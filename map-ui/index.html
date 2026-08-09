@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="한국관광공사 TourAPI 제주 장소 데이터를 카테고리별로 탐색하는 인터랙티브 지도"
+    />
+    <title>제주 플레이스 맵</title>
+    <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
+    <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img">
+            <path d="M16 3.5 24.5 7v8.2c0 6-3.6 10.8-8.5 13.3-4.9-2.5-8.5-7.3-8.5-13.3V7L16 3.5Z" />
+            <path d="m12.2 19.8 2.2-6.7 6.7-2.2-2.2 6.7-6.7 2.2Z" />
+          </svg>
+        </span>
+        <div>
+          <p class="eyebrow">TOURAPI PLACE EXPLORER</p>
+          <h1>제주 플레이스 맵</h1>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="data-pill" aria-label="데이터 상태">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span><strong id="headerValidCount">—</strong>개 좌표 확인</span>
+          <span class="data-pill-divider" aria-hidden="true"></span>
+          <span id="sourceDate">수집일 —</span>
+        </div>
+        <button
+          class="button button-secondary mobile-panel-button"
+          id="mobilePanelButton"
+          type="button"
+          aria-controls="sidebar"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h10" />
+          </svg>
+          장소 목록
+        </button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" id="sidebar" aria-label="장소 탐색 패널">
+        <div class="sidebar-heading">
+          <div>
+            <p class="section-kicker">EXPLORE JEJU</p>
+            <h2>어디를 둘러볼까요?</h2>
+            <p id="filterSummary">데이터를 불러오는 중입니다.</p>
+          </div>
+          <button
+            class="icon-button sidebar-close-button"
+            id="sidebarCloseButton"
+            type="button"
+            aria-label="장소 목록 닫기"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" />
+            <path d="m16 16 4 4" />
+          </svg>
+          <label class="sr-only" for="placeSearch">장소명 또는 주소 검색</label>
+          <input
+            id="placeSearch"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="장소명 또는 주소 검색"
+          />
+          <button id="clearSearchButton" type="button" aria-label="검색어 지우기" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m7 7 10 10M17 7 7 17" />
+            </svg>
+          </button>
+        </div>
+
+        <section class="filter-section" aria-labelledby="categoryTitle">
+          <div class="section-title-row">
+            <h3 id="categoryTitle">카테고리</h3>
+            <button class="text-button" id="resetFiltersButton" type="button">필터 초기화</button>
+          </div>
+          <div class="category-grid" id="categoryFilters"></div>
+        </section>
+
+        <section class="results-section" aria-labelledby="resultTitle">
+          <div class="section-title-row result-title-row">
+            <div>
+              <h3 id="resultTitle">현재 지도 안 장소</h3>
+              <p>목록을 누르면 해당 위치로 이동합니다.</p>
+            </div>
+            <span class="count-badge" id="resultCount">—</span>
+          </div>
+          <div class="result-list" id="resultList" aria-live="polite">
+            <div class="loading-list" aria-label="장소 목록을 불러오는 중">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="map-shell" aria-label="제주 장소 지도">
+        <div id="map"></div>
+
+        <div class="map-toolbar" aria-label="지도 보기 도구">
+          <button class="map-action" id="fitFilteredButton" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" />
+            </svg>
+            결과 맞춤
+          </button>
+          <button class="map-action" id="fitJejuButton" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            제주 전체
+          </button>
+        </div>
+
+        <div class="viewport-status" aria-live="polite">
+          <span class="status-pulse" aria-hidden="true"></span>
+          지도 안 <strong id="viewportCount">—</strong>개
+        </div>
+
+        <div class="map-loading" id="mapLoading" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          제주 지도를 준비하고 있어요
+        </div>
+
+        <article class="detail-card" id="detailPanel" aria-live="polite" hidden>
+          <button class="detail-close" id="detailCloseButton" type="button" aria-label="장소 상세 닫기">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+          <div class="detail-media" id="detailMedia">
+            <img id="detailImage" alt="" />
+            <div class="image-placeholder" id="detailImagePlaceholder" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M8 38V14a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4v24H8Z" />
+                <circle cx="18" cy="20" r="4" />
+                <path d="m10 36 9-9 7 6 5-5 8 8" />
+              </svg>
+            </div>
+          </div>
+          <div class="detail-content">
+            <div class="detail-meta-row">
+              <span class="type-badge" id="detailType"></span>
+              <span id="detailModified"></span>
+            </div>
+            <h2 id="detailTitle"></h2>
+            <p class="detail-address" id="detailAddress"></p>
+            <p class="detail-phone" id="detailPhone" hidden></p>
+            <div class="detail-actions">
+              <button class="button button-primary" id="centerPlaceButton" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                </svg>
+                지도 중심으로
+              </button>
+              <button class="button button-secondary" id="copyPlaceButton" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="8" y="8" width="11" height="11" rx="2" />
+                  <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+                </svg>
+                <span id="copyPlaceButtonLabel">위치 복사</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <button class="mobile-results-fab" id="mobileResultsFab" type="button" aria-controls="sidebar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h10" />
+          </svg>
+          장소 <strong id="mobileResultCount">—</strong>
+        </button>
+      </section>
+    </main>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+    <script src="./vendor/leaflet/leaflet.js" defer></script>
+    <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
+    <script src="./data/jeju-places.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
