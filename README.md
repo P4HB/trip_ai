@@ -117,5 +117,6 @@ Leaflet 및 MarkerCluster 라이선스는 각 `map-ui/vendor/` 하위에 포함�
 
 ## 관련 문서
 
+- [개발 SPEC 및 설계 문서 색인](docs/README.md)
 - [경쟁사 및 시장 조사](COMPETITOR_RESEARCH_2026-08-02.md)
 - [지도 UI 실행 안내](map-ui/README.md)
