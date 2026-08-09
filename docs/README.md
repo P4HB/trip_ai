@@ -13,6 +13,8 @@
 
 - 구현됨: 제주 TourAPI 기본 장소 수집 및 검증
 - 구현됨: 최신 스냅샷을 지도용 JavaScript 데이터로 변환
+- 구현됨: TourAPI 장소를 라벨링용 음식점·비음식점 데이터로 분리
+- 구현됨: 관광지·문화시설·축제·레포츠 100건의 companion·월별 적합도 AI 초안 sidecar
 - 구현됨: 장소 검색, 카테고리 필터, 지도 마커·클러스터, 장소 상세 UI
 - 미구현: 사용자 프로필, 개인화 추천, 랭킹, 일정 최적화, 추천 API, 추천 평가 파이프라인
 
@@ -21,8 +23,10 @@
 | SPEC | 제목 | 상태 | 관련 영역 |
 |---|---|---|---|
 | [SPEC-001](spec_001.md) | SDD 및 여행 추천 AI 문서 체계 도입 | Implemented | repository, docs |
+| [SPEC-002](spec_002.md) | 제주 장소 음식점·비음식점 라벨링 데이터 분리 | Implemented | data, labeling |
+| [SPEC-003](spec_003.md) | Companion·월별 적합도 100건 파일럿 라벨링 | Implemented | data, labeling, evaluation |
 
-- 다음 예약 번호: `SPEC-002`
+- 다음 예약 번호: `SPEC-004`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

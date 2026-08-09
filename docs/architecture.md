@@ -19,17 +19,19 @@ data/tourapi/jeju/YYYY-MM-DD/
   - JSON/JSONL/CSV
   - 품질 리포트와 manifest
         |
-        v
-scripts/build_map_ui_data.mjs
-        |
-        v
-map-ui/data/jeju-places.js
-        |
-        v
-map-ui/index.html + app.js + styles.css
-        |
-        v
-Leaflet 지도 탐색 UI
+        +-------------------------------+
+        |                               |
+        v                               v
+scripts/build_map_ui_data.mjs   scripts/split_tourapi_jeju_places.mjs
+        |                               |
+        v                               v
+map-ui/data/jeju-places.js      data/labeling/jeju/YYYY-MM-DD/
+        |                         - restaurants.json
+        v                         - non_restaurants.json
+map-ui/index.html + app.js        - manifest.json
+        |                               |
+        v                               v
+Leaflet 지도 탐색 UI            일반 장소 라벨링 입력(라벨 생성은 미구현)
 ```
 
 ### 컴포넌트 책임
@@ -37,6 +39,8 @@ Leaflet 지도 탐색 UI
 - `scripts/collect_tourapi_jeju.py`: API 키 로드, 전체 페이지 수집, ID 무결성 및 좌표 품질 검사, 날짜별 스냅샷과 해시 생성
 - `data/tourapi/jeju/`: 재현 가능한 원본·정제 데이터와 수집 메타데이터 보관
 - `scripts/build_map_ui_data.mjs`: 가장 최근 스냅샷 선택, 지도용 필드 정규화, 제주 표시 범위를 벗어난 좌표 제외
+- `scripts/split_tourapi_jeju_places.mjs`: 가장 최근 원본 스냅샷을 음식점과 비음식점으로 완전 분할하고 출처·건수·해시 기록
+- `data/labeling/jeju/`: 원본 필드와 순서를 보존한 날짜별 라벨링 입력 파생물 보관
 - `map-ui/`: 검색, 카테고리 필터, 지도 범위 결과, 마커 클러스터, 장소 상세를 제공하는 정적 UI
 
 ### 현재 런타임 경계
