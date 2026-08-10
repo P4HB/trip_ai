@@ -172,6 +172,32 @@ data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/
 
 v3도 사람 승인 전 AI 초안이다. `low`·`medium` 일괄 승인은 각각의 사용자 확인 뒤 사람 검수 sidecar 상태만 바꾸며 AI 원본이나 운영용 골드 라벨을 자동 변경하지 않는다. `high`는 개별 검수한다.
 
+## 비음식점 전체 장소 프로필 v1 — 구현됨, AI 초안
+
+`SPEC-007`은 2026-08-09 분할의 `non_restaurants.json` 1,434건을 원본 순서와 `contentid` 단위로 유지하면서, 기존 파일럿 100건의 값·축별 provenance·hard constraint를 회귀 기준으로 포함하고 나머지 장소까지 조사와 자동 제안을 확장한다. 음식점 720건과 기존 TourAPI·분할·파일럿·기후·지도·검수 UI 파일은 입력 또는 보호 원본이며 수정하지 않는다.
+
+```text
+data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/
+  research/web_pages.jsonl
+  place_web_research.jsonl
+  auto_label_proposals.jsonl
+  hard_constraints.jsonl
+  review_queue.jsonl
+  place_profiles.sqlite3
+  manifest.json
+  review_report.md
+```
+
+- `research/web_pages.jsonl`은 1,434개 K-TRIP TIPS `contentid` 상세 페이지를 실제로 연 결과를 보존하는 재개 가능 cache다. URL·최종 URL, HTTP 상태, 페이지 제목·주소, overview·안내 필드, 공식 홈페이지 후보, 확인일과 본문 SHA-256 또는 명시적 오류를 기록하며 원문 HTML 전체를 저장하지 않는다. 현재 검증 스냅샷은 1,434건 모두 성공·`matched`다.
+- JSONL 다섯 파일이 UTF-8·0 기반 `source_order` 순서의 canonical 교환 형식이다. SQLite는 같은 내용을 질의하기 위한 파생물이며 `places`, `web_sources`, `research`, `label_runs`, `label_proposals`, `label_axes`, `hard_constraints`와 metadata를 foreign key·unique·CHECK 제약이 있는 새 파일에 단일 writer로 생성한다.
+- companion은 1,434×5=7,170축, 비축제 month는 1,406×12=16,872축이 수치다. 축제 28건의 month 336축만 `not_applicable`/`date_gated_not_applicable` N/A이며, 전체 24,378축은 value/state, confidence, inference level, 한국어 rationale, evidence ID와 rule ID를 가진다. 현재 `direct_evidence`는 파일럿 회귀 68축과 비파일럿 overview의 명시적 동행 문구를 fail-closed로 확인한 14축을 합친 82축이다.
+- 숙박·쇼핑 등 유형마다 `experience_scope`를 조사·proposal·축·제약에 함께 기록한다. 직접 근거가 아닌 `0`·`1`은 허용하지 않고, 조사 불확실 fallback은 confidence `0.25`와 `high` 검수 우선순위를 사용한다.
+- 예약, 인원·연령, 운영·개최일, 기상 통제와 접근 조건은 점수와 상쇄되지 않는 별도 hard constraint다. 현재 스냅샷은 1,518건이며 각 레코드는 구체적인 `applies_to`, condition, status/action, 공개 source URL, 확인일과 rule provenance를 가진다.
+- `manifest.json`은 원본·웹 cache·파일럿·기후 fixture·규칙·출력 SHA-256, 분포·coverage와 `trip-ai-sqlite-logical-v1` digest를 기록한다. 이 digest는 일곱 content table을 SQLite 컬럼 순서와 선언된 기본키 순서로 canonical dump한 값이며 현재 검증값은 `795010641f53664d4bfbd1164c1193168aa053370e45ec9a5aebd8ef78c6e517`다. SQLite 파일 바이트가 아니라 이 논리값으로 결정성을 비교한다.
+- `scripts/validate_all_place_profiles.py`는 파일럿 100건 회귀, ID·순서·축 coverage, provenance·극단값·N/A 정책, hard constraint, JSONL↔SQLite 전수 일치, integrity/FK, manifest와 보호 원본 SHA-256을 독립 검증한다.
+
+전체 결과의 상태는 `ai_draft`다. `review_queue.jsonl`은 사람 검수 순서를 돕지만 승인 결과가 아니며, 이 데이터는 사람 검수 없이 골드 라벨이나 운영 추천 입력으로 승격하지 않는다.
+
 ## 장소 프로필 사람 검수 피드백 — 구현됨
 
 `labeling-review/index.html`은 v3 수치 제안과 v2의 조사 사실·미확인 사항·출처를 함께 보여주고, 100건 AI 제안을 읽기 전용 기준값으로 내장해 사람 검수 결과를 별도 sidecar로 내보낸다. 원본 `place_profiles.json`, TourAPI 데이터와 지도 데이터는 수정하지 않는다.

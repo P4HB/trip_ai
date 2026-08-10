@@ -30,8 +30,9 @@
 | [SPEC-004](spec_004.md) | 장소 프로필 100건 사람 검수 HTML | Implemented | labeling, UI |
 | [SPEC-005](spec_005.md) | 100건 장소별 웹 조사와 근거 강화 검수 화면 | Implemented | research, labeling, UI |
 | [SPEC-006](spec_006.md) | 웹 조사 기반 AI 자동 가중치 완성과 저노력 검수 | Implemented | scoring, labeling, UI |
+| [SPEC-007](spec_007.md) | 제주 비음식점 전체 웹 조사·DB 저장·자동 라벨 확장 | Implemented | research, scoring, database, labeling |
 
-- 다음 예약 번호: `SPEC-007`
+- 다음 예약 번호: `SPEC-008`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

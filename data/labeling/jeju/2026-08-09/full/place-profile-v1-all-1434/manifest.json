@@ -1,0 +1,201 @@
+{
+  "schema_version": "place-profile-full-manifest-v1",
+  "status": "ai_draft",
+  "dataset_version": "place-profile-v1-all-1434",
+  "snapshot_date": "2026-08-09",
+  "algorithm_version": "full-place-autolabel-rules-v1",
+  "label_run_id": "place-profile-v1-all-1434:full-place-autolabel-rules-v1",
+  "inputs": {
+    "builder": {
+      "path": "scripts/build_all_place_profiles.py",
+      "sha256": "ef8414f74d45cd6a90d332b4f36a9aa551dfcb2292890417aa4463e2ad673f95"
+    },
+    "climate_fixture": {
+      "path": "data/climate/kma/1991-2020/jeju_four_station_monthly_normals.json",
+      "sha256": "e81e1d363e6db463f4d9c9388c36b18ae7b3cd7fe83b40636f7d786c877393ae"
+    },
+    "companion_profiles": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/scoring/companion_profiles.json",
+      "sha256": "5ac0c18a455f94fce3b0ce3a1759fbc2cf6bfda0ec26f68c886c701aca155bda"
+    },
+    "month_profiles": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/scoring/month_profiles.json",
+      "sha256": "cdfbb59e3578588775b87e1dc9a1eb04d79d1a6c5fed432b11d0d987acaaffd5"
+    },
+    "non_restaurants": {
+      "path": "data/labeling/jeju/2026-08-09/non_restaurants.json",
+      "sha256": "c99ff138b63f15653b639b29a9c5e62aa6060494409fbedd4ed4b79855db0e54"
+    },
+    "partition_manifest": {
+      "path": "data/labeling/jeju/2026-08-09/manifest.json",
+      "sha256": "51f74e172bec21707f6d0ba66d7cfb616ed744cf48a4bef678cfda4952fa95fc"
+    },
+    "pilot_v2_manifest": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v2-100/manifest.json",
+      "sha256": "19a8e81dd88b35865cc69e96ce857b43e4d0f0fa0d9901325a396c5b80d7403d"
+    },
+    "pilot_v2_research": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v2-100/place_web_research.json",
+      "sha256": "e92ff9bafd94b2bdcdda2ae04ab9930235d16147717e698fd3bfe7766d302fc6"
+    },
+    "pilot_v3_manifest": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/manifest.json",
+      "sha256": "73139b7cc0e442edf23c9c3cbf924fd4fd8a51269cdd417fc55662a6ac48a883"
+    },
+    "pilot_v3_profiles": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/place_profiles.json",
+      "sha256": "d7b0263661d1fc66f2c21cb6b059a9adbab41b074e248663bd0f4f1ddd44fd14"
+    },
+    "pilot_v3_proposals": {
+      "path": "data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/auto_label_proposals.json",
+      "sha256": "04d57b96672a7287eb0b6c76cc5d73cc6438cf8d8a73b48ed2db2b669f1c4a8c"
+    },
+    "restaurants_protected": {
+      "path": "data/labeling/jeju/2026-08-09/restaurants.json",
+      "sha256": "b9e9253aae337d6f2c4ef42bc32bf97b21fc46a1369c56f97f662775fa7f29f3"
+    },
+    "web_cache": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/research/web_pages.jsonl",
+      "sha256": "efaf38517e7935875037a257a3613fb7fb74a3681b212cc31b39bcf459c58d24"
+    }
+  },
+  "input_digest": "5c262d088756d381c5718dda57eb100439b8604f572cbff5c840092a6e4e853a",
+  "rules": {
+    "descriptor": {
+      "algorithm_version": "full-place-autolabel-rules-v1",
+      "archetype_inputs": [
+        "contenttypeid",
+        "lclsSystm1",
+        "lclsSystm2",
+        "lclsSystm3",
+        "title",
+        "overview"
+      ],
+      "classification_priority": [
+        "contenttypeid",
+        "lclsSystm3",
+        "lclsSystm2",
+        "exact_title_keywords"
+      ],
+      "overview_policy": "summary, direct facts, and explicit environment refinement; never primary archetype",
+      "direct_companion_policy": "only curated explicit companion claims in the fetched overview become direct_evidence",
+      "hard_constraint_policy": "direct page condition only; generic sensitivity stays in prior/review",
+      "inference_priority": [
+        "pilot_reviewed_anchor",
+        "direct_evidence",
+        "researched_inference",
+        "archetype_prior",
+        "climate_heuristic"
+      ],
+      "fallback_confidence": 0.25,
+      "non_direct_extreme_policy": "0.25..0.75 only",
+      "coordinate_bounds": {
+        "longitude": [
+          125.5,
+          127.5
+        ],
+        "latitude": [
+          32.5,
+          34.2
+        ]
+      },
+      "special_cases": {
+        "2704351": "retain_coordinate_anomaly_and_high_priority"
+      }
+    },
+    "descriptor_sha256": "351a9fef20b829043889a4424608c07289a23370051a400d2f2844be0ec79f26",
+    "builder_path": "scripts/build_all_place_profiles.py",
+    "builder_sha256": "ef8414f74d45cd6a90d332b4f36a9aa551dfcb2292890417aa4463e2ad673f95"
+  },
+  "climate": {
+    "path": "data/climate/kma/1991-2020/jeju_four_station_monthly_normals.json",
+    "file_sha256": "e81e1d363e6db463f4d9c9388c36b18ae7b3cd7fe83b40636f7d786c877393ae",
+    "canonical_sha256": "f4280833510c0a2180093fbfce6671b56d08aae21af034541daa8831653e3370"
+  },
+  "stats": {
+    "total": 1434,
+    "pilot_anchors": 100,
+    "by_content_type": {
+      "12": 566,
+      "14": 97,
+      "15": 28,
+      "28": 137,
+      "32": 209,
+      "38": 397
+    },
+    "research_status": {
+      "matched": 1434
+    },
+    "review_priority": {
+      "high": 40,
+      "low": 575,
+      "medium": 819
+    },
+    "inference_level": {
+      "archetype_prior": 501,
+      "climate_heuristic": 16704,
+      "direct_evidence": 82,
+      "not_applicable": 336,
+      "researched_inference": 6755
+    },
+    "companion_numeric": 7170,
+    "nonfestival_month_numeric": 16872,
+    "festival_month_na": 336,
+    "hard_constraints": 1518,
+    "coordinate_anomalies": 1,
+    "archetypes": {
+      "active_shared_ride_or_leisure": 37,
+      "beach_or_water": 37,
+      "camping": 22,
+      "festival_or_event": 28,
+      "golf_or_team_play": 12,
+      "hands_on_craft_or_education": 67,
+      "hiking_or_trail": 162,
+      "history_or_religion": 61,
+      "indoor_culture_or_performance": 87,
+      "park_picnic_or_play": 101,
+      "quiet_indoor_reading_or_meditation": 10,
+      "scenic_photo_or_light_stroll": 149,
+      "shopping_visit": 397,
+      "spa_or_wellness": 6,
+      "sports_spectator": 1,
+      "stay": 209,
+      "transport_or_ferry": 26,
+      "unresolved_generic": 2,
+      "water_sport_caution": 20
+    }
+  },
+  "logical_db_digest": "795010641f53664d4bfbd1164c1193168aa053370e45ec9a5aebd8ef78c6e517",
+  "logical_db_digest_algorithm": "trip-ai-sqlite-logical-v1",
+  "files": {
+    "place_web_research.jsonl": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/place_web_research.jsonl",
+      "sha256": "0a1b09b71a4bae990ef4054307311cb30f6615ad57ee8e9dacf61f6c00476419",
+      "count": 1434
+    },
+    "auto_label_proposals.jsonl": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/auto_label_proposals.jsonl",
+      "sha256": "71859afa5d505ece781e59e3b9ae00a290e78c8b336e02e2701d09314c6fb4f0",
+      "count": 1434
+    },
+    "hard_constraints.jsonl": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/hard_constraints.jsonl",
+      "sha256": "d4c03868f19802116cee4a7580ae9cd2c1e774ce806ee4390cba4a3c1bb272b8",
+      "count": 1518
+    },
+    "review_queue.jsonl": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/review_queue.jsonl",
+      "sha256": "a6f66687a0856ba5367081d4f1e2deecafab9e94966e641c15328b4b25e40d1a",
+      "count": 1434
+    },
+    "place_profiles.sqlite3": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/place_profiles.sqlite3",
+      "sha256": "b704ae243c4749612655d82730d4a9d7542731301f4744f6015978ab7f0c541f"
+    },
+    "review_report.md": {
+      "path": "data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/review_report.md",
+      "sha256": "e6587df12b0b6011c1464ce23f867f761cf58ed58d4fc192cd3337a393ec2551"
+    }
+  },
+  "protected_inputs_unchanged": true
+}

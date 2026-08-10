@@ -68,6 +68,31 @@ Leaflet 지도 탐색 UI            고정 100건 v1 AI 초안
                               - 사람 검수 JSON 내보내기
 ```
 
+고정 100건 검수 파이프라인과 별도로, 같은 비음식점 분할의 1,434건 전체에는 다음 파생 파이프라인이 구현되어 있다. 기존 100건은 회귀 앵커로 재사용하며 원본·파일럿·지도·검수 UI를 수정하지 않는다.
+
+```text
+data/labeling/jeju/YYYY-MM-DD/non_restaurants.json (1,434건)
+        |
+        v
+scripts/fetch_all_place_web_pages.mjs
+  - contentid 상세 페이지 조회
+  - 성공 cache skip·원자적 checkpoint
+        |
+        v
+research/web_pages.jsonl
+        |
+        v
+scripts/build_all_place_profiles.py
+  - 파일럿 100건 회귀 앵커 연결
+  - 조사 사실·동행 5축·월 12축·hard constraint 생성
+  - canonical JSONL + 단일 writer SQLite 생성
+        |
+        v
+scripts/validate_all_place_profiles.py
+  - coverage·provenance·파일럿 회귀
+  - JSONL↔SQLite·integrity·FK·manifest 전수 검증
+```
+
 ### 컴포넌트 책임
 
 - `scripts/collect_tourapi_jeju.py`: API 키 로드, 전체 페이지 수집, ID 무결성 및 좌표 품질 검사, 날짜별 스냅샷과 해시 생성
@@ -83,6 +108,10 @@ Leaflet 지도 탐색 UI            고정 100건 v1 AI 초안
 - `scripts/validate_place_profile_autolabel_v3.mjs`: 500 companion·1,152 비축제 month·48 축제 N/A, 직접 근거 매핑, 추론 provenance·극단값 정책, 기후 fixture의 전 월·파생 벡터, TourAPI 원본과 출력 해시 검증
 - `scripts/build_labeling_review_ui.mjs`: v3 100건, v2 웹 조사, 자동 라벨 provenance와 표시용 원본 필드를 검증해 외부 코드 의존성이 없는 단일 검수 HTML 생성
 - `labeling-review/`: 조사 사실과 전 축 AI 제안을 함께 보여주고, 낮음·중간 우선순위별 명시적 일괄 승인 및 장소별 override·상태·코멘트를 JSON sidecar로 내보내는 정적 UI
+- `scripts/fetch_all_place_web_pages.mjs`: 비음식점 1,434건의 공개 상세 페이지를 최대 동시성 5로 조회하고 성공 레코드를 건너뛰는 원자적 JSONL checkpoint를 만든다.
+- `scripts/build_all_place_profiles.py`: 웹 조사 cache와 파일럿·기후 fixture를 고정 입력으로 사용해 전체 조사·자동 라벨·검수 큐·hard constraint를 canonical JSONL과 파생 SQLite로 결정적으로 생성한다.
+- `scripts/validate_all_place_profiles.py`: 전체 ID·순서·축·근거·제약·파일럿 회귀, JSONL↔SQLite 일치, SQLite integrity/FK, manifest와 보호 입력 해시를 독립 검증한다.
+- `data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/`: 전체 비음식점 AI 초안의 재개 가능 웹 cache, canonical JSONL, 질의용 SQLite, manifest와 검수 보고서를 보관한다.
 - `map-ui/`: 검색, 카테고리 필터, 지도 범위 결과, 마커 클러스터, 장소 상세를 제공하는 정적 UI
 
 ### 현재 런타임 경계
@@ -94,6 +123,7 @@ Leaflet 지도 탐색 UI            고정 100건 v1 AI 초안
 - 검수 UI는 100건 v3 제안, v2 웹 조사 레코드, 기후 기준과 기준 SHA-256을 HTML에 내장하며 서버 API를 호출하지 않는다.
 - 브라우저는 조사 시점에 캐시한 페이지를 다시 가져오지 않는다. 출처 링크를 여는 동작만 외부 네트워크에 의존한다.
 - 사람 입력은 현재 브라우저의 `localStorage`와 사용자가 내려받은 JSON 파일에만 저장된다.
+- 전체 장소 SQLite는 로컬 질의용 파생 산출물이며 현재 서버 API나 브라우저 런타임에서 읽지 않는다. 교환 정본은 `source_order` 순서의 canonical JSONL이다.
 
 ## 목표 추천 구조 — 미구현
 
