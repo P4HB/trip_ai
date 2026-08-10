@@ -107,3 +107,42 @@ node scripts/build_labeling_review_ui.mjs
 node scripts/validate_labeling_review_ui.mjs
 node scripts/test_labeling_review_model.mjs
 ```
+
+## 비음식점 전체 장소 프로필 v1
+
+SPEC-007이 생성한 비음식점 1,434건 전체 AI 초안은 다음 위치에 있다.
+
+```text
+2026-08-09/full/place-profile-v1-all-1434/
+  research/web_pages.jsonl
+  place_web_research.jsonl
+  auto_label_proposals.jsonl
+  review_queue.jsonl
+  hard_constraints.jsonl
+  place_profiles.sqlite3
+  manifest.json
+  review_report.md
+```
+
+- 조사 상태 `matched`: 1,434건
+- companion: 7,170축
+- 비축제 month 수치: 16,872축
+- 축제 month N/A: 336축
+- hard constraint: 1,518건
+- 논리 DB digest: `795010641f53664d4bfbd1164c1193168aa053370e45ec9a5aebd8ef78c6e517`
+
+canonical JSONL이 정본 교환 형식이고 `place_profiles.sqlite3`는 같은 레코드의 로컬 읽기·질의용 파생물이다. 전체 데이터도 사람 검수 전 `ai_draft`이며, 직접 근거는 전체 24,378축 중 82축뿐이다. 운영 추천 입력이나 골드 라벨로 승격하지 않는다.
+
+기존 성공 cache를 확인하고 현재 산출물을 검증하려면 다음을 실행한다.
+
+```powershell
+node scripts/fetch_all_place_web_pages.mjs --dry-run
+python scripts/validate_all_place_profiles.py
+```
+
+현재 cache는 1,434건 모두 성공해 `to_fetch=0`이다. `--refresh`는 외부 페이지를 전건 재조회해 조사 snapshot을 바꾸므로 명시적인 새 조사 run을 만들 때만 사용한다. canonical 산출물을 다시 만들 때는 고정 cache와 입력을 사용해 다음을 실행한다.
+
+```powershell
+python scripts/build_all_place_profiles.py
+python scripts/validate_all_place_profiles.py
+```

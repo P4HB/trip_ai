@@ -3,14 +3,14 @@
 - 상태: Implemented
 - 작성일: 2026-08-10
 - 최종 수정일: 2026-08-10
-- 관련 이슈: 검수한 100건을 기준으로 음식점을 제외한 제주 장소 전체를 웹 조사하고 companion·월별 적합도를 자동 라벨링해 DB에 저장
+- 관련 이슈: 비공식 결과 피드백을 받은 100건을 회귀 기준으로 음식점을 제외한 제주 장소 전체를 웹 조사하고 companion·월별 적합도를 자동 라벨링해 DB에 저장
 - 관련 문서: [문서 색인](README.md), [데이터 계약](data_contracts.md), [시스템 아키텍처](architecture.md), [SPEC-006](spec_006.md)
 - 관련 코드: `scripts/fetch_all_place_web_pages.mjs`, `scripts/build_all_place_profiles.py`, `scripts/validate_all_place_profiles.py`, `data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/`
 - 선행 SPEC: [SPEC-006](spec_006.md)
 
 ## 배경
 
-제주 TourAPI 2026-08-09 스냅샷은 2,154건이며 음식점 720건과 비음식점 1,434건으로 분리되어 있다. SPEC-005와 SPEC-006은 비음식점 중 관광지·문화시설·축제·레포츠 100건만 실제 상세 페이지에서 조사하고 companion 5축과 month 12축 AI 초안을 만들었다. 사용자가 이 100건을 검토한 결과 대부분이 적절하다고 확인했고, 같은 원칙을 음식점을 제외한 나머지 전체 장소로 확장하도록 요청했다.
+제주 TourAPI 2026-08-09 스냅샷은 2,154건이며 음식점 720건과 비음식점 1,434건으로 분리되어 있다. SPEC-005와 SPEC-006은 비음식점 중 관광지·문화시설·축제·레포츠 100건만 실제 상세 페이지에서 조사하고 companion 5축과 month 12축 AI 초안을 만들었다. 사용자는 결과를 대략 확인한 뒤 대부분 합리적으로 보인다는 비공식 피드백과 전체 확장 요청을 주었다. 이는 구조화된 사람 검수 완료나 골드 승인이 아니며, 기록된 사람 검수 완료 건수는 0건이다.
 
 현재 100건 파이프라인은 날짜, 건수, 네 유형, 세 개 수동 배치와 개별 장소 예외를 하드코딩하므로 단순히 입력 건수만 바꿀 수 없다. 전체 비음식점에는 기존 파일럿에 없던 숙박 209건과 쇼핑 397건도 있다. 또한 현재 저장소에는 조사 사실과 라벨을 질의할 수 있는 데이터베이스가 없다.
 
@@ -59,7 +59,7 @@
 - `REQ-006`: 기존 파일럿 100건은 SPEC-005/006 산출물의 수치·축별 provenance·hard constraint를 변경 없이 전체 데이터에 연결하고 source hash를 기록한다. 나머지 1,334건만 새 웹 조사·일반화 규칙으로 보완한다.
 - `REQ-007`: companion 키는 `solo`, `couple`, `friends`, `kids`, `parents`이고 전 1,434건 7,170축이 `0`, `0.25`, `0.5`, `0.75`, `1` 중 하나여야 한다.
 - `REQ-008`: 축제가 아닌 1,406건의 month 16,872축은 모두 수치여야 한다. 축제 28건의 month 336축만 `not_applicable/date_gated_not_applicable`로 `null`이어야 한다.
-- `REQ-009`: 추론 우선순위는 `pilot_reviewed_anchor > direct_evidence > researched_inference > archetype_prior > climate_heuristic`이다. 직접 claim이 연결되지 않은 `0`·`1`은 금지하고 일반·불확실 fallback은 `0.25..0.75`로 제한한다.
+- `REQ-009`: 일반 추론 우선순위는 `direct_evidence > researched_inference > archetype_prior > climate_heuristic`이다. 기존 파일럿 100건은 값·축별 inference level·provenance를 그대로 보존하는 회귀 anchor이지 별도 inference level이나 사람 검수 완료 상태가 아니다. 직접 claim이 연결되지 않은 `0`·`1`은 금지하고 일반·불확실 fallback은 `0.25..0.75`로 제한한다.
 - `REQ-010`: 숙박은 숙박 경험, 쇼핑은 관광 중 쇼핑 방문 경험이라는 `experience_scope`를 각 축과 DB에 기록해 관광지 방문 점수와 혼동하지 않는다.
 - `REQ-011`: 예약, 연령·신장·인원, 운영·개최일, 기상 통제, 접근·이동 부담은 점수와 별도 hard constraint로 저장한다. 각 제약은 구체적인 `applies_to`, condition, status, action, 출처와 확인일을 가져야 한다.
 - `REQ-012`: 각 수치 축은 value, confidence, inference level, 한국어 rationale, rule ID와 가능한 source claim을 가져야 한다. `uncertain`·`not_found` 장소의 prior는 confidence 0.25와 `high` 우선순위를 강제한다.
@@ -230,3 +230,4 @@ DB는 원본 저장소를 대체하지 않는다. JSONL과 SQLite 모두 `conten
 |---|---|
 | 2026-08-10 | 사용자 승인 범위에 따라 1,434건 전체 조사·자동 라벨·새 SQLite 저장 계약 작성 및 구현 시작 |
 | 2026-08-10 | 1,434건 수집·자동 라벨·SQLite 생성, 직접 근거 회귀 보정, 결정성·전수 validator 검증을 완료하고 Implemented로 전환 |
+| 2026-08-10 | 비공식 결과 피드백과 구조화된 사람 검수를 구분하고 파일럿을 품질 등급이 아닌 회귀 anchor로 명확화 |

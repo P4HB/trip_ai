@@ -253,52 +253,346 @@ HumanReview {
 - v1·v2·v3는 기준 SHA-256이 다르므로 이전 버전 브라우저 상태나 내보내기 파일을 자동 병합하지 않는다.
 - 다운로드한 JSON만 브라우저 밖으로 공유 가능한 사람 검수 결과다. 서버나 데이터베이스로 자동 전송하거나 운영 라벨에 자동 반영하는 단계는 구현하지 않았다.
 
-## 추천 요청 — 목표 초안, 미구현
+## 추천 feature snapshot — 목표 계약, 미구현
 
-정확한 API 스키마는 구현 SPEC에서 확정한다. 최소 도메인 필드는 다음을 고려한다.
+랭커는 현재 JSONL 파일이나 SQLite 테이블을 직접 해석하지 않고 다음 공통 snapshot을 입력받는다.
 
 ```text
-RecommendationRequest {
-  request_id: string
-  destination_region: string
-  travel_dates: { start: date, end: date, timezone: string }
-  party: { adults: integer, children: integer?, accessibility_needs: string[] }
-  transport_modes: string[]
-  origin: coarse_location | place_id | null
-  budget: { amount: number?, currency: string, is_hard_limit: boolean }
-  hard_constraints: Constraint[]
-  preferences: Preference[]
-  excluded_place_ids: string[]
+RecommendationFeatureSnapshot {
+  schema_version: string
+  data_snapshot: date
+  dataset_status: ai_draft
+  source_manifest_sha256: sha256
+  logical_db_digest: sha256
+  feature_snapshot_digest: sha256
+
+  places: RecommendationPlaceFeature[]
+}
+
+RecommendationPlaceFeature {
+  place_id: string              # 현재 TourAPI contentid와 1:1
+  source_order: integer
+  contenttypeid: string
+  title: string
+  address: string?
+  longitude: number?
+  latitude: number?
+  coordinate_state: valid | invalid | missing
+  region: {
+    country_code: string
+    areacode: string
+    sigungucode: string?
+    first_level: string
+    second_level: string?
+  }
+
+  lcls1: string?
+  lcls2: string?
+  lcls3: string?
+  place_kind: string
+  experience_scope: string
+  environment: indoor | outdoor | mixed | unknown
+  research_status: matched | uncertain | not_found
+
+  companion_axes: AxisFeature[5]
+  month_axes: AxisFeature[12]
+  constraint_facts: ConstraintFact[]
+  source_refs: RecommendationSourceRef[]
+}
+
+AxisFeature {
+  axis_group: companion | month
+  axis_key: string
+  state: numeric | not_applicable
+  value: number?
+  confidence: number?
+  inference_level: string
+  evidence_ids: string[]
+  rule_ids: string[]
+}
+
+ConstraintFact {
+  constraint_id: string
+  kind: string
+  subject_scope: string
+  condition_text: string
+  predicate: {
+    operator: controlled_enum
+    value: scalar | list | range
+    unit: string?
+  }?
+  source_status: confirmed | stale | unknown
+  source_action: exclude | verify
+  predicate_status: absent | unreviewed | reviewed
+  checked_at: date
+  source_ref_id: string
+  provenance: string
+}
+
+RecommendationSourceRef {
+  source_id: string
+  source_kind: web | climate | catalog
+  url: string?
+  final_url: string?
+  publisher: string?
+  source_type: string
+  checked_at: date
+  content_sha256: sha256?
 }
 ```
 
-- 필수 제약과 선호를 별도 필드로 유지한다.
-- 정확한 실시간 위치가 필요하지 않으면 행정구역 또는 격자 수준 위치를 사용한다.
-- 금액에는 통화를, 시간에는 시간대를 반드시 포함한다.
+- materializer는 `canonical JSONL set + 원본 장소` 또는 `read-only SQLite + manifest`를 이 계약으로 투영한다.
+- `state=numeric`이면 value와 confidence가 필수고, `state=not_applicable`이면 둘 다 `null`이다.
+- 지역 필드는 원본 `areacode`·`sigungucode`와 versioned 코드명 표에서 만든다. 주소 문자열만으로 지역을 추측하지 않는다.
+- 같은 manifest 입력의 두 경로는 canonical `feature_snapshot_digest`가 같아야 한다.
+- `feature_snapshot_digest`는 해당 필드 자체를 제외한 canonical snapshot payload의 SHA-256이다.
+- 현재 constraint는 predicate가 없으므로 `predicate_status=absent`다. 후속 구조화·독립 검수 전에는 `reviewed`로 만들지 않는다.
+- 동적 freshness는 snapshot 필드가 아니다. 필터가 고정 `checked_at`, 신뢰된 `evaluation_as_of`와 versioned freshness policy에서 계산하고 decision trace에 시각·정책을 기록한다.
+- source ref는 JSONL과 SQLite·manifest에 공통인 최소 필드만 사용한다. JSONL에만 있는 `claims`는 v0 feature snapshot과 digest에서 제외하고 evidence ID로 원 출처를 추적한다.
+- 현 SQLite에 없는 `companion_archetype`, `month_archetype`, `flags`는 `baseline-v0` 입력이 아니다.
+- 추천 구현은 snapshot builder·schema validator·두 경로 동등성 검사를 함께 제공해야 한다.
+- 정확한 canonical 직렬화와 digest 알고리즘은 구현 SPEC에서 version으로 고정한다.
 
-## 추천 결과 — 목표 초안, 미구현
+## 장소 추천 요청 — 목표 계약, 미구현
+
+정확한 직렬화 스키마는 구현 SPEC에서 고정한다. [SPEC-008](spec_008.md)의 첫 내부 오프라인 랭커는 다음 의미 계약을 따른다.
 
 ```text
-RecommendationResult {
+RecommendationExecutionContext {
+  execution_mode: internal_experiment
+  configured_by: trusted_runtime
+  evaluation_as_of: datetime
+}
+
+PlaceRecommendationRequest {
+  schema_version: string
+  request_id: string
+
+  destination_region: {
+    country_code: string
+    first_level: string
+    second_level: string?
+  }
+  travel_window: {
+    start_date: date
+    end_date: date
+    timezone: string
+  }?
+
+  intent: visit | shopping | stay | event
+  party: {
+    context: solo | couple | friends | family | custom
+    adults: integer
+    children_ages: integer[]
+    senior_count: integer
+    accessibility_needs: string[]
+  }
+
+  hard_constraints: ConstraintRequirement[]
+  preference_tags: PreferenceTag[]
+  environment_preferences: indoor | outdoor | mixed | any
+  excluded_place_ids: string[]
+  result_count: integer
+  diversity: off | balanced
+
+  natural_language: {
+    text: string
+    consent_to_external_processing: boolean
+  }?
+}
+```
+
+- `RecommendationExecutionContext`는 CLI·서버의 신뢰된 런타임 설정이며 클라이언트 요청 필드가 아니다. 현재 `internal_experiment`만 허용한다.
+- 요청자가 실행 gate, `dataset_status`나 AI 초안 경고를 바꾸는 필드는 두지 않는다.
+- 현재 제주 adapter에서 결과의 `place_id`는 TourAPI `contentid` 문자열과 1:1이다. 제목·주소·좌표 유사성으로 새 ID를 만들거나 병합하지 않는다. 향후 다중 공급자를 도입하면 별도 namespace 계약을 먼저 만든다.
+- 정규화된 `PlaceRecommendationRequest.intent`는 필수다. UI·CLI가 intent를 받지 않았다면 이 계약으로 직렬화하기 전에 `visit`을 넣는다.
+- `visit`은 `representative_visit`만 후보로 사용한다. 쇼핑·숙박·축제는 각 intent를 명시해야 한다.
+- 일반 탐색에서 `travel_window`는 생략할 수 있지만 `event`에는 필수다. 날짜에는 시간대를 포함하며 축제는 확인 가능한 구조화 개최일과 여행 기간이 겹칠 때만 eligible이다.
+- 성인 수로 `couple` 또는 `friends`를 추측하지 않는다.
+- `children_ages`는 연령 제약 판정용이며 현재 companion의 `kids` 축은 만 4~12세 범위라는 한계를 별도 표시한다.
+- `accessibility_needs`는 companion 축과 별도 hard constraint다.
+- 정확한 위치가 필요하지 않은 장소 적합도 랭커에는 실시간 좌표를 받지 않는다. 후속 일정 기능도 행정구역·격자·place ID 같은 낮은 정밀도를 우선한다.
+- 현재 데이터에 신뢰 가능한 정규화 가격이 없으므로 예산을 가진 것처럼 필터링하지 않는다. 예산 계약은 가격 데이터 SPEC과 함께 추가한다.
+
+### 사용자 제약과 자연어 매핑
+
+```text
+ConstraintRequirement {
+  requirement_id: string
+  kind: controlled_enum
+  operator: controlled_enum
+  value: scalar | list | range
+  unit: string?
+  source: structured_user_input | natural_language_mapper
+  confirmed_by_user: boolean
+}
+
+PreferenceTag {
+  tag_id: controlled_enum
+  weight: number  # 0 < weight <= 1
+  source: structured_user_input | natural_language_mapper
+  mapper_confidence: number?
+  source_span: { start: integer, end: integer }?
+  acceptance: structured | user_confirmed | policy_threshold
+}
+```
+
+- hard constraint와 preference는 같은 객체나 점수로 합치지 않는다.
+- 자연어 mapper가 제안한 hard constraint는 `confirmed_by_user=true` 전에는 확정 필터가 아니다.
+- mapper의 `proposed` 결과는 이 요청 계약 밖의 중간 산출물이다. 사용자 확인 또는 versioned policy threshold를 통과한 `accepted` 태그만 `preference_tags`에 넣는다.
+- preference가 없으면 빈 배열을 사용한다. 태그를 보낼 때 모든 weight는 `0 < weight <= 1`이어야 하며 0 weight 태그는 허용하지 않는다.
+- mapper는 버전된 통제 어휘 밖의 태그를 만들지 않는다. 매핑되지 않은 원문은 경고로 남긴다.
+- 자연어 원문과 외부 전송은 [안전 및 개인정보 원칙](safety_privacy.md)을 따른다.
+
+## 제약 판정과 점수 trace — 목표 계약, 미구현
+
+```text
+ConstraintDecision {
+  requirement_id: string
+  place_id: string
+  decision_state: pass | fail | unknown | not_applicable
+  fact_ids: string[]
+  evidence_ids: string[]
+  policy_version: string
+  evaluated_at: datetime
+  verification_required: boolean
+  reason_code: string
+}
+
+ScoreComponentTrace {
+  feature_id: string
+  raw_value: number?
+  feature_value: number?
+  reliability: number
+  active: boolean
+  weight_before_normalization: number
+  effective_weight: number
+  contribution: number
+  evidence_ids: string[]
+  rule_ids: string[]
+  subcomponents: AxisComponentTrace[]
+}
+
+AxisComponentTrace {
+  axis_key: string
+  raw_value: number
+  adjusted_value: number
+  reliability: number
+  evidence_ids: string[]
+  rule_ids: string[]
+}
+
+RecommendationCandidateTrace {
+  place_id: string
+  source_order: integer
+  candidate_lane: string
+  experience_scope: string
+  eligibility: eligible | conditional | ineligible
+  constraint_decisions: ConstraintDecision[]
+  score_components: ScoreComponentTrace[]
+  place_fit: number?
+  result_confidence: number?
+  request_coverage: number
+  ranking_mode: personalized | exploration
+  diversity_trace: object?
+}
+```
+
+- `fail`은 점수 계산 전에 제외한다. `unknown`은 `pass`가 아니다.
+- 원천 constraint의 `source_status=confirmed`와 `source_action=exclude|verify`는 추천 판정이 아니다. fresh·confirmed이고 검수된 predicate가 요청에 적용될 때만 operator 평가로 `pass/fail`을 만든다.
+- 자유 텍스트, `stale`, 원천 `unknown`과 적용되지만 사실이 없는 요구사항은 `decision_state=unknown`, `verification_required=true`다. 자유 텍스트 `exclude`도 자동 `fail`로 변환하지 않는다.
+- `not_applicable`은 요구사항 scope가 장소 경험에 적용되지 않을 때만 사용한다.
+- score component는 raw·최종 feature 값·reliability·실효 가중치·기여도와 하위 축 trace를 모두 보존한다.
+- `review_priority`는 trace의 점수나 reliability 입력이 아니다.
+- `source_order`는 안정적 동점 처리에 사용하며 추천 품질 특징이 아니다.
+
+## 장소 추천 결과 — 목표 계약, 미구현
+
+```text
+PlaceRecommendationResult {
+  schema_version: string
   request_id: string
   generated_at: datetime
-  data_snapshot: string
-  algorithm_version: string
-  items: RecommendationItem[]
+
+  data: {
+    snapshot_date: date
+    dataset_version: string
+    dataset_status: ai_draft
+    manifest_sha256: sha256
+    logical_db_digest: sha256
+    feature_snapshot_digest: sha256
+  }
+
+  algorithm: {
+    request_schema_version: string
+    mapper_version: string?
+    taxonomy_similarity_version: string
+    feature_version: string
+    filter_policy_version: string
+    scoring_version: string
+    diversity_version: string
+  }
+
+  items: PlaceRecommendationItem[]
+  verification_candidates: VerificationCandidate[]
+  filtered_summary: object
+  relaxation_options: RelaxationOption[]
   warnings: Warning[]
 }
 
-RecommendationItem {
+PlaceRecommendationItem {
   place_id: string
+  title: string
+  experience_scope: string
+  location: {
+    longitude: number?
+    latitude: number?
+    address: string?
+    coordinate_state: valid | invalid | missing
+  }
   rank: integer
-  score: number
-  score_components: map<string, number>
-  matched_preferences: string[]
+  place_fit: number
+  result_confidence: number
+  request_coverage: number
+  ranking_mode: personalized | exploration
+
+  eligibility: eligible
+  constraint_decisions: ConstraintDecision[]
+  verification_required: VerificationItem[]
+  score_components: ScoreComponentTrace[]
   reasons: EvidenceBackedReason[]
-  uncertainty: string[]
+  uncertainties: Uncertainty[]
+  source_refs: RecommendationSourceRef[]
+}
+
+VerificationCandidate {
+  place_id: string
+  experience_scope: string
+  unresolved_requirements: ConstraintDecision[]
+  source_refs: RecommendationSourceRef[]
+  warnings: Warning[]
+}
+
+EvidenceBackedReason {
+  reason_code: string
+  feature_id: string
+  text: string
+  contribution: number
+  feature_value: number
+  reliability: number
+  evidence_ids: string[]
+  caveat_codes: string[]
 }
 ```
 
-- `reasons`는 실제 필터와 점수 특징에서 생성된 근거만 포함한다.
-- 운영시간·가격 등 확인되지 않은 정보는 `uncertainty` 또는 `warnings`에 표시한다.
-- 내부 점수 범위와 반올림 방식은 알고리즘 SPEC에서 버전별로 고정한다.
+- v0 계약에서 허용하는 전체 데이터 상태는 `ai_draft`뿐이다. `reviewed` 승격값은 사람 검수 ingest·승격·철회 절차를 승인하는 후속 SPEC 전에는 생성하지 않는다.
+- 모든 `ai_draft` 결과는 데이터 상태, 출처 등급, 확인일과 불확실성 경고를 가진다.
+- `place_fit`은 요청 적합도이며 장소 절대 품질·인기도·운영 가능성·일정 가능성이 아니다.
+- `result_confidence`는 calibration된 확률이 아니라 활성 특징의 휴리스틱 근거 강도다. `request_coverage`를 별도 표시한다.
+- `reasons`는 실제 constraint와 score trace에서 선택된 근거만 포함한다.
+- 확인되지 않은 운영시간·가격·행사일·접근 정보는 `verification_required` 또는 `warnings`로 표시한다.
+- active hard requirement가 `unknown`인 후보는 일반 `items`가 아니라 `verification_candidates`로 반환한다. 사용자 요구와 무관한 source fact는 일반 item의 경고로 남길 수 있다.
+- `verification_candidates`는 추천 순위가 아니며 `source_order ASC`, `contentid ASC`로 결정적으로 정렬한다.
+- 결과에는 데이터 snapshot과 feature/filter/scoring/diversity/mapper 버전을 모두 기록한다.
+- 후속 일정 엔진은 `place_fit`을 변경하지 않고 별도 `schedule_feasibility`와 `schedule_utility` 계약을 사용한다.
+- 점수 범위, 내부 정밀도와 표시 반올림은 알고리즘 버전별로 고정한다.

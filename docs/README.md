@@ -16,7 +16,8 @@
 - 구현됨: TourAPI 장소를 라벨링용 음식점·비음식점 데이터로 분리
 - 구현됨: 관광지·문화시설·축제·레포츠 100건의 companion·월별 적합도 AI 초안 sidecar
 - 구현됨: 같은 100건의 웹 상세 페이지를 열어 장소 사실·미확인 사항·출처별 주장을 연결한 v2 AI 초안 sidecar
-- 구현됨: 웹 조사 사실을 먼저 읽고 100건 AI 초안을 한 건씩 검수해 JSON으로 내보내는 단일 HTML
+- 구현됨: 웹 조사 사실을 먼저 읽고 100건 AI 초안을 한 건씩 검수해 JSON으로 내보낼 수 있는 단일 HTML. 구조화된 사람 검수 완료는 0건
+- 구현됨: 비음식점 1,434건 전체 웹 조사·companion·월별 자동 라벨·canonical JSONL·SQLite (`ai_draft`)
 - 구현됨: 장소 검색, 카테고리 필터, 지도 마커·클러스터, 장소 상세 UI
 - 미구현: 사용자 프로필, 개인화 추천, 랭킹, 일정 최적화, 추천 API, 추천 평가 파이프라인
 
@@ -31,8 +32,9 @@
 | [SPEC-005](spec_005.md) | 100건 장소별 웹 조사와 근거 강화 검수 화면 | Implemented | research, labeling, UI |
 | [SPEC-006](spec_006.md) | 웹 조사 기반 AI 자동 가중치 완성과 저노력 검수 | Implemented | scoring, labeling, UI |
 | [SPEC-007](spec_007.md) | 제주 비음식점 전체 웹 조사·DB 저장·자동 라벨 확장 | Implemented | research, scoring, database, labeling |
+| [SPEC-008](spec_008.md) | AI 초안 인지형 개인화 장소 추천 엔진 상세 설계 | Draft | recommendation, ranking, evaluation, safety |
 
-- 다음 예약 번호: `SPEC-008`
+- 다음 예약 번호: `SPEC-009`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

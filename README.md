@@ -4,6 +4,16 @@
 
 별도의 로그인, 프레임워크, 빌드 과정 없이 HTML/CSS/JavaScript만으로 실행됩니다. 현재 스냅샷에는 제주 장소 2,154건이 있으며, 좌표가 정상인 2,153건을 지도에 표시합니다.
 
+## 프로젝트 상태와 AI 초안 주의
+
+- 현재 사용자 실행 기능은 정적 지도 탐색 UI입니다.
+- 음식점을 제외한 1,434개 장소에는 웹 조사, companion 5축, 비축제 월별 12축, hard constraint와 provenance를 담은 canonical JSONL·SQLite가 생성되어 있습니다.
+- 이 장소 프로필은 구조화된 사람 검수 완료가 0건인 `ai_draft`입니다. 운영 추천, 골드 라벨 또는 “제주 최고 장소” 순위로 사용하면 안 됩니다.
+- 개인화 추천, 랭킹, 추천 API와 일정 최적화는 아직 구현되지 않았습니다.
+- AI 초안을 보수적으로 사용하는 첫 장소 추천 엔진은 [SPEC-008 Draft](docs/spec_008.md)에 설계되어 있으며, 구현 전 별도 승인과 독립 평가가 필요합니다.
+
+전체 AI 초안과 검증 명령은 [제주 장소 라벨링 데이터 안내](data/labeling/jeju/README.md)를 참고합니다.
+
 ## 주요 기능
 
 - 실제 지도 확대·축소 및 이동
@@ -98,8 +108,13 @@ node scripts/build_map_ui_data.mjs
 │  └─ vendor/                      # Leaflet 및 MarkerCluster
 ├─ scripts/
 │  ├─ collect_tourapi_jeju.py      # TourAPI 전체 수집·검증
-│  └─ build_map_ui_data.mjs        # 지도용 데이터 변환
-├─ data/tourapi/jeju/              # 날짜별 원본 데이터 스냅샷
+│  ├─ build_map_ui_data.mjs        # 지도용 데이터 변환
+│  └─ ...                          # 장소 조사·라벨·검증 파이프라인
+├─ data/
+│  ├─ tourapi/jeju/                # 날짜별 원본 데이터 스냅샷
+│  └─ labeling/jeju/               # 파일럿 및 전체 AI 초안
+├─ labeling-review/                # 100건 정적 사람 검수 도구
+├─ docs/                           # SPEC·설계·계약·평가 기준 문서
 ├─ COMPETITOR_RESEARCH_2026-08-02.md
 ├─ .env.example
 └─ README.md
@@ -118,5 +133,6 @@ Leaflet 및 MarkerCluster 라이선스는 각 `map-ui/vendor/` 하위에 포함�
 ## 관련 문서
 
 - [개발 SPEC 및 설계 문서 색인](docs/README.md)
+- [AI 초안 인지형 장소 추천 엔진 Draft](docs/spec_008.md)
 - [경쟁사 및 시장 조사](COMPETITOR_RESEARCH_2026-08-02.md)
 - [지도 UI 실행 안내](map-ui/README.md)
