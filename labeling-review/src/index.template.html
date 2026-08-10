@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src https: data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+  <title>제주 장소 라벨 검수 · Trip AI</title>
+  <style>
+__INLINE_STYLES__
+  </style>
+</head>
+<body>
+  <a class="visually-hidden skip-link" href="#review-main">검수 폼으로 바로가기</a>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="btn ghost mobile-list-button" id="mobile-list-button" type="button" aria-controls="review-sidebar" aria-expanded="false">목록</button>
+
+      <div class="brand">
+        <p class="brand-kicker">TRIP AI LAB · AUTO LABEL V3</p>
+        <h1 class="brand-title">장소 라벨 검수</h1>
+      </div>
+
+      <div class="top-progress" aria-label="전체 검수 진행률">
+        <div class="progress-copy">
+          <span id="progress-label">처리 0 / 100</span>
+          <span id="progress-detail">승인 0 · 조사 0 · 건너뜀 0</span>
+        </div>
+        <progress class="progress-track" id="review-progress" max="100" value="0">0%</progress>
+        <p class="save-state" id="save-state" aria-live="polite">이 브라우저에 자동 저장</p>
+      </div>
+
+      <div class="top-actions" aria-label="검수 파일 관리">
+        <button class="btn secondary small" id="bulk-approve-button" type="button">낮은 위험 일괄 승인</button>
+        <button class="btn secondary small" id="bulk-approve-medium-button" type="button">중간 위험 일괄 승인</button>
+        <button class="btn secondary small" id="import-button" type="button">JSON 불러오기</button>
+        <button class="btn primary small" id="export-button" type="button">결과 내보내기</button>
+        <button class="btn ghost small" id="reset-all-button" type="button">전체 초기화</button>
+        <input class="visually-hidden" id="import-file" type="file" accept="application/json,.json">
+      </div>
+    </header>
+
+    <div class="banner" role="note">
+      100개 장소의 웹 조사 결과에 장소 경험 사전값과 1991~2020 제주 기후평년 규칙을 더해 AI가 모든 적용 가능 축을 먼저 채운 v3 초안입니다. <strong>높은 우선순위 16건만 개별 확인</strong>하고, 낮음·중간 장소는 각 확인 모달에서 따로 일괄 승인할 수 있습니다. 입력은 이 브라우저에만 저장되므로 검수가 끝나면 <strong>결과 내보내기</strong>로 JSON을 내려받아 이 대화에 첨부해 주세요.
+    </div>
+    <div class="banner" id="storage-banner" role="status" hidden>
+      브라우저 자동 저장을 사용할 수 없습니다. 작업 중간에도 JSON을 내려받아 백업해 주세요.
+    </div>
+
+    <div class="workspace">
+      <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+      <aside class="sidebar" id="review-sidebar" aria-label="검수 장소 목록">
+        <div class="sidebar-header">
+          <div>
+            <p class="eyebrow">PILOT 100</p>
+            <h2>검수할 장소</h2>
+          </div>
+          <button class="btn ghost small mobile-close" id="mobile-close" type="button">닫기</button>
+        </div>
+
+        <div class="search-wrap">
+          <label for="place-search">장소명 또는 contentid</label>
+          <input id="place-search" type="search" placeholder="예: 만장굴, 126452" autocomplete="off">
+        </div>
+
+        <div class="filter-stack" aria-label="장소 필터">
+          <div class="filter-row">
+            <label for="status-filter">검수 상태</label>
+            <select class="filter-select" id="status-filter">
+              <option value="all">전체 상태</option>
+              <option value="unreviewed">미검토</option>
+              <option value="in_progress">작성 중</option>
+              <option value="approved">승인 완료 전체</option>
+              <option value="approved_as_is">AI 원안 승인</option>
+              <option value="approved_with_changes">수정 후 승인</option>
+              <option value="needs_research">추가 조사</option>
+              <option value="skipped">건너뜀</option>
+            </select>
+          </div>
+          <div class="filter-row">
+            <label for="type-filter">장소 유형</label>
+            <select class="filter-select" id="type-filter">
+              <option value="all">전체 유형</option>
+              <option value="12">관광지</option>
+              <option value="14">문화시설</option>
+              <option value="15">축제</option>
+              <option value="28">레포츠</option>
+            </select>
+          </div>
+          <div class="filter-row">
+            <label for="priority-filter">검수 우선순위</label>
+            <select class="filter-select" id="priority-filter">
+              <option value="all">전체 우선순위</option>
+              <option value="high">높음 — 먼저 확인</option>
+              <option value="medium">중간</option>
+              <option value="low">낮음 — 일괄 승인 가능</option>
+            </select>
+          </div>
+          <fieldset class="quality-filters">
+            <legend>빠른 품질 필터</legend>
+            <label class="check-chip"><input id="no-source-filter" type="checkbox"> 확인 페이지 없음</label>
+            <label class="check-chip"><input id="companion-null-filter" type="checkbox"> 동반자 미정</label>
+            <label class="check-chip"><input id="month-null-filter" type="checkbox"> 조치할 월 미정</label>
+            <label class="check-chip"><input id="changed-filter" type="checkbox"> 내가 수정함</label>
+          </fieldset>
+        </div>
+
+        <div class="list-summary">
+          <span id="list-summary">100건 표시</span>
+          <button class="reset-link" id="clear-filters" type="button">필터 지우기</button>
+        </div>
+        <ol class="place-list" id="place-list"></ol>
+      </aside>
+
+      <main class="review-main" id="review-main" tabindex="-1">
+        <div class="review-container" id="review-container">
+          <section class="empty-state">
+            <p class="eyebrow">LOADING</p>
+            <h2>100건 검수 화면을 준비하고 있습니다.</h2>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-message">
+      <p class="eyebrow" id="modal-kicker">확인</p>
+      <h2 id="modal-title">작업을 확인해 주세요</h2>
+      <p id="modal-message"></p>
+      <div class="modal-actions">
+        <button class="btn secondary" id="modal-cancel" type="button">취소</button>
+        <button class="btn primary" id="modal-confirm" type="button">확인</button>
+      </div>
+    </section>
+  </div>
+
+  <script id="review-dataset" type="application/json">
+__REVIEW_DATA__
+  </script>
+  <script>
+__REVIEW_MODEL__
+  </script>
+  <script>
+__APP_SCRIPT__
+  </script>
+</body>
+</html>

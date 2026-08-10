@@ -29,7 +29,7 @@ node scripts/split_tourapi_jeju_places.mjs
 
 스크립트는 가장 최신 날짜의 TourAPI 스냅샷을 선택한다. 빈·중복 `contentid`, 빈 `contenttypeid` 또는 지원하지 않는 장소 유형을 발견하면 출력하지 않고 오류로 종료한다.
 
-## Companion·월별 적합도 파일럿
+## Companion·월별 적합도 파일럿 v1
 
 100건 AI 초안은 다음 위치에 있다.
 
@@ -50,4 +50,60 @@ node scripts/split_tourapi_jeju_places.mjs
 ```powershell
 node scripts/build_place_profile_pilot.mjs
 node scripts/validate_place_profile_pilot.mjs
+```
+
+## 장소별 웹 조사 v2
+
+v3 자동 가중치의 사실 근거는 같은 100건을 장소별로 조사한 다음 경로다.
+
+```text
+2026-08-09/pilots/place-profile-v2-100/
+  research/web_pages.json
+  research/part_*.json
+  place_web_research.json
+  place_profiles.json
+  manifest.json
+  review_report.md
+```
+
+100개 장소 모두 공개 관광 상세 페이지를 실제로 열어 URL·본문 사실·안내 항목·페이지 해시를 보존했다. 공통 확인 페이지인 K-TRIP TIPS는 2차 관광 상세 자료이며, 운영시간·휴무·가격 같은 변동 정보는 사람 검수 시 링크에서 다시 확인한다. v2 역시 AI 초안이라 운영용 골드 라벨이 아니다.
+
+캐시된 조사 입력을 다시 병합하고 검증하려면 다음을 실행한다. 웹 페이지 재수집은 외부 내용이 바뀔 수 있으므로 명시적으로 조사 스냅샷을 갱신할 때만 별도로 실행한다.
+
+```powershell
+node scripts/build_place_profile_research_v2.mjs
+node scripts/validate_place_profile_research_v2.mjs
+```
+
+## 자동 가중치 v3
+
+현재 사람 검수 기준은 v2 조사 결과의 빈 라벨을 장소 경험 유형과 기상청 1991~2020 제주 기후평년 규칙으로 보완한 다음 경로다.
+
+```text
+2026-08-09/pilots/place-profile-v3-auto-100/
+  climate_baseline.json
+  scoring/assignments_part_*.json
+  scoring/archetype_assignments.json
+  scoring/companion_profiles.json
+  scoring/month_profiles.json
+  auto_label_proposals.json
+  place_profiles.json
+  manifest.json
+  review_report.md
+```
+
+companion 500축과 축제가 아닌 96건의 month 1,152축은 모두 AI 제안 수치가 있다. 축제 4건의 month 48축만 개최일 종속 `N/A`이며 사용자가 채울 미정값이 아니다. `auto_label_proposals.json`에는 각 축의 근거 수준·신뢰도·설명·규칙 ID가 있고, `place_profiles.json`은 같은 최종 수치를 편리하게 소비하는 파일이다.
+
+월별 사전값의 고정 입력은 `data/climate/kma/1991-2020/jeju_four_station_monthly_normals.json`이다. 빌드는 기상청 PDF에서 추출한 제주·고산·성산·서귀포 4지점 월표와 canonical SHA-256을 확인한 뒤 기후 baseline과 month profile을 파생한다.
+
+v3도 사람 검수 전 AI 초안이다. 예약·최소 인원·기상·운영·이동 조건은 `hard_constraints`에서 먼저 확인하고 fit 점수로 상쇄하지 않는다. 낮음·중간 우선순위 일괄 승인은 각각의 확인 모달 뒤 정적 검수 화면의 사람 상태만 변경하며 데이터베이스나 AI 원본을 수정하지 않는다. 높은 우선순위는 개별 검수한다.
+
+다시 생성하고 검증하려면 다음을 실행한다.
+
+```powershell
+node scripts/build_place_profile_autolabel_v3.mjs
+node scripts/validate_place_profile_autolabel_v3.mjs
+node scripts/build_labeling_review_ui.mjs
+node scripts/validate_labeling_review_ui.mjs
+node scripts/test_labeling_review_model.mjs
 ```
