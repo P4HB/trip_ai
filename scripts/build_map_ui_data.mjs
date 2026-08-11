@@ -1,10 +1,48 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 
-const workspaceRoot = path.resolve(import.meta.dirname, "..");
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const workspaceRoot = path.resolve(scriptDirectory, "..");
 const datasetRoot = path.join(workspaceRoot, "data", "tourapi", "jeju");
 const outputPath = path.join(workspaceRoot, "map-ui", "data", "jeju-places.js");
+const labelOutputPath = path.join(workspaceRoot, "map-ui", "data", "jeju-place-labels.js");
+const SCORE_SCALE = [0, 0.25, 0.5, 0.75, 1];
+const LABEL_GROUPS = {
+  theme: [
+    "mountain",
+    "ocean",
+    "activity",
+    "culture_history",
+    "theme_park",
+    "cafe",
+    "traditional_market",
+    "festival",
+  ],
+  environment: ["indoor_ratio", "weather_sensitivity"],
+  style_evidence: [
+    "restfulness",
+    "physical_ease",
+    "visit_duration_flexibility",
+    "scenic_value",
+    "distinctiveness",
+    "local_embeddedness",
+    "landmark_significance",
+    "photo_value",
+  ],
+  derived_style: [
+    "healing_slow",
+    "scenic_immersion",
+    "discovery_explorer",
+    "local_immersion",
+    "iconic_highlight",
+    "photo_mood",
+  ],
+};
+const LABEL_PATHS = Object.entries(LABEL_GROUPS).flatMap(([group, labels]) =>
+  labels.map((label) => `${group}.${label}`),
+);
 
 function findLatestDataset() {
   const candidates = fs
@@ -45,8 +83,83 @@ function isValidJejuCoordinate(lng, lat) {
   );
 }
 
+function loadPlaceLabels(sourceDate) {
+  const labelDirectory = path.join(
+    workspaceRoot,
+    "data",
+    "labeling",
+    "jeju",
+    sourceDate,
+    "place-preference-label-v2",
+  );
+  const labelPath = path.join(labelDirectory, "place_labels.jsonl");
+  const manifestPath = path.join(labelDirectory, "manifest.json");
+
+  if (!fs.existsSync(labelPath) || !fs.existsSync(manifestPath)) {
+    return {
+      metadata: {
+        available: false,
+        sourceDate,
+        labelVersion: "",
+        labeledPlaces: 0,
+        paths: LABEL_PATHS,
+        scoreScale: SCORE_SCALE,
+      },
+      labels: {},
+      sourcePath: labelPath,
+    };
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  if (manifest.snapshot_date !== sourceDate) {
+    throw new Error(
+      `Label snapshot ${manifest.snapshot_date} does not match map snapshot ${sourceDate}`,
+    );
+  }
+
+  const allowedValues = new Set(SCORE_SCALE);
+  const labels = {};
+  const lines = fs
+    .readFileSync(labelPath, "utf8")
+    .split(/\r?\n/)
+    .filter((line) => line.trim());
+
+  for (const [index, line] of lines.entries()) {
+    const record = JSON.parse(line);
+    const contentid = clean(record.contentid);
+    if (!contentid) throw new Error(`Label record ${index + 1} has no contentid`);
+    if (Object.hasOwn(labels, contentid)) {
+      throw new Error(`Duplicate label contentid: ${contentid}`);
+    }
+
+    const values = LABEL_PATHS.map((labelPathKey) => {
+      const [group, label] = labelPathKey.split(".");
+      const value = record[group]?.[label]?.value;
+      if (!allowedValues.has(value)) {
+        throw new Error(`${contentid} ${labelPathKey} has invalid value: ${value}`);
+      }
+      return value;
+    });
+    labels[contentid] = values;
+  }
+
+  return {
+    metadata: {
+      available: true,
+      sourceDate,
+      labelVersion: clean(manifest.label_version),
+      labeledPlaces: lines.length,
+      paths: LABEL_PATHS,
+      scoreScale: SCORE_SCALE,
+    },
+    labels,
+    sourcePath: labelPath,
+  };
+}
+
 const source = findLatestDataset();
 const rawPlaces = JSON.parse(fs.readFileSync(source.file, "utf8"));
+const labelDataset = loadPlaceLabels(source.date);
 const excluded = [];
 
 const places = rawPlaces.flatMap((place) => {
@@ -98,13 +211,23 @@ fs.writeFileSync(
   "utf8",
 );
 
+fs.writeFileSync(
+  labelOutputPath,
+  `/* Generated from ${path.relative(workspaceRoot, labelDataset.sourcePath).replaceAll("\\", "/")} */\n` +
+    `window.JEJU_LABEL_META = ${JSON.stringify(labelDataset.metadata)};\n` +
+    `window.JEJU_PLACE_LABELS = ${JSON.stringify(labelDataset.labels)};\n`,
+  "utf8",
+);
+
 console.log(
   JSON.stringify(
     {
       input: source.file,
       output: outputPath,
+      labelOutput: labelOutputPath,
       total: rawPlaces.length,
       validCoordinates: places.length,
+      labeledPlaces: labelDataset.metadata.labeledPlaces,
       excluded,
     },
     null,

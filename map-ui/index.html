@@ -183,6 +183,17 @@
                 <span id="copyPlaceButtonLabel">위치 복사</span>
               </button>
             </div>
+            <section class="detail-labels" aria-labelledby="detailLabelsTitle">
+              <div class="detail-labels-heading">
+                <div>
+                  <p class="section-kicker">PLACE LABELS</p>
+                  <h3 id="detailLabelsTitle">장소 라벨</h3>
+                </div>
+                <span id="detailLabelSummary">—</span>
+              </div>
+              <p class="label-help">라벨에 마우스를 올리거나 키보드로 선택하면 설명을 볼 수 있어요.</p>
+              <div id="detailLabelGroups"></div>
+            </section>
           </div>
         </article>
 
@@ -196,10 +207,16 @@
     </main>
 
     <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+    <div class="label-tooltip" id="labelTooltip" role="tooltip" hidden>
+      <strong id="labelTooltipTitle"></strong>
+      <span id="labelTooltipDescription"></span>
+      <span class="label-tooltip-value" id="labelTooltipValue"></span>
+    </div>
 
     <script src="./vendor/leaflet/leaflet.js" defer></script>
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
     <script src="./data/jeju-places.js" defer></script>
+    <script src="./data/jeju-place-labels.js" defer></script>
     <script src="./app.js" defer></script>
   </body>
 </html>

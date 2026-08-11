@@ -18,7 +18,7 @@
 
 | 단계 | 구현 결과 | 근거 문서 |
 |---|---|---|
-| TourAPI 수집·지도 MVP | 제주 장소 2,154건을 수집·검증하고, 정상 좌표 2,153건을 검색·필터·클러스터링하는 정적 지도를 구현 | [데이터 안내](data/tourapi/jeju/README.md), [지도 안내](map-ui/README.md) |
+| TourAPI 수집·지도 MVP | 제주 장소 2,154건을 수집·검증하고, 정상 좌표 2,153건을 검색·필터·클러스터링하며 라벨 보유 장소의 24축 값을 보여주는 정적 지도를 구현 | [데이터 안내](data/tourapi/jeju/README.md), [지도 안내](map-ui/README.md) |
 | SDD 문서 체계 | 요구사항·승인 기준·테스트 결과를 SPEC 단위로 추적하는 문서 체계를 도입 | [SPEC-001](docs/spec_001.md) |
 | 라벨링 입력 분리 | 원본 순서를 유지한 채 음식점 720건과 비음식점 1,434건을 결정적으로 분리 | [SPEC-002](docs/spec_002.md) |
 | 100건 파일럿 | 관광지 68·문화시설 12·축제 4·레포츠 16건에 동행자 5축과 월별 12축 AI 초안을 생성 | [SPEC-003](docs/spec_003.md) |
@@ -27,6 +27,7 @@
 | 자동 가중치 v3 | 동행자 500축과 비축제 월별 1,152축을 채우고, 축제 월별 48축은 날짜 종속 `N/A`로 분리 | [SPEC-006](docs/spec_006.md) |
 | 비음식점 전체 확장 | 1,434건 전부를 조사해 24,378개 축, 필수 제약 1,518건, 검수 큐와 canonical JSONL·SQLite를 생성 | [SPEC-007](docs/spec_007.md) |
 | 추천 엔진 설계 | AI 초안 보정, 필수 제약, 설명·추적 계약을 설계했으나 코드는 아직 미구현 | [SPEC-008 Draft](docs/spec_008.md) |
+| 24축 완전 라벨·지도 표시 | 비음식점과 FD05 카페·찻집 1,664건의 Theme·Environment·Style 값을 완성하고 지도 상세에 설명과 함께 표시 | [SPEC-009](docs/spec_009.md), [SPEC-010](docs/spec_010.md) |
 
 ## 라벨링 결과 요약
 
@@ -50,6 +51,7 @@
 - 현재 지도 범위에 포함된 장소 목록
 - 목록, 마커, 상세 패널 간 선택 상태 연동
 - 장소 이미지·주소·전화번호·수정일 확인
+- 장소별 Theme·Environment·Style 24축 값과 hover·focus 설명 확인
 - 선택 위치 복사
 - 데스크톱·모바일 반응형 UI
 
@@ -121,7 +123,7 @@ python scripts/collect_tourapi_jeju.py
 node scripts/build_map_ui_data.mjs
 ```
 
-스크립트가 가장 최근 날짜의 `jeju_places.json`을 찾아 좌표를 검증하고, 브라우저가 바로 읽을 수 있는 `map-ui/data/jeju-places.js`를 생성합니다.
+스크립트가 가장 최근 날짜의 `jeju_places.json`을 찾아 좌표를 검증하고, 같은 날짜의 완전 라벨 데이터가 있으면 브라우저가 바로 읽을 수 있는 `map-ui/data/jeju-places.js`와 `map-ui/data/jeju-place-labels.js`를 생성합니다.
 
 ## 디렉터리 구조
 
@@ -132,6 +134,7 @@ node scripts/build_map_ui_data.mjs
 │  ├─ styles.css
 │  ├─ app.js
 │  ├─ data/jeju-places.js          # 브라우저용 경량 데이터
+│  ├─ data/jeju-place-labels.js     # contentid별 24축 compact 라벨
 │  └─ vendor/                      # Leaflet 및 MarkerCluster
 ├─ scripts/
 │  ├─ collect_tourapi_jeju.py      # TourAPI 전체 수집·검증

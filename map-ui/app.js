@@ -19,6 +19,80 @@
     [33.82, 127.22],
   ];
 
+  const LABEL_GROUPS = [
+    {
+      key: "theme",
+      title: "Theme",
+      description: "장소에서 기대할 수 있는 핵심 경험",
+    },
+    {
+      key: "environment",
+      title: "Environment",
+      description: "실내외 구성과 날씨 영향",
+    },
+    {
+      key: "style_evidence",
+      title: "Style 근거",
+      description: "여행 스타일을 계산하는 장소 특성",
+    },
+    {
+      key: "derived_style",
+      title: "여행 스타일",
+      description: "장소 특성을 조합한 여행 성향",
+    },
+  ];
+
+  const LABEL_DEFINITIONS = {
+    "theme.mountain": ["산·오름", "산, 오름, 고개, 봉우리 경험이 핵심인 정도"],
+    "theme.ocean": ["바다", "바다, 해변, 해안 경관을 경험하는 정도"],
+    "theme.activity": ["액티비티", "몸을 움직이는 체험이나 레포츠를 즐기는 정도"],
+    "theme.culture_history": ["문화·역사", "문화, 역사, 유산, 전시를 경험하는 정도"],
+    "theme.theme_park": ["테마파크", "놀이시설이나 테마형 공간을 즐기는 정도"],
+    "theme.cafe": ["카페", "카페나 찻집에서 머무는 경험이 핵심인 정도"],
+    "theme.traditional_market": ["전통시장", "시장과 지역 상권을 둘러보는 경험의 정도"],
+    "theme.festival": ["축제", "축제, 공연, 행사 참여 경험의 정도"],
+    "environment.indoor_ratio": ["실내 비율", "전체 방문 경험 중 실내에서 보내는 비중"],
+    "environment.weather_sensitivity": ["날씨 민감도", "비, 바람, 더위 등 날씨가 핵심 경험에 미치는 영향"],
+    "style_evidence.restfulness": ["여유로움", "느긋하고 차분하게 머물기 좋은 정도"],
+    "style_evidence.physical_ease": ["신체 편안함", "걷기와 체력 부담이 적어 편하게 방문할 수 있는 정도"],
+    "style_evidence.visit_duration_flexibility": ["시간 유연성", "체류시간을 짧거나 길게 조절하기 쉬운 정도"],
+    "style_evidence.scenic_value": ["경관 가치", "인상적인 자연·도시 경관을 볼 수 있는 정도"],
+    "style_evidence.distinctiveness": ["새로움", "다른 장소와 구별되는 독특한 경험의 정도"],
+    "style_evidence.local_embeddedness": ["제주 로컬성", "제주의 생활, 문화, 지역성을 느낄 수 있는 정도"],
+    "style_evidence.landmark_significance": ["랜드마크성", "제주를 대표하는 상징적 명소인 정도"],
+    "style_evidence.photo_value": ["사진 가치", "사진을 남기기 좋은 장면과 분위기의 정도"],
+    "derived_style.healing_slow": ["여유로운 힐링", "천천히 쉬면서 편안하게 즐기는 여행에 맞는 정도"],
+    "derived_style.scenic_immersion": ["멋진 경관 몰입", "인상적인 풍경을 충분히 감상하는 여행에 맞는 정도"],
+    "derived_style.discovery_explorer": ["새로운 곳 탐험", "새롭고 독특한 장소를 찾아다니는 여행에 맞는 정도"],
+    "derived_style.local_immersion": ["제주 로컬 몰입", "제주의 지역성과 일상에 가까이 다가가는 여행에 맞는 정도"],
+    "derived_style.iconic_highlight": ["대표 명소 중심", "잘 알려진 핵심 명소를 챙기는 여행에 맞는 정도"],
+    "derived_style.photo_mood": ["사진·분위기", "사진과 공간 분위기를 중요하게 보는 여행에 맞는 정도"],
+  };
+
+  const GENERIC_SCORE_MEANINGS = {
+    0: "해당 성향이 거의 없음",
+    0.25: "해당 성향이 낮음",
+    0.5: "해당 성향이 보통",
+    0.75: "해당 성향이 높음",
+    1: "해당 성향이 매우 높음",
+  };
+
+  const INDOOR_SCORE_MEANINGS = {
+    0: "거의 전부 야외",
+    0.25: "야외 중심·일부 실내",
+    0.5: "실내와 야외가 비슷함",
+    0.75: "실내 중심·일부 야외",
+    1: "거의 전부 실내",
+  };
+
+  const WEATHER_SCORE_MEANINGS = {
+    0: "날씨 영향이 거의 없음",
+    0.25: "날씨 영향이 적음",
+    0.5: "날씨에 따라 일부 제한",
+    0.75: "핵심 경험이 크게 축소될 수 있음",
+    1: "이용 곤란·취소 가능성이 매우 높음",
+  };
+
   const dom = {
     mapLoading: document.querySelector("#mapLoading"),
     headerValidCount: document.querySelector("#headerValidCount"),
@@ -43,6 +117,12 @@
     detailTitle: document.querySelector("#detailTitle"),
     detailAddress: document.querySelector("#detailAddress"),
     detailPhone: document.querySelector("#detailPhone"),
+    detailLabelSummary: document.querySelector("#detailLabelSummary"),
+    detailLabelGroups: document.querySelector("#detailLabelGroups"),
+    labelTooltip: document.querySelector("#labelTooltip"),
+    labelTooltipTitle: document.querySelector("#labelTooltipTitle"),
+    labelTooltipDescription: document.querySelector("#labelTooltipDescription"),
+    labelTooltipValue: document.querySelector("#labelTooltipValue"),
     centerPlaceButton: document.querySelector("#centerPlaceButton"),
     copyPlaceButton: document.querySelector("#copyPlaceButton"),
     copyPlaceButtonLabel: document.querySelector("#copyPlaceButtonLabel"),
@@ -55,6 +135,12 @@
   const numberFormatter = new Intl.NumberFormat("ko-KR");
   const rawPlaces = Array.isArray(window.JEJU_PLACES) ? window.JEJU_PLACES : [];
   const metadata = window.JEJU_DATA_META || {};
+  const labelMetadata = window.JEJU_LABEL_META || {};
+  const rawPlaceLabels =
+    window.JEJU_PLACE_LABELS && typeof window.JEJU_PLACE_LABELS === "object"
+      ? window.JEJU_PLACE_LABELS
+      : {};
+  const labelPaths = Array.isArray(labelMetadata.paths) ? labelMetadata.paths : [];
   const places = rawPlaces.map((place) => ({
     ...place,
     searchText: `${place.title || ""} ${place.address || ""}`
@@ -101,6 +187,143 @@
     const digits = String(value || "").replace(/\D/g, "");
     if (digits.length < 8) return "수정일 정보 없음";
     return `업데이트 ${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}`;
+  }
+
+  function formatScore(value) {
+    return Number(value).toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+  }
+
+  function scoreMeaning(labelPath, value) {
+    if (labelPath === "environment.indoor_ratio") {
+      return INDOOR_SCORE_MEANINGS[value] || "값 의미 없음";
+    }
+    if (labelPath === "environment.weather_sensitivity") {
+      return WEATHER_SCORE_MEANINGS[value] || "값 의미 없음";
+    }
+    return GENERIC_SCORE_MEANINGS[value] || "값 의미 없음";
+  }
+
+  function hideLabelTooltip() {
+    dom.labelTooltip.hidden = true;
+  }
+
+  function positionLabelTooltip(target) {
+    const targetRect = target.getBoundingClientRect();
+    const tooltipRect = dom.labelTooltip.getBoundingClientRect();
+    const viewportPadding = 12;
+    const centeredLeft = targetRect.left + targetRect.width / 2 - tooltipRect.width / 2;
+    const left = Math.min(
+      window.innerWidth - tooltipRect.width - viewportPadding,
+      Math.max(viewportPadding, centeredLeft),
+    );
+    let top = targetRect.top - tooltipRect.height - 10;
+    if (top < viewportPadding) top = targetRect.bottom + 10;
+    top = Math.min(window.innerHeight - tooltipRect.height - viewportPadding, top);
+    dom.labelTooltip.style.left = `${Math.round(left)}px`;
+    dom.labelTooltip.style.top = `${Math.round(Math.max(viewportPadding, top))}px`;
+  }
+
+  function showLabelTooltip(target, labelPath, value) {
+    const [labelName, description] = LABEL_DEFINITIONS[labelPath] || [labelPath, "장소 라벨"];
+    dom.labelTooltipTitle.textContent = `${labelName} · ${formatScore(value)}`;
+    dom.labelTooltipDescription.textContent = description;
+    dom.labelTooltipValue.textContent = `현재 값 의미: ${scoreMeaning(labelPath, value)}`;
+    dom.labelTooltip.hidden = false;
+    window.requestAnimationFrame(() => positionLabelTooltip(target));
+  }
+
+  function createLabelResult(labelPath, value) {
+    const [labelName] = LABEL_DEFINITIONS[labelPath] || [labelPath];
+    const meaning = scoreMeaning(labelPath, value);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "label-result";
+    button.style.setProperty("--label-strength", `${Number(value) * 100}%`);
+    button.setAttribute("aria-describedby", "labelTooltip");
+    button.setAttribute(
+      "aria-label",
+      `${labelName}, ${formatScore(value)}, ${meaning}. 설명 보기`,
+    );
+
+    const header = document.createElement("span");
+    header.className = "label-result-header";
+    const name = document.createElement("span");
+    name.className = "label-result-name";
+    name.textContent = labelName;
+    const score = document.createElement("strong");
+    score.className = "label-result-score";
+    score.textContent = formatScore(value);
+    header.append(name, score);
+
+    const track = document.createElement("span");
+    track.className = "label-result-track";
+    const fill = document.createElement("span");
+    fill.className = "label-result-fill";
+    track.append(fill);
+    button.append(header, track);
+
+    button.addEventListener("mouseenter", () => showLabelTooltip(button, labelPath, value));
+    button.addEventListener("mouseleave", () => {
+      if (document.activeElement !== button) hideLabelTooltip();
+    });
+    button.addEventListener("focus", () => showLabelTooltip(button, labelPath, value));
+    button.addEventListener("blur", hideLabelTooltip);
+    button.addEventListener("click", () => showLabelTooltip(button, labelPath, value));
+    return button;
+  }
+
+  function renderDetailLabels(place) {
+    hideLabelTooltip();
+    const values = rawPlaceLabels[place.id];
+    const validValues =
+      Array.isArray(values) &&
+      labelPaths.length === 24 &&
+      values.length === labelPaths.length &&
+      values.every((value) => [0, 0.25, 0.5, 0.75, 1].includes(value));
+
+    if (!validValues) {
+      dom.detailLabelSummary.textContent = "미제공";
+      const empty = document.createElement("div");
+      empty.className = "label-empty";
+      const title = document.createElement("strong");
+      title.textContent = "이 장소의 라벨 데이터가 없습니다.";
+      const description = document.createElement("span");
+      description.textContent =
+        place.type === "39"
+          ? "현재 라벨 범위에서 제외된 일반 음식·주점입니다."
+          : "현재 지도 스냅샷과 연결되는 라벨을 찾지 못했습니다.";
+      empty.append(title, description);
+      dom.detailLabelGroups.replaceChildren(empty);
+      return;
+    }
+
+    const version = String(labelMetadata.labelVersion || "").replace(/^place-preference-label-/, "");
+    dom.detailLabelSummary.textContent = `${values.length}개${version ? ` · ${version}` : ""}`;
+    const valuesByPath = new Map(labelPaths.map((labelPath, index) => [labelPath, values[index]]));
+    const fragment = document.createDocumentFragment();
+
+    for (const group of LABEL_GROUPS) {
+      const entries = labelPaths.filter((labelPath) => labelPath.startsWith(`${group.key}.`));
+      if (!entries.length) continue;
+      const section = document.createElement("section");
+      section.className = "label-group";
+      const heading = document.createElement("div");
+      heading.className = "label-group-heading";
+      const title = document.createElement("h4");
+      title.textContent = group.title;
+      const description = document.createElement("span");
+      description.textContent = group.description;
+      heading.append(title, description);
+      const grid = document.createElement("div");
+      grid.className = "label-grid";
+      for (const labelPath of entries) {
+        grid.append(createLabelResult(labelPath, valuesByPath.get(labelPath)));
+      }
+      section.append(heading, grid);
+      fragment.append(section);
+    }
+
+    dom.detailLabelGroups.replaceChildren(fragment);
   }
 
   function debounce(callback, delay = 200) {
@@ -460,6 +683,7 @@
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
+    renderDetailLabels(place);
 
     dom.detailImage.onload = () => {
       dom.detailImage.hidden = false;
@@ -490,6 +714,7 @@
       marker?.setIcon(createMarkerIcon(state.selectedPlace, false));
     }
     state.selectedPlace = null;
+    hideLabelTooltip();
     dom.detailPanel.hidden = true;
     document.body.classList.remove("detail-open");
     scheduleVisibleResultRender();
@@ -632,6 +857,7 @@
     window.addEventListener(
       "resize",
       debounce(() => {
+        hideLabelTooltip();
         if (window.innerWidth > 760) closeSidebar();
         state.map?.invalidateSize();
         scheduleVisibleResultRender();

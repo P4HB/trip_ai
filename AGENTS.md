@@ -61,6 +61,7 @@
 python -m py_compile scripts/collect_tourapi_jeju.py
 node --check scripts/build_map_ui_data.mjs
 node --check map-ui/app.js
+node --test tests/map_ui_labels.test.mjs
 ```
 
 지도용 데이터를 다시 생성해야 하는 변경에서는 다음 명령과 생성 diff를 함께 확인한다.

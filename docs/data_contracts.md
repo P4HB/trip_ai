@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-08-10
+- 최종 수정일: 2026-08-11
 
 ## 공통 규칙
 
@@ -53,6 +53,28 @@ Place {
 - 유효 지도 좌표 범위는 경도 `125.5..127.5`, 위도 `32.5..34.2`다.
 - 이미지 URL은 HTTP(S)만 허용하고 HTTP는 HTTPS로 정규화한다.
 - 이름이 비어 있으면 `이름 없는 장소`를 사용한다.
+
+같은 스크립트는 지도 스냅샷 날짜에 `place-preference-label-v2`가 있으면 `map-ui/data/jeju-place-labels.js`를 생성한다.
+
+```text
+LabelMeta {
+  available: boolean
+  sourceDate: YYYY-MM-DD
+  labelVersion: string
+  labeledPlaces: number
+  paths: string[24]
+  scoreScale: [0, 0.25, 0.5, 0.75, 1]
+}
+
+PlaceLabels {
+  [contentid: string]: number[24]
+}
+```
+
+- 값 배열 인덱스는 `LabelMeta.paths` 순서와 일치한다.
+- 라벨 원본의 24개 숫자만 compact 배열로 투영하며 provenance와 검토 상태는 원본 `place_labels.jsonl`에 유지한다.
+- 동일 날짜 라벨 파일이 없으면 `available=false`, `labeledPlaces=0`, 빈 `PlaceLabels`를 생성해 지도 탐색은 계속 동작한다.
+- 지도 상세는 `contentid`로 라벨을 연결한다. 값 배열이 24개가 아니거나 허용 점수가 아니면 해당 장소는 라벨 미제공으로 처리한다.
 
 ## 라벨링용 장소 분할 — 구현됨
 

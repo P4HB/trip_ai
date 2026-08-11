@@ -19,6 +19,7 @@
 - 구현됨: 웹 조사 사실을 먼저 읽고 100건 AI 초안을 한 건씩 검수해 JSON으로 내보낼 수 있는 단일 HTML. 구조화된 사람 검수 완료는 0건
 - 구현됨: 비음식점 1,434건 전체 웹 조사·companion·월별 자동 라벨·canonical JSONL·SQLite (`ai_draft`)
 - 구현됨: 비음식점과 FD05 카페·찻집 1,664건의 Theme·Environment·Style 24축 완전 숫자 라벨
+- 구현됨: 지도 장소 상세에서 24축 라벨 값과 hover·focus 설명 표시
 - 구현됨: 장소 검색, 카테고리 필터, 지도 마커·클러스터, 장소 상세 UI
 - 미구현: 사용자 프로필, 개인화 추천, 랭킹, 일정 최적화, 추천 API, 추천 평가 파이프라인
 
@@ -35,8 +36,9 @@
 | [SPEC-007](spec_007.md) | 제주 비음식점 전체 웹 조사·DB 저장·자동 라벨 확장 | Implemented | research, scoring, database, labeling |
 | [SPEC-008](spec_008.md) | AI 초안 인지형 개인화 장소 추천 엔진 상세 설계 | Draft | recommendation, ranking, evaluation, safety |
 | [SPEC-009](spec_009.md) | 제주 장소 24축 완전 숫자 라벨 데이터 | Implemented | data, labeling |
+| [SPEC-010](spec_010.md) | 지도 장소 상세 라벨 결과와 설명 툴팁 | Implemented | map, UI, labeling |
 
-- 다음 예약 번호: `SPEC-010`
+- 다음 예약 번호: `SPEC-011`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
