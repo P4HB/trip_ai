@@ -47,6 +47,7 @@
 | [시스템 아키텍처](architecture.md) | 컴포넌트 경계, 데이터 흐름, 배포 구조 변경 | 현재 구현 + 목표 구조 |
 | [데이터 계약](data_contracts.md) | 장소, 사용자 조건, 추천 결과 스키마 변경 | 현재 구현 + 초안 |
 | [추천 알고리즘](recommendation_algorithm.md) | 후보 생성, 필터, 랭킹, 다양성, 일정 생성 변경 | 목표 설계, 미구현 |
+| [CCU-MMR 알고리즘 초안](ccu_mmr_algorithm_draft.md) | 41개 라벨 기반 차기 추천안의 구조와 계산 흐름 검토 | 후보 설계, 미구현 |
 | [평가 전략](evaluation.md) | 추천 품질, 회귀 테스트, 출시 기준 변경 | 목표 설계, 미구현 |
 | [안전 및 개인정보](safety_privacy.md) | 위치정보, 외부 데이터, 설명 안전성 변경 | 적용 원칙 |
 | [SPEC 템플릿](spec_template.md) | 새 구현 SPEC 생성 | 템플릿 |
