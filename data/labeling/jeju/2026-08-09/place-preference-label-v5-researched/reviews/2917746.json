@@ -1,0 +1,61 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2917746",
+  "title": "유니클로 제주이도점",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {
+      "id": "uniqlo-store",
+      "publisher": "UNIQLO Korea",
+      "type": "official_store",
+      "url": "https://map.uniqlo.com/kr/ko/detail/10501142",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "The official store locator identifies Jeju Ido Store at 1F, 1 Gunam-ro 8-gil, Jeju-si, Jeju Special Self-Governing Province.",
+        "It is a standard store selling WOMEN, MEN, KIDS and BABY products, with store delivery, Order & Pick, parking, and stated daily opening hours."
+      ]
+    },
+    {
+      "id": "uniqlo-pickup-store-list",
+      "publisher": "UNIQLO Korea",
+      "type": "official_brand",
+      "url": "https://www.uniqlo.com/kr/ko/special-feature/order-and-pick/store",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "UNIQLO Korea lists Jeju Ido Store among its Jeju-region stores that provide the brand's Order & Pick service.",
+        "The same official list includes multiple other Jeju UNIQLO stores, confirming this is a branch in a nationwide brand store network rather than a Jeju-local independent shop."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "The official description is a standard apparel retail store; it provides no mountain visit, trail, or mountain-view experience.", "source_ids": ["uniqlo-store"]},
+    "theme.ocean": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "The documented store purpose and services are apparel retail, with no coastal or marine experience.", "source_ids": ["uniqlo-store"]},
+    "theme.activity": {"value": 0, "confidence": 0.85, "review_status": "confirmed", "rationale": "Shopping is possible, but the official store information documents retail rather than a recreational, participatory, or physical activity destination.", "source_ids": ["uniqlo-store"]},
+    "theme.culture_history": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "No official source identifies cultural, historical, heritage, or exhibition content; it is a standard apparel store.", "source_ids": ["uniqlo-store"]},
+    "theme.theme_park": {"value": 0, "confidence": 0.98, "review_status": "confirmed", "rationale": "UNIQLO classifies it as a standard store, not a themed attraction or amusement facility.", "source_ids": ["uniqlo-store"]},
+    "theme.cafe": {"value": 0, "confidence": 0.98, "review_status": "confirmed", "rationale": "Official product categories are apparel for women, men, kids and babies; no cafe operation is documented.", "source_ids": ["uniqlo-store"]},
+    "theme.traditional_market": {"value": 0, "confidence": 0.98, "review_status": "confirmed", "rationale": "This is an official branded standard store, not a traditional market.", "source_ids": ["uniqlo-store", "uniqlo-pickup-store-list"]},
+    "theme.festival": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "The official pages describe regular retail operation and no festival as the place's purpose.", "source_ids": ["uniqlo-store"]},
+    "environment.indoor_ratio": {"value": 1, "confidence": 0.9, "review_status": "confirmed", "rationale": "The official locator identifies a first-floor standard retail store with indoor shopping services; no outdoor visitor program is documented.", "source_ids": ["uniqlo-store"]},
+    "environment.weather_sensitivity": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "The documented visitor experience is indoor standard-store shopping, so weather is not a material experience dependency.", "source_ids": ["uniqlo-store"]},
+    "style_evidence.restfulness": {"value": 0.25, "confidence": 0.75, "review_status": "confirmed", "rationale": "The documented purpose is apparel shopping and pickup rather than quiet rest or restorative leisure.", "source_ids": ["uniqlo-store"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "review_status": "needs_review", "hold_reason": "The official store page confirms a ground-floor location and parking but gives no reliable accessibility, walking-distance, seating, slope, or barrier-free detail.", "rationale": "Do not infer full physical ease from ordinary retail format alone; retain a neutral value pending accessibility evidence.", "source_ids": ["uniqlo-store"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.8, "review_status": "confirmed", "rationale": "Published daily hours, free-entry retail browsing, and Order & Pick support a short errand or longer shopping visit without a scheduled tour.", "source_ids": ["uniqlo-store", "uniqlo-pickup-store-list"]},
+    "style_evidence.scenic_value": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "The official description contains no landscape, viewpoint, natural setting, or scenic feature; the place is a standard urban apparel store.", "source_ids": ["uniqlo-store"]},
+    "style_evidence.distinctiveness": {"value": 0, "confidence": 0.85, "review_status": "confirmed", "rationale": "Officially described as a standard store with the normal brand product range and services; no Jeju-specific, singular, or destination-defining feature is documented.", "source_ids": ["uniqlo-store", "uniqlo-pickup-store-list"]},
+    "style_evidence.local_embeddedness": {"value": 0, "confidence": 1, "review_status": "confirmed", "rationale": "Official UNIQLO pages identify this as one of several Jeju branches in the nationwide UNIQLO store network. Location in Jeju does not make a standard chain branch locally embedded.", "source_ids": ["uniqlo-store", "uniqlo-pickup-store-list"]},
+    "style_evidence.landmark_significance": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "No official or public source establishes the standard branch as a Jeju landmark, designated attraction, or regional symbol.", "source_ids": ["uniqlo-store", "uniqlo-pickup-store-list"]},
+    "style_evidence.photo_value": {"value": 0, "confidence": 0.75, "review_status": "confirmed", "rationale": "Official material presents ordinary apparel retail and does not document a visual attraction, photo spot, or notable architecture.", "source_ids": ["uniqlo-store"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {"value": 0.5, "review_status": "needs_review", "confidence": 0.25, "calculation": "quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.5", "input_labels": ["style_evidence.restfulness", "style_evidence.physical_ease", "style_evidence.visit_duration_flexibility"], "hold_reason": "physical_ease remains needs_review."},
+    "derived_style.scenic_immersion": {"value": 0, "review_status": "confirmed", "confidence": 0.9, "calculation": "copy(style_evidence.scenic_value)", "input_labels": ["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer": {"value": 0.5, "review_status": "needs_review", "confidence": 0.25, "calculation": "constant(0.5) per place_label_completion_rules.v1", "input_labels": [], "hold_reason": "The current derived rule has no independently researched place-specific input."},
+    "derived_style.local_immersion": {"value": 0, "review_status": "confirmed", "confidence": 1, "calculation": "copy(style_evidence.local_embeddedness)", "input_labels": ["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight": {"value": 0, "review_status": "confirmed", "confidence": 0.9, "calculation": "copy(style_evidence.landmark_significance)", "input_labels": ["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood": {"value": 0, "review_status": "confirmed", "confidence": 0.75, "calculation": "copy(style_evidence.photo_value)", "input_labels": ["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": [
+    {"proposal": "An officially confirmed standard branch of a nationwide apparel chain should receive local_embeddedness=0 unless the specific branch has independently evidenced Jeju-specific programming, products, or heritage value.", "basis": "UNIQLO Korea identifies Jeju Ido as one of multiple Jeju stores in its national chain network and describes normal standardized retail services.", "status": "proposed"}
+  ]
+}

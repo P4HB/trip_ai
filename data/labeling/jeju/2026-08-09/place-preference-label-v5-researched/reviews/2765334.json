@@ -1,0 +1,39 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2765334",
+  "title": "한림매일시장",
+  "reviewed_at": "2026-08-11",
+  "sources": [
+    {"id":"visitjeju","publisher":"Jeju Tourism Organization / Visit Jeju","type":"public_tourism","url":"https://www.visitjeju.net/en/detail/view?contentsid=CONT_000000000500758&menuId=DOM_000001920004000000","checked_at":"2026-08-11","facts":["Introduces Hallim Maeil Market as showing the character of an old traditional market."]},
+    {"id":"kto","publisher":"Korea Tourism Organization / VisitKorea","type":"public_tourism","url":"https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=97e8d0e8-06b6-4928-854d-414204a84a8b","checked_at":"2026-08-11","facts":["Distinguishes the market from Hallim five-day market and describes it as a permanent market used mainly by local residents, with a local atmosphere."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Public tourism descriptions identify a permanent traditional market, not a mountain activity or landscape destination.","source_ids":["visitjeju","kto"]},
+    "theme.ocean":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No public-source evidence makes marine scenery or an ocean activity the visit purpose.","source_ids":["visitjeju","kto"]},
+    "theme.activity":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"Browsing and purchasing at a market are light visitor activities, but not a dedicated activity attraction.","source_ids":["kto"]},
+    "theme.culture_history":{"value":0.5,"confidence":0.7,"review_status":"confirmed","rationale":"Visit Jeju explicitly presents the old traditional-market character; the sources do not establish a separate historic-site program.","source_ids":["visitjeju","kto"]},
+    "theme.theme_park":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The sources describe a permanent market, not a themed amusement facility.","source_ids":["visitjeju","kto"]},
+    "theme.cafe":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"A cafe is not identified as the place's primary theme.","source_ids":["visitjeju","kto"]},
+    "theme.traditional_market":{"value":1,"confidence":1,"review_status":"confirmed","rationale":"Both public tourism sources directly characterize it as a permanent/old traditional market.","source_ids":["visitjeju","kto"]},
+    "theme.festival":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No evidence identifies a festival as the venue or visit purpose.","source_ids":["visitjeju","kto"]},
+    "environment.indoor_ratio":{"value":0.5,"confidence":0.3,"review_status":"needs_review","hold_reason":"The consulted public sources do not document covered versus open-air circulation.","rationale":"A neutral value is retained rather than inferring physical layout from market type.","source_ids":["visitjeju","kto"]},
+    "environment.weather_sensitivity":{"value":0.5,"confidence":0.3,"review_status":"needs_review","hold_reason":"Neither source documents rain shelter, roof coverage, or weather-related accessibility.","rationale":"Weather exposure cannot be established from the available evidence.","source_ids":["visitjeju","kto"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"A daily market principally used by residents implies a lively shopping setting rather than a quiet rest-oriented destination.","source_ids":["kto"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official evidence found for walking distance, slopes, steps, or accessibility facilities.","rationale":"Do not infer mobility ease solely from market category.","source_ids":[]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"As a permanent market with browsing and purchasing, it supports a short errand or longer exploration without a fixed attraction program.","source_ids":["kto"]},
+    "style_evidence.scenic_value":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"Public descriptions focus on the market and local shopping atmosphere, not a natural or panoramic scene.","source_ids":["visitjeju","kto"]},
+    "style_evidence.distinctiveness":{"value":0.5,"confidence":0.65,"review_status":"confirmed","rationale":"The old traditional-market character and local-resident use distinguish it from a generic retail venue, but sources do not support exceptional regional uniqueness.","source_ids":["visitjeju","kto"]},
+    "style_evidence.local_embeddedness":{"value":1,"confidence":0.9,"review_status":"confirmed","rationale":"KTO states that local residents mainly use this permanent market and that it conveys a local atmosphere; Visit Jeju identifies its traditional-market character.","source_ids":["kto","visitjeju"]},
+    "style_evidence.landmark_significance":{"value":0.25,"confidence":0.55,"review_status":"confirmed","rationale":"It is a recognized local market, but the consulted public sources do not call it a citywide or islandwide landmark.","source_ids":["visitjeju","kto"]},
+    "style_evidence.photo_value":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official source evaluates visual composition or photo appeal.","rationale":"Photo availability is not sufficient evidence for a photo-value score.","source_ids":["visitjeju"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease is needs_review."},
+    "derived_style.scenic_immersion":{"value":0.25,"review_status":"confirmed","confidence":0.7,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"The current derivation has no place-specific input."},
+    "derived_style.local_immersion":{"value":1,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0.25,"review_status":"confirmed","confidence":0.55,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"],"hold_reason":"photo_value is needs_review."}
+  },
+  "common_rule_proposals": []
+}

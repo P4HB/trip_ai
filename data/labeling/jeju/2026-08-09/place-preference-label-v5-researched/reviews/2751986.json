@@ -1,0 +1,37 @@
+{
+  "schema_version":"place-preference-label-v5-place-review-v1",
+  "contentid":"2751986", "title":"Forest Dinosaur Safari", "reviewed_at":"2026-08-11",
+  "sources":[
+    {"id":"visitjeju","publisher":"Jeju Tourism Organization Visit Jeju","type":"public_tourism","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008314","checked_at":"2026-08-11","facts":["Jeju public tourism page calls it a zoo theme park.","Animal models, pond, camellia photo zones, seasonal flowers and trees are described.","The page recommends family walking and notes closure in heavy snow or typhoon."]},
+    {"id":"nol","publisher":"NOL booking listing","type":"booking_operator","url":"https://leisure-web.yanolja.com/leisure/10061652","checked_at":"2026-08-11","facts":["Listing gives the Jeju address and an on-site cafe and snack shop.","Hours may change according to season and weather."]}
+  ],
+  "atomic_labels":{
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Public listing describes a zoo theme park, not mountain activity.","source_ids":["visitjeju"]},
+    "theme.ocean":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No sea or beach activity is presented as a core experience.","source_ids":["visitjeju"]},
+    "theme.activity":{"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"Children can interact with animal models and the facility is described as family play.","source_ids":["visitjeju"]},
+    "theme.culture_history":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"It is presented as a private animal and dinosaur theme facility, not heritage interpretation.","source_ids":["visitjeju"]},
+    "theme.theme_park":{"value":1,"confidence":1,"review_status":"confirmed","rationale":"Jeju Tourism Organization explicitly calls it a zoo theme park.","source_ids":["visitjeju"]},
+    "theme.cafe":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"There is a cafe, but it is ancillary to the dinosaur and animal park.","source_ids":["visitjeju","nol"]},
+    "theme.traditional_market":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No traditional market function is evidenced.","source_ids":["visitjeju"]},
+    "theme.festival":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It is an ongoing facility, not an event-specific festival destination.","source_ids":["visitjeju","nol"]},
+    "environment.indoor_ratio":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"Models, pond, flowers, trees and walking are outdoor features central to the description.","source_ids":["visitjeju"]},
+    "environment.weather_sensitivity":{"value":0.75,"confidence":0.85,"review_status":"confirmed","rationale":"The outdoor facility may close for snow or typhoon and hours vary by weather.","source_ids":["visitjeju","nol"]},
+    "style_evidence.restfulness":{"value":0.5,"confidence":0.65,"review_status":"confirmed","rationale":"Walking among flowers and trees is calm, while the children's theme-park function remains active.","source_ids":["visitjeju"]},
+    "style_evidence.physical_ease":{"value":0.75,"confidence":0.7,"review_status":"confirmed","rationale":"It is described as safe, comfortable and suitable for family walking; no difficult terrain is evidenced.","source_ids":["visitjeju"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"Visitors can combine dinosaur viewing, walking, photo zones and food service to varying depth.","source_ids":["visitjeju"]},
+    "style_evidence.scenic_value":{"value":0.5,"confidence":0.65,"review_status":"confirmed","rationale":"Pond, camellias and seasonal trees add scenery, but landscape is not presented as the main attraction.","source_ids":["visitjeju"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.75,"review_status":"confirmed","rationale":"The combined dinosaur and animal safari theme differentiates the visitor experience.","source_ids":["visitjeju"]},
+    "style_evidence.local_embeddedness":{"value":0.25,"confidence":0.6,"review_status":"confirmed","rationale":"It is a Jeju site with local plants, but no evidence ties its dinosaur and animal theme deeply to Jeju-specific culture or industry.","source_ids":["visitjeju","nol"]},
+    "style_evidence.landmark_significance":{"value":0.25,"confidence":0.55,"review_status":"confirmed","rationale":"It appears in the public tourism database, but no public evidence establishes it as a Jeju landmark.","source_ids":["visitjeju"]},
+    "style_evidence.photo_value":{"value":0.75,"confidence":0.9,"review_status":"confirmed","rationale":"The public tourism page explicitly identifies pond and camellia photo zones.","source_ids":["visitjeju"]}
+  },
+  "derived_labels":{
+    "derived_style.healing_slow":{"value":0.75,"review_status":"confirmed","confidence":0.65,"calculation":"quantize(0.4*restfulness(0.5)+0.3*physical_ease(0.75)+0.3*visit_duration_flexibility(0.75)) = 0.75","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"]},
+    "derived_style.scenic_immersion":{"value":0.5,"review_status":"confirmed","confidence":0.65,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"Current derived rule has no place-specific input."},
+    "derived_style.local_immersion":{"value":0.25,"review_status":"confirmed","confidence":0.6,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0.25,"review_status":"confirmed","confidence":0.55,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.75,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals":[{"proposal":"Do not assign local_embeddedness above 0.5 from Jeju location alone; require direct evidence of Jeju-specific culture, industry, or natural-resource connection.","evidence":"This site has local plants and a Jeju address, but no evidence makes dinosaur or animal themes Jeju-specific.","status":"proposed"}]
+}

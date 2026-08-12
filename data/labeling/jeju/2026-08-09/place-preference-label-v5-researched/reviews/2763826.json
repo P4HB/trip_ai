@@ -1,0 +1,40 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2763826",
+  "title": "World Liquor Museum",
+  "reviewed_at": "2026-08-11",
+  "sources": [
+    {"id":"brix-feature","publisher":"Brix Magazine","type":"editorial_visit","url":"https://v.daum.net/v/1SXjLjnbWr","checked_at":"2026-08-11","facts":["It describes the museum in Pyoseon-myeon, Seogwipo, with parking and tasting.","It describes exhibits on traditional-liquor types and brewing, Korean and foreign liquor, and 1970s-80s bottles and advertisements.","It describes Jeju gosori-sul and omegi-sul exhibits and sales, with an address and hours."]},
+    {"id":"travel-listing","publisher":"Travel Diary","type":"tourism_listing","url":"https://www.mytravelnotes.co.kr/attractions/jeju","checked_at":"2026-08-11","facts":["Lists World Liquor Museum as a cultural facility at 431 Hanmaeum Elementary School-ro, Pyoseon-myeon, Seogwipo, Jeju."]},
+    {"id":"visitjeju-search","publisher":"Jeju Tourism Organization Visit Jeju","type":"public_tourism_search","url":"https://www.visitjeju.net/kr/search?q=%EC%A0%84%EC%8B%9C%EA%B4%80&searchtype=2","checked_at":"2026-08-11","facts":["Visit Jeju search results include World Liquor Museum among exhibition facilities."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It is an exhibition and liquor-culture facility, with no mountain-experience evidence.","source_ids":["brix-feature","travel-listing"]},
+    "theme.ocean":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No marine, beach, or ocean-view visit purpose is evidenced.","source_ids":["brix-feature","travel-listing"]},
+    "theme.activity":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"Tasting is possible after viewing, but this is not a physical-activity venue.","source_ids":["brix-feature"]},
+    "theme.culture_history":{"value":0.75,"confidence":0.85,"review_status":"confirmed","rationale":"The exhibits cover traditional brewing, liquor history, and historic bottles and advertisements.","source_ids":["brix-feature"]},
+    "theme.theme_park":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It is a museum, with no rides or theme-park attraction evidence.","source_ids":["brix-feature","travel-listing"]},
+    "theme.cafe":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Tasting and souvenir sales are mentioned, not a cafe as the principal theme.","source_ids":["brix-feature"]},
+    "theme.traditional_market":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Sources classify it as a cultural facility/museum, not a traditional market.","source_ids":["travel-listing","brix-feature"]},
+    "theme.festival":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It has regular museum hours; no event-specific festival purpose is evidenced.","source_ids":["brix-feature"]},
+    "environment.indoor_ratio":{"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"The primary experience is viewing museum exhibits and display cases indoors.","source_ids":["brix-feature","visitjeju-search"]},
+    "environment.weather_sensitivity":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"The primary museum-viewing activity is indoors.","source_ids":["brix-feature","visitjeju-search"]},
+    "style_evidence.restfulness":{"value":0.5,"confidence":0.45,"review_status":"needs_review","hold_reason":"No operator or public evidence on crowding/noise was found.","rationale":"It is a viewing facility, but quietness is not directly established.","source_ids":["brix-feature"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No place-specific evidence on route length, stairs, slopes, or accessibility was found.","rationale":"Indoor museum status alone cannot establish physical ease.","source_ids":[]},
+    "style_evidence.visit_duration_flexibility":{"value":0.5,"confidence":0.4,"review_status":"needs_review","hold_reason":"No recommended duration, re-entry, or route-choice information was found.","rationale":"Viewing and tasting are available, but time flexibility is not directly established.","source_ids":["brix-feature"]},
+    "style_evidence.scenic_value":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"Available material emphasizes exhibits and liquor culture, not natural or urban scenic viewing.","source_ids":["brix-feature"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"The specialized collection spans brewing culture, domestic/international liquors, and original historic bottles and advertisements.","source_ids":["brix-feature"]},
+    "style_evidence.local_embeddedness":{"value":0.5,"confidence":0.65,"review_status":"confirmed","rationale":"It is located in Jeju and includes Jeju gosori-sul and omegi-sul, but its exhibition scope is national and global liquor rather than chiefly Jeju-specific.","source_ids":["brix-feature","travel-listing"]},
+    "style_evidence.landmark_significance":{"value":0.25,"confidence":0.45,"review_status":"needs_review","hold_reason":"No public-tourism or operator evidence designating it a representative Jeju landmark was found.","rationale":"A specialized museum alone does not establish regional landmark status.","source_ids":["visitjeju-search","brix-feature"]},
+    "style_evidence.photo_value":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official/public evidence directly establishes photography appeal.","rationale":"Retro exhibits exist, but that alone does not justify a photo-value score beyond neutral.","source_ids":["brix-feature"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.5)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.5)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"Atomic inputs are held for further review."},
+    "derived_style.scenic_immersion":{"value":0.25,"review_status":"confirmed","confidence":0.75,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"Existing derived rule has no place-specific input."},
+    "derived_style.local_immersion":{"value":0.5,"review_status":"confirmed","confidence":0.65,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0.25,"review_status":"needs_review","confidence":0.45,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"],"hold_reason":"landmark_significance is held for further review."},
+    "derived_style.photo_mood":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"],"hold_reason":"photo_value is held for further review."}
+  },
+  "common_rule_proposals": []
+}

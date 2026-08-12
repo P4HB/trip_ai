@@ -43,6 +43,7 @@
     detailTitle: document.querySelector("#detailTitle"),
     detailAddress: document.querySelector("#detailAddress"),
     detailPhone: document.querySelector("#detailPhone"),
+    detailLabels: document.querySelector("#detailLabels"),
     centerPlaceButton: document.querySelector("#centerPlaceButton"),
     copyPlaceButton: document.querySelector("#copyPlaceButton"),
     copyPlaceButtonLabel: document.querySelector("#copyPlaceButtonLabel"),
@@ -53,6 +54,22 @@
   };
 
   const numberFormatter = new Intl.NumberFormat("ko-KR");
+  const LABEL_GROUPS = [
+    ["Theme", "theme."],
+    ["Environment", "environment."],
+    ["Style", "style_evidence."],
+    ["Derived Style", "derived_style."],
+  ];
+  const LABEL_NAMES = {
+    mountain: "산", ocean: "바다", activity: "활동", culture_history: "문화·역사",
+    theme_park: "테마파크", cafe: "카페", traditional_market: "전통시장", festival: "축제",
+    indoor_ratio: "실내 비율", weather_sensitivity: "날씨 민감", restfulness: "휴식성",
+    physical_ease: "이동 편의", visit_duration_flexibility: "체류 유연성", scenic_value: "경관 가치",
+    distinctiveness: "독특함", local_embeddedness: "제주 로컬성", landmark_significance: "랜드마크성",
+    photo_value: "사진 가치", healing_slow: "힐링·느긋함", scenic_immersion: "경관 몰입",
+    discovery_explorer: "발견·탐험", local_immersion: "로컬 몰입", iconic_highlight: "상징 하이라이트",
+    photo_mood: "사진 무드",
+  };
   const rawPlaces = Array.isArray(window.JEJU_PLACES) ? window.JEJU_PLACES : [];
   const metadata = window.JEJU_DATA_META || {};
   const places = rawPlaces.map((place) => ({
@@ -101,6 +118,81 @@
     const digits = String(value || "").replace(/\D/g, "");
     if (digits.length < 8) return "수정일 정보 없음";
     return `업데이트 ${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}`;
+  }
+
+  function labelName(label) {
+    const key = String(label).split(".").at(-1);
+    return LABEL_NAMES[key] || key;
+  }
+
+  function formatScore(value) {
+    return Number.isFinite(value) ? String(value) : "—";
+  }
+
+  function renderV5Labels(place) {
+    const review = place.v5;
+    dom.detailLabels.replaceChildren();
+    if (!review?.labels?.length) {
+      dom.detailLabels.hidden = true;
+      return;
+    }
+    dom.detailLabels.hidden = false;
+    const heading = document.createElement("div");
+    heading.className = "v5-label-heading";
+    heading.innerHTML = "<strong>v5 근거 라벨</strong><span>24개 · 항목을 누르면 근거 표시</span>";
+    const grid = document.createElement("div");
+    grid.className = "v5-label-grid";
+    const detail = document.createElement("div");
+    detail.className = "v5-label-detail";
+    const sourceMap = new Map((review.sources || []).map((source) => [source.id, source]));
+
+    const showDetail = (record) => {
+      detail.replaceChildren();
+      const title = document.createElement("strong");
+      title.textContent = `${labelName(record.label)} · ${formatScore(record.value)}`;
+      const status = document.createElement("span");
+      status.className = "v5-label-status";
+      status.textContent = record.status === "confirmed" ? "근거 확인" : "검토 보류";
+      const rationale = document.createElement("p");
+      rationale.textContent = record.rationale || record.hold_reason || "판단 사유가 기록되지 않았습니다.";
+      detail.append(title, status, rationale);
+      const linkedSources = record.source_ids.map((id) => sourceMap.get(id)).filter(Boolean);
+      if (linkedSources.length) {
+        const links = document.createElement("div");
+        links.className = "v5-source-links";
+        for (const source of linkedSources) {
+          const link = document.createElement("a");
+          link.href = source.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = source.publisher || "웹 근거";
+          links.append(link);
+        }
+        detail.append(links);
+      }
+    };
+
+    for (const [groupName, prefix] of LABEL_GROUPS) {
+      const group = document.createElement("div");
+      group.className = "v5-label-group";
+      const title = document.createElement("span");
+      title.textContent = groupName;
+      group.append(title);
+      for (const record of review.labels.filter((label) => label.label.startsWith(prefix))) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "v5-label-chip";
+        button.innerHTML = `<span>${labelName(record.label)}</span><b>${formatScore(record.value)}</b>`;
+        button.addEventListener("click", () => {
+          grid.querySelectorAll(".v5-label-chip").forEach((chip) => chip.classList.remove("is-active"));
+          button.classList.add("is-active");
+          showDetail(record);
+        });
+        group.append(button);
+      }
+      grid.append(group);
+    }
+    dom.detailLabels.append(heading, grid, detail);
   }
 
   function debounce(callback, delay = 200) {
@@ -460,6 +552,7 @@
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
+    renderV5Labels(place);
 
     dom.detailImage.onload = () => {
       dom.detailImage.hidden = false;

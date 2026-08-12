@@ -1,0 +1,39 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "4013225",
+  "title": "\uD0E0\uC800\uBE44 \uC81C\uC6D0\uC810",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {"id":"kto-public-place","publisher":"Korea Tourism Organization TourAPI public tourism information (onTrip republisher)","type":"public_tourism","url":"https://ontrip.kr/travel-guides/details/4013225","checked_at":"2026-08-12","facts":["Identifies the store at 1F, 61 Singwang-ro, Jeju-si.","Describes Tanger-Bee as a fashion-accessory brand pursuing fresh-tangerine-like sensibility, color palettes, and unique graphics.","Lists traditional folk crafts, ceramics, woodcraft, and other handicrafts; daily hours are 10:00-23:00 and parking and restrooms are unavailable."]},
+    {"id":"company-profile","publisher":"Saramin company profile","type":"business_registry_secondary","url":"https://www.saramin.co.kr/zf_user/company-info/view/csn/Tkp3UTlxVXRHWkpkTmloTWU3d0d4QT09/company_nm/%28%EC%A3%BC%29%ED%83%A0%EC%A0%80%EB%B9%84","checked_at":"2026-08-12","facts":["Lists the company address in Jeju-si and its business as souvenirs, tourism folk crafts, ornaments, retail, and e-commerce.","Lists franchise affiliation as a business activity, but does not establish the actual geographic coverage of its stores."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The public tourism listing describes an indoor fashion-accessory and handicraft shop, with no mountain scenery or hiking activity.","source_ids":["kto-public-place"]},
+    "theme.ocean":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The listing provides no ocean activity, coast, or marine-view purpose.","source_ids":["kto-public-place"]},
+    "theme.activity":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"Browsing and buying goods is a light activity, but no participatory program or recreation is documented.","source_ids":["kto-public-place"]},
+    "theme.culture_history":{"value":0.25,"confidence":0.65,"review_status":"confirmed","rationale":"Folk crafts and ceramics are sold, but the listing does not establish heritage interpretation or cultural-history experience as the visit purpose.","source_ids":["kto-public-place"]},
+    "theme.theme_park":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"It is a single retail store, not a rides, attraction, or theme-park facility.","source_ids":["kto-public-place"]},
+    "theme.cafe":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The documented products are accessories and handicrafts, with no beverage or cafe service.","source_ids":["kto-public-place"]},
+    "theme.traditional_market":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"It is listed as an individual shop rather than a traditional-market district.","source_ids":["kto-public-place"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The listing documents regular daily operation, not a festival or time-limited event.","source_ids":["kto-public-place"]},
+    "environment.indoor_ratio":{"value":1,"confidence":0.9,"review_status":"confirmed","rationale":"The documented first-floor shop is an indoor sales environment.","source_ids":["kto-public-place"]},
+    "environment.weather_sensitivity":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"The core activity is indoor retail use, with no weather-dependent outdoor experience documented.","source_ids":["kto-public-place"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"This is a purchase-oriented urban retail shop; rest, healing, or quiet long-stay use is not documented.","source_ids":["kto-public-place"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.3,"review_status":"needs_review","hold_reason":"No place-specific evidence covers entrance steps, internal route, wheelchair access, or pedestrian distance.","rationale":"An indoor first-floor shop alone cannot prove overall physical ease, and parking and restrooms are unavailable.","source_ids":["kto-public-place"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.5,"confidence":0.4,"review_status":"needs_review","hold_reason":"No recommended duration, reservation policy, capacity, or entry-constraint evidence is published for this location.","rationale":"Daily long hours are documented but do not directly establish the range between brief and extended visits.","source_ids":["kto-public-place"]},
+    "style_evidence.scenic_value":{"value":0,"confidence":0.8,"review_status":"confirmed","rationale":"The listing centers products and graphic design, not nature, view, or exhibition scenery appreciation.","source_ids":["kto-public-place"]},
+    "style_evidence.distinctiveness":{"value":0.5,"confidence":0.7,"review_status":"confirmed","rationale":"The brand's tangerine-inspired sensibility and unique graphics establish a differentiated design identity, but not an irreplaceable site-specific experience.","source_ids":["kto-public-place"]},
+    "style_evidence.local_embeddedness":{"value":0.25,"confidence":0.55,"review_status":"confirmed","rationale":"The operator's Jeju address and tourism-souvenir sector provide limited local connection, but no direct evidence links this branch to Jeju-specific culture, production, or community. Franchise business is listed, so Jeju location alone does not justify a high value.","source_ids":["kto-public-place","company-profile"]},
+    "style_evidence.landmark_significance":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"It is a tourism-listed individual shop, but no public evidence identifies it as a regional landmark or essential destination.","source_ids":["kto-public-place"]},
+    "style_evidence.photo_value":{"value":0.25,"confidence":0.45,"review_status":"needs_review","hold_reason":"No official or public source identifies a photo spot, photo zone, or photography-driven visit.","rationale":"Color and graphic design are visual elements but do not by themselves prove high photo-destination value.","source_ids":["kto-public-place"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.5)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease and visit_duration_flexibility are needs_review."},
+    "derived_style.scenic_immersion":{"value":0,"review_status":"confirmed","confidence":0.8,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"No place-specific input is defined for this derived rule."},
+    "derived_style.local_immersion":{"value":0.25,"review_status":"confirmed","confidence":0.55,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0,"review_status":"confirmed","confidence":0.85,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.25,"review_status":"needs_review","confidence":0.45,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"],"hold_reason":"photo_value is needs_review."}
+  },
+  "common_rule_proposals": []
+}

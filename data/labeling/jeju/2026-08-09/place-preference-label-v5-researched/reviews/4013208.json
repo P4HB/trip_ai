@@ -1,0 +1,40 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "4013208",
+  "title": "아이더 신제주점",
+  "reviewed_at": "2026-08-12",
+  "source_place": {"contenttypeid":"38","lclsSystm1":"SH","lclsSystm2":"SH04","lclsSystm3":"SH040300"},
+  "sources": [
+    {"id":"tourapi-place","publisher":"Korea Tourism Organization TourAPI","type":"public_tourism_authority","url":"https://api.visitkorea.or.kr","checked_at":"2026-08-12","facts":["TourAPI identifies contentid 4013208 as 아이더 신제주점, a first-floor shopping place at 109 Noyeon-ro, Yeon-dong, Jeju-si."]},
+    {"id":"eider-brand","publisher":"EIDER official","type":"official_operator","url":"https://www.eider.co.kr/brand","checked_at":"2026-08-12","facts":["The official brand history states EIDER was founded in Chamonix in the Alps in 1962.","EIDER describes itself as a global brand and lists its company address in Seoul.","The brand offers outdoor products for hiking, climbing and other outdoor uses."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"This is a retail outlet selling outdoor goods, not a mountain visit or mountain activity location.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.ocean":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Neither the TourAPI place identity nor the official brand page establishes a coastal or ocean experience at this store.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.activity":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"The brand is oriented to hiking and climbing equipment, but this location's visitor experience is shopping rather than performing those activities.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.culture_history":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No cultural, historical, heritage, or interpretive function is identified for this retail outlet.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.theme_park":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"A first-floor retail outlet is not a themed attraction or amusement facility.","source_ids":["tourapi-place"]},
+    "theme.cafe":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"The identified place is an EIDER shopping outlet; no cafe operation is indicated.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.traditional_market":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"The named place is a branded retail store, not a traditional market.","source_ids":["tourapi-place","eider-brand"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No festival or event is identified as the purpose of this place.","source_ids":["tourapi-place","eider-brand"]},
+    "environment.indoor_ratio":{"value":1,"confidence":0.9,"review_status":"confirmed","rationale":"TourAPI identifies the location as a first-floor shopping outlet; its core shopping experience is indoors.","source_ids":["tourapi-place"]},
+    "environment.weather_sensitivity":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The core retail visit is indoors and does not depend on weather conditions.","source_ids":["tourapi-place"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"The place is a functional outdoor-goods retail visit rather than a setting designed for quiet rest or slow relaxation.","source_ids":["tourapi-place","eider-brand"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official evidence was found for walking distance, stairs, parking, barrier-free facilities, or in-store circulation.","rationale":"It is a first-floor shop, but that fact alone is insufficient to assign a high physical-ease score.","source_ids":["tourapi-place"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"A retail visit can be a brief purchase or a longer product-browsing stop; no fixed tour duration is inherent in the identified store use.","source_ids":["tourapi-place","eider-brand"]},
+    "style_evidence.scenic_value":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"Official evidence defines a functional indoor retail outlet and provides no natural, architectural, or scenic viewing feature.","source_ids":["tourapi-place","eider-brand"]},
+    "style_evidence.distinctiveness":{"value":0,"confidence":0.8,"review_status":"confirmed","rationale":"The record identifies a standard outlet of an established global outdoor brand, without evidence that this branch is a flagship, concept store, or unique attraction.","source_ids":["tourapi-place","eider-brand"]},
+    "style_evidence.local_embeddedness":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"EIDER's official history identifies an Alps-origin brand that has grown globally and is operated by a Seoul-based company; the Jeju branch is therefore a national/global brand outlet rather than a Jeju-local business or experience.","source_ids":["eider-brand","tourapi-place"]},
+    "style_evidence.landmark_significance":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No official source identifies this ordinary retail branch as a landmark, designated site, or major visitor attraction.","source_ids":["tourapi-place","eider-brand"]},
+    "style_evidence.photo_value":{"value":0,"confidence":0.75,"review_status":"confirmed","rationale":"No official or public evidence establishes photo-oriented scenery, an installation, or a distinctive visual feature at this retail branch.","source_ids":["tourapi-place","eider-brand"]}
+  },
+  "derived_style": {
+    "healing_slow":{"value":0.5,"confidence":0.25,"review_status":"needs_review","inputs":{"restfulness":0.25,"physical_ease":0.5,"visit_duration_flexibility":0.75},"calculation":"quantize(0.40*0.25 + 0.30*0.5 + 0.30*0.75) = 0.5","rationale":"Calculated from atomic labels.","hold_reason":"physical_ease is needs_review."},
+    "scenic_immersion":{"value":0,"confidence":0.85,"review_status":"derived","inputs":{"scenic_value":0},"calculation":"scenic_value = 0","rationale":"Copies verified scenic_value."},
+    "discovery_explorer":{"value":0.5,"confidence":0.25,"review_status":"needs_review","inputs":{"distinctiveness":0,"objective_popularity":null},"calculation":null,"rationale":"The current rule requires objective_popularity, which is not evidenced in this place review.","hold_reason":"MISSING_DEPENDENCY_OBJECTIVE_POPULARITY"},
+    "local_immersion":{"value":0,"confidence":0.98,"review_status":"derived","inputs":{"local_embeddedness":0},"calculation":"local_embeddedness = 0","rationale":"Copies verified local_embeddedness."},
+    "iconic_highlight":{"value":0,"confidence":0.9,"review_status":"derived","inputs":{"landmark_significance":0},"calculation":"landmark_significance = 0","rationale":"Copies verified landmark_significance."},
+    "photo_mood":{"value":0,"confidence":0.75,"review_status":"derived","inputs":{"photo_value":0},"calculation":"photo_value = 0","rationale":"Copies verified photo_value."}
+  },
+  "common_rule_proposals": []
+}

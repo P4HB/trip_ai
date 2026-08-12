@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="제주 1,664개 장소의 v5 웹 근거 기반 선호 라벨 뷰어" />
+    <title>Trip AI · 제주 v5 라벨 뷰어</title>
+    <link rel="stylesheet" href="./v5-viewer.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">TRIP AI · EVIDENCE-BASED RESEARCH</p>
+        <h1>제주 v5 라벨 뷰어</h1>
+      </div>
+      <div class="dataset-chip"><strong id="placeCount">1,664</strong>개 장소 · 웹 근거 검수</div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="장소 목록">
+        <label class="search-label" for="placeSearch">장소 검색</label>
+        <input id="placeSearch" type="search" placeholder="장소명 또는 contentid" autocomplete="off" />
+        <p id="resultCount" class="result-count"></p>
+        <div id="placeList" class="place-list" role="listbox" aria-label="장소 선택"></div>
+      </aside>
+
+      <section class="content" aria-live="polite">
+        <div id="emptyState" class="empty-state">v5 검수 데이터를 불러오는 중입니다.</div>
+        <div id="placeDetail" hidden>
+          <section class="place-header">
+            <div>
+              <p id="placeId" class="eyebrow"></p>
+              <h2 id="placeTitle"></h2>
+              <p id="placeMeta" class="place-meta"></p>
+            </div>
+            <p id="reviewedAt" class="reviewed-at"></p>
+          </section>
+
+          <section aria-labelledby="labelsHeading">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">24 LABELS</p>
+                <h3 id="labelsHeading">검수 라벨</h3>
+              </div>
+              <p>각 라벨을 누르면 해당 판정 근거를 확인할 수 있습니다.</p>
+            </div>
+            <div id="labelGrid" class="label-grid"></div>
+          </section>
+
+          <section class="evidence-panel" aria-labelledby="evidenceHeading">
+            <div>
+              <p class="eyebrow">LABEL EVIDENCE</p>
+              <h3 id="evidenceHeading">라벨을 선택하세요</h3>
+            </div>
+            <div id="labelEvidence"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="./data/v5-researched-data.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

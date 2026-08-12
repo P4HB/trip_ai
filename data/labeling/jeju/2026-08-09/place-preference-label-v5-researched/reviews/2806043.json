@@ -1,0 +1,61 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2806043",
+  "title": "동백포레스트",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {
+      "id": "visitjeju-place",
+      "publisher": "Jeju Tourism Organization / Visit Jeju",
+      "type": "public_tourism",
+      "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012427",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "Dongbaek Forest in Sinrye-ri, Namwon-eup is described as a camellia grove planted with rounded aegi-camellia trees.",
+        "The garden is open only during the camellia flowering season; the associated cafe operates year-round.",
+        "Visitors walk an outdoor viewing path among camellias; benches are provided, and the cafe has a window photo zone and rooftop overview.",
+        "The page states that camellias normally peak from December to January, with flowering possibly extending from late November to February."
+      ]
+    },
+    {
+      "id": "visitjeju-winter",
+      "publisher": "Jeju Tourism Organization / Visit Jeju",
+      "type": "public_tourism",
+      "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_300000000014003&menuId=DOM_700000000010853",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "Visit Jeju presents camellia viewing as a defining Jeju winter activity and lists Dongbaek Forest among recommended camellia-viewing places.",
+        "The article characterizes winter camellias as coloring Jeju red and highlights their seasonal visual contrast."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain": {"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The public tourism descriptions identify a cultivated camellia grove, not a mountain activity or landscape.","source_ids":["visitjeju-place"]},
+    "theme.ocean": {"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"The rooftop has a distant view toward the Seogwipo sea, but the visit purpose is the camellia grove rather than an ocean experience.","source_ids":["visitjeju-place"]},
+    "theme.activity": {"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"The documented activity is gentle outdoor path walking and flower viewing, not an activity-focused attraction.","source_ids":["visitjeju-place"]},
+    "theme.culture_history": {"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The reviewed public sources describe seasonal horticulture and do not establish a cultural-heritage or historic-interpretation purpose.","source_ids":["visitjeju-place","visitjeju-winter"]},
+    "theme.theme_park": {"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"A camellia viewing grove with a cafe is not documented as a rides, exhibits, or themed-attraction park.","source_ids":["visitjeju-place"]},
+    "theme.cafe": {"value":0.5,"confidence":0.85,"review_status":"confirmed","rationale":"The venue operates an on-site cafe year-round, but the attraction itself is the seasonal camellia grove.","source_ids":["visitjeju-place"]},
+    "theme.traditional_market": {"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No market function is described.","source_ids":["visitjeju-place"]},
+    "theme.festival": {"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Seasonal flowering operation is documented, but no event or festival is the visit purpose.","source_ids":["visitjeju-place","visitjeju-winter"]},
+    "environment.indoor_ratio": {"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"The documented viewing route and camellia experience are outdoors; the cafe provides a secondary indoor component.","source_ids":["visitjeju-place"]},
+    "environment.weather_sensitivity": {"value":0.75,"confidence":0.9,"review_status":"confirmed","rationale":"Outdoor viewing and the explicitly flowering-season-only garden make the core experience strongly weather- and season-sensitive.","source_ids":["visitjeju-place"]},
+    "style_evidence.restfulness": {"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"A garden path, benches, flower viewing, and cafe outlook support a quiet, slow-paced visit.","source_ids":["visitjeju-place"]},
+    "style_evidence.physical_ease": {"value":0.5,"confidence":0.35,"review_status":"needs_review","hold_reason":"The public source confirms a walking path but gives no route length, grade, step, or barrier-free access details.","rationale":"Neutral pending accessibility and walking-condition evidence.","source_ids":["visitjeju-place"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.5,"confidence":0.6,"review_status":"confirmed","rationale":"Visitors can combine a short flower-path visit with cafe and rooftop time, but garden access is bounded by seasonal opening hours.","source_ids":["visitjeju-place"]},
+    "style_evidence.scenic_value": {"value":0.75,"confidence":0.9,"review_status":"confirmed","rationale":"The source describes rounded camellia trees, red blooms, rooftop panorama, and a sea view as visually striking scenery.","source_ids":["visitjeju-place"]},
+    "style_evidence.distinctiveness": {"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"The deliberately rounded aegi-camellia grove and seasonal flowering landscape give the place a clear specialized identity.","source_ids":["visitjeju-place"]},
+    "style_evidence.local_embeddedness": {"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"It is a Sinrye-ri Jeju camellia grove, and the Jeju Tourism Organization explicitly frames camellia viewing and this place within Jeju's distinctive winter travel experience.","source_ids":["visitjeju-place","visitjeju-winter"]},
+    "style_evidence.landmark_significance": {"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"It is an officially recommended seasonal viewing place, but the sources do not establish island-wide landmark, heritage, or iconic-site status.","source_ids":["visitjeju-winter","visitjeju-place"]},
+    "style_evidence.photo_value": {"value":1,"confidence":0.95,"review_status":"confirmed","rationale":"The public source calls the cafe window the venue's best photo zone, notes visitors queue to photograph it, and describes benches and camellias as good for photos.","source_ids":["visitjeju-place"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {"value":0.5,"review_status":"needs_review","confidence":0.35,"calculation":"quantize(0.4*restfulness(0.75)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.5)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease remains needs_review."},
+    "derived_style.scenic_immersion": {"value":0.75,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer": {"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"The current derivation has no place-specific input."},
+    "derived_style.local_immersion": {"value":0.75,"review_status":"confirmed","confidence":0.8,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight": {"value":0.25,"review_status":"confirmed","confidence":0.75,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood": {"value":1,"review_status":"confirmed","confidence":0.95,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": []
+}

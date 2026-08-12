@@ -1,0 +1,39 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2847188",
+  "title": "Hotel Rest Seogwipo",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {"id":"tamnao-listing","publisher":"Jeju Tourism Association Tamnao","type":"regional_tourism_booking","url":"https://www.tamnao.com/mw/ad/detailPrdt.do?sPrdtNum=AD00003378","checked_at":"2026-08-12","facts":["Address is 17 Jungang-ro 71beon-gil, Seogwipo, matching TourAPI.","Lists a rooftop Hallasan view, self kitchen, free coffee, reading and rest areas.","Lists breakfast, rooms, shared kitchen, library and shared lounge."]},
+    {"id":"nol-listing","publisher":"NOL","type":"booking_listing","url":"https://nol.yanolja.com/stay/domestic/3001499?ratePlanId=9986&roomTypeId=181445","checked_at":"2026-08-12","facts":["Address matches TourAPI.","Some rooms have Seogwipo sea views and the property has a rooftop rest zone.","It describes Olle Market, Lee Jung-seop Street, Cheonjiyeon Falls and Seogwipo Port as nearby."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Hallasan is a rooftop view only; no mountain activity or mountain-focused stay evidence.","source_ids":["tamnao-listing"]},
+    "theme.ocean":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"Some rooms and rooftop have sea views, but this is not described as a marine or beach-focused stay.","source_ids":["nol-listing"]},
+    "theme.activity":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Sources describe lodging and rest facilities, not activity programs.","source_ids":["tamnao-listing","nol-listing"]},
+    "theme.culture_history":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"A cultural street is nearby, but the hotel itself is not a culture or history experience.","source_ids":["nol-listing"]},
+    "theme.theme_park":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"It is a hotel; no theme-park facility or program is evidenced.","source_ids":["tamnao-listing"]},
+    "theme.cafe":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"Free coffee and breakfast are hotel amenities, not a cafe-centered visit.","source_ids":["tamnao-listing"]},
+    "theme.traditional_market":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It is near Olle Market but is not itself a traditional market.","source_ids":["nol-listing"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No festival hosting or festival-centered visiting evidence was found.","source_ids":["tamnao-listing"]},
+    "environment.indoor_ratio":{"value":1,"confidence":0.9,"review_status":"confirmed","rationale":"Rooms, breakfast, shared kitchen, library and lounge make the core stay indoor.","source_ids":["tamnao-listing"]},
+    "environment.weather_sensitivity":{"value":0.25,"confidence":0.85,"review_status":"confirmed","rationale":"Core lodging facilities are indoors; rooftop and views are optional.","source_ids":["tamnao-listing","nol-listing"]},
+    "style_evidence.restfulness":{"value":0.75,"confidence":0.85,"review_status":"confirmed","rationale":"The Jeju Tourism Association listing explicitly presents rest-oriented recreation, reading, lounge and rest spaces.","source_ids":["tamnao-listing"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No reliable source confirms elevator, room route, or accessible facilities.","rationale":"Generic hotel status alone is insufficient to score walking and accessibility ease.","source_ids":[]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.75,"review_status":"confirmed","rationale":"Overnight stay plus breakfast, shared kitchen, lounge and rooftop support short or longer discretionary stays.","source_ids":["tamnao-listing","nol-listing"]},
+    "style_evidence.scenic_value":{"value":0.5,"confidence":0.7,"review_status":"confirmed","rationale":"Rooftop Hallasan view and some sea-view rooms are confirmed, but not universal or the primary experience.","source_ids":["tamnao-listing","nol-listing"]},
+    "style_evidence.distinctiveness":{"value":0.25,"confidence":0.6,"review_status":"confirmed","rationale":"Rooftop and communal rest facilities exist, but no strong unique concept, history, or specialized experience is evidenced.","source_ids":["tamnao-listing","nol-listing"]},
+    "style_evidence.local_embeddedness":{"value":0.25,"confidence":0.55,"review_status":"confirmed","rationale":"A Seogwipo setting and nearby local attractions are confirmed, but no evidence verifies local cultural or producer linkage or locally rooted operation. No multi-region chain evidence was found, so a zero is not assigned.","source_ids":["tamnao-listing","nol-listing"]},
+    "style_evidence.landmark_significance":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"Nearby attractions are identified, but there is no public or official evidence that the hotel itself is a regional landmark.","source_ids":["nol-listing"]},
+    "style_evidence.photo_value":{"value":0.5,"confidence":0.55,"review_status":"confirmed","rationale":"Rooftop and partial sea/Hallasan views offer visual potential, but no source establishes it as a photo landmark.","source_ids":["tamnao-listing","nol-listing"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.75,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.75)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.75","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease is needs_review."},
+    "derived_style.scenic_immersion":{"value":0.5,"review_status":"confirmed","confidence":0.7,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"The existing derived rule has no place-specific input."},
+    "derived_style.local_immersion":{"value":0.25,"review_status":"confirmed","confidence":0.55,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0,"review_status":"confirmed","confidence":0.85,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.5,"review_status":"confirmed","confidence":0.55,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": []
+}

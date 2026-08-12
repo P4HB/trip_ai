@@ -1,0 +1,61 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2839759",
+  "title": "니모메",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {
+      "id": "tourapi-downstream",
+      "publisher": "KTOURMAP (TourAPI place listing)",
+      "type": "public_tourism",
+      "url": "https://ktourmap.com/spotDetails.jsp?contentId=2839759",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "Exact TourAPI place name and address: Jeju-si, Iljuseo-ro 7335-8.",
+        "Lists the business as a cafe with ocean view, vintage interior, indoor seating and a yard; its listed official Instagram is @nimome_jeju.",
+        "Lists coffee, desserts, parking, and daily 10:00-20:00 operation."
+      ]
+    },
+    {
+      "id": "business-listing",
+      "publisher": "Ban-life business/place listing",
+      "type": "reputable_secondary",
+      "url": "https://ban-life.com/store/view?id=20396&type=s",
+      "checked_at": "2026-08-12",
+      "facts": [
+        "Describes the exact Jeju-si cafe as an ocean-view cafe, with varied interior spaces, vintage objects, an outdoor lounge directly facing the Jeju sea, and a large yard.",
+        "States that 'Nimome' means 'in your heart' in Jeju dialect and that the place is about ten minutes by car from Jeju Airport.",
+        "Lists parking, Wi-Fi, takeout, group seating, and pet access conditions."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "The corroborated descriptions identify an ocean-view cafe, not a mountain destination or mountain activity.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.85, "review_status": "confirmed", "rationale": "Both sources describe sea viewing; the outdoor lounge is described as directly facing the Jeju sea, making the ocean a strong visit attribute.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "theme.activity": {"value": 0, "confidence": 0.8, "review_status": "confirmed", "rationale": "The evidenced offer is coffee, dessert, seating and ocean viewing, not a participatory activity program.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.65, "review_status": "confirmed", "rationale": "The name is explained as Jeju dialect, but no heritage interpretation, historical site, or cultural program is evidenced.", "source_ids": ["business-listing"]},
+    "theme.theme_park": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "No rides, ticketed attractions, or theme-park facilities are described.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "theme.cafe": {"value": 1, "confidence": 1, "review_status": "confirmed", "rationale": "Both matched listings explicitly identify 니모메 as a cafe and describe coffee and desserts.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "theme.traditional_market": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "It is a single cafe rather than a market.", "source_ids": ["tourapi-downstream"]},
+    "theme.festival": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "The listed daily cafe operation is not a time-bounded festival.", "source_ids": ["tourapi-downstream"]},
+    "environment.indoor_ratio": {"value": 0.5, "confidence": 0.65, "review_status": "confirmed", "rationale": "There are multiple indoor spaces as well as a substantial outdoor lounge and yard; neither side can be quantified from the available evidence.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "environment.weather_sensitivity": {"value": 0.25, "confidence": 0.55, "review_status": "confirmed", "rationale": "Indoor seating supports visits in poor weather, while the direct sea-facing outdoor lounge and yard add weather-dependent value.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.8, "review_status": "confirmed", "rationale": "The place is described as a space to comfortably rest while viewing the sea, with an outdoor lounge and yard.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "review_status": "needs_review", "hold_reason": "Parking is listed, but no authoritative information establishes step-free access, walking distance, gradients, or accessible facilities.", "rationale": "Do not infer physical ease from cafe category alone.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.7, "review_status": "confirmed", "rationale": "Daily operation, coffee/dessert service, indoor and outdoor seating allow a short drink stop or a longer relaxed stay; no fixed program is evidenced.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.85, "review_status": "confirmed", "rationale": "Sea viewing is central to both descriptions, including a lounge directly facing the Jeju sea.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "review_status": "confirmed", "rationale": "The evidenced combination of direct Jeju-sea view, vintage objects, varied indoor spaces, outdoor lounge and yard is more distinctive than an undifferentiated cafe visit.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.6, "review_status": "confirmed", "rationale": "The Jeju-dialect name and directly Jeju-sea-facing setting establish a moderate local connection. The available sources do not establish Jeju-local sourcing, local ownership, or a heritage program, so a higher value is not supported.", "source_ids": ["business-listing", "tourapi-downstream"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.65, "review_status": "confirmed", "rationale": "It is positioned as an airport-near ocean-view cafe, but the sources do not identify it as an island-wide landmark or essential attraction.", "source_ids": ["tourapi-downstream", "business-listing"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.55, "review_status": "confirmed", "rationale": "Ocean-facing outdoor space and vintage interior create documented visual attributes, but no official/public source establishes it as a photography destination.", "source_ids": ["tourapi-downstream", "business-listing"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {"value": 0.75, "review_status": "needs_review", "confidence": 0.25, "calculation": "quantize(0.4*restfulness(0.75)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.75", "input_labels": ["style_evidence.restfulness", "style_evidence.physical_ease", "style_evidence.visit_duration_flexibility"], "hold_reason": "physical_ease is needs_review."},
+    "derived_style.scenic_immersion": {"value": 0.75, "review_status": "confirmed", "confidence": 0.85, "calculation": "copy(style_evidence.scenic_value)", "input_labels": ["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer": {"value": 0.5, "review_status": "needs_review", "confidence": 0.25, "calculation": "constant(0.5) per place_label_completion_rules.v1", "input_labels": [], "hold_reason": "No place-specific input exists for this legacy derived rule."},
+    "derived_style.local_immersion": {"value": 0.5, "review_status": "confirmed", "confidence": 0.6, "calculation": "copy(style_evidence.local_embeddedness)", "input_labels": ["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight": {"value": 0.25, "review_status": "confirmed", "confidence": 0.65, "calculation": "copy(style_evidence.landmark_significance)", "input_labels": ["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood": {"value": 0.5, "review_status": "confirmed", "confidence": 0.55, "calculation": "copy(style_evidence.photo_value)", "input_labels": ["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": []
+}

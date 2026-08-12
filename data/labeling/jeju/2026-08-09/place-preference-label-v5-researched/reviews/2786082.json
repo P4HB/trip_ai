@@ -1,0 +1,40 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2786082",
+  "title": "\uadf8\ucd08\ub85d",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {"id":"tourapi-place","publisher":"Korea Tourism Organization TourAPI","type":"public_tourism","url":"https://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?contentId=2786082","checked_at":"2026-08-12","facts":["TourAPI records the name, address in Gujwa-eup, Jeju City, and cafe/teahouse classification (FD05)."]},
+    {"id":"ktriptips","publisher":"K-TRIP TIPS","type":"reputable_secondary","url":"https://www.ktriptips.com/kor/tourspot/2786082","checked_at":"2026-08-12","facts":["Describes a cafe on the east Jeju Woljeongri coastal road.","Describes green plants, vintage furniture and wooden objects, a small garden overlooking the sea, and avocado coffee."]},
+    {"id":"official-instagram","publisher":"Geu Chorok","type":"official_operator","url":"https://www.instagram.com/the_green_cafe/","checked_at":"2026-08-12","facts":["The venue's official account URL was identified, but its full posts and operating facts could not be independently inspected without login."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"The available description is of a coastal-view cafe, not a mountain activity or mountain-view destination.","source_ids":["ktriptips"]},
+    "theme.ocean":{"value":0.75,"confidence":0.7,"review_status":"confirmed","rationale":"Its coastal-road setting and sea-view garden make ocean scenery a clear part of the visit.","source_ids":["ktriptips"]},
+    "theme.activity":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"Cafe use, drinks, and garden viewing are the focus; no separate activity or recreation program is evidenced.","source_ids":["tourapi-place","ktriptips"]},
+    "theme.culture_history":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"No history, heritage, or traditional-culture experience is described.","source_ids":["ktriptips"]},
+    "theme.theme_park":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"TourAPI classifies it as a cafe and provides no theme-park facility evidence.","source_ids":["tourapi-place"]},
+    "theme.cafe":{"value":1,"confidence":1,"review_status":"confirmed","rationale":"TourAPI classifies it as a cafe/teahouse and the description identifies coffee and avocado coffee service.","source_ids":["tourapi-place","ktriptips"]},
+    "theme.traditional_market":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"This is an individual cafe, not a traditional market or market district.","source_ids":["tourapi-place","ktriptips"]},
+    "theme.festival":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"It is an ongoing cafe; no festival or event is the main visitor purpose.","source_ids":["tourapi-place","ktriptips"]},
+    "environment.indoor_ratio":{"value":0.75,"confidence":0.55,"review_status":"confirmed","rationale":"The description includes cafe interiors and a small sea-view garden. Outdoor elements exist, but the primary use is cafe interior service.","source_ids":["ktriptips"]},
+    "environment.weather_sensitivity":{"value":0.5,"confidence":0.45,"review_status":"needs_review","hold_reason":"No authoritative seat split or rain-day operation evidence was found.","rationale":"Indoor cafe use is possible while garden and sea-view enjoyment remains weather-dependent.","source_ids":["ktriptips"]},
+    "style_evidence.restfulness":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"A small garden, green plants, warm cozy atmosphere, and sea view support a rest-oriented experience.","source_ids":["ktriptips"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official or public evidence covers walking distance, slopes, steps, or accessibility facilities.","rationale":"Cafe classification alone cannot establish physical accessibility; neutral value is retained.","source_ids":[]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.6,"review_status":"confirmed","rationale":"Drinks, interior seating, and garden viewing support both a short stop and a longer relaxed cafe stay.","source_ids":["ktriptips"]},
+    "style_evidence.scenic_value":{"value":0.75,"confidence":0.7,"review_status":"confirmed","rationale":"The cited coastal-road location and sea-view garden provide clear coastal scenery value.","source_ids":["ktriptips"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.7,"review_status":"confirmed","rationale":"Plant-, vintage-, and wood-focused decor plus avocado coffee distinguish the venue from a generic cafe.","source_ids":["ktriptips"]},
+    "style_evidence.local_embeddedness":{"value":0.5,"confidence":0.35,"review_status":"needs_review","hold_reason":"The Jeju coastal location is verified, but direct evidence of Jeju-specific products, culture, local ownership, or multi-region franchise status was not found.","rationale":"It appears tied to the local coastal setting, but location alone is insufficient to raise Jeju local embeddedness.","source_ids":["tourapi-place","ktriptips","official-instagram"]},
+    "style_evidence.landmark_significance":{"value":0.25,"confidence":0.35,"review_status":"needs_review","hold_reason":"No official or public source identifies it as a Jeju landmark, designated heritage, or regional landmark.","rationale":"It is an individual coastal cafe, but the evidence is insufficient to establish wider landmark significance.","source_ids":["ktriptips"]},
+    "style_evidence.photo_value":{"value":0.75,"confidence":0.6,"review_status":"confirmed","rationale":"Green plants, vintage furniture, wooden objects, and the sea-view garden are documented visual features.","source_ids":["ktriptips"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.75)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease is needs_review."},
+    "derived_style.scenic_immersion":{"value":0.75,"review_status":"confirmed","confidence":0.7,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"The existing derived rule has no place-specific input."},
+    "derived_style.local_immersion":{"value":0.5,"review_status":"needs_review","confidence":0.35,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"],"hold_reason":"local_embeddedness is needs_review."},
+    "derived_style.iconic_highlight":{"value":0.25,"review_status":"needs_review","confidence":0.35,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"],"hold_reason":"landmark_significance is needs_review."},
+    "derived_style.photo_mood":{"value":0.75,"review_status":"confirmed","confidence":0.6,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": []
+}

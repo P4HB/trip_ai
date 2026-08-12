@@ -1,0 +1,40 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "4026815",
+  "title": "\uD718\uB77C\uD0A4\uC988 \uC11C\uADC0\uD3EC\uC810",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {"id":"fila-membership","publisher":"FILA official store","type":"official_brand","url":"https://www.fila.co.kr/pages/membership","checked_at":"2026-08-12","facts":["Misto Korea operates an integrated membership across its brands.","The official page specifies benefits for FILA Kids dealership stores and offline stores."]},
+    {"id":"krx-business-report","publisher":"Korea Exchange disclosure","type":"public_corporate_filing","url":"https://kind.krx.co.kr/external/2024/05/14/000798/20240514001728/11013.htm","checked_at":"2026-08-12","facts":["The public filing reports FILA Kids stores across multiple Korean retail channels.","It describes FILA Korea sales through dealerships, department stores, outlet stores, online commerce and other channels."]},
+    {"id":"visitkorea-fila-kids","publisher":"Korea Tourism Organization VISITKOREA","type":"public_tourism","url":"https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=202898","checked_at":"2026-08-12","facts":["KTO describes FILA as a global sportswear brand originating in Italy.","The public listing identifies the business as a FILA Kids branded store."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"This is a branded sportswear retail store, not a mountain experience or scenic destination.","source_ids":["fila-membership","visitkorea-fila-kids"]},
+    "theme.ocean":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Official and public sources describe sportswear retail only; no ocean experience is evidenced.","source_ids":["fila-membership","visitkorea-fila-kids"]},
+    "theme.activity":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Retail purchase is the purpose; no participatory sport or leisure activity is evidenced.","source_ids":["fila-membership","krx-business-report"]},
+    "theme.culture_history":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No Jeju cultural or historical experience is established by the sources.","source_ids":["fila-membership","visitkorea-fila-kids"]},
+    "theme.theme_park":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"A FILA Kids dealership is a retail store, with no theme-park facility evidence.","source_ids":["fila-membership"]},
+    "theme.cafe":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"Official material presents apparel retail and membership, not cafe service.","source_ids":["fila-membership"]},
+    "theme.traditional_market":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"This is a branded dealership retail channel, not a traditional market.","source_ids":["fila-membership","krx-business-report"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The business is a permanent retail store, not a festival or event destination.","source_ids":["fila-membership","krx-business-report"]},
+    "environment.indoor_ratio":{"value":1,"confidence":0.85,"review_status":"confirmed","rationale":"Dealership retail shopping is primarily an indoor store experience.","source_ids":["fila-membership","krx-business-report"]},
+    "environment.weather_sensitivity":{"value":0,"confidence":0.8,"review_status":"confirmed","rationale":"The primarily indoor retail visit is not materially weather-dependent.","source_ids":["fila-membership","krx-business-report"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.7,"review_status":"confirmed","rationale":"Commercial shopping is not evidenced as a rest or healing destination.","source_ids":["fila-membership","krx-business-report"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official or public place-specific evidence was found for entrance, stairs, slopes, parking, or accessible facilities.","rationale":"Retail classification alone cannot establish actual walking and access ease.","source_ids":[]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"A dealership retail visit allows brief purchases or longer product comparison without a required program duration.","source_ids":["fila-membership","krx-business-report"]},
+    "style_evidence.scenic_value":{"value":0,"confidence":0.85,"review_status":"confirmed","rationale":"Sources establish product retail only and provide no natural or urban scenery as the visit purpose.","source_ids":["fila-membership","visitkorea-fila-kids"]},
+    "style_evidence.distinctiveness":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"FILA Kids is a multi-store branded retail operation, not a place-specific unique experience.","source_ids":["fila-membership","krx-business-report"]},
+    "style_evidence.local_embeddedness":{"value":0,"confidence":1,"review_status":"confirmed","rationale":"FILA originated in Italy and FILA Kids operates through Misto Korea's nationwide dealership and retail network. No Jeju-specific operation, product, or cultural linkage is evidenced.","source_ids":["visitkorea-fila-kids","fila-membership","krx-business-report"]},
+    "style_evidence.landmark_significance":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No source identifies this as a Seogwipo landmark; it is a standard branded retail store.","source_ids":["fila-membership","krx-business-report"]},
+    "style_evidence.photo_value":{"value":0.5,"confidence":0.25,"review_status":"needs_review","hold_reason":"No official place-specific exterior, interior, or visual-design evidence was located.","rationale":"Brand retail classification alone cannot prove photographic suitability.","source_ids":[]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease is needs_review."},
+    "derived_style.scenic_immersion":{"value":0,"review_status":"confirmed","confidence":0.85,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"The existing derived rule has no place-specific input."},
+    "derived_style.local_immersion":{"value":0,"review_status":"confirmed","confidence":1,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"],"hold_reason":"photo_value is needs_review."}
+  },
+  "common_rule_proposals": []
+}

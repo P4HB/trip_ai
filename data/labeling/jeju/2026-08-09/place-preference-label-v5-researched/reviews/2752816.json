@@ -1,0 +1,72 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2752816",
+  "title": "문서프",
+  "reviewed_at": "2026-08-11",
+  "sources": [
+    {
+      "id": "tourism-listing",
+      "publisher": "Korea tourism-data listing (TourAPI content 2752816)",
+      "type": "public_tourism",
+      "url": "https://www.tripinfo.co.kr/info.html?content_id=2752816&content_type_id=28",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "The listing describes Moon Surf as a surfing shop in Gwakji-ri, Aewol, Jeju.",
+        "It offers surfing experiences, rental/sales of surfing equipment, and a surf-themed cafe.",
+        "Surfing is enjoyed at Gwakji Gwimul Beach and Handam Beach; the listing states it was the first surf shop in northwest Jeju."
+      ]
+    },
+    {
+      "id": "tourism-listing-photo",
+      "publisher": "Korea tourism-data listing (TourAPI content 2752816)",
+      "type": "public_tourism",
+      "url": "https://kor.clubrichtour.co.kr/bbs/board.php?bo_table=datagokr_Kor&wr_id=17312",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "The tourism-data page repeats the Gwakji/Handam beach surfing, rental, sales, and surf-cafe description.",
+        "It states that a contracted professional photographer provides high-quality surfing photos."
+      ]
+    },
+    {
+      "id": "operator-channel",
+      "publisher": "Moon Surf operator channel",
+      "type": "operator",
+      "url": "https://moonsurf.modoo.at/",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "Operator URL is published with the tourism listing; the detailed facts above are retained from the public tourism listing because direct page retrieval was unavailable."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Published description is a beach surfing operation, with no mountain activity.","source_ids":["tourism-listing"]},
+    "theme.ocean":{"value":1,"confidence":0.95,"review_status":"confirmed","rationale":"Surfing is specifically offered at Gwakji Gwimul and Handam beaches.","source_ids":["tourism-listing"]},
+    "theme.activity":{"value":1,"confidence":0.95,"review_status":"confirmed","rationale":"Surfing experience and equipment rental are the primary offerings.","source_ids":["tourism-listing"]},
+    "theme.culture_history":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The sources describe contemporary surf recreation, not cultural or historic interpretation.","source_ids":["tourism-listing"]},
+    "theme.theme_park":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No themed attraction or amusement facility is described.","source_ids":["tourism-listing"]},
+    "theme.cafe":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"A surf-themed cafe is operated, but surfing is the stated core offering.","source_ids":["tourism-listing"]},
+    "theme.traditional_market":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"The venue is a surf shop, not a market.","source_ids":["tourism-listing"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No event/festival is the visit purpose; promotional events do not make it a festival venue.","source_ids":["tourism-listing"]},
+    "environment.indoor_ratio":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"The shop/cafe are indoor support spaces, while the core surfing experience takes place on the beach/in sea.","source_ids":["tourism-listing"]},
+    "environment.weather_sensitivity":{"value":1,"confidence":0.95,"review_status":"confirmed","rationale":"The primary activity is ocean surfing, which depends directly on sea and weather conditions.","source_ids":["tourism-listing"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"The stated purpose is active surfing rather than quiet rest.","source_ids":["tourism-listing"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.45,"review_status":"needs_review","hold_reason":"No official accessibility, exertion, or participant-requirement detail was found.","rationale":"Surfing entails physical participation, but the evidence does not support a precise accessibility score.","source_ids":["tourism-listing"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.5,"confidence":0.45,"review_status":"needs_review","hold_reason":"Lesson duration and booking/session constraints were not established from an official source.","rationale":"Rental and experience offerings suggest options, but schedule flexibility is not evidenced sufficiently.","source_ids":["tourism-listing"]},
+    "style_evidence.scenic_value":{"value":0.75,"confidence":0.75,"review_status":"confirmed","rationale":"The public listing foregrounds the emerald sea at Gwakji and Handam beaches as the setting for the experience.","source_ids":["tourism-listing"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"The tourism description identifies it as the first surf shop established in northwest Jeju, a documented niche distinction.","source_ids":["tourism-listing"]},
+    "style_evidence.local_embeddedness":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"It is an operator-branded surf shop whose product is explicitly tied to named Jeju beaches in Aewol; no evidence identifies it as a national chain.","source_ids":["tourism-listing","operator-channel"]},
+    "style_evidence.landmark_significance":{"value":0.25,"confidence":0.65,"review_status":"confirmed","rationale":"Being an early northwest-Jeju surf shop supports niche relevance, but no public source establishes island-wide landmark status.","source_ids":["tourism-listing"]},
+    "style_evidence.photo_value":{"value":0.75,"confidence":0.9,"review_status":"confirmed","rationale":"The published listing explicitly says a contracted professional photographer provides high-quality surfing photos.","source_ids":["tourism-listing-photo"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"needs_review","confidence":0.45,"calculation":"quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.5)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"],"hold_reason":"physical_ease and visit_duration_flexibility are held for insufficient detailed evidence."},
+    "derived_style.scenic_immersion":{"value":0.75,"review_status":"confirmed","confidence":0.75,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"No place-specific input is defined by the current derived rule."},
+    "derived_style.local_immersion":{"value":0.75,"review_status":"confirmed","confidence":0.65,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0.25,"review_status":"confirmed","confidence":0.65,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0.75,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": [
+    {"proposal":"A surf shop's in-store cafe should not raise theme.cafe above 0.25 when surf experience/rental is the documented primary offering.","evidence":"Moon Surf is described primarily as a surfing shop, with a surf-themed cafe as an additional operation.","status":"proposed"}
+  ]
+}

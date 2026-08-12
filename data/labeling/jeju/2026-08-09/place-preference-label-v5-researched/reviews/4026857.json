@@ -1,0 +1,40 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "4026857",
+  "title": "삼성스토어 제주인화",
+  "reviewed_at": "2026-08-12",
+  "sources": [
+    {"id":"samsung-newsroom","publisher":"Samsung Newsroom Korea","type":"official_brand","url":"https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%A7%80%EC%97%AD-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%ED%99%9C%EC%84%B1%ED%99%94%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%97%B4%EB%A6%B0%EA%B3%B5%EA%B0%84","checked_at":"2026-08-12","facts":["Samsung Newsroom identifies Samsung Store as a multi-region retail network and lists Jeju Inhwa among 27 stores.","The store participates in Samsung Store sales and community-space programs."]},
+    {"id":"store-channel","publisher":"Samsung Store Jeju Inhwa official Kakao channel","type":"official_store","url":"https://pf.kakao.com/_xoYRxgj/35255588","checked_at":"2026-08-12","facts":["Official channel gives the store address as 633 Yeonsam-ro, Jeju-si.","It promotes Samsung mobile and home-appliance consultation, experience and purchase benefits, and identifies parking."]},
+    {"id":"kto-derived-place","publisher":"KOREA TRIP TIPS","type":"public_tourism","url":"https://www.ktriptips.com/kor/shopping/4026857","checked_at":"2026-08-12","facts":["Public tourism listing classifies the place as electronics/digital-product shopping.","It lists daily operation, parking and restrooms; hours are 10:30-20:30 and may change."]}
+  ],
+  "atomic_labels": {
+    "theme.mountain":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Official and public listings describe an urban Samsung electronics store, not mountain activity.","source_ids":["store-channel","kto-derived-place"]},
+    "theme.ocean":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No source describes coastal or ocean activity as part of the visit.","source_ids":["store-channel","kto-derived-place"]},
+    "theme.activity":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"Visitors can handle and try electronics and receive consultations, but this is retail interaction rather than a dedicated activity venue.","source_ids":["samsung-newsroom","store-channel"]},
+    "theme.culture_history":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The reviewed sources identify current electronics retail and do not establish cultural or historical interpretation.","source_ids":["samsung-newsroom","kto-derived-place"]},
+    "theme.theme_park":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"The place is an electronics retail store, not a theme park.","source_ids":["kto-derived-place"]},
+    "theme.cafe":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"No café operation is described in the store sources.","source_ids":["store-channel","kto-derived-place"]},
+    "theme.traditional_market":{"value":0,"confidence":0.98,"review_status":"confirmed","rationale":"It is a branded electronics shop rather than a traditional market.","source_ids":["samsung-newsroom","kto-derived-place"]},
+    "theme.festival":{"value":0,"confidence":0.95,"review_status":"confirmed","rationale":"Promotional sales events are not a destination festival theme.","source_ids":["samsung-newsroom","store-channel"]},
+    "environment.indoor_ratio":{"value":1,"confidence":0.95,"review_status":"confirmed","rationale":"Electronics display, consultation and purchase are described as store services; these are indoor retail functions.","source_ids":["store-channel","kto-derived-place"]},
+    "environment.weather_sensitivity":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The intended retail visit is indoors, so weather is not a material access condition apart from ordinary travel.","source_ids":["store-channel","kto-derived-place"]},
+    "style_evidence.restfulness":{"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"Product trials and purchase consultations are task-oriented commercial activities, not a calm restorative experience.","source_ids":["store-channel","kto-derived-place"]},
+    "style_evidence.physical_ease":{"value":0.75,"confidence":0.65,"review_status":"confirmed","rationale":"The public listing records parking and restrooms and the primary service is an indoor shop; full accessibility details were not found.","source_ids":["store-channel","kto-derived-place"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.75,"confidence":0.7,"review_status":"confirmed","rationale":"A visitor can make a brief consultation or browse products longer; the sources describe broad product and consultation services.","source_ids":["store-channel","samsung-newsroom"]},
+    "style_evidence.scenic_value":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"Sources present an urban electronics retail function and provide no scenic setting or viewpoint evidence.","source_ids":["store-channel","kto-derived-place"]},
+    "style_evidence.distinctiveness":{"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"It is a standard branch of Samsung Store's multi-region retail network, although it provides direct product experiences.","source_ids":["samsung-newsroom","store-channel"]},
+    "style_evidence.local_embeddedness":{"value":0,"confidence":1,"review_status":"confirmed","rationale":"Samsung Newsroom explicitly identifies Jeju Inhwa as one branch in a 27-store Samsung Store network; a Jeju address alone does not make the national brand locally embedded.","source_ids":["samsung-newsroom","store-channel"]},
+    "style_evidence.landmark_significance":{"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"No official or public source establishes the branch as a Jeju landmark or major visitor highlight.","source_ids":["samsung-newsroom","kto-derived-place"]},
+    "style_evidence.photo_value":{"value":0,"confidence":0.8,"review_status":"confirmed","rationale":"The sources document retail products and promotions, not a visually distinctive or photography-oriented destination.","source_ids":["store-channel","kto-derived-place"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow":{"value":0.5,"review_status":"confirmed","confidence":0.67,"calculation":"quantize(0.4*restfulness(0.25)+0.3*physical_ease(0.75)+0.3*visit_duration_flexibility(0.75)) = 0.5","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"]},
+    "derived_style.scenic_immersion":{"value":0,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer":{"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"No place-specific source-backed discovery input exists in the current derived-label rule."},
+    "derived_style.local_immersion":{"value":0,"review_status":"confirmed","confidence":1,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight":{"value":0,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood":{"value":0,"review_status":"confirmed","confidence":0.8,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": []
+}

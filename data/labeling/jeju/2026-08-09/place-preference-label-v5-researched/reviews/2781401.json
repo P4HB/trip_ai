@@ -1,0 +1,61 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "2781401",
+  "title": "소천지",
+  "reviewed_at": "2026-08-11",
+  "sources": [
+    {
+      "id": "visitjeju-place",
+      "publisher": "Jeju Tourism Organization / Visit Jeju",
+      "type": "public_tourism",
+      "url": "https://m.visitjeju.net/en/detail/view?contentsid=CNTS_000000000019986",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "Official place page locates Socheonji in Bomok-dong, Seogwipo, on Jeju Olle Course 6.",
+        "It describes the place as a popular spot for photographing Hallasan's reflection on calm, clear days."
+      ]
+    },
+    {
+      "id": "visitjeju-feature",
+      "publisher": "Jeju Tourism Organization / Visit Jeju",
+      "type": "public_tourism",
+      "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008736",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "The feature calls Socheonji a small Baekdu Cheonji in Bomok-dong and a little-known photo spot on Olle Course 6.",
+        "It describes coastal rock formations enclosing clear water, the Hallasan reflection, a wooden-deck stair approach, and says the signature view requires calm waves and clear sky."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain": {"value":0.25,"confidence":0.8,"review_status":"confirmed","rationale":"The official description makes the Hallasan reflection a key view, but this is a coastal rock-pool destination rather than a mountain visit.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "theme.ocean": {"value":1,"confidence":1,"review_status":"confirmed","rationale":"Official material describes a seashore setting with coastal rock formations and water enclosed beside the sea.","source_ids":["visitjeju-feature"]},
+    "theme.activity": {"value":0.25,"confidence":0.75,"review_status":"confirmed","rationale":"It lies on Olle Course 6 and requires a short walk down deck stairs, but the documented purpose is viewing and photography rather than an activity program.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "theme.culture_history": {"value":0,"confidence":0.9,"review_status":"confirmed","rationale":"The official sources describe natural scenery and do not establish a cultural or historical attraction purpose.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "theme.theme_park": {"value":0,"confidence":1,"review_status":"confirmed","rationale":"This is an unmanaged natural coastal viewpoint, not a theme park or paid attraction complex.","source_ids":["visitjeju-feature"]},
+    "theme.cafe": {"value":0,"confidence":1,"review_status":"confirmed","rationale":"The cited official place information identifies a natural viewpoint and no cafe operation.","source_ids":["visitjeju-place"]},
+    "theme.traditional_market": {"value":0,"confidence":1,"review_status":"confirmed","rationale":"The cited official place information identifies a natural viewpoint and no market function.","source_ids":["visitjeju-place"]},
+    "theme.festival": {"value":0,"confidence":1,"review_status":"confirmed","rationale":"No event or festival is described; the attraction is continuously visitable natural scenery.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "environment.indoor_ratio": {"value":0,"confidence":1,"review_status":"confirmed","rationale":"The official feature describes an outdoor coast, wooden-deck stairway, pavilion viewpoint, rocks and water; no indoor visitor space is documented.","source_ids":["visitjeju-feature"]},
+    "environment.weather_sensitivity": {"value":1,"confidence":1,"review_status":"confirmed","rationale":"The official source explicitly states that the hallmark Hallasan reflection is only visible when waves are calm and the sky is clear.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "style_evidence.restfulness": {"value":0.75,"confidence":0.8,"review_status":"confirmed","rationale":"The feature characterizes it as a little-known, hidden natural vista suited to quietly viewing water and landscape; it is not a staffed relaxation facility.","source_ids":["visitjeju-feature"]},
+    "style_evidence.physical_ease": {"value":0.5,"confidence":0.8,"review_status":"confirmed","rationale":"Access includes a wooden-deck stairway down from the sign, so it is less than fully step-free, while no long trail or strenuous route is documented.","source_ids":["visitjeju-feature"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.75,"confidence":0.75,"review_status":"confirmed","rationale":"A visitor can make a short viewpoint/photo stop or include it while walking Olle Course 6; no timed program or admission schedule is documented.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "style_evidence.scenic_value": {"value":1,"confidence":1,"review_status":"confirmed","rationale":"Official tourism material foregrounds the distinctive coastal rock pool and Hallasan reflection as a spectacular landscape view.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "style_evidence.distinctiveness": {"value":0.75,"confidence":0.9,"review_status":"confirmed","rationale":"The official feature explains both the 'small Cheonji' name and the unusual composition of coastal rocks, enclosed water, and Hallasan reflection.","source_ids":["visitjeju-feature"]},
+    "style_evidence.local_embeddedness": {"value":1,"confidence":0.9,"review_status":"confirmed","rationale":"This is a place-specific Jeju coastal landform in Bomok-dong, tied to Jeju Olle 6 and a Hallasan view; it is not a portable commercial brand experience.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "style_evidence.landmark_significance": {"value":0.5,"confidence":0.7,"review_status":"confirmed","rationale":"Visit Jeju presents it as a recognized scenic stop and photo spot, but also describes it as little-known; evidence does not support island-wide flagship-landmark status.","source_ids":["visitjeju-place","visitjeju-feature"]},
+    "style_evidence.photo_value": {"value":1,"confidence":1,"review_status":"confirmed","rationale":"The official page calls it popular for photographing Hallasan's reflection, and the feature repeatedly presents it as an 'in-life shot' photo point.","source_ids":["visitjeju-place","visitjeju-feature"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {"value":0.75,"review_status":"confirmed","confidence":0.78,"calculation":"quantize(0.4*restfulness(0.75)+0.3*physical_ease(0.5)+0.3*visit_duration_flexibility(0.75)) = 0.75","input_labels":["style_evidence.restfulness","style_evidence.physical_ease","style_evidence.visit_duration_flexibility"]},
+    "derived_style.scenic_immersion": {"value":1,"review_status":"confirmed","confidence":1,"calculation":"copy(style_evidence.scenic_value)","input_labels":["style_evidence.scenic_value"]},
+    "derived_style.discovery_explorer": {"value":0.5,"review_status":"needs_review","confidence":0.25,"calculation":"constant(0.5) per place_label_completion_rules.v1","input_labels":[],"hold_reason":"No place-specific source-backed rule is defined for this derived label."},
+    "derived_style.local_immersion": {"value":1,"review_status":"confirmed","confidence":0.9,"calculation":"copy(style_evidence.local_embeddedness)","input_labels":["style_evidence.local_embeddedness"]},
+    "derived_style.iconic_highlight": {"value":0.5,"review_status":"confirmed","confidence":0.7,"calculation":"copy(style_evidence.landmark_significance)","input_labels":["style_evidence.landmark_significance"]},
+    "derived_style.photo_mood": {"value":1,"review_status":"confirmed","confidence":1,"calculation":"copy(style_evidence.photo_value)","input_labels":["style_evidence.photo_value"]}
+  },
+  "common_rule_proposals": [
+    {"proposal":"For named Jeju natural landforms with official evidence of a place-specific coastal/mountain landscape and Olle linkage, score local_embeddedness from direct place identity rather than retaining the generic 0.5 fallback.","evidence":"visitjeju-place; visitjeju-feature","status":"proposed"}
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "place-preference-label-v5-place-review-v1",
+  "contentid": "397643",
+  "title": "C&P리조트",
+  "reviewed_at": "2026-08-11",
+  "source_place": {
+    "contenttypeid": "32",
+    "address": "제주특별자치도 서귀포시 성산읍 중산간동로 4328-63"
+  },
+  "sources": [
+    {
+      "id": "ktriptips-detail",
+      "publisher": "K-TRIP TIPS",
+      "type": "reputable_secondary",
+      "url": "https://www.ktriptips.com/kor/stay/397643",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "주소가 TourAPI 장소 주소와 일치하며, 객실 10실·2층·체크인 16:00·체크아웃 11:00으로 소개된다.",
+        "객실에서 바다 일출을 볼 수 있고 후면에는 한라산과 오름 경관이 있으며, 카페테리아·세미나실·공방이 있다고 소개한다."
+      ]
+    },
+    {
+      "id": "airbnb-host-listing",
+      "publisher": "C&P Resort 호스트 listing",
+      "type": "operator_listing",
+      "url": "https://www.airbnb.co.in/rooms/41568966",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "제주 서귀포의 조용하고 아름다운 풍경의 복층 숙소로, 대가족·그룹·MT 이용을 표방한다."
+      ]
+    },
+    {
+      "id": "agoda-property",
+      "publisher": "Agoda",
+      "type": "booking_platform",
+      "url": "https://www.agoda.com/ko-kr/c-p-resort/hotel/jeju-island-kr.html",
+      "checked_at": "2026-08-11",
+      "facts": [
+        "제주 성산 소재 C&P 리조트 숙소로 표시되며 숙박 시설임을 교차 확인한다."
+      ]
+    }
+  ],
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.7, "review_status": "confirmed", "rationale": "한라산과 오름 경관이 숙소 후면 조망으로 소개되지만 산행 자체가 주된 체험은 아니다.", "source_ids": ["ktriptips-detail"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.8, "review_status": "confirmed", "rationale": "객실 침대에서도 바다 일출을 볼 수 있다고 명시되어 해양 조망이 숙박 경험의 강한 요소다.", "source_ids": ["ktriptips-detail"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.65, "review_status": "confirmed", "rationale": "공방에서 소품·공예품 제작이 가능하나 숙소의 주된 체험은 아니다.", "source_ids": ["ktriptips-detail"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.55, "review_status": "confirmed", "rationale": "공예품 제작 부대시설은 확인되나 지역 문화·역사 해설이나 유산 체험 근거는 없다.", "source_ids": ["ktriptips-detail"]},
+    "theme.theme_park": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "숙박·세미나·공방 시설로 소개되며 놀이기구나 테마파크 체험 근거가 없다.", "source_ids": ["ktriptips-detail", "agoda-property"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.6, "review_status": "confirmed", "rationale": "카페테리아가 부대시설로 언급되나 카페 방문이 이 장소의 주된 목적이라는 근거는 없다.", "source_ids": ["ktriptips-detail"]},
+    "theme.traditional_market": {"value": 0, "confidence": 0.95, "review_status": "confirmed", "rationale": "숙박 시설이며 전통시장 기능 또는 상설 시장 운영 근거가 없다.", "source_ids": ["ktriptips-detail", "agoda-property"]},
+    "theme.festival": {"value": 0, "confidence": 0.9, "review_status": "confirmed", "rationale": "상시 숙박 시설로 확인되며 특정 축제·행사가 장소의 주된 목적이라는 근거가 없다.", "source_ids": ["ktriptips-detail"]},
+    "environment.indoor_ratio": {"value": 0.75, "confidence": 0.85, "review_status": "confirmed", "rationale": "객실 중심의 숙박 시설이고 카페테리아·세미나실·공방도 실내 부대시설로 확인된다.", "source_ids": ["ktriptips-detail", "agoda-property"]},
+    "environment.weather_sensitivity": {"value": 0.25, "confidence": 0.75, "review_status": "confirmed", "rationale": "핵심은 실내 숙박이어서 기상에 덜 좌우되지만 바다 일출·한라산·오름 조망의 만족도는 날씨 영향을 받는다.", "source_ids": ["ktriptips-detail"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.8, "review_status": "confirmed", "rationale": "조용한 풍경에서 일상 탈출과 휴식을 표방하는 숙소이며 자연 조망이 확인된다.", "source_ids": ["airbnb-host-listing", "ktriptips-detail"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "review_status": "needs_review", "rationale": "객실 숙박 위주이나 2층 건물이라는 정보 외 계단·경사·무장애 접근성 정보가 없다.", "source_ids": ["ktriptips-detail"], "hold_reason": "ACCESSIBILITY_DETAILS_UNAVAILABLE"},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.75, "review_status": "confirmed", "rationale": "체크인 16:00·체크아웃 11:00의 숙박형 이용이며, 객실 유형과 그룹 이용 선택지가 확인된다.", "source_ids": ["ktriptips-detail", "airbnb-host-listing"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.8, "review_status": "confirmed", "rationale": "바다 일출과 한라산·오름 조망이 구체적으로 소개되어 숙소 경관 가치가 높다.", "source_ids": ["ktriptips-detail"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.55, "review_status": "confirmed", "rationale": "바다·한라산·오름 조망과 공방을 함께 갖췄으나 지역 대표성이나 독자적 수상·지정 근거는 없다.", "source_ids": ["ktriptips-detail"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.45, "review_status": "needs_review", "rationale": "제주 성산의 바다·한라산·오름 경관을 직접 경험하지만, 독립 지역 운영자·제주 고유 프로그램·프랜차이즈 여부를 확정할 근거가 부족하다.", "source_ids": ["ktriptips-detail", "airbnb-host-listing"], "hold_reason": "OPERATOR_ORIGIN_AND_LOCAL_PROGRAM_UNVERIFIED"},
+    "style_evidence.landmark_significance": {"value": 0, "confidence": 0.8, "review_status": "confirmed", "rationale": "숙소 자체가 공인 명소·문화재·지역 상징으로 지정되었다는 근거가 없다.", "source_ids": ["ktriptips-detail", "agoda-property"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.75, "review_status": "confirmed", "rationale": "객실에서 보는 바다 일출과 한라산·오름 조망이 명시되어 경관 사진 소재가 충분하다.", "source_ids": ["ktriptips-detail"]}
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {"value": 0.75, "confidence": 0.25, "review_status": "needs_review", "inputs": {"restfulness": 0.75, "physical_ease": 0.5, "visit_duration_flexibility": 0.75}, "calculation": "quantize(0.40*0.75 + 0.30*0.50 + 0.30*0.75) = 0.75", "hold_reason": "physical_ease needs_review"},
+    "derived_style.scenic_immersion": {"value": 0.75, "confidence": 0.8, "review_status": "derived", "inputs": {"scenic_value": 0.75}, "calculation": "copy(scenic_value)"},
+    "derived_style.discovery_explorer": {"value": 0.5, "confidence": 0.25, "review_status": "needs_review", "inputs": {"distinctiveness": 0.5, "objective_popularity": null}, "calculation": null, "hold_reason": "MISSING_DEPENDENCY_OBJECTIVE_POPULARITY"},
+    "derived_style.local_immersion": {"value": 0.5, "confidence": 0.45, "review_status": "needs_review", "inputs": {"local_embeddedness": 0.5}, "calculation": "copy(local_embeddedness)", "hold_reason": "local_embeddedness needs_review"},
+    "derived_style.iconic_highlight": {"value": 0, "confidence": 0.8, "review_status": "derived", "inputs": {"landmark_significance": 0}, "calculation": "copy(landmark_significance)"},
+    "derived_style.photo_mood": {"value": 0.75, "confidence": 0.75, "review_status": "derived", "inputs": {"photo_value": 0.75}, "calculation": "copy(photo_value)"}
+  },
+  "common_rule_proposals": []
+}
