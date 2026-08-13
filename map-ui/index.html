@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="한국관광공사 TourAPI 제주 장소 데이터를 카테고리별로 탐색하는 인터랙티브 지도"
+      content="구조화된 여행 입력으로 CCU-MMR 제주 장소 추천 결과와 41개 라벨을 함께 검토하는 내부 실험 대시보드"
     />
-    <title>제주 플레이스 맵</title>
+    <title>제주 CCU-MMR 추천 실험실</title>
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
@@ -23,15 +23,16 @@
           </svg>
         </span>
         <div>
-          <p class="eyebrow">TOURAPI PLACE EXPLORER</p>
-          <h1>제주 플레이스 맵</h1>
+          <p class="eyebrow">INTERNAL RECOMMENDATION LAB</p>
+          <h1>제주 CCU-MMR 추천 실험실</h1>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <div class="data-pill" aria-label="데이터 상태">
+        <div class="experiment-badge">AI 초안 · 내부 실험</div>
+        <div class="data-pill" aria-label="추천 데이터 상태">
           <span class="live-dot" aria-hidden="true"></span>
-          <span><strong id="headerValidCount">—</strong>개 좌표 확인</span>
+          <span><strong id="headerReadyCount">—</strong>개 추천 가능</span>
           <span class="data-pill-divider" aria-hidden="true"></span>
           <span id="sourceDate">수집일 —</span>
         </div>
@@ -42,95 +43,217 @@
           aria-controls="sidebar"
           aria-expanded="false"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h10" />
-          </svg>
-          장소 목록
+          추천 입력
+        </button>
+        <button
+          class="button button-primary mobile-output-button"
+          id="mobileOutputButton"
+          type="button"
+          aria-controls="outputPanel"
+          aria-expanded="false"
+        >
+          추천 결과
         </button>
       </div>
     </header>
 
     <main class="workspace">
-      <aside class="sidebar" id="sidebar" aria-label="장소 탐색 패널">
-        <div class="sidebar-heading">
-          <div>
-            <p class="section-kicker">EXPLORE JEJU</p>
-            <h2>어디를 둘러볼까요?</h2>
-            <p id="filterSummary">데이터를 불러오는 중입니다.</p>
-          </div>
-          <button
-            class="icon-button sidebar-close-button"
-            id="sidebarCloseButton"
-            type="button"
-            aria-label="장소 목록 닫기"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m6 6 12 12M18 6 6 18" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="search-field">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.5" />
-            <path d="m16 16 4 4" />
-          </svg>
-          <label class="sr-only" for="placeSearch">장소명 또는 주소 검색</label>
-          <input
-            id="placeSearch"
-            type="search"
-            inputmode="search"
-            autocomplete="off"
-            placeholder="장소명 또는 주소 검색"
-          />
-          <button id="clearSearchButton" type="button" aria-label="검색어 지우기" hidden>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m7 7 10 10M17 7 7 17" />
-            </svg>
-          </button>
-        </div>
-
-        <section class="filter-section" aria-labelledby="categoryTitle">
-          <div class="section-title-row">
-            <h3 id="categoryTitle">카테고리</h3>
-            <button class="text-button" id="resetFiltersButton" type="button">필터 초기화</button>
-          </div>
-          <div class="category-grid" id="categoryFilters"></div>
-        </section>
-
-        <section class="results-section" aria-labelledby="resultTitle">
-          <div class="section-title-row result-title-row">
+      <aside class="sidebar dashboard-panel" id="sidebar" aria-labelledby="requestPanelTitle" tabindex="-1">
+        <div class="panel-scroll">
+          <div class="sidebar-heading">
             <div>
-              <h3 id="resultTitle">현재 지도 안 장소</h3>
-              <p>목록을 누르면 해당 위치로 이동합니다.</p>
+              <p class="section-kicker">01 · REQUEST</p>
+              <h2 id="requestPanelTitle">여행 조건 입력</h2>
+              <p>구조화된 값을 바꿔가며 추천 순위와 점수 변화를 비교합니다.</p>
             </div>
-            <span class="count-badge" id="resultCount">—</span>
+            <button
+              class="icon-button sidebar-close-button"
+              id="sidebarCloseButton"
+              type="button"
+              aria-label="추천 입력 닫기"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
           </div>
-          <div class="result-list" id="resultList" aria-live="polite">
-            <div class="loading-list" aria-label="장소 목록을 불러오는 중">
-              <span></span><span></span><span></span>
+
+          <div class="lab-notice">
+            <strong id="algorithmBadge">ccu-mmr-v0-demo</strong>
+            <span>날씨·이동시간·가격은 현재 점수에 넣지 않습니다.</span>
+          </div>
+
+          <form id="recommendationForm" class="recommendation-form" novalidate>
+            <section class="form-section" aria-labelledby="tripContextTitle">
+              <div class="form-section-heading">
+                <span class="step-number">1</span>
+                <div>
+                  <h3 id="tripContextTitle">여행 맥락</h3>
+                  <p>어디서, 언제, 누구와 갈지 선택합니다.</p>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span>추천 지역</span>
+                  <select id="destinationRegion" name="destinationRegion">
+                    <option value="jeju_all">제주 전체</option>
+                    <option value="jeju_city">제주시</option>
+                    <option value="seogwipo_city">서귀포시</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>장소 목적</span>
+                  <select id="tripIntent" name="tripIntent">
+                    <option value="visit" selected>관광·문화·레포츠</option>
+                    <option value="shopping">쇼핑</option>
+                    <option value="stay">숙박</option>
+                    <option value="event">축제·행사</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>여행 시작일</span>
+                  <input id="travelStartDate" name="travelStartDate" type="date" value="2026-08-20" />
+                </label>
+                <label class="field">
+                  <span>여행 종료일</span>
+                  <input id="travelEndDate" name="travelEndDate" type="date" value="2026-08-22" />
+                </label>
+                <label class="field field-wide">
+                  <span>대표 동행 유형</span>
+                  <select id="companionType" name="companionType">
+                    <option value="none">동행 점수 사용 안 함</option>
+                    <option value="solo">혼자</option>
+                    <option value="couple">연인·부부</option>
+                    <option value="friends">친구</option>
+                    <option value="kids">아이 동반</option>
+                    <option value="parents" selected>부모님·고령자 동반</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section" aria-labelledby="preferenceTitle">
+              <div class="form-section-heading">
+                <span class="step-number">2</span>
+                <div>
+                  <h3 id="preferenceTitle">원자 라벨 선호</h3>
+                  <p>높을수록 선호, 낮을수록 선호, 목표값 중 하나를 선택합니다.</p>
+                </div>
+              </div>
+
+              <div class="preset-row" role="group" aria-label="선호 프리셋">
+                <button type="button" class="preset-button" data-preset="scenic">바다·경관</button>
+                <button type="button" class="preset-button" data-preset="easy">편안한 여행</button>
+                <button type="button" class="preset-button" data-preset="local">제주 로컬</button>
+                <button type="button" class="preset-button" data-preset="indoor">실내 중심</button>
+              </div>
+
+              <div id="preferenceRows" class="preference-rows"></div>
+              <button id="addPreferenceButton" class="add-preference-button" type="button">+ 선호 라벨 추가</button>
+            </section>
+
+            <section class="form-section" aria-labelledby="outputOptionTitle">
+              <div class="form-section-heading">
+                <span class="step-number">3</span>
+                <div>
+                  <h3 id="outputOptionTitle">출력 설정</h3>
+                  <p>추천 개수와 다양성 재정렬을 정합니다.</p>
+                </div>
+              </div>
+              <div class="field-grid">
+                <label class="field">
+                  <span>결과 수</span>
+                  <select id="resultLimit" name="resultLimit">
+                    <option value="5">5개</option>
+                    <option value="10" selected>10개</option>
+                    <option value="15">15개</option>
+                    <option value="20">20개</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>목록 구성</span>
+                  <select id="diversityPreset" name="diversityPreset">
+                    <option value="balanced" selected>MMR 다양성 적용</option>
+                    <option value="off">관련도 순서만</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <details class="advanced-section">
+              <summary>필수 확인 조건 · 제외 장소</summary>
+              <p class="advanced-copy">
+                현재 제약 데이터는 자유 텍스트이므로 선택한 필수 조건을 자동 통과시키지 않고 확인 후보로 분리합니다.
+              </p>
+              <div class="constraint-options" role="group" aria-label="필수 확인 조건">
+                <label><input type="checkbox" name="hardConstraint" value="wheelchair_accessible" /> 휠체어 접근 가능</label>
+                <label><input type="checkbox" name="hardConstraint" value="reservation_not_required" /> 사전예약 불필요</label>
+                <label><input type="checkbox" name="hardConstraint" value="age_unrestricted" /> 연령 제한 없음</label>
+              </div>
+              <label class="field field-wide">
+                <span>제외할 장소 ID</span>
+                <textarea id="excludedPlaceIds" rows="2" placeholder="쉼표로 구분: 126435, 2472824"></textarea>
+              </label>
+            </details>
+
+            <div class="form-error" id="formError" role="alert" hidden></div>
+            <div class="form-actions">
+              <button class="button button-primary run-button" id="runRecommendationButton" type="submit">
+                추천 실행
+              </button>
+              <button class="button button-secondary" id="resetRecommendationButton" type="button">
+                예시값 복원
+              </button>
             </div>
-          </div>
-        </section>
+          </form>
+
+          <details class="json-panel" open>
+            <summary>정규화 입력 JSON</summary>
+            <pre id="requestPreview">추천을 실행하면 입력이 표시됩니다.</pre>
+          </details>
+          <details class="json-panel">
+            <summary>적용 설정 JSON</summary>
+            <pre id="configPreview">알고리즘 설정을 불러오는 중입니다.</pre>
+          </details>
+
+          <details class="explore-panel">
+            <summary>추천 후보 탐색 필터</summary>
+            <p class="explore-copy" id="filterSummary">데이터를 불러오는 중입니다.</p>
+            <div class="search-field compact-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="m16 16 4 4" />
+              </svg>
+              <label class="sr-only" for="placeSearch">장소명 또는 주소 검색</label>
+              <input id="placeSearch" type="search" autocomplete="off" placeholder="후보 장소 검색" />
+              <button id="clearSearchButton" type="button" aria-label="검색어 지우기" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m7 7 10 10M17 7 7 17" />
+                </svg>
+              </button>
+            </div>
+            <div class="section-title-row candidate-filter-title">
+              <h3>TourAPI 유형</h3>
+              <button class="text-button" id="resetFiltersButton" type="button">초기화</button>
+            </div>
+            <div class="category-grid" id="categoryFilters"></div>
+            <div class="candidate-list-heading">
+              <span>현재 지도 안 장소</span>
+              <b id="resultCount">—</b>
+            </div>
+            <div class="candidate-result-list" id="resultList" aria-live="polite"></div>
+          </details>
+        </div>
       </aside>
 
-      <section class="map-shell" aria-label="제주 장소 지도">
+      <section class="map-shell" aria-label="제주 추천 결과 지도">
         <div id="map"></div>
 
         <div class="map-toolbar" aria-label="지도 보기 도구">
-          <button class="map-action" id="fitFilteredButton" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" />
-            </svg>
-            결과 맞춤
-          </button>
-          <button class="map-action" id="fitJejuButton" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
-              <circle cx="12" cy="10" r="2.5" />
-            </svg>
-            제주 전체
-          </button>
+          <button class="map-action" id="fitRecommendationButton" type="button" disabled>추천 결과 맞춤</button>
+          <button class="map-action" id="fitFilteredButton" type="button">후보 맞춤</button>
+          <button class="map-action" id="fitJejuButton" type="button">제주 전체</button>
         </div>
 
         <div class="viewport-status" aria-live="polite">
@@ -138,12 +261,17 @@
           지도 안 <strong id="viewportCount">—</strong>개
         </div>
 
-        <div class="map-loading" id="mapLoading" role="status">
-          <span class="spinner" aria-hidden="true"></span>
-          제주 지도를 준비하고 있어요
+        <div class="map-legend" id="recommendationLegend" hidden>
+          <strong>추천 순위 마커</strong>
+          <span>숫자는 MMR 선택 순서입니다.</span>
         </div>
 
-        <article class="detail-card" id="detailPanel" aria-live="polite" hidden>
+        <div class="map-loading" id="mapLoading" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          제주 추천 지도를 준비하고 있어요
+        </div>
+
+        <article class="detail-card" id="detailPanel" aria-labelledby="detailTitle" hidden>
           <button class="detail-close" id="detailCloseButton" type="button" aria-label="장소 상세 닫기">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m6 6 12 12M18 6 6 18" />
@@ -163,44 +291,87 @@
             <div class="detail-meta-row">
               <span class="type-badge" id="detailType"></span>
               <span id="detailModified"></span>
+              <span class="recommendation-rank-badge" id="detailRank" hidden></span>
             </div>
             <h2 id="detailTitle"></h2>
             <p class="detail-address" id="detailAddress"></p>
             <p class="detail-phone" id="detailPhone" hidden></p>
-            <section class="v5-labels" id="detailLabels" aria-label="v5 선호 라벨 결과"></section>
+            <section class="detail-score-trace" id="detailScoreTrace" hidden></section>
+            <section class="v5-labels" id="detailLabels" aria-label="장소 41개 라벨"></section>
+            <section class="constraint-note" id="detailConstraintNote" hidden></section>
             <div class="detail-actions">
-              <button class="button button-primary" id="centerPlaceButton" type="button">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-                </svg>
-                지도 중심으로
-              </button>
+              <button class="button button-primary" id="centerPlaceButton" type="button">지도 중심으로</button>
               <button class="button button-secondary" id="copyPlaceButton" type="button">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="8" y="8" width="11" height="11" rx="2" />
-                  <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
-                </svg>
                 <span id="copyPlaceButtonLabel">위치 복사</span>
               </button>
             </div>
           </div>
         </article>
 
-        <button class="mobile-results-fab" id="mobileResultsFab" type="button" aria-controls="sidebar">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h10" />
-          </svg>
-          장소 <strong id="mobileResultCount">—</strong>
+        <button class="mobile-results-fab" id="mobileResultsFab" type="button" aria-controls="outputPanel" aria-expanded="false">
+          추천 결과 <strong id="mobileResultCount">0</strong>
         </button>
       </section>
+
+      <aside class="output-panel dashboard-panel" id="outputPanel" aria-labelledby="outputPanelTitle" tabindex="-1">
+        <div class="output-heading">
+          <div>
+            <p class="section-kicker">02 · RESULT</p>
+            <h2 id="outputPanelTitle">추천 결과</h2>
+            <p id="recommendationSummary">입력값을 확인한 뒤 추천을 실행하세요.</p>
+          </div>
+          <button class="icon-button output-close-button" id="outputCloseButton" type="button" aria-label="추천 결과 닫기">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="output-scroll">
+          <div class="metric-grid" id="metricGrid">
+            <div><span>후보</span><strong id="candidateMetric">—</strong></div>
+            <div><span>점수 계산</span><strong id="scoredMetric">—</strong></div>
+            <div><span>MMR pool</span><strong id="poolMetric">—</strong></div>
+            <div><span>출력</span><strong id="returnedMetric">—</strong></div>
+          </div>
+
+          <div class="warning-list" id="warningList" hidden></div>
+
+          <div class="output-section-heading">
+            <div>
+              <h3>Top-N 장소</h3>
+              <p>카드를 누르면 지도와 41개 라벨 상세가 열립니다.</p>
+            </div>
+            <span class="count-badge" id="recommendationCount">0</span>
+          </div>
+          <div class="recommendation-result-list" id="recommendationResultList" aria-live="polite">
+            <div class="empty-state">
+              <strong>아직 추천 결과가 없습니다</strong>
+              <span>왼쪽 입력 패널에서 추천 실행을 눌러주세요.</span>
+            </div>
+          </div>
+
+          <details class="verification-panel" id="verificationPanel" hidden>
+            <summary>별도 확인 후보 <strong id="verificationCount">0</strong></summary>
+            <p>개최일 또는 필수 조건을 구조적으로 확인할 수 없어 일반 추천에서 분리했습니다.</p>
+            <div id="verificationList"></div>
+          </details>
+
+          <details class="json-panel output-json-panel">
+            <summary>전체 출력 JSON</summary>
+            <pre id="outputPreview">추천을 실행하면 결과 trace가 표시됩니다.</pre>
+          </details>
+        </div>
+      </aside>
     </main>
 
     <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+    <div class="output-backdrop" id="outputBackdrop" aria-hidden="true"></div>
 
     <script src="./vendor/leaflet/leaflet.js" defer></script>
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
     <script src="./data/jeju-places.js" defer></script>
+    <script src="./ccu-mmr.js" defer></script>
     <script src="./app.js" defer></script>
   </body>
 </html>

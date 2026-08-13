@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-08-10
+- 최종 수정일: 2026-08-13
 
 ## 공통 규칙
 
@@ -37,6 +37,7 @@
 ```text
 Place {
   id: string
+  sourceOrder: integer
   type: string
   title: string
   address: string
@@ -47,12 +48,26 @@ Place {
   thumbnail: string
   modified: string
   category: [string, string, string]
+  region: jeju_city | seogwipo_city | unknown
+  v5: { labels: PreferenceLabel[24], sources: Source[] } | null
+  fit: { companion: ContextAxis[5], month: ContextAxis[12] } | null
+  constraints: HardConstraintSummary[]
+  constraintCoverage: covered | not_collected
 }
 ```
 
 - 유효 지도 좌표 범위는 경도 `125.5..127.5`, 위도 `32.5..34.2`다.
 - 이미지 URL은 HTTP(S)만 허용하고 HTTP는 HTTPS로 정규화한다.
 - 이름이 비어 있으면 `이름 없는 장소`를 사용한다.
+- 2026-08-09 번들은 좌표 정상 2,153곳을 담고, 이 중 24+17축이 완전한 1,663곳만 추천 가능하다. 좌표 이상 `2704351` 한 곳과 지도 탐색 전용 490곳은 metadata에서 분리 집계한다.
+- Companion·Month는 `state=numeric|not_applicable`을 먼저 확인한다. `not_applicable` 값은 반드시 `null`이며 0이나 0.5로 대체하지 않는다.
+- metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v0-demo`를 기록한다.
+
+## CCU-MMR 정적 대시보드 요청·결과 — 구현됨
+
+`map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v1`을 사용한다. 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 18개 원자 라벨 선호, 결과 수, 다양성, 제외 ID와 확인 필요 조건이다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다.
+
+결과 `ccu-mmr-result-v1`은 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. 이 계약은 `internal_experiment`/`ai_draft` 전용이며 아래 목표 `PlaceRecommendationRequest`나 SPEC-008 `baseline-v0`와 동일한 운영 계약이 아니다.
 
 ## 라벨링용 장소 분할 — 구현됨
 
