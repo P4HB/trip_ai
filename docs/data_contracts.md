@@ -50,6 +50,13 @@ Place {
   category: [string, string, string]
   region: jeju_city | seogwipo_city | unknown
   v5: { labels: PreferenceLabel[24], sources: Source[] } | null
+  research: {
+    status: ai_draft
+    reviewedAt: YYYY-MM-DD
+    coverage: claim_available | metadata_only
+    highlights: Array<{ text, sourceId, tier, dynamic, language }>[1..2]
+    sources: Array<{ id, publisher, url, checkedAt }>[1..2]
+  } | null
   fit: { companion: ContextAxis[5], month: ContextAxis[12] } | null
   constraints: HardConstraintSummary[]
   constraintCoverage: covered | not_collected
@@ -62,12 +69,14 @@ Place {
 - 2026-08-09 번들은 좌표 정상 2,153곳을 담고, 이 중 24+17축이 완전한 1,663곳만 추천 가능하다. 좌표 이상 `2704351` 한 곳과 지도 탐색 전용 490곳은 metadata에서 분리 집계한다.
 - Companion·Month는 `state=numeric|not_applicable`을 먼저 확인한다. `not_applicable` 값은 반드시 `null`이며 0이나 0.5로 대체하지 않는다.
 - metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v0-demo`를 기록한다.
+- `research.highlights`는 v5 `sources[].facts[]`를 원문 출처 ID와 함께 유지한 표시용 요약이다. 구형 1건은 `evidence`를 claim으로 정규화한다. 링크는 HTTPS로 정규화하며 활동·체험·관람·판매·메뉴 설명을 주소·카탈로그·운영 정보보다 우선하고 변동 정보는 우선 제외한다.
+- 웹 조사 설명은 ranking feature가 아니며 `status=ai_draft`다. `dynamic=true` 또는 운영시간·가격·휴무·행사 일정은 현재 사실로 보장하지 않고 원문 재확인이 필요하다.
 
 ## CCU-MMR 정적 대시보드 요청·결과 — 구현됨
 
 `map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v1`을 사용한다. 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 18개 원자 라벨 선호, 결과 수, 다양성, 제외 ID와 확인 필요 조건이다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다.
 
-결과 `ccu-mmr-result-v1`은 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. 이 계약은 `internal_experiment`/`ai_draft` 전용이며 아래 목표 `PlaceRecommendationRequest`나 SPEC-008 `baseline-v0`와 동일한 운영 계약이 아니다.
+결과 `ccu-mmr-result-v1`은 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, Top-N별 표시용 `webResearch`, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. 이 계약은 `internal_experiment`/`ai_draft` 전용이며 아래 목표 `PlaceRecommendationRequest`나 SPEC-008 `baseline-v0`와 동일한 운영 계약이 아니다.
 
 ## 라벨링용 장소 분할 — 구현됨
 

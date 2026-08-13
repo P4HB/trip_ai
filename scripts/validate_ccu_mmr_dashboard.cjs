@@ -22,6 +22,9 @@ assert.equal(metadata.v5ReviewSourceCount, 1664);
 assert.equal(metadata.v5ReviewAttachedCount, 1663);
 assert.equal(metadata.fitLabelSourceCount, 1664);
 assert.equal(metadata.fitLabelAttachedCount, 1663);
+assert.equal(metadata.researchSourceCount, 1664);
+assert.equal(metadata.researchAttachedCount, 1663);
+assert.equal(metadata.recommendationResearchReadyCount, 1663);
 assert.equal(metadata.hardConstraintAttachedCount, 1517);
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);
@@ -38,6 +41,34 @@ for (const place of readyPlaces) {
     (axis.state === "numeric" && Number.isFinite(axis.value)) ||
     (axis.state === "not_applicable" && axis.value === null)
   ));
+  assert.equal(place.research.status, "ai_draft", `${place.id}: research status`);
+  assert.ok(["claim_available", "metadata_only"].includes(place.research.coverage), `${place.id}: research coverage`);
+  assert.ok(place.research.highlights.length >= 1 && place.research.highlights.length <= 2, `${place.id}: research highlights`);
+  assert.ok(place.research.sources.length >= 1, `${place.id}: research sources`);
+  const researchSourceIds = new Set(place.research.sources.map((source) => source.id));
+  assert.ok(place.research.sources.every((source) => /^https:\/\//u.test(source.url)), `${place.id}: secure research URLs`);
+  assert.ok(place.research.highlights.every((highlight) =>
+    highlight.text && researchSourceIds.has(highlight.sourceId) && highlight.tier >= 1 && highlight.tier <= 6
+  ), `${place.id}: research claim provenance`);
+  assert.ok(
+    place.research.highlights.every((highlight) => !highlight.dynamic) || place.research.coverage === "metadata_only",
+    `${place.id}: changing information must be avoided or explicitly downgraded`
+  );
+}
+
+const legacyResearch = readyPlaces.find((place) => place.id === "1906211")?.research;
+assert.ok(legacyResearch?.highlights.some((highlight) => highlight.text.includes("골목")), "legacy evidence fallback");
+
+for (const contentId of [
+  "140930", "129076", "126438", "2948051",
+  "132160", "132556", "992261", "1690237", "2730822", "3512205", "131784", "2411625",
+]) {
+  const research = readyPlaces.find((place) => place.id === contentId)?.research;
+  assert.ok(research?.highlights?.length, `${contentId}: changing-information regression place`);
+  assert.ok(
+    research.highlights.every((highlight) => !highlight.dynamic) || research.coverage === "metadata_only",
+    `${contentId}: changing information must be avoided or marked as metadata-only`
+  );
 }
 
 function featureKey(label) {
@@ -84,11 +115,13 @@ assert.equal(
 assert.equal(first.items.length, 10);
 assert.deepEqual(first.items.map((item) => item.placeId), second.items.map((item) => item.placeId));
 assert.ok(first.items.every((item) => Number.isFinite(item.relevance) && Number.isFinite(item.mmrScore)));
+assert.ok(first.items.every((item) => readyPlaces.find((place) => place.id === item.placeId)?.research?.highlights?.length));
 
 console.log(JSON.stringify({
   places: places.length,
   recommendationReady: readyPlaces.length,
   labelsPerReadyPlace: 41,
+  researchCoverage: metadata.recommendationResearchReadyCount,
   returned: first.items.length,
   verificationCandidates: first.verificationCandidates.length,
   topPlaceIds: first.items.map((item) => item.placeId),

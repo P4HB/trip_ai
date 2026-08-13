@@ -42,6 +42,8 @@
 - `REQ-1409`: 입력이 없는 블록은 0점이 아니라 비활성화한다. 개인 취향·동행·월이 모두 비활성이면 결정적인 탐색 결과와 경고를 반환한다.
 - `REQ-1410`: 자유 텍스트 hard constraint는 자동 `pass/fail`로 실행하지 않으며, 접근성 등 구조화되지 않은 조건은 확인 필요 경고로만 표시한다.
 - `REQ-1411`: 동일 입력과 데이터에서는 `source_order`, `contentid` 동점 규칙으로 같은 결과를 반환한다.
+- `REQ-1412`: 추천 가능 장소의 기존 v5 웹 조사 claim을 `contentid`로 결합하고, Top-N 카드와 장소 상세에 특정 출처와 연결된 활동 설명을 표시한다.
+- `REQ-1413`: 웹 조사 문장은 `웹 조사 AI 초안`으로 명시하며 운영시간·가격·휴무·행사 일정 등 변동 정보는 대표 활동 설명에서 우선 제외하고 방문 전 원문 확인을 안내한다.
 
 ## 입력과 출력
 
@@ -117,6 +119,7 @@ catalog fields: contentid, contenttypeid, sigungucode, coordinate, source_order
 - `AC-1404`: 추천 장소 상세에서 Theme 8, Environment 2, Style 8, Derived 6, Companion 5, Month 12가 표시된다.
 - `AC-1405`: 잘못된 기간, 빈 후보, event N/A와 결측 라벨 폴백이 오류 없이 표시된다.
 - `AC-1406`: 기존 검색·카테고리 필터·마커·상세 기능이 유지되고 정적 로컬 HTTP에서 동작한다.
+- `AC-1407`: 추천 가능 1,663곳 모두 웹 조사 설명과 HTTPS 출처를 가지며 Top-N 카드에서는 2줄 요약, 상세에서는 출처별 claim과 조사일을 확인할 수 있다.
 
 ## 테스트 계획
 
@@ -125,6 +128,7 @@ catalog fields: contentid, contenttypeid, sigungucode, coordinate, source_order
 | AC-1401 | 지도 데이터 재생성 후 metadata·표본 장소 41축 검사 |
 | AC-1402~AC-1405 | CCU-MMR 단위 테스트와 브라우저 DOM 시나리오 검사 |
 | AC-1406 | 생성기·앱 구문 검사, 로컬 HTTP, 지도 화면 상호작용 확인 |
+| AC-1407 | 실제 번들 전수 research coverage 검사와 관광지·카페·legacy source 브라우저 표본 확인 |
 
 ## 구현 결과
 
@@ -134,6 +138,8 @@ catalog fields: contentid, contenttypeid, sigungucode, coordinate, source_order
 - 장소 상세에 41축과 사용 라벨 강조, P/A/M/R/MMR trace를 추가했다.
 - `scripts/test_ccu_mmr.cjs`와 `scripts/validate_ccu_mmr_dashboard.cjs`로 수식·결정성·실제 번들 41축을 검증했다.
 - 로컬 HTTP 브라우저에서 데스크톱 3열, 모바일 입력·결과 드로어, 입력 재실행, 41축 클릭 상세를 확인했다.
+- 기존 v5 웹 조사 출처의 claim을 활동·체험·관람·판매·메뉴 중심의 결정적 tier로 고르고, 변동 정보는 우선 제외해 추천 가능 1,663곳 모두에 1~2개 설명과 원래 출처를 연결했다.
+- Top-N 카드에는 2줄 웹 조사 요약과 출처·확인일을, 장소 상세에는 출처별 설명·새 창 링크·변동 정보 재확인 고지를 표시했다. 이 정보는 추천 점수에 사용하지 않는다.
 
 ## 설계와 달라진 점
 
@@ -154,3 +160,5 @@ catalog fields: contentid, contenttypeid, sigungucode, coordinate, source_order
 | 2026-08-13 | 사용자 요청을 승인 근거로 CCU-MMR 정적 실험 대시보드 구현 시작 |
 | 2026-08-13 | 알고리즘·41축 번들·입출력 대시보드·회귀 및 브라우저 검증 완료 |
 | 2026-08-13 | 낮은 브라우저 높이에서도 첫 Top-N 카드가 즉시 보이도록 결과 패널 우선순위 수정 |
+| 2026-08-13 | 추천 결과에 기존 웹 조사 활동 설명과 출처를 추가하는 후속 구현 시작 |
+| 2026-08-13 | 웹 조사 설명 1,663곳 전수 결합, Top-N·상세 표시와 legacy evidence 회귀 검증 완료 |

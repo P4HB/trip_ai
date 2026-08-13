@@ -97,7 +97,7 @@ scripts/validate_all_place_profiles.py
 
 - `scripts/collect_tourapi_jeju.py`: API 키 로드, 전체 페이지 수집, ID 무결성 및 좌표 품질 검사, 날짜별 스냅샷과 해시 생성
 - `data/tourapi/jeju/`: 재현 가능한 원본·정제 데이터와 수집 메타데이터 보관
-- `scripts/build_map_ui_data.mjs`: 2026-08-09 TourAPI·24축·Companion/Month 17축 snapshot 일치를 검증하고 지도용 필드·제약·버전 metadata를 결합하며 제주 표시 범위를 벗어난 좌표를 제외
+- `scripts/build_map_ui_data.mjs`: 2026-08-09 TourAPI·24축·Companion/Month 17축 snapshot 일치를 검증하고 지도용 필드·제약·v5 웹 조사 claim·버전 metadata를 결합하며 제주 표시 범위를 벗어난 좌표를 제외
 - `scripts/split_tourapi_jeju_places.mjs`: 가장 최근 원본 스냅샷을 음식점과 비음식점으로 완전 분할하고 출처·건수·해시 기록
 - `data/labeling/jeju/`: 원본 필드와 순서를 보존한 날짜별 라벨링 입력 파생물 보관
 - `scripts/fetch_place_profile_web_pages.mjs`: 고정 100건의 공개 상세 페이지를 열어 HTTP 상태, 본문·안내 항목과 페이지 해시를 조사 캐시에 기록
@@ -112,7 +112,7 @@ scripts/validate_all_place_profiles.py
 - `scripts/build_all_place_profiles.py`: 웹 조사 cache와 파일럿·기후 fixture를 고정 입력으로 사용해 전체 조사·자동 라벨·검수 큐·hard constraint를 canonical JSONL과 파생 SQLite로 결정적으로 생성한다.
 - `scripts/validate_all_place_profiles.py`: 전체 ID·순서·축·근거·제약·파일럿 회귀, JSONL↔SQLite 일치, SQLite integrity/FK, manifest와 보호 입력 해시를 독립 검증한다.
 - `data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/`: 전체 비음식점 AI 초안의 재개 가능 웹 cache, canonical JSONL, 질의용 SQLite, manifest와 검수 보고서를 보관한다.
-- `map-ui/`: 검색·지도 탐색과 함께 `ccu-mmr-v0-demo` 구조화 입력, P/A/M 관련도, Top-100 MMR, 추천 trace, 41축 상세를 제공하는 정적 내부 실험 UI
+- `map-ui/`: 검색·지도 탐색과 함께 `ccu-mmr-v0-demo` 구조화 입력, P/A/M 관련도, Top-100 MMR, 추천 trace, 41축 상세, 출처가 연결된 웹 조사 장소 설명을 제공하는 정적 내부 실험 UI
 
 ### 현재 런타임 경계
 

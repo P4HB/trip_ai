@@ -72,7 +72,7 @@
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
     "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailRank", "detailTitle",
-    "detailAddress", "detailPhone", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
+    "detailAddress", "detailPhone", "detailResearch", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "companionType",
@@ -162,6 +162,85 @@
   function formatModifiedDate(value) {
     const digits = String(value || "").replace(/\D/gu, "");
     return digits.length >= 8 ? `업데이트 ${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}` : "수정일 정보 없음";
+  }
+
+  function researchSource(place, sourceId) {
+    return (place.research?.sources || []).find((source) => source.id === sourceId) || null;
+  }
+
+  function publicResearch(place) {
+    const research = place?.research;
+    if (!research?.highlights?.length) return null;
+    return {
+      status: research.status,
+      coverage: research.coverage,
+      notice: "웹 조사 AI 초안이며 변동 정보는 방문 전 원문 확인이 필요합니다.",
+      highlights: research.highlights.map((highlight) => {
+        const source = researchSource(place, highlight.sourceId);
+        return {
+          text: highlight.text,
+          publisher: source?.publisher || "출처 미기록",
+          checkedAt: source?.checkedAt || null,
+          url: source?.url || null,
+          requiresRecheck: Boolean(highlight.dynamic),
+        };
+      }),
+    };
+  }
+
+  function renderResearchDetail(place) {
+    dom.detailResearch.replaceChildren();
+    const research = place.research;
+    if (!research?.highlights?.length) {
+      dom.detailResearch.hidden = true;
+      return;
+    }
+    dom.detailResearch.hidden = false;
+    const metadataOnly = research.coverage === "metadata_only";
+    const heading = document.createElement("div");
+    heading.className = "research-heading";
+    const title = document.createElement("strong");
+    title.textContent = metadataOnly ? "기본 정보만 확인됨" : "어떤 곳인가요?";
+    const badge = document.createElement("span");
+    badge.className = "research-draft-badge";
+    badge.textContent = metadataOnly ? "장소 메타데이터만 확인됨" : "웹 조사 AI 초안";
+    badge.classList.toggle("is-metadata", metadataOnly);
+    heading.append(title, badge);
+    const facts = document.createElement("div");
+    facts.className = "research-facts";
+    for (const highlight of research.highlights) {
+      const source = researchSource(place, highlight.sourceId);
+      const fact = document.createElement("article");
+      fact.className = "research-fact";
+      const meta = document.createElement("div");
+      meta.className = "research-source-meta";
+      if (source?.url) {
+        const link = document.createElement("a");
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = `출처: ${source.publisher}`;
+        link.setAttribute("aria-label", `${place.title} – ${source.publisher} 출처 새 창`);
+        meta.append(link);
+      } else {
+        const publisher = document.createElement("span");
+        publisher.textContent = `출처: ${source?.publisher || "미기록"}`;
+        meta.append(publisher);
+      }
+      const checked = document.createElement("span");
+      checked.textContent = source?.checkedAt ? `확인 ${formatSourceDate(source.checkedAt)}` : "출처 확인일 미기록";
+      meta.append(checked);
+      const copy = document.createElement("p");
+      copy.textContent = highlight.text;
+      fact.append(meta, copy);
+      facts.append(fact);
+    }
+    const notice = document.createElement("p");
+    notice.className = "research-notice";
+    notice.textContent = metadataOnly
+      ? "웹 조사에서 활동 설명을 찾지 못해 분류·주소 등 기본 정보만 표시합니다. 실제 체험은 원문에서 확인하세요."
+      : "출처 내용을 짧게 정리한 AI 초안입니다. 운영시간·가격·휴무·행사 일정은 방문 전에 원문에서 다시 확인하세요.";
+    dom.detailResearch.append(heading, facts, notice);
   }
 
   function regionName(region) {
@@ -609,7 +688,7 @@
       else rationale.textContent = `근거 수준 ${record.inferenceLevel || "미기록"} · 신뢰도 ${formatScore(record.confidence, 2)}. 원시 값을 그대로 사용하는 CCU-MMR 실험입니다.`;
       if (requestUsedLabel(record)) rationale.textContent += " 현재 요청 점수에 사용된 라벨입니다.";
       detail.append(title, status, rationale);
-      const linkedSources = (record.source_ids || []).map((id) => sourceMap.get(id)).filter(Boolean);
+      const linkedSources = (record.source_ids || []).map((id) => sourceMap.get(id)).filter((source) => source?.url);
       if (linkedSources.length) {
         const links = document.createElement("div");
         links.className = "v5-source-links";
@@ -773,6 +852,7 @@
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
+    renderResearchDetail(place);
     renderScoreTrace(place, recommendation);
     renderPlaceLabels(place);
     renderConstraintNote(place);
@@ -822,6 +902,26 @@
     relevance.className = "recommendation-relevance";
     relevance.textContent = formatScore(item.relevance);
     top.append(rank, copy, relevance);
+    const researchSnippet = document.createElement("div");
+    researchSnippet.className = "recommendation-research-snippet";
+    const metadataOnly = place.research?.coverage === "metadata_only";
+    const researchHeading = document.createElement("div");
+    researchHeading.className = "research-snippet-heading";
+    const researchTitle = document.createElement("strong");
+    researchTitle.textContent = metadataOnly ? "기본 정보만 확인됨" : "어떤 곳인가요?";
+    const researchBadge = document.createElement("span");
+    researchBadge.textContent = metadataOnly ? "장소 메타데이터만 확인됨" : "웹 조사 AI 초안";
+    researchBadge.className = metadataOnly ? "is-metadata" : "";
+    researchHeading.append(researchTitle, researchBadge);
+    const firstHighlight = place.research?.highlights?.[0] || null;
+    const firstSource = firstHighlight ? researchSource(place, firstHighlight.sourceId) : null;
+    const researchCopy = document.createElement("p");
+    researchCopy.textContent = firstHighlight?.text || "웹 활동 설명이 아직 없습니다.";
+    const researchMeta = document.createElement("span");
+    researchMeta.textContent = firstSource
+      ? `연결 출처: ${firstSource.publisher}${firstSource.checkedAt ? ` · 확인 ${formatSourceDate(firstSource.checkedAt)}` : " · 확인일 미기록"}${firstHighlight?.dynamic ? " · 방문 전 원문 재확인" : ""}`
+      : "TourAPI 장소 분류 참고";
+    researchSnippet.append(researchHeading, researchMeta, researchCopy);
     const scoreRow = document.createElement("div");
     scoreRow.className = "recommendation-score-row";
     const scorePairs = [
@@ -848,8 +948,8 @@
       const diversity = document.createElement("p");
       diversity.className = "diversity-note";
       diversity.textContent = `가장 유사: ${placeById.get(item.similarPlaceId)?.title || item.similarPlaceId} · sim ${formatScore(item.maxSimilarity)}`;
-      button.append(top, scoreRow, reasons, diversity);
-    } else button.append(top, scoreRow, reasons);
+      button.append(top, researchSnippet, scoreRow, reasons, diversity);
+    } else button.append(top, researchSnippet, scoreRow, reasons);
     button.addEventListener("click", () => {
       selectPlace(place, { moveMap: true });
       closeOutputPanel();
@@ -899,6 +999,9 @@
       recommendationReadyCount: metadata.recommendationReadyCount || null,
       candidateFilter: result.request.candidateFilter,
     };
+    for (const item of result.items) {
+      item.webResearch = publicResearch(placeById.get(item.placeId));
+    }
     state.recommendationResult = result;
     state.recommendationById = new Map(result.items.map((item) => [item.placeId, item]));
     const summary = result.summary;

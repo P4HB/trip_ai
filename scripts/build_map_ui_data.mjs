@@ -52,6 +52,9 @@ const DERIVED_LABEL_KEYS = [
   "derived_style.iconic_highlight", "derived_style.photo_mood",
 ];
 const EXPECTED_LABEL_KEYS = new Set([...ATOMIC_LABEL_KEYS, ...DERIVED_LABEL_KEYS]);
+const RESEARCH_SEMANTIC_PATTERN = /정원|공원|해변|바다|오름|산|폭포|동굴|숲|산책|탐방|트레일|조망|전망|경관|일출|일몰|관람|감상|체험|박물관|미술관|전시|공연|문화|작품|기념관|갤러리|축제|행사|프로그램|퍼레이드|마켓|레저|낚시|수영|서핑|승마|골프|캠핑|트레킹|투어|자전거|요트|다이빙|숙박|객실|호텔|리조트|펜션|게스트하우스|조식|수영장|스파|휴식|쇼핑|시장|매장|판매|구매|취급|상품|특산품|기념품|의류|면세|브랜드|생활용품|약국|소매|음식|메뉴|요리|식당|카페|커피|디저트|베이커리|흑돼지|해산물|국수|전복|갈치|식사|즐길|둘러|볼 수|맛볼|먹을|마실|머물|촬영|선보/u;
+const RESEARCH_CATALOG_PATTERN = /contentid|TourAPI|관광 분류|주소는|주소와|주소를|주소가|위치는|장소명|명칭은|수록|기록한다|기재|일치|목록|검색 결과|교차 확인|기준점|등록|데이터/u;
+const RESEARCH_DYNAMIC_PATTERN = /영업|이용시간|운영|관람시간|휴무|주차|전화|문의|예약|체크인|체크아웃|입장|마감|개최|행사기간|일정|장날|운항|상시 개방|연중무휴|요금|가격|무료|유료|매주|매월|매년[^,.]{0,24}(?:열|개최|행사|축제|공연|운영)|\d{1,2}[·,]\d{1,2}일장|유효기간|시즌별|요일[^,.]{0,20}\d{1,2}(?:시|:)|\b\d{1,2}:\d{2}\b|20\d{2}년\s*\d{1,2}월/u;
 
 function readJsonLines(filePath) {
   if (!fs.existsSync(filePath)) {
@@ -159,6 +162,82 @@ function normalizeLabelEntries(review) {
   ];
 }
 
+function normalizeReviewSources(review) {
+  const usedIds = new Set();
+  return (review.sources ?? []).map((source, sourceIndex) => {
+    const baseId = clean(source.id) || `legacy-source-${sourceIndex + 1}`;
+    let id = baseId;
+    let suffix = 2;
+    while (usedIds.has(id)) id = `${baseId}-${suffix++}`;
+    usedIds.add(id);
+    const rawClaims = Array.isArray(source.facts) && source.facts.length
+      ? source.facts
+      : clean(source.evidence)
+        ? [source.evidence]
+        : [];
+    return {
+      id,
+      publisher: clean(source.publisher) || "출처 미기록",
+      url: safeHttpUrl(source.url),
+      checkedAt: clean(source.checked_at),
+      sourceIndex,
+      claims: rawClaims.map((claim) => clean(claim)).filter(Boolean),
+    };
+  });
+}
+
+function researchTier(text) {
+  const semantic = RESEARCH_SEMANTIC_PATTERN.test(text);
+  const catalogOnly = RESEARCH_CATALOG_PATTERN.test(text);
+  const dynamic = RESEARCH_DYNAMIC_PATTERN.test(text);
+  if (semantic && !catalogOnly && !dynamic) return 1;
+  if (semantic && !catalogOnly) return 2;
+  if (!catalogOnly && !dynamic) return 3;
+  if (semantic) return 4;
+  if (!catalogOnly) return 5;
+  return 6;
+}
+
+function buildCompactResearch(review, normalizedSources) {
+  const candidates = [];
+  const seenTexts = new Set();
+  for (const source of normalizedSources) {
+    if (!source.url) continue;
+    source.claims.forEach((text, factIndex) => {
+      if (seenTexts.has(text)) return;
+      seenTexts.add(text);
+      candidates.push({
+        text,
+        sourceId: source.id,
+        tier: researchTier(text),
+        dynamic: RESEARCH_DYNAMIC_PATTERN.test(text),
+        language: /[가-힣]/u.test(text) ? "ko" : "other",
+        sourceIndex: source.sourceIndex,
+        factIndex,
+      });
+    });
+  }
+  candidates.sort((left, right) =>
+    left.tier - right.tier ||
+    (left.language === "ko" ? 0 : 1) - (right.language === "ko" ? 0 : 1) ||
+    left.sourceIndex - right.sourceIndex ||
+    left.factIndex - right.factIndex
+  );
+  let selected = candidates.filter((claim) => !claim.dynamic && claim.tier <= 3).slice(0, 2);
+  if (!selected.length) selected = candidates.filter((claim) => !claim.dynamic).slice(0, 1);
+  if (!selected.length) selected = candidates.slice(0, 1);
+  const selectedSourceIds = new Set(selected.map((claim) => claim.sourceId));
+  return {
+    status: "ai_draft",
+    reviewedAt: clean(review.reviewed_at),
+    coverage: selected.length && selected.every((claim) => claim.tier <= 3 && !claim.dynamic) ? "claim_available" : "metadata_only",
+    highlights: selected.map(({ text, sourceId, tier, dynamic, language }) => ({ text, sourceId, tier, dynamic, language })),
+    sources: normalizedSources
+      .filter((source) => selectedSourceIds.has(source.id))
+      .map(({ id, publisher, url, checkedAt }) => ({ id, publisher, url, checkedAt })),
+  };
+}
+
 function loadV5Reviews() {
   if (!fs.existsSync(v5ReviewRoot)) {
     throw new Error(`v5 review directory is missing: ${v5ReviewRoot}`);
@@ -169,6 +248,7 @@ function loadV5Reviews() {
     if (!entry.isFile() || !entry.name.endsWith(".json")) continue;
     const review = JSON.parse(fs.readFileSync(path.join(v5ReviewRoot, entry.name), "utf8"));
     const id = clean(review.contentid);
+    const normalizedSources = normalizeReviewSources(review);
     const labels = normalizeLabelEntries(review).map(([label, record]) => ({
       label,
       value: record.value,
@@ -187,11 +267,13 @@ function loadV5Reviews() {
     }
     reviews.set(id, {
       labels,
-      sources: (review.sources ?? []).map((source) => ({
-        id: clean(source.id),
-        publisher: clean(source.publisher),
-        url: clean(source.url),
+      sources: normalizedSources.map(({ id: sourceId, publisher, url, checkedAt }) => ({
+        id: sourceId,
+        publisher,
+        url,
+        checkedAt,
       })),
+      research: buildCompactResearch(review, normalizedSources),
     });
   }
   return reviews;
@@ -223,6 +305,13 @@ function secureImageUrl(value) {
   const image = clean(value);
   if (!/^https?:\/\//i.test(image)) return "";
   return image.replace(/^http:\/\//i, "https://");
+}
+
+function safeHttpUrl(value) {
+  const url = clean(value);
+  if (/^https:\/\//iu.test(url)) return url;
+  if (/^http:\/\//iu.test(url)) return url.replace(/^http:\/\//iu, "https://");
+  return "";
 }
 
 function regionForPlace(place) {
@@ -270,9 +359,11 @@ const places = rawPlaces.flatMap((place, sourceOrder) => {
     return [];
   }
 
+  const placeId = clean(place.contentid);
+  const v5Review = v5Reviews.get(placeId) ?? null;
   return [
     {
-      id: clean(place.contentid),
+      id: placeId,
       sourceOrder,
       type: clean(place.contenttypeid),
       title: clean(place.title) || "이름 없는 장소",
@@ -285,9 +376,10 @@ const places = rawPlaces.flatMap((place, sourceOrder) => {
       modified: clean(place.modifiedtime),
       category: [clean(place.cat1), clean(place.cat2), clean(place.cat3)],
       region: regionForPlace(place),
-      v5: v5Reviews.get(clean(place.contentid)) ?? null,
-      fit: fitLabels.get(clean(place.contentid)) ?? null,
-      constraints: constraintsById.get(clean(place.contentid)) ?? [],
+      v5: v5Review ? { labels: v5Review.labels, sources: v5Review.sources } : null,
+      research: v5Review?.research ?? null,
+      fit: fitLabels.get(placeId) ?? null,
+      constraints: constraintsById.get(placeId) ?? [],
       constraintCoverage: clean(place.contenttypeid) === "39" ? "not_collected" : "covered",
     },
   ];
@@ -305,6 +397,8 @@ const recommendationReadyCount = places.filter((place) => {
 const recommendationUnscoredCount = places.length - recommendationReadyCount;
 const attachedConstraintCount = places.reduce((sum, place) => sum + place.constraints.length, 0);
 const attachedConstraintPlaceCount = places.filter((place) => place.constraints.length).length;
+const researchAttachedCount = places.filter((place) => place.research?.highlights?.length).length;
+const recommendationResearchReadyCount = places.filter((place) => place.v5 && place.fit && place.research?.highlights?.length).length;
 
 const metadata = {
   source: "한국관광공사 TourAPI",
@@ -320,6 +414,9 @@ const metadata = {
   fitLabelAttachedCount: places.filter((place) => place.fit).length,
   recommendationReadyCount,
   recommendationUnscoredCount,
+  researchSourceCount: [...v5Reviews.values()].filter((review) => review.research?.highlights?.length).length,
+  researchAttachedCount,
+  recommendationResearchReadyCount,
   hardConstraintSourceCount: hardConstraintCount,
   hardConstraintAttachedCount: attachedConstraintCount,
   hardConstraintAttachedPlaceCount: attachedConstraintPlaceCount,
@@ -327,6 +424,7 @@ const metadata = {
   algorithmVersion: "ccu-mmr-v0-demo",
   fitLabelVersion: "place-fit-relabel-v2-relative-five-level-companion",
   preferenceLabelVersion: "place-preference-label-v5-researched",
+  researchVersion: "place-preference-label-v5-researched-sources-v1",
   hardConstraintVersion: "place-profile-v1-all-1434",
   companionKeys: COMPANION_KEYS,
   monthKeys: MONTH_KEYS,
@@ -354,6 +452,8 @@ console.log(
       fitLabelAttachedCount: metadata.fitLabelAttachedCount,
       recommendationReadyCount,
       recommendationUnscoredCount,
+      researchAttachedCount,
+      recommendationResearchReadyCount,
       hardConstraintSourceCount: hardConstraintCount,
       hardConstraintAttachedCount: attachedConstraintCount,
       excluded,
