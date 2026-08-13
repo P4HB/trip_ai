@@ -153,3 +153,4 @@ catalog fields: contentid, contenttypeid, sigungucode, coordinate, source_order
 |---|---|
 | 2026-08-13 | 사용자 요청을 승인 근거로 CCU-MMR 정적 실험 대시보드 구현 시작 |
 | 2026-08-13 | 알고리즘·41축 번들·입출력 대시보드·회귀 및 브라우저 검증 완료 |
+| 2026-08-13 | 낮은 브라우저 높이에서도 첫 Top-N 카드가 즉시 보이도록 결과 패널 우선순위 수정 |

@@ -80,7 +80,7 @@
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
     "recommendationCount", "recommendationResultList", "verificationPanel", "verificationCount", "verificationList",
-    "outputPreview", "recommendationLegend",
+    "outputPreview", "recommendationLegend", "outputScroll",
   ].map((id) => [id, document.getElementById(id)]));
 
   const numberFormatter = new Intl.NumberFormat("ko-KR");
@@ -921,6 +921,7 @@
     } else {
       renderEmptyState(dom.recommendationResultList, "일반 추천 결과가 없습니다", result.verificationCandidates.length ? "미확인 조건 후보를 별도 목록과 JSON에서 확인하세요." : "지역·목적·후보 필터를 바꿔보세요.");
     }
+    dom.outputScroll.scrollTop = 0;
     refreshMapMarkers();
     if (state.selectedPlace) renderDetail(state.selectedPlace);
   }
