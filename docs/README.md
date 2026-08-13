@@ -21,7 +21,8 @@
 - 구현됨: 비음식점과 FD05 카페·찻집 1,664건의 Theme·Environment·Style 24축 완전 숫자 라벨
 - 구현됨: 장소 검색, 카테고리 필터, 지도 마커·클러스터, 장소 상세 UI
 - 구현됨: 구조화된 입력으로 1,663개 41축 장소의 CCU-MMR 결과를 비교하는 정적 내부 실험 대시보드
-- 미구현: 운영 사용자 프로필, 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
+- 구현됨: 자차 여부에 따른 중심 반경과 하루 6곳 capacity를 사용하는 근사 일정 군집과 일차별 지도 강조
+- 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
 ## SPEC 색인
 
@@ -39,8 +40,9 @@
 | [SPEC-012](spec_012.md) | v5 전수 근거 라벨 뷰어 v1 | Implemented | labeling, UI |
 | [SPEC-013](spec_013.md) | 지도 UI v5 전수 근거 라벨 표시 v1 | Implemented | map, labeling, UI |
 | [SPEC-014](spec_014.md) | CCU-MMR 제주 추천 실험 대시보드 v1 | Implemented | recommendation, map, UI |
+| [SPEC-015](spec_015.md) | 중심 반경·일일 수용량 기반 근사 일정 군집 v2 | Implemented | itinerary, clustering, UI |
 
-- 다음 예약 번호: `SPEC-015`
+- 다음 예약 번호: `SPEC-016`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
@@ -51,7 +53,7 @@
 | [시스템 아키텍처](architecture.md) | 컴포넌트 경계, 데이터 흐름, 배포 구조 변경 | 현재 구현 + 목표 구조 |
 | [데이터 계약](data_contracts.md) | 장소, 사용자 조건, 추천 결과 스키마 변경 | 현재 구현 + 초안 |
 | [추천 알고리즘](recommendation_algorithm.md) | 후보 생성, 필터, 랭킹, 다양성, 일정 생성 변경 | 목표 설계, 미구현 |
-| [CCU-MMR 알고리즘 초안](ccu_mmr_algorithm_draft.md) | 41개 라벨 기반 알고리즘의 구조와 계산 흐름 검토 | 내부 데모 구현, 운영 미승인 |
+| [CCU-MMR 알고리즘 초안](ccu_mmr_algorithm_draft.md) | 41개 라벨 장소 추천과 중심 반경·capacity 근사 일정 | 일정 군집 v2 구현 |
 | [평가 전략](evaluation.md) | 추천 품질, 회귀 테스트, 출시 기준 변경 | 목표 설계, 미구현 |
 | [안전 및 개인정보](safety_privacy.md) | 위치정보, 외부 데이터, 설명 안전성 변경 | 적용 원칙 |
 | [SPEC 템플릿](spec_template.md) | 새 구현 SPEC 생성 | 템플릿 |

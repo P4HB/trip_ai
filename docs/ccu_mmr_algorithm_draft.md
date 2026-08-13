@@ -1,20 +1,16 @@
-# CCU-MMR 장소 추천 알고리즘 초안
+# CCU-MMR 장소 추천 및 일정 군집 알고리즘 초안
 
-- 문서 상태: 설계 초안, SPEC-014 내부 데모 구현
+- 문서 상태: 장소 추천 내부 데모와 중심 반경·capacity 근사 일정 v2 구현
 - 작성일: 2026-08-12
 - 최종 수정일: 2026-08-13
-- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md)
+- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md)
 - 관련 기준 문서: [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md)
 
-> 이 문서는 41개 장소·상황 라벨을 활용하는 차기 추천 알고리즘 후보를 처음 보는 사람도 이해할 수 있도록 정리한 설명서다. 현재 추천 엔진의 구현 완료나 운영 적용을 의미하지 않는다. 기존 `baseline-v0`와의 통합·대체 여부 및 모든 계수는 평가 후 SPEC에서 승인해야 한다.
+> 이 문서는 41개 장소·상황 라벨을 사용하는 CCU-MMR 장소 추천과, 추천 결과를 여행일별로 묶기 위한 중심 반경·일일 capacity 군집을 하나의 흐름으로 정리한다. 중심 반경·capacity 일정 v2는 SPEC-015에 따라 구현하며 실제 이동시간, 체류시간과 방문 순서 최적화는 포함하지 않는다.
 
-> 구현 메모: SPEC-014는 이 초안을 `ccu-mmr-v0-demo` 정적 내부 실험으로 구현했다. 실시간 날씨와 실행 가능한 hard constraint가 없으므로 P/A/M만 활성 블록으로 재정규화하고, 자유 텍스트 제약은 확인 후보로 분리한다. 이는 SPEC-008 `baseline-v0` 구현이나 운영 승인이 아니다.
+## 1. 알고리즘 한눈에 보기
 
-## 1. 한 문장 정의
-
-CCU-MMR은 **갈 수 없는 장소를 먼저 제외하고, 현재 여행에 중요한 라벨만 점수화한 뒤, 비슷한 장소의 반복을 줄여 추천 목록을 만드는 알고리즘**이다.
-
-정식 명칭은 다음과 같다.
+CCU-MMR은 다음 세 가지를 결합한다.
 
 ```text
 CCU-MMR
@@ -23,24 +19,67 @@ CCU-MMR
 + Maximal Marginal Relevance
 ```
 
-전체 흐름은 다음과 같다.
+- `Constraint-First`: 갈 수 없거나 목적에 맞지 않는 장소를 먼저 제외한다.
+- `Contextual Utility`: 현재 취향·동행자·여행 월에 맞는 장소 적합도를 계산한다.
+- `MMR`: 적합도가 높으면서 이미 선택한 장소와 경험이 지나치게 겹치지 않는 장소를 고른다.
+
+일정 군집까지 포함한 전체 흐름은 다음과 같다.
 
 ```text
-전체 장소
-→ 필수 조건 필터
-→ 현재 요청에 필요한 feature 활성화
-→ 취향·동행자·월·날씨 적합도 계산
-→ 기본 관련도 계산
-→ MMR로 유사 장소 중복 완화
+구조화된 여행 입력
+→ 후보 자격과 필수 조건 검사
+→ 18개 원자 라벨 취향 적합도 P
+→ 동행자 A와 월 M 결합
+→ 장소 관련도 R 계산
+→ 필수 장소를 중심 반경으로 지리 군집화
+→ 일일 capacity 초과 군집 재분할
+→ 여행일보다 군집이 적으면 사용자에게 새 anchor 제안
+→ 날짜별 필수 장소·anchor를 선선택한 CCU-MMR
+→ 반경과 남은 capacity 안에서 추가 장소 선택
+→ 일자별 장소 군집 출력
 ```
 
-이 방식은 장소를 41차원 벡터로 놓고 단순 유사도만 계산하는 알고리즘이 아니다. **자격 판단, 요청별 효용 계산, 여행 상황 결합, 목록 수준 다양화**를 순서대로 수행하는 다단계 랭커다.
+장소 관련도와 일정 배치는 분리한다. 거리 때문에 장소 적합도 `R_i`를 바꾸지 않고, 중심 근접도와 capacity는 특정 날짜에 배치할 수 있는지를 판단하는 별도 값으로 사용한다.
 
-## 2. 41개 라벨의 역할
+## 2. 입력
 
-### 2.1 장소 선호 라벨 24개
+초기 버전은 자연어 입력을 사용하지 않고 UI 또는 API의 구조화된 값을 받는다.
 
-직접 점수에 사용하는 원자 라벨은 18개다.
+```text
+CCUMMRScheduleRequest {
+  destination_region
+  intent: visit | shopping | stay | event
+  travel_start_date
+  travel_end_date
+  trip_days: k
+  transport_mode: car | no_car
+  companion_type: solo | couple | friends | kids | parents | none
+  preferences[] {
+    feature
+    mode: benefit | avoid | target
+    weight: 1 | 2 | 4
+    target?
+    tolerance?
+  }
+  required_place_ids[]
+  anchor_place_ids[]
+  excluded_place_ids[]
+  schedule_config {
+    cluster_radius_km: 15 if car, otherwise 5
+    capacity_mode: place_count
+    daily_capacity: 6
+    beta_center: 0.20
+  }
+}
+```
+
+`required_place_ids`는 반드시 일정에 들어가야 하는 장소다. 여행일 `k`는 시작일과 종료일을 포함해 계산한다. 사용자는 자차 여부만 입력하며 v1은 자차면 반경 15km, 비자차면 5km를 적용한다. 이 반경은 실제 도로시간이 아니라 중심과 장소 사이의 Haversine 직선거리 임계값이다.
+
+v2 capacity는 체류시간 데이터가 없는 현재 한계를 명시하고 `place_count=6곳/일`을 상한으로 사용한다. `visit_minutes` 방식은 체류시간 데이터가 확보된 뒤 도입한다.
+
+## 3. 라벨 구성
+
+### 3.1 점수에 직접 사용하는 원자 라벨 18개
 
 | 그룹 | 라벨 |
 |---|---|
@@ -48,7 +87,7 @@ CCU-MMR
 | Environment 2 | `indoor_ratio`, `weather_sensitivity` |
 | Atomic Style 8 | `restfulness`, `physical_ease`, `visit_duration_flexibility`, `scenic_value`, `distinctiveness`, `local_embeddedness`, `landmark_significance`, `photo_value` |
 
-파생 Style 6개는 직접 점수에 다시 넣지 않는다.
+### 3.2 직접 점수에 다시 넣지 않는 파생 Style 6개
 
 ```text
 healing_slow
@@ -59,287 +98,387 @@ iconic_highlight
 photo_mood
 ```
 
-파생 라벨은 원자 라벨로부터 만들어진 값이므로 함께 점수화하면 동일한 성격을 중복 반영할 수 있다. 따라서 다음 용도로만 사용한다.
+파생 Style은 원자 라벨로부터 계산되므로 직접 점수에 함께 넣으면 같은 특성이 중복 반영된다. UI 프리셋과 요약 태그에만 사용한다.
 
-- 구조화된 UI 선택값을 원자 라벨 선호로 변환하는 프리셋
-- 탐색 UI의 요약 태그
-
-### 2.2 상황 라벨 17개
-
-상황 라벨은 현재 여행 요청에 해당하는 축만 활성화한다.
+### 3.3 상황 라벨 17개
 
 | 그룹 | 라벨 수 | 사용 방식 |
 |---|---:|---|
-| 동행 유형 | 5 | `solo`, `couple`, `friends`, `kids`, `parents` 중 현재 구성에 해당하는 축 |
-| 월별 적합도 | 12 | 실제 여행 기간에 포함된 월만 일수 비중으로 결합 |
+| Companion | 5 | 대표 동행 유형 하나의 축을 사용 |
+| Month | 12 | 여행 기간에 포함된 월을 일수로 가중 평균 |
 
-따라서 매 요청에서 41개 라벨 전체를 동일한 비중으로 사용하지 않는다. 예를 들어 구조화된 UI에서 `8월`, `부모님`, `바다 풍경 선호`, `긴 보행 회피`를 선택하면 주로 다음 축이 활성화된다.
+모든 라벨의 신뢰도는 동일하게 취급한다. 출처·검수 상태·confidence에 따른 수축이나 추가 감점 없이 저장된 라벨값을 그대로 사용한다. 출처 정보는 데이터 품질 관리에는 유지하지만 초기 추천 점수에는 넣지 않는다.
 
-```text
-ocean
-scenic_value
-physical_ease
-parents
-month_8
-weather_sensitivity
-```
+## 4. 후보 자격과 필수 조건
 
-**초기 점수 입력 원칙:** 모든 라벨의 신뢰도를 동일하게 취급한다. 출처 등급, 검수 상태 또는 라벨별 confidence에 따른 가중치 조정과 유형 평균 수축은 적용하지 않으며 저장된 라벨 값 `x_ik`를 그대로 효용 계산에 사용한다.
-
-근거와 출처 정보는 라벨링 데이터의 품질 관리에는 유지할 수 있지만 초기 추천 점수에는 영향을 주지 않는다.
-
-## 3. 1단계: 갈 수 있는 장소만 남긴다
-
-취향 점수를 계산하기 전에 장소가 여행 조건을 충족하는지 판정한다. 영업 여부, 여행 날짜, 연령 제한, 예약, 접근성, 안전 조건 등은 라벨 점수와 분리된 필수 제약이다.
-
-장소 상태는 다음 세 범주로 구분한다.
+취향 점수보다 먼저 장소의 후보 자격을 판정한다.
 
 | 상태 | 의미 |
 |---|---|
-| `eligible` | 모든 활성 필수 조건을 충족하여 추천 가능 |
-| `conditional` | 중요한 정보가 없거나 예약·최신 확인이 필요한 조건부 후보 |
-| `ineligible` | 하나 이상의 필수 조건을 위반하여 제외 |
+| `eligible` | 활성 필수 조건을 충족해 일반 추천 가능 |
+| `conditional` | 예약·영업·접근성 등 추가 확인 필요 |
+| `ineligible` | 필수 조건 위반 또는 사용자 제외 장소 |
 
-필수 조건 위반은 높은 취향 점수로 상쇄하지 않는다. 예를 들어 휠체어 접근이 필수인데 접근할 수 없는 장소라면 경관이나 로컬성이 높아도 추천하지 않는다.
+필수 조건 위반은 높은 취향 점수로 상쇄하지 않는다. 구조화되지 않은 영업·예약·접근성 정보는 자동으로 통과시키지 않고 조건부 후보나 확인 사항으로 분리한다.
 
-중요한 정보가 `unknown`일 때의 정책도 항목별로 구분한다.
-
-- 안전·연령·필수 접근성: 제외하거나 별도 조건부 목록으로 분리
-- 축제 개최일: 여행 날짜와 겹침이 확인될 때만 후보에 포함
-- 영업 여부: 조건부 후보로 두고 최신 확인 요구
-- 예약 필요 여부: 조건부 후보로 두고 경고 표시
-
-## 4. 2단계: 구조화된 사용자 선호를 효용 함수로 바꾼다
-
-초기 버전은 자연어 입력을 사용하지 않는다. UI나 API에서 선택한 각 활성 라벨의 선호를 다음 구조로 전달한다.
+intent lane은 서로 섞지 않는다.
 
 ```text
-p_k = (mode, weight, target, tolerance, threshold)
+visit    → 관광·문화·레포츠
+shopping → 쇼핑
+stay     → 숙박
+event    → 축제·행사
 ```
 
-| mode | 의미 | 예시 |
-|---|---|---|
-| `benefit` | 라벨 값이 높을수록 선호 | 바다 느낌이 강한 곳 |
-| `avoid` | 라벨 값이 낮을수록 선호 | 활동적인 곳을 피함 |
-| `target` | 특정 값에 가까울수록 선호 | 실내와 야외가 반반인 곳 |
-| `ignore` | 이번 요청에서는 계산하지 않음 | 카페 여부는 상관없음 |
+## 5. 구조화된 선호 효용
 
-대표적인 효용 함수는 다음과 같다.
+각 활성 원자 라벨에 대한 선호는 다음 구조를 가진다.
+
+```text
+p_k = (mode, weight, target, tolerance)
+```
 
 ```text
 benefit: u_k(x) = x
 avoid:   u_k(x) = 1 - x
-target:  u_k(x) = exp(-(x - target)^2 / (2 × tolerance^2))
+target:  u_k(x) = exp(-(x-target)^2 / (2*tolerance^2))
 ignore:  계산에서 제외
 ```
 
-초기 중요도는 `0, 1, 2, 4`처럼 희소하게 입력한다.
+중요도는 `1`, `2`, `4`를 사용하고 활성 가중치의 합으로 정규화한다. “반드시”는 큰 가중치가 아니라 필수 조건으로 입력해야 한다.
 
-- 관심 없음: 0
-- 조금 중요: 1
-- 중요: 2
-- 매우 중요: 4
+## 6. 장소 관련도 계산
 
-“반드시”라는 요구는 매우 큰 가중치로 표현하지 않고 필수 또는 소프트 제약으로 승격한다. 활성 가중치는 합이 1이 되도록 정규화한다.
-
-## 5. 3단계: 개인 취향 적합도를 계산한다
-
-모든 라벨을 동일한 신뢰도로 보고 활성 라벨의 저장값을 그대로 가중 평균한다.
+### 6.1 개인 취향 P
 
 ```text
 P_i
-  = sum(active_weight_k × u_k(x_ik))
-    / sum(active_weight_k)
+  = sum(w_k * u_k(x_ik))
+    / sum(w_k)
 ```
 
-예를 들어 사용자 선호가 다음과 같다고 가정한다.
+사용자가 선택하지 않은 라벨은 0점으로 넣지 않고 계산에서 제외한다.
 
-```text
-ocean                weight 4
-physical_ease        weight 2
-local_embeddedness   weight 2
-photo_value          weight 1
-```
+### 6.2 동행자 A
 
-어떤 장소의 라벨값이 각각 `1.00`, `0.75`, `0.80`, `0.90`이면 취향 적합도는 약 `0.89`다.
-
-```text
-(4×1.00 + 2×0.75 + 2×0.80 + 1×0.90) / 9 = 0.89
-```
-
-이 값은 장소의 절대적인 품질 점수가 아니라 **현재 사용자의 현재 여행 요청에 대한 적합도**다.
-
-## 6. 4단계: 동행자·월·날씨를 결합한다
-
-### 6.1 동행자 적합도
-
-초기 입력에서 대표 동행자 유형 하나를 선택하고 해당 동행자 라벨값을 사용한다.
+대표 동행 유형 하나를 사용한다.
 
 ```text
 A_i(g) = companion_score_i,g
 ```
 
-사용자별 점수를 별도로 계산하거나 평균·최소 만족도를 다시 합산하지 않는다. 아이나 고령자의 안전·필수 접근성은 동행 점수가 아니라 별도의 필수 제약이다.
+아이·고령자의 안전이나 휠체어 접근 요구는 동행 점수가 아니라 별도 필수 조건이다.
 
-### 6.2 월별 적합도
-
-여행 기간이 여러 달에 걸치면 각 달에 속한 일수로 가중 평균한다.
+### 6.3 여행 월 M
 
 ```text
 M_i(date_range)
-  = sum(days_in_month_m × month_score_i,m)
+  = sum(days_in_month_m * month_score_i,m)
     / sum(days_in_month_m)
 ```
 
-축제는 일반 월 적합도로 판단하지 않는다. 개최일이 여행 기간과 겹치지 않으면 제외하고, 겹치면 확인된 개최 가능성을 사용한다.
+축제는 일반 월 적합도로 개최 가능성을 대신하지 않는다. 구조화된 개최일 확인이 별도로 필요하다.
 
-### 6.3 날씨 적합도
+### 6.4 날씨 W
 
-현재 날씨의 불리한 정도를 `b(context)`라고 하면 다음처럼 계산한다.
+실시간 날씨가 연결된 후에만 다음 값을 사용할 수 있다.
 
 ```text
 W_i(context)
-  = 1 - b(context) × weather_sensitivity_i
+  = 1 - weather_badness(context) * weather_sensitivity_i
 ```
 
-운영 중단이나 안전 통제는 날씨 점수보다 먼저 필수 필터로 처리한다. `indoor_ratio`는 사용자의 실내·야외 선호에 사용하고, 날씨 감점에는 기본적으로 `weather_sensitivity`만 사용하여 중복 반영을 피한다.
+현재 `ccu-mmr-v2-six-place-schedule`은 날씨 블록을 비활성화한다.
 
-## 7. 5단계: 기본 관련도를 계산한다
+### 6.5 최종 장소 관련도 R
 
-활성화된 블록만 정규화하여 결합한다.
-
-```text
-B_i
-  = normalized_sum(
-      W_P × P_i,
-      W_A × A_i,
-      W_M × M_i,
-      W_W × W_i,
-      optional W_L × L_i
-    )
-```
-
-평가 전 초기 block weight 후보는 다음과 같다.
-
-| 블록 | 초기값 |
-|---|---:|
-| 개인 취향 `W_P` | 0.70 |
-| 동행자 `W_A` | 0.15 |
-| 월 `W_M` | 0.10 |
-| 날씨 `W_W` | 0.05 |
-
-사용자가 최대 이동시간을 필수로 지정하면 이동시간은 필터다. 단순 선호라면 별도의 감쇠 점수를 사용할 수 있다.
-
-```text
-L_i = exp(-travel_time_i / tau_L)
-```
-
-최종 관련도는 기본 점수에서 예약 확인 등 명시적인 소프트 조건만 반영한다. 라벨별 신뢰도나 불확실성에 따른 감점은 적용하지 않는다.
+활성 블록만 다시 정규화한다.
 
 ```text
 R_i
-  = clip(
-      B_i
-      - soft_penalty_i,
-      0,
-      1
+  = normalized_sum(
+      W_P * P_i,
+      W_A * A_i,
+      W_M * M_i,
+      W_W * W_i
     )
 ```
 
-## 8. 6단계: MMR로 목록의 중복을 줄인다
+평가 전 block weight seed는 다음과 같다.
 
-관련도만으로 상위 장소를 고르면 해수욕장, 카페 또는 오름처럼 비슷한 장소가 반복될 수 있다. MMR은 관련성과 이미 선택한 장소와의 차이를 동시에 고려한다.
+| 블록 | 초기값 |
+|---|---:|
+| 개인 취향 P | 0.70 |
+| 동행자 A | 0.15 |
+| 월 M | 0.10 |
+| 날씨 W | 0.05 |
 
-먼저 관련도 상위 후보군을 만든다.
+`R_i`는 장소의 절대 품질이 아니라 현재 요청에 대한 적합도다.
+
+## 7. 필수 장소의 중심 반경 지리 군집
+
+실제 장소 간 도로 이동시간은 사용하지 않는다. 필수 장소의 좌표로 각 군집의 중심을 계산하고 중심에서 각 장소까지의 Haversine 거리만 검사한다.
 
 ```text
-candidate_pool = Top M by R_i
-초기 후보: M=100
+center(C)
+  = 필수 장소 좌표의 구면 또는 지역 투영 평균점
+
+radius(C)
+  = max Haversine(center(C), place_i)
 ```
 
-첫 장소는 관련도가 가장 높은 후보를 선택한다. 이후에는 다음 값을 최대화하는 장소를 반복 선택한다.
+각 필수 장소를 singleton 군집으로 시작한다. 두 군집을 합친 뒤 새 중심을 계산했을 때 모든 장소가 반경 `R` 안에 들어오는 병합 중 반경 증가가 가장 작은 병합을 반복한다.
 
 ```text
-MMR(i)
-  = lambda_MMR × R_i
-  - (1 - lambda_MMR) × max(similarity(i, selected_place))
+merge(A,B) allowed
+  iff radius(A union B) <= R
 ```
 
-초기 후보값은 `lambda_MMR=0.75`, 결과 수는 `N=10`이다.
+더 이상 병합할 수 없을 때 `c_geo`개의 지리 군집을 얻는다.
 
-- `lambda_MMR` 증가: 관련도 우선
-- `lambda_MMR` 감소: 다양성 우선
+이 방법은 Complete-link HAC가 아니다. Complete-link는 클러스터 간 가장 먼 장소 쌍을 사용하지만, 이 초안은 오직 `중심 ↔ 장소` 거리만 사용한다. 한 클러스터의 반대편에 있는 두 장소는 서로 최대 약 `2R` 떨어질 수 있다.
 
-장소 간 유사도는 18개 원자 라벨의 가중 Gower 또는 Manhattan 거리로 계산한다. 비교 가능한 값이 없는 축은 mask로 제외한다.
+기존 필수 장소 군집의 중심은 이후 추가 추천 장소 때문에 이동시키지 않는다. 그래야 추천이 반복되면서 권역이 계속 밀려나는 현상을 막을 수 있다.
+
+## 8. 일일 capacity와 초과 군집 재분할
+
+지리적으로 가까운 장소가 많으면 `c_geo <= k`여도 하루에 모두 방문할 수 없다. 따라서 각 지리 군집의 수요 합을 검사한다.
+
+```text
+demand_i = estimated_visit_minutes_i  if mode = visit_minutes
+demand_i = 1                          if mode = place_count
+
+used_capacity(C) = sum demand_i
+```
+
+```text
+used_capacity(C) <= B
+  → 하루 군집 하나로 사용 가능
+
+used_capacity(C) > B
+  → 같은 권역이어도 여러 하루 군집으로 분할
+```
+
+지리 군집 `G`의 최소 필요 군집 수 하한은 다음과 같다.
+
+```text
+q_lower(G) = ceil(sum demand_i / B)
+```
+
+`q=q_lower`부터 증가시키며 capacity-constrained center clustering을 실행한다. 각 분할 군집은 동시에 다음 조건을 만족해야 한다.
+
+```text
+max Haversine(center(C), place_i) <= R
+sum demand_i <= B
+```
+
+조건을 만족하는 첫 `q`를 `q*(G)`로 사용한다. 구현 후보는 capacity-constrained k-means 또는 작은 필수 장소 집합에 대한 중심 후보 기반 CP-SAT 할당이다.
+
+예를 들어 모든 필수 장소가 한 반경 안에 있어 `c_geo=1`이어도 장소가 8개이고 하루 최대 장소 수가 4개라면 다음과 같다.
+
+```text
+q_lower = ceil(8 / 4) = 2
+```
+
+따라서 최소 두 개의 하루 군집을 만든다. 두 군집의 중심이 서로 가까워도 서로 다른 날짜를 의미하므로 문제가 아니다.
+
+## 9. 최종 군집 수와 새 추천 anchor
+
+모든 지리 군집의 capacity 분할 결과를 합산한다.
+
+```text
+c_final = sum(q*(G))
+```
+
+### 9.1 `c_final > k`
+
+현재 필수 장소·반경·capacity로는 여행일 안에 배치할 수 없다. 먼 군집을 억지로 합치거나 필수 장소를 자동 제외하지 않는다.
+
+사용자에게 다음 조정안을 보여준다.
+
+- 여행일 증가
+- 하루 capacity 증가
+- 반경 증가
+- 필수 장소 일부 해제
+
+### 9.2 `c_final = k`
+
+각 하루 군집의 남은 capacity 안에서 추가 장소를 추천한다.
+
+### 9.3 `c_final < k`
+
+기존 모든 군집 중심에서 반경 밖에 있는 장소 중 CCU 관련도가 높은 후보를 사용자에게 보여준다.
+
+```text
+outside(i)
+  = for every C:
+      Haversine(center(C), i) > R
+```
+
+사용자가 선택한 장소를 새 군집의 고정 `anchor`로 사용한다.
+
+```text
+new_cluster = { selected_anchor }
+center(new_cluster) = coordinates(selected_anchor)
+```
+
+이 과정을 `c_final=k`가 되거나 사용자가 더 이상 날짜를 채우지 않을 때까지 반복한다. 선택된 anchor는 해당 날짜에 반드시 들어가는 장소로 취급한다.
+
+## 10. 하루 군집 안의 추가 장소 CCU-MMR
+
+각 하루 군집에서 필수 장소와 anchor를 먼저 선택된 집합으로 둔다.
+
+```text
+selected(C)
+  = required_places(C)
+    union {anchor(C)}
+    union already_recommended(C)
+```
+
+후보는 다음 hard gate를 통과해야 한다.
+
+```text
+Haversine(center(C), candidate) <= R
+used_capacity(C) + demand(candidate) <= B
+candidate constraint status = eligible
+```
+
+중심에 가까울수록 높은 별도 배치값을 줄 수 있다.
+
+```text
+center_fit(i,C)
+  = max(0, 1 - Haversine(center(C),i) / R)
+```
+
+장소 적합도와 중심 근접도를 결합해 날짜 안에서의 관련도를 만든다.
+
+```text
+day_relevance(i,C)
+  = (1 - beta_center) * R_i
+  + beta_center * center_fit(i,C)
+```
+
+그다음 MMR로 의미 중복을 줄인다.
+
+```text
+MMR_day(i,C)
+  = lambda_MMR * day_relevance(i,C)
+  - (1 - lambda_MMR)
+    * max similarity(i,j) for j in selected(C)
+```
+
+필수 장소와 anchor가 `selected(C)`에 들어 있으므로 추가 추천은 이들과도 의미적으로 겹치지 않게 선택된다.
+
+장소 유사도는 18개 원자 라벨만 사용한다.
 
 ```text
 feature_distance(i,j)
-  = sum(v_k × mask_ijk × abs(x_ik - x_jk))
-    / sum(v_k × mask_ijk)
+  = sum(v_k * abs(x_ik - x_jk)) / sum(v_k)
 
 feature_similarity(i,j)
   = 1 - feature_distance(i,j)
 ```
 
-발견용 목록에서는 같은 장소 유형과 같은 권역 여부를 추가할 수 있다.
+후보를 하나 선택할 때마다 capacity를 차감하고 다음 후보를 다시 평가한다. 반경 또는 capacity를 넘는 후보는 점수를 낮추는 것이 아니라 해당 하루 후보에서 제외한다.
+
+## 11. 출력
+
+장소 추천과 일정 군집 결과를 분리해서 반환한다.
 
 ```text
-similarity(i,j)
-  = 0.7 × feature_similarity
-  + 0.2 × same_type
-  + 0.1 × same_region
+CCUMMRScheduleResult {
+  place_ranking[] {
+    place_id
+    relevance_R
+    preference_P
+    companion_A
+    month_M
+  }
+
+  schedule_clustering {
+    method: center-radius-capacity-v0
+    approximation: straight_line_center_distance
+    radius_km
+    capacity_mode
+    daily_capacity
+    geographic_cluster_count
+    final_day_cluster_count
+    day_clusters[] {
+      center
+      center_type
+      anchor_place_id?
+      required_place_ids[]
+      recommended_place_ids[]
+      used_capacity
+      remaining_capacity
+      max_center_distance_km
+    }
+  }
+
+  warnings[]
+  relaxation_options[]
+}
 ```
 
-지역별·유형별 최소 개수가 제품 요구사항이라면 MMR에 기대지 않고 명시적인 coverage 제약으로 구현한다.
+사용자에게는 장소 선정 이유와 일자 배치 이유를 구분해서 표시한다.
 
-MMR은 발견용 Top-N 추천의 다양화 방식이다. 실제 일정에서는 지리적 거리를 다양성 벌점으로 사용하지 않고, 이동시간과 경로 비용을 별도 일정 최적화 문제로 계산한다.
+```text
+장소 선정 이유:
+  바다·경관 선호와 부모님 동행 적합도가 높음
 
-## 9. 이 알고리즘이 보장하려는 원칙
+일자 배치 이유:
+  선택한 날짜 중심에서 반경 안에 있고 남은 방문 capacity를 충족함
+```
 
-1. **가능성이 적합성보다 먼저다.** 갈 수 없는 장소는 점수화하지 않는다.
-2. **현재 요청에 필요한 라벨만 사용한다.** 무관한 축은 중립값이 아니라 계산 제외다.
-3. **모든 라벨의 신뢰도를 동일하게 취급한다.** 초기 버전은 라벨별 confidence 보정이나 유형 평균 수축을 적용하지 않는다.
-4. **필수 조건과 선호를 분리한다.** 높은 선호 점수로 안전·접근성 위반을 상쇄하지 않는다.
-5. **개별 장소 순위와 목록 다양성을 분리한다.** 관련도 계산 후 MMR로 목록을 구성한다.
-6. **장소 추천과 일정 최적화를 분리한다.** 장소 적합도와 경로 효율을 같은 점수로 섞지 않는다.
+## 12. 예외와 폴백
 
-## 10. 평가 전 초기값과 미결정 사항
+- 필수 장소가 없으면 모든 날짜의 anchor를 추천·사용자 선택으로 채운다.
+- 필수 장소 하나는 해당 장소 좌표를 중심으로 singleton 군집을 만든다.
+- 좌표가 없는 필수 장소는 추측하지 않고 일정 군집을 중단한다.
+- 장소 하나의 demand가 하루 capacity보다 크면 실행 불가능으로 반환한다.
+- `visit_minutes`에 필요한 체류시간이 없으면 버전된 폴백을 명시적으로 사용하거나 `place_count` mode로 전환한다.
+- `c_final > k`이면 강제 병합이나 필수 장소 자동 제외를 하지 않는다.
+- 새 anchor 후보가 없으면 날짜를 비워 두거나 반경·군집 정책 변경을 요청한다.
+- 결과는 직선거리 기준 근사 군집이며 실제 도로, 산악 우회, 선박, 교통량과 방문 순서를 보장하지 않는다.
+- 실제 이동시간을 확보하면 중심 반경 단계 뒤에 경로 실행 가능성 검사를 추가하되 장소 적합도 `R_i`는 유지한다.
 
-다음 값은 확정된 운영 파라미터가 아니라 실험을 시작하기 위한 seed다.
+## 13. 평가 전 파라미터와 미결정 사항
 
-| 항목 | 초기 후보값 |
+장소 추천 데모의 현재 seed는 다음과 같다.
+
+| 항목 | 초기값 |
 |---|---:|
-| 취향/동행/월/날씨 block | `0.70 / 0.15 / 0.10 / 0.05` |
+| P/A/M/W block | `0.70 / 0.15 / 0.10 / 0.05` |
 | MMR 관련도 비중 `lambda_MMR` | `0.75` |
-| MMR 후보군 `M` | `100` |
-| 기본 결과 수 `N` | `10` |
-| feature/type/region 유사도 비중 | `0.70 / 0.20 / 0.10` |
-| 상관 feature 그룹 가중치 cap 후보 | `0.35` |
+| MMR 후보 pool | 최대 `100` |
+| 기본 결과 수 | `10` |
 
-구현 전 또는 오프라인 평가에서 최소한 다음을 결정해야 한다.
+일정 군집에서 새로 결정해야 할 값은 다음과 같다.
 
-- 구조화된 UI 선택값을 원자 feature와 hard constraint로 변환하는 규칙
-- 조건부 후보를 일반 결과와 어떻게 분리해 보여줄지
-- MMR 강도와 지역·유형 coverage 정책
+- 중심 반경 `R`
+- 하루 최대 장소 수 또는 체류시간 capacity `B`
+- 장소별 예상 체류시간 출처와 폴백
+- capacity-constrained center clustering solver와 동점 규칙
+- 중심 근접도 비중 `beta_center`
+- 새 anchor 후보 수와 사용자 선택 UI
+- 실제 도로시간 도입 시 근사 군집을 재검증하는 정책
 
-## 학습 기반 랭커로 전환하는 조건
+## 14. 보장하려는 원칙
 
-초기에는 해석 가능한 규칙과 전문가 pairwise 평가로 가중치를 보정한다. 학습 기반 랭커로 전환할 때는 단순한 로그 건수 하나만 기준으로 삼지 않는다.
+1. 갈 수 없는 장소는 높은 취향 점수로 복구하지 않는다.
+2. 사용자가 선택한 원자 라벨만 장소 적합도에 사용한다.
+3. 모든 라벨의 신뢰도는 동일하게 취급한다.
+4. 필수 장소는 일정 군집에서 누락하지 않는다.
+5. 지리적으로 가까워도 하루 capacity를 넘으면 여러 날짜로 나눈다.
+6. 추가 추천 중심지는 사용자가 선택하며 새 날짜의 고정 anchor가 된다.
+7. 필수 장소와 anchor를 MMR 중복 계산에 포함한다.
+8. 장소 적합도와 일정 배치값을 분리한다.
+9. 중심 반경 결과를 실제 이동시간 기반 확정 일정으로 표현하지 않는다.
 
-다음 조건을 함께 확인한다.
+## 15. 현재 구현 범위
 
-- 필수 제약 schema와 최신성 관리가 안정적임
-- 유형·지역·상황별로 대표성 있는 노출 로그가 존재함
-- 저장, 상세 보기, 방문, 예약 등 reward 정의가 명확함
-- 시간 순서 holdout에서 현재 기준선보다 일관되게 개선됨
-- constraint violation, 지역·유형 coverage가 악화되지 않음
-- shadow mode에서 충분히 검증됨
+- 구현됨: 구조화된 입력, P/A/M 관련도, 18원자 라벨 유사도, Top-N MMR, 지도·41축·웹 조사 표시 (`ccu-mmr-v2-six-place-schedule`)
+- 구현됨: 자차 여부, 필수 장소, 중심 반경 병합, 하루 6곳 capacity 분할, 추가 중심 후보 선택, 날짜별 MMR, 일차 hover/focus 지도 강조 (`ccu-mmr-v2-six-place-schedule`)
+- 미구현: 실제 이동시간·체류시간·영업시간·예약과 방문 순서 최적화
 
-운영 계획을 위한 거친 시작점으로 `10^4` 수준의 노출과 `10^3` 수준의 의미 있는 positive action부터 FM 또는 LightFM 계열 실험을 검토할 수 있다. 이는 학술적 전환 임계값이 아니며 segment별 learning curve와 power analysis로 판단해야 한다.
-
-## 현재 문서 체계에서의 위치
-
-- 이 문서는 41개 라벨을 활용하는 **차기 CCU-MMR 후보 설계**다.
-- 현재 기준 설계는 [추천 알고리즘](recommendation_algorithm.md)의 `baseline-v0`이며 추천 기능 자체는 아직 미구현이다.
-- 두 안의 입력 feature, 가중치, MMR 유사도 정의가 다르므로 구현 전에 [SPEC-008](spec_008.md)에서 통합 또는 대체 결정을 승인해야 한다.
-- 실제 구현 변경에는 데이터 계약, 오프라인 평가 시나리오, 회귀 검증과 버전 추적을 함께 반영해야 한다.
+초기값과 정확한 입출력 계약은 [SPEC-015](spec_015.md)를 따른다.

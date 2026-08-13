@@ -12,6 +12,12 @@
     39: { label: "음식점", short: "맛", color: "#c55747" },
   };
   const FALLBACK_CATEGORY = { label: "기타", short: "기", color: "#60706d" };
+  const INTENT_CONTENT_TYPES = Object.freeze({
+    visit: new Set(["12", "14", "25", "28"]),
+    shopping: new Set(["38"]),
+    stay: new Set(["32"]),
+    event: new Set(["15"]),
+  });
   const LIST_LIMIT = 40;
   const JEJU_LIMITS = [[32.78, 125.72], [33.82, 127.22]];
   const LABEL_GROUPS = [
@@ -68,18 +74,20 @@
   ];
 
   const dom = Object.fromEntries([
-    "mapLoading", "headerReadyCount", "sourceDate", "filterSummary", "placeSearch", "clearSearchButton",
+    "map", "mapLoading", "headerReadyCount", "sourceDate", "filterSummary", "placeSearch", "clearSearchButton",
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
     "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailRank", "detailTitle",
     "detailAddress", "detailPhone", "detailResearch", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
-    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "companionType",
-    "preferenceRows", "addPreferenceButton", "resultLimit", "diversityPreset", "excludedPlaceIds", "formError",
+    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "companionType", "transportMode",
+    "preferenceRows", "addPreferenceButton", "resultLimit", "diversityPreset", "requiredPlaceSearch", "selectedRequiredPlaces",
+    "requiredPlaceSearchResults", "requiredPlaceStatus", "excludedPlaceIds", "formError",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
     "recommendationCount", "recommendationResultList", "verificationPanel", "verificationCount", "verificationList",
+    "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
     "outputPreview", "recommendationLegend", "outputScroll",
   ].map((id) => [id, document.getElementById(id)]));
 
@@ -143,6 +151,11 @@
     renderFrame: null,
     recommendationResult: null,
     recommendationById: new Map(),
+    scheduleById: new Map(),
+    requiredPlaceIds: new Set(),
+    selectedAnchorIds: new Set(),
+    hoveredScheduleDay: null,
+    focusedScheduleDay: null,
     drawerReturnFocus: null,
   };
 
@@ -370,6 +383,120 @@
     });
   }
 
+  function requiredPlaceEligible(place) {
+    if (!place?.recommendationReady || String(place.type) === "15") return false;
+    if (dom.destinationRegion.value !== "jeju_all" && place.region !== dom.destinationRegion.value) return false;
+    return INTENT_CONTENT_TYPES[dom.tripIntent.value]?.has(String(place.type)) || false;
+  }
+
+  function requiredPlaceMatches(place, query) {
+    const normalized = query.normalize("NFKC").toLocaleLowerCase("ko-KR");
+    return String(place.id).includes(normalized) || place.searchText.includes(normalized);
+  }
+
+  function requiredPlaceMatchRank(place, query) {
+    const normalized = query.normalize("NFKC").toLocaleLowerCase("ko-KR");
+    const title = String(place.title || "").normalize("NFKC").toLocaleLowerCase("ko-KR");
+    const id = String(place.id);
+    if (id === normalized || title === normalized) return 0;
+    if (title.startsWith(normalized)) return 1;
+    if (title.includes(normalized)) return 2;
+    if (String(place.address || "").normalize("NFKC").toLocaleLowerCase("ko-KR").includes(normalized)) return 3;
+    return 4;
+  }
+
+  function renderSelectedRequiredPlaces() {
+    dom.selectedRequiredPlaces.replaceChildren();
+    const selectedIds = [...state.requiredPlaceIds];
+    const invalidCount = selectedIds.filter((placeId) => !requiredPlaceEligible(placeById.get(placeId))).length;
+    dom.requiredPlaceStatus.textContent = selectedIds.length
+      ? `${formatNumber(selectedIds.length)}곳 선택${invalidCount ? ` · 현재 지역·목적과 맞지 않는 ${formatNumber(invalidCount)}곳은 삭제하거나 조건을 되돌려 주세요.` : ""}`
+      : "선택된 필수 장소가 없습니다.";
+    for (const placeId of selectedIds) {
+      const place = placeById.get(placeId);
+      if (!place) continue;
+      const chip = document.createElement("div");
+      chip.className = `selected-required-place${requiredPlaceEligible(place) ? "" : " is-invalid"}`;
+      const copy = document.createElement("div");
+      const title = document.createElement("strong");
+      title.textContent = place.title;
+      const meta = document.createElement("span");
+      meta.textContent = `${categoryFor(place.type).label} · ${regionName(place.region)} · ID ${place.id}`;
+      copy.append(title, meta);
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "remove-required-place";
+      remove.setAttribute("aria-label", `${place.title} 필수 장소에서 삭제`);
+      remove.textContent = "삭제";
+      remove.addEventListener("click", () => {
+        state.requiredPlaceIds.delete(placeId);
+        renderRequiredPlacePicker();
+        clearRecommendation("필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요.");
+        dom.requiredPlaceSearch.focus();
+      });
+      chip.append(copy, remove);
+      dom.selectedRequiredPlaces.append(chip);
+    }
+  }
+
+  function renderRequiredPlaceSearchResults() {
+    const query = dom.requiredPlaceSearch.value.trim();
+    dom.requiredPlaceSearchResults.replaceChildren();
+    if (!query) {
+      dom.requiredPlaceSearchResults.hidden = true;
+      dom.requiredPlaceSearch.setAttribute("aria-expanded", "false");
+      return;
+    }
+    const excludedIds = new Set(dom.excludedPlaceIds.value.split(/[\s,]+/u).map((value) => value.trim()).filter(Boolean));
+    const matches = places
+      .filter(requiredPlaceEligible)
+      .filter((place) => !state.requiredPlaceIds.has(String(place.id)) && !excludedIds.has(String(place.id)))
+      .filter((place) => requiredPlaceMatches(place, query))
+      .sort((left, right) => requiredPlaceMatchRank(left, query) - requiredPlaceMatchRank(right, query)
+        || Number(left.sourceOrder ?? Number.MAX_SAFE_INTEGER) - Number(right.sourceOrder ?? Number.MAX_SAFE_INTEGER)
+        || String(left.id).localeCompare(String(right.id)))
+      .slice(0, 10);
+    dom.requiredPlaceSearchResults.hidden = false;
+    dom.requiredPlaceSearch.setAttribute("aria-expanded", "true");
+    if (!matches.length) {
+      const empty = document.createElement("p");
+      empty.className = "required-place-search-empty";
+      empty.textContent = "현재 지역·장소 목적에서 선택 가능한 검색 결과가 없습니다.";
+      dom.requiredPlaceSearchResults.append(empty);
+      return;
+    }
+    for (const place of matches) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "required-place-result";
+      button.setAttribute("role", "option");
+      button.dataset.placeId = String(place.id);
+      const copy = document.createElement("div");
+      const title = document.createElement("strong");
+      title.textContent = place.title;
+      const address = document.createElement("span");
+      address.textContent = place.address || "주소 정보 없음";
+      copy.append(title, address);
+      const meta = document.createElement("small");
+      meta.textContent = `${categoryFor(place.type).label} · ${regionName(place.region)} · ID ${place.id}`;
+      button.append(copy, meta);
+      button.addEventListener("click", () => {
+        state.requiredPlaceIds.add(String(place.id));
+        state.selectedAnchorIds.clear();
+        dom.requiredPlaceSearch.value = "";
+        renderRequiredPlacePicker();
+        clearRecommendation("필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요.");
+        dom.requiredPlaceSearch.focus();
+      });
+      dom.requiredPlaceSearchResults.append(button);
+    }
+  }
+
+  function renderRequiredPlacePicker() {
+    renderSelectedRequiredPlaces();
+    renderRequiredPlaceSearchResults();
+  }
+
   function collectRequest() {
     const hardConstraints = [...document.querySelectorAll('input[name="hardConstraint"]:checked')].map((input) => input.value);
     const excludedPlaceIds = dom.excludedPlaceIds.value.split(/[\s,]+/u).map((value) => value.trim()).filter(Boolean);
@@ -379,9 +506,12 @@
       destinationRegion: dom.destinationRegion.value,
       intent: dom.tripIntent.value,
       travelWindow: hasDates ? { startDate: dom.travelStartDate.value, endDate: dom.travelEndDate.value } : null,
+      transportMode: dom.transportMode.value,
       companionType: dom.companionType.value,
       preferences: collectPreferences(),
       hardConstraints,
+      requiredPlaceIds: [...state.requiredPlaceIds],
+      anchorPlaceIds: [...state.selectedAnchorIds],
       excludedPlaceIds,
       resultCount: Number(dom.resultLimit.value),
       diversity: dom.diversityPreset.value,
@@ -398,11 +528,16 @@
     dom.travelStartDate.value = "2026-08-20";
     dom.travelEndDate.value = "2026-08-22";
     dom.companionType.value = "parents";
+    dom.transportMode.value = "car";
     dom.resultLimit.value = "10";
     dom.diversityPreset.value = "balanced";
+    dom.requiredPlaceSearch.value = "";
+    state.requiredPlaceIds.clear();
     dom.excludedPlaceIds.value = "";
+    state.selectedAnchorIds.clear();
     document.querySelectorAll('input[name="hardConstraint"]').forEach((input) => { input.checked = false; });
     renderPreferenceRows(DEFAULT_PREFERENCES);
+    renderRequiredPlacePicker();
     hideFormError();
   }
 
@@ -460,14 +595,22 @@
     return state.recommendationById.get(String(place.id)) || null;
   }
 
+  function activeScheduleDay() {
+    return state.hoveredScheduleDay ?? state.focusedScheduleDay;
+  }
+
   function createMarkerIcon(place, selected = false) {
     const recommendation = recommendationFor(place);
+    const scheduleAssignment = state.scheduleById.get(String(place.id));
+    const highlightedDay = activeScheduleDay();
+    const isDayHighlighted = highlightedDay !== null && scheduleAssignment?.dayIndex === highlightedDay;
     const category = categoryFor(place.type);
-    const markerClass = recommendation ? " is-recommended" : "";
-    const content = recommendation ? String(recommendation.rank) : category.short;
+    const markerClass = recommendation || scheduleAssignment ? " is-recommended" : "";
+    const content = scheduleAssignment ? `D${scheduleAssignment.dayIndex}` : recommendation ? String(recommendation.rank) : category.short;
+    const markerColor = isDayHighlighted ? "#d84f75" : scheduleAssignment ? "#14877a" : recommendation ? "#ef8354" : category.color;
     return window.L.divIcon({
-      className: `place-marker-wrap${selected ? " is-selected" : ""}${markerClass}`,
-      html: `<div class="place-marker" style="--marker-color:${recommendation ? "#ef8354" : category.color}"><span>${content}</span></div>`,
+      className: `place-marker-wrap${selected ? " is-selected" : ""}${markerClass}${isDayHighlighted ? " is-day-highlighted" : ""}`,
+      html: `<div class="place-marker" style="--marker-color:${markerColor}"><span>${content}</span></div>`,
       iconSize: [32, 38], iconAnchor: [16, 37], tooltipAnchor: [0, -31],
     });
   }
@@ -497,6 +640,13 @@
   }
 
   function mapPlaces() {
+    const highlightedDay = activeScheduleDay();
+    if (highlightedDay !== null) {
+      const day = state.recommendationResult?.schedule?.dayClusters?.find((item) => item.dayIndex === highlightedDay);
+      return (day?.placeIds || []).map((placeId) => placeById.get(placeId)).filter(Boolean);
+    }
+    const scheduleIds = [...state.scheduleById.keys()];
+    if (scheduleIds.length) return scheduleIds.map((placeId) => placeById.get(placeId)).filter(Boolean);
     if (state.recommendationResult?.items?.length) {
       return state.recommendationResult.items.map((item) => placeById.get(item.placeId)).filter(Boolean);
     }
@@ -507,14 +657,24 @@
     if (!state.clusterLayer) return;
     state.clusterLayer.clearLayers();
     const targetPlaces = mapPlaces();
+    dom.map.dataset.highlightedScheduleDay = activeScheduleDay() ?? "";
+    dom.map.dataset.visiblePlaceIds = targetPlaces.map((place) => String(place.id)).join(",");
     for (const place of places) {
       const marker = state.markerById.get(place.id);
       if (marker) marker.setIcon(createMarkerIcon(place, state.selectedPlace?.id === place.id));
     }
     state.clusterLayer.addLayers(targetPlaces.map((place) => state.markerById.get(place.id)).filter(Boolean));
-    dom.recommendationLegend.hidden = !state.recommendationResult?.items?.length;
-    dom.fitRecommendationButton.disabled = !state.recommendationResult?.items?.length;
+    dom.recommendationLegend.hidden = !state.recommendationResult?.items?.length && !state.scheduleById.size;
+    dom.fitRecommendationButton.disabled = !state.recommendationResult?.items?.length && !state.scheduleById.size;
     scheduleVisibleResultRender();
+  }
+
+  function refreshScheduleDayHighlight() {
+    const highlightedDay = activeScheduleDay();
+    document.querySelectorAll(".schedule-day-card").forEach((card) => {
+      card.classList.toggle("is-map-highlighted", Number(card.dataset.dayIndex) === highlightedDay);
+    });
+    refreshMapMarkers();
   }
 
   function initMap() {
@@ -989,6 +1149,118 @@
     }
   }
 
+  function scheduleStatusLabel(status) {
+    return {
+      feasible: "일정 군집 완료",
+      needs_anchor_selection: "추가 중심 선택 필요",
+      infeasible: "현재 조건으로 배치 불가",
+      not_requested: "여행일 미입력",
+    }[status] || status;
+  }
+
+  function createSchedulePlaceButton(item, dayIndex) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `schedule-place is-${item.role}`;
+    const role = item.role === "required" ? "필수" : item.role === "anchor" ? "중심" : "추천";
+    button.innerHTML = `<span>${role}</span><strong></strong><small>${formatScore(item.distanceKm, 1)}km</small>`;
+    button.querySelector("strong").textContent = item.title;
+    button.setAttribute("aria-label", `${dayIndex}일차 ${role} 장소 ${item.title}`);
+    button.addEventListener("click", () => {
+      const place = placeById.get(item.placeId);
+      if (place) {
+        selectPlace(place, { moveMap: true });
+        closeOutputPanel();
+      }
+    });
+    return button;
+  }
+
+  function renderSchedule(schedule) {
+    dom.scheduleDayCount.textContent = formatNumber(schedule.dayClusters.length);
+    dom.scheduleSummary.textContent = `${scheduleStatusLabel(schedule.status)} · ${schedule.radiusKm}km · 하루 ${schedule.dailyCapacity}곳`;
+    if (schedule.dayClusters.length) {
+      const fragment = document.createDocumentFragment();
+      for (const day of schedule.dayClusters) {
+        const card = document.createElement("article");
+        card.className = "schedule-day-card";
+        card.dataset.dayIndex = String(day.dayIndex);
+        card.tabIndex = 0;
+        card.setAttribute("aria-label", `${day.dayIndex}일차 일정 · 지도에서 이 일차 장소 강조`);
+        card.addEventListener("mouseenter", () => {
+          state.hoveredScheduleDay = day.dayIndex;
+          refreshScheduleDayHighlight();
+        });
+        card.addEventListener("mouseleave", () => {
+          state.hoveredScheduleDay = null;
+          refreshScheduleDayHighlight();
+        });
+        card.addEventListener("focusin", () => {
+          state.focusedScheduleDay = day.dayIndex;
+          refreshScheduleDayHighlight();
+        });
+        card.addEventListener("focusout", (event) => {
+          if (card.contains(event.relatedTarget)) return;
+          state.focusedScheduleDay = null;
+          refreshScheduleDayHighlight();
+        });
+        const heading = document.createElement("div");
+        heading.className = "schedule-day-heading";
+        const title = document.createElement("div");
+        const dateText = day.date ? ` · ${day.date}` : "";
+        title.innerHTML = `<strong>${day.dayIndex}일차${dateText}</strong><span>${day.centerType === "user_anchor" ? "사용자 선택 중심" : "필수 장소 중심"}</span>`;
+        const usage = document.createElement("b");
+        usage.textContent = `${day.usedCapacity}/${schedule.dailyCapacity}`;
+        heading.append(title, usage);
+        const meta = document.createElement("p");
+        meta.textContent = `최대 중심거리 ${formatScore(day.maxCenterDistanceKm, 1)}km · 중심 ${formatScore(day.center.lat, 4)}, ${formatScore(day.center.lng, 4)}`;
+        const placesList = document.createElement("div");
+        placesList.className = "schedule-place-list";
+        for (const item of day.places) placesList.append(createSchedulePlaceButton(item, day.dayIndex));
+        card.append(heading, meta, placesList);
+        if (day.anchorPlaceId) {
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "remove-anchor-button";
+          remove.textContent = "이 중심 선택 취소";
+          remove.addEventListener("click", () => {
+            state.selectedAnchorIds.delete(day.anchorPlaceId);
+            runRecommendation({ fit: true, openOutput: false });
+          });
+          card.append(remove);
+        }
+        fragment.append(card);
+      }
+      dom.scheduleResultList.replaceChildren(fragment);
+    } else {
+      const description = schedule.status === "infeasible"
+        ? schedule.violations.map((violation) => violation.message).join(" ")
+        : schedule.status === "not_requested"
+          ? "여행 시작일과 종료일을 입력해 주세요."
+          : "아래 후보 중 새 일자의 중심 장소를 선택해 주세요.";
+      renderEmptyState(dom.scheduleResultList, scheduleStatusLabel(schedule.status), description);
+    }
+
+    const showAnchors = schedule.status === "needs_anchor_selection" && schedule.anchorCandidates.length > 0;
+    dom.anchorCandidatePanel.hidden = !showAnchors;
+    dom.anchorCandidateList.replaceChildren();
+    if (showAnchors) {
+      dom.anchorCandidateHelp.textContent = `${schedule.unfilledDayCount}일이 비어 있습니다. 기존 중심에서 ${schedule.radiusKm}km 밖인 후보입니다.`;
+      for (const candidate of schedule.anchorCandidates) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "anchor-candidate-button";
+        button.innerHTML = `<strong></strong><span>R ${formatScore(candidate.relevance)}</span>`;
+        button.querySelector("strong").textContent = candidate.title;
+        button.addEventListener("click", () => {
+          state.selectedAnchorIds.add(candidate.placeId);
+          runRecommendation({ fit: true, openOutput: false });
+        });
+        dom.anchorCandidateList.append(button);
+      }
+    }
+  }
+
   function renderRecommendationOutput(result) {
     result.provenance = {
       sourceDate: metadata.sourceDate || null,
@@ -1003,7 +1275,13 @@
       item.webResearch = publicResearch(placeById.get(item.placeId));
     }
     state.recommendationResult = result;
+    state.hoveredScheduleDay = null;
+    state.focusedScheduleDay = null;
     state.recommendationById = new Map(result.items.map((item) => [item.placeId, item]));
+    state.scheduleById = new Map();
+    for (const day of result.schedule?.dayClusters || []) {
+      for (const item of day.places || []) state.scheduleById.set(item.placeId, { ...item, dayIndex: day.dayIndex });
+    }
     const summary = result.summary;
     dom.requestPreview.textContent = JSON.stringify(result.request, null, 2);
     dom.outputPreview.textContent = JSON.stringify(result, null, 2);
@@ -1017,6 +1295,7 @@
     dom.recommendationSummary.textContent = `${formatNumber(summary.scoredCandidates)}개 점수 계산 · ${mode} · ${formatNumber(summary.returned)}개 출력`;
     renderWarnings(result.warnings);
     renderVerificationCandidates(result);
+    renderSchedule(result.schedule);
     if (result.items.length) {
       const fragment = document.createDocumentFragment();
       for (const item of result.items) fragment.append(createRecommendationCard(item));
@@ -1033,9 +1312,15 @@
     hideFormError();
     try {
       if (!algorithm) throw new Error("CCU-MMR 알고리즘을 불러오지 못했습니다.");
-      const result = algorithm.rank(state.filteredPlaces, collectRequest());
+      const request = collectRequest();
+      const candidateMap = new Map(state.filteredPlaces.map((place) => [String(place.id), place]));
+      for (const placeId of [...request.requiredPlaceIds, ...request.anchorPlaceIds]) {
+        const place = placeById.get(placeId);
+        if (place) candidateMap.set(placeId, place);
+      }
+      const result = algorithm.rank([...candidateMap.values()], request);
       renderRecommendationOutput(result);
-      if (fit && result.items.length) fitRecommendationPlaces();
+      if (fit && mapPlaces().length) fitRecommendationPlaces();
       if (openOutput && window.innerWidth <= 1240) openOutputPanel();
       return result;
     } catch (error) {
@@ -1045,14 +1330,22 @@
   }
 
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
+    state.selectedAnchorIds.clear();
     if (!state.recommendationResult) return;
     state.recommendationResult = null;
     state.recommendationById = new Map();
+    state.scheduleById = new Map();
+    state.hoveredScheduleDay = null;
+    state.focusedScheduleDay = null;
     dom.recommendationSummary.textContent = message;
     dom.recommendationCount.textContent = "0";
     dom.mobileResultCount.textContent = "0";
     dom.fitRecommendationButton.disabled = true;
     dom.recommendationLegend.hidden = true;
+    dom.scheduleDayCount.textContent = "0";
+    dom.scheduleSummary.textContent = "입력값이 바뀌어 일정을 다시 계산해야 합니다.";
+    dom.anchorCandidatePanel.hidden = true;
+    renderEmptyState(dom.scheduleResultList, "일정을 다시 계산해야 합니다", message);
     renderEmptyState(dom.recommendationResultList, "결과를 다시 계산해야 합니다", message);
     refreshMapMarkers();
     if (state.selectedPlace) renderDetail(state.selectedPlace);
@@ -1151,6 +1444,29 @@
 
   function bindEvents() {
     dom.recommendationForm.addEventListener("submit", (event) => { event.preventDefault(); runRecommendation(); });
+    dom.requiredPlaceSearch.addEventListener("input", renderRequiredPlaceSearchResults);
+    dom.requiredPlaceSearch.addEventListener("focus", renderRequiredPlaceSearchResults);
+    dom.requiredPlaceSearch.addEventListener("keydown", (event) => {
+      const firstResult = dom.requiredPlaceSearchResults.querySelector(".required-place-result");
+      if (event.key === "Enter" && firstResult) {
+        event.preventDefault();
+        firstResult.click();
+      } else if (event.key === "ArrowDown" && firstResult) {
+        event.preventDefault();
+        firstResult.focus();
+      } else if (event.key === "Escape") {
+        dom.requiredPlaceSearchResults.hidden = true;
+        dom.requiredPlaceSearch.setAttribute("aria-expanded", "false");
+      }
+    });
+    dom.destinationRegion.addEventListener("change", renderRequiredPlacePicker);
+    dom.tripIntent.addEventListener("change", renderRequiredPlacePicker);
+    dom.excludedPlaceIds.addEventListener("input", renderRequiredPlaceSearchResults);
+    document.addEventListener("click", (event) => {
+      if (event.target.closest(".required-place-picker")) return;
+      dom.requiredPlaceSearchResults.hidden = true;
+      dom.requiredPlaceSearch.setAttribute("aria-expanded", "false");
+    });
     dom.addPreferenceButton.addEventListener("click", () => {
       addPreferenceRow();
       clearRecommendation("선호 라벨이 바뀌었습니다. 추천을 다시 실행해 주세요.");
@@ -1164,6 +1480,7 @@
     dom.resetRecommendationButton.addEventListener("click", () => { resetRecommendationForm(); runRecommendation(); });
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
+      if (event.target === dom.requiredPlaceSearch) return;
       clearRecommendation("입력값이 바뀌었습니다. 추천을 다시 실행해 주세요.");
     };
     dom.recommendationForm.addEventListener("input", markRequestDirty);
@@ -1217,6 +1534,7 @@
       dom.algorithmBadge.textContent = algorithm.ALGORITHM_VERSION;
       dom.configPreview.textContent = JSON.stringify(algorithm.CONFIG, null, 2);
       renderPreferenceRows(DEFAULT_PREFERENCES);
+      renderRequiredPlacePicker();
       createCategoryFilters();
       bindEvents();
       initMap();
@@ -1225,6 +1543,8 @@
         run: () => runRecommendation({ fit: false, openOutput: false }),
         getResult: () => state.recommendationResult,
         getSelectedPlace: () => state.selectedPlace,
+        getMapPlaceIds: () => mapPlaces().map((place) => String(place.id)),
+        getHighlightedScheduleDay: () => activeScheduleDay(),
       };
     } catch (error) {
       console.error(error);

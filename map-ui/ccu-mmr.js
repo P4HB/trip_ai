@@ -5,8 +5,8 @@
 })(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
   "use strict";
 
-  const ALGORITHM_VERSION = "ccu-mmr-v0-demo";
-  const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v1";
+  const ALGORITHM_VERSION = "ccu-mmr-v2-six-place-schedule";
+  const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v2";
   const ATOMIC_FEATURES = [
     "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
     "traditional_market", "festival", "indoor_ratio", "weather_sensitivity",
@@ -26,6 +26,15 @@
     blockWeights: BLOCK_WEIGHTS,
     similarityWeights: Object.freeze({ feature: 0.70, sameType: 0.20, sameRegion: 0.10 }),
     softPenalty: 0,
+    schedule: Object.freeze({
+      method: "center-radius-capacity-v2",
+      carRadiusKm: 15,
+      noCarRadiusKm: 5,
+      capacityMode: "place_count",
+      dailyCapacity: 6,
+      centerWeight: 0.20,
+      anchorCandidateLimit: 12,
+    }),
   });
   const INTENT_TYPES = Object.freeze({
     visit: new Set(["12", "14", "25", "28"]),
@@ -95,6 +104,12 @@
     return Math.exp(-(distance * distance) / (2 * preference.tolerance * preference.tolerance));
   }
 
+  function normalizeIdList(value, fieldName) {
+    if (value === undefined || value === null) return [];
+    if (!Array.isArray(value)) throw new Error(`${fieldName}는 배열이어야 합니다.`);
+    return [...new Set(value.map(String).map((item) => item.trim()).filter(Boolean))];
+  }
+
   function normalizeRequest(input = {}) {
     const destinationRegion = input.destinationRegion || "jeju_all";
     if (!["jeju_all", "jeju_city", "seogwipo_city"].includes(destinationRegion)) {
@@ -150,8 +165,20 @@
       : null;
     if (intent === "event" && !travelWindow) throw new Error("축제·행사 추천에는 여행 기간이 필요합니다.");
     const monthWeights = monthDayWeights(travelWindow);
-    const excludedPlaceIds = [...new Set((input.excludedPlaceIds || []).map(String).filter(Boolean))];
-    const hardConstraints = [...new Set((input.hardConstraints || []).map(String).filter(Boolean))];
+    const excludedPlaceIds = normalizeIdList(input.excludedPlaceIds, "excludedPlaceIds");
+    const requiredPlaceIds = normalizeIdList(input.requiredPlaceIds, "requiredPlaceIds");
+    const anchorPlaceIds = normalizeIdList(input.anchorPlaceIds, "anchorPlaceIds");
+    const hardConstraints = normalizeIdList(input.hardConstraints, "hardConstraints");
+    const transportMode = input.transportMode || "car";
+    if (!["car", "no_car"].includes(transportMode)) {
+      throw new Error("이동수단은 자차 또는 비자차여야 합니다.");
+    }
+    const overlap = requiredPlaceIds.find((placeId) => excludedPlaceIds.includes(placeId));
+    if (overlap) throw new Error(`필수 장소와 제외 장소가 중복되었습니다: ${overlap}`);
+    const anchorRequiredOverlap = anchorPlaceIds.find((placeId) => requiredPlaceIds.includes(placeId));
+    if (anchorRequiredOverlap) throw new Error(`필수 장소는 추가 중심지로 다시 선택할 수 없습니다: ${anchorRequiredOverlap}`);
+    const anchorExcludedOverlap = anchorPlaceIds.find((placeId) => excludedPlaceIds.includes(placeId));
+    if (anchorExcludedOverlap) throw new Error(`제외 장소는 추가 중심지로 선택할 수 없습니다: ${anchorExcludedOverlap}`);
     const candidateFilter = {
       query: input.candidateFilter?.query ? String(input.candidateFilter.query) : null,
       contentTypeIds: Array.isArray(input.candidateFilter?.contentTypeIds)
@@ -164,13 +191,23 @@
       destinationRegion,
       intent,
       travelWindow,
+      transportMode,
       companionType,
       preferences: normalizedPreferences,
       hardConstraints,
       excludedPlaceIds,
+      requiredPlaceIds,
+      anchorPlaceIds,
       resultCount,
       diversity,
       monthWeights,
+      scheduleConfig: {
+        tripDays: monthWeights?.totalDays || 0,
+        radiusKm: transportMode === "car" ? CONFIG.schedule.carRadiusKm : CONFIG.schedule.noCarRadiusKm,
+        capacityMode: CONFIG.schedule.capacityMode,
+        dailyCapacity: CONFIG.schedule.dailyCapacity,
+        centerWeight: CONFIG.schedule.centerWeight,
+      },
       candidateFilter,
     };
   }
@@ -297,6 +334,299 @@
     };
   }
 
+  function hasCoordinates(place) {
+    return Number.isFinite(Number(place?.lat)) && Number.isFinite(Number(place?.lng));
+  }
+
+  function haversineKm(left, right) {
+    if (!hasCoordinates(left) || !hasCoordinates(right)) return Number.POSITIVE_INFINITY;
+    const toRadians = (degrees) => Number(degrees) * Math.PI / 180;
+    const lat1 = toRadians(left.lat);
+    const lat2 = toRadians(right.lat);
+    const deltaLat = lat2 - lat1;
+    const deltaLng = toRadians(right.lng) - toRadians(left.lng);
+    const a = Math.sin(deltaLat / 2) ** 2
+      + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng / 2) ** 2;
+    return 6371.0088 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(Math.max(0, 1 - a)));
+  }
+
+  function sphericalCenter(inputPlaces) {
+    if (!inputPlaces.length || inputPlaces.some((place) => !hasCoordinates(place))) return null;
+    let x = 0;
+    let y = 0;
+    let z = 0;
+    for (const place of inputPlaces) {
+      const lat = Number(place.lat) * Math.PI / 180;
+      const lng = Number(place.lng) * Math.PI / 180;
+      x += Math.cos(lat) * Math.cos(lng);
+      y += Math.cos(lat) * Math.sin(lng);
+      z += Math.sin(lat);
+    }
+    const horizontal = Math.sqrt(x * x + y * y);
+    return {
+      lat: Math.atan2(z, horizontal) * 180 / Math.PI,
+      lng: Math.atan2(y, x) * 180 / Math.PI,
+    };
+  }
+
+  function clusterFromIds(placeIds, placesById, fixedCenter = null) {
+    const sortedIds = [...placeIds].map(String).sort(compareText);
+    const clusterPlaces = sortedIds.map((placeId) => placesById.get(placeId));
+    const center = fixedCenter || sphericalCenter(clusterPlaces);
+    const maxCenterDistanceKm = center
+      ? Math.max(0, ...clusterPlaces.map((place) => haversineKm(center, place)))
+      : Number.POSITIVE_INFINITY;
+    return { placeIds: sortedIds, center, maxCenterDistanceKm };
+  }
+
+  function clusterRequiredPlaces(requiredPlaceIds, placesById, radiusKm) {
+    const clusters = requiredPlaceIds.map((placeId) => clusterFromIds([placeId], placesById));
+    const epsilon = 1e-9;
+    while (clusters.length > 1) {
+      let best = null;
+      for (let leftIndex = 0; leftIndex < clusters.length - 1; leftIndex += 1) {
+        for (let rightIndex = leftIndex + 1; rightIndex < clusters.length; rightIndex += 1) {
+          const merged = clusterFromIds(
+            [...clusters[leftIndex].placeIds, ...clusters[rightIndex].placeIds],
+            placesById,
+          );
+          if (merged.maxCenterDistanceKm > radiusKm + epsilon) continue;
+          const key = merged.placeIds.join("|");
+          if (!best
+            || merged.maxCenterDistanceKm < best.cluster.maxCenterDistanceKm - epsilon
+            || (Math.abs(merged.maxCenterDistanceKm - best.cluster.maxCenterDistanceKm) <= epsilon
+              && compareText(key, best.key) < 0)) {
+            best = { leftIndex, rightIndex, cluster: merged, key };
+          }
+        }
+      }
+      if (!best) break;
+      clusters.splice(best.rightIndex, 1);
+      clusters.splice(best.leftIndex, 1, best.cluster);
+    }
+    return clusters.sort((a, b) => compareText(a.placeIds[0], b.placeIds[0]));
+  }
+
+  function bearingFromCenter(center, place) {
+    const deltaLng = (Number(place.lng) - center.lng) * Math.PI / 180;
+    const lat1 = center.lat * Math.PI / 180;
+    const lat2 = Number(place.lat) * Math.PI / 180;
+    return Math.atan2(
+      Math.sin(deltaLng) * Math.cos(lat2),
+      Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLng),
+    );
+  }
+
+  function splitClustersByCapacity(geographicClusters, placesById, dailyCapacity) {
+    const dayClusters = [];
+    geographicClusters.forEach((geographicCluster, geographicClusterIndex) => {
+      const ordered = [...geographicCluster.placeIds].sort((leftId, rightId) => {
+        const bearingDifference = bearingFromCenter(geographicCluster.center, placesById.get(leftId))
+          - bearingFromCenter(geographicCluster.center, placesById.get(rightId));
+        return bearingDifference || compareText(leftId, rightId);
+      });
+      for (let offset = 0; offset < ordered.length; offset += dailyCapacity) {
+        const requiredPlaceIds = ordered.slice(offset, offset + dailyCapacity);
+        const child = clusterFromIds(requiredPlaceIds, placesById, geographicCluster.center);
+        dayClusters.push({
+          center: child.center,
+          centerType: "required_centroid",
+          anchorPlaceId: null,
+          requiredPlaceIds,
+          recommendedPlaceIds: [],
+          maxCenterDistanceKm: child.maxCenterDistanceKm,
+          geographicClusterIndex,
+        });
+      }
+    });
+    return dayClusters;
+  }
+
+  function outsideAllCenters(place, clusters, radiusKm) {
+    return hasCoordinates(place)
+      && clusters.every((cluster) => haversineKm(cluster.center, place) > radiusKm + 1e-9);
+  }
+
+  function dateForDay(startDate, dayIndex) {
+    if (!startDate) return null;
+    const date = parseCalendarDate(startDate, "여행 시작일");
+    date.setUTCDate(date.getUTCDate() + dayIndex);
+    return date.toISOString().slice(0, 10);
+  }
+
+  function chooseDayRecommendations(dayCluster, scoredCandidates, placesById, usedPlaceIds, request) {
+    const selectedIds = [
+      ...dayCluster.requiredPlaceIds,
+      ...(dayCluster.anchorPlaceId ? [dayCluster.anchorPlaceId] : []),
+    ];
+    const recommended = [];
+    while (selectedIds.length < request.scheduleConfig.dailyCapacity) {
+      const evaluated = [];
+      for (const candidate of scoredCandidates) {
+        if (usedPlaceIds.has(candidate.placeId)) continue;
+        const candidatePlace = placesById.get(candidate.placeId);
+        const distanceKm = haversineKm(dayCluster.center, candidatePlace);
+        if (distanceKm > request.scheduleConfig.radiusKm + 1e-9) continue;
+        const centerFit = Math.max(0, 1 - distanceKm / request.scheduleConfig.radiusKm);
+        const dayRelevance = (1 - request.scheduleConfig.centerWeight) * candidate.relevance
+          + request.scheduleConfig.centerWeight * centerFit;
+        let maxSimilarity = 0;
+        let similarPlaceId = null;
+        for (const selectedId of selectedIds) {
+          const similarity = featureSimilarity(candidatePlace, placesById.get(selectedId));
+          if (similarity > maxSimilarity) {
+            maxSimilarity = similarity;
+            similarPlaceId = selectedId;
+          }
+        }
+        const mmrScore = CONFIG.mmrLambda * dayRelevance - (1 - CONFIG.mmrLambda) * maxSimilarity;
+        evaluated.push({
+          ...candidate,
+          distanceKm,
+          centerFit,
+          dayRelevance,
+          maxSimilarity,
+          similarPlaceId,
+          mmrScore,
+        });
+      }
+      if (!evaluated.length) break;
+      evaluated.sort((a, b) => compareStable(a, b, "mmrScore"));
+      const winner = evaluated[0];
+      selectedIds.push(winner.placeId);
+      usedPlaceIds.add(winner.placeId);
+      recommended.push(winner);
+    }
+    return recommended;
+  }
+
+  function buildSchedule(scoredCandidates, placesById, request) {
+    const tripDays = request.scheduleConfig.tripDays;
+    const radiusKm = request.scheduleConfig.radiusKm;
+    const dailyCapacity = request.scheduleConfig.dailyCapacity;
+    const base = {
+      method: CONFIG.schedule.method,
+      status: tripDays ? "needs_anchor_selection" : "not_requested",
+      approximation: "center_to_place_haversine",
+      tripDays,
+      transportMode: request.transportMode,
+      radiusKm,
+      capacityMode: request.scheduleConfig.capacityMode,
+      dailyCapacity,
+      geographicClusterCount: 0,
+      requiredDayClusterCount: 0,
+      selectedAnchorCount: 0,
+      unfilledDayCount: tripDays,
+      dayClusters: [],
+      anchorCandidates: [],
+      violations: [],
+    };
+    if (!tripDays) return base;
+
+    const scoreById = new Map(scoredCandidates.map((candidate) => [candidate.placeId, candidate]));
+    const requestedIds = [...request.requiredPlaceIds, ...request.anchorPlaceIds];
+    for (const placeId of requestedIds) {
+      const place = placesById.get(placeId);
+      if (!place) throw new Error(`일정 장소 ID를 후보 데이터에서 찾을 수 없습니다: ${placeId}`);
+      if (!scoreById.has(placeId)) throw new Error(`일정 장소가 현재 지역·목적·필수조건을 통과하지 못했습니다: ${placeId}`);
+      if (!hasCoordinates(place)) throw new Error(`일정 장소 좌표가 없습니다: ${placeId}`);
+    }
+
+    const geographicClusters = clusterRequiredPlaces(request.requiredPlaceIds, placesById, radiusKm);
+    let dayClusters = splitClustersByCapacity(geographicClusters, placesById, dailyCapacity);
+    base.geographicClusterCount = geographicClusters.length;
+    base.requiredDayClusterCount = dayClusters.length;
+    if (dayClusters.length > tripDays) {
+      base.status = "infeasible";
+      base.unfilledDayCount = 0;
+      base.violations.push({
+        code: "required_clusters_exceed_trip_days",
+        message: `필수 장소에 필요한 일자 ${dayClusters.length}일이 여행일 ${tripDays}일을 초과합니다.`,
+      });
+    }
+
+    if (base.status !== "infeasible") {
+      if (dayClusters.length + request.anchorPlaceIds.length > tripDays) {
+        throw new Error("선택한 추가 중심지 수가 남은 여행일 수를 초과합니다.");
+      }
+      for (const anchorPlaceId of request.anchorPlaceIds) {
+        const anchor = placesById.get(anchorPlaceId);
+        if (!outsideAllCenters(anchor, dayClusters, radiusKm)) {
+          throw new Error(`추가 중심지는 기존 모든 중심에서 ${radiusKm}km 밖이어야 합니다: ${anchorPlaceId}`);
+        }
+        dayClusters.push({
+          center: { lat: Number(anchor.lat), lng: Number(anchor.lng) },
+          centerType: "user_anchor",
+          anchorPlaceId,
+          requiredPlaceIds: [],
+          recommendedPlaceIds: [],
+          maxCenterDistanceKm: 0,
+          geographicClusterIndex: null,
+        });
+      }
+      base.selectedAnchorCount = request.anchorPlaceIds.length;
+      base.unfilledDayCount = Math.max(0, tripDays - dayClusters.length);
+      base.status = base.unfilledDayCount ? "needs_anchor_selection" : "feasible";
+    }
+
+    const occupiedIds = new Set([
+      ...request.requiredPlaceIds,
+      ...request.anchorPlaceIds,
+    ]);
+    if (base.status !== "infeasible") {
+      base.anchorCandidates = scoredCandidates
+        .filter((candidate) => !occupiedIds.has(candidate.placeId))
+        .filter((candidate) => outsideAllCenters(placesById.get(candidate.placeId), dayClusters, radiusKm))
+        .slice(0, CONFIG.schedule.anchorCandidateLimit)
+        .map((candidate) => ({
+          placeId: candidate.placeId,
+          title: candidate.title,
+          relevance: candidate.relevance,
+          region: candidate.region,
+        }));
+      if (base.unfilledDayCount && !base.anchorCandidates.length) {
+        base.violations.push({ code: "no_anchor_candidates", message: "기존 중심 반경 밖에서 추가 중심 후보를 찾지 못했습니다." });
+      }
+    }
+
+    const usedPlaceIds = new Set(occupiedIds);
+    base.dayClusters = dayClusters.map((cluster, index) => {
+      const recommendations = base.status === "infeasible"
+        ? []
+        : chooseDayRecommendations(cluster, scoredCandidates, placesById, usedPlaceIds, request);
+      cluster.recommendedPlaceIds = recommendations.map((item) => item.placeId);
+      const allPlaceIds = [
+        ...cluster.requiredPlaceIds,
+        ...(cluster.anchorPlaceId ? [cluster.anchorPlaceId] : []),
+        ...cluster.recommendedPlaceIds,
+      ];
+      return {
+        dayIndex: index + 1,
+        date: index < tripDays ? dateForDay(request.travelWindow?.startDate, index) : null,
+        center: cluster.center,
+        centerType: cluster.centerType,
+        anchorPlaceId: cluster.anchorPlaceId,
+        requiredPlaceIds: cluster.requiredPlaceIds,
+        recommendedPlaceIds: cluster.recommendedPlaceIds,
+        placeIds: allPlaceIds,
+        places: allPlaceIds.map((placeId) => ({
+          placeId,
+          title: placesById.get(placeId)?.title || placeId,
+          role: cluster.requiredPlaceIds.includes(placeId)
+            ? "required"
+            : placeId === cluster.anchorPlaceId ? "anchor" : "recommended",
+          distanceKm: haversineKm(cluster.center, placesById.get(placeId)),
+          relevance: scoreById.get(placeId)?.relevance ?? null,
+          dayMmrScore: recommendations.find((item) => item.placeId === placeId)?.mmrScore ?? null,
+        })),
+        usedCapacity: allPlaceIds.length,
+        remainingCapacity: Math.max(0, dailyCapacity - allPlaceIds.length),
+        maxCenterDistanceKm: Math.max(0, ...allPlaceIds.map((placeId) => haversineKm(cluster.center, placesById.get(placeId)))),
+      };
+    });
+    return base;
+  }
+
   function rank(inputPlaces, requestInput) {
     const request = normalizeRequest(requestInput);
     if (!Array.isArray(inputPlaces)) throw new Error("추천 후보는 배열이어야 합니다.");
@@ -417,12 +747,24 @@
 
     const items = selected.map((item, index) => ({ ...item, rank: index + 1 }));
     summary.returned = items.length;
+    const schedule = buildSchedule(candidates, placesById, request);
+    summary.scheduleStatus = schedule.status;
+    summary.scheduledDays = schedule.dayClusters.length;
     if (!items.length) warnings.push("현재 조건에서 순위를 계산할 수 있는 추천 후보가 없습니다.");
     if (items.some((item) => item.requestCoverage < 1)) {
       warnings.push("일부 후보는 요청 라벨이 없어 사용 가능한 블록만 재정규화했습니다.");
     }
+    if (schedule.status !== "not_requested") {
+      warnings.push(`일정은 실제 도로시간이 아닌 중심-장소 Haversine 직선거리(${schedule.radiusKm}km)와 하루 ${schedule.dailyCapacity}곳으로 만든 근사 군집입니다.`);
+    }
+    if (schedule.status === "needs_anchor_selection") {
+      warnings.push(`비어 있는 ${schedule.unfilledDayCount}일의 추가 중심 장소를 선택해야 합니다.`);
+    }
+    if (schedule.status === "infeasible") {
+      warnings.push("필수 장소를 현재 여행일·반경·하루 capacity 안에 모두 배치할 수 없습니다.");
+    }
     return {
-      schemaVersion: "ccu-mmr-result-v1",
+      schemaVersion: "ccu-mmr-result-v2",
       algorithmVersion: ALGORITHM_VERSION,
       executionMode: CONFIG.executionMode,
       datasetStatus: CONFIG.datasetStatus,
@@ -430,6 +772,7 @@
       config: CONFIG,
       summary,
       items,
+      schedule,
       verificationCandidates,
       warnings,
     };
@@ -446,6 +789,11 @@
     utilityForPreference,
     featureSimilarity,
     placeSimilarity,
+    haversineKm,
+    sphericalCenter,
+    clusterRequiredPlaces,
+    splitClustersByCapacity,
+    buildSchedule,
     rank,
   });
 });

@@ -94,6 +94,8 @@ const request = {
   destinationRegion: "jeju_all",
   intent: "visit",
   travelWindow: { startDate: "2026-08-20", endDate: "2026-08-22" },
+  transportMode: "car",
+  requiredPlaceIds: ["126435"],
   companionType: "parents",
   preferences: [
     { feature: "ocean", mode: "benefit", weight: 4 },
@@ -116,6 +118,14 @@ assert.equal(first.items.length, 10);
 assert.deepEqual(first.items.map((item) => item.placeId), second.items.map((item) => item.placeId));
 assert.ok(first.items.every((item) => Number.isFinite(item.relevance) && Number.isFinite(item.mmrScore)));
 assert.ok(first.items.every((item) => readyPlaces.find((place) => place.id === item.placeId)?.research?.highlights?.length));
+assert.equal(first.schedule.radiusKm, 15);
+assert.equal(first.schedule.dailyCapacity, 6);
+assert.equal(first.schedule.status, "needs_anchor_selection");
+assert.equal(first.schedule.dayClusters.length, 1);
+assert.equal(first.schedule.dayClusters[0].requiredPlaceIds[0], "126435");
+assert.ok(first.schedule.dayClusters[0].usedCapacity <= 6);
+assert.ok(first.schedule.dayClusters[0].maxCenterDistanceKm <= 15);
+assert.ok(first.schedule.anchorCandidates.length > 0);
 
 console.log(JSON.stringify({
   places: places.length,
@@ -124,5 +134,7 @@ console.log(JSON.stringify({
   researchCoverage: metadata.recommendationResearchReadyCount,
   returned: first.items.length,
   verificationCandidates: first.verificationCandidates.length,
+  scheduleStatus: first.schedule.status,
+  scheduledDays: first.schedule.dayClusters.length,
   topPlaceIds: first.items.map((item) => item.placeId),
 }, null, 2));

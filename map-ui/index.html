@@ -79,7 +79,7 @@
           </div>
 
           <div class="lab-notice">
-            <strong id="algorithmBadge">ccu-mmr-v0-demo</strong>
+            <strong id="algorithmBadge">ccu-mmr-v2-six-place-schedule</strong>
             <span>날씨·이동시간·가격은 현재 점수에 넣지 않습니다.</span>
           </div>
 
@@ -129,6 +129,14 @@
                     <option value="kids">아이 동반</option>
                     <option value="parents" selected>부모님·고령자 동반</option>
                   </select>
+                </label>
+                <label class="field field-wide">
+                  <span>제주 내 이동수단</span>
+                  <select id="transportMode" name="transportMode" required>
+                    <option value="car" selected>자차 있음 · 중심 반경 15km</option>
+                    <option value="no_car">자차 없음 · 중심 반경 5km</option>
+                  </select>
+                  <small>두 경우 모두 하루 최대 6곳으로 근사 일정을 만듭니다.</small>
                 </label>
               </div>
             </section>
@@ -182,7 +190,7 @@
             </section>
 
             <details class="advanced-section">
-              <summary>필수 확인 조건 · 제외 장소</summary>
+              <summary>필수 장소 · 확인 조건 · 제외 장소</summary>
               <p class="advanced-copy">
                 현재 제약 데이터는 자유 텍스트이므로 선택한 필수 조건을 자동 통과시키지 않고 확인 후보로 분리합니다.
               </p>
@@ -190,6 +198,25 @@
                 <label><input type="checkbox" name="hardConstraint" value="wheelchair_accessible" /> 휠체어 접근 가능</label>
                 <label><input type="checkbox" name="hardConstraint" value="reservation_not_required" /> 사전예약 불필요</label>
                 <label><input type="checkbox" name="hardConstraint" value="age_unrestricted" /> 연령 제한 없음</label>
+              </div>
+              <div class="required-place-picker">
+                <label class="field field-wide" for="requiredPlaceSearch">
+                  <span>일정에 반드시 넣을 장소</span>
+                  <input
+                    id="requiredPlaceSearch"
+                    type="search"
+                    autocomplete="off"
+                    role="combobox"
+                    aria-autocomplete="list"
+                    aria-controls="requiredPlaceSearchResults"
+                    aria-expanded="false"
+                    placeholder="장소명·주소로 검색: 성산일출봉"
+                  />
+                  <small>검색 결과에서 장소를 선택하면 반경과 하루 6곳 조건으로 먼저 군집화합니다.</small>
+                </label>
+                <div class="selected-required-places" id="selectedRequiredPlaces" aria-label="선택된 필수 장소"></div>
+                <div class="required-place-search-results" id="requiredPlaceSearchResults" role="listbox" hidden></div>
+                <p class="required-place-status" id="requiredPlaceStatus" aria-live="polite">선택된 필수 장소가 없습니다.</p>
               </div>
               <label class="field field-wide">
                 <span>제외할 장소 ID</span>
@@ -262,8 +289,8 @@
         </div>
 
         <div class="map-legend" id="recommendationLegend" hidden>
-          <strong>추천 순위 마커</strong>
-          <span>숫자는 MMR 선택 순서입니다.</span>
+          <strong>추천·일정 마커</strong>
+          <span>D1은 1일차, 숫자는 Top-N MMR 순서입니다.</span>
         </div>
 
         <div class="map-loading" id="mapLoading" role="status">
@@ -329,6 +356,29 @@
         </div>
 
         <div class="output-scroll" id="outputScroll">
+          <section class="schedule-section" aria-labelledby="scheduleTitle">
+            <div class="output-section-heading">
+              <div>
+                <h3 id="scheduleTitle">일자별 근사 일정</h3>
+                <p id="scheduleSummary">일차 카드에 마우스를 올리면 지도에 그날 장소만 강조합니다.</p>
+              </div>
+              <span class="count-badge" id="scheduleDayCount">0</span>
+            </div>
+            <div class="schedule-result-list" id="scheduleResultList" aria-live="polite">
+              <div class="empty-state">
+                <strong>아직 일정 결과가 없습니다</strong>
+                <span>여행일과 필수 장소를 입력한 뒤 추천을 실행해 주세요.</span>
+              </div>
+            </div>
+            <div class="anchor-candidate-panel" id="anchorCandidatePanel" hidden>
+              <div class="anchor-heading">
+                <strong>빈 일자의 추가 중심 장소</strong>
+                <span id="anchorCandidateHelp"></span>
+              </div>
+              <div class="anchor-candidate-list" id="anchorCandidateList"></div>
+            </div>
+          </section>
+
           <div class="output-section-heading">
             <div>
               <h3>Top-N 장소</h3>
