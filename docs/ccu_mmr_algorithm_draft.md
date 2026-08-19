@@ -1,9 +1,9 @@
 # CCU-MMR 장소 추천 및 일정 군집 알고리즘 초안
 
-- 문서 상태: 장소 추천 내부 데모와 중심 반경·capacity 근사 일정 v2 구현
+- 문서 상태: 세션 코스 3안·요청 인지형 MMR과 선택 코스 자동 일정 v4 구현
 - 작성일: 2026-08-12
-- 최종 수정일: 2026-08-13
-- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md)
+- 최종 수정일: 2026-08-16
+- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md), [SPEC-016](spec_016.md)
 - 관련 기준 문서: [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md)
 
 > 이 문서는 41개 장소·상황 라벨을 사용하는 CCU-MMR 장소 추천과, 추천 결과를 여행일별로 묶기 위한 중심 반경·일일 capacity 군집을 하나의 흐름으로 정리한다. 중심 반경·capacity 일정 v2는 SPEC-015에 따라 구현하며 실제 이동시간, 체류시간과 방문 순서 최적화는 포함하지 않는다.
@@ -188,7 +188,7 @@ W_i(context)
   = 1 - weather_badness(context) * weather_sensitivity_i
 ```
 
-현재 `ccu-mmr-v2-six-place-schedule`은 날씨 블록을 비활성화한다.
+현재 `ccu-mmr-v4-session-variants-schedule`은 날씨 블록을 비활성화한다.
 
 ### 6.5 최종 장소 관련도 R
 
@@ -214,6 +214,22 @@ R_i
 | 날씨 W | 0.05 |
 
 `R_i`는 장소의 절대 품질이 아니라 현재 요청에 대한 적합도다.
+
+### 6.6 Top-N seed variant와 최초 가중 선택
+
+`balanced` 결과는 관련도 `R_i` 내림차순 상위 최대 3개를 각각 첫 seed로 고정한 코스 variant를 미리 계산한다.
+
+```text
+관련도 1위: 0.5
+관련도 2위: 0.3
+관련도 3위: 0.2
+```
+
+후보가 2개 이하면 존재하는 가중치만 합이 1이 되도록 정규화한다. 각 variant의 첫 seed는 유사도 패널티 없이 `lambda_MMR * R_i`를 받고, 이후 항목부터 기존 MMR 점수와 안정 동점 규칙을 그대로 사용한다. 최초 표시에서만 가중 추첨하며 난수값, 후보별 확률과 선택 결과를 `seedSelection` trace에 기록한다. 명시적 `variantId` 실행은 난수를 사용하지 않는다. 브라우저 세션의 `다른 코스 보기`는 아직 노출하지 않은 variant를 seed 순위대로 선택하고, 모두 본 뒤에는 현재 variant를 제외한 새 순환을 시작한다. `diversity=off`는 추첨과 재추천을 하지 않는 단일 관련도 순 variant다.
+
+### 6.7 요청 인지형 MMR 유사도
+
+사용자가 선호로 지정한 원자 feature는 이미 `P_i` 관련도에 반영되므로 MMR feature 거리에서는 제외한다. 예를 들어 바다 선호 요청에서는 장소들이 모두 바다 특성을 가진다는 이유만으로 중복 패널티를 크게 받지 않는다. 제외 후 남은 원자 feature와 장소 유형·지역으로 유사도를 계산한다. 남은 원자 feature가 없으면 유형·지역 항목만 사용한다.
 
 ## 7. 필수 장소의 중심 반경 지리 군집
 
@@ -307,7 +323,7 @@ c_final = sum(q*(G))
 
 ### 9.3 `c_final < k`
 
-기존 모든 군집 중심에서 반경 밖에 있는 장소 중 CCU 관련도가 높은 후보를 사용자에게 보여준다.
+필수 군집과 사용자가 고른 anchor를 먼저 보존한다. 남은 일자는 선택된 course variant의 Top-N 순서에서 기존 모든 중심 반경 밖인 장소를 자동 anchor로 사용하고, 부족할 때 전체 CCU 관련도 후보로 보완한다.
 
 ```text
 outside(i)
@@ -315,7 +331,7 @@ outside(i)
       Haversine(center(C), i) > R
 ```
 
-사용자가 선택한 장소를 새 군집의 고정 `anchor`로 사용한다.
+자동 후보가 부족하면 기존 방식대로 사용자에게 남은 중심 후보를 보여주고 사용자가 선택한 장소를 새 군집의 고정 `anchor`로 사용한다.
 
 ```text
 new_cluster = { selected_anchor }
@@ -326,7 +342,7 @@ center(new_cluster) = coordinates(selected_anchor)
 
 ## 10. 하루 군집 안의 추가 장소 CCU-MMR
 
-각 하루 군집에서 필수 장소와 anchor를 먼저 선택된 집합으로 둔다.
+각 하루 군집에서 필수 장소와 anchor를 먼저 선택된 집합으로 둔다. 반경 안에 선택 course variant의 미사용 장소가 있으면 이 집합을 먼저 MMR 평가하고, 더 없을 때 전체 후보를 평가한다.
 
 ```text
 selected(C)
@@ -387,6 +403,10 @@ feature_similarity(i,j)
 
 ```text
 CCUMMRScheduleResult {
+  result_schema: ccu-mmr-result-v4
+  course_variant { variant_id, seed_place_id, seed_relevance_rank, base_probability, place_ids[] }
+  course_variants[]
+  reroll_session? { reroll_index, previous_variant_id, shown_variant_ids[], overlap_count, overlap_rate, changed_place_count }
   place_ranking[] {
     place_id
     relevance_R
@@ -396,13 +416,17 @@ CCUMMRScheduleResult {
   }
 
   schedule_clustering {
-    method: center-radius-capacity-v0
+    method: center-radius-capacity-v3-course-anchor
     approximation: straight_line_center_distance
     radius_km
     capacity_mode
     daily_capacity
     geographic_cluster_count
     final_day_cluster_count
+    course_variant_id
+    variant_seed_place_id
+    auto_anchor_ids[]
+    auto_anchors[] { place_id, source }
     day_clusters[] {
       center
       center_type
@@ -432,7 +456,7 @@ CCUMMRScheduleResult {
 
 ## 12. 예외와 폴백
 
-- 필수 장소가 없으면 모든 날짜의 anchor를 추천·사용자 선택으로 채운다.
+- 필수 장소가 없으면 선택 variant seed부터 가능한 모든 날짜의 anchor를 자동으로 채운다.
 - 필수 장소 하나는 해당 장소 좌표를 중심으로 singleton 군집을 만든다.
 - 좌표가 없는 필수 장소는 추측하지 않고 일정 군집을 중단한다.
 - 장소 하나의 demand가 하루 capacity보다 크면 실행 불가능으로 반환한다.
@@ -452,6 +476,7 @@ CCUMMRScheduleResult {
 | MMR 관련도 비중 `lambda_MMR` | `0.75` |
 | MMR 후보 pool | 최대 `100` |
 | 기본 결과 수 | `10` |
+| 첫 seed 후보·가중치 | 관련도 상위 3개 · `0.5 / 0.3 / 0.2` |
 
 일정 군집에서 새로 결정해야 할 값은 다음과 같다.
 
@@ -470,15 +495,15 @@ CCUMMRScheduleResult {
 3. 모든 라벨의 신뢰도는 동일하게 취급한다.
 4. 필수 장소는 일정 군집에서 누락하지 않는다.
 5. 지리적으로 가까워도 하루 capacity를 넘으면 여러 날짜로 나눈다.
-6. 추가 추천 중심지는 사용자가 선택하며 새 날짜의 고정 anchor가 된다.
+6. 추가 추천 중심지는 선택 variant에서 자동으로 만들고 부족할 때 사용자 선택 후보를 제공한다.
 7. 필수 장소와 anchor를 MMR 중복 계산에 포함한다.
 8. 장소 적합도와 일정 배치값을 분리한다.
 9. 중심 반경 결과를 실제 이동시간 기반 확정 일정으로 표현하지 않는다.
 
 ## 15. 현재 구현 범위
 
-- 구현됨: 구조화된 입력, P/A/M 관련도, 18원자 라벨 유사도, Top-N MMR, 지도·41축·웹 조사 표시 (`ccu-mmr-v2-six-place-schedule`)
-- 구현됨: 자차 여부, 필수 장소, 중심 반경 병합, 하루 6곳 capacity 분할, 추가 중심 후보 선택, 날짜별 MMR, 일차 hover/focus 지도 강조 (`ccu-mmr-v2-six-place-schedule`)
+- 구현됨: 구조화된 입력, P/A/M 관련도, 상위 3개 seed 코스 variant, 최초 `0.5/0.3/0.2` 선택, 세션 미노출 재추천, 요청 인지형 유사도, 지도·41축·웹 조사 표시 (`ccu-mmr-v4-session-variants-schedule`)
+- 구현됨: 자차 여부, 필수 장소, 중심 반경 병합, 하루 6곳 capacity 분할, 선택 variant 자동 anchor·후보 보완, 날짜별 variant 우선 MMR, 일차 hover/focus 지도 강조 (`ccu-mmr-v4-session-variants-schedule`)
 - 미구현: 실제 이동시간·체류시간·영업시간·예약과 방문 순서 최적화
 
-초기값과 정확한 입출력 계약은 [SPEC-015](spec_015.md)를 따른다.
+일정 초기값은 [SPEC-015](spec_015.md), 최초 seed 가중치는 [SPEC-016](spec_016.md), 코스 variant·세션 재추천·자동 일정 연결은 [SPEC-017](spec_017.md)을 따른다.

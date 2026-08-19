@@ -8,6 +8,9 @@ function close(actual, expected, epsilon = 1e-9) {
 }
 
 function place(id, relevanceVector, overrides = {}) {
+  const atomicFeatures = Object.fromEntries(
+    CCU.ATOMIC_FEATURES.map((key, index) => [key, relevanceVector[index] ?? 0.5]),
+  );
   return {
     id,
     title: id,
@@ -17,11 +20,11 @@ function place(id, relevanceVector, overrides = {}) {
     lat: overrides.lat ?? 33.5,
     lng: overrides.lng ?? 126.5,
     recommendationReady: true,
-    atomicFeatures: Object.fromEntries(CCU.ATOMIC_FEATURES.map((key, index) => [key, relevanceVector[index] ?? 0.5])),
     companionScores: { solo: 0.5, couple: 0.5, friends: 0.5, kids: 0.5, parents: 0.5 },
     monthScores: Object.fromEntries(Array.from({ length: 12 }, (_, index) => [String(index + 1), 0.5])),
     constraints: [],
     ...overrides,
+    atomicFeatures: { ...atomicFeatures, ...(overrides.atomicFeatures || {}) },
   };
 }
 
@@ -75,8 +78,118 @@ const mmrResult = CCU.rank(mmrPlaces, {
   preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
   resultCount: 3,
   diversity: "balanced",
-});
+}, { random: () => 0 });
 assert.deepEqual(mmrResult.items.map((item) => item.placeId), ["A1", "C3", "B2"]);
+assert.equal(mmrResult.seedSelection.selectedRelevanceRank, 1);
+assert.equal(mmrResult.items[0].seedSelectionProbability, 0.5);
+assert.deepEqual(mmrResult.courseVariants.map((variant) => variant.seedPlaceId), ["A1", "B2", "C3"]);
+assert.deepEqual(mmrResult.courseVariants.map((variant) => variant.placeIds[0]), ["A1", "B2", "C3"]);
+assert.equal(mmrResult.courseVariant.variantId, "seed-rank-1");
+assert.ok(!mmrResult.request.diversityFeatureKeys.includes("ocean"));
+assert.ok(mmrResult.request.diversityFeatureKeys.includes("culture_history"));
+
+const allPreferenceFeatures = CCU.ATOMIC_FEATURES.map((feature) => ({ feature, mode: "benefit", weight: 1 }));
+const noFeatureSimilarityResult = CCU.rank(mmrPlaces, {
+  preferences: allPreferenceFeatures,
+  resultCount: 3,
+  diversity: "balanced",
+}, { variantId: "seed-rank-1" });
+assert.deepEqual(noFeatureSimilarityResult.request.diversityFeatureKeys, []);
+assert.ok(noFeatureSimilarityResult.items.every((item) => Number.isFinite(item.mmrScore)));
+
+const weightedSeedPlaces = [
+  place("S1", [], { sourceOrder: 1, atomicFeatures: { ocean: 0.9 } }),
+  place("S2", [], { sourceOrder: 2, atomicFeatures: { ocean: 0.8 } }),
+  place("S3", [], { sourceOrder: 3, atomicFeatures: { ocean: 0.7 } }),
+];
+function weightedSeedResult(randomValue, candidates = weightedSeedPlaces) {
+  return CCU.rank(candidates, {
+    preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
+    resultCount: candidates.length,
+    diversity: "balanced",
+  }, { random: () => randomValue });
+}
+for (const [randomValue, expectedPlaceId] of [
+  [0, "S1"], [0.499999, "S1"], [0.5, "S2"],
+  [0.799999, "S2"], [0.8, "S3"], [0.999999, "S3"],
+]) {
+  assert.equal(weightedSeedResult(randomValue).items[0].placeId, expectedPlaceId, `seed boundary ${randomValue}`);
+}
+
+const twoCandidateFirst = weightedSeedResult(0.624999, weightedSeedPlaces.slice(0, 2));
+const twoCandidateSecond = weightedSeedResult(0.625, weightedSeedPlaces.slice(0, 2));
+assert.equal(twoCandidateFirst.items[0].placeId, "S1");
+assert.equal(twoCandidateSecond.items[0].placeId, "S2");
+close(twoCandidateFirst.seedSelection.candidates[0].probability, 0.625);
+close(twoCandidateFirst.seedSelection.candidates[1].probability, 0.375);
+const oneCandidateSeed = weightedSeedResult(0.999999, weightedSeedPlaces.slice(0, 1));
+assert.equal(oneCandidateSeed.items[0].placeId, "S1");
+assert.equal(oneCandidateSeed.seedSelection.selectedProbability, 1);
+
+const secondSeedMmr = CCU.rank(mmrPlaces, {
+  preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
+  resultCount: 3,
+  diversity: "balanced",
+}, { random: () => 0.5 });
+assert.deepEqual(secondSeedMmr.items.map((item) => item.placeId), ["B2", "C3", "A1"]);
+
+let explicitVariantRandomCalled = false;
+const explicitThirdVariant = CCU.rank(weightedSeedPlaces, {
+  preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
+  resultCount: 3,
+  diversity: "balanced",
+}, {
+  variantId: "seed-rank-3",
+  random: () => { explicitVariantRandomCalled = true; return 0; },
+});
+assert.equal(explicitVariantRandomCalled, false);
+assert.equal(explicitThirdVariant.items[0].placeId, "S3");
+assert.equal(explicitThirdVariant.courseVariant.variantId, "seed-rank-3");
+assert.equal(explicitThirdVariant.seedSelection.reason, "explicit_variant");
+assert.throws(
+  () => CCU.rank(weightedSeedPlaces, { resultCount: 3 }, { variantId: "seed-rank-4" }),
+  /지원하지 않는 코스 variant/u,
+);
+
+const sessionVariants = explicitThirdVariant.courseVariants;
+assert.deepEqual(
+  CCU.selectNextCourseVariant(sessionVariants, ["seed-rank-2"], "seed-rank-2"),
+  { variantId: "seed-rank-1", cycleRestarted: false },
+);
+assert.deepEqual(
+  CCU.selectNextCourseVariant(sessionVariants, ["seed-rank-1", "seed-rank-2"], "seed-rank-1"),
+  { variantId: "seed-rank-3", cycleRestarted: false },
+);
+assert.deepEqual(
+  CCU.selectNextCourseVariant(sessionVariants, sessionVariants.map((variant) => variant.variantId), "seed-rank-3"),
+  { variantId: "seed-rank-1", cycleRestarted: true },
+);
+assert.deepEqual(
+  CCU.courseOverlapTrace(["A", "B", "C"], ["B", "C", "D"]),
+  { overlapCount: 2, overlapRate: 2 / 3, changedPlaceCount: 1 },
+);
+
+let balancedRandomCalls = 0;
+CCU.rank(weightedSeedPlaces, {
+  preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
+  resultCount: 3,
+  diversity: "balanced",
+}, { random: () => { balancedRandomCalls += 1; return 0.9; } });
+assert.equal(balancedRandomCalls, 1);
+
+let offRandomCalled = false;
+const diversityOff = CCU.rank(weightedSeedPlaces, {
+  preferences: [{ feature: "ocean", mode: "benefit", weight: 1 }],
+  resultCount: 3,
+  diversity: "off",
+}, { random: () => { offRandomCalled = true; return 0.99; } });
+assert.equal(offRandomCalled, false);
+assert.deepEqual(diversityOff.items.map((item) => item.placeId), ["S1", "S2", "S3"]);
+assert.equal(diversityOff.seedSelection.reason, "diversity_off");
+assert.equal(diversityOff.courseVariants.length, 1);
+assert.equal(diversityOff.courseVariant.variantId, "relevance-order");
+assert.throws(() => weightedSeedResult(1), /난수값/u);
+assert.throws(() => weightedSeedResult(-0.01), /난수값/u);
 
 const exploration = CCU.rank([place("4", []), place("5", [])], { resultCount: 2 });
 assert.ok(exploration.items.every((item) => item.relevance === 0.5 && item.rankingMode === "exploration"));
@@ -94,8 +207,12 @@ assert.equal(verification.verificationCandidates.length, 1);
 const deterministicInput = [place("9", []), place("10", []), place("11", [])];
 const deterministicRequest = { companionType: "parents", resultCount: 3, diversity: "balanced" };
 assert.deepEqual(
-  CCU.rank(deterministicInput, deterministicRequest).items,
-  CCU.rank(deterministicInput, deterministicRequest).items,
+  CCU.rank(deterministicInput, deterministicRequest, { random: () => 0.75 }).items,
+  CCU.rank(deterministicInput, deterministicRequest, { random: () => 0.75 }).items,
+);
+assert.notEqual(
+  CCU.rank(deterministicInput, deterministicRequest, { random: () => 0 }).items[0].placeId,
+  CCU.rank(deterministicInput, deterministicRequest, { random: () => 0.9 }).items[0].placeId,
 );
 
 assert.throws(
@@ -177,10 +294,19 @@ const needsAnchor = CCU.rank(anchorPlaces, {
   travelWindow: { startDate: "2026-08-20", endDate: "2026-08-21" },
   requiredPlaceIds: ["MUST"],
 }).schedule;
-assert.equal(needsAnchor.status, "needs_anchor_selection");
-assert.equal(needsAnchor.unfilledDayCount, 1);
-assert.deepEqual(needsAnchor.anchorCandidates.map((item) => item.placeId), ["FAR"]);
+assert.equal(needsAnchor.status, "feasible");
+assert.equal(needsAnchor.unfilledDayCount, 0);
+assert.equal(needsAnchor.autoAnchorCount, 1);
+assert.deepEqual(needsAnchor.autoAnchorIds, ["FAR"]);
+assert.equal(needsAnchor.dayClusters[1].centerType, "variant_anchor");
 close(needsAnchor.dayClusters[0].places.find((item) => item.placeId === "NEAR").dayMmrScore, 0.2, 0.01);
+const diversityOffNeedsAnchor = CCU.rank(anchorPlaces, {
+  travelWindow: { startDate: "2026-08-20", endDate: "2026-08-21" },
+  requiredPlaceIds: ["MUST"],
+  diversity: "off",
+}).schedule;
+assert.equal(diversityOffNeedsAnchor.status, "needs_anchor_selection");
+assert.equal(diversityOffNeedsAnchor.autoAnchorCount, 0);
 const withAnchor = CCU.rank(anchorPlaces, {
   travelWindow: { startDate: "2026-08-20", endDate: "2026-08-21" },
   requiredPlaceIds: ["MUST"],
@@ -190,5 +316,48 @@ assert.equal(withAnchor.status, "feasible");
 assert.equal(withAnchor.dayClusters.length, 2);
 assert.equal(withAnchor.dayClusters[1].anchorPlaceId, "FAR");
 assert.equal(withAnchor.dayClusters[1].date, "2026-08-21");
+assert.equal(withAnchor.dayClusters[1].centerType, "user_anchor");
+assert.equal(withAnchor.autoAnchorCount, 0);
+
+const variantSchedulePlaces = [
+  place("V1", [], { sourceOrder: 1, lng: 126.2 }),
+  place("V2", [], { sourceOrder: 2, lng: 126.5 }),
+  place("V3", [], { sourceOrder: 3, lng: 126.8 }),
+];
+const variantScheduleRequest = {
+  travelWindow: { startDate: "2026-08-20", endDate: "2026-08-21" },
+  transportMode: "car",
+  resultCount: 3,
+  diversity: "balanced",
+};
+const firstVariantSchedule = CCU.rank(
+  variantSchedulePlaces,
+  variantScheduleRequest,
+  { variantId: "seed-rank-1" },
+).schedule;
+const thirdVariantSchedule = CCU.rank(
+  variantSchedulePlaces,
+  variantScheduleRequest,
+  { variantId: "seed-rank-3" },
+).schedule;
+assert.equal(firstVariantSchedule.status, "feasible");
+assert.equal(thirdVariantSchedule.status, "feasible");
+assert.equal(firstVariantSchedule.dayClusters[0].anchorPlaceId, "V1");
+assert.equal(thirdVariantSchedule.dayClusters[0].anchorPlaceId, "V3");
+assert.ok(firstVariantSchedule.dayClusters.every((day) => day.usedCapacity <= 6 && day.maxCenterDistanceKm <= 15));
+assert.ok(thirdVariantSchedule.dayClusters.every((day) => day.usedCapacity <= 6 && day.maxCenterDistanceKm <= 15));
+
+const fallbackAnchorSchedule = CCU.rank(
+  variantSchedulePlaces,
+  variantScheduleRequest,
+  { variantId: "seed-rank-1" },
+).schedule;
+const oneResultFallbackSchedule = CCU.rank(
+  variantSchedulePlaces,
+  { ...variantScheduleRequest, resultCount: 1 },
+  { variantId: "seed-rank-1" },
+).schedule;
+assert.equal(fallbackAnchorSchedule.autoAnchors.every((anchor) => anchor.source === "variant"), true);
+assert.deepEqual(oneResultFallbackSchedule.autoAnchors.map((anchor) => anchor.source), ["variant", "relevance_fallback"]);
 
 console.log("CCU-MMR tests passed");

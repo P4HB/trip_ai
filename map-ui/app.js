@@ -88,6 +88,7 @@
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
     "recommendationCount", "recommendationResultList", "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
+    "courseVariantBar", "courseVariantLabel", "courseOverlapSummary", "rerollRecommendationButton",
     "outputPreview", "recommendationLegend", "outputScroll",
   ].map((id) => [id, document.getElementById(id)]));
 
@@ -157,6 +158,14 @@
     hoveredScheduleDay: null,
     focusedScheduleDay: null,
     drawerReturnFocus: null,
+    variantSession: {
+      fingerprint: null,
+      shownVariantIds: new Set(),
+      currentVariantId: null,
+      currentPlaceIds: [],
+      rerollIndex: 0,
+      lastTransition: null,
+    },
   };
 
   function formatNumber(value) {
@@ -1104,12 +1113,19 @@
       chip.textContent = `${prefix}${LABEL_NAMES[trace.feature] || trace.feature} · u ${formatScore(trace.utility, 2)}`;
       reasons.append(chip);
     }
+    button.append(top, researchSnippet, scoreRow, reasons);
+    if (Number.isInteger(item.seedRelevanceRank)) {
+      const seedNote = document.createElement("p");
+      seedNote.className = "diversity-note";
+      seedNote.textContent = `코스 seed: 관련도 ${item.seedRelevanceRank}위 · 기본 확률 ${formatScore(item.seedSelectionProbability * 100, 0)}%`;
+      button.append(seedNote);
+    }
     if (item.similarPlaceId) {
       const diversity = document.createElement("p");
       diversity.className = "diversity-note";
       diversity.textContent = `가장 유사: ${placeById.get(item.similarPlaceId)?.title || item.similarPlaceId} · sim ${formatScore(item.maxSimilarity)}`;
-      button.append(top, researchSnippet, scoreRow, reasons, diversity);
-    } else button.append(top, researchSnippet, scoreRow, reasons);
+      button.append(diversity);
+    }
     button.addEventListener("click", () => {
       selectPlace(place, { moveMap: true });
       closeOutputPanel();
@@ -1156,6 +1172,15 @@
       infeasible: "현재 조건으로 배치 불가",
       not_requested: "여행일 미입력",
     }[status] || status;
+  }
+
+  function scheduleCenterLabel(centerType) {
+    return {
+      required_centroid: "필수 장소 중심",
+      user_anchor: "사용자 선택 중심",
+      variant_anchor: "선택 코스 자동 중심",
+      fallback_anchor: "관련도 보완 중심",
+    }[centerType] || "일정 중심";
   }
 
   function createSchedulePlaceButton(item, dayIndex) {
@@ -1208,7 +1233,7 @@
         heading.className = "schedule-day-heading";
         const title = document.createElement("div");
         const dateText = day.date ? ` · ${day.date}` : "";
-        title.innerHTML = `<strong>${day.dayIndex}일차${dateText}</strong><span>${day.centerType === "user_anchor" ? "사용자 선택 중심" : "필수 장소 중심"}</span>`;
+        title.innerHTML = `<strong>${day.dayIndex}일차${dateText}</strong><span>${scheduleCenterLabel(day.centerType)}</span>`;
         const usage = document.createElement("b");
         usage.textContent = `${day.usedCapacity}/${schedule.dailyCapacity}`;
         heading.append(title, usage);
@@ -1218,14 +1243,19 @@
         placesList.className = "schedule-place-list";
         for (const item of day.places) placesList.append(createSchedulePlaceButton(item, day.dayIndex));
         card.append(heading, meta, placesList);
-        if (day.anchorPlaceId) {
+        if (day.anchorPlaceId && day.centerType === "user_anchor") {
           const remove = document.createElement("button");
           remove.type = "button";
           remove.className = "remove-anchor-button";
           remove.textContent = "이 중심 선택 취소";
           remove.addEventListener("click", () => {
             state.selectedAnchorIds.delete(day.anchorPlaceId);
-            runRecommendation({ fit: true, openOutput: false });
+            runRecommendation({
+              fit: true,
+              openOutput: false,
+              variantId: state.variantSession.currentVariantId,
+              preserveSession: true,
+            });
           });
           card.append(remove);
         }
@@ -1254,11 +1284,116 @@
         button.querySelector("strong").textContent = candidate.title;
         button.addEventListener("click", () => {
           state.selectedAnchorIds.add(candidate.placeId);
-          runRecommendation({ fit: true, openOutput: false });
+          runRecommendation({
+            fit: true,
+            openOutput: false,
+            variantId: state.variantSession.currentVariantId,
+            preserveSession: true,
+          });
         });
         dom.anchorCandidateList.append(button);
       }
     }
+  }
+
+  function resetVariantSession() {
+    state.variantSession = {
+      fingerprint: null,
+      shownVariantIds: new Set(),
+      currentVariantId: null,
+      currentPlaceIds: [],
+      rerollIndex: 0,
+      lastTransition: null,
+    };
+  }
+
+  function requestFingerprint(request) {
+    return JSON.stringify(request);
+  }
+
+  function attachVariantSession(result, { reroll = false, preserveSession = false } = {}) {
+    const variantId = result.courseVariant?.variantId || null;
+    const fingerprint = requestFingerprint(result.request);
+    const sameRequest = state.variantSession.fingerprint === fingerprint;
+    if (!preserveSession || !variantId || (reroll && !sameRequest)) resetVariantSession();
+
+    const previousVariantId = reroll ? state.variantSession.currentVariantId : null;
+    const transition = reroll
+      ? {
+          previousVariantId,
+          ...algorithm.courseOverlapTrace(state.variantSession.currentPlaceIds, result.courseVariant.placeIds),
+        }
+      : state.variantSession.lastTransition || {
+          previousVariantId: null,
+          overlapCount: 0,
+          overlapRate: 0,
+          changedPlaceCount: 0,
+        };
+
+    if (reroll) {
+      state.variantSession.rerollIndex += 1;
+      state.variantSession.lastTransition = transition;
+    } else if (!preserveSession) {
+      state.variantSession.lastTransition = transition;
+    }
+    state.variantSession.fingerprint = fingerprint;
+    state.variantSession.currentVariantId = variantId;
+    state.variantSession.currentPlaceIds = [...(result.courseVariant?.placeIds || [])];
+    if (variantId) state.variantSession.shownVariantIds.add(variantId);
+
+    result.rerollSession = {
+      rerollIndex: state.variantSession.rerollIndex,
+      previousVariantId: transition.previousVariantId,
+      shownVariantIds: [...state.variantSession.shownVariantIds],
+      overlapCount: transition.overlapCount,
+      overlapRate: transition.overlapRate,
+      changedPlaceCount: transition.changedPlaceCount,
+    };
+  }
+
+  function renderCourseVariant(result) {
+    const variant = result.courseVariant;
+    const variants = result.courseVariants || [];
+    dom.courseVariantBar.hidden = !variant;
+    if (!variant) return;
+
+    const probability = formatScore(variant.baseProbability * 100, 0);
+    dom.courseVariantLabel.textContent = `코스 ${variant.seedRelevanceRank}안 · 관련도 ${variant.seedRelevanceRank}위 seed · 기본 ${probability}%`;
+    const session = result.rerollSession;
+    dom.courseOverlapSummary.textContent = session?.previousVariantId
+      ? `이전 코스와 ${session.overlapCount}/${variant.placeIds.length}곳(${formatScore(session.overlapRate * 100, 0)}%) 겹침 · ${session.changedPlaceCount}곳 변경`
+      : "최초 추천 코스";
+    const rerollAvailable = result.request.diversity === "balanced" && variants.length > 1;
+    dom.rerollRecommendationButton.hidden = !rerollAvailable;
+    dom.rerollRecommendationButton.disabled = !rerollAvailable;
+    if (rerollAvailable) {
+      const shownCount = variants.filter((item) => state.variantSession.shownVariantIds.has(item.variantId)).length;
+      dom.rerollRecommendationButton.textContent = `다른 코스 보기 · ${shownCount}/${variants.length}`;
+    }
+  }
+
+  function rerollRecommendation() {
+    const result = state.recommendationResult;
+    const variants = [...(result?.courseVariants || [])]
+      .sort((left, right) => left.seedRelevanceRank - right.seedRelevanceRank);
+    if (variants.length < 2) return null;
+
+    const currentVariantId = state.variantSession.currentVariantId;
+    const selection = algorithm.selectNextCourseVariant(
+      variants,
+      state.variantSession.shownVariantIds,
+      currentVariantId,
+    );
+    if (selection.cycleRestarted) {
+      state.variantSession.shownVariantIds = new Set(currentVariantId ? [currentVariantId] : []);
+    }
+    return runRecommendation({
+      fit: true,
+      openOutput: false,
+      variantId: selection.variantId,
+      reroll: true,
+      preserveSession: true,
+    });
   }
 
   function renderRecommendationOutput(result) {
@@ -1291,8 +1426,14 @@
     dom.returnedMetric.textContent = formatNumber(summary.returned);
     dom.recommendationCount.textContent = formatNumber(summary.returned);
     dom.mobileResultCount.textContent = formatNumber(summary.returned);
-    const mode = result.request.diversity === "balanced" ? "MMR 다양성 적용" : "관련도 순";
+    const seed = result.seedSelection;
+    const mode = result.request.diversity === "balanced"
+      ? seed?.applied
+        ? `MMR 다양성 · 코스 ${result.courseVariant?.seedRelevanceRank || seed.selectedRelevanceRank}안`
+        : "MMR 다양성 · seed 후보 없음"
+      : "관련도 순";
     dom.recommendationSummary.textContent = `${formatNumber(summary.scoredCandidates)}개 점수 계산 · ${mode} · ${formatNumber(summary.returned)}개 출력`;
+    renderCourseVariant(result);
     renderWarnings(result.warnings);
     renderVerificationCandidates(result);
     renderSchedule(result.schedule);
@@ -1308,7 +1449,13 @@
     if (state.selectedPlace) renderDetail(state.selectedPlace);
   }
 
-  function runRecommendation({ fit = true, openOutput = true } = {}) {
+  function runRecommendation({
+    fit = true,
+    openOutput = true,
+    variantId = null,
+    reroll = false,
+    preserveSession = false,
+  } = {}) {
     hideFormError();
     try {
       if (!algorithm) throw new Error("CCU-MMR 알고리즘을 불러오지 못했습니다.");
@@ -1318,7 +1465,9 @@
         const place = placeById.get(placeId);
         if (place) candidateMap.set(placeId, place);
       }
-      const result = algorithm.rank([...candidateMap.values()], request);
+      const runtime = variantId ? { variantId } : {};
+      const result = algorithm.rank([...candidateMap.values()], request, runtime);
+      attachVariantSession(result, { reroll, preserveSession });
       renderRecommendationOutput(result);
       if (fit && mapPlaces().length) fitRecommendationPlaces();
       if (openOutput && window.innerWidth <= 1240) openOutputPanel();
@@ -1331,6 +1480,8 @@
 
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     state.selectedAnchorIds.clear();
+    resetVariantSession();
+    dom.courseVariantBar.hidden = true;
     if (!state.recommendationResult) return;
     state.recommendationResult = null;
     state.recommendationById = new Map();
@@ -1478,6 +1629,7 @@
       });
     });
     dom.resetRecommendationButton.addEventListener("click", () => { resetRecommendationForm(); runRecommendation(); });
+    dom.rerollRecommendationButton.addEventListener("click", rerollRecommendation);
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
       if (event.target === dom.requiredPlaceSearch) return;
@@ -1541,6 +1693,7 @@
       runRecommendation({ fit: true, openOutput: false });
       window.CCU_MMR_DASHBOARD = {
         run: () => runRecommendation({ fit: false, openOutput: false }),
+        reroll: () => rerollRecommendation(),
         getResult: () => state.recommendationResult,
         getSelectedPlace: () => state.selectedPlace,
         getMapPlaceIds: () => mapPlaces().map((place) => String(place.id)),

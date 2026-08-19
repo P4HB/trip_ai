@@ -112,7 +112,7 @@ scripts/validate_all_place_profiles.py
 - `scripts/build_all_place_profiles.py`: 웹 조사 cache와 파일럿·기후 fixture를 고정 입력으로 사용해 전체 조사·자동 라벨·검수 큐·hard constraint를 canonical JSONL과 파생 SQLite로 결정적으로 생성한다.
 - `scripts/validate_all_place_profiles.py`: 전체 ID·순서·축·근거·제약·파일럿 회귀, JSONL↔SQLite 일치, SQLite integrity/FK, manifest와 보호 입력 해시를 독립 검증한다.
 - `data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/`: 전체 비음식점 AI 초안의 재개 가능 웹 cache, canonical JSONL, 질의용 SQLite, manifest와 검수 보고서를 보관한다.
-- `map-ui/`: 검색·지도 탐색과 함께 `ccu-mmr-v2-six-place-schedule` 구조화 입력, P/A/M 관련도, Top-100 MMR, 추천 trace, 중심 반경·하루 capacity 근사 일정, 일차 hover/focus 지도 강조, 41축 상세, 출처가 연결된 웹 조사 장소 설명을 제공하는 정적 내부 실험 UI
+- `map-ui/`: 검색·지도 탐색과 함께 `ccu-mmr-v4-session-variants-schedule` 구조화 입력, P/A/M 관련도, 관련도 상위 3개를 각각 seed로 한 코스 3안, 최초 `0.5/0.3/0.2` 선택, 세션 재추천, 요청 인지형 MMR, 선택 코스 자동 일정 중심, 추천 trace, 일차 hover/focus 지도 강조, 41축 상세와 출처가 연결된 웹 조사 장소 설명을 제공하는 정적 내부 실험 UI
 
 ### 현재 런타임 경계
 
@@ -121,8 +121,8 @@ scripts/validate_all_place_profiles.py
 - 지도 타일과 장소 이미지는 외부 네트워크에 의존한다.
 - 지도 UI는 생성된 `window.JEJU_PLACES`와 `window.JEJU_DATA_META`를 읽는다.
 - 추천 입력과 결과는 브라우저 메모리에만 있으며 서버나 외부 서비스로 전송·저장하지 않는다. 날씨·실제 이동시간·가격은 현재 계산에 없다.
-- `ccu-mmr-v2-six-place-schedule`은 SPEC-008의 목표 `baseline-v0`와 별도인 `internal_experiment`이며 AI 초안 데이터의 운영 승격을 뜻하지 않는다.
-- 근사 일정은 사용자 자차 여부에 따라 15km/5km 중심 반경과 하루 최대 6곳을 사용한다. 이는 중심-장소 Haversine 직선거리 군집이며 도로·교통·방문 순서를 계산하지 않는다.
+- `ccu-mmr-v4-session-variants-schedule`은 SPEC-008의 목표 `baseline-v0`와 별도인 `internal_experiment`다. `balanced` 모드는 상위 3개 seed variant를 결정적으로 미리 계산하고 최초 표시만 가중 선택하며, 브라우저 세션에서 미노출 variant를 우선한다. 이는 AI 초안 데이터의 운영 승격을 뜻하지 않는다.
+- 근사 일정은 필수 군집과 사용자 중심을 먼저 보존한 뒤 선택 variant Top-N에서 남은 일자의 자동 중심을 만든다. 자차 15km/비자차 5km와 하루 최대 6곳을 사용하며, 중심-장소 Haversine 직선거리 군집일 뿐 도로·교통·방문 순서를 계산하지 않는다.
 - 검수 UI는 100건 v3 제안, v2 웹 조사 레코드, 기후 기준과 기준 SHA-256을 HTML에 내장하며 서버 API를 호출하지 않는다.
 - 브라우저는 조사 시점에 캐시한 페이지를 다시 가져오지 않는다. 출처 링크를 여는 동작만 외부 네트워크에 의존한다.
 - 사람 입력은 현재 브라우저의 `localStorage`와 사용자가 내려받은 JSON 파일에만 저장된다.
@@ -184,7 +184,7 @@ read-only SQLite + manifest ─────┴─> feature snapshot materializer
 schedule feasibility / schedule utility
 ```
 
-일정기는 동선 때문에 장소를 제외할 수 있지만 원래 `place_fit`을 변경하지 않는다. 현재 저장소에는 신뢰할 수 있는 체류시간·이동시간과 운영 time window가 없으므로 완전한 일정 최적화기는 후속 SPEC 범위다. 다만 SPEC-015의 내부 실험 UI는 장소 좌표만 사용해 필수 장소를 중심 반경과 하루 장소 수로 나누는 근사 일정 군집을 제공한다. 이 군집은 `place_fit`을 바꾸지 않고 일자별 후보를 고르는 별도 단계다.
+일정기는 동선 때문에 장소를 제외할 수 있지만 원래 `place_fit`을 변경하지 않는다. 현재 저장소에는 신뢰할 수 있는 체류시간·이동시간과 운영 time window가 없으므로 완전한 일정 최적화기는 후속 SPEC 범위다. 다만 SPEC-015·017의 내부 실험 UI는 장소 좌표만 사용해 필수 장소를 중심 반경과 하루 장소 수로 나누고, 선택한 코스 variant를 남은 일자의 자동 중심과 일자별 후보 우선순위로 연결한다. 이 군집은 `place_fit`을 바꾸지 않는 별도 단계다.
 
 ### 유지할 경계
 

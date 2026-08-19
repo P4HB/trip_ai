@@ -5,8 +5,10 @@
 })(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
   "use strict";
 
-  const ALGORITHM_VERSION = "ccu-mmr-v2-six-place-schedule";
+  const ALGORITHM_VERSION = "ccu-mmr-v4-session-variants-schedule";
   const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v2";
+  const RESULT_SCHEMA_VERSION = "ccu-mmr-result-v4";
+  const SEED_SELECTION_WEIGHTS = Object.freeze([0.5, 0.3, 0.2]);
   const ATOMIC_FEATURES = [
     "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
     "traditional_market", "festival", "indoor_ratio", "weather_sensitivity",
@@ -25,9 +27,15 @@
     resultCountDefault: 10,
     blockWeights: BLOCK_WEIGHTS,
     similarityWeights: Object.freeze({ feature: 0.70, sameType: 0.20, sameRegion: 0.10 }),
+    seedSelection: Object.freeze({
+      strategy: "weighted-precomputed-top-relevance-3",
+      weights: SEED_SELECTION_WEIGHTS,
+    }),
+    courseVariantCount: 3,
+    diversityFeaturePolicy: "exclude-requested-preference-features-v1",
     softPenalty: 0,
     schedule: Object.freeze({
-      method: "center-radius-capacity-v2",
+      method: "center-radius-capacity-v3-course-anchor",
       carRadiusKm: 15,
       noCarRadiusKm: 5,
       capacityMode: "place_count",
@@ -64,6 +72,65 @@
     if (scoreKey !== "relevance" && relevanceDifference) return relevanceDifference;
     const orderDifference = Number(a.sourceOrder ?? Number.MAX_SAFE_INTEGER) - Number(b.sourceOrder ?? Number.MAX_SAFE_INTEGER);
     return orderDifference || compareText(a.placeId, b.placeId);
+  }
+
+  function selectWeightedSeed(candidates, random = Math.random) {
+    if (!Array.isArray(candidates)) throw new Error("seed 후보는 배열이어야 합니다.");
+    const topCandidates = candidates.slice(0, SEED_SELECTION_WEIGHTS.length);
+    if (!topCandidates.length) {
+      return {
+        candidate: null,
+        trace: {
+          strategy: CONFIG.seedSelection.strategy,
+          applied: false,
+          reason: "no_candidates",
+          randomValue: null,
+          candidates: [],
+          selectedPlaceId: null,
+          selectedVariantId: null,
+          selectedRelevanceRank: null,
+          selectedProbability: null,
+        },
+      };
+    }
+    if (typeof random !== "function") throw new Error("seed 난수 생성기는 함수여야 합니다.");
+    const randomValue = Number(random());
+    if (!Number.isFinite(randomValue) || randomValue < 0 || randomValue >= 1) {
+      throw new Error("seed 난수값은 0 이상 1 미만이어야 합니다.");
+    }
+    const weights = SEED_SELECTION_WEIGHTS.slice(0, topCandidates.length);
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+    const traceCandidates = topCandidates.map((candidate, index) => ({
+      placeId: String(candidate.placeId),
+      variantId: candidate.variantId || null,
+      relevanceRank: index + 1,
+      weight: weights[index],
+      probability: weights[index] / totalWeight,
+    }));
+    let selectedIndex = traceCandidates.length - 1;
+    let cumulativeProbability = 0;
+    for (let index = 0; index < traceCandidates.length; index += 1) {
+      cumulativeProbability += traceCandidates[index].probability;
+      if (randomValue < cumulativeProbability) {
+        selectedIndex = index;
+        break;
+      }
+    }
+    const selected = traceCandidates[selectedIndex];
+    return {
+      candidate: topCandidates[selectedIndex],
+      trace: {
+        strategy: CONFIG.seedSelection.strategy,
+        applied: true,
+        reason: null,
+        randomValue,
+        candidates: traceCandidates,
+        selectedPlaceId: selected.placeId,
+        selectedVariantId: selected.variantId,
+        selectedRelevanceRank: selected.relevanceRank,
+        selectedProbability: selected.probability,
+      },
+    };
   }
 
   function parseCalendarDate(value, fieldName) {
@@ -156,6 +223,8 @@
       }
       return normalized;
     });
+    const requestedPreferenceFeatures = new Set(normalizedPreferences.map((preference) => preference.feature));
+    const diversityFeatureKeys = ATOMIC_FEATURES.filter((feature) => !requestedPreferenceFeatures.has(feature));
     const travelWindow = input.travelWindow?.startDate || input.travelWindow?.endDate
       ? {
           startDate: input.travelWindow.startDate,
@@ -194,6 +263,7 @@
       transportMode,
       companionType,
       preferences: normalizedPreferences,
+      diversityFeatureKeys,
       hardConstraints,
       excludedPlaceIds,
       requiredPlaceIds,
@@ -307,10 +377,10 @@
     };
   }
 
-  function featureSimilarity(a, b) {
+  function featureSimilarity(a, b, featureKeys = ATOMIC_FEATURES) {
     let distanceSum = 0;
     let comparable = 0;
-    for (const feature of ATOMIC_FEATURES) {
+    for (const feature of featureKeys) {
       const left = a.atomicFeatures?.[feature];
       const right = b.atomicFeatures?.[feature];
       if (!isUnitValue(left) || !isUnitValue(right)) continue;
@@ -320,8 +390,8 @@
     return comparable ? 1 - distanceSum / comparable : 0;
   }
 
-  function placeSimilarity(a, b) {
-    const feature = featureSimilarity(a, b);
+  function placeSimilarity(a, b, featureKeys = ATOMIC_FEATURES) {
+    const feature = featureSimilarity(a, b, featureKeys);
     const sameType = a.type && b.type && String(a.type) === String(b.type) ? 1 : 0;
     const sameRegion = a.region && b.region && a.region !== "unknown" && a.region === b.region ? 1 : 0;
     return {
@@ -331,6 +401,133 @@
       feature,
       sameType,
       sameRegion,
+    };
+  }
+
+  function summarizeCourseVariant(variant) {
+    return {
+      variantId: variant.variantId,
+      seedPlaceId: variant.seedPlaceId,
+      seedRelevanceRank: variant.seedRelevanceRank,
+      baseProbability: variant.baseProbability,
+      placeIds: variant.items.map((item) => item.placeId),
+      averageRelevance: variant.items.length
+        ? variant.items.reduce((sum, item) => sum + item.relevance, 0) / variant.items.length
+        : null,
+    };
+  }
+
+  function buildMmrVariant(pool, placesById, request, seedIndex, baseProbability) {
+    const seed = pool[seedIndex] || null;
+    const variantId = request.diversity === "off" ? "relevance-order" : `seed-rank-${seedIndex + 1}`;
+    if (!seed) {
+      return { variantId, seedPlaceId: null, seedRelevanceRank: null, baseProbability: null, items: [] };
+    }
+    if (request.diversity === "off") {
+      const items = pool.slice(0, request.resultCount).map((candidate, index) => ({
+        ...candidate,
+        rank: index + 1,
+        mmrScore: candidate.relevance,
+        maxSimilarity: 0,
+        redundancyPenalty: 0,
+        similarPlaceId: null,
+      }));
+      return { variantId, seedPlaceId: seed.placeId, seedRelevanceRank: 1, baseProbability: 1, items };
+    }
+
+    const selected = [{
+      ...seed,
+      mmrScore: CONFIG.mmrLambda * seed.relevance,
+      maxSimilarity: 0,
+      redundancyPenalty: 0,
+      similarPlaceId: null,
+      seedRelevanceRank: seedIndex + 1,
+      seedSelectionProbability: baseProbability,
+    }];
+    const remaining = pool.filter((candidate) => candidate.placeId !== seed.placeId);
+    while (remaining.length && selected.length < request.resultCount) {
+      const evaluated = remaining.map((candidate) => {
+        const candidatePlace = placesById.get(candidate.placeId);
+        let maxSimilarity = 0;
+        let similarPlaceId = null;
+        for (const prior of selected) {
+          const similarity = placeSimilarity(
+            candidatePlace,
+            placesById.get(prior.placeId),
+            request.diversityFeatureKeys,
+          ).value;
+          if (similarity > maxSimilarity) {
+            maxSimilarity = similarity;
+            similarPlaceId = prior.placeId;
+          }
+        }
+        const redundancyPenalty = (1 - CONFIG.mmrLambda) * maxSimilarity;
+        return {
+          ...candidate,
+          maxSimilarity,
+          similarPlaceId,
+          redundancyPenalty,
+          mmrScore: CONFIG.mmrLambda * candidate.relevance - redundancyPenalty,
+        };
+      });
+      evaluated.sort((a, b) => compareStable(a, b, "mmrScore"));
+      const winner = evaluated[0];
+      selected.push(winner);
+      remaining.splice(remaining.findIndex((candidate) => candidate.placeId === winner.placeId), 1);
+    }
+    return {
+      variantId,
+      seedPlaceId: seed.placeId,
+      seedRelevanceRank: seedIndex + 1,
+      baseProbability,
+      items: selected.map((item, index) => ({ ...item, rank: index + 1 })),
+    };
+  }
+
+  function buildCourseVariants(pool, placesById, request) {
+    if (!pool.length) return [];
+    if (request.diversity === "off") return [buildMmrVariant(pool, placesById, request, 0, 1)];
+    const seedCount = Math.min(CONFIG.courseVariantCount, pool.length);
+    const weights = SEED_SELECTION_WEIGHTS.slice(0, seedCount);
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+    return Array.from({ length: seedCount }, (_, seedIndex) => buildMmrVariant(
+      pool,
+      placesById,
+      request,
+      seedIndex,
+      weights[seedIndex] / totalWeight,
+    ));
+  }
+
+  function courseOverlapTrace(previousPlaceIds = [], currentPlaceIds = []) {
+    const previous = new Set(previousPlaceIds.map(String));
+    const current = currentPlaceIds.map(String);
+    const overlapCount = current.filter((placeId) => previous.has(placeId)).length;
+    const denominator = Math.max(previousPlaceIds.length, current.length, 1);
+    return {
+      overlapCount,
+      overlapRate: overlapCount / denominator,
+      changedPlaceCount: denominator - overlapCount,
+    };
+  }
+
+  function selectNextCourseVariant(courseVariants, shownVariantIds = [], currentVariantId = null) {
+    const ordered = [...courseVariants].sort((left, right) => (
+      left.seedRelevanceRank - right.seedRelevanceRank
+      || compareText(left.variantId, right.variantId)
+    ));
+    const shown = new Set([...shownVariantIds].map(String));
+    let candidates = ordered.filter((variant) => (
+      variant.variantId !== currentVariantId && !shown.has(variant.variantId)
+    ));
+    let cycleRestarted = false;
+    if (!candidates.length) {
+      cycleRestarted = true;
+      candidates = ordered.filter((variant) => variant.variantId !== currentVariantId);
+    }
+    return {
+      variantId: candidates[0]?.variantId || null,
+      cycleRestarted,
     };
   }
 
@@ -454,7 +651,7 @@
     return date.toISOString().slice(0, 10);
   }
 
-  function chooseDayRecommendations(dayCluster, scoredCandidates, placesById, usedPlaceIds, request) {
+  function chooseDayRecommendations(dayCluster, scoredCandidates, placesById, usedPlaceIds, request, preferredPlaceIds = new Set()) {
     const selectedIds = [
       ...dayCluster.requiredPlaceIds,
       ...(dayCluster.anchorPlaceId ? [dayCluster.anchorPlaceId] : []),
@@ -473,7 +670,7 @@
         let maxSimilarity = 0;
         let similarPlaceId = null;
         for (const selectedId of selectedIds) {
-          const similarity = featureSimilarity(candidatePlace, placesById.get(selectedId));
+          const similarity = featureSimilarity(candidatePlace, placesById.get(selectedId), request.diversityFeatureKeys);
           if (similarity > maxSimilarity) {
             maxSimilarity = similarity;
             similarPlaceId = selectedId;
@@ -488,11 +685,14 @@
           maxSimilarity,
           similarPlaceId,
           mmrScore,
+          variantPreferred: preferredPlaceIds.has(candidate.placeId),
         });
       }
       if (!evaluated.length) break;
-      evaluated.sort((a, b) => compareStable(a, b, "mmrScore"));
-      const winner = evaluated[0];
+      const preferred = evaluated.filter((candidate) => candidate.variantPreferred);
+      const selectionPool = preferred.length ? preferred : evaluated;
+      selectionPool.sort((a, b) => compareStable(a, b, "mmrScore"));
+      const winner = selectionPool[0];
       selectedIds.push(winner.placeId);
       usedPlaceIds.add(winner.placeId);
       recommended.push(winner);
@@ -500,7 +700,7 @@
     return recommended;
   }
 
-  function buildSchedule(scoredCandidates, placesById, request) {
+  function buildSchedule(scoredCandidates, placesById, request, courseVariant = null) {
     const tripDays = request.scheduleConfig.tripDays;
     const radiusKm = request.scheduleConfig.radiusKm;
     const dailyCapacity = request.scheduleConfig.dailyCapacity;
@@ -516,7 +716,12 @@
       geographicClusterCount: 0,
       requiredDayClusterCount: 0,
       selectedAnchorCount: 0,
+      autoAnchorCount: 0,
+      autoAnchorIds: [],
+      autoAnchors: [],
       unfilledDayCount: tripDays,
+      courseVariantId: courseVariant?.variantId || null,
+      variantSeedPlaceId: courseVariant?.seedPlaceId || null,
       dayClusters: [],
       anchorCandidates: [],
       violations: [],
@@ -558,6 +763,7 @@
           center: { lat: Number(anchor.lat), lng: Number(anchor.lng) },
           centerType: "user_anchor",
           anchorPlaceId,
+          anchorSource: "user",
           requiredPlaceIds: [],
           recommendedPlaceIds: [],
           maxCenterDistanceKm: 0,
@@ -565,8 +771,6 @@
         });
       }
       base.selectedAnchorCount = request.anchorPlaceIds.length;
-      base.unfilledDayCount = Math.max(0, tripDays - dayClusters.length);
-      base.status = base.unfilledDayCount ? "needs_anchor_selection" : "feasible";
     }
 
     const occupiedIds = new Set([
@@ -574,6 +778,40 @@
       ...request.anchorPlaceIds,
     ]);
     if (base.status !== "infeasible") {
+      const addAutomaticAnchor = (candidate, source) => {
+        if (!candidate || dayClusters.length >= tripDays || occupiedIds.has(candidate.placeId)) return false;
+        const place = placesById.get(candidate.placeId);
+        if (!place || !scoreById.has(candidate.placeId) || !outsideAllCenters(place, dayClusters, radiusKm)) return false;
+        dayClusters.push({
+          center: { lat: Number(place.lat), lng: Number(place.lng) },
+          centerType: source === "variant" ? "variant_anchor" : "fallback_anchor",
+          anchorPlaceId: candidate.placeId,
+          anchorSource: source,
+          requiredPlaceIds: [],
+          recommendedPlaceIds: [],
+          maxCenterDistanceKm: 0,
+          geographicClusterIndex: null,
+        });
+        occupiedIds.add(candidate.placeId);
+        base.autoAnchors.push({ placeId: candidate.placeId, source });
+        return true;
+      };
+
+      if (request.diversity === "balanced" && courseVariant) {
+        for (const placeId of courseVariant.placeIds) {
+          if (dayClusters.length >= tripDays) break;
+          addAutomaticAnchor(scoreById.get(placeId), "variant");
+        }
+        for (const candidate of scoredCandidates) {
+          if (dayClusters.length >= tripDays) break;
+          addAutomaticAnchor(candidate, "relevance_fallback");
+        }
+      }
+
+      base.autoAnchorIds = base.autoAnchors.map((anchor) => anchor.placeId);
+      base.autoAnchorCount = base.autoAnchorIds.length;
+      base.unfilledDayCount = Math.max(0, tripDays - dayClusters.length);
+      base.status = base.unfilledDayCount ? "needs_anchor_selection" : "feasible";
       base.anchorCandidates = scoredCandidates
         .filter((candidate) => !occupiedIds.has(candidate.placeId))
         .filter((candidate) => outsideAllCenters(placesById.get(candidate.placeId), dayClusters, radiusKm))
@@ -590,10 +828,11 @@
     }
 
     const usedPlaceIds = new Set(occupiedIds);
+    const preferredPlaceIds = new Set(courseVariant?.placeIds || []);
     base.dayClusters = dayClusters.map((cluster, index) => {
       const recommendations = base.status === "infeasible"
         ? []
-        : chooseDayRecommendations(cluster, scoredCandidates, placesById, usedPlaceIds, request);
+        : chooseDayRecommendations(cluster, scoredCandidates, placesById, usedPlaceIds, request, preferredPlaceIds);
       cluster.recommendedPlaceIds = recommendations.map((item) => item.placeId);
       const allPlaceIds = [
         ...cluster.requiredPlaceIds,
@@ -606,6 +845,7 @@
         center: cluster.center,
         centerType: cluster.centerType,
         anchorPlaceId: cluster.anchorPlaceId,
+        anchorSource: cluster.anchorSource || null,
         requiredPlaceIds: cluster.requiredPlaceIds,
         recommendedPlaceIds: cluster.recommendedPlaceIds,
         placeIds: allPlaceIds,
@@ -618,6 +858,7 @@
           distanceKm: haversineKm(cluster.center, placesById.get(placeId)),
           relevance: scoreById.get(placeId)?.relevance ?? null,
           dayMmrScore: recommendations.find((item) => item.placeId === placeId)?.mmrScore ?? null,
+          variantPreferred: preferredPlaceIds.has(placeId),
         })),
         usedCapacity: allPlaceIds.length,
         remainingCapacity: Math.max(0, dailyCapacity - allPlaceIds.length),
@@ -627,7 +868,7 @@
     return base;
   }
 
-  function rank(inputPlaces, requestInput) {
+  function rank(inputPlaces, requestInput, runtime = {}) {
     const request = normalizeRequest(requestInput);
     if (!Array.isArray(inputPlaces)) throw new Error("추천 후보는 배열이어야 합니다.");
     const inputIds = new Set();
@@ -699,55 +940,76 @@
     summary.scoredCandidates = candidates.length;
     const pool = candidates.slice(0, CONFIG.candidatePoolSize);
     summary.poolSize = pool.length;
-    const selected = [];
-    const remaining = [...pool];
+    const variantRecords = buildCourseVariants(pool, placesById, request);
+    const courseVariants = variantRecords.map(summarizeCourseVariant);
+    summary.variantCount = courseVariants.length;
+    let selectedVariant = null;
+    let seedSelection = {
+      strategy: CONFIG.seedSelection.strategy,
+      applied: false,
+      reason: request.diversity === "off" ? "diversity_off" : "no_candidates",
+      selectionMode: request.diversity === "off" ? "relevance_order" : "none",
+      randomValue: null,
+      candidates: [],
+      selectedPlaceId: null,
+      selectedVariantId: null,
+      selectedRelevanceRank: null,
+      selectedProbability: null,
+    };
 
-    while (remaining.length && selected.length < request.resultCount) {
+    if (variantRecords.length) {
       if (request.diversity === "off") {
-        const candidate = remaining.shift();
-        selected.push({ ...candidate, mmrScore: candidate.relevance, maxSimilarity: 0, redundancyPenalty: 0, similarPlaceId: null });
-        continue;
-      }
-      if (!selected.length) {
-        const first = remaining.shift();
-        selected.push({
-          ...first,
-          mmrScore: CONFIG.mmrLambda * first.relevance,
-          maxSimilarity: 0,
-          redundancyPenalty: 0,
-          similarPlaceId: null,
-        });
-        continue;
-      }
-      const evaluated = remaining.map((candidate) => {
-        const candidatePlace = placesById.get(candidate.placeId);
-        let maxSimilarity = 0;
-        let similarPlaceId = null;
-        for (const prior of selected) {
-          const similarity = placeSimilarity(candidatePlace, placesById.get(prior.placeId)).value;
-          if (similarity > maxSimilarity) {
-            maxSimilarity = similarity;
-            similarPlaceId = prior.placeId;
-          }
-        }
-        const redundancyPenalty = (1 - CONFIG.mmrLambda) * maxSimilarity;
-        return {
-          ...candidate,
-          maxSimilarity,
-          similarPlaceId,
-          redundancyPenalty,
-          mmrScore: CONFIG.mmrLambda * candidate.relevance - redundancyPenalty,
+        selectedVariant = variantRecords[0];
+        const onlyVariant = courseVariants[0];
+        seedSelection.candidates = [{
+          placeId: onlyVariant.seedPlaceId,
+          variantId: onlyVariant.variantId,
+          relevanceRank: 1,
+          weight: 1,
+          probability: 1,
+        }];
+        seedSelection.selectedPlaceId = onlyVariant.seedPlaceId;
+        seedSelection.selectedVariantId = onlyVariant.variantId;
+        seedSelection.selectedRelevanceRank = 1;
+        seedSelection.selectedProbability = 1;
+      } else if (runtime.variantId !== undefined && runtime.variantId !== null) {
+        const requestedVariantId = String(runtime.variantId);
+        selectedVariant = variantRecords.find((variant) => variant.variantId === requestedVariantId) || null;
+        if (!selectedVariant) throw new Error(`지원하지 않는 코스 variant입니다: ${requestedVariantId}`);
+        const selectedSummary = summarizeCourseVariant(selectedVariant);
+        seedSelection = {
+          strategy: CONFIG.seedSelection.strategy,
+          applied: true,
+          reason: "explicit_variant",
+          selectionMode: "explicit_variant",
+          randomValue: null,
+          candidates: courseVariants.map((variant, index) => ({
+            placeId: variant.seedPlaceId,
+            variantId: variant.variantId,
+            relevanceRank: variant.seedRelevanceRank,
+            weight: SEED_SELECTION_WEIGHTS[index],
+            probability: variant.baseProbability,
+          })),
+          selectedPlaceId: selectedSummary.seedPlaceId,
+          selectedVariantId: selectedSummary.variantId,
+          selectedRelevanceRank: selectedSummary.seedRelevanceRank,
+          selectedProbability: selectedSummary.baseProbability,
         };
-      });
-      evaluated.sort((a, b) => compareStable(a, b, "mmrScore"));
-      const winner = evaluated[0];
-      selected.push(winner);
-      remaining.splice(remaining.findIndex((candidate) => candidate.placeId === winner.placeId), 1);
+      } else {
+        const seedCandidates = courseVariants.map((variant) => ({
+          placeId: variant.seedPlaceId,
+          variantId: variant.variantId,
+        }));
+        const seed = selectWeightedSeed(seedCandidates, runtime.random || Math.random);
+        selectedVariant = variantRecords.find((variant) => variant.variantId === seed.trace.selectedVariantId) || null;
+        seedSelection = { ...seed.trace, selectionMode: "initial_weighted" };
+      }
     }
 
-    const items = selected.map((item, index) => ({ ...item, rank: index + 1 }));
+    const courseVariant = selectedVariant ? summarizeCourseVariant(selectedVariant) : null;
+    const items = selectedVariant?.items || [];
     summary.returned = items.length;
-    const schedule = buildSchedule(candidates, placesById, request);
+    const schedule = buildSchedule(candidates, placesById, request, courseVariant);
     summary.scheduleStatus = schedule.status;
     summary.scheduledDays = schedule.dayClusters.length;
     if (!items.length) warnings.push("현재 조건에서 순위를 계산할 수 있는 추천 후보가 없습니다.");
@@ -764,13 +1026,16 @@
       warnings.push("필수 장소를 현재 여행일·반경·하루 capacity 안에 모두 배치할 수 없습니다.");
     }
     return {
-      schemaVersion: "ccu-mmr-result-v2",
+      schemaVersion: RESULT_SCHEMA_VERSION,
       algorithmVersion: ALGORITHM_VERSION,
       executionMode: CONFIG.executionMode,
       datasetStatus: CONFIG.datasetStatus,
       request,
       config: CONFIG,
       summary,
+      seedSelection,
+      courseVariant,
+      courseVariants,
       items,
       schedule,
       verificationCandidates,
@@ -781,12 +1046,16 @@
   return Object.freeze({
     ALGORITHM_VERSION,
     REQUEST_SCHEMA_VERSION,
+    RESULT_SCHEMA_VERSION,
     ATOMIC_FEATURES,
     COMPANION_TYPES,
     CONFIG,
     normalizeRequest,
     monthDayWeights,
     utilityForPreference,
+    selectWeightedSeed,
+    courseOverlapTrace,
+    selectNextCourseVariant,
     featureSimilarity,
     placeSimilarity,
     haversineKm,
