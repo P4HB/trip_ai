@@ -45,8 +45,9 @@
 | [SPEC-016](spec_016.md) | CCU-MMR 상위 3개 가중 랜덤 seed v3 | Implemented | recommendation, ranking, UI, evaluation |
 | [SPEC-017](spec_017.md) | 세션 코스 3안·자동 일정 anchor v4 | Implemented | recommendation, reroll, itinerary, UI, evaluation |
 | [SPEC-018](spec_018.md) | 클러스터 재사용·일자 한계효용 기반 일정 배분 v5 | Draft | itinerary, clustering, distance, evaluation |
+| [SPEC-019](spec_019.md) | 질문·적응형 쌍대 선택 기반 개인 선호 추정 v1 | Draft | personalization, preference elicitation, ranking, UI, evaluation |
 
-- 다음 예약 번호: `SPEC-019`
+- 다음 예약 번호: `SPEC-020`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
