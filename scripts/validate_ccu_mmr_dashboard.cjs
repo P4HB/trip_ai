@@ -18,7 +18,7 @@ const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "clearTravelMbtiButton", "travelMbtiDialog",
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
-  "detailPlaceId",
+  "detailPlaceId", "feedbackSavePanel", "feedbackCompletionStatus", "saveFeedbackLogButton", "feedbackSaveHelp",
 ]) {
   assert.match(dashboardHtml, new RegExp(`id=["']${id}["']`, "u"), `${id}: travel MBTI DOM contract`);
 }
@@ -63,7 +63,8 @@ assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recomm
 const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\r?\n  \}\r?\n\r?\n  function clearTravelMbtiProfile/u)?.[1] || "";
 assert.ok(travelMbtiApplySource, "travel MBTI apply function");
 assert.doesNotMatch(travelMbtiApplySource, /runRecommendation\(/u, "travel MBTI apply must wait for final wizard confirmation");
-assert.match(dashboardHtml, /얼마나 마음에 드는지 알려주세요\. 점수와 의견은 아직 저장되지 않아요\./u, "feedback persistence notice");
+assert.match(dashboardHtml, /모든 장소의 만족도를 고르면 여행 조건과 추천 결과를 JSON 파일로 저장할 수 있어요\./u, "feedback download notice");
+assert.match(dashboardHtml, /id="saveFeedbackLogButton"[^>]*disabled/u, "feedback save starts disabled");
 assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
 assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
 assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
@@ -103,6 +104,16 @@ const clearRecommendationSource = clearRecommendationStart >= 0 && clearRecommen
   ? dashboardApp.slice(clearRecommendationStart, clearRecommendationEnd)
   : "";
 assert.match(clearRecommendationSource, /state\.recommendationFeedback\.clear\(\)/u, "new recommendation conditions clear feedback");
+assert.match(dashboardApp, /function recommendationFeedbackTargets\(result = state\.recommendationResult\)/u, "unique feedback target calculation");
+assert.match(dashboardApp, /function recommendationFeedbackCompletion\(\)/u, "feedback completion calculation");
+assert.match(dashboardApp, /function buildFeedbackLog\(\)/u, "feedback log builder");
+assert.match(dashboardApp, /schema_version: "travel-recommendation-feedback-log-v1"/u, "feedback log schema version");
+assert.match(dashboardApp, /method: "browser_download"/u, "user-controlled feedback storage");
+assert.match(dashboardApp, /server_transmitted: false/u, "no feedback server transmission");
+assert.match(dashboardApp, /web_storage_used: false/u, "no feedback Web Storage");
+assert.match(dashboardApp, /new Blob\(/u, "feedback JSON browser download");
+assert.match(dashboardApp, /getFeedbackCompletion: \(\) => recommendationFeedbackCompletion\(\)/u, "feedback completion inspection boundary");
+assert.match(dashboardApp, /buildFeedbackLog: \(\) => buildFeedbackLog\(\)/u, "feedback log inspection boundary");
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);
 assert.equal(readyPlaces.length, 1663);

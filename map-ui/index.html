@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css?v=20260824-feedback-v2" />
+    <link rel="stylesheet" href="./styles.css?v=20260824-feedback-log-v1" />
   </head>
   <body>
     <header class="topbar">
@@ -450,7 +450,7 @@
           <div class="output-section-heading">
             <div>
               <h3>추천 장소</h3>
-              <p>얼마나 마음에 드는지 알려주세요. 점수와 의견은 아직 저장되지 않아요.</p>
+              <p>모든 장소의 만족도를 고르면 여행 조건과 추천 결과를 JSON 파일로 저장할 수 있어요.</p>
             </div>
             <span class="count-badge" id="recommendationCount">0</span>
           </div>
@@ -460,6 +460,16 @@
               <span>여행 조건을 차례로 선택해 주세요.</span>
             </div>
           </div>
+
+          <section class="feedback-save-panel" id="feedbackSavePanel" hidden>
+            <div class="feedback-save-heading">
+              <strong>평가 로그 저장</strong>
+              <span id="feedbackCompletionStatus" aria-live="polite">만족도 0/0 완료</span>
+            </div>
+            <p>여행 조건·MBTI 선택·추천 결과·일정·점수·의견을 JSON 파일로 이 기기에 저장합니다. 의견은 선택 사항이며 서버로 전송되지 않습니다. 파일의 보관과 삭제는 직접 관리해 주세요.</p>
+            <button class="button button-primary feedback-save-button" id="saveFeedbackLogButton" type="button" disabled>평가 로그 저장</button>
+            <span class="feedback-save-help" id="feedbackSaveHelp" role="status" aria-live="polite"></span>
+          </section>
 
           <details class="run-summary-panel">
             <summary>실행 요약 · 주의사항</summary>
@@ -516,8 +526,8 @@
     <script src="./vendor/leaflet/leaflet.js" defer></script>
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
     <script src="./data/jeju-places.js?v=20260824-b0046a2" defer></script>
-    <script src="./preference-elicitation.js?v=20260824-feedback-v2" defer></script>
-    <script src="./ccu-mmr.js?v=20260824-feedback-v2" defer></script>
-    <script src="./app.js?v=20260824-feedback-v2" defer></script>
+    <script src="./preference-elicitation.js?v=20260824-feedback-log-v1" defer></script>
+    <script src="./ccu-mmr.js?v=20260824-feedback-log-v1" defer></script>
+    <script src="./app.js?v=20260824-feedback-log-v1" defer></script>
   </body>
 </html>

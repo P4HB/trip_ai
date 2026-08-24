@@ -104,7 +104,8 @@
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
-    "recommendationCount", "recommendationResultList", "verificationPanel", "verificationCount", "verificationList",
+    "recommendationCount", "recommendationResultList", "feedbackSavePanel", "feedbackCompletionStatus", "saveFeedbackLogButton", "feedbackSaveHelp",
+    "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
     "courseVariantBar", "courseVariantLabel", "courseOverlapSummary", "rerollRecommendationButton",
     "outputPreview", "recommendationLegend", "outputScroll",
@@ -1584,6 +1585,130 @@
     }
   }
 
+  function recommendationFeedbackTargets(result = state.recommendationResult) {
+    const targets = new Map();
+    const addContext = (placeId, title, context) => {
+      const key = String(placeId);
+      if (!targets.has(key)) targets.set(key, { placeId: key, title: title || placeById.get(key)?.title || "", contexts: [] });
+      const target = targets.get(key);
+      const contextKey = JSON.stringify(context);
+      if (!target.contexts.some((item) => JSON.stringify(item) === contextKey)) target.contexts.push(context);
+    };
+    for (const item of result?.items || []) {
+      addContext(item.placeId, placeById.get(String(item.placeId))?.title, { kind: "recommendation", rank: item.rank });
+    }
+    for (const day of result?.schedule?.dayClusters || []) {
+      for (const item of day.places || []) {
+        addContext(item.placeId, item.title, {
+          kind: "schedule",
+          dayIndex: day.dayIndex,
+          date: day.date || null,
+          role: item.role,
+        });
+      }
+    }
+    return [...targets.values()];
+  }
+
+  function recommendationFeedbackCompletion() {
+    const targets = recommendationFeedbackTargets();
+    const completed = targets.filter((target) => {
+      const score = state.recommendationFeedback.get(target.placeId)?.score;
+      return Number.isInteger(score) && score >= 1 && score <= 5;
+    }).length;
+    return { completed, total: targets.length, allCompleted: targets.length > 0 && completed === targets.length };
+  }
+
+  function updateFeedbackSaveState() {
+    const completion = recommendationFeedbackCompletion();
+    const hasTargets = Boolean(state.recommendationResult) && completion.total > 0;
+    dom.feedbackSavePanel.hidden = !hasTargets;
+    dom.feedbackCompletionStatus.textContent = `만족도 ${completion.completed}/${completion.total} 완료`;
+    dom.saveFeedbackLogButton.disabled = !completion.allCompleted;
+    if (!hasTargets) dom.feedbackSaveHelp.textContent = "";
+    else if (completion.allCompleted) dom.feedbackSaveHelp.textContent = "모든 만족도를 입력했습니다. 의견은 선택 사항입니다.";
+    else dom.feedbackSaveHelp.textContent = `남은 장소 ${completion.total - completion.completed}곳의 만족도를 선택해 주세요.`;
+  }
+
+  function cloneForFeedbackLog(value) {
+    return value == null ? value : JSON.parse(JSON.stringify(value));
+  }
+
+  function buildFeedbackLog() {
+    const completion = recommendationFeedbackCompletion();
+    if (!state.recommendationResult || !completion.allCompleted) {
+      throw new Error("모든 추천 장소의 만족도를 먼저 선택해 주세요.");
+    }
+    const result = cloneForFeedbackLog(state.recommendationResult);
+    return {
+      schema_version: "travel-recommendation-feedback-log-v1",
+      exported_at: new Date().toISOString(),
+      storage: {
+        method: "browser_download",
+        server_transmitted: false,
+        web_storage_used: false,
+      },
+      source: {
+        ui_version: "map-ui-feedback-log-v1",
+        algorithm_version: algorithm.ALGORITHM_VERSION,
+        provenance: cloneForFeedbackLog(result.provenance || null),
+      },
+      user_selections: {
+        request: cloneForFeedbackLog(result.request),
+        selected_preset: state.selectedPreset,
+        travel_mbti: {
+          questionnaire_answers: cloneForFeedbackLog(state.travelMbti.questionnaireAnswers),
+          pair_answers: cloneForFeedbackLog(state.travelMbti.pairAnswers),
+          generated_profile: cloneForFeedbackLog(state.travelMbti.profile),
+          applied_profile: cloneForFeedbackLog(state.preferenceProfile),
+        },
+        variant_session: {
+          fingerprint: state.variantSession.fingerprint,
+          shown_variant_ids: [...state.variantSession.shownVariantIds],
+          current_variant_id: state.variantSession.currentVariantId,
+          current_place_ids: [...state.variantSession.currentPlaceIds],
+          reroll_index: state.variantSession.rerollIndex,
+          last_transition: cloneForFeedbackLog(state.variantSession.lastTransition),
+        },
+      },
+      recommendation_result: result,
+      feedback: {
+        required_place_count: completion.total,
+        completed_place_count: completion.completed,
+        all_scores_completed: completion.allCompleted,
+        entries: recommendationFeedbackTargets().map((target) => {
+          const entry = state.recommendationFeedback.get(target.placeId);
+          return {
+            place_id: target.placeId,
+            title: target.title,
+            contexts: cloneForFeedbackLog(target.contexts),
+            score: entry.score,
+            score_label: FEEDBACK_OPTIONS[entry.score - 1].label,
+            comment: entry.comment || "",
+          };
+        }),
+      },
+    };
+  }
+
+  function saveFeedbackLog() {
+    try {
+      const log = buildFeedbackLog();
+      const blob = new Blob([`${JSON.stringify(log, null, 2)}\n`], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `trip-ai-feedback-${log.exported_at.replace(/[-:]/gu, "").replace(/\.\d{3}Z$/u, "Z").replace("T", "-")}.json`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      dom.feedbackSaveHelp.textContent = "평가 로그 JSON 파일을 저장했습니다.";
+    } catch (error) {
+      dom.feedbackSaveHelp.textContent = error instanceof Error ? error.message : "평가 로그를 저장하지 못했습니다.";
+    }
+  }
+
   function createRecommendationFeedback(place, contextKey) {
     const feedbackKey = String(place.id);
     const selectedFeedback = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
@@ -1613,6 +1738,7 @@
         const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
         state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
         syncRecommendationFeedback(feedbackKey);
+        updateFeedbackSaveState();
       });
       feedbackScale.append(feedbackButton);
     }
@@ -1646,6 +1772,7 @@
       const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
       state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
       syncRecommendationFeedback(feedbackKey, commentInput);
+      updateFeedbackSaveState();
     });
     comment.append(commentLabel, commentInput, commentCount);
     feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
@@ -2035,6 +2162,7 @@
     } else {
       renderEmptyState(dom.recommendationResultList, "일반 추천 결과가 없습니다", result.verificationCandidates.length ? "미확인 조건 후보를 별도 목록과 JSON에서 확인하세요." : "지역·목적·후보 필터를 바꿔보세요.");
     }
+    updateFeedbackSaveState();
     dom.outputScroll.scrollTop = 0;
     refreshMapMarkers();
     if (state.selectedPlace) renderDetail(state.selectedPlace);
@@ -2076,7 +2204,10 @@
     dom.courseVariantBar.hidden = true;
     document.body.classList.remove("has-recommendation");
     dom.runRecommendationButton.textContent = "이 조건으로 장소 추천받기";
-    if (!state.recommendationResult) return;
+    if (!state.recommendationResult) {
+      updateFeedbackSaveState();
+      return;
+    }
     state.recommendationResult = null;
     state.recommendationById = new Map();
     state.scheduleById = new Map();
@@ -2092,6 +2223,7 @@
     dom.anchorCandidatePanel.hidden = true;
     renderEmptyState(dom.scheduleResultList, "일정을 다시 계산해야 합니다", message);
     renderEmptyState(dom.recommendationResultList, "결과를 다시 계산해야 합니다", message);
+    updateFeedbackSaveState();
     refreshMapMarkers();
     if (state.selectedPlace) renderDetail(state.selectedPlace);
   }
@@ -2278,6 +2410,7 @@
       resetRecommendationForm();
     });
     dom.rerollRecommendationButton.addEventListener("click", rerollRecommendation);
+    dom.saveFeedbackLogButton.addEventListener("click", saveFeedbackLog);
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
       if (event.target === dom.requiredPlaceSearch) return;
@@ -2356,6 +2489,8 @@
         getHighlightedScheduleDay: () => activeScheduleDay(),
         getPreferenceProfile: () => state.preferenceProfile,
         getRecommendationFeedback: () => Object.fromEntries(state.recommendationFeedback),
+        getFeedbackCompletion: () => recommendationFeedbackCompletion(),
+        buildFeedbackLog: () => buildFeedbackLog(),
         startTravelMbti: () => startTravelMbti(),
       };
     } catch (error) {
