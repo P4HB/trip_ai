@@ -67,6 +67,18 @@ assert.match(dashboardHtml, /얼마나 마음에 드는지 알려주세요\. 점
 assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
 assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
 assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
+const feedbackComponentStart = dashboardApp.indexOf("function createRecommendationFeedback(place, contextKey)");
+const feedbackComponentEnd = dashboardApp.indexOf("function createRecommendationCard(item)", feedbackComponentStart);
+const feedbackComponentSource = feedbackComponentStart >= 0 && feedbackComponentEnd > feedbackComponentStart
+  ? dashboardApp.slice(feedbackComponentStart, feedbackComponentEnd)
+  : "";
+assert.ok(feedbackComponentSource, "shared place feedback component");
+assert.match(feedbackComponentSource, /recommendation-feedback-option/u, "per-place satisfaction controls");
+assert.match(feedbackComponentSource, /aria-pressed/u, "feedback pressed state");
+assert.match(feedbackComponentSource, /createElement\("textarea"\)/u, "per-place free-text feedback");
+assert.match(feedbackComponentSource, /commentInput\.maxLength = 300/u, "feedback comment length boundary");
+assert.match(feedbackComponentSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value \}\)/u, "feedback comment memory state");
+assert.match(feedbackComponentSource, /syncRecommendationFeedback\(feedbackKey, commentInput\)/u, "feedback instances synchronize comments");
 const recommendationCardStart = dashboardApp.indexOf("function createRecommendationCard(item)");
 const recommendationCardEnd = dashboardApp.indexOf("function renderWarnings", recommendationCardStart);
 const recommendationCardSource = recommendationCardStart >= 0 && recommendationCardEnd > recommendationCardStart
@@ -74,12 +86,17 @@ const recommendationCardSource = recommendationCardStart >= 0 && recommendationC
   : "";
 assert.ok(recommendationCardSource, "recommendation card function");
 assert.match(recommendationCardSource, /recommendation-detail-button/u, "explicit place detail button");
-assert.match(recommendationCardSource, /recommendation-feedback-option/u, "per-place satisfaction controls");
-assert.match(recommendationCardSource, /aria-pressed/u, "feedback pressed state");
-assert.match(recommendationCardSource, /createElement\("textarea"\)/u, "per-place free-text feedback");
-assert.match(recommendationCardSource, /commentInput\.maxLength = 300/u, "feedback comment length boundary");
-assert.match(recommendationCardSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value \}\)/u, "feedback comment memory state");
+assert.match(recommendationCardSource, /createRecommendationFeedback\(place, "recommendation"\)/u, "recommendation card uses shared feedback");
 assert.doesNotMatch(recommendationCardSource, /ID |MMR|연결 출처|seed:|sim |recommendation-score-row|recommendation-relevance/u, "beta card must hide internal trace");
+const schedulePlaceStart = dashboardApp.indexOf("function createSchedulePlaceCard(item, dayIndex)");
+const schedulePlaceEnd = dashboardApp.indexOf("function renderSchedule(schedule)", schedulePlaceStart);
+const schedulePlaceSource = schedulePlaceStart >= 0 && schedulePlaceEnd > schedulePlaceStart
+  ? dashboardApp.slice(schedulePlaceStart, schedulePlaceEnd)
+  : "";
+assert.ok(schedulePlaceSource, "schedule place card function");
+assert.match(schedulePlaceSource, /schedule-place-card/u, "schedule place is a non-button container");
+assert.match(schedulePlaceSource, /createRecommendationFeedback\(place, `schedule-\$\{dayIndex\}`\)/u, "schedule place uses shared feedback");
+assert.match(dashboardApp, /function syncRecommendationFeedback\(feedbackKey, sourceInput = null\)/u, "same-place feedback synchronization");
 const clearRecommendationStart = dashboardApp.indexOf("function clearRecommendation(");
 const clearRecommendationEnd = dashboardApp.indexOf("function fitBoundsForPlaces", clearRecommendationStart);
 const clearRecommendationSource = clearRecommendationStart >= 0 && clearRecommendationEnd > clearRecommendationStart

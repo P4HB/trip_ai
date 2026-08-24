@@ -1562,6 +1562,96 @@
     scheduleVisibleResultRender();
   }
 
+  function syncRecommendationFeedback(feedbackKey, sourceInput = null) {
+    const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+    for (const feedback of document.querySelectorAll(".recommendation-feedback")) {
+      if (feedback.dataset.feedbackPlaceId !== feedbackKey) continue;
+      for (const control of feedback.querySelectorAll(".recommendation-feedback-option")) {
+        control.setAttribute("aria-pressed", String(Number(control.dataset.score) === current.score));
+      }
+      const status = feedback.querySelector(".recommendation-feedback-status");
+      if (status) {
+        status.textContent = current.score
+          ? `${current.score}점 · ${FEEDBACK_OPTIONS[current.score - 1].label}`
+          : "";
+      }
+      const commentInput = feedback.querySelector("textarea");
+      if (commentInput && commentInput !== sourceInput && commentInput.value !== current.comment) {
+        commentInput.value = current.comment;
+      }
+      const commentCount = feedback.querySelector(".recommendation-feedback-count");
+      if (commentCount) commentCount.textContent = `${current.comment.length}/300`;
+    }
+  }
+
+  function createRecommendationFeedback(place, contextKey) {
+    const feedbackKey = String(place.id);
+    const selectedFeedback = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+    const feedback = document.createElement("section");
+    feedback.className = "recommendation-feedback";
+    feedback.dataset.feedbackPlaceId = feedbackKey;
+    feedback.setAttribute("aria-label", `${place.title} 추천 만족도`);
+    const feedbackHeading = document.createElement("strong");
+    feedbackHeading.textContent = "이 추천, 얼마나 마음에 드나요?";
+    const feedbackScale = document.createElement("div");
+    feedbackScale.className = "recommendation-feedback-scale";
+    feedbackScale.setAttribute("role", "group");
+    feedbackScale.setAttribute("aria-label", "1점부터 5점까지 선택");
+    const feedbackStatus = document.createElement("span");
+    feedbackStatus.className = "recommendation-feedback-status";
+    feedbackStatus.setAttribute("aria-live", "polite");
+    for (const option of FEEDBACK_OPTIONS) {
+      const feedbackButton = document.createElement("button");
+      feedbackButton.type = "button";
+      feedbackButton.className = "recommendation-feedback-option";
+      feedbackButton.dataset.score = String(option.score);
+      feedbackButton.textContent = String(option.score);
+      feedbackButton.title = option.label;
+      feedbackButton.setAttribute("aria-label", `${option.score}점, ${option.label}`);
+      feedbackButton.setAttribute("aria-pressed", String(selectedFeedback.score === option.score));
+      feedbackButton.addEventListener("click", () => {
+        const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+        state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
+        syncRecommendationFeedback(feedbackKey);
+      });
+      feedbackScale.append(feedbackButton);
+    }
+    const feedbackEnds = document.createElement("div");
+    feedbackEnds.className = "recommendation-feedback-ends";
+    feedbackEnds.innerHTML = "<span>전혀 안 끌려요</span><span>꼭 가고 싶어요</span>";
+    if (selectedFeedback.score) {
+      feedbackStatus.textContent = `${selectedFeedback.score}점 · ${FEEDBACK_OPTIONS[selectedFeedback.score - 1].label}`;
+    }
+    const comment = document.createElement("div");
+    comment.className = "recommendation-feedback-comment";
+    const commentLabel = document.createElement("label");
+    const safeContext = String(contextKey).replace(/[^a-z0-9_-]/giu, "-");
+    const commentId = `recommendation-comment-${safeContext}-${place.id}`;
+    const countId = `${commentId}-count`;
+    commentLabel.htmlFor = commentId;
+    commentLabel.textContent = "의견을 자유롭게 남겨주세요 (선택)";
+    const commentInput = document.createElement("textarea");
+    commentInput.id = commentId;
+    commentInput.rows = 3;
+    commentInput.maxLength = 300;
+    commentInput.placeholder = "좋았던 점이나 아쉬운 점을 적어주세요.";
+    commentInput.value = selectedFeedback.comment;
+    commentInput.setAttribute("aria-label", `${place.title} 추천 의견`);
+    commentInput.setAttribute("aria-describedby", countId);
+    const commentCount = document.createElement("span");
+    commentCount.id = countId;
+    commentCount.className = "recommendation-feedback-count";
+    commentCount.textContent = `${commentInput.value.length}/300`;
+    commentInput.addEventListener("input", () => {
+      const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+      state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
+      syncRecommendationFeedback(feedbackKey, commentInput);
+    });
+    comment.append(commentLabel, commentInput, commentCount);
+    feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
+    return feedback;
+  }
+
   function createRecommendationCard(item) {
     const place = placeById.get(item.placeId);
     const category = categoryFor(place.type);
@@ -1626,72 +1716,7 @@
       closeOutputPanel();
     });
 
-    const feedback = document.createElement("section");
-    feedback.className = "recommendation-feedback";
-    feedback.setAttribute("aria-label", `${place.title} 추천 만족도`);
-    const feedbackHeading = document.createElement("strong");
-    feedbackHeading.textContent = "이 추천, 얼마나 마음에 드나요?";
-    const feedbackScale = document.createElement("div");
-    feedbackScale.className = "recommendation-feedback-scale";
-    feedbackScale.setAttribute("role", "group");
-    feedbackScale.setAttribute("aria-label", "1점부터 5점까지 선택");
-    const feedbackKey = String(place.id);
-    const selectedFeedback = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
-    const selectedScore = selectedFeedback.score;
-    const feedbackStatus = document.createElement("span");
-    feedbackStatus.className = "recommendation-feedback-status";
-    feedbackStatus.setAttribute("aria-live", "polite");
-    for (const option of FEEDBACK_OPTIONS) {
-      const feedbackButton = document.createElement("button");
-      feedbackButton.type = "button";
-      feedbackButton.className = "recommendation-feedback-option";
-      feedbackButton.dataset.score = String(option.score);
-      feedbackButton.textContent = String(option.score);
-      feedbackButton.title = option.label;
-      feedbackButton.setAttribute("aria-label", `${option.score}점, ${option.label}`);
-      feedbackButton.setAttribute("aria-pressed", String(selectedScore === option.score));
-      feedbackButton.addEventListener("click", () => {
-        const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
-        state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
-        for (const control of feedbackScale.querySelectorAll(".recommendation-feedback-option")) {
-          control.setAttribute("aria-pressed", String(Number(control.dataset.score) === option.score));
-        }
-        feedbackStatus.textContent = `${option.score}점 · ${option.label}`;
-      });
-      feedbackScale.append(feedbackButton);
-    }
-    const feedbackEnds = document.createElement("div");
-    feedbackEnds.className = "recommendation-feedback-ends";
-    feedbackEnds.innerHTML = "<span>전혀 안 끌려요</span><span>꼭 가고 싶어요</span>";
-    if (selectedScore) {
-      feedbackStatus.textContent = `${selectedScore}점 · ${FEEDBACK_OPTIONS[selectedScore - 1].label}`;
-    }
-    const comment = document.createElement("div");
-    comment.className = "recommendation-feedback-comment";
-    const commentLabel = document.createElement("label");
-    const commentId = `recommendation-comment-${place.id}`;
-    const countId = `${commentId}-count`;
-    commentLabel.htmlFor = commentId;
-    commentLabel.textContent = "의견을 자유롭게 남겨주세요 (선택)";
-    const commentInput = document.createElement("textarea");
-    commentInput.id = commentId;
-    commentInput.rows = 3;
-    commentInput.maxLength = 300;
-    commentInput.placeholder = "좋았던 점이나 아쉬운 점을 적어주세요.";
-    commentInput.value = selectedFeedback.comment;
-    commentInput.setAttribute("aria-label", `${place.title} 추천 의견`);
-    commentInput.setAttribute("aria-describedby", countId);
-    const commentCount = document.createElement("span");
-    commentCount.id = countId;
-    commentCount.className = "recommendation-feedback-count";
-    commentCount.textContent = `${commentInput.value.length}/300`;
-    commentInput.addEventListener("input", () => {
-      const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
-      state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
-      commentCount.textContent = `${commentInput.value.length}/300`;
-    });
-    comment.append(commentLabel, commentInput, commentCount);
-    feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
+    const feedback = createRecommendationFeedback(place, "recommendation");
     card.append(top, researchSnippet);
     if (traces.length) card.append(reasons);
     card.append(detailButton, feedback);
@@ -1748,7 +1773,10 @@
     }[centerType] || "일정 중심";
   }
 
-  function createSchedulePlaceButton(item, dayIndex) {
+  function createSchedulePlaceCard(item, dayIndex) {
+    const card = document.createElement("article");
+    card.className = "schedule-place-card";
+    card.dataset.placeId = item.placeId;
     const button = document.createElement("button");
     button.type = "button";
     button.className = `schedule-place is-${item.role}`;
@@ -1763,12 +1791,15 @@
         closeOutputPanel();
       }
     });
-    return button;
+    card.append(button);
+    const place = placeById.get(item.placeId);
+    if (place) card.append(createRecommendationFeedback(place, `schedule-${dayIndex}`));
+    return card;
   }
 
   function renderSchedule(schedule) {
     dom.scheduleDayCount.textContent = formatNumber(schedule.dayClusters.length);
-    dom.scheduleSummary.textContent = `${scheduleStatusLabel(schedule.status)} · ${schedule.radiusKm}km · 하루 ${schedule.dailyCapacity}곳`;
+    dom.scheduleSummary.textContent = `${scheduleStatusLabel(schedule.status)} · ${schedule.radiusKm}km · 하루 ${schedule.dailyCapacity}곳 · 장소별 만족도 입력 가능`;
     if (schedule.dayClusters.length) {
       const fragment = document.createDocumentFragment();
       for (const day of schedule.dayClusters) {
@@ -1806,7 +1837,7 @@
         meta.textContent = `최대 중심거리 ${formatScore(day.maxCenterDistanceKm, 1)}km · 중심 ${formatScore(day.center.lat, 4)}, ${formatScore(day.center.lng, 4)}`;
         const placesList = document.createElement("div");
         placesList.className = "schedule-place-list";
-        for (const item of day.places) placesList.append(createSchedulePlaceButton(item, day.dayIndex));
+        for (const item of day.places) placesList.append(createSchedulePlaceCard(item, day.dayIndex));
         card.append(heading, meta, placesList);
         if (day.anchorPlaceId && day.centerType === "user_anchor") {
           const remove = document.createElement("button");
