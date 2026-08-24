@@ -421,7 +421,7 @@ const metadata = {
   hardConstraintAttachedCount: attachedConstraintCount,
   hardConstraintAttachedPlaceCount: attachedConstraintPlaceCount,
   datasetStatus: "ai_draft",
-  algorithmVersion: "ccu-mmr-v4-session-variants-schedule",
+  algorithmVersion: "ccu-mmr-v6-travel-mbti-three-axis",
   fitLabelVersion: "place-fit-relabel-v2-relative-five-level-companion",
   preferenceLabelVersion: "place-preference-label-v5-researched",
   researchVersion: "place-preference-label-v5-researched-sources-v1",

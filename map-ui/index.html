@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260824-feedback-v2" />
   </head>
   <body>
     <header class="topbar">
@@ -29,6 +29,15 @@
       </div>
 
       <div class="topbar-actions">
+        <button
+          class="button button-primary travel-mbti-topbar-button"
+          id="headerTravelMbtiButton"
+          type="button"
+          aria-label="여행 MBTI 질문 시작"
+        >
+          <span class="travel-mbti-topbar-full">여행 MBTI</span>
+          <span class="travel-mbti-topbar-short" aria-hidden="true">MBTI</span>
+        </button>
         <div class="experiment-badge">BETA · AI 초안</div>
         <div class="data-pill" aria-label="추천 데이터 상태">
           <span class="live-dot" aria-hidden="true"></span>
@@ -196,6 +205,25 @@
                 <p>지금 여행에서 가장 끌리는 분위기를 골라주세요.</p>
                 <h3 id="preferenceStepTitle">어떤 여행을 좋아하나요?</h3>
               </div>
+
+              <div class="travel-mbti-launch">
+                <div>
+                  <span class="travel-mbti-chip">TRAVEL MBTI · 18문항</span>
+                  <strong>질문으로 내 여행 취향 찾기</strong>
+                  <p>축마다 6개씩 답하고 애매한 취향만 가상 여행지 A/B로 확인해요.</p>
+                </div>
+                <button id="startTravelMbtiButton" class="travel-mbti-start" type="button">내 여행 MBTI 찾기</button>
+              </div>
+
+              <div id="travelMbtiApplied" class="travel-mbti-applied" hidden>
+                <div class="travel-mbti-applied-code" id="travelMbtiAppliedType">—</div>
+                <div>
+                  <strong id="travelMbtiAppliedName">여행 취향 적용됨</strong>
+                  <p id="travelMbtiAppliedSummary"></p>
+                </div>
+                <button id="clearTravelMbtiButton" type="button">개인화 해제</button>
+              </div>
+
               <div class="preference-card-list" role="group" aria-label="여행 취향 선택">
                 <button type="button" class="preset-card" data-preset="scenic"><span class="preset-card-icon" aria-hidden="true">01</span><span><strong>바다와 멋진 풍경</strong><small>탁 트인 경관과 사진 남기기 좋은 곳</small></span></button>
                 <button type="button" class="preset-card" data-preset="easy"><span class="preset-card-icon" aria-hidden="true">02</span><span><strong>편안하고 여유롭게</strong><small>걷는 부담이 적고 쉬어가기 좋은 곳</small></span></button>
@@ -262,7 +290,7 @@
 
           <details class="lab-notice">
             <summary>베타 서비스 안내</summary>
-            <strong id="algorithmBadge">ccu-mmr-v4-session-variants-schedule</strong>
+            <strong id="algorithmBadge">ccu-mmr-v6-travel-mbti-three-axis</strong>
             <span>AI 초안 데이터로 만든 내부 베타입니다. 날씨·실제 이동시간·가격은 현재 점수에 넣지 않습니다.</span>
           </details>
 
@@ -321,7 +349,7 @@
 
         <div class="map-legend" id="recommendationLegend" hidden>
           <strong>추천·일정 마커</strong>
-          <span>D1은 1일차, 숫자는 Top-N MMR 순서입니다.</span>
+          <span>D1은 1일차, 숫자는 추천 순서입니다.</span>
         </div>
 
         <div class="map-loading" id="mapLoading" role="status">
@@ -349,6 +377,7 @@
             <div class="detail-meta-row">
               <span class="type-badge" id="detailType"></span>
               <span id="detailModified"></span>
+              <span class="detail-place-id" id="detailPlaceId"></span>
               <span class="recommendation-rank-badge" id="detailRank" hidden></span>
             </div>
             <h2 id="detailTitle"></h2>
@@ -420,8 +449,8 @@
 
           <div class="output-section-heading">
             <div>
-              <h3>Top-N 장소</h3>
-              <p>카드를 누르면 지도와 41개 라벨 상세가 열립니다.</p>
+              <h3>추천 장소</h3>
+              <p>얼마나 마음에 드는지 알려주세요. 점수와 의견은 아직 저장되지 않아요.</p>
             </div>
             <span class="count-badge" id="recommendationCount">0</span>
           </div>
@@ -460,13 +489,35 @@
       </aside>
     </main>
 
+    <dialog id="travelMbtiDialog" class="travel-mbti-dialog" aria-labelledby="travelMbtiDialogTitle">
+      <div class="travel-mbti-shell">
+        <header class="travel-mbti-header">
+          <div>
+            <span class="travel-mbti-chip">TRAVEL MBTI</span>
+            <h2 id="travelMbtiDialogTitle">나의 여행 취향 발견하기</h2>
+          </div>
+          <button id="travelMbtiCloseButton" class="travel-mbti-close" type="button" aria-label="여행 MBTI 닫기">×</button>
+        </header>
+        <div class="travel-mbti-progress-wrap">
+          <span id="travelMbtiProgressLabel">질문 1 / 18</span>
+          <div class="travel-mbti-progress" aria-hidden="true"><span id="travelMbtiProgressBar"></span></div>
+        </div>
+        <div id="travelMbtiBody" class="travel-mbti-body" aria-live="polite"></div>
+        <footer id="travelMbtiFooter" class="travel-mbti-footer">
+          <button id="travelMbtiBackButton" class="button button-secondary" type="button">이전</button>
+          <button id="travelMbtiSkipButton" class="travel-mbti-skip" type="button">이 질문 건너뛰기</button>
+        </footer>
+      </div>
+    </dialog>
+
     <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
     <div class="output-backdrop" id="outputBackdrop" aria-hidden="true"></div>
 
     <script src="./vendor/leaflet/leaflet.js" defer></script>
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
-    <script src="./data/jeju-places.js" defer></script>
-    <script src="./ccu-mmr.js" defer></script>
-    <script src="./app.js" defer></script>
+    <script src="./data/jeju-places.js?v=20260824-b0046a2" defer></script>
+    <script src="./preference-elicitation.js?v=20260824-feedback-v2" defer></script>
+    <script src="./ccu-mmr.js?v=20260824-feedback-v2" defer></script>
+    <script src="./app.js?v=20260824-feedback-v2" defer></script>
   </body>
 </html>

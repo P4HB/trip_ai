@@ -1,9 +1,9 @@
 # CCU-MMR 장소 추천 및 일정 군집 알고리즘 초안
 
-- 문서 상태: 세션 코스 3안·요청 인지형 MMR과 선택 코스 자동 일정 v4 구현
+- 문서 상태: 3축 여행 MBTI 개인화·세션 코스 3안·요청 인지형 MMR과 선택 코스 자동 일정 v6 구현
 - 작성일: 2026-08-12
-- 최종 수정일: 2026-08-16
-- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md), [SPEC-016](spec_016.md)
+- 최종 수정일: 2026-08-22
+- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md), [SPEC-016](spec_016.md), [SPEC-017](spec_017.md), [SPEC-019](spec_019.md)
 - 관련 기준 문서: [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md)
 
 > 이 문서는 41개 장소·상황 라벨을 사용하는 CCU-MMR 장소 추천과, 추천 결과를 여행일별로 묶기 위한 중심 반경·일일 capacity 군집을 하나의 흐름으로 정리한다. 중심 반경·capacity 일정 v2는 SPEC-015에 따라 구현하며 실제 이동시간, 체류시간과 방문 순서 최적화는 포함하지 않는다.
@@ -57,7 +57,9 @@ CCUMMRScheduleRequest {
   preferences[] {
     feature
     mode: benefit | avoid | target
-    weight: 1 | 2 | 4
+    weight: 1 | 2 | 4, 또는 v4-personalized의 number(0,4]
+    confidence? // v4-personalized
+    source?     // v4-personalized
     target?
     tolerance?
   }
@@ -72,6 +74,8 @@ CCUMMRScheduleRequest {
   }
 }
 ```
+
+`ccu-mmr-request-v2`는 기존 수동 중요도 `1|2|4`만 허용한다. `ccu-mmr-request-v4-personalized`는 메모리 한정 `TravelerPreferenceProfileV2`와 profile에서 materialize한 연속 weight·confidence·source를 전달한다. profile은 A/R·O/I·L/H 각 6개인 18개 상황 질문과 최대 3개 적응형 가상 장소 비교로 만들며 active feature를 신호 상위 8개로 제한한다. 여행 MBTI 3글자 유형은 전용 axis evidence로 만든 표시 전용 요약이고 점수에 직접 사용하지 않는다.
 
 `required_place_ids`는 반드시 일정에 들어가야 하는 장소다. 여행일 `k`는 시작일과 종료일을 포함해 계산한다. 사용자는 자차 여부만 입력하며 v1은 자차면 반경 15km, 비자차면 5km를 적용한다. 이 반경은 실제 도로시간이 아니라 중심과 장소 사이의 Haversine 직선거리 임계값이다.
 
@@ -145,7 +149,7 @@ target:  u_k(x) = exp(-(x-target)^2 / (2*tolerance^2))
 ignore:  계산에서 제외
 ```
 
-중요도는 `1`, `2`, `4`를 사용하고 활성 가중치의 합으로 정규화한다. “반드시”는 큰 가중치가 아니라 필수 조건으로 입력해야 한다.
+v2 중요도는 `1`, `2`, `4`, v4-personalized 중요도는 `0 < weight <= 4`인 연속값을 사용하고 활성 가중치의 합으로 정규화한다. 개인화 confidence는 weight 생성 근거와 trace에 남지만 장소 라벨 confidence 보정으로 사용하지 않는다. “반드시”는 큰 가중치가 아니라 필수 조건으로 입력해야 한다.
 
 ## 6. 장소 관련도 계산
 
@@ -188,7 +192,7 @@ W_i(context)
   = 1 - weather_badness(context) * weather_sensitivity_i
 ```
 
-현재 `ccu-mmr-v4-session-variants-schedule`은 날씨 블록을 비활성화한다.
+현재 `ccu-mmr-v6-travel-mbti-three-axis`는 날씨 블록을 비활성화한다. 개인화 v2도 P/A/M/W 블록 가중치 자체는 바꾸지 않고 개인취향 P 내부 feature weight만 변경한다.
 
 ### 6.5 최종 장소 관련도 R
 
@@ -403,7 +407,7 @@ feature_similarity(i,j)
 
 ```text
 CCUMMRScheduleResult {
-  result_schema: ccu-mmr-result-v4
+  result_schema: ccu-mmr-result-v6
   course_variant { variant_id, seed_place_id, seed_relevance_rank, base_probability, place_ids[] }
   course_variants[]
   reroll_session? { reroll_index, previous_variant_id, shown_variant_ids[], overlap_count, overlap_rate, changed_place_count }
@@ -491,7 +495,7 @@ CCUMMRScheduleResult {
 ## 14. 보장하려는 원칙
 
 1. 갈 수 없는 장소는 높은 취향 점수로 복구하지 않는다.
-2. 사용자가 선택한 원자 라벨만 장소 적합도에 사용한다.
+2. 사용자가 직접 선택하거나 여행 MBTI profile에서 충분한 신호로 활성화한 원자 라벨만 장소 적합도에 사용한다.
 3. 모든 라벨의 신뢰도는 동일하게 취급한다.
 4. 필수 장소는 일정 군집에서 누락하지 않는다.
 5. 지리적으로 가까워도 하루 capacity를 넘으면 여러 날짜로 나눈다.
@@ -502,8 +506,9 @@ CCUMMRScheduleResult {
 
 ## 15. 현재 구현 범위
 
-- 구현됨: 구조화된 입력, P/A/M 관련도, 상위 3개 seed 코스 variant, 최초 `0.5/0.3/0.2` 선택, 세션 미노출 재추천, 요청 인지형 유사도, 지도·41축·웹 조사 표시 (`ccu-mmr-v4-session-variants-schedule`)
-- 구현됨: 자차 여부, 필수 장소, 중심 반경 병합, 하루 6곳 capacity 분할, 선택 variant 자동 anchor·후보 보완, 날짜별 variant 우선 MMR, 일차 hover/focus 지도 강조 (`ccu-mmr-v4-session-variants-schedule`)
+- 구현됨: A/R·O/I·L/H 각 6개인 18개 상황 질문, 최대 3개 적응형 가상 장소 pair, 연속 원자 feature 가중치, 3축 8개 표시 전용 여행 MBTI와 v2/v4 요청 분리 (`ccu-mmr-v6-travel-mbti-three-axis`)
+- 구현됨: 구조화된 입력, 고정 P/A/M 관련도, 상위 3개 seed 코스 variant, 최초 `0.5/0.3/0.2` 선택, 세션 미노출 재추천, 요청 인지형 유사도, 지도·41축·웹 조사 표시 (`ccu-mmr-v6-travel-mbti-three-axis`)
+- 구현됨: 자차 여부, 필수 장소, 중심 반경 병합, 하루 6곳 capacity 분할, 선택 variant 자동 anchor·후보 보완, 날짜별 variant 우선 MMR, 일차 hover/focus 지도 강조 (`ccu-mmr-v6-travel-mbti-three-axis`)
 - 미구현: 실제 이동시간·체류시간·영업시간·예약과 방문 순서 최적화
 
-일정 초기값은 [SPEC-015](spec_015.md), 최초 seed 가중치는 [SPEC-016](spec_016.md), 코스 variant·세션 재추천·자동 일정 연결은 [SPEC-017](spec_017.md)을 따른다.
+일정 초기값은 [SPEC-015](spec_015.md), 최초 seed 가중치는 [SPEC-016](spec_016.md), 코스 variant·세션 재추천·자동 일정 연결은 [SPEC-017](spec_017.md), 여행 MBTI 개인화는 [SPEC-019](spec_019.md)을 따른다.

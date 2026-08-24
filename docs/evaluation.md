@@ -43,6 +43,7 @@ SPEC-007은 비음식점 1,434건을 모두 조사·생성했다.
 - 축별 값 범위, provenance, confidence와 evidence 연결
 - `dataset_status=ai_draft` 실행 gate와 경고 누락률
 - 관련도·각 seed variant·자동 일정은 같은 입력에서 결정적이어야 한다. 최초 브라우저 가중 seed는 상위 3개와 `0.5/0.3/0.2` 경계를 벗어나지 않고, 명시 variant 선택은 난수를 호출하지 않아야 한다.
+- 여행 MBTI 질문·pair catalog ID와 mapping, 같은 답변의 profile JSON, A/B 대칭성, 미노출 적응형 pair 선택, A/R·O/I·L/H 각 6문항과 선택지 방향 3:3 균형, 8개 유형과 최대 8개 active feature를 고정 fixture로 회귀한다. 기존 v2와 개인화 v4 요청을 분리해 v2 P/A/M/R/MMR·일정 결과가 유지되는지 확인한다.
 
 ### 2. 필수 제약 정확성
 
@@ -79,6 +80,7 @@ SPEC-007은 비음식점 1,434건을 모두 조사·생성했다.
 4. 3과 같은 점수에 결정적 다양성 재정렬 적용
 5. 4의 첫 seed만 상위 3개 `0.5/0.3/0.2`로 추첨한 내부 실험
 6. 5의 세 seed variant를 미리 계산하고 요청 선호 feature를 MMR 중복축에서 제외하며 선택 variant를 자동 일정에 연결한 내부 실험
+7. 6과 같은 P/A/M·제약·MMR·일정에 질문·가상 pair로 추정한 연속 원자 feature weight만 적용한 개인화 내부 실험
 
 권장 지표는 NDCG@10, Recall@20, pairwise preference accuracy다. `result_confidence`는 확률이 아닌 휴리스틱 근거 강도이므로 `request_coverage` 구간과 함께 품질 편차를 보고 calibration 전에는 성공 확률로 평가하지 않는다. 행동 로그가 생겨도 노출 편향을 포함하므로 단독 정답으로 사용하지 않는다.
 
@@ -93,6 +95,8 @@ SPEC-007은 비음식점 1,434건을 모두 조사·생성했다.
 지리적 다양성과 일정 이동 편의는 장소 랭킹 품질과 별도 평가한다.
 
 SPEC-016·017의 코스 variant는 후보별 실제 최초 선택 빈도, seed별 NDCG@10·intra-list similarity·적합도 손실, variant 간 Top-N 교집합·순위 변화와 재추천 만족도를 결정적 기준선과 별도로 비교한다. 세션 회귀는 미노출 variant 우선, 즉시 같은 variant 반복 없음과 교집합 trace 정확성을 검사한다. 단위 테스트는 경계·trace 재현만 보장하며 추천 품질 향상을 증명하지 않는다.
+
+SPEC-019 개인화는 유형 분류 정확도를 추천 품질로 간주하지 않는다. 연속 profile에 대해 held-out 가상 pair 방향 일치, 반복 응답 안정성, active feature 수·confidence 분포, 수동 선호 대비 Top-N regret와 사용자 설명 납득도를 별도로 평가한다. 3글자 유형은 바이럴·설명 출력이므로 유형별 노출 편차와 공유 문구의 개인정보 최소화도 확인한다.
 
 SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검사한다.
 

@@ -68,15 +68,17 @@ Place {
 - 이름이 비어 있으면 `이름 없는 장소`를 사용한다.
 - 2026-08-09 번들은 좌표 정상 2,153곳을 담고, 이 중 24+17축이 완전한 1,663곳만 추천 가능하다. 좌표 이상 `2704351` 한 곳과 지도 탐색 전용 490곳은 metadata에서 분리 집계한다.
 - Companion·Month는 `state=numeric|not_applicable`을 먼저 확인한다. `not_applicable` 값은 반드시 `null`이며 0이나 0.5로 대체하지 않는다.
-- metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v4-session-variants-schedule`을 기록한다.
+- metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v6-travel-mbti-three-axis`를 기록한다.
 - `research.highlights`는 v5 `sources[].facts[]`를 원문 출처 ID와 함께 유지한 표시용 요약이다. 구형 1건은 `evidence`를 claim으로 정규화한다. 링크는 HTTPS로 정규화하며 활동·체험·관람·판매·메뉴 설명을 주소·카탈로그·운영 정보보다 우선하고 변동 정보는 우선 제외한다.
 - 웹 조사 설명은 ranking feature가 아니며 `status=ai_draft`다. `dynamic=true` 또는 운영시간·가격·휴무·행사 일정은 현재 사실로 보장하지 않고 원문 재확인이 필요하다.
 
 ## CCU-MMR 정적 대시보드 요청·결과 — 구현됨
 
-`map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v2`를 사용한다. 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 자차 여부, 18개 원자 라벨 선호, 필수·추가 중심·제외 ID, 결과 수, 다양성과 확인 필요 조건이다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다. 자차는 15km, 비자차는 5km 반경으로 정규화하고 하루 capacity는 `place_count=6`으로 고정한다.
+`map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v2`와 `ccu-mmr-request-v4-personalized`를 사용한다. 공통 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 자차 여부, 18개 원자 라벨 선호, 필수·추가 중심·제외 ID, 결과 수, 다양성과 확인 필요 조건이다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다. 자차는 15km, 비자차는 5km 반경으로 정규화하고 하루 capacity는 `place_count=6`으로 고정한다.
 
-결과 `ccu-mmr-result-v4`는 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, Top-N별 표시용 `webResearch`, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. `balanced` 모드는 관련도 상위 최대 3개를 각각 seed로 하는 `courseVariants[]`를 결정적으로 만들고 최초 `courseVariant`만 `0.5/0.3/0.2`로 선택한다. 명시적 `variantId` 선택은 난수를 사용하지 않는다. 요청에 포함된 선호 feature는 관련도에 유지하되 파생 `diversityFeatureKeys`에서는 제외한다. `diversity=off`는 단일 관련도 순 variant다.
+v2는 기존 수동 중요도 `1|2|4`만 허용한다. v4-personalized는 `TravelerPreferenceProfileV2` snapshot과 `confidence`, `source`, `0 < weight <= 4`인 연속 중요도를 허용한다. 프로필은 A/R·O/I·L/H 각 6개인 18개 상황 질문과 최대 3개 가상 장소 pair의 stable ID 응답, 18개 feature estimate, 전용 질문 evidence로 계산한 3축·8유형 요약을 가진다. pair 응답은 세부 feature만 보정하며 유형 문자를 바꾸지 않는다. 자동 활성 feature는 신호 상위 최대 8개다. 유형 ID는 표시·공유용이며 점수 입력이 아니다. P/A/M block weight는 v2와 같은 고정값을 유지한다.
+
+결과 `ccu-mmr-result-v6`는 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, Top-N별 표시용 `webResearch`, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. 개인화 요청에서는 실제 사용한 profile과 preference confidence·source·연속 weight도 trace한다. `balanced` 모드는 관련도 상위 최대 3개를 각각 seed로 하는 `courseVariants[]`를 결정적으로 만들고 최초 `courseVariant`만 `0.5/0.3/0.2`로 선택한다. 명시적 `variantId` 선택은 난수를 사용하지 않는다. 요청에 포함된 선호 feature는 관련도에 유지하되 파생 `diversityFeatureKeys`에서는 제외한다. `diversity=off`는 단일 관련도 순 variant다.
 
 `courseVariant`와 각 `courseVariants[]`는 `variantId`, `seedPlaceId`, `seedRelevanceRank`, `baseProbability`, `placeIds[]`, `averageRelevance`를 가진다. `schedule`은 중심-장소 Haversine 거리와 하루 최대 6곳 capacity 외에 `courseVariantId`, `variantSeedPlaceId`, `autoAnchorCount`, `autoAnchorIds[]`, `autoAnchors[]{placeId,source}`를 기록한다. 필수 군집·사용자 anchor 뒤 남은 일자는 선택 variant의 Top-N을 우선하고 전체 관련도 후보로 보완한다. UI는 브라우저 메모리에서 `rerollSession`의 노출 variant, 직전 variant, 교집합 수·비율·변경 수를 결과 JSON에 덧붙인다. 이 계약은 `internal_experiment`/`ai_draft` 전용이며 아래 목표 `PlaceRecommendationRequest`나 SPEC-008 `baseline-v0`와 동일한 운영 계약이 아니다.
 

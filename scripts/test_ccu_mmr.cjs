@@ -2,6 +2,7 @@
 
 const assert = require("node:assert/strict");
 const CCU = require("../map-ui/ccu-mmr.js");
+const Preference = require("../map-ui/preference-elicitation.js");
 
 function close(actual, expected, epsilon = 1e-9) {
   assert.ok(Math.abs(actual - expected) <= epsilon, `${actual} != ${expected}`);
@@ -48,6 +49,42 @@ const exampleResult = CCU.rank([example], {
   resultCount: 1,
 });
 close(exampleResult.items[0].components.preference.value, 8 / 9);
+
+const profileAnswers = Preference.QUESTIONS.map((question, index) => ({
+  questionId: question.id,
+  optionId: ["a", "b", "b", "b", "a", "a", "a", "b", "b", "b", "a", "a", "a", "b", "a", "b", "a", "b"][index],
+}));
+const preferenceProfile = Preference.estimateProfile(profileAnswers, []);
+assert.equal(preferenceProfile.schemaVersion, CCU.PREFERENCE_PROFILE_SCHEMA_VERSION);
+const personalizedPlaces = [
+  place("PERSONAL-HIGH", [], { sourceOrder: 1, atomicFeatures: { activity: 0.95 } }),
+  place("PERSONAL-LOW", [], { sourceOrder: 2, atomicFeatures: { activity: 0.15 } }),
+];
+const personalizedResult = CCU.rank(personalizedPlaces, {
+  schemaVersion: CCU.PERSONALIZED_REQUEST_SCHEMA_VERSION,
+  preferenceProfile,
+  preferences: [{ feature: "activity", mode: "benefit", weight: 3.275, confidence: 0.84, source: "quiz" }],
+  resultCount: 2,
+  diversity: "off",
+});
+assert.equal(personalizedResult.schemaVersion, CCU.RESULT_SCHEMA_VERSION);
+assert.equal(personalizedResult.request.schemaVersion, CCU.PERSONALIZED_REQUEST_SCHEMA_VERSION);
+assert.deepEqual(personalizedResult.request.preferenceProfile, preferenceProfile);
+assert.equal(personalizedResult.request.preferences[0].weight, 3.275);
+assert.equal(personalizedResult.request.preferences[0].confidence, 0.84);
+assert.deepEqual(personalizedResult.items.map((item) => item.placeId), ["PERSONAL-HIGH", "PERSONAL-LOW"]);
+assert.throws(
+  () => CCU.normalizeRequest({ preferences: [{ feature: "activity", mode: "benefit", weight: 3.275 }] }),
+  /1, 2, 4/u,
+);
+assert.throws(
+  () => CCU.normalizeRequest({
+    schemaVersion: CCU.PERSONALIZED_REQUEST_SCHEMA_VERSION,
+    preferenceProfile,
+    preferences: [{ feature: "activity", mode: "benefit", weight: 3, confidence: 2, source: "quiz" }],
+  }),
+  /confidence/u,
+);
 
 const blockPlace = place("2", [], {
   atomicFeatures: { ocean: 0.8 },

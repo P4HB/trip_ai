@@ -67,6 +67,13 @@
     ],
   };
   const WIZARD_STEPS = ["동행자", "날짜", "여행 방식", "여행 취향", "조건 확인"];
+  const FEEDBACK_OPTIONS = Object.freeze([
+    { score: 1, label: "전혀 안 끌려요" },
+    { score: 2, label: "별로예요" },
+    { score: 3, label: "괜찮아요" },
+    { score: 4, label: "마음에 들어요" },
+    { score: 5, label: "꼭 가고 싶어요" },
+  ]);
   const DISPLAY_VALUES = Object.freeze({
     companionType: {
       none: "동행자 미정", solo: "혼자", couple: "연인·부부", friends: "친구", kids: "아이와", parents: "부모님과",
@@ -84,13 +91,16 @@
     "map", "mapLoading", "headerReadyCount", "sourceDate", "filterSummary", "placeSearch", "clearSearchButton",
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
-    "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailRank", "detailTitle",
+    "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
     "detailAddress", "detailPhone", "detailResearch", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "companionType", "transportMode",
     "preferenceRows", "addPreferenceButton", "resultLimit", "diversityPreset", "requiredPlaceSearch", "selectedRequiredPlaces",
     "requiredPlaceSearchResults", "requiredPlaceStatus", "excludedPlaceIds", "formError",
+    "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "travelMbtiAppliedType", "travelMbtiAppliedName", "travelMbtiAppliedSummary",
+    "clearTravelMbtiButton", "travelMbtiDialog", "travelMbtiCloseButton", "travelMbtiProgressLabel", "travelMbtiProgressBar",
+    "travelMbtiBody", "travelMbtiFooter", "travelMbtiBackButton", "travelMbtiSkipButton",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
@@ -103,6 +113,7 @@
   const numberFormatter = new Intl.NumberFormat("ko-KR");
   const metadata = window.JEJU_DATA_META || {};
   const algorithm = window.CCU_MMR;
+  const preferenceEngine = window.TRAVEL_PREFERENCE;
   const rawPlaces = Array.isArray(window.JEJU_PLACES) ? window.JEJU_PLACES : [];
 
   function categoryFor(type) {
@@ -160,6 +171,7 @@
     renderFrame: null,
     recommendationResult: null,
     recommendationById: new Map(),
+    recommendationFeedback: new Map(),
     scheduleById: new Map(),
     requiredPlaceIds: new Set(),
     selectedAnchorIds: new Set(),
@@ -168,6 +180,15 @@
     drawerReturnFocus: null,
     wizardStep: 1,
     selectedPreset: null,
+    preferenceProfile: null,
+    travelMbti: {
+      phase: "question",
+      questionIndex: 0,
+      questionnaireAnswers: [],
+      pairAnswers: [],
+      currentPairId: null,
+      profile: null,
+    },
     variantSession: {
       fingerprint: null,
       shownVariantIds: new Set(),
@@ -341,7 +362,11 @@
     const mode = createSimpleSelect("preference-mode", "선호 방향", [
       ["benefit", "높을수록 선호"], ["avoid", "낮을수록 선호"], ["target", "목표값 선호"],
     ], preference.mode);
-    const weight = createSimpleSelect("preference-weight", "중요도", [[1, "조금 · 1"], [2, "중요 · 2"], [4, "매우 · 4"]], preference.weight);
+    const weightOptions = [[1, "조금 · 1"], [2, "중요 · 2"], [4, "매우 · 4"]];
+    if (![1, 2, 4].includes(Number(preference.weight))) {
+      weightOptions.unshift([Number(preference.weight), `개인화 · ${formatScore(preference.weight, 2)}`]);
+    }
+    const weight = createSimpleSelect("preference-weight", "중요도", weightOptions, preference.weight);
     const targetFields = document.createElement("div");
     targetFields.className = "target-fields";
     targetFields.dataset.targetFields = "true";
@@ -378,6 +403,13 @@
       syncPresetCards();
       clearRecommendation("선호 라벨이 바뀌었습니다. 추천을 다시 실행해 주세요.");
     });
+    row.dataset.preferenceSource = preference.source || (state.preferenceProfile ? "manual_override" : "manual");
+    row.dataset.preferenceConfidence = String(preference.confidence ?? 1);
+    row.addEventListener("change", () => {
+      if (!state.preferenceProfile) return;
+      row.dataset.preferenceSource = "manual_override";
+      row.dataset.preferenceConfidence = "1";
+    });
     syncTarget();
     row.append(feature, mode, weight, targetFields, remove);
     dom.preferenceRows.append(row);
@@ -399,6 +431,10 @@
       if (mode === "target") {
         preference.target = Number(row.querySelector(".preference-target").value);
         preference.tolerance = Number(row.querySelector(".preference-tolerance").value);
+      }
+      if (state.preferenceProfile) {
+        preference.confidence = Number(row.dataset.preferenceConfidence || 1);
+        preference.source = row.dataset.preferenceSource || "manual_override";
       }
       return preference;
     });
@@ -523,6 +559,10 @@
     const excludedPlaceIds = dom.excludedPlaceIds.value.split(/[\s,]+/u).map((value) => value.trim()).filter(Boolean);
     const hasDates = !dom.dateUndecided.checked && dom.travelStartDate.value && dom.travelEndDate.value;
     return {
+      ...(state.preferenceProfile ? {
+        schemaVersion: algorithm.PERSONALIZED_REQUEST_SCHEMA_VERSION,
+        preferenceProfile: state.preferenceProfile,
+      } : {}),
       requestId: "local-dashboard",
       destinationRegion: dom.destinationRegion.value,
       intent: dom.tripIntent.value,
@@ -562,6 +602,8 @@
   }
 
   function preferenceSummary() {
+    const mbtiSummary = state.preferenceProfile?.displaySummary;
+    if (mbtiSummary) return `${mbtiSummary.archetypeId} · ${mbtiSummary.archetypeName}`;
     if (state.selectedPreset && DISPLAY_VALUES.preset[state.selectedPreset]) return DISPLAY_VALUES.preset[state.selectedPreset];
     const preferences = collectPreferences();
     return preferences.length
@@ -668,6 +710,7 @@
   }
 
   function resetRecommendationForm() {
+    clearTravelMbtiProfile({ restorePreferences: false, run: false });
     dom.destinationRegion.value = "";
     dom.tripIntent.value = "";
     dom.travelStartDate.value = "";
@@ -703,6 +746,331 @@
   function hideFormError() {
     dom.formError.hidden = true;
     dom.formError.textContent = "";
+  }
+
+  function closeTravelMbtiDialog() {
+    if (dom.travelMbtiDialog.open && typeof dom.travelMbtiDialog.close === "function") dom.travelMbtiDialog.close();
+    else dom.travelMbtiDialog.removeAttribute("open");
+  }
+
+  function setTravelMbtiProgress(label, completed, total = preferenceEngine.QUESTIONS.length + preferenceEngine.MAX_PAIR_QUESTIONS) {
+    dom.travelMbtiProgressLabel.textContent = label;
+    dom.travelMbtiProgressBar.style.width = `${Math.max(0, Math.min(100, (completed / total) * 100))}%`;
+  }
+
+  function resetTravelMbtiWizard() {
+    state.travelMbti = {
+      phase: "question",
+      questionIndex: 0,
+      questionnaireAnswers: [],
+      pairAnswers: [],
+      currentPairId: null,
+      profile: null,
+    };
+  }
+
+  function startTravelMbti() {
+    hideFormError();
+    if (!preferenceEngine) {
+      showFormError("여행 MBTI 모듈을 불러오지 못했습니다.");
+      return;
+    }
+    resetTravelMbtiWizard();
+    if (typeof dom.travelMbtiDialog.showModal === "function") dom.travelMbtiDialog.showModal();
+    else dom.travelMbtiDialog.setAttribute("open", "");
+    renderTravelMbtiQuestion();
+  }
+
+  function answerForQuestion(questionId) {
+    return state.travelMbti.questionnaireAnswers.find((answer) => answer.questionId === questionId) || null;
+  }
+
+  function renderTravelMbtiQuestion() {
+    const wizard = state.travelMbti;
+    const question = preferenceEngine.QUESTIONS[wizard.questionIndex];
+    wizard.phase = "question";
+    wizard.currentPairId = null;
+    setTravelMbtiProgress(`상황 질문 ${wizard.questionIndex + 1} / ${preferenceEngine.QUESTIONS.length}`, wizard.questionIndex);
+    dom.travelMbtiFooter.hidden = false;
+    dom.travelMbtiBackButton.hidden = false;
+    dom.travelMbtiBackButton.disabled = wizard.questionIndex === 0;
+    dom.travelMbtiSkipButton.hidden = false;
+    dom.travelMbtiSkipButton.textContent = "이 질문 건너뛰기";
+
+    const kicker = document.createElement("p");
+    kicker.className = "mbti-stage-kicker";
+    kicker.textContent = "01 · QUICK QUESTIONS";
+    const title = document.createElement("h3");
+    title.className = "mbti-question-title";
+    title.textContent = question.prompt;
+    const help = document.createElement("p");
+    help.className = "mbti-question-help";
+    help.textContent = "정답은 없어요. 지금 더 끌리는 장면을 골라주세요.";
+    const grid = document.createElement("div");
+    grid.className = "mbti-option-grid";
+    const previous = answerForQuestion(question.id);
+    for (const option of question.options) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "mbti-option";
+      if (previous?.optionId === option.id) button.classList.add("is-selected");
+      const icon = document.createElement("span");
+      icon.className = "mbti-option-icon";
+      icon.textContent = option.icon;
+      const label = document.createElement("strong");
+      label.textContent = option.label;
+      const note = document.createElement("small");
+      note.textContent = option.id === "a" ? "선택 A" : "선택 B";
+      button.append(icon, label, note);
+      button.addEventListener("click", () => recordTravelMbtiQuestion(option.id));
+      grid.append(button);
+    }
+    dom.travelMbtiBody.replaceChildren(kicker, title, help, grid);
+    window.requestAnimationFrame(() => grid.querySelector("button")?.focus({ preventScroll: true }));
+  }
+
+  function recordTravelMbtiQuestion(optionId) {
+    const wizard = state.travelMbti;
+    const question = preferenceEngine.QUESTIONS[wizard.questionIndex];
+    wizard.questionnaireAnswers = wizard.questionnaireAnswers.filter((answer) => answer.questionId !== question.id);
+    wizard.questionnaireAnswers.push({ questionId: question.id, optionId });
+    wizard.questionIndex += 1;
+    if (wizard.questionIndex < preferenceEngine.QUESTIONS.length) renderTravelMbtiQuestion();
+    else renderNextTravelMbtiPair();
+  }
+
+  function renderNextTravelMbtiPair(forcedPairId = null) {
+    const wizard = state.travelMbti;
+    wizard.phase = "pair";
+    wizard.profile = preferenceEngine.estimateProfile(wizard.questionnaireAnswers, wizard.pairAnswers);
+    if (wizard.pairAnswers.length >= preferenceEngine.MAX_PAIR_QUESTIONS) {
+      renderTravelMbtiResult();
+      return;
+    }
+    const candidate = forcedPairId
+      ? { pair: preferenceEngine.PAIRS.find((pair) => pair.id === forcedPairId) }
+      : preferenceEngine.nextAdaptivePair(wizard.profile, wizard.pairAnswers.map((answer) => answer.pairId));
+    if (!candidate?.pair) {
+      renderTravelMbtiResult();
+      return;
+    }
+    const pair = candidate.pair;
+    wizard.currentPairId = pair.id;
+    const pairNumber = wizard.pairAnswers.length + 1;
+    setTravelMbtiProgress(`가상 여행지 선택 ${pairNumber} / ${preferenceEngine.MAX_PAIR_QUESTIONS}`, preferenceEngine.QUESTIONS.length + wizard.pairAnswers.length);
+    dom.travelMbtiFooter.hidden = false;
+    dom.travelMbtiBackButton.hidden = false;
+    dom.travelMbtiBackButton.disabled = false;
+    dom.travelMbtiSkipButton.hidden = false;
+    dom.travelMbtiSkipButton.textContent = "이 비교 건너뛰기";
+
+    const kicker = document.createElement("p");
+    kicker.className = "mbti-stage-kicker";
+    kicker.textContent = "02 · TASTE CHECK";
+    const title = document.createElement("h3");
+    title.className = "mbti-question-title";
+    title.textContent = "둘 중 한 곳만 간다면 어디를 고를까요?";
+    const note = document.createElement("div");
+    note.className = "mbti-virtual-note";
+    note.textContent = "✦ 실제 장소가 아닌 취향 확인용 가상 여행지입니다";
+    const grid = document.createElement("div");
+    grid.className = "mbti-pair-grid";
+    for (const [choice, card, labelText] of [["a", pair.cardA, "가상 여행지 A"], ["b", pair.cardB, "가상 여행지 B"]]) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "mbti-place-card";
+      const label = document.createElement("span");
+      label.className = "mbti-place-card-label";
+      label.textContent = labelText;
+      const icon = document.createElement("span");
+      icon.className = "mbti-place-icon";
+      icon.textContent = card.icon;
+      const name = document.createElement("strong");
+      name.textContent = card.title;
+      const description = document.createElement("small");
+      description.textContent = card.description;
+      button.append(label, icon, name, description);
+      button.addEventListener("click", () => recordTravelMbtiPair(choice));
+      grid.append(button);
+    }
+    const tie = document.createElement("button");
+    tie.type = "button";
+    tie.className = "travel-mbti-skip";
+    tie.textContent = "둘 다 비슷하게 끌려요";
+    tie.addEventListener("click", () => recordTravelMbtiPair("tie"));
+    dom.travelMbtiBody.replaceChildren(kicker, title, note, grid, tie);
+    window.requestAnimationFrame(() => grid.querySelector("button")?.focus({ preventScroll: true }));
+  }
+
+  function recordTravelMbtiPair(choice) {
+    const wizard = state.travelMbti;
+    if (!wizard.currentPairId) return;
+    wizard.pairAnswers = wizard.pairAnswers.filter((answer) => answer.pairId !== wizard.currentPairId);
+    wizard.pairAnswers.push({ pairId: wizard.currentPairId, choice });
+    wizard.currentPairId = null;
+    renderNextTravelMbtiPair();
+  }
+
+  function featureChip(feature, avoid = false) {
+    const chip = document.createElement("span");
+    chip.className = `mbti-feature-chip${avoid ? " is-avoid" : ""}`;
+    chip.textContent = `${avoid ? "낮은 쪽 선호 · " : ""}${preferenceEngine.FEATURE_LABELS[feature] || feature}`;
+    return chip;
+  }
+
+  function renderTravelMbtiResult() {
+    const wizard = state.travelMbti;
+    wizard.phase = "result";
+    wizard.currentPairId = null;
+    wizard.profile = preferenceEngine.estimateProfile(wizard.questionnaireAnswers, wizard.pairAnswers);
+    const profile = wizard.profile;
+    const summary = profile.displaySummary;
+    const preferences = preferenceEngine.materializePreferences(profile);
+    setTravelMbtiProgress("여행 MBTI 완성", preferenceEngine.QUESTIONS.length + preferenceEngine.MAX_PAIR_QUESTIONS);
+    dom.travelMbtiFooter.hidden = true;
+
+    const hero = document.createElement("section");
+    hero.className = "mbti-result-hero";
+    const code = document.createElement("p");
+    code.className = "mbti-type-code";
+    code.textContent = summary.archetypeId;
+    const name = document.createElement("h3");
+    name.textContent = summary.archetypeName;
+    const description = document.createElement("p");
+    description.textContent = summary.description;
+    const emoji = document.createElement("span");
+    emoji.className = "mbti-result-emoji";
+    emoji.textContent = summary.emoji;
+    hero.append(code, name, description, emoji);
+
+    const axisGrid = document.createElement("div");
+    axisGrid.className = "mbti-axis-grid";
+    for (const axis of summary.axes) {
+      const card = document.createElement("div");
+      card.className = "mbti-axis-card";
+      const row = document.createElement("div");
+      const label = document.createElement("span");
+      label.textContent = axis.name;
+      const value = document.createElement("strong");
+      value.textContent = `${axis.code} · ${axis.label}`;
+      row.append(label, value);
+      const meter = document.createElement("div");
+      meter.className = "mbti-axis-meter";
+      const fill = document.createElement("span");
+      fill.style.width = `${Math.max(8, axis.confidence * 100)}%`;
+      meter.append(fill);
+      card.append(row, meter);
+      axisGrid.append(card);
+    }
+
+    const featureSection = document.createElement("section");
+    featureSection.className = "mbti-result-section";
+    const featureTitle = document.createElement("h4");
+    featureTitle.textContent = "추천에 반영할 핵심 취향";
+    const chips = document.createElement("div");
+    chips.className = "mbti-feature-chips";
+    for (const feature of summary.topPreferences) chips.append(featureChip(feature));
+    for (const feature of summary.topAvoidances) chips.append(featureChip(feature, true));
+    featureSection.append(featureTitle, chips);
+
+    const actions = document.createElement("div");
+    actions.className = "mbti-result-actions";
+    const apply = document.createElement("button");
+    apply.type = "button";
+    apply.className = "button button-primary";
+    apply.textContent = "이 취향 적용하기";
+    apply.disabled = !preferences.length;
+    apply.addEventListener("click", applyTravelMbtiProfile);
+    const share = document.createElement("button");
+    share.type = "button";
+    share.className = "button button-secondary";
+    share.textContent = "결과 문구 복사";
+    share.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(preferenceEngine.publicShareText(profile));
+        share.textContent = "복사했어요";
+      } catch (_error) {
+        share.textContent = "복사 권한을 확인해 주세요";
+      }
+    });
+    const restart = document.createElement("button");
+    restart.type = "button";
+    restart.className = "travel-mbti-skip";
+    restart.textContent = "다시 하기";
+    restart.addEventListener("click", () => { resetTravelMbtiWizard(); renderTravelMbtiQuestion(); });
+    actions.append(apply, share, restart);
+
+    const content = [hero, axisGrid, featureSection];
+    if (!preferences.length) {
+      const warning = document.createElement("p");
+      warning.className = "mbti-empty-warning";
+      warning.textContent = "건너뛴 답변이 많아 추천에 적용할 취향 신호가 부족해요. 다시 하거나 기존 수동 라벨을 사용해 주세요.";
+      content.push(warning);
+    }
+    content.push(actions);
+    dom.travelMbtiBody.replaceChildren(...content);
+    window.requestAnimationFrame(() => apply.focus({ preventScroll: true }));
+  }
+
+  function renderAppliedTravelMbti() {
+    const summary = state.preferenceProfile?.displaySummary;
+    dom.travelMbtiApplied.hidden = !summary;
+    if (!summary) return;
+    dom.travelMbtiAppliedType.textContent = summary.archetypeId;
+    dom.travelMbtiAppliedName.textContent = summary.archetypeName;
+    const labels = summary.topPreferences.map((feature) => preferenceEngine.FEATURE_LABELS[feature] || feature);
+    dom.travelMbtiAppliedSummary.textContent = labels.length ? `추천 반영: ${labels.join(" · ")}` : summary.description;
+  }
+
+  function applyTravelMbtiProfile() {
+    const profile = state.travelMbti.profile;
+    const preferences = preferenceEngine.materializePreferences(profile);
+    if (!preferences.length) return;
+    state.preferenceProfile = profile;
+    state.selectedPreset = "custom";
+    renderPreferenceRows(preferences);
+    renderAppliedTravelMbti();
+    syncPresetCards();
+    hideFormError();
+    closeTravelMbtiDialog();
+    clearRecommendation("여행 MBTI 취향을 적용했습니다. 마지막 확인에서 추천을 실행해 주세요.");
+  }
+
+  function clearTravelMbtiProfile({ restorePreferences = true, run = false } = {}) {
+    state.preferenceProfile = null;
+    dom.travelMbtiApplied.hidden = true;
+    if (restorePreferences) {
+      state.selectedPreset = null;
+      renderPreferenceRows([]);
+      syncPresetCards();
+    }
+    if (run) {
+      clearRecommendation("여행 MBTI 개인화를 해제했습니다.");
+      runRecommendation({ fit: true, openOutput: false });
+    } else {
+      clearRecommendation("여행 MBTI 개인화를 해제했습니다. 취향을 다시 선택해 주세요.");
+    }
+  }
+
+  function travelMbtiBack() {
+    const wizard = state.travelMbti;
+    if (wizard.phase === "question") {
+      if (!wizard.questionIndex) return;
+      wizard.questionIndex -= 1;
+      const questionId = preferenceEngine.QUESTIONS[wizard.questionIndex].id;
+      wizard.questionnaireAnswers = wizard.questionnaireAnswers.filter((answer) => answer.questionId !== questionId);
+      renderTravelMbtiQuestion();
+      return;
+    }
+    const previousPair = wizard.pairAnswers.pop();
+    if (previousPair) {
+      renderNextTravelMbtiPair(previousPair.pairId);
+      return;
+    }
+    wizard.questionIndex = preferenceEngine.QUESTIONS.length - 1;
+    const questionId = preferenceEngine.QUESTIONS[wizard.questionIndex].id;
+    wizard.questionnaireAnswers = wizard.questionnaireAnswers.filter((answer) => answer.questionId !== questionId);
+    renderTravelMbtiQuestion();
   }
 
   function createCategoryFilters() {
@@ -1076,7 +1444,7 @@
     const heading = document.createElement("div");
     heading.className = "trace-heading";
     const title = document.createElement("strong");
-    title.textContent = "CCU-MMR 점수 trace";
+    title.textContent = "내부 추천 상세";
     const meta = document.createElement("span");
     meta.textContent = `coverage ${(recommendation.requestCoverage * 100).toFixed(0)}%`;
     heading.append(title, meta);
@@ -1162,6 +1530,7 @@
     document.body.classList.add("detail-open");
     dom.detailType.textContent = `${category.label} · ${regionName(place.region)}`;
     dom.detailModified.textContent = formatModifiedDate(place.modified);
+    dom.detailPlaceId.textContent = `ID ${place.id}`;
     dom.detailTitle.textContent = place.title;
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
@@ -1196,11 +1565,10 @@
   function createRecommendationCard(item) {
     const place = placeById.get(item.placeId);
     const category = categoryFor(place.type);
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "recommendation-card";
-    button.dataset.placeId = item.placeId;
-    button.setAttribute("aria-current", state.selectedPlace?.id === item.placeId ? "true" : "false");
+    const card = document.createElement("article");
+    card.className = "recommendation-card";
+    card.dataset.placeId = item.placeId;
+    card.setAttribute("aria-current", state.selectedPlace?.id === item.placeId ? "true" : "false");
     const top = document.createElement("div");
     top.className = "recommendation-card-top";
     const rank = document.createElement("span");
@@ -1208,74 +1576,126 @@
     rank.textContent = String(item.rank);
     const copy = document.createElement("div");
     const title = document.createElement("strong");
+    title.id = `recommendation-title-${item.placeId}`;
     title.textContent = place.title;
     const meta = document.createElement("span");
-    meta.textContent = `${category.label} · ${regionName(place.region)} · ID ${place.id}`;
+    meta.textContent = `${category.label} · ${regionName(place.region)}`;
     copy.append(title, meta);
-    const relevance = document.createElement("b");
-    relevance.className = "recommendation-relevance";
-    relevance.textContent = formatScore(item.relevance);
-    top.append(rank, copy, relevance);
+    top.append(rank, copy);
+    card.setAttribute("aria-labelledby", title.id);
     const researchSnippet = document.createElement("div");
     researchSnippet.className = "recommendation-research-snippet";
-    const metadataOnly = place.research?.coverage === "metadata_only";
     const researchHeading = document.createElement("div");
     researchHeading.className = "research-snippet-heading";
     const researchTitle = document.createElement("strong");
-    researchTitle.textContent = metadataOnly ? "기본 정보만 확인됨" : "어떤 곳인가요?";
-    const researchBadge = document.createElement("span");
-    researchBadge.textContent = metadataOnly ? "장소 메타데이터만 확인됨" : "웹 조사 AI 초안";
-    researchBadge.className = metadataOnly ? "is-metadata" : "";
-    researchHeading.append(researchTitle, researchBadge);
+    researchTitle.textContent = "어떤 곳인가요?";
+    researchHeading.append(researchTitle);
     const firstHighlight = place.research?.highlights?.[0] || null;
-    const firstSource = firstHighlight ? researchSource(place, firstHighlight.sourceId) : null;
     const researchCopy = document.createElement("p");
-    researchCopy.textContent = firstHighlight?.text || "웹 활동 설명이 아직 없습니다.";
-    const researchMeta = document.createElement("span");
-    researchMeta.textContent = firstSource
-      ? `연결 출처: ${firstSource.publisher}${firstSource.checkedAt ? ` · 확인 ${formatSourceDate(firstSource.checkedAt)}` : " · 확인일 미기록"}${firstHighlight?.dynamic ? " · 방문 전 원문 재확인" : ""}`
-      : "TourAPI 장소 분류 참고";
-    researchSnippet.append(researchHeading, researchMeta, researchCopy);
-    const scoreRow = document.createElement("div");
-    scoreRow.className = "recommendation-score-row";
-    const scorePairs = [
-      ["MMR", item.mmrScore], ["P", item.components.preference.value], ["A", item.components.companion.value], ["M", item.components.month.value],
-    ];
-    for (const [label, value] of scorePairs) {
-      const score = document.createElement("span");
-      score.textContent = `${label} ${formatScore(value)}`;
-      scoreRow.append(score);
-    }
-    const reasons = document.createElement("div");
-    reasons.className = "recommendation-reasons";
+    researchCopy.textContent = firstHighlight?.text || "장소 설명을 준비하고 있어요.";
+    researchSnippet.append(researchHeading, researchCopy);
     const traces = [...(item.components.preference.traces || [])]
       .filter((trace) => Number.isFinite(trace.utility) && trace.utility >= 0.6)
       .sort((a, b) => b.contribution - a.contribution)
       .slice(0, 2);
-    for (const trace of traces) {
-      const chip = document.createElement("span");
-      const prefix = trace.mode === "avoid" ? "낮은 " : trace.mode === "target" ? "목표 " : "높은 ";
-      chip.textContent = `${prefix}${LABEL_NAMES[trace.feature] || trace.feature} · u ${formatScore(trace.utility, 2)}`;
-      reasons.append(chip);
+    const reasons = document.createElement("div");
+    reasons.className = "recommendation-reasons";
+    if (traces.length) {
+      const reasonLabel = document.createElement("strong");
+      reasonLabel.textContent = "내 취향과 맞는 점";
+      const reasonChips = document.createElement("div");
+      for (const trace of traces) {
+        const chip = document.createElement("span");
+        const feature = LABEL_NAMES[trace.feature] || trace.feature;
+        chip.textContent = trace.mode === "avoid"
+          ? `${feature} 부담 적음`
+          : trace.mode === "target"
+            ? `${feature} 취향에 가까움`
+            : feature;
+        reasonChips.append(chip);
+      }
+      reasons.append(reasonLabel, reasonChips);
     }
-    button.append(top, researchSnippet, scoreRow, reasons);
-    if (Number.isInteger(item.seedRelevanceRank)) {
-      const seedNote = document.createElement("p");
-      seedNote.className = "diversity-note";
-      seedNote.textContent = `코스 seed: 관련도 ${item.seedRelevanceRank}위 · 기본 확률 ${formatScore(item.seedSelectionProbability * 100, 0)}%`;
-      button.append(seedNote);
-    }
-    if (item.similarPlaceId) {
-      const diversity = document.createElement("p");
-      diversity.className = "diversity-note";
-      diversity.textContent = `가장 유사: ${placeById.get(item.similarPlaceId)?.title || item.similarPlaceId} · sim ${formatScore(item.maxSimilarity)}`;
-      button.append(diversity);
-    }
-    button.addEventListener("click", () => {
+    const detailButton = document.createElement("button");
+    detailButton.type = "button";
+    detailButton.className = "recommendation-detail-button";
+    detailButton.textContent = "상세보기";
+    detailButton.setAttribute("aria-label", `${place.title} 상세보기`);
+    detailButton.addEventListener("click", () => {
       selectPlace(place, { moveMap: true });
       closeOutputPanel();
     });
-    return button;
+
+    const feedback = document.createElement("section");
+    feedback.className = "recommendation-feedback";
+    feedback.setAttribute("aria-label", `${place.title} 추천 만족도`);
+    const feedbackHeading = document.createElement("strong");
+    feedbackHeading.textContent = "이 추천, 얼마나 마음에 드나요?";
+    const feedbackScale = document.createElement("div");
+    feedbackScale.className = "recommendation-feedback-scale";
+    feedbackScale.setAttribute("role", "group");
+    feedbackScale.setAttribute("aria-label", "1점부터 5점까지 선택");
+    const feedbackKey = String(place.id);
+    const selectedFeedback = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+    const selectedScore = selectedFeedback.score;
+    const feedbackStatus = document.createElement("span");
+    feedbackStatus.className = "recommendation-feedback-status";
+    feedbackStatus.setAttribute("aria-live", "polite");
+    for (const option of FEEDBACK_OPTIONS) {
+      const feedbackButton = document.createElement("button");
+      feedbackButton.type = "button";
+      feedbackButton.className = "recommendation-feedback-option";
+      feedbackButton.dataset.score = String(option.score);
+      feedbackButton.textContent = String(option.score);
+      feedbackButton.title = option.label;
+      feedbackButton.setAttribute("aria-label", `${option.score}점, ${option.label}`);
+      feedbackButton.setAttribute("aria-pressed", String(selectedScore === option.score));
+      feedbackButton.addEventListener("click", () => {
+        const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+        state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
+        for (const control of feedbackScale.querySelectorAll(".recommendation-feedback-option")) {
+          control.setAttribute("aria-pressed", String(Number(control.dataset.score) === option.score));
+        }
+        feedbackStatus.textContent = `${option.score}점 · ${option.label}`;
+      });
+      feedbackScale.append(feedbackButton);
+    }
+    const feedbackEnds = document.createElement("div");
+    feedbackEnds.className = "recommendation-feedback-ends";
+    feedbackEnds.innerHTML = "<span>전혀 안 끌려요</span><span>꼭 가고 싶어요</span>";
+    if (selectedScore) {
+      feedbackStatus.textContent = `${selectedScore}점 · ${FEEDBACK_OPTIONS[selectedScore - 1].label}`;
+    }
+    const comment = document.createElement("div");
+    comment.className = "recommendation-feedback-comment";
+    const commentLabel = document.createElement("label");
+    const commentId = `recommendation-comment-${place.id}`;
+    const countId = `${commentId}-count`;
+    commentLabel.htmlFor = commentId;
+    commentLabel.textContent = "의견을 자유롭게 남겨주세요 (선택)";
+    const commentInput = document.createElement("textarea");
+    commentInput.id = commentId;
+    commentInput.rows = 3;
+    commentInput.maxLength = 300;
+    commentInput.placeholder = "좋았던 점이나 아쉬운 점을 적어주세요.";
+    commentInput.value = selectedFeedback.comment;
+    commentInput.setAttribute("aria-label", `${place.title} 추천 의견`);
+    commentInput.setAttribute("aria-describedby", countId);
+    const commentCount = document.createElement("span");
+    commentCount.id = countId;
+    commentCount.className = "recommendation-feedback-count";
+    commentCount.textContent = `${commentInput.value.length}/300`;
+    commentInput.addEventListener("input", () => {
+      const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+      state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
+      commentCount.textContent = `${commentInput.value.length}/300`;
+    });
+    comment.append(commentLabel, commentInput, commentCount);
+    feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
+    card.append(top, researchSnippet);
+    if (traces.length) card.append(reasons);
+    card.append(detailButton, feedback);
+    return card;
   }
 
   function renderWarnings(warnings) {
@@ -1502,12 +1922,11 @@
     dom.courseVariantBar.hidden = !variant;
     if (!variant) return;
 
-    const probability = formatScore(variant.baseProbability * 100, 0);
-    dom.courseVariantLabel.textContent = `코스 ${variant.seedRelevanceRank}안 · 관련도 ${variant.seedRelevanceRank}위 seed · 기본 ${probability}%`;
+    dom.courseVariantLabel.textContent = `추천 코스 ${variant.seedRelevanceRank}안`;
     const session = result.rerollSession;
     dom.courseOverlapSummary.textContent = session?.previousVariantId
-      ? `이전 코스와 ${session.overlapCount}/${variant.placeIds.length}곳(${formatScore(session.overlapRate * 100, 0)}%) 겹침 · ${session.changedPlaceCount}곳 변경`
-      : "최초 추천 코스";
+      ? `이전 코스와 다른 장소 ${session.changedPlaceCount}곳`
+      : "현재 조건으로 고른 장소 구성이에요.";
     const rerollAvailable = result.request.diversity === "balanced" && variants.length > 1;
     dom.rerollRecommendationButton.hidden = !rerollAvailable;
     dom.rerollRecommendationButton.disabled = !rerollAvailable;
@@ -1573,13 +1992,7 @@
     dom.returnedMetric.textContent = formatNumber(summary.returned);
     dom.recommendationCount.textContent = formatNumber(summary.returned);
     dom.mobileResultCount.textContent = formatNumber(summary.returned);
-    const seed = result.seedSelection;
-    const mode = result.request.diversity === "balanced"
-      ? seed?.applied
-        ? `MMR 다양성 · 코스 ${result.courseVariant?.seedRelevanceRank || seed.selectedRelevanceRank}안`
-        : "MMR 다양성 · seed 후보 없음"
-      : "관련도 순";
-    dom.recommendationSummary.textContent = `${formatNumber(summary.scoredCandidates)}개 점수 계산 · ${mode} · ${formatNumber(summary.returned)}개 출력`;
+    dom.recommendationSummary.textContent = `내 조건에 맞는 제주 장소 ${formatNumber(summary.returned)}곳을 골랐어요.`;
     renderCourseVariant(result);
     renderWarnings(result.warnings);
     renderVerificationCandidates(result);
@@ -1627,6 +2040,7 @@
 
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     state.selectedAnchorIds.clear();
+    state.recommendationFeedback.clear();
     resetVariantSession();
     dom.courseVariantBar.hidden = true;
     document.body.classList.remove("has-recommendation");
@@ -1779,6 +2193,15 @@
       dom.travelEndDate.disabled = undecided;
       hideFormError();
     });
+    dom.headerTravelMbtiButton.addEventListener("click", startTravelMbti);
+    dom.startTravelMbtiButton.addEventListener("click", startTravelMbti);
+    dom.travelMbtiCloseButton.addEventListener("click", closeTravelMbtiDialog);
+    dom.clearTravelMbtiButton.addEventListener("click", () => clearTravelMbtiProfile());
+    dom.travelMbtiBackButton.addEventListener("click", travelMbtiBack);
+    dom.travelMbtiSkipButton.addEventListener("click", () => {
+      if (state.travelMbti.phase === "question") recordTravelMbtiQuestion("skip");
+      else if (state.travelMbti.phase === "pair") recordTravelMbtiPair("skip");
+    });
     dom.requiredPlaceSearch.addEventListener("input", renderRequiredPlaceSearchResults);
     dom.requiredPlaceSearch.addEventListener("focus", renderRequiredPlaceSearchResults);
     dom.requiredPlaceSearch.addEventListener("keydown", (event) => {
@@ -1811,6 +2234,8 @@
     document.querySelectorAll("[data-preset]").forEach((button) => {
       button.addEventListener("click", () => {
         state.selectedPreset = button.dataset.preset;
+        state.preferenceProfile = null;
+        renderAppliedTravelMbti();
         renderPreferenceRows(button.dataset.preset === "none" ? [] : PRESETS[button.dataset.preset]);
         syncPresetCards();
         hideFormError();
@@ -1863,7 +2288,8 @@
     dom.outputBackdrop.addEventListener("click", closeOutputPanel);
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
-      if (document.body.classList.contains("sidebar-open")) closeSidebar();
+      if (dom.travelMbtiDialog.open) closeTravelMbtiDialog();
+      else if (document.body.classList.contains("sidebar-open")) closeSidebar();
       else if (document.body.classList.contains("output-open")) closeOutputPanel();
       else if (state.selectedPlace) clearSelection();
     });
@@ -1877,6 +2303,7 @@
   function initialize() {
     try {
       if (!algorithm) throw new Error("CCU-MMR 알고리즘 파일을 불러오지 못했습니다.");
+      if (!preferenceEngine) throw new Error("여행 MBTI 모듈을 불러오지 못했습니다.");
       dom.headerReadyCount.textContent = formatNumber(metadata.recommendationReadyCount || places.filter((place) => place.recommendationReady).length);
       dom.sourceDate.textContent = `수집일 ${formatSourceDate(metadata.sourceDate)}`;
       dom.algorithmBadge.textContent = algorithm.ALGORITHM_VERSION;
@@ -1896,6 +2323,9 @@
         getSelectedPlace: () => state.selectedPlace,
         getMapPlaceIds: () => mapPlaces().map((place) => String(place.id)),
         getHighlightedScheduleDay: () => activeScheduleDay(),
+        getPreferenceProfile: () => state.preferenceProfile,
+        getRecommendationFeedback: () => Object.fromEntries(state.recommendationFeedback),
+        startTravelMbti: () => startTravelMbti(),
       };
     } catch (error) {
       console.error(error);

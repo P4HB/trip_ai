@@ -5,9 +5,11 @@
 })(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
   "use strict";
 
-  const ALGORITHM_VERSION = "ccu-mmr-v4-session-variants-schedule";
+  const ALGORITHM_VERSION = "ccu-mmr-v6-travel-mbti-three-axis";
   const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v2";
-  const RESULT_SCHEMA_VERSION = "ccu-mmr-result-v4";
+  const PERSONALIZED_REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v4-personalized";
+  const PREFERENCE_PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
+  const RESULT_SCHEMA_VERSION = "ccu-mmr-result-v6";
   const SEED_SELECTION_WEIGHTS = Object.freeze([0.5, 0.3, 0.2]);
   const ATOMIC_FEATURES = [
     "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
@@ -178,6 +180,20 @@
   }
 
   function normalizeRequest(input = {}) {
+    const requestSchemaVersion = input.schemaVersion || REQUEST_SCHEMA_VERSION;
+    if (![REQUEST_SCHEMA_VERSION, PERSONALIZED_REQUEST_SCHEMA_VERSION].includes(requestSchemaVersion)) {
+      throw new Error(`지원하지 않는 추천 요청 버전입니다: ${requestSchemaVersion}`);
+    }
+    const personalized = requestSchemaVersion === PERSONALIZED_REQUEST_SCHEMA_VERSION;
+    let preferenceProfile = null;
+    if (personalized) {
+      if (!input.preferenceProfile || input.preferenceProfile.schemaVersion !== PREFERENCE_PROFILE_SCHEMA_VERSION) {
+        throw new Error("개인화 요청에는 유효한 여행 취향 프로필이 필요합니다.");
+      }
+      preferenceProfile = JSON.parse(JSON.stringify(input.preferenceProfile));
+    } else if (input.preferenceProfile !== undefined) {
+      throw new Error("여행 취향 프로필은 개인화 요청 버전에서만 사용할 수 있습니다.");
+    }
     const destinationRegion = input.destinationRegion || "jeju_all";
     if (!["jeju_all", "jeju_city", "seogwipo_city"].includes(destinationRegion)) {
       throw new Error("지원하지 않는 추천 지역입니다.");
@@ -211,8 +227,24 @@
       const mode = preference.mode || "benefit";
       if (!["benefit", "avoid", "target"].includes(mode)) throw new Error(`지원하지 않는 선호 모드입니다: ${mode}`);
       const weight = Number(preference.weight);
-      if (![1, 2, 4].includes(weight)) throw new Error("선호 중요도는 1, 2, 4 중 하나여야 합니다.");
+      if (personalized) {
+        if (!Number.isFinite(weight) || weight <= 0 || weight > 4) {
+          throw new Error("개인화 선호 중요도는 0보다 크고 4 이하여야 합니다.");
+        }
+      } else if (![1, 2, 4].includes(weight)) {
+        throw new Error("선호 중요도는 1, 2, 4 중 하나여야 합니다.");
+      }
       const normalized = { feature, mode, weight };
+      if (personalized) {
+        const confidence = Number(preference.confidence);
+        if (!isUnitValue(confidence)) throw new Error("개인화 선호 confidence는 0~1이어야 합니다.");
+        const source = String(preference.source || "");
+        if (!["quiz", "pairwise", "quiz_pairwise", "manual_override"].includes(source)) {
+          throw new Error(`지원하지 않는 개인화 선호 출처입니다: ${source || "(비어 있음)"}`);
+        }
+        normalized.confidence = confidence;
+        normalized.source = source;
+      }
       if (mode === "target") {
         normalized.target = Number(preference.target);
         normalized.tolerance = Number(preference.tolerance);
@@ -255,7 +287,7 @@
         : [],
     };
     return {
-      schemaVersion: REQUEST_SCHEMA_VERSION,
+      schemaVersion: requestSchemaVersion,
       requestId: String(input.requestId || "local-dashboard"),
       destinationRegion,
       intent,
@@ -263,6 +295,7 @@
       transportMode,
       companionType,
       preferences: normalizedPreferences,
+      ...(personalized ? { preferenceProfile } : {}),
       diversityFeatureKeys,
       hardConstraints,
       excludedPlaceIds,
@@ -1046,6 +1079,8 @@
   return Object.freeze({
     ALGORITHM_VERSION,
     REQUEST_SCHEMA_VERSION,
+    PERSONALIZED_REQUEST_SCHEMA_VERSION,
+    PREFERENCE_PROFILE_SCHEMA_VERSION,
     RESULT_SCHEMA_VERSION,
     ATOMIC_FEATURES,
     COMPANION_TYPES,

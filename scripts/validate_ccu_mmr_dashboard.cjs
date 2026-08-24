@@ -5,11 +5,28 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 const CCU = require("../map-ui/ccu-mmr.js");
+const Preference = require("../map-ui/preference-elicitation.js");
 
 const workspaceRoot = path.resolve(__dirname, "..");
 const bundlePath = path.join(workspaceRoot, "map-ui", "data", "jeju-places.js");
-const dashboardHtml = fs.readFileSync(path.join(workspaceRoot, "map-ui", "index.html"), "utf8");
-const dashboardApp = fs.readFileSync(path.join(workspaceRoot, "map-ui", "app.js"), "utf8");
+const htmlPath = path.join(workspaceRoot, "map-ui", "index.html");
+const appPath = path.join(workspaceRoot, "map-ui", "app.js");
+const preferencePath = path.join(workspaceRoot, "map-ui", "preference-elicitation.js");
+const dashboardHtml = fs.readFileSync(htmlPath, "utf8");
+const dashboardApp = fs.readFileSync(appPath, "utf8");
+const preferenceSource = fs.readFileSync(preferencePath, "utf8");
+for (const id of [
+  "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "clearTravelMbtiButton", "travelMbtiDialog",
+  "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
+  "detailPlaceId",
+]) {
+  assert.match(dashboardHtml, new RegExp(`id=["']${id}["']`, "u"), `${id}: travel MBTI DOM contract`);
+}
+assert.ok(dashboardHtml.indexOf("./preference-elicitation.js") < dashboardHtml.indexOf("./ccu-mmr.js"), "preference module must load before ranker");
+assert.ok(dashboardHtml.indexOf("./ccu-mmr.js") < dashboardHtml.indexOf("./app.js"), "ranker must load before app");
+assert.doesNotMatch(`${dashboardApp}\n${preferenceSource}`, /localStorage|sessionStorage|sendBeacon|XMLHttpRequest|fetch\s*\(/u, "profile must remain memory-only");
+assert.equal(Preference.QUESTIONS.length, 18);
+assert.equal(Object.keys(Preference.ARCHETYPES).length, 8);
 const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(bundlePath, "utf8"), sandbox, { filename: bundlePath });
@@ -43,6 +60,32 @@ for (const target of ["companionType", "destinationRegion", "tripIntent", "trans
 assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
 assert.match(dashboardApp, /function renderReviewSummary\(\)/u, "review summary");
 assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recommendation must not auto-run on initialize");
+const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\n  \}\n\n  function clearTravelMbtiProfile/u)?.[1] || "";
+assert.ok(travelMbtiApplySource, "travel MBTI apply function");
+assert.doesNotMatch(travelMbtiApplySource, /runRecommendation\(/u, "travel MBTI apply must wait for final wizard confirmation");
+assert.match(dashboardHtml, /얼마나 마음에 드는지 알려주세요\. 점수와 의견은 아직 저장되지 않아요\./u, "feedback persistence notice");
+assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
+assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
+assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
+const recommendationCardStart = dashboardApp.indexOf("function createRecommendationCard(item)");
+const recommendationCardEnd = dashboardApp.indexOf("function renderWarnings", recommendationCardStart);
+const recommendationCardSource = recommendationCardStart >= 0 && recommendationCardEnd > recommendationCardStart
+  ? dashboardApp.slice(recommendationCardStart, recommendationCardEnd)
+  : "";
+assert.ok(recommendationCardSource, "recommendation card function");
+assert.match(recommendationCardSource, /recommendation-detail-button/u, "explicit place detail button");
+assert.match(recommendationCardSource, /recommendation-feedback-option/u, "per-place satisfaction controls");
+assert.match(recommendationCardSource, /aria-pressed/u, "feedback pressed state");
+assert.match(recommendationCardSource, /createElement\("textarea"\)/u, "per-place free-text feedback");
+assert.match(recommendationCardSource, /commentInput\.maxLength = 300/u, "feedback comment length boundary");
+assert.match(recommendationCardSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value \}\)/u, "feedback comment memory state");
+assert.doesNotMatch(recommendationCardSource, /ID |MMR|연결 출처|seed:|sim |recommendation-score-row|recommendation-relevance/u, "beta card must hide internal trace");
+const clearRecommendationStart = dashboardApp.indexOf("function clearRecommendation(");
+const clearRecommendationEnd = dashboardApp.indexOf("function fitBoundsForPlaces", clearRecommendationStart);
+const clearRecommendationSource = clearRecommendationStart >= 0 && clearRecommendationEnd > clearRecommendationStart
+  ? dashboardApp.slice(clearRecommendationStart, clearRecommendationEnd)
+  : "";
+assert.match(clearRecommendationSource, /state\.recommendationFeedback\.clear\(\)/u, "new recommendation conditions clear feedback");
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);
 assert.equal(readyPlaces.length, 1663);
