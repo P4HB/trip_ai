@@ -23,6 +23,7 @@
 - 구현됨: 구조화된 입력으로 1,663개 41축 장소의 CCU-MMR 결과를 비교하는 정적 내부 실험 대시보드
 - 구현됨: 관련도 상위 1·2·3위 seed 코스 3안, 최초 `0.5/0.3/0.2` 선택과 세션 미노출 코스 재추천
 - 구현됨: 요청 선호 feature를 중복축에서 제외한 MMR과 선택 코스 기반 자동 일정 중심·일차별 지도 강조
+- 구현됨: 동행자부터 조건 확인까지 5단계로 진행하는 베타 사용자용 추천 입력 UI
 - 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
 ## SPEC 색인
@@ -46,8 +47,9 @@
 | [SPEC-017](spec_017.md) | 세션 코스 3안·자동 일정 anchor v4 | Implemented | recommendation, reroll, itinerary, UI, evaluation |
 | [SPEC-018](spec_018.md) | 클러스터 재사용·일자 한계효용 기반 일정 배분 v5 | Draft | itinerary, clustering, distance, evaluation |
 | [SPEC-019](spec_019.md) | 질문·적응형 쌍대 선택 기반 개인 선호 추정 v1 | Draft | personalization, preference elicitation, ranking, UI, evaluation |
+| [SPEC-020](spec_020.md) | 베타 사용자용 단계형 여행 조건 입력 UI v1 | Implemented | recommendation, onboarding, map, UI |
 
-- 다음 예약 번호: `SPEC-020`
+- 다음 예약 번호: `SPEC-021`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

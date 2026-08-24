@@ -66,12 +66,19 @@
       { feature: "physical_ease", mode: "benefit", weight: 1 },
     ],
   };
-  const DEFAULT_PREFERENCES = [
-    { feature: "ocean", mode: "benefit", weight: 4 },
-    { feature: "physical_ease", mode: "benefit", weight: 2 },
-    { feature: "local_embeddedness", mode: "benefit", weight: 2 },
-    { feature: "photo_value", mode: "benefit", weight: 1 },
-  ];
+  const WIZARD_STEPS = ["동행자", "날짜", "여행 방식", "여행 취향", "조건 확인"];
+  const DISPLAY_VALUES = Object.freeze({
+    companionType: {
+      none: "동행자 미정", solo: "혼자", couple: "연인·부부", friends: "친구", kids: "아이와", parents: "부모님과",
+    },
+    destinationRegion: { jeju_all: "제주 전체", jeju_city: "제주시", seogwipo_city: "서귀포시" },
+    tripIntent: { visit: "볼거리·체험", shopping: "쇼핑", stay: "숙소", event: "축제·행사" },
+    transportMode: { car: "차량 이용", no_car: "차량 없이" },
+    preset: {
+      scenic: "바다와 멋진 풍경", easy: "편안하고 여유롭게", local: "제주다운 로컬 경험",
+      indoor: "날씨 걱정 없는 실내", none: "취향 없이 골고루", custom: "직접 고른 세부 취향",
+    },
+  });
 
   const dom = Object.fromEntries([
     "map", "mapLoading", "headerReadyCount", "sourceDate", "filterSummary", "placeSearch", "clearSearchButton",
@@ -81,10 +88,11 @@
     "detailAddress", "detailPhone", "detailResearch", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
-    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "companionType", "transportMode",
+    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "companionType", "transportMode",
     "preferenceRows", "addPreferenceButton", "resultLimit", "diversityPreset", "requiredPlaceSearch", "selectedRequiredPlaces",
     "requiredPlaceSearchResults", "requiredPlaceStatus", "excludedPlaceIds", "formError",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
+    "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
     "recommendationCount", "recommendationResultList", "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
@@ -158,6 +166,8 @@
     hoveredScheduleDay: null,
     focusedScheduleDay: null,
     drawerReturnFocus: null,
+    wizardStep: 1,
+    selectedPreset: null,
     variantSession: {
       fingerprint: null,
       shownVariantIds: new Set(),
@@ -364,6 +374,8 @@
     mode.addEventListener("change", syncTarget);
     remove.addEventListener("click", () => {
       row.remove();
+      state.selectedPreset = collectPreferences().length ? "custom" : null;
+      syncPresetCards();
       clearRecommendation("선호 라벨이 바뀌었습니다. 추천을 다시 실행해 주세요.");
     });
     syncTarget();
@@ -509,7 +521,7 @@
   function collectRequest() {
     const hardConstraints = [...document.querySelectorAll('input[name="hardConstraint"]:checked')].map((input) => input.value);
     const excludedPlaceIds = dom.excludedPlaceIds.value.split(/[\s,]+/u).map((value) => value.trim()).filter(Boolean);
-    const hasDates = dom.travelStartDate.value || dom.travelEndDate.value;
+    const hasDates = !dom.dateUndecided.checked && dom.travelStartDate.value && dom.travelEndDate.value;
     return {
       requestId: "local-dashboard",
       destinationRegion: dom.destinationRegion.value,
@@ -531,22 +543,155 @@
     };
   }
 
+  function syncChoiceCards() {
+    document.querySelectorAll("[data-choice-target]").forEach((button) => {
+      const target = dom[button.dataset.choiceTarget];
+      button.setAttribute("aria-pressed", String(target?.value === button.dataset.choiceValue));
+    });
+  }
+
+  function syncPresetCards() {
+    document.querySelectorAll("[data-preset]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.preset === state.selectedPreset));
+    });
+  }
+
+  function formatWizardDate(value) {
+    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/u);
+    return match ? `${match[1]}.${match[2]}.${match[3]}` : "날짜 미정";
+  }
+
+  function preferenceSummary() {
+    if (state.selectedPreset && DISPLAY_VALUES.preset[state.selectedPreset]) return DISPLAY_VALUES.preset[state.selectedPreset];
+    const preferences = collectPreferences();
+    return preferences.length
+      ? preferences.map((preference) => labelName(preference.feature)).slice(0, 3).join(" · ")
+      : "취향 없이 골고루";
+  }
+
+  function renderReviewSummary() {
+    const dateText = dom.dateUndecided.checked
+      ? "날짜 미정"
+      : `${formatWizardDate(dom.travelStartDate.value)} → ${formatWizardDate(dom.travelEndDate.value)}`;
+    const entries = [
+      ["동행", DISPLAY_VALUES.companionType[dom.companionType.value] || "미선택", 1],
+      ["날짜", dateText, 2],
+      ["여행 지역", DISPLAY_VALUES.destinationRegion[dom.destinationRegion.value] || "미선택", 3],
+      ["찾는 장소", DISPLAY_VALUES.tripIntent[dom.tripIntent.value] || "미선택", 3],
+      ["이동", DISPLAY_VALUES.transportMode[dom.transportMode.value] || "미선택", 3],
+      ["여행 취향", preferenceSummary(), 4, true],
+    ];
+    const fragment = document.createDocumentFragment();
+    for (const [label, value, step, wide] of entries) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `review-summary-item${wide ? " is-wide" : ""}`;
+      button.dataset.editStep = String(step);
+      button.setAttribute("aria-label", `${label} 수정: ${value}`);
+      const caption = document.createElement("span");
+      caption.textContent = `${label} · 수정`;
+      const strong = document.createElement("strong");
+      strong.textContent = value;
+      button.append(caption, strong);
+      fragment.append(button);
+    }
+    dom.reviewSummary.replaceChildren(fragment);
+  }
+
+  function focusWizardChoice(selector) {
+    window.requestAnimationFrame(() => document.querySelector(selector)?.focus({ preventScroll: true }));
+  }
+
+  function validateWizardStep(step) {
+    hideFormError();
+    if (step === 1 && !dom.companionType.value) {
+      showFormError("함께 가는 사람을 하나 선택해 주세요.");
+      focusWizardChoice('[data-choice-target="companionType"]');
+      return false;
+    }
+    if (step === 2 && !dom.dateUndecided.checked) {
+      if (!dom.travelStartDate.value || !dom.travelEndDate.value) {
+        showFormError("출발일과 돌아오는 날을 모두 선택하거나 날짜 미정을 골라주세요.");
+        window.requestAnimationFrame(() => (!dom.travelStartDate.value ? dom.travelStartDate : dom.travelEndDate).focus());
+        return false;
+      }
+      if (dom.travelStartDate.value > dom.travelEndDate.value) {
+        showFormError("돌아오는 날은 출발일과 같거나 이후여야 해요.");
+        window.requestAnimationFrame(() => dom.travelEndDate.focus());
+        return false;
+      }
+    }
+    if (step === 3) {
+      const missingTarget = ["destinationRegion", "tripIntent", "transportMode"].find((target) => !dom[target].value);
+      if (missingTarget) {
+        const messages = {
+          destinationRegion: "둘러볼 지역을 선택해 주세요.",
+          tripIntent: "찾고 싶은 장소 유형을 선택해 주세요.",
+          transportMode: "제주에서 이용할 이동수단을 선택해 주세요.",
+        };
+        showFormError(messages[missingTarget]);
+        focusWizardChoice(`[data-choice-target="${missingTarget}"]`);
+        return false;
+      }
+    }
+    if (step === 4 && state.selectedPreset !== "none" && collectPreferences().length === 0) {
+      showFormError("가장 가까운 여행 취향을 하나 선택해 주세요.");
+      focusWizardChoice("[data-preset]");
+      return false;
+    }
+    return true;
+  }
+
+  function showWizardStep(step, { focus = true } = {}) {
+    const nextStep = Math.max(1, Math.min(WIZARD_STEPS.length, Number(step) || 1));
+    state.wizardStep = nextStep;
+    hideFormError();
+    document.querySelectorAll("[data-wizard-step]").forEach((section) => {
+      const active = Number(section.dataset.wizardStep) === nextStep;
+      section.hidden = !active;
+      section.setAttribute("aria-hidden", String(!active));
+      section.classList.toggle("is-active", active);
+    });
+    const progress = Math.round((nextStep / WIZARD_STEPS.length) * 100);
+    dom.wizardStepLabel.textContent = `${nextStep} / ${WIZARD_STEPS.length} · ${WIZARD_STEPS[nextStep - 1]}`;
+    dom.wizardProgressPercent.textContent = `${progress}%`;
+    dom.wizardProgressBar.style.width = `${progress}%`;
+    dom.wizardBackButton.hidden = nextStep === 1;
+    dom.wizardNextButton.hidden = nextStep === WIZARD_STEPS.length;
+    dom.runRecommendationButton.hidden = nextStep !== WIZARD_STEPS.length;
+    if (nextStep === WIZARD_STEPS.length) renderReviewSummary();
+    document.querySelector(".panel-scroll")?.scrollTo({ top: 0, behavior: "smooth" });
+    if (focus) {
+      const heading = document.querySelector(`[data-wizard-step="${nextStep}"] .wizard-step-heading`);
+      window.requestAnimationFrame(() => heading?.focus({ preventScroll: true }));
+    }
+  }
+
   function resetRecommendationForm() {
-    dom.destinationRegion.value = "jeju_all";
-    dom.tripIntent.value = "visit";
-    dom.travelStartDate.value = "2026-08-20";
-    dom.travelEndDate.value = "2026-08-22";
-    dom.companionType.value = "parents";
-    dom.transportMode.value = "car";
+    dom.destinationRegion.value = "";
+    dom.tripIntent.value = "";
+    dom.travelStartDate.value = "";
+    dom.travelEndDate.value = "";
+    dom.dateUndecided.checked = false;
+    dom.travelStartDate.disabled = false;
+    dom.travelEndDate.disabled = false;
+    dom.companionType.value = "";
+    dom.transportMode.value = "";
     dom.resultLimit.value = "10";
     dom.diversityPreset.value = "balanced";
     dom.requiredPlaceSearch.value = "";
     state.requiredPlaceIds.clear();
     dom.excludedPlaceIds.value = "";
     state.selectedAnchorIds.clear();
+    state.selectedPreset = null;
     document.querySelectorAll('input[name="hardConstraint"]').forEach((input) => { input.checked = false; });
-    renderPreferenceRows(DEFAULT_PREFERENCES);
+    renderPreferenceRows([]);
+    syncChoiceCards();
+    syncPresetCards();
     renderRequiredPlacePicker();
+    showWizardStep(1, { focus: false });
+    dom.requestPreview.textContent = "추천을 실행하면 입력이 표시됩니다.";
+    dom.recommendationSummary.textContent = "여행 조건을 모두 고르면 여기에 추천 장소가 나타나요.";
     hideFormError();
   }
 
@@ -1410,6 +1555,8 @@
       item.webResearch = publicResearch(placeById.get(item.placeId));
     }
     state.recommendationResult = result;
+    document.body.classList.add("has-recommendation");
+    dom.runRecommendationButton.textContent = "이 조건으로 다시 추천받기";
     state.hoveredScheduleDay = null;
     state.focusedScheduleDay = null;
     state.recommendationById = new Map(result.items.map((item) => [item.placeId, item]));
@@ -1482,6 +1629,8 @@
     state.selectedAnchorIds.clear();
     resetVariantSession();
     dom.courseVariantBar.hidden = true;
+    document.body.classList.remove("has-recommendation");
+    dom.runRecommendationButton.textContent = "이 조건으로 장소 추천받기";
     if (!state.recommendationResult) return;
     state.recommendationResult = null;
     state.recommendationById = new Map();
@@ -1594,7 +1743,42 @@
   }
 
   function bindEvents() {
-    dom.recommendationForm.addEventListener("submit", (event) => { event.preventDefault(); runRecommendation(); });
+    dom.recommendationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (state.wizardStep !== WIZARD_STEPS.length) {
+        if (validateWizardStep(state.wizardStep)) showWizardStep(state.wizardStep + 1);
+        return;
+      }
+      if (validateWizardStep(state.wizardStep)) runRecommendation();
+    });
+    dom.wizardNextButton.addEventListener("click", () => {
+      if (validateWizardStep(state.wizardStep)) showWizardStep(state.wizardStep + 1);
+    });
+    dom.wizardBackButton.addEventListener("click", () => showWizardStep(state.wizardStep - 1));
+    dom.reviewSummary.addEventListener("click", (event) => {
+      const editButton = event.target.closest("[data-edit-step]");
+      if (editButton) showWizardStep(Number(editButton.dataset.editStep));
+    });
+    document.querySelectorAll("[data-choice-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = dom[button.dataset.choiceTarget];
+        if (!target) return;
+        target.value = button.dataset.choiceValue;
+        syncChoiceCards();
+        hideFormError();
+        target.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+    dom.dateUndecided.addEventListener("change", () => {
+      const undecided = dom.dateUndecided.checked;
+      if (undecided) {
+        dom.travelStartDate.value = "";
+        dom.travelEndDate.value = "";
+      }
+      dom.travelStartDate.disabled = undecided;
+      dom.travelEndDate.disabled = undecided;
+      hideFormError();
+    });
     dom.requiredPlaceSearch.addEventListener("input", renderRequiredPlaceSearchResults);
     dom.requiredPlaceSearch.addEventListener("focus", renderRequiredPlaceSearchResults);
     dom.requiredPlaceSearch.addEventListener("keydown", (event) => {
@@ -1620,19 +1804,31 @@
     });
     dom.addPreferenceButton.addEventListener("click", () => {
       addPreferenceRow();
+      state.selectedPreset = "custom";
+      syncPresetCards();
       clearRecommendation("선호 라벨이 바뀌었습니다. 추천을 다시 실행해 주세요.");
     });
     document.querySelectorAll("[data-preset]").forEach((button) => {
       button.addEventListener("click", () => {
-        renderPreferenceRows(PRESETS[button.dataset.preset]);
+        state.selectedPreset = button.dataset.preset;
+        renderPreferenceRows(button.dataset.preset === "none" ? [] : PRESETS[button.dataset.preset]);
+        syncPresetCards();
+        hideFormError();
         clearRecommendation("선호 프리셋이 바뀌었습니다. 추천을 다시 실행해 주세요.");
       });
     });
-    dom.resetRecommendationButton.addEventListener("click", () => { resetRecommendationForm(); runRecommendation(); });
+    dom.resetRecommendationButton.addEventListener("click", () => {
+      clearRecommendation("여행 조건을 처음부터 다시 선택해 주세요.");
+      resetRecommendationForm();
+    });
     dom.rerollRecommendationButton.addEventListener("click", rerollRecommendation);
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
       if (event.target === dom.requiredPlaceSearch) return;
+      if (event.target.closest(".preference-row")) {
+        state.selectedPreset = collectPreferences().length ? "custom" : null;
+        syncPresetCards();
+      }
       clearRecommendation("입력값이 바뀌었습니다. 추천을 다시 실행해 주세요.");
     };
     dom.recommendationForm.addEventListener("input", markRequestDirty);
@@ -1685,12 +1881,14 @@
       dom.sourceDate.textContent = `수집일 ${formatSourceDate(metadata.sourceDate)}`;
       dom.algorithmBadge.textContent = algorithm.ALGORITHM_VERSION;
       dom.configPreview.textContent = JSON.stringify(algorithm.CONFIG, null, 2);
-      renderPreferenceRows(DEFAULT_PREFERENCES);
+      renderPreferenceRows([]);
+      syncChoiceCards();
+      syncPresetCards();
       renderRequiredPlacePicker();
       createCategoryFilters();
       bindEvents();
       initMap();
-      runRecommendation({ fit: true, openOutput: false });
+      showWizardStep(1, { focus: false });
       window.CCU_MMR_DASHBOARD = {
         run: () => runRecommendation({ fit: false, openOutput: false }),
         reroll: () => rerollRecommendation(),

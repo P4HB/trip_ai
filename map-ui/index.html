@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="구조화된 여행 입력으로 CCU-MMR 제주 장소 추천 결과와 41개 라벨을 함께 검토하는 내부 실험 대시보드"
+      content="동행자부터 여행 취향까지 차례로 선택해 나에게 맞는 제주 장소와 일정을 추천받는 베타 서비스"
     />
-    <title>제주 CCU-MMR 추천 실험실</title>
+    <title>제주 여행 추천 베타</title>
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
@@ -23,13 +23,13 @@
           </svg>
         </span>
         <div>
-          <p class="eyebrow">INTERNAL RECOMMENDATION LAB</p>
-          <h1>제주 CCU-MMR 추천 실험실</h1>
+          <p class="eyebrow">JEJU TRIP BETA</p>
+          <h1>나에게 맞는 제주 여행</h1>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <div class="experiment-badge">AI 초안 · 내부 실험</div>
+        <div class="experiment-badge">BETA · AI 초안</div>
         <div class="data-pill" aria-label="추천 데이터 상태">
           <span class="live-dot" aria-hidden="true"></span>
           <span><strong id="headerReadyCount">—</strong>개 추천 가능</span>
@@ -43,7 +43,7 @@
           aria-controls="sidebar"
           aria-expanded="false"
         >
-          추천 입력
+          여행 조건
         </button>
         <button
           class="button button-primary mobile-output-button"
@@ -62,9 +62,9 @@
         <div class="panel-scroll">
           <div class="sidebar-heading">
             <div>
-              <p class="section-kicker">01 · REQUEST</p>
-              <h2 id="requestPanelTitle">여행 조건 입력</h2>
-              <p>구조화된 값을 바꿔가며 추천 순위와 점수 변화를 비교합니다.</p>
+              <p class="section-kicker">YOUR JEJU</p>
+              <h2 id="requestPanelTitle">여행을 같이 만들어볼까요?</h2>
+              <p>한 번에 하나씩 고르면 제주 장소와 일정을 추천해 드려요.</p>
             </div>
             <button
               class="icon-button sidebar-close-button"
@@ -78,164 +78,195 @@
             </button>
           </div>
 
-          <div class="lab-notice">
-            <strong id="algorithmBadge">ccu-mmr-v4-session-variants-schedule</strong>
-            <span>날씨·이동시간·가격은 현재 점수에 넣지 않습니다.</span>
-          </div>
-
           <form id="recommendationForm" class="recommendation-form" novalidate>
-            <section class="form-section" aria-labelledby="tripContextTitle">
-              <div class="form-section-heading">
-                <span class="step-number">1</span>
-                <div>
-                  <h3 id="tripContextTitle">여행 맥락</h3>
-                  <p>어디서, 언제, 누구와 갈지 선택합니다.</p>
-                </div>
+            <div class="wizard-progress" aria-label="여행 조건 입력 진행률">
+              <div class="wizard-progress-copy">
+                <span id="wizardStepLabel">1 / 5 · 동행자</span>
+                <strong id="wizardProgressPercent">20%</strong>
               </div>
+              <div class="wizard-progress-track" aria-hidden="true">
+                <span id="wizardProgressBar"></span>
+              </div>
+            </div>
 
-              <div class="field-grid">
-                <label class="field">
-                  <span>추천 지역</span>
-                  <select id="destinationRegion" name="destinationRegion">
-                    <option value="jeju_all">제주 전체</option>
-                    <option value="jeju_city">제주시</option>
-                    <option value="seogwipo_city">서귀포시</option>
-                  </select>
-                </label>
-                <label class="field">
-                  <span>장소 목적</span>
-                  <select id="tripIntent" name="tripIntent">
-                    <option value="visit" selected>관광·문화·레포츠</option>
-                    <option value="shopping">쇼핑</option>
-                    <option value="stay">숙박</option>
-                    <option value="event">축제·행사</option>
-                  </select>
-                </label>
-                <label class="field">
-                  <span>여행 시작일</span>
-                  <input id="travelStartDate" name="travelStartDate" type="date" value="2026-08-20" />
-                </label>
-                <label class="field">
-                  <span>여행 종료일</span>
-                  <input id="travelEndDate" name="travelEndDate" type="date" value="2026-08-22" />
-                </label>
-                <label class="field field-wide">
-                  <span>대표 동행 유형</span>
-                  <select id="companionType" name="companionType">
-                    <option value="none">동행 점수 사용 안 함</option>
-                    <option value="solo">혼자</option>
-                    <option value="couple">연인·부부</option>
-                    <option value="friends">친구</option>
-                    <option value="kids">아이 동반</option>
-                    <option value="parents" selected>부모님·고령자 동반</option>
-                  </select>
-                </label>
-                <label class="field field-wide">
-                  <span>제주 내 이동수단</span>
-                  <select id="transportMode" name="transportMode" required>
-                    <option value="car" selected>자차 있음 · 중심 반경 15km</option>
-                    <option value="no_car">자차 없음 · 중심 반경 5km</option>
-                  </select>
-                  <small>두 경우 모두 하루 최대 6곳으로 근사 일정을 만듭니다.</small>
-                </label>
+            <section class="wizard-step is-active" data-wizard-step="1" aria-labelledby="companionStepTitle">
+              <div class="wizard-step-heading" tabindex="-1">
+                <span class="wizard-question-number">01</span>
+                <p>먼저 함께 가는 사람을 알려주세요.</p>
+                <h3 id="companionStepTitle">누구와 제주에 가나요?</h3>
               </div>
+              <div class="choice-card-grid choice-card-grid-two" role="group" aria-label="동행자 선택">
+                <button class="choice-card" type="button" data-choice-target="companionType" data-choice-value="solo">
+                  <strong>혼자</strong><span>내 속도대로 가볍게</span>
+                </button>
+                <button class="choice-card" type="button" data-choice-target="companionType" data-choice-value="couple">
+                  <strong>연인·부부</strong><span>둘이 기억에 남을 여행</span>
+                </button>
+                <button class="choice-card" type="button" data-choice-target="companionType" data-choice-value="friends">
+                  <strong>친구</strong><span>함께 즐기는 활기찬 여행</span>
+                </button>
+                <button class="choice-card" type="button" data-choice-target="companionType" data-choice-value="kids">
+                  <strong>아이와</strong><span>가족 모두 편안하게</span>
+                </button>
+                <button class="choice-card" type="button" data-choice-target="companionType" data-choice-value="parents">
+                  <strong>부모님과</strong><span>무리 없이 여유롭게</span>
+                </button>
+                <button class="choice-card choice-card-muted" type="button" data-choice-target="companionType" data-choice-value="none">
+                  <strong>아직 미정</strong><span>동행 점수 없이 추천</span>
+                </button>
+              </div>
+              <select class="wizard-source-control" id="companionType" name="companionType" aria-hidden="true" tabindex="-1">
+                <option value="" selected></option><option value="none">미정</option><option value="solo">혼자</option>
+                <option value="couple">연인·부부</option><option value="friends">친구</option><option value="kids">아이</option>
+                <option value="parents">부모님</option>
+              </select>
             </section>
 
-            <section class="form-section" aria-labelledby="preferenceTitle">
-              <div class="form-section-heading">
-                <span class="step-number">2</span>
-                <div>
-                  <h3 id="preferenceTitle">원자 라벨 선호</h3>
-                  <p>높을수록 선호, 낮을수록 선호, 목표값 중 하나를 선택합니다.</p>
-                </div>
+            <section class="wizard-step" data-wizard-step="2" aria-labelledby="dateStepTitle" hidden aria-hidden="true">
+              <div class="wizard-step-heading" tabindex="-1">
+                <span class="wizard-question-number">02</span>
+                <p>여행하는 계절과 일수도 추천에 반영해요.</p>
+                <h3 id="dateStepTitle">언제 제주에 가나요?</h3>
               </div>
-
-              <div class="preset-row" role="group" aria-label="선호 프리셋">
-                <button type="button" class="preset-button" data-preset="scenic">바다·경관</button>
-                <button type="button" class="preset-button" data-preset="easy">편안한 여행</button>
-                <button type="button" class="preset-button" data-preset="local">제주 로컬</button>
-                <button type="button" class="preset-button" data-preset="indoor">실내 중심</button>
-              </div>
-
-              <div id="preferenceRows" class="preference-rows"></div>
-              <button id="addPreferenceButton" class="add-preference-button" type="button">+ 선호 라벨 추가</button>
-            </section>
-
-            <section class="form-section" aria-labelledby="outputOptionTitle">
-              <div class="form-section-heading">
-                <span class="step-number">3</span>
-                <div>
-                  <h3 id="outputOptionTitle">출력 설정</h3>
-                  <p>추천 개수와 다양성 재정렬을 정합니다.</p>
-                </div>
-              </div>
-              <div class="field-grid">
-                <label class="field">
-                  <span>결과 수</span>
-                  <select id="resultLimit" name="resultLimit">
-                    <option value="5">5개</option>
-                    <option value="10" selected>10개</option>
-                    <option value="15">15개</option>
-                    <option value="20">20개</option>
-                  </select>
+              <div class="date-card">
+                <label class="date-field">
+                  <span>출발일</span>
+                  <input id="travelStartDate" name="travelStartDate" type="date" />
                 </label>
-                <label class="field">
-                  <span>목록 구성</span>
-                  <select id="diversityPreset" name="diversityPreset">
-                    <option value="balanced" selected>MMR 다양성 적용</option>
-                    <option value="off">관련도 순서만</option>
-                  </select>
+                <span class="date-arrow" aria-hidden="true">→</span>
+                <label class="date-field">
+                  <span>돌아오는 날</span>
+                  <input id="travelEndDate" name="travelEndDate" type="date" />
                 </label>
               </div>
-            </section>
-
-            <details class="advanced-section">
-              <summary>필수 장소 · 확인 조건 · 제외 장소</summary>
-              <p class="advanced-copy">
-                현재 제약 데이터는 자유 텍스트이므로 선택한 필수 조건을 자동 통과시키지 않고 확인 후보로 분리합니다.
-              </p>
-              <div class="constraint-options" role="group" aria-label="필수 확인 조건">
-                <label><input type="checkbox" name="hardConstraint" value="wheelchair_accessible" /> 휠체어 접근 가능</label>
-                <label><input type="checkbox" name="hardConstraint" value="reservation_not_required" /> 사전예약 불필요</label>
-                <label><input type="checkbox" name="hardConstraint" value="age_unrestricted" /> 연령 제한 없음</label>
-              </div>
-              <div class="required-place-picker">
-                <label class="field field-wide" for="requiredPlaceSearch">
-                  <span>일정에 반드시 넣을 장소</span>
-                  <input
-                    id="requiredPlaceSearch"
-                    type="search"
-                    autocomplete="off"
-                    role="combobox"
-                    aria-autocomplete="list"
-                    aria-controls="requiredPlaceSearchResults"
-                    aria-expanded="false"
-                    placeholder="장소명·주소로 검색: 성산일출봉"
-                  />
-                  <small>검색 결과에서 장소를 선택하면 반경과 하루 6곳 조건으로 먼저 군집화합니다.</small>
-                </label>
-                <div class="selected-required-places" id="selectedRequiredPlaces" aria-label="선택된 필수 장소"></div>
-                <div class="required-place-search-results" id="requiredPlaceSearchResults" role="listbox" hidden></div>
-                <p class="required-place-status" id="requiredPlaceStatus" aria-live="polite">선택된 필수 장소가 없습니다.</p>
-              </div>
-              <label class="field field-wide">
-                <span>제외할 장소 ID</span>
-                <textarea id="excludedPlaceIds" rows="2" placeholder="쉼표로 구분: 126435, 2472824"></textarea>
+              <label class="undecided-option">
+                <input id="dateUndecided" type="checkbox" />
+                <span><strong>아직 날짜를 정하지 않았어요</strong><small>월별 적합도와 일정을 제외하고 장소만 추천해요.</small></span>
               </label>
-            </details>
+            </section>
+
+            <section class="wizard-step" data-wizard-step="3" aria-labelledby="tripStyleStepTitle" hidden aria-hidden="true">
+              <div class="wizard-step-heading" tabindex="-1">
+                <span class="wizard-question-number">03</span>
+                <p>여행 범위와 이동 방식을 골라주세요.</p>
+                <h3 id="tripStyleStepTitle">어떤 제주 여행을 원하나요?</h3>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>어디를 둘러볼까요?</legend>
+                <div class="choice-card-grid choice-card-grid-three" role="group" aria-label="추천 지역 선택">
+                  <button class="choice-card choice-card-compact" type="button" data-choice-target="destinationRegion" data-choice-value="jeju_all"><strong>제주 전체</strong><span>폭넓게</span></button>
+                  <button class="choice-card choice-card-compact" type="button" data-choice-target="destinationRegion" data-choice-value="jeju_city"><strong>제주시</strong><span>북쪽 중심</span></button>
+                  <button class="choice-card choice-card-compact" type="button" data-choice-target="destinationRegion" data-choice-value="seogwipo_city"><strong>서귀포시</strong><span>남쪽 중심</span></button>
+                </div>
+              </fieldset>
+
+              <fieldset class="choice-fieldset">
+                <legend>무엇을 찾고 있나요?</legend>
+                <div class="choice-card-grid choice-card-grid-two" role="group" aria-label="장소 목적 선택">
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="tripIntent" data-choice-value="visit"><strong>볼거리·체험</strong><span>관광·문화·레포츠</span></button>
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="tripIntent" data-choice-value="event"><strong>축제·행사</strong><span>시기에 맞는 이벤트</span></button>
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="tripIntent" data-choice-value="shopping"><strong>쇼핑</strong><span>시장과 쇼핑 명소</span></button>
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="tripIntent" data-choice-value="stay"><strong>숙소</strong><span>머물 곳 탐색</span></button>
+                </div>
+              </fieldset>
+
+              <fieldset class="choice-fieldset">
+                <legend>제주에서는 어떻게 이동하나요?</legend>
+                <div class="choice-card-grid choice-card-grid-two" role="group" aria-label="이동수단 선택">
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="transportMode" data-choice-value="car"><strong>차량 이용</strong><span>하루 반경 약 15km</span></button>
+                  <button class="choice-card choice-card-inline" type="button" data-choice-target="transportMode" data-choice-value="no_car"><strong>차량 없이</strong><span>하루 반경 약 5km</span></button>
+                </div>
+              </fieldset>
+
+              <select class="wizard-source-control" id="destinationRegion" name="destinationRegion" aria-hidden="true" tabindex="-1">
+                <option value="" selected></option><option value="jeju_all">제주 전체</option><option value="jeju_city">제주시</option><option value="seogwipo_city">서귀포시</option>
+              </select>
+              <select class="wizard-source-control" id="tripIntent" name="tripIntent" aria-hidden="true" tabindex="-1">
+                <option value="" selected></option><option value="visit">관광·문화·레포츠</option><option value="shopping">쇼핑</option><option value="stay">숙박</option><option value="event">축제·행사</option>
+              </select>
+              <select class="wizard-source-control" id="transportMode" name="transportMode" aria-hidden="true" tabindex="-1">
+                <option value="" selected></option><option value="car">차량 이용</option><option value="no_car">차량 없이</option>
+              </select>
+            </section>
+
+            <section class="wizard-step" data-wizard-step="4" aria-labelledby="preferenceStepTitle" hidden aria-hidden="true">
+              <div class="wizard-step-heading" tabindex="-1">
+                <span class="wizard-question-number">04</span>
+                <p>지금 여행에서 가장 끌리는 분위기를 골라주세요.</p>
+                <h3 id="preferenceStepTitle">어떤 여행을 좋아하나요?</h3>
+              </div>
+              <div class="preference-card-list" role="group" aria-label="여행 취향 선택">
+                <button type="button" class="preset-card" data-preset="scenic"><span class="preset-card-icon" aria-hidden="true">01</span><span><strong>바다와 멋진 풍경</strong><small>탁 트인 경관과 사진 남기기 좋은 곳</small></span></button>
+                <button type="button" class="preset-card" data-preset="easy"><span class="preset-card-icon" aria-hidden="true">02</span><span><strong>편안하고 여유롭게</strong><small>걷는 부담이 적고 쉬어가기 좋은 곳</small></span></button>
+                <button type="button" class="preset-card" data-preset="local"><span class="preset-card-icon" aria-hidden="true">03</span><span><strong>제주다운 로컬 경험</strong><small>제주의 문화와 개성이 느껴지는 곳</small></span></button>
+                <button type="button" class="preset-card" data-preset="indoor"><span class="preset-card-icon" aria-hidden="true">04</span><span><strong>날씨 걱정 없는 실내</strong><small>비가 와도 즐기기 편한 곳</small></span></button>
+                <button type="button" class="preset-card preset-card-muted" data-preset="none"><span class="preset-card-icon" aria-hidden="true">—</span><span><strong>취향 없이 골고루</strong><small>동행자와 여행 시기 중심으로 추천</small></span></button>
+              </div>
+
+              <details class="preference-customizer">
+                <summary>세부 취향을 직접 조정할래요</summary>
+                <p>추천에 사용할 장소 특성과 중요도를 직접 추가할 수 있어요.</p>
+                <div id="preferenceRows" class="preference-rows"></div>
+                <button id="addPreferenceButton" class="add-preference-button" type="button">+ 세부 취향 추가</button>
+              </details>
+            </section>
+
+            <section class="wizard-step" data-wizard-step="5" aria-labelledby="reviewStepTitle" hidden aria-hidden="true">
+              <div class="wizard-step-heading" tabindex="-1">
+                <span class="wizard-question-number">05</span>
+                <p>선택한 조건을 확인하면 추천 준비가 끝나요.</p>
+                <h3 id="reviewStepTitle">이대로 장소를 찾아볼까요?</h3>
+              </div>
+
+              <div class="review-summary" id="reviewSummary" aria-live="polite"></div>
+
+              <details class="advanced-section output-options-section">
+                <summary>추천 결과 설정</summary>
+                <div class="field-grid advanced-field-grid">
+                  <label class="field"><span>추천 장소 수</span><select id="resultLimit" name="resultLimit"><option value="5">5개</option><option value="10" selected>10개</option><option value="15">15개</option><option value="20">20개</option></select></label>
+                  <label class="field"><span>목록 구성</span><select id="diversityPreset" name="diversityPreset"><option value="balanced" selected>다양한 코스</option><option value="off">관련도 순서만</option></select></label>
+                </div>
+              </details>
+
+              <details class="advanced-section">
+                <summary>필수 장소 · 확인 조건 · 제외 장소</summary>
+                <p class="advanced-copy">접근성·예약 같은 정보는 자동 확정하지 않고 방문 전 확인할 후보로 나눠 보여드려요.</p>
+                <div class="constraint-options" role="group" aria-label="필수 확인 조건">
+                  <label><input type="checkbox" name="hardConstraint" value="wheelchair_accessible" /> 휠체어 접근 가능</label>
+                  <label><input type="checkbox" name="hardConstraint" value="reservation_not_required" /> 사전예약 불필요</label>
+                  <label><input type="checkbox" name="hardConstraint" value="age_unrestricted" /> 연령 제한 없음</label>
+                </div>
+                <div class="required-place-picker">
+                  <label class="field field-wide" for="requiredPlaceSearch">
+                    <span>일정에 반드시 넣을 장소</span>
+                    <input id="requiredPlaceSearch" type="search" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="requiredPlaceSearchResults" aria-expanded="false" placeholder="장소명·주소로 검색: 성산일출봉" />
+                    <small>선택한 장소를 중심으로 하루 최대 6곳의 근사 일정을 만들어요.</small>
+                  </label>
+                  <div class="selected-required-places" id="selectedRequiredPlaces" aria-label="선택된 필수 장소"></div>
+                  <div class="required-place-search-results" id="requiredPlaceSearchResults" role="listbox" hidden></div>
+                  <p class="required-place-status" id="requiredPlaceStatus" aria-live="polite">선택된 필수 장소가 없습니다.</p>
+                </div>
+                <label class="field field-wide advanced-textarea-field"><span>제외할 장소 ID</span><textarea id="excludedPlaceIds" rows="2" placeholder="쉼표로 구분: 126435, 2472824"></textarea></label>
+              </details>
+            </section>
 
             <div class="form-error" id="formError" role="alert" hidden></div>
-            <div class="form-actions">
-              <button class="button button-primary run-button" id="runRecommendationButton" type="submit">
-                추천 실행
-              </button>
-              <button class="button button-secondary" id="resetRecommendationButton" type="button">
-                예시값 복원
-              </button>
+            <div class="wizard-actions">
+              <button class="button button-secondary" id="wizardBackButton" type="button" hidden>이전</button>
+              <button class="button button-primary wizard-next-button" id="wizardNextButton" type="button">다음</button>
+              <button class="button button-primary run-button" id="runRecommendationButton" type="submit" hidden>이 조건으로 장소 추천받기</button>
             </div>
+            <button class="wizard-reset-button" id="resetRecommendationButton" type="button">처음부터 다시 선택</button>
           </form>
 
-          <details class="json-panel" open>
+          <details class="lab-notice">
+            <summary>베타 서비스 안내</summary>
+            <strong id="algorithmBadge">ccu-mmr-v4-session-variants-schedule</strong>
+            <span>AI 초안 데이터로 만든 내부 베타입니다. 날씨·실제 이동시간·가격은 현재 점수에 넣지 않습니다.</span>
+          </details>
+
+          <details class="json-panel">
             <summary>정규화 입력 JSON</summary>
             <pre id="requestPreview">추천을 실행하면 입력이 표시됩니다.</pre>
           </details>
@@ -344,9 +375,9 @@
       <aside class="output-panel dashboard-panel" id="outputPanel" aria-labelledby="outputPanelTitle" tabindex="-1">
         <div class="output-heading">
           <div>
-            <p class="section-kicker">02 · RESULT</p>
-            <h2 id="outputPanelTitle">추천 결과</h2>
-            <p id="recommendationSummary">입력값을 확인한 뒤 추천을 실행하세요.</p>
+            <p class="section-kicker">YOUR PICKS</p>
+            <h2 id="outputPanelTitle">제주 추천 결과</h2>
+            <p id="recommendationSummary">여행 조건을 모두 고르면 여기에 추천 장소가 나타나요.</p>
           </div>
           <button class="icon-button output-close-button" id="outputCloseButton" type="button" aria-label="추천 결과 닫기">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -396,8 +427,8 @@
           </div>
           <div class="recommendation-result-list" id="recommendationResultList" aria-live="polite">
             <div class="empty-state">
-              <strong>아직 추천 결과가 없습니다</strong>
-              <span>왼쪽 입력 패널에서 추천 실행을 눌러주세요.</span>
+              <strong>추천을 준비하고 있어요</strong>
+              <span>여행 조건을 차례로 선택해 주세요.</span>
             </div>
           </div>
 

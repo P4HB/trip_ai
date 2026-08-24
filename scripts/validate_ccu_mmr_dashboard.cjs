@@ -8,6 +8,8 @@ const CCU = require("../map-ui/ccu-mmr.js");
 
 const workspaceRoot = path.resolve(__dirname, "..");
 const bundlePath = path.join(workspaceRoot, "map-ui", "data", "jeju-places.js");
+const dashboardHtml = fs.readFileSync(path.join(workspaceRoot, "map-ui", "index.html"), "utf8");
+const dashboardApp = fs.readFileSync(path.join(workspaceRoot, "map-ui", "app.js"), "utf8");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(bundlePath, "utf8"), sandbox, { filename: bundlePath });
@@ -27,6 +29,20 @@ assert.equal(metadata.researchAttachedCount, 1663);
 assert.equal(metadata.recommendationResearchReadyCount, 1663);
 assert.equal(metadata.hardConstraintAttachedCount, 1517);
 assert.equal(metadata.algorithmVersion, CCU.ALGORITHM_VERSION);
+
+assert.equal((dashboardHtml.match(/data-wizard-step="[1-5]"/gu) || []).length, 5, "five wizard steps");
+for (const id of [
+  "wizardStepLabel", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "dateUndecided", "reviewSummary",
+  "companionType", "destinationRegion", "tripIntent", "transportMode", "runRecommendationButton",
+]) {
+  assert.match(dashboardHtml, new RegExp(`id="${id}"`, "u"), `${id}: wizard control`);
+}
+for (const target of ["companionType", "destinationRegion", "tripIntent", "transportMode"]) {
+  assert.match(dashboardHtml, new RegExp(`data-choice-target="${target}"`, "u"), `${target}: choice cards`);
+}
+assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
+assert.match(dashboardApp, /function renderReviewSummary\(\)/u, "review summary");
+assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recommendation must not auto-run on initialize");
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);
 assert.equal(readyPlaces.length, 1663);
