@@ -52,8 +52,9 @@
 | [SPEC-019](spec_019.md) | 여행 MBTI·적응형 가상 장소 선택 기반 개인 선호 v2 | Implemented | personalization, preference elicitation, ranking, UI, viral |
 | [SPEC-020](spec_020.md) | 베타 사용자용 단계형 여행 조건 입력 UI v1 | Implemented | recommendation, onboarding, map, UI |
 | [SPEC-056](spec_056.md) | 베타 추천 카드 단순화와 장소별 만족도 UI | Implemented | recommendation, feedback, map, UI |
+| [SPEC-057](spec_057.md) | Map UI `/travel/` 정적 호스팅 배포 | Implemented | deployment, hosting, map, UI |
 
-- 다음 예약 번호: `SPEC-057`
+- 다음 예약 번호: `SPEC-058`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

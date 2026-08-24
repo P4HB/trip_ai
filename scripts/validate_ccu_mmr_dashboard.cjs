@@ -60,7 +60,7 @@ for (const target of ["companionType", "destinationRegion", "tripIntent", "trans
 assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
 assert.match(dashboardApp, /function renderReviewSummary\(\)/u, "review summary");
 assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recommendation must not auto-run on initialize");
-const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\n  \}\n\n  function clearTravelMbtiProfile/u)?.[1] || "";
+const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\r?\n  \}\r?\n\r?\n  function clearTravelMbtiProfile/u)?.[1] || "";
 assert.ok(travelMbtiApplySource, "travel MBTI apply function");
 assert.doesNotMatch(travelMbtiApplySource, /runRecommendation\(/u, "travel MBTI apply must wait for final wizard confirmation");
 assert.match(dashboardHtml, /얼마나 마음에 드는지 알려주세요\. 점수와 의견은 아직 저장되지 않아요\./u, "feedback persistence notice");

@@ -116,6 +116,7 @@ scripts/validate_all_place_profiles.py
 
 ### 현재 런타임 경계
 
+- 공개 베타 배포는 `https://168-107-40-231.sslip.io/travel/`에서 제공한다. 같은 Caddy edge의 기존 Rail Desk `/`와 `/healthz`를 유지하고, 버전된 Docker 릴리스가 Map UI 정적 파일을 `/srv/travel/`에 포함해 `/travel/` 경로로만 노출한다. `/travel`은 `/travel/`로 영구 리다이렉트한다.
 - 브라우저에 API 키를 전달하지 않는다.
 - 지도 라이브러리는 `map-ui/vendor/`의 로컬 파일을 사용한다.
 - 지도 타일과 장소 이미지는 외부 네트워크에 의존한다.
