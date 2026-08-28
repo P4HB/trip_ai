@@ -173,6 +173,7 @@
     recommendationResult: null,
     recommendationById: new Map(),
     recommendationFeedback: new Map(),
+    feedbackSubmission: { status: "idle", payload: null, receipt: null, error: "" },
     scheduleById: new Map(),
     requiredPlaceIds: new Set(),
     selectedAnchorIds: new Set(),
@@ -1619,14 +1620,30 @@
     return { completed, total: targets.length, allCompleted: targets.length > 0 && completed === targets.length };
   }
 
+  function resetFeedbackSubmission() {
+    state.feedbackSubmission = { status: "idle", payload: null, receipt: null, error: "" };
+  }
+
   function updateFeedbackSaveState() {
     const completion = recommendationFeedbackCompletion();
     const hasTargets = Boolean(state.recommendationResult) && completion.total > 0;
+    const submission = state.feedbackSubmission;
     dom.feedbackSavePanel.hidden = !hasTargets;
     dom.feedbackCompletionStatus.textContent = `만족도 ${completion.completed}/${completion.total} 완료`;
-    dom.saveFeedbackLogButton.disabled = !completion.allCompleted;
+    dom.saveFeedbackLogButton.disabled = !completion.allCompleted || submission.status === "saving" || submission.status === "saved";
+    dom.saveFeedbackLogButton.textContent = submission.status === "saving"
+      ? "서버에 저장 중…"
+      : submission.status === "saved"
+        ? "서버 저장 완료"
+        : "서버에 평가 로그 저장";
     if (!hasTargets) dom.feedbackSaveHelp.textContent = "";
-    else if (completion.allCompleted) dom.feedbackSaveHelp.textContent = "모든 만족도를 입력했습니다. 의견은 선택 사항입니다.";
+    else if (submission.status === "saved") {
+      dom.feedbackSaveHelp.textContent = `서버에 안전하게 저장했습니다. 제출 ID: ${submission.receipt.submission_id}`;
+    } else if (submission.status === "saving") {
+      dom.feedbackSaveHelp.textContent = "평가 로그를 서버에 저장하고 있습니다.";
+    } else if (submission.status === "failed") {
+      dom.feedbackSaveHelp.textContent = `${submission.error} 같은 제출 ID로 다시 시도할 수 있습니다.`;
+    } else if (completion.allCompleted) dom.feedbackSaveHelp.textContent = "모든 만족도를 입력했습니다. 의견은 선택 사항입니다.";
     else dom.feedbackSaveHelp.textContent = `남은 장소 ${completion.total - completion.completed}곳의 만족도를 선택해 주세요.`;
   }
 
@@ -1634,22 +1651,24 @@
     return value == null ? value : JSON.parse(JSON.stringify(value));
   }
 
-  function buildFeedbackLog() {
+  function buildFeedbackLog(submissionId = null) {
     const completion = recommendationFeedbackCompletion();
     if (!state.recommendationResult || !completion.allCompleted) {
       throw new Error("모든 추천 장소의 만족도를 먼저 선택해 주세요.");
     }
     const result = cloneForFeedbackLog(state.recommendationResult);
     return {
-      schema_version: "travel-recommendation-feedback-log-v1",
-      exported_at: new Date().toISOString(),
+      schema_version: "travel-recommendation-feedback-log-v2",
+      submission_id: submissionId || crypto.randomUUID(),
+      created_at: new Date().toISOString(),
       storage: {
-        method: "browser_download",
-        server_transmitted: false,
+        method: "server_api",
+        endpoint: "/travel/api/feedback",
+        server_transmitted: true,
         web_storage_used: false,
       },
       source: {
-        ui_version: "map-ui-feedback-log-v1",
+        ui_version: "map-ui-feedback-server-v2",
         algorithm_version: algorithm.ALGORITHM_VERSION,
         provenance: cloneForFeedbackLog(result.provenance || null),
       },
@@ -1691,21 +1710,40 @@
     };
   }
 
-  function saveFeedbackLog() {
+  async function saveFeedbackLog() {
+    if (state.feedbackSubmission.status === "saving" || state.feedbackSubmission.status === "saved") return;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
     try {
-      const log = buildFeedbackLog();
-      const blob = new Blob([`${JSON.stringify(log, null, 2)}\n`], { type: "application/json;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `trip-ai-feedback-${log.exported_at.replace(/[-:]/gu, "").replace(/\.\d{3}Z$/u, "Z").replace("T", "-")}.json`;
-      document.body.append(link);
-      link.click();
-      link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      dom.feedbackSaveHelp.textContent = "평가 로그 JSON 파일을 저장했습니다.";
+      const log = state.feedbackSubmission.payload || buildFeedbackLog();
+      state.feedbackSubmission = { status: "saving", payload: log, receipt: null, error: "" };
+      updateFeedbackSaveState();
+      const response = await fetch("/travel/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(log),
+        credentials: "omit",
+        signal: controller.signal,
+      });
+      const receipt = await response.json().catch(() => null);
+      if (!response.ok || !receipt?.ok) {
+        throw new Error(receipt?.error ? `서버 저장에 실패했습니다 (${receipt.error}).` : `서버 저장에 실패했습니다 (HTTP ${response.status}).`);
+      }
+      if (receipt.submission_id !== log.submission_id) throw new Error("서버 영수증의 제출 ID가 일치하지 않습니다.");
+      state.feedbackSubmission = { status: "saved", payload: log, receipt, error: "" };
     } catch (error) {
-      dom.feedbackSaveHelp.textContent = error instanceof Error ? error.message : "평가 로그를 저장하지 못했습니다.";
+      const message = error?.name === "AbortError"
+        ? "서버 응답 시간이 초과되었습니다."
+        : error instanceof Error ? error.message : "평가 로그를 서버에 저장하지 못했습니다.";
+      state.feedbackSubmission = {
+        status: "failed",
+        payload: state.feedbackSubmission.payload,
+        receipt: null,
+        error: message,
+      };
+    } finally {
+      window.clearTimeout(timeoutId);
+      updateFeedbackSaveState();
     }
   }
 
@@ -1737,6 +1775,7 @@
       feedbackButton.addEventListener("click", () => {
         const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
         state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
+        resetFeedbackSubmission();
         syncRecommendationFeedback(feedbackKey);
         updateFeedbackSaveState();
       });
@@ -1771,6 +1810,7 @@
     commentInput.addEventListener("input", () => {
       const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
       state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
+      resetFeedbackSubmission();
       syncRecommendationFeedback(feedbackKey, commentInput);
       updateFeedbackSaveState();
     });
@@ -2119,6 +2159,7 @@
   }
 
   function renderRecommendationOutput(result) {
+    resetFeedbackSubmission();
     result.provenance = {
       sourceDate: metadata.sourceDate || null,
       labelSnapshotDate: metadata.labelSnapshotDate || null,
@@ -2200,6 +2241,7 @@
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     state.selectedAnchorIds.clear();
     state.recommendationFeedback.clear();
+    resetFeedbackSubmission();
     resetVariantSession();
     dom.courseVariantBar.hidden = true;
     document.body.classList.remove("has-recommendation");

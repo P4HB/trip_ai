@@ -1,0 +1,317 @@
+#!/usr/bin/env python3
+"""Minimal same-origin API for durable travel recommendation feedback."""
+
+from __future__ import annotations
+
+import json
+import os
+import sqlite3
+import threading
+import time
+import uuid
+from datetime import datetime, timedelta, timezone
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Any
+
+
+SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
+API_PATH = "/travel/api/feedback"
+MAX_BODY_BYTES = 2 * 1024 * 1024
+MAX_ENTRIES = 100
+MAX_COMMENT_LENGTH = 300
+
+
+class ValidationError(ValueError):
+    pass
+
+
+class SubmissionConflict(ValueError):
+    pass
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def isoformat_utc(value: datetime) -> str:
+    return value.astimezone(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+
+def parse_iso_datetime(value: Any, field: str) -> datetime:
+    if not isinstance(value, str):
+        raise ValidationError(f"{field} must be an ISO 8601 string")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValidationError(f"{field} must be an ISO 8601 string") from exc
+    if parsed.tzinfo is None:
+        raise ValidationError(f"{field} must include a timezone")
+    return parsed
+
+
+def validate_payload(payload: Any) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ValidationError("request body must be an object")
+    if payload.get("schema_version") != SCHEMA_VERSION:
+        raise ValidationError("unsupported schema_version")
+
+    submission_id = payload.get("submission_id")
+    try:
+        parsed_id = uuid.UUID(submission_id)
+    except (AttributeError, TypeError, ValueError) as exc:
+        raise ValidationError("submission_id must be a UUID") from exc
+    if str(parsed_id) != submission_id.lower():
+        raise ValidationError("submission_id must use canonical UUID form")
+
+    parse_iso_datetime(payload.get("created_at"), "created_at")
+    storage = payload.get("storage")
+    if not isinstance(storage, dict) or storage.get("method") != "server_api":
+        raise ValidationError("storage.method must be server_api")
+    if storage.get("endpoint") != API_PATH:
+        raise ValidationError("storage.endpoint is invalid")
+    if storage.get("server_transmitted") is not True or storage.get("web_storage_used") is not False:
+        raise ValidationError("storage flags are invalid")
+
+    feedback = payload.get("feedback")
+    if not isinstance(feedback, dict):
+        raise ValidationError("feedback must be an object")
+    entries = feedback.get("entries")
+    if not isinstance(entries, list) or not 1 <= len(entries) <= MAX_ENTRIES:
+        raise ValidationError(f"feedback.entries must contain 1..{MAX_ENTRIES} items")
+    required = feedback.get("required_place_count")
+    completed = feedback.get("completed_place_count")
+    if type(required) is not int or type(completed) is not int:
+        raise ValidationError("feedback counts must be integers")
+    if required != completed or completed != len(entries) or feedback.get("all_scores_completed") is not True:
+        raise ValidationError("feedback completion counts do not match")
+
+    seen_place_ids: set[str] = set()
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            raise ValidationError(f"feedback.entries[{index}] must be an object")
+        place_id = entry.get("place_id")
+        if not isinstance(place_id, str) or not place_id or len(place_id) > 100:
+            raise ValidationError(f"feedback.entries[{index}].place_id is invalid")
+        if place_id in seen_place_ids:
+            raise ValidationError("feedback place_id values must be unique")
+        seen_place_ids.add(place_id)
+        score = entry.get("score")
+        if type(score) is not int or not 1 <= score <= 5:
+            raise ValidationError(f"feedback.entries[{index}].score must be 1..5")
+        comment = entry.get("comment")
+        if not isinstance(comment, str) or len(comment) > MAX_COMMENT_LENGTH:
+            raise ValidationError(f"feedback.entries[{index}].comment is too long")
+        if not isinstance(entry.get("title"), str) or not isinstance(entry.get("contexts"), list):
+            raise ValidationError(f"feedback.entries[{index}] metadata is invalid")
+
+    if not isinstance(payload.get("source"), dict):
+        raise ValidationError("source must be an object")
+    if not isinstance(payload.get("user_selections"), dict):
+        raise ValidationError("user_selections must be an object")
+    if not isinstance(payload.get("recommendation_result"), dict):
+        raise ValidationError("recommendation_result must be an object")
+    return payload
+
+
+class FeedbackStore:
+    def __init__(self, db_path: str, retention_days: int = 90):
+        self.db_path = db_path
+        self.retention_days = retention_days
+        Path(db_path).parent.mkdir(parents=True, exist_ok=True)
+        self.initialize()
+
+    def connect(self) -> sqlite3.Connection:
+        connection = sqlite3.connect(self.db_path, timeout=10)
+        connection.execute("PRAGMA busy_timeout = 10000")
+        return connection
+
+    def initialize(self) -> None:
+        with self.connect() as connection:
+            connection.execute("PRAGMA journal_mode = WAL")
+            connection.execute(
+                """
+                CREATE TABLE IF NOT EXISTS feedback_submissions (
+                    submission_id TEXT PRIMARY KEY,
+                    received_at TEXT NOT NULL,
+                    client_created_at TEXT NOT NULL,
+                    schema_version TEXT NOT NULL,
+                    payload_json TEXT NOT NULL
+                )
+                """
+            )
+            connection.execute(
+                "CREATE INDEX IF NOT EXISTS idx_feedback_received_at ON feedback_submissions(received_at)"
+            )
+            self._prune(connection, utc_now())
+
+    def _prune(self, connection: sqlite3.Connection, now: datetime) -> None:
+        cutoff = isoformat_utc(now - timedelta(days=self.retention_days))
+        connection.execute("DELETE FROM feedback_submissions WHERE received_at < ?", (cutoff,))
+
+    def save(self, payload: dict[str, Any], now: datetime | None = None) -> tuple[str, bool]:
+        received_at = isoformat_utc(now or utc_now())
+        canonical_payload = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+        with self.connect() as connection:
+            self._prune(connection, now or utc_now())
+            cursor = connection.execute(
+                """
+                INSERT OR IGNORE INTO feedback_submissions
+                    (submission_id, received_at, client_created_at, schema_version, payload_json)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    payload["submission_id"],
+                    received_at,
+                    payload["created_at"],
+                    payload["schema_version"],
+                    canonical_payload,
+                ),
+            )
+            duplicate = cursor.rowcount == 0
+            if duplicate:
+                row = connection.execute(
+                    "SELECT received_at, payload_json FROM feedback_submissions WHERE submission_id = ?",
+                    (payload["submission_id"],),
+                ).fetchone()
+                if row is None:
+                    raise sqlite3.IntegrityError("duplicate submission disappeared")
+                if row[1] != canonical_payload:
+                    raise SubmissionConflict("submission_id already belongs to another payload")
+                received_at = row[0]
+        return received_at, duplicate
+
+
+class MemoryRateLimiter:
+    def __init__(self, limit: int = 20, window_seconds: int = 60):
+        self.limit = limit
+        self.window_seconds = window_seconds
+        self._events: dict[str, list[float]] = {}
+        self._lock = threading.Lock()
+
+    def allow(self, key: str, now: float | None = None) -> bool:
+        current = now if now is not None else time.monotonic()
+        cutoff = current - self.window_seconds
+        with self._lock:
+            events = [event for event in self._events.get(key, []) if event > cutoff]
+            allowed = len(events) < self.limit
+            if allowed:
+                events.append(current)
+            if events:
+                self._events[key] = events
+            else:
+                self._events.pop(key, None)
+            return allowed
+
+
+class FeedbackRequestHandler(BaseHTTPRequestHandler):
+    server_version = "TravelFeedback/1"
+
+    @property
+    def feedback_server(self) -> "FeedbackHTTPServer":
+        return self.server  # type: ignore[return-value]
+
+    def log_message(self, format_string: str, *args: Any) -> None:
+        # Do not persist client IPs or request headers in application logs.
+        print(f"travel-feedback {self.command} {self.path}", flush=True)
+
+    def send_json(self, status: int, body: dict[str, Any]) -> None:
+        encoded = json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(encoded)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(encoded)
+
+    def do_GET(self) -> None:
+        if self.path == "/healthz":
+            self.send_json(200, {"ok": True})
+        else:
+            self.send_json(404, {"ok": False, "error": "not_found"})
+
+    def do_POST(self) -> None:
+        if self.path != API_PATH:
+            self.send_json(404, {"ok": False, "error": "not_found"})
+            return
+        origin = self.headers.get("Origin")
+        if origin and origin != self.feedback_server.public_origin:
+            self.send_json(403, {"ok": False, "error": "origin_not_allowed"})
+            return
+        content_type = self.headers.get("Content-Type", "").partition(";")[0].strip().lower()
+        if content_type != "application/json":
+            self.send_json(415, {"ok": False, "error": "application_json_required"})
+            return
+        trusted_client_ip = self.headers.get("X-Travel-Client-IP", "").strip()
+        rate_key = trusted_client_ip or self.client_address[0]
+        if not self.feedback_server.rate_limiter.allow(rate_key):
+            self.send_json(429, {"ok": False, "error": "rate_limit_exceeded"})
+            return
+        try:
+            content_length = int(self.headers.get("Content-Length", ""))
+        except ValueError:
+            self.send_json(411, {"ok": False, "error": "content_length_required"})
+            return
+        if content_length <= 0:
+            self.send_json(400, {"ok": False, "error": "empty_body"})
+            return
+        if content_length > MAX_BODY_BYTES:
+            self.send_json(413, {"ok": False, "error": "payload_too_large"})
+            return
+        try:
+            raw_body = self.rfile.read(content_length)
+            payload = validate_payload(json.loads(raw_body.decode("utf-8")))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            self.send_json(400, {"ok": False, "error": "invalid_json"})
+            return
+        except ValidationError as exc:
+            self.send_json(422, {"ok": False, "error": "invalid_feedback", "detail": str(exc)})
+            return
+        try:
+            received_at, duplicate = self.feedback_server.store.save(payload)
+        except SubmissionConflict:
+            self.send_json(409, {"ok": False, "error": "submission_id_conflict"})
+            return
+        except sqlite3.Error:
+            self.send_json(500, {"ok": False, "error": "storage_unavailable"})
+            return
+        self.send_json(
+            200 if duplicate else 201,
+            {
+                "ok": True,
+                "submission_id": payload["submission_id"],
+                "received_at": received_at,
+                "duplicate": duplicate,
+            },
+        )
+
+
+class FeedbackHTTPServer(ThreadingHTTPServer):
+    daemon_threads = True
+
+    def __init__(
+        self,
+        server_address: tuple[str, int],
+        store: FeedbackStore,
+        public_origin: str,
+        rate_limiter: MemoryRateLimiter | None = None,
+    ):
+        self.store = store
+        self.public_origin = public_origin.rstrip("/")
+        self.rate_limiter = rate_limiter or MemoryRateLimiter()
+        super().__init__(server_address, FeedbackRequestHandler)
+
+
+def main() -> None:
+    port = int(os.environ.get("TRAVEL_FEEDBACK_PORT", "8200"))
+    db_path = os.environ.get("TRAVEL_FEEDBACK_DB_PATH", "/data/feedback.sqlite3")
+    public_origin = os.environ.get("TRAVEL_PUBLIC_ORIGIN", "http://127.0.0.1:8080")
+    retention_days = int(os.environ.get("TRAVEL_FEEDBACK_RETENTION_DAYS", "90"))
+    server = FeedbackHTTPServer(("0.0.0.0", port), FeedbackStore(db_path, retention_days), public_origin)
+    print(f"travel-feedback listening on :{port}", flush=True)
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()

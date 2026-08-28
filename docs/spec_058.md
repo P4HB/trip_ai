@@ -1,12 +1,13 @@
 # SPEC-058: 추천 만족도 완료형 JSON 로그 저장
 
-- 상태: Implemented
+- 상태: Superseded
 - 작성일: 2026-08-24
 - 최종 수정일: 2026-08-24
 - 관련 이슈:
 - 관련 문서: [시스템 아키텍처](architecture.md), [데이터 계약](data_contracts.md), [안전 및 개인정보](safety_privacy.md), [SPEC-056](spec_056.md)
 - 관련 코드: `map-ui/index.html`, `map-ui/styles.css`, `map-ui/app.js`, `map-ui/README.md`, `scripts/validate_ccu_mmr_dashboard.cjs`
 - 선행 SPEC: SPEC-056
+- 후속 SPEC: [SPEC-059](spec_059.md) — 브라우저 다운로드를 서버 적재로 대체
 
 ## 배경
 
@@ -104,6 +105,7 @@
 
 ## 알려진 제한
 
+- 이 SPEC의 v1 브라우저 다운로드 동작은 SPEC-059의 v2 서버 적재 동작으로 대체됐다.
 - 내려받은 파일은 사이트가 자동 회수·삭제하거나 여러 사용자의 로그로 집계하지 않는다.
 - 운영 서버 저장, 동의·보관 기간·삭제 API가 필요한 평가 파이프라인은 별도 SPEC이 필요하다.
 - `node scripts/test_preference_elicitation.cjs`는 현재 저장소에 테스트가 참조하는 `travel-mbti-site/app/lib/preference-elicitation.js`가 없어 `ENOENT`로 시작하지 못했다. `map-ui/preference-elicitation.js`를 직접 읽는 대시보드 검증과 CCU-MMR 회귀 검증은 통과했다.

@@ -534,21 +534,23 @@ RecommendationCandidateTrace {
 - `review_priority`는 trace의 점수나 reliability 입력이 아니다.
 - `source_order`는 안정적 동점 처리에 사용하며 추천 품질 특징이 아니다.
 
-## 추천 만족도 다운로드 로그 — 구현됨
+## 추천 만족도 서버 적재 로그 — 구현됨
 
-`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 모든 고유 장소의 1~5점 만족도가 입력된 뒤 사용자가 `평가 로그 저장`을 누르면 다음 논리 구조의 UTF-8 JSON 파일을 만든다. 자동 네트워크 전송이나 Web Storage 저장은 없다.
+`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 모든 고유 장소의 1~5점 만족도가 입력된 뒤 사용자가 `서버에 평가 로그 저장`을 누르면 다음 논리 구조를 `POST /travel/api/feedback`으로 전송한다. Web Storage나 백그라운드 전송은 없다.
 
 ```text
-TravelRecommendationFeedbackLog {
-  schema_version: travel-recommendation-feedback-log-v1
-  exported_at: datetime          # UTC ISO 8601
+TravelRecommendationFeedbackLogV2 {
+  schema_version: travel-recommendation-feedback-log-v2
+  submission_id: uuid            # 클라이언트 생성, 재시도 멱등 키
+  created_at: datetime            # UTC ISO 8601
   storage: {
-    method: browser_download
-    server_transmitted: false
+    method: server_api
+    endpoint: /travel/api/feedback
+    server_transmitted: true
     web_storage_used: false
   }
   source: {
-    ui_version: map-ui-feedback-log-v1
+    ui_version: map-ui-feedback-server-v2
     algorithm_version: string
     provenance: object?
   }
@@ -596,7 +598,9 @@ RecommendationFeedbackContext =
 - 같은 장소가 추천 목록과 하나 이상의 일정 카드에 나타나도 `entries`에는 한 번만 기록하고 모든 노출 context를 보존한다.
 - `required_place_count`와 `completed_place_count`는 저장 시 항상 같으며 `entries.length`와도 같다.
 - 자유 의견은 선택 사항이고 만족도만 완료 조건이다.
-- 파일명은 `trip-ai-feedback-YYYYMMDD-HHMMSSZ.json` 형식이다. 내려받은 파일의 보관과 삭제는 사용자 기기에서 사용자가 제어한다.
+- 요청 본문은 최대 2 MiB, 피드백은 최대 100건이며 서버가 점수·의견 길이·완료 건수와 UUID를 다시 검증한다.
+- 성공 응답은 신규 HTTP 201 또는 중복 재시도 HTTP 200과 `{ ok, submission_id, received_at, duplicate }`를 반환한다.
+- 서버 SQLite `feedback_submissions`는 `submission_id` 기본키, `received_at`, `client_created_at`, `schema_version`, `payload_json`만 저장한다. 수신 IP·User-Agent·쿠키는 저장하지 않으며 `received_at` 기준 90일 뒤 삭제한다.
 
 ## 장소 추천 결과 — 목표 계약, 미구현
 

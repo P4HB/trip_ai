@@ -27,7 +27,7 @@
 - 구현됨: A/R·O/I·L/H 축마다 6개씩 총 18개 상황 질문·최대 3개 적응형 가상 장소 A/B·연속 라벨 가중치
 - 구현됨: 3축 8개 여행 MBTI를 내장한 지도 추천 UI
 - 구현됨: 베타 추천 카드의 내부 trace 상세 분리와 추천 목록·일자별 일정 장소의 1~5·최대 300자 동기화 세션 피드백 UI
-- 구현됨: 모든 고유 추천 장소의 만족도 입력 완료 후 사용자 선택·추천 결과·피드백을 묶은 JSON 로그 다운로드
+- 구현됨: 모든 고유 추천 장소의 만족도 입력 완료 후 명시적 저장 버튼으로 선택·추천 결과·피드백을 서버의 분리된 SQLite에 90일 적재
 - 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
 ## SPEC 색인
@@ -52,11 +52,13 @@
 | [SPEC-018](spec_018.md) | 클러스터 재사용·일자 한계효용 기반 일정 배분 v5 | Draft | itinerary, clustering, distance, evaluation |
 | [SPEC-019](spec_019.md) | 여행 MBTI·적응형 가상 장소 선택 기반 개인 선호 v2 | Implemented | personalization, preference elicitation, ranking, UI, viral |
 | [SPEC-020](spec_020.md) | 베타 사용자용 단계형 여행 조건 입력 UI v1 | Implemented | recommendation, onboarding, map, UI |
+| [SPEC-022](spec_022.md) | Kakao 신규 후보 2,374건 41축 에이전트 라벨링 v1 | In Progress | research, labeling, data |
 | [SPEC-056](spec_056.md) | 베타 추천 카드 단순화와 장소별 만족도 UI | Implemented | recommendation, feedback, map, UI |
 | [SPEC-057](spec_057.md) | Map UI `/travel/` 정적 호스팅 배포 | Implemented | deployment, hosting, map, UI |
 | [SPEC-058](spec_058.md) | 추천 만족도 완료형 JSON 로그 저장 | Implemented | recommendation, feedback, privacy, UI |
+| [SPEC-059](spec_059.md) | 추천 만족도 서버 적재 API | Implemented | recommendation, feedback, API, privacy, deployment |
 
-- 다음 예약 번호: `SPEC-059`
+- 다음 예약 번호: `SPEC-060`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
