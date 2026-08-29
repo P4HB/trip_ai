@@ -1,0 +1,91 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1908954493",
+  "canonical_id": "kakao:1908954493",
+  "name": "석두청산 전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 표식의 명칭은 ‘석두청산 전망대’이며, 제주관광공사 Visit Jeju가 독립 명소로 안내하는 ‘석두청산’과 동일한 고유 지명을 사용한다. 공식 안내는 석두청산 자체를 하추자도 신양항 앞 석지머리·청도의 해안 경관으로 설명하고 별도 전망대 시설은 안내하지 않는다. 따라서 이 표식은 기존 석두청산(kakao:7946995)을 조망하는 동일 방문 경험의 지도 표식으로 판단해 중복 후보로 분류한다.",
+    "duplicate_of": "kakao:7946995",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-DUPLICATE-EXISTING-DESTINATION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_destination_candidate",
+      "applies_to": "recommendation_catalog",
+      "condition": "석두청산 전망대 표식은 기존 석두청산(kakao:7946995)과 동일한 석두청산 해안 경관 방문 경험을 중복 노출할 가능성이 있다.",
+      "status": "needs_review",
+      "action": "추천·일정 후보에서는 기존 석두청산 레코드만 사용한다. 별도 전망 시설의 위치·운영 주체·독립 관람 범위가 공식 또는 공공 출처로 확인될 때만 중복 여부를 재검토한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘석두청산 전망대’는 하추자도 추자10경인 석두청산과 같은 고유 지명을 쓴 Kakao 지도 표식이다. 공개 공식 안내에서는 석두청산을 독립 경관 명소로 소개하지만, 별도 전망대 시설은 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "제주관광공사 Visit Jeju는 석두청산을 하추자도의 석지머리 청도에 있는 푸른 소나무 경관으로 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "입력 Kakao 지도 레코드의 명칭은 ‘석두청산 전망대’이며, 별도 주소·좌표·업종·운영 정보는 입력에 제공되지 않았다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "석두청산 전망대 표식의 정확한 좌표와 석두청산 경관 감상 지점과의 거리",
+      "전망대라는 별도 시설의 관리 주체, 운영·개방 상태, 접근로와 안전시설",
+      "별도 시설로서 기존 석두청산과 구별되는 관람 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000007317&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "하추자도 명소 석두청산을 석지머리 청도의 푸른 소나무 경관으로 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1908954493",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘석두청산 전망대’다.",
+          "입력 패킷에는 주소, 좌표, 업종, 운영 정보 및 공개 방문 후기 근거가 없다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

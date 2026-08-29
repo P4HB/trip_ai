@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "place_id": "7891006",
+  "canonical_id": "kakao:7891006",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "identity": {
+    "canonical_id": "kakao:7891006",
+    "provider": "kakao",
+    "place_id": "7891006",
+    "name": "방일봉",
+    "url": "https://place.map.kakao.com/7891006",
+    "status": "confirmed",
+    "source": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+    "rule": "공공 오름 현황 문서의 제주시 노형동 방일봉 항목과 장소명 일치",
+    "rationale": "입력 장소명 방일봉은 공공 문서에 제주시 노형동 2093-1번지 일대의 침식잔류산체로 수록되어 있다."
+  },
+  "eligibility": {
+    "status": "out_of_scope",
+    "source": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+    "rule": "일반 여행자가 이용 가능한 방문 경험이 공개 근거로 확인되지 않는 장소는 관광 추천 라벨 대상에서 제외한다.",
+    "rationale": "공공 현황 문서는 방일봉의 오름 형태가 거의 사라졌고, 탐방로가 개설되어 있지 않으며 내부가 사유지라고 명시한다. 일반 방문지로서의 접근·이용 가능성이 확인되지 않아 보수적으로 제외한다."
+  },
+  "sources": [
+    {
+      "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+      "publisher": "제주특별자치도",
+      "checked_at": "2026-08-25",
+      "facts": [
+        "방일봉은 제주시 노형동 2093-1번지 일대의 침식잔류산체로 기재되어 있다.",
+        "오름의 형태가 거의 사라진 상태이며 탐방로가 현재 개설되어 있지 않다.",
+        "경계면 내부는 사유지이고 일부가 경작지로 이용된다."
+      ]
+    }
+  ],
+  "research": {
+    "status": "confirmed",
+    "source": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+    "rule": "공식·공공 상세 출처를 우선 사용한다.",
+    "rationale": "공공 현황 문서의 접근성과 토지 이용 사실을 eligibility 판정 근거로 사용했다."
+  },
+  "labels": {
+    "atomic": {},
+    "companion": {},
+    "month": {}
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "review": {
+    "status": "confirmed",
+    "source": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+    "rule": "eligible이 아닌 경우 원자·동반자·월 라벨과 제약은 빈 맵으로 둔다.",
+    "rationale": "방문 가능성이 공개 근거로 확인되지 않은 비공개 사유지·미개설 탐방로 지형이므로 라벨 점수를 생성하지 않았다."
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

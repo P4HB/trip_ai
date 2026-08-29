@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "26916266",
+  "canonical_id": "kakao:26916266",
+  "name": "제주가마오름 일제동굴진지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 국가등록문화유산 ‘제주 가마오름 일제 동굴진지’ 및 제주 공식 관광정보의 같은 명칭·주소와 일치한다. 일제 군사시설 유적을 방문·학습하는 독립 관광지로 공개 안내된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광정보는 가마오름 기슭에 위치한 동굴진지와 오름에서 주변을 조망할 수 있음을 설명한다.", "source_ids": ["S2"], "rule_ids": ["THEME-OREUM-DIRECT"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름에서 고산 해안가 등을 조망할 수 있으나, 장소의 핵심은 해양 활동이 아닌 동굴 군사유적 관람이다.", "source_ids": ["S2"], "rule_ids": ["THEME-VIEW-NONPRIMARY"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 공식 관광정보가 도보여행·도보 태그로 안내하며, 야외 오름 기슭과 동굴진지를 둘러보는 방문 경험이다.", "source_ids": ["S2"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가등록문화유산인 전쟁 관련 시설이며, 제주 공식 관광정보도 침략의 역사를 품은 교육의 장 및 일본군 군사기지 유적으로 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HERITAGE-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 정보는 역사유적·박물관 성격을 설명하며 놀이·동물·수족관형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적 방문 목적인 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "국가등록문화유산 동굴진지로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 역사유적으로 소개될 뿐 특정 기간 축제나 공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "동굴 내부 관람 요소가 있으나 오름 기슭의 야외 유적이기도 하며, 실제 관람 동선의 실내·야외 비율은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-CAVE-AND-OUTDOOR-SITE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 방문에는 야외 오름 기슭과 동굴 진입 동선이 포함되어 비·바람 등 날씨 영향이 예상되나 현장 통제 기준은 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개의 중심은 전쟁·침략 역사 교육이며 휴식이나 평온함을 핵심 경험으로 제시하지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HISTORY-NONREST"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름 기슭의 동굴 유적과 도보 방문은 확인되지만 경사·계단·무장애 동선 정보가 확인되지 않아 낮은 잠정값이다.", "source_ids": ["S2"], "rule_ids": ["STYLE-CAVE-WALKING-BURDEN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "권장 체류시간·단축 동선·현행 관람 운영 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "가마오름에서 산방산·모슬포·알뜨르비행장·고산 해안가 등을 한눈에 조망할 수 있다고 공식 관광정보가 설명한다.", "source_ids": ["S2"], "rule_ids": ["STYLE-VIEWPOINT-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가유산 설명은 격자형 내부 공간을 포함한 동굴 진지와 벙커 구성을, 제주 공식 관광정보는 제주 지역 최대 규모의 일본군 진지라는 특성을 제시한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-UNIQUE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 한경면 청수리 가마오름에 남은 태평양전쟁 말기 제주 방어기지 유적으로, 제주 지역의 장소성과 전쟁사를 직접 보여준다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가등록문화유산으로 지정된 제주 전쟁 관련 시설이며 제주 공식 관광정보에 대표 역사유적으로 등록되어 있다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-REGISTERED-HERITAGE-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광정보에 유적과 동굴 이미지 갤러리 및 오름 조망 설명은 있으나, 사진 촬영 자체가 공식적으로 핵심 활동으로 권장되지는 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 동선·편의 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 공식 관광정보가 ‘친구’ 방문 맥락 태그를 제공한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-FRIENDS-DIRECT-TAG"]},
+    "kids": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 공식 관광정보가 ‘아이’, ‘어린이’ 태그와 교육의 장이라는 설명을 제공한다. 다만 현장 안전 조건은 별도 확인이 필요하다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-KIDS-DIRECT-TAG"]},
+    "parents": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름 기슭·동굴의 보행 방문은 확인되나 고령 방문자의 계단·경사·휴식·무장애 정보가 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-SENIOR-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "heritage_site_access_and_underground_safety_unknown", "applies_to": "all_visitors", "condition": "동굴·오름 유적의 현재 개방 여부, 실제 진입 가능 구간, 우천·강풍 시 통제, 조명·바닥 상태와 경사·계단·무장애 접근성은 조사 출처에서 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주특별자치도 또는 현장 관리 주체의 최신 개방·안전·관람 안내를 확인하고, 지정된 동선만 이용한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 국가유산포털의 ‘제주 가마오름 일제 동굴진지’ 및 제주 공식 관광정보의 ‘제주가마오름일제동굴진지’와 일치한다.",
+    "facts": [{"text": "국가유산포털은 이 장소를 2006년 등록된 국가등록문화유산 전쟁 관련 시설로, 1945년경 일본군 제58군 사령부의 최후 저항 거점 목적의 동굴·벙커 시설로 설명한다.", "source_id": "S1"}, {"text": "제주 공식 관광정보는 한경면 청수리 가마오름 기슭의 일본군 군사기지를 재활용한 특수 박물관이며, 도보·문화유적·아이·친구 방문 맥락으로 안내한다.", "source_id": "S2"}, {"text": "제주 공식 관광정보는 가마오름에서 산방산, 모슬포, 알뜨르비행장, 고산 해안가를 조망할 수 있다고 설명한다.", "source_id": "S2"}],
+    "unknowns": ["현행 개방 시간·입장 절차·관람료", "현재 공개된 동굴 구간과 안전 통제 기준", "경사·계단·휠체어 접근성 및 고령·유아 방문 편의시설", "월별 관람 적합성 및 계절 행사"],
+    "sources": [{"id": "S1", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_information", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?assetnamel=&ccbaAsno=03080000&ccbaCpno=4413903080000&ccbaCtcd=50&ccbaKdcd=79&ccbaLcto=00&culPageNo=38&header=region&pageNo=1_1_3_0&returnUrl=%2Fheri%2Fcul%2FculSelectRegionList.do&s_ctcd=50&s_kdcd=", "checked_at": "2026-08-25", "facts": ["국가등록문화유산, 전쟁 관련 시설, 동굴 7기와 면적, 2006년 등록 정보를 제공한다.", "일본군 제58군 사령부와 관련된 동굴 진지·벙커의 역사와 구성을 설명한다."]}, {"id": "S2", "publisher": "Visit Jeju", "type": "official_tourism_information", "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018729", "checked_at": "2026-08-25", "facts": ["가마오름 기슭의 일본군 군사기지 동굴 유적을 특수 박물관 및 역사 교육의 장으로 소개한다.", "도보, 문화유적, 동굴, 오름, 친구, 아이·어린이 태그와 주소를 제공한다.", "가마오름에서 주변 산·해안 지역을 조망할 수 있다고 소개한다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

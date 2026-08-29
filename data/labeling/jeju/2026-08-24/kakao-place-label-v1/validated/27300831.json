@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "27300831",
+  "canonical_id": "kakao:27300831",
+  "name": "덕수리전통민속축제",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 장소명·Kakao URL과 평점·리뷰 건수만 있으며, 주소·좌표·축제 주최·개최 시기·프로그램·상세 설명·리뷰 근거가 없다. ‘덕수리전통민속축제’라는 명칭만으로는 현재 운영되는 독립 축제 항목인지, 과거 행사 표식 또는 다른 장소의 부속 항목인지를 확인할 수 없어 적격성을 확정하지 않는다.",
+    "source_ids": [
+      "K1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "event_identity_and_schedule_unknown",
+      "applies_to": "all_visitors",
+      "condition": "축제의 정확한 개최지, 개최 여부·일정, 접근 및 안전·편의시설 정보가 입력에 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처와 최신 행사 안내로 축제의 주최·개최지·기간·독립 방문지 여부를 확인한 뒤 재판정한다.",
+      "source_ids": [
+        "K1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "고정 입력 패킷의 장소명은 ‘덕수리전통민속축제’이나, 식별 및 행사 적격성 판정에 필요한 개최지·시기·주최·프로그램·상세 설명 및 리뷰 근거가 제공되지 않았다.",
+    "facts": [
+      {
+        "text": "입력 패킷은 Kakao place_id 27300831, 장소명 ‘덕수리전통민속축제’, Kakao 장소 URL을 제공하며 방문자·블로그 리뷰 근거 목록은 비어 있다.",
+        "source_id": "K1"
+      }
+    ],
+    "unknowns": [
+      "축제의 정확한 개최지와 주최·관리 주체",
+      "현재 또는 다음 개최 일정 및 상설 방문 가능 여부",
+      "프로그램, 접근성, 안전 및 편의시설"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/27300831",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 ‘덕수리전통민속축제’로 제공된다.",
+          "입력의 visitor_review_count는 0, blog_review_count는 1이며 kakao_review_evidence는 비어 있다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

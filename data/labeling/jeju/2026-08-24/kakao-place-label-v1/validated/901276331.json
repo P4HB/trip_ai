@@ -1,0 +1,84 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:901276331",
+  "place_id": "901276331",
+  "name": "장전연못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘장전연못’이라는 명칭과 place_id만 제공하며 주소·좌표·업종·사진·설명·공개 후기 근거가 없다. 공개 웹 검색에서도 이 Kakao place_id와 동일한 제주 연못의 위치·관리 주체·일반 방문 가능 범위를 교차 확인할 공식·공공 상세 출처를 찾지 못했다. 따라서 동명 수역 또는 시설과의 동일성, 독립 여행 방문지 여부를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 정보는 Kakao 장소명 ‘장전연못’과 place_id 901276331뿐이다. 이 표식이 가리키는 실제 연못의 정확한 위치와 독립 방문지 정체성은 공개 신뢰 출처로 확인하지 못했다.",
+    "typical_visit": "실제 시설의 위치·관리 주체·개방 및 접근 정보가 확인되지 않아 일반적인 방문 경험을 추정하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 설명, 운영·접근 안내 및 공개 방문 후기 근거가 없다. 평점·후기 수는 0으로 기록되어 있으나 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 명칭은 ‘장전연못’이고 canonical_id는 kakao:901276331이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 주소, 좌표, 업종, 사진, 상세 설명 및 공개 방문 후기 근거가 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 실제 연못의 정확한 주소·좌표와 동명 장소와의 동일성을 확인하지 못했다.",
+      "연못의 관리 주체, 사유지·보호구역 여부, 일반 방문객 출입 가능 범위와 최신 현장 상태를 확인하지 못했다.",
+      "안전한 접근 경로, 주차·보행 여건, 수변 안전 및 계절·기상에 따른 방문 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/901276331",
+        "checked_at": "2026-08-24T20:05:19+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘장전연못’이며 place_id는 901276331이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진, 상세 설명 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·상세 안내가 없고, 공개 신뢰 출처로 실제 연못의 동일성·관리 주체·일반 방문 가능 범위를 교차 확인하지 못함",
+      "status": "needs_review",
+      "action": "관할 지자체·관리 기관 또는 Kakao의 주소·좌표·시설 정보를 확보해 실제 장소와의 동일성, 출입 허용 범위 및 안전한 접근 경로를 먼저 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T20:05:19+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

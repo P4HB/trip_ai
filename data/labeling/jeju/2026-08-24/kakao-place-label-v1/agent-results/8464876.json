@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8464876",
+  "place_id": "8464876",
+  "name": "앞동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 주소·좌표·설명·후기를 제공하지 않는다. 공공 자료는 ‘앞동산’이 제주시 건입동의 주요 지명으로도, 제주시 구좌읍 하도리의 여러 낮은 언덕 중 하나로도 쓰였음을 보여 준다. 따라서 Kakao 표식이 어느 지점을 뜻하는지와 독립 방문지·일반 출입 가능 여부를 신뢰할 수 있게 확인할 수 없어 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "‘앞동산’은 제주에서 복수 지역의 지명으로 확인되나, place_id 8464876이 가리키는 특정 지점은 입력과 공개 공공 자료만으로 식별되지 않았다.",
+    "typical_visit": "확인된 공식 방문 동선·운영 주체·이용 방법이 없다.",
+    "experience_scope": "지명으로서의 존재 외에는 해당 Kakao 표식의 실제 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국학중앙연구원의 디지털제주문화대전은 제주시 건입동의 주요 지명 목록에 ‘앞동산’을 포함한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "국립민속박물관 민속현장조사 자료는 제주시 구좌읍 하도리에서 ‘앞동산’을 포함한 여러 낮은 언덕 지명을 열거하며, 이 지점들이 임야·공한지 또는 도로가 통과하는 장소로 이용된다고 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 8464876과 명칭 ‘앞동산’ 및 장소 URL만 제공하며 주소·좌표·설명·공개 후기는 없다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표, 행정구역, 실물 또는 지형과 공공 자료의 지명이 일치하는지 확인하지 못했다.",
+      "해당 지점이 독립 관광·방문 장소인지, 사유지·임야·공한지·도로 부속 지명인지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 접근 경로, 주차·보행 안전, 관리 주체와 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국학중앙연구원 디지털제주문화대전",
+        "type": "public_encyclopedia",
+        "url": "https://jeju.grandculture.net/jeju/toc/GC00700104?search=A2%2F1",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "건입동의 주요 지명 목록에 앞동산이 포함된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국립민속박물관 민속현장조사",
+        "type": "public_research",
+        "url": "https://efw.nfm.go.kr/service/book/text/81?groupId=1&refer_id=57",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "하도리의 고지로 개왓동산·거욱대동산·망동산·남동산·큰동산·앞동산 등을 열거한다.",
+          "열거된 지점들은 대부분 해발 20~40m의 낮은 언덕이며 임야·공한지 또는 도로가 관통하는 장소로 활용된다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8464876",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 8464876 및 명칭 앞동산을 제공한다.",
+          "입력 패킷의 평점과 방문자·블로그 후기 수는 모두 0이며, 후기는 제공되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동일 명칭이 서로 다른 제주 지역의 지명으로 확인되고, 입력에는 주소·좌표·설명·후기가 없어 Kakao 표식의 정확한 위치와 일반 방문객 출입 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 좌표와 현장·관할 지자체의 최신 안내를 대조해 장소 실체, 토지·출입 권한, 안전한 접근 경로를 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

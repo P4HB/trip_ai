@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "465729084",
+  "canonical_id": "kakao:465729084",
+  "name": "녹고대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "제공된 Kakao 등록 정보는 명칭과 장소 ID만 제공하며 주소·업종·설명·공식 운영 주체가 없다. 공개 웹 검색에서도 ‘녹고대’를 제주 내 특정 독립 방문지로 확인할 신뢰 가능한 상세 출처를 찾지 못했으므로, 다른 장소나 시설로 추정해 라벨링하지 않는다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-UNRESOLVED"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_verification_required",
+      "applies_to": "all_visitors",
+      "condition": "장소의 정확한 위치, 업종·방문 경험, 운영 주체와 현재 운영 여부를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 또는 추천 전에 Kakao 지도 상세 정보나 운영 주체의 최신 공식 안내로 장소 정체와 운영 상태를 확인한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "Kakao 등록의 명칭은 ‘녹고대’이나, 제공된 정보에는 주소·카테고리·소개·리뷰가 없고 공개 검색으로 독립 방문지 정체를 검증하지 못했다.",
+    "facts": [
+      {
+        "text": "제공된 Kakao 장소 등록은 place ID 465729084와 명칭 ‘녹고대’를 표시하지만, 주소·카테고리·상세 설명은 제공하지 않는다.",
+        "source_id": "S1"
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "S1",
+        "url": "https://place.map.kakao.com/465729084",
+        "publisher": "Kakao Map",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소 ID 465729084의 등록 명칭은 ‘녹고대’이다.",
+          "제공된 등록 정보에는 주소·카테고리·상세 설명이 없다."
+        ]
+      }
+    ]
+  }
+}

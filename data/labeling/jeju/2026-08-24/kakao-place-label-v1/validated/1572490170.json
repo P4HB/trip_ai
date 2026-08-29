@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1572490170",
+  "canonical_id": "kakao:1572490170",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "review_status": "fallback",
+    "rationale": "입력의 장소명은 일반명사인 '돌하르방'뿐이며 좌표·주소·사진·문화재 지정번호가 없다. 공개 자료는 제주에 현존하는 돌하르방의 역사성과 47기라는 총수는 확인하지만, 이 Kakao 장소 레코드가 그중 어느 개체인지 특정하지 못한다. 따라서 개별 장소 라벨을 부여할 수 없다.",
+    "source_ids": [
+      "SRC-001",
+      "SRC-002"
+    ],
+    "rule_ids": [
+      "RULE-IDENTITY-INSUFFICIENT",
+      "RULE-NONELIGIBLE-EMPTY-MAPS"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "identity_verification_required",
+      "status": "needs_review",
+      "rationale": "개별 석상의 위치 또는 공식 문화유산 식별 정보가 확인되기 전에는 방문 적합성·월별 적합성을 추정하지 않는다.",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "rule_ids": [
+        "RULE-IDENTITY-INSUFFICIENT"
+      ]
+    }
+  ],
+  "research": {
+    "status": "completed_with_identity_gap",
+    "sources": [
+      {
+        "source_id": "SRC-001",
+        "url": "https://www.yna.co.kr/amp/view/AKR20200710142500056",
+        "publisher": "연합뉴스",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "돌하르방은 제주목·대정현·정의현의 성문 밖에 세워진 석상으로 설명된다.",
+          "원래 48기 중 1기가 사라져 47기가 남아 있다고 보도한다.",
+          "제주에 남은 돌하르방은 관공서·공항·학교·관광지 등 여러 곳으로 옮겨져 있다."
+        ]
+      },
+      {
+        "source_id": "SRC-002",
+        "url": "https://www.jst.re.kr/upload/pdf/RC00098347.pdf",
+        "publisher": "제주학연구센터",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주 역사 분야 기초 조사 보고서의 문화유산 목록에는 여러 개별 돌하르방과 각각의 소재지가 수록되어 있다.",
+          "입력 레코드에는 이 목록의 어느 개별 항목과 대응되는지 판단할 주소나 지정번호가 없다."
+        ]
+      }
+    ],
+    "rationale": "공개 자료로 돌하르방이라는 문화유산 유형은 확인했으나, 제공된 Kakao 식별자와 특정 개체를 연결하는 공개 근거를 찾지 못했다.",
+    "rule_ids": [
+      "RULE-IDENTITY-INSUFFICIENT"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

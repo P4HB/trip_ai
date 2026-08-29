@@ -1,0 +1,69 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7875187",
+  "canonical_id": "kakao:7875187",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "status_detail": "모란동산은 제주시 한경면 조수리의 이름 있는 낮은 봉우리로 공개 지도에 표시되어 있고, 지역 기사도 같은 명칭의 농업용수 시설을 확인한다. 다만 독립 관광시설·산책로 또는 공개 출입 조건은 확인되지 않았다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-NAMED-NATURAL-FEATURE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"direct_evidence","rationale":"공개 지도 자료가 모란동산을 peak(봉우리)로 분류하고 제주시 한경면 조수리에 위치한 높이 85.7m의 산봉 목록에도 같은 지명이 확인된다. 실제 등산·탐방로 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-NAMED-PEAK"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·바다 또는 해양 활동이 이 장소의 방문 경험이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-OCEAN-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"등산로, 걷기 코스 또는 체험 활동의 공개 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-ACTIVITY-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"모란동산 자체의 역사·문화유산·전시 경험 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-CULTURE-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 유료 체험의 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-THEMEPARK-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용이 핵심 방문 목적이라는 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 경험의 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.75,"status":"needs_review","inference_level":"direct_evidence","rationale":"확인된 대상은 야외 봉우리 및 농업용수 저장시설이며 대표 경험에 실내 공간이 있다는 근거는 없다. 실제 공개 출입·방문 형태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-NATURAL-FEATURE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 지점이 야외 봉우리·농업용수 시설이므로, 실제로 방문 가능한 경우 비·강풍·기온의 영향을 크게 받을 것으로 추정했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-WEATHER"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온한 체류 경험을 직접 뒷받침하는 방문 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-RESTFULNESS-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로, 경사, 노면, 계단 또는 무장애 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-ACCESS-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"방문 가능 여부와 체류 시간 정보를 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DURATION-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"봉우리라는 분류 외에 조망·경관 감상이 방문 가치라는 직접 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-SCENIC-EVIDENCE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이름 있는 지형·시설임은 확인되나 다른 장소와 구별되는 방문 경험의 근거는 부족하다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DISTINCTIVENESS-EVIDENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"조수2리의 지역 기사에서 모란동산 농업용수 물탱크가 언급되고, 봉우리 위치도 조수리로 확인된다. 다만 여행자가 경험할 수 있는 지역 문화·자연 연결성은 별도 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-PLACE-NAME"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 한경면을 대표하는 상징 명소라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-LANDMARK-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영·시각 기록 가치에 관한 직접 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-PHOTO-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문 조건·안전·접근성 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-COMPANION"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 뒷받침하는 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-COMPANION"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동행의 활동·편의 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-COMPANION"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 출입·안전·편의시설 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-COMPANION"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 세대 보행·접근 편의 정보가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-COMPANION"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 개방·이용 조건이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"constraint_id":"HC-ACCESS-PERMISSION","kind":"accessibility","condition":"봉우리 또는 농업용수 시설의 실제 진입로, 공개 출입 허용 여부, 주차·보행 조건은 확인되지 않았다.","status":"unknown","action":"verify","source_ids":["S1","S2"],"rule_ids":["GATE-UNCONFIRMED-ACCESS"]},
+    {"constraint_id":"HC-OUTDOOR-WEATHER","kind":"weather","condition":"야외 지형·시설로 확인되므로 방문 가능 시 강풍·호우 등 악천후의 영향을 받을 수 있다. 실시간 통제 정보는 확인되지 않았다.","status":"unknown","action":"verify","source_ids":["S1","S2"],"rule_ids":["GATE-OUTDOOR-WEATHER"]}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "needs_review",
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"source_id":"S1","publisher":"한라일보","url":"https://www.ihalla.com/article.php?aid=1786039200789025289","checked_at":"2026-08-25","facts":["한경면 조수2리 기사와 삽화의 제목이 '모란동산 농업용수 물탱크'라고 표기한다.","해당 시설이 조수2리의 농업용 지하수·저장시설 맥락에서 소개된다."]},
+      {"source_id":"S2","publisher":"Mapcarta (OpenStreetMap 데이터 기반)","url":"https://mapcarta.com/W375190532","checked_at":"2026-08-25","facts":["제주옹기마을 인근 지형으로 모란동산을 peak로 표기한다.","모란동산 인근의 제주옹기마을 위치는 한경면 조수리로 안내된다."]}
+    ],
+    "unknowns": ["Kakao 장소 핀과 봉우리·농업용수 물탱크의 정확한 일치 여부", "일반인의 출입 허용 여부, 입구·산책로·주차·보행 난이도", "관광지로서의 운영 정보와 계절별 이용 조건"]
+  }
+}

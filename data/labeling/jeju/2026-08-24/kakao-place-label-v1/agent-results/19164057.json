@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:19164057",
+  "place_id": "19164057",
+  "name": "김정 유배지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status": "eligible", "confidence": 0.85, "rationale": "제주시 원도심의 제주성안유배길 구성에 ‘김정 유배지’가 독립 경유지로 명시되고, 한국민족문화대백과사전은 충암 김정의 제주 유배 및 금강사 옛 절터 적거 생활을 확인한다.", "duplicate_of": null, "evidence_ids": ["F1", "F2"]},
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "김정 유배지는 조선 전기 문신 충암 김정의 제주 유배를 기리는 제주시 원도심 역사 경유지로 판단했다.",
+    "facts": [
+      {"id": "F1", "text": "한국민족문화대백과사전은 김정이 1520년 8월 제주로 이배되어 1521년 10월 사사될 때까지 제주에 머물렀고, 적거지인 금강사 옛 절터의 생활을 『제주풍토록』에 기록했다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주대학교 중앙도서관 공개 연구자료는 제주성안유배길의 3km 경로에 김정 유배지를 포함하며, 김정이 1520년 제주성 동문 밖 가락천 인근 금강사 옛 절터에 유배되었다고 기술한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["표지·전시물의 현존 및 최신 개방 상태", "정확한 현장 동선, 계단·경사와 무장애 접근성", "주차·화장실·해설 및 야간 조명 운영"],
+    "sources": [
+      {"id": "S1", "publisher": "한국학중앙연구원 한국민족문화대백과사전", "type": "public_encyclopedia", "url": "https://encykorea.aks.ac.kr/Article/E0051470", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["김정의 제주 유배 기간과 금강사 옛 절터 적거 생활, 『제주풍토록』의 역사적 의의를 제공한다."]},
+      {"id": "S2", "publisher": "제주대학교 중앙도서관", "type": "academic_repository", "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/20565/2/%EC%A0%9C%EC%A3%BC%EC%9C%A0%EB%B0%B0%EB%AC%B8%ED%99%94%20%EC%97%AD%EC%82%AC%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%85%94%EB%A7%81%EC%9D%98%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%ED%99%9C%EC%9A%A9%EB%B0%A9%EC%95%88.pdf", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["제주성안유배길의 김정 유배지 경유와 금강사 옛 절터 인근의 역사적 위치를 기술한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 대표 경험이라는 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험이 장소의 핵심이라는 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"신체 활동·레포츠·참여형 체험의 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 연구자료가 이곳을 제주성안유배길의 김정 유배지로 명시하고, 공공 백과사전은 김정의 제주 유배와 적거 생활 기록을 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["THEME-HISTORIC-SITE-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등의 테마파크형 경험 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 방문이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"유배지터는 걷기 경로의 역사 경유지로 제시되며 실내 전시 공간이 확인되지 않아 실외 중심으로 추정한다.","source_ids":["S2"],"rule_ids":["ENV-HISTORIC-SITE-OUTDOOR-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"실외 역사 경유지로 판단되어 우천·강풍·더위가 현장 관람과 보행에 영향을 줄 수 있으나 현장 시설 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온한 체류를 제공한다는 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 거리·노면·경사·무장애 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 관람 시간과 체류 편의가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 핵심 가치라는 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-SCENIC-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"기묘사화 뒤 제주에 유배된 김정의 금강사 옛 절터 적거지라는 구체적 역사 맥락이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-HISTORIC-ASSOCIATION-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"김정의 제주 유배 경험과 제주 풍토를 기록한 『제주풍토록』, 제주시 원도심 유배길의 연결이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주성안유배길의 독립 경유지로 제시되고, 김정은 제주 유배 문화의 대표 인물로 역사 자료에 수록된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-HERITAGE-ROUTE-DIRECT"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치의 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·동선·조명 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문의 체류·동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 수용성·동선 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 안전시설과 보호자 동선 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 보행 난이도·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·해설·계절 행사 정보를 확인하지 못해 실외 역사 경유지의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind":"site_accessibility_and_operations_unknown","applies_to":"all_visitors","condition":"유배지 표지와 전시물의 최신 운영, 정확한 보행 동선·노면·무장애 접근, 주차·화장실·야간 조명 상태가 공개 출처에서 확인되지 않았다.","status":"needs_review","action":"방문 전 제주시 또는 현장 안내로 운영·동선·이동약자 접근성과 날씨 영향을 확인한다.","source_ids":["S2"],"checked_at":"2026-08-25T00:00:00+09:00"}],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

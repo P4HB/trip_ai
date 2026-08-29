@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25725751",
+  "place_id": "25725751",
+  "name": "동회천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "제주시 공공 연구자료는 동회천을 회천동을 구성하는 두 마을 가운데 하나로 확인한다. 공개 자료에서 입력명과 일치하는 독립 관광·체험 장소의 운영 또는 일반 방문 경험은 확인하지 못했으므로, 생활권 마을 지명을 추천용 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "동회천은 제주특별자치도 제주시 회천동의 마을명으로, 회천동은 동회천과 서회천 두 마을로 구성된다.",
+    "typical_visit": "공개 공공자료에서 확인되는 성격은 주민 생활권·마을 행정 단위이며, 독립 관광객을 위한 관람·체험 방문지는 확인되지 않았다.",
+    "experience_scope": "입력명과 같은 마을의 존재는 확인되지만, 이 Kakao 레코드가 마을 전체를 뜻하는지 특정 시설·정류장·지점을 뜻하는지 주소·좌표·업종으로 교차 확인하지 못했다. 어느 경우에도 공개 신뢰 출처로 독립 여행 방문 경험은 확인되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주시 마을특성 및 실태조사 자료는 회천동이 동회천과 서회천 두 개의 마을로 이루어져 있다고 설명하고, 동회천마을회관 주소를 제주시 동회천길 27로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘동회천’으로만 제공하며, 제공된 입력에는 주소·좌표·업종·공개 방문 후기 근거가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 동회천 마을 전체, 특정 시설, 버스 정류장 또는 다른 동명 지점 중 무엇을 가리키는지 확인하지 못했다.",
+      "독립 관광·체험 장소로서의 상시 운영, 관람 동선, 접근성, 주차, 화장실 및 안전 안내를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았으며 평점·후기 수를 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책정보협의회·제주특별자치도 제주시",
+        "type": "government_research_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "회천동은 행정동 봉개동에 속한 법정동이며 동회천과 서회천 두 마을로 이루어진다고 제시한다.",
+          "동회천마을회관 주소를 제주시 동회천길 27로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25725751",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘동회천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "locality_identity_and_visitor_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "동회천은 회천동의 마을명으로 확인되지만, 이 Kakao 레코드의 정확한 표식과 독립 관광·체험 방문지로서의 일반 이용 범위는 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 정확한 주소·좌표와 공식 관광·방문 안내가 확인되면 독립 방문지 적격성을 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

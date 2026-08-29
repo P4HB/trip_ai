@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "478857171",
+  "canonical_id": "kakao:478857171",
+  "name": "한남시험림 탐방안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공식 규정은 한남연구시험림 탐방객의 사전예약·입산·탐방 관리를 정하고, 입력명은 그 탐방을 지원하는 ‘탐방안내소’다. 독립 관광지보다 한남시험림의 부속 안내 시설로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_forest_reservation_and_control",
+      "applies_to": "recommendation_candidate",
+      "condition": "한남연구시험림 탐방은 사전예약·시간·인원 및 산불·입산통제 조건의 적용을 받는다.",
+      "status": "needs_review",
+      "action": "독립 후보 대신 한남연구시험림에 연결하고 방문 전 공식 예약·개방 정보를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 한남연구시험림 탐방객 관리를 위한 안내소로 해석되며, 공식 규정의 탐방 관리 맥락과 일치한다.",
+    "facts": [
+      {
+        "text": "공식 규정은 한남연구시험림 탐방객의 사전예약·탐방시간·통제를 정한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "안내소 건물의 정확한 운영 범위와 위치",
+      "당일 운영·개방 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가법령정보센터",
+        "type": "official_regulation",
+        "url": "https://law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000073603",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한남연구시험림 탐방객 관리 및 예약·통제 조건을 규정한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

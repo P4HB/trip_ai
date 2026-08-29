@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725872",
+  "place_id": "13725872",
+  "name": "쪼른숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주올레 공식 걷기축제 자료가 쪼른숲길 출구를 제주올레 13코스의 위치로 안내하며, 공개 걷기 기록도 이 명칭을 해당 코스의 숲길 구간으로 일관되게 기록한다. 독립 표식으로 탐방할 수 있는 야외 보행 구간으로 판정했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "쪼른숲길은 제주시 한경면 두모리 일대 제주올레 13코스에 있는 숲길 구간으로 확인된다.",
+    "typical_visit": "제주올레 13코스를 걸으며 지나는 짧은 야외 숲길 구간 방문이다.",
+    "experience_scope": "공개 자료는 올레길 내 위치와 걷기 맥락을 확인하지만, 이 표식의 정확한 거리·노면·경사·편의시설·상시 개방 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주올레의 2023 걷기축제 안내는 제주올레 13코스 일정에서 ‘쪼른숲길 출구’를 10.8km 지점으로 표기한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 제주올레 13코스 걷기 기록은 쪼른숲길을 두모리 일대의 올레길 숲길 구간으로 소개하며, ‘쪼른’은 짧은 길이라는 제주어 뜻으로 설명한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["쪼른숲길 표식의 정확한 시작·끝, 거리와 실제 노면·경사·계단", "현행 개방 여부, 우천·강풍·산불 시 통제와 안전 안내", "주차, 화장실, 휴식시설 및 무장애 접근성"],
+    "sources": [
+      {"id": "S1", "publisher": "제주올레", "type": "official_route_event_page", "url": "https://contents.ollepass.org/static/festival_view/2023/01/index.html?name=course_3n&seq=30", "checked_at": "2026-08-25", "facts": ["2023 제주올레걷기축제 안내는 쪼른숲길 출구를 제주올레 13코스의 10.8km 지점으로 표시한다."]},
+      {"id": "S2", "publisher": "상민의 산이야기", "type": "public_walking_record", "url": "https://sangmin-1.tistory.com/15969742", "checked_at": "2026-08-25", "facts": ["제주올레 13코스의 두모리 일대 숲길로 쪼른숲길을 기록한다.", "게시물은 ‘쪼른’을 짧은, ‘질’을 길이라는 제주어로 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 정체성은 올레 13코스의 숲길 구간이며, 산·오름 정상이나 봉우리 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"숲길 보행 구간으로 확인되며 해안·해양 활동이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주올레 13코스에서 실제로 걸어 지나는 숲길 구간으로 안내돼 야외 보행이 대표 경험이다.","source_ids":["S1","S2"],"rule_ids":["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·전시형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"행사 자료에 경유 지점으로 나타나지만 특정 축제가 이 장소의 상설 핵심 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"올레길의 숲길을 걷는 야외 구간으로 소개되며 대표 경험의 실내 공간은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 숲길 보행이므로 비·바람·더위·추위에 영향을 받을 수 있다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·소음·혼잡도와 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숲길 보행은 확인되지만 거리·경사·노면·계단과 무장애 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전체 올레 코스 내 위치는 확인되나 이 구간의 단독 체류시간과 단축 동선은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숲길이라는 명칭과 보행 맥락은 확인되지만 경관 감상이 핵심 가치로 직접 소개된 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주어 지명 의미는 소개되지만 다른 숲길과 구별되는 경험의 충분한 근거가 없어 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-DISTINCTIVENESS-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주어 지명과 제주올레 경로라는 맥락 외에 지역 생활·문화·생산자와의 직접 연결 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-LOCAL-UNKNOWN"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레 코스의 경유 숲길임은 확인되지만 제주 또는 지역을 대표하는 상징 명소라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류 환경·편의시설 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 이용의 동선·수용·안전 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 노면·안전시설·보호자 조건 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_trail_access_and_weather_conditions_unknown","applies_to":"all_visitors","condition":"쪼른숲길은 야외 올레 숲길 구간이나, 현재 개방 상태, 정확한 진입·이탈 지점, 노면·경사·계단, 우천·강풍·산불 시 통제와 무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"방문 전 제주올레 또는 현장 최신 안내로 지정 경로, 개방 여부와 기상에 따른 보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

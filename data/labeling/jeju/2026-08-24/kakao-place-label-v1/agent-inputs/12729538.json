@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2355,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/12729538.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:12729538",
+    "provider": "kakao",
+    "place_id": "12729538",
+    "name": "존자암",
+    "url": "https://place.map.kakao.com/12729538",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "13",
+    "blog_review_count": "9",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.07.24.",
+      "content": "여름에 시원하고 조용히 걷기 좋아요 뷰는 말해 뭐합니까 전말 좋습니다",
+      "tags": ""
+    },
+    {
+      "date": "2023.08.20.",
+      "content": "뱀 있음 ㅎ",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2022.09.15.",
+      "content": "입구에서 20~25분 정도 천천히 걸어올라가면 되는 곳! 아침산책으로 아주 많이 추천하고, 뱀, 노루, 다람쥐 다 볼 수 있고, 조용해서 사색하기 좋아요^^",
+      "tags": "주차"
+    },
+    {
+      "date": "2022.08.22.",
+      "content": "작은 절. 올라가보니 별건 없었지만.. 뱀있었음...",
+      "tags": ""
+    },
+    {
+      "date": "2024.06.09.",
+      "content": "와~~~씨 /부도탑 계단 독사출현/존자암 가시는분듵다 뱀 조심하셔요~~",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

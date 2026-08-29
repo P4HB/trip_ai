@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1818,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8108616.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8108616",
+    "provider": "kakao",
+    "place_id": "8108616",
+    "name": "토산봉",
+    "url": "https://place.map.kakao.com/8108616",
+    "average_rating_5": "3.8",
+    "visitor_review_count": "12",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.31.",
+      "content": "오름인증하러 다녀왔어요",
+      "tags": ""
+    },
+    {
+      "date": "2025.10.28.",
+      "content": "리뷰덕분에 제대로 올라가긴했는데 오름이라하기엔 뭐하고 뒷동산오르는 수준 야자매트는 다 없어지고 고정용 쇳덩이가 걸리적거려 위험하네요",
+      "tags": ""
+    },
+    {
+      "date": "2024.12.02.",
+      "content": "신운용님 팁대로 망오름전망대에서 올라가셔야합니다. 짧지만 전망이좋고 길이뚜렷하고 깔끔합니다. 즐오름",
+      "tags": "시설"
+    },
+    {
+      "date": "2024.06.22.",
+      "content": "산 속 둘레길 걷기 좋고 정상 뷰 너무 좋네요 전망대도 설치해서 사방이 막힘없이 잘 보입니다",
+      "tags": ""
+    },
+    {
+      "date": "2023.10.13.",
+      "content": "📍밑에 신운용님이 남겨주신 입구위치 꼭 참고 (저는 잘못된 입구로 올라감, 입구 찾기 어려움) 📍다른 분 후기처럼 **혼자갈거면 맑은 날!!!!**에 가셔야해요. 저 혼자갔다가 너무 으스스해서 도중에 나왔어요 ㅠ 저런 분위기에선 사람 만나도 무서움 ㅠㅠㅠㅠㅠㅠㅠ",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

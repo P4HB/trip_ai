@@ -1,0 +1,768 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:136914935",
+  "place_id": "136914935",
+  "name": "천아계곡",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 비짓제주가 제주시 애월읍의 한라산 둘레길 천아숲길 초입 관광지로 천아계곡을 직접 소개하므로, 독립 방문 가능한 자연 관광지로 식별된다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "천아계곡은 제주시 애월읍 봉성리의 한라산 둘레길 천아숲길 초입에 있는 계곡으로, 가을 단풍과 숲길 도보 경험이 핵심인 자연 관광지다.",
+    "typical_visit": "천아수원지 입구에서 진입로를 걷고 계곡과 숲·단풍 경관을 관찰하는 야외 도보 방문이며, 천아수원지부터 돌오름 방향 숲길을 연계할 수 있다.",
+    "experience_scope": "공식 관광 안내는 위치, 단풍, 계곡 횡단, 약간의 숲길 난이도와 우천 뒤 통제를 설명한다. 최신 개방 여부, 현장 주차 여유, 수량, 장애인 접근성 및 실제 혼잡도는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 비짓제주는 천아계곡을 한라산 둘레길에 자리한 단풍 명소로 소개하고, 천아숲길 초입에서 만나는 계곡이라고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "비짓제주는 천아숲길이 계곡을 건너며 우천 후 2일간 안전상 입산 통제되고, 숲길은 약간 난이도가 있어 운동화나 등산화를 권한다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 패킷의 공개 방문 후기는 임시주차장에서 약 1km를 걷고 오르막 구간이 있어 편한 신발과 체력이 필요하다고 언급하며, 11월 단풍 및 사진 지점을 서술한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-24 현재의 입산 통제, 수량, 주차 운영, 화장실과 무장애 시설은 공식 최신 공지로 확인하지 못했다.",
+      "가을 단풍 절정일과 각 월의 현장 기상·노면 상태는 해마다 달라 확정하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022704",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "천아계곡의 위치와 한라산 둘레길 천아숲길 초입이라는 정체",
+          "가을 단풍·숲길·계곡 중심의 방문 경험",
+          "우천 후 2일간 입산 통제 안내와 약간의 숲길 난이도"
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기 요약 (입력 패킷)",
+        "type": "visitor_review",
+        "url": "https://place.map.kakao.com/136914935",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한 공개 후기는 11월 단풍, 약 1km 도보, 오르막 구간 및 사진 지점을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 한라산 둘레길 천아숲길의 계곡과 돌오름 방향 숲길을 대표 방문 맥락으로 직접 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 안내의 핵심은 한라산 숲길과 계곡이며 해안·바다 경험 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도보·숲길 방문과 약간의 난이도는 확인되지만, 레포츠나 체험 프로그램이 핵심이라는 근거는 없어 중간값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·전시·전통 체험이 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이시설·동물·수족관 등 테마파크형 경험 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용이 독립적인 방문 목적이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장이나 상거래 기능은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 계곡 횡단과 야외 숲길·단풍 경관을 대표 경험으로 설명하므로 실내 비중은 낮다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "계곡을 건너는 숲길이며 공식 안내가 우천 후 2일간 안전상 입산 통제를 명시해 날씨 영향이 크다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "숲과 단풍 경관은 확인되지만, 혼잡·소음·휴식 시설 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 약간의 난이도와 등산화 권장, 공개 후기의 도보·오르막 언급은 보행 부담을 시사하지만 최신 노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "계곡만 짧게 관찰하거나 천아수원지~돌오름 방향 숲길을 연계할 수 있으나 실제 입산·동선 운영은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 이곳을 단풍 명소로 소개하고 가을 단풍의 아름다움을 방문 이유로 직접 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산 둘레길 천아숲길 초입의 계곡과 가을 단풍이라는 결합된 자연 경험이 공식 소개로 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 한라산 둘레길, 천아숲길 및 애월읍의 산림·계곡 자연환경과 직접 연결된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "관광기관이 단풍 명소로 소개하지만 제주 전체를 대표하는 공적 상징·지정 명소인지까지는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 단풍 명소 설명과 입력 후기의 사진 지점 언급으로 시각적 기록 가치를 추론할 수 있으나, 공식 사진 명소 지정은 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 방문 안전·통신·현장 통제 상태가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 체류와 안전 환경 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "소규모 동행 적합성을 판단할 최신 시설·안전 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광 태그에 어린이·물놀이가 있으나 계곡 횡단과 약간의 난이도도 확인되어, 보호자 동반 시의 적합성은 중간값으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "계곡 횡단, 약간의 숲길 난이도, 등산화 권장과 도보·오르막 언급 때문에 보행 부담 가능성이 있으나 무장애 정보는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 계곡·숲길의 실제 겨울 통제와 노면 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 계곡·숲길의 실제 겨울 통제와 노면 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·수량·노면 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·수량·노면 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·수량·노면 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·수량·노면 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 계곡·숲길은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 계곡·숲길은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·수량·노면 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 가을 단풍을 이곳의 뚜렷한 방문 이유로 직접 소개한다. 정확한 절정일과 통제는 방문 전 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 가을 단풍을 이곳의 뚜렷한 방문 이유로 직접 소개하며, 입력 후기 역시 11월 단풍을 언급한다. 최신 통제는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 계곡·숲길의 실제 겨울 통제와 노면 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "rain_related_access_control_and_trail_safety",
+      "applies_to": "all_visitors",
+      "condition": "공식 안내는 계곡을 건너는 천아숲길이 우천 후 2일간 안전상 입산 통제된다고 안내한다. 현재 통제·노면·기상은 별도 최신 확인이 필요하다.",
+      "status": "needs_review",
+      "action": "방문 직전에 한라산둘레길의 통제 공지와 현장 기상·강수 이력을 확인하고, 통제 시 방문을 미룬다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    },
+    {
+      "kind": "uneven_walking_and_footwear",
+      "applies_to": "visitors_with_limited_mobility_or_unsuitable_footwear",
+      "condition": "공식 안내는 숲길의 약간의 난이도와 운동화·등산화를 권장하고, 입력 후기는 도보와 오르막 구간을 언급한다.",
+      "status": "needs_review",
+      "action": "보행 능력에 맞는 신발을 준비하고, 이동 제약이 있으면 최신 접근성·노면 정보를 확인한 뒤 방문한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

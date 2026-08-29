@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:825220597",
+  "place_id": "825220597",
+  "name": "숭조당길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {"model": "gpt-5.6-terra", "reasoning_effort": "medium"},
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.5,
+    "rationale": "제주관광공사 Visit Jeju가 제주올레 16코스를 고내포구에서 광령1리까지 이어지는 도보 관광 코스로 안내하고, 공개 관광 정보가 그 세부 경로에 숭조당을 수록한다. 입력명 ‘숭조당길’은 이 코스의 독립적인 보행 지점으로 파악되나, 정확한 구간 경계와 최신 현장 상태는 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "숭조당길은 제주시 애월읍 일대 제주올레 16코스의 내륙 보행 경로상 숭조당 인근 길로 파악된다.",
+    "typical_visit": "제주올레 16코스의 일부로 야외에서 마을길과 주변 자연·마을 경관을 걸어 지나가는 방문이다.",
+    "experience_scope": "공식 관광 안내는 16코스의 15.7km 도보 경로, 해안·오름·항파두리 유적·조용한 마을길의 구성과 사전 코스 변경 확인 필요성을 안내한다. 숭조당길 자체의 정확한 거리, 노면, 경사, 편의시설, 개방·안전 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 제주올레 16코스를 고내포구에서 광령1리사무소까지 이어지는 15.7km 길로 소개하며, 내륙 구간에서 조용한 마을길을 걷는 경험을 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 제주 관광 정보는 제주올레 16코스의 경로에 고성숲길·고성천길 다음 숭조당과 청화마을을 수록한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["숭조당길의 정확한 구간 경계, 거리, 경사, 계단 및 노면 상태를 확인하지 못했다.", "주차·화장실·쉼터·무장애 접근성과 최신 통행 가능 여부를 확인하지 못했다.", "우천·강풍·폭염 시 통제 또는 안전 안내를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_webpage", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019520", "checked_at": "2026-08-24", "facts": ["제주올레 16코스는 고내포구에서 광령1리사무소까지 이어지는 15.7km 도보 코스다.", "코스는 해안, 오름, 항파두리 유적과 조용한 마을길을 지난다.", "코스 우회·변경 가능성이 있어 방문 전 제주올레 공식 홈페이지 확인을 권고한다."]},
+      {"id": "S2", "publisher": "제주도 관광정보", "type": "public_tourism_webpage", "url": "https://www.tjeju.com/CS/TourInfo/detail.aspx?cid=3900", "checked_at": "2026-08-24", "facts": ["제주올레 16코스 세부 경로에 고성숲길, 고성천길, 숭조당, 청화마을이 수록된다.", "해당 코스는 숲길·계곡길과 마을을 잇는 걷기 코스로 소개된다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"16코스 전체에는 수산봉이 포함되지만 숭조당길 자체에서 산·오름 경관이 핵심이라는 근거는 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"16코스에 해안 구간이 있으나 숭조당길 자체의 바다·해양 경험은 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 16코스를 15.7km 도보 코스로 설명하고 숭조당을 세부 경로에 수록하므로 보행 참여가 대표 경험으로 추론되나, 이 구간의 거리·난이도는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"코스 전체에는 항파두리 유적이 있으나 숭조당길 자체의 역사·문화유산 관람 근거는 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설 또는 운영 근거가 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립적인 핵심 방문 목적이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 기능이 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 이 길의 핵심이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 야외 제주올레 도보 코스와 마을길 걷기를 설명하므로 대표 경험은 실외에 있다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 도보와 마을길 통과이므로 비·바람·더위의 영향을 비교적 받을 것으로 추론하나 구간별 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 조용한 마을길 걷기 설명은 느린 체류 성격을 시사하지만 숭조당길 자체의 휴식 시설·체류 환경은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 구간의 경사·계단·노면·무장애 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숭조당길 자체의 권장 소요 시간과 구간 길이가 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"16코스가 자연·마을 경관을 잇는 도보 코스로 소개되고 숲길·계곡길 구성도 확인되지만, 숭조당길 자체의 경관 특성은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"코스 내 고유 지점으로 수록되지만 다른 길과 구별되는 경험의 충분한 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주올레 16코스의 마을길과 제주 지역 자연·마을을 잇는 경로라는 점은 지역 연결성을 시사하나 숭조당길 자체의 지역 생활·생산 맥락은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 숭조당길 자체에 직접 확인되는 안내가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"구간별 통행·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 접근성 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·교통·안전시설 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 도보 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 도보 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 도보 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 도보 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 도보 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"숭조당길 자체의 정확한 동선, 노면·경사·계단, 교통·주차, 무장애 시설과 악천후 안전 통제는 확인하지 못했다. 제주올레 코스는 우회·변경될 수 있다.","status":"needs_review","action":"방문 전 제주올레 공식 홈페이지 또는 현장 최신 안내로 해당 구간의 통행 가능 여부와 날씨·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

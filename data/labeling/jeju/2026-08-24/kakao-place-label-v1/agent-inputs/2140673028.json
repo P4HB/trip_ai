@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1144,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/2140673028.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:2140673028",
+    "provider": "kakao",
+    "place_id": "2140673028",
+    "name": "비와사폭포",
+    "url": "https://place.map.kakao.com/2140673028",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "3",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.07.08.",
+      "content": "비와사폭포. 비오기전 폭포가 없을때 모습 비가 오면 우도봉 근처 빗물이 흘러 폭포가 되어 기암절벽위에서 우뢰와 같은 소리를 내며 쏟아져 내리는 하얀 물기둥은 바다로 간다. \"비가 오면 절벽에서 폭포가 만들어져 내리는 폭포, 비 와사 폭포 바닷물은 빗물의 집합체 이 아름다운 경치는 그림 같은절경을 만들어 놓았다 폭포수의 양옆 깍아지른 암벽 풍광이 때어나 수직으로 내리는 물줄기 소리 내며 세차게 떨어지는 모습은 장관이며 폭포 속에 햇빛이 내려 최면 무지개색이 나타나 더욱더 감동을 준다. 절벽에는 식물들이 울창한 숲과 군락을 이루며 고귀한 풍란이 자생하고 현무암 용암이 굳어질때 일어난 지질현상 경관이 독특하고 뛰어난곳 아래는 현무암, 편성암, 화강암이 형성 주변은 주간명월, 광대코지, 자갈밭 일출봉, 해식동굴 지층이 어우러져 우도를 뽐내는 비경을 자아낸다. 아- 이 섬에서 한밤만 자고 가자. ^^",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

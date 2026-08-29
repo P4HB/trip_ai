@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26919625",
+  "place_id": "26919625",
+  "name": "컨테이너야드협재타운",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "Kakao 입력의 상호와 두 개의 짧은 방문 후기는 붕어빵·떡볶이·순대 판매 경험을 시사하지만, 이 명칭이 단일 독립 장소인지 여러 음식점·상점이 모인 구역인지, 현재 운영 주체와 방문 범위가 무엇인지는 공식·공공 출처에서 확인되지 않았다. 검색된 외부 안내도 이곳을 협재의 골목 카페·소품점이 모인 구역 또는 인근 명소로만 언급하므로, 단일 추천 후보로 식별할 근거가 부족하다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주시 한림읍 협재 일대의 ‘컨테이너야드협재타운’이라는 Kakao 장소 레코드이나, 독립 관광지·시장·음식점·복합 상권 중 어느 범주인지 신뢰할 수 있는 상세 식별 정보는 확인하지 못했다.",
+    "typical_visit": "입력된 공개 후기에는 간식과 분식 이용 경험만 있으나, 장소 전체의 대표 방문 경험으로 일반화할 수 없다.",
+    "experience_scope": "현 시점에는 장소 경계와 운영 단위가 불명확하여 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘컨테이너야드협재타운’이며, 익명화된 공개 후기 두 건에는 붕어빵 및 떡볶이·순대 이용에 대한 서술이 있다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "외부 주차 안내 페이지는 컨테이너야드협재타운을 협재해수욕장 인근 명소로 열거하고, 별도 안내에서는 협재 마을 골목의 카페·소품점이 모인 구역으로 언급한다. 단일 시설의 운영 주체·구성·경계는 제시하지 않는다.",
+        "source_ids": [
+          "S2",
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 주소·좌표, 운영 주체와 현재 영업 여부를 공식 출처에서 확인하지 못했다.",
+      "단일 점포인지, 여러 점포를 포함한 상권 또는 명칭상 구역인지 확인하지 못했다.",
+      "공식 웹사이트·지자체 또는 관광 공공기관의 상세 소개를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "provider_metadata_and_anonymized_public_reviews",
+        "url": "https://place.map.kakao.com/26919625",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘컨테이너야드협재타운’이다.",
+          "입력된 익명화 공개 후기에는 분식·간식 이용 서술이 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "블루스퀘어 주차",
+        "type": "third_party_local_guide",
+        "url": "https://bluesquare.app/parking/1426/",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "협재리 2514 주차장 인근 명소로 컨테이너야드협재타운을 열거한다.",
+          "장소의 운영 주체나 단일 시설 여부는 안내하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "블루스퀘어 주차",
+        "type": "third_party_local_guide",
+        "url": "https://bluesquare.app/parking/17054/",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "컨테이너야드협재타운을 협재 마을 골목의 카페와 소품샵이 모인 곳으로 언급한다.",
+          "독립 장소의 범위·운영 정보는 제시하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "단일 추천 장소로서의 경계, 유형, 운영 주체가 공식·공공 출처에서 확인되지 않음",
+      "status": "needs_review",
+      "action": "공식 운영 채널 또는 현장 표지로 단일 장소 여부·구성 점포·현재 운영 정보를 확인한 뒤 재라벨링",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

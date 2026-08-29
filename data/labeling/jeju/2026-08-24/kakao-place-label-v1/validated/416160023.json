@@ -1,0 +1,619 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:416160023",
+  "place_id": "416160023",
+  "name": "수월봉지질트레일",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "수월봉 해안선을 따라 지질 경관을 탐방하는 독립적인 도보 관광 코스로 확인된다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "eligibility.independent_place"
+    ]
+  },
+  "research": {
+    "status": "researched",
+    "summary": "수월봉지질트레일은 해안절벽의 화산 퇴적층과 바다·일몰 경관을 걸어서 탐방하는 제주 서부의 야외 지질관광 코스다.",
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500388&menuId=DOM_000002022002200010",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "수월봉 지질트레일은 해안절벽에 드러난 화산재 지층과 다양한 화산 퇴적구조, 풍경을 즐기는 트레일 코스로 소개된다.",
+          "전체 길이 10km, 약 4시간 30분이며 엉알길·당산봉·차귀도 코스가 안내된다.",
+          "수월봉 전망대에서 차귀도·송악산 등을 조망하고 낙조를 볼 수 있다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=21d975e1-0499-48ee-b5d6-5500da9d736d",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "수월봉은 제주도 세계지질공원의 지질명소 중 하나로 소개된다.",
+          "해안선을 따라 지질트레일이 있고 해안절벽의 화산 퇴적물과 화산재 지층을 탐방하는 내용이 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "수월봉의 지질·화산 지형과 당산봉을 포함한 트레일 코스가 공식 안내에 명시된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.volcanic_hill_trail"
+      ]
+    },
+    "theme.ocean": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안절벽을 따라 걷고 차귀도와 낙조를 조망하는 것이 공식 안내의 핵심 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.coastal_trail"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "10km의 여러 도보 코스로 구성된 지질트레일을 걷는 방문 경험이 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.walking_trail"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "화산 분출과 신석기 정착의 이야기가 소개되지만, 대표 경험은 자연 지질과 경관 탐방이므로 중간값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "inference.geological_history_secondary"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 상세는 자연 지질 경관과 도보 코스만을 대표 경험으로 설명하며 테마파크형 시설·놀이 경험은 제시하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.official_nature_trail_scope"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 장소 상세의 대표 방문 경험은 지질 경관과 걷기이며 카페·음료 이용은 포함되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.official_nature_trail_scope"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 장소 상세는 지질관광 도보 코스로 설명하며 시장 방문·상거래 경험을 제시하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.official_nature_trail_scope"
+      ]
+    },
+    "theme.festival": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내는 상시 지질트레일의 경관·도보 경험을 설명하며 특정 축제나 기간성 행사를 대표 경험으로 제시하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.official_nature_trail_scope"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 대표 경험은 해안절벽·전망대 조망과 야외 지질트레일 보행이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.outdoor_coastal_trail"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험이 야외 해안절벽 보행과 바다·낙조 조망이어서 날씨 노출의 영향을 직접 받는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.outdoor_coastal_trail"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "바다와 낙조, 지질 경관을 보며 걷는 경험으로 휴식적 체류 가치를 추론할 수 있으나 혼잡·휴식시설 정보는 부족하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "inference.scenic_walking_restfulness"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "수월봉 정상은 차량 접근이 가능하지만 전체 트레일은 10km 도보 코스로 안내되어 모든 구간의 보행 부담은 확인되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "inference.mixed_access_route"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "전체 코스 외에 길이와 소요시간이 다른 엉알길·당산봉·차귀도 코스가 공식 안내되어 체류시간을 조절할 수 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "evidence.multiple_route_options"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "화산 퇴적구조가 드러난 해안절벽과 차귀도·낙조 조망이 공식적으로 주요 볼거리로 안내된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.coastal_geology_sunset"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "화산학 연구의 교과서 역할을 하는 화산 퇴적구조와 세계지질공원 지질명소라는 공적 설명이 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.geopark_geological_heritage"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 서부 수월봉의 화산재 지층·해안절벽·제주도 세계지질공원이라는 제주 고유 자연유산을 직접 탐방한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.jeju_geological_heritage"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주도 세계지질공원의 지질명소로 공식 소개되고 제주 서부의 대표 조망·지질 경관이 안내된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "evidence.official_geopark_landmark"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안절벽의 화산 퇴적구조와 차귀도·낙조 조망은 시각적 기록 가치가 높다고 추론되나 촬영 편의 조건은 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "inference.geological_scenery_photo"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시의 최신 안전·출입·동선 지원 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "바다·낙조 조망과 함께 걷는 야외 코스라 동반 산책에 적합하다고 추론하지만 커플 대상 편의 정보는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "inference.shared_scenic_walking"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "여러 지질트레일 코스를 함께 걷고 경관을 감상할 수 있으나 단체 이용 조건은 확인되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "inference.shared_scenic_walking"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반에 필요한 구간별 안전시설·난이도·감독 조건이 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback.child_unknown"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정상 차량 접근은 안내되지만 고령 방문자의 전체 동선·경사·휴식·무장애 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.senior_unknown"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전·현장 기상 정보가 부족해 야외 해안 트레일의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    }
+  },
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 1,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 1,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 1,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

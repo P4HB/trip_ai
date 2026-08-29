@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1885,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8168362.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8168362",
+    "provider": "kakao",
+    "place_id": "8168362",
+    "name": "후곡악",
+    "url": "https://place.map.kakao.com/8168362",
+    "average_rating_5": "3.0",
+    "visitor_review_count": "6",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.04.19.",
+      "content": "무릎상태가 좋지않아 짧은 구간 원해서 갔어요. 사진 순서대로 가서 찍은 풍경이예요. 노루 봤는데 못찍었네요.ㅠㅠ 정상에서 계단으로 내려와서 왼쪽으로 꺾어 탐방로 따라 원점회귀 했어요.",
+      "tags": ""
+    },
+    {
+      "date": "2020.12.03.",
+      "content": "오름 정비(야자수매트)가 어느 정도 되어 있으나 짧은 코스 및 정상뷰가 좋지 않은 관계로 그다지 추천하고 싶지는 않습니다. 더이상 오를 오름이 없다면 한 번쯤은 괜찮겠지요ㅋ 정상에 도착하시면 반대편 내려가는 계단이 있는데 내려가보니 길이 없더군요 짧은 코스에 불만이신 분은 내려갔다 올라오시는걸 추천합니다~ 참고로 120~140계단임 여기 오실려면 네비에 수산리 4504로 검색 후 올려드린 두 번째 사진 참고하시어 진입하시면 됩니다. 진입로에서 한 700m~1000m정도 주행하시면 오름 입구에 도착하실 수 있습니다. 오름입구에 주차하셔도 되고 100m 전 공터에 주차하셔서 오셔도 좋을 것 같습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2020.02.04.",
+      "content": "길 잘 나있어요 . 한라산. 영주산 아주 잘 보여요. 짧은코스라 좀 아쉽네요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

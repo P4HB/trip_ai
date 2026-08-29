@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "102453956",
+  "canonical_id": "kakao:102453956",
+  "name": "관광지순환버스",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "입력명은 제주도의 관광지순환버스라는 대중교통 노선·운영 주체를 가리킨다. 제주버스정보시스템은 이를 810·820번대 관광지순환 노선으로 분류하고 각 노선의 출발지와 경유지를 별도로 안내한다. 따라서 이 Kakao 레코드는 독립적으로 방문·체류하는 관광지가 아니라 관광지 접근을 위한 교통 서비스로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘관광지순환버스’는 제주 동부·서부의 관광지와 환승 정류장을 순환하는 대중교통 노선군 및 그 운행 서비스로 확인된다.",
+    "typical_visit": "이용자는 대천환승정류장 또는 동광환승정류장 등에서 버스를 타고 비자림, 거슨새미오름, 자동차박물관, 신화역사공원 같은 개별 관광지로 이동한다.",
+    "experience_scope": "서비스 자체는 이동수단이며 개별 방문 경험·관람 공간을 제공하는 독립 여행지는 아니다. 입력에는 특정 정류장, 노선, 차량 또는 관광지 지점 정보가 없어 하나의 장소 경험 벡터를 생성할 수 없다. Kakao 평점·후기 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주버스정보시스템은 관광지순환버스를 810-1·810-2와 820-1·820-2 순환 노선으로 구분하고, 대천환승정류장·동광환승정류장 및 주요 경유지를 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드의 장소명은 ‘관광지순환버스’이며, 제공된 레코드에는 특정 관광지·정류장·노선 번호·주소·좌표 정보가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 특정 회사 사무실, 정류장, 차량 차고지 또는 일반적인 버스 서비스명을 가리키는지 확인하지 못했다.",
+      "특정 노선의 최신 운행 시간, 정류장, 요금 및 운휴 여부는 이 레코드만으로 특정할 수 없다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 제주버스정보시스템",
+        "type": "official_public_transport_information",
+        "url": "https://bus.jeju.go.kr/publicTrafficInformation/generalBusSchedule",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "관광지순환버스는 제주버스 노선 분류에서 810·820번대로 안내된다.",
+          "810-1·810-2 및 820-1·820-2는 관광지와 환승정류장을 잇는 순환 노선으로 안내된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/102453956",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘관광지순환버스’다.",
+          "입력 패킷에는 평점·후기 수 외의 장소 주소, 좌표, 업종, 특정 정류장 또는 노선 식별 정보가 제공되지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

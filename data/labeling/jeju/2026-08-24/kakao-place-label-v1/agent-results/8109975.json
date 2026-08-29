@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8109975",
+  "place_id": "8109975",
+  "name": "파크써던랜드 (폐장)",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.95,
+    "rationale": "한국관광공사 관광지식정보시스템 자료를 인용한 한국관광공사 보고서는 제주 파크 써던랜드(태왕사신기 세트장)를 ‘운영종료’로 분류하고 2014년 철거됐다고 명시한다. 입력 Kakao 장소명도 폐장으로 표시되어 있어, 현재 독립 관광 방문지로 추천할 수 있는 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "파크써던랜드는 제주시의 드라마 ‘태왕사신기’ 촬영 세트장으로 조성됐던 영상테마파크다.",
+    "typical_visit": "과거에는 드라마 촬영 세트장을 관람하는 테마파크형 방문 경험이었으나, 공개 관광 연구자료는 운영 종료와 2014년 철거를 기록한다.",
+    "experience_scope": "현재 운영 중인 독립 관광·체험 장소라는 근거가 없고, 공공 관광 자료가 운영 종료 및 철거를 명시한다. 과거의 관람 정보나 과거 리뷰를 현재 적합도에 전용하지 않으며 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 보고서의 한류 드라마 세트장 표는 제주 제주시의 ‘파크 써던랜드(태왕사신기 세트장)’를 운영종료로 분류한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 보고서는 개발사업이 계획대로 추진되지 않아 세트장 보수·관리가 되지 않았고 2014년에 철거됐다고 기록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 레코드의 이름은 ‘파크써던랜드 (폐장)’이며, 입력에 제공된 공개 방문 후기 근거는 없다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "철거 부지의 현재 토지 이용, 일반 방문객 출입 가능 여부와 안전·접근 조건은 확인하지 못했다.",
+      "과거 시설을 대체하는 현재의 공식 관광·관람 운영 또는 체험 프로그램은 확인하지 못했다.",
+      "입력 Kakao 레코드에는 주소·좌표·업종 및 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 관광데이터랩",
+        "type": "public_research_report",
+        "url": "https://datalab.visitkorea.or.kr/common/board/Download.do?bcIdx=299657&cbIdx=1129&streFileNm=df74965b-4796-4746-95f4-19a00cfb990e.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한류 드라마 세트장 표에서 파크 써던랜드(태왕사신기 세트장)를 제주 제주시 소재 운영종료 시설로 분류한다.",
+          "개발사업 미추진에 따른 관리 문제 뒤 2014년에 철거됐다고 기록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8109975",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘파크써던랜드 (폐장)’이다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없으며, 평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "permanently_closed_and_demolished",
+      "applies_to": "recommendation_candidate",
+      "condition": "공공 관광 자료가 이 시설을 운영종료로 분류하고 2014년 철거를 기록해, 현재 관광 방문지로서의 운영·출입·안전 조건을 확인할 수 없음",
+      "status": "confirmed",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 동일 부지에 별도 공식 관광시설이 개장한 것이 확인되더라도 새 장소로 신원을 분리해 재검수한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24"
+}

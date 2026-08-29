@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1562735676",
+  "canonical_id": "kakao:1562735676",
+  "name": "사상양공헌수선정비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 장소 목록이 이 Kakao place_id를 사상양공헌수선정비로 식별하고, 제주 지역의 양헌수 선정비는 조선시대 제주목사의 선정을 기리는 비석으로 문헌에 확인된다. 동일 명칭 비가 여러 곳에 있어 정확한 비문의 위치·현장 상태는 추가 확인이 필요하지만, 독립적으로 표기된 역사 유적 방문지로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사된 장소 성격은 선정비 관람이며 산·오름 경관 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 제주 지역의 역사 기념비를 설명하며 해안·해양 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "비석의 역사 관람 외에 레포츠·참여형 체험이 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "문헌은 사상양공헌수선정비를 제주목사 양헌수의 선정을 기리는 기념비로 열거하며, 비석 자체가 역사·문화유산 관람 대상이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HISTORIC-MONUMENT-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 출처에서 놀이·동물·전시 복합시설 형태는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·디저트 이용이 이 비석의 방문 목적이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장 방문 경험은 조사된 역사 기념비의 기능과 연결되어 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 기간 축제·공연이 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "개별 Kakao 지점의 실제 설치 환경과 실내 관람 공간 유무를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-ENVIRONMENT-UNKNOWN"]},
+    "environment.weather_sensitivity": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "정확한 현장 환경과 우천·강풍 시 관람 조건이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-WEATHER-UNKNOWN"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장 체류 환경과 휴식 시설이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "진입 동선, 경사, 계단 및 무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 관람 시간과 주변 동선의 결합 가능성이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석 주변 경관이나 조망의 구체적 근거를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "양헌수의 제주목사 재임과 그 선정을 기리는 비명은 다른 일반 시설과 구별되는 역사적 정체성을 제공한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HISTORIC-MONUMENT-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 목사 양헌수의 지역 행정과 주민의 선정 기념 맥락이 이 비석의 핵심 의미로 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HISTORY-CONTEXT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 지역 역사비 목록에 포함되지만, 이 특정 표식이 제주 전체를 대표하는 공적 랜드마크라는 지정·인식은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HISTORIC-LOCAL-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석의 현장 시각 요소나 촬영 가치가 공식적으로 소개된 근거를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안내·안전·접근성 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 방문의 체류·편의 요소가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹 이용 편의와 수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설·보호자 동반 조건과 동선 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-UNKNOWN-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "site_identity_access_and_conditions_need_verification", "applies_to": "all_visitors", "condition": "동일 명칭의 양헌수 선정비가 제주 내 여러 곳에 기록되어 있고, 이 Kakao 표식의 정확한 비문·현장 위치, 진입 동선, 개방 상태 및 기상 시 안전 조건은 공신력 있는 현장 안내로 확인하지 못했다.", "status": "needs_review", "action": "방문 전 Kakao 지도 표식과 현장 안내 또는 관할 지자체·문화유산 관리 정보로 정확한 위치와 접근·관람 가능 여부를 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "Kakao 입력명은 공개 장소 목록의 같은 place_id와 연결된다. 문헌에는 같은 명칭의 선정비가 신촌리·삼양3동 등 복수 위치에 기록되어 있어 현장 표식의 세부 위치는 미확정이다.",
+    "facts": [{"text": "제주대학교 학술자료의 제주 지역 진휼비·진휼실상 표는 ‘사상양공헌수선정비’를 양헌수의 선정비로 기록하고 신촌리와 삼양3동의 동명 비를 열거한다.", "source_id": "S1"}, {"text": "공개 장소 목록은 Kakao place_id 1562735676을 ‘사상양공헌수선정비’로 표시하며 문화유적·탑·비석 분류와 주소 정보를 제공한다.", "source_id": "S2"}],
+    "unknowns": ["이 Kakao 표식이 문헌의 어느 동명 비와 대응하는지", "비문의 보존 상태, 관리 주체, 현행 개방·접근 조건", "주변 동선, 주차, 화장실 및 무장애 접근성"],
+    "sources": [{"id": "S1", "publisher": "제주대학교", "type": "academic_repository", "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/20046/2/%EC%A1%B0%EC%84%A0%ED%9B%84%EA%B8%B0%20%EC%A0%9C%EC%A3%BC%EC%A7%80%EC%97%AD%EC%9D%98%20%EC%A7%84%ED%9C%BC%EB%B9%84%28%E8%B3%91%E6%81%A4%E7%A2%91%29%EC%99%80%20%EC%A7%84%ED%9C%BC%EC%8B%A4%EC%83%81.pdf", "checked_at": "2026-08-25", "facts": ["제주 지역 비석 표에서 사상양공헌수선정비를 양헌수의 선정비로 기록한다.", "동일 명칭의 비가 신촌리와 삼양3동에 각각 기록되어 있다."]}, {"id": "S2", "publisher": "Placeview", "type": "public_map_listing", "url": "https://placeview.co.kr/id/MTU2MjczNTY3NiAg", "checked_at": "2026-08-25", "facts": ["사상양공헌수선정비를 문화유적·탑·비석으로 분류한다.", "Kakao place_id 1562735676의 공개 장소 목록으로 표시된다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

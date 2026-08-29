@@ -1,0 +1,104 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2001736805",
+  "place_id": "2001736805",
+  "name": "블랙홀 엑시트",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.45,
+    "rationale": "제주신화월드 공식 안내는 동일 명칭의 실내 미션 체험 시설을 서귀포시 안덕면 신화역사로304번길 89에 안내한다. 그러나 입력 Kakao 레코드는 주소·좌표·업종·공개 후기 근거가 없어 그 공식 시설과의 동일성, 또는 다른 동명 사업체인지 교차 확인할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "공식 신화월드 자료에는 블랙홀 엑시트가 퀴즈·탐험·게임 미션을 수행하는 체험형 공간으로 안내되지만 Kakao 레코드와 직접 연결하는 위치 정보는 없다.",
+    "typical_visit": "공식 후보는 실내에서 다양한 미션을 수행하고 코인을 교환하는 체험이다. 다만 이 레코드와 동일성은 미확정이다.",
+    "experience_scope": "신원이 확정되지 않아 추천용 축 벡터를 생성하지 않는다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주신화월드는 블랙홀 엑시트를 퀴즈·탐험·액티비티·게임 미션을 수행하는 체험형 공간으로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 블랙홀 엑시트 코인 사냥 대회의 장소를 서귀포시 안덕면 신화역사로304번길 89로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id의 정확한 주소·좌표·업종과 공식 신화월드 시설의 동일성",
+      "당일 운영, 입장·연령·안전 조건과 체험 구성",
+      "접근성·혼잡도·예약 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주신화월드",
+        "type": "official_business_site",
+        "url": "https://www.shinhwaworld.com/entertainment/42797.jhtml",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "블랙홀 엑시트를 미션 수행 체험형 공간으로 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014560",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "코인 사냥 대회의 장소·주소와 실내 미션 활동을 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/2001736805",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 레코드는 장소명 외 주소·좌표·업종·공개 후기 근거를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 위치 정보가 없어 신화월드 공식 블랙홀 엑시트와의 동일성 및 체험 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식 주소·좌표·업종으로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 35축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

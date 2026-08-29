@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8615054",
+  "place_id": "8615054",
+  "name": "협자연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju와 국가유산포털이 모두 서귀포시 성산읍의 제주특별자치도 기념물 협자연대를 별도 관광·문화유산 장소로 안내한다. 입력 Kakao 장소명과 정확히 일치하며 독립 방문 가능한 문화유적지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "협자연대(俠子煙臺)는 서귀포시 성산읍 섭지코지로 261(고성리)에 있는 제주특별자치도 기념물 제23-2호 해안 군사 통신 유적이다.",
+    "typical_visit": "해안 절벽의 연대 유구와 화덕자리를 보고, 주변의 푸른 바다와 선돌바위 경관을 감상하는 야외 문화유적 방문이다.",
+    "experience_scope": "공식 관광 안내는 문화유적의 위치·역사·해안 경관을 확인한다. 최신 개방 시간, 접근로 상태, 주차·화장실, 무장애 시설, 난간 및 악천후 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"국가유산포털은 협자연대를 제주특별자치도 기념물로, 유적건조물·교통통신·통신·봉수 분류의 1기 유적으로 안내하며 소재지를 서귀포시 성산읍 섭지코지로 261로 표시한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 협자연대가 수산진 소속 연대였고 옛 모습과 화덕자리가 남아 있으며, 해안 절벽·푸른 바다·선돌바위 주변 경관이 뛰어나다고 설명한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["최신 개방 여부와 운영·현장 통제 정보를 확인하지 못했다.", "접근로의 노면·경사·계단, 주차·화장실, 무장애 접근 및 해안 절벽 주변 안전시설을 확인하지 못했다.", "월별 현장 상태와 악천후 시 안전 조건을 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"국가유산청 국가유산포털","type":"official_heritage_portal","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2333900230200&pageNo=1_1_1_1","checked_at":"2026-08-24","facts":["협자연대는 제주특별자치도 기념물이다.","분류는 유적건조물/교통통신/통신/봉수이며 수량은 1기다.","소재지는 제주 서귀포시 성산읍 섭지코지로 261(고성리)이다."]},
+      {"id":"S2","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020247","checked_at":"2026-08-24","facts":["협자연대는 성산읍 고성리의 제주특별자치도 기념물 제23-2호 문화유적지로 안내된다.","수산진 소속 연대로 옛 모습과 화덕자리가 남아 있다.","해안 절벽, 푸른 바다, 선돌바위 주변 경관이 뛰어나다고 안내한다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8615054","checked_at":"2026-08-24","facts":["입력 패킷의 Kakao 장소명은 협자연대다.","입력된 공개 후기는 라벨값 근거로 사용하지 않았다.","Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 절벽의 야외 유적이지만 산·오름·산림 경관이 핵심이라는 직접 근거는 없어 중립값으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 해안 절벽과 푸른 바다를 이 유적의 뛰어난 주변 경관으로 직접 설명한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털의 기념물 지정·봉수 유적 분류와 공식 관광 안내의 옛 군사 통신 연대 설명을 근거로 한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 절벽의 연대 유구와 주변 바다를 보는 야외 방문으로 안내되어 대표 경험의 실내 비율이 낮다고 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안 절벽에서 유적과 바다 경관을 보는 대표 경험이므로 비·바람 등 날씨의 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로의 노면·경사·계단과 무장애 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 관람 시간과 장·단기 체류 여건 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 해안 절벽, 푸른 바다, 선돌바위 주변의 뛰어난 경관을 직접 설명한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물로 지정된 해안 봉수 유적이며 옛 모습과 화덕자리가 남아 있다는 공식 안내를 근거로 한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물인 역사적 연대 유적으로서 제주 지역의 해안 방어·통신 체계와 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 국가유산 자료의 제주특별자치도 기념물 지정과 공식 관광지 안내를 근거로 지역 문화유산 명소성을 인정한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 여부, 접근로의 노면·경사·계단, 주차·화장실, 무장애 시설, 해안 절벽 주변 안전시설과 악천후 통제를 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광정보센터 또는 현장 최신 안내로 개방 여부와 해안·기상·보행 안전, 접근 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

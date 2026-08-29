@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7832259",
+  "place_id": "7832259",
+  "name": "독지최지석기념비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "카카오맵 공개 장소 페이지는 ‘독지최지석기념비’라는 장소명을 제시한다. 제주학연구센터의 학교 공덕비 기초조사는 신흥리 학교에 ‘재일교포 독지 기념비’가 있었다고 기록하지만, 이 명칭이 카카오 등록 장소와 같은 기념비인지, ‘최지석’의 의미가 무엇인지, 독립 방문지인지 또는 학교 부지 내 부속 기념물인지는 확인하지 못했다. 이름의 유사성만으로 동일 장소나 관광 방문지를 단정할 수 없으므로 추천용 벡터를 생성하지 않고 identity_unknown으로 보존한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "독지최지석기념비는 카카오맵에 등록된 기념비 명칭이나, 공개 신뢰 출처에서 정확한 소재지·건립 대상·관리 주체 및 독립 방문지 여부를 확인하지 못했다.",
+    "typical_visit": "일반 방문객을 위한 관람, 해설, 산책 또는 체험의 대표 경험은 확인되지 않았다.",
+    "experience_scope": "제주학연구센터 자료에는 신흥리 학교의 ‘재일교포 독지 기념비’가 1966년에 건립되었다는 기록이 있으나 카카오 등록명과의 동일성은 확인되지 않는다. 학교 부지의 공덕비·부속 기념물인지도 확인되지 않아 접근·안전·운영 조건이나 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "카카오맵 공개 장소 페이지의 제목은 ‘독지최지석기념비’다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주학연구센터의 학교 공헌 기록 기초조사는 신흥리 학교에 1966년 ‘재일교포 독지 기념비’가 건립되었고 재일교포 40인이 자금을 희사해 교실을 준공했다고 기록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "카카오 등록 ‘독지최지석기념비’가 제주학연구센터 자료의 ‘재일교포 독지 기념비’와 동일한지 확인하지 못했다.",
+      "기념비의 정확한 소재지, 건립 대상·연혁, 관리 주체 및 문화재·관광 자원 지정 여부를 확인하지 못했다.",
+      "일반 방문객의 출입 가능 여부, 독립 관람 가치, 접근 동선, 주차·화장실, 안전시설 및 무장애 접근성을 확인하지 못했다.",
+      "학교 또는 다른 시설 부지 안의 부속 기념물인지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7832259",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공개 장소 페이지의 제목은 ‘독지최지석기념비’다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주학연구센터",
+        "type": "public_research_document",
+        "url": "https://www.jst.re.kr/upload/pdf/RC00098583.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "학교 설립과 공헌의 기록 기초조사는 신흥리 학교의 공덕비로 ‘재일교포 독지 기념비’를 수록한다.",
+          "해당 기록은 재일교포 40인이 자금을 희사해 교실을 준공했고 기념비가 1966년 4월 건립되었다고 설명한다.",
+          "자료만으로 이 기념비가 카카오 등록 ‘독지최지석기념비’와 동일하다고 확인할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "등록 장소명과 유사한 학교 공덕비 기록은 확인됐지만 동일성, 정확한 위치, 독립 방문지 여부, 일반 방문객 출입·접근·안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 identity_unknown으로 보존한다. 공식 관리 기관, 학교 또는 지자체의 기념비 안내와 정확한 위치가 확인되면 동일성 및 부속 시설 여부를 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

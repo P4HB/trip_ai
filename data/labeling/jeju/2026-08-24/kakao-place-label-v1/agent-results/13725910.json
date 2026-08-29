@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725910",
+  "canonical_id": "kakao:13725910",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "하동숲길은 제주올레 13코스 상의 숲길 구간으로 확인되며, 독립적으로 방문·보행할 수 있는 야외 자연 탐방 장소로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIGIBILITY-OUTDOOR-TRAIL"]
+  },
+  "atomic_labels": {
+    "theme.mountain": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인된 대표 경험은 숲길 보행이며 산·오름 자체가 핵심이라는 직접 근거는 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.ocean": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "13코스 전체는 바다에서 시작하지만 하동숲길 구간의 핵심 경험이 해안이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.activity": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 정보가 13코스를 숲길을 걷는 14.8km 도보 코스로 설명한다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-WALKING-TRAIL"] },
+    "theme.culture_history": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "하동숲길 자체의 역사·문화유산 체험이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.theme_park": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲길 보행 장소로 확인되며 테마파크형 시설 여부의 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.cafe": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.traditional_market": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "theme.festival": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 행사나 축제가 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME"] },
+    "environment.indoor_ratio": { "state": "numeric", "value": 0.25, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험이 숲길을 걷는 야외 도보 활동으로 안내된다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-OUTDOOR-TRAIL"] },
+    "environment.weather_sensitivity": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "실외의 폭이 좁은 숲길을 걷는 코스이므로 날씨가 대표 경험에 영향을 준다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-OUTDOOR-TRAIL"] },
+    "style_evidence.restfulness": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 정보가 울창한 숲과 함께 걷는 한적한 길로 소개한다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-QUIET-FOREST"] },
+    "style_evidence.physical_ease": { "state": "numeric", "value": 0.5, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 정보에서 13코스 난이도를 중으로 안내하고 폭이 좁은 숲길을 언급한다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-MODERATE-TRAIL"] },
+    "style_evidence.visit_duration_flexibility": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "전체 13코스 소요 시간은 안내되지만 하동숲길 단독 방문 시간을 확인할 수 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION"] },
+    "style_evidence.scenic_value": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "울창한 나무숲과 숲 사이로 비치는 햇빛이 공식 관광 정보의 대표 묘사다.", "source_ids": ["S1"], "rule_ids": ["EVIDENCE-FOREST-SCENERY"] },
+    "style_evidence.distinctiveness": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "하동숲길 고유의 차별 요소를 직접 설명하는 공공·공식 자료는 충분히 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DISTINCTIVENESS"] },
+    "style_evidence.local_embeddedness": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주올레 13코스의 제주 서부 중산간 숲길 구간으로 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["EVIDENCE-JEJU-OLLE"] },
+    "style_evidence.landmark_significance": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주를 대표하는 상징 명소라는 직접 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-LANDMARK"] },
+    "style_evidence.photo_value": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲 경관은 확인되지만 사진 촬영이 직접적인 방문 가치라는 근거는 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-PHOTO"] }
+  },
+  "companion_fit": {
+    "solo": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 유형별 적합성을 직접 비교할 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-COMPANION"] },
+    "couple": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 유형별 적합성을 직접 비교할 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-COMPANION"] },
+    "friends": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 유형별 적합성을 직접 비교할 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-COMPANION"] },
+    "kids": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "어린이 동반에 대한 공식 연령·안전 안내를 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-COMPANION"] },
+    "parents": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "부모 동반 적합성을 직접 판단할 접근성·건강 관련 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-COMPANION"] }
+  },
+  "month_fit": {
+    "1": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "2": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "3": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "4": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "5": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "6": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "7": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "8": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "9": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "10": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "11": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] },
+    "12": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·계절 적합성의 장소별 근거가 부족하다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-MONTH"] }
+  },
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      { "source_id": "S1", "publisher": "제주관광공사 Visit Jeju", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018727", "checked_at": "2026-08-25", "facts": ["제주올레 13코스는 숲길을 여럿 지나는 난이도 중의 도보 코스다.", "코스는 울창한 숲과 함께 걷는 한적한 길로 소개되며, 전체 14.8km·약 4~5시간으로 안내된다.", "숲 사이로 비치는 햇빛과 숲 경관이 소개된다."] },
+      { "source_id": "S2", "publisher": "개인 탐방 기록", "url": "https://cheonym.tistory.com/16506717", "checked_at": "2026-08-25", "facts": ["탐방 기록의 13코스 동선에 하동숲길 입구가 표기되어 있다."] }
+    ],
+    "identity": "하동숲길은 제주올레 13코스 동선에 속한 숲길 구간으로 조사됐다.",
+    "limitations": ["하동숲길 단독의 거리, 운영시간, 접근성, 동반자별 적합성 및 월별 운영 정보는 공식·공공 상세 출처에서 확인하지 못했다.", "Kakao 평점·리뷰 수는 라벨 근거에 사용하지 않았다."]
+  }
+}

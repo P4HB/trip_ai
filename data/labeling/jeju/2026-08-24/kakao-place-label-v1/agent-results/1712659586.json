@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1712659586",
+  "place_id": "1712659586",
+  "name": "삼양해수욕장종합상황실",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 VisitJeju의 삼양해수욕장 공식 관광 안내는 연락처를 ‘삼양 종합상황실’로 명시한다. 따라서 입력 장소는 독립 여행 경험을 제공하는 관광지가 아니라 삼양해수욕장 운영·안내를 위한 부속 상황실로 판정하며, 해수욕장 자체의 속성을 이 장소 ID에 중복 라벨링하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "삼양해수욕장종합상황실은 삼양해수욕장과 연결된 운영·연락 시설로 식별된다.",
+    "typical_visit": "일반 여행객의 독립 관람·체험 목적지가 아니라 해수욕장 이용 중 운영 안내·상황 대응을 위한 부속 시설이다.",
+    "experience_scope": "공식 관광 안내가 ‘삼양 종합상황실’ 전화번호를 삼양해수욕장의 연락처로 제시한다. 해변의 검은 모래, 물놀이, 축제 등은 상위 장소인 삼양해수욕장의 경험이므로 이 부속 시설에 41축 추천 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "VisitJeju의 삼양해수욕장 안내는 연락처를 ‘삼양 종합상황실: 064-728-3991’로 표기한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 공식 안내는 삼양해수욕장을 검은 모래가 특색인 해수욕장으로 소개하며, 해수욕장 개장 기간은 상이하다고 안내한다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "종합상황실 건물의 일반 방문객 출입·이용 가능 여부와 독립 관람 기능",
+      "상황실의 계절별 운영 시간과 현장 안내 범위",
+      "상황실 건물의 무장애 접근성 및 내부 편의시설"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_listing",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500301",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "삼양해수욕장의 연락처로 ‘삼양 종합상황실: 064-728-3991’을 제시한다.",
+          "삼양해수욕장을 반짝이는 검은 모래가 특색인 해수욕장으로 소개하며, 개장 기간은 상이하다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1712659586",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 Kakao 장소 레코드의 명칭은 ‘삼양해수욕장종합상황실’이다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "공식 관광 안내에서 삼양 종합상황실은 삼양해수욕장의 연락처·운영 맥락으로만 확인되며, 독립 관람·체험 장소로 확인되지 않음",
+      "status": "needs_review",
+      "action": "이 장소 ID에는 추천 벡터를 생성하지 않는다. 해수욕장 방문 추천은 별도 상위 장소인 삼양해수욕장 레코드에서 판정하고, 상황실의 일반 이용 범위가 공식적으로 확인되면 적격성을 재검토한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

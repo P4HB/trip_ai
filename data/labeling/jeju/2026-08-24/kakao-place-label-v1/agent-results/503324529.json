@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:503324529",
+  "place_id": "503324529",
+  "name": "도예시선",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 제주시 구좌읍 종달리의 도예시선을 도자기 공방과 함께 운영하는 도자기 소품 가게로 별도 안내한다. 도자기 판매·일일 체험·수강·주문제작이라는 독립 방문 경험이 확인되어 독립 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "도예시선은 제주시 구좌읍 종달리에 있는 도자기 소품 판매점과 공방이다.",
+    "typical_visit": "도자기 소품을 둘러보거나, 사전 연락 후 도자기 만들기 또는 페인팅 일일 체험을 하는 실내 공예 방문이다.",
+    "experience_scope": "공식 관광 안내는 제주 옛집을 개조한 판매점, 도자기 소품, 일일 체험·수강·주문제작과 체험 소요 시간을 안내한다. 입력 공개 후기는 체험 진행의 친절함, 작품 수령과 작품 관람을 언급한다. 최신 영업일·시간·체험 가능 여부·가격·접근성은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"Visit Jeju는 도예시선을 구좌읍 종달리의 제주 옛집을 개조한 도자기 소품 가게이자 공방으로 소개하며, 도자기 소품·찻잔 세트와 제주 당근을 그린 소품 판매를 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 도자기 만들기와 페인팅 일일 체험, 장단기 수강 및 주문제작을 안내하며, 일일 체험은 방문 전 전화가 필요하고 약 1~1시간 30분이 걸린다고 설명한다. 판매 가게와 체험 공방은 서로 다른 곳이라고 밝힌다.","source_ids":["S1"]},
+      {"id":"F3","text":"입력 Kakao 공개 후기는 체험을 편하게 진행한 경험과 완성 작품의 수령, 공방 내 작품 관람을 언급한다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "최신 영업일·영업시간, 휴무, 체험 가능 시간·정원·가격 및 예약 방식은 확인하지 못했다.",
+      "판매점과 체험 공방 각각의 정확한 동선, 주차, 화장실, 계단·문턱 및 무장애 접근성은 확인하지 못했다.",
+      "어린이 동반 체험의 연령·보호자 조건과 작품 수령의 최신 소요 기간은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008023&menuId=DOM_000001720005000000","checked_at":"2026-08-24","facts":["도예시선을 제주시 구좌읍 종달논길 36-18의 도자기 공방과 함께 운영하는 도자기 소품 가게로 안내한다.","제주 옛집을 개조한 판매점, 도자기 소품과 제주 당근 그림 소품을 소개한다.","일일 체험은 사전 전화가 필요하며 약 1~1시간 30분이고, 판매 가게와 체험 공방은 서로 다른 곳이라고 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/503324529","checked_at":"2026-08-24","facts":["입력 패킷의 공개 후기는 도자기 체험 진행, 완성 작품 수령, 공방의 작품 관람 경험을 언급한다.","평점·후기 수와 작성자 식별 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 도자기 만들기와 페인팅 일일 체험을 직접 안내하므로 참여형 공예 활동 비중이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"도자기 공예는 확인되지만 역사·문화유산 관람 또는 전통 체험이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"판매점과 공방에서 소품을 보고 도자기를 만드는 대표 경험으로 안내돼 실내 비율이 높다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 판매점·공방 내부의 소품 관람과 공예 체험으로 안내돼 날씨 영향은 비교적 낮다고 추론하나, 이동·입장 환경은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"옛집 분위기와 공예 체험은 확인되지만 휴식·평온이 핵심 경험이라는 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내 공예 활동은 확인되지만 계단·문턱·좌석·무장애 접근성과 장시간 작업 부담이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"소품 관람·구매와 약 1~1시간 30분 일일 체험, 장단기 수강이 함께 안내돼 체류 시간 조절이 비교적 쉽다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"옛집 외관과 큰 나무의 분위기는 안내되지만 경관 감상 자체가 핵심 방문 가치라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 옛집을 개조한 공간과 제주 당근을 그린 도자기 소품, 공예 체험의 조합이 확인돼 고유성은 비교적 높다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 종달리의 제주 옛집과 제주 당근 그림 도자기 소품을 직접 설명해 제주 지역 맥락 연결이 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 관광 안내 외에 제주 또는 종달리를 대표하는 상징 명소라는 공적 지정·근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아기자기한 외관과 소품은 안내되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개별 체험은 가능하나 최신 예약 조건과 현장 지원 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 공개 후기에서 두 사람이 함께 도자기 체험을 한 경험이 확인돼 커플 동반 적합도를 비교적 높게 추론하나, 최신 예약 조건은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 수용 인원과 동시 체험 조건이 확인되지 않아 친구 동반 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 체험 연령·보호자·안전 조건이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"좌석·계단·문턱·무장애 접근성과 작업 부담이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공예 방문의 월별 운영·예약 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"advance_contact_and_split_venue","applies_to":"experience_visitors","condition":"공식 안내는 일일 체험이 방문 전 전화가 필요하고 판매 가게와 체험 공방은 서로 다른 곳이라고 설명한다. 최신 체험 가능 여부·예약·요금·정확한 체험 장소는 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 연락처로 체험 가능 시간, 예약·요금, 판매점과 공방의 정확한 위치·이동 방법을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"},
+    {"kind":"accessibility_unknown","applies_to":"mobility_limited_visitors_and_children","condition":"계단·문턱·주차·화장실·좌석 및 어린이 체험 조건을 확인하지 못했다.","status":"needs_review","action":"동반자 필요에 맞춰 현장 접근성과 체험 연령·보호자 조건을 사전 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

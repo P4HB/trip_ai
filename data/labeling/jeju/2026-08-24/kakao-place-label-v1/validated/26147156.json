@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26147156",
+  "place_id": "26147156",
+  "place_name": "해안도로입구 옹포귀덕",
+  "name": "해안도로입구 옹포귀덕",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 지도 레코드의 명칭은 ‘해안도로입구’이며, 확인 가능한 공개 안내도 이 지점을 옹포에서 귀덕으로 이어지는 해안도로의 입구·드라이브 동선으로만 언급한다. 독립적으로 관람·체험·이용할 시설 또는 명소의 정체성은 확인되지 않아, 길찾기용 진입 지점을 독립 추천 후보로 만들지 않기 위해 범위 제외로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ],
+    "duplicate_of": null
+  },
+  "research": {
+    "identity_summary": "해안도로입구 옹포귀덕은 제주 한림읍 옹포리 일대의 옹포–귀덕 해안도로 진입을 가리키는 Kakao 지도 지점으로 식별된다.",
+    "typical_visit": "독립 시설 방문이 아니라 옹포·귀덕 해안도로 드라이브 또는 주변 장소로 이동할 때의 진입·방향 지점으로 언급된다.",
+    "experience_scope": "독립 운영 주체, 관람·체험 콘텐츠, 별도 이용 시설을 확인하지 못한 도로 진입 표지이므로 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력에 연결된 Kakao Map 공개 장소 레코드는 이름을 ‘해안도로입구 옹포귀덕’으로 제공하며, 평점과 방문·블로그 후기 수는 모두 0으로 수집되어 있다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 위치 안내는 해당 지점을 ‘옹포에서 귀덕으로 이어지는 해안도로 입구’ 또는 ‘옹포귀덕 해안도로 입구’로 설명하며, 주변 주차장에서 도보 접근하는 드라이브 동선의 지점으로 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "제주특별자치도 또는 관광기관의 이 진입 지점 자체에 대한 독립 관광 상세 페이지는 확인하지 못했다.",
+      "별도 관람 시설, 운영 주체, 주차·보행 안전시설, 독립 체험 프로그램의 존재는 확인하지 못했다.",
+      "도로와 주변 해안의 현재 통행·보행 안전 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/26147156",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소 레코드 명칭은 ‘해안도로입구 옹포귀덕’이다.",
+          "입력 패킷에 수집된 평점·후기 수는 장소 적합도 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "블루스퀘어 주차",
+        "type": "public_location_guide",
+        "url": "https://bluesquare.app/parking/17206/",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "옹포리 주차장 안내는 ‘옹포귀덕 해안도로 입구’까지 도보 5분이라고 표기한다.",
+          "해당 위치를 산책·드라이브 준비 동선으로 설명한다."
+        ]
+      }
+    ]
+  },
+  "preference_atomic": {},
+  "companion_context": {},
+  "month_context": {},
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type",
+      "applies_to": "recommendation_candidate",
+      "condition": "독립 관람·체험 장소가 아니라 해안도로 진입을 나타내는 지도 지점으로만 확인됨",
+      "status": "needs_review",
+      "action": "독립 추천 후보 벡터에서 제외하고, 필요하면 옹포–귀덕 해안도로 또는 실제 주변 방문 장소와의 관계를 별도 검수",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10471809",
+  "place_id": "10471809",
+  "name": "부대악",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 공개 후기 두 건은 ‘부대악’을 오름으로 지칭하며 사유재산으로 출입할 수 없고, 등반로가 가파르다는 과거 경험을 전한다. 그러나 현재 일반 탐방객에게 허용된 공식 출입·운영 안내는 공개 신뢰 출처에서 확인하지 못했다. 출입 권한과 안전 관리가 확인되지 않은 사유지 오름을 독립적인 추천 방문지로 취급하지 않아 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소 표식 ‘부대악’은 공개 후기에서 오름으로 언급된다. 입력에는 주소·좌표·업종이 없으며, 현재 공식 탐방 운영 주체 또는 개방 상태는 확인하지 못했다.",
+    "typical_visit": "2021~2022년의 공개 방문 경험에는 가파른 계단형 등반로가 언급되지만, 한 후기는 해당 오름이 사유재산으로 더는 들어갈 수 없다고 적고 있다. 이 과거 보조 근거만으로 현재 방문 경험이나 개방 상태를 확정하지 않는다.",
+    "experience_scope": "합법적 일반 출입, 지정 탐방로, 안전 관리와 최신 운영 안내가 확인되지 않은 사유지 오름 표식이다. 따라서 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 후기(2022-03-20)는 부대악을 사유재산으로 표현하고 더는 들어갈 수 없는 오름이라고 적는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 공개 후기(2021-11-22)는 등반로 계단이 직선 코스여서 가파르며 전망이 없다고 적는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "부대악의 주소·좌표·토지 소유 및 이 Kakao 표식과의 상세 위치 일치 여부를 확인하지 못했다.",
+      "2026-08-25 기준 일반인의 합법적 출입 가능 여부, 공식 관리·탐방 안내, 폐쇄 해제 여부와 최신 안전 상태를 확인하지 못했다.",
+      "주차, 화장실, 지정 동선, 난간·계단 상태, 무장애 접근성 및 계절별 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소·방문 후기",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10471809",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 10471809와 장소명 ‘부대악’을 제공한다.",
+          "작성자 식별 정보를 제외한 입력 공개 후기에는 사유재산으로 인한 출입 불가 주장과 가파른 계단형 등반로에 관한 과거 방문 경험이 포함돼 있다.",
+          "평점과 후기 수는 라벨값의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "government_policy_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781545913771_attach_1.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 오름 기본계획은 오름 탐방에서 지정 탐방로 이용과 출입금지 표지에 따른 관리 필요성을 설명한다.",
+          "이 일반 정책 자료는 부대악의 현재 개방 여부나 소유 관계를 직접 확인하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 보조 후기는 사유재산으로 인한 출입 불가를 주장하지만, 부대악의 현재 일반 출입 권한·공식 탐방로·안전 관리와 개방 상태를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 토지 소유자 또는 관할 기관의 최신 공식 탐방·출입 안내로 일반 방문이 허용되고 안전 동선이 확인될 때에만 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

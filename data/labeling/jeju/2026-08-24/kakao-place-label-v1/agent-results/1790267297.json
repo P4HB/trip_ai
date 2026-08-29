@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1790267297",
+  "canonical_id": "kakao:1790267297",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rule_ids": ["ELIG-PLACE-ATTRACTION", "ELIG-IDENTITY-CONFIRMED"],
+    "source_ids": ["S1", "S2"],
+    "rationale": "공개 자료가 정실본향당을 옥련천 옆의 굴 형태 제주 신당으로 특정하며, 전통 신앙·지역 문화 자체가 방문 경험의 대상임을 확인한다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 경험 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 또는 해양 경험 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"참여형 활동이나 레포츠 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"자료가 이곳을 하르방·할망신을 모시는 굴 형태의 신당으로 설명하고, 제주 4·3 당시 주민 은신처였던 이력도 기록한다.","source_ids":["S1"],"rule_ids":["DIRECT-CULTURAL-SITE"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용 정보가 확인되지 않는다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제나 기간성 행사가 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"굴 형태라는 설명만으로 대표 경험의 실내 비율을 산정할 수 없다.","source_ids":["S1"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 용천수 옆 신당이지만 실제 기상별 관람 영향은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 목적의 체류 경험을 뒷받침하는 자료가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 거리·경사·계단 등 접근 난이도 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류 시간 또는 이용 방식 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"용천수 바로 옆의 굴 형태 신당이라는 확인된 자연·공간 구성은 경관 감상 가치를 시사하지만, 경관 평가 자료는 제한적이다.","source_ids":["S1"],"rule_ids":["INFER-SITE-SETTING"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"커다란 궤를 신의 좌정처로 모시는 굴 형태 신당이라는 구성이 직접 기록되어 고유성이 확인된다.","source_ids":["S1"],"rule_ids":["DIRECT-UNIQUE-FEATURE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"정실마을 용천수 옆에서 마을 신을 모시는 제주 신당이며, 지역 주민의 식수원·4·3 기억과도 연결되어 있다.","source_ids":["S1"],"rule_ids":["DIRECT-LOCAL-CULTURE"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 명소라는 공신력 있는 지정·평가 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치나 촬영 환경을 직접 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개별 방문 적합성을 확인할 자료가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 확인할 자료가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동반 방문 적합성을 확인할 자료가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반의 안전·교육·접근 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반의 이동·편의 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·접근 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"rule_id":"HC-SACRED-SITE-ETIQUETTE","status":"needs_review","source_ids":["S1"],"rationale":"현존 신을 모시는 신당으로 설명되므로 제례·신앙 행위와 마을 관습을 방해하지 않는 방문 예절이 필요하다."},
+    {"rule_id":"HC-ACCESS-HOURS-UNKNOWN","status":"fallback","source_ids":[],"rationale":"공개 출처에서 출입 가능 시간, 관리 주체, 현장 접근 조건을 확인하지 못했으므로 방문 전 최신 현장 정보를 확인해야 한다."}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "sources": [
+      {"source_id":"S1","url":"https://jeju.ekfem.or.kr/_storage_/public/175/3poe3uufvpieb8gaungq1d6y6jiq?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAYOMTQJP22FHNBH73%2F20260609%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20260609T001425Z&X-Amz-Expires=300&X-Amz-Signature=c26a43323e52ec8a5cf0e9186754fe317471d3214801d62b721c42ae514f90ae&X-Amz-SignedHeaders=host&response-content-disposition=inline%3B+filename%3D%22%253F%253F_1228%253F%253F%253F%253F%253F%253F%253F%253F%253F%253F.pdf%22%3B+filename%2A%3DUTF-8%27%27%25EC%25B5%259C%25EC%25A2%2585_1228%25EC%25A0%259C%25EC%25A3%25BC%25EC%259A%25A9%25EC%25B2%259C%25EC%2588%2598%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0%25EB%2582%25B4%25EC%25A7%2580.pdf&response-content-type=application%2Fpdf","publisher":"제주환경운동연합","checked_at":"2026-08-25","facts":["옥련천 옆에 정실본향당이 있다.","하르방·할망신을 모시는 굴 형태 신당이며 커다란 궤를 신의 좌정처로 모신다.","정실 주민의 식수원 및 제주 4·3 당시 주민 은신처와 관련된 이력이 기록되어 있다."]},
+      {"source_id":"S2","url":"https://place.map.kakao.com/1790267297","publisher":"카카오맵","checked_at":"2026-08-25","facts":["입력 레코드의 장소명과 Kakao 장소 식별자는 정실본향당 / 1790267297이다."]}
+    ]
+  }
+}

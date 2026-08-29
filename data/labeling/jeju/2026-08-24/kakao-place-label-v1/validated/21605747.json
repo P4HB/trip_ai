@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:21605747",
+  "place_id": "21605747",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "장소명은 한라산 성판악 탐방로 입구에 딸린 약수터를 뜻한다. 공개 관광·공공 자료는 성판악을 한라산 탐방로 입구로 안내하지만 이 약수터를 독립 방문 목적지로 확인하지 못했으므로, 탐방로 방문에 종속된 편의 지점으로 분류하고 검수가 필요하다.",
+    "source_ids": [
+      "SRC-001",
+      "SRC-002"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY-V1",
+      "IDENTITY-NAME-RELATION-V1"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "high",
+  "hard_constraints": [],
+  "research": {
+    "identity_status": "partially_matched",
+    "identity_rationale": "Kakao 장소명에 성판악입구와 약수터가 함께 명시되어 있으며, 공개 자료의 성판악 탐방로 입구 맥락과 일치한다. 다만 약수터 자체의 공식 상세 페이지나 독립 체험·운영 정보를 확인하지 못했다.",
+    "sources": [
+      {
+        "source_id": "SRC-001",
+        "publisher": "제주특별자치도",
+        "url": "https://www.data.go.kr/data/15056441/fileData.do?recommendDataYn=Y",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주특별자치도 한라산 입산·하산 시간 현황은 성판악을 탐방로 입구로 구분한다.",
+          "성판악 탐방은 입산 통제 시각 등 별도 이용 조건의 대상이다."
+        ]
+      },
+      {
+        "source_id": "SRC-002",
+        "publisher": "지역N문화",
+        "url": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=126436",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "한라산 성판악 탐방로 입구 안내소와 탐방 통제 시각을 안내한다.",
+          "성판악은 한라산 탐방 맥락의 입구 지점으로 소개된다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "약수터의 정확한 위치·시설 상태·독립 방문 가능 여부",
+      "약수터 자체의 공식 운영·접근성 정보"
+    ]
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

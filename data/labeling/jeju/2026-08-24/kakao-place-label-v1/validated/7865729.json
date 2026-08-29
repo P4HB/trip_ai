@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7865729",
+  "canonical_id": "kakao:7865729",
+  "name": "마보기",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "공개 자료는 안덕면 상천리의 마보기오름 후보를 강하게 시사하지만, 입력에는 주소·좌표·정식 별칭이 없고 ‘마보기’가 카카오 ID의 지형 표식과 동일한지 확인할 공식 좌표 대조 자료가 없다. 라벨값 생성을 보류한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-NO-CANONICAL-LOCATION-MATCH"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_identity_and_trail_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "대상 지형의 정확한 지도점과 최신 탐방로·출입 조건을 이 카카오 장소 ID에 연결해 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "카카오 좌표를 안덕면 상천리 산83의 공식 지형·관리 안내와 대조한 뒤 라벨링한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "안덕면 상천리 마보기오름 후보는 확인됐으나 카카오 입력의 좌표가 없어 해당 후보와의 동일성을 확정하지 못했다.",
+    "facts": [
+      {
+        "text": "한라일보는 마보기를 안덕면 상천리의 영아리오름 탐방로 도중에 있는 오름으로 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공개 오름 정보는 마보기 소재지를 서귀포시 안덕면 상천리 산83으로 기록한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 장소의 좌표",
+      "현행 탐방 허용 구간과 사유지 여부",
+      "보행로 정비·안전·편의시설"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "reputable_local_news",
+        "url": "https://m.ihalla.com/article.php?aid=1786989600789358370",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "마보기의 안덕면 상천리 위치와 영아리 탐방로 맥락을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "산나들이",
+        "type": "public_oreum_information",
+        "url": "https://san.wjsevin.com/oreum/%EB%A7%88%EB%B3%B4%EA%B8%B0",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "마보기의 소재지·표고·면적·지형 형태를 수록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

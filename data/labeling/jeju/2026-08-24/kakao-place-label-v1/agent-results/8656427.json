@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8656427",
+  "canonical_id": "kakao:8656427",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "source_ids": ["src_jeju_university", "src_mountain_list"],
+    "rule_ids": ["identity.public_place"],
+    "rationale": "공개 자료에서 제주 제주시 아라일동의 홍샘이동산을 산으로 명시하며, 카카오 장소명과 일치한다.",
+    "confidence": 0.75
+  },
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "src_jeju_university",
+        "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/21836/2/%EC%A0%9C%EC%A3%BC%EB%8F%84%EC%82%B0%20%EB%86%8D%EC%9E%91%EB%AC%BC%20%ED%94%BC%ED%95%B4%EC%A7%80%EC%97%AD%EC%9D%98%20%EB%85%B8%EB%A3%A8%20%EA%B0%9C%EC%B2%B4%EA%B5%B0%20%ED%98%84%ED%99%A9%EA%B3%BC%20%EB%A8%B9%EC%9D%B4%EC%9E%90%EC%9B%90.pdf",
+        "publisher": "제주대학교 OAK",
+        "checked_at": "2026-08-25",
+        "facts": ["제주시 아라동에 오구시오름, 홍샘이동산, 궝망동산이 있다고 서술한다.", "아라동은 지대가 높고 산림과 농경지가 있는 지역으로 서술한다."]
+      },
+      {
+        "id": "src_mountain_list",
+        "url": "https://2fpretty0911.tistory.com/m/entry/%EC%9D%B8%ED%84%B0%EB%84%B7-%EA%B2%80%EC%83%89%ED%95%98%EC%97%AC-%EC%A1%B0%EC%82%AC%ED%95%9C-%EC%82%B0%EB%B4%89-%EC%9D%B4%EB%A6%84-2%EB%A7%8C-3%EC%B2%9C%EA%B0%9C-%EC%A4%91-5%EC%9E%90-%EC%9D%B4%EC%83%81%EC%9D%98-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D",
+        "publisher": "P2SK 블로거 세상",
+        "checked_at": "2026-08-25",
+        "facts": ["홍샘이동산을 제주 제주시 아라일동의 해발 230m 산으로 열거한다."]
+      },
+      {
+        "id": "src_kakao_place",
+        "url": "https://place.map.kakao.com/8656427",
+        "publisher": "카카오맵",
+        "checked_at": "2026-08-25",
+        "facts": ["카카오 장소 식별자는 8656427이고 장소명은 홍샘이동산이다."]
+      }
+    ],
+    "unknowns": ["공식 탐방로, 출입 가능 구간, 주차, 화장실, 안전시설 및 계절별 이용 조건은 확인하지 못했다."]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju_university","src_mountain_list"],"rule_ids":["mountain.named_landform"],"rationale":"두 공개 자료가 홍샘이동산을 아라동의 산지 지명 및 해발 230m 산으로 명시한다."},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"해양 경험 여부를 직접 확인한 자료가 없다."},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_mountain_list"],"rule_ids":["activity.mountain_visit_inference"],"rationale":"산 방문은 보행을 수반할 가능성이 있으나 공식 탐방 정보는 확인되지 않았다."},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"문화·역사 체험을 확인한 자료가 없다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"테마파크형 시설 여부를 확인한 자료가 없다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"카페 이용이 핵심 경험이라는 근거가 없다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"시장 방문지라는 근거가 없다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"기간성 축제·행사를 확인한 자료가 없다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_mountain_list"],"rule_ids":["environment.landform_outdoor_inference"],"rationale":"산 지형 방문 경험으로 확인되어 실내 비중은 낮게 추정하되 시설 정보가 없어 재확인이 필요하다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_mountain_list"],"rule_ids":["environment.outdoor_weather_inference"],"rationale":"산 지형의 야외 방문은 날씨의 영향을 받을 가능성이 높으나 공식 운영 기준은 확인되지 않았다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"휴식 경험을 직접 확인한 자료가 없다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"경사, 노면, 계단 등 보행 난이도 정보가 없다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"공식 동선과 권장 체류시간이 확인되지 않았다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_mountain_list"],"rule_ids":["scenic.natural_landform_inference"],"rationale":"산 지형 자체는 자연 경관 감상 가능성을 시사하지만 전망·경관 설명은 확인되지 않았다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"고유 체험이나 구성의 직접 근거가 없다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_jeju_university","src_mountain_list"],"rule_ids":["local.jeju_landform_inference"],"rationale":"제주시 아라동의 명명된 산지 지형으로 확인되어 제주 자연환경과의 연결성이 높게 추정된다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"지역 대표 명소·상징이라는 근거를 확인하지 못했다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"사진 촬영 가치 또는 촬영 지점을 확인한 자료가 없다."}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"단독 방문 안전·동선 정보가 없다."},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"동반 방문 적합성을 확인한 자료가 없다."},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"그룹 방문 동선·활동 정보를 확인하지 못했다."},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"어린이 안전·편의시설 정보를 확인하지 못했다."},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"고령 동반자의 접근성·휴식시설 정보를 확인하지 못했다."}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_monthly_access_data"],"rationale":"월별 개방 및 이용 조건이 확인되지 않았다."}
+  },
+  "hard_constraints": [
+    {"type":"access_unknown","source_ids":[],"rule_ids":["constraint.unknown_not_fit"],"rationale":"공식 탐방로·출입 가능 구간·주차·화장실·안전시설은 공개 조사에서 확인하지 못했다.","status":"fallback"}
+  ],
+  "review_priority": "high"
+}

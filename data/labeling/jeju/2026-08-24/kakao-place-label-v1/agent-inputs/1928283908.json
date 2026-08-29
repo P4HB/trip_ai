@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1692,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1928283908.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1928283908",
+    "provider": "kakao",
+    "place_id": "1928283908",
+    "name": "한남사려니오름숲",
+    "url": "https://place.map.kakao.com/1928283908",
+    "average_rating_5": "4.1",
+    "visitor_review_count": "18",
+    "blog_review_count": "81",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.10.02.",
+      "content": "넙거리 오름 제외하고 A, B 코스 따라 걷다 C코스 사려니 오름 쪽으로 내려왔고, 쉬는 시간 제외하고 2시간 걸렸어요. 완만한 오르막에 쇄석이 깔려 있는 임도길이 대부분인데 많이 안 걸으시는 분들한텐 결코 쉬운 코스는 아닐거 같아요. 발이 피로해요. 그리고 방문 전 화장실은 다른 곳에서 해결하고 오시길 추천드립니다.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2025.09.04.",
+      "content": "숲이랑 사이트에서 예약 후 다녀 왔습니다. 하루에 2번있는 숲해설 1시간30분 정도 듣고 나머지는 자유탐방...총3시간 정도 걸렸네요. 비온 후라 안개 자욱해서 사려니오름 정상뷰는 못 봤지만 안개낀 몽환의 숲...그 걸로 행복한 탐방이었습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.07.",
+      "content": "#25.06.07 방문 *재방문의사 무조건 있음. https://www.foresttrip.go.kr/indvz/main.do?hmpgId=ID05030007 사전예약필 *전용주차공간 있으나 많은 사람이 찾는 곳이라 주차가 어려울 수 있음. - 왕복 2시간 정도 걷는 산책길이다. 아내와 뱃속의 아이와 행복하게 걸었다. - 오늘 운이 좋게도 사람들이 많이 없어서, 새들이 아름답게 지저귀는 소리만 들리는 고요한 숲을 온전히 즐길 수 있었는데, 정말 멋있는 나무들이 가득하고 잘 관리된 숲이다. 그래서 그런지 코로 한가득 들어오는 시원하고 향긋한 숲내음덕에 오래 걸어도 전혀 힘들지 않았다. 감사합니다. 더할 나위 없이 행복한 시간 보냈습니다.",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2025.06.06.",
+      "content": "좀 산책로가 차길이다보니 다리가 많이 피곤하네요.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2024.08.16.",
+      "content": "숲의 다양함과 편안한 탐방길이 좋습니다. 다 돌고 오면 3시간 남짓 소요되며, 초등 저학년도 가능하나 탐방로 거리가 다소 있으므로 징징거립니다. 그래도 사려니오름까지 찍고 내려오시는걸 추천드려요. 숲이랑에서 사전 예약 하세요",
+      "tags": "뷰|시설|+1"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

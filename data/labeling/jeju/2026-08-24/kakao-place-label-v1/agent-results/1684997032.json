@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1684997032",
+  "canonical_id": "kakao:1684997032",
+  "name": "악생이",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "‘악생이’는 제주시 추자면 추자군도에 속한 작은 섬으로 공공 관광안내도와 학술 조사에서 확인되며, 공개 낚시 취재는 선박으로 갯바위 포인트에 내려 이용하는 독립적인 해양 레저 목적지임을 보여준다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 자료는 악생이를 추자군도의 섬·갯바위 낚시터로 설명하며 산·오름 탐방 경험은 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "악생이는 추자군도의 섬으로 공공 안내도에 표기되며, 공개 취재는 선박으로 갯바위에 내려 바다낚시를 하는 경험을 직접 설명한다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-MARINE-DIRECT"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 낚시 취재는 악생이에 약 9개 포인트가 있고 갯바위에서 감성돔 낚시를 한다고 설명해 참여형 해양 활동이 핵심임을 뒷받침한다.", "source_ids": ["S2"], "rule_ids": ["THEME-ACTIVITY-DIRECT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공공 지도와 조사·취재 자료에서 문화유산, 전시, 전통 체험 또는 역사 해설은 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소 성격은 작은 섬과 갯바위 낚시 포인트이며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "무인도성 섬·갯바위 낚시 포인트라는 확인 자료에 카페·음료·디저트 이용 정보는 없다.", "source_ids": ["S2", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 출처는 악생이를 추자군도의 섬으로 분류하며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "선박으로 이동해 갯바위에서 낚시하는 섬으로 설명되어 대표 경험은 야외 해안 환경이다. 실내 방문 공간은 확인되지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["ENV-OUTDOOR-MARINE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "선박 접근과 노출된 갯바위 낚시가 확인된 대표 경험이므로 바람, 파고, 강수 등 해상 기상 조건의 영향을 크게 받는다.", "source_ids": ["S2"], "rule_ids": ["ENV-MARINE-WEATHER-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬의 경관과 낚시 활동은 확인되지만 조용한 휴식·느린 체류를 공식적으로 제공한다는 근거는 부족해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "선박에서 갯바위 포인트로 하선하는 이용 방식이 확인된다. 다만 접안 난이도와 각 포인트의 경사·안전시설은 확인되지 않아 낮은 잠정값이다.", "source_ids": ["S2"], "rule_ids": ["STYLE-ROCKY-SHORE-BURDEN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "섬 접근이 선박 이동과 낚시 출조 일정에 의존하는 것으로 확인되어 짧은 즉흥 방문부터 긴 체류까지 자유롭게 조절하기는 어렵다. 실제 선박 일정은 미확인이다.", "source_ids": ["S2"], "rule_ids": ["STYLE-BOAT-DEPENDENT-DURATION"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자군도 섬과 해안 풍경이라는 맥락은 확인되지만, 악생이 자체의 경관 감상이 공식 관광 경험으로 직접 소개되지는 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-ISLAND-VISUAL-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "악생이는 추자군도의 고유한 작은 섬으로 공공 지도와 학술 조사에 별도 지명으로 확인되고, 공개 취재는 약 9개의 갯바위 낚시 포인트를 설명한다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-NAMED-ISLET-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 추자면의 공공 관광안내도에 악생이가 표기되고, 추자군도 조간대 생태 조사 및 지역 해양낚시 맥락에 직접 연결된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-LOCAL-ISLAND-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자군도의 알려진 낚시 포인트라는 의미는 확인되나 제주 또는 추자면 전체를 대표하는 공적 랜드마크·상징으로 지정된 사실은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SPECIALTY-DESTINATION"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬·바다 환경은 확인되지만 사진 촬영이 안내되거나 핵심 방문 경험으로 직접 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "선박 접근과 갯바위 활동이 확인되지만 단독 출조의 안전 지원·가이드·통신 여건은 확인되지 않아 낮은 잠정값이다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-MARINE-SAFETY-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 편의·체험 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 낚시 이용 사례는 있으나 친구 여행의 수용·안전·예약 조건은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "선박 접근과 갯바위 낚시가 확인되어 아동에게는 보호자·안전장비·기상 판단이 필요할 수 있다. 연령 제한과 현장 안전 기준은 미확인이다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-CHILD-MARINE-RISK"]},
+    "parents": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "선박 하선과 갯바위 이동이 확인되어 이동 부담이 있을 수 있다. 경사, 난간, 휴식 공간, 무장애 접근성은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-SENIOR-MARINE-ACCESS"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 출항·접근 가능 여부와 운영 정보가 확인되지 않아 해상 야외 활동의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "boat_access_and_marine_weather_conditions", "applies_to": "all_visitors", "condition": "악생이는 선박으로 갯바위 포인트에 하선해 이용하는 추자군도 섬이다. 정기 교통, 허가·출조 절차, 접안 가능 여부, 구명장비, 기상·파고·풍속에 따른 출항 및 현장 통제 기준은 확인되지 않았다.", "status": "needs_review", "action": "방문 전 현지 허가 선박·낚시 안내 주체를 통해 출조 가능 여부, 선박 안전장비, 기상·파고 예보, 접안 지점과 갯바위 안전수칙을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘악생이’는 학술 자료의 ‘낙생이(악생이)’와 일치하며, 제주시 공공 관광안내도에도 추자군도 섬으로 표기된다.",
+    "facts": [
+      {"text": "제주시 공공 관광안내도는 추자도 인근의 섬으로 ‘악생이’를 표기한다.", "source_id": "S1"},
+      {"text": "학술 조사는 ‘낙생이(악생이)’를 추자군도의 조간대 식생 조사 대상 섬 중 하나로 열거한다.", "source_id": "S3"},
+      {"text": "공개 낚시 취재는 악생이에 선박으로 이동해 갯바위에 하선하며, 약 9개의 낚시 포인트가 있다고 설명한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["악생이의 공식 접안·상륙 허가 및 현행 출조 절차", "현행 기상·파고 기준, 안전관리, 구명장비 및 구조 지원", "갯바위별 난이도·경사·난간, 화장실·쉼터·무장애 접근성", "일반 관광객 대상 정기 운항·운영 시간 및 월별 접근 가능성"],
+    "sources": [
+      {"id": "S1", "publisher": "서귀포시", "type": "local_government_tourism_map", "url": "https://www.seogwipo.go.kr/files/board/bf6b83e5-2a8f-4200-8f8f-2421794bb621.pdf", "checked_at": "2026-08-25", "facts": ["제주관광안내도에 추자도 인근 섬 ‘악생이’를 표기한다."]},
+      {"id": "S2", "publisher": "다락원 낚시", "type": "specialty_activity_reporting", "url": "https://m.fish.darakwon.co.kr/news_Detail.asp?b_no=12246", "checked_at": "2026-08-25", "facts": ["추자도 묵리항에서 현지 선박으로 이동해 악생이 북쪽 갯바위에 하선한 낚시 사례를 소개한다.", "악생이에 대략 9개의 낚시 포인트가 있으며 갯바위 낚시가 이뤄진다고 설명한다."]},
+      {"id": "S3", "publisher": "제주대학교", "type": "academic_repository", "url": "https://123dok.co/document/eqoel0y1-%E6%A5%B8%E5%AD%90%E7%BE%A4%E5%B3%B6%EC%9D%98%E6%B5%B7%E8%97%BB%E7%9B%B8.html", "checked_at": "2026-08-25", "facts": ["추자군도 해조상 연구는 ‘낙생이(악생이)’를 조사 대상 섬으로 열거한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

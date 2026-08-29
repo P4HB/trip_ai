@@ -1,0 +1,90 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17582079",
+  "canonical_id": "kakao:17582079",
+  "name": "제주미니미니랜드 아메리카",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명은 제주센트럴파크(구 미니미니랜드)의 세계 미니어처 전시를 대륙별로 지칭한 ‘아메리카’ 구획으로 판단된다. 공개 관광 안내는 해당 공원을 하나의 미니어처 테마파크로 소개하며, 별도 입장·운영 주체·독립 방문 단위인 ‘제주미니미니랜드 아메리카’는 확인하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-FACILITY"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_venue_operation_and_admission_apply",
+      "applies_to": "all_visitors",
+      "condition": "이 전시 구획의 실제 관람 가능 여부와 입장 조건은 상위 시설인 제주센트럴파크의 현행 운영·입장 안내에 종속된다.",
+      "status": "needs_review",
+      "action": "방문 전 제주센트럴파크의 최신 운영 및 입장 안내를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명의 ‘아메리카’는 미니미니랜드의 세계 건축물 미니어처 전시 중 아메리카 대륙 구분을 가리키는 것으로 보인다. 공개 출처는 상위 시설 제주센트럴파크를 독립 관광지로 식별하지만, 이 입력명 자체의 별도 운영 단위는 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "제주관광공사 관광 안내는 제주센트럴파크(구 미니랜드)를 세계 유명 건축물과 문화유산 100여 점의 축소 모형을 전시하는 미니어처 테마파크로 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공개 여행 안내는 구 미니미니랜드가 유럽·아시아·아프리카·오세아니아·북남미의 유명 건축물·문화유산 축소 모형을 한 테마파크 안에 전시한다고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "‘제주미니미니랜드 아메리카’ 표식의 정확한 현장 위치와 현재 존 구성",
+      "해당 전시 구획만의 별도 입장, 운영 주체 또는 독립 관람 동선",
+      "상위 시설의 현재 운영 시간·휴무·요금"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500552",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주센트럴파크(구 미니랜드)를 세계 유명 건축물과 문화유산을 축소 전시하는 미니어처 테마파크로 소개한다.",
+          "상위 관광지의 주소를 제주시 조천읍 비자림로 606으로 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "NOL 인터파크투어 프리야 여행정보",
+        "type": "public_travel_information",
+        "url": "https://tour.interpark.com/freeya/spot/view.aspx?SpotNo=77620",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주미니미니랜드를 유럽·아시아·아프리카·오세아니아·북남미의 유명 건축물과 문화유산을 축소 전시한 테마파크로 설명한다.",
+          "아메리카는 상위 미니어처 테마파크 전시 범위의 일부로 제시된다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

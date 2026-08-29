@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "198238243",
+  "canonical_id": "kakao:198238243",
+  "name": "제주국제공항 제주특별자치도관광협회",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명은 제주국제공항 안에서 제주특별자치도관광협회가 운영하는 관광안내 기능을 가리킨다. 공개 자료는 제주국제공항을 독립 방문지로 소개하고 공항의 부대시설을 별도로 열거하며, 관광협회는 제주종합관광안내센터를 운영한다고 밝힌다. 따라서 이 레코드는 독립 여행지라기보다 공항 방문에 종속된 안내 시설로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-FACILITY"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주국제공항 내 제주특별자치도관광협회 관광안내 기능을 뜻하는 것으로 확인했다. 독립 관광지명이나 별도 체험 시설명은 확인되지 않았다.",
+    "facts": [
+      {
+        "text": "제주특별자치도관광협회는 제주종합관광안내센터를 운영한다고 공개 보도자료에서 밝혔다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "Visit Jeju는 제주국제공항을 공항 자체 방문지로 소개하면서 공항의 부대시설을 별도로 열거한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "입력 레코드가 가리키는 안내 창구의 정확한 터미널·층·현행 운영 시간",
+      "관광협회 안내 기능의 현행 운영 주체와 서비스 범위"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도관광협회",
+        "type": "official_organization",
+        "url": "https://www.visitjeju.or.kr/comm/press.htm?_layout=print&act=view&page=140&seq=35231",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주특별자치도관광협회가 제주종합관광안내센터를 운영한다고 밝힌다.",
+          "관광안내센터는 관광안내소 서비스 평가의 대상 시설로 소개된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019568&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주국제공항의 주소를 제주특별자치도 제주시 공항로 2로 안내한다.",
+          "공항의 의원·약국·유아휴게실·놀이방·수화물보관소·카페·쇼핑 등을 부대시설로 열거한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

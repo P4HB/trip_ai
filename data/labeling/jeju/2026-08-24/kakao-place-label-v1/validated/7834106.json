@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7834106",
+  "place_id": "7834106",
+  "name": "돔바위",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 공개 장소 메타데이터는 ‘돔바위’라는 일반 명칭과 place_id만 제공하며 주소·좌표·업종·후기·상세 설명이 없다. 공개 웹 조사에서는 이 Kakao 표식과 일치하는 제주 소재의 공식·공공 상세 자료를 확인하지 못했고, 같은 명칭의 타지역 바위·낚시 지점 자료만 확인되어 제주 독립 방문지의 정체성을 확정할 수 없다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘돔바위’는 입력 Kakao Map의 제주 후보 표식명이지만, 제공된 공개 메타데이터만으로는 제주 내 정확한 위치·유형·방문지 정체성을 확인할 수 없다.",
+    "typical_visit": "공식 안내, 위치, 접근 방식, 관람·체험 내용을 확인하지 못해 대표 방문 경험을 추정하지 않는다.",
+    "experience_scope": "명칭과 Kakao place_id 외에 식별 근거가 없어, 자연 경관·낚시·관광지 등 특정 유형으로 분류하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 7834106, 장소명 ‘돔바위’, Kakao Map 장소 URL을 제공하며 평점은 0.0, 방문자·블로그 후기는 각각 0건으로 제공한다. 주소·좌표·카테고리·상세 설명은 입력에 없다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "제주 내 정확한 위치, 행정구역, 장소 유형과 Kakao 표식이 가리키는 실물을 확인하지 못했다.",
+      "일반 방문객의 출입 가능 여부, 접근로, 주차·화장실, 보행·기상 안전 및 관리 주체를 확인하지 못했다.",
+      "같은 명칭의 타지역 장소와의 구분 또는 기존 추천 후보와의 중복 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/7834106",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 7834106 및 장소명 돔바위를 제공한다.",
+          "입력에는 주소, 좌표, 카테고리, 상세 설명 및 공개 후기 근거가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "정확한 제주 소재지·장소 유형·실물 일치와 일반 방문객의 출입·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 원문 상세 정보와 관할 지자체·관광기관 또는 현장 최신 안내로 위치, 장소 정체성, 출입 허용 및 안전한 접근 경로를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

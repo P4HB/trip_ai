@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725867",
+  "place_id": "13725867",
+  "name": "특전사숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "특전사숲길은 제주올레 13코스의 공개된 보행 구간이며, 제주올레 조성을 지원한 제13공수특전여단 병사들이 낸 숲길이라는 형성 이력도 확인된다. 코스의 부속 안내시설이 아니라 실제로 걷고 탐방하는 야외 경로이므로 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 대표 경험은 숲길 보행이며 산·오름·정상 경관이 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "13코스의 내륙 숲길 구간으로 수록되어 해안·해양 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "특전사숲길은 제주올레 13코스의 보행 경유지이며, 해당 코스는 15.9km·4~5시간의 걷기 코스로 공개돼 있다.", "source_ids": ["S1"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특전사 장병이 제주올레 조성을 지원해 낸 길이라는 형성 이력은 확인되나, 역사 해설·전시가 핵심 방문 경험인지는 확인되지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 숲길과 도보여행을 설명하며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·디저트 이용이 독립적인 방문 목적인 장소라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "숲길 보행 구간으로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 제주올레 숲길로 소개될 뿐 특정 기간 축제·행사가 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "숲길을 걷는 야외 탐방 구간으로 소개되며 실내 방문 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 숲길 보행이므로 비·바람·더위·추위의 영향을 받을 수 있다. 현장 통제 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "자연을 크게 훼손하지 않고 조성한 숲길이라는 맥락은 확인되나, 휴식·치유가 직접적인 핵심 경험으로 소개되지는 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-FOREST-REST-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "13코스 전체 보행 시간은 확인되지만 특전사숲길 구간의 경사·노면·계단과 무장애 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "전체 코스는 4~5시간으로 안내되지만 이 숲길만의 체류시간과 단축 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "숲길 자연경관이 도보여행 경험의 배경인 것은 확인되나, 특전사숲길 고유의 경관 감상이 핵심이라는 직접 설명은 확인하지 못했다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-NATURE-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제13공수특전여단 장병들이 제주올레를 도와 낸 숲길이라는 고유한 조성 이력이 확인된다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-UNIQUE-ORIGIN-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주올레 13코스의 공식 경유지이며 제주 자연을 보전하며 조성한 올레길 맥락에 직접 연결된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-ROUTE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레의 조성 정신을 보여주는 지점으로 언급되지만 제주 전체를 대표하는 랜드마크라는 지정·상징성은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲길의 시각적 기록 가치나 촬영 권장이 직접 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 걷기 위한 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의와 수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 경로 난이도·안전시설·보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_trail_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "특전사숲길은 야외 보행 구간이나 현재 개방 여부, 구간 통제, 우천·강풍 시 안전, 실제 노면·경사·계단 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주올레 또는 현장 최신 안내로 지정 보행로, 개방·통제 상태, 기상에 따른 안전 조건을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘특전사숲길’은 제주올레 13코스의 용수저수지와 고사리숲길 사이에 수록된 숲길 구간으로 확인됐다.",
+    "facts": [
+      {"id": "F1", "text": "공공 정책자료는 제주올레 13코스를 용수포구-용수저수지-특전사숲길-고사리숲길 등을 지나는 15.9km, 4~5시간 코스로 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "연합뉴스는 특전사숲길을 제주올레가 자연을 크게 변형하지 않고 조성한 정신을 보여주는 지점으로 언급한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "제주환경일보는 특전사숲길이 제주도에 순환 주둔하던 제13공수특전여단 병사들이 제주올레를 도와 낸 숲길이라고 설명한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["입력 표식의 정확한 진입 지점과 현행 개방 상태", "구간별 경사·노면·계단, 휠체어·유아차 접근성 및 화장실·휴식시설", "우천·강풍·산불 위험 시 통제와 안전 안내", "월별 계절 절정·행사 및 사진 촬영 권장 여부"],
+    "sources": [
+      {"id": "S1", "publisher": "국회도서관 정책정보서비스", "type": "public_tourism_information", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/2/8/2022/CLIKC505329548199099_attach_1.pdf", "checked_at": "2026-08-25", "facts": ["제주올레 13코스의 경유지에 특전사숲길을 수록한다.", "13코스 전체 거리는 15.9km, 소요 시간은 4~5시간으로 제시한다."]},
+      {"id": "S2", "publisher": "연합뉴스", "type": "reputable_news", "url": "https://www.yna.co.kr/view/AKR20121030039400056", "checked_at": "2026-08-25", "facts": ["특전사숲길을 제주올레의 자연 보전 조성 정신을 보여주는 지점으로 언급한다."]},
+      {"id": "S3", "publisher": "제주환경일보", "type": "local_news", "url": "https://www.newsje.com/news/articleView.html?idxno=102833", "checked_at": "2026-08-25", "facts": ["제13공수특전여단 병사들이 제주올레를 도와 특전사숲길을 냈다고 설명한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

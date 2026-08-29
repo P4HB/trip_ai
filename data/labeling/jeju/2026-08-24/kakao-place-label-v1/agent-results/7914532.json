@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7914532",
+  "place_id": "7914532",
+  "name": "사제비동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "국립제주호국원 공개 안내가 사제비동산을 어리목 탐방로에서 사제비물과 함께 만나는 해발 1,472m 지점으로 명시한다. 입력 공개 후기도 같은 이름의 가파른 오름 구간 경험을 설명하므로, 독립적으로 탐색·방문 가능한 자연 탐방 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "사제비동산은 한라산 어리목 탐방로에서 어리목계곡 위쪽에 위치한 해발 1,472m의 자연 탐방 지점이다.",
+    "typical_visit": "어리목 쪽에서 야외 탐방로를 걸어 올라 사제비물과 사제비동산을 지나 만세동산·윗세오름 방향으로 이어지는 산행의 일부로 방문한다.",
+    "experience_scope": "공개 기관 안내는 탐방로상 위치·고도·사제비물·후속 동선을 확인한다. 최신 개방, 예약·통제, 주차, 화장실, 휴식시설, 노면과 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국립제주호국원은 어리목계곡에서 약 한 시간 올라가면 사제비물이 있는 해발 1,472m의 사제비동산에 이르고, 이후 만세동산으로 이어진다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력 Kakao 공개 후기는 사제비동산으로 오르는 A코스가 매우 가파르며, 위쪽은 오르기 좋았다는 방문 경험을 기록한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["최신 탐방로 개방·입산 통제와 기상 경보 적용 여부를 확인하지 못했다.", "주차, 화장실, 쉼터, 식수 외 편의시설과 무장애 접근 정보를 확인하지 못했다.", "계절별 적설·결빙, 강풍, 노면 상태 및 안전시설 정보를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "국립제주호국원", "type": "public_institution_page", "url": "https://sinam.mpva.go.kr/jjnc/contents.do?key=1726", "checked_at": "2026-08-24", "facts": ["사제비동산은 어리목 탐방로상 어리목계곡·만세동산·윗세오름 대피소로 이어지는 동선에 있다.", "어리목계곡에서 약 한 시간 위쪽의 사제비동산에는 사제비물이 있으며 해발 1,472m로 안내된다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/7914532", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 사제비동산 A코스의 가파른 오르막과 상단부 보행 경험을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 기관 안내가 해발 1,472m 사제비동산을 한라산 어리목 탐방로의 고지 자연 지점으로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"탐방로를 걸어 고지 지점에 이르는 방문과 가파른 오르막 후기에서 신체 활동의 비중이 높다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 어리목 탐방로의 고지 자연 지점을 걷는 야외 활동으로 안내돼 실내 비율은 낮다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실외 고지 탐방로의 보행·조망 중심 경험이므로 날씨의 영향을 비교적 크게 받는다고 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기가 A코스의 가파른 오르막을 직접 언급해 보행 부담이 낮지 않다고 추론한다. 전체 구간의 노면·계단·우회로는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방로상 위치는 확인되지만 단독 방문과 전체 산행에서의 체류 시간 선택 폭은 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고지 자연 지점이라는 사실은 확인되지만 경관 감상 자체가 핵심이라는 직접 설명을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사제비물과 고도는 확인되지만 다른 한라산 탐방 지점과 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"한라산 자연환경 외에 제주 지역 생활·생산자·문화와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 해당 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기에 가파른 오르막이 언급돼 어린이 동반 보행 부담이 있을 수 있다고 추론한다. 연령별 안전시설 정보는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기에 가파른 오르막이 언급돼 보행 부담이 있을 수 있다고 추론한다. 건강 상태별 적합성과 쉼터 정보는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 고지 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 고지 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 고지 탐방은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 고지 탐방은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 고지 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_hiking_safety","applies_to":"all_visitors","condition":"사제비동산은 어리목 탐방로의 해발 1,472m 야외 지점이며 입력 공개 후기는 A코스의 가파른 오르막을 언급한다. 최신 입산 통제, 노면·적설·강풍 상태와 안전시설은 확인하지 못했다.","status":"needs_review","action":"방문 전 한라산국립공원 또는 현장 최신 안내로 탐방로 개방, 기상, 복장·보행 안전과 동행자의 체력을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

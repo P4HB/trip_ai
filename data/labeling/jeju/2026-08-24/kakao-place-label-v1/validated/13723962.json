@@ -1,0 +1,620 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723962",
+  "canonical_id": "kakao:13723962",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 제주관광공사 별도봉 상세정보가 해안단의 '애기업은돌'을 별도봉 산책 경험의 기암으로 명시한다. 단순 편의시설이 아니라 방문·관찰 가능한 명명 자연 명소이므로 독립 POI로 처리한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "R-ELIGIBLE-NAMED-NATURAL-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광정보가 별도봉을 오름 및 걷기/등산 자연경관으로 분류하고, 애기업은돌을 그 해안단 기암으로 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-MOUNTAIN-ORUM"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "애기업은돌은 별도봉 북측 해안단에 있으며, 공식 설명은 해안절벽·푸른 바다 조망을 명시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-OCEAN-COASTAL"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기암 자체는 관찰 대상이지만 공식 설명상 해안 산책로와 함께 도달·감상하는 방문 경험이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-ACTIVITY-WALKING"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.45,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 설명의 핵심은 화산 지형과 경관이며, 이 장소 자체의 문화유산·전시·공연 운영 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-CULTURE-NONCORE"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 분류와 설명은 자연 오름·산책로·기암으로, 테마파크형 시설 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-THEMEPARK-NONCORE"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 장소 설명에서 카페·음료·디저트 이용은 방문 목적 또는 시설로 제시되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-CAFE-NONCORE"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광정보는 자연경관과 산책로를 설명하며 시장 방문 경험은 확인되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-MARKET-NONCORE"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "특정 축제·기간성 행사 운영이 이 기암의 핵심이라는 근거는 확인되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-FESTIVAL-NONCORE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 설명은 해안단 기암과 해안절벽 산책로의 야외 경관 감상 경험을 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ENV-OUTDOOR-NATURAL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 해안절벽 산책·바다 조망이므로 날씨와 시야의 영향을 받는 것으로 판단한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ENV-WEATHER-OUTDOOR"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "경관 감상과 산책은 느린 체류에 적합할 수 있으나, 기암 자체의 휴식 시설·조용함은 공식적으로 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-REST-OUTDOOR-SCENIC"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산책로 접근의 실제 경사·계단·노면 및 무장애 정보가 이 지점 기준으로 확인되지 않아 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기암 관찰은 짧게 가능하고 별도봉 산책로와 결합할 수 있으나, 이 지점의 체류 선택 폭에 대한 직접 운영 정보는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-DURATION-ROUTE-INTEGRATION"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광정보가 애기업은돌을 해안단 기암으로 특정하고, 제주항·선박·푸른 바다의 해안절경 조망을 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-SCENIC-OFFICIAL-DESCRIPTION"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 설명에서 고래굴과 함께 고유명으로 명시된 해안단 기암이며, 명명된 독특한 지형 관찰이 핵심이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-DISTINCT-NAMED-GEOFEATURE"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 별도봉의 화산 쇄설성 퇴적암·용암 및 해안 지형 안에 위치한 자연 기암으로 공식 설명에 연결된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-LOCAL-JEJU-GEOLOGY"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.45,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "별도봉의 하위 해안단 기암으로 공식 소개되지만, 제주 전역 또는 제주시 대표 상징 명소라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-LANDMARK-SUBAREA"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "고유 기암과 해안절벽·바다 조망은 시각적 기록 가치가 높다고 판단하되, 이 지점 전용 촬영 명소 지정은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-PHOTO-SCENIC-GEOFEATURE"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "개별 방문자의 안전·접근·동행 지원 정보가 이 지점 기준으로 부족해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광정보가 별도봉 해안절벽 산책로를 연인끼리 산책할 수 있는 장소로 명시하며 애기업은돌은 그 해안단 기암이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-COUPLE-OFFICIAL"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 동반에 특화된 시설·활동 근거가 없어 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 설명은 가족 산책을 언급하지만 해안절벽 환경이므로 연령별 안전 적합성은 추가 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-KIDS-FAMILY-WITH-CLIFF-CAUTION"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "가족 산책 근거는 있으나 경사·휴식시설·접근성 정보가 이 지점 기준으로 부족해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-COMPANION-ACCESS-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "겨울철 이 야외 해안 산책 경험의 현장 조건 정보가 부족해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "2월 현장 조건 정보가 부족한 야외 해안 명소이므로 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광정보가 별도봉을 봄 태그로 분류하며, 애기업은돌은 그 산책로 해안단 경관 요소다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-SPRING-OFFICIAL-TAG"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광정보의 봄 분류를 4월의 야외 경관·산책 방문에 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-SPRING-OFFICIAL-TAG"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광정보의 봄 분류를 5월의 야외 경관·산책 방문에 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-SPRING-OFFICIAL-TAG"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "6월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "7월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "8월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "9월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "10월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "11월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "12월의 현장 날씨·통제 정보를 확인하지 못해 중간값 폴백을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-FALLBACK-MONTH-OUTDOOR-UNKNOWN"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "type": "outdoor_exposure",
+      "status": "caution",
+      "rationale": "대표 방문 경험이 해안단·해안절벽 산책 및 조망인 야외 자연환경이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "type": "cliff_side_environment",
+      "status": "caution",
+      "rationale": "공식 설명이 북측 사면에서 바다로 뻗은 벼랑과 해안절벽 산책로를 명시한다. 현장 안전시설·통제 여부는 방문 전 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "source_id": "S1",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500243",
+        "publisher": "제주관광공사 VisitJeju",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "별도봉은 오름·걷기/등산·봄·자연경관으로 소개된다.",
+          "화산 쇄설성 퇴적암과 용암으로 구성된 별도봉의 북측 해안단에 애기업은돌이라 불리는 기암이 있다.",
+          "해안절벽을 끼고 조성된 산책로에서 제주항, 선박, 푸른 바다의 해안절경을 조망할 수 있으며 연인 또는 가족 산책 장소로 소개된다."
+        ]
+      }
+    ],
+    "notes": "카카오 평점·리뷰 수 및 제공된 리뷰 내용은 라벨 근거로 사용하지 않았다. 동명이 자연물(비양도의 애기업은돌)과 구별하기 위해, 공식 별도봉 상세정보에서 명시한 해안단 애기업은돌로 identity를 확인했다."
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.45,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

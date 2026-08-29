@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "644445557",
+  "canonical_id": "kakao:644445557",
+  "name": "무릉1리 향사",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "무릉1리사무소 인근에 남아 있는 무릉향사는 옛 대정현 객사를 이설·복원한 마을의 역사 건축물로 공개 소개된다. 마을 안에서 독립적으로 찾아볼 수 있는 향토 문화·역사 지점으로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을 안의 역사 건축물로 소개되며 산·오름·산림 경관이 핵심 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "무릉1리의 향토 건축물로 소개되며 해안·해양 경험이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 향사의 건축·마을 역사 맥락을 설명하며 레포츠나 참여형 체험 운영은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "무릉향사는 봉건시대 마을회관·학문 수양 공간으로 설명되며, 옛 대정현 객사 건물을 이설해 1990년 복원한 역사 건축물로 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HERITAGE-BUILDING-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "전통 건축과 마을 역사지로 소개될 뿐 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적 방문 목적인 장소라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "향사와 마을 역사 건축물로 소개되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 향사 건물로 소개되며 특정 기간 축제나 공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "건물 두 채와 대문·울타리로 된 향사 부지가 소개되지만 방문객의 실내 출입 가능 여부는 확인되지 않아, 외관·마당 중심의 낮은 잠정값으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-HISTORIC-BUILDING-ACCESS-UNKNOWN"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "건물 외관과 부지 관람이 확인된 대표 경험이며 실내 관람 가능 여부가 미확인이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고풍스러운 부지라는 소개는 있으나 휴식 시설·체류 방식은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "마을 골목 안에 위치한다는 정보만 확인되며 진입 동선, 계단, 경사와 무장애 접근성은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "향사 단독 관람의 체류시간·내부 개방·연계 해설은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "솟을대문과 고색창연한 옛집, 고풍의 나무가 어우러진 부지로 묘사되지만 경관 감상이 공식 핵심 목적이라는 확인은 부족하다.", "source_ids": ["S1"], "rule_ids": ["STYLE-HISTORIC-VISUAL-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "옛 대정현 객사 건물을 옮겨 무릉1리 향사로 사용하고 1989~1990년 이설·복원했다는 고유한 건립 이력이 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-UNIQUE-ORIGIN-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "무릉1리의 마을 대소사와 학문 수양 공간으로 쓰였고, 마을의 유서 깊은 명소로 소개되어 지역 생활사와 직접 연결된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "무릉1리의 유서 깊은 마을 명소로 소개되지만 제주 전역을 대표하는 공적 지정·상징성은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "고색창연한 옛집과 솟을대문, 고풍의 나무가 묘사되나 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-HISTORIC-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 개방 상태·안내·안전 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 체험·편의시설 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의나 수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설·보호자 동반 기준·동선 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 건축 관람의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "historic_building_public_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "무릉1리 향사는 마을 안의 역사 건축물이지만 현재 내부 개방 시간, 행사·마을 사용에 따른 관람 제한, 진입 동선과 우천·강풍 시 관람 안전은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 무릉1리 또는 관할 지자체의 최신 안내로 외부·내부 관람 가능 여부, 출입 제한, 주차와 보행 동선을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘무릉1리 향사’는 서귀포시 대정읍 무릉1리사무소 인근의 무릉향사를 가리킨다. 공개 자료가 향사의 건립·이설 이력과 마을 내 위치를 함께 설명한다.",
+    "facts": [{"text": "무릉향사는 무릉1리사무소 옆 골목 안에 있으며, 과거 마을의 대소사를 공론하고 학문을 수양하던 공간으로 소개된다.", "source_id": "S1"}, {"text": "향사는 본래 안성리에 있던 대정현 객사 건물을 이설한 것이며, 1989년부터 이듬해까지 이설·복원해 완공했다는 기록이 소개된다.", "source_id": "S1"}, {"text": "공공 정책자료는 무릉1리 향사가 현 위치에 전통 향사 보전을 위해 1989년 착공, 1990년 완공됐고 향사·관리사·대문으로 구성된다고 기록한다.", "source_id": "S2"}],
+    "unknowns": ["현재 외부·내부 관람 가능 시간과 마을 행사에 따른 출입 제한", "진입 동선, 주차, 계단·경사, 휠체어 접근성 및 화장실·휴식 시설", "우천·강풍 시 현장 안전과 관람 통제 기준"],
+    "sources": [{"id": "S1", "publisher": "한라일보", "type": "reputable_news", "url": "https://www.ihalla.com/article.php?aid=1637506800716730289", "checked_at": "2026-08-25", "facts": ["무릉향사의 무릉1리사무소 인근 위치와 마을회관·수양 공간으로서의 성격을 소개했다.", "옛 대정현 객사 건물의 이설 및 1989~1990년 복원 이력을 소개했다."]}, {"id": "S2", "publisher": "국회도서관 정책정보포털", "type": "public_document", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2011/CLIKC2002327031492906_attach_15.pdf", "checked_at": "2026-08-25", "facts": ["무릉1리 향사의 1989년 착공·1990년 완공과 전통 향사 보전 목적을 기록했다.", "향사·관리사·대문으로 이루어진 건물 구성을 기록했다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

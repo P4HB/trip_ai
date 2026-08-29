@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17560164",
+  "place_id": "17560164",
+  "name": "제주돌문화공원 존자암지부도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "입력 장소명은 제주돌문화공원에 소속된 ‘존자암지부도’라는 개별 전시·시설 단위를 가리킨다. 제주관광공사는 제주돌문화공원을 박물관이자 생태공원으로 소개하고, 국가유산포털은 원래 존자암지세존사리탑의 소재지를 서귀포시 하원동 존자암지 경내로 기록한다. 따라서 이 Kakao 항목은 독립 여행지로 벡터화하지 않고 제주돌문화공원 방문 경험에 종속된 시설로 처리한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력은 ‘제주돌문화공원 존자암지부도’라는 명칭만 제공한다. 명칭상 제주돌문화공원 내 개별 시설·전시 항목이며, 원래 존자암지세존사리탑은 별도의 서귀포시 존자암지 경내 국가유산으로 기록된다.",
+    "typical_visit": "제주돌문화공원은 제주 돌문화를 다루는 박물관·생태공원으로 안내된다. 이 레코드는 그 공원의 개별 부도 항목이므로 독립 방문지보다 공원 관람의 일부로 이해하는 것이 적절하다.",
+    "experience_scope": "공개 입력에는 이 항목의 별도 운영, 입장, 접근성 또는 독립 관람 동선이 없다. 부모 공원과 분리한 추천 점수는 중복 추천을 만들 수 있으므로 생성하지 않는다. Kakao 평점·후기 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘제주돌문화공원 존자암지부도’이며, 제주돌문화공원을 접두어로 포함한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사는 제주돌문화공원을 제주 돌문화를 보여주는 박물관이자 생태공원으로 소개한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "국가유산포털은 존자암지세존사리탑의 소재지를 제주 서귀포시 하원동 산1-1번지 존자암지 경내로 기록한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 항목이 제주돌문화공원 안의 어떤 전시물·복제품·안내 지점을 정확히 가리키는지 공식 공원 자료로 확인하지 못했다.",
+      "이 항목의 별도 운영시간, 입장 조건, 접근성 및 독립 관람 가능 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17560164",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주돌문화공원 존자암지부도’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사",
+        "type": "official_tourism_site",
+        "url": "https://visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원을 제주 돌문화를 종합적·체계적으로 보여주는 박물관이자 생태공원으로 소개한다.",
+          "부지는 제주시 조천읍 남조로 2023으로 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "국가유산청",
+        "type": "official_heritage_portal",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2113900170000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "존자암지세존사리탑은 제주특별자치도 유형문화유산으로 분류된다.",
+          "소재지는 제주 서귀포시 하원동 산1-1번지 존자암지 경내로 기록된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주돌문화공원에 소속된 개별 부도 항목으로 보이며 독립 여행지 범위와 별도 방문 조건이 확인되지 않음",
+      "status": "confirmed",
+      "action": "부모 장소인 제주돌문화공원과 분리해 추천하거나 점수화하지 않는다. 공원 내 정확한 전시물 신원이 필요하면 공원 공식 안내로 재확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

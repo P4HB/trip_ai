@@ -1,0 +1,660 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "975873140",
+  "canonical_id": "kakao:975873140",
+  "name": "한라산국립공원 _어리목2",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 한라산국립공원 어리목 탐방안내소에서 출발하는 어리목 탐방로를 가리킨다. 공식 탐방 안내에 독립적인 출발지와 6.8km 탐방 구간이 명시되어 있어 방문 가능한 자연 탐방지로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내는 어리목 탐방로가 한라산국립공원 탐방안내소에서 시작해 사제비동산·윗세오름 등을 지나는 산악 탐방로라고 명시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-MOUNTAIN-TRAIL-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 대표 경험은 한라산 고지대 탐방로 보행이며 해안·해양 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "어리목에서 남벽분기점까지 총 6.8km, 편도 약 3시간의 탐방로로 공개되어 등산·보행 활동이 핵심이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "한라산의 자연 경관과 탐방로가 핵심으로 확인되며 문화유산 해설·전시가 주된 방문 경험이라는 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내는 자연 탐방로를 설명하며 놀이·동물·전시 중심의 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "한라산 탐방로 출발지로 확인되며 시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 탐방로로 안내될 뿐 특정 기간 축제나 공연이 장소의 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 동선은 탐방안내소에서 계곡·동산·대피소를 잇는 야외 산악 탐방로로 설명된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 탐방 시스템은 탐방로별 입산시간을 운영하고 기상·현장 상황에 따른 탐방 제한 안내를 제공하므로 야외 경험의 날씨 민감도가 높다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 산악 경관을 걷는 탐방로이나 편도 약 3시간의 보행이 필요해 휴식 중심 체류인지 여부는 중간값으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-NATURE-TRAIL-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 6.8km·편도 약 3시간 산악 탐방로라는 정보로 보행 부담은 예상되나, 구간별 경사와 무장애 접근성은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-TRAIL-WALKING-BURDEN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전체 탐방 시간은 공개됐지만 이 Kakao 표식에서의 단축 동선과 단독 체류시간은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내는 어리목 탐방로가 고지대 계곡·사제비동산·만세동산·윗세오름을 지나는 한라산 탐방 경험임을 명시한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-MOUNTAIN-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산국립공원의 어리목에서 시작해 윗세오름과 남벽분기점으로 이어지는 특정 산악 탐방 경로가 직접 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-ROUTE-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주특별자치도가 관리하는 한라산국립공원 내 어리목 탐방로로, 제주 화산지형과 지역 자연환경에 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-NATURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산국립공원은 제주를 대표하는 산악 자연명소이며, 어리목은 그 공식 탐방로의 출발지로 안내된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-REGIONAL-LANDMARK-DIRECT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "고지대 산악 경관을 지나는 탐방로인 점은 확인되지만 사진 촬영이 공식적으로 핵심 활동으로 제시됐는지는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SCENERY-VISUAL-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 탐방에 필요한 현행 안전관리·통신·동행 권고 정보는 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 편의와 실제 동선 난이도 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 이용 편의와 안전관리 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "편도 약 3시간의 산악 탐방로로 공개되어 아동에게는 보행 부담이 있을 수 있으나 연령별 제한과 실제 난이도는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-LONG-TRAIL-CONTEXT"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "6.8km 산악 탐방로라는 정보로 고령 방문자에게 보행 부담이 예상되지만 경사·계단·휴식시설은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-LONG-TRAIL-CONTEXT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·통제와 계절 절정 정보가 이 표식에 대해 확인되지 않아 야외 산악 탐방의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "mountain_trail_access_and_weather_conditions",
+      "applies_to": "all_visitors",
+      "condition": "어리목 탐방로는 야외 산악 코스이며 입산시간과 기상·현장 상황에 따른 탐방 제한이 있을 수 있다. 현재 개방 여부와 구간 통제, 필요한 장비·안전 조건은 이 라벨에서 확정하지 않는다.",
+      "status": "needs_review",
+      "action": "방문 전 한라산 탐방 예약·안내 시스템에서 어리목 탐방로의 당일 입산 가능 시간, 통제, 기상 및 안전 공지를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명 ‘한라산국립공원 _어리목2’는 한라산국립공원 어리목 탐방안내소에서 출발하는 어리목 탐방로 표식을 가리키는 것으로 판단했다. Kakao의 접미사 ‘2’가 별도 시설을 뜻하는지는 공식 출처에서 확인되지 않았다.",
+    "facts": [
+      {
+        "text": "한라산 탐방 예약시스템은 어리목 탐방로가 해발 970m 한라산국립공원 탐방안내소에서 시작해 어리목계곡·사제비동산·만세동산·윗세오름대피소·남벽분기점까지 총 6.8km, 편도 약 3시간이라고 안내한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주 관광 안내는 어리목 코스를 한라산국립공원 탐방안내소에서 시작하는 겨울 산행·트레킹 코스로 소개한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "공공 탐방 데이터는 어리목을 탐방로 입구로 구분하고 입산 제한시간 정보를 제공한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식 접미사 ‘2’의 정확한 지도상 범위와 별도 시설 여부",
+      "현행 일자별 입산·통제 상태와 구간별 경사·계단",
+      "화장실·휴식시설·무장애 접근성과 동행자별 안전 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라산 탐방 예약시스템",
+        "type": "official",
+        "url": "https://visithalla.jeju.go.kr/contents/contents.do?id=7",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "어리목 탐방로의 출발지, 주요 경유지, 6.8km 거리와 약 3시간 소요를 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju",
+        "type": "public_travel_information",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_000000000021690&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "어리목 코스가 한라산국립공원 탐방안내소에서 시작하는 산악 트레킹 코스임을 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "공공데이터포털",
+        "type": "public_data",
+        "url": "https://www.data.go.kr/dataset/3084205/fileData.do?lang=ko",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라산 탐방로별 입산 제한시간 데이터의 대상에 어리목 탐방로 입구가 포함된다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:305903187",
+  "place_id": "305903187",
+  "name": "영모원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주4·3평화재단과 제주다크투어가 제주시 애월읍 하귀리의 영모원을 항일독립운동가·4·3 희생자·전몰장병 등을 추모하기 위해 조성한 별도 역사 현장으로 안내한다. 독립적인 추모·역사 이해 방문 목적이 확인돼 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "영모원은 제주시 애월읍 하귀1리 1130-1에 조성된 항일운동가, 제주4·3 희생자 및 전몰장병 등을 위한 추모 공간이다.",
+    "typical_visit": "위령비와 추모 공간을 찾아 제주4·3과 지역의 화해·상생의 역사를 기억하고 조용히 참배하는 야외 역사 방문이다.",
+    "experience_scope": "공개 출처는 영모원의 역사적 성격과 위치를 확인한다. 최신 개방 시간, 주차·화장실, 경사·노면, 무장애 접근성 및 현장 안전시설은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주4·3평화재단은 영모원이 하귀리에 있으며 항일독립운동가, 한국전쟁 전몰장병과 4·3 희생자들을 한곳에 모신 곳이라고 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주다크투어는 영모원이 2003년 주민들이 조성한 제주4·3 역사 현장이고, 제주시 애월읍 하귀1리 1130-1의 야외 동산에 위치한다고 안내한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["최신 개방 여부와 이용 시간은 확인하지 못했다.","주차, 화장실, 쉼터, 노면·경사·계단 및 무장애 접근성은 확인하지 못했다.","악천후 시 현장 보행 안전과 행사일 접근 제한 여부는 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주4·3평화재단","type":"official_foundation_page","url":"https://jeju43peace.or.kr/kor/BBSMSTR_000000000032/6255/view.do","checked_at":"2026-08-24","facts":["하귀리 소재 영모원에서 위령제가 열린다고 안내한다.","영모원은 항일독립운동가, 한국전쟁 전몰장병, 4·3 희생자들을 한곳에 모신 추모 공간이라고 설명한다."]},
+      {"id":"S2","publisher":"(사)제주다크투어","type":"historical_site_page","url":"https://www.jejudarktours.org/ko/historical-sites/youngmowon/","checked_at":"2026-08-24","facts":["영모원은 2003년 주민들이 조성한 제주4·3 역사 현장이다.","주소는 제주시 애월읍 하귀1리 1130-1이며 상귀 교차로 남서쪽 동산으로 안내한다.","항일운동가·4·3 희생자·호국영령을 함께 추모하기 위해 조성했다고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"동산의 야외 역사 현장으로 안내되지만 산·오름 경관 자체가 핵심이라는 근거는 부족하다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 동산의 추모 공간을 걷는 방문으로 보이나 레포츠·참여형 활동이 핵심이라는 근거는 없다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 재단과 역사 현장 안내가 항일운동·제주4·3·전몰장병 추모의 역사적 의미를 직접 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"위령제 개최는 확인되지만 특정 기간성 행사가 이 장소의 일반 방문 핵심이라는 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 동산의 역사 현장으로 안내돼 대표 경험의 실내 비율은 낮게 추론한다. 부속 실내공간은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 동산의 추모 공간 참배이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동산 접근의 경사·계단·노면과 무장애 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선·소요시간·체류 시설 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 방문 가치라고 직접 설명한 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"서로 다른 역사적 희생자들을 한곳에 모셔 추모하고 화해·상생의 뜻을 담았다는 안내가 고유한 구성을 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"하귀리 주민들이 지역의 항일운동·제주4·3·전몰장병 기억을 위해 조성한 장소라는 안내가 제주 지역사와의 직접 연결을 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사 현장임은 확인되나 제주 또는 지역을 대표하는 상징 명소라는 공적 지정·비교 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 추모 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 추모 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 추모 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 추모 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 추모 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 시간, 주차·화장실, 동산 접근로의 경사·노면·계단, 무장애 시설 및 악천후 안전 통제는 공개 출처에서 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내로 개방 여부와 접근·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

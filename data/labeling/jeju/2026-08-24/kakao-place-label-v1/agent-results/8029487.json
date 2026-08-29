@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8029487",
+  "place_id": "8029487",
+  "name": "우지연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털이 우지연대(牛池煙臺)를 제주특별자치도 기념물로, 제주시 한림읍 귀덕2리 3977번지의 독립 유산으로 기록한다. 입력 장소명과 일치하며 다른 시설의 부속물이라는 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "우지연대(牛池煙臺)는 제주시 한림읍 귀덕2리에 있는 제주특별자치도 기념물 연대 유적이다.",
+    "typical_visit": "등록된 역사유적을 짧게 살펴보는 야외 문화·역사 방문으로 보이나, 현재 관람 동선과 운영 정보는 확인하지 못했다.",
+    "experience_scope": "국가유산으로 별도 등록된 장소이며, 실내 전시·체험·상업 시설 또는 최신 편의시설 운영은 조사 출처에서 확인되지 않았다.",
+    "facts": [
+      {"id":"F1","text":"국가유산포털 검색 결과는 우지연대(牛池煙臺)를 제주특별자치도 기념물로 표시하고 소재지를 제주 제주시 한림읍 귀덕2리 3977번지로 안내한다.","source_ids":["S1"]}
+    ],
+    "unknowns": [
+      "현재 출입 가능 여부, 개방 시간, 관람 동선, 주차·화장실·무장애 접근성은 공식 최신 안내로 확인하지 못했다.",
+      "현장 노면, 조명, 계절별 기상 안전, 실제 체류 시간과 혼잡도는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"국가유산청 국가유산포털","type":"public_cultural_heritage","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=23%2C00230600%2C50","checked_at":"2026-08-24T12:00:00+09:00","facts":["우지연대(牛池煙臺)는 제주특별자치도 기념물이다.","소재지는 제주 제주시 한림읍 귀덕2리 3977번지로 기록되어 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 탐방이 대표 경험이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 경관 또는 해양 활동이 핵심 방문 경험이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.culture_history":{"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털이 우지연대를 제주특별자치도 기념물로 직접 기록하므로 역사·문화유산 관람이 장소의 핵심이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 운영 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립적인 방문 목적이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 기능이나 상거래 방문 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내 관람 공간의 유무와 대표 경험에서의 비율을 확인하지 못해 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기상에 대한 실제 관람 영향과 보호 시설 정보를 확인하지 못해 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 공간 또는 느린 체류를 뒷받침하는 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"진입 동선, 노면, 계단 및 무장애 접근 정보를 확인하지 못해 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 소요시간·개방시간·복수 동선 정보가 없어 체류시간 조절성은 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 핵심 방문 가치라는 직접 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"고유 명칭으로 개별 등록된 제주특별자치도 기념물이라는 사실은 구별되는 역사유산 경험을 뒷받침하지만, 현장 해설·구성은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 한림읍 귀덕2리에 소재한 제주특별자치도 기념물로 직접 등록되어 제주 지역 역사와 연결된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기념물 지정은 확인되지만 해당 지역을 대표하는 관광 랜드마크라는 평가는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영이 대표 방문 가치라는 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"독립 역사유적이나 실제 접근·안전 조건이 확인되지 않아 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유적 관람은 가능하나 편의시설·체류 경험 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행 관람 외 단체 활동 근거가 없어 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사유적 관람은 가능할 수 있으나 현장 안전·접근 정보가 없어 적합도를 단정하지 않는다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이동 거리·노면·휴식시설 정보가 없어 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태를 확인하지 못해 일반 계절 휴리스틱의 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"현재 출입·개방 여부, 접근로·노면, 주차·화장실 및 무장애 시설과 악천후 안전 통제는 공식 출처에서 확인되지 않았다.","status":"needs_review","action":"방문 전 국가유산 또는 현장 최신 안내로 출입 가능 여부, 보행 조건 및 기상 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

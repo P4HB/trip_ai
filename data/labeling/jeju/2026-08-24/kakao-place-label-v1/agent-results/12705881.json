@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12705881",
+  "place_id": "12705881",
+  "name": "함덕연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털이 함덕연대를 제주시 조천읍 함덕리의 제주특별자치도 기념물 봉수 유적으로 별도 등록한다. 장소명이 등록 유산명과 일치하므로 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "함덕연대는 제주시 조천읍 함덕리 2152-1번지에 있는 제주특별자치도 기념물 봉수 통신 유적이다.",
+    "typical_visit": "남아 있는 해안 방어·통신 유적을 짧게 둘러보며 제주 지역의 역사적 경관을 살피는 야외 문화유산 방문이다.",
+    "experience_scope": "국가유산의 종류·지정·소재지는 확인했으나 최신 개방 여부, 현장 출입 동선, 주차·화장실·무장애 시설, 안내 해설과 보존 상태는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"국가유산포털은 함덕연대를 제주특별자치도 기념물로 등록하고, 분류를 유적건조물·교통통신·통신·봉수로 제시한다.","source_ids":["S1"]},
+      {"id":"F2","text":"국가유산포털은 소재지를 제주 제주시 조천읍 함덕리 2152-1번지, 수량을 1기로 제시하며 지정일은 1996년 7월 18일이다.","source_ids":["S1"]},
+      {"id":"F3","text":"제주 향토문화유적 소개 검색 결과는 함덕연대가 조천진 소속 연대였고 제주대학교 해양연구소 안에 있다고 설명한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["최신 일반인 출입 가능 여부와 운영·개방 시간", "현장 보행 동선, 노면, 계단, 주차와 화장실", "훼손·정비 상태 및 해설·안내 제공 여부"],
+    "sources": [
+      {"id":"S1","publisher":"국가유산청 국가유산포털","type":"official_heritage_page","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2333900231400","checked_at":"2026-08-25","facts":["함덕연대는 제주특별자치도 기념물이다.","유적건조물·교통통신·통신·봉수로 분류된다.","소재지는 제주시 조천읍 함덕리 2152-1번지이며 수량은 1기다."]},
+      {"id":"S2","publisher":"똑똑장소찾기 제주 향토문화유적 소개","type":"secondary_culture_reference","url":"https://dokdokplace.kr/folkculturesites/jeju/jeju-si/","checked_at":"2026-08-25","facts":["검색 결과는 함덕연대를 조천진 소속 연대로 설명한다.","검색 결과는 제주대학교 해양연구소 안에 있다고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 방어 통신 유적이라는 성격은 확인되지만 바다·해양 활동 자체가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 국가유산 등록이 이 장소를 제주특별자치도 기념물인 봉수 통신 유적으로 분류한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"건축 유적을 현장에서 보는 대표 경험으로 확인돼 실내 비율은 낮게 추론하나 현장 시설은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 유적을 둘러보는 경험으로 추론되어 비·바람·더위·추위의 영향을 비교적 크게 받는다. 실제 현장 여건은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음·체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단·무장애 접근성과 실제 출입 동선 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유적 관람 시간과 해설·주변 체류 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 방문 가치라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"별도 지정된 제주 해안 봉수 통신 유적 1기를 보존한 장소라는 공식 분류를 근거로 고유 경험 비중을 높게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"제주특별자치도 기념물로 지정된 조천진 소속 봉수 통신 유적이라는 근거로 제주 지역 역사와의 연결이 높다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화재 지정은 확인됐으나 제주 또는 해당 지역을 대표하는 명소·상징이라는 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 접근 조건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 안전시설·노면·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"국가유산 소재지는 확인됐지만 최신 일반인 출입 가능 여부, 연구소 부지 출입 동선, 노면·계단, 주차·화장실 및 무장애 시설은 확인하지 못했다.","status":"needs_review","action":"방문 전 국가유산포털·관리기관 또는 현장 최신 안내로 출입 가능 여부와 보행 안전·편의시설을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

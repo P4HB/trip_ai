@@ -1,0 +1,766 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:779604763",
+  "place_id": "779604763",
+  "name": "왕벚꽃거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주관광공사 Visit Jeju가 애월읍 장전리 왕벚꽃거리를 별도 관광지로 안내하고, 입력 Kakao 공개 후기 역시 서부 지역의 벚꽃·야간 조명·축제를 언급한다. 입력명에는 장전리 지명이 빠져 있어 동일성에 일부 검수 여지는 있으나, 독립 방문 가능한 거리로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "왕벚꽃거리는 제주시 애월읍 장전리 광상로 403 일대의 벚나무 거리로, Visit Jeju가 장전리 왕벚꽃거리로 안내하는 야외 관광지다.",
+    "typical_visit": "봄철 벚꽃길을 걷고 경관과 야간 조명을 감상하며, 축제 개최 시 트레킹·전통문화 체험 등 프로그램을 이용하는 야외 방문이다.",
+    "experience_scope": "공식 관광 페이지는 위치, 벚꽃거리와 축제·트레킹·야간 조명을 확인한다. 정확한 Kakao 핀 좌표, 최신 개화·축제 일정, 차량 통제, 주차, 보행로 상태, 무장애 접근성과 안전시설은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 장전리 왕벚꽃거리를 제주시 애월읍 광상로 403의 관광지로 안내하며, 벚꽃 만개 무렵 매년 제주왕벚꽃축제가 열린다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 장전리 왕벚꽃거리 축제에 전통문화 체험과 벚꽃길 트레킹 프로그램이 있고, 조명을 감싼 벚나무 때문에 밤에도 아름답다고 안내한다. 입력 Kakao 공개 후기도 벚꽃·조명·축제와 차량이 다니는 도로라는 방문 경험을 언급한다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 핀이 공식 페이지의 장전리 왕벚꽃거리와 정확히 같은 좌표인지 확인하지 못했다.",
+      "최신 벚꽃 개화, 축제 일정·운영, 교통 통제와 주차 조건을 확인하지 못했다.",
+      "보행로 폭·경사·노면, 화장실·쉼터, 유모차·휠체어 접근성과 악천후 안전 통제를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021894",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장전리 왕벚꽃거리는 제주시 애월읍 광상로 403에 안내된다.",
+          "벚꽃 만개 무렵 매년 제주왕벚꽃축제가 열리며, 봄꽃·걷기/등산·경관/포토·커플·도보여행 태그가 제시된다.",
+          "축제에는 전통문화 체험과 벚꽃길 트레킹 프로그램이 마련되며, 조명을 감싼 벚나무 때문에 밤에도 아름답다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/779604763",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 공개 후기는 벚꽃, 야간 조명 및 축제를 언급한다.",
+          "입력된 공개 후기는 이 장소가 차량이 다니는 도로이며 관람 시 주의가 필요하다고 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 벚꽃길 트레킹은 참여형 보행 경험을 뒷받침하지만 레포츠가 핵심이라는 근거는 없어 중간값으로 제한한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화유산·예술 전시가 핵심 방문 목적이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·커피·디저트 이용이 독립적인 핵심 목적이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 벚꽃 만개 무렵 매년 제주왕벚꽃축제가 열린다고 직접 설명한다. 축제 외에는 벚꽃길 방문이므로 1은 부여하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 벚꽃거리·트레킹·야간 조명 감상은 야외 경험으로 파악된다. 부대 실내공간의 비율은 확인하지 못해 낮은 값으로 제한한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 벚꽃길 걷기와 경관 감상이고 만개 시점에 축제가 열려 비·바람과 개화 상태의 영향을 비교적 크게 받을 것으로 추론한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식시설, 혼잡도와 소음 수준에 대한 신뢰할 만한 근거가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행로의 경사·폭·노면, 계단과 무장애 접근성 정보가 없어 이동 부담을 판단하지 않고 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "거리 산책과 축제 프로그램을 함께 안내하므로 짧은 산책부터 프로그램 포함 체류까지 조절할 여지가 있다고 추론한다. 구간 길이·운영시간은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 벚꽃거리의 봄꽃 경관과 조명을 감싼 벚나무의 야간 아름다움을 직접 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장전리의 왕벚꽃거리에서 열리는 연례 축제와 벚꽃길·야간 조명 조합은 구별되는 경험을 뒷받침한다. 다른 벚꽃 명소와의 체계 비교는 없어 0.75로 제한한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "애월읍 장전리에서 매년 열리는 제주왕벚꽃축제와 지역 벚꽃길이라는 직접 근거가 제주 지역성과의 연결을 뒷받침한다. 지역 생산자·생활문화 참여 범위는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 또는 애월을 대표하는 상징 명소라는 공적 지정·비교 안내를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 경관/포토 태그를 제시하고 야간 조명을 감싼 벚나무가 아름답다고 직접 안내한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 방문의 안전·동선·휴식 여건 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광 안내가 커플 태그와 벚꽃·야간 조명 경관을 제시해 둘이 걷는 방문 적합도를 비교적 높게 추론한다. 혼잡·교통 여건은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "여러 명 방문의 수용·안전·동선 여건이 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 차량 분리, 보행로·화장실·안전시설 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행 난이도, 쉼터와 무장애 접근성 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내가 벚꽃 만개 무렵 축제가 열린다고 설명해 봄철 대표 경험 적합도를 높게 추론한다. 실제 개화·축제 날짜는 매년 달라 최신 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내가 벚꽃 만개 무렵 축제가 열린다고 설명해 봄철 대표 경험 적합도를 높게 추론한다. 실제 개화·축제 날짜는 매년 달라 최신 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "벚꽃 대표 시기는 아니지만 거리 자체의 방문 가능 여부를 배제할 근거는 없어 일반 야외 방문의 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "seasonal_bloom_and_event_confirmation",
+      "applies_to": "all_visitors",
+      "condition": "대표 경험은 벚꽃 만개와 축제 운영에 의존하지만 최신 개화 상태와 행사 일정은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "출발 전 제주관광공사 또는 행사 주최 측의 최신 개화·축제 일정과 운영 공지를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    },
+    {
+      "kind": "road_traffic_and_accessibility_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 공개 후기는 차량이 다니는 도로라고 언급하며, 차량 통제·보행로·주차·무장애 접근성과 악천후 안전 통제는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 교통·주차·보행 안전과 동반자별 접근성을 최신 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

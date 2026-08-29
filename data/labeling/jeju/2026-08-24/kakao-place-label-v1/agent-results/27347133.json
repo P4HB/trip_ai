@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27347133",
+  "place_id": "27347133",
+  "name": "두령여",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "입력명 두령여는 제주시 추자면 예초리에서 북동쪽 약 4.5km 떨어진 영흥리 산 64의 바위섬(두령이·두령서)으로 확인된다. 공공 여행 안내와 지역 언론은 이를 추자도 주변의 섬 이름·무인 바위섬으로 소개하지만, 일반 여행객을 위한 독립 관람·체험 장소, 정기 접근 수단 또는 안전 관리·개방 안내는 확인되지 않았다. 따라서 일반 여행 추천의 독립 방문 장소 벡터 대상이 아닌 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "두령여는 두령이·두령서로도 불리는 추자면 영흥리 인근의 바위섬이다.",
+    "typical_visit": "공개 자료는 두령여를 추자도 주변의 무인도서·바위섬 및 어장 맥락으로 설명하며, 일반 관광객 대상의 상시 관람·체험 운영은 확인하지 못했다.",
+    "experience_scope": "장소 신원과 해상 바위섬이라는 성격은 확인됐으나, 독립 여행지로서의 합법적 접근, 선착·승선, 보행 동선, 안전 시설과 운영 안내가 확인되지 않았다. 본 라벨링의 일반 여행 방문 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주일보는 두령여를 추자면 예초리에서 북동쪽 약 4.5km 떨어진 바위섬으로, 행정구역상 제주시 추자면 영흥리 산 64이며 두령이 또는 두령여로 부른다고 보도했다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 대한민국 구석구석의 추자도 여행 기사는 두령여를 추자도 주변의 섬 이름 가운데 하나로 열거한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 합법적 상륙 가능 여부, 정기 운항·승선 방법, 허가 조건 및 현장 접근 경로를 확인하지 못했다.",
+      "선착시설, 보행 동선, 난간·구명 설비, 통신·구조 체계와 날씨·파고에 따른 통제 기준을 확인하지 못했다.",
+      "관광객 대상의 상시 개방, 관람 프로그램, 운영 주체의 최신 방문 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주일보",
+        "type": "reputable_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2137599",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "두령여를 추자면 예초리에서 북동쪽 약 4.5km 떨어진 바위섬으로 소개한다.",
+          "행정구역상 제주시 추자면 영흥리 산 64이며 두령이 또는 두령여로 부른다고 설명한다.",
+          "섬 전체가 바위로 이뤄졌고 우럭여라는 별칭도 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=25d13c9e-fcf4-4834-842f-4d21d64ec435",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 주변 섬 이름으로 두령여를 열거한다.",
+          "추자도 여행의 여객선 교통과 마을 내 탐방 정보를 소개하지만 두령여의 일반 상륙·관람 운영은 제시하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/27347133",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 두령여다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "uninhabited_rocky_islet_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "두령여는 해상 바위섬으로 확인됐지만 일반 방문객의 상륙 가능 여부, 운항·접근 방법, 기상·파고에 따른 통제 및 현장 안전 관리가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공공기관 또는 관리 주체의 일반 방문·안전 안내가 확인되면 접근 가능성과 운영 조건을 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

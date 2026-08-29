@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8679274",
+  "place_id": "8679274",
+  "name": "검은들먹오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 공개 후기는 검은들먹오름을 이동 중 잠시 들르는 오름으로 언급하지만, 안내된 트레킹 경로가 사유지를 통과하고 해당 통과가 불가능하다고 명시한다. 일반 방문객이 합법적·안전하게 이용할 수 있는 공식 탐방로, 개방 운영 또는 독립 방문지 안내를 공개 신뢰 출처에서 확인하지 못했으므로, 접근이 검증되지 않은 자연 지형을 추천용 완전 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소는 ‘검은들먹오름’이라는 명칭의 자연 지형 표식이다. 제공된 공개 방문 후기는 비타민 농장과 한대오름 사이의 오름으로 언급하지만, 행정 위치·공식 관리 주체·공식 표기와의 교차 확인은 하지 못했다.",
+    "typical_visit": "확인 가능한 공개 후기 범위에서는 주변 이동 중 잠시 쉬어가는 야외 지점으로만 언급된다. 일반 방문객에게 허용된 독립 탐방 경험이나 공식 이용 동선은 확인되지 않았다.",
+    "experience_scope": "입력 공개 후기는 트레킹 앱의 경로가 사유지를 통과하며 그 통과가 불가능하다고 명시한다. 공식·공공 출처에서 일반 방문객의 합법적 접근, 탐방로, 안전관리 또는 관광 운영을 확인하지 못했으므로 이번 독립 방문 장소 추천용 41축 벡터 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 8679274의 장소명을 ‘검은들먹오름’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 제공된 Kakao 공개 방문 후기는 검은들먹오름을 비타민 농장과 한대오름 사이의 오름으로 언급하고, 트레킹 앱 경로가 사유지를 통과하며 그 통과가 불가능하다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 또는 공공 출처에서 검은들먹오름의 행정 위치, 관리 주체, 지형 정보와 Kakao 표식의 정확한 동일성을 확인하지 못했다.",
+      "일반 방문객에게 허용된 합법적 접근로, 탐방로, 개방 여부, 사유지 통과 대체 동선 및 최신 출입 제한을 확인하지 못했다.",
+      "주차, 화장실, 쉼터, 노면·경사·계단, 무장애 접근성, 기상·안전 통제와 구조 지원 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8679274",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘검은들먹오름’이다.",
+          "평점과 후기 수는 라벨값의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/8679274",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력에 제공된 공개 후기는 비타민 농장에서 한대오름으로 가는 중간의 오름이라고 언급한다.",
+          "입력에 제공된 공개 후기는 정상 조망이 없고 잠시 쉬어가는 정도라고 언급한다.",
+          "입력에 제공된 공개 후기는 트레킹 앱의 경로가 사유지를 통과하며 해당 통과가 불가능하다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_unverified_private_land_route",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 공개 후기가 제시한 트레킹 경로는 사유지 통과가 불가능하다고 설명하며, 일반 방문객에게 허용된 대체 접근로·공식 개방·안전 동선은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 주체 또는 공공 관광·등산 안내에서 일반 탐방객의 합법적 접근과 안전한 공식 동선이 확인되면 적격성을 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

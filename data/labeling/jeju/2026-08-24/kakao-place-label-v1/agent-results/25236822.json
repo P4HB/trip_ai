@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25236822",
+  "canonical_id": "kakao:25236822",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공공 문화자료가 추자도 묵리고개를 마을 사이를 잇는 고갯길이자 바다 경관과 유배 역사로 방문되는 장소로 설명한다.",
+    "source_ids": ["src-1", "src-2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"묵리고개는 마을 사이를 잇는 고갯길로 소개된다.","source_ids":["src-1","src-2"],"rule_ids":["THEME-PASS"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"고개에서 푸른 바다와 여러 섬·포구가 펼쳐지는 경관이 직접 설명된다.","source_ids":["src-1"],"rule_ids":["THEME-SEA-VIEW"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"고개를 넘는 보행 경험이 장소 방문의 일부이나 별도 레포츠 시설은 확인되지 않았다.","source_ids":["src-1","src-2"],"rule_ids":["THEME-WALKING"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"자료는 묵리고개 일대에 유배와 삼별초 관련 이야기가 전한다고 설명한다.","source_ids":["src-1"],"rule_ids":["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 뒷받침하는 공개 근거를 찾지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-FACILITY-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용이 이 고개의 독립적 방문 목적이라는 근거를 찾지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 장소라는 공개 근거를 찾지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 기간 축제가 장소의 핵심이라는 근거를 찾지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고갯길·경관 자료 외에 대표 경험의 실내 비중을 정량화할 근거가 부족하다.","source_ids":["src-1"],"rule_ids":["FALLBACK-INDOOR-RATIO"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 고갯길 보행과 바다 조망이므로 야외 날씨의 영향을 받을 가능성이 높다.","source_ids":["src-1","src-2"],"rule_ids":["ENV-OUTDOOR-VIEW"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"바다·섬 경관 감상이 가능하나 휴식 시설이나 체류 방식은 확인되지 않았다.","source_ids":["src-1"],"rule_ids":["STYLE-SCENIC-PAUSE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"길이 정비되어 사람들이 넘기 좋다고 하나, 자료는 묵리고갯길을 꽤 험한 길로도 설명한다.","source_ids":["src-1"],"rule_ids":["STYLE-MAINTAINED-BUT-RUGGED"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상과 통과 보행 외의 체류 선택지를 확인할 수 없어 중간값으로 보류한다.","source_ids":["src-1"],"rule_ids":["FALLBACK-DURATION"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료가 고개에서 바다·섬·포구와 일몰 경관이 펼쳐진다고 직접 설명한다.","source_ids":["src-1"],"rule_ids":["STYLE-DIRECT-SCENERY"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"추자도의 섬 조망과 유배 관련 지명이 결합된 고갯길 경험으로 설명된다.","source_ids":["src-1"],"rule_ids":["STYLE-ISLAND-PASS-HISTORY"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"묵리 마을, 추자도의 섬 경관과 지역 유배 서사가 장소 설명의 중심이다.","source_ids":["src-1","src-2"],"rule_ids":["STYLE-LOCAL-LANDSCAPE"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 문화자료와 해양수산부 연안길 자료에 수록됐으나 제주 전역의 대표 상징성은 확인되지 않았다.","source_ids":["src-1","src-2"],"rule_ids":["STYLE-REGIONAL-REFERENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"바다·섬·포구 및 일몰 경관이 설명되지만 촬영 명소라는 직접 표기는 확인되지 않았다.","source_ids":["src-1"],"rule_ids":["STYLE-VISUAL-SCENERY"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"정비된 고갯길과 경관은 개인 보행에 이용될 수 있으나 안전·편의 정보는 미확인이다.","source_ids":["src-1"],"rule_ids":["COMPANION-WALKING-UNKNOWN-AMENITIES"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"바다와 일몰 경관은 동반 감상에 적합할 수 있으나 편의시설은 미확인이다.","source_ids":["src-1"],"rule_ids":["COMPANION-SCENERY"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"고개를 넘는 보행과 경관 감상은 함께 가능하나 단체 수용 정보는 없다.","source_ids":["src-1"],"rule_ids":["COMPANION-WALKING"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"길이 정비됐지만 꽤 험한 고갯길이라는 설명이 있어 보호자 동반·경사 적응 여부 확인이 필요하다.","source_ids":["src-1"],"rule_ids":["COMPANION-RUGGED-TERRAIN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"길이 정비됐지만 고갯길 경사와 휴식·무장애 정보가 미확인이라 개별 보행 능력 확인이 필요하다.","source_ids":["src-1"],"rule_ids":["COMPANION-MOBILITY-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "4":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "5":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "6":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "9":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "10":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 고갯길·해안 조망의 계절 기후 휴리스틱이며 현장 운영 정보는 미확인이다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]}
+  },
+  "hard_constraints": [
+    {"kind":"mobility","applies_to":"고갯길 보행·경사","condition":"자료가 묵리고갯길을 꽤 험한 길로 설명하므로 경사와 보행 부담을 감당할 수 있는지 확인해야 한다.","status":"confirmed","action":"mobility_check","source_ids":["src-1"],"checked_at":"2026-08-25T00:00:00+09:00","rule_ids":["GATE-RUGGED-PASS"]},
+    {"kind":"transport","applies_to":"추자도 입도","condition":"추자도 접근에는 여객선 터미널을 통한 해상 교통이 필요하며, 실제 운항·결항·예약 조건은 방문 전에 확인해야 한다.","status":"unknown","action":"verify_current_ferry_service","source_ids":["src-3"],"checked_at":"2026-08-25T00:00:00+09:00","rule_ids":["GATE-CHUJA-FERRY"]}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "Kakao 명칭 '묵리고개'는 공공 문화자료와 해양수산부 연안길 자료의 추자도 묵리고개와 일치한다.",
+    "summary": "추자도 묵리로 넘어가는 고갯길이며 바다·섬·포구 경관과 유배 역사 맥락이 확인된다.",
+    "sources": [
+      {"id":"src-1","url":"https://ncms.nculture.org/river-n-sea/story/8241","title":"바다 경관이 아름다운 제주의 묵리고개","publisher":"지역N문화","source_type":"public_culture","checked_at":"2026-08-25T00:00:00+09:00","facts":["묵리는 추자도의 마을이며 묵리고갯길은 마을을 잇는 고갯길이다.","길은 꽤 험한 길로 소개되며 고개는 사람들이 넘기 좋게 정비됐다고 설명된다.","고개에서는 바다·섬·포구 및 일몰 경관을 볼 수 있다고 설명된다.","묵리 일대는 유배 관련 서사와 연결돼 소개된다."]},
+      {"id":"src-2","url":"https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=44","title":"해양수산부 연안포털 추자도 연안길","publisher":"해양수산부","source_type":"government","checked_at":"2026-08-25T00:00:00+09:00","facts":["연안길 안내가 묵리로 넘어가는 묵리고개를 경유 지점으로 명시한다."]},
+      {"id":"src-3","url":"https://www.ktriptips.com/kor/tourspot/3557958","title":"상추자항","publisher":"KOREA TRIP TIPS","source_type":"public_tourism","checked_at":"2026-08-25T00:00:00+09:00","facts":["상추자항 여객선 터미널은 제주 본섬과 추자도를 잇는 해상 교통의 중심지로 소개된다."]}
+    ],
+    "unknowns": ["묵리고개의 현재 통행 상태·안전 시설·휴식 및 무장애 편의", "방문일의 여객선 운항·결항·예약 조건", "월별 현장 접근성과 기상 영향"]
+  }
+}

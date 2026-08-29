@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "26920313",
+  "canonical_id": "kakao:26920313",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 1,
+    "rationale": "제주곶자왈도립공원 탐방안내소는 도립공원의 탐방로·전망대·주차장 등과 함께 조성·관리되는 공원 부대시설이다. 공원 공식 1코스도 탐방안내소를 출발·종료 지점으로 표기하므로, 독립 추천 장소가 아니라 제주곶자왈도립공원 방문에 종속된 안내 시설로 처리한다.",
+    "source_ids": [
+      "source_park_course",
+      "source_council_facilities"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility.park_visitor_center",
+      "policy.no_forced_vector"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "parent_destination_required",
+      "rationale": "탐방안내소 자체가 아닌 제주곶자왈도립공원의 탐방 코스·운영 정보를 기준으로 방문을 판단해야 한다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_park_course",
+        "url": "https://jejugotjawal.or.kr/mobile/index.php?page_id=25",
+        "publisher": "제주곶자왈도립공원",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "공원 공식 1코스는 탐방안내소에서 테우리길과 전망대를 거쳐 다시 탐방안내소로 돌아오는 1.8km, 40분 코스로 안내된다.",
+          "탐방안내소는 공원 탐방의 출발·종료 지점으로 제시된다."
+        ]
+      },
+      {
+        "source_id": "source_council_facilities",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a10/A021930.pdf",
+        "publisher": "제주특별자치도의회",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "도립공원 조성사업 2단계에 탐방안내소·곶자왈전망대·생태학습장이 포함됐다고 기록한다.",
+          "탐방안내소·전망대·탐방로·주차장 등을 도립공원 관리청에 기부채납하는 내용이 기록돼 있다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "medium",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

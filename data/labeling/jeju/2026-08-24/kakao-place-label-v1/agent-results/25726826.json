@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726826",
+  "place_id": "25726826",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 제주 관광 정보는 산지천을 동문시장에서 제주항까지 이어지는 제주시 도심의 독립 관광지로 소개하며, 하천을 따른 산책로·공원·문화행사 공간을 확인한다. 입력에는 좌표가 없어 Kakao 표식의 정확한 구간은 특정하지 못했으나, 상점·부속시설이 아닌 독립 장소로 판정한다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-PLACE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "한라산 부근에서 시작한다는 설명은 있으나, 대표 방문 경험은 도심 하천·산책로여서 산악 경관 중심성은 확인되지 않는다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-NONMOUNTAIN-PLACE"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "하류 제주항의 어선·왜가리·갈매기 경관이 소개되지만, 산지천 자체의 핵심 경험을 해양 활동으로 단정할 근거는 부족하다.", "source_ids": ["S2"], "rule_ids": ["THEME-COASTAL-CONNECTION"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "하천을 따라 산책로와 공원이 조성되어 있고 걷기 경험이 관광 정보에 명시된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산지천은 영주십경의 산포조어 장소로 소개되고, 복원 및 지역 생활사와 문화광장·행사 맥락이 확인된다.", "source_ids": ["S2", "S4"], "rule_ids": ["THEME-LOCAL-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 설명은 하천·산책로·공원 및 행사 공간을 다루며 놀이공원형 시설은 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-NON-THEME-PARK"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "주변 상권은 언급되지만 카페·차 이용이 산지천 자체의 독립 방문 목적이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-CAFE-NOT-CORE"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "산지천은 동문시장 옆을 흘러 제주항까지 이어지지만, 하천 자체가 시장 장소는 아니다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-MARKET-ADJACENCY"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "산지천 축제와 여름·겨울 문화행사 개최 이력은 확인되지만, 특정 행사의 현재 개최 여부와 일정은 확인하지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-EVENT-VENUE-DIRECT"]},
+    "environment.indoor_ratio": {"value": 0, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험으로 소개되는 하천, 산책로, 공원, 음악분수는 야외 공간이다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["ENV-OUTDOOR-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 하천변 산책·공원 이용이므로 강수·바람·기온이 방문 경험에 영향을 줄 가능성이 높다. 현장 통제 조건은 확인하지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["ENV-OUTDOOR-WEATHER-INFERENCE"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산지천은 시민과 관광객이 쉴 수 있는 산책로와 문화광장으로 소개되며, 하천 양쪽 산책로에서 경관 감상이 가능하다고 안내된다.", "source_ids": ["S3", "S4"], "rule_ids": ["STYLE-REST-WALKWAY-DIRECT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "하천 좌우에 산책로가 조성된 사실은 확인되지만, 전 구간의 경사·계단·노면·무장애 접근성은 확인되지 않았다.", "source_ids": ["S3"], "rule_ids": ["STYLE-WALKWAY-ACCESS-PARTIAL"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책로·공원·인근 동문시장 및 문화행사 맥락으로 짧은 경유부터 산책 체류까지 조절 가능하다고 추론하나, 권장 체류시간은 확인하지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-DURATION-FLEX-INFERENCE"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주항 쪽 하류의 어선·왜가리·갈매기 경관과 산책로에서 하천 아름다움을 감상할 수 있다는 공식 안내가 있다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "영주십경 산포조어의 장소이며, 도심 복원 하천·산책로·문화광장이라는 결합된 경험이 공공 문화 기록에 확인된다.", "source_ids": ["S4"], "rule_ids": ["STYLE-HISTORIC-WATERWAY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 도심을 관통해 동문시장 옆을 지나 제주항으로 이어지고, 지역 축제와 제주의 역사·생활사가 소개된다.", "source_ids": ["S1", "S4"], "rule_ids": ["STYLE-LOCAL-URBAN-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주를 대표하는 영주십경 중 산포조어의 장소로 소개되고, 제주 공식 관광 정보가 독립 관광지로 수록한다.", "source_ids": ["S1", "S4"], "rule_ids": ["STYLE-REGIONAL-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 정보가 하류의 어선·왜가리·갈매기 경관을 소개하고, 산책로에서 하천 경관을 감상할 수 있다고 안내한다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-PHOTO-SCENERY-DIRECT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "도심 하천 산책로와 공원 경험은 혼자 걷거나 쉬는 방문에 적합할 수 있으나, 야간 안전·혼잡도는 확인하지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["COMPANION-SOLO-WALK-INFERENCE"]},
+    "couple": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "하천변 산책과 항구 경관은 둘이 함께 즐길 수 있는 경험으로 추론되지만, 특정 커플 편의시설은 확인하지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["COMPANION-COUPLE-SCENERY-INFERENCE"]},
+    "friends": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책로·공원·문화행사 공간은 일행 방문에 활용될 수 있으나, 현재 행사 운영은 확인하지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["COMPANION-FRIENDS-EVENT-INFERENCE"]},
+    "kids": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "관광 정보는 여름철 어린이를 포함한 방문과 산책로·공원을 소개한다. 다만 수변 안전시설과 수위 조건은 확인하지 않았다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-KIDS-DIRECT-WITH-SAFETY-REVIEW"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책로가 조성된 점은 부모 동행 가능성을 뒷받침하지만, 전 구간의 휴식시설·경사·무장애 정보가 없어 중립값이다.", "source_ids": ["S3"], "rule_ids": ["COMPANION-PARENTS-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "겨울 행사 이력은 있으나 현재 일정·기상·현장 상태를 확인하지 않아 중립값이다.", "source_ids": ["S2"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "여름 행사 이력은 있으나 현재 일정·기상·현장 상태를 확인하지 않아 중립값이다.", "source_ids": ["S2"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "여름 행사 이력은 있으나 현재 일정·기상·현장 상태를 확인하지 않아 중립값이다.", "source_ids": ["S2"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "여름 행사 이력은 있으나 현재 일정·기상·현장 상태를 확인하지 않아 중립값이다.", "source_ids": ["S2"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·현장 상태를 확인하지 않아 야외 산책지의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "겨울 행사 이력은 있으나 현재 일정·기상·현장 상태를 확인하지 않아 중립값이다.", "source_ids": ["S2"], "rule_ids": ["MONTH-DYNAMIC-UNKNOWN"]}
+  },
+  "review_priority": "high",
+  "hard_constraints": [
+    {"type": "identity_location_precision", "status": "needs_review", "rationale": "입력 패킷에 좌표·주소가 없어 동일명 산지천 가운데 Kakao 표식의 정확한 구간을 특정하지 못했다.", "source_ids": ["S1"], "checked_at": "2026-08-25"},
+    {"type": "weather_water_safety", "status": "needs_review", "rationale": "야외 수변 산책지이나 강수·수위·공사·현장 통제 정보는 조사 시점에 확인하지 않았다.", "source_ids": ["S2", "S3"], "checked_at": "2026-08-25"},
+    {"type": "accessibility", "status": "needs_review", "rationale": "산책로 조성은 확인되지만 경사·계단·화장실·무장애 접근성의 현재 상태는 확인하지 않았다.", "source_ids": ["S3"], "checked_at": "2026-08-25"}
+  ],
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 산지천은 제주 공식 관광 정보에 제주시 건입동의 도심 하천 관광지로 수록된다. 다만 입력에 좌표·주소가 없어 Kakao ID 25726826이 가리키는 정확한 산책 구간은 확인하지 못했다.",
+    "facts": [
+      {"text": "산지천은 한라산 부근에서 제주시 도심을 관통해 동문시장 옆을 지나 제주항까지 이어지는 내천으로 소개된다.", "source_id": "S1"},
+      {"text": "하천 주변에는 산책로·공원·음악분수가 있고, 여름과 겨울 문화행사 및 공연이 열리는 것으로 관광공사 안내에 수록된다.", "source_id": "S2"},
+      {"text": "제주 관광약자접근성안내센터는 산지천 좌우 산책로와 경관 감상 가능성을 안내한다.", "source_id": "S3"},
+      {"text": "공공 문화 기록은 산지천을 영주십경 산포조어의 장소이자 복원된 산책로·문화광장으로 설명한다.", "source_id": "S4"}
+    ],
+    "unknowns": ["Kakao 표식의 정확한 지점과 경로", "현재 행사 일정과 운영 여부", "수변 안전·수위·통제 조건", "전 구간의 무장애 접근성과 편의시설"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020236&menuId=DOM_000001718000000000", "checked_at": "2026-08-25", "facts": ["산지천은 동문시장에서 제주항까지 이어진 제주시 도심 하천으로 소개된다.", "동문시장 옆을 지나 제주항까지 흐르며 산지천 축제의 공간으로 소개된다."]},
+      {"id": "S2", "publisher": "한국관광공사 VISITKOREA", "type": "official_tourism", "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=89958", "checked_at": "2026-08-25", "facts": ["산지천 주변에는 산책로·공원·음악분수가 있다.", "하류 항구의 어선·왜가리·갈매기 경관과 여름·겨울 문화행사·공연을 소개한다."]},
+      {"id": "S3", "publisher": "제주관광약자접근성안내센터 EASYJEJU", "type": "official_accessibility_portal", "url": "https://easyjeju.net/pages.php?no=725&p=tourist", "checked_at": "2026-08-25", "facts": ["제주시내 산지천을 따라 조성된 광장 공원으로 다양한 축제와 행사가 열린다고 안내한다.", "산지천 좌우 산책로에서 경관을 감상할 수 있다고 안내한다."]},
+      {"id": "S4", "publisher": "인문360", "type": "public_culture_record", "url": "https://inmun360.culture.go.kr/content/382.do?cid=2355791&mode=view", "checked_at": "2026-08-25", "facts": ["산지천은 영주십경의 산포조어 장소로 소개된다.", "하천 복원 뒤 산책로와 문화광장으로 탈바꿈한 과정을 기록한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

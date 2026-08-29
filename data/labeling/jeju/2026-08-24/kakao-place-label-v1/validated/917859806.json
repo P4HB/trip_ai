@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "917859806",
+  "canonical_id": "kakao:917859806",
+  "name": "제주향교 고비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력명 ‘제주향교 고비’는 제주향교 경내에 보존된 고비를 가리킨다. 공개 보도는 제주향교 내 고비 6기에 대한 보존 세척을 설명하고, 공개 문화유산 목록은 제주향교 주소의 ‘제주도 고비’ 세부 항목들을 함께 제시한다. 따라서 독립적으로 운영되는 방문지라기보다 제주향교 방문 경험 안의 문화유산 구성 요소로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-COMPLEX-CONSTITUENT"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_site_access_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "고비 자체의 독립 관람 가능 여부와 제주향교 경내의 현재 출입·관람 조건은 조사 출처에서 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 안내에는 제주향교의 최신 개방·출입 정보를 먼저 확인하고, 고비는 독립 목적지가 아닌 경내 구성 요소로 취급한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "Kakao 입력의 장소명은 ‘제주향교 고비’이다. 공개 자료는 제주향교 경내에 보존된 고비들과 제주향교 주소에 속한 제주도 고비 세부 항목을 확인해, 이 표식이 제주향교의 부속 문화유산을 가리키는 것으로 뒷받침한다.",
+    "facts": [
+      {
+        "text": "입력 Kakao 공개 장소 메타데이터의 place_id 917859806 명칭은 ‘제주향교 고비’이다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주문화유산돌봄센터 관련 보도는 제주향교 내에 보존된 향토유형유산 ‘제주도 고비’ 6기에 대한 보존 세척 작업을 설명한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "공개 문화유산 목록은 제주향교를 별도 문화유산으로 소개하고, 용담1동 298-1 제주향교 주소에 속한 ‘제주도 고비’ 세부 항목들을 제시한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 제주향교 경내의 어느 개별 고비 또는 고비 묶음을 가리키는지는 확인하지 못했다.",
+      "고비 자체의 독립 관람·해설 제공 여부와 현재 접근 조건은 확인하지 못했다.",
+      "제주향교의 최신 개방 시간, 행사에 따른 출입 제한, 무장애 접근성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/917859806",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 ‘제주향교 고비’로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주환경일보",
+        "type": "reputable_news",
+        "url": "https://www.newsje.com/news/articleView.html?idxno=306676",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주향교 내 보존된 ‘제주도 고비’ 6기에 보존 세척 작업이 진행됐다고 보도했다.",
+          "고비는 향토유형유산으로 표현된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "똑똑장소찾기",
+        "type": "public_cultural_heritage_information",
+        "url": "https://dokdokplace.kr/folkculturesites/jeju/jeju-si/",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주향교를 제주시 용담동 소재 문화유산으로 소개한다.",
+          "용담1동 298-1 제주향교 주소에 속한 제주도 고비 세부 항목들을 제시한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

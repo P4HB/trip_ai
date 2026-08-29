@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18097562",
+  "place_id": "18097562",
+  "name": "절물자연휴양림 안내데스크",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.98,
+    "rationale": "입력명은 절물자연휴양림의 안내데스크로, 상위 자연휴양림 탐방을 지원하는 안내 시설임을 명시한다. 독립 관광지·체험 장소가 아니므로 별도 추천 후보로 벡터화하지 않는다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION-IDENTIFIED"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 절물자연휴양림 내부의 안내데스크를 가리킨다.",
+    "typical_visit": "절물자연휴양림의 숲 탐방·시설 이용을 위한 정보 및 입장 지원 경험의 일부다.",
+    "experience_scope": "상위 장소 절물자연휴양림의 지원 시설로 판정하여 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력의 공식 장소명은 절물자연휴양림 안내데스크이며, 안내데스크는 휴양림 이용을 지원하는 구성 시설 유형이다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "안내데스크의 현재 운영 시간·제공 서비스",
+      "상위 휴양림의 현장 예약·입장·탐방 통제 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "source_dataset",
+        "url": "https://place.map.kakao.com/18097562",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 절물자연휴양림 안내데스크이다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_recreation_forest_information_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "안내데스크는 절물자연휴양림 이용을 지원하는 구성 시설",
+      "status": "confirmed",
+      "action": "추천에서는 상위 장소 절물자연휴양림으로 통합하고, 운영·예약·입장·안전 정보는 현장 최신 안내를 따른다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

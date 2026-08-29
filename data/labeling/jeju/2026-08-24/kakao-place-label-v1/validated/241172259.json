@@ -1,0 +1,622 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:241172259",
+  "place_id": "241172259",
+  "name": "봉개오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "국회도서관에 공개된 제주특별자치도 마을조사 자료는 봉개오름(봉아름) 일대에 형성된 봉개오름마을과 봉개오름의 이명·한자 표기를 직접 기록한다. Kakao 입력명의 장소와 이 지명·자연지형이 일치하므로 독립 자연 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "봉개오름은 제주시 봉개동의 지명 형성에 연결된 오름으로, 공개 공공 조사자료에서 봉아름·봉개악·붉은오름이라는 표기와 함께 확인된다.",
+    "typical_visit": "확인 가능한 범위의 대표 경험은 제주시 봉개동에 있는 자연 오름을 야외에서 찾는 것이다. 정상·탐방로·경관·운영시설의 세부 내용은 확인하지 못했다.",
+    "experience_scope": "공공 자료는 장소의 지명·지역 맥락을 확인하지만 난이도, 개방 여부, 주차, 화장실, 무장애 동선, 계절 행사와 최신 안전 관리는 확인하지 않는다. Kakao 평점과 후기 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 마을특성 및 실태조사(제주시)는 봉개동의 자연마을로 봉개오름마을을 기록하고, 이를 봉개오름 또는 봉아름 일대에 형성된 마을이라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 공공 조사자료는 봉개오름의 한자차용 표기 봉개악(奉蓋岳)과 붉은오름·적악(赤岳) 표기를 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 레코드는 장소명을 봉개오름으로 제시하며, 제공된 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "최신 출입 가능 여부와 탐방로 상태",
+      "정상 조망, 경관, 사진 촬영 여건",
+      "주차·화장실·휴식시설·무장애 접근성",
+      "계절별 식생·행사·악천후 통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 / 국회도서관",
+        "type": "public_research_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "봉개오름마을은 봉개오름 또는 봉아름 일대에 형성된 마을로 기록된다.",
+          "봉개오름은 봉개악·붉은오름·적악 표기도 가진다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/241172259",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 봉개오름이다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 조사자료가 이 장소를 오름(봉개악)으로 직접 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-MOUNTAIN-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해안·바다·해양 활동이 핵심 경험이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "탐방로, 걷기 거리 또는 참여형 활동이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-ACTIVITY-UNKNOWN"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "마을명과 지명 유래의 역사적 연결은 확인되지만 문화·역사 해설이 핵심 방문 경험인지는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-HISTORY-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설·경험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 이용이 독립적인 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 장소 유형이 자연 오름이므로 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-NATURAL-LANDFORM-OUTDOOR"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 오름의 야외 방문으로 추론되어 날씨의 영향을 비교적 크게 받을 수 있다. 현장 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식 환경·혼잡도·체류 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-STYLE-UNKNOWN"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경사, 계단, 노면, 무장애 동선 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "체류시간과 단축 동선 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경관 또는 조망의 직접 설명을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SCENERY-UNKNOWN"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "봉개악·붉은오름이라는 복수의 지명·표기는 확인되나 다른 오름과 비교한 방문 경험의 고유성은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-PLACE-NAME-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 조사자료는 봉개오름이 봉개오름마을의 형성과 명칭에 직접 연결된 지역 지형임을 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-PLACE-NAME-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 또는 지역을 대표하는 공적 랜드마크라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 또는 시각적 기록 가치의 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 안전·안내·통신 환경 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 체류 환경 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "여러 명 방문의 동선·수용 환경 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 노면·안전시설 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행 난이도·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 방문은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 방문은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 조건이 확인되지 않아 일반 야외 방문의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-CLIMATE"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "최신 출입 가능 여부, 탐방로 노면·경사·계단, 주차·화장실, 무장애 접근성 및 악천후 통제 정보를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 또는 제주시 공식 최신 안내로 개방 여부와 기상·보행 안전을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

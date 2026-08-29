@@ -1,0 +1,745 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1071649168",
+  "place_id": "1071649168",
+  "name": "오소록이동네",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주4·3평화재단이 금악마을 4·3길의 ‘오소록이 동네’로 직접 안내하는 독립 역사·기억 지점이다. 상위 유료시설의 내부 부속물이 아니라 4·3길에서 방문·추모할 수 있는 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "오소록이동네는 제주시 한림읍 금악리의 제주한림 금악마을 4·3길에 안내된, 4·3으로 희생과 폐촌을 겪은 잃어버린 마을 지점이다.",
+    "typical_visit": "야외 4·3길에서 장소의 지명과 1948년의 희생, 남은 빈 집터와 대나무를 읽고 기억하는 역사·추모 중심 방문이다.",
+    "experience_scope": "공식 자료가 역사 지점과 4·3길 맥락은 확인하지만, 최신 출입 동선·편의시설·무장애 접근성·운영 시간은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주4·3평화재단은 제주한림 금악마을 4·3길의 세부 지점으로 ‘오소록이 동네’를 안내하며, ‘오소록하다’ 및 검은매가 사는 곳이라는 지명 뜻을 전한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 재단 안내는 1948년 음력 5월 초하루 이곳에서 많은 주민이 희생됐고, 현재 대나무가 빈 집터를 지킨다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주4·3평화재단은 금악리의 오소록이동네 등을 4·3 뒤 복구되지 못한 잃어버린 마을로 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 항목의 정확한 좌표와 공식 최신 출입 가능 구간은 입력에 없다.",
+      "현장 노면, 주차, 화장실, 조명, 무장애 시설 및 계절별 안전 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주4·3평화재단",
+        "type": "public_history_tourism",
+        "url": "https://jeju43peace.or.kr/kor/sub01_06_01_05.do",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금악마을 4·3길의 오소록이 동네를 안내한다.",
+          "1948년 음력 5월 초하루 많은 주민 희생 및 빈 집터·대나무를 설명한다.",
+          "오소록이동네는 복구되지 못한 잃어버린 마을 중 하나다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "금악리 4·3길 맥락은 확인되지만 산·오름 탐방이 이 지점의 핵심 경험이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 안내에서 해안·해양 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "4·3길의 지점인 사실 외에 레포츠 또는 참여형 체험 운영은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 재단이 4·3 당시 희생과 폐촌, 빈 집터를 직접 기록해 역사·기억이 대표 방문 경험임을 뒷받침한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 운영은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용이 독립 방문 목적인 근거가 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래 기능은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연·기간성 행사가 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 대표 현장은 바람에 흔들리는 대나무와 빈 집터로 묘사된 야외 역사 지점이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 빈 집터와 4·3길 방문이므로 기상 영향을 비교적 받을 것으로 추론하나 실제 동선 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "기억·추모 성격은 확인되나 휴식 시설, 소음, 체류 환경 정보가 없어 중립값으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "접근로·노면·경사·계단·무장애 정보가 없어 보행 부담을 판단할 수 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 소요 시간·개방 시간·탐방 코스 정보가 확인되지 않아 체류시간 조절성은 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "대나무와 빈 집터는 확인되지만 경관 감상 자체가 핵심 가치라는 공식 설명은 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주어 지명 유래와 4·3 희생·폐촌의 구체적 기억이 공식 자료에 직접 기록된 독자적인 역사 지점이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 금악리의 4·3 역사와 제주어 지명 뜻이 공식 자료에 직접 연결돼 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공공 재단의 4·3길 세부 지점으로 안내되지만 제주 전체를 대표하는 상징 명소라는 공식 지정은 확인되지 않아 중간값으로만 추론한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현장 이미지·촬영 지점 또는 사진 목적의 공식 근거가 없어 중립값으로 기록한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 가능한지에 필요한 출입·안전·동선 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 방문 적합성을 뒷받침할 체류 환경·동선 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "소규모 동행의 적합성을 판단할 시설·안전 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 노면·난간·교육 안내·안전시설 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행 난이도·쉼터·무장애 접근성 정보가 없어 부모 동반 적합도는 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 역사 지점이라는 일반 특성상 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 역사 지점이라는 일반 특성상 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 역사 지점은 여름 더위와 강수의 영향을 받을 수 있으나 실제 출입·현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 역사 지점은 여름 더위와 강수의 영향을 받을 수 있으나 실제 출입·현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 방문의 계절 적합도에 대한 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 역사 지점이라는 일반 특성상 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "공식 자료는 4·3길의 역사 지점임을 확인하지만 현재 출입 경로, 노면, 주차, 조명 및 무장애 시설은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 제주4·3평화재단 또는 현장 최신 안내로 출입 허용 여부·접근 경로·기상 안전을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

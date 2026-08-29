@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25382983",
+  "canonical_id": "kakao:25382983",
+  "name": "큰지산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 지리 자료가 큰지산을 제주 추자면 횡간도의 봉우리(Peak)로 표시하고, 제주도 공공 보고서도 횡간도를 추자도의 유인도서로 확인한다. 상업 시설이나 다른 장소의 부속물이 아닌 독립 자연지형으로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-NATURAL-FEATURE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 지리 자료가 큰지산을 횡간도 내 봉우리로 분류한다.", "source_ids": ["S1"], "rule_ids": ["THEME-PEAK-DIRECT"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "큰지산은 횡간도라는 섬에 있으나, 봉우리 자체에서 해안·해양 활동이나 조망이 핵심인지 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-ISLAND-CONTEXT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "봉우리 지형이지만 공식 탐방로·등산 동선이나 활동 난이도를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-TRAIL-UNKNOWN"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 자료는 자연 지형과 섬의 행정·생활 맥락이며, 큰지산의 역사·문화 체험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "봉우리로 표시된 자연지형이며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 방문 목적이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장 장소나 상거래 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제나 기간성 행사가 큰지산의 핵심이라는 정보는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "큰지산은 봉우리로 분류된 자연지형으로, 대표 경험은 야외일 것으로 확인된다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-NATURAL-FEATURE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 섬 지형 방문은 비·바람 등 기상에 영향을 받을 수 있으며, 횡간도 접근은 날씨에 따라 달라진다는 여행 보도도 확인된다.", "source_ids": ["S1", "S3"], "rule_ids": ["ENV-OUTDOOR-ISLAND-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식 환경·체류 방식에 대한 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "봉우리 지형이지만 실제 길·경사·계단·무장애 접근성은 확인되지 않아 낮은 잠정값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 방문 시간과 이동 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "섬의 자연 경관이 여행 기사에서 소개되지만 큰지산 정상의 조망이나 경관 포인트는 확인하지 못했다.", "source_ids": ["S3"], "rule_ids": ["STYLE-ISLAND-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "지명과 지형 분류 외에 큰지산만의 고유 경험·구성은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DISTINCTIVENESS-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "큰지산은 제주 추자면의 유인도서 횡간도에 위치한 지형으로 제주 도서 자연·생활권과 직접 연결된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-GEOGRAPHY"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "지도상 봉우리로 등록되었으나 공적 대표 명소·지정 또는 광범위한 상징성은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LANDMARK-UNCONFIRMED"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬 자연경관의 일반적 맥락은 있으나 큰지산에서의 사진 촬영 가치·지점은 직접 확인하지 못했다.", "source_ids": ["S3"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "안전·안내·통신 및 접근 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 방문 경험·편의시설 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 이용 편의·수용 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설·경로 난이도·보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 없어 야외 섬 지형의 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "remote_island_peak_access_and_weather_unknown", "applies_to": "all_visitors", "condition": "큰지산은 횡간도 내 야외 봉우리이나 공식 탐방로·진입로·개방 여부, 기상 통제, 경사·낙상 위험, 화장실·휴식시설 및 무장애 접근성을 확인하지 못했다. 횡간도 이동도 날씨의 영향을 받을 수 있다.", "status": "needs_review", "action": "방문 전 추자면 또는 현지 선박·관리 주체의 최신 운항, 입도·탐방 가능 여부와 기상·안전 안내를 확인하고, 확인된 지정 동선 밖으로 이동하지 않는다.", "source_ids": ["S1", "S3"], "checked_at": "2026-08-25T00:00:00+09:00"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 큰지산은 공개 지도에서 제주도 횡간도에 위치한 Peak로 표시되며, 횡간도는 제주 추자면의 유인도서로 공공 자료에 확인된다.",
+    "facts": [
+      {"text": "공개 지도 데이터 기반 지리 페이지는 큰지산을 횡간도 인근의 Peak로 표시한다.", "source_id": "S1"},
+      {"text": "제주특별자치도 보고서는 추자 횡간도를 유인도서 조사 대상 해역으로 명시한다.", "source_id": "S2"},
+      {"text": "여행 보도는 횡간도까지의 뱃길이 약 20분이며 날씨가 좋을 때 이동 중 한라산을 볼 수 있다고 소개한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["큰지산의 공식 등산로, 진입 위치, 높이, 왕복 시간 및 현행 탐방 허용 여부", "현행 횡간도 입도·선박 운항 조건과 기상 시 통제", "경사·계단·노면·난간·통신·화장실·휴식시설 및 무장애 접근성", "큰지산 정상의 조망·사진 지점과 계절별 방문 적합성"],
+    "sources": [
+      {"id": "S1", "publisher": "Mapcarta (OpenStreetMap·GeoNames·Wikidata 기반)", "type": "public_geographic_information", "url": "https://mapcarta.com/16034180", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["횡간도 지도에서 큰지산을 Peak로 표시한다."]},
+      {"id": "S2", "publisher": "제주특별자치도", "type": "government_report", "url": "https://jeju.go.kr/jori/reference/report.htm?act=download&no=1&page=2&seq=1350603", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["2019 제주연안 마을어장 자원생태 환경조사는 추자 횡간도를 유인도서 조사 대상에 포함한다."]},
+      {"id": "S3", "publisher": "한경머니", "type": "travel_feature", "url": "https://magazine.hankyung.com/money/amp/202206149332c", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["횡간도까지의 뱃길과 날씨에 따른 섬 경관을 소개한다.", "횡간도의 숲과 파도·바람에 침식된 해안지형을 소개한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

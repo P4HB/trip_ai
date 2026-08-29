@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:260054074",
+  "place_id": "260054074",
+  "name": "제주올레21코스 공식안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘제주올레21코스 공식안내소’로, 제주올레 21코스 이용을 안내하는 시설임을 직접 나타낸다. 제주관광공사 관광 정보는 21코스를 제주 동부의 마을·밭길·해안·오름을 걷는 11.1km 도보 코스로 소개한다. 따라서 이 안내소는 해당 걷기 코스의 출발·이용 정보를 지원하는 부속 서비스 지점이며, 그 자체로 독립 방문 경험을 제공하는 추천 후보는 아니라고 보수적으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주올레21코스 공식안내소는 Kakao 입력상 제주올레 21코스에 딸린 공식 안내 지점이다.",
+    "typical_visit": "21코스 도보 여행 전후에 코스·스탬프·이용 정보를 확인하는 보조 시설 이용으로 파악된다.",
+    "experience_scope": "공개 관광 자료가 설명하는 주요 방문 경험은 제주올레 21코스의 도보 여행이며, 입력 장소는 그 코스 이용을 지원하는 안내소다. 안내소 자체의 독립 관람·체험 콘텐츠는 확인되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 입력 패킷은 place_id 260054074의 장소명을 ‘제주올레21코스 공식안내소’로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주올레 21코스를 제주해녀박물관과 종달바당 사이 11.1km, 약 3~4시간이 걸리는 도보 코스로 소개하며 마을·밭길·해안길·오름을 지난다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "안내소의 최신 운영 시간, 휴무일, 제공 언어, 판매 품목 및 현장 서비스 범위는 공식 최신 안내로 확인하지 못했다.",
+      "안내소의 정확한 위치가 21코스의 어느 지점에 해당하는지와 현재 스탬프·안내 서비스 제공 여부는 확인하지 못했다.",
+      "21코스는 우회·변경될 수 있으므로 실제 걷기 전 최신 공식 코스 정보와 기상·보행 조건 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/260054074",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 ‘제주올레21코스 공식안내소’다.",
+          "입력에 포함된 공개 후기는 스탬프북·굿즈와 올레길 시작 전 설명을 언급하지만, 작성자 식별 정보와 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020314",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "제주올레 21코스는 제주해녀박물관에서 종달바당까지 11.1km, 약 3~4시간이 소요되는 도보 코스로 소개된다.",
+          "코스는 마을·밭길·해안길·오름을 지나며, 코스 우회·변경 가능성이 있어 방문 전 제주올레 공식 홈페이지 확인이 필요하다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주올레 21코스 이용을 지원하는 공식 안내소로 식별되며, 독립 관람·체험 방문지 범위는 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고, 21코스 걷기 방문의 안내·지원 지점으로만 함께 표시한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

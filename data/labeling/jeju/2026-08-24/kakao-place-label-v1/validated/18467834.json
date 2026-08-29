@@ -1,0 +1,647 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18467834",
+  "place_id": "18467834",
+  "name": "지미봉밭길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주관광공사 Visit Jeju가 종달마을 입구에서 지미봉으로 이어지는 밭길로 별도 소개하며, 돌담과 밭 풍경을 벗 삼아 걷는 방문 경험 및 접근 시 유의사항을 제공한다. 독립적으로 탐색 가능한 야외 산책 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "지미봉밭길은 제주 구좌읍 종달마을 입구에서 지미봉으로 이어지는 야외 밭길이다.",
+    "typical_visit": "넓은 밭과 돌담 풍경을 따라 걷고 지미봉에 이르는 산책형 방문이다. 주 접근로의 차도·인도 구분 미흡과 초입 급경사가 안내되어 있다.",
+    "experience_scope": "카페·상점·실내 전시가 아닌 야외 경관 산책로로 한정해 판정했다. Kakao 평점·후기 수와 작성자 정보는 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 지미봉밭길을 종달마을 입구 동북방향의 지미봉으로 이어지는 길로 소개하며, 넓은 밭의 작물과 돌담을 벗 삼아 걷는다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 주 접근로의 차도·인도 구분 미흡, 초입의 급경사와 일부 바닥 주의를 안내하고 하도해변까지 관람하는 코스를 추천한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 총 거리·소요 시간, 계절별 노면 상태 및 최신 접근 가능 여부는 확인하지 못했다.",
+      "운영시설·화장실·주차의 최신 상태는 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_site",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012141&menuId=DOM_200000000010740",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "종달마을 입구에서 지미봉으로 이어지는 밭길과 돌담·작물 풍경을 소개한다.",
+          "접근로의 차도·인도 구분 미흡, 초입 급경사 및 일부 바닥 주의를 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/18467834",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 지미봉밭길이다.",
+          "입력의 평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "지미봉으로 이어지는 밭길로 공식 관광 안내에 명시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-IDENTITY-01"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "하도해변까지 이어 보는 코스가 추천되지만, 밭길 자체의 핵심 경관은 밭과 돌담이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-01"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "밭길을 걸어 지미봉에 이르는 보행형 방문 경험이 공식 안내에 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-02"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "돌담과 농경 풍경은 지역성을 보이지만 역사·문화 해설이 핵심 경험으로 직접 확인되지는 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-03"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내는 야외 밭길 산책을 설명하며 테마파크형 시설 경험은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-04"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 소개의 핵심은 밭길 걷기이며 카페·차·디저트 이용 정보는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-05"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "밭과 돌담의 산책로로 소개되며 시장 방문 경험은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-06"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "특정 기간 행사나 축제가 장소의 핵심이라는 공식 안내는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-THEME-07"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "넓은 밭과 돌담을 따라 걷는 길로 소개된 야외 방문지다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ENV-01"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "야외 밭길이며 접근로·노면 주의가 안내되어 날씨와 노면 조건의 영향을 받는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ENV-02"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "돌담과 밭 풍경을 벗 삼아 걷는 산책 경험이 공식 안내에 제시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-01"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "초입 경사가 급하고 일부 바닥 주의가 공식 안내되어 보행 부담이 낮지 않다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-02"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "밭길 산책과 하도해변 관람 코스 선택지는 있으나 거리·소요시간 정보가 없어 중간값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-03"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "넓은 밭의 작물과 돌담 풍경을 벗 삼아 걷는 경관 경험이 공식 소개의 중심이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-04"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지미봉으로 이어지는 제주 농경지·돌담 산책로라는 구성은 구별되나 비교 가능한 공식 기준은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-05"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "종달마을, 제주 밭의 작물과 돌담을 따라 걷는 경험으로 지역 자연·농경 경관과 직접 연결된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-06"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지미봉으로 이어지는 길로 공식 소개되나 제주를 대표하는 상징 명소라는 별도 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-07"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "밭과 돌담 풍경은 시각적 기록 잠재력이 있으나 사진 촬영 가치가 직접 안내되지는 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-STYLE-08"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "독립적인 야외 산책로이나 접근로와 급경사 주의가 있어 중간 적합도로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-01"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "돌담·밭 경관을 함께 걷는 경험이지만 안전·편의 정보가 제한적이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-02"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "소규모 동행 산책은 가능하나 보행 동선 폭과 체류 시설은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-03"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "차도·인도 구분 미흡, 급경사 및 바닥 주의가 안내되어 보호자 동반 시에도 주의가 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-04"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "초입 급경사와 노면 주의가 공식 안내되어 보행 부담 가능성을 반영한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COMPANION-05"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 공식 운영·노면 정보가 없어 야외 산책로 일반 폴백값을 적용한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-MONTH-FALLBACK"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "walking_safety",
+      "applies_to": "visit_plan",
+      "condition": "주 접근로의 차도·인도 구분이 미흡하고 초입 경사가 급하며 일부 바닥 주의가 필요함",
+      "status": "needs_review",
+      "action": "동행자의 보행 능력과 당일 날씨·노면을 확인하고, 어린이·보행 취약자 동반 시 안전을 우선 검토한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1151,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/286446828.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:286446828",
+    "provider": "kakao",
+    "place_id": "286446828",
+    "name": "어룡굴",
+    "url": "https://place.map.kakao.com/286446828",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "1",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.07.10.",
+      "content": "어룡굴 (현재 주간명월) 섬의 둘레가 50리이고, 바닷길은 10리인데, 파도가 심하여 건너기에 험난하다. 동남쪽의 어룡굴 (현재: 주간명월)은 천연으로된 돌집이다. 굴안의 길이는 8척쯤 들어가 있을 정도이고, 높이 또한 돛대 정도 담아 놓을 수 있을 길이이다.\"해가 비쳐 물빛이 반짝거리고 물색깔이 푸르면서 차가움은 마치 파란 유리와 같다. 바다의 기운이 사람을 감쌈이 마치 따뜻한 구들방에 들어선 듯하고 그 바닥은 가능하기 힘들 정도로 깊다. (이형상의 남한박물 1702년) 신룡신이 있는 곳이라 하였고 7,8월 사이에 고기잡이배가 가지 못한다. 가면 크게 바람이 일어나고 우레가 심하고 비가 쏟아져서 나무가 뽑히고 곡식을 손상 시킨다. (신중동국여지승람 산천1418년) 바다가 토해낸 상서로운 산 운치 있는 볼거리요. 용이 서린 우도 섬엔 안개 자욱 좋은 징조라네 산천이 나를 반겨 떼배여 어서 오라 하니 나 또한 신이 나서 손짓하며 돌아보네(탐라사 1487년) 둘레가 50리이고, 주의동쪽 정의현이 경계에 있다. 사람과 말이 떠들어대면 곧바로 비바람이 몰아친다. 섬의 서남쪽에 돌이 뚫린 구멍이 있어 작은 배 한 척쯤은 들여 놓을 수가 있다 조금 더 나아가면 배5,6척은 거뜬히 숨겨놓을 수 있다. 그 위에는 큰 돌이 마치 집고 같이 생겼는데, 만일 햇빛이 비쳐 반짝거릴 때면 별자리들이 화려하게 박혀 있는 듯하다. 공기는 매우 차서 머리털이 쭈뱃하게 솟아날 정도이다. 풍속에 이르기를 신령스럽 용이 있는 곳이 이곳에는 7.8월 사이에는 고깃배가 들어갈 수가 없다. 만일 갔다가는 큰바람과 천둥번개가 치며 비가 내려 나무를 뽑아내고 곡식을 망까뜨린다. 그 위에는 닥나무가 많다. (이원진의 탐라지 산천1653년/357년전 제주목사 재임시) 2024.7월 기준. 인근에 주차장있고, 자전거로 이동가능 합니다.",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

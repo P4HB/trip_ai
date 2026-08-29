@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119049",
+  "place_id": "18119049",
+  "name": "제주돌문화공원 매표휴게소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘제주돌문화공원 매표휴게소’로, 제주돌문화공원 방문을 위한 매표 및 휴식 기능을 명시한다. 제주관광공사 자료는 제주돌문화공원을 돌박물관·야외전시·탐방 코스를 포함한 독립 문화관광 공원으로 소개한다. 따라서 이 레코드는 별도의 여행 경험을 제공하는 독립 방문지라기보다 공원 입장·이용을 지원하는 부속 시설로 판정한다. 다만 휴게소의 현재 운영 범위와 정확한 위치는 별도로 확인하지 못했다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드는 제주돌문화공원에 속한 ‘매표휴게소’로 명명되어 있으며, 공개 관광 자료의 제주돌문화공원 방문 경험을 지원하는 시설로 파악된다.",
+    "typical_visit": "독립 방문 경험으로는 확인하지 않으며, 제주돌문화공원 입장·관람 또는 야외 탐방 전후에 이용할 수 있는 매표·휴식 지원 시설로 판단한다.",
+    "experience_scope": "제주관광공사 자료는 제주돌문화공원 자체의 박물관·야외전시·탐방 코스를 설명하지만, 이 Kakao 표식의 별도 체험·전시·휴게 서비스와 현재 운영 상태는 확인하지 못했다. 따라서 공원과 분리된 추천용 경험 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 18119049의 명칭을 ‘제주돌문화공원 매표휴게소’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사는 제주돌문화공원을 돌박물관, 야외전시와 탐방 코스를 갖춘 제주 대표 문화관광 명소로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표·주소와 제주돌문화공원 내 세부 위치는 입력 패킷 및 확인한 공개 자료에서 확인하지 못했다.",
+      "매표휴게소의 현재 운영 여부, 제공 서비스, 접근성, 화장실·주차 등 편의시설과 최신 안전 조건은 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/18119049",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주돌문화공원 매표휴게소’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원은 제주 대표 문화관광 명소로 소개된다.",
+          "소개된 공원 방문 경험에는 돌박물관, 야외전시와 탐방 코스가 포함된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "매표휴게소는 제주돌문화공원 입장·이용을 지원하는 부속 시설로 판단되며, 공원과 분리된 독립 여행 경험은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 않는다. 공원 방문 안내에 포함해야 할 경우에는 제주돌문화공원 공식 최신 안내로 매표·휴게소의 운영 및 이용 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

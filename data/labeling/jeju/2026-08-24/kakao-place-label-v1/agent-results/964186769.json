@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:964186769",
+  "place_id": "964186769",
+  "name": "고망난돌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소명 ‘고망난돌’은 제주관광공사 VisitJeju의 ‘종달고망난돌쉼터’와 명칭 및 핵심 지물(구멍 난 큰 돌)이 일치한다. VisitJeju는 이를 종달해안도로의 독립 관광 쉼터로 안내하므로, 중복·부속 시설이 아닌 독립 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "고망난돌은 제주시 구좌읍 종달리 112-4의 종달고망난돌쉼터로, 종달해안도로와 하도해수욕장 사이에 있는 해안 쉼터·자연 지물이다.",
+    "typical_visit": "해안도로를 따라 들러 구멍 난 바위와 해안 경관을 보고, 인근 돌청산불턱의 해녀 문화 흔적을 짧게 살피는 야외 방문이다.",
+    "experience_scope": "공식 관광 안내의 야외 경관·쉼터 경험만 라벨 근거로 삼았다. 평점과 리뷰 수는 사용하지 않았으며, 주차·무장애 접근·운영 상태처럼 확인하지 못한 동적·시설 정보는 확정하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "VisitJeju는 종달고망난돌쉼터를 종달해안도로에서 하도해수욕장에 닿기 전 만나는 장소로 소개하고 주소를 제주시 구좌읍 종달리 112-4로 표기한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "‘고망난돌’은 제주어로 구멍 난 돌이며, 쉼터 인근 마을 쪽 약 100m 지점에 가운데 둥근 구멍이 난 큰 돌이 있다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "VisitJeju는 이곳에서 종달리의 돌청산불턱을 만날 수 있으며, 불턱은 해녀가 입수 준비와 작업 중 휴식을 하던 곳이라고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F4", "text": "VisitJeju는 경관·포토, 휴식·힐링, 드라이브 및 사계절 태그를 제공한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["바위와 불턱까지의 실제 보행면, 경사, 계단 및 무장애 접근성은 확인하지 못했다.", "주차·화장실·그늘·안전시설과 최신 현장 상태는 확인하지 못했다.", "월별 기상·파고·바람에 따른 체감 및 체류 제한은 별도 확인이 필요하다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 VisitJeju", "type": "official_tourism_site", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012327&menuId=DOM_000001718000000000", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["종달고망난돌쉼터의 위치·주소·구멍 난 바위·돌청산불턱과 해녀 문화 설명", "경관·포토, 휴식·힐링, 드라이브, 사계절 태그"]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/964186769", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 패킷의 장소명은 ‘고망난돌’이다.", "평점·리뷰 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 안내는 해안 쉼터와 바위를 설명하며 산·오름 경험 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-MOUNTAIN-ABSENT-FALLBACK"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "종달해안도로의 해안 쉼터와 해녀 불턱이 핵심으로 직접 안내된다.", "source_ids": ["S1"], "rule_ids": ["THEME-OCEAN-DIRECT"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 야외 관찰·보행은 예상되지만 레포츠나 참여형 체험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-ACTIVITY-LOW"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.7, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해녀의 입수 준비·휴식 장소였던 돌청산불턱을 함께 볼 수 있어 지역 생활문화 맥락이 있다.", "source_ids": ["S1"], "rule_ids": ["THEME-CULTURE-HAENYEO"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 안내에 놀이·동물·수족관 등 테마파크형 경험은 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-PARK-ABSENT-FALLBACK"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 안내에서 카페·음료 이용은 독립 방문 목적으로 확인되지 않는다.", "source_ids": ["S1"], "rule_ids": ["THEME-CAFE-ABSENT-FALLBACK"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험에 관한 근거가 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-MARKET-ABSENT-FALLBACK"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "기간성 축제·공연이 장소의 핵심이라는 근거가 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-FESTIVAL-ABSENT-FALLBACK"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.7, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내의 대표 경험은 해안도로·쉼터·바위·불턱을 보는 야외 경험이다.", "source_ids": ["S1"], "rule_ids": ["ENV-INDOOR-OUTDOOR-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 해안 관찰이므로 비·바람·더위·추위의 영향을 크게 받을 것으로 보이나 현장 기상 제한은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["ENV-WEATHER-OUTDOOR-COAST"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 이곳을 쉼터로 소개하고 휴식·힐링 태그를 제공한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-REST-SHELTER"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.4, "status": "needs_review", "inference_level": "researched_inference", "rationale": "도로변 쉼터와 약 100m 떨어진 바위가 안내되지만 보행면과 경사를 확인하지 못해 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["STYLE-EASE-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "드라이브 중 짧게 들르는 쉼터 방문은 확인되나 장시간 체류를 뒷받침할 시설 정보는 없다.", "source_ids": ["S1"], "rule_ids": ["STYLE-DURATION-SHORT-STOP"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해안도로와 구멍 난 큰 돌을 공식 안내가 핵심 지물로 소개하고 경관·포토 태그를 제공한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SCENIC-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주어로 이름 붙은 가운데 구멍 난 큰 돌과 자연 바위를 이용한 불턱이 구별되는 구성이다.", "source_ids": ["S1"], "rule_ids": ["STYLE-DISTINCTIVE-GEOMORPHOLOGY"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주어 지명과 종달리 해녀의 불턱이라는 지역 자연·생활문화 연결이 직접 확인된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-JEJU-HAENYEO"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 페이지에 독립 관광지로 수록됐지만 지역 대표성의 객관 지표는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LANDMARK-TOURISM-LISTING"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 경관·포토 태그를 제공하며 구멍 난 큰 돌을 핵심 지물로 설명한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-PHOTO-OFFICIAL-TAG"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 야외 경관·휴식 중심의 독립 방문으로 추론되나 현장 안전·접근성은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-SOLO-SCENIC"]},
+    "couple": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "경관·포토·휴식 태그가 있어 둘이 들르는 짧은 야외 방문에 맞을 수 있다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-COUPLE-SCENIC"]},
+    "friends": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "드라이브 중 경관 관찰에는 적합할 수 있으나 단체 체험·편의시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-FRIENDS-SHORT-STOP"]},
+    "kids": {"value": 0.5, "confidence": 0.4, "status": "needs_review", "inference_level": "researched_inference", "rationale": "바위 관찰은 가능하나 해안 주변 안전과 보행 여건이 확인되지 않아 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-KIDS-SAFETY-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.4, "status": "needs_review", "inference_level": "researched_inference", "rationale": "도로변 쉼터라는 점은 유리할 수 있으나 경사·좌석·화장실 등 접근성은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-PARENTS-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "사계절 안내는 있으나 겨울 해안의 실제 바람·안전 조건은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["MONTH-COAST-WINTER-CAUTION"]},
+    "2": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "사계절 안내는 있으나 겨울 해안의 실제 바람·안전 조건은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["MONTH-COAST-WINTER-CAUTION"]},
+    "3": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "4": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "5": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "6": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "7": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "8": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "9": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "10": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "11": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 사계절 태그를 제공하나 월별 현장 조건은 별도 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["MONTH-ALL-SEASON-MODERATE"]},
+    "12": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "사계절 안내는 있으나 겨울 해안의 실제 바람·안전 조건은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["MONTH-COAST-WINTER-CAUTION"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_weather_and_access", "applies_to": "visit_planning", "condition": "대표 경험이 야외 해안 쉼터·바위 관찰이며 보행면·경사·해안 안전 및 현장 기상 조건은 확인되지 않음", "status": "needs_review", "action": "방문 전 공식 현장 안내와 날씨·바람·파고, 동행자의 보행 가능 여부를 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

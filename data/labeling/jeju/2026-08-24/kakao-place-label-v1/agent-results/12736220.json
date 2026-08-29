@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "12736220",
+  "canonical_id": "kakao:12736220",
+  "name": "곤을동환해장성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명과 일치하는 곤을동 환해장성은 제주시 화북동의 제주특별자치도 기념물 구간으로, 공개 관광 안내에 독립 관광지로 수록되어 있다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내의 핵심은 화북 해안의 성벽과 역사 탐방이며 산·오름 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "화북의 바다를 앞에 둔 해안 성벽을 걷는 장소로 공식 소개된다.", "source_ids": ["S1"], "rule_ids": ["THEME-COASTAL-DIRECT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "올레 18코스의 일부를 바다 곁에서 걷는 방문 맥락은 확인되나, 별도 레포츠·체험 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "고려·조선기 방어 역할을 한 환해장성의 흔적이며 1998년 제주특별자치도 기념물 제49호로 지정된 역사유적이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 안내는 성벽·해안·역사유적을 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 성벽·해안 산책 장소로 소개되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 문화유적지로 소개될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "바다 앞 해안 성벽과 올레길을 걷는 야외 유적지로 소개되며 실내 관람 공간은 안내에 없다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-HERITAGE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 바다 곁 야외 성벽·올레길 보행이므로 비·바람·더위·추위의 영향을 받는다. 현행 통제 기준은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다 곁을 걷는 방문 맥락은 확인되나, 휴식 시설이나 조용한 체류 경험의 직접 안내는 부족하다.", "source_ids": ["S1"], "rule_ids": ["STYLE-COASTAL-WALK-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "무장애 코스 자료의 존재는 확인됐으나 이 표식 구간의 실제 경사·노면·계단과 현행 접근성을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "올레길 일부라는 정보 외에 이 유적의 단독 체류시간·단축 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 화북의 바다를 앞에 둔 성벽과 그 앞에 펼쳐진 바다를 곁에 두고 걷는 경험을 직접 소개한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-COASTAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "고려기에 해안선에 축조된 환해장성의 남은 구간이자 제주특별자치도 기념물로 보호되는 고유한 유적이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HERITAGE-UNIQUENESS-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 해안 방어와 삼별초·여몽연합군·조선기 방어의 지역사 맥락을 직접 담은 제주 문화유적이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주특별자치도 기념물 제49호로 지정되어 보호되는 환해장성 구간이며 제주 해안 방어유산으로 공식 관광 안내에 수록된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-DESIGNATED-HERITAGE-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 페이지가 해안 성벽과 바다의 이미지 갤러리를 제공하지만 사진 촬영 자체를 핵심 활동으로 권장하지는 않는다.", "source_ids": ["S1"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 현장 안전·조명·안내 환경을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설의 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 보호자 동반 기준 및 실제 보행 난이도가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "무장애 코스 데이터는 있으나 해당 구간의 현행 경사·노면·휴식·휠체어 접근 가능 여부를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-SENIOR-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_coastal_heritage_access_conditions_unknown", "applies_to": "all_visitors", "condition": "야외 해안 유적 구간이며 현재 개방 상태, 우천·강풍 시 통제, 노면·경사 및 구간별 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주관광공사 또는 현장 최신 안내로 개방 여부, 기상에 따른 안전 통제와 실제 보행·휠체어 접근 조건을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘곤을동환해장성’은 Visit Jeju의 제주시 화북동 관광지와 국가유산포털의 제주특별자치도 기념물 곤을동 환해장성 명칭에 일치한다.",
+    "facts": [
+      {"text": "Visit Jeju는 곤을동환해장성을 제주시 화북동의 문화유적지·역사유적으로 소개하고, 화북의 바다를 앞에 둔 성벽과 올레 18코스 보행 경험을 안내한다.", "source_id": "S1"},
+      {"text": "Visit Jeju는 환해장성이 고려기에 축조되어 이후 방어 용도로 이어지고, 1998년 제주특별자치도 기념물 제49호로 지정되어 보호된다고 설명한다.", "source_id": "S1"},
+      {"text": "제주특별자치도 제공 공공데이터는 곤을동 환해장성 구간 중심의 무장애 여행 코스이며 노면·경사·보행환경·주차·화장실 접근성을 포함한다고 설명한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["현재 운영·개방 시간과 우천·강풍 시 통제 기준", "표식 지점의 실제 노면·경사·계단 및 현행 휠체어 접근 가능 여부", "주차·화장실·휴식시설의 현행 위치와 운영 상태"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021187&menuId=DOM_000001718003000000", "checked_at": "2026-08-25", "facts": ["곤을동환해장성의 위치·문화유적 분류·해안 및 올레 18코스 맥락을 소개한다.", "고려기 축조·방어 역사와 1998년 제주특별자치도 기념물 제49호 지정을 설명한다."]},
+      {"id": "S2", "publisher": "공공데이터포털·제주특별자치도", "type": "government_open_data", "url": "https://www.data.go.kr/data/15097105/fileData.do", "checked_at": "2026-08-25", "facts": ["곤을동 환해장성 구간 중심의 무장애 여행 코스 데이터셋을 제공한다.", "데이터셋이 노면 상태, 경사도, 보행환경, 주차 및 화장실 접근성 정보를 포함한다고 설명한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

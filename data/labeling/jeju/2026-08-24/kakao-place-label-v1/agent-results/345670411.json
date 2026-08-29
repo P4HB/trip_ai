@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:345670411",
+  "place_id": "345670411",
+  "name": "제3수원지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "제주특별자치도의회 공개 회의록은 추자도 제3수원지를 시설보강 사업장으로, 다른 공개 회의록은 제3저수지를 정수장·배수지 노후와 여과능력 문제를 가진 용수공급 시설로 기록한다. Kakao 입력명과 공개 기록의 시설명이 일치하지만, 일반 여행객을 위한 독립 관람·체험·상시 출입 운영은 공식·공공 출처에서 확인하지 못했다. 따라서 생활·급수 인프라를 추천용 독립 방문 장소 벡터로 점수화하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘제3수원지’는 제주특별자치도의회 공개 기록에 나오는 추자도 제3수원지와 명칭 및 제주 장소 목록 맥락이 일치하는 용수공급 시설로 보수적으로 연결했다.",
+    "typical_visit": "공개 공공 기록에서 확인되는 기능은 추자도 용수공급을 위한 수원·정수·배수 시설 관리다. 일반 여행객 대상 관람·체험 시설로서의 이용은 확인하지 못했다.",
+    "experience_scope": "시설의 존재와 용수공급 기능은 확인했지만, 이 Kakao 표식의 일반인 출입 허용, 탐방·관람 동선, 안전 관리, 운영 시간 또는 관광 프로그램은 확인되지 않았다. 따라서 추천용 18+5+12 축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 공개 회의록은 추자도 현지 방문의 주요 사업장으로 ‘제3수원지 시설보강 사업장’을 기록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "북제주군의회 공개 회의록은 추자도 제3저수지의 정수장·배수지 노후, 누수 및 여과능력 부족을 용수공급 관리 문제로 기록한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 좌표·주소·관리 주체와 공개 기록의 추자 제3수원지를 직접 대조할 상세 메타데이터는 입력에 없다.",
+      "일반 방문객의 출입 가능 여부, 관람 동선, 주차, 화장실, 난간·수변 안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "저수량·수질·수위·개방 여부처럼 변하는 현장 상태와 관광·레저 목적의 상시 운영 또는 프로그램은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_council_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Retrieval2/index.php?daesu=4&hfile=4A0110101012.html",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 현지 방문의 주요 사업장에 제3수원지 시설보강 사업장이 포함됐다고 기록한다.",
+          "일반 관광객을 위한 관람·체험 운영을 안내하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "북제주군의회",
+        "type": "public_council_record",
+        "url": "https://record.council.jeju.kr/bukdocument/Retrieval2/index.php?cha=3&n=1&nameCode=ma&nameFile=2ma0037003451.html&pageNum=1&tag=lst&th=37&totalPage=66",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 제3저수지의 정수장·배수지 시설 노후와 누수, 여과능력 부족을 기록한다.",
+          "관광객 출입 또는 관람 운영을 안내하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "water_supply_infrastructure_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "추자 제3수원지는 용수공급 시설보강·관리 맥락으로 확인됐으나, 이 Kakao 표식의 일반인 출입, 독립 관광 이용, 수변 안전시설 및 최신 운영 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 관리 주체의 최신 공식 방문 안내가 확인되어 독립 관광·체험 장소로 판명될 때만 신원·출입·안전 조건을 재검수한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

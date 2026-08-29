@@ -1,0 +1,790 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723868",
+  "place_id": "13723868",
+  "name": "나바론절벽",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 별도 관광지로 안내하는 나바론절벽은 상추자도의 해안 절벽과 그 위 나바론 하늘길의 경관·도보 탐방 경험을 가리킨다. 공개 보도와 입력 공개 방문 경험도 같은 절벽길과 조망을 뒷받침하므로 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "나바론절벽은 제주특별자치도 제주시 추자면 영흥리 산 19 일대의 상추자도 해안 절벽이며, 절벽 능선을 걷는 나바론 하늘길의 핵심 경관이다.",
+    "typical_visit": "절벽과 바다, 인근 섬을 조망하며 나바론 하늘길의 야외 도보 구간을 걷는 방문이다.",
+    "experience_scope": "공식 관광 안내와 보도는 절벽·바다 경관, 계단과 경사가 있는 도보 구간을 확인한다. 최신 개방 구간, 현장 시설, 난간·노면 상태, 기상 통제, 접근성과 무장애 정보는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 나바론절벽을 추자면 영흥리 산 19의 관광지로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "연합뉴스는 나바론 절벽을 독산에서 큰산까지 이어지는 절벽과 그를 따라 조성된 나바론 하늘길로 설명하며, 가파른 계단·오르내림과 바다·섬 조망을 보도했다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 공개 방문 후기는 나바론하늘길과 용둠벙전망대 방향의 길, 절벽길 보행과 주변 풍경 감상을 언급한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "최신 출입 가능 구간, 운영·통제 시간과 우천·강풍 시 안전 통제를 확인하지 못했다.",
+      "노면, 계단, 난간, 화장실·주차, 휴식시설과 무장애 접근성을 확인하지 못했다.",
+      "월별 개방·행사·계절 절정 정보와 유람선 실제 운항 여부는 방문 시점에 재확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018516",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "나바론절벽을 제주특별자치도 제주시 추자면 영흥리 산 19의 관광지로 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://www.yna.co.kr/view/AKR20160620038200056",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "나바론 절벽은 독산에서 큰산까지 이어지고, 이를 따라 나바론 하늘길이 조성됐다고 보도했다.",
+          "길에는 가파른 계단과 오르내림이 있으며 절벽·바다·인근 섬 조망을 소개했다.",
+          "주변 산행 코스는 산세가 험하고 음식과 물을 살 곳이 적을 수 있다고 보도했다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/13723868",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력된 공개 방문 후기는 나바론하늘길과 용둠벙전망대 방향의 도보 길을 언급한다.",
+          "입력된 공개 방문 후기는 절벽길에서 주변 풍경을 감상한 경험을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "절벽 능선 보행은 확인되나 산·오름·봉우리 경관이 핵심이라는 충분한 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안 절벽과 바다·인근 섬 조망이 공식 관광지와 도보 경험의 중심으로 직접 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "나바론 하늘길을 따라 계단과 오르내림을 포함한 야외 도보 탐방이 대표 경험으로 직접 확인된다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "명칭 유래는 소개되지만 역사·문화유산·전시·전통 체험이 대표 방문 경험이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조사 출처는 자연 절벽과 도보길을 설명하며 놀이·동물·전시형 테마파크 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 절벽과 도보 탐방지로 확인되며 시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 자연 경관과 도보길로 안내될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험은 해안 절벽 위 야외 길에서의 보행과 바다 조망으로 소개되며 실내 방문 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 노출된 해안 절벽의 야외 보행·조망이어서 비·바람·더위·추위 영향을 크게 받을 것으로 추론한다. 현장 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "풍광 감상은 확인되지만 혼잡도·휴식시설·소음과 느린 체류 환경 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "가파른 계단과 반복되는 오르내림, 험한 산세가 보도돼 보행 부담이 비교적 클 것으로 추론한다. 최신 노면·난간·무장애 정보는 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "하늘길 전체 거리와 일부 전망 지점은 소개되지만 장소 단독의 짧은 방문·장기 체류 선택 가능성은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "깎아지른 해안 절벽, 바다와 섬 조망이 나바론 하늘길을 찾는 핵심 가치로 직접 소개되고 공개 방문 경험도 풍경 감상을 확인한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "나바론 절벽을 따라 조성된 하늘길과 수직 해안 절벽의 조합이 장소 고유의 경험으로 직접 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "상추자도의 절벽 지형과 추자면이 조성한 도보여행 코스 맥락에 직접 연결된 자연 경관이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "보도는 나바론절벽을 추자 사람들이 자랑하는 비경으로, 나바론 하늘길을 추자도 도보여행의 핵심 구간으로 직접 소개한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "절벽과 바다의 시각 경관은 확인되지만 사진 촬영 또는 기록 가치가 직접 권장된 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 최신 안전·안내·통신 및 통제 환경을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 체류 환경과 최신 동선·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "여러 명 방문 시 수용·안전·휴식 여건을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반에 필요한 난간·노면·안전시설과 보호자 안내 기준을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경사·계단은 확인됐으나 고령 방문자의 휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·현장 통제 정보가 없어 야외 절벽길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "steep_outdoor_trail_and_weather_access",
+      "applies_to": "all_visitors",
+      "condition": "나바론 하늘길은 가파른 계단과 오르내림이 있는 야외 해안 절벽길이며, 최신 개방 구간·노면·난간 상태와 우천·강풍 시 통제는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 또는 추자면 최신 안내로 개방 여부와 기상·보행 안전을 확인하고, 아동·보행 취약자는 동행과 경로 적합성을 별도로 판단한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "remote_island_provisions_and_transport",
+      "applies_to": "all_visitors",
+      "condition": "보도는 추자도 산행 구간 주변에서 음식과 물을 구하기 어려울 수 있다고 안내한다. 추자도 유람선 운항 코스는 기상에 따라 변경될 수 있다.",
+      "status": "needs_review",
+      "action": "필요한 물·식량을 준비하고, 섬 방문 및 해상 교통·유람선 이용 전 최신 운항·기상 정보를 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1216777617",
+  "place_id": "1216777617",
+  "name": "월대 옛터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주4·3 유적을 공개 목록에 등재한 제주4·3연구소와 현장 안내판 조사 자료가 같은 이름의 독립 역사·기억 지점으로 확인한다. 상위 시설의 부속물이 아닌 금악마을 4·3길의 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "월대 옛터(뱅디가름)는 제주시 한림읍 금악리의 제주4·3 역사 유적이자 금악마을 4·3길 지점이다.",
+    "typical_visit": "야외 안내판에서 옛 마을 중심지와 4·3 당시의 사건을 읽고 기억하는 짧은 역사·추모 중심 방문이다.",
+    "experience_scope": "조사 자료는 도로 개통 뒤 당시 흔적을 찾기 어렵고 안내판이 세워졌다고 설명한다. 최신 출입·주차·노면·편의시설·무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주4·3연구소의 4·3 유적지 공개 목록은 ‘월대 옛터’를 별도 유적지로 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주다크투어의 안내판 조사 자료는 월대 옛터를 금악리의 옛 마을 중심지이자 4·3 관련 지점으로 설명하고, 2017년 개통한 금악마을 4·3길 코스 중 한 곳이라고 기록한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "같은 조사 자료는 현재 도로 개통으로 당시 흔적을 찾기 어렵고 ‘뱅디가름(잃어버린 마을)’ 안내판이 세워져 있다고 기록한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "Kakao 항목의 좌표와 최신 현장 출입 가능 구간은 입력에 없다.",
+      "현장 노면·경사·계단, 주차·화장실·쉼터, 조명 및 무장애 시설은 확인하지 못했다.",
+      "정기 해설·전시·행사 또는 계절별 운영 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3연구소", "type": "public_history_archive", "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0", "checked_at": "2026-08-24", "facts": ["4·3 유적지 공개 목록에 월대 옛터를 별도 항목으로 수록한다."]},
+      {"id": "S2", "publisher": "제주다크투어", "type": "heritage_signage_survey", "url": "https://www.jejudarktours.org/documents/29/%EC%B5%9C%EC%A2%85_%EA%B3%B5%EA%B0%9C%EC%9A%A9_%EC%A0%9C%EC%A3%BC%EB%8B%A4%ED%81%AC%ED%88%AC%EC%96%B4_%EC%A0%9C%EC%A3%BC%EC%A7%80%EC%97%AD_%EB%8B%A4%ED%81%AC%ED%88%AC%EC%96%B4_%EC%9C%A0%EC%A0%81%EC%A7%80_%EC%95%88%EB%82%B4%ED%8C%90_%EC%A1%B0%EC%82%AC%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf", "checked_at": "2026-08-24", "facts": ["월대 옛터의 옛 마을 중심지·4·3 사건·안내판 및 금악마을 4·3길 맥락을 기록한다.", "도로 개통으로 당시 흔적을 찾기 어렵다고 기록한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 산·오름·산림 경관 탐방이 이 지점의 핵심 경험이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 해안·해양 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"4·3길의 역사 지점이라는 사실 외 레포츠·참여형 체험 운영은 확인되지 않았다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 유적지 목록과 안내판 조사 자료가 4·3 역사 및 잃어버린 마을의 기억을 이 장소의 핵심으로 직접 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립적인 방문 목적인 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"현장에 ‘뱅디가름’ 안내판이 세워진 야외 옛터이며 실내 대표 방문 경험은 자료에서 확인되지 않는다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 안내판과 4·3길 지점 방문이므로 날씨 영향을 비교적 받을 것으로 추론하나 실제 동선 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·추모 성격은 확인되나 휴식 시설·소음·체류 환경 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단·무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간·개방 시간·탐방 동선 정보가 확인되지 않아 체류시간 조절성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 당시 흔적을 찾기 어렵다는 기록은 있으나 경관 감상 자체가 핵심 가치라는 근거도 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"옛 마을 중심지와 4·3 사건, 잃어버린 마을 안내판이라는 구체적인 기억이 공개 자료에 직접 기록된 독자적 역사 지점이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"금악리의 옛 마을과 제주4·3 역사, 금악마을 4·3길에 직접 연결돼 있다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 4·3 유적 및 금악마을 4·3길 지점이지만 제주 전체를 대표하는 상징 명소라는 공식 지정은 확인되지 않아 중간값으로만 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 이미지·촬영 지점 또는 사진 목적의 공개 근거가 없어 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문에 필요한 출입·안전·동선 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문 적합성을 뒷받침할 체류 환경·동선 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 적합성을 판단할 시설·안전 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·교육 안내·안전시설 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 부모 동반 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사 지점의 일반적 겨울 기상 영향을 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사 지점의 일반적 겨울 기상 영향을 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사 지점의 일반적 여름 더위·강수 영향을 적용했으며 실제 출입·현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사 지점의 일반적 여름 더위·강수 영향을 적용했으며 실제 출입·현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 일반 기후 휴리스틱만 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사 지점의 일반적 겨울 기상 영향을 적용했으며 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"accessibility_and_weather_unknown","applies_to":"all_visitors","condition":"공개 자료는 역사 유적과 안내판을 확인하지만 최신 출입 경로·노면·주차·조명·화장실·무장애 시설 및 기상 안전은 확인하지 못했다.","status":"needs_review","action":"방문 전 제주4·3 관련 최신 안내와 현장 표지로 출입 가능 여부·접근 경로·기상 및 보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

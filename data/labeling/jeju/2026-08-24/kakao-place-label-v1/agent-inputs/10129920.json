@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1457,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10129920.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10129920",
+    "provider": "kakao",
+    "place_id": "10129920",
+    "name": "거친오름",
+    "url": "https://place.map.kakao.com/10129920",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "25",
+    "blog_review_count": "13",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.21.",
+      "content": "2026.06.21 방문 노루생태관찰원 통해서 올라갔습니다. 아이들을 데려와도 올라갈 수 있을 정도로 높지 않고 난이도가 낮습니다. 정상에 오르면 한라산도 볼 수 있고 주변 경관이 탁 트여있습니다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2024.12.06.",
+      "content": "♡",
+      "tags": ""
+    },
+    {
+      "date": "2024.06.26.",
+      "content": "둘레길 좀 걷다가 오름 올라가는데 정작 오름 올라가는 길은 짧아요 하지만 지대가 높아서 뷰 너무 좋습니다 오름 둘레길 너무 잘 정비되어 있습니다 산책하시기에 너무 좋을 것 같습니다 야생 노루들도 종종 조우합니다 눈 잠깐 마주쳐주고 사라지네요 아!! 그리고 절물에서도 넘어올 수 있는데 시간대 제한있습니다 확인 먼저 필수요!",
+      "tags": ""
+    },
+    {
+      "date": "2023.05.09.",
+      "content": "노루생태원 안 잘 단장된 오름이나 한라산둘레길 절물휴양림길로도 갈수 있는 오름이기도하다 정상뷰가 아주멋진 곳으로 누구나 탐방가능한 접근성또한 좋은 곳임",
+      "tags": "시설"
+    },
+    {
+      "date": "2026.06.09.",
+      "content": "노루생태관찰원으로~ 한라산 뷰 멋집니다",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

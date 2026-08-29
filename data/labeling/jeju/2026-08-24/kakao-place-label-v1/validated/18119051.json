@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119051",
+  "place_id": "18119051",
+  "name": "제주돌문화공원 의식생활",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명은 제주돌문화공원 안에서 제주의 생활문화를 보여 주는 전시 주제를 가리킨다. 제주관광공사 Visit Jeju는 제주돌문화공원을 박물관·생태공원으로 소개하고, 공원 2코스의 전시동과 3코스의 전통초가마을에서 돌문화와 옛 사람들의 삶을 관람한다고 안내한다. 따라서 ‘의식생활’은 독립 운영·입장·방문 동선이 확인된 별도 장소가 아니라 제주돌문화공원 관람 경험의 세부 전시 항목으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘제주돌문화공원 의식생활’은 제주시 조천읍의 제주돌문화공원 안에서 제주의 생활문화를 다루는 세부 전시 표식으로 식별된다.",
+    "typical_visit": "제주돌문화공원 전체의 돌문화 전시와 전통초가마을 관람 동선에서 함께 보는 세부 전시 경험으로 파악된다.",
+    "experience_scope": "별도의 독립 관광시설·운영·입장 체계를 확인하지 못했으므로, 이 결과에서는 독립 추천 후보용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원을 제주도의 전신과 체계적인 돌문화를 보여 주는 박물관이자 생태공원으로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 공원 2코스의 돌문화야외전시장과 제주 돌문화전시관, 3코스의 제주전통초가마을에서 옛 사람들의 삶을 엿볼 수 있다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식 ‘의식생활’의 정확한 전시실·전시물 위치와 현재 현장 표기 여부를 별도 공식 도면으로 확인하지 못했다.",
+      "이 세부 전시 항목만의 독립 입장, 운영 시간, 관람 제한 또는 별도 접근성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원을 돌문화를 보여 주는 박물관이자 생태공원으로 안내한다.",
+          "공원 2코스의 돌문화야외전시장·제주 돌문화전시관과 3코스의 제주전통초가마을을 안내한다.",
+          "제주전통초가마을에서 옛 사람들의 삶을 엿볼 수 있다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_exhibition_feature",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘의식생활’은 제주돌문화공원 내부의 세부 전시 항목으로 판정되며, 독립 방문지로서의 별도 운영·입장·동선은 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고, 필요할 경우 상위 장소 제주돌문화공원의 전시 구성으로만 안내한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

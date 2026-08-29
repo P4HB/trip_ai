@@ -1,0 +1,91 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725853",
+  "canonical_id": "kakao:13725853",
+  "name": "복원된밭길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "Kakao 지도 표식은 제주시 한경면 용수리의 ‘복원된밭길’로 확인된다. 공공 농촌여행 안내는 이를 제주올레 13코스에서 돌담 사이를 따라 용수저수지로 이어지는 밭길 구간으로 설명한다. 따라서 독립 방문지라기보다 제주올레 13코스에 종속된 경유 구간으로 판정하며, 단독 추천용 적합도 벡터는 생성하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-ROUTE-SEGMENT"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "route_segment_not_standalone_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "복원된밭길은 제주올레 13코스의 일부 밭길 구간으로 소개되며, 단독 목적지의 운영·시설·접근성 정보는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "단독 추천 후보로 사용하지 말고, 제주올레 13코스 전체의 최신 코스 개방 여부와 보행 안전·기상 안내를 확인해 경유 구간으로만 취급한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력 Kakao place_id는 제주시 한경면 용수리의 ‘복원된밭길’ 표식이다. 공개 공공 여행 안내에서 같은 명칭을 제주올레 13코스의 돌담 사이 밭길 구간으로 설명해 위치와 성격이 일치한다.",
+    "facts": [
+      {
+        "text": "Kakao Map 장소 페이지의 제목은 ‘복원된밭길’이고, 위치 설명은 제주특별자치도 제주시 한경면 용수리다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "웰촌의 제주올레 13코스 안내는 돌담 사이를 따르는 ‘복원된 밭길’을 지나면 용수저수지가 나온다고 설명하며, 13코스를 용수포구에서 저지마을회관으로 이어지는 15.4km 걷기 코스로 소개한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "복원된밭길 구간의 최신 개방 여부, 정확한 진입 지점, 노면·경사·계단 및 무장애 접근성",
+      "단독 방문을 위한 주차, 화장실, 휴식시설 및 안전 관리 정보",
+      "우천·강풍 등 기상 상황에 따른 실제 구간 통제 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13725853",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명 ‘복원된밭길’과 제주특별자치도 제주시 한경면 용수리라는 위치 설명을 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "웰촌 (한국농어촌공사 농어촌정보포털)",
+        "type": "public_travel_information",
+        "url": "https://www.welchon.com/web/lay1/program/S1T11C24/travelHistory/view.do?bbs_idx=554190",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주올레 13코스의 용수저수지 구간에서 돌담 사이를 따르는 ‘복원된 밭길’을 언급한다.",
+          "제주올레 13코스는 용수포구에서 저지마을회관까지 이어지는 15.4km, 약 4~5시간 걷기 코스로 소개된다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10793634",
+  "place_id": "10793634",
+  "name": "좌가연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털은 좌가연대를 제주시 구좌읍 한동리의 제주특별자치도 기념물로 등록하고, 공공 향토문화유적 자료는 별방진 소속의 옛 군사 통신시설이라고 설명한다. 별도의 역사 유적으로 방문 범위가 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "좌가연대는 제주시 구좌읍 한동리 1683-1번지에 있는 제주특별자치도 기념물 제23-15호의 봉수 통신 유적이다.",
+    "typical_visit": "남아 있는 연대 유구를 짧게 둘러보며 제주 해안 방어·통신 체계의 역사적 맥락을 살피는 야외 문화유산 방문이다.",
+    "experience_scope": "공식·공공 출처는 문화유산 지정, 위치, 별방진 소속과 유구 현황을 확인한다. 최신 개방 시간, 주차, 화장실, 보행 노면, 무장애 접근, 안전시설 및 현장 해설 운영은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국가유산포털은 좌가연대를 제주특별자치도 기념물로 등록하고, 분류를 교통통신·통신·봉수로 제시하며 소재지를 제주시 구좌읍 한동리 1683-1번지로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "전국향토문화유적표준데이터 기반 공개 자료는 좌가연대가 별방진에 소속되어 한동리 북쪽 옛 좌가장에 자리하며, 남·서쪽 면 일부가 무너졌지만 연대 윤곽은 뚜렷하고 남은 높이는 약 1.8~2.2m라고 설명한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["최신 현장 개방 상태와 관람 가능 구역을 확인하지 못했다.", "주차·화장실·쉼터·노면·계단 및 무장애 접근 정보를 확인하지 못했다.", "현장 안내판, 해설 프로그램, 혼잡도와 사진 촬영 여건을 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_page", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2333900231500", "checked_at": "2026-08-24", "facts": ["좌가연대는 제주특별자치도 기념물이다.", "분류는 유적건조물/교통통신/통신/봉수이며 소재지는 제주시 구좌읍 한동리 1683-1번지다."]},
+      {"id": "S2", "publisher": "전국향토문화유적표준데이터", "type": "public_cultural_data", "url": "https://kor.clubrichtour.co.kr/bbs/board.php?bo_table=public_nvpc_cltur&wr_id=3595", "checked_at": "2026-08-24", "facts": ["좌가연대는 별방진 소속의 옛 통신 유적으로 설명된다.", "남·서쪽 면 일부가 무너졌으나 윤곽이 뚜렷하고 높이 약 1.8~2.2m가 남아 있다고 설명한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/10793634", "checked_at": "2026-08-24", "facts": ["입력 패킷의 Kakao 장소명은 좌가연대다.", "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 또는 해양 활동이 대표 경험이라는 직접 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 국가유산 등록이 봉수 통신 유적으로 분류하고, 공공 자료가 별방진 소속의 옛 통신시설이라고 설명해 역사문화 경험이 핵심임을 직접 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"남아 있는 연대 유구를 보는 문화유산으로 설명돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외에 남아 있는 연대 유구를 둘러보는 경험으로 확인되어 비·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단·무장애 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선과 권장 체류시간 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 핵심 가치라는 직접 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 등록과 공공 유적 설명이 제주 방어·통신 체계의 별방진 소속 좌가연대라는 고유한 역사적 구성을 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 한동리의 제주특별자치도 기념물이며 별방진 소속 통신 유적으로 설명되어 제주 지역 역사와의 직접 연결이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털에 제주특별자치도 기념물로 등록된 역사 유적이라는 공적 지정 사실을 근거로 지역 역사 명소의 의의를 높게 판정한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 문화유산 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 문화유산 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 문화유산 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 문화유산 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 문화유산 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 상태, 관람 가능 구역, 접근로·노면·계단, 주차·화장실, 무장애 시설 및 악천후 안전 통제를 확인하지 못했다.","status":"needs_review","action":"방문 전 국가유산 또는 현장 최신 안내로 관람 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

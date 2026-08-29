@@ -1,0 +1,113 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1183980997",
+  "place_id": "1183980997",
+  "name": "병문동산 4.3성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력 장소명은 제주4·3연구소가 공개한 ‘오조리 4.3성 병문동산 성담’과 핵심 지명이 일치한다. 해당 출처는 이를 서귀포시 성산읍 오조리의 제주4·3 유적지로 설명하므로, 독립적인 역사·기억 방문지 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "병문동산은 제주4·3연구소의 ‘오조리 4.3성 병문동산 성담’ 유적지로, 서귀포시 성산읍 오조리 689-2번지 일대에 남은 마을 성담이다.",
+    "typical_visit": "제주4·3의 역사 현장과 남아 있는 성담 흔적을 찾아보는 야외 역사·기억 방문이다. 상설 전시·안내판·체험 운영이나 편의시설은 확인되지 않았다.",
+    "experience_scope": "대표 경험은 야외 역사 유적의 현장 관찰이다. 공식 자료는 성담의 규모와 일부 훼손·잔존을 설명하지만, 계절별 운영·접근성·주차·화장실·안내 시설은 확인하지 않아 적합도는 보수적으로 기록한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주4·3연구소는 ‘오조리 4.3성 병문동산 성담’을 서귀포시 성산읍 오조리 689-2번지 일대의 4·3 유적지로 소개한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 자료는 이곳을 오조리 마을을 둘렀던 4·3 성으로 설명하며, 높이 1~3m·폭 1~1.5m·길이 약 150m 규모의 성담이 남아 있다고 기록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소명은 ‘병문동산 4.3성’이며, 제공된 공개 후기에는 표지판 없이 귤나무와 무밭이 보인다는 방문 경험이 있다. 평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "공식 안내판, 해설, 상설 전시, 관람 동선과 접근 가능한 성담 구간을 확인하지 못했다.",
+      "주차, 화장실, 휠체어 접근, 보행 난이도, 사유지·농경지 경계와 같은 현장 접근 조건을 확인하지 못했다.",
+      "계절별 관람 적합성, 야간 조명, 안전 관리 및 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주4·3연구소",
+        "type": "historical_site_database",
+        "url": "https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&wr_id=125",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "오조리 4.3성 병문동산 성담을 서귀포시 성산읍 오조리 689-2번지 일대의 4·3 유적지로 소개한다.",
+          "오조리 마을을 둘렀던 4·3 성이며 성담 일부가 남아 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1183980997",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 병문동산 4.3성이다.",
+          "제공된 공개 방문 경험은 표지판 없이 귤나무와 무밭이 보인다는 내용이다.",
+          "평점·후기 수와 작성자 정체는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.55,"inference_level":"researched_inference","rationale":"공식 자료는 마을 성담 유적을 설명하며 산·오름 방문 경험은 확인하지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.ocean": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.55,"inference_level":"researched_inference","rationale":"공식 자료의 핵심은 오조리 마을의 4·3 성담이며 해안·해양 경험은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.activity": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.6,"inference_level":"researched_inference","rationale":"확인된 대표 경험은 유적 현장 관찰이며 레포츠나 참여형 체험 운영은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.culture_history": {"state":"numeric","status":"confirmed","value":0.75,"confidence":0.9,"inference_level":"direct_evidence","rationale":"제주4·3연구소가 이곳을 4·3 유적지와 마을 성담으로 직접 설명하므로 역사·기억 경험의 비중이 높다.","source_ids":["S1"],"rule_ids":["theme-scope-v1"]},
+    "theme.theme_park": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.65,"inference_level":"researched_inference","rationale":"공개 자료는 역사 유적만 설명하고 놀이·동물·수족관형 시설 경험은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.cafe": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.65,"inference_level":"researched_inference","rationale":"공개 자료에는 카페·차·디저트 이용 시설이 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.traditional_market": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.65,"inference_level":"researched_inference","rationale":"공개 자료는 마을 성담 유적을 설명하며 시장 방문 경험은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "theme.festival": {"state":"numeric","status":"needs_review","value":0.25,"confidence":0.65,"inference_level":"researched_inference","rationale":"특정 기간 행사나 축제 운영이 장소의 핵심이라는 근거는 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme-scope-v1","non-direct-extreme-ban-v1"]},
+    "environment.indoor_ratio": {"state":"numeric","status":"confirmed","value":0,"confidence":0.8,"inference_level":"direct_evidence","rationale":"공식 자료가 야외 마을 성담과 그 잔존 구간을 설명하므로 확인된 대표 방문 경험은 실외이다.","source_ids":["S1"],"rule_ids":["environment-scope-v1"]},
+    "environment.weather_sensitivity": {"state":"numeric","status":"needs_review","value":0.75,"confidence":0.65,"inference_level":"researched_inference","rationale":"확인된 경험이 야외 성담 관찰이므로 강수·바람·더위·추위의 영향을 받을 가능성이 높으나 현장 운영 자료는 없다.","source_ids":["S1"],"rule_ids":["environment-weather-v1","non-direct-extreme-ban-v1"]},
+    "style_evidence.restfulness": {"state":"numeric","status":"needs_review","value":0.5,"confidence":0.45,"inference_level":"archetype_prior","rationale":"소규모 야외 유적 관찰은 짧고 조용한 체류가 가능할 수 있으나 휴식 시설·체류 환경은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["style-evidence-v1"]},
+    "style_evidence.physical_ease": {"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"성담 주변의 실제 보행면, 경사, 계단과 접근 동선이 확인되지 않아 이용 편의는 중립 폴백으로 둔다.","source_ids":["S1","S2"],"rule_ids":["style-evidence-v1","fallback-uncertainty-v1"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","status":"needs_review","value":0.5,"confidence":0.45,"inference_level":"archetype_prior","rationale":"유적 현장 관찰 자체는 짧게 또는 주변을 포함해 길게 볼 여지가 있으나 공식 관람 동선·체류 시간은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["style-evidence-v1"]},
+    "style_evidence.scenic_value": {"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"성담과 농경지 주변의 시각적 경관을 정량화할 공식·공공 근거가 없어 중립 폴백으로 둔다.","source_ids":["S1","S2"],"rule_ids":["style-evidence-v1","fallback-uncertainty-v1"]},
+    "style_evidence.distinctiveness": {"state":"numeric","status":"confirmed","value":0.75,"confidence":0.85,"inference_level":"direct_evidence","rationale":"오조리 마을을 둘렀던 제주4·3 성담이라는 구체적 역사 맥락과 잔존 유구가 직접 확인된다.","source_ids":["S1"],"rule_ids":["style-evidence-v1"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","status":"confirmed","value":0.75,"confidence":0.9,"inference_level":"direct_evidence","rationale":"제주4·3연구소가 오조리 마을의 4·3 성담으로 기록해 제주 지역의 역사와 생활 공간에 직접 연결된다.","source_ids":["S1"],"rule_ids":["style-evidence-v1"]},
+    "style_evidence.landmark_significance": {"state":"numeric","status":"needs_review","value":0.5,"confidence":0.5,"inference_level":"researched_inference","rationale":"공식 4·3 유적 데이터베이스에 등재됐지만 제주 전체를 대표하는 상징 명소 수준인지는 확인되지 않는다.","source_ids":["S1"],"rule_ids":["style-evidence-v1"]},
+    "style_evidence.photo_value": {"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"공식 자료의 현황 사진은 있으나 사진 촬영 자체가 방문 가치라는 직접 근거가 없어 중립 폴백으로 둔다.","source_ids":["S1"],"rule_ids":["style-evidence-v1","fallback-uncertainty-v1"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"혼자 역사 유적을 관찰할 가능성은 있으나 안전·접근 동선과 체류 환경이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["companion-fit-v1","fallback-uncertainty-v1"]},
+    "couple":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"2인 동반 관찰 가능 여부를 제한하는 공식 정보는 없지만 편의시설·접근 조건이 미확인이라 중립 폴백이다.","source_ids":["S1"],"rule_ids":["companion-fit-v1","fallback-uncertainty-v1"]},
+    "friends":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"소규모 동행 관찰 가능성은 있으나 단체 동선과 안전·주차 정보가 없어 중립 폴백이다.","source_ids":["S1"],"rule_ids":["companion-fit-v1","fallback-uncertainty-v1"]},
+    "kids":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"아동 대상 해설·안전시설·보행 조건을 확인하지 못해 가족 아동 동행 적합도는 중립 폴백이다.","source_ids":["S1"],"rule_ids":["companion-fit-v1","fallback-uncertainty-v1"]},
+    "parents":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"archetype_prior","rationale":"고령 동행에 중요한 경사·바닥·휴식·화장실 정보가 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["companion-fit-v1","fallback-uncertainty-v1"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 1월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "2":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 2월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "3":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 3월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "4":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 4월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "5":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 5월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "6":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 6월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "7":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 7월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "8":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 8월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "9":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 9월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "10":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 10월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "11":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 11월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]},
+    "12":{"state":"numeric","status":"fallback","value":0.5,"confidence":0.25,"inference_level":"climate_heuristic","rationale":"야외 유적이나 12월의 현장 기상·접근 조건이 확인되지 않아 중립 폴백이다.","source_ids":["S1"],"rule_ids":["month-fit-v1","fallback-uncertainty-v1"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_facilities_unverified","applies_to":"recommendation_candidate","condition":"야외 성담 유적의 실제 보행 동선, 농경지·사유지 경계, 주차, 화장실, 휠체어 접근과 안전 관리 상태가 공개 공식 자료에서 확인되지 않음","status":"needs_review","action":"방문 전 공식 또는 현장 관리 주체를 통해 접근 가능한 구간과 안전·편의 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

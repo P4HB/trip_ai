@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25724363",
+  "place_id": "25724363",
+  "name": "귀덕천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공공 하천 목록과 제주특별자치도 재해정보지도는 귀덕천을 제주시 한림읍의 지방하천으로 수록한다. 확인된 자료에는 일반 방문객을 위한 독립 관광지, 산책·체험 시설, 운영 주체 또는 이용 프로그램이 나타나지 않는다. 따라서 이 Kakao 표식은 추천용 독립 장소 후보 범위 밖의 하천 지리 객체로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "귀덕천은 제주시 한림읍에 있는 지방하천으로 확인된다.",
+    "typical_visit": "독립적인 관광 방문 경험, 공식 이용 동선 또는 프로그램은 공개 공공 자료에서 확인하지 못했다.",
+    "experience_scope": "하천 자체의 지리·재해관리 정보만 확인됐으므로 관광·체험 장소의 성격이나 이용 적합도를 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국하천일람(2023년 12월 31일 기준)은 귀덕천을 제주특별자치도 제주시 한림 지역의 지방하천으로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 재해대피정보의 한림읍 상대리·봉성리 재해정보지도에는 귀덕천이 하천 및 침수예상 정보의 지명으로 표시된다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 가리키는 정확한 하천 구간의 일반인 접근 가능 여부와 토지·시설 관리 주체를 확인하지 못했다.",
+      "공식 산책로, 주차, 안전시설 또는 관광·체험 프로그램의 존재를 확인하지 못했다.",
+      "강우·범람 등 시기별 현장 접근 안전성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회",
+        "type": "public_river_registry",
+        "url": "https://www.riverlove.or.kr/files/riverData/69269ede35a2f6790c4624667d113157.pdf",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": ["귀덕천을 제주특별자치도 제주시 한림 지역의 지방하천으로 수록한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도 재난안전대책본부",
+        "type": "public_disaster_map",
+        "url": "https://bangjae.jeju.go.kr/files/map4/jejusi_010.pdf",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": ["한림읍 상대리·봉성리 재해정보지도에 귀덕천이 하천 지명으로 표시된다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_access_and_flood_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "귀덕천은 재해정보지도에 표시된 하천이며, 일반 방문객용 접근 동선과 강우·범람 시 안전 상태를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "관광 또는 현장 방문 대상으로 제시하지 않으며, 별도 활용이 필요하면 관리 주체와 최신 현장 안전·출입 정보를 확인한다.",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

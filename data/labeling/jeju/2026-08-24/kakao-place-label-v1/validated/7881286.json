@@ -1,0 +1,726 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7881286",
+  "place_id": "7881286",
+  "name": "민오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "입력의 공개 후기에서 제주시 조천읍 선흘리의 민오름 입구·정상·등산 경험이 구체적으로 확인되고, 제주도의회 공개 자료도 같은 조천읍 선흘리 산141 일대의 민오름을 별도 오름으로 수록한다. 독립적인 자연 탐방 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "이 레코드는 제주시 조천읍 선흘리 산141 일대의 민오름으로 확인된다. 동명 오름이 제주에 여러 곳이므로, 선흘리라는 후기의 위치 단서와 공개 지형 목록을 함께 사용했다.",
+    "typical_visit": "비정비 또는 부분 정비된 산길을 따라 정상과 전망을 보는 야외 오름 탐방이다. 입력 후기는 입구 찾기, 경사·험한 길, 밧줄·방향표시, 정상 조망을 언급한다.",
+    "experience_scope": "공개 근거는 야외 도보 탐방과 조망에 한정된다. 운영시간·공식 개방 여부·주차·안전시설은 최신 공식 출처로 확인하지 못했으므로 방문 전 현장 확인이 필요하다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주도의회 공개 오름 자료는 제주시 조천읍 선흘리 산141번지 일대에 민오름이 있으며, 표고 518.3m·비고 118m의 복합형 오름으로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 공개 후기들은 선흘리 1911 인근의 입구, 정상 조망, 경사지고 험하거나 길 상태가 좋지 않은 등산로를 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "한 입력 후기는 밧줄, 방향표시와 산불감시초소를 따라 정상과 둘레길을 탐방한 경험을 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 탐방로 관리 주체, 개방 여부, 통제 구간과 최신 안전 안내를 확인하지 못했다.",
+      "공식 운영시간, 화장실·주차·대중교통 등 편의시설과 무장애 접근성을 확인하지 못했다.",
+      "계절별 실제 탐방 가능성은 기상·현장 통제에 따라 달라질 수 있다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_government_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "민오름을 제주시 조천읍 선흘리 산141번지 일대로 수록한다.",
+          "표고 518.3m, 비고 118m, 복합형으로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/7881286",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 익명화된 공개 후기에는 경사·험한 길, 정상 조망, 입구 탐색과 밧줄·방향표시 관련 방문 경험이 있다.",
+          "평점과 후기 수, 작성자 정체는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 지형 자료에서 오름으로 확인되고, 후기가 등산·정상 탐방을 설명한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 대표 경험은 내륙 오름 탐방이며 해안·해양 경험 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "후기에 경사지고 험한 등산로를 오르는 신체 활동이 구체적으로 나타난다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 방문 경험은 자연 탐방이며 문화·역사 해설 또는 유산 경험 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 시설 경험 근거가 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커피·차·디저트 이용이 핵심이라는 근거가 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험 근거가 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "기간성 축제·공연이 핵심이라는 근거가 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름의 정상·등산로·둘레길을 걷는 야외 탐방이 확인되어 실내 비중은 낮게 추정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 경사지 등산로와 조망이 핵심이어서 강수·강풍·폭염·한파가 경험과 안전에 영향을 줄 수 있다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "후기에 조용함이 언급되지만 경사지고 험한 산행 부담도 함께 확인된다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "험한 경사, 길 상태, 밧줄 관련 후기로 보행 부담이 낮지 않다고 판단한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정상만 보는 짧은 산행과 둘레길 탐방 가능성은 보이나 공식 코스·소요시간이 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "복수 후기가 정상의 전망·뷰 감상을 핵심 경험으로 언급한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "선흘리의 복합형 오름과 자연 상태에 가까운 탐방로라는 특징은 확인되나 비교 가능한 공식 소개가 부족하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 선흘리의 화산 지형 오름으로 위치·지형이 확인되지만 지역 문화·생산자 연결은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역의 오름임은 확인되나 제주 대표 상징 명소라는 공식 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "정상 전망과 '뷰' 언급은 있으나 사진 촬영이 대표 목적이라는 직접 근거는 부족하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조용한 탐방 경험 근거는 있으나 입구 탐색과 험한 길 때문에 단독 산행 안전성 확인이 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "정상 조망은 함께 즐길 수 있으나 경사·길 상태가 동행 적합도를 제한할 수 있다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "등산·조망 활동은 소그룹에 가능하나 공식 안전·코스 정보가 부족하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "험한 경사와 밧줄 관련 경험이 있어 일반적인 아동 동반에 부담 가능성이 있다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "길 상태와 경사로 인해 보행 부담이 있을 수 있어 체력·이동보조 필요 여부를 현장 기준으로 확인해야 한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사지 오름이므로 겨울 기상 노출 가능성을 반영한 보수적 추정이며 현장 통제는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사지 오름의 겨울 기상 노출을 반영한 보수적 추정이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 탐방의 계절성만 반영한 중립 추정이며 실제 기상·길 상태는 확인이 필요하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사지 오름의 겨울 기상 노출을 반영한 보수적 추정이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_trail_safety",
+      "applies_to": "recommendation_candidate",
+      "condition": "방문일의 기상·탐방로 개방 상태가 안전하지 않거나, 이용자의 보행 능력에 경사·험한 길·밧줄 구간이 부적합한 경우",
+      "status": "needs_review",
+      "action": "공식 현장 안내와 기상을 확인하고, 부적합하면 대체 장소를 추천한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

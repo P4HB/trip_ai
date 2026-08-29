@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1231709554",
+  "place_id": "1231709554",
+  "name": "너나들이길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "한국관광공사와 제주관광공사 자료는 너나들이길을 제주시 절물자연휴양림 안의 여러 숲길 중 하나로 소개한다. 한국관광공사 정보는 절물자연휴양림의 산림문화휴양관·목공예체험장·장생의숲길과 너나들이길 입구가 이어진다고 설명하며, 제주관광공사도 휴양림 내 표지판을 제시한다. 따라서 너나들이길은 상위 절물자연휴양림의 세부 탐방로로, 독립 여행지와 중복되는 하위 시설로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-NATURAL-RECREATION-AREA"
+    ],
+    "duplicate_of": "절물자연휴양림",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘너나들이길’은 제주시 명림로 584의 절물자연휴양림 내부 탐방로 명칭과 일치한다.",
+    "typical_visit": "삼나무 숲·산책·산림휴양 경험은 절물자연휴양림과 그 여러 숲길에 함께 귀속된다. 너나들이길 단독의 별도 운영·입장·관람 범위는 확인되지 않는다.",
+    "experience_scope": "상위 절물자연휴양림과 중복되는 추천용 18개 원자축, 동반자 5축 및 월별 12축을 생성하지 않는다. 이 표식은 경내 세부 탐방 동선으로만 유지한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 안내는 절물자연휴양림의 산림문화휴양관과 목공예체험장을 지나 장생의숲길·너나들이길 입구로 이어진다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 절물자연휴양림 내 약수터와 너나들이길 표지판을 안내하고, 휴양림의 숙소·숲길 정보를 제공한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "너나들이길의 현재 전 구간 길이·정비 상태·공식 난이도",
+      "휴양림 입장권·개방 시간 및 계절·기상 통제와의 관계",
+      "현재 휠체어·유모차 이용 가능 구간, 경사·노면·휴게시설과 안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=2604ff19-372e-434f-a190-48e0095a2fc0",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "절물자연휴양림의 산림문화휴양관·목공예체험장과 장생의숲길·너나들이길 입구의 연결 동선을 소개한다.",
+          "절물자연휴양림 주소를 제주시 명림로 584로 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500570&menuId=DOM_000002016001000000",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "절물자연휴양림 내 약수터와 너나들이길 표지판을 제시한다.",
+          "절물자연휴양림의 숲·숙소·이용 정보를 제공한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_trail_within_recreation_area",
+      "applies_to": "recommendation_candidate",
+      "condition": "너나들이길은 절물자연휴양림 경내 숲길로, 단독 추천 시 상위 휴양림의 자연·휴양 경험과 중복됨",
+      "status": "confirmed",
+      "action": "추천·라벨링은 상위 ‘절물자연휴양림’ 단위로 처리하고, 너나들이길은 세부 탐방 동선·접근성 안내로만 사용한다. 방문 전에는 관리 주체의 최신 개방·입장·탐방로 정비 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:8610382",
+  "provider": "kakao",
+  "place_id": "8610382",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "review_status": "needs_review",
+    "inference_level": "direct_evidence",
+    "rationale": "입력 근거는 표선 해안의 경관을 보며 드라이브하는 공공 도로 경험을 설명한다. 독립적으로 운영·방문할 수 있는 장소나 시설이 아니라 선형 도로 구간이므로 이 장소 단위 추천 후보 범위에서는 제외한다.",
+    "rule_ids": [
+      "eligibility.public_road_segment"
+    ],
+    "source_ids": [
+      "kakao_reviews"
+    ]
+  },
+  "review_priority": "high",
+  "hard_constraints": [
+    "도로 이용 중 음주·정차·보행 등 안전과 교통 법규를 별도로 준수해야 한다."
+  ],
+  "research": {
+    "status": "input_evidence_only",
+    "rationale": "제공된 Kakao 공개 방문자 리뷰 근거만 사용했으며 도로 이용 조건은 확인하지 않았다."
+  },
+  "sources": [
+    {
+      "source_id": "kakao_reviews",
+      "source_type": "kakao_review_evidence",
+      "url": "https://place.map.kakao.com/8610382",
+      "publisher": "Kakao Map 공개 방문자 리뷰",
+      "checked_at": "2026-08-24T00:00:00+09:00",
+      "facts": [
+        "조용하고 평화로운 제주다운 길과 백사장 인접 경관이라는 후기가 있다.",
+        "가볍게 드라이브하기 좋고 해안도로가 아름답다는 후기가 있다."
+      ]
+    }
+  ],
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

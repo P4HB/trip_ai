@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1661,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/425010838.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:425010838",
+    "provider": "kakao",
+    "place_id": "425010838",
+    "name": "돌코리숲",
+    "url": "https://place.map.kakao.com/425010838",
+    "average_rating_5": "3.9",
+    "visitor_review_count": "11",
+    "blog_review_count": "88",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.19.",
+      "content": "소인국테마파크를 이렇게 재활용하다니...(p) 30분컷일 줄 알았는데 생각보다 볼 게 많았어요!! 야외에서 사진이 너무예쁘게 나오더라고요💛 근데 여름에 밖은 너무 습하고 더우니까 야외먼저보고 실내 오는게 좋은듯 실내 볼거리도 많았어요 전 쫄본데 미끄럼틀 와 비명질렀어요 깜짝놀램 밖에 유료체험 하는 것 중에는 보트 운전하는거! 그거 둘이서 대결하는거 정도 해볼만해요 ㅋㅋㅋ 나머지는 좀 돈아까움 스탬프 다찍으면 스티커 주니까 받아가시길",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.08.05.",
+      "content": "러버덕 작가가 만든 왕 귤냥이가 있다고 해서 갔는데 크고 귀여워서 사진 많이 찍었습니다ㅋㅋ 체험 시설은 다 유료인데 골라서 하면 되니까 부담스럽진 않았어요. 야외 먼저 보고 실내에서 땀 식히니까 딱이었습니다",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2026.05.16.",
+      "content": "실내는 솔직히 아쉬운데 실외는 괜찮은거 같아요 다만 가격이 좀 비싸서...",
+      "tags": ""
+    },
+    {
+      "date": "2026.05.02.",
+      "content": "전 소인구 테마파크를 고양이 라는 캐릭터로 업그레이드 한것 같아요 특별전시관은 정말 볼게 없지만 나머지 실외 실내는 아이들과 시간 보내기 좋아여 그리고 고유가 지원금 사용 가능 하다 알고 갔지만 결재가 안된다네요",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2026.08.19.",
+      "content": "가격에 비해 진짜 볼게 없어요. 귤고양이 보러오신분들은 주차장에서도 보이긴해서 매표소 들어가지말고 밖에서 찍고 가도 될거같네요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12728719",
+  "place_id": "12728719",
+  "name": "신도리도요지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "공공저작물과 공공데이터에 신도리 도요지가 서귀포시 대정읍 신도리의 제주특별자치도 기념물 제58-4호로 명시되어 있다. 옛 제주 도기 가마 유적으로 독립적인 역사·문화 탐방 대상이므로 eligible로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "신도리도요지는 서귀포시 대정읍 신도리 3138번지에 있는 제주특별자치도 기념물 제58-4호의 옛 도기 가마 유적이다.",
+    "typical_visit": "‘일곱드르 노랑굴’로도 불리는 근대 초·중기 추정 도요지와 제주 전통 생활 도기의 생산 흔적을 살피는 역사·문화유산 방문이다.",
+    "experience_scope": "공개 공공자료는 유적의 지정·위치·가마 구조와 도기 생산 이력을 확인한다. 최신 개방 시간, 관람 동선, 내부 출입 허용 여부, 주차·화장실·무장애 시설 및 현장 안전 안내는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주특별자치도가 제공한 공공저작물은 신도리 도요지를 제주특별자치도 기념물 제58-4호로 표기한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "전국향토문화유적 공공데이터는 신도리 도요지를 서귀포시 대정읍 신도리 3138번지의 도 기념물로 기록하며, 생활 도기를 만들던 ‘일곱드르 노랑굴’과 남아 있는 가마의 구조·근대 초중기 추정 시기를 소개한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "2026년 기준의 개방 시간, 관람 가능 구역, 가마 내부 출입 허용 여부와 현장 관리 연락처 운영 상태",
+      "진입로·주차·화장실·휴식시설, 경사·계단·노면 및 휠체어 접근성",
+      "우천·강풍 시 안전 통제, 보존을 위한 출입 제한과 월별 관람 조건"
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주특별자치도", "type": "public_copyright_portal", "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=39210", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["제주특별자치도 제공 이미지 자료가 신도리 도요지를 대정읍 신도리의 가마·노랑굴로 설명하고 제주특별자치도 기념물 제58-4호로 태그한다."]},
+      {"id": "S2", "publisher": "제주특별자치도 세계유산본부 (전국향토문화유적표준데이터 제공기관)", "type": "public_data", "url": "https://kor.clubrichtour.co.kr/bbs/board.php?bo_table=public_nvpc_cltur&page=123&sod=asc&sop=and&sst=wr_hit&wr_id=3642", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["공개된 전국향토문화유적표준데이터는 소재지를 서귀포시 대정읍 신도리 3138번지로, 지정일을 2005-10-05로 기록한다.", "‘일곱드르 노랑굴’에서 허벅·통개·병·장테 등 생활 도기를 만들었고, 남은 가마는 길이 8.85m·너비 2~5.7m·높이 1.56m이며 근대 초·중기 건립 추정이라고 소개한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험이 이 유적의 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험 운영 여부를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료가 제주특별자치도 기념물로 지정된 옛 도기 가마 유적과 제주 생활 도기 생산 이력을 직접 설명한다.","source_ids":["S1","S2"],"rule_ids":["THEME-CULTURAL-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·테마파크형 시설 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 대상이 야외에 남아 있는 도요지·가마 유적이므로 실내 경험 비율은 낮게 추론한다. 실내 전시·안내 공간의 존재는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-HERITAGE-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"가마 유적을 현장에서 살피는 야외 방문으로 확인되어 비·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다. 실제 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·소음·휴식시설과 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"진입로, 노면, 경사·계단 및 무장애 동선을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 관람 시간, 해설·전시와 단축 또는 장기 체류 선택지를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"풍경 감상 자체가 핵심 가치라는 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"‘일곱드르 노랑굴’이라는 명칭, 제주 생활 도기 생산 이력과 남아 있는 가마 구조가 공공자료에서 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-UNIQUE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 지정 기념물이자 제주 선현의 일상용 도기 생산 유적으로 직접 소개되어 제주 지역 문화와의 연결이 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-CULTURE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"도 기념물 지정은 확인되나 제주 전체 또는 대정 지역을 대표하는 상징 명소라는 관광·공적 안내 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-DESIGNATION-NOT-ICONIC"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공공 이미지가 존재하지만 사진 촬영 또는 시각적 기록 자체가 현장 핵심 경험으로 권장된 근거는 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·안내·통신 환경을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류·편의 환경 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 동선·수용 여건 및 안전 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 안전시설, 내부 출입·노면 및 보호자 기준을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·계단·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적의 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"heritage_site_access_and_safety_unknown","applies_to":"all_visitors","condition":"야외 역사유적이지만 최신 관람 가능 구역·내부 출입, 운영 시간, 진입로·주차, 노면·계단·무장애 접근성과 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 제주특별자치도 유산 관리기관 또는 현장 최신 안내로 개방 여부, 보존을 위한 출입 제한, 이동·기상 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

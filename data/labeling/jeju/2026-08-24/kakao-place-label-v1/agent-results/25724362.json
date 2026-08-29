@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25724362",
+  "place_id": "25724362",
+  "name": "귀덕천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 공공자료는 귀덕천을 제주시 한림 지역의 하천으로 수록한다. 확인된 자료에는 일반 방문객을 위한 독립 관광지, 공식 산책·체험 시설 또는 운영 프로그램이 나타나지 않으며, 입력에도 주소·좌표·후기가 없다. 따라서 이 Kakao 표식은 추천용 독립 방문지 후보 범위 밖의 하천 지리 객체로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "귀덕천은 제주시 한림 지역에 있는 하천으로, 공공 자료에서 귀덕교 습지 및 한림천 합류점과 연결되어 기록된다.",
+    "typical_visit": "공개 공공 자료에서 독립적인 관광 방문 경험, 공식 이용 동선 또는 체험 프로그램은 확인하지 못했다.",
+    "experience_scope": "확인된 내용은 하천·습지의 지리 및 관리 정보에 한정된다. Kakao 표식의 정확한 구간, 일반 출입 가능 여부와 관광지로서의 운영은 확인되지 않아 적합도 점수를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국립생태원 공개 전국내륙습지조사 자료는 제주시 한림읍 봉성리의 귀덕천 귀덕교습지를 하천형 습지(R4)로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 제주시 하천 목록은 귀덕천의 기점을 봉성리 846, 종점을 한림천 합류점으로 기록한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 표식이 가리키는 정확한 하천 구간과 일반인 접근 가능 여부를 확인하지 못했다.",
+      "공식 산책로·관람로, 주차·화장실·무장애 접근성 또는 관광·체험 프로그램의 존재를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 현장 안전 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국립생태원",
+        "type": "public_wetland_survey_document",
+        "url": "https://www.nie.re.kr/nie/cmmn/file/fileDown.do?atchFileId=748b733666a3426885b7d612f2bcb630&fileSn=1",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "귀덕천 귀덕교습지는 제주시 한림읍 봉성리의 하천형 습지(R4)로 수록된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_council_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주시 하천 목록은 귀덕천의 기점을 봉성리 846, 종점을 한림천 합류점으로 기록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_access_and_flood_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "귀덕천은 공공 자료에 하천·하천형 습지로 기록되어 있으나, 일반 방문객용 접근 동선과 강우·범람 시 안전 상태는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보에서 제외하며, 별도 현장 활용이 필요하면 관리 주체와 최신 출입·강우·보행 안전 정보를 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

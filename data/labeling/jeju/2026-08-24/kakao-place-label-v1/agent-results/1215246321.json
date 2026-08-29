@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1215246321",
+  "canonical_id": "kakao:1215246321",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "카카오 장소명과 제주4·3연구소의 4·3유적지 목록·상세 제목이 모두 '고산지서 터'로 일치한다.",
+    "source_ids": ["src:jeju43-research-institute"]
+  },
+  "research": {
+    "identity_status": "matched",
+    "summary": "제주4·3연구소가 '고산지서 터'를 4·3유적지로 수록한 역사 유적지다. 공개 페이지에는 현재 시설, 접근, 운영시간, 경관 및 체험 정보가 제시되지 않았다.",
+    "sources": [
+      {
+        "source_id": "src:jeju43-research-institute",
+        "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&wr_id=107",
+        "publisher": "제주4·3연구소",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "상세 페이지의 제목은 '고산지서 터'이다.",
+          "제주4·3연구소는 이 장소를 '4·3유적지' 목록에 수록한다."
+        ]
+      },
+      {
+        "source_id": "src:jeju43-peace-foundation-timeline",
+        "url": "https://jeju43peace.or.kr/kor/sub01_01_04.do",
+        "publisher": "제주4·3평화재단",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "1948년 2월 10일 고산지서 경찰이 시위 군중에게 발포해 주민 1명이 중상한 사건을 연표에 기록한다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "현존 안내물·시설과 실내외 구성",
+      "접근로, 보행 난이도 및 무장애 정보",
+      "운영시간·휴무·출입 가능 여부",
+      "계절별 방문 경험과 사진 촬영 환경"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 또는 산림 경관이 핵심이라는 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해변·해양 활동이 핵심이라는 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 활동의 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 성격의 연구소가 이 장소를 제주4·3 유적지로 수록하며, 평화재단 연표는 고산지서 관련 1948년 사건을 기록한다.","source_ids":["src:jeju43-research-institute","src:jeju43-peace-foundation-timeline"],"rule_ids":["research:43-heritage-site"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 놀이 경험의 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용의 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제·공연이 장소의 핵심이라는 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현존 시설의 실내외 구성 정보를 공개 출처에서 확인하지 못했다.","source_ids":[],"rule_ids":["fallback:unknown-physical-setting"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"대표 방문 경험과 날씨 영향의 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:unknown-physical-setting"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온한 체류 경험에 관한 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행, 경사, 계단 또는 접근성 정보를 확인하지 못했다.","source_ids":[],"rule_ids":["fallback:unknown-accessibility"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류시간이나 방문 동선 정보가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 방문 가치라는 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유적지 수록 외에 현장 고유 경험이나 구성의 상세 근거가 없다.","source_ids":[],"rule_ids":["fallback:insufficient-public-evidence"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주4·3 유적지로 수록되고 제주에서 발생한 고산지서 관련 사건과 연결된다.","source_ids":["src:jeju43-research-institute","src:jeju43-peace-foundation-timeline"],"rule_ids":["research:43-heritage-site"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유적지 목록 수록만으로 제주 또는 지역 대표 명소 여부를 판단할 수 없다.","source_ids":[],"rule_ids":["fallback:insufficient-significance-evidence"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 대상·환경에 관한 공개 근거가 없다.","source_ids":[],"rule_ids":["fallback:unknown-physical-setting"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 적합성을 판단할 접근·체험 정보가 없다.","source_ids":[],"rule_ids":["fallback:unknown-visitor-fit"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 적합성을 판단할 접근·체험 정보가 없다.","source_ids":[],"rule_ids":["fallback:unknown-visitor-fit"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 적합성을 판단할 접근·체험 정보가 없다.","source_ids":[],"rule_ids":["fallback:unknown-visitor-fit"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반 시 접근성·안전·해설 정보가 없다.","source_ids":[],"rule_ids":["fallback:unknown-visitor-fit"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반 시 보행·휴식·접근성 정보가 없다.","source_ids":[],"rule_ids":["fallback:unknown-visitor-fit"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"1월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"2월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"3월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"4월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"5월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"6월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"7월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"8월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"9월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"10월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"11월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"12월의 현장 접근·계절 경험 정보가 없다.","source_ids":[],"rule_ids":["fallback:no-seasonal-evidence"]}
+  },
+  "hard_constraints": [],
+  "review_priority": "high"
+}

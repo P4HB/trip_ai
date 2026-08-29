@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:967199520",
+  "place_id": "967199520",
+  "name": "용천수탐방길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "조천리의 용천수들을 잇도록 조성된 독립적인 탐방·산책 장소로 확인된다.",
+    "source_ids": ["src_jpdc_20260825"],
+    "rule_ids": ["eligibility.independent_place"]
+  },
+  "research": {
+    "status": "researched",
+    "summary": "조천리의 여러 용천수를 잇는 야외 마을 탐방길로, 용천수의 생활사와 물 문화를 관찰하고 걷는 경험이 핵심이다.",
+    "sources": [
+    {
+      "id": "src_jpdc_20260825",
+      "publisher": "제주특별자치도개발공사",
+      "url": "https://webzine.jpdc.co.kr/html/vol46/sub01_02.php",
+      "checked_at": "2026-08-25T00:00:00+09:00",
+      "facts": [
+        "조천리 용천수탐방길은 2018년부터 2년간 약 23곳의 용천수를 정비해 조성됐다.",
+        "용천수마다 번호 안내 표지판이 있으며, 쉼터에서 맨발 걷기와 발 담그기 체험을 할 수 있다.",
+        "용천수는 조천리 주민의 식수와 생활용수로 쓰였고, 각 용천수의 용도와 이름을 알아가며 보는 경험을 소개한다."
+      ]
+    },
+    {
+      "id": "src_ecotourism_20260825",
+      "publisher": "한국생태관광협회",
+      "url": "https://www.ecotourism.or.kr/post/%EB%B3%B4%EB%8F%84%EC%9E%90%EB%A3%8C-10%EC%9B%94-%EC%A0%95%EA%B8%B0%EC%83%9D%ED%83%9C%EA%B4%80%EA%B4%91-%EC%A7%80%EA%B8%88-%EC%A0%9C%EC%A3%BC%EC%97%90-%EB%8B%BF%EA%B8%B0%EB%A5%BC-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%9A%B4%EC%98%81",
+      "checked_at": "2026-08-25T00:00:00+09:00",
+      "facts": [
+        "조천리 용천수탐방길은 올레길 18코스와 용천수 코스가 겹쳐진 마을길을 걸으며 주민의 물 문화와 생활상을 살피는 생태관광 프로그램 장소로 소개됐다."
+      ]
+    }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 용천수와 마을길 걷기를 핵심으로 설명하며 산·오름 경관은 확인하지 못했다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.researched_non_extreme"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "탐방길 자체의 해안 경관 비중은 공공 상세 자료에서 충분히 확인되지 않아 중간값으로 둔다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.researched_non_extreme"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "용천수를 찾아 마을길을 걷고, 쉼터에서 맨발 걷기 체험을 할 수 있다고 확인된다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["evidence.walking_experience"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "용천수의 옛 식수·생활용수 이용과 주민 물 문화·생활상을 살피는 탐방 경험이 확인된다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["evidence.local_water_culture"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "마을 탐방길로 확인되어 테마파크형 시설 경험은 핵심으로 보이지 않지만, 완전 부재를 확정하지 않는다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["prior.village_trail"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공개 자료에서 카페·차·디저트 이용은 확인하지 못했으므로 탐방길 유형의 낮은 사전값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["prior.village_trail"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "시장 방문 장소라는 근거가 없어 탐방길 유형의 낮은 사전값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["prior.village_trail"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "특정 기간 축제가 장소의 핵심이라는 근거를 찾지 못해 낮은 사전값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["prior.village_trail"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을길을 걷고 용천수를 찾는 야외 탐방으로 설명되지만 실내 구간의 부재는 확정하지 않는다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["inference.outdoor_trail"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험이 마을길 보행과 야외 용천수 탐방으로 확인되어 날씨 노출 영향이 크다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["evidence.outdoor_walking"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "쉼터와 발 담그기 체험이 확인되어 느린 휴식형 체류 가치가 있다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["evidence.rest_area_water_soak"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을길 보행은 확인되지만 전체 거리·경사·무장애 정보가 없어 중간값으로 둔다.", "source_ids": ["src_ecotourism_20260825"], "rule_ids": ["inference.walking_route_unknown_grade"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "여러 번호의 용천수를 찾아보는 구성이라 일부만 보거나 여러 지점을 둘러보는 체류 조절이 가능하다고 추론한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.multi_stop_route"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "용천수와 마을 환경을 보는 탐방이지만 경관 감상 비중을 정량화할 직접 근거는 부족하다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.village_water_landscape"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "번호가 붙은 다수 용천수와 각 용도·이름을 알아보는 탐방 구성은 고유한 경험으로 확인된다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["evidence.numbered_springs"]},
+    "style_evidence.local_embeddedness": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 조천리 주민의 식수·생활용수와 물 문화, 마을 생활상을 직접 다루는 장소다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["evidence.jeju_local_water_culture"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "지역의 물 문화와 연결된 탐방길이나 제주 대표 명소 여부를 확정할 공공 지정 근거는 찾지 못했다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.local_site_no_designation"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "용천수와 마을길을 관찰하는 야외 장소이나 사진 촬영이 직접 확인되지는 않아 중간값으로 둔다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.outdoor_visual_record"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "안내 표지판을 따라 개별 용천수를 둘러보는 마을길 탐방이라 혼자 방문에도 적합하다고 추론한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.self_guided_trail"]},
+    "couple": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "느린 산책과 물 문화 관찰 중심의 야외 탐방으로 동반 산책에 적합하다고 추론한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.shared_walking"]},
+    "friends": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "여러 지점을 함께 걸으며 탐방할 수 있으나 단체 편의 정보는 확인되지 않아 검수가 필요하다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.shared_walking"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "용천수의 이름과 이용 이야기를 관찰할 수 있으나 어린이 안전·난이도 정보가 부족하다.", "source_ids": ["src_jpdc_20260825", "src_ecotourism_20260825"], "rule_ids": ["inference.educational_walk_unknown_safety"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을길 탐방 장소이나 거리·경사·휴식시설의 전 구간 정보가 없어 중간값으로 둔다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["inference.walking_route_unknown_grade"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 보행 장소의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_jpdc_20260825"], "rule_ids": ["fallback.climate_unknown"]}
+  },
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

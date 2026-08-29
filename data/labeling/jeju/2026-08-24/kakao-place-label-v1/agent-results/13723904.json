@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723904",
+  "place_id": "13723904",
+  "name": "사수동약수물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 ‘사수동약수물’이라는 명칭 외에 주소·좌표·업종을 제공하지 않는다. 공개된 제주올레 17코스 경로 자료와 해당 코스 안내 전자책의 목차는 사수동 약수물을 도두봉과 어영소공원 사이의 코스상 경유 지점으로 열거한다. 약수물 자체의 독립 관람·운영·체험 동선 또는 관리 안내는 확인하지 못했으므로, 독립 추천 후보가 아니라 올레길 보행 경험에 종속된 수원 표식으로 분류한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"],
+    "rule_ids": ["REQ-012"]
+  },
+  "research": {
+    "identity_summary": "사수동약수물은 제주올레 17코스에서 도두봉 뒤, 어영소공원 앞에 열거되는 약수물(수원) 표식으로 확인된다. 입력에는 이 표식의 주소·좌표·운영 정보가 없다.",
+    "typical_visit": "공개 경로 자료는 이 지점을 제주올레 17코스를 걷는 중 지나는 경유 지점으로만 제시한다.",
+    "experience_scope": "독립 방문지로서의 관람·체험, 시설 규모, 수질·음용 가능 여부, 개방 상태, 접근·안전 조건을 확인하지 못했다. 따라서 41축 추천 라벨을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 13723904의 명칭을 ‘사수동약수물’로 제공하며, 주소·좌표·업종 및 공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개된 제주올레 17코스 경로 자료는 사수동 약수물을 도두봉 정상 뒤, 어영소공원 앞의 약 11.6km 경유 지점으로 열거한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "제주올레 17코스 안내 전자책의 목차도 사수동 약수물을 도두봉과 어영소공원 사이의 코스 항목으로 열거한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id의 정확한 좌표·주소 및 현장 표식과 공개 경로 자료의 정확한 일치",
+      "약수물의 수질, 음용 가능 여부, 관리 주체, 최신 개방 상태 및 이용 제한",
+      "독립 방문을 위한 접근로, 보행 안전, 편의시설 및 무장애 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/13723904",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 장소명은 사수동약수물이며 place_id는 13723904다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "걷기좋은길 (전국길관광정보표준데이터 기반 안내)",
+        "type": "public_route_information",
+        "url": "https://walk.kimgoon.kr/trails/1334",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주 올레길 17코스 안내의 경유 지점에 사수동약수물이 포함된다.",
+          "사수동약수물은 도두봉 정상과 어영소공원 사이에 열거된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "예스24",
+        "type": "public_book_metadata",
+        "url": "https://www.yes24.com/product/goods/125576682",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "‘제주 올레 17코스 광령-제주원도심’ 안내 전자책 목차는 사수동 약수물을 코스 항목으로 열거한다.",
+          "목차에서 사수동 약수물은 도두봉 다음, 어영소공원 이전에 배치된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_waypoint_and_water_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "사수동약수물은 올레길 경유 표식으로만 확인되며, 독립 방문 경험·정확한 위치·최신 접근 가능 여부와 수질·음용 안전 정보는 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 추천 후보에서는 제외한다. 올레길 안내에서 언급할 경우, 현장 또는 관리 기관의 최신 경로 상태와 물 이용·안전 안내를 먼저 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "rule_ids": ["REQ-009", "REQ-011", "REQ-012"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

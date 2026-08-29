@@ -1,0 +1,767 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11889968",
+  "place_id": "11889968",
+  "name": "애월해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "제주관광공사 Visit Jeju가 애월해안도로를 제주시 애월읍 애월해안로의 독립 관광지로 안내하며, 해안 드라이브·자전거·산책을 대표 경험으로 설명한다. 입력 Kakao 공개 후기도 바다 경관을 보며 운전하는 경험과 일치하므로 별도 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "애월해안도로는 제주 북서부 하귀리에서 애월리까지 이어지는 약 9km 해안 드라이브·자전거·산책 구간이다.",
+    "typical_visit": "차, 자전거 또는 도보로 해안선을 따라 이동하면서 바다·일몰·포구·돌염전 등 경관을 감상하는 야외 방문이다.",
+    "experience_scope": "공식 관광 안내는 위치, 약 9km 구간, 야외 이동 방식과 올레·자전거길 연계를 확인한다. 개별 구간의 최신 교통량·보행로 상태, 주차, 화장실, 휠체어 접근성, 기상·파도 안전 및 일몰 시각은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 애월해안도로를 제주 북서부 하귀리에서 애월리까지 이어지는 약 9km 해안 드라이브 코스로 안내하며, 바다 풍경과 일몰, 구엄리 돌염전·포구 등을 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 도로를 따라 자전거길과 보행 구간이 있고 제주환상자전거길 및 제주올레 16코스 일부라고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 공개 후기는 바다·등대 경관, 굴곡진 도로의 절경, 드라이브 중 정차해 경관을 보는 경험을 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "개별 구간의 최신 차량 통행량, 보행로 폭·단차·노면, 자전거 안전 및 무장애 접근성은 확인하지 못했다.",
+      "주차·화장실·쉼터 등 편의시설의 위치와 운영 상태는 구간별로 확인하지 못했다.",
+      "강풍·강수·고파랑 등 악천후 때의 현장 통제와 야간 안전 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500425&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "애월해안도로는 제주시 애월읍 애월해안로에 안내된 관광지다.",
+          "하귀리에서 애월리까지 약 9km의 해안 드라이브 코스이며 바다 풍경과 일몰을 소개한다.",
+          "자전거길과 보행 구간이 있고 제주환상자전거길 및 제주올레 16코스 일부로 안내된다.",
+          "구엄리 돌염전, 포구와 방파제 등 해안 명소를 지나는 구간으로 소개된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/11889968",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 공개 후기는 드라이브와 바다·등대·도로 경관 감상을 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_guidebook",
+        "url": "https://www.visitjeju.net/pdf/Official%20Jeju%20Tourism%20Guidebook_kr.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공식 제주 관광 가이드북은 애월~하귀 해안도로를 제주 7대 도로로 소개한다.",
+          "가이드북은 제주 겨울 바닷가에서 강한 바람을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 바다 풍경을 감상하는 해안 드라이브 코스로 직접 설명하므로 해안 경관이 핵심 경험이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 자동차·자전거·도보 이동과 자전거길·보행 구간을 직접 안내해 참여형 야외 이동 경험의 비중이 높다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "돌염전 등 주변 지점은 소개되지만 역사·문화유산 관람이 이 도로 자체의 핵심 경험이라는 근거는 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "주변 카페는 언급되지만 카페 이용이 이 도로의 독립적 핵심 방문 목적이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 활동이 해안도로의 드라이브·자전거·산책으로 안내돼 실내 경험 비율은 낮게 추론한다. 구간별 실내 부대시설은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 해안 경관 감상과 도보·자전거 이동이 대표 경험이므로 비·바람·더위·추위 영향을 비교적 크게 받는다. 실제 현장 통제는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 바다·마을길·숲길을 경험하며 산책할 수 있는 구간과 일몰 경관을 설명해 느린 경관 감상 체류 성격을 직접 뒷받침한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행 구간은 확인되지만 구간별 경사·노면·교통량·무장애 접근성을 확인하지 못해 신체 부담은 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "약 9km 구간을 자동차·자전거·도보로 즐길 수 있다고 안내돼 짧은 정차부터 긴 이동까지 체류 시간을 조절하기 쉽다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 빼어난 제주 바다 풍경과 아름다운 일몰을 이 도로의 방문 가치로 직접 소개한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안도로가 돌염전·포구·방파제와 제주올레 16코스·환상자전거길을 함께 지나는 구성으로 공식 안내돼 구별되는 경험을 제공한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 제주 해안 마을길, 구엄리 돌염전과 포구, 제주올레를 직접 연결해 제주 자연과 지역 생활 경관의 연계를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 제주 관광 가이드북이 애월~하귀 해안도로를 제주 7대 도로에 포함하고, Visit Jeju도 제주 서부의 인기 드라이브 코스로 안내한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 바다 풍경과 일몰, 돌염전·포구 등 시각적 경관을 대표 방문 가치로 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시의 구간별 보행·교통 안전과 편의시설 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 일몰과 해안 드라이브·산책을 제시하며 커플 태그를 함께 제공해 두 명의 경관 감상 방문에 비교적 적합하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 자동차·자전거·도보 이동과 경관 감상은 소규모 동행이 함께 경험할 수 있는 활동이다. 단, 차량·보행 안전은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 차도와의 분리, 보행로·난간, 화장실 등 안전·편의 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "부모 세대의 보행 부담, 쉼터, 주차와 무장애 접근성 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공식 가이드북이 겨울 제주 바닷가의 강한 바람을 언급하며, 야외 해안도로 경험은 겨울 기상 영향을 받을 수 있다. 현장 조건은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공식 가이드북이 겨울 제주 바닷가의 강한 바람을 언급하며, 야외 해안도로 경험은 겨울 기상 영향을 받을 수 있다. 현장 조건은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안도로 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안도로 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공식 가이드북이 겨울 제주 바닷가의 강한 바람을 언급하며, 야외 해안도로 경험은 겨울 기상 영향을 받을 수 있다. 현장 조건은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "road_and_weather_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "대표 경험이 차량·자전거·도보를 포함하는 해안도로이며, 구간별 교통량, 보행·자전거 분리, 노면, 주차, 무장애 접근성과 악천후 안전 통제는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 최신 도로·기상 정보와 현장 주차·보행 안전을 확인하고, 강풍·강수 시에는 이동 방식을 조정한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

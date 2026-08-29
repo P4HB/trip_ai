@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1916,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/7958410.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:7958410",
+    "provider": "kakao",
+    "place_id": "7958410",
+    "name": "소병악",
+    "url": "https://place.map.kakao.com/7958410",
+    "average_rating_5": "3.7",
+    "visitor_review_count": "6",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.19.",
+      "content": "오름인증하러 다녀왔습니다.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2022.11.05.",
+      "content": "대병악과 같이 돌아볼 수 있는 곳 꼭대기서 산불 아저씨와 대화나눌 수 있는곳",
+      "tags": "뷰"
+    },
+    {
+      "date": "2021.08.11.",
+      "content": "올라가는 길이 가파르지만 충분히 그 가치가 있는 오름이예요~~",
+      "tags": ""
+    },
+    {
+      "date": "2021.06.06.",
+      "content": "입구: 상창리 93-1 비포장도로에 진입하시면 됩니다. 대병악 먼저 가시고 소병악 코스로 가시면 편합니다. 정상 뷰 좋고요 굼부리는 대병악에서 볼 수 있어요. 대병악과 마찬가지로 계단으로 되어 있어서 무릎 안좋으신 분들은 비추천 합니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

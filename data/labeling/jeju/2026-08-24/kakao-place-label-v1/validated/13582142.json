@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13582142",
+  "place_id": "13582142",
+  "name": "솔동산농원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 기업정보에서 솔동산농원은 제주시 조천읍의 건강·식품 관련 전자상거래 소매 중개업 사업체로 확인된다. 공개 여행 자료는 이 장소에서 2010년 3월 이틀간 열린 제3회 제주매실꽃축제만 기록하며, 현재 일반 여행객이 방문·관람·체험할 수 있는 농원 또는 축제 장소라는 최신 공식 근거는 확인되지 않았다. 따라서 현재 여행지 추천용 독립 방문 경험으로는 범위 밖으로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-MATCHED",
+      "ELIG-CURRENT-VISIT-SCOPE-UNVERIFIED",
+      "ELIG-PRIVATE-COMMERCE-OUT-OF-SCOPE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "current_public_visit_availability_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "솔동산농원의 현재 일반 방문 허용 여부, 관람·체험 프로그램, 운영 시간 및 매실꽃축제의 계속 개최 여부를 공개 최신 출처로 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "관리 주체의 최신 공식 안내로 일반 방문 가능 여부와 운영·행사 정보를 확인하기 전에는 여행 추천 후보로 노출하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched_scope_unverified",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘솔동산농원’은 공개 기업정보의 동명 사업체와 일치하며, 주소는 제주 제주시 조천읍 중산간동로 946으로 표시된다.",
+    "facts": [
+      {
+        "text": "공개 기업정보는 솔동산농원을 제주 제주시 조천읍 중산간동로 946 소재의 건강·식품 관련 전자상거래 소매 중개업 사업체로 표시한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공개 여행 아카이브는 2010년 3월 6~7일 제3회 제주매실꽃축제의 장소를 제주 조천읍 솔동산농원으로 기록한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "현재 농원의 일반인 출입, 관람 또는 농촌 체험 제공 여부",
+      "2010년 이후 제주매실꽃축제의 개최 지속 여부와 최신 일정",
+      "현장 접근, 주차, 화장실, 안전 및 무장애 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "사람인 (NICE평가정보 제공 기업정보)",
+        "type": "business_information",
+        "url": "https://www.saramin.co.kr/zf_user/company-info/view/csn/VnhuZmx4NWJYNS93MmN2YUxpT29OZz09/company_nm/%EC%86%94%EB%8F%99%EC%82%B0%EB%86%8D%EC%9B%90",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "솔동산농원의 업종을 전자상거래 소매 중개업, 사업 내용을 건강/식품으로 표시한다.",
+          "주소를 제주 제주시 조천읍 중산간동로 946으로 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국 여행 정보 블로그 아카이브",
+        "type": "archived_travel_information",
+        "url": "https://korea-tour.tistory.com/m/entry/%EB%B4%84%EA%BD%83%EC%B6%95%EC%A0%9C-3%EC%9B%94-%EC%B6%95%EC%A0%9C-%EC%B6%94%EC%B2%9C-%EC%97%AC%ED%96%89",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2010년 3월 6~7일 제3회 제주매실꽃축제의 장소를 제주 조천읍 솔동산농원으로 기록한다.",
+          "해당 기록은 과거 행사 정보이며 현재 개최·운영 상태는 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

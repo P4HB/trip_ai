@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1836353575",
+  "place_id": "1836353575",
+  "name": "깨어진 공적비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공개 여행 보도는 산지천 북성교 인근 공신정 터에 남은 특정 비석 흔적을 ‘깨어진 공적비’로 식별하고, 산지천 산책 동선의 역사 관찰 지점으로 소개한다. 상위 시설의 운영 부속물이나 다른 입력 장소와의 중복 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "깨어진 공적비는 제주시 산지천의 북성교를 건너 공신정 터에서 볼 수 있는 비석 받침 일부의 흔적으로 확인된다.",
+    "typical_visit": "산지천·탐라문화광장 일대를 걷다가 멈춰 작은 역사 표식의 흔적을 살피는 짧은 야외 방문이다.",
+    "experience_scope": "공개 자료는 위치 맥락, 현존 형태 및 비문의 대상이 알 수 없다는 점을 확인한다. 현장 보존 상태, 접근로·노면, 주차·화장실, 무장애 접근성 및 악천후 안전은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"공개 여행 보도는 산지천 주변의 제주항 서부두~탐라문화광장 구간에서 깨어진 공적비를 눈길을 끄는 지점으로 열거한다.","source_ids":["S1"]},
+      {"id":"F2","text":"같은 보도는 북성교를 건너면 공신정 터에 흔히 깨어진 공적비라 불리는 비석 흔적이 있고, 비문은 사라지고 받침 일부만 남아 누구의 공적을 기린 것인지는 알 수 없다고 기록한다.","source_ids":["S1"]}
+    ],
+    "unknowns": [
+      "Kakao 표식과 공개 보도의 현장 지점이 최신 좌표상 정확히 같은지 대조하지 못했다.",
+      "현재 출입 범위, 비석 보존 상태, 안내판, 주차·화장실·쉼터 및 무장애 접근성은 확인하지 못했다.",
+      "공식 문화유산 지정 여부와 건립 대상·연대는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"오마이뉴스","type":"public_travel_article","url":"https://www.ohmynews.com/NWS_Web/view/at_pg.aspx?CNTN_CD=A0003212801","checked_at":"2026-08-25T00:00:00+09:00","facts":["산지천 주변 산책 동선에서 깨어진 공적비를 소개한다.","북성교 인근 공신정 터에 비석의 받침 일부가 남았고 비문과 기념 대상은 알 수 없다고 기록한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 산·오름·산림 경관이 이 표식 방문의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산지천과 항만 인근이라는 위치 외에 해양 활동이나 해안 경관 감상이 핵심이라는 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산책 동선의 작은 관찰 지점이라는 사실 외에 참여형 체험이나 레포츠 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"정체는 미상이나 공신정 터에 남은 비석 흔적을 관찰하고 과거의 공적을 기린 표식의 소실을 살피는 역사 관찰이 대표 경험으로 직접 소개된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적인 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인근 동문시장과 별개로 이 비석 자체가 시장 또는 상거래 경험을 제공한다는 근거는 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"북성교를 건너 공신정 터의 비석 흔적을 보는 야외 방문으로 설명되지만, 주변 실내 연계 공간의 이용 비중은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 산지천 야외 산책 동선에서 비석 흔적을 살피는 것이므로 비·바람·더위 등의 영향을 비교적 받을 것으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·소음·체류 환경 정보가 없어 휴식성은 중립값으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단 및 무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간·개방 시간·현장 해설 운영을 확인하지 못해 체류시간 조절성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산지천 산책 동선이라는 위치 외에 경관 감상 자체가 이 표식의 직접 방문 가치라는 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"비문은 사라지고 받침 일부만 남아 기념 대상도 알 수 없는 공신정 터의 특정 비석 흔적이라는 구성이 직접 확인되어 고유성이 있다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 산지천과 공신정 터라는 지역 역사·도시 산책 맥락에 직접 연결된 표식이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산지천 산책 기사에 소개되지만 제주 또는 제주시를 대표하는 상징 명소라는 공적 지정·공식 안내는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문에 필요한 최신 출입·안전·동선 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경·동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·교육 안내·안전시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 역사 표식의 보수적 기후 폴백값을 사용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공개 자료는 역사 표식의 위치와 현존 형태를 확인하지만, 최신 출입 허용 범위·노면·주차·화장실·무장애 접근성 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 또는 추천 안내 전에 관할 지자체나 현장의 최신 안내로 접근 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

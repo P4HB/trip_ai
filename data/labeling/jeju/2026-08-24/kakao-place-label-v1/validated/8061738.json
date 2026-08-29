@@ -1,0 +1,125 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8061738",
+  "place_id": "8061738",
+  "name": "한림공원 재암민속마을",
+  "place_name": "한림공원 재암민속마을",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.99,
+    "rationale": "한림공원 공식 안내는 재암민속마을을 한림공원의 9개 테마 구성 중 하나로 열거하고 공원 주소·연락처를 함께 제공한다. 제주관광공사 Visit Jeju도 한림공원 관람 중 재암민속마을에서 옛 제주 초가를 볼 수 있다고 안내하므로, 독립 추천 후보가 아니라 한림공원 내부 관람 경험으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "재암민속마을은 제주시 한림읍 한림로 300 한림공원 안에 조성된 제주 전통초가 보존·전시 구역이다.",
+    "typical_visit": "한림공원 입장·관람 동선에서 이설·복원한 제주 전통초가와 옛 생활 민구류를 보는 세부 관람 경험이다.",
+    "experience_scope": "한림공원의 내부 테마 구역이므로 이 레코드에는 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한림공원 공식 사이트는 재암민속마을을 공원의 테마 구역으로 열거하고, 제주 중산간 실제 초가를 원형대로 이설·복원해 민구류와 함께 전시한다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 한림공원 안에서 재암민속마을로 가면 옛 제주 모습을 가진 초가집을 볼 수 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력에 포함된 Kakao 공개 방문 후기는 재암민속마을의 독립 운영을 입증하지 않으며, 한림공원 안에서 여러 테마를 함께 관람한다는 맥락의 보조 경험만 제공한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "재암민속마을만을 위한 별도 입장권, 독립 운영 시간 또는 단독 관람 동선은 확인하지 못했다.",
+      "현재 한림공원 내 해당 구역의 개방 범위와 시설 상태는 방문 전에 공식 운영 안내로 재확인해야 한다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한림공원",
+        "type": "official_venue",
+        "url": "https://www.hallimpark.com/park6",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "재암민속마을은 한림공원의 테마 구역으로 열거된다.",
+          "제주 중산간 실제 초가를 이설·복원하고 민구류를 전시한다고 안내한다.",
+          "페이지에 한림공원 주소와 연락처가 제공된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500690&menuId=DOM_000001917007000000",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "한림공원 상세 안내는 재암민속마을에서 옛 제주 모습을 가진 초가집을 볼 수 있다고 설명한다.",
+          "한림공원 주소는 제주시 한림읍 한림로 300으로 제시된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기 요약",
+        "type": "public_review_summary",
+        "url": "https://place.map.kakao.com/8061738",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "입력 패킷의 공개 후기는 한 곳에서 여러 테마를 관람할 수 있다는 경험을 언급한다.",
+          "평점과 후기 수는 적합도 라벨의 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "preference_atomic": {},
+  "companion_context": {},
+  "month_context": {},
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "한림공원 공식 테마 구역으로 확인된 내부 민속 전시·관람 시설",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고, 한림공원 상위 장소의 관람 구성 요소로만 함께 검토",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18467816",
+  "place_id": "18467816",
+  "name": "알찡물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘알찡물’과 place_id·상세 URL만 제공하며 주소, 좌표, 업종, 공개 후기 본문이 없다. 2026-08-24 공개 웹 검색에서 이 명칭과 해당 Kakao 장소를 신뢰성 있게 연결하는 공식·공공 상세 출처를 확인하지 못했다. 동명 또는 표기 변형의 다른 장소와 동일시하지 않고 신원 미확정으로 처리한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 식별 정보는 Kakao 입력 패킷의 이름 ‘알찡물’, place_id 18467816, 상세 URL뿐이다. 독립 장소의 정확한 위치·업종·운영 주체를 확인하지 못했다.",
+    "typical_visit": "신원이 확인되지 않아 대표 방문 경험을 판정하지 않는다.",
+    "experience_scope": "입력에 주소·좌표·업종·후기 본문이 없고, 평점과 후기 수는 라벨 근거로 사용하지 않았다. 신원과 여행 방문지 범위가 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘알찡물’이고 place_id는 18467816이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 본문이 제공되지 않았다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종, 운영 주체와 독립 장소 여부를 확인하지 못했다.",
+      "관람·체험·휴식 등 대표 방문 경험, 접근성, 안전, 편의시설과 최신 운영 상태를 확인하지 못했다.",
+      "입력의 평점·후기 수는 라벨값 근거로 사용하지 않았으며, 공개 후기 본문도 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/18467816",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘알찡물’이고 place_id는 18467816이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 본문이 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·후기 본문이 없어 장소 신원과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 운영자·공공 출처의 주소와 업종으로 신원을 먼저 교차 확인한다. 신원과 여행 방문지 범위가 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

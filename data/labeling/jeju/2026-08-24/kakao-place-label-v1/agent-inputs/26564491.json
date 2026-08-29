@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2063,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26564491.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26564491",
+    "provider": "kakao",
+    "place_id": "26564491",
+    "name": "갑마장길및가름질 쫄븐갑마장길",
+    "url": "https://place.map.kakao.com/26564491",
+    "average_rating_5": "4.1",
+    "visitor_review_count": "9",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.11.02.",
+      "content": "지나가라는건지 말라는건지 입장을 명확히 해주기바람. 지나는데 몸을 돌려가면서까지 한참을 사람을 빤히 쳐다보더라니. 나도 오지말라는데 갈생각 없다고. 중간중간 길이 많이 사라져서 긴옷에 기피제 뿌리고 사람이 지난자리를 따라갔는데도 진드기에 잔뜩 물림",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.28.",
+      "content": "운동화 잘신고 올라가세요.생각보다 솔잎이 미끄러워요. 보이는 풍경은 역시나 멋집니다.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2022.05.06.",
+      "content": "표선면 가시리에 있는 쫄븐갑마장길은 대록산과 따리비오름이 포함되 있어서 운동삼아 나들이 하기 딱 좋네요. 길도 아기자기하고 숲길터널은 시원합니다. ㄷㅐ록산은 높고 시야가 넓고 따라비오름은 길이 이쁘고 재밌습니다. 천천히 돌아보는데 3시간반정도 걸리네요.",
+      "tags": ""
+    },
+    {
+      "date": "2022.02.20.",
+      "content": "봄,가을에 가면 좋은곳이예요. 큰사슴이오름과 따라비오름을 같이 트래킹하면서 3~4시간동안 걷기 정말 좋아요^^",
+      "tags": ""
+    },
+    {
+      "date": "2025.08.21.",
+      "content": "억새 흩날리는 늦가을에 가면 정말 예쁜길. 검정치마-everything 뮤직비디오 촬영지. 유채꽃프라자~따라비오름까지만 가도 참 좋습니다.",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

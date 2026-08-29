@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8011701",
+  "place_id": "8011701",
+  "name": "오구시오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "오구시오름은 제주시 오등동의 침식잔류산체·말굽형 지형으로 확인되지만, 공공 조사자료는 탐방로가 개설되지 않았고 대부분 사유지라고 기록한다. 입력에 제공된 최근 공개 리뷰도 지도상 등반로가 사유지 대문으로 막혀 있다고 언급한다. 일반 여행객을 위한 지정 탐방·안전 관리·합법적 접근 동선을 확인하지 못했으므로 추천용 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTIFIED",
+      "ELIG-UNVERIFIED-PUBLIC-ACCESS"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘오구시오름’은 제주시 오등동 570-1번지 일대의 오름으로 기록된 지형과 일치한다.",
+    "typical_visit": "공개 자료에는 낮은 침식잔류산체와 주변 산림·묘지·주거지·목장·경작지 맥락이 기록되어 있으나, 일반 관광객용 지정 탐방 경험은 확인되지 않았다.",
+    "experience_scope": "지형의 신원은 확인됐으나, 공공 조사자료에 탐방로 미개설과 대부분 사유지가 기록되어 있고 입력의 최근 공개 리뷰도 지도상 등반로의 사유지 차단을 언급한다. 일반 여행객을 위한 합법적 접근·지정 동선·안전 관리·상시 개방 정보를 확인하지 못했으므로 41축 추천 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의 오름 관리·보전 조사 자료는 오구시오름을 제주시 오등동 570-1번지 일대의 표고 188.6m, 비고 29m 침식잔류산체·동향 말굽형 지형으로 기록하며, 탐방로가 현재 개설되어 있지 않고 대부분 토지가 사유지라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷의 2026년 공개 Kakao 리뷰에는 지도에 표시된 등반로가 사유지 대문으로 막혀 있다는 방문자 경험이 포함돼 있다. 이는 접근 상태의 보조 근거이며 평점·리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객이 사용할 수 있는 합법적 공식 진입로·지정 탐방 동선과 최신 개방 여부",
+      "사유지 통행 허가, 관리 주체, 출입 제한 및 현장 안전 안내",
+      "경사·노면·야간 안전, 우천·강풍 시 통제, 주차·화장실·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 지방행정연구자료(제주특별자치도 오름 관리·보전 조사 보고서)",
+        "type": "public_policy_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "오구시오름의 위치·지형 형태·표고·비고와 주변 토지 이용을 기록한다.",
+          "탐방로가 현재 개설되지 않았고 대부분 토지가 사유지라고 기록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 정보 및 입력 제공 공개 리뷰",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8011701",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘오구시오름’이다.",
+          "입력의 최근 공개 리뷰는 지도상 등반로가 사유지 대문으로 막혀 있다는 접근 문제를 언급한다.",
+          "평점·리뷰 수와 공개 리뷰 작성자 정체는 라벨 근거 또는 결과에 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "public_access_and_designated_trail_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "오구시오름은 탐방로 미개설 및 대부분 사유지로 기록돼 있고, 최근 공개 리뷰에서도 지도상 등반로의 사유지 차단이 언급된다. 일반 방문객의 합법적 진입, 지정 동선, 최신 개방·안전 관리 상태가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 토지·탐방 관리 주체의 공식 공개·지정 동선·안전 안내가 확인되면 최신 접근 조건을 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "HARD-ACCESS-VERIFY-BEFORE-RECOMMENDATION"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

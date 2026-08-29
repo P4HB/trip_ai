@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1201,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/708965034.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:708965034",
+    "provider": "kakao",
+    "place_id": "708965034",
+    "name": "다온",
+    "url": "https://place.map.kakao.com/708965034",
+    "average_rating_5": "5.0",
+    "visitor_review_count": "5",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.12.27.",
+      "content": "저녁에 갔는데 여자 사장님께서 너무 친절하고 여러개 사니까 저렴하게주시고 서비스도 먹을거 챙겨주시고 너무 좋았습니다. 기념품은 무조건 여기서 살게요 정말 싸고 친절해서 좋아요!",
+      "tags": ""
+    },
+    {
+      "date": "2024.02.16.",
+      "content": "제주 첫 날 갔었는데 물건 못 찾으니까 친절하게 찾아주시고 매장에 없으니까 다른 매장을 알려주면서 가보라고 추천 해주셔서 감사했습니다. 제주 마지막날에 또 찾아뵙는데 상냥하게 대해주셔서 좋았습니다",
+      "tags": "시설"
+    },
+    {
+      "date": "2024.10.09.",
+      "content": "종류가 다양하고 기념품, 선물 한큐에 해결 가능해서 좋았음 할머니가 친절하심",
+      "tags": ""
+    },
+    {
+      "date": "2024.08.18.",
+      "content": "친절+서비스+착한가격+자세한 설명= 좋습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.05.29.",
+      "content": "시장님이 정말 친절해요! 주변에 많은 샵들이 있고 다 비슷한 물건을 파는데 여기 간 걸 너무 잘했다고 생각해요! 아이가 인형을 샀는데 끈 부분이 튼튼하지 못한편이라며 자전거 보관끈 같은 튼튼한 끈도 챙겨주시고,, 키링가격도 다른 곳에서 보고 온 것보다 천원이나 더 저렴하더라고요! 물론 다른 제품은 더 비싼 것도 있을 수 있겠죠~ 제가 산 품목에 대해선 너무 만족합니다! 친절함에 리뷰쓰려고 나오며 가게이름 보고 왔네요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

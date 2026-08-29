@@ -1,0 +1,119 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8229310",
+  "place_id": "8229310",
+  "name": "샛오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력의 ‘샛오름’은 공개 관광 자료에서 한라산 웃세오름 권역의 누운오름 별칭으로도 쓰이고, 공공 정책자료에서는 과오름의 별도 봉우리명으로도 쓰인다. Kakao 입력에는 좌표·주소가 없으며, ‘말젯오름에서 올라야 쉬어요’라는 익명화된 공개 후기만으로는 이 place_id가 어느 동명 오름을 가리키는지 공식적으로 확정할 수 없다. 따라서 독립 추천 방문지의 정확한 정체성은 미확인으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "샛오름은 공개 자료상 적어도 두 지형 맥락에서 사용되는 이름이다. 입력 Kakao 표식은 말젯오름을 언급한 한 건의 공개 후기와 연결되지만, 위치·주소·공식 상세 설명이 없어 특정 오름으로 교차 식별할 수 없다.",
+    "typical_visit": "정확한 대상이 확정되지 않아 공식 탐방 동선·개방 조건·대표 경험을 특정하지 않는다.",
+    "experience_scope": "오름 명칭이라는 사실과 한 공개 후기가 인접한 말젯오름을 언급한다는 점까지만 확인했으며, 경관·난이도·시설·계절 적합도를 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 웃세오름 권역의 누운오름을 삼형제에 빗대어 둘째 ‘샛오름’이라고도 부른다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국회도서관 공개 정책자료는 과오름의 두 명칭을 구분하며 ‘과오름(샛오름): 샛오름’으로 표기한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 8229310과 이름 ‘샛오름’을 제공하고, 공개 후기 내용에는 ‘말젯오름에서 올라야 쉬어요’라는 접근 관련 언급이 있다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 패킷에 Kakao 표식의 좌표·주소·카테고리·공식 상세 설명이 없다.",
+      "이 표식이 웃세오름 권역의 누운오름 별칭인지, 과오름의 샛오름인지 또는 다른 동명 지점인지 확인하지 못했다.",
+      "일반 방문객 출입 허용, 최신 접근로·노면·경사, 주차·화장실·무장애 시설과 기상 안전 통제를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500484",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "웃세오름 권역의 누운오름을 삼형제의 둘째 ‘샛오름’으로도 부른다고 안내한다.",
+          "일부 오름은 사유지이거나 출입이 제한·통제될 수 있으므로 사전 확인을 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책정보협의회 공개자료",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "오름 명칭 통일화 자료는 과오름의 별도 봉우리명을 ‘샛오름’으로 표기한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 익명화된 공개 후기",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8229310",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 8229310과 장소명 ‘샛오름’을 제공한다.",
+          "입력 패킷의 공개 후기에는 말젯오름에서의 접근을 언급한 내용이 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동일한 ‘샛오름’ 명칭이 서로 다른 오름 맥락에서 쓰이며, 이 Kakao 표식의 좌표·주소와 최신 출입·접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 표식 좌표를 공식 관광·지자체 자료와 대조해 정확한 오름을 식별하고, 현장 또는 관할 기관의 최신 안내로 출입 허용·접근로·기상 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

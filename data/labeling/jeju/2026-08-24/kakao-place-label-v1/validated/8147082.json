@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8147082",
+  "place_id": "8147082",
+  "name": "감투동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명·place_id 외에 주소, 좌표, 업종 및 공개 방문 경험을 제공하지 않는다. 공개 산 목록에는 제주시 영평동의 감투동산이라는 동명 지형이 실리지만, 해당 목록은 Kakao 표식의 위치·진입점·독립 방문지 여부를 확인하는 공식·공공 출처가 아니므로 같은 장소라고 단정할 수 없다. 따라서 추천용 장소 신원과 방문 범위를 확인하기 전 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력으로 확인되는 것은 Kakao Map의 ‘감투동산’ 명칭과 place_id뿐이다. 공개 제주 산 목록은 같은 이름의 지형을 제주시 영평동, 해발 142m로 기록하지만 이 Kakao 레코드와의 동일성을 교차 확인하지 못했다.",
+    "typical_visit": "확정된 방문 동선, 공식 탐방 안내, 운영 주체 또는 독립 관광지로서의 경험을 확인하지 못했다.",
+    "experience_scope": "Kakao 평점·후기 수는 입력에 0으로 표시되어 있으나 라벨 근거로 사용하지 않았다. 정확한 위치와 출입 가능 여부가 불명확하므로 추천용 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao Map 레코드는 장소명을 ‘감투동산’으로, place_id를 8147082로 제공하며 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 제주 산 목록은 감투동산을 제주시 영평동의 해발 142m 지형으로 기록하지만, Kakao place_id 8147082의 표식과 동일한 장소·진입점을 입증하지는 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표·주소 및 영평동 감투동산과의 동일성",
+      "공식 탐방로, 토지 소유·출입 가능 여부, 주차·화장실 및 무장애 접근성",
+      "기상 악화·산불 위험 시 통제와 최신 안전 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8147082",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 감투동산이며 place_id는 8147082다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점과 후기 수는 라벨값 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "P2SKLife",
+        "type": "public_geographic_list",
+        "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 산 목록은 감투동산을 해발 142m, 제주시 영평동으로 기록한다.",
+          "목록은 Kakao place_id의 위치·진입점·공식 탐방 가능 여부를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 표식의 정확한 위치와 영평동 감투동산과의 동일성, 공식 탐방·출입 가능 여부 및 현장 안전 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "공식 또는 공공 지리·관광 안내와 Kakao의 좌표·주소를 교차 확인한다. 독립적으로 접근 가능한 방문지로 확인되기 전에는 추천용 41축 벡터를 생성하거나 추천하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

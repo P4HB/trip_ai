@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1722657096",
+  "place_id": "1722657096",
+  "name": "청수곶자왈 입구",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "입력명은 ‘청수곶자왈 입구’로, 공개 관광 자료에서 독립 방문지로 소개되는 청수곶자왈 자체가 아니라 그곳으로 들어가는 길찾기·접근 표식이다. 청수곶자왈의 숲 산책과 반딧불이·생태 탐방 경험을 이 입구 표식에 중복 귀속하지 않기 위해 부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-SUBORDINATE-FACILITY"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 장소 ‘청수곶자왈 입구’는 제주 한경면 청수곶자왈로 진입하는 지도 표식으로 판단된다. 공개 관광 자료는 청수곶자왈을 별도의 생태 숲 관광지로 소개한다.",
+    "typical_visit": "입구 자체가 아닌 청수곶자왈의 야외 산책·생태 관찰·계절 반딧불이 감상 경험을 위해 방문하는 곳이다.",
+    "experience_scope": "이 표식의 정확한 좌표, 주차·안내 시설, 실제 진입 동선과 당일 통제 여부는 공식 최신 자료로 확인하지 못했다. 따라서 청수곶자왈 본체의 경험 점수를 이 부속 표식에 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1722657096의 명칭을 ‘청수곶자왈 입구’로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 기반 공개 관광 정보는 청수곶자왈을 청정 생태 숲으로 소개하며, 정비된 산책로, 반딧불이 서식, 한경면 연명로 348의 위치를 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘청수곶자왈 입구’ 표식과 공식 관광지 주출입구의 정확한 좌표 일치 여부",
+      "현재 주차·화장실·안내판 등 입구 편의시설과 무장애 접근성",
+      "우천·강풍·산불 위험 또는 반딧불이 관찰 시기의 최신 출입·안전 통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1722657096",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 청수곶자왈 입구로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 공공데이터 기반 Korea Trip Tips",
+        "type": "public_tourism_information",
+        "url": "https://www.koreatriptips.com/tourist-attractions/2742373.html",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "청수곶자왈은 운문산 반딧불이의 서식지인 생태 숲으로 소개된다.",
+          "정비된 산책로가 있어 낮에 가벼운 산책을 할 수 있다고 안내한다.",
+          "위치는 제주특별자치도 제주시 한경면 연명로 348로 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "entrance_location_and_current_access_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "이 Kakao 입구 표식의 정확한 진입 위치와 현재 출입 가능 여부, 야외 보행 안전·기상 통제, 시설 및 무장애 접근성은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 청수곶자왈 관리 주체 또는 최신 공식 관광 안내로 진입 위치, 개방 여부, 기상·산불 등에 따른 통제와 보행 안전을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

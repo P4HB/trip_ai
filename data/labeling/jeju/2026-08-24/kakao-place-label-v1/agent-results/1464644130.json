@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1464644130",
+  "place_id": "1464644130",
+  "name": "마이시크릿포레스트",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "이니스프리 모음재단의 연혁과 아모레퍼시픽의 공식 자료는 제주 이니스프리 숲 ‘마이 시크릿 포레스트’의 2017년 개장을 확인한다. 공개 보도는 이를 구좌읍의 쓰레기 매립지를 복원해 만든 테마형 숲으로 설명한다. 독립된 야외 숲 방문지로 식별되며, 중복·부속시설이라는 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "마이시크릿포레스트는 제주 구좌읍에 2017년 개장한 이니스프리 숲 ‘My Secret Forest’로, 매립지를 복원해 조성한 숲이다.",
+    "typical_visit": "나무와 방향식재가 있는 야외 숲을 걸으며 쉬고 경관을 보는 방문이다.",
+    "experience_scope": "공식 자료는 숲의 개장과 조성 배경을 확인하지만 최신 개방 시간, 입장 조건, 주차, 화장실, 보행로 상태와 무장애 접근성은 확인하지 못했다. 개인 여행 기록은 한적한 공원과 산책 경험을 언급하지만 보조 근거로만 사용했다.",
+    "facts": [
+      {"id": "F1", "text": "이니스프리 모음재단 연혁은 2017년 5월 ‘마이 시크릿 포레스트 개장’을 기록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "아모레퍼시픽그룹의 2017년 공식 실적공시는 제주 이니스프리 숲 ‘마이 시크릿 포레스트’ 개장을 언급한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "공개 보도는 이 숲을 제주 구좌읍 쓰레기 매립지를 복원해 조성한 약 2만 평 규모의 테마형 숲으로 설명하며, 편백나무 등 나무와 다양한 방향식재를 언급한다.", "source_ids": ["S3"]},
+      {"id": "F4", "text": "개인 여행 기록은 이 장소를 한적한 공원으로 묘사하고 가벼운 산책에 적합하다는 방문 경험을 전한다.", "source_ids": ["S4"]}
+    ],
+    "unknowns": [
+      "현재 일반인 출입 가능 범위, 운영·관리 주체의 최신 현장 안내, 입장료와 개방 시간은 확인하지 못했다.",
+      "주차, 화장실, 보행로 노면·경사, 쉼터, 휠체어·유모차 접근성과 야간 조명은 확인하지 못했다.",
+      "계절별 식재 상태, 기상 악화 시 통제 및 최근 공사·안전 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "이니스프리 모음재단", "type": "official_foundation_history", "url": "https://www.innisfreemoeum.or.kr/foundation/history.do", "checked_at": "2026-08-24", "facts": ["2017년 5월 마이 시크릿 포레스트 개장을 연혁에 수록한다."]},
+      {"id": "S2", "publisher": "아모레퍼시픽그룹", "type": "official_corporate_news", "url": "https://www.apgroup.com/int/ko/news/2017-07-26.html", "checked_at": "2026-08-24", "facts": ["2017년 상반기 실적공시는 제주 이니스프리 숲 ‘마이 시크릿 포레스트’ 개장을 언급한다."]},
+      {"id": "S3", "publisher": "이데일리", "type": "public_news_article", "url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03995046615934496", "checked_at": "2026-08-24", "facts": ["2017년 보도는 구좌읍의 쓰레기 매립지를 복원한 테마형 숲, 약 2만 평 규모, 나무와 방향식재를 설명한다."]},
+      {"id": "S4", "publisher": "카노라떼", "type": "public_travel_article", "url": "https://sootacoffee.tistory.com/2832", "checked_at": "2026-08-24", "facts": ["2022년 개인 여행 기록은 한적한 공원과 가벼운 산책 경험을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 또는 산림 경관이 핵심 경험이라는 충분한 직접 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 숲 조성 정보와 공개 여행 기록의 산책 단서를 바탕으로 가벼운 야외 보행이 대표 경험의 일부라고 추론한다.","source_ids":["S3","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등의 테마파크형 경험 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"숲과 식재를 중심으로 조성된 야외 장소이므로 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 숲 보행과 식재 감상이므로 비·바람·더위·추위가 이용에 비교적 크게 영향을 준다고 추론한다.","source_ids":["S3","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"시민 휴식 공간으로 가꾼 숲이라는 보도와 한적한 공원이라는 보조 기록을 바탕으로 휴식 경험이 비교적 높다고 추론한다.","source_ids":["S3","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"가벼운 산책 단서는 있으나 최신 노면·경사·계단·안전시설 정보가 부족해 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숲의 산책 동선·면적·체류 규칙과 최신 출입 지점 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"나무와 다양한 방향식재를 조성한 숲이라는 사실로 자연 식재 감상이 방문 경험의 일부임을 추론한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"쓰레기 매립지를 복원해 만든 이니스프리 테마형 숲이라는 조성 배경은 일반 공원과 구별되는 경험 요소로 추론된다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 구좌읍의 매립지를 복원하고 제주에 조성한 숲이라는 사실에서 제주 지역 자연·환경 맥락과의 연결을 추론한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 구좌읍을 대표하는 상징 명소라는 공적 지정·관광 안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S3","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"한적함의 보조 단서는 있으나 최신 출입·안전·동선 정보가 부족해 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선 정보가 부족해 중립값이다.","source_ids":["S3","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S3","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·운영 조건 정보가 없어 중립값이다.","source_ids":["S3","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S3","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_confirmation_required","applies_to":"all_visitors","condition":"최신 개방 시간·출입 범위, 접근로·주차, 보행로 상태, 무장애 접근성과 기상 악화 시 현장 통제 정보를 확인하지 못했다.","status":"needs_review","action":"방문 전 관리 주체 또는 현장 최신 안내로 출입 가능 여부와 기상·보행 안전 조건을 확인한다.","source_ids":["S1","S3","S4"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,583 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:14632904",
+  "place_id": "14632904",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "국가유산포털의 ‘북촌리 등명대’와 Kakao 장소명이 일치하며, 제주시 소재 등록문화유산 1기로 확인된다.",
+    "source_ids": [
+      "source:heritage-portal",
+      "source:yna-dodaebul"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-MATCH",
+      "ELIG-INDEPENDENT-HERITAGE"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 핵심 경험은 산·오름이 아닌 해안 포구의 등명대 관람이므로 산 테마 근거는 없다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "어선이 포구로 돌아오도록 세운 옛 등대라는 설명에 따라 해안·어촌 맥락이 대표 방문 경험과 강하게 연결된다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-HERITAGE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "레포츠나 참여형 체험 프로그램은 공개 근거에서 확인되지 않았다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "국가유산포털이 북촌리 등명대를 근현대시기 등록문화유산으로 분류하며, 어업·해양생활 문화자원이라는 설명이 확인된다.",
+      "source_ids": [
+        "source:heritage-portal",
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "THEME-REGISTERED-HERITAGE"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이시설·동물원·수족관 등 테마파크형 시설 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용이 장소의 핵심 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 기능 또는 상거래 방문 경험의 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 기간 축제·공연이 핵심이라는 공개 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "THEME-NONPRIMARY-FALLBACK"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포구에 세운 돌무더기 옛 등대로 설명되어 대표 관람은 실외 비중이 높다고 추론했다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-STRUCTURE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포구의 실외 유산 관람이라는 확인된 공간 성격상 비·바람 등 날씨가 방문 경험에 영향을 줄 가능성이 높다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-WEATHER"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식 공간·체류 환경의 직접 설명이 없어 소규모 유산 관람의 중립값으로 보류한다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "STYLE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현장 보행거리, 단차, 주차와 접근성의 공개 확인 근거가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "STYLE-ACCESS-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "권장 체류시간이나 관람 동선이 확인되지 않아 시간 조절 가능성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "STYLE-DURATION-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "포구·해안 경관의 직접적인 품질 또는 조망 설명은 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "STYLE-SCENIC-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주에만 남은 고유 유산으로 평가되고 원형을 간직한 등록문화유산이라는 자료에 따라 구별성은 높게 추론했다.",
+      "source_ids": [
+        "source:yna-dodaebul",
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-HERITAGE"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 고유의 옛 등대이며 근현대 어업문화와 해양생활을 보여주는 문화자원이라는 설명이 직접 확인된다.",
+      "source_ids": [
+        "source:yna-dodaebul"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-HERITAGE"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "등록문화유산이지만 제주 전체를 대표하는 관광 랜드마크라는 직접 근거는 없어 지역 유산으로서 중간값을 제안한다.",
+      "source_ids": [
+        "source:heritage-portal"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-LANDMARK-MODERATE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치 또는 촬영 명소라는 직접 근거는 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "STYLE-PHOTO-UNKNOWN-NEUTRAL"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 안전·접근성·권장 여부가 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "COMPANION-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "연인 방문 적합성을 뒷받침할 시설·경험 근거가 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "COMPANION-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 동행에 관한 활동·수용성 근거가 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "COMPANION-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 안전, 난간, 화장실과 이동 부담의 확인 근거가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "COMPANION-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 동행을 위한 보행·휴식·접근성 근거가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "COMPANION-UNKNOWN-NEUTRAL"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 관람 경험 또는 운영·기상 영향의 장소별 근거가 없어 계절 적합도는 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-UNKNOWN-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [],
+  "research": {
+    "identity_status": "matched",
+    "sources": [
+      {
+        "id": "source:heritage-portal",
+        "publisher": "국가유산청 국가유산포털",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaAsno=00010500&ccbaCpno=4425000010500&ccbaCtcd=50&ccbaKdcd=25&pageNo=1_1_1_0",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "북촌리 등명대는 제주시 소재 등록문화유산이며 근현대시기로 분류된다.",
+          "수량은 1기이며 2021-07-28 등록됐다."
+        ]
+      },
+      {
+        "id": "source:yna-dodaebul",
+        "publisher": "연합뉴스",
+        "url": "https://www.yna.co.kr/view/AKR20160928136900056",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "북촌리 도대불은 1915년 12월 민간인이 어선의 귀항을 돕기 위해 포구에 세운 돌무더기 등대라고 보도됐다.",
+          "제주 등명대는 제주 고유 유산으로 근현대 어업문화와 해양생활을 보여주는 문화자원이라는 설명이 있다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "현장 보행 동선·단차·편의시설",
+      "월별 관람 경험과 실제 접근·운영 조건",
+      "동행 유형별 안전·적합성"
+    ]
+  },
+  "review_priority": "high",
+  "review_reasons": [
+    "접근성 및 동행 적합성의 직접 근거 부족",
+    "월별 경험 근거 부족",
+    "해안 실외 관람의 기상 영향 확인 필요"
+  ],
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

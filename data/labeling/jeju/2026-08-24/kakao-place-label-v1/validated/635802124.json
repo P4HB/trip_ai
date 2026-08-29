@@ -1,0 +1,115 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:635802124",
+  "place_id": "635802124",
+  "name": "고내포구 우주물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "공개 환경조사 자료는 우주물을 고내리 해안의 용천수로 설명하고, 제주관광공사 공식 가이드북은 고내포구를 제주올레 16코스의 출발지로 안내한다. 우주물은 고내포구·올레 동선에서 보는 자연·생활유산 지점으로 확인되지만, 별도 운영·입장·독립 체험을 가진 관광지라는 근거는 찾지 못했다. 따라서 독립 추천 후보가 아닌 고내포구 및 제주올레 경유 지점에 종속된 시설로 판정한다.",
+    "duplicate_of": "고내포구",
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "고내포구 우주물은 제주시 애월읍 고내리 포구 부근의 용천수로, 제주올레 15코스의 종점 및 16코스 출발지인 고내포구 주변 세부 지점으로 식별된다.",
+    "typical_visit": "고내포구를 둘러보거나 제주올레 15·16코스를 걷는 중 옛 생활용수인 용천수와 포구 주변을 짧게 보는 경유 경험이다.",
+    "experience_scope": "공개 자료는 우주물의 용천수·생활용수 성격과 고내포구의 올레 출발지 성격을 확인한다. 우주물만의 독립 운영, 입장, 프로그램, 최신 보존 상태 또는 접근성은 확인하지 못했으므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주환경운동연합의 고내리 일대 용천수 조사에는 우주물이 고내리의 용천수 중 하나로 수록되어 있으며, 언덕 사이에서 흘러나오는 물이라는 이름의 뜻과 과거 마을의 식수·생활용수 이용을 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju 공식 가이드북은 제주올레 16코스를 고내포구 출발, 15.8km·5~6시간 코스로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 레코드는 place_id 635802124의 명칭을 ‘고내포구 우주물’로 제공하며, 공개 방문 후기는 올레길 16코스 시작점 근처에서 잠시 쉬어 가는 지점으로 언급한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 용천수의 정확히 어느 범위를 가리키는지와 고내포구 본체와의 좌표 관계는 공식 좌표 자료로 확인하지 못했다.",
+      "우주물만의 별도 관리·운영 주체, 독립 관람 프로그램 및 최신 보존·수질 상태는 확인하지 못했다.",
+      "현재 접근로, 노면·난간, 주차·화장실, 무장애 시설 및 악천후·만조 시 안전 조건은 방문 전 현장 또는 관할 최신 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주환경운동연합",
+        "type": "public_environmental_survey",
+        "url": "https://jeju.ekfem.or.kr/posts/LKtOnR",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "고내리 용천수 목록에 우주물을 수록한다.",
+          "우주물은 언덕 사이에서 흘러나오는 물이라는 뜻으로 설명되며, 과거 고내리 주민의 식수·생활용수로 이용됐다고 기록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_guidebook",
+        "url": "https://www.visitjeju.net/pdf/Official%20Jeju%20Tourism%20Guidebook_kr.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 16코스는 고내포구에서 출발한다고 안내한다.",
+          "16코스 길이는 15.8km, 안내 소요시간은 5~6시간으로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 방문 후기",
+        "type": "provider_metadata_and_public_review_evidence",
+        "url": "https://place.map.kakao.com/635802124",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 장소명은 고내포구 우주물이다.",
+          "입력된 공개 방문 후기는 올레길 16코스 시작점 근처에서 잠시 쉬어 가는 경험을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_route_waypoint_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "우주물은 고내포구 주변의 용천수이자 제주올레 출발·종점 동선의 세부 지점으로 확인되며, 독립 운영 관광지·체험이라는 근거는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보 벡터에서는 제외하고 고내포구 또는 제주올레 15·16코스의 경유 정보로만 참조한다. 방문 안내가 필요하면 최신 접근·안전 조건을 현장 또는 관할 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

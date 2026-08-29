@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25283148",
+  "place_id": "25283148",
+  "name": "선소오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "공개 자료가 선소오름을 제주시 한림읍 명월리와 금악리에 걸친 독립 오름으로 설명하며, 부속 시설 또는 중복 장소라는 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "선소오름은 제주시 한림읍 명월리와 금악리에 걸친 오름으로, 갯거리오름과 인접해 있다.",
+    "typical_visit": "야외 오름 지형을 짧게 걸으며 능선과 주변 경관을 보는 자연 탐방 중심 장소로 파악된다.",
+    "experience_scope": "위치·오름 지형과 인접 오름 관계, 전망 가능성은 확인했다. 최신 공식 개방 여부, 입구·동선, 노면, 주차·화장실, 무장애 시설 및 계절별 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주일보는 선소오름을 제주시 한림읍 명월리와 금악리에 걸친 갯거리오름과 함께 소개하며, 선소오름의 표고를 226m로 전한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력된 공개 Kakao 방문 후기는 선소오름이 하논 분화구를 닮았다고 언급하고, 등반로가 정비되어 오르기 쉽지만 정상 전망은 없다고 서술한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "제주일보 기사는 인접 갯거리오름에서 선소오름 능선과 금오름·산방산·한라산을 조망한 내용을 전한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": [
+      "현재 공식 개방 여부와 정확한 출입구·탐방 동선은 확인하지 못했다.",
+      "경사·계단·노면·쉼터·화장실·주차·안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "강풍·우천·폭염 시 통제와 계절별 현장 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주일보", "type": "local_news_feature", "url": "https://www.jejunews.com/news/articleView.html?idxno=2192500", "checked_at": "2026-08-24", "facts": ["선소오름은 제주시 한림읍 명월리와 금악리에 걸친 오름으로 소개된다.", "기사 본문은 선소오름의 표고를 226m로 전한다.", "인접 오름에서 선소오름 능선과 주변 산·경관을 조망한 내용을 전한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/25283148", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 분화구를 닮은 형태, 정비된 등반로와 쉬운 오름, 정상 전망 부재를 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"지역 언론이 이 장소를 한림읍의 독립 오름으로 직접 소개하므로 오름·지형 경관이 핵심 경험이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 후기에 오르기 쉬운 등반로가 언급되어 야외 보행 활동은 확인되지만 공식 코스·난이도 정보가 없어 중간값으로만 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연 또는 전통 체험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적인 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"자료가 표고를 가진 오름과 그 능선을 직접 설명하므로 대표 경험은 실내가 아닌 야외 자연 지형이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 오름 보행과 경관 감상이므로 날씨 영향을 비교적 받을 것으로 추론하나 실제 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·소음·체류 환경 정보가 없어 중립값으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 후기에 쉬운 오름이라는 언급은 있으나 경사·계단·노면·무장애 정보가 없어 보행 부담은 중립값으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간·개방 시간·탐방 코스 정보가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"기사의 인접 지점 조망과 공개 후기의 독특한 분화구형 언급을 근거로 경관 감상 가치가 비교적 높다고 추론하나 선소오름 정상 전망은 상충되므로 검수가 필요하다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인접 오름과의 관계와 지형 언급은 있으나 다른 장소와 비교한 고유성 근거가 부족하다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"한림읍 명월리·금악리에 걸친 제주 오름으로 직접 소개되어 제주 자연 지형과의 연결이 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 한림 지역을 대표하는 상징 명소라는 공식 지정·안내는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 관련 단서는 있으나 사진 촬영 가치가 직접 확인되는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"안전·동선·접근 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행 적합성을 판단할 시설·안전 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·안전시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"현재 공식 개방 여부, 출입로, 경사·노면, 주차·화장실, 무장애 시설 및 기상 시 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 관할 지자체의 최신 안내로 출입 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

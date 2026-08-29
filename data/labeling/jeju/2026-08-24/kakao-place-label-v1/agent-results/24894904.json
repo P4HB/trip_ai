@@ -1,0 +1,101 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24894904",
+  "place_id": "24894904",
+  "name": "납읍난대림지역",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산청 국가유산포털은 이 장소를 천연기념물 ‘제주 납읍리 난대림’으로 등록하고 애월읍 납읍 마을 인접 금산공원의 난대 식물 숲으로 설명한다. 입력 Kakao 공개 후기도 원시숲·곶자왈 산책이라는 독립 방문 경험을 뒷받침하므로 별도 자연 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "납읍난대림지역은 국가유산청이 천연기념물로 등록한 ‘제주 납읍리 난대림’으로, 제주시 애월읍 납읍 마을 인접 금산공원의 난대 상록활엽수림이다.",
+    "typical_visit": "난대림의 식생과 숲 경관을 짧게 걷고 관찰하는 소규모 야외 자연유산 방문으로 파악된다.",
+    "experience_scope": "국가유산청 자료는 지정·위치·식생의 자연유산 가치를 확인한다. 최신 개방 여부, 공사·통제, 세부 탐방로, 주차·화장실, 무장애 접근성 및 안전시설은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가유산청 국가유산포털은 ‘제주 납읍리 난대림’을 천연기념물로 등록하며, 납읍 마을 인접 금산공원에 온난 기후대 자생 식물이 숲을 이룬다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 공개 방문 후기는 원시숲·곶자왈의 짧은 산책과 숲의 이국적 경관을 언급하며, 2025년 8월에는 공사로 출입하지 못했다는 경험도 포함한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "2026-08-24 기준 최신 개방 여부와 공사·출입 통제는 확인하지 못했다.",
+      "탐방로 길이, 노면, 경사·계단, 주차, 화장실, 쉼터 및 무장애 시설은 확인하지 못했다.",
+      "계절별 식생 관찰 조건과 악천후 안전 통제 기준은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가유산청 국가유산포털",
+        "type": "official_heritage_record",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_1_0&ccbaKdcd=16&ccbaAsno=0003750000000&ccbaCtcd=50&ccbaCpno=1363903750000",
+        "checked_at": "2026-08-24",
+        "facts": ["국가유산명은 천연기념물 제주 납읍리 난대림이다.", "납읍 마을 인접 금산공원에 위치하며, 온난 기후대 자생 식물이 숲을 이룬다.", "후박나무와 생달나무 등을 포함한 난대림의 보존 가치를 설명한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/24894904",
+        "checked_at": "2026-08-24",
+        "facts": ["입력된 공개 후기는 원시숲·곶자왈 산책 및 숲 경관 경험을 언급한다.", "한 2025년 8월 후기에는 공사 중이라 출입하지 못했다는 당시 경험이 있다.", "여름 대낮 산책 시 시원함과 모기 대비 필요성을 언급한 후기가 있다."]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산청이 난대 자생 식물이 이루는 숲을 이 장소의 본질로 설명한다. 계약상 산림 경관을 포함하는 mountain 축의 핵심 자연 방문 경험으로 0.75를 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 대표 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험 운영의 근거가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"천연기념물 지정은 확인되지만 역사·문화유산 관람이나 해설이 핵심 경험이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 설명과 방문 후기는 숲을 관찰하고 걷는 야외 경험을 가리킨다. 실내 시설 비율은 확인하지 못해 0.25로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 난대림 방문이므로 비·바람·더위 등 기상에 비교적 영향을 받을 것으로 추론한다. 실제 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·혼잡도·체류 환경 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방로의 경사·계단·노면과 무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요시간, 개방시간, 탐방 동선 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 기록의 난대 상록활엽수림과 입력 후기의 이국적 숲 경관 언급은 숲 경관 감상이 중요한 방문 가치임을 뒷받침한다. 공식 경관 안내가 제한적이라 0.75로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산청이 천연기념물로 등록한 난대림이며, 특정 난대 자생 식생의 보존 가치가 직접 확인된다. 비교 가능한 모든 숲과의 상대 우위는 확인하지 않아 0.75로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 기록이 제주 납읍리와 금산공원의 난대 자생 식생을 직접 연결하므로 제주 지역 자연환경과의 연결성이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"천연기념물 지정은 확인되지만 제주 또는 해당 지역을 대표하는 관광 상징 명소라는 직접 안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 공식적으로 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수 영향을 받을 수 있고 입력 후기에도 모기 대비 언급이 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수 영향을 받을 수 있고 입력 후기에도 모기 대비 언급이 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·식생·노면 조건 정보가 부족해 일반 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 여부, 2025년 8월 후기에서 언급된 공사·출입 통제의 종료 여부, 탐방로 노면·경사, 주차·화장실 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 국가유산청 또는 현장 관리 주체의 최신 안내로 출입 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

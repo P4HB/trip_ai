@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725935",
+  "place_id": "13725935",
+  "name": "구남물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주관광공사와 농림축산식품부 웰촌의 공개 자료는 구남물을 서귀포시 대정읍 무릉리의 별도 생태 자원·연못으로 기록한다. 무릉2리 생태 탐방의 경유지로도 소개되어 독립적인 자연 관찰 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "구남물은 서귀포시 대정읍 무릉리 114-1에 소개된 숲과 연못 형태의 자연 생태 자원이다.",
+    "typical_visit": "원시림과 연못, 주변 마을 풍경을 관찰하고 무릉2리 마을길·곶자왈 일대와 함께 야외로 걷는 방문 경험이다.",
+    "experience_scope": "공개 자료는 장소의 자연 환경과 과거 생태 탐방 프로그램을 확인한다. 현재 개방 여부, 공식 접근 동선, 주차·화장실·안내 시설, 수변 안전 및 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사는 구남물을 무릉2리의 다양한 생태 자원 가운데 하나로 열거한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주관광공사는 무릉2리 마을길·구남물·무릉곶자왈 일대의 생태 자원을 약 1시간 걷는 트레킹 프로그램을 소개했다.","source_ids":["S1"]},
+      {"id":"F3","text":"농림축산식품부 웰촌은 구남물을 원시림이 우거진 곳의 연못으로 소개하고, 주변 마을 풍경과 무릉리 곶자왈 숲길과의 인접성을 설명하며 주소를 무릉리 114-1로 제시한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["최신 개방·출입 허용, 관리 주체와 지정 접근로를 확인하지 못했다.","수변 추락·미끄럼 등 현장 안전 통제, 주차·화장실·안내 및 무장애 시설 정보를 확인하지 못했다.","월별 운영 또는 계절별 현장 상태를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사","type":"public_tourism_organization","url":"https://www.ijto.or.kr/korean/Bd/view.php?bno=1240&btable=report_info&cate=0&p=24","checked_at":"2026-08-25","facts":["구남물은 무릉2리의 생태 자원으로 소개된다.","구남물을 포함한 마을 생태 자원을 걷는 트레킹 프로그램이 소개된다."]},
+      {"id":"S2","publisher":"웰촌·농림축산식품부","type":"public_rural_tourism_platform","url":"https://www.welchon.com/web/lay1/program/S1T11C24/travelHistory/view.do?bbs_idx=2211087","checked_at":"2026-08-25","facts":["구남물은 원시림과 연못이 있는 자연 장소로 소개된다.","주소는 제주특별자치도 서귀포시 대정읍 무릉리 114-1로 제시된다.","주변 마을 풍경과 곶자왈 숲길이 소개된다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 경관이 핵심이라는 직접 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"구남물을 포함한 마을 생태 자원을 약 1시간 걷는 트레킹 프로그램이 공개 자료에서 확인된다.","source_ids":["S1"],"rule_ids":["evidence.outdoor_trekking"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시 또는 전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 이 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.insufficient_evidence"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"원시림·연못 관찰과 마을길 트레킹으로 소개된 대표 경험을 근거로 야외 비중이 높다고 추론한다. 부대 실내공간은 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["inference.outdoor_nature_site"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 방문 경험이 원시림·연못 및 마을 생태 자원을 야외로 걷는 트레킹으로 확인되어 날씨 노출 영향이 크다.","source_ids":["S1","S2"],"rule_ids":["evidence.outdoor_trekking"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"숲·연못과 마을 풍경을 관찰하는 자연 방문이나, 휴식 시설과 체류 환경은 확인하지 못해 중간값으로 둔다.","source_ids":["S2"],"rule_ids":["inference.nature_observation_unknown_facilities"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로, 경사, 노면, 계단 및 무장애 접근 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.accessibility_unknown"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 동선과 자유 관람 시간 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.duration_unknown"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 관광 자료가 원시림, 연못과 주변 마을 풍경을 구남물의 관찰 대상으로 직접 소개한다.","source_ids":["S2"],"rule_ids":["evidence.natural_and_village_scenery"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"무릉2리의 개별 명명 생태 자원이자 숲 속 연못으로 소개되나, 다른 자연 장소와 비교한 고유성 근거는 부족하다.","source_ids":["S1","S2"],"rule_ids":["inference.named_local_ecological_resource"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사는 구남물을 무릉2리의 지역 생태 자원으로 기록하고, 웰촌은 무릉리 주소와 주변 마을·곶자왈 환경을 소개한다.","source_ids":["S1","S2"],"rule_ids":["evidence.local_ecological_resource"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역 대표 명소·공식 지정물이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.significance_unknown"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.photo_value_unknown"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·혼잡 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.companion_conditions_unknown"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문 편의와 안전 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.companion_conditions_unknown"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 동선·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.companion_conditions_unknown"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 수변 안전, 난이도와 보호자 동반 조건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.companion_conditions_unknown"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 쉼터와 무장애 접근 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.companion_conditions_unknown"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["fallback.monthly_conditions_unknown"]}
+  },
+  "hard_constraints": [
+    {"kind":"pond_access_and_safety_conditions_unknown","applies_to":"all_visitors","condition":"공개 관광 자료는 숲 속 연못과 야외 트레킹 경험을 확인하지만, 최신 개방 여부, 관리 주체·지정 접근로, 수변 안전시설·통제, 노면, 주차·화장실 및 무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 서귀포시·무릉2리의 최신 안내로 출입 가능 여부, 지정 보행 동선과 수변·악천후 안전 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

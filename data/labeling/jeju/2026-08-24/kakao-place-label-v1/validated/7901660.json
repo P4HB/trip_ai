@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7901660",
+  "place_id": "7901660",
+  "name": "봉수대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "Kakao Map 공개 장소 페이지는 이 ‘봉수대’를 서귀포시 성산읍 고성리, 경도 126.932139·위도 33.426312로 표시한다. 제주관광공사 Visit Jeju는 같은 섭지코지에 조선시대 왜구 경보용 협자 봉수대가 있고, 높이 4m·가로세로 약 9m의 원형 봉수라고 안내한다. 따라서 이 표식은 독립 운영되는 여행지라기보다 섭지코지 해안 관광·산책 경험 안의 세부 역사 시설로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao의 ‘봉수대’ 표식은 서귀포시 성산읍 고성리 섭지코지 권역에 있으며, 제주관광공사가 소개하는 협자 봉수대(협자연대)와 위치 및 유형이 일치한다.",
+    "typical_visit": "협자 봉수대는 섭지코지 해안·언덕을 걷고 경관을 보는 상위 관광지 경험 중 마주하는 조선시대 통신·방어 유구다.",
+    "experience_scope": "제주관광공사 자료는 섭지코지의 자연 경관, 등대 및 협자 봉수대를 함께 소개한다. 봉수대 표식 자체의 별도 운영·입장·관람 동선은 확인하지 못했으므로, 독립 추천용 41축 벡터는 생성하지 않는다. Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지는 place_id 7901660의 명칭을 ‘봉수대’로, 소재지를 제주특별자치도 서귀포시 성산읍 고성리로 표시하며 지도 좌표는 경도 약 126.932139, 위도 약 33.426312로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 섭지코지에 조선시대 왜구 경보용 협자 봉수대가 있으며, 화산석으로 만든 원형 봉수의 높이는 4m, 가로와 세로는 약 9m라고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 협자 봉수대 유구의 어느 지점을 가리키는지와 현장 표지·보존 상태는 별도 관리 주체 자료로 확인하지 못했다.",
+      "봉수대 자체의 별도 관람 운영, 출입 제한, 해설 제공 및 최신 안전 상태를 확인하지 못했다.",
+      "섭지코지 상위 관광지의 최신 주차·보행·무장애 접근 및 악천후 통제 조건은 최신 운영 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/7901660",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 ‘봉수대’다.",
+          "소재지는 제주특별자치도 서귀포시 성산읍 고성리로 표시된다.",
+          "공개 페이지의 지도 좌표는 경도 약 126.93213851495001, 위도 약 33.426311962506134로 제시된다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/en/detail/view?contentsid=CONT_000000000500343&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "섭지코지에 협자 봉수대(Hyeopja Beacon Fire Station)가 있다고 안내한다.",
+          "협자 봉수대는 조선시대 왜구 경보에 쓰였고, 화산석으로 만든 원형 유구이며 높이 4m, 가로와 세로 약 9m라고 안내한다.",
+          "섭지코지를 자연 경관·등대·봉수대가 함께 있는 관광지로 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_historic_feature",
+      "applies_to": "recommendation_candidate",
+      "condition": "협자 봉수대는 섭지코지 관광지 권역의 세부 역사 유구로 확인되며, 봉수대 자체의 독립 운영·관람 범위는 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고, 필요 시 섭지코지 방문 정보의 역사 시설로만 표시한다. 방문 안내 전 최신 섭지코지 출입·안전 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10412117",
+  "place_id": "10412117",
+  "name": "민오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 ‘민오름’이라는 일반 명칭과 익명 리뷰만 있고 주소·좌표·공식 탐방 안내가 없다. 리뷰는 계단·매트·보행 시간·미끄러움 위험을 언급하지만, 어느 민오름인지와 공식 탐방로·현재 안전 조건을 확인할 수 없어 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 레코드는 장소명, place_id, URL 및 익명 리뷰만 제공한다. 동명 오름과의 구별, 정확한 위치·공식 탐방로는 확인할 수 없다.",
+    "typical_visit": "리뷰는 짧은 오르막, 계단·매트, 둘레길과 미끄러움·철심 위험을 언급하지만 보조 근거일 뿐 최신 공식 안전 정보가 아니다.",
+    "experience_scope": "공식 위치·관리·개방 정보가 없어 신원 확정 전 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 10412117의 장소명을 ‘민오름’으로 제공하며 주소·좌표 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 익명 리뷰는 계단·매트·보행 시간과 습한 날 미끄러움, 일부 철심 위험을 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 오름 위치와 공식 탐방로",
+      "최신 개방·안전·시설·통제 조건",
+      "동행자·월별 적합도를 판단할 공식 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10412117",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘민오름’이고 place_id는 10412117이다.",
+          "평점·리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 익명 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/10412117",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 리뷰는 계단·매트·산책 경험 및 미끄러움·철심 위험을 언급한다.",
+          "리뷰는 보조 근거로만 사용하며 공식 안전 정보를 확정하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "oreum_identity_and_trail_safety_unverified",
+      "applies_to": "all_visitors",
+      "condition": "정확한 오름·공식 탐방로와 최신 미끄러움·시설물 위험·통제 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "방문 전 공식 또는 공공 안내로 위치, 개방 구간, 기상·미끄러움 위험과 시설물 상태를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

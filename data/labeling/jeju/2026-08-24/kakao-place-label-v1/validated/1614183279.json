@@ -1,0 +1,796 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1614183279",
+  "place_id": "1614183279",
+  "name": "큰소낭숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공개 관광 경로 자료들이 큰소낭숲길을 제주올레 14코스의 독립 경유지로 일관되게 제시한다. 상업 시설의 부속물이 아닌 야외 보행 경유지로 판단했으나, 최신 현장 운영·출입 정보는 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "큰소낭숲길은 제주시 한경면에서 저지예술정보화마을 다음에 이어지는 제주올레 14코스의 숲길 경유지다.",
+    "typical_visit": "제주올레 14코스를 걷는 중 숲과 농촌 경관을 짧게 통과·관찰하는 야외 보행 방문이다.",
+    "experience_scope": "공개 자료는 이곳이 19.1km, 약 6~7시간의 제주올레 14코스상 숲길 경유지임을 뒷받침한다. 큰소낭숲길 단독의 거리, 노면, 그늘, 주차, 화장실, 무장애 시설과 당일 통제 여부는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 관광 지도는 제주올레 14코스의 경로를 저지예술정보화마을에서 큰소낭숲길을 거쳐 한림항으로 제시하고, 코스 길이 19km와 소요 6~7시간을 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "관광 정보 페이지는 제주올레 14코스가 농촌 밭길 뒤 무성한 숲길과 해안으로 이어진다고 소개하며, 큰소낭숲길을 저지예술정보화마을 후 2.4km 지점 경유지로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력된 공개 방문 후기는 이 장소가 매우 짧고 더우며 그늘이 없었다고 서술한다. 단일 후기이므로 현재 상태의 확정 근거로 사용하지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 출입 허용 범위, 공식 우회·통제, 노면과 그늘 상태는 확인하지 못했다.",
+      "큰소낭숲길 단독의 정확한 거리·체류시간, 주차·화장실·무장애 접근성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "전국 길(road) 관광 지도",
+        "type": "public_tourism_data",
+        "url": "https://flt.purpleo.co.kr/view/346",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 14코스의 경로에 큰소낭숲길을 포함하고, 총길이 19km·소요 6~7시간과 관리기관 제주올레사무국을 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Korea Trip Tips",
+        "type": "tourism_information",
+        "url": "https://koreatriptips.com/leisure-sports/1839801.html",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 14코스의 숲길·농촌 경관 소개와 저지예술정보화마을-큰소낭숲길 2.4km 경유 순서를 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기 요약 (입력 패킷)",
+        "type": "visitor_review",
+        "url": "https://place.map.kakao.com/1614183279",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한 공개 후기가 짧은 구간, 더위와 그늘 부족을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공개 자료는 숲길을 확인하지만 산·오름·봉우리 경험이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "14코스 전체는 해안까지 이어지지만 이 숲길 경유지에서 바다 경험이 핵심이라는 직접 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장거리 올레 코스의 숲길을 보행하는 경험은 확인되나, 이 지점 단독의 운동 강도·거리·난이도는 미확인이라 중간값으로 기록한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·전시·전통 체험이 핵심이라는 근거를 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 운영 근거가 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용이 독립 방문 목적이라는 근거가 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래 기능은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 자료가 밭길과 숲길을 잇는 올레 보행 코스로 소개하므로 대표 경험의 실내 비중은 낮다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 숲길 보행 경험이며 입력 후기의 더위·그늘 부족 언급이 있어 날씨 영향을 비교적 크게 받을 가능성이 있으나 최신 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "숲길이라는 사실은 확인되지만 혼잡, 소음, 휴식 시설 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "코스 전체 길이와 소요시간은 확인되지만 이 지점의 경사·계단·노면·무장애 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "장거리 코스의 경유지이나 이곳에서의 단독 체류시간·정차 공간은 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "관광 자료가 농촌 풍경과 무성한 숲길을 14코스 경험으로 소개해 경관 감상 가치는 있으나, 큰소낭숲길 단독의 조망 근거는 부족하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "올레 14코스에서 별도 명명된 숲길이지만 고유한 자연·문화 요소의 상세 근거가 부족해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주올레 14코스의 한경면 농촌·숲길 구간이라는 지역 연결성은 확인되지만, 이 지점 고유의 지역 문화·생산자 연결은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 관광 경로의 세부 경유지임은 확인되나 제주를 대표하는 상징 명소라는 지정·평가 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "숲길·농촌 풍경은 확인되지만 이 지점이 사진 명소라는 직접 근거는 없어 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 보행의 안전·통신·동선 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 방문의 휴식·안전·동선 정보를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "소규모 동행 적합성을 판단할 시설·안전 정보가 부족해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반의 보행 난이도·차량 접근·보호시설 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경사·쉼터·무장애 접근성 정보가 없어 부모 세대 동반 적합도는 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행 구간의 겨울 적합도는 현장 통제·기상 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행 구간의 겨울 적합도는 현장 통제·기상 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "입력 후기에 더위·그늘 부족 언급이 있어 여름 야외 보행은 보수적으로 기록하되 최신 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "입력 후기에 더위·그늘 부족 언급이 있어 여름 야외 보행은 보수적으로 기록하되 최신 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행 구간의 겨울 적합도는 현장 통제·기상 상태를 확인하지 못해 보수적으로 기록한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_trail_access_and_weather_unknown",
+      "applies_to": "all_visitors",
+      "condition": "큰소낭숲길은 야외 제주올레 보행 경유지이나, 최신 출입·우회·노면·그늘·안전시설 상태를 공식 출처로 확인하지 못했다. 입력 후기는 더위와 그늘 부족을 언급한다.",
+      "status": "needs_review",
+      "action": "방문 전 제주올레의 최신 코스 통제·우회 안내와 당일 기상, 보행 가능 여부를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

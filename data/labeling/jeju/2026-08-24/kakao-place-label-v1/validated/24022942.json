@@ -1,0 +1,114 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24022942",
+  "place_id": "24022942",
+  "name": "삼각봉",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "공식 관광 안내와 공공 백과는 삼각봉·삼각봉대피소를 관음사 탐방로의 경유 지점으로 제시한다. 입력 레코드의 삼각봉은 해당 한라산 등반 코스에서 경험되는 봉우리·지점이므로, 독립 여행지로 중복 라벨링하지 않고 상위 관음사 탐방로에 종속된 지점으로 처리한다.",
+    "duplicate_of": "한라산국립공원 관음사 탐방로",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ],
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "R-ELIGIBILITY-SUBORDINATE-FACILITY",
+      "R-INELIGIBLE-EMPTY-LABEL-MAPS"
+    ]
+  },
+  "research": {
+    "identity_summary": "삼각봉은 한라산 관음사 탐방로의 삼각봉대피소 인근에 있는 봉우리·경유 지점이다.",
+    "typical_visit": "삼각봉은 관음사 탐방로를 따라 백록담으로 향하는 등산 과정에서 통과·조망하는 지점으로 확인된다.",
+    "experience_scope": "공식 자료는 관음사 탐방로를 단일 등반 코스로 관리하고 삼각봉을 그 경유 지점으로 안내한다. 따라서 이 레코드에 별도의 41축 적합도를 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "비짓제주는 한라산 관음사 탐방로의 삼각봉~백록담 구간을 별도 관리·통제 구간으로 안내하며, 관음사 코스를 공식 탐방로로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국민족문화대백과사전은 관음사 코스가 관음사 야영장을 기점으로 탐라계곡·개미등·삼각봉대피소·용진각을 지나 백록담 동릉에 이르는 8.7km 탐방로라고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 레코드가 봉우리 정상, 대피소 또는 인근 조망 지점 중 어느 좌표를 가리키는지는 확인되지 않았다.",
+      "탐방 예약, 통제 구간, 기상과 안전 조건은 변동될 수 있으므로 상위 탐방로의 공식 최신 안내가 필요하다.",
+      "평점·후기 수는 라벨 근거로 사용하지 않았고 공개 후기 작성자 식별 정보는 기록하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://visitjeju.net/kr/detail/view?contentsid=CONT_000000000500685",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "한라산의 공식 탐방로로 관음사 코스를 안내한다.",
+          "관음사 탐방로 삼각봉~백록담 구간은 관리·통제 안내의 대상이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "type": "public_encyclopedia_page",
+        "url": "https://encykorea.aks.ac.kr/Article/E0061564",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "관음사 코스는 탐라계곡, 개미등, 삼각봉대피소, 용진각을 지나 백록담 동릉에 이르는 8.7km 탐방로라고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/24022942",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘삼각봉’이다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았으며 작성자 식별 정보는 기록하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "component_of_managed_trail",
+      "applies_to": "recommendation_candidate",
+      "condition": "삼각봉은 관음사 탐방로의 경유 지점으로 관리·이용되며, 독립 여행지로 분리할 근거가 없다.",
+      "status": "confirmed",
+      "action": "추천·동행·월별 적합도는 상위 ‘한라산국립공원 관음사 탐방로’에만 부여하고 이 레코드는 중복 후보에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

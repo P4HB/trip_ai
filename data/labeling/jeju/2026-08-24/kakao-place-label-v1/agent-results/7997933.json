@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7997933",
+  "place_id": "7997933",
+  "name": "알선족이오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju는 ‘선족이오름(알선족이)’을 하나의 관광지로 안내하며, 그 동쪽 능선의 동향 말굽형 화구를 ‘알선족이’라고 명시한다. 기존 Kakao 후보 kakao:246058408은 같은 공식 명칭 ‘선족이오름’으로 이미 이 관광지를 기록하고 있어, 입력 레코드는 독립 방문지가 아닌 동일 오름의 별칭 중복으로 판정한다.",
+    "duplicate_of": "kakao:246058408",
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "알선족이는 제주관광공사가 ‘선족이오름(알선족이)’으로 안내하는 동일 오름의 동쪽 능선 화구 명칭이다. 입력 Kakao 장소명은 이 별칭과 일치한다.",
+    "typical_visit": "해당 공식 관광지는 오름·걷기/등산·자연경관으로 분류된다. 그러나 이 레코드는 기존 동일 장소의 별칭 중복이므로 별도 방문 경험 벡터를 만들지 않는다.",
+    "experience_scope": "Kakao 공개 평점, 후기 수 및 작성자 신원은 판정 근거로 사용하지 않았다. 입력에 포함된 한 줄 후기 역시 중복 판정이나 점수화에 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 관광지명을 ‘선족이오름(알선족이)’으로 표기하고, 동쪽 능선으로 이어진 동향 말굽형 화구를 ‘알선족이’라고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "기존 Kakao 후보 레코드 kakao:246058408의 장소명은 ‘선족이오름’이며, 그 조사 결과는 동일 Visit Jeju 관광지 페이지를 근거로 ‘선족이오름(알선족이)’을 식별한다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "이 중복 레코드 자체에는 주소·좌표가 없으므로, 별칭 외의 Kakao 필드만으로는 위치를 재교차 검증할 수 없다.",
+      "최신 출입 가능 여부, 사유지·방목지 통과 조건과 현장 안전 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500339",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "관광지명을 ‘선족이오름(알선족이)’으로 안내한다.",
+          "동쪽 능선의 동향 말굽형 화구를 ‘알선족이’라고 설명한다.",
+          "관광지 분류는 오름, 걷기/등산, 자연경관, 도보여행이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao 신규 후보 라벨링 큐",
+        "type": "internal_candidate_record",
+        "url": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/246058408.json",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "kakao:246058408의 장소명은 ‘선족이오름’이다.",
+          "해당 레코드는 Visit Jeju의 ‘선족이오름(알선족이)’ 관광지 페이지를 동일성 근거로 기록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 장소명 ‘알선족이오름’은 공식 관광지 ‘선족이오름(알선족이)’의 별칭이며, Kakao 후보 kakao:246058408이 같은 관광지를 이미 나타낸다.",
+      "status": "confirmed",
+      "action": "kakao:246058408만 대표 후보로 유지하고, 이 레코드는 추천용 41축 벡터와 후보 집합에서 제외한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

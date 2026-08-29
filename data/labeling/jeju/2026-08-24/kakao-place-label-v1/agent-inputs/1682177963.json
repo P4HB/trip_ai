@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1324,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1682177963.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1682177963",
+    "provider": "kakao",
+    "place_id": "1682177963",
+    "name": "테마파크툰",
+    "url": "https://place.map.kakao.com/1682177963",
+    "average_rating_5": "4.1",
+    "visitor_review_count": "34",
+    "blog_review_count": "102",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.13.",
+      "content": "❤️❤️❤️❤️❤️👍👍👍👍👍",
+      "tags": "시설"
+    },
+    {
+      "date": "2026.05.28.",
+      "content": "아이스크림이 맜있고 재밌어요 실화같기도?!",
+      "tags": ""
+    },
+    {
+      "date": "2026.05.27.",
+      "content": "진짜 만화 속 들어온 느낌이라 구경하는 재미가 있었어요. 포토존도 많아서 커플끼리 방문하기 괜찮았습니다.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.05.25.",
+      "content": "캐릭터랑 배경 연출이 잘 되어 있어서 진짜 만화 속 들어온 느낌이었어요 ✨ 포토존 많아서 사진 찍기 좋고 친구들이랑 웃으면서 구경했습니다! 생각보다 볼거리 많아서 만족했어요 😊",
+      "tags": ""
+    },
+    {
+      "date": "2026.05.25.",
+      "content": "생각보다 체험 요소가 많아서 시간 가는 줄 모르고 놀았어요 😆 사진 찍을 공간도 많고 테마마다 분위기가 달라서 보는 재미가 있었습니다. 실내라 날씨 상관없이 방문하기 좋은 곳 같아요!",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

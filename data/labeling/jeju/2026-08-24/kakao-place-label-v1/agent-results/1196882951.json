@@ -1,0 +1,568 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1196882951",
+  "canonical_id": "kakao:1196882951",
+  "name": "한라산국립공원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 제주특별자치도 한라산국립공원과 일치하며, 공식 관광 안내에서 천연보호구역·국립공원 및 지정 탐방로를 가진 독립 방문지로 확인된다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산국립공원은 한라산의 산악 탐방과 백록담 경관을 핵심으로 하는 국립공원이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-MOUNTAIN-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "산악 국립공원으로 해양 경험은 핵심이 아니다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "지정 탐방로를 이용한 산행이 핵심 방문 경험이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-HIKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "천연보호구역·국립공원 지정 이력은 확인되나 역사문화 관람이 주목적은 아니다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-NATURAL-HERITAGE-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연보호 국립공원이며 테마파크형 시설은 핵심이 아니다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페 이용이 독립 목적이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "시장 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기간성 축제가 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험은 야외 산악 탐방이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-MOUNTAIN"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "기상특보·강풍·대설·호우 등에는 탐방로가 통제될 수 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-WEATHER-CONTROL-DIRECT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 경관은 휴식 가치를 주지만 산행 부담도 크다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-NATURE-MIXED"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "정상 탐방은 산행과 시간 제한을 수반한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-MOUNTAIN-BURDEN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "여러 탐방로가 있으나 정상 코스는 예약·시간 제한이 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-ROUTE-CONSTRAINTS"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산 천연보호구역과 산악 경관이 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-MOUNTAIN-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "천연기념물 한라산 천연보호구역이자 국립공원이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-NATIONAL-PARK-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주의 대표 산악 자연유산이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-JEJU-NATURAL-HERITAGE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주를 대표하는 국립공원·천연보호구역으로 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-ICONIC-NATIONAL-PARK-DIRECT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "백록담과 산악 경관은 공식 관광지도에서 주요 감상 요소로 제시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-SCENERY-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 산행의 안전·통신 정보를 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 유형별 편의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹별 이용 편의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "고지대 산행과 기상 통제 때문에 아동 적합성은 제한적이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-MOUNTAIN-BURDEN"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "고지대 산행과 경사·시간 제한으로 고령 방문 적합성은 제한적이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-MOUNTAIN-BURDEN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-MOUNTAIN-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "mountain_trail_reservation_and_weather_controls",
+      "applies_to": "all_visitors",
+      "condition": "일부 정상 탐방로는 예약·입산시간 제한이 적용되고 기상특보, 강풍, 호우, 대설 등에는 부분·전면 통제될 수 있다.",
+      "status": "needs_review",
+      "action": "방문 전 공식 탐방예약시스템에서 예약 필요 여부, 입산 시간, 실시간 통제·기상을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 제주 한라산국립공원과 일치한다.",
+    "facts": [
+      {
+        "text": "비짓제주는 한라산 천연보호구역이 1966년 천연기념물로, 1970년 국립공원으로 지정됐다고 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한라산 탐방예약시스템은 기상특보·강풍·호우·대설 등 상황에서 탐방로 통제가 가능하다고 안내한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "방문일별 실시간 통제",
+      "탐방로별 예약 잔여·운영 조건",
+      "개별 구간 무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500685&menuId=DOM_000001923002006003",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라산 천연보호구역의 천연기념물·국립공원 지정 이력을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한라산탐방 예약시스템",
+        "type": "government_park",
+        "url": "https://visithalla.jeju.go.kr/board/boardView.do?bbsId=notice&seq=1270",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "기상특보·강풍·대설·호우 등 탐방 통제 기준을 안내한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

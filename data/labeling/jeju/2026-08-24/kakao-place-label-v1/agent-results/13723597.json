@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723597",
+  "place_id": "13723597",
+  "name": "해녀콩서식지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.75,"rationale":"공개 웹 자료들이 제주올레 14코스 월령 해안의 ‘해녀콩 자생지’ 안내 지점을 일관되게 지시한다. 상업 시설의 부속물이 아닌 해안 올레길의 자연 관찰 지점으로 보이나, 공식 최신 관리·출입 정보는 확인하지 못했다.","duplicate_of":null,"evidence_ids":["F1","F2","F3"]},
+  "research": {
+    "identity_summary":"해녀콩서식지는 제주시 한림읍 월령포구와 금능포구 사이 제주올레 14코스 해안 구간에 있는 해녀콩 자생지 안내 지점이다.",
+    "typical_visit":"제주올레 14코스의 해안길을 걸으며 자생 식물 안내와 현무암 해안·바다 경관을 짧게 관찰하는 야외 경유 방문이다.",
+    "experience_scope":"공개 자료는 해안 올레길과 자생지 안내 지점이라는 사실은 뒷받침하지만, 공식 최신 개방 상태, 관리 주체, 정확한 동선, 주차·화장실·무장애 시설은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"제주올레 14코스 답사 기록은 월령바당올레의 돌밭길 해안 구간을 따라가면 ‘해녀콩자생지’ 푯말이 나온다고 기록한다.","source_ids":["S1"]},
+      {"id":"F2","text":"공개 사진 아카이브는 해녀콩서식지를 제주 올레 14코스의 해안길·자연·풍경으로 분류하고, 별도 사진에는 풍력발전기와 바다를 함께 표기한다.","source_ids":["S2","S3"]},
+      {"id":"F3","text":"입력에 포함된 공개 방문 후기는 일성비치콘도에서 월령코지까지 이어지는 길이 길고 노면이 좋지 않으며 비 오는 날 위험할 수 있다고 서술한다.","source_ids":["S4"]}
+    ],
+    "unknowns":["해녀콩의 현장 개화·관찰 가능 시기와 보호·채취 규정은 공식 최신 출처로 확인하지 못했다.","현재 출입 허용 범위, 노면, 주차, 화장실, 난간 및 무장애 접근성은 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"천년의 미소","type":"walk_record","url":"https://cheonym.tistory.com/16506722","checked_at":"2026-08-24","facts":["제주올레 14코스 월령바당올레의 해안 돌밭길과 해녀콩자생지 안내 표지를 기록한다."]},
+      {"id":"S2","publisher":"크라우드픽","type":"photo_archive","url":"https://www.crowdpic.net/photo/%ED%95%B4%EB%85%80%EC%BD%A9%EC%84%9C%EC%8B%9D%EC%A7%80-%ED%95%B4%EC%95%88%EA%B8%B8-%EC%A0%9C%EC%A3%BC-%EC%98%AC%EB%A0%8814%EC%BD%94%EC%8A%A4-%EC%98%AC%EB%A0%88%EA%B8%B8-342491","checked_at":"2026-08-24","facts":["해녀콩서식지 사진을 제주 올레14코스 해안길·자연·풍경으로 표기한다."]},
+      {"id":"S3","publisher":"크라우드픽","type":"photo_archive","url":"https://www.crowdpic.net/photo/%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EA%B8%B0-%ED%95%B4%EB%85%80%EC%BD%A9%EC%84%9C%EC%8B%9D%EC%A7%80-%EC%A0%9C%EC%A3%BC-%EC%98%AC%EB%A0%8814%EC%BD%94%EC%8A%A4-%EC%98%AC%EB%A0%88%EA%B8%B8-342502","checked_at":"2026-08-24","facts":["해녀콩서식지와 바다·풍력발전기를 함께 표기한 사진이다."]},
+      {"id":"S4","publisher":"Kakao Map 공개 방문 후기 요약 (입력 패킷)","type":"visitor_review","url":"https://place.map.kakao.com/13723597","checked_at":"2026-08-24","facts":["한 공개 후기는 해당 해안 구간의 좋지 않은 길과 우천 시 위험 가능성을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료는 해안 올레길을 확인할 뿐 산·오름 경험이 핵심이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"해안 돌밭길과 바다를 접한 제주올레 14코스 구간이라는 기록이 대표 경험의 해양·해안성을 직접 뒷받침한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"올레길 해안 구간을 걷는 방문은 확인되지만, 독립 레포츠·체험 운영 여부는 확인되지 않아 중간값으로 기록한다.","source_ids":["S1","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·전시·전통 체험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 운영 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"기록과 사진이 해안 돌밭길·야외 자연 경관을 가리키므로 대표 경험의 실내 비중은 낮다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안 돌밭길이며 공개 후기에 우천 시 위험 가능성이 언급되어 날씨 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관은 확인되지만 휴식 시설·혼잡·소음 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 돌밭길과 좋지 않은 노면 언급은 보행 부담 가능성을 시사하지만, 공식 난이도·거리·무장애 정보는 없어 낮은 값으로만 추론한다.","source_ids":["S1","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"안내 지점의 체류 시간·개방 시간·정차 공간이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 사진 자료가 해안길·자연·풍경 및 바다를 직접 표기하므로 해안 경관 감상 가치는 비교적 높다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주올레 해안 구간에서 해녀콩 자생지를 별도 안내 표지로 지칭하는 자연 관찰 지점이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주올레 14코스의 월령 해안 자연환경과 해녀콩 자생지라는 지역 생태 요소가 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레길 세부 안내 지점임은 확인되지만 제주를 대표하는 상징 명소라는 공적 지정은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 사진 아카이브에 해안길·바다·풍력발전기와 함께 촬영돼 시각적 기록 가능성은 보이나, 공식 사진 명소 안내는 확인되지 않았다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문 안전·동선·통신 환경이 확인되지 않아 중립값이다.","source_ids":["S1","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 적합성을 판단할 시설·안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"돌밭길과 우천 시 위험 가능성 언급 때문에 어린이 동반에는 주의가 필요하나, 실제 보호시설은 확인되지 않았다.","source_ids":["S1","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"좋지 않은 노면 언급 때문에 보행 부담 가능성이 있으나, 경사·쉼터·무장애 정보가 없어 낮은 값으로만 추론한다.","source_ids":["S1","S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 겨울 적합도는 현장 출입·바람 상태를 확인하지 못해 보수적으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 겨울 적합도는 현장 출입·바람 상태를 확인하지 못해 보수적으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 실제 월별 출입·식생 상태를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안길의 겨울 적합도는 현장 출입·바람 상태를 확인하지 못해 보수적으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"uneven_coastal_path_and_weather_safety","applies_to":"all_visitors","condition":"공개 기록은 해안 돌밭길을, 입력된 공개 후기는 좋지 않은 노면과 우천 시 위험 가능성을 언급한다. 최신 출입·노면·안전시설 상태는 미확인이다.","status":"needs_review","action":"방문 전 제주올레의 최신 우회·통제 안내와 현장 기상, 신발·보행 가능 여부를 확인한다.","source_ids":["S1","S4"],"checked_at":"2026-08-24"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-24"
+}

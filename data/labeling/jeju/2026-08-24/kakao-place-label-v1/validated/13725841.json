@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725841",
+  "place_id": "13725841",
+  "name": "주가홀길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공개 관광정보는 문도지오름과 곶자왈을 지나는 제주올레 14-1코스라는 전체 도보 코스를 안내한다. 반면 입력의 주가홀길은 그 일대의 도로명·통로 표식이며, 독립적으로 운영·관람·체험되는 방문지라는 공공 안내는 확인하지 못했다. 따라서 독립 방문·체험 장소만 41축으로 라벨링하는 현재 범위에서는 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "주가홀길은 문도지오름과 저지곶자왈 인근, 제주올레 14-1코스와 연결된 도로·통로 표식으로 파악된다.",
+    "typical_visit": "독립 관광시설의 관람이 아니라 올레 14-1코스 또는 인근 자연 탐방 중 통과하는 동선으로만 확인된다.",
+    "experience_scope": "입력 Kakao 장소는 길 자체를 가리키며, 독립 운영 장소·관람지·체험 프로그램이라는 근거가 없어 추천용 독립 장소 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주올레 14-1코스를 약 17km, 5~6시간의 도보 코스로 안내하고, 문도지오름을 지난 뒤 곶자왈을 만나는 경로라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 현장 기록은 주가홀길을 문도지오름과 명성목장으로 향하는 통로이자 올레 14-1코스상 숲길 구간으로 설명한다. 이는 공공 자료가 아닌 위치·동선 보조 근거다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "주가홀길의 정확한 관리 주체, 도로 구간, 차량·보행 통행 조건 및 최신 노면 상태를 확인하지 못했다.",
+      "길 자체에 독립 관람·체험 프로그램, 안내시설 또는 방문객 편의시설이 있는지 확인하지 못했다.",
+      "제주올레 14-1코스의 현재 우회·변경 여부와 해당 구간의 출입 가능 여부는 최신 공식 안내로 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018726&menuId=DOM_000001718001000000",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 14-1코스는 약 17km, 5~6시간의 도보 코스로 안내된다.",
+          "코스는 문도지오름을 지나 곶자왈로 이어진다고 설명한다.",
+          "올레코스는 우회·변경될 수 있으므로 방문 전 제주올레 공식 홈페이지 확인을 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 현장 기록",
+        "type": "public_web_record",
+        "url": "https://canon3210.tistory.com/16121721?category=1302860",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "주가홀길을 문도지오름·명성목장으로 향하는 주요 통로 및 곶자왈 숲길로 서술한다.",
+          "도로 폭이 좁고 비포장 구간이 포함된다는 현장 서술이 있으나 최신 공식 안전 안내는 아니다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "독립 관광·체험 장소가 아닌 길·통과 동선으로 파악되며, 최신 관리 주체·출입·노면 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 추천 후보에서는 제외하고, 올레 14-1코스의 최신 공식 경로와 현장 출입·안전 정보를 확인한 뒤 경로 안내에만 활용",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

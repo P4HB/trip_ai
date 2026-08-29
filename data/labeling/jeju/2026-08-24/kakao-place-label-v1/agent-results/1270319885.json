@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1270319885",
+  "place_id": "1270319885",
+  "name": "쇠물깍",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주시 공식 블로그 글은 신흥리 쇠물깍 무지개도로, 짧은 나무데크길과 신흥해변으로 이어지는 보행 경험을 소개한다. 독립적으로 방문하는 자연·마을 경관 지점으로 식별되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "쇠물깍은 제주시 신흥리에서 큰물의 단물이 바다로 흐르는 내와 그 주변의 무지개도로·나무데크길로 소개되는 용천수 및 해안 보행 지점이다.",
+    "typical_visit": "무지개도로와 짧은 나무데크길을 걸으며 용천수·마을 풍경을 보고, 인접한 신흥해변까지 이어서 둘러보는 야외 산책·사진 방문이다.",
+    "experience_scope": "공식 제주시 글은 용천수, 무지개도로, 짧은 나무데크길, 신흥해변 및 제주올레 19코스 연결을 소개한다. 최신 주차, 화장실, 실제 개방 상태, 데크·해안의 노면·난간, 수영 가능 여부, 무장애 접근 및 악천후 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주시 공식 블로그 글은 쇠물깍을 신흥리의 발상지이자 삶의 터전인 용천수로 설명하며, 과거 생활·농업용수로 쓰였다고 소개한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 글은 쇠물깍 주변 무지개도로, 짧은 나무데크길, 신흥해변과 제주올레 19코스 연결을 소개하고 포토스팟 및 한적한 산책 맥락을 제시한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "제주특별자치도교육청 제주어 교육 자료는 제주올레 19코스의 쇠물깍을 신흥리·큰물·내·용천수와 함께 다룬다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "최신 일반 출입 가능 여부, 주차·화장실, 조명과 현장 안내는 확인하지 못했다.",
+      "데크와 해변의 노면·경사·난간, 유아·고령자 동반 안전 및 무장애 접근성은 확인하지 못했다.",
+      "수질·수영 가능 여부, 계절별 해안 통제와 악천후 안전 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주시", "type": "municipal_blog", "url": "https://blog.naver.com/wowjejusi/223703101462", "checked_at": "2026-08-25", "facts": ["쇠물깍의 용천수·신흥리 생활사와 과거 용수 이용을 소개한다.", "무지개도로, 짧은 나무데크길, 신흥해변 및 제주올레 19코스 연결을 소개한다.", "무지개도로를 포토스팟으로, 데크길을 한적하게 걸을 수 있는 곳으로 소개한다."]},
+      {"id": "S2", "publisher": "제주특별자치도교육청", "type": "education_material", "url": "https://www.jeju.go.kr/jedu/data/data.htm?act=view&page=113&seq=1538377", "checked_at": "2026-08-25", "facts": ["제주어 교육 자료의 제주올레 19코스 쇠물깍은 신흥리, 큰물, 내, 용천수 관련 핵심어를 제시한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/1270319885", "checked_at": "2026-08-25", "facts": ["입력 패킷의 Kakao 장소명은 쇠물깍이다.", "평점·후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 또는 산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 글이 쇠물깍에서 무지개다리 끝의 신흥해변까지 방문해 바다를 느낄 수 있다고 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 글이 신흥리의 발상지·삶의 터전과 과거 생활·농업용수 이용을 직접 설명해 지역 생활사와 연결된 방문 경험을 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"무지개도로·나무데크길·해변을 걷는 야외 방문으로 소개되어 대표 경험의 실내 비율이 낮다고 추론한다. 부대 실내 공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안과 데크의 야외 산책이므로 비·바람·더위·추위가 방문에 비교적 크게 영향을 준다고 추론한다. 현장 통제 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 글은 짧은 나무데크길을 한적하게 거닐며 사색할 수 있는 곳으로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"짧은 데크길은 확인되지만 전체 보행 거리·노면·경사·계단과 무장애 정보가 없어 이용 용이성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"짧은 데크길만 둘러보거나 신흥해변과 올레 19코스까지 이어 걸을 수 있어 체류 시간을 조절하기 비교적 쉽다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 글은 무지개도로의 색감과 푸른 자연의 조화, 신흥해변에서 바다를 느끼는 경험을 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"용천수·무지개도로·나무데크길과 해변 연결이라는 구성이 공식 소개에서 직접 확인돼 구별되는 방문 경험이 있다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"신흥리의 발상지와 삶의 터전, 과거 생활·농업용수로 이용된 용천수라는 지역 생활과의 연결이 공식 글에서 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 공적 명소·상징이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 글은 무지개도로를 많은 사람이 찾는 포토스팟으로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"한적하게 거닐며 사색할 수 있는 산책 지점으로 소개되어 혼자 방문에 비교적 적합하다고 추론한다. 현장 안전 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"무지개도로·해변 산책과 사진 맥락이 확인되어 두 명이 함께 둘러보기에 비교적 적합하다고 추론한다. 동선·안전 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"사진 촬영과 해변까지 이어지는 야외 산책 경험이 확인되어 친구 동행에 비교적 적합하다고 추론한다. 수용 여건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"데크·해안의 난간, 노면, 물가 안전과 어린이 편의시설 정보가 없어 어린이 동반 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도, 쉼터, 주차와 무장애 접근성 정보가 없어 부모·고령자 동반 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 산책의 월별 현장 상태와 계절 운영 정보가 부족해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 여부, 주차·화장실, 데크·해안의 노면·난간, 무장애 접근, 수질·물가 안전 및 악천후 통제 정보는 확인되지 않음","status":"needs_review","action":"방문 전 현장 또는 제주시 최신 안내로 출입 가능 여부와 보행·해안·기상 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

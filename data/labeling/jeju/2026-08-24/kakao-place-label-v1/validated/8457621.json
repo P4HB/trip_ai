@@ -1,0 +1,54 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8457621",
+  "canonical_id": "kakao:8457621",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "inference_level": "direct_evidence",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "R1"
+    ],
+    "rationale": "카카오맵은 제주특별자치도 제주시 이호일동의 '송덕비'와 좌표를 제시하지만, 비의 대상·연혁·관리 주체·방문 경험을 확인할 공공 또는 공식 상세 자료를 찾지 못했다. 동명 비석과 구별할 수 있는 정체성이 부족하므로 축별 점수를 생성하지 않는다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "high",
+  "research": {
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://place.map.kakao.com/8457621",
+        "publisher": "카카오맵",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 송덕비로 표시된다.",
+          "공개 페이지 메타데이터의 소재지는 제주특별자치도 제주시 이호일동이다.",
+          "공개 페이지 메타데이터의 중심 좌표는 경도 126.4582696992056, 위도 33.50009165810244이다."
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "R1",
+        "rule": "식별 가능한 장소 정체성과 방문 경험의 근거가 부족하면 identity_unknown으로 판정하고 원자·동반자·월별 라벨 맵을 비운다."
+      }
+    ],
+    "summary": "공개적으로 확인된 정보는 카카오맵의 명칭·행정동·좌표뿐이며, 이를 넘어선 속성은 추정하지 않았다."
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1622318577",
+  "place_id": "1622318577",
+  "name": "김녕리 서문 하르방당",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "입력 장소명은 한겨레 제주당올레 보도가 제주시 구좌읍 김녕리 4108에 안내한 ‘해신미륵 서문하르방당’과 일치한다. 해당 보도는 미륵돌을 모신 해안 신당과 바다 경관을 설명하고, 제주학연구의 신당 현장조사 표도 서김녕 서문하르방당을 김녕리 신당으로 수록한다. 따라서 독립적인 지역 민속·문화 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "김녕리 서문 하르방당은 제주시 구좌읍 김녕리 4108의 해신미륵 서문하르방당으로, 미륵돌을 모신 해안 신당이다.",
+    "typical_visit": "해안가의 작은 제주 신당과 미륵돌을 보고 바다 풍경을 살피는 짧은 야외 민속·경관 방문으로 확인된다.",
+    "experience_scope": "공개 출처는 신당의 위치·해신미륵·미륵돌·바다 경관을 확인한다. 최신 출입 가능 여부, 주차·화장실, 노면·무장애 접근성, 제의 일정과 현장 예절은 확인하지 못했으므로 점수와 분리해 확인 대상으로 남긴다.",
+    "facts": [
+      {"id":"F1","text":"한겨레 제주당올레 보도는 구좌읍 서김녕리 영등물고개 바닷가의 해신미륵 서문하르방당을 미륵돌을 모신 당으로 설명하며 바다 풍경이 특히 아름답다고 적는다.","source_ids":["S1"]},
+      {"id":"F2","text":"같은 보도는 해신미륵 서문하르방당의 주소를 제주시 구좌읍 김녕리 4108로 제시한다.","source_ids":["S1"]},
+      {"id":"F3","text":"제주학연구 공개 조사자료의 제주시 권역 신당 현장조사 표에는 김녕리의 ‘서김녕 서문하르방당’이 수록돼 있다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "입력 Kakao 레코드에서 좌표·업종·공개 방문 후기 근거는 제공되지 않았으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+      "최신 출입 가능 여부, 현장 안내·제의 일정, 촬영·참배 예절, 주차·화장실과 무장애 접근성은 확인하지 못했다.",
+      "해안 접근로의 노면, 난간, 파랑·강풍 등 악천후 안전 통제의 최신 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"한겨레","type":"news_feature","url":"https://www.hani.co.kr/arti/area/jeju/861617.html","checked_at":"2026-08-24","facts":["해신미륵 서문하르방당은 구좌읍 서김녕리 영등물고개 바닷가에 있다.","미륵돌을 모신 당이며 바다 풍경이 특히 아름답다고 설명한다.","주소는 제주시 구좌읍 김녕리 4108로 제시한다."]},
+      {"id":"S2","publisher":"제주학연구센터","type":"research_report","url":"https://jst.re.kr/upload/pdf/RC00085041.pdf","checked_at":"2026-08-24","facts":["제주시 권역 신당 현장조사 표에 김녕리의 서김녕 서문하르방당이 수록돼 있다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/1622318577","checked_at":"2026-08-24","facts":["입력 패킷의 Kakao 장소명은 ‘김녕리 서문 하르방당’이다.","입력에는 공개 방문 후기 근거가 없으며 평점·후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 보도가 영등물고개 바닷가의 신당과 특히 아름다운 바다 풍경을 직접 설명해 해안 경관이 대표 방문 경험에 크게 연결된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 경험은 신당·미륵돌 관찰과 해안 경관 감상이며 레포츠나 참여형 체험 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"출처가 이 장소를 미륵돌을 모신 해신미륵 신당으로 설명하고, 제주학연구 신당조사에도 수록해 제주 민속 신앙·문화유산 맥락이 방문의 핵심이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"바닷가의 신당과 바다 풍경을 보는 경험으로 안내돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"해안가에서 신당과 바다 경관을 보는 야외 경험이므로 비·강풍·파랑 등 날씨의 영향을 비교적 크게 받을 수 있다. 현장 통제는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로의 거리·노면·계단·경사와 무장애 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 소요 시간과 장기 체류 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 보도가 이 신당의 바다 풍경을 특히 아름답다고 직접 설명해 경관 감상이 중요한 방문 가치로 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"해신미륵과 미륵돌을 모신 김녕리 신당이라는 구성이 출처에 직접 확인돼 일반 해안 경관과 구별되는 민속 방문 경험을 이룬다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 마을 신당 조사에 수록되고 제주 신당·미륵돌 신앙으로 설명돼 제주 지역 민속 문화와의 연결이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화적 의미는 확인됐지만 제주 전체 또는 지역의 대표 상징 명소라는 공적 지정·공식 안내는 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"바다 풍경의 아름다움은 직접 확인되지만 사진 촬영 가치가 명시되지는 않아 시각적 기록 가치는 보수적으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 현장 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 해안 접근 안전, 난간·노면과 현장 규정 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_weather_and_site_etiquette_unverified","applies_to":"all_visitors","condition":"해안 신당의 최신 출입 가능 여부, 접근로·노면·난간, 강풍·파랑 시 안전 통제, 제의 일정과 현장 예절·촬영 규정은 공개 출처에서 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내로 접근·기상 안전과 신당 예절·촬영 가능 여부를 확인하고, 통제 또는 제의 중이면 방문을 조정한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

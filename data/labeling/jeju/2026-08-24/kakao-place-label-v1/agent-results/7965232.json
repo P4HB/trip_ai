@@ -1,0 +1,58 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7965232",
+  "place_id": "7965232",
+  "name": "셋정도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공개 검색에서 ‘셋정도’가 제주 장소명으로 쓰인 정황은 확인되지만, 카카오 장소 항목과 일치하는 위치·유형·방문 가능 범위를 확인할 신뢰 가능한 상세 출처가 부족하다. 오인 추천을 피하기 위해 독립 후보 판정을 보류한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "제주 장소명으로 보이나 카카오 항목의 정확한 실체와 범위는 확인하지 못했다.",
+    "typical_visit": "확인 불가",
+    "experience_scope": "공개 근거만으로 관광지·시설·지명 중 어느 범주인지 특정할 수 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주대학교 아카이브의 제주 잣성 연구에는 ‘셋정도’가 색달동 인근 위치 표기로 나타나지만, 개별 관광지 또는 방문 시설이라는 설명은 제공하지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "정확한 위치와 경계",
+      "장소 유형과 운영 주체",
+      "일반 방문 가능 여부와 접근 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주대학교 OAK",
+        "type": "academic_paper",
+        "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/7651/2/%28%EC%9D%BC%EB%B0%98%EB%85%BC%EB%AC%B8%29%20%EC%A1%B0%EC%84%A0%EC%8B%9C%EB%8C%80%20%EC%A0%9C%EC%A3%BC%EB%8F%84%20%EC%9E%A3%EC%84%B1%28%E7%89%86%E5%9E%A3%29%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": ["‘셋정도’가 색달동 인근의 위치 표기로 언급된다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_verification_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "카카오 장소 항목의 정확한 위치·유형·일반 방문 가능 여부가 검증되지 않았다.",
+      "status": "needs_review",
+      "action": "공식 지도 또는 공공 관광·지명 자료로 항목의 위치와 방문 가능 범위를 확인한 뒤 재판정한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

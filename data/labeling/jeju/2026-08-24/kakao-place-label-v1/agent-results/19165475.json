@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "19165475",
+  "canonical_id": "kakao:19165475",
+  "name": "김윤식.이승오유배지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 제주성안 유배길에 포함된 김윤식·이승오의 유배지터를 가리킨다. 제주대학교 연구는 제주시가 옛 도심의 유배터에 표지석을 세우고 이를 약 3km의 제주성안유배길로 연결했다고 설명하며, 별도 공개 안내도 두 사람이 함께 제주에 유배되어 김응빈의 집에서 생활한 사실을 소개한다. 독립적으로 방문·해설할 수 있는 역사 유적 표지 지점으로 판정한다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-HISTORIC-SITE", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 제주시 옛 도심의 유배 역사 표지와 도보길을 설명하며 산·오름 경관이나 등산이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 유배지터와 성안 도보길로 소개되며 해안·해양 경험은 핵심으로 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "이 지점은 약 3km 제주성안유배길의 역사 유적들을 잇는 도보 코스 맥락에 있다. 지점 단독의 보행량이나 체험 프로그램은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HISTORIC-WALKING-ROUTE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "김윤식·이승오의 제주 유배와 유배지터는 제주성안유배길의 핵심 해설 대상이며, 두 인물의 유배 생활 및 귤원시회 활동도 공개 자료에서 확인된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-HISTORIC-SITE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 역사 표지와 도보 유배길을 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·커피·디저트 이용이 이 유배지터의 독립적 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "성안길이 동문시장 인근을 지난다는 설명은 있으나, 이 유배지터 자체가 시장 방문 경험이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 역사 유적·유배길로 소개될 뿐 특정 기간 축제나 공연이 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주시가 옛 유배터에 세운 표지석과 성안 도보길의 지점으로 설명된다. 실내 전시·관람 공간은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-MARKER"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 역사 표지와 도보길 탐방이므로 비·바람·더위·추위의 영향을 받을 수 있다. 현장 대피·통제 기준은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "유배지터의 실제 체류 환경, 휴식 공간과 혼잡도는 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "성안 도보길의 총 길이는 확인되지만 이 표지 지점의 보도 폭·단차·계단·무장애 접근성은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "유배길 전체는 약 3km로 소개되지만 이 지점 단독의 관람 시간과 단축 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처의 핵심은 역사 해설과 옛 도심 도보길이며, 경관 감상 자체가 이 표지 지점의 주요 방문 가치라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SCENIC-NOT-PRIMARY"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조선 말기 김윤식과 이승오가 함께 생활한 유배지터라는 특정 역사와 인물 연결이 공개 자료로 확인되어 고유성이 있다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-UNIQUE-HISTORIC-ASSOCIATION-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 옛 도심의 유배터 표지와 제주성안유배길은 제주 유배사·지역 문인 교류를 연결하는 지역 역사 자원으로 소개된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주성안유배길의 해설 지점으로서 지역 역사 의미는 확인되지만, 국가·도 지정 문화재나 제주 전체를 대표하는 랜드마크라는 공식 지정은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-HERITAGE-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 표지와 도보 유배길이라는 성격은 확인되나 사진 촬영이 공식적으로 핵심 경험으로 권장된다는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-PHOTO-NOT-CONFIRMED"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 현장 안전·안내·통신 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험이나 편의시설 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 차량 동선과 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 보도 상태·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 역사 도보 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_historic_marker_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "유배지터 표지와 성안 도보길의 현재 개방 상태, 정확한 진입 위치, 보도 단차·휠체어 접근성, 우천·강풍 시 보행 안전은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주성안유배길의 최신 현장 안내와 지도에서 표지 위치, 보행 동선 및 기상 상황을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘김윤식.이승오유배지’는 제주성안유배길에 포함된 조선 말기 김윤식·이승오의 유배지터 표지 지점과 일치한다. 공개 자료는 유배터 표지석과 유배길 존재, 두 인물의 제주 유배·김응빈 집 거처를 확인하지만 Kakao 표식의 정확한 좌표·진입 위치는 제공하지 않는다.",
+    "facts": [
+      {"text": "제주대학교 연구는 제주시 옛 도심의 유배인 거처에 표지석이 세워졌고, 제주성안유배길이 유배 유적지와 문화재·관광지를 잇는 약 3km 순환 도보길이라고 설명한다.", "source_id": "S1"},
+      {"text": "같은 연구의 제주성안유배길 표에는 조선 말기 유배인으로 김윤식과 이승오가 포함된다.", "source_id": "S1"},
+      {"text": "공개 성안 유배길 안내는 김윤식이 이승오와 함께 제주에 유배되어 제주성 안 김응빈의 집에서 생활했다고 소개한다.", "source_id": "S2"},
+      {"text": "제민일보는 김윤식과 이승오가 1898년 함께 산지항에 도착했으며, 김윤식·이승오가 귤원시회 참여 유배인으로 언급된다고 보도한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["Kakao 표식의 정확한 좌표와 도로·보행 진입 위치", "현재 표지석의 보존 상태, 운영·개방 시간 및 현장 해설 제공 여부", "계단·단차·휠체어 접근성, 화장실·휴식 시설과 우천·강풍 시 안전 안내"],
+    "sources": [
+      {"id": "S1", "publisher": "제주대학교 중앙도서관", "type": "academic_repository", "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/20565/2/%EC%A0%9C%EC%A3%BC%EC%9C%A0%EB%B0%B0%EB%AC%B8%ED%99%94%20%EC%97%AD%EC%82%AC%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%85%94%EB%A7%81%EC%9D%98%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%ED%99%9C%EC%9A%A9%EB%B0%A9%EC%95%88.pdf", "checked_at": "2026-08-25", "facts": ["제주시가 옛 도심 유배터에 표지석을 세우고 제주성안유배길로 연결했다는 연구 내용을 제공한다.", "제주성안유배길이 약 3km의 순환 도보 코스이며 김윤식·이승오를 포함한 유배인 기록을 바탕으로 한다고 설명한다."]},
+      {"id": "S2", "publisher": "제주 아즈방", "type": "public_travel_information", "url": "https://jejuazbang.tistory.com/4613", "checked_at": "2026-08-25", "facts": ["제주 성안 유배길의 김윤식·이승오 유배지 항목을 소개한다.", "김윤식이 이승오와 함께 제주에 유배되어 제주성 안 김응빈의 집에서 생활했다고 설명한다."]},
+      {"id": "S3", "publisher": "제민일보", "type": "reputable_news", "url": "https://www.jemin.com/news/articleView.html?idxno=230290", "checked_at": "2026-08-25", "facts": ["김윤식과 이승오가 1898년 함께 제주에 도착한 사실을 보도한다.", "김윤식·이승오가 귤원시회 참여 유배인으로 언급된다고 보도한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11102796",
+  "canonical_id": "kakao:11102796",
+  "name": "어오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "공개 오름 자료는 어오름을 서귀포시 안덕면 상천리 일대의 오름으로 언급하지만, 다른 공공 문서의 행정구역 표기가 상충하며 입력에 주소·좌표가 없다. 카카오 ID와 특정 지형을 확정하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-LOCATION-CONFLICT"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "정확한 행정 위치·탐방로·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "카카오 좌표와 관할 지자체·관리 주체의 최신 안내를 대조해 신원을 확정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "어오름 후보는 서영아리 인근으로 언급되나 입력의 지도 좌표가 없어 매칭하지 않았다.",
+    "facts": [
+      {
+        "text": "한라일보는 안덕면 어오름 인근 한라산둘레길에서 조난 사례를 보도한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공공 정책자료는 어오름의 소재지·표고·형태를 수록하지만 행정구역 표기에 혼선이 있다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 장소 좌표",
+      "정확한 행정리",
+      "현행 탐방·출입·기상 통제 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "reputable_local_news",
+        "url": "https://app.ihalla.com/article.php?aid=1773907894783591044",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "안덕면 어오름 인근 한라산둘레길을 언급한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 정책정보",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "어오름의 소재지·표고·면적을 수록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

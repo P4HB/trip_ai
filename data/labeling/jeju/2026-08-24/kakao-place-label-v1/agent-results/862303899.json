@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:862303899",
+  "place_id": "862303899",
+  "name": "제주올레길 15코스갈림길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 장소명은 제주올레 15코스의 ‘갈림길’이라는 길찾기·동선 표식이며, 공공 관광 안내가 소개하는 독립 방문 경험은 한림항에서 고내포구까지 이어지는 제주올레 15-A 코스이다. 갈림길 자체의 독립 관람·체험 또는 운영 주체는 확인되지 않아, 상위 트레일에 딸린 세부 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주올레길 15코스갈림길은 제주올레 15코스 동선에 붙은 갈림길 표식으로 식별되며, 독립 관광시설명으로 확인되지는 않았다.",
+    "typical_visit": "제주올레 15-A 코스를 걷는 중 방향을 선택하거나 경로를 이어 가는 지점으로 이용되는 것으로 판단된다.",
+    "experience_scope": "독립 방문 경험이 아니라 상위 제주올레 15코스 도보 여행의 길찾기·동선 구성 요소이므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주올레 15-A코스를 한림항에서 고내포구까지 이어지는 약 19.2km, 5~6시간의 도보 코스로 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 VISITKOREA는 제주올레 15코스를 숲·중산간·농로와 고내포구를 잇는 트레일로 소개한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 레코드에 좌표·주소·업종 정보가 제공되지 않아 이 갈림길의 정확한 현장 위치는 독립적으로 확인하지 못했다.",
+      "갈림길 표식의 현재 설치 상태, 우회 여부 및 최신 통행 가능 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019463&menuId=DOM_000001817000000005",
+        "checked_at": "2026-08-24",
+        "facts": ["제주올레 15-A코스는 한림항에서 고내포구까지 이어지는 도보 코스다.", "안내된 총 길이는 19.2km이며 소요 시간은 약 5~6시간이다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 VISITKOREA",
+        "type": "public_tourism",
+        "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=78985",
+        "checked_at": "2026-08-24",
+        "facts": ["제주올레 15코스는 숲과 중산간 지역을 지나 농지·숲·흙길 경관을 경험하는 트레일로 소개된다.", "코스는 고내포구에서 끝난다고 안내한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "상위 제주올레 15코스에 속한 갈림길·길찾기 지점이며 독립 방문 경험 또는 운영 시설로 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고, 필요 시 상위 제주올레 15코스의 경로 정보로 함께 제공",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

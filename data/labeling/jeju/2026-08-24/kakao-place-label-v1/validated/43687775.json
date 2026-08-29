@@ -1,0 +1,673 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:43687775",
+  "place_id": "43687775",
+  "name": "남수각하늘길벽화거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "제주관광공사 Visit Jeju가 제주시 중앙로13길 32의 ‘남수각 하늘길 벽화거리’를 별도 관광지로 안내하며, 220m 골목의 벽화 감상·도보 산책·사진 촬영이라는 독립 방문 경험을 명시한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "남수각 하늘길 벽화거리는 제주시 원도심 동문시장 인근의 220m 길이 야외 벽화 골목으로 공식 관광 안내에 수록된 독립 관광지다.",
+    "typical_visit": "골목을 도보로 걸으며 제주의 옛 추억과 현재 풍경을 담은 벽화를 감상하고, 작품 설명을 읽으며 사진을 남기는 약 30분 방문이다.",
+    "experience_scope": "공식 안내는 야외 벽화 감상, 산책, 커플 스냅, 220m 거리와 약 30분 소요, 동문공영주차장 이용 및 차량 진입 불가를 확인한다. 최신 벽화 보존 상태, 야간 조명, 휠체어 접근성, 혼잡도와 실제 주차 가능 여부는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 남수각 하늘길 벽화거리를 제주시 중앙로13길 32의 소박한 골목 야외미술관으로 안내하며, 총 220m 거리의 다양한 벽화와 작품 제목·작가·내용 소개를 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 벽화거리를 도는 데 보통 30분이 걸리고, 커플 스냅과 산책에 좋은 코스이며 동문공영주차장 이용을 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "Visit Jeju 원도심 여행 안내는 이 골목이 실제 주민 생활 공간이고 차량은 들어갈 수 없어 도보로 다녀야 한다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "벽화의 최신 보존·교체 상태와 야간 조명, 화장실·휴식시설 정보를 확인하지 못했다.",
+      "보도 폭, 단차, 휠체어·유모차 접근성과 현행 주차 가능 여부를 확인하지 못했다.",
+      "거주지 인접 골목의 촬영·소음 관련 현장 예절과 최신 통제 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007677",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시 중앙로13길 32의 남수각 하늘길 벽화거리를 관광지로 안내한다.",
+          "220m 거리의 벽화, 도보 산책·커플 스냅·사진 경험, 약 30분 소요와 동문공영주차장 이용을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009900",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "동문시장 인근의 다채로운 벽화가 있는 마을길이라고 소개한다.",
+          "실제 주민 생활 공간이므로 배려하며 둘러볼 것을 안내하고 차량 진입은 불가하며 도보 이동이라고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 핵심은 원도심 골목 벽화 감상과 산책이며 산·오름·숲 경관 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "원도심 동문시장 인근 골목의 벽화거리로 안내되며 해안·해양 활동이 핵심인 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "220m 골목을 도보로 둘러보는 산책이 대표 방문 방식으로 공식 안내된다. 레포츠나 고강도 체험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "야외미술관 형태의 벽화거리이며 제주의 옛 추억부터 현재 모습을 담은 벽화와 작품별 작가·내용 설명을 감상하는 문화예술 경험이 직접 안내된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-CULTURAL-ART-DIRECT"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내는 주민 생활 골목의 벽화 감상을 설명하며 놀이시설·동물·수족관형 테마파크 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "동문시장 인근이라는 위치는 확인되지만, 벽화거리 자체의 핵심 경험은 시장 상거래가 아니라 골목 벽화 감상이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 벽화 골목으로 안내될 뿐 특정 시기 축제·공연·기간성 행사가 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험은 야외 골목의 벽화를 보며 걷는 것이고 차량도 진입할 수 없는 도보 공간으로 안내된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-STREET-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 골목의 도보 감상·사진 촬영이므로 비·강풍·더위·추위의 영향을 비교적 크게 받을 수 있다. 악천후 운영 지침은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "약 30분간 천천히 골목을 걷는 방문은 가능하지만, 주민 생활 공간이고 휴식시설·혼잡도는 확인되지 않아 휴식성은 중간 잠정값으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SHORT-WALK-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "도보 골목이라는 점은 확인되지만 단차·보도 폭·경사와 무장애 접근성 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESSIBILITY-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 전체 벽화거리를 도는 데 보통 30분이라고 제시해 짧은 일정에도 포함하기 쉬운 도보 방문이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-SHORT-VISIT-DIRECT"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "다채로운 벽화가 골목을 채우고 각기 다른 콘셉트와 착시미술관 같은 시각 경험이 공식 안내의 핵심이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-ART-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주의 옛 추억부터 현재 모습까지 담은 220m 야외 벽화 골목과 작품별 해설이라는 구성은 이 장소의 구별되는 경험으로 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-CULTURAL-STREET-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 원도심의 실제 주민 생활 골목에 제주의 옛 기억과 현재 풍경을 담은 벽화가 조성돼 지역 생활·문화와의 연결이 직접 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-CULTURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광지로 별도 소개되고 원도심 산책 코스에 연결되지만, 제주 전체를 대표하는 공적 상징·지정 명소라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-LANDMARK-CONTEXT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 아무 준비 없이도 사진을 찍을 수 있고 커플 스냅에 제격이라고 설명하며, 포토스팟·커플스냅 태그도 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-PHOTO-DIRECT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 안전·야간 조명·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 커플 스냅 사진을 찍기에 제격이고 커플 산책 코스로 직접 소개한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-COUPLE-DIRECT"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 동선·혼잡·수용 편의에 대한 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 보도 폭·차량 분리·안전시설·화장실 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 단차·경사·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 골목 벽화 감상은 겨울 기상의 영향을 받을 수 있으나 월별 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-HEURISTIC"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 골목 벽화 감상은 겨울 기상의 영향을 받을 수 있으나 월별 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-HEURISTIC"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 골목 벽화 감상은 여름 더위와 강수의 영향을 받을 수 있으나 월별 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-HEURISTIC"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 골목 벽화 감상은 여름 더위와 강수의 영향을 받을 수 있으나 월별 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-HEURISTIC"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·행사·계절 절정 정보가 없어 야외 도보 관광의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 골목 벽화 감상은 겨울 기상의 영향을 받을 수 있으나 월별 현장 상태는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-HEURISTIC"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "residential_pedestrian_alley_access_and_etiquette",
+      "applies_to": "all_visitors",
+      "condition": "실제 주민 생활 공간인 야외 골목으로 차량은 진입할 수 없다. 최신 단차·보도 폭·무장애 접근성, 야간 조명, 주차 가능 여부와 현장 촬영·소음 안내는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "도보로 방문하고 주민 사생활·소음에 배려한다. 방문 전 최신 주차와 접근성, 야간 및 악천후 안전 정보를 현장·공식 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

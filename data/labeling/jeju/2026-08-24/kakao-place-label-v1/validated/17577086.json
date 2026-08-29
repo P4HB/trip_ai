@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17577086",
+  "place_id": "17577086",
+  "name": "렛츠런파크제주 청동마상",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력 Kakao 장소명은 ‘렛츠런파크제주 청동마상’이다. 공개 무장애 관광 안내는 렛츠런파크제주의 전체 관람 코스 안에서 ‘13. 청동마상’을 별도 지점으로 열거하고, 같은 안내에서 렛츠런파크제주 자체를 조랑말 승마·파크골프·박물관·어린이 놀이시설 등을 갖춘 말 테마파크로 설명한다. 따라서 청동마상은 공원 방문 중 보는 조형물·코스 지점이지 독립 운영되는 여행 추천 후보로는 보지 않는다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 장소 ‘렛츠런파크제주 청동마상’은 공개 무장애 관광 안내에서 렛츠런파크제주 전체 관람 코스의 13번 ‘청동마상’ 지점으로 확인된다.",
+    "typical_visit": "독립 방문 경험으로는 판정하지 않으며, 렛츠런파크제주를 방문할 때 공원 관람 동선에서 볼 수 있는 조형물·표식으로 파악한다.",
+    "experience_scope": "공개 자료는 청동마상을 공원 코스 지점으로 제시할 뿐, 청동마상 자체의 독립 운영, 별도 관람·체험 프로그램 또는 독립 접근 조건은 확인하지 못했다. 이 결과는 공원 전체의 시설·운영 조건을 청동마상 단독의 조건으로 전이하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터의 place_id 17577086 명칭은 ‘렛츠런파크제주 청동마상’이며, 공개 리뷰 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "WheelNavi의 렛츠런파크제주 전체 관람 코스는 ‘13. 청동마상’을 코스 지점으로 열거하며, 같은 페이지는 렛츠런파크제주를 여러 체험 시설을 갖춘 말 테마파크로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "청동마상 자체의 설치 연혁·작가·규모·문화재 또는 예술작품 지정 여부는 확인하지 못했다.",
+      "청동마상 단독의 독립 관람·체험 프로그램, 별도 입장 절차 및 최신 접근 가능 여부는 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 없으며, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17577086",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘렛츠런파크제주 청동마상’이다.",
+          "입력 패킷에는 공개 리뷰 근거가 없으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "WheelNavi",
+        "type": "public_accessibility_tourism_information",
+        "url": "https://wheelnavi.kr/tour.htm?act=view&id=letsrunpark",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "렛츠런파크제주 전체 관람 코스는 ‘13. 청동마상’을 코스 지점으로 열거한다.",
+          "같은 안내는 렛츠런파크제주를 조랑말 승마체험, 파크골프장, 미니 조랑말 박물관, 어린이 놀이시설 등이 있는 말 테마파크로 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "청동마상은 렛츠런파크제주 전체 관람 코스에 속한 지점으로 확인되며, 독립 운영·체험·입장 단위는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 후보에는 청동마상 단독을 넣지 않고, 필요하면 상위 장소인 렛츠런파크제주의 최신 관람·접근 조건을 별도로 확인해 안내한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

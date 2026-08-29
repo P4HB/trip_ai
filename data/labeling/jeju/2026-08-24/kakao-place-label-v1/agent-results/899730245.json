@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:899730245",
+  "place_id": "899730245",
+  "name": "남당암수",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "제주관광공사 Visit Jeju의 금성포구 안내는 금성천과 바다가 만나는 곳의 남당암수 해안절벽 앞에 민물이 솟는 샘이 있다고 명시한다. 한국문화원연합회의 지역N문화 자료도 같은 금성리 해안 용천수인 남당수의 위치·생활사와 방문 맥락을 설명한다. 따라서 독립적으로 식별 가능한 자연·지역문화 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "남당암수는 제주시 애월읍 금성리 해안, 금성천 하구 인근 해안절벽의 민물 용천수 지점이다. 공개 자료에서는 남당수·남당물로도 불린다.",
+    "typical_visit": "금성포구와 해안길을 걸으며 용천수와 바다 경관, 지역의 생활사·해안 마을 분위기를 짧게 살피는 야외 방문으로 파악된다.",
+    "experience_scope": "공식 자료는 용천수의 위치와 해안 경관·지역사 맥락을 확인한다. 최신 수질, 물놀이 가능 여부, 개방·출입 조건, 주차·화장실·무장애 시설, 파도·기상 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju의 금성포구 안내는 금성천과 바다가 합류하는 방향에서 민물이 솟아나는 샘이 있는 남당암수 해안절벽을 언급한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "한국문화원연합회 지역N문화는 남당수(갯믈-금성리)를 애월읍 금성리 해안가의 용천수로 소개하고, 과거 빨래·물놀이 등 마을 생활의 터전이었다고 설명한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "지역N문화 자료는 남당수 주변에서 바다를 배경으로 한 일몰과 한적한 해안 마을 분위기를 서술한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "남당암수와 남당수 표기의 현장 범위가 Kakao 지점 경계와 정확히 일치하는지 좌표 기반 공공 자료로는 확인하지 못했다.",
+      "최신 수질, 물 접촉·물놀이 허용 여부 및 조수·파도에 따른 접근 위험은 확인하지 못했다.",
+      "현장 노면, 계단·경사, 주차, 화장실, 쉼터 및 무장애 접근 시설은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_guide", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517&menuId=DOM_000001718001000000", "checked_at": "2026-08-24", "facts": ["금성포구 인근 남당암수 해안절벽 앞에 민물이 솟는 샘이 있다고 안내한다.", "금성포구는 금성천과 바다가 만나는 곳에 있다."]},
+      {"id": "S2", "publisher": "한국문화원연합회 지역N문화", "type": "public_cultural_archive", "url": "https://ncms.nculture.org/story-of-our-hometown/story/864", "checked_at": "2026-08-24", "facts": ["남당수는 애월읍 금성리 해안가의 용천수로 소개된다.", "마을 생활사와 바다·일몰 경관 및 해안길 방문 맥락을 설명한다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기 요약", "type": "public_review_summary", "url": "https://place.map.kakao.com/899730245", "checked_at": "2026-08-24", "facts": ["입력에 제공된 익명화 후기는 남당암수의 용천수·암반 샘과 금성리 생활사에 관한 현장 설명을 담고 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 금성천과 바다가 만나는 해안절벽의 샘으로, 공공 문화자료가 해안·바다 경관 방문으로 설명한다. 해양 활동 자체의 운영은 미확인이라 0.75로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠·신체 활동 또는 참여형 체험의 운영 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 문화자료가 용천수를 중심으로 형성된 금성리의 생활사와 과거 이용을 설명한다. 현장 해설·전시 운영은 미확인이라 0.75로 제한한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 방문 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 최신 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"해안절벽의 샘과 해안길·바다 경관을 살피는 야외 방문으로 파악된다. 인근 실내 편의공간의 실제 이용 비율은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안절벽·용천수·바다 경관을 살피는 야외 방문이므로 비·바람·파도와 더위의 영향을 비교적 받을 것으로 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 문화자료가 한적하고 운치 있는 해안 마을과 바다를 배경으로 한 일몰 감상을 서술한다. 실제 혼잡도·쉼터는 미확인이라 0.75로 제한한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·계단·경사 및 무장애 접근 정보가 없어 보행 부담을 판단할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요시간·개방시간·동선 길이 정보가 부족해 체류시간 조절 용이성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 안내는 해안절벽 앞 샘과 바다를, 공공 문화자료는 바다를 배경으로 한 일몰과 해안 마을 분위기를 설명한다. 경관이 핵심 경험임을 뒷받침하지만 현장 시야 조건은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"금성리 해안의 용천수와 금성천 하구·해안절벽이라는 결합, 그리고 마을 생활사 연결은 고유성을 뒷받침한다. 유사 용천수와의 체계적 비교는 없어 0.75로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 문화자료가 남당수를 금성리의 용천수·마을 생활 터전으로 직접 설명하고, 공식 관광 안내도 금성포구·금성천 인근 지점으로 안내한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월을 대표하는 광역 상징 명소라는 공적 지정·선정 근거를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 문화자료가 바다를 배경으로 한 일몰 감상과 해안 풍경을 서술해 시각적 기록 가치를 뒷받침한다. 촬영 접근성·조건은 미확인이라 0.75로 제한한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·물가 안전·시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 바람·기상의 영향을 받을 수 있으나 실제 접근 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 바람·기상의 영향을 받을 수 있으나 실제 접근 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위·강수의 영향을 받을 수 있으나 실제 접근 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위·강수의 영향을 받을 수 있으나 실제 접근 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 바람·기상의 영향을 받을 수 있으나 실제 접근 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_access_and_water_safety_unknown","applies_to":"all_visitors","condition":"최신 수질·물 접촉 허용 여부, 조수·파도에 따른 접근 위험, 현장 노면과 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 관할 지자체 또는 현장 최신 안내로 출입 가능 구간, 기상·파도 상황과 물가 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"},
+    {"kind":"accessibility_unknown","applies_to":"mobility_limited_visitors","condition":"계단·경사·노면, 주차, 화장실 및 무장애 시설의 최신 정보가 확인되지 않았다.","status":"needs_review","action":"이동 제약이 있는 방문객은 방문 전 현장 접근성과 동선을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

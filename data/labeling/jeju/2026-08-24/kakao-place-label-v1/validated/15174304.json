@@ -1,0 +1,120 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:15174304",
+  "place_id": "15174304",
+  "name": "한라산 사라악샘터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "공개 산행 자료는 사라악샘터를 한라산 성판악 탐방로에서 속밭대피소를 지난 뒤 만나는 샘터로 기록하며, 월간산도 사라대피소 전의 사라악샘터로 언급한다. 따라서 독립적으로 운영·관람되는 여행지가 아니라 한라산 성판악 탐방 경험 중 이용하는 급수·휴식 지점으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 표식 ‘한라산 사라악샘터’는 한라산 성판악 탐방로 상의 사라악샘터를 가리키는 것으로 확인된다.",
+    "typical_visit": "성판악 탐방로를 걷는 등산객이 물을 보충하거나 잠시 쉬는 경유 지점으로 파악된다.",
+    "experience_scope": "샘터 자체의 독립 관람·운영 경험은 확인되지 않았고, 한라산 성판악 탐방의 부속 지점이므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 place_id 15174304의 명칭을 ‘한라산 사라악샘터’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "월간산의 한라산 성판악 산행 기사는 ‘사라대피소 전 사라악샘터’라고 해당 샘터를 산행 경로의 지점으로 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "공개 산행 기록은 성판악탐방안내소에서 속밭대피소를 거쳐 사라악샘터와 사라오름입구로 이어지는 동선을 제시한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "샘터의 현재 음용 가능 여부와 수량·수질, 동절기 운영 상태는 확인하지 못했다.",
+      "정확한 표식 위치, 현행 성판악 탐방 예약·입산 통제와 악천후·산불 시 접근 조건은 최신 관리 주체 안내로 확인이 필요하다.",
+      "샘터 단독의 별도 운영·관람·접근성 시설은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/15174304",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공개 장소 URL의 place_id는 15174304이다.",
+          "입력 장소명은 ‘한라산 사라악샘터’이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "월간산",
+        "type": "reputable_outdoor_publication",
+        "url": "https://san.chosun.com/news/articleView.html?idxno=449",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "한라산 성판악 산행 기사에 사라대피소 전의 사라악샘터가 언급된다.",
+          "기사의 맥락은 한라산 산행 경로와 대피소를 설명하는 것이다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "산솔산방",
+        "type": "public_hiking_record",
+        "url": "https://sansolsanbang.tistory.com/3944",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "성판악탐방안내소-속밭대피소-사라악샘터-사라오름입구로 이어지는 산행 동선을 기록한다.",
+          "사라악샘터는 한라산 탐방 중의 경유 지점으로 제시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_trail_water_point",
+      "applies_to": "recommendation_candidate",
+      "condition": "사라악샘터는 한라산 성판악 탐방로의 샘터·경유 지점으로 확인되며 독립 방문지 범위가 아니다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고, 한라산 성판악 탐방 방문 시 최신 탐방 허용·안전·음용수 안내를 관리 주체의 공지로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

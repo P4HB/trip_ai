@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7959730",
+  "place_id": "7959730",
+  "name": "소왕산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "입력의 장소명 소왕산은 서귀포시 성산읍 수산리 2160번지 일대에 있는 족은왕뫼(소왕산)로 공공 자료에서 확인된다. 독립적인 제주 오름 지형으로 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "소왕산은 족은왕뫼·전이미·제임악으로도 불리는 서귀포시 성산읍 수산리의 제주 오름이다.",
+    "typical_visit": "오름 지형과 조림된 숲, 말굽형 화구 주변을 걷고 자연 경관을 관찰하는 방문으로 파악된다.",
+    "experience_scope": "공공 자료는 수산리 2160번지 일대의 표고 103m, 비고 28m인 서향 말굽형 오름임을 안내한다. 공개 상세 자료에는 숲과 화구·농경지의 형태가 설명되지만, 공식 탐방로·현재 출입 가능 여부·주차·화장실·무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"서귀포시 성산읍 현황은 소왕산(족은왕뫼·전이미·제임악)을 수산리 2160번지 일대, 표고 103m·비고 28m·면적 35,071㎡의 말굽형 오름으로 수록한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주에너지공사 공개 오름 현황 자료도 소왕산을 서귀포시 성산읍 수산리 2160번지 일대의 서향 말굽형 오름으로 수록한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 오름 상세 기록은 소왕산의 화구가 서쪽으로 열린 말굽형이며, 남사면 공동묘지와 해송·삼나무 조림지, 화구 주변 농경지를 설명한다.","source_ids":["S3"]},
+      {"id":"F4","text":"기상청 기후평년 자료 서비스는 1991~2020년 30년 평년의 월별 기온·강수량 등 기후 자료를 제공한다.","source_ids":["S4"]}
+    ],
+    "unknowns": [
+      "Kakao place_id 7959730의 좌표·주소가 입력에 없어 공공 자료의 소왕산과의 직접 좌표 대조는 하지 못했다.",
+      "공식 탐방로, 현재 출입 가능 여부, 주차·화장실·안전시설, 경사·계단 및 무장애 접근성은 확인하지 못했다.",
+      "계절별 개화·조망·혼잡도와 실제 날씨에 따른 이용 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"서귀포시","type":"official_local_government","url":"https://www.seogwipo.go.kr/communication/upright/clean.htm?act=download&no=1&page=3&seq=115045570","checked_at":"2026-08-24","facts":["소왕산은 성산읍 수산리 2160번지 일대에 수록돼 있다.","족은왕뫼·전이미·제임악이라는 별칭과 표고 103m, 비고 28m, 말굽형이라는 지형 정보가 제공된다."]},
+      {"id":"S2","publisher":"제주에너지공사","type":"public_agency_document","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf","checked_at":"2026-08-24","facts":["소왕산은 서귀포시 성산읍 수산리 2160번지 일대의 오름으로 수록된다.","자료는 비고 28m, 표고 103m, 면적 35,071㎡, 말굽형(서향)을 제시한다."]},
+      {"id":"S3","publisher":"제주 오름 답사 기록","type":"reputable_secondary","url":"https://jejuazbang.tistory.com/6361?category=568298","checked_at":"2026-08-24","facts":["소왕산은 대왕산과 비교해 붙은 이름인 작은 오름으로 소개된다.","서쪽으로 열린 말굽형 화구, 조림된 해송·삼나무 숲과 주변 농경지가 설명된다."]},
+      {"id":"S4","publisher":"기상청 기상자료개방포털","type":"official_climate_portal","url":"https://data.kma.go.kr/climate/average30Years/selectAverage30YearsKoreaFileset.do?pgmNo=716","checked_at":"2026-08-24","facts":["1991~2020년 기후평년 자료를 제공한다.","월별 평균기온·강수량 등 주요 기후 요소를 조회·다운로드할 수 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료가 소왕산을 표고 103m의 말굽형 제주 오름으로 확인하므로 산·오름 지형이 핵심이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심이라는 근거를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"오름과 화구·숲 지형은 확인됐으나 공식 탐방로와 참여형 활동 정보가 부족해 보수적으로 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"확인된 대표 대상이 야외 오름·화구·숲 지형이므로 실내 경험 비율은 낮게 판정한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 오름 지형이라는 사실과 기상청 월별 기후 자료를 바탕으로 날씨 영향이 비교적 크다고 추론하되, 현장 노출도·공식 이용 기준은 미확인이다.","source_ids":["S1","S2","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·휴식 시설·체류 분위기 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방로 경사·계단·노면과 무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 탐방 동선·소요시간·예약 조건을 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"말굽형 화구와 조림 숲이라는 자연 지형은 확인됐지만, 조망·경관 감상이 대표 가치라는 공식 안내가 부족해 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"소왕산의 별칭과 서향 말굽형 화구는 확인되지만 다른 오름과 구별되는 방문 경험의 충분한 근거가 없어 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료가 소왕산을 제주 성산읍 수산리의 오름으로, 지역 지명과 별칭을 포함해 수록하므로 제주 자연 지형과의 연결성이 높다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역을 대표하는 상징 명소라는 공적 지정이나 관광 안내 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 안전·동선·통신·현재 출입 조건을 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"2인 방문에 관한 경관·동선·안전 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 동선·수용성·안전 조건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반을 위한 경사·난간·화장실·안전시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담·휴식 시설·무장애 접근성 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 계절 경험과 출입 조건을 확인하지 못해 기후 평년만 참고한 중립값이다.","source_ids":["S4"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_confirmation_required","applies_to":"all_visitors","condition":"공식 탐방로·현재 출입 가능 여부, 주차·화장실, 경사·계단·노면 및 무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"방문 전 Kakao 지도 원본 좌표·주소를 관할 기관 자료와 대조하고, 최신 출입 가능 여부와 탐방 동선·안전 조건을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

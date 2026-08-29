@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723600",
+  "place_id": "13723600",
+  "name": "오조리성터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘오조리성터’라는 장소명과 URL만 제공하며 주소·좌표·업종·사진·공개 방문 후기가 없다. 공개 웹 조사에서도 이 place_id 또는 정확히 같은 명칭을 개별 유적의 위치·성격과 연결하는 공식·공공 상세 출처를 확인하지 못했다. 따라서 특정 성터나 문화유산으로 단정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 13723600은 ‘오조리성터’로 표시되지만, 제공된 메타데이터만으로는 어느 성터 또는 유적을 가리키는지 특정할 수 없다.",
+    "typical_visit": "미확인: 현장 위치, 남아 있는 유구, 공개 관람 가능 여부 및 방문 동선을 이 레코드에 연결할 근거가 없다.",
+    "experience_scope": "입력에 주소·좌표·업종·후기가 없고, 공개 조사에서 동일 장소를 확인할 수 있는 직접 출처를 찾지 못했다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았으며 신원 확인 전 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 공개 장소 메타데이터는 place_id 13723600, 장소명 ‘오조리성터’, Kakao 장소 URL을 제공하며 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 레코드가 가리키는 성터의 정확한 위치, 시대·유적 성격과 개별 식별자를 확인하지 못했다.",
+      "현장 유구의 보존 상태, 일반 관람 가능 여부, 접근로·주차·안전 및 최신 출입 제한을 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/13723600",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 13723600과 장소명 ‘오조리성터’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진 및 공개 방문 후기 근거가 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_not_resolved",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 위치·개별 유적 식별자와 공식 또는 공공 상세 출처의 동일성 연결이 없어 독립 방문지 범위를 확정할 수 없다.",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처에서 주소·좌표·현장 표기 등 식별 근거를 확보해 동일성을 확인하기 전에는 추천 후보 및 41축 벡터에 포함하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

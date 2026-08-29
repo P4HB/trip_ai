@@ -1,0 +1,116 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20152340",
+  "place_id": "20152340",
+  "name": "상섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "Kakao 지도 표기는 상섬을 제주시 추자면 예초리 124의 해상 지점으로 두고, 공개 보도는 예초리 앞 상섬을 무인도 가운데 하나로 설명한다. 일반 여행객이 독립적으로 상륙·관람할 수 있는 공식 개방, 정기 교통, 탐방 동선 또는 안전 운영 근거는 확인하지 못했으므로 추천용 방문 장소 벡터의 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "상섬은 Kakao 지도에서 제주특별자치도 제주시 추자면 예초리 124로 표기되는 해상 장소이며, 공개 보도에서 예초리 앞에 보이는 무인도 중 하나로 언급된다.",
+    "typical_visit": "확인된 공개 자료에는 예초리 해안에서 보이는 무인도라는 지리적 설명과 낚시대회 선단의 하선 지점 언급만 있다. 일반 관광객용 독립 관람·상륙 방문의 공식 운영은 확인되지 않았다.",
+    "experience_scope": "장소의 해상 위치와 무인도 성격은 확인됐으나, 일반 방문객의 상륙 허가, 선박 운항, 계류·보행 동선, 안전시설 및 최신 이용 조건은 확인되지 않았다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map의 장소 페이지는 장소명을 ‘상섬’으로, 주소를 ‘제주특별자치도 제주시 추자면 예초리 124’로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 보도는 예초리 앞에 보이는 보름섬·작은달섬·큰달섬·구멍섬·상섬을 ‘무인도들’로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "공개 낚시대회 보도는 상섬을 포함한 주변 해상 지점에 한 선단이 하선했다고 언급하지만, 이는 일반 관광객의 상륙 허가나 상시 관광 운영을 입증하지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 최신 상륙 허용 여부, 토지·해역 이용 조건 및 관리 주체를 확인하지 못했다.",
+      "정기 여객·관광선, 접안·계류 가능 지점, 공식 탐방로, 화장실·안내·안전시설을 확인하지 못했다.",
+      "기상·파고에 따른 접근 제한, 낚시 목적 입도 조건, 무장애 접근성을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/20152340",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘상섬’으로 표시된다.",
+          "주소는 제주특별자치도 제주시 추자면 예초리 124로 표시된다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "오마이뉴스",
+        "type": "news_feature",
+        "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0001954276",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "예초리 앞에 보이는 다섯 섬을 보름섬·작은달섬·큰달섬·구멍섬·상섬으로 열거한다.",
+          "해당 섬들을 무인도로 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "낚시춘추",
+        "type": "news_report",
+        "url": "https://m.fishingseasons.co.kr/news_Detail.asp?b_no=10425",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "추자사랑 전국 바다낚시대회에서 한 선단의 하선 지점으로 상섬·구멍섬·덜섬·보름섬을 언급한다.",
+          "보도에는 일반 관광객의 상시 접근·상륙 운영 조건이 제시되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "uninhabited_island_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 자료에서 예초리 앞 무인도로 확인되지만, 일반 방문객의 공식 상륙 허용·교통·접안·탐방 동선·안전 관리 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 관할 행정기관 또는 공식 관광·선박 운영자가 일반 방문객의 합법적 접근과 안전 조건을 명시하면 적격성을 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

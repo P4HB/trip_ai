@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8138993",
+  "place_id": "8138993",
+  "name": "감낭굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 ‘감낭굴’이라는 명칭과 place_id만 제공하며 주소·좌표·분류·후기가 없다. 제주대학교 학위논문은 같은 표기의 지명을 제주 아라 지역의 지명으로 수록하지만, 해당 지명과 Kakao 표식의 정확한 일치, 지형·시설의 성격, 일반 방문객의 출입 및 독립 방문지 여부를 확인하는 공식·공공 상세 자료는 찾지 못했다. 따라서 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "감낭굴은 제주 아라 지역 지명 목록에 같은 표기로 수록된 바 있으나, Kakao place_id 8138993이 가리키는 실체와 관광 방문지로서의 정체성은 확인되지 않았다.",
+    "typical_visit": "공식적인 관람 동선, 운영 주체, 이용 방법을 확인하지 못했다.",
+    "experience_scope": "지명 목록의 동일 표기 외에는 실제 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주대학교 학위논문 ‘제주 지명어의 형태·음운론적 연구’의 지명 표는 ‘감낭굴’을 ‘감+낭+굴’로 분석하고 지역을 ‘제주아라’로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 8138993, 장소명 감낭굴, Kakao 장소 URL을 제공하며 평점과 방문자·블로그 후기 수는 모두 0으로 기록한다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 논문에 수록된 제주 아라의 동명 지점과 일치하는지 확인하지 못했다.",
+      "감낭굴이 동굴, 골짜기, 마을 또는 다른 지형·시설 중 무엇을 가리키는지와 정확한 위치를 확인하지 못했다.",
+      "관리 주체, 일반 방문객의 출입 가능 여부, 접근 경로, 주차·보행 안전 및 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주대학교 대학원",
+        "type": "academic_repository",
+        "url": "https://oldlib.jejunu.ac.kr/bitstream/2020.oak/18176/2/%EC%A0%9C%EC%A3%BC%20%EC%A7%80%EB%AA%85%EC%96%B4%EC%9D%98%20%ED%98%95%ED%83%9C%C2%B7%EC%9D%8C%EC%9A%B4%EB%A1%A0%EC%A0%81%20%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "학위논문의 제주 지명 표는 감낭굴을 감+낭+굴로 분석하고 제주아라로 수록한다.",
+          "이 자료는 Kakao 표식과의 동일성, 관광지 운영 또는 출입 조건은 제공하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8138993",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 8138993 및 감낭굴이라는 장소명을 제공한다.",
+          "입력 패킷에는 주소, 좌표, 장소 분류, 공개 방문 후기 또는 상세 설명이 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식의 정확한 지점·실체, 관리 주체, 일반 방문객의 출입 허용 및 안전한 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체 또는 현장 최신 안내로 표식의 실재, 출입 허용, 안전한 접근 경로를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17575028",
+  "place_id": "17575028",
+  "name": "제주목관아 우연당",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘제주목관아 우연당’의 우연당은 제주목관아지에서 확인·복원된 중심 건물 가운데 하나로, 제주목관아라는 단일 역사관광지의 관람 동선과 입장 운영 안에 포함된다. 따라서 별도의 독립 여행 방문지로 라벨링하지 않고 상위 장소의 부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "우연당(友蓮堂)은 제주시 관덕로 25의 제주목관아 안에 있는 복원 건물이다.",
+    "typical_visit": "제주목관아의 조선시대 행정·문화 유적과 복원 건물을 관람하는 과정에서 우연당을 함께 보는 방문 경험이다.",
+    "experience_scope": "Visit Jeju는 제주목관아에서 우연당을 포함한 중심 건물 터가 발굴되고 복원됐다고 안내하며, 우연당 자체의 독립 입장·운영·관람 경험은 제시하지 않는다. 이 레코드에는 추천용 독립 장소 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 place_id 17575028의 명칭을 ‘제주목관아 우연당’으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주목관아지 발굴에서 우연당을 포함한 중심 건물의 흔적이 확인됐고, 제주목관아를 제주시 관덕로 25의 역사 관광지로 안내한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "Visit Jeju의 제주목관아 관광 소개는 우연당을 포함한 30여 채의 고풍스러운 건물을 제주목관아 관람 구성으로 설명한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "우연당 건물 단독의 현재 개방 시간, 별도 입장·해설·전시 운영 여부는 확인하지 못했다.",
+      "건물 내부 관람 가능 여부와 휠체어 접근성, 계단·경사 및 최신 안전 제한은 확인하지 못했다.",
+      "제주목관아 전체의 최신 운영 시간·입장료·행사는 변동될 수 있어 방문 전 공식 안내 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17575028",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 ‘제주목관아 우연당’으로 표시된다.",
+          "입력 패킷의 공개 후기에는 옛 제주목사의 생활과 산책 경험에 대한 언급이 있으나, 독립 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500551&menuId=DOM_000001718001000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주목관아는 탐라국부터 조선시대까지 제주 행정의 중추 역할을 한 관아지로 소개된다.",
+          "발굴에서 우연당을 포함한 중심 건물의 흔적이 확인됐다고 안내한다.",
+          "제주목관아의 주소는 제주시 관덕로 25로 안내된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_300000000013313&menuId=DOM_000002000000000227",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주목관아의 고풍스러운 홍화각·연희각·우연당·귤림당 등 건물이 하나의 관광지 관람 구성을 이룬다고 소개한다.",
+          "해당 소개는 제주목관아 전체의 관람 시간과 입장료를 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "우연당은 제주목관아의 부속 복원 건물로 확인되며, 단독 방문지로서의 별도 운영·출입·접근성 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천·일정에는 우연당을 제주목관아의 장소 설명 또는 세부 POI로만 연결하고, 방문 전 제주목관아 공식 최신 안내에서 전체 운영과 관람 가능 여부를 확인한다.",
+      "source_ids": ["S2", "S3"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

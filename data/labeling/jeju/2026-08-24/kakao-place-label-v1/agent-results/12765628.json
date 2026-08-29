@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12765628",
+  "place_id": "12765628",
+  "name": "북촌리 선사주거지유적",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "입력명과 일치하는 북촌리 선사주거지 유적은 제주시 조천읍 북촌리 275번지의 지정 문화유적으로 공공·학술 자료에서 별도 유적으로 확인된다. 독립적인 역사문화 방문 대상으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "북촌리 선사주거지 유적은 제주 제주시 조천읍 북촌리 275번지 고두기 언덕의 바위그늘 생활유적이다.",
+    "typical_visit": "선사시대부터 이어진 생활유적의 바위그늘과 출토 유물의 역사·고고학적 의미를 살피는 야외 역사문화 방문으로 범위를 한정한다.",
+    "experience_scope": "자료는 유적의 위치·지정·유적 성격을 확인하지만, 최신 개방 상태, 현장 안내·관람 동선, 주차·화장실, 노면과 무장애 접근성은 확인하지 못했다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"한국민족문화대백과사전은 북촌리 선사주거지 유적을 제주시 조천읍의 석기시대 이후 생활유적으로 설명하며 1990년 제주특별자치도 기념물로 지정되었다고 기록한다.","source_ids":["S1"]},
+      {"id":"F2","text":"전국향토문화유적 표준데이터는 이 유적의 소재지를 제주시 조천읍 북촌리 275번지로 제시하고, 화산활동으로 생긴 동굴을 이용한 대표적 집자리라고 설명한다.","source_ids":["S2"]},
+      {"id":"F3","text":"한국민족문화대백과사전은 고두기 언덕의 남향 바위그늘에서 신석기시대부터 서로 다른 시대의 층위와 토기·동물뼈 유물이 확인되었다고 설명한다.","source_ids":["S1"]}
+    ],
+    "unknowns": ["최신 개방 여부, 보호구역 출입 조건과 현장 관람 가능 범위를 확인하지 못했다.","주차, 화장실, 안내판, 노면·계단·경사와 무장애 접근성 정보를 확인하지 못했다.","계절별 현장 환경과 악천후 안전 통제를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"한국학중앙연구원 한국민족문화대백과사전","type":"public_academic_encyclopedia","url":"https://encykorea.aks.ac.kr/Article/E0024769","checked_at":"2026-08-25T00:00:00+09:00","facts":["북촌리 선사주거지 유적은 제주시 조천읍의 석기시대 이후 생활유적이다.","1990년 제주특별자치도 기념물로 지정되었다.","고두기 언덕의 바위그늘 유적에서 신석기시대부터 여러 시대의 문화층과 유물이 확인되었다."]},
+      {"id":"S2","publisher":"전국향토문화유적표준데이터","type":"public_data","url":"https://kor.clubrichtour.co.kr/bbs/board.php?bo_table=public_nvpc_cltur&wr_id=3618","checked_at":"2026-08-25T00:00:00+09:00","facts":["소재지는 제주특별자치도 제주시 조천읍 북촌리 275번지로 제시된다.","제주 화산활동으로 생긴 동굴을 이용한 대표적 집자리로 설명된다.","관리기관은 제주특별자치도 세계유산본부로 제시된다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/12765628","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷의 Kakao 장소명은 ‘북촌리 선사주거지유적’이다.","평점, 후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유적은 언덕의 바위그늘에 있으나 산·오름 경관이 핵심 경험이라는 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 보행 동선이나 참여형 체험 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공·학술 자료가 선사 생활유적, 다층 문화층과 지정 기념물 성격을 직접 확인하므로 역사·문화 방문 성격이 높다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문이나 상거래 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 대상이 언덕의 바위그늘 유적이므로 실내 시설보다 야외 관람 비중이 높다고 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"바위그늘 유적을 현장에서 살피는 야외 중심 경험으로 한정했으므로 강수·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도와 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단·무장애 접근성 정보가 없어 보행 부담을 중립값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선과 체류 시간 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바위그늘이라는 지형은 확인되나 경관 감상 자체가 핵심 방문 가치라는 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료가 화산 동굴을 이용한 대표적 집자리로, 학술 자료가 여러 시대의 문화층을 가진 유적으로 설명해 고유 구성이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 북촌리의 화산 지형을 이용한 선사 생활유적이며 제주에서 확인된 여러 시대의 생활 흔적과 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"1990년 제주특별자치도 기념물로 지정된 공적 문화유산이라는 사실을 근거로 지역 역사유산으로서의 상징성이 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보를 확인하지 못해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·보호시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_preservation_unknown","applies_to":"all_visitors","condition":"지정 문화유산의 최신 개방·출입 조건, 보호구역 경계, 관람 동선, 노면·계단·경사와 무장애 시설을 확인하지 못했다.","status":"needs_review","action":"방문 전 관리기관 또는 현장 최신 안내로 출입 가능 범위와 보존·안전 지침을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

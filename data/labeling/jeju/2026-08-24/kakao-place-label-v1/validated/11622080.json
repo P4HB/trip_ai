@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11622080",
+  "canonical_id": "kakao:11622080",
+  "name": "제주삼나무길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명 ‘제주삼나무길’은 비자림로의 삼나무 가로수길 등 여러 비공식 명칭으로 쓰일 수 있으나, Kakao place_id의 정확한 도로 구간·좌표·안전한 정차 또는 보행 가능 범위를 공식·공공 자료로 확인하지 못했다.",
+    "source_ids": [],
+    "rule_ids": [
+      "ELIG-IDENTITY-UNVERIFIED"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "road_segment_identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "정확한 도로 구간·보행 허용·정차·교통 안전 조건 미확인",
+      "status": "needs_review",
+      "action": "공식 도로·관광 지도와 최신 교통 안내로 표식 위치 및 안전한 접근을 확인한다.",
+      "source_ids": [],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "공개 자료는 비자림로 삼나무 숲길을 언급하지만 입력 place_id와의 위치 일치는 확인되지 않았다.",
+    "facts": [],
+    "unknowns": [
+      "Kakao 좌표·주소",
+      "정확한 도로 구간",
+      "보행·정차·교통 통제 정보"
+    ],
+    "sources": []
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

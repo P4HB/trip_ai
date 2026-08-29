@@ -1,0 +1,42 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "27087339",
+  "canonical_id": "kakao:27087339",
+  "name": "아라동역사문화탐방로 1코스",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명은 아라동의 역사문화 탐방로 1코스를 가리키지만, 주소·좌표·공식 코스도·운영 주체·공식 개방 안내가 제공되지 않았다. 공개 검색에서는 아라동의 역사문화공간 조성사업 및 삼의악 관련 프로그램은 확인됐으나, 해당 Kakao place_id의 ‘1코스’와 일치하는 공식·공공 경로를 교차 확인하지 못했다. 따라서 정확한 동선과 독립 방문지 여부를 추정하지 않는다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{
+    "kind": "route_identity_access_and_safety_unverified",
+    "applies_to": "recommendation_candidate",
+    "condition": "정확한 코스 선형, 출입 허용 구간, 사유지 여부, 도로 횡단 및 공사·통제 상태가 공식 근거로 확인되지 않음",
+    "status": "needs_review",
+    "action": "지자체 또는 탐방로 관리 주체의 최신 코스도·주소·개방 및 안전 안내로 place_id의 신원과 보행 가능 구간을 먼저 확인한다. 확인 전에는 추천용 라벨 벡터를 생성하지 않는다.",
+    "source_ids": ["S1", "S2"],
+    "checked_at": "2026-08-28"
+  }],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 ‘아라동역사문화탐방로 1코스’라는 명칭만 명확히 제공한다. 공개 자료는 아라동 역사문화공간 조성사업과 삼의악 관련 프로그램을 언급하지만, 해당 장소명·코스 번호·Kakao place_id를 직접 연결하지 못했다.",
+    "facts": [
+      {"text": "제주지역 평생교육 프로그램 자료는 아라동의 역사문화공간 조성사업과 삼의악 웰빙로 조성 관련 활동을 기록한다.", "source_id": "S1"},
+      {"text": "입력 패킷에는 장소명과 한 건의 공개 안전 관련 서술만 있으며 주소·좌표·공식 운영 정보는 없다. 공개 서술의 작성자 정체와 평점은 라벨 근거로 사용하지 않았다.", "source_id": "S2"}
+    ],
+    "unknowns": ["Kakao place_id의 정확한 주소·좌표와 코스 선형", "공식 관리 주체, 코스별 거리·난이도·개방 상태", "사유지·공사·도로 횡단 및 야간 안전과 최신 통제 정보"],
+    "sources": [
+      {"id": "S1", "publisher": "제주평생교육장학진흥원", "type": "public_program_document", "url": "https://jiles.or.kr/community/issue.htm?act=download&no=1&page=2&seq=6958", "checked_at": "2026-08-28", "facts": ["아라동의 역사문화공간 조성사업 및 삼의악 웰빙로 조성 관련 프로그램을 수록한다.", "해당 문서는 ‘아라동역사문화탐방로 1코스’ 또는 Kakao place_id를 직접 식별하지 않는다."]},
+      {"id": "S2", "publisher": "Kakao Map (input listing)", "type": "public_map_listing", "url": "https://place.map.kakao.com/27087339", "checked_at": "2026-08-28", "facts": ["입력 패킷의 장소명은 ‘아라동역사문화탐방로 1코스’다.", "입력 패킷에는 주소·좌표·업종·공식 운영 정보가 없다."]}
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

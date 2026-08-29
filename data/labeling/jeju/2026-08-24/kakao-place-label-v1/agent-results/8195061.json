@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8195061",
+  "place_id": "8195061",
+  "name": "고성천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘고성천’이라는 명칭 외에 주소·좌표·업종·공개 후기 근거를 제공하지 않는다. 공개 하천 자료에는 제주 애월 지역의 지방하천 ‘고성천’이 확인되지만, 이 Kakao place_id가 그 하천의 어느 지점 또는 접근 가능한 독립 방문 경험을 가리키는지는 교차 확인할 수 없다. 따라서 명칭만으로 방문지 신원과 추천 범위를 확정하지 않고 identity_unknown으로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력은 place_id 8195061과 장소명 ‘고성천’만 제공한다. 공공 건설기술 자료 검색 결과에는 제주 애월의 지방하천 고성천이 보이나, 입력 레코드의 위치·범위와 일치한다는 직접 연결 정보는 없다.",
+    "typical_visit": "공개 자료로 확인된 것은 ‘고성천’이 제주 애월 지역의 지방하천 명칭이라는 점뿐이다. 해당 Kakao 레코드가 관광객이 접근·방문할 수 있는 하천 구간, 산책로 또는 별도 관광지를 뜻하는지는 확인하지 못했다.",
+    "experience_scope": "장소 신원, 정확한 위치와 접근·이용 범위가 확정되지 않았으므로 추천용 방문 경험 및 41축 적합도 벡터를 생성하지 않는다. Kakao 평점·리뷰 수는 입력상 0이며 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공공 건설기술 자료 검색 결과는 ‘고성천’을 제주 애월 지역의 지방하천으로 열거한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드에는 장소명 ‘고성천’과 place_id만 있고 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 공공 자료의 제주 애월 고성천과 동일한지, 또는 어느 하천 구간을 뜻하는지 확인하지 못했다.",
+      "관광객의 접근 가능 여부, 대표 방문 경험, 안전·시설·주차·계절 이용 조건을 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국토교통부 건설기술정보시스템(CODIL)",
+        "type": "public_infrastructure_record",
+        "url": "https://www.codil.or.kr/filebank/original/EC/OTKCEC200503/OTKCEC200503.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "검색 색인은 고성천을 지방하천으로 표시하고 지역을 제주·애월로 열거한다.",
+          "이 자료만으로 Kakao place_id 8195061의 정확한 지도 위치나 방문지 범위는 확인되지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8195061",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘고성천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없어 제주 애월 지방하천 고성천과의 동일성, 정확한 구간 및 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도·하천 관리 자료의 좌표·구간 정보를 확보해 레코드 신원을 먼저 교차 확인한다. 접근 가능한 독립 방문 경험이 확인되면 그 근거로 적격성과 축 라벨을 별도 검수하며, 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

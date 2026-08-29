@@ -1,0 +1,785 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:480417904",
+  "place_id": "480417904",
+  "name": "우도정원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주특별자치도 관광약자접근성안내센터가 우도면 천진길 105의 우도정원을 별도 관광지로 안내하며, 여러 꽃 정원과 관람로·매표소 정보를 제공한다. 독립적으로 방문 가능한 정원형 관광지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "우도정원은 제주특별자치도 제주시 우도면 천진길 105에 있는 야외 꽃 정원이다.",
+    "typical_visit": "야자수와 계절별 꽃 정원을 야외 관람로로 산책하고 사진을 찍는 방문이다.",
+    "experience_scope": "공식 접근성 안내는 정원 종류와 야외 관람로 재질·일부 폭·화장실 접근을 확인한다. 최신 운영시간·입장료·꽃의 실제 개화 상태와 페리 운항은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 관광약자접근성안내센터는 우도정원을 천진길 105의 꽃정원으로 안내하며, 야자수·산수국·팜파스·수국·동백·핑크뮬리 정원을 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 정원 관람로가 흙길·야자매트·잔디매트이고 팜파스 관람로 폭은 60cm이며, 턱이나 급경사 없이 관람 가능하다고 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "NOL World는 계절별 꽃밭, 야자수, 사진 구역과 여름 수국·버베나 및 가을 핑크뮬리·코스모스를 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "최신 운영시간, 입장료, 휴장 및 실제 꽃 개화 상태를 확인하지 못했다.",
+      "현재 관람로 상태, 모기 등 현장 환경, 주차 수용량과 페리 운항은 확인하지 못했다.",
+      "유아차·휠체어의 전 구간 통행 가능 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 관광약자접근성안내센터 이지제주",
+        "type": "official_accessibility_tourism_page",
+        "url": "https://easyjeju.net/m/pages.php?no=1336&p=tourist",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "우도정원의 주소는 제주시 우도면 천진길 105이다.",
+          "야자수와 여러 계절 꽃 정원이 있으며 꽃 계절에 유의해 방문하도록 안내한다.",
+          "관람로는 흙길·야자매트·잔디매트이고 팜파스 관람로 폭은 60cm이다.",
+          "2023-05 조사 기준 키오스크 출입구 턱 18cm, 화장실 접근 계단 및 장애인 화장실 부재가 기록돼 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "NOL World",
+        "type": "tourism_listing",
+        "url": "https://world.nol.com/pois/b73adb61-72da-4903-89f7-29eb6d361390",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "계절별 꽃밭과 야자수가 있는 정원 및 사진 구역을 소개한다.",
+          "여름에는 수국·버베나, 가을에는 핑크뮬리·코스모스를 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/480417904",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 후기는 핑크뮬리, 야자수, 바다 배경 및 사진 경험을 언급한다.",
+          "입력된 후기는 모기와 보수 상태 등 시점 의존적인 현장 경험도 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름·봉우리 경관이 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "일부 후기의 바다 배경 언급만으로 해안·해양 활동이 핵심이라고 판정할 수 없어 중립값이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 관람로를 걸으며 정원을 보는 경험은 확인되나 레포츠나 참여형 체험의 핵심성은 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이기구·동물·수족관 등 테마파크형 경험 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·커피·디저트 이용이 독립 방문 목적인지 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제나 기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내가 꽃 정원과 야외 관람로를 설명하므로 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내 공간은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 정원 산책과 계절 꽃 감상이 대표 경험이며 꽃 계절에 유의하라는 공식 안내가 있어 날씨·계절 영향을 비교적 크게 받는다고 추론한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 이국적인 풍경의 힐링 정원으로 소개하고, 꽃 정원을 산책하는 방문 성격을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "급경사 없이 관람 가능하다는 기록이 있으나 흙길·야자매트·잔디매트, 폭 60cm 구간과 키오스크·화장실 단차가 함께 확인돼 전체 보행 용이성은 중립으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정원 규모와 최신 동선·체류 여건 정보가 충분하지 않아 체류 시간 조절성은 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 접근성 안내의 이국적 야자수·꽃 정원과 관광 안내의 계절별 꽃밭 설명이 경관 감상을 대표 경험으로 직접 뒷받침한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "야자수와 팜파스·핑크뮬리 등 여러 계절 꽃 정원의 조합이 공식 안내에서 이국적인 정원 구성으로 직접 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "우도에 위치한 정원이라는 사실 외에 제주 지역 생활·생산자·문화와의 직접 연결 근거가 부족해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 또는 우도를 대표하는 상징 명소라는 공적 지정·안내 근거가 부족해 중립값이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 정원 전역의 사진 구역을 직접 소개하며, 입력 공개 후기도 야자수와 핑크뮬리 배경 사진 경험을 언급한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-008",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 정원 산책·사진 구역 경험을 근거로 혼자 관람도 가능하다고 추론하되, 최신 안전·혼잡 정보는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "꽃 정원 산책과 사진 구역은 두 명이 함께 관람하기에 비교적 적합하다고 추론하되 최신 현장 여건은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "꽃 정원 산책과 사진 구역은 친구 동반 관람에 비교적 적합하다고 추론하되 단체 수용 여건은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "어린이 동반에 필요한 최신 안전시설·유아차 동선 정보가 부족하고 일부 좁은 관람로와 단차가 확인돼 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행 보조·휴식시설·무장애 접근의 최신 전 구간 정보가 부족하고 일부 좁은 관람로와 단차가 확인돼 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "겨울의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "겨울의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "봄의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "봄의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "봄의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 여름 수국·버베나를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 여름 수국·버베나를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 여름 수국·버베나를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 가을 핑크뮬리·코스모스를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 가을 핑크뮬리·코스모스를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 가을 핑크뮬리·코스모스를 소개하지만 최신 개화 상태는 미확인이라 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "겨울의 실제 개화·운영 상태를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "accessibility_and_surface",
+      "applies_to": "mobility_limited_visitors",
+      "condition": "2023-05 조사 기준 관람로에는 흙길·야자매트·잔디매트과 폭 60cm 구간이 있고, 키오스크 출입구 18cm 턱 및 화장실 접근 계단·장애인 화장실 부재가 기록돼 있다. 현재 상태는 미확인이다.",
+      "status": "needs_review",
+      "action": "휠체어·유아차 또는 보행 보조가 필요하면 방문 전에 최신 관람로·화장실 접근 가능 여부를 운영처에 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    },
+    {
+      "kind": "seasonal_bloom_and_operations_unknown",
+      "applies_to": "all_visitors",
+      "condition": "꽃 정원은 계절에 유의해 방문하도록 안내되며 최신 개화 상태, 운영시간, 입장료, 휴장 여부는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 운영처의 최신 공지로 개화·운영 상태와 이용 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17638638",
+  "place_id": "17638638",
+  "name": "월정마을안길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "공개 자료에서 월정마을안길은 제주올레 20코스가 지나가는 월정리 마을 안쪽의 보행 구간으로 확인된다. 독립적으로 운영·관람·체험되는 관광시설이나 별도 방문 프로그램이라는 근거는 확인하지 못했으므로, 독립 방문·체험 장소에만 41축 벡터를 부여하는 현재 범위에서는 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "월정마을안길은 카카오맵에 등록된 명칭이며, 공개 제주올레 20코스 동선 자료에서는 월정모살길과 월정리해수욕장 사이에 있는 월정리 마을길 구간으로 나타난다.",
+    "typical_visit": "제주올레 20코스 또는 월정리 해변 주변을 걷는 중 통과하는 야외 마을길로만 확인된다.",
+    "experience_scope": "공개 자료는 이 명칭을 올레 도보 동선 또는 인근 산책길로 언급하지만, 월정마을안길 자체의 독립적인 관광 운영, 관람 대상, 체험 프로그램 또는 방문객 시설은 확인하지 못했다. 따라서 추천용 독립 장소 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 카카오맵 공개 장소명은 ‘월정마을안길’이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 제주올레 20코스 답사 기록은 월정모살길 다음에 월정마을안길을 거쳐 월정해수욕장으로 이어지는 동선을 제시한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "월정리 공영주차장 주변 안내는 월정마을안길을 월정리해수욕장 인근의 산책길로 언급한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "월정마을안길의 정확한 관리 주체·구간 범위와 공식 탐방 안내는 확인하지 못했다.",
+      "독립 방문지로서의 안내시설, 체험 프로그램, 주차·화장실·휴식시설 여부는 확인하지 못했다.",
+      "현재 보행로 상태, 차량 통행, 공사·우회, 야간 조명 및 악천후 안전 상태는 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "카카오맵",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17638638",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 공개 장소명은 ‘월정마을안길’이다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 제주올레 답사 기록",
+        "type": "public_web_record",
+        "url": "https://jejuazbang.tistory.com/4655?category=568307",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "제주올레 20코스 동선에 월정모살길, 월정마을안길, 월정해수욕장이 순서대로 제시된다.",
+          "해당 기록은 코스를 김녕에서 하도로 이어지는 장거리 도보 코스로 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "블루스퀘어 주차 안내",
+        "type": "public_location_guide",
+        "url": "https://bluesquare.app/parking/17325/",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "월정리 공영주차장 주변 안내는 월정마을안길을 도보로 이용할 수 있는 산책길로 언급한다.",
+          "같은 안내는 월정리해수욕장과 월정리해안도로를 별도 인근 명소·도로로 구분한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "independent_visitor_experience_unconfirmed",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 자료에서 월정마을안길은 올레·산책 동선의 통과 구간으로만 확인됐으며, 독립 관광·체험 장소로서의 일반 방문 운영과 시설·안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 공식 탐방 안내 또는 독립 방문 경험이 확인되면 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

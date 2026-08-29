@@ -1,0 +1,59 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "19157746",
+  "canonical_id": "kakao:19157746",
+  "name": "동계정온유허비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사의 Visit Jeju는 동계 정온 유허비를 서귀포시 대정읍 안성리의 문화유적지·역사유적으로 소개하며 좌표와 연락처를 제공한다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-PUBLIC-VISITABLE-CULTURAL-HERITAGE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개의 핵심 경험은 역사 기념비 관람이며 산악 경험 근거는 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개의 핵심 경험은 역사 기념비 관람이며 해양 경험 근거는 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개에는 참여형 활동이나 레포츠가 제시되지 않는다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 소개가 이곳을 동계 정온의 유배와 우국충정을 기리는 문화유적지·역사유적으로 분류한다.","source_ids":["S1"],"rule_ids":["DIRECT-OFFICIAL-THEME"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용이 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제나 공연이 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 사진과 유허비라는 장소 유형상 야외 기념물 관람으로 보이나 실내 부대시설 여부는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["OUTDOOR-MONUMENT-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 기념물 관람으로 추정되어 비·바람 등 날씨의 영향을 받을 수 있다.","source_ids":["S1"],"rule_ids":["OUTDOOR-MONUMENT-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"소규모 역사 기념비 관람은 비교적 조용한 짧은 체류가 가능하나 현장 환경은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["MONUMENT-ARCHETYPE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 좌표가 제공된 기념비이지만 보행로·단차·주차 위치는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ACCESS-UNKNOWN-MIDPOINT"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"기념비 관람은 짧은 방문에 적합할 가능성이 있으나 주변 연계 관람 정보는 불충분하다.","source_ids":["S1"],"rule_ids":["MONUMENT-ARCHETYPE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 핵심이라는 직접 근거가 없다.","source_ids":["S1"],"rule_ids":["NO-DIRECT-EVIDENCE-FALLBACK"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 오현 가운데 한 사람인 정온의 유배 흔적을 기리는 유허비로, 역사적 서사가 뚜렷하다.","source_ids":["S1"],"rule_ids":["HISTORICAL-INTERPRETATION"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"정온의 제주 유배와 대정 지역의 역사에 직접 연결된 기념물이다.","source_ids":["S1"],"rule_ids":["HISTORICAL-INTERPRETATION"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 콘텐츠에 역사유적으로 등재됐으나 지역 대표성의 상대적 수준은 별도 비교 근거가 없다.","source_ids":["S1"],"rule_ids":["OFFICIAL-LISTING-MIDPOINT"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 페이지가 현장 사진을 제공하지만 촬영 적합성의 직접 평가는 없다.","source_ids":["S1"],"rule_ids":["OFFICIAL-PHOTO-MIDPOINT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"소규모 역사 기념비 관람의 일반적 적합성을 적용했다.","source_ids":["S1"],"rule_ids":["MONUMENT-ARCHETYPE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"동반 관람의 일반적 적합성을 적용했다.","source_ids":["S1"],"rule_ids":["MONUMENT-ARCHETYPE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"동반 관람의 일반적 적합성을 적용했다.","source_ids":["S1"],"rule_ids":["MONUMENT-ARCHETYPE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"역사 학습 가치 가능성은 있으나 어린이 편의시설 정보는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ACCESS-UNKNOWN-MIDPOINT"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"역사 관심 방문객에게 적합할 수 있으나 보행·휴식 편의는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ACCESS-UNKNOWN-MIDPOINT"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·현장 조건 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-UNKNOWN-FALLBACK"]}
+  },
+  "hard_constraints": [{"kind":"outdoor_monument_conditions","applies_to":"all_visitors","condition":"야외 유허비의 현행 접근로·관람 환경 및 날씨 영향은 방문 전 확인이 필요하다.","status":"needs_review","action":"방문 전 Visit Jeju 또는 서귀포시 관광 안내로 위치와 현장 조건을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-28"}],
+  "review_priority":"medium",
+  "research":{"status":"matched","checked_at":"2026-08-28T00:00:00+09:00","identity_notes":"입력명은 Visit Jeju에 등재된 대정읍 안성리의 동계 정온 유허비와 일치한다.","facts":[{"text":"Visit Jeju는 동계 정온 유허비를 대정읍 안성리의 문화유적지·역사유적으로 소개하며 좌표와 연락처를 제공한다.","source_id":"S1"},{"text":"이 유허비는 동계 정온의 제주 유배와 우국충정을 기리기 위해 세워졌고 현재 위치로 이전됐다고 공식 소개는 설명한다.","source_id":"S1"}],"unknowns":["현행 주차·화장실·무장애 접근성","계절별 운영·관람 조건"],"sources":[{"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_listing","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500154","checked_at":"2026-08-28","facts":["동계 정온 유허비의 위치, 관광 분류와 역사적 설명을 제공한다."]}]},
+  "generated_at":"2026-08-28"
+}

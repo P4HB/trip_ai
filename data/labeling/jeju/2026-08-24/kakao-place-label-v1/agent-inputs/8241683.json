@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 653,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8241683.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8241683",
+    "provider": "kakao",
+    "place_id": "8241683",
+    "name": "꾀꼬리오름",
+    "url": "https://place.map.kakao.com/8241683",
+    "average_rating_5": "2.8",
+    "visitor_review_count": "8",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.07.",
+      "content": "경사가있고 가파르다. 정상뷰X 첫번째사진속 표지판있는곳을 찾으면 그곳으로 오르면된다.",
+      "tags": ""
+    },
+    {
+      "date": "2021.06.19.",
+      "content": "것구리오름 표석에서 남쪽으로 100m남짓쯤 가면 오름으로 입산하는 입구가 있어요",
+      "tags": ""
+    },
+    {
+      "date": "2021.03.23.",
+      "content": "작은오름, 걷기에는 부족함이 있는 오름입니다 정상에 뷰는 없네요 멀리 보이는 골프장이 그나마 볼만합니다 입구도 잘 찿아야 하고, 경사가 있어서 올라갈때 약간 힘듬",
+      "tags": ""
+    },
+    {
+      "date": "2020.01.31.",
+      "content": "관리가 덜 되어 되돌아오는길에 헤맸어요. ㅠㅠ 벤취도 없고 정상뷰도 시원하지 않네요",
+      "tags": ""
+    },
+    {
+      "date": "2024.01.07.",
+      "content": "거의 산과 다름이 없는.. 내려오다 길을 잃었음.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

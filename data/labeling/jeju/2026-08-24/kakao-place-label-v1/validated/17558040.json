@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17558040",
+  "place_id": "17558040",
+  "name": "제주돌문화공원 연못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공식 관광 안내는 제주돌문화공원을 박물관이자 생태공원으로 소개하고, 공원 안의 하늘연못을 공원 풍경·관람 요소로 설명한다. 입력명 ‘제주돌문화공원 연못’은 이 공원 내부 연못 표식을 가리키는 것으로 확인되며, 연못 자체의 독립 운영·입장·별도 방문 경험은 확인되지 않았다. 따라서 상위 공원에 포함된 경관 시설로 판정한다.",
+    "duplicate_of": "제주돌문화공원",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 표식 ‘제주돌문화공원 연못’은 제주돌문화공원 내부의 연못 경관 요소를 가리킨다. 공개 관광 안내에는 공원 내 ‘하늘연못’이 소개된다.",
+    "typical_visit": "방문자는 제주돌문화공원 관람 중 야외 전시·숲길·연못 경관을 함께 둘러본다.",
+    "experience_scope": "공개 공식 안내는 연못을 제주돌문화공원의 내부 경관·관람 요소로 제시한다. 연못 단독의 별도 입장, 독립 운영 또는 독립 추천 후보로서의 방문 범위는 확인하지 못했으므로 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원을 제주 돌문화를 보여 주는 박물관이자 생태공원으로 안내하며, 관련 테마 여행 안내에서 공원 내 하늘연못을 공원의 풍경 요소로 소개한다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드의 장소명은 ‘제주돌문화공원 연못’으로, 상위 공원의 명칭을 포함한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 표식이 하늘연못의 정확한 어느 지점 또는 다른 공원 내 연못을 가리키는지 공식 도면으로 확인하지 못했다.",
+      "연못 자체의 별도 입장, 독립 운영 시간, 독립 관람 동선 및 접근성 정보는 확인하지 못했다.",
+      "제주돌문화공원의 현재 개방 여부, 입장 조건, 기상·안전 통제와 현장 접근 조건은 이 결과에서 확정하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_listing",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원은 제주 돌문화를 보여 주는 박물관이자 생태공원으로 안내된다.",
+          "공원 전체는 설문대할망과 오백장군을 테마로 조성됐다고 안내된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_article",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013549&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원 내부의 하늘연못을 공원의 숲길·거석 경관과 함께 소개한다.",
+          "하늘연못은 제주 신화의 이미지를 상징적으로 디자인한 공원 내 공간으로 소개된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17558040",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 17558040의 장소명을 ‘제주돌문화공원 연못’으로 제공한다.",
+          "평점과 리뷰 수는 라벨값 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_park_feature_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "연못은 제주돌문화공원 내부 경관·관람 요소로 확인되며, 독립 방문지로서의 별도 운영·입장·동선은 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "이 레코드를 독립 추천 후보로 사용하지 않는다. 공원 방문 맥락이 필요하면 상위 장소인 제주돌문화공원의 별도 검수 결과와 최신 공식 운영 안내를 사용한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

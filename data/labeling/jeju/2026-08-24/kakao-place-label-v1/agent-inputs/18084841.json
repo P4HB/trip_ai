@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 613,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/18084841.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:18084841",
+    "provider": "kakao",
+    "place_id": "18084841",
+    "name": "거문오름 탐방안내소",
+    "url": "https://place.map.kakao.com/18084841",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "27",
+    "blog_review_count": "92",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.02.15.",
+      "content": "거문오름... 우리나라에 이런곳이 있어서 뿌듯했어요. 많은 노력과 자원 투입이 인상깊었음. 그런데 자율 코스에서 산악회 놈들이 자리펴고 싸온 음식 먹는거 보고 짜증이... 분명 내부에서 취식 안되는데. 굳이 컵라면을 그안에서 먹고 싶더냐??",
+      "tags": ""
+    },
+    {
+      "date": "2024.08.19.",
+      "content": "유네스코 세계유산 사전 예약 필수 문화해설사님 따라 걷고 나머지는 자유코스",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2022.08.17.",
+      "content": "사전예약 필수입니다 워낙 쏟아지는 빗줄기를 뚫고 다녀와서 그런지 10명다녀왔습니다 해설하시는 여자분 넘 좋았어요 줄거웠습니다",
+      "tags": ""
+    },
+    {
+      "date": "2025.10.01.",
+      "content": "유네스코 지정 오름 예약제 이며 30분 단위로 해설자 가이드분 안내로 1,2코스 이야기 들으며 트레킹 할 수 있어 유익한 시간이다.",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

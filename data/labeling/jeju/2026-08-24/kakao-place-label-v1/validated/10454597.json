@@ -1,0 +1,116 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10454597",
+  "place_id": "10454597",
+  "name": "사랑터울",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju와 사업자 공식 사이트는 사랑터울을 제주시 어영길 25의 펜션·숙박업소로 안내한다. 해안도로와 바다낚시 알선·바비큐 같은 숙박 부대 안내는 확인되지만, 현재 41축 라벨링의 독립 관광·문화·자연·체험 방문 장소 범위에 해당하는 별도 공개 방문 프로그램은 확인되지 않았다. 따라서 숙박업소 자체에는 추천용 방문 경험 벡터를 생성하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘사랑터울’은 제주특별자치도 제주시 어영길 25에 있는 사랑터울펜션과 일치한다.",
+    "typical_visit": "확인된 운영 범위는 객실 예약을 통한 숙박이며, 공식 관광 안내는 용담해안도로 인근 위치와 바비큐 시설, 숙박객 대상 바다낚시 알선을 소개한다.",
+    "experience_scope": "숙박의 예약·객실·부대시설 이용은 여행 여정의 숙소 선택과 관련되지만, 이번 데이터 계약의 독립 관광·문화·자연·체험 방문 장소 41축에는 포함하지 않는다. 동적 객실 가용성, 요금, 체크인 조건 및 낚시 알선 운영 여부는 확인·점수화하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 사랑터울펜션을 제주시 소재 숙박으로 분류하고, 제주국제공항 인근 용담해안도로 한가운데에 위치한다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 사랑터울펜션의 부대시설로 바비큐 시설을, 펜션 앞바다와 관련해 바다낚시 알선을 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "사랑터울펜션 공식 사이트는 제주특별자치도 제주시 어영길 25를 주소로 표시하고 객실안내와 실시간예약 메뉴를 제공한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-25 기준 객실 가용성, 요금, 체크인·체크아웃, 바비큐·낚시 알선의 실제 제공 조건은 확인하지 못했다.",
+      "숙박객이 아닌 일반 여행객에게 별도로 제공되는 관람·체험 프로그램, 출입 범위 및 안전·접근 조건은 확인하지 못했다.",
+      "주차, 무장애 접근성, 객실·부대시설의 현재 운영 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019127",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "사랑터울펜션을 제주시 소재 숙박으로 분류한다.",
+          "제주국제공항 인근 및 용담해안도로 위치를 안내한다.",
+          "바비큐 시설과 펜션 앞바다의 바다낚시 알선 안내를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "사랑터울펜션",
+        "type": "official_business_site",
+        "url": "https://www.xn--9i2br6oz2ej5l.com/",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "사업장 주소를 제주특별자치도 제주시 어영길 25로 표시한다.",
+          "객실안내, 예약안내 및 실시간예약 메뉴를 제공한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10454597",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘사랑터울’이다.",
+          "입력의 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "lodging_not_independent_visit_vector",
+      "applies_to": "recommendation_candidate",
+      "condition": "사랑터울은 공개 관광·사업자 자료상 펜션 숙박업소이며, 이번 41축의 독립 관광·문화·자연·체험 방문 장소 범위에 해당하지 않는다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 숙박 추천 기능의 별도 데이터 계약이 승인되면 최신 운영·예약 조건을 별도로 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

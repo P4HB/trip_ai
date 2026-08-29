@@ -1,0 +1,69 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8297242",
+  "canonical_id": "kakao:8297242",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "source_ids": ["SRC-001", "SRC-002"],
+    "rule_ids": ["RULE-ELIGIBILITY-01"],
+    "rationale": "공개 자료가 애월읍 장전리의 눈오름(논오름)을 독립된 오름으로 식별하며, 카카오 장소명 및 공개 리뷰의 오름 방문 맥락과도 일치한다.",
+    "review_status": "needs_review"
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001","SRC-002"],"rule_ids":["RULE-THEME-MOUNTAIN-01"],"rationale":"공개 자료가 이 장소를 말굽형 기생화산인 눈오름으로 설명한다."},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-THEME-OCEAN-01"],"rationale":"조사 자료에는 해안·해양 활동이 핵심 경험이라는 근거가 없다."},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001","SRC-003"],"rule_ids":["RULE-THEME-ACTIVITY-01"],"rationale":"오름 방문·탐방 맥락은 확인되지만, 공식 탐방로와 활동 조건은 확인되지 않았다."},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-002"],"rule_ids":["RULE-THEME-CULTURE-01"],"rationale":"명칭 유래 외에 역사·문화 체험이 핵심이라는 근거가 부족하다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-THEME-PARK-01"],"rationale":"테마파크형 시설 또는 프로그램 근거가 없다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-THEME-CAFE-01"],"rationale":"카페·음료 이용이 독립적 방문 목적이라는 근거가 없다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-THEME-MARKET-01"],"rationale":"시장 기능의 근거가 없다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-THEME-FESTIVAL-01"],"rationale":"정기 축제·공연이 장소의 핵심이라는 근거가 없다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["RULE-ENV-INDOOR-01"],"rationale":"자료가 작은 야외 기생화산과 숲으로 된 오름으로 설명하며 실내 방문 공간은 제시하지 않는다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["RULE-ENV-WEATHER-01"],"rationale":"대표 경험이 야외 오름·숲 탐방이므로 비·바람·더위 등의 영향을 직접 받는다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["RULE-STYLE-REST-01"],"rationale":"자연 숲 오름이지만 탐방로 부재와 가시덤불 언급 때문에 편안한 휴식성은 제한적으로 판정한다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["RULE-STYLE-EASE-01"],"rationale":"현장 기록에 정식 길이 없고 가시덤불이 우거졌다고 되어 있어 접근·보행 부담이 낮지 않다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["RULE-STYLE-DURATION-01"],"rationale":"작은 규모이나 확인된 탐방 동선이 없어 안전하게 체류 시간을 조절하기 어렵다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-003"],"rule_ids":["RULE-STYLE-SCENIC-01"],"rationale":"제공된 공개 리뷰가 일몰과 한라산 북벽 조망을 이 장소의 뚜렷한 경험으로 언급한다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001","SRC-002"],"rule_ids":["RULE-STYLE-DISTINCT-01"],"rationale":"소 머리를 들고 누운 형상에서 유래한 별칭과 동향 말굽형 분화구가 확인되나, 독특한 관광 구성은 제한적으로 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001","SRC-002"],"rule_ids":["RULE-STYLE-LOCAL-01"],"rationale":"제주 장전리의 자연 지형과 지역 명칭 유래에 직접 연결된 오름이다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["RULE-STYLE-LANDMARK-01"],"rationale":"제주를 대표하는 상징 명소라는 공공·공식 근거가 부족하다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-003"],"rule_ids":["RULE-STYLE-PHOTO-01"],"rationale":"일몰과 한라산 북벽 조망이 확인되어 시각적 기록 가치는 높게 추정하지만, 안전한 촬영 동선은 미확인이다."}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["RULE-COMPANION-SOLO-01"],"rationale":"정식 길이 부재가 확인되어 단독 탐방에는 주의가 필요하다."},
+    "couple": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001","SRC-003"],"rule_ids":["RULE-COMPANION-COUPLE-01"],"rationale":"경관 잠재력은 있으나 탐방로 부재로 일반적 동반 방문 적합성은 낮게 본다."},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001","SRC-003"],"rule_ids":["RULE-COMPANION-FRIENDS-01"],"rationale":"오름 방문 경험은 가능하나 비공식·불명확한 동선이 제약이다."},
+    "kids": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["RULE-COMPANION-KIDS-01"],"rationale":"길 없음과 가시덤불 언급 때문에 아동 동반에는 적합성이 낮다."},
+    "parents": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["RULE-COMPANION-PARENTS-01"],"rationale":"확인된 정식 탐방로가 없고 수풀 접근 부담이 있어 부모 세대 동반 적합성이 낮다."}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "2": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "3": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "4": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "5": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "6": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "7": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "8": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "9": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "10": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "11": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."},
+    "12": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["RULE-MONTH-OUTDOOR-01"],"rationale":"야외 오름이나 계절별 개방·안전 정보를 확인하지 못했다."}
+  },
+  "review_priority": "high",
+  "hard_constraints": [
+    {"constraint":"공식 탐방로·개방 여부를 현장 또는 관할 기관에서 확인","source_ids":["SRC-001"],"rule_ids":["RULE-CONSTRAINT-ACCESS-01"],"rationale":"2024년 현장 기록이 길이 없고 가시덤불이 우거졌다고 보고했다.","status":"needs_review"},
+    {"constraint":"우천·강풍 등 기상 악화 시 야외 방문을 피함","source_ids":["SRC-001"],"rule_ids":["RULE-CONSTRAINT-WEATHER-01"],"rationale":"대표 경험이 야외 오름·숲 접근이다.","status":"confirmed"}
+  ],
+  "research": {
+    "sources": [
+      {"source_id":"SRC-001","publisher":"동네 오름이 더 힘들다","url":"https://rhodeus.tistory.com/15083057","checked_at":"2026-08-25","facts":["눈오름(장전리)은 제주시 애월읍 장전리 1756번지 일대의 작은 기생화산이다.","동쪽으로 열린 말굽형 분화구, 해송 숲과 가시덤불을 설명하며 정식 길이 없다고 기록한다."]},
+      {"source_id":"SRC-002","publisher":"한국미디어일보","url":"https://koreamedia.net/news/view.asp?idx=14966","checked_at":"2026-08-25","facts":["제주특별자치도 자연유산 오름 목록은 눈오름(논오름)을 제주시 애월읍 장전리 1756번지 일대로 열거한다."]},
+      {"source_id":"SRC-003","publisher":"Kakao Place 공개 리뷰(입력 제공)","url":"https://place.map.kakao.com/8297242","checked_at":"2026-08-25","facts":["제공된 공개 리뷰는 오름 방문과 일몰, 한라산 북벽 조망을 언급한다."]}
+    ],
+    "identity_decision":"카카오 장소 '눈오름'은 공개 자료의 애월읍 장전리 눈오름(논오름)으로 판정했다.",
+    "limitations":"공식 관광·지자체의 최신 개방, 주차, 탐방로, 안전 정보는 확인하지 못했다."
+  }
+}

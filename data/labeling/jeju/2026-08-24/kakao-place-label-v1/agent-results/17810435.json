@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17810435",
+  "place_id": "17810435",
+  "name": "와산도예",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "공개 사업자 정보와 지역 언론 보도는 와산도예를 제주시 조천읍 와산리의 도자기제품 도매 사업체이자 도예가 한홍곤이 운영한 작업 공간으로 연결한다. 그러나 현재 일반 방문객을 위한 전시·판매·체험·관람을 제공한다는 공식 또는 공공 근거는 확인하지 못했다. 확인된 사업 성격만으로는 독립적인 여행 방문 경험을 확정할 수 없어, 현 단계에서는 추천 후보 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "와산도예는 제주시 조천읍 와산리·중산간동로 일대에 등록된 도자기제품 도매 사업체로 검색되며, 지역 언론은 2012년 와산도예를 한홍곤이 운영한 조천읍 와산리의 도예 공간으로 보도했다.",
+    "typical_visit": "공개 근거로 확인되는 활동은 도자기 제작·도매와 2012년 외부 기획전 참여다. 현재 현장에 일반인이 방문해 작품을 관람·구매하거나 체험할 수 있는지는 확인하지 못했다.",
+    "experience_scope": "입력 Kakao 레코드에는 이름 외에 주소·좌표·업종·공개 방문 후기 근거가 없고, 평점과 후기 수는 라벨 근거로 사용하지 않았다. 현재 방문자 대상 운영 범위가 확인되지 않으므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "114On의 와산도예 사업자 검색 결과는 제주시 조천읍 와산리 및 중산간동로 소재를 표시하고 업종을 도자기제품도매로 분류한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주일보의 2012년 보도는 조천읍 와산리의 와산도예를 한홍곤이 운영하며 한홍곤·강희욱 도예전에 참여한 곳으로 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 레코드는 장소명을 ‘와산도예’로 제공하지만 주소, 좌표, 업종과 공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 공개 사업자 정보와 보도된 와산도예의 정확한 현장과 동일한지 주소·좌표로 교차 확인하지 못했다.",
+      "현재 일반 방문객 대상 작품 관람, 판매, 도예 체험, 예약 방식, 운영일·시간 및 요금을 확인하지 못했다.",
+      "현장 접근성, 주차, 화장실, 계단·문턱, 어린이 동반 조건과 최신 영업 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "114On",
+        "type": "public_business_directory",
+        "url": "https://www.114.co.kr/search/detail?comp_id=57337&comp_tp_cd=INT&upjong_cd=462503",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "와산도예를 제주특별자치도 제주시 조천읍 와산리·중산간동로 소재로 표시한다.",
+          "업종을 도자기제품도매로 분류한다.",
+          "운영시간과 방문객 대상 서비스는 표시하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주일보",
+        "type": "local_news_article",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=1419441",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2012년 보도는 조천읍 와산리의 와산도예와 한홍곤·강희욱 도예전을 언급한다.",
+          "보도는 한홍곤의 도예 작업과 외부 기획전 참여를 설명한다.",
+          "이는 과거 보도이며 현재 현장 관람·판매·체험 운영을 확인하는 근거는 아니다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17810435",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘와산도예’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "도자기제품 도매 및 과거 도예 활동은 확인되지만 현재 일반 방문객이 이용할 수 있는 관람·판매·체험 서비스와 이 Kakao 레코드의 정확한 현장 동일성을 확인하지 못함",
+      "status": "needs_review",
+      "action": "공식 운영 주체 또는 최신 현장 안내로 Kakao 장소의 주소·업종 동일성과 일반 방문객 대상 관람·판매·체험 가능 여부를 확인한다. 독립 방문 경험이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

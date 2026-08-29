@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1812732157",
+  "canonical_id": "kakao:1812732157",
+  "name": "돈대산 해맞이길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "추자면이 하추자도 돈대산 정상을 관통하도록 개통한 독립 명칭의 도보여행 코스로 공개 소개된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추자면이 하추자도 돈대산 정상을 관통하도록 개통한 길로 소개되어 산 정상 보행이 핵심 경험이다.", "source_ids": ["S1"], "rule_ids": ["THEME-MOUNTAIN-TRAIL-DIRECT"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도 섬 지역의 산길이며 인근 해안·군도 조망 맥락은 확인되나, 해당 길의 전 구간에서 해양 경험이 핵심인지는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-ISLAND-COASTAL-CONTEXT"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 자료가 돈대산 해맞이길을 도보여행·트레킹 코스로, 돈대산 정상을 관통하는 길로 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 자료는 자연 도보·트레킹 코스로 소개하며, 이 길 자체의 역사·문화유산 해설 또는 전시 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산길·도보여행 코스로 확인되며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·디저트 이용이 이 장소의 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산 정상 도보 코스로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 도보여행 코스로 소개될 뿐 특정 축제·공연·기간성 행사가 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "돈대산 정상을 관통하는 도보여행·트레킹 길로 소개되어 대표 경험은 야외 보행이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 산길 보행이므로 비·바람·더위·추위의 영향을 크게 받을 수 있다. 현행 통제 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "섬의 자연 속 도보여행·트레킹 맥락은 확인되나, 휴식·평온을 핵심 가치로 공식 소개한 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-NATURE-WALK-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "돈대산 정상을 관통하는 산길 보행이 확인된다. 정확한 경사·계단·무장애 동선은 미확인이어서 낮은 잠정값이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-MOUNTAIN-TRAIL-BURDEN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "길의 총연장·단독 진입 동선·단축 가능 여부가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도 산 정상과 섬 자연을 잇는 트레킹·도보여행 맥락은 확인되나, 해당 길의 공식 조망 지점·경관 설명은 제한적이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ISLAND-MOUNTAIN-SCENERY"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "돈대산 해맞이길은 추자면이 개발한 명명 도보여행 코스이나, 다른 길과 구별되는 시설·콘텐츠의 상세 근거는 제한적이다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NAMED-ROUTE-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 추자면이 하추자도 돈대산과 주변 길을 연결해 조성한 추자도 도보여행 코스이며, 지역 트레킹 자원으로 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-TRAIL-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도의 트레킹 자원으로 알려졌으나 제주 전체를 대표하는 공적 랜드마크 지정·상징성은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "섬 산길의 자연·조망 맥락은 확인되나 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 경로 난이도 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 산길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_mountain_trail_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "돈대산 해맞이길은 야외 산길이나, 현재 개방 여부, 구간 통제, 우천·강풍 시 안전, 실제 경사·계단 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 추자면 또는 현장 최신 안내로 개방 여부, 지정 탐방로, 기상에 따른 통제와 보행 안전을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주 추자면이 하추자도 돈대산 정상을 관통하도록 개통한 도보여행 코스의 공개 명칭과 일치한다.",
+    "facts": [
+      {"text": "추자면은 하추자도 돈대산 정상을 관통하는 돈대산 해맞이길과 추석산 소원길 등을 연결해 총연장 9.3km의 추자도 도보여행 코스를 개발했다고 보도됐다.", "source_id": "S1"},
+      {"text": "공공 지역정보는 돈대산 해맞이길을 제주올레 18-1코스·나바론 하늘길·추석산 소원길과 함께 추자도의 트레킹 자원으로 소개한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["정확한 입구와 현행 운영·개방 시간", "코스의 총거리·소요시간 및 구간별 경사·계단", "우천·강풍·산불 위험 시 통제 기준과 화장실·휴식 시설", "월별 개방·행사·계절 절정 정보"],
+    "sources": [
+      {"id": "S1", "publisher": "연합뉴스", "type": "reputable_news", "url": "https://www.yna.co.kr/view/AKR20160620038200056", "checked_at": "2026-08-25", "facts": ["추자면이 하추자도 돈대산 정상을 관통하는 돈대산 해맞이길을 포함한 도보여행 코스를 개발했다고 보도했다."]},
+      {"id": "S2", "publisher": "나비스 균형발전종합정보시스템", "type": "public_information", "url": "https://nabis.go.kr/outstandRegionDetailView.do?appfileNo=16386&outstandNo=708&pageIndex=1&searchCondition=&searchKeyword=&searchSidoCode=&searchSigunguCode=&searchYearCode=", "checked_at": "2026-08-25", "facts": ["돈대산 해맞이길을 추자도의 트레킹 자원으로 소개한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

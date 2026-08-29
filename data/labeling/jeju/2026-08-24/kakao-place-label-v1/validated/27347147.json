@@ -1,0 +1,672 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27347147",
+  "place_id": "27347147",
+  "name": "노린여",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력명 노린여는 제주일보가 추자면 대서리 북쪽 약 5.5km의 작은 바위섬 녹서의 별칭(노린여·노른여)으로 명시한 지명과 일치한다. 주변 참돔 낚시 포인트로 알려진 독립 해양 자연 지점이므로 판정 대상에 포함한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "노린여는 제주특별자치도 제주시 추자면 대서리 북쪽 해상에 있는 작은 바위섬 녹서의 별칭이다.",
+    "typical_visit": "공개 보도는 녹서 주변의 노린여 참돔 낚시를 낚시인이 찾는 경험으로 소개한다. 상륙 관광이나 정기 유람선 경유는 확인하지 못했다.",
+    "experience_scope": "확인된 경험은 해상 바위섬 경관과 주변 낚시다. 현행 출항·승선·상륙 가능 여부, 선박 운영과 현장 시설은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주일보는 녹서를 추자면 대서리에서 북쪽으로 5.5km 떨어진 약 9846㎡의 바위섬으로 소개하며, 사슴처럼 누런 색 때문에 노린여 또는 노른여라고 부른다고 보도했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 보도는 녹서 주변의 노린여 참돔이 유명해 낚시인이 많이 찾는다고 전했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "낚시 전문 매체는 추자도의 참돔 포인트 목록에 노른여를 포함하고, 추자도 대물 참돔 시즌을 4월 초부터 5월 말로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-25 기준 노린여 주변 낚시 출항·접근·상륙 가능 여부와 허가 조건",
+      "선박 운항사, 승하선·구명장비·기상 결항 및 안전 안내",
+      "현장 화장실·휴식 시설, 휠체어 접근성 및 아동·고령자 이용 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주일보",
+        "type": "news_report",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2120652",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "녹서의 위치·면적·바위섬 특성과 노린여·노른여 별칭을 보도한다.",
+          "녹서 주변 노린여 참돔 낚시가 알려져 있음을 보도한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "낚시춘추",
+        "type": "specialist_media",
+        "url": "https://fishingseasons.co.kr/contents_view_detail.asp?b_no=10841",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "추자도 참돔 포인트로 노른여를 열거한다.",
+          "추자도 참돔 시즌 관련 일반 정보를 제공한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 대상은 해상 바위섬이며 산·오름 또는 산림을 걷는 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대서리 북쪽 해상의 바위섬과 그 주변 낚시가 확인되어 바다·섬 환경이 핵심이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-MARINE-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "노린여 참돔 낚시를 낚시인이 많이 찾고, 참돔 포인트로도 열거되어 낚시 활동의 비중이 높다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-FISHING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화 관람 또는 전통 체험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 경험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·커피·디저트 이용 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래 기능 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "축제·공연·기간 행사 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 대상은 바위섬과 주변 해상 낚시이며 장소 자체의 실내 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-MARINE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 해상 이동과 낚시이므로 바람·파고·강수 등 날씨 영향을 크게 받을 수 있다. 현행 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-SEA-WEATHER-INFERENCE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식시설·혼잡도·체류 환경 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "선박 승하선, 낚시 지점의 발판, 무장애 접근성 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현행 출항·소요 시간과 개별 체류 선택 폭을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해상에 있는 작은 바위섬과 암석해안이라는 지형 경관이 직접 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-MARINE-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "사슴처럼 누런 바위 색에서 유래한 노린여·노른여 별칭과 소규모 암석섬이라는 고유 지형이 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-GEOLOGY-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 추자면 대서리 해상 지형이며 추자도 참돔 낚시 포인트 맥락과 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-MARINE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "별칭과 낚시 포인트로의 인지도는 확인되지만 제주 또는 추자도를 대표하는 공식 상징 명소라는 근거는 부족하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-POINT-INFERENCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "암석섬 경관은 확인되지만 사진 촬영 가치가 직접 안내된 근거는 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 출항·낚시의 안전 지원과 현장 통신 정보를 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 이용 편의 또는 선박·체류 조건 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 예약·정원·안전 조건 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 승선·구명장비·낚시 안전과 보호자 동반 조건이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 승하선·발판·무장애 접근성 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "참돔 시즌 정보는 있으나 개인의 실제 출항·기상·낚시 가능 여부를 확정할 수 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "참돔 시즌 정보는 있으나 개인의 실제 출항·기상·낚시 가능 여부를 확정할 수 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 출항·접근 가능 여부가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "boat_access_and_weather_conditions_must_be_confirmed",
+      "applies_to": "all_visitors",
+      "condition": "노린여는 대서리에서 약 5.5km 떨어진 해상 바위섬이며, 조사에서는 현행 출항 수단·기상 기준·결항 및 상륙 가능 여부를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 또는 낚시 전 공식 선박·낚시 출항 주체에 최신 출항 가능 여부, 기상·파고에 따른 결항, 접근·상륙 제한과 안전 수칙을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "marine_fishing_safety_and_accessibility_unknown",
+      "applies_to": "kids_and_parents",
+      "condition": "승하선, 낚시 발판, 구명장비, 화장실·휴식 시설과 아동·고령자·휠체어 이용 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "동행자의 이동 능력에 맞춰 출항 주체에 승하선 지원, 구명장비, 선내 시설 및 아동·고령자 이용 조건을 사전 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

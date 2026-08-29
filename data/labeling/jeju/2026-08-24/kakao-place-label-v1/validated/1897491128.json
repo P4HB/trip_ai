@@ -1,0 +1,115 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1897491128",
+  "place_id": "1897491128",
+  "name": "건하 로얄팔레스카지노",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "입력명은 주식회사 건하가 운영하는 로얄팔레스카지노를 뜻한다. 제주오리엔탈호텔 공식 안내와 한국관광공사 안내는 같은 카지노를 제주오리엔탈호텔 1층의 ‘제주오리엔탈호텔 카지노’로 소개한다. 따라서 이 레코드는 이미 분리 등록된 kakao:8458599와 같은 호텔 내 카지노 시설을 가리키며, 별도 추천 후보로 만들지 않는 중복으로 판정한다.",
+    "duplicate_of": "kakao:8458599",
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘건하 로얄팔레스카지노’는 건하가 운영하는 로얄팔레스카지노이며, 공개 공식·관광 안내에서 제주오리엔탈호텔 내 카지노로 확인된다.",
+    "typical_visit": "공식 호텔 안내상 룰렛·블랙잭·바카라·슬롯머신 등을 제공하는 호텔 내 카지노 시설이다.",
+    "experience_scope": "같은 시설이 Kakao place_id 8458599에 ‘제주오리엔탈호텔 카지노’로 별도 등록돼 있다. 이 레코드는 그 카지노의 사업자명·상호 표기 차이로 보이는 중복이므로 추천용 41축 벡터를 생성하지 않는다. 최신 운영과 입장 조건은 동적 사실이므로 방문 전 확인이 필요하다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주오리엔탈호텔 공식 카지노 안내는 카지노를 호텔 1층 시설로 표시하고 룰렛, 블랙잭, 바카라, 슬롯머신, 대소를 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 VISITKOREA는 Jeju Oriental Hotel Casino를 제주특별자치도 제주시 탑동로 47의 국제 방문객 전용 카지노로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "한국거래소 전자공시 자료의 제주 카지노 현황은 로얄팔레스카지노의 운영사를 주식회사 건하로 기재한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 레코드의 최신 현장 주소·좌표와 kakao:8458599 표식의 공급자 내부 병합 상태는 확인하지 못했다.",
+      "당일 게임 테이블 운영, 입장 자격 확인 절차, 요금 및 이용 제한의 최신 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주오리엔탈호텔",
+        "type": "official_business_site",
+        "url": "https://www.oriental.co.kr/view/viewLink.do?page=homepage%2FKOR%2Ffacility%2Fcasino",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "카지노 안내는 위치를 호텔 1F로 표시한다.",
+          "카지노 안내는 룰렛, 블랙잭, 바카라, 슬롯머신, 대소를 시설로 열거한다.",
+          "운영시간은 영업장 사정에 따라 변경될 수 있다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 VISITKOREA",
+        "type": "official_tourism_information",
+        "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=111304",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "Jeju Oriental Hotel Casino의 주소를 제주특별자치도 제주시 탑동로 47로 표시한다.",
+          "카지노를 국제 방문객 전용이며 호텔의 여러 편의시설 중 하나로 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한국거래소 전자공시",
+        "type": "public_corporate_disclosure",
+        "url": "https://kind.krx.co.kr/external/2022/03/10/000840/20220310001900/00591.htm",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 카지노 현황 표에 로얄팔레스카지노와 주식회사 건하가 함께 기재된다.",
+          "표는 로얄팔레스카지노의 개장일을 1990년 11월 6일로 기재한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_hotel_casino_candidate",
+      "applies_to": "recommendation_catalog",
+      "condition": "건하 로얄팔레스카지노는 제주오리엔탈호텔 카지노(kakao:8458599)와 같은 호텔 내 카지노 시설을 사업자명·상호 차이로 중복 등록한 후보로 판단된다.",
+      "status": "needs_review",
+      "action": "추천·일정 후보에는 이 레코드를 별도로 추가하지 말고 kakao:8458599의 중복·부대시설 판정을 유지한다. 호텔 공식 채널로 최신 운영 여부와 적용되는 입장 자격·이용 제한을 확인한 뒤 필요하면 두 Kakao 표식을 병합한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

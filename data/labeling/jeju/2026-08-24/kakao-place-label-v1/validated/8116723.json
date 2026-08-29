@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8116723",
+  "place_id": "8116723",
+  "name": "충헌비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘충헌비’라는 명칭과 place_id만 제공하며 주소·좌표·업종·방문 후기 근거가 없다. 공개 검색으로는 이 명칭의 제주 소재 비석을 특정하거나 공식·공공 문화유산 기록과 교차 확인하지 못했다. 동명 비석 또는 다른 장소와의 혼동을 배제할 수 없으므로 독립 여행 방문지 여부를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 정보는 Kakao 장소명 ‘충헌비’와 place_id 8116723뿐이다. 제주 내 정확한 위치, 비문 대상 인물, 관리 기관 및 문화유산 지정 여부는 확인하지 못했다.",
+    "typical_visit": "‘비(碑)’는 일반적으로 기념·추모 또는 기록을 위한 석조 표지물이지만, 이 레코드가 어떤 비석인지와 실제 관람 범위는 확인되지 않았다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 공개 후기, 운영·관람 안내가 없으며, 공식·공공 출처로 이 레코드의 신원을 확인하지 못했다. 따라서 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 레코드는 place_id 8116723의 장소명을 ‘충헌비’로 제공하며, 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표·관리 기관 및 제주 내 실제 소재지를 확인하지 못했다.",
+      "충헌비가 가리키는 인물·사건, 문화유산 지정 상태, 독립 관람지 여부와 다른 장소와의 중복 여부를 확인하지 못했다.",
+      "관람 가능 여부, 접근 동선, 안전·무장애 시설, 주차 및 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8116723",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘충헌비’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없고, 공식·공공 문화유산 자료로 ‘충헌비’의 제주 소재지와 신원을 교차 확인하지 못함",
+      "status": "needs_review",
+      "action": "관리 기관 또는 공공 문화유산·공간정보 자료로 정확한 위치와 대상 비석을 먼저 확인한다. 독립 관람지 및 신규 장소임이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

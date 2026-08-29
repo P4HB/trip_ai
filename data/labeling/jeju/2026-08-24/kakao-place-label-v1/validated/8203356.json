@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8203356",
+  "place_id": "8203356",
+  "name": "기념비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 장소 메타데이터는 일반명 '기념비'와 place_id만 제공하며 주소, 좌표, 상세 설명, 공개 방문 후기가 없다. 공개 웹 검색과 공식·공공 관광 자료 조사로도 이 place_id가 가리키는 기념비의 명칭, 위치, 기념 대상 또는 일반 방문 가능한 독립 장소인지 확인하지 못했다. 따라서 추천용 장소 정체성을 판정할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 8203356은 '기념비'라는 일반명으로만 제공되어, 어떤 기념비인지와 정확한 위치를 확인할 수 없다.",
+    "typical_visit": "장소의 실제 대상과 접근 조건이 확인되지 않아 대표 방문 경험을 판정하지 않는다.",
+    "experience_scope": "기념비라는 일반적 명칭 외에 장소 유형, 역사·문화 내용, 관람 동선 또는 운영 정보를 확인하지 못했으므로 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 8203356의 장소명을 '기념비'로 제공하지만 주소·좌표·상세 설명·공개 방문 후기는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "기념비의 정식 명칭, 기념 대상, 정확한 위치와 관리 주체를 확인하지 못했다.",
+      "Kakao place_id 8203356이 어떤 실물 표식 또는 독립 방문지를 가리키는지 공식·공공 자료로 확인하지 못했다.",
+      "일반 방문객의 출입 가능 여부, 접근 경로, 주차·보행 안전과 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8203356",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 8203356 및 장소명 '기념비'를 제공한다.",
+          "입력 패킷에는 주소·좌표·상세 설명·공개 방문 후기가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao place_id 8203356이 가리키는 기념비의 정확한 대상·위치·관리 주체와 일반 방문객의 출입·접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 지도상 좌표·주소와 관할 지자체 또는 현장 최신 안내를 대조해 장소 신원, 출입 범위 및 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

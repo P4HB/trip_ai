@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1585957152",
+  "place_id": "1585957152",
+  "name": "돌하르방",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 일반명사이자 제주를 상징하는 조형물 명칭인 ‘돌하르방’과 place_id만 제공하며 주소·좌표·업종·공개 후기·사진이 없다. 공개 관광 자료에는 북촌돌하르방미술관, 돌하르방식당 등 서로 다른 제주 장소가 확인되지만 어느 곳도 이 Kakao place_id와 연결되지 않는다. 따라서 특정 조형물, 관광지, 상점 또는 식당으로 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 Kakao place_id 1585957152와 명칭 ‘돌하르방’뿐이다. 해당 명칭은 제주 문화 상징 및 복수의 관광·상업 장소에 쓰여, 주소·좌표 또는 업종 없이 이 레코드의 실제 대상을 공개 출처로 특정할 수 없다.",
+    "typical_visit": "미확인: 이 레코드가 독립 방문 가능한 조형물·관광지인지, 특정 사업체인지, 또는 비공식 지도 표식인지 확인할 근거가 없다.",
+    "experience_scope": "입력에 주소, 좌표, 업종, 공개 후기 또는 운영 정보가 없으며 Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 1585957152와 장소명 ‘돌하르방’을 제공하지만 주소, 좌표, 업종 및 공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju 공개 검색에는 ‘돌하르방’ 명칭과 관련된 북촌돌하르방미술관·돌하르방식당 등 여러 별도 장소가 나타나며, 해당 자료에는 Kakao place_id 1585957152와의 동일성 정보가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 장소 유형",
+      "‘돌하르방’이 특정 조형물, 북촌돌하르방미술관·돌하르방식당 등 동명 관련 장소, 또는 다른 지도 표식인지 여부",
+      "독립 여행 방문지로서의 접근성, 안전, 운영·개방 상태와 대표 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1585957152",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷은 place_id 1585957152와 장소명 ‘돌하르방’을 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점 및 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/search?q=%EB%8F%8C%ED%95%98%EB%A5%B4%EB%B0%A9&searchtype=2",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공개 검색 결과는 ‘돌하르방’ 관련 관광지·음식점 등 복수의 서로 다른 장소를 보여 준다.",
+          "검색 결과에는 Kakao place_id 1585957152 또는 이 입력 레코드를 특정하는 주소·좌표 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없어 장소 신원과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·유형 정보로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

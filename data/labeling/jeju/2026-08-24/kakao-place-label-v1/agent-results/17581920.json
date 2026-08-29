@@ -1,0 +1,102 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17581920",
+  "place_id": "17581920",
+  "name": "렛츠런파크제주 골프고객휴게소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 장소명은 렛츠런파크제주 골프 고객을 위한 휴게소를 뜻하며, 공개 자료는 렛츠런파크 제주 안에 말 테마 파크골프장이 운영되고 그 이용자를 위한 고객 휴게실이 있음을 설명한다. 독립적으로 방문·추천할 목적지라기보다 파크골프장 이용에 종속된 편의시설로 판단해 subordinate_facility로 분류한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명은 ‘렛츠런파크제주 골프고객휴게소’다. 공개 자료에서 렛츠런파크 제주는 말 테마 파크골프장을 포함한 복합 말 테마파크로 소개되고, 파크골프장 이용 맥락의 고객 휴게실이 언급된다.",
+    "typical_visit": "파크골프장 이용자가 라운딩 중 휴식·편의를 위해 이용하는 부속 휴게 공간으로 파악된다. 독립 관광·체험 프로그램이나 별도 목적지 운영은 확인되지 않았다.",
+    "experience_scope": "이 레코드는 상위 렛츠런파크 제주 말 테마 파크골프장에 종속된 고객 편의시설로 판정했다. 따라서 추천용 방문 경험과 41축 적합도 벡터를 생성하지 않는다. Kakao 평점·후기 수는 0건이지만 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 VisitJeju는 렛츠런파크 제주를 말 테마파크로 소개하며 무료 파크골프장을 포함한 여러 체험 시설을 열거한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국마사회 제주본부 관련 보도는 렛츠런파크 제주 ‘말테마 파크골프장’이 경주로 내부에 조성된 시설이라고 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "파크골프장 현장 소개는 라운딩 중 휴식할 수 있는 고객 휴게실을 언급한다. 입력 장소명도 ‘골프고객휴게소’로 상위 골프 이용객을 위한 편의시설임을 가리킨다.",
+        "source_ids": ["S3", "S4"]
+      }
+    ],
+    "unknowns": [
+      "이 휴게소의 독립 운영 시간, 별도 입장·이용 조건 및 최신 편의 설비는 확인하지 못했다.",
+      "입력 패킷에는 주소, 좌표, 업종, 공개 방문 후기 본문이 없으며 Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_site",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019539",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주를 말 테마파크로 소개한다.",
+          "무료 파크골프장 등 여러 체험 시설을 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "news_report",
+        "url": "https://www.yna.co.kr/amp/view/AKR20260423125300007",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "한국마사회 제주본부가 렛츠런파크 제주 말테마 파크골프장의 재개장을 알렸다.",
+          "해당 파크골프장은 경주로 내부에 조성된 시설로 설명된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "이춘근 제주여행",
+        "type": "public_visit_report",
+        "url": "https://cklee88.tistory.com/936",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주 말 테마파크골프장 이용 맥락에서 고객 휴게실의 생수통과 커피 자판기를 언급한다."
+        ]
+      },
+      {
+        "id": "S4",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17581920",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 골프고객휴게소’다.",
+          "입력 패킷에는 공개 방문 후기 본문이 없고, 평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "골프고객휴게소는 렛츠런파크 제주 말 테마 파크골프장 이용자를 위한 종속 편의시설로 판단됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 및 41축 벡터에서 제외하고, 필요하면 상위 파크골프장 상세 정보의 편의시설로만 표시한다.",
+      "source_ids": ["S1", "S2", "S3", "S4"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25190845",
+  "canonical_id": "kakao:25190845",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력의 장소명·Kakao 장소 URL과 공개 오름 안내가 모두 조천읍 교래리의 까끄래기오름을 가리킨다. 독립적으로 방문 가능한 오름 탐방 경험이므로 부속시설이나 중복 장소로 보지 않았다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["REQ-012", "identity-name-location-match"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 오름 안내와 입력 리뷰가 정상까지의 등반·둘레길·분화구를 명시한다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["theme-natural-oreum"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 핵심 경험은 내륙 오름의 등반·정상 조망이며 해안·해양 활동 근거는 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "정상까지 오르는 탐방로, 가파른 구간, 둘레길 이용이 직접 언급된다.", "source_ids": ["S1", "S3"], "rule_ids": ["theme-walking-hiking"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사된 자료는 자연 탐방을 설명하며 문화유산·전시·전통 체험을 핵심으로 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "자연 오름 탐방지로 확인되며 놀이·동물·수족관형 시설 경험 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "커피·차·디저트 이용이 독립적 방문 목적인 장소라는 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장 기능이나 상거래 방문 경험에 대한 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "기간성 축제·공연이 장소의 핵심이라는 자료를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["non-direct-extreme-prohibited"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "등반로·정상·둘레길을 이용하는 야외 오름 탐방으로 설명된다.", "source_ids": ["S1", "S3"], "rule_ids": ["environment-outdoor"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "야외 탐방로와 정상 조망이 핵심이고, 공개 후기에는 풀이 우거진 시기와 진드기 노출 경험도 보고됐다.", "source_ids": ["S1", "S3"], "rule_ids": ["environment-outdoor-weather"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 자연 탐방과 조망은 휴식적일 수 있으나 가파른 구간도 있어 중간값으로 보수적으로 평가했다.", "source_ids": ["S1", "S3"], "rule_ids": ["style-mixed-terrain"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "정상까지 짧지만 가파른 편이라는 안내와 입력 리뷰가 반복 확인된다.", "source_ids": ["S2", "S3"], "rule_ids": ["style-steep-trail"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "정상까지 약 20분이라는 공개 안내와 왕복 10~15분이라는 입력 리뷰가 있어 짧은 방문이 가능하며, 정상 부근 둘레길도 언급된다.", "source_ids": ["S2", "S3"], "rule_ids": ["style-short-or-loop-visit"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "정상에서의 뷰와 한라산 조망이 방문 경험으로 직접 언급된다.", "source_ids": ["S1", "S3"], "rule_ids": ["style-viewpoint"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주의 개별 오름으로서 분화구 둘레길과 정상 조망이 확인되지만, 비교 가능한 고유성 자료는 제한적이다.", "source_ids": ["S1", "S3"], "rule_ids": ["style-limited-comparative-evidence"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.7, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 고유 지형인 오름 탐방지이며 교래리 위치와 오름·분화구 탐방 경험이 확인된다.", "source_ids": ["S1", "S3"], "rule_ids": ["style-jeju-oreum"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립 오름으로 공개 안내에 등재돼 있으나 제주 전체를 대표하는 상징성의 객관적 근거는 충분하지 않다.", "source_ids": ["S2", "S3"], "rule_ids": ["style-significance-evidence-limited"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "정상 조망과 한라산이 보인다는 관찰이 직접 있어 풍경 기록 가치를 뒷받침한다.", "source_ids": ["S1", "S3"], "rule_ids": ["style-viewpoint-photo"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 독립 야외 탐방으로 혼자 방문은 가능하나 입구·탐방로 확인이 필요하다는 보고가 있어 만점으로 두지 않았다.", "source_ids": ["S1", "S3"], "rule_ids": ["companion-trail-caution"]},
+    "couple": {"value": 0.75, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 등반과 정상 조망을 함께 경험할 수 있으나 가파른 구간이 적합도를 제한한다.", "source_ids": ["S1", "S3"], "rule_ids": ["companion-trail-caution"]},
+    "friends": {"value": 0.75, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "소규모 동행 탐방에는 맞지만 시설·관리 상태 정보가 제한적이고 가파른 구간이 있다.", "source_ids": ["S1", "S3"], "rule_ids": ["companion-trail-caution"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "왕복 시간이 짧은 점은 유리하나 가파른 구간과 야외 길 상태 때문에 보호자 동반 전제가 필요하다.", "source_ids": ["S1", "S3"], "rule_ids": ["companion-child-terrain-caution"]},
+    "parents": {"value": 0.5, "confidence": 0.55, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상까지 짧지만 가파른 보행 부담이 반복 언급돼 일반적 부모 동행 적합도는 중간으로 평가했다.", "source_ids": ["S1", "S3"], "rule_ids": ["companion-mobility-caution"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이라는 유형에 따른 계절 폴백이며, 현장 날씨·출입 가능 여부는 방문 전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["month-outdoor-climate-fallback"]}
+  },
+  "hard_constraints": [
+    {"kind": "access_and_trail_condition", "description": "입구 위치, 탐방로 관리 상태와 통행 가능 여부는 변동될 수 있으므로 방문 직전 공식 안내와 현장 상황을 확인해야 한다.", "source_ids": ["S1", "S3"]}
+  ],
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {"source_id": "S1", "publisher": "Kakao Map", "url": "https://place.map.kakao.com/25190845", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소는 까끄래기오름으로 식별된다."]},
+      {"source_id": "S2", "publisher": "온니언", "url": "https://onion.co.kr/assets/download/company_info_240905.pdf", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["공개 오름 여행 플랫폼 소개 자료는 까끄래기오름의 정상까지 소요시간을 20분, 난이도를 매우 어려움으로 표기한다."]},
+      {"source_id": "S3", "publisher": "Kakao Map 공개 리뷰 요약", "url": "https://place.map.kakao.com/25190845", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷에 익명화된 공개 방문 경험 요약이 제공됐으며, 가파른 등반로·정상 조망·분화구 둘레길·교래리 입구 관련 관찰을 포함한다."]}
+    ],
+    "limitations": ["공공기관의 장소별 상세 안내를 찾지 못해 계절별 적합도는 모두 보수적 climate_heuristic 폴백으로 남겼다.", "탐방로 관리·식생·출입 가능 상태는 변동 가능하므로 확정 사실로 라벨링하지 않았다."]
+  },
+  "review_priority": "high"
+}

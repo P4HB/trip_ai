@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1307341722",
+  "canonical_id": "kakao:1307341722",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "review_status": "confirmed",
+    "rationale": "카카오의 장소명은 문형순 서장의 옛 묘를 가리키지만, 공개 보도에 따르면 2024년 해당 묘는 파묘·화장되어 국립제주호국원에 안장되었다. 따라서 현재의 독립적인 방문 장소로 라벨링할 대상이 아니다.",
+    "source_ids": [
+      "source_police_history",
+      "source_jejusori_reinterment"
+    ],
+    "rule_ids": [
+      "eligibility.out_of_scope_nonexistent_or_relocated_site",
+      "contract.noneligible_empty_label_maps"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "low",
+  "hard_constraints": [
+    {
+      "status": "confirmed",
+      "rationale": "원 묘는 파묘·이장된 것으로 보도되어 현장 방문 가능 여부를 전제로 한 추천·적합도 판정에 사용할 수 없다.",
+      "source_ids": [
+        "source_jejusori_reinterment"
+      ],
+      "rule_ids": [
+        "hard_constraints.separate_from_fit"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "id": "source_police_history",
+        "url": "https://www.police.go.kr/user/bbs/BD_selectBbs.do?q_bbsCode=1047&q_bbscttSn=1B000016814011100",
+        "publisher": "경찰청",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "문형순은 1897~1966년의 모슬포·성산포 경찰서장으로 소개된다.",
+          "제주4·3 당시 처형 명령 거부와 주민 구명 행적이 소개된다."
+        ]
+      },
+      {
+        "id": "source_jejusori_reinterment",
+        "url": "https://www.jejusori.net/news/articleView.html?idxno=434717",
+        "publisher": "제주의소리",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2024년 5월 제주시 오등동 제주 평안도민 공동묘지의 문형순 서장 묘를 파묘·화장한 뒤 유골을 국립제주호국원에 안장했다고 보도한다."
+        ]
+      }
+    ],
+    "status": "confirmed",
+    "rationale": "인물 정체와 옛 묘의 이장 사실을 교차 확인했다.",
+    "rule_ids": [
+      "research.official_public_source_preferred"
+    ]
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

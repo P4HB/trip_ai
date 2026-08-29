@@ -1,0 +1,110 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1835134800",
+  "place_id": "1835134800",
+  "name": "제주대학교 아라캠퍼스 연못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공식 제주대학교 캠퍼스맵은 아라캠퍼스를 제주대학교가 관리하는 하나의 캠퍼스로 안내한다. 입력명은 그 캠퍼스 내부의 ‘연못’이라는 부속 경관 요소를 가리키며, 독립 운영·관람 목적지 또는 별도 방문지라는 공개 근거는 확인되지 않았다. 따라서 독립 추천 후보가 아닌 캠퍼스 부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "입력 Kakao 장소명 ‘제주대학교 아라캠퍼스 연못’은 제주대학교 아라캠퍼스 내부의 연못 표식을 뜻하는 것으로 확인했다.",
+    "typical_visit": "대학 캠퍼스 내 이동 또는 휴식 중 보게 되는 부속 경관 요소이며, 독립 관광·체험 장소로서의 운영 정보는 확인되지 않았다.",
+    "experience_scope": "캠퍼스 부속 시설이므로 독립 여행 추천용 41축 벡터를 생성하지 않는다. Kakao 평점·리뷰 수나 작성자 정보는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주대학교 공식 캠퍼스맵은 아라캠퍼스의 주소를 제주시 제주대학로 102로 안내하고, 건물·공간 정보를 캠퍼스 단위로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주대학교의 아라캠퍼스 안내 자료는 아라캠퍼스를 다수의 대학 건물과 시설로 구성된 하나의 캠퍼스로 제시한다. 공개 안내에서 ‘연못’을 별도의 독립 관광·운영 시설로 소개한 근거는 확인되지 않았다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "연못 표식의 정확한 캠퍼스 내 위치와 현장 접근 조건",
+      "외부 방문객의 상시 출입 가능 여부 및 야간·악천후 안전 안내",
+      "연못을 독립 방문지로 운영하거나 관람 프로그램을 제공하는지 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주대학교",
+        "type": "official_campus_map",
+        "url": "https://www.jejunu.ac.kr/schoolinfo/campinfo/campusmap.htm",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "아라캠퍼스의 주소를 제주시 제주대학로 102로 안내한다.",
+          "캠퍼스의 건물·공간 정보를 제주대학교 캠퍼스 체계 안에서 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주대학교 입학안내",
+        "type": "official_campus_guide",
+        "url": "https://ibsi.jejunu.ac.kr/files/ibsi/content/202601/292b4b5cf9814befa0498b78b3153db9.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "아라캠퍼스 전체 배치도와 캠퍼스 내 대학 건물·시설 목록을 제공한다.",
+          "연못을 별도의 독립 관광·운영 시설로 소개하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1835134800",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 Kakao 장소명은 ‘제주대학교 아라캠퍼스 연못’이다.",
+          "평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주대학교 아라캠퍼스 내부의 연못 표식으로 확인되며 독립 관광지·운영 시설로서의 범위와 외부 방문 조건이 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 방문지로 취급하지 않는다. 향후 캠퍼스 공식 자료가 연못의 독립 운영·관람 목적과 방문 조건을 명시할 경우에만 적격성을 재검토한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

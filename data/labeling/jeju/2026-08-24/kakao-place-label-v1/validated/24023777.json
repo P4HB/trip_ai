@@ -1,0 +1,125 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24023777",
+  "place_id": "24023777",
+  "name": "민대가리동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.85,
+    "rationale": "학술 논문과 제주특별자치도산악연맹의 공개 기록은 민대가리동산을 한라산 고지대의 오름 및 산악 활동 경로상 지명으로 확인한다. 같은 Kakao 공개 지도 인벤토리에는 더 구체적인 명칭인 ‘한라산 민대가리동산(촛대봉)’(place_id 10838735)이 별도 레코드로 있어, 이 레코드는 동일 자연 지형을 가리키는 중복 후보로 판정한다.",
+    "duplicate_of": "kakao:10838735",
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "민대가리동산은 한라산의 높은 부분에 위치한 오름으로 언급되는 자연 지형이다.",
+    "typical_visit": "공개 산악 활동 기록상 장구목·동어리목골·용진각을 잇는 한라산 야외 산행 경로에서 경유하는 지점이다.",
+    "experience_scope": "공식 관광 운영 시설이나 독립 방문지로서의 최신 개방·접근·안전 정보를 확인하지 못했으며, 같은 자연 지형을 더 구체적으로 명시한 Kakao 레코드와 중복되므로 추천용 축 라벨을 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국환경복원기술학회 논문은 민대가리동산을 한라산에서 높은 부분에 위치한 오름 중 하나로 언급한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도산악연맹의 산악안전대 훈련 기록은 동어리목골-민대가리동산-용진각으로 이어지는 실제 한라산 활동 경로를 남긴다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "Kakao 공개 지도에는 ‘민대가리동산’과 ‘한라산 민대가리동산(촛대봉)’이 각각 등록되어 있으며, 후자는 동일 지형을 더 구체적으로 표기한다.",
+        "source_ids": [
+          "S3",
+          "S4"
+        ]
+      }
+    ],
+    "unknowns": [
+      "민대가리동산의 최신 개방 여부, 공식 탐방로, 출입 제한과 안전 통제를 확인하지 못했다.",
+      "주차, 화장실, 쉼터, 노면·경사·계단, 무장애 접근성 정보를 확인하지 못했다.",
+      "두 Kakao 레코드의 공급자 내부 병합 상태와 좌표 정확도는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국환경복원기술학회",
+        "type": "academic_journal_article",
+        "url": "https://jst.re.kr/upload/pdf/RC00012947.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "논문은 민대가리동산을 한라산의 높은 부분에 위치한 오름 중 하나로 언급한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도산악연맹",
+        "type": "public_association_activity_record",
+        "url": "https://jeju.kaf.or.kr/forum_03/552",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "2005년 산악안전대 훈련 기록에 동어리목골-민대가리동산-용진각 경로가 기재되어 있다.",
+          "기록은 해당 구간이 숲과 표식기를 따라 이동한 산악 활동 구간이었다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 정보",
+        "type": "public_map_metadata",
+        "url": "https://place.map.kakao.com/24023777",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 Kakao 장소 레코드의 명칭은 ‘민대가리동산’이다."
+        ]
+      },
+      {
+        "id": "S4",
+        "publisher": "Kakao Map 공개 장소 정보",
+        "type": "public_map_metadata",
+        "url": "https://place.map.kakao.com/10838735",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "같은 Kakao 공개 장소 인벤토리에 ‘한라산 민대가리동산(촛대봉)’ 레코드가 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_candidate",
+      "applies_to": "recommendation_catalog",
+      "condition": "민대가리동산은 같은 Kakao 인벤토리의 ‘한라산 민대가리동산(촛대봉)’(kakao:10838735)과 동일 한라산 오름 지형을 가리키는 것으로 판단되어 중복 노출 위험이 있다.",
+      "status": "needs_review",
+      "action": "추천 후보에서는 이 레코드를 제외하고 kakao:10838735의 신원·중복 판정 결과를 확인한 뒤 하나만 유지한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

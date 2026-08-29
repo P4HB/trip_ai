@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "23150902",
+  "canonical_id": "kakao:23150902",
+  "name": "아쿠아플라넷제주 사람쉼팡",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력명 자체가 ‘아쿠아플라넷제주 사람쉼팡’으로 상위 시설명을 포함한다. 아쿠아플라넷 제주 공식 이용안내는 관람시설 안의 푸드코트와 카페 1·2호점을 부대 이용시설로 열거한다. ‘사람쉼팡’의 현재 개별 운영명·메뉴는 공식 페이지에서 확인되지 않았지만, 상위 아쿠아리움에 부속된 식음 공간으로 판정하며 독립 여행지 벡터는 생성하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력의 장소명은 ‘아쿠아플라넷제주 사람쉼팡’이다. 공식 아쿠아플라넷 제주 이용안내에는 관람시설 내 푸드코트와 카페가 운영시설로 별도 열거된다. ‘사람쉼팡’이라는 명칭의 현재 개별 운영 정보는 확인하지 못했다.",
+    "typical_visit": "공식 안내상 아쿠아플라넷 제주 관람객은 시설 내 푸드코트·카페를 이용할 수 있다. 입력 장소는 이 상위 관람시설의 식음 부대공간으로 해석된다.",
+    "experience_scope": "이 결과는 독립 관광·체험 장소가 아니라 상위 아쿠아플라넷 제주에 종속된 부대시설로 분류한다. 따라서 장소 자체의 18개 원자 축, 동행 적합도와 월별 적합도는 생성하지 않는다. Kakao 평점·후기 수는 판단 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 명칭은 ‘아쿠아플라넷제주 사람쉼팡’으로 상위 시설명을 포함한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "아쿠아플라넷 제주 공식 이용안내는 시설 운영시간 표에 푸드코트와 카페 1·2호점을 열거하고, 현장 상황에 따라 운영 시간이 변동될 수 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "‘사람쉼팡’의 현재 상호, 정확한 층·위치, 메뉴와 독립 영업 여부는 공식 공개 페이지에서 확인하지 못했다.",
+      "해당 부대시설의 최신 운영시간, 휴무, 주문 조건 및 입장권 없이 이용 가능한지 여부는 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았으며, 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/23150902",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘아쿠아플라넷제주 사람쉼팡’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "아쿠아플라넷 제주",
+        "type": "official_business_site",
+        "url": "https://www.aquaplanet.co.kr/jeju/information/use_price.do",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "이용시간·요금안내의 시설 운영시간 표에는 푸드코트와 카페 1호점·2호점이 아쿠아플라넷 제주 내부 운영시설로 열거된다.",
+          "공식 안내는 현장 상황에 따라 운영 시간이 변동될 수 있다고 명시한다.",
+          "공식 페이지에서 ‘사람쉼팡’이라는 현재 개별 운영명은 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_current_operation_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 장소는 아쿠아플라넷 제주 상위 관람시설에 부속된 식음 공간으로 판정되며, ‘사람쉼팡’의 현재 상호·운영 여부와 독립 이용 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 않는다. 상위 아쿠아플라넷 제주 방문 중 식음 편의 정보가 필요하면 공식 최신 안내 또는 현장으로 현재 운영명, 시간과 이용 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

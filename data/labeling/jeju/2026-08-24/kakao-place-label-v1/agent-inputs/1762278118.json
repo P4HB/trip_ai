@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1159,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1762278118.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1762278118",
+    "provider": "kakao",
+    "place_id": "1762278118",
+    "name": "성산일출봉 정상전망대",
+    "url": "https://place.map.kakao.com/1762278118",
+    "average_rating_5": "4.5",
+    "visitor_review_count": "14",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.12.",
+      "content": "운동좀 하신분들은 15분 그렇지 않으면 20분 정도 잡으면 올라오는 곳 구름때문에 못봤는데 기분은 좋아요^-^",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.02.17.",
+      "content": "왕복 50분",
+      "tags": ""
+    },
+    {
+      "date": "2024.12.25.",
+      "content": "올라갈땐 힘들지만 정상에서 보면 뿌듯하다 (돈내야하는곳이에욤) 2024년,,",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2026.06.21.",
+      "content": "일출보러 왔는데 실패했네요😅 그래두 흐린날에 한라산이라도 보여서 좋았습니다🥲",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

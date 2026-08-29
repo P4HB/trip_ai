@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "12747496",
+  "canonical_id": "kakao:12747496",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 1,
+    "inference_level": "direct_evidence",
+    "rationale": "국가유산청이 골왓마을방사탑 1호를 제주시 이호2동의 민간신앙 유적건조물로 지정·공개하고 있어, 독립 방문 장소로 식별된다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-01", "ELIG-SCOPE-01"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 중심 경험을 확인할 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 인접성은 확인되지만, 이 탑 자체의 핵심 경험이 해양 활동 또는 해안 경관이라는 직접 근거가 부족하다.","source_ids":["S2"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"신체 활동이나 참여형 체험 프로그램을 확인할 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":1,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산청 분류가 유적건조물·종교신앙·민간신앙·마을신앙이며, 해당 방사탑은 제주 마을신앙 유산이다.","source_ids":["S1","S2"],"rule_ids":["THEME-CULTURE-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 경험 여부를 확인할 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 핵심 목적이라는 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험이라는 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 기간 행사나 축제가 장소의 핵심이라는 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공개된 설명은 밭담 위에 세운 현무암 돌탑이라는 야외 유적을 설명하므로 실내 비중이 낮을 것으로 추정된다.","source_ids":["S2"],"rule_ids":["ENV-OUTDOOR-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"야외에 세워진 돌탑을 현장에서 보는 경험이므로 날씨 노출 영향이 클 것으로 추정된다.","source_ids":["S2"],"rule_ids":["ENV-OUTDOOR-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온 체류의 수준을 직접 확인할 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"밭 경계의 유적이라는 설명만으로 실제 접근·보행 부담을 판단하기 어렵다.","source_ids":["S2"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"일반 방문자의 관람 시간 또는 체류 방식에 관한 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 대표 방문 가치인지 확인할 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":1,"confidence":1,"status":"confirmed","inference_level":"direct_evidence","rationale":"1호는 골왓마을 5기 중 가장 크고 제주 방사탑 가운데 유일한 3층 형태로 기록되어 있다.","source_ids":["S2"],"rule_ids":["STYLE-DISTINCTIVENESS-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":1,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 이호2동 골왓마을 주민이 마을의 안녕과 액막이를 위해 세운 마을신앙 유적이라는 기록이 있다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-EMBEDDEDNESS-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":1,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산청에 제주특별자치도 민속문화유산으로 지정·공개된 지역 문화유산이다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-HERITAGE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영이 대표 가치라는 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 형태별 실제 방문 적합성 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 형태별 실제 방문 적합성 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 형태별 실제 방문 적합성 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반 접근성·안전성의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 세대 동반 접근성·편의의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 여건의 직접 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "hard_constraints": [
+    {"constraint":"outdoor_weather_exposure","rationale":"야외 유적 관람으로 강수·강풍 등 날씨에 노출될 수 있다.","source_ids":["S2"],"rule_ids":["CONSTRAINT-OUTDOOR"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"source_id":"S1","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do%3Bjsessionid%3DhsQEHbREJDtdmloaB46zFvfixvw37tXhtlOlCdgWH4wr46soTEQqWQYIIbVuITyx.cpawas_servlet_engine1?ccbaAsno=0000080000300&ccbaBcode=06&ccbaCpno=2443900080300&ccbaCtcd=50&ccbaGcode=CA&ccbaKdcd=24&ccbaMcode=05&culPageNo=5&header=div&pageNo=4_3_1_0&returnUrl=%2Fheri%2Fcul%2FculSelectDivList.do&searchCondition=&searchCondition2=&sngl=Y","publisher":"국가유산청","checked_at":"2026-08-25","facts":["골왓마을방사탑 1호는 제주시 이호2동 소재의 유적건조물·종교신앙·민간신앙·마을신앙 문화유산이다.","지정일은 1995-08-26이다."]},
+      {"source_id":"S2","url":"https://aritok.com/bbs/board.php?bo_table=ency&wr_id=981","publisher":"아리톡 백과","checked_at":"2026-08-25","facts":["골왓마을에는 방사탑 5기가 있으며 1호는 북쪽 4기 중 가장 서쪽이다.","1호는 5기 중 가장 크고 제주 방사탑 가운데 유일한 3층 형태로 설명된다.","방사탑은 마을의 무사안녕을 기원하고 액을 막기 위해 세워졌다."]}
+    ]
+  }
+}

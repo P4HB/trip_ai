@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1463252680",
+  "canonical_id": "kakao:1463252680",
+  "name": "도련1동 4.3 희생자 위령제단",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 역사현장 안내가 도련일동의 독립된 4·3 희생자 위령공간과 찾아가는 방법을 제시하고, 제주4·3평화재단 일정에도 같은 위령제단에서의 위령제가 확인된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 안내는 마을 안의 4·3 위령공간을 설명하며 산·오름·산림 경관 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소는 도련일동의 위령공간이며 해안·해양 활동이나 경관은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추모와 역사 기억을 위한 제단·위령공간으로 확인되며 레포츠·참여형 체험 프로그램은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "도련1동 4·3 희생자를 위한 위령제단이며 제주4·3평화재단의 위령제 일정과 역사현장 안내에서 그 역사·추모 기능이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HISTORIC-MEMORIAL-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 추모 공간으로 소개될 뿐 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 정보는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사현장 안내의 위령공간이며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "매년 4월 위령제가 열리는 사실은 확인되지만, 제단 자체의 상시 핵심 경험이 축제·공연이라는 근거는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["THEME-EVENT-NOT-PRIMARY"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "역사현장 안내 사진과 설명은 야외 위령제단·표지석 및 위령공간을 보여주며 실내 관람 공간은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-MEMORIAL-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 방문 공간이 야외 제단이므로 비·바람·더위·추위가 방문에 영향을 줄 수 있다. 현장 대피시설과 기상 통제 기준은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "위령과 기억을 위한 작은 야외 공간임은 확인되지만, 휴식·느린 체류를 제공하는 장소로 공식 소개된 근거는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-MEMORIAL-CONTEMPLATION-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "주소와 진입 방향은 확인되지만 제단까지의 경사·계단·포장 및 무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "평상시 단독 방문의 체류시간·관람 동선 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 추모 대상과 위치를 설명하며 경관 감상이 핵심 방문 가치라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SCENERY-NOT-CONFIRMED"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "도련1동 4·3 희생자를 위한 특정 위령제단으로 역사현장 안내와 지역 위령제 일정에서 직접 식별된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SPECIFIC-MEMORIAL-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "도련1동 지역의 제주4·3 희생자 추모 공간이며 지역 유족회가 위령제를 주관하는 것으로 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "도련1동의 4·3 역사현장이라는 지역적 의미는 확인되나 제주 전체를 대표하는 지정 랜드마크라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장 사진은 공개되어 있으나 사진 촬영 또는 시각적 기록이 방문 핵심으로 권장된 근거는 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·접근 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 방문의 편의나 적합성을 뒷받침하는 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 인원·프로그램 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 보호자 동반 기준, 동선 난이도 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "1월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "3월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주4·3평화재단 일정은 도련1동 4·3희생자위령제가 매년 4월 2일 이 위령제단에서 열린다고 안내한다.", "source_ids": ["S2"], "rule_ids": ["MONTH-ANNUAL-MEMORIAL-DIRECT"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "5월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "6월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "7월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "8월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "9월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "10월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "11월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "12월의 개방·행사·계절 적합성 정보가 확인되지 않아 야외 위령공간의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "accessibility_and_opening_conditions_unknown", "applies_to": "all_visitors", "condition": "야외 위령공간의 현재 개방 여부, 진입로 상태, 경사·계단, 휠체어 접근성과 우천·강풍 시 안전 기준은 공개 자료에서 확인하지 못했다.", "status": "needs_review", "action": "방문 전 현장 최신 안내로 접근 가능 여부와 기상 조건을 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-25"},
+    {"kind": "annual_memorial_event_schedule_dynamic", "applies_to": "all_visitors", "condition": "4월 2일 위령제 개최 이력은 확인되지만 해마다 실제 일정·현장 운영·관람 가능 범위는 변동될 수 있다.", "status": "needs_review", "action": "4월 방문은 제주4·3평화재단 또는 주관 유족회의 최신 행사 안내를 확인한다.", "source_ids": ["S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주특별자치도 제주시 도련일동 1528-2에 위치한 도련1동 4·3 희생자 위령공간으로 공개 역사현장 자료에서 확인됐다.",
+    "facts": [
+      {"text": "제주다크투어 역사현장 안내는 도련1동 4·3희생자 위령비·위령제단을 제주4·3 역사현장으로 소개하고 주소와 찾아가는 방법을 제공한다.", "source_id": "S1"},
+      {"text": "제주4·3평화재단의 일정 자료는 도련1동 4·3 희생자 위령제가 4월 2일 도련1동 위령제단에서 열린다고 기록한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["평상시 개방 시간과 출입 가능 범위", "진입로·주차·화장실 및 무장애 접근성", "현재 연도의 위령제 세부 일정과 현장 운영"],
+    "sources": [
+      {"id": "S1", "publisher": "(사)제주다크투어", "type": "public_historical_site_information", "url": "https://www.jejudarktours.org/ko/historical-sites/%EB%8F%84%EB%A0%A81%EB%8F%99-43%ED%9D%AC%EC%83%9D%EC%9E%90-%EC%9C%84%EB%A0%B9%EB%B9%84/", "checked_at": "2026-08-25", "facts": ["도련1동 4·3희생자 위령제단의 주소와 찾아가는 방법을 제공한다.", "현장 표지석과 야외 위령제단 사진을 제공한다."]},
+      {"id": "S2", "publisher": "제주4·3평화재단", "type": "official_schedule", "url": "https://jeju43peace.or.kr/kor/schedule/list.do?search_month=04&search_year=2024", "checked_at": "2026-08-25", "facts": ["도련1동 4·3희생자위령제와 4·3위령제단 장소를 기록한다.", "지역 위령제의 4월 개최 맥락을 제공한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

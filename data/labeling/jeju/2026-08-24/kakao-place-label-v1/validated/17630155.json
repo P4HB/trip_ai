@@ -1,0 +1,613 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17630155",
+  "canonical_id": "kakao:17630155",
+  "name": "토이파크",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 관광 안내가 서귀포시 안덕면의 토이파크(현 북앤토이 뮤지엄)를 동일 장소로 소개한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장난감 전시는 확인되나 역사·문화 해설의 비중은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-EXHIBITION-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내는 장난감·인형 전시와 4D 영상, 정글짐, 실내외 놀이 체험을 소개한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-TOY-PARK-DIRECT"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "전시·4D 영상·정글짐·실내 체험실이 공식 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-INDOOR-ATTRACTION-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "세부 축별 현장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "촬영 권장 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행자별 편의·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행자별 편의·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행자별 편의·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행자별 편의·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행자별 편의·안전 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-INSUFFICIENT-EVIDENCE"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·계절 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-INDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "current_operations_unknown",
+      "applies_to": "all_visitors",
+      "condition": "현 운영·요금·예약·안전 기준은 변동 가능하다.",
+      "status": "needs_review",
+      "action": "방문 전 운영 주체의 최신 안내를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "공식 안내가 기존 제주 토이파크를 현 북앤토이 뮤지엄으로 표기한다.",
+    "facts": [
+      {
+        "text": "장난감·인형 전시와 4D 영상, 정글짐, 실내외 체험시설이 소개된다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "현재 운영 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c0e1c6d8-4772-4b75-85c2-bfc636bcb14c",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장난감 전시와 체험시설을 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

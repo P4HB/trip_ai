@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7813442",
+  "canonical_id": "kakao:7813442",
+  "name": "이어도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "이어도는 동중국해 중앙의 수면 아래 암초(소코트라 암초)이며, 일반 관광객이 방문할 수 있는 제주 육상 장소가 아니다. 해양과학기지는 연구·관측 시설이므로 제주 여행지 추천용 장소 벡터 대상에서 제외한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-OUT-OF-SCOPE-NONVISITABLE",
+      "ELIG-OUT-OF-SCOPE-REMOTE-SCIENCE-FACILITY"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "remote_submerged_reef_no_general_visitor_access",
+      "applies_to": "all_visitors",
+      "condition": "이어도는 제주에서 멀리 떨어진 수중 암초이며 해양과학기지는 연구·관측 목적 시설이다.",
+      "status": "confirmed",
+      "action": "일반 여행 일정 후보로 제시하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 전설의 섬 이름과 연결된 수중 암초 이어도를 가리키며, 일반인이 방문하는 제주 관광지가 아니다.",
+    "facts": [
+      {
+        "text": "한국해양과학기술원은 이어도2호의 명칭 설명에서 이어도를 동중국해 중앙의 해도상 소코트라 암초로 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "해양수산부는 이어도 해양과학기지가 해양·기상 관측 자료를 수집하는 연구 인프라라고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국해양과학기술원",
+        "type": "official_research_infrastructure",
+        "url": "https://kordi.re.kr/kor/sub04_04.do",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "이어도를 동중국해 중앙의 수중 암초로 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "해양수산부",
+        "type": "official_government_information",
+        "url": "https://ksgc.co.kr/press/156764154",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "이어도 해양과학기지의 관측 자료 수집 기능을 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

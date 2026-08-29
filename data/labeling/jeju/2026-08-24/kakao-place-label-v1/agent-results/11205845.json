@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11205845",
+  "place_id": "11205845",
+  "name": "현장이동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.7,
+    "rationale": "공개 지역 언론과 올레 답사 기록은 현장이동산을 저지리의 이름 붙은 동산·능선으로 확인하지만, 뒷동산과 일쳇동산을 잇는 능선 및 저지오름으로 향하는 올레 구간의 한 지점으로 설명한다. 독립 운영·관리되는 관광 방문지나 별도 탐방 경험이라는 근거는 확인하지 못했으므로, 제주올레 13코스·저지오름 접근 경험에 종속된 지형 표식으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "현장이동산은 Kakao 지도에 등록된 제주 한경면 저지리의 명칭 있는 동산이며, 공개 기록에서는 뒷동산·일쳇동산과 이어진 능선의 일부로 언급된다.",
+    "typical_visit": "독립된 방문 경험은 확인하지 못했으며, 제주올레 13코스에서 저지오름 방향으로 이어지는 야외 보행 중 통과하는 능선·지형 표식으로 파악된다.",
+    "experience_scope": "공개 자료는 명칭, 저지리 일원 위치 및 올레 능선상 관계만 확인한다. 별도 관리 주체·정식 탐방로·독립 출입 여부, 주차·화장실, 노면·경사·무장애 접근성, 기상 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 11205845의 장소명을 ‘현장이동산’으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주의소리는 뒷동산에서 일쳇동산까지가 한 능선이며, 현장이동산 능선을 다 오르면 저지오름 입구로 이어지는 내리막 올레라고 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "공개 제주올레 13코스 답사 기록은 현장이동산을 저지리 1425-1 일원으로 적고, 저지악(저지오름) 왼쪽에 있다고 설명한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "현장이동산 자체가 독립된 관광지·정식 탐방 대상으로 운영되는지 확인하지 못했다.",
+      "Kakao 표식과 공개 기록의 지점이 정확히 일치하는지 좌표 기반의 공식 자료로 확인하지 못했다.",
+      "현재 출입 가능 여부, 토지 소유·통행 권한, 접근로·노면·경사, 주차·화장실·무장애 시설 및 악천후 안전 통제는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/11205845",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 현장이동산으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주의소리",
+        "type": "regional_news_article",
+        "url": "https://www.jejusori.net/news/articleView.html?idxno=406759",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "뒷동산에서 일쳇동산까지는 한 능선으로 소개된다.",
+          "현장이동산 능선을 다 오르면 저지오름 입구로 이어지는 내리막 올레라고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주올레 13코스 공개 답사 기록",
+        "type": "public_trail_record",
+        "url": "https://sangmin-1.tistory.com/15969742",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "현장이동산은 저지리 1425-1 일원으로 기록된다.",
+          "기록은 현장이동산의 왼쪽에 저지악이 있다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "현장이동산은 올레 능선상의 지형 표식으로만 확인됐고, Kakao 표식의 정확한 위치, 독립 출입 허용·통행 권한 및 현재 야외 보행 안전 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 추천 또는 방문 안내 전에 제주올레·관할 지자체 또는 현장 최신 안내로 정확한 위치, 통행 가능 여부와 기상·보행 안전을 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

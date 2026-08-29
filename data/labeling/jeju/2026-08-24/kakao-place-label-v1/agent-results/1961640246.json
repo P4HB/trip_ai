@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1961640246",
+  "canonical_id": "kakao:1961640246",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "졸복산 전망대는 제주올레 18-2코스의 졸복산 구간에서 수덕도·청도와 하추자 앞바다를 조망하는 독립된 야외 전망 지점으로 공개 여행 자료에서 확인된다.",
+    "source_ids": ["src_visitkorea_18_2", "src_100mountain_18_2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 코스 소개가 졸복산을 오르내리는 구간으로 설명한다.","source_ids":["src_visitkorea_18_2"],"rule_ids":["PLACE-THEME-MOUNTAIN"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"전망대에서 수덕도·청도와 하추자 앞바다를 조망한다는 공개 여행 기록이 있다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-THEME-OCEAN"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주올레 18-2코스의 보행 구간에 있는 전망 지점이다.","source_ids":["src_visitkorea_18_2"],"rule_ids":["PLACE-THEME-ACTIVITY"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에 이 전망대의 역사·문화유산 경험 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-CULTURE-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에 테마파크형 시설 또는 체험 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-THEMEPARK-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에 카페·음료 이용이 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에 시장 경험 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에 기간성 축제·공연 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"산·앞바다 조망을 대표 경험으로 설명한 야외 전망 지점이다.","source_ids":["src_visitkorea_18_2","src_100mountain_18_2"],"rule_ids":["PLACE-ENVIRONMENT-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실내 대체 공간이 확인되지 않은 야외 산·해양 조망 경험이어서 기상 노출 영향을 받는 것으로 추정했다.","source_ids":["src_visitkorea_18_2","src_100mountain_18_2"],"rule_ids":["PLACE-WEATHER-OUTDOOR-HEURISTIC"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"조망을 위한 전망 지점이지만 올레 보행 구간에 있어 휴식 전용 시설 여부는 확인되지 않았다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-STYLE-REST"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 코스 기록에 전망대 전후 데크와 계단, 산중턱 사면길이 언급된다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-STYLE-WALKING-BURDEN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 체류 시간 또는 이용 방식의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"수덕도와 청도, 하추자 해안 절경을 바라보는 전망대로 소개된다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-STYLE-SCENIC"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"추자도 졸복산 아래에서 인근 무인도와 해안 풍광을 조망하는 지점이라는 구성이 확인된다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-STYLE-DISTINCTIVENESS"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"추자도 하추자 올레길과 졸복산·대왕산을 잇는 지역 자연 경관 안에 위치한다.","source_ids":["src_visitkorea_18_2"],"rule_ids":["PLACE-STYLE-LOCAL"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 자료는 코스의 주요 지명으로 졸복산을 제시하지만, 이 전망대 자체의 대표 명소 지위는 별도로 확인되지 않았다.","source_ids":["src_visitkorea_18_2"],"rule_ids":["PLACE-STYLE-LANDMARK"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"수덕도·청도와 해안 절경을 조망하는 전망 경험이 확인된다.","source_ids":["src_100mountain_18_2"],"rule_ids":["PLACE-STYLE-PHOTO"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"월별 방문 적합성의 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"transport_access","applies_to":"추자도 입도","condition":"전망대는 추자도 하추자 올레 18-2코스 구간에 있으므로 섬 접근 교통편과 운항 여부를 방문 전에 별도로 확인해야 한다.","status":"unknown","source_ids":["src_visitkorea_18_2"],"rule_ids":["GATE-CHUJA-ACCESS"]},
+    {"kind":"mobility","applies_to":"전망대 접근 보행","condition":"공개 코스 기록에 데크·계단과 산중턱 사면길이 언급되므로 보행·계단 부담을 고려해야 한다.","status":"confirmed","source_ids":["src_100mountain_18_2"],"rule_ids":["GATE-WALKING-STAIRS"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": "카카오 장소명 '졸복산 전망대'는 제주올레 18-2코스의 졸복산 아래 전망 지점으로 조사했다.",
+    "sources": [
+      {"id":"src_visitkorea_18_2","url":"https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=95a91686-3caa-48a9-87b8-6a5d82784436","publisher":"한국관광공사 대한민국 구석구석","checked_at":"2026-08-25","facts":["하추자 올레길은 신양항에서 졸복산과 대왕산을 오르내리는 제주올레 18-2코스이며 총 9.7km, 약 3~4시간으로 소개된다."]},
+      {"id":"src_100mountain_18_2","url":"https://www.100mountain.co.kr/2025/11/jejuolle-18-2-course.html","publisher":"100대명산","checked_at":"2026-08-25","facts":["졸복산 전망대에서 수덕도와 청도를 조망하는 것으로 기록되어 있다.","전망대 이후 대왕산으로 이어지는 길과 데크·계단이 기록되어 있다."]}
+    ],
+    "limitations": ["전망대 자체의 공식 운영·시설·무장애 정보와 월별 적합성 자료를 확인하지 못했다.","카카오 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]
+  }
+}

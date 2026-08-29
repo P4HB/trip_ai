@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8096189",
+  "canonical_id": "kakao:8096189",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "국가보훈부 현충시설정보서비스가 제주시 한경면 용수리의 충혼탑을 제주 4·3사건 및 6·25전쟁 전몰군경을 추모하는 탑형 현충시설로 명시한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PUBLIC-MEMORIAL-PLACE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 근거는 추모탑의 역사적 기능만 확인하며 산·오름 경관이 대표 경험이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"용수리 소재는 확인되지만 해안·해양 경험이 이 시설의 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"신체 활동이나 참여형 체험 프로그램의 공개 근거가 없다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 4·3사건과 6·25전쟁 기간 산화한 전몰군경을 추모하기 위해 세운 현충시설이라는 공식 설명이 있다.","source_ids":["S1"],"rule_ids":["AXIS-DIRECT-HISTORICAL-MEMORIAL"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 공개 근거가 없다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 방문 목적이라는 공개 근거가 없다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 기능 또는 상거래 방문 경험의 공개 근거가 없다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"매년 현충일 추모행사가 열리지만, 특정 축제가 장소의 핵심 경험이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["AXIS-ANNUAL-CEREMONY-NOT-FESTIVAL"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 분류가 탑이며 현충일 추모행사가 이곳에서 열리는 것으로 보아 대표 경험은 실외일 가능성이 높다.","source_ids":["S1"],"rule_ids":["AXIS-OUTDOOR-MEMORIAL-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"탑형 현충시설에서의 참배·관람은 실외 중심으로 추정되어 날씨 영향이 비교적 클 수 있다.","source_ids":["S1"],"rule_ids":["AXIS-OUTDOOR-MEMORIAL-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"평온한 체류를 제공하는지에 대한 직접적인 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 거리, 경사, 계단, 무장애 시설에 대한 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 관람시간이나 체류 방식에 대한 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 방문 가치라는 직접적인 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"한경면 출신 전몰군경과 제주 4·3 및 6·25의 기억을 기리는 개별 현충시설이나, 다른 장소 대비 고유성의 직접 비교 근거는 없다.","source_ids":["S1"],"rule_ids":["AXIS-PLACE-SPECIFIC-MEMORIAL"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"한경면 용수리에서 지역 출신 전몰군경을 추모하고 매년 현충일 행사를 실시하는 시설로 공식 설명된다.","source_ids":["S1"],"rule_ids":["AXIS-DIRECT-LOCAL-MEMORIAL"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"국가 현충시설정보서비스에 등재된 지역 추모시설이나 제주 전역을 대표하는 상징성의 직접 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["AXIS-REGISTERED-LOCAL-MEMORIAL"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치에 대한 직접적인 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["AXIS-FALLBACK-NEUTRAL"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["COMPANION-FALLBACK-NEUTRAL"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["COMPANION-FALLBACK-NEUTRAL"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동행 유형별 이용 적합성의 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["COMPANION-FALLBACK-NEUTRAL"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반 관람 편의나 교육 프로그램의 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["COMPANION-FALLBACK-NEUTRAL"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반 관람 편의와 접근성의 공개 근거가 부족하다.","source_ids":["S1"],"rule_ids":["COMPANION-FALLBACK-NEUTRAL"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 설명상 매년 현충일에 추모행사가 열리나, 일반 방문 적합도에 대한 세부 정보는 없다.","source_ids":["S1"],"rule_ids":["MONTH-MEMORIAL-DAY-EVENT"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사·기상 대응에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["MONTH-FALLBACK-NEUTRAL"]}
+  },
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": "제주특별자치도 제주시 한경면 용수리의 충혼탑",
+    "sources": [
+      {"source_id":"S1","url":"https://mfis.mpva.go.kr/memorial/mfisMovementList.do?pageIndex=161","publisher":"국가보훈부 현충시설정보서비스","checked_at":"2026-08-25","facts":["한경면 용수리의 탑형 현충시설이다.","제주 4·3사건 및 6·25전쟁 기간에 산화한 호국전몰군경을 추모하기 위해 건립됐다.","1968년 준공, 1994년 현 위치에 다시 건립됐으며 매년 현충일 추모행사가 실시된다."]},
+      {"source_id":"S2","url":"https://place.map.kakao.com/8096189","publisher":"카카오맵","checked_at":"2026-08-25","facts":["장소명은 충혼탑이며 주소 표기는 제주특별자치도 제주시 한경면 용수리다."]}
+    ],
+    "unknowns": ["공식 관람시간·휴관일·출입 조건", "무장애·주차·화장실 등 접근성", "월별 일반 방문 적합도", "사진·경관 가치"]
+  }
+}

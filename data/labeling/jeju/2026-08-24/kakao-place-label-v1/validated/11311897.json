@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11311897",
+  "canonical_id": "kakao:11311897",
+  "name": "당포연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "당포연대는 대정현 동부지역 방어 연대로 공공 학술자료에서 확인되지만, 입력에는 주소·좌표·현존 유적 표식이 없다. 동일 명칭의 현장 위치와 카카오 ID를 대조할 공공 지도 자료를 확보하지 못해 신원을 확정하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-NO-CANONICAL-LOCATION-MATCH"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "historical_site_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "유적의 정확한 위치·보존 상태·공개 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "제주도 문화유산 또는 지자체의 지정·좌표·방문 안내로 동일성을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "당포연대의 역사적 존재는 확인됐으나 입력에 위치 식별 정보가 없어 특정 현장으로 매칭하지 않았다.",
+    "facts": [
+      {
+        "text": "국립제주박물관 학술총서는 당포연대를 대정현 동부지역 연대 중 하나로 수록한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "국립중앙도서관 서지정보는 제주 방어시설 목록에 당포연대를 포함한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 장소 좌표",
+      "현존 유구·안내판·공개 방문 가능 여부",
+      "문화재 지정과 관리 주체"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국립제주박물관",
+        "type": "official_museum_research",
+        "url": "https://jeju.museum.go.kr/_prog/download.php?filedir=%2FUpl%2Fkr%2Fbook%2Ffile%2F&filename=book_file_0_1687763145.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "당포연대를 대정현 동부지역 연대로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국립중앙도서관",
+        "type": "official_bibliographic_information",
+        "url": "https://www.nl.go.kr/seoji/contents/S80100000000.do?isbn=9791192819037&schM=intgr_detail_view_isbn",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주 방어시설 목록에 당포연대를 포함한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

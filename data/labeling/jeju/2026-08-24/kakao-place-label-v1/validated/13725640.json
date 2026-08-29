@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725640",
+  "place_id": "13725640",
+  "name": "알뜨르비행장길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명은 알뜨르비행장으로 향하거나 그 주변을 지나는 도로 구간을 뜻한다. 한국관광공사가 독립 여행지로 소개하는 대상은 알뜨르비행장 및 일본군 비행기 격납고 유적이며, 이 레코드는 그 유적의 별도 관람 대상이 아닌 접근·통과 도로 표기다. 동일한 역사 유적 경험을 중복 추천하지 않도록 부속 접근 시설로 판정한다.",
+    "duplicate_of": "kakao:25047260",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 장소명은 ‘알뜨르비행장길’이다. 이 명칭은 알뜨르비행장 역사 유적과 연관된 도로 표기이나, 독립적인 유적·관람 시설이라는 공식 근거는 확인되지 않았다.",
+    "typical_visit": "확인된 방문 대상은 넓은 들판의 알뜨르비행장 및 일본군 비행기 격납고 역사 유적이며, ‘알뜨르비행장길’은 그 주변 접근·통과 동선이다.",
+    "experience_scope": "입력 패킷의 비식별 공개 후기는 길에서 보는 풍경과 역사적 인상을 언급하지만, 일반 도로 구간은 알뜨르비행장 유적과 분리된 추천 경험으로 사용하지 않는다. 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 지도 장소 페이지는 place_id 13725640의 이름을 ‘알뜨르비행장길’로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사는 알뜨르비행장 및 일본군 비행기 격납고를 넓은 들판의 근현대사 유적과 독립 관광 대상으로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "알뜨르비행장길의 공식 도로 구간 시작·종점과 관리 주체",
+      "도로 자체의 보행·자전거 허용 범위와 안전·정차 조건",
+      "도로 표기와 각 개별 문화유산의 정확한 경계"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13725640",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "장소명을 알뜨르비행장길로 표시한다.",
+          "입력 패킷에는 비식별 공개 후기만 있으며 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c2f9d559-16ab-4de6-82a2-cae9db7a2caf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "알뜨르비행장 및 일본군 비행기 격납고를 근현대사 유적과 독립 관광 대상으로 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_road_not_separate_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "알뜨르비행장길은 독립 관람 시설이 아니라 알뜨르비행장 역사 유적 주변의 접근·통과 도로 표기임",
+      "status": "confirmed",
+      "action": "알뜨르비행장 유적 방문 시의 접근 동선으로만 사용하고, 별도 추천 후보·41축 벡터에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

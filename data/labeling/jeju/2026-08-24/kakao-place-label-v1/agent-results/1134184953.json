@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1134184953",
+  "place_id": "1134184953",
+  "name": "애월카페거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "입력 장소명과 공개 지도 후기의 해안 전망 언급은 애월 해안 카페 밀집 구간이라는 독립적인 방문 대상을 가리킨다. 제주관광공사 공식 관광정보의 애월해안도로 안내도 같은 지역의 해안 경관·보행 구간과 주변 카페를 확인한다. 특정 개별 카페의 부속 시설이나 중복 장소라는 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "애월카페거리는 제주시 애월읍 애월해안로 일대의 바다 경관과 카페 이용을 함께 경험하는 해안 방문 구간으로 파악된다.",
+    "typical_visit": "해안도로의 바다·일몰 경관을 보며 도보 또는 차량으로 둘러보고, 주변 카페를 이용하는 야외 중심 방문이다.",
+    "experience_scope": "공식 출처는 애월해안도로의 해안 경관, 보행·자전거 구간, 주변 카페를 확인한다. 카페거리의 정확한 경계, 개별 점포의 영업·가격, 주차 여건, 보행 구간의 무장애 수준과 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 애월해안도로가 하귀리에서 애월리까지 이어지는 약 9km 해안 드라이브 코스이며, 도로를 따라 자전거길과 보행 구간이 있고 주변에 음식점과 카페가 많다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력에 포함된 공개 Kakao 방문 후기는 애월카페거리에서 바다 전망과 날씨에 따라 달라지는 뷰를 언급한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["카페거리의 공식 경계와 개별 카페의 최신 영업·휴무·가격은 확인하지 못했다.", "주차 혼잡도, 보행 구간의 경사·노면, 화장실 및 무장애 시설은 확인하지 못했다.", "월별 행사·운영 제한 또는 악천후 시 현장 통제 기준은 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500425", "checked_at": "2026-08-24", "facts": ["애월해안도로는 제주시 애월읍 애월해안로의 해안 드라이브 코스다.", "자전거길과 보행 구간이 있으며 주변에 음식점과 카페가 많다.", "바다 경관과 일몰을 안내한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/1134184953", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 바다 전망, 풍경, 날씨에 따른 뷰 변화를 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "theme.ocean": {"value": 0.75, "confidence": 0.8, "state": "numeric", "inference_level": "direct_evidence", "rationale": "공식 안내가 애월해안도로의 제주 바다 경관과 해안선을 직접 설명하고, 입력 후기에도 바다 전망이 확인되어 해양·해안 경관이 핵심 경험으로 판단된다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"], "status": "confirmed"},
+    "theme.activity": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "레포츠나 참여형 체험이 장소의 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "theme.cafe": {"value": 0.75, "confidence": 0.7, "state": "numeric", "inference_level": "researched_inference", "rationale": "장소명은 카페거리이며 공식 안내도 이 해안도로 주변에 카페가 많다고 설명한다. 다만 공식 출처가 카페거리 자체의 경계나 점포 구성을 규정하지 않아 0.75로 제한한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "needs_review"},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "특정 기간 축제·공연·행사가 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.6, "state": "numeric", "inference_level": "researched_inference", "rationale": "대표 대상은 해안도로의 바다 경관과 보행 구간으로 공식 안내되어 야외 비중이 높다고 추론한다. 개별 카페 실내 이용 비중은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "needs_review"},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.65, "state": "numeric", "inference_level": "researched_inference", "rationale": "바다 경관 감상과 해안 보행이 대표 경험이므로 비·바람·더위 등 날씨 영향이 비교적 클 것으로 추론한다. 현장 통제 기준은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "needs_review"},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "휴식시설·혼잡도·소음 수준이 확인되지 않아 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "보행 구간은 확인되지만 경사·노면·무장애 정보가 없어 이용 부담을 중립값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.65, "state": "numeric", "inference_level": "researched_inference", "rationale": "공식 안내가 도보·자전거·자동차로 즐길 수 있는 해안도로라고 설명해 짧은 조망부터 이동을 포함한 체류까지 조절 가능성이 높다고 추론한다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "needs_review"},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.8, "state": "numeric", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 빼어난 제주 바다 풍경과 일몰을 직접 소개하고, 입력 후기도 풍경·바다 전망을 언급한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"], "status": "confirmed"},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "다른 제주 해안 방문지와 비교한 고유성 근거가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "제주 해안이라는 위치는 확인되지만 지역 생산자·생활·문화와의 직접 연결 근거가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "제주 또는 애월을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "경관은 확인되지만 사진 촬영 또는 시각 기록이 직접적인 방문 가치라는 근거가 부족해 중립값이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 안전·동선·혼잡 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "동반 체류의 구체적 환경과 혼잡 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "소규모 동행 이용 조건과 체류 공간 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "어린이 동반에 필요한 도로 인접성·노면·안전시설 정보가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "archetype_prior", "rationale": "경사·쉼터·무장애 접근성 정보가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"}
+  },
+  "month_fit": {
+    "1": {"value": 0.25, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "해안 야외 방문은 겨울 기상의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "2": {"value": 0.25, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "해안 야외 방문은 겨울 기상의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "7": {"value": 0.25, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "해안 야외 방문은 여름 더위·강수의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "8": {"value": 0.25, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "해안 야외 방문은 여름 더위·강수의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사 정보가 없어 일반 야외 방문 기후 휴리스틱의 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"},
+    "12": {"value": 0.25, "confidence": 0.25, "state": "numeric", "inference_level": "climate_heuristic", "rationale": "해안 야외 방문은 겨울 기상의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"], "status": "fallback"}
+  },
+  "hard_constraints": [
+    {"kind": "access_and_safety_unknown", "applies_to": "all_visitors", "condition": "카페거리의 공식 경계, 개별 점포의 최신 운영, 주차·보행 노면·무장애 시설, 악천후 안전 통제는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 개별 점포와 현장·지자체 최신 안내로 영업 여부, 주차, 해안 보행 및 기상 안전을 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

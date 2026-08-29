@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726585",
+  "place_id": "25726585",
+  "name": "부록천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "공개 하천대장 자료는 부록천을 제주시 용강에서 화북으로 이어지는 지방하천 체계의 ‘화북천’ 하위 하천으로 수록한다. 입력에는 해당 하천의 독립 관광·탐방지 또는 방문시설을 식별하는 정보가 없으므로, 현재 추천 후보군에서는 독립 방문지로 벡터화하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-RECORD",
+      "ELIG-INDEPENDENT-VISIT-NOT-CONFIRMED"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 부록천은 제주 제주시의 지방하천 자료에 화북천 계통 하천으로 수록된다.",
+    "typical_visit": "공식 관광·공공 안내에서 단독 관람·체험 목적지로 확인된 경험이 없다.",
+    "experience_scope": "하천 체계의 세부 지형 표식으로 판정하여 이 레코드에는 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국하천일람은 부록천을 제주 제주시 용강 산14-4번지선에서 화북으로 이어지는 지방하천으로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국토교통부 건설기술정보시스템의 제주 지방하천 자료는 부록천을 화북천 계통으로 수록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "카카오 표식의 정확한 하천 구간",
+      "공개 탐방로·공식 방문 시설·관리 주체",
+      "현장 접근 및 우천 시 안전·통제 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회",
+        "type": "public_river_registry",
+        "url": "https://www.riverlove.or.kr/files/riverData/69269ede35a2f6790c4624667d113157.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "부록천을 제주 제주시의 지방하천으로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국토교통부 건설기술정보시스템",
+        "type": "public_infrastructure_information",
+        "url": "https://www.codil.or.kr/filebank/original/EC/OTKCEC200509/OTKCEC200509.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "부록천을 화북천 계통 하천으로 수록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_waterway_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "부록천은 화북천 계통의 세부 하천이며 독립 방문 경험·접근 정보가 확인되지 않음",
+      "status": "needs_review",
+      "action": "공식 탐방지 또는 별도 관리 방문시설로 확인되기 전까지 독립 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

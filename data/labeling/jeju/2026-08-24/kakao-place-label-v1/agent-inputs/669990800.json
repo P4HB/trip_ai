@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1937,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/669990800.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:669990800",
+    "provider": "kakao",
+    "place_id": "669990800",
+    "name": "서광리벚꽃길",
+    "url": "https://place.map.kakao.com/669990800",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "3",
+    "blog_review_count": "5",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.04.05.",
+      "content": "1. 큰 벚꽃과 동백꽃의 조화~ 최고!!🌸 2. 주차는 벚꽃길 입구 차단기 앞까지 주차 가능한 듯요~ 저는 큰 길 갓길 주차했습니다! 3. 새소리도 너무 아름다웠던 곳🐦",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2026.04.01.",
+      "content": "초입에 주차하고 걸어들어 갔어요, 차단기 지나 차없이 벚꽃과 동백을 함께 볼 수 있어요.",
+      "tags": "뷰|주차"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

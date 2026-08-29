@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17556442",
+  "place_id": "17556442",
+  "name": "제주돌문화공원 훈장묘",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "Kakao 장소명은 ‘제주돌문화공원 훈장묘’로 상위 공원에 귀속된 지점을 가리킨다. 공공·관광 안내는 제주돌문화공원을 박물관·생태공원 및 다수의 전시·시설을 포함하는 단일 관광지로 설명하지만, ‘훈장묘’의 독립 운영 또는 별도 방문 경험은 확인하지 못했다. 따라서 독립 추천 후보가 아닌 공원 내부의 하위 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "‘제주돌문화공원 훈장묘’는 Kakao 장소명상 제주돌문화공원에 귀속된 묘역·지점으로 보인다.",
+    "typical_visit": "공개 관광 안내상 방문자는 제주돌문화공원을 하나의 박물관·생태공원 관광지로 관람한다.",
+    "experience_scope": "훈장묘 자체의 별도 입장, 운영, 독립 관람 코스, 접근성 또는 고유 방문 경험은 공개 출처에서 확인하지 못했다. 독립 추천 후보용 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 장소 레코드는 이 지점의 이름을 ‘제주돌문화공원 훈장묘’로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 제주돌문화공원을 제주 돌문화를 보여 주는 박물관이자 생태공원으로, 석조 전시와 설문대할망·오백장군 테마를 포함한 공원으로 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "훈장묘가 가리키는 정확한 묘역의 대상, 위치 및 역사적 설명은 확인하지 못했다.",
+      "훈장묘의 별도 입장, 운영시간, 요금, 접근성 또는 독립 방문 조건은 확인하지 못했다.",
+      "제주돌문화공원의 최신 운영 조건과 현장 동선은 이 결과에서 확정하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "place_record",
+        "url": "https://place.map.kakao.com/17556442",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소 레코드의 표기명은 ‘제주돌문화공원 훈장묘’이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원은 제주 돌문화를 보여 주는 박물관이자 생태공원으로 안내된다.",
+          "공원은 제주 석조 전시와 설문대할망·오백장군을 테마로 한 관광지로 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_site_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소명은 제주돌문화공원에 귀속된 훈장묘 지점을 뜻하며, 해당 지점의 별도 운영 또는 독립 방문 경험은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 후보에서는 이 레코드를 독립 장소로 사용하지 않고, 필요하면 상위 장소인 제주돌문화공원의 별도 검수 결과를 사용한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

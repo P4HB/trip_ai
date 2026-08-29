@@ -1,0 +1,84 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:266096178",
+  "place_id": "266096178",
+  "name": "휘닉스아일랜드 섭지 광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "휘닉스 아일랜드 공식 페이지는 ‘섭지 광장’을 리조트의 ‘부대 시설’로 분류하고 B동 1층에 위치한다고 안내한다. 같은 안내에서 광장 안의 BBQ 빌리지·해랑·키즈 플레이 라운지·분수대/공연장을 별도 구역으로 제시한다. 따라서 이 Kakao 레코드는 독립 여행 목적지라기보다 휘닉스 아일랜드 리조트 방문 중 이용하는 종속 공용 공간으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 장소명 ‘휘닉스아일랜드 섭지 광장’은 휘닉스 아일랜드 공식 웹사이트의 ‘섭지 광장’ 부대 시설과 명칭 및 리조트 소속이 일치한다.",
+    "typical_visit": "휘닉스 아일랜드 리조트 내 공용 광장으로, 음식·음료, 분수대 및 저녁 공연 등을 리조트 체류 중 이용하는 공간으로 안내된다.",
+    "experience_scope": "광장 자체는 리조트 부대 시설이며 그 안의 식음·키즈·분수·공연 구역은 별도 시설 또는 계절·시간대별 프로그램으로 운영될 수 있다. 독립 추천 후보용 적합도 벡터는 생성하지 않는다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "휘닉스 아일랜드 공식 페이지는 섭지 광장을 ‘부대 시설’로 분류하고 위치를 B동 1층으로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공식 페이지는 섭지 광장 구역으로 BBQ 빌리지, 해랑, 키즈 플레이 라운지, 분수대/공연장을 별도로 열거하며, 분수대와 저녁 공연을 광장 내 이용 요소로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "광장 및 각 하위 구역의 최신 개방 여부, 이용 대상, 요금, 공연·분수 운영일과 시간은 별도 확인이 필요하다.",
+      "비투숙객의 이용 가능 범위와 주차·무장애 접근성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "휘닉스 아일랜드",
+        "type": "official_facility_page",
+        "url": "https://phoenixhnr.co.kr/static/jeju/experience/leports/seopji-plaza",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "섭지 광장은 휘닉스 아일랜드의 ‘부대 시설’로 분류되어 있다.",
+          "위치는 B동 1층으로 안내되어 있다.",
+          "Seopji Plaza Zone에는 BBQ 빌리지, 해랑, 키즈 플레이 라운지, 분수대/공연장이 열거되어 있다.",
+          "분수대와 저녁 공연은 광장에서 이용하는 요소로 소개되어 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "휘닉스 아일랜드 B동 1층의 부대 시설이며, 광장 내 식음·키즈·분수·공연 구역은 별도 시설 또는 프로그램으로 구성됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보와 41축 적합도 산정에서 제외한다. 휘닉스 아일랜드 숙박 또는 리조트 방문을 추천할 때에만 현장 공용 공간으로 보조 표시하고, 각 구역의 최신 운영·이용 조건은 공식 페이지에서 별도 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

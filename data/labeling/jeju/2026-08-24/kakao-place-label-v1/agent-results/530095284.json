@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "530095284",
+  "canonical_id": "kakao:530095284",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "한라산국립공원의 성판악 탐방로 기점으로 확인되며, 탐방 자체가 가능한 독립 방문 경험이다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-01", "ELIG-INDEPENDENT-01"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 예약 시스템과 관광공사 자료가 성판악을 한라산 탐방로로 명시한다.","source_ids":["S1","S2"],"rule_ids":["THEME-MOUNTAIN-DIRECT"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 공식 자료에 해안·해양 경험 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"성판악은 백록담 정상까지 이어지는 탐방로이며 등산·보행 활동이 방문의 핵심이다.","source_ids":["S1","S2"],"rule_ids":["THEME-ACTIVITY-DIRECT"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에서 역사·전시·전통 체험이 핵심 방문 경험이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에서 놀이·동물·수족관 등 테마파크형 경험 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에서 카페·음료 이용이 독립 방문 목적이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에서 시장 방문 경험 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에서 특정 기간 행사·축제가 핵심이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 자료가 성판악을 산 정상으로 이어지는 탐방로로 설명하므로 대표 경험은 실외 보행으로 판단했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-TRAIL-INFERENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실외 장거리 산행이고 공식 시스템이 실시간 탐방로 정보를 제공하므로 날씨 영향이 큰 것으로 판단했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-ACTIVITY-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"숲과 계절 자연을 관찰하는 산행이지만 정상까지 이어지는 장거리 탐방로여서 중간값으로 판단했다.","source_ids":["S2"],"rule_ids":["STYLE-NATURE-TRAIL-INFERENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"정상까지 이어지는 9.6km 탐방로라는 공개 설명을 근거로 신체 부담이 낮지는 않다고 판단했다.","source_ids":["S2"],"rule_ids":["STYLE-LONG-TRAIL-INFERENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"정상 목적 탐방은 긴 시간이 필요하지만 탐방로 기점 방문과 자연 관찰에는 일부 체류 조절 여지가 있어 중간값으로 판단했다.","source_ids":["S2"],"rule_ids":["STYLE-TRAIL-DURATION-INFERENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 자료가 울창한 활엽수와 봄철 철쭉으로 특징을 설명하며, 산 자연 경관 감상이 직접 확인된다.","source_ids":["S2"],"rule_ids":["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"성판악은 동쪽에서 백록담 정상까지 닿는 탐방로로 소개되어 고유한 정상 탐방 경험이 확인된다.","source_ids":["S2"],"rule_ids":["STYLE-SUMMIT-ROUTE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"한라산국립공원은 제주 한라산의 자연보호와 탐방 안전을 목적으로 운영되며, 장소의 제주 자연환경 연결성이 직접 확인된다.","source_ids":["S1","S3"],"rule_ids":["STYLE-JEJU-NATURE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 자료가 한라산을 대한민국 최고 높이의 산으로 소개하고 성판악을 정상 접근 탐방로로 명시한다.","source_ids":["S2"],"rule_ids":["STYLE-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 자료의 숲·철쭉 등 경관 설명을 근거로 시각적 기록 가치는 중간 수준으로 판단했다.","source_ids":["S2"],"rule_ids":["STYLE-SCENERY-PHOTO-INFERENCE"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"예약·탐방 안내가 개인 단위 탐방을 지원하나 장거리 산행 준비가 필요하다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-HIKING-INFERENCE"]},
+    "couple": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"2인이 함께할 수 있는 일반 탐방로이나 장거리 산행 준비가 필요하다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-HIKING-INFERENCE"]},
+    "friends": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"여러 인원이 예약해 함께 탐방할 수 있으나 장거리 산행 적합성은 구성원 체력에 좌우된다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-HIKING-INFERENCE"]},
+    "kids": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"정상까지 이어지는 9.6km 탐방로이므로 일반적인 어린이 동반에는 부담이 클 수 있다.","source_ids":["S2"],"rule_ids":["COMPANION-LONG-TRAIL-INFERENCE"]},
+    "parents": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"장거리 정상 탐방로 특성상 부모 동반 적합성은 체력과 이동 능력에 크게 좌우된다.","source_ids":["S2"],"rule_ids":["COMPANION-LONG-TRAIL-INFERENCE"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"고지대 장거리 실외 산행의 한겨울 조건을 고려한 보수적 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-HIGH-ELEVATION-CLIMATE"]},
+    "2": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"고지대 장거리 실외 산행의 늦겨울 조건을 고려한 보수적 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-HIGH-ELEVATION-CLIMATE"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 산행의 초봄 변동성을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 산행의 봄철 변동성을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "5": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 자료가 봄철 철쭉이 산비탈을 물들인다고 설명한다.","source_ids":["S2"],"rule_ids":["MONTH-SPRING-FLOWER-DIRECT"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 장거리 산행의 초여름 조건을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 장거리 산행의 한여름 더위와 기상 변동을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 장거리 산행의 한여름 더위와 기상 변동을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 산행의 초가을 변동성을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "10": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 자료가 가을부터 시작하는 선명한 단풍을 한라산 탐방의 특징으로 설명한다.","source_ids":["S2"],"rule_ids":["MONTH-AUTUMN-FOLIAGE-DIRECT"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실외 산행의 늦가을 변동성을 고려한 중간 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-CLIMATE"]},
+    "12": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"고지대 장거리 실외 산행의 초겨울 조건을 고려한 보수적 계절 추정이다.","source_ids":["S1"],"rule_ids":["MONTH-HIGH-ELEVATION-CLIMATE"]}
+  },
+  "hard_constraints": [
+    {"constraint":"reservation_required_for_summit_section","status":"confirmed","rationale":"한라산국립공원은 자연보호와 탐방객 안전을 위해 탐방예약제를 운영한다.","source_ids":["S1","S3"],"rule_ids":["CONSTRAINT-RESERVATION"]},
+    {"constraint":"check_current_trail_status_and_entry_hours","status":"confirmed","rationale":"공식 예약 시스템은 실시간 탐방로 정보와 운영 상태를 제공하며, 관광공사도 탐방 전 운영시간 확인을 안내한다.","source_ids":["S1","S2"],"rule_ids":["CONSTRAINT-DYNAMIC-TRAIL-STATUS"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"source_id":"S1","url":"https://visithalla.jeju.go.kr/main/main.do?language=en","publisher":"Jeju Provincial Office Hallasan National Park","checked_at":"2026-08-25","facts":["The official system lists Seongpanak as a Hallasan trail and provides real-time trail information and reservation functions.","Trail operating status is dynamic."]},
+      {"source_id":"S2","url":"https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=90434","publisher":"Korea Tourism Organization (VISITKOREA)","checked_at":"2026-08-25","facts":["Seongpanak Trail on the east reaches Baekrokdam summit.","The trail is described as long and gently sloping, with broadleaf trees and spring azaleas.","Visitors should start early and check official operating hours."]},
+      {"source_id":"S3","url":"https://www.visitjeju.net/en/detail/view?contentsid=CONT_000000000500685&menuId=DOM_000001917001000000","publisher":"Jeju Tourism Organization (Visit Jeju)","checked_at":"2026-08-25","facts":["Hallasan National Park operates a trail reservation system to protect the UNESCO World Natural Heritage environment and visitor safety.","Seongpanak is one of the official Hallasan trails."]}
+    ]
+  }
+}

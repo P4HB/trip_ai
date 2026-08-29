@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12706242",
+  "place_id": "12706242",
+  "name": "창천지석묘 1호",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.65,
+    "rationale": "국가유산포털은 창천지석묘 1호를 안덕면 창천리 966-1번지의 제주특별자치도 기념물로 등록한다. 그러나 입력 Kakao 레코드에는 주소·좌표가 없어 이 표식이 정확한 지정 지석묘, 인근 지석묘군 또는 별도 안내 지점을 가리키는지 교차 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "공식 국가유산은 창천지석묘 1호를 안덕면 창천리의 제주특별자치도 기념물로 등록하지만 Kakao 표식의 정확한 범위는 미확정이다.",
+    "typical_visit": "공식 후보는 야외 선사 지석묘 문화유산 관람이다.",
+    "experience_scope": "정확한 표식·안내·출입 범위가 불확실해 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가유산포털은 창천지석묘 1호를 서귀포시 안덕면 창천리 966-1번지의 제주특별자치도 기념물로 등록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표와 지정 유산 경계",
+      "현장 안내·접근·주차·무장애 정보",
+      "보존·출입·안전 제한"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가유산포털",
+        "type": "official_heritage_registry",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=23%2C00022400%2C50&pageNo=5_1_1_0",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "창천지석묘 1호의 지정·주소를 등록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/12706242",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 레코드에는 주소·좌표·업종이 제공되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "heritage_marker_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 표식의 정확한 지석묘·안내 지점·보존 경계를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "국가유산 좌표·현장 표지로 정확한 위치와 출입·보존 안내를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

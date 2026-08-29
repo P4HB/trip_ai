@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8057914",
+  "place_id": "8057914",
+  "name": "자랑못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.7,"rationale":"입력 Kakao 장소명 ‘자랑못’은 소길리 마을의 공개 탐방 자료가 ‘자랑·자랑못’ 또는 ‘좌랑못’으로 병기한 좌랑못과 일치한다. 해당 자료와 제주 습지 기본현황은 이를 애월읍의 독립된 소규모 못으로 기록한다. Kakao 핀의 좌표는 입력에 없지만, 명칭 별칭과 장소 성격을 교차 확인했으며 다른 시설의 부속물이라는 근거가 없어 독립 방문 후보로 보수적으로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"자랑못은 ‘좌랑못’·‘좌정못’으로도 불리는 제주시 애월읍의 소규모 못이다.",
+    "typical_visit":"마을 길·농경지 주변의 작은 못과 제주 마을의 옛 물 이용 흔적을 짧게 살피는 야외 자연·생활문화 방문으로 파악된다.",
+    "experience_scope":"공개 자료는 명칭 별칭, 옛 식수·우마 이용과 습지의 위치·주변 환경을 확인한다. 최신 개방·관리 상태, 현장 표지, 접근로·주차·화장실, 수변 안전과 무장애성은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"소길리 마을 탐방 자료는 좌랑못을 ‘자랑·자랑못’ 또는 ‘좌랑못’으로 부르며, 주변 묘비에 者浪池(자랑지)로 표기된다고 안내한다. 작은 못은 식수, 큰 못은 우마 이용에 쓰였다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"람사르 정보시스템에 공개된 제주 습지 기본현황 표는 ‘좌정못(자랑못, 좌랑못)’을 제주시 애월읍 유수암리 3137의 면적 285㎡ 습지로 수록하고 주변 환경을 도로·농경지로 기록한다.","source_ids":["S2"]}
+    ],
+    "unknowns":["입력 Kakao 레코드에는 주소·좌표·업종·공개 방문 후기가 없어 Kakao 핀의 정확한 위치를 직접 대조하지 못했다.","현재 수량·수질, 개방·출입 범위, 현장 정비 상태, 사유지 여부, 주차·화장실 및 무장애 접근성은 확인하지 못했다.","수변 난간 등 어린이 안전시설, 야간 조명, 악천후 시 보행 위험과 계절별 경관 상태는 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"풋감마을 소길리","type":"official_community_site","url":"https://sogil.co.kr/story1","checked_at":"2026-08-24T00:00:00+09:00","facts":["좌랑못은 ‘자랑·자랑못’ 또는 ‘좌랑못’으로 불린다.","주변 묘비에는 者浪池(자랑지)로 표기되어 있다.","작은 못은 식수, 큰 못은 우마 이용에 쓰였다고 안내한다."]},
+      {"id":"S2","publisher":"Ramsar Sites Information Service","type":"public_environment_report","url":"https://rsis.ramsar.org/RISapp/files/28411793/documents/KR1648_mgt1605.pdf","checked_at":"2026-08-24T00:00:00+09:00","facts":["제주 습지 기본현황 표는 좌정못(자랑못, 좌랑못)을 제주시 애월읍 유수암리 3137로 기록한다.","표는 면적 285㎡, 주변 환경을 도로·농경지로 기록한다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8057914","checked_at":"2026-08-24T00:00:00+09:00","facts":["입력 패킷의 Kakao 장소명은 ‘자랑못’이며 place_id는 8057914이다.","입력 패킷에는 주소·좌표·업종·공개 방문 후기가 제공되지 않는다.","평점과 후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"참여형 체험·레포츠 또는 정비된 걷기 활동이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"마을 공식 자료가 자랑못의 명칭과 주민 식수·우마 이용을 직접 설명해 제주 마을 생활문화·역사 흔적이 방문 의미의 근거가 된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트가 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"못과 도로·농경지 주변이라는 공개 기록을 근거로 대표 방문은 야외일 것으로 추론한다. 실내 부대공간은 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 못과 주변을 살피는 방문으로 파악되어 비·바람·더위 등 날씨 영향을 비교적 크게 받을 것으로 추론한다. 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"쉼터·소음·혼잡도와 실제 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"도로 인접 정보만으로는 노면·경사·계단·무장애 접근성을 판단할 수 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"짧은 관찰과 장기 체류 모두에 대한 공식 소요시간·시설 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"못과 주변 농경지의 존재는 확인되지만 경관 감상 자체가 방문 가치라고 직접 설명한 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"명칭과 옛 물 이용은 확인되지만 다른 제주 마을 못과 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"소길리 마을 공식 자료가 자랑못을 지역의 명칭·물 이용·우마 생활과 연결된 못으로 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 공적 지정·관광 안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 안내된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·체류 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 수변 안전·난간·노면·시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 못 방문의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공개 자료는 자랑못의 별칭·옛 이용과 도로·농경지 주변 환경만 확인한다. 최신 개방·관리 상태, 수변 안전, 노면·경사, 주차·화장실, 무장애 시설, 사유지 여부와 악천후 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 소길리 마을 또는 현장 최신 안내로 출입 가능 범위, 수변·보행 안전, 주차와 편의시설을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-24"
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26092498",
+  "place_id": "26092498",
+  "name": "후해석벽",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주관광공사 Visit Jeju는 후해석벽을 우도 8경 중 하나로 열거하고, 검멀레해변·우도봉 아래 해안 협곡과 절벽·동굴 경관을 공식 안내한다. 입력 Kakao 장소명의 후해석벽과 이 공식 경관 맥락이 일치하여 독립적으로 방문·조망할 수 있는 자연 관광지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "후해석벽은 우도 8경의 하나로 알려진 우도봉 아래 검멀레해변 일대의 해안 절벽 경관이다.",
+    "typical_visit": "검멀레해변과 우도봉 아래의 야외 해안에서 절벽·검은 모래·바다와 동굴 경관을 조망하는 방문이다. 해수욕, 수상레저 또는 모래찜질은 검멀레해변에서 가능한 별도 경험으로 안내된다.",
+    "experience_scope": "공식 안내는 우도 8경, 해안 협곡·검은 모래·동굴과 해변 활동을 확인한다. 후해석벽 자체의 최신 출입 경로, 절벽 가장자리 안전시설, 보트·해수욕 운영 여부, 조석·기상 통제와 정확한 무장애 동선은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 우도를 ‘제주도의 축소판’으로 소개하며 우도 8경에 후해석벽을 포함한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주관광공사 Visit Jeju는 우도봉 아래 협곡의 검멀레해변을 검은 모래 해변으로 소개하고, 절벽 아래 ‘콧구멍’ 동굴 및 수상레저·모래찜질·해수욕 경험을 안내한다.","source_ids":["S2"]},
+      {"id":"F3","text":"입력 Kakao 공개 후기 근거는 절벽과 바다의 조망, 사진 촬영 맥락, 조석이 높을 때 동굴 접근 위험 가능성을 언급한다. 평점·후기 수·작성자 정보는 사용하지 않았다.","source_ids":["S3"]}
+    ],
+    "unknowns": ["후해석벽의 최신 출입 가능 구간, 절벽 가장자리 안전시설 및 정확한 도보 동선", "조석·강풍·우천 시 동굴·해안 접근 통제와 수상레저의 운영 조건", "주차, 화장실, 경사·계단 및 휠체어 접근성을 포함한 현장 편의·무장애 정보"],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012144","checked_at":"2026-08-25T00:00:00+09:00","facts":["우도 8경에 후해석벽을 포함한다.","우도의 해안 자연 경관과 접근성 안내를 제공한다."]},
+      {"id":"S2","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012144&menuId=DOM_000001823008007000","checked_at":"2026-08-25T00:00:00+09:00","facts":["검멀레해변은 우도봉 아래 협곡에 있으며 검은 모래가 특징이다.","절벽 아래 ‘콧구멍’ 동굴과 수상레저·모래찜질·해수욕 경험을 안내한다."]},
+      {"id":"S3","publisher":"Kakao Map 공개 후기 요약(입력 패킷)","type":"public_review_evidence","url":"https://place.map.kakao.com/26092498","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력된 공개 후기 내용은 해안 절벽·바다 조망과 사진 촬영 맥락을 언급한다.","입력된 공개 후기 내용은 높은 조석에서 동굴 접근의 위험 가능성을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 핵심은 우도봉 아래 해안 협곡과 절벽 경관이며 산·오름 정상 탐방 자체가 주된 경험으로 확인되지는 않았다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 검멀레해변의 검은 모래, 해안 동굴, 해수욕과 수상레저를 설명하므로 바다·해안 경험이 핵심이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"검멀레해변에서 수상레저와 해수욕이 가능하다고 공식 안내되지만, 후해석벽 조망만을 위한 방문의 필수 활동 여부와 최신 운영은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"우도 8경이라는 관광 경관 지위는 확인되지만 역사·문화유산·전시·전통 체험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크 등 테마파크형 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 핵심 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내의 대표 경험은 우도봉 아래 해변·협곡·절벽 아래 동굴을 포함한 야외 해안 경관이다. 실내 공간은 확인되지 않았다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 해안·절벽 조망과 해수욕·수상레저이므로 바람·강수·파도·조석의 영향을 비교적 크게 받는다. 현행 통제 기준은 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 경관은 확인되지만 혼잡도·소음·휴식시설과 느린 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 접근성 안내에 주출입구 단차와 장애인화장실 부재가 표시되지만 후해석벽의 실제 경사·계단·노면과 경관 지점까지의 동선은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"절벽 조망과 해변 활동은 확인되지만 후해석벽 단독 체류시간·단축 동선·장기 체류 여건이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"후해석벽은 공식적으로 우도 8경에 포함되고, 검멀레해변의 해안 협곡·절벽·검은 모래·동굴 경관이 직접 안내된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도 8경 중 하나이며 검은 모래 해변 끝 절벽 아래 동굴이라는 조합이 공식 안내에서 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도의 대표 경관인 우도 8경과 우도봉 아래 검멀레해변이라는 제주 지역 자연·지명 맥락에 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사 공식 관광정보가 후해석벽을 우도 8경으로 열거하므로 우도 지역을 대표하는 경관으로 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 절벽·검은 모래·동굴 해안 경관과 입력된 공개 후기의 사진 촬영 맥락을 근거로 시각적 기록 가치가 높다고 추론한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시의 최신 접근·안전·조석·기상 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문의 편의·안전·체류 여건 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 수용·동선·안전 여건 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"절벽·해안 주변의 어린이 동반 안전, 조석 및 안전시설 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"주출입구 단차 외에 실제 경사·계단·휴식·무장애 동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 바람·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 바람·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망과 해변 활동은 여름 더위·강수·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망과 해변 활동은 여름 더위·강수·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안의 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 바람·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_cliff_tide_and_access_conditions_unknown","applies_to":"all_visitors","condition":"후해석벽은 해안 절벽·동굴·해변 인접 경관이나, 최신 출입 구간, 절벽 안전시설, 조석·강풍·우천 시 통제와 보트·해수욕 운영 여부는 확인하지 못했다. 공식 접근성 안내에는 주출입구 단차와 장애인화장실 부재가 표시된다.","status":"needs_review","action":"방문 전 우도 현장 최신 안내로 절벽·동굴 접근 가능 구간, 조석·기상 경보, 해양 활동 운영과 보행·무장애 동선을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

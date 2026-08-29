@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1880,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25254223.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25254223",
+    "provider": "kakao",
+    "place_id": "25254223",
+    "name": "본지오름",
+    "url": "https://place.map.kakao.com/25254223",
+    "average_rating_5": "2.4",
+    "visitor_review_count": "5",
+    "blog_review_count": "4",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.29.",
+      "content": "표고 : 151m 비고 : 32m 신풍리 벚꽂을 보러온김에 인근에 있는 본지오름에 다녀왔다. 산불감시초소, 공동묘지가 있을만큼 뷰가좋지만, 일부러 찾아올 만큼의 이유는 없다. 지나는길에 짧게 잠시 산책할만한 오름",
+      "tags": ""
+    },
+    {
+      "date": "2020.01.24.",
+      "content": "한라산이 잘보여요. 그냥 지나가다 들릴 오름. 남산봉. 영주산과 함께 ~",
+      "tags": ""
+    },
+    {
+      "date": "2018.04.03.",
+      "content": "아쉬웠다 성산읍 삼달리에 있는 본지오름",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.10.",
+      "content": "차세워놓고 한바퀴돌면 좋아요. 요녀석 제대로 솟았으면 꽤 컸을듯. 햇살 잘 들고 낮은거에 비해 뷰도 좋은 편이고 명당인듯 묘지들도 많고.",
+      "tags": ""
+    },
+    {
+      "date": "2020.12.03.",
+      "content": "어떤 즐거움도 느낄 수 없는 오름 정상뷰는 조금 보이지만 그 외 즐거움은 전혀 없는 곳~ 포장도로에 주차하시고 비포장도로는 도보로 이동하시길~",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

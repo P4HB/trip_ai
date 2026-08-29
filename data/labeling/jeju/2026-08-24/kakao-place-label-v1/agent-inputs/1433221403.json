@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1918,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1433221403.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1433221403",
+    "provider": "kakao",
+    "place_id": "1433221403",
+    "name": "길모퉁이가게",
+    "url": "https://place.map.kakao.com/1433221403",
+    "average_rating_5": "3.5",
+    "visitor_review_count": "6",
+    "blog_review_count": "4",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.26.",
+      "content": "숨은 수국 정원이에요~ 5000원 고급 요거트주시고 20년 걸려 가꾸신 수국정원을 보실 수 있어요♡",
+      "tags": ""
+    },
+    {
+      "date": "2026.06.22.",
+      "content": "너무 이뻐요!! 인생샷 남겼어요 ㅎㅎㅎ 사장님 소쿨하고 재밌는데 ㅎㅎㅎ 저는 매년 친구들 데리고 갑니다",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.06.22.",
+      "content": "여름 수국이 이쁜 장소! 사장님이 친절하시고, 입장료는 5,000원이다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.06.27.",
+      "content": "수국이 거의 지는 날짜에 왔는데도 여기 수국 관리 잘되있네요!! 사장님 친절하시던데요? 아이 모기 물릴까봐 약도 뿌려주심ㅋㅋㅋㅋ 대만족",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.29.",
+      "content": "와...저 진짜 웬만하면 안좋은 후기 길게 안남기는데...밑에 댓글이랑 유사한 상황이었네요! 여기 들어가면 길 조금 지나서 입장하는 곳이랑 사장님 서있는 곳 있어여! 입구쪽에서 사장님 계시나요? 하고 기다리고 나서 사장님이 오셨는데 입구 문고리(돈내고 들어가는 곳)의 문 제가 풀었냐고 의심하고 아니라고 하니 미안하다는 사과 한마디 없더라고요...불쾌해서 들어가지 말까?? 급 고민하다가 차타고 멀리 와서 그래도 구경하자 하고 그러려니 했어요. 제가 얼마냐고 물으니 가격 듣고 도민 할인 없냐고 정중히 물었어요! 그러더니만, 요구르트도 주는데 무신 도민할인 마씸! 장사 하면서, 남는거 없다... 라고 말씀하더군요?! 요구르트 주는 줄도 몰랐지만 말투에 좀 당황했어요! 뭐 이건 이렇다 치는데, 처음에 육지사람이라 봐서 그런거 했는데, 도민할인 얘기꺼내니 제주 어디서 왔냐 그러더니만, 어디서 왔다 그러면 아 멀리서 왔느라 폭삭 속았수다. 이런 반응을 기대했는데, 뭐보고 왔냐! 그러더니 네이버 검색해서 왔다 했거든요? 그러더니만, 무사 제주도 사람이 인터넷까지 검색해셔 왔냐고...? 비아냥 거리더라고요...! ...(지금 적으니 진짜 불쾌합니다) 계좌이체하고 입장해서 구경했어요! 구경할 곳은 더러 있어요! 구경을 마친 후, 사장님있는 오솔길 코스 갔다가 다 구경하고 출구로 요구르트 받고 나가려던 찰나에 일행이랑 와놓고선 같이 왜 안오냐고...타박타박을 하는데 들어오면서 나갈때까지 기분 잡쳤습니다...저 웬만하면 이렇게 길게 후기 안남기는 데 이뻐도 다시는 안가고 싶어요...손님을 대하는 마인드를 제발 고쳐주세요!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

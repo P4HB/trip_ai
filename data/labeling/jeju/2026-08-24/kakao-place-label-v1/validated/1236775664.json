@@ -1,0 +1,707 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:1236775664",
+  "place_id": "1236775664",
+  "name": "사라봉산책로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "review_status": "confirmed",
+    "inference_level": "direct_evidence",
+    "rationale_ko": "제주관광공사는 사라봉을 공원으로 조성된 제주 시내의 야간 산책 장소로 직접 소개하며, 입력명 ‘사라봉산책로’는 그 독립 방문 경험을 가리킨다.",
+    "rationale": "제주관광공사는 사라봉을 공원으로 조성된 제주 시내의 야간 산책 장소로 직접 소개하며, 입력명 ‘사라봉산책로’는 그 독립 방문 경험을 가리킨다.",
+    "rule_id": "eligibility.independent_place.v1",
+    "rule_ids": [
+      "eligibility.independent_place.v1"
+    ],
+    "source_ids": [
+      "src_visitjeju_sarabong"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "src_visitjeju_sarabong",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000013826",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "사라봉은 영주십경 제2경 ‘사봉낙조’로, 저녁노을로 도민과 관광객에게 사랑받는다고 안내한다.",
+          "사라봉은 공원으로 조성되어 길이 잘 정비되어 있고 음수대·화장실·쉼터 및 야간 가로등이 마련돼 있다고 안내한다.",
+          "정상에서 제주 밤바다·제주항 야경·한라산·제주시내를 조망할 수 있다고 안내한다."
+        ]
+      },
+      {
+        "source_id": "src_molit_sarabong_park_notice",
+        "url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?chrgorg=&enddt=&geul_yn=&gihyung_yn=&gosino=&mobile_yn=&pageNo=72&prj_cat_cd=&prj_nm=&selSggCd=50&select2=5000000000&select_3=&seq=35715&silsi_yn=&startdt=&zonenm=",
+        "publisher": "국토교통부 토지이음 / 제주시",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 고시 제2018-356호는 사라봉공원 조성계획 결정(변경) 및 지형도면 승인을 공고했다."
+        ]
+      }
+    ],
+    "summary": "사라봉산책로는 사라봉공원 내 야외 오름 산책과 일몰·야경 조망이 핵심인 독립 방문지로 확인됐다.",
+    "unknowns": [
+      "현재의 구간별 개방, 조명 작동 상태, 기상 통제와 실제 경사·무장애 동선",
+      "월별 행사·계절 절정 및 최신 시설 운영 상태"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "사라봉 정상으로 느긋하게 오르는 산책 경험이 직접 소개된다.",
+      "rationale": "사라봉 정상으로 느긋하게 오르는 산책 경험이 직접 소개된다.",
+      "rule_id": "theme.mountain.direct.v1",
+      "rule_ids": [
+        "theme.mountain.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "정상에서 제주 밤바다와 제주항 야경을 조망하는 것이 핵심 경관으로 안내된다.",
+      "rationale": "정상에서 제주 밤바다와 제주항 야경을 조망하는 것이 핵심 경관으로 안내된다.",
+      "rule_id": "theme.ocean.direct_view.v1",
+      "rule_ids": [
+        "theme.ocean.direct_view.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "가벼운 야간 산책과 정상까지의 보행이 대표 경험으로 직접 소개된다.",
+      "rationale": "가벼운 야간 산책과 정상까지의 보행이 대표 경험으로 직접 소개된다.",
+      "rule_id": "theme.walking.direct.v1",
+      "rule_ids": [
+        "theme.walking.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "사봉낙조의 영주십경 맥락과 인근 산지등대의 역사성은 소개되나, 산책로 자체의 주된 경험은 자연 경관이다.",
+      "rationale": "사봉낙조의 영주십경 맥락과 인근 산지등대의 역사성은 소개되나, 산책로 자체의 주된 경험은 자연 경관이다.",
+      "rule_id": "theme.culture_history.context.v1",
+      "rule_ids": [
+        "theme.culture_history.context.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "놀이·동물·전시형 테마파크 경험 근거가 없다.",
+      "rationale": "놀이·동물·전시형 테마파크 경험 근거가 없다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": []
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "카페·음료·디저트 이용이 독립적 방문 목적인 근거가 없다.",
+      "rationale": "카페·음료·디저트 이용이 독립적 방문 목적인 근거가 없다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": []
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "전통시장 방문 경험 근거가 없다.",
+      "rationale": "전통시장 방문 경험 근거가 없다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": []
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "특정 축제·기간성 행사가 장소의 핵심이라는 근거가 없다.",
+      "rationale": "특정 축제·기간성 행사가 장소의 핵심이라는 근거가 없다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": []
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "공원과 정상으로의 산책, 바다·야경 조망이 대표 경험으로 소개되어 야외 비중이 높다.",
+      "rationale": "공원과 정상으로의 산책, 바다·야경 조망이 대표 경험으로 소개되어 야외 비중이 높다.",
+      "rule_id": "environment.outdoor.direct.v1",
+      "rule_ids": [
+        "environment.outdoor.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "대표 경험이 야외 보행과 해안·도시 조망이므로 비·바람·더위·추위의 영향을 받는다.",
+      "rationale": "대표 경험이 야외 보행과 해안·도시 조망이므로 비·바람·더위·추위의 영향을 받는다.",
+      "rule_id": "environment.outdoor_weather.inference.v1",
+      "rule_ids": [
+        "environment.outdoor_weather.inference.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "숲 향을 느끼며 느긋하게 정상에 오르고 쉼터를 이용하는 경험이 직접 소개된다.",
+      "rationale": "숲 향을 느끼며 느긋하게 정상에 오르고 쉼터를 이용하는 경험이 직접 소개된다.",
+      "rule_id": "style.restfulness.direct.v1",
+      "rule_ids": [
+        "style.restfulness.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "길이 잘 정비돼 있고 가벼운 산책으로 안내되지만, 경사·계단·무장애 정보는 확인되지 않았다.",
+      "rationale": "길이 잘 정비돼 있고 가벼운 산책으로 안내되지만, 경사·계단·무장애 정보는 확인되지 않았다.",
+      "rule_id": "style.physical_ease.path_condition.v1",
+      "rule_ids": [
+        "style.physical_ease.path_condition.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "가벼운 산책부터 일몰·야경과 산지등대 연계까지 권장되어 체류 시간 조절 여지가 있다.",
+      "rationale": "가벼운 산책부터 일몰·야경과 산지등대 연계까지 권장되어 체류 시간 조절 여지가 있다.",
+      "rule_id": "style.duration.flexibility.v1",
+      "rule_ids": [
+        "style.duration.flexibility.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 1,
+      "confidence": 0.9,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "영주십경 제2경 사봉낙조와 정상의 바다·항구·한라산·시내 조망이 직접 소개되는 핵심 가치다.",
+      "rationale": "영주십경 제2경 사봉낙조와 정상의 바다·항구·한라산·시내 조망이 직접 소개되는 핵심 가치다.",
+      "rule_id": "style.scenic.direct.v1",
+      "rule_ids": [
+        "style.scenic.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "사봉낙조라는 영주십경의 경관과 도심 숲·항구 야경을 함께 보는 구성이 직접 확인된다.",
+      "rationale": "사봉낙조라는 영주십경의 경관과 도심 숲·항구 야경을 함께 보는 구성이 직접 확인된다.",
+      "rule_id": "style.distinctiveness.direct.v1",
+      "rule_ids": [
+        "style.distinctiveness.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "제주 영주십경과 제주항·한라산·제주시내를 조망하는 지역 고유의 자연·도시 맥락에 연결된다.",
+      "rationale": "제주 영주십경과 제주항·한라산·제주시내를 조망하는 지역 고유의 자연·도시 맥락에 연결된다.",
+      "rule_id": "style.local_embeddedness.direct.v1",
+      "rule_ids": [
+        "style.local_embeddedness.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "영주십경 제2경으로 명시되고 오랫동안 도민과 관광객에게 사랑받는 경관 지점으로 안내된다.",
+      "rationale": "영주십경 제2경으로 명시되고 오랫동안 도민과 관광객에게 사랑받는 경관 지점으로 안내된다.",
+      "rule_id": "style.landmark.direct.v1",
+      "rule_ids": [
+        "style.landmark.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "일몰·제주항 야경·밤바다·한라산과 시내를 한눈에 담는 조망이 직접 소개된다.",
+      "rationale": "일몰·제주항 야경·밤바다·한라산과 시내를 한눈에 담는 조망이 직접 소개된다.",
+      "rule_id": "style.photo_visual.direct.v1",
+      "rule_ids": [
+        "style.photo_visual.direct.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "정비된 길과 야간 가로등 안내는 혼자 가벼운 산책에 유리하나 최신 야간 안전 조건은 확인이 필요하다.",
+      "rationale": "정비된 길과 야간 가로등 안내는 혼자 가벼운 산책에 유리하나 최신 야간 안전 조건은 확인이 필요하다.",
+      "rule_id": "companion.solo.path_context.v1",
+      "rule_ids": [
+        "companion.solo.path_context.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "일몰·야경과 느긋한 산책 경험은 둘이 함께 즐길 수 있으나 동행 특화 시설은 확인되지 않았다.",
+      "rationale": "일몰·야경과 느긋한 산책 경험은 둘이 함께 즐길 수 있으나 동행 특화 시설은 확인되지 않았다.",
+      "rule_id": "companion.couple.scenic_context.v1",
+      "rule_ids": [
+        "companion.couple.scenic_context.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "review_status": "needs_review",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale_ko": "함께 하는 야간 산책·조망 경험은 가능하나 단체 이용 정보는 확인되지 않았다.",
+      "rationale": "함께 하는 야간 산책·조망 경험은 가능하나 단체 이용 정보는 확인되지 않았다.",
+      "rule_id": "companion.friends.scenic_context.v1",
+      "rule_ids": [
+        "companion.friends.scenic_context.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "화장실·쉼터는 안내되지만 아동 안전시설, 난이도와 보호자 동반 기준이 부족하다.",
+      "rationale": "화장실·쉼터는 안내되지만 아동 안전시설, 난이도와 보호자 동반 기준이 부족하다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "길 정비·쉼터 정보는 있으나 실제 경사, 계단, 무장애 동선은 확인되지 않았다.",
+      "rationale": "길 정비·쉼터 정보는 있으나 실제 경사, 계단, 무장애 동선은 확인되지 않았다.",
+      "rule_id": "fallback.insufficient_evidence.v1",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ],
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale_ko": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rationale": "월별 개방·행사·경관 절정 정보가 없어 야외 산책지의 중립값으로 보류한다.",
+      "rule_id": "fallback.month_unknown.v1",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ],
+      "source_ids": []
+    }
+  },
+  "hard_constraints": [
+    {
+      "key": "outdoor_route_conditions_check",
+      "status": "required",
+      "rationale": "야외 오름 산책로이므로 방문 전 최신 기상, 야간 조명, 구간 통제 및 개인 보행 가능 여부를 확인해야 한다. 공개 관광 안내는 2022년 작성 정보로 변경 가능성을 명시한다.",
+      "source_ids": [
+        "src_visitjeju_sarabong"
+      ]
+    }
+  ],
+  "review_priority": "medium",
+  "review_reason": "시설·야간 조명 및 구간 조건의 최신성은 재확인이 필요하다.",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25731303",
+  "place_id": "25731303",
+  "name": "흘천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘흘천’이라는 명칭과 place_id만 제공하고 주소·좌표·업종·공개 후기 근거가 없다. 제주특별자치도의회 공개 자료는 흘천을 오라동에서 도두동으로 이어지는 지방하천으로 기록하지만, 그 자료에는 이 Kakao place_id나 특정 지도 표식 구간이 없다. 또한 동일 명칭의 Kakao 후보가 여러 ID로 존재해 이 레코드가 하천 자체, 특정 구간 또는 중복 표식인지 확인할 수 없으므로 독립 여행 방문지로 확정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"],
+    "rule_ids": ["REQ-010", "REQ-012"]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 25731303은 ‘흘천’으로만 제공된다. 공공 자료로 제주시의 지방하천 흘천 존재는 확인되지만, 입력 레코드가 그 하천의 어느 지점 또는 별도 표식인지 연결할 좌표·주소·사진·유형 정보가 없다.",
+    "typical_visit": "미확인: 흘천 하천 자체의 방문·산책 가능 구간, 접근 동선, 안전 시설 및 관광 목적의 독립 방문 경험을 이 레코드에 연결할 근거가 없다.",
+    "experience_scope": "입력에는 장소 유형·위치·공개 방문 경험이 없으며, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다. 신원과 독립 후보 범위가 확정되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 25731303 및 장소명 ‘흘천’을 제공하며, 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": ["S1"],
+        "rule_ids": ["REQ-010", "REQ-012"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 자료의 제주시 지방하천 목록은 흘천의 시점을 오라동 585, 종점을 도두동 714, 연장을 6.77km로 기록한다. 그러나 Kakao place_id 25731303이나 특정 지도 표식 구간은 기재하지 않는다.",
+        "source_ids": ["S2"],
+        "rule_ids": ["REQ-012"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 흘천의 어느 구간 또는 어떤 지도 표식을 뜻하는지",
+      "동명 Kakao 레코드들과의 중복 여부 및 대표 레코드",
+      "일반 여행객의 실제 접근·산책 가능성, 보행 안전, 편의시설 및 최신 통제 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/25731303",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 25731303과 장소명 ‘흘천’을 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점 및 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "official_public_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 지방하천 목록은 흘천의 시점을 오라동 585, 종점을 도두동 714, 연장을 6.77km로 기록한다.",
+          "공개 목록에는 Kakao place_id 25731303 또는 입력 레코드와의 동일성을 확인할 특정 지도 표식 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_scope_and_duplicate_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "주소·좌표·장소 유형이 없어 하천의 특정 구간인지, 독립 방문지인지 및 동명 Kakao 표식과의 중복 여부를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도에서 이 place_id의 좌표·표식 범위와 접근 가능 지점을 확보하고 동명 레코드와 대조한다. 신원과 독립 방문 범위 확인 전에는 추천용 41축 벡터에 포함하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "rule_ids": ["REQ-011", "REQ-012"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

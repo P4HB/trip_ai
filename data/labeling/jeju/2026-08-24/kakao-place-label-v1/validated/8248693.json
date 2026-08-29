@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8248693",
+  "place_id": "8248693",
+  "name": "남문",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 장소 정보는 이름 ‘남문’과 URL뿐이며 주소·업종·좌표·후기가 제공되지 않았다. 공개 웹 조사에서도 이 Kakao 장소 표식과 동일하다고 확인할 수 있는 제주 소재의 공공·공식 장소 자료를 찾지 못했다. 동명 음식점·서점 등 서로 다른 후보가 확인되어 독립 추천 장소의 정체성을 보수적으로 확정할 수 없다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명은 ‘남문’이지만, 주소·카테고리·좌표 및 공개 후기가 없다. 웹 검색에서 제주 지역의 동명 상호·장소가 복수 확인되나 Kakao place_id 8248693과의 동일성은 확인되지 않았다.",
+    "typical_visit": "정확한 장소 유형과 일반 방문객에게 제공되는 경험을 확인하지 못했다.",
+    "experience_scope": "동일한 이름만으로는 관광지, 상업시설, 건물 출입구 또는 다른 시설의 부속 표식인지 구분할 수 없어 추천용 경험·접근성·안전을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 인벤토리는 place_id 8248693의 표시명을 ‘남문’으로 기록하며, 평점 0.0과 방문자·블로그 리뷰 0건을 기록한다. 평점과 리뷰 수는 라벨값 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 웹 검색에서는 제주 지역의 ‘남문’ 동명 음식점·서점 등 복수 후보가 노출됐으나, 이들 중 어느 곳도 Kakao place_id 8248693과 연결하는 공식·공공 식별 정보는 확인되지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식의 정확한 주소, 좌표, 업종 또는 공적 명칭을 확인하지 못했다.",
+      "일반 방문객에게 개방된 독립 장소인지, 다른 시설의 부속 표식인지 또는 중복 표식인지 확인하지 못했다.",
+      "운영 주체, 출입 조건, 접근 동선, 안전·편의시설과 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 인벤토리",
+        "type": "provider_place_metadata",
+        "url": "https://place.map.kakao.com/8248693",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 인벤토리의 표시명은 ‘남문’이다.",
+          "입력에는 주소, 좌표, 업종 및 공개 후기 본문이 포함되지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%228248693%22+%EB%82%A8%EB%AC%B8+%EC%A0%9C%EC%A3%BC",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주 지역에 ‘남문’이라는 동명 후보가 복수 존재하지만 place_id 8248693과의 동일성을 입증하는 공공·공식 출처는 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "이 Kakao 표식의 정확한 장소 정체성, 일반인 출입 가능 여부 및 접근·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao의 최신 장소 상세와 해당 장소의 공식 운영·지자체 안내로 주소, 업종·장소 유형, 독립성, 일반인 출입 조건 및 안전 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

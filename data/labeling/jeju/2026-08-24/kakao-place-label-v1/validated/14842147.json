@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14842147",
+  "canonical_id": "kakao:14842147",
+  "name": "제주농업생태원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "제주관광공사 VisitJeju는 입력 장소를 ‘서귀포농업기술센터 제주농업생태원’으로 소개한다. 감귤홍보관·전시실·숲길·체험장을 포함한 농업기술센터의 부속 생태·교육 시설이므로, 독립된 장소 후보가 아닌 상위 시설의 구성 공간으로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_facility_program_and_opening_conditions",
+      "applies_to": "recommendation_candidate",
+      "condition": "감귤따기 등 프로그램과 해설 운영·휴관 정보는 시기별로 달라질 수 있으며, 입력은 농업기술센터 부속 생태원이다.",
+      "status": "needs_review",
+      "action": "독립 후보 대신 서귀포농업기술센터 제주농업생태원에 연결하고 방문 전 공식 운영·예약·프로그램 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 VisitJeju 및 서귀포농업기술센터 자료의 ‘서귀포농업기술센터 제주농업생태원’과 일치한다.",
+    "facts": [
+      {
+        "text": "VisitJeju는 제주농업생태원을 서귀포농업기술센터의 감귤 홍보·전시·숲길·체험 시설로 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "서귀포농업기술센터 자료는 농업생태원에서 감귤꽃길걷기와 감귤따기 등 계절 프로그램을 운영한다고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "방문일 기준 프로그램·체험 운영 여부",
+      "정확한 부속 공간별 개방·접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009895",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주농업생태원을 서귀포농업기술센터의 감귤홍보관·전시실·숲길·체험장으로 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "서귀포농업기술센터",
+        "type": "official_public_document",
+        "url": "https://agri.jeju.go.kr/files/board/0716d681-5583-40f1-aa0e-66225099a9ca.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "농업생태원의 계절 프로그램 운영 계획을 제시한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

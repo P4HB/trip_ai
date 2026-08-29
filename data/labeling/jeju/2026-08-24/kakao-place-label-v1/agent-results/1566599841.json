@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1566599841",
+  "canonical_id": "kakao:1566599841",
+  "name": "감자남밧",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력은 ‘감자남밧’이라는 장소명과 Kakao place_id만 제공하며 주소·좌표·업종·후기가 없다. 공개 검색에서도 이 명칭과 해당 Kakao 장소를 신뢰할 수 있게 연결하는 공식·공공·상세 여행 출처를 찾지 못했다. 제주어 지명·개인 소유 농지·비공개 표식 등 가능한 해석 중 어느 것도 확인할 수 없으므로 신원을 추정하지 않는다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{
+    "kind": "identity_and_access_scope_unverified",
+    "applies_to": "recommendation_candidate",
+    "condition": "Kakao 입력 레코드에 정확한 위치·업종·운영 정보가 없고, ‘감자남밧’의 실제 지점·토지 성격·일반 방문 허용 여부를 공개 근거로 확인할 수 없음",
+    "status": "needs_review",
+    "action": "Kakao 또는 공공 지리정보의 주소·좌표·업종을 통해 장소 신원과 공공 접근 가능 여부를 먼저 확인한다. 확인 전에는 추천용 라벨 벡터를 생성하지 않는다.",
+    "source_ids": ["S1"],
+    "checked_at": "2026-08-28"
+  }],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "공개 검색 결과는 입력명과 동일한 제주 방문지·사업체·공공 지리객체를 확인하지 못했다. 입력 레코드의 name/place_id 외 신원 단서가 없다.",
+    "facts": [{
+      "text": "입력 패킷의 Kakao 장소명은 ‘감자남밧’이고, 주소·좌표·업종·공개 리뷰 근거는 제공되지 않았다.",
+      "source_id": "S1"
+    }],
+    "unknowns": ["Kakao place_id의 정확한 좌표와 주소", "장소가 공개 방문 가능한 독립 여행지인지 또는 사유 농지·비공개 표식인지", "방문 경험, 운영·안전·접근성 및 계절 정보"],
+    "sources": [{
+      "id": "S1",
+      "publisher": "Kakao Map (input listing)",
+      "type": "public_map_listing",
+      "url": "https://place.map.kakao.com/1566599841",
+      "checked_at": "2026-08-28",
+      "facts": ["입력 패킷은 장소명 ‘감자남밧’과 place_id 1566599841을 제공한다.", "입력 패킷에는 주소, 좌표, 업종 및 공개 후기 증거가 없다.", "평점·후기 수는 라벨 근거로 사용하지 않았다."]
+    }]
+  },
+  "generated_at": "2026-08-28"
+}

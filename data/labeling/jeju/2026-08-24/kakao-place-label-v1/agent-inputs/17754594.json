@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 423,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17754594.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17754594",
+    "provider": "kakao",
+    "place_id": "17754594",
+    "name": "김녕리도대불",
+    "url": "https://place.map.kakao.com/17754594",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "7",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.11.03.",
+      "content": "옛날 등대. 뷰포인트로 멋집니다.",
+      "tags": "시설"
+    },
+    {
+      "date": "2023.07.17.",
+      "content": "저 돌탑이 등대래요. 계단이있어 올라갈 수 있습니다. 올라가서 사진찍으니 이뻤어요!",
+      "tags": ""
+    },
+    {
+      "date": "2025.03.04.",
+      "content": "다양한 해안뷰를볼수있습니다. . 파도높은 바다도 장관입니다.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2024.07.30.",
+      "content": "여기서 노을 보세요. 진짜 멋짐.",
+      "tags": ""
+    },
+    {
+      "date": "2023.04.20.",
+      "content": "일몰 때 가면 바다에 일렁이는 물결이 예쁘게 비쳐요 조용하고 한적해서 좋습니다",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

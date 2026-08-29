@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "962115439",
+  "canonical_id": "kakao:962115439",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사는 김기량길이 순교현양비까지 이어지는 9.3km 천주교 성지순례길이라고 안내한다. 장소명 및 순례길 지점 정보가 일치해 독립 방문 가능한 현양·역사 방문 지점으로 판정했다.",
+    "source_ids": ["SRC-001", "SRC-002"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인 출처의 핵심 설명은 순교현양비와 해안 순례길이며 산·오름 경험은 핵심으로 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "김기량길이 함덕해변 등 해안 지점을 지나고 해안 풍광을 안내하지만, 이 현양비 자체의 주된 경험이 해양 활동인지는 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-ROUTE-CONTEXT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "현양비는 9.3km 도보 순례길의 한 지점이나, 장소 자체에서 별도 레포츠·체험을 제공한다는 근거는 없다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-ROUTE-CONTEXT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주관광공사는 김기량을 제주 최초의 천주교 신자로 소개하고, 순교현양비를 성지순례길의 지점으로 명시한다. 현양과 종교·지역사의 이해가 방문 핵심이다.", "source_ids": ["SRC-001", "SRC-002"], "rule_ids": ["THEME-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 현양비와 도보 순례길을 설명하며 놀이·동물·수족관 등 테마파크형 시설은 확인하지 못했다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내에서 카페·음료·디저트 이용은 이 장소의 독립적인 방문 목적으로 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내의 대상은 천주교 순례와 현양비이며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사한 출처는 상설 순례길과 현양비를 설명하며 특정 기간 축제가 장소의 핵심이라는 근거는 없다.", "source_ids": ["SRC-001"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "현양비는 순례길의 야외 지점으로 소개된다. 실내 전시·휴게 공간의 실제 이용 비율은 확인되지 않아 낮은 비율의 잠정값이다.", "source_ids": ["SRC-001"], "rule_ids": ["ENV-OUTDOOR-MEMORIAL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "도보 순례길의 야외 현양비 지점이라는 확인 사실에 따라 비·바람·더위·추위가 체류 경험에 영향을 줄 가능성이 높다. 현장 차양·실내 대피 정보는 미확인이다.", "source_ids": ["SRC-001"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "기도와 순례 목적의 방문 경험은 확인되지만, 조용한 휴식 공간·체류 환경은 출처로 확인되지 않아 중립값으로 보류했다.", "source_ids": ["SRC-001"], "rule_ids": ["STYLE-PILGRIMAGE-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현양비 자체 및 접근 동선의 경사·계단·무장애 정보가 확인되지 않았다. 순례길 전체 거리로 이 장소의 보행 부담을 단정하지 않고 중립 fallback으로 둔다.", "source_ids": ["SRC-001"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "긴 도보 순례길의 지점으로 포함되지만 현양비 단독 체류시간 및 관람 구성은 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["STYLE-STOP-ON-ROUTE"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 김기량길에서 제주 해안·해변 풍광을 즐길 수 있다고 하나, 현양비 지점 자체의 조망 품질은 별도로 확인되지 않았다.", "source_ids": ["SRC-001"], "rule_ids": ["STYLE-ROUTE-SCENERY"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 최초 천주교 신자로 소개되는 김기량을 현양하는 비이며, 해당 인물을 주제로 한 순례길의 종점으로 안내되어 고유한 방문 맥락이 직접 확인된다.", "source_ids": ["SRC-001"], "rule_ids": ["STYLE-UNIQUE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "출처는 김기량을 함덕 출신의 제주 최초 천주교 신자로 설명하고, 현양비를 제주 천주교 순례길의 지점으로 안내한다.", "source_ids": ["SRC-001", "SRC-002"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주교구 순례길의 지점이라는 종교·지역사적 의미는 확인되지만, 제주 전체를 대표하는 일반 관광 랜드마크인지에 대한 공적 지정·방문 규모 근거는 없다.", "source_ids": ["SRC-001", "SRC-002"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현양비·해안 순례길의 시각적 가치는 가능하나, 사진 촬영을 직접 권장하거나 대표 이미지 가치가 있다는 신뢰 출처 근거는 찾지 못했다.", "source_ids": ["SRC-001"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "개인 기도·순례 목적의 방문 후기는 보조적으로 있으나, 안전·동행 권고는 확인되지 않아 중립값이다.", "source_ids": ["SRC-001"], "rule_ids": ["COMPANION-PILGRIMAGE-NEUTRAL"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹 대상 경험·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 적합성, 안전시설, 연령 제한 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령자 이동 편의·휴식·안전 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "현양비의 월별 행사·계절 절정 정보가 확인되지 않아 야외 순례 지점의 중립값으로 보류한다.", "source_ids": ["SRC-001"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "review_priority": "high",
+  "hard_constraints": [],
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "카카오 장소명과 제주관광공사 안내의 ‘김기량 순교현양비’가 일치한다. 연합뉴스도 동일 현양비를 김기량길 지점으로 보도했다.",
+    "facts": [
+      {"text": "제주관광공사는 김기량길이 조천성당에서 함덕해변 등을 거쳐 김기량 순교현양비까지 이어지는 총 9.3km 길이라고 안내한다.", "source_id": "SRC-001"},
+      {"text": "제주관광공사는 김기량을 함덕 출신의 제주 최초 천주교 신자로 소개한다.", "source_id": "SRC-001"},
+      {"text": "연합뉴스는 김기량 순교현양비를 제주 천주교 순례길 김기량길의 출발지로 설명했다.", "source_id": "SRC-002"}
+    ],
+    "unknowns": ["현양비 단독 관람 동선, 경사·계단, 무장애 편의, 화장실·휴게 시설", "월별 행사·계절 절정 및 실제 운영·개방 정보"],
+    "sources": [
+      {"id": "SRC-001", "publisher": "제주관광공사", "url": "https://www.ijto.or.kr/korean/Bd/view.php?bno=1120&btable=event_info&cate=0&p=4", "source_type": "official_tourism_agency_event_page", "checked_at": "2026-08-25T00:00:00+09:00"},
+      {"id": "SRC-002", "publisher": "연합뉴스", "url": "https://www.yna.co.kr/view/AKR20120904108600056", "source_type": "reputable_news", "checked_at": "2026-08-25T00:00:00+09:00"}
+    ]
+  }
+}

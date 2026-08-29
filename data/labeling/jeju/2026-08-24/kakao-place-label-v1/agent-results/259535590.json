@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:259535590",
+  "place_id": "259535590",
+  "name": "묵리고개전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "해양수산부 연안포털이 추자도 해안일주길의 독립 경유지로 묵리고개전망대를 열거하고, 전망 좋은 곳으로 안내한다. 따라서 관광객이 경관을 보기 위해 방문할 수 있는 독립 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "묵리고개전망대는 제주특별자치도 제주시 추자도의 해안일주길에 포함된 전망 지점이다.",
+    "typical_visit": "추자항에서 출발하는 15 km 해안일주길에서 해안·바다 경관을 보며 통과하거나 잠시 조망하는 야외 방문이다.",
+    "experience_scope": "공식 공공 안내는 코스상 위치, 전망 지점 성격, 전 구간 바다 조망과 인근 화장실을 확인한다. 이 지점 단독의 최신 개방 시간, 접근로·경사·난간, 주차 및 무장애 시설은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "해양수산부 연안포털은 묵리고개전망대를 추자도 해안일주길의 경유지이자 ‘전망 좋은 곳’으로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "연안포털은 이 15 km 해안일주길이 전 구간 바다를 바라보며 걷는 코스이고 묵리고개전망대가 주요 전망 포인트 중 하나라고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "연안포털 편의시설 안내는 묵리고개전망대를 포함한 인근 8개소에 화장실이 있다고 열거한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["묵리고개전망대 단독의 최신 개방·출입 제한 여부를 확인하지 못했다.", "단독 방문 시의 주차, 접근로, 경사·계단, 난간, 무장애 시설과 야간 조명 정보를 확인하지 못했다.", "월별 기상 통제와 현장 안전 상태를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "해양수산부 연안포털", "type": "official_public_tourism_page", "url": "https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=44", "checked_at": "2026-08-25", "facts": ["추자도 해안일주길은 제주특별자치도 제주시의 15 km, 420분, 어려움 코스다.", "묵리고개전망대는 코스 경유지이며 전망 좋은 곳으로 표시된다.", "코스는 전 구간 바다를 바라볼 수 있고 묵리고개전망대는 주요 전망 포인트다.", "화장실은 묵리고개전망대를 포함한 인근 8개소에 있다고 안내한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고개라는 명칭 외에 산·오름·산림 경관이 핵심이라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 해안일주길 전 구간의 바다 조망과 이 지점의 전망 포인트 성격을 설명한다.","source_ids":["S1"],"rule_ids":["DIRECT-COASTAL-VIEW"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"15 km 해안일주길의 경유 전망 지점이므로 야외 걷기가 대표 이용과 연결되지만, 이 지점만의 보행 동선은 미확인이다.","source_ids":["S1"],"rule_ids":["INFER-TRAIL-WALKING"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설이나 체험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트가 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"해안일주길의 전망 지점으로 안내되어 대표 경험은 야외라고 추론한다. 부대 실내 공간은 미확인이다.","source_ids":["S1"],"rule_ids":["INFER-OUTDOOR-VIEWPOINT"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"바다를 바라보는 야외 걷기·조망 경험이 대표이므로 비·바람 등 날씨 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1"],"rule_ids":["INFER-OUTDOOR-WEATHER"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"코스 전체 난이도는 어려움으로 안내되지만 이 지점 단독의 경사·계단·노면 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전망대 단독 체류시간과 단축 동선 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 이곳을 전망 좋은 곳·주요 전망 포인트로 명시하고 해안일주길의 바다 조망을 설명한다.","source_ids":["S1"],"rule_ids":["DIRECT-SCENIC-VIEWPOINT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"다른 전망 지점과 비교한 고유성 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"추자도의 해안 경관과 연결되나 지역 생활·생산자·문화와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 추자를 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 조망은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹의 이용 편의·수용 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 노면·안전시설·보호자 조건 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·휴식·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·안전 정보를 확인하지 못해 야외 방문의 중립값이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 조망은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_trail_access_and_weather_conditions_unknown","applies_to":"all_visitors","condition":"묵리고개전망대는 15 km의 난이도 어려움 해안일주길 경유지이나, 이 지점 단독의 최신 출입 가능 여부, 접근로·경사·난간·노면, 무장애 시설과 악천후 통제를 확인하지 못했다.","status":"needs_review","action":"방문 전 연안포털 또는 현장 최신 안내로 경로 개방 여부, 기상에 따른 통제와 보행 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

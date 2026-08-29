@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "843799102",
+  "canonical_id": "kakao:843799102",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "generated_at": "2026-08-25",
+  "place": {
+    "name": "멜케천",
+    "url": "https://place.map.kakao.com/843799102"
+  },
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공공 고시는 멜케천을 서귀포시의 소하천구역·하천정비사업 대상으로 확인한다. 공개 자료에서 관광객을 위한 독립 방문 시설·관람 동선·체험 또는 관광지 지정은 확인되지 않았고, 최근 환경 보고에는 신도리 멜케천의 녹조와 농업 폐기물 문제도 기록되어 있다. 따라서 입력 명칭은 실제 하천을 가리키는 것으로 보이나, 현 라벨링의 독립 여행 방문지 범위에는 넣지 않는다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "condition": "관광 목적의 안전한 접근·관람 동선·운영 여부가 공개 근거로 확인되지 않은 소하천이다.",
+      "status": "unknown",
+      "action": "do_not_recommend_as_destination",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "eligibility.independent_visitor_destination"
+      ]
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?mobile_yn=&seq=16719",
+        "publisher": "토지이음 / 서귀포시",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "서귀포시 고시 제2016-42호는 멜케천 하천정비사업과 소하천구역 결정을 기록한다.",
+          "고시의 담당기관은 서귀포시 환경도시건설국 건설교통과로 표기된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "url": "https://greenparan.org/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMzA0MDUzN2Q0ZTYwNDQxYTg3IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjYwMTE2MTY0ZTAxODgxNTVlMyI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDI2MDExNmQyNjc3ZDhmMTI0ODIiO3M6MTM6IjZhMDQ4NmViNjdiMjQiO3M6MTE6Im1lbWJlcl9jb2RlIjtOO30%3D",
+        "publisher": "제주환경운동연합 PARAN",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "보고서는 신도리 멜케천에서 녹조와 농약 포장지 등 농업 폐기물이 발견됐다고 기록한다."
+        ]
+      }
+    ],
+    "limitations": [
+      "입력에는 좌표·주소·카테고리가 없어 Kakao 핀과 공공 고시의 하천 구간을 좌표 수준으로 대조하지 못했다.",
+      "접근 가능 여부와 현장 수질은 변동 가능하므로 별도 확인이 필요하다."
+    ]
+  },
+  "review_priority": "medium"
+}

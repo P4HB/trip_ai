@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17576446",
+  "place_id": "17576446",
+  "name": "렛츠런파크제주 담덕의꿈",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명 자체가 ‘렛츠런파크제주 담덕의꿈’으로 상위 시설을 명시한다. 한국마사회 공개 이행실적은 담덕의꿈을 렛츠런파크 제주 내 공원시설물 점검·보수 대상 및 공원 개방시설 이용 실적으로 열거한다. 따라서 독립적으로 운영·추천할 장소가 아니라 렛츠런파크 제주 안의 부속 어린이 놀이시설로 판정한다. 현재 운영, 이용 대상, 안전 조건은 최신 공식 안내로 확인하지 못했다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "담덕의꿈은 Kakao 지도에 ‘렛츠런파크제주 담덕의꿈’으로 등록된 표식이며, 한국마사회 공개 자료에서 렛츠런파크 제주 내 공원시설물·개방시설로 확인된다.",
+    "typical_visit": "독립 방문지가 아니라 렛츠런파크 제주 방문 중 이용하는 어린이 대상 부속 놀이시설로 파악된다.",
+    "experience_scope": "공개 근거는 상위 공원 안의 부속 시설이라는 점을 뒷받침한다. 최신 운영일·운영시간·이용 연령·요금, 실제 놀이기구 구성, 보호자 동반 요건 및 안전·접근성 정보는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 17576446의 명칭을 ‘렛츠런파크제주 담덕의꿈’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국마사회 공개 이행실적은 렛츠런파크 제주 공원시설물 점검·보수 항목에 ‘담덕의꿈’을, 공원 개방시설 이용 실적에 ‘담덕의꿈(833명)’을 각각 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "담덕의꿈의 최신 운영 여부, 운영일·시간, 이용 연령·보호자 동반 요건 및 요금은 확인하지 못했다.",
+      "현재 놀이기구 구성, 시설 상태, 안전 통제와 우천·강풍 시 운영 정책은 확인하지 못했다.",
+      "유모차·휠체어 접근, 화장실·휴식 공간, 주차와 상위 공원 입장 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17576446",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘렛츠런파크제주 담덕의꿈’으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국마사회",
+        "type": "official_public_performance_report",
+        "url": "https://www.kra.co.kr/pdf/result/%EC%9D%B4%ED%96%89%EC%8B%A4%EC%A0%81_2020_%EC%A0%84%EC%B2%B4.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "렛츠런파크 제주 공원시설물 점검·보수 실적에 담덕의꿈 난간 보수가 포함된다.",
+          "렛츠런파크 제주 공원 개방시설 이용 실적에 담덕의꿈 이용 인원이 별도 열거된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "all_visitors",
+      "condition": "담덕의꿈은 렛츠런파크 제주 안의 부속 공원시설로 확인돼 독립 추천 후보로 사용하면 상위 공원 경험을 중복 집계할 수 있다.",
+      "status": "confirmed",
+      "action": "독립 추천·라벨 벡터에서는 제외하고, 필요하면 렛츠런파크 제주 상위 장소의 시설·동행자 정보로만 참조한다. 방문 전 최신 운영·안전·접근 조건은 공식 공원 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

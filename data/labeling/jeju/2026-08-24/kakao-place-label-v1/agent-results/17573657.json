@@ -1,0 +1,53 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17573657",
+  "canonical_id": "kakao:17573657",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "status_detail": "한라수목원 내부의 주제원인 만목원으로 확인되어 독립 추천 장소가 아닌 상위 시설의 하위 구역으로 분류했다.",
+    "rationale": "공개 관광·학술 출처가 한라수목원을 만목원을 포함한 여러 주제원으로 구성된 단일 수목원으로 설명한다.",
+    "rule_ids": [
+      "eligibility.subordinate_facility",
+      "identity.public_source_confirmed"
+    ],
+    "source_ids": [
+      "source_1",
+      "source_2"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "source_1",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "url": "https://encykorea.aks.ac.kr/Article/E0075260",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "한라수목원은 만목원을 포함한 10개의 주제원으로 구성되어 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "source_2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500689&menuId=DOM_000001718002000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "한라수목원을 제주시 연동의 식물 전시 수목원과 산책코스를 갖춘 관광지로 소개한다."
+        ]
+      }
+    ],
+    "rationale": "입력 명칭의 만목원은 한라수목원 내 주제원이므로, 장소 단위 중복을 피하기 위해 하위 시설로 판정했다.",
+    "rule_ids": [
+      "eligibility.subordinate_facility"
+    ]
+  }
+}

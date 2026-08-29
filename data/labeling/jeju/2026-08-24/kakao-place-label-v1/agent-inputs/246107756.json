@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 562,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/246107756.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:246107756",
+    "provider": "kakao",
+    "place_id": "246107756",
+    "name": "말산메",
+    "url": "https://place.map.kakao.com/246107756",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "36",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.09.13.",
+      "content": "올레길이 아니더라도 날씨 좋을때 가볍게 올만한 오름입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.07.24.",
+      "content": "흐렸는데도 정말 뷰가 이뻤어요 제가 초심자인데도 오르기 쉬울만큼 그렇게 힘들지 않았습니다!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.01.23.",
+      "content": "올레 1코스에 포함되어 있으며 두산봉에서 내려와 알오름으로 연결된다. 올레길이 아니더라도 나중에 날씨 좋을 때 또 가보고 싶다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.07.",
+      "content": "올레길 1코스 시점에 바로 나타나는 알오름입니다. 가파르긴하나 길지않고 정산에 뻗어있는 능선 고갯길이 이쁩니다. 멀리 우도와 성산일출봉이 시원하게 보여 아름답습니다. 근처 지미봉만큼 재밌고 눈이 아름답습니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

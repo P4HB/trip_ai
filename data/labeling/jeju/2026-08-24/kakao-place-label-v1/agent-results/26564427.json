@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26564427",
+  "place_id": "26564427",
+  "name": "엄장해암길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.93,
+    "rationale": "해양수산부 연안포털과 바다온이 모두 제주시 애월읍의 엄장해암길을 독립된 해안누리길 노선으로 안내하며, 구엄포구부터 고내포구까지의 거리·소요시간·경로가 일치한다. 따라서 Kakao 장소명은 공개 관광 안내의 해당 도보 여행지와 동일한 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "엄장해암길은 제주특별자치도 제주시 애월읍 구엄포구에서 고내포구까지 이어지는 해안누리길 45번 노선이다.",
+    "typical_visit": "구엄포구·돌염전에서 시작해 바다, 암석, 데크길과 숲길을 따라 걷고 남두연대 등 해안의 역사·문화 요소를 보는 약 4.8km 도보 여행이다.",
+    "experience_scope": "공식 안내에 따라 약 90분, 보통 난이도의 야외 해안 걷기 경험과 화장실·해안도로 편의점 정보를 확인했다. 최신 통행 가능 여부, 공사·파랑·강풍 등 기상 통제, 노면 상태, 무장애 접근성 및 개별 구간 안전 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "해양수산부 연안포털은 엄장해암길을 제주시의 해안누리길로 안내하며, 구엄포구에서 남도리쉼터·남두연대를 거쳐 고내포구로 이어지는 4.8km, 약 90분, 보통 난이도 노선으로 제시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "연안포털과 바다온은 구엄포구·돌염전에서 바다를 보며 걷고 암석, 데크길, 숲길을 지나는 경험과 돌염전·환해장성·도대불 등 제주 해양문화·역사 요소를 안내한다.", "source_ids": ["S1", "S2"]},
+      {"id": "F3", "text": "연안포털은 구엄포구, 중엄새물, 다락쉼터 인근에 화장실이 있고 식수는 없으며 해안도로 내 편의점을 이용할 수 있다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F4", "text": "연안포털은 이 노선을 어린이를 동반한 가족 단위 이용객에게 적합하다고 소개한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": [
+      "최신 개방·우회·공사 구간, 파랑·강풍·우천 시 통제와 현장 안전 상태를 확인하지 못했다.",
+      "노면 경사·계단·폭, 휠체어·유모차 접근성 및 주차의 최신 상태를 확인하지 못했다.",
+      "계절별 혼잡도, 일몰 후 조명과 야간 보행 안전, 최신 편의시설 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "해양수산부 연안포털", "type": "government_tourism_page", "url": "https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=45", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["엄장해암길은 제주시 해안누리길 45번 노선이다.", "구엄포구~남도리쉼터~남두연대~고내포구, 거리 4.8km, 소요 90분, 난이도 보통으로 안내한다.", "바다·암석·데크길·숲길과 돌염전·환해장성·도대불 등 해양문화·역사 요소를 안내한다.", "화장실 위치, 식수 없음, 해안도로 편의점 이용 정보를 제공하며 가족 단위 이용객에게 적합하다고 소개한다."]},
+      {"id": "S2", "publisher": "바다온", "type": "public_tourism_page", "url": "https://badaon.or.kr/seantour_map/travel/destination/detail.do?destId=FCID112449", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["엄장해암길을 제주 애월읍의 대한민국 해안누리길로 소개한다.", "구엄포구와 돌염전에서 바다를 보며 걷고 암석·데크길·숲길을 지나는 길이라고 안내한다.", "도대불, 돌염전, 환해장성 등 제주 역사와 특색을 경험하는 노선이라고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 또는 산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 구엄포구와 돌염전에서 바다를 보며 걷는 해안누리길로 설명하므로 해안·바다 경관이 핵심 경험이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"4.8km, 약 90분의 보통 난이도 도보 노선이라는 안내를 근거로 걷기 참여가 대표 경험의 큰 부분이라고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 돌염전·환해장성·도대불 등 제주 해양문화와 역사 요소를 이 노선에서 경험한다고 명시한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이시설·동물·수족관·워터파크 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경로 밖 편의점 안내 외 카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"바다와 암석, 데크길·숲길을 걷는 해안 노선으로 안내돼 대표 경험의 실내 비율은 낮다고 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안의 바다 경관과 도보가 핵심이므로 비·강풍·더위·추위가 대표 경험에 비교적 크게 영향을 준다고 추론한다. 실제 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관은 확인되지만 휴식의 정도, 혼잡도, 소음과 장시간 머무르기 좋은 환경의 직접 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 난이도가 보통이고 4.8km 도보 노선이므로 부담이 아주 낮다고 단정하지 않고 중립값으로 둔다. 노면·계단·무장애 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 소요시간이 약 90분인 선형 도보 노선인 것은 확인되나, 중간 진입·단축 동선과 장기 체류 여건이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 바다 풍경, 화려한 암석과 수려한 주변 경관을 이 길의 대표 경험으로 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주에서 볼 수 있는 도대불과 현무암 암반의 돌염전, 환해장성 등 구체적 해양문화 요소가 공식 안내에 제시돼 고유한 구성이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 제주 고유의 돌염전·도대불과 지역 해양문화·역사를 체험하는 노선으로 설명하므로 제주 지역성과 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안누리길 선정 사실은 확인되지만 제주 또는 애월을 대표하는 상징 명소라는 비교·지정 근거가 충분하지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다와 암석 경관은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 걷기 시 최신 안전·통신·통행 환경을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문의 체류·편의·안전 여건에 대한 직접 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 이동·휴식·수용 환경에 대한 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"해양수산부 안내가 이 노선을 어린이를 동반한 가족 단위 이용객에게 적합하다고 직접 소개한다. 다만 최신 노면·기상 안전은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보통 난이도와 4.8km 정보는 있으나 보행 보조, 휴식·무장애 시설과 노면 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 걷기는 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 걷기는 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 걷기는 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 걷기는 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 적합도에 일반 야외 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 걷기는 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_access_and_weather_check","applies_to":"all_visitors","condition":"대표 경험이 야외 해안 도보이며 최신 통행 가능 여부, 공사·우회, 파랑·강풍·우천 통제, 노면 상태와 무장애 접근성은 공식 페이지에서 확인하지 못함","status":"needs_review","action":"방문 직전 지자체 또는 현장 안내로 구간 개방, 기상·해상 상황, 보행 안전과 접근 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"},
+    {"kind":"drinking_water_unavailable","applies_to":"all_visitors","condition":"공식 안내에 식수 없음으로 기재됨","status":"needs_review","action":"도보 전 필요한 식수를 준비하고 최신 편의시설 운영 상태를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

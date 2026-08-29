@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25176062",
+  "canonical_id": "kakao:25176062",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "입력의 카카오 장소명과 공개 지도 출처의 ‘고냉이굴오름’ Peak 표기가 일치해, 제주 자연 지형 방문지로 판정했다.",
+    "source_ids": ["SRC-001", "SRC-002"],
+    "rule_ids": ["RULE-IDENTITY-NAME-AND-PLACE-TYPE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 지도 출처가 고냉이굴오름을 Peak로 분류한다.","source_ids":["SRC-001"],"rule_ids":["RULE-DIRECT-PEAK-IS-MOUNTAIN"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해양 경험 여부를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방로·체험·레포츠 운영을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화·역사 콘텐츠를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용이 핵심 경험인지 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문지 여부를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"축제·기간성 행사 여부를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"확인된 장소 유형은 실내 시설이 아닌 Peak 자연 지형이다.","source_ids":["SRC-001"],"rule_ids":["RULE-DIRECT-PEAK-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실외 Peak 지형이라는 확인 사실에서 날씨 영향이 높다고 추론했으며, 현장 접근 조건은 미확인이다.","source_ids":["SRC-001"],"rule_ids":["RULE-OUTDOOR-WEATHER-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 체류의 질을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·노면·계단·접근성 정보를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류 시간이나 이용 동선을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 가치를 직접 설명하는 출처가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고유한 체험이나 구성 요소를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 제주시 인근에 위치한 명명된 자연 지형이라는 확인 사실로부터 지역 자연과의 연결을 제한적으로 추론했다.","source_ids":["SRC-001"],"rule_ids":["RULE-LOCAL-NATURAL-FEATURE-INFERENCE"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표성이나 공인 명소 지위를 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"촬영 가치 또는 사진 명소라는 직접 근거가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문의 접근·안전 조건을 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동반 방문의 이용 조건을 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반 시 난이도·안전·시설 정보를 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반 시 이동 부담과 편의시설 정보를 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"1월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"2월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "3":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"3월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "4":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"4월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "5":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"5월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "6":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"6월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"7월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"8월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "9":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"9월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "10":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"10월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "11":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"11월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"12월 현장 개방·안전·계절 조건을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["RULE-FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "hard_constraints": [
+    {"constraint":"접근 경로·탐방로·현장 안전·편의시설의 공식 확인 자료가 없어 방문 전 최신 현장 정보를 확인해야 한다.","status":"unknown","source_ids":[],"rule_ids":["RULE-HARD-CONSTRAINT-UNKNOWN-NOT-SCORED"]}
+  ],
+  "review_priority": "high",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"id":"SRC-001","url":"https://mapcarta.com/N415164615","publisher":"Mapcarta / OpenStreetMap","checked_at":"2026-08-25","facts":["고냉이굴오름을 Peak로 표기한다.","제주 제주시 회천동 인근의 주목할 장소로 표기한다."]},
+      {"id":"SRC-002","url":"https://place.map.kakao.com/25176062","publisher":"Kakao Map","checked_at":"2026-08-25","facts":["입력 레코드의 카카오 장소 URL이며 place_id 25176062에 대응한다."]}
+    ],
+    "limitations": ["공식 관광·지자체 상세 안내, 운영 정보, 탐방로·접근성·계절 정보는 확인하지 못했다.","입력에 포함된 평점·리뷰 수 및 공개 리뷰 내용은 라벨 근거로 사용하지 않았다."]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17574886",
+  "place_id": "17574886",
+  "name": "제주공룡랜드 3D입체영화관",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력 Kakao 장소명은 ‘제주공룡랜드 3D입체영화관’이다. 제주관광공사 Visit Jeju는 제주공룡랜드를 복합 체험형 가족공원으로 안내하며 그 내부 시설 가운데 하나로 3D입체 영화관을 명시한다. 따라서 이 표식은 독립 운영 방문지보다 제주공룡랜드의 부속 관람 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주공룡랜드 3D입체영화관은 Kakao 지도에 별도 표식으로 등록된 제주공룡랜드 내부의 3D 영상 관람 시설이다.",
+    "typical_visit": "독립 방문 경험으로는 확인하지 않으며, 제주공룡랜드의 공룡 전시·해양박물관·어린이 체험학습관 등과 함께 이용하는 부속 시설로 파악된다.",
+    "experience_scope": "공식 관광 안내는 3D입체 영화관을 제주공룡랜드의 여러 시설 중 하나로 설명한다. 해당 영화관만의 독립 운영 여부, 상영 일정·요금·관람 조건 및 재개 일정은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 17574886의 명칭을 ‘제주공룡랜드 3D입체영화관’으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주공룡랜드를 복합 체험형 가족공원으로 소개하고, 해양박물관·어린이 체험학습관·3D입체 영화관 등을 갖춘 시설로 명시한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "같은 Visit Jeju 상세 안내는 제주공룡랜드가 장기 리모델링으로 휴업 중이며 재개 일정이 확정되지 않았다고 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "3D입체영화관의 독립 운영 주체·독립 입장 가능 여부·상영 일정·요금·좌석 및 관람 조건은 확인하지 못했다.",
+      "제주공룡랜드 및 영화관의 실제 재개 일정과 최신 이용 가능 여부는 확인하지 못했다.",
+      "접근로, 주차, 화장실 및 무장애 관람 조건의 최신 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17574886",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 제주공룡랜드 3D입체영화관으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500536",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주공룡랜드는 해양박물관, 어린이 체험학습관, 3D입체 영화관 등을 갖춘 복합 체험형 가족공원으로 안내된다.",
+          "제주공룡랜드는 장기 리모델링으로 휴업 중이고 재개 일정이 확정되지 않았으므로 운영 여부를 사전에 확인하라고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_facility_closure_and_reopening_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "상위 시설인 제주공룡랜드가 장기 리모델링으로 휴업 중이며 재개 일정이 확정되지 않았다고 안내된다. 영화관의 독립 운영·상영 여부도 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 안내 전에 제주공룡랜드의 공식 최신 안내 또는 전화로 재개 여부, 영화관 상영 및 입장 조건을 확인한다.",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

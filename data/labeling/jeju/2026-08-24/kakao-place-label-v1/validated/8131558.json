@@ -1,0 +1,124 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8131558",
+  "place_id": "8131558",
+  "name": "한림저수지",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 지도 레코드는 이 항목을 한림저수지로 식별하고, 공개 감정평가 요약은 한림읍 상대리의 한림저수지와 그 주변 농경지를 위치 기준으로 사용한다. 반면 일반 방문객을 위한 관람·체험·산책 시설, 운영 주체 또는 공식 관광 안내는 확인되지 않았다. 농업·수자원 인프라 지점을 독립 추천 목적지로 과장하지 않기 위해 현 라벨링 범위에서는 제외한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "한림저수지는 제주시 한림읍 상대리 일대의 저수지로 식별되는 지도 지점이다.",
+    "typical_visit": "공개 자료에서 일반 방문객 대상의 독립 관람·체험 방문 방식은 확인하지 못했다.",
+    "experience_scope": "저수지와 인근 농경지라는 위치·수자원 맥락은 확인되지만, 관광·산책·낚시·교육 시설 또는 일반 출입이 가능한 독립 목적지라는 근거가 없어 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력에 연결된 Kakao Map 공개 장소 레코드는 place_id 8131558의 명칭을 한림저수지로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 감정평가 요약은 제주시 한림읍 상대리의 한림저수지 남측 인근을 위치 기준으로 쓰며, 주변이 단독·공동주택과 농경지로 형성됐다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주 지역 가뭄 보도는 한국농어촌공사 관리 저수지 현황에서 한림 상대 저수지를 저수율 관측 대상으로 열거한다. 이는 한림 상대리 일대 저수지가 수자원 관리 맥락에 있음을 보조적으로 뒷받침한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 한림 상대 저수지 관리 시설과 정확히 같은 경계·시설을 가리키는지는 공공 지적·시설 도면으로 확인하지 못했다.",
+      "일반인의 수변 접근, 산책·낚시·조망 활동 허용 여부와 출입 시간은 확인하지 못했다.",
+      "안전 난간, 주차, 화장실, 탐방 동선, 무장애 접근성 및 최신 수위·기상 통제 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8131558",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소 식별자 8131558의 명칭은 한림저수지이다.",
+          "입력 패킷의 평점·후기 수는 장소 적합도 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "리치고 공개 경매 감정평가 요약",
+        "type": "public_property_record",
+        "url": "https://m.richgo.ai/auctionMobile/C36VQQRS",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "대상 위치를 제주시 한림읍 상대리 한림저수지 남측 인근으로 설명한다.",
+          "주변은 주택과 농경지로 형성됐다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한라일보",
+        "type": "public_news_report",
+        "url": "https://www.ihalla.com/article.php?aid=1770017272781922044",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "보도는 한국농어촌공사가 관리하는 저수지 현황에 한림 상대 저수지를 열거한다.",
+          "해당 내용은 가뭄 상황의 저수율 보도 맥락이며 관광 이용 안내는 아니다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "저수지·농업 수자원 인프라 맥락은 확인되지만, 독립 방문 목적지로서의 일반 출입 권한·관람 시설·안전 동선은 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 추천 후보 벡터에서는 제외한다. 관광·산책 목적지로 활용하려면 관리 주체의 최신 공개 출입·안전 안내와 Kakao 표식의 정확한 시설 일치를 먼저 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

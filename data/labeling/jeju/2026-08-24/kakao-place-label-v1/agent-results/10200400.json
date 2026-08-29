@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10200400",
+  "place_id": "10200400",
+  "name": "김행철선생공덕비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드에는 ‘김행철선생공덕비’라는 명칭과 짧은 공개 후기만 있고 주소·좌표·업종·설치 주체·비문 또는 공식 안내가 없다. 공개 검색에서도 이 place_id 또는 명칭과 동일한 제주 기념비를 교차 확인할 신뢰할 수 있는 공식·공공 상세 출처를 찾지 못했다. 따라서 기념비의 정확한 위치·대상·독립 방문지 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 정보는 Kakao 장소명 ‘김행철선생공덕비’와 place_id뿐이며, 동일한 제주 기념비의 위치·대상 인물·설치 배경은 공개 신뢰 출처로 확인하지 못했다.",
+    "typical_visit": "공덕비라는 명칭은 기념비를 뜻할 수 있으나, 이 Kakao 레코드가 가리키는 실제 시설과 독립 관광 방문 경험은 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 공식 안내 및 운영·접근 정보가 없다. 제공된 공개 후기는 다리 쪽을 언급하지만 장소의 정확한 위치나 시설 성격을 확정하지 못한다. 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 명칭은 ‘김행철선생공덕비’이고 canonical_id는 kakao:10200400이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 포함된 공개 방문 후기에는 다리 쪽이라는 언급과 대상 인물을 의인으로 표현한 내용이 있으나, 주소·기념비 비문·설치 주체 또는 공식 안내를 제공하지 않아 장소 신원을 교차 확인할 수 없다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표, 실제 기념비의 위치와 접근 경로를 확인하지 못했다.",
+      "김행철선생의 신원, 공덕비의 설치 주체·사유·비문, 문화유산 또는 공공 시설 지정 여부를 확인하지 못했다.",
+      "독립 관광 방문지로서의 관람 범위, 개방 상태, 주차·보행 안전·무장애 접근성과 계절별 접근 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10200400",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘김행철선생공덕비’이며 place_id는 10200400이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진 및 공식 운영·시설 안내가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/10200400",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력에 제공된 익명화된 공개 후기 두 건은 다리 쪽이라는 위치 단서와 대상 인물에 대한 평가를 포함한다.",
+          "후기 내용만으로는 기념비의 정확한 위치, 공식 명칭, 설치 배경 또는 독립 방문지 범위를 확인할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공식 안내가 없고, 공개 신뢰 출처로 동일한 제주 공덕비의 위치·대상·독립 방문지 범위를 교차 확인하지 못함",
+      "status": "needs_review",
+      "action": "공식 문화유산·지자체 자료 또는 Kakao의 주소·좌표·시설 정보를 확보해 실제 기념비와의 동일성 및 일반 방문 가능 범위를 먼저 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11064668",
+  "place_id": "11064668",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "labeled_at": "2026-08-24T00:00:00+09:00",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "공공 관광 포털이 제주올레 19코스의 주변 볼거리로 벌러진동산을 별도 기재하며, 숲·용암 공터·옛길이 남은 방문 가능한 지역으로 소개한다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["REQ-012", "RULE-ELIGIBLE-INDEPENDENT-PLACE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"명칭은 동산이나, 확인된 핵심 경험은 산 정상 탐방보다 숲과 옛길 통과이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 올레 19코스의 한 지점이지만, 벌러진동산 자체의 확인된 특징은 내륙 숲과 용암 공터이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주올레 19코스의 경유지이며 옛길을 걷는 야외 탐방이 방문 경험의 중심이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"direct_evidence","rationale":"공식 소개에 아름다운 옛길이 남아 있다고 하나, 독립적인 역사·문화 해설 시설 여부는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인된 숲·옛길 방문지 성격상 테마파크형 시설 경험의 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개에서 카페·차·디저트 이용 시설은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개에서 시장 방문 경험은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개는 상시 올레 경유지로 설명하며 특정 기간 행사 중심이라는 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"나무가 우거진 지역, 용암 공터, 옛길로 소개되어 대표 경험은 실외이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실외 숲길과 공터를 걷는 경험이므로 강수·바람·폭염·한파에 따른 체감 영향이 예상되나, 현장 기상 대응 시설은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"숲과 옛길 환경은 느린 탐방에 어울릴 수 있으나, 휴식시설이나 혼잡도는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"옛길·숲길의 경사, 노면, 무장애 접근성 정보가 없어 신체 부담을 확정할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"장거리 올레 코스의 경유지이지만, 이 지점만의 체류 동선·소요시간은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개가 나무가 우거진 풍경, 용암이 굳은 넓은 공터, 아름다운 옛길을 특징으로 명시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.7,"status":"needs_review","inference_level":"direct_evidence","rationale":"용암 공터와 옛길, 벌러진 지형의 명칭 유래가 함께 소개되지만 제주 내 상대적 희소성은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주올레 19코스의 지역 경유지이며 제주 화산지형의 용암 공터와 옛길이 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"direct_evidence","rationale":"공공 관광 포털의 19코스 주변 볼거리로 등재됐으나 제주 대표 상징 명소라는 별도 근거는 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숲·용암 공터·옛길의 시각 요소는 확인되지만 촬영 명소나 촬영 환경에 대한 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-009","POLICY-FALLBACK-025"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"독립적으로 걸을 수 있는 올레 경유지이나, 현장 안전·혼잡 정보가 없어 단독 방문 적합도는 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"함께 걷는 숲길 경험은 가능하나 데이트형 시설·편의 정보는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"일행과 올레길을 걷는 활동은 가능하나 단체 편의·체험 정보가 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "kids": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"숲길의 노면·거리·안전시설 정보가 부족해 어린이 동반 적합도를 보수적으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009","POLICY-FALLBACK-025"]},
+    "parents": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사와 보행 보조 필요 여부, 휴식시설 정보가 없어 부모 동반 적합도를 보수적으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009","POLICY-FALLBACK-025"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개된 실외 올레 경유지이나 겨울 현장 기상과 노면 상태 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개된 실외 올레 경유지이나 겨울 현장 기상과 노면 상태 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"상시 운영으로 소개됐으나 월별 강수·바람과 숲길 상태 자료가 없어 중립값으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-009"]}
+  },
+  "hard_constraints": ["실외 숲길·옛길이므로 방문 전 당일 기상, 노면 상태 및 코스 안내를 확인해야 한다.", "무장애 접근성, 화장실·휴식시설과 주차 가능 여부는 이 지점 기준으로 확인되지 않았다."],
+  "research": {
+    "checked_at": "2026-08-24T00:00:00+09:00",
+    "sources": [
+      {"id":"S1","publisher":"한국어촌어항공단 바다여행","url":"https://www.seantour.kr/newseantour/fhlg/trrsrt/trrsrtDetail.do?tourNttSn=TRSRT0000001373","checked_at":"2026-08-24T00:00:00+09:00","facts":["제주올레 19코스의 주변 볼거리로 벌러진동산을 기재한다.","나무가 우거져 있고 용암이 굳어 만들어진 넓은 공터와 옛길이 남은 지역으로 소개한다.","제주올레 19코스는 상시 운영으로 표시된다."]}
+    ],
+    "limitations": ["확인 가능한 공공 상세자료가 지점별 보행 난이도·무장애 접근성·편의시설·월별 노면 상태를 제공하지 않아 해당 축은 보수적으로 라벨링했다."]
+  },
+  "review_priority": "high"
+}

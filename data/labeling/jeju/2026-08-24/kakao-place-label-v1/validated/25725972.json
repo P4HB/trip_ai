@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25725972",
+  "place_id": "25725972",
+  "name": "멍중내",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 교통 정보는 ‘멍중내’를 제주 시내버스 704-3 노선의 정류장으로 열거하고, 정류소 안내는 지끄물·돗바령 사이의 정류장 및 운행 노선을 제시한다. 이는 이동을 위한 교통 인프라이며 독립 관광·체험 방문지가 아니므로 추천용 방문 경험 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "멍중내는 제주 조천 지역 시내버스 노선에 포함된 버스 정류장 표식이다.",
+    "typical_visit": "대중교통 승하차를 위한 정류장이며, 독립적인 관광·문화·레저 체험 장소라는 근거는 확인되지 않았다.",
+    "experience_scope": "정류소는 여행 중 이동에 유용할 수 있으나 이 데이터셋이 라벨링하는 독립 방문·체험 후보는 아니다. 운행 시간·배차 등 변동 정보는 추천 적합도 근거나 확정 사실로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주 704-3번 버스 노선 정보는 정류장 목록에 ‘멍중내’를 두 차례 포함한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주 정류소 안내는 멍중내를 ‘돗바령 방향’ 정류소로 표시하고 지끄물·돗바령을 인접 정류소로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 레코드에는 주소·좌표·업종·공개 방문 후기 근거가 제공되지 않았다.",
+      "정류소의 최신 운행 시간, 배차, 시설 상태와 접근성은 변동 가능하므로 이 조사에서 확정하지 않았다.",
+      "정류소 주변의 개별 관광·상업 시설은 이 Kakao 레코드의 방문 경험으로 간주하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "KoreaCharts",
+        "type": "public_transit_data_service",
+        "url": "https://bus.koreacharts.com/city-bus/39/JEB405570407.html",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주도 704-3번 지선버스 노선의 정류장 목록에 멍중내가 포함된다.",
+          "페이지는 국토교통부 제공 공공데이터를 활용한다고 밝힌다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "시내버스타요",
+        "type": "public_transit_information_site",
+        "url": "https://citybus.yohan1002.com/%EC%A0%9C%EC%A3%BC%EB%8F%84/%EC%A0%95%EB%A5%98%EC%86%8C/%EB%A9%8D%EC%A4%91%EB%82%B4-2",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "멍중내를 제주도 시내버스 정류소로 표시한다.",
+          "지끄물 및 돗바령 방향의 인접 정류소 정보를 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/25725972",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 25725972와 장소명 ‘멍중내’를 제공한다.",
+          "입력 패킷의 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "transit_stop_not_independent_visit_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "멍중내는 대중교통 승하차용 버스 정류소로 확인되며 독립 관광·체험 방문 경험이 아님",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 여행 이동 안내가 필요하면 별도 교통 데이터와 최신 운행 정보를 사용한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

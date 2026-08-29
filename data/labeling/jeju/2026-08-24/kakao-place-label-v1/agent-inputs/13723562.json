@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1140,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13723562.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13723562",
+    "provider": "kakao",
+    "place_id": "13723562",
+    "name": "비양도망대",
+    "url": "https://place.map.kakao.com/13723562",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "42",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.05.",
+      "content": "비양도 망대 연대라고 잘 못 알려진 곳입니다. 연대는 별장 2~6명과 연군 12명이 3교대로 돌아가며 제주의 해안을 지키는 현대에 경계초소개념으로 생각하시면 쉽죠 제주에는 총 38개의 연대가 있었고 제주읍성, 정의읍성, 대정읍성이나 9곳에 진성에 소속되어 해안을 감시하고 봉수대와 함께 당시에 중요한 통신시설이였죠. 허나 우도에 알려진 우도봉수나 비양도에 연대는 정식 봉수대도 연대도 아닌 망대입니다. 우도는 과거에 소와 말을 키우는 목장이였고 성산읍 앞에 있어 왜구들이 우도섬 뒤에 큰 배를 숨기고 작고 빠른 배로 성산지역에 노략질을 했기에 제주 본섬에서 보기 힘든 섬 뒷쪽 감시하는 시설이였죠 성산은 왜구들에 약탈이 많아 성산읍 고성리에 수산진성이 있었고 성산을 빠르게 돕기 위해 김녕리에 있던 방호소를 하도리로 옴겨 별방진성을 만들었죠",
+      "tags": ""
+    },
+    {
+      "date": "2026.01.16.",
+      "content": "말도 안되는 풍경,,,🥹",
+      "tags": ""
+    },
+    {
+      "date": "2025.11.09.",
+      "content": "백패커들에게 비양도는 최고입니다. 우리나라 백팩 성지중 단연 으뜸이라고 생각합니다. 물때 맞추시면 등대 다녀올 수 있습니다.",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2024.08.23.",
+      "content": "물이차서 등대까지는 못가서 아쉬웠어요. 사진찍기 좋은곳❤️",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

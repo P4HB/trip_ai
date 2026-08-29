@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 627,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10417720.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10417720",
+    "provider": "kakao",
+    "place_id": "10417720",
+    "name": "물찻오름",
+    "url": "https://place.map.kakao.com/10417720",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "9",
+    "blog_review_count": "8",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.03.30.",
+      "content": "사려니 숲길 입구에서 물찻오름을 가는 동안 자연과 함께 마누리와 함께 가는 길이 즐겁다. 가는 동안 주위 환경이 시시각각으로 바뀌고 또는 샛길로 빠지는 힐링길에 반하기도 하죠. 왕복 약 12키로 정도인데 몸과 마음이 즐겁습니다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2023.07.17.",
+      "content": "오름에 있는 물을 기대하고 갔는데.. 나무가 우거져서 볼 수가 없었고 전망도 없음. 힘들게 올라오지마시고 가볍게 사려니숲길 걸으세요.",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.14.",
+      "content": "30통 전화시도 끝에 어렵게 연결되어 예약하고, 붉은오름 사려니숲길쪽으로 들어가서 물찻오름까지 왕복으로 4시간 30여분 걸렸어요. 숲길입구에만 산수국이 조금 피어있고 숲길쪽은 아직이었고, 숲내음, 새소리, 바람소리 흠뻑 만끽했어요. 물찻오름 입구에서 예약시간 확인 후 30분 단위로 20명씩 해설사분 인솔하에 단체로 탐방하는 시스템! 분화구 호수는 나무에 가려져 잘 안보였고, 일년 중 4일만 개방하지만 나무정비를 좀 해서 잘 보이게끔 해줬으면 하는 바람이었네요. 환경문제를 생각한다면 그게 아닐 수 있지만... 예약은 어려웠지만 그만큼 충분한 가치가 있었던 오름입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.07.",
+      "content": "22년 12월까지 출입통제",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

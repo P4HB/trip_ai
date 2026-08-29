@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:850727521",
+  "place_id": "850727521",
+  "name": "공간정원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공간7의 공식 채널과 공식 웹 검색 결과가 공간정원을 제주 구좌읍 공간7 단지의 별도 정원 경험으로 안내하고, 입력된 공개 방문 경험도 넓은 잔디밭과 산책로 이용을 일관되게 설명한다. 따라서 독립적으로 방문·산책할 수 있는 여행 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "공간정원은 제주시 구좌읍 번영로의 공간7(코사이어티 빌리지) 내 자연 정원·산책 공간으로 확인된다.",
+    "typical_visit": "잔디밭과 자연스러운 산책로를 걷고 경관을 감상하는 야외 체류가 대표 경험이며, 인근 블루보틀 제주 카페와 함께 방문할 수 있다.",
+    "experience_scope": "정원 산책과 경관 감상이 핵심인 야외 장소로 라벨링했다. 운영 시간·예약·대여 조건 등 변동 가능 정보는 적합도 점수의 확정 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "공간7 공식 카카오톡 채널은 공간정원을 ‘자연과 다시 이어지는 순간’을 위한 콘텐츠로 소개하고 공간7 주소를 제주시 구좌읍 번영로 2133-50으로 표시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공간7 공식 웹사이트 검색 결과는 공간정원과 블루보틀 제주 카페를 같은 코사이어티 빌리지의 이웃 시설로 안내한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력된 Kakao 공개 방문 경험은 넓은 잔디밭, 산책로, 라운지에서의 경관 감상 및 반려견 출입 경험을 언급한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["공간정원의 상시 개방 범위, 예약 필요 여부, 무장애 동선, 계절별 식생 상태는 공개 신뢰 출처로 확인하지 못했다.", "월별 적합도는 야외 정원이라는 확인된 성격에 대한 보수적 기후 휴리스틱이며 날씨·운영 상태를 보장하지 않는다."],
+    "sources": [
+      {"id": "S1", "publisher": "공간7", "type": "official_kakao_channel", "url": "https://pf.kakao.com/_rHxawG", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["공간정원을 자연과 다시 이어지는 순간을 위한 콘텐츠로 소개한다.", "공간7 주소를 제주시 구좌읍 번영로 2133-50으로 표시한다."]},
+      {"id": "S2", "publisher": "공간7", "type": "official_business_site", "url": "https://gonggan7.com/neighborhood", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["공간정원과 블루보틀 제주를 코사이어티 빌리지의 이웃 시설로 안내한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing_and_review_evidence", "url": "https://place.map.kakao.com/850727521", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 패킷의 공개 방문 경험은 잔디밭, 산책로, 경관 감상 및 반려견 출입을 언급한다.", "평점, 리뷰 수 및 작성자 정체는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"중산간 구좌읍의 자연 정원이지만 산·오름 자체가 핵심이라는 직접 안내는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 경험은 내륙 정원 산책이며 해안·해양 경험 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"산책로 이용이 확인되나 레포츠나 강도 높은 참여 체험은 확인되지 않았다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"문화유산·전시·전통 체험의 직접 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"놀이공원형 시설·동물·수족관 경험의 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"정원은 블루보틀 제주와 인접하지만 카페 이용이 공간정원 자체의 독립 핵심 목적이라는 직접 근거는 부족하다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"시장 방문 경험의 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"기간성 축제·공연이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 핵심 경험이 잔디밭과 산책로의 야외 이용이므로 실내 비중은 낮게 추정했다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 잔디밭과 산책로 이용이어서 날씨의 영향을 비교적 크게 받는다고 추정했다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"넓은 잔디밭을 프라이빗하게 즐기고 자연스러운 산책을 했다는 방문 경험은 느린 휴식 체류를 뒷받침한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"산책로는 확인되지만 거리·경사·무장애 정보가 없어 이용 부담은 중간값으로 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"잔디밭 감상과 산책로 이용은 짧은 산책부터 여유로운 체류까지 조절 가능한 경험으로 보인다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"라운지에서 보는 경관과 넓은 잔디밭이 공개 방문 경험에서 반복 언급되어 경관 감상이 핵심으로 판단된다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"자연 정원과 인접 라운지의 조합은 확인되지만 제주 내 고유성의 비교 근거는 부족하다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 구좌읍의 자연 정원 경험이지만 지역 문화·생산자와의 직접 연결은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"독립 정원 방문지는 확인되지만 제주를 대표하는 상징 명소라는 공신력 있는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-009"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 방문 경험에서 라운지의 경관과 정원 풍경이 시각적 가치로 언급된다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-009"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"조용한 정원 산책·경관 감상은 혼자 체류에도 맞을 수 있다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"경관 감상과 느린 산책 경험은 둘이 함께하는 방문에도 맞을 수 있다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"잔디밭·산책로는 소규모 동행에 가능하나 단체 이용 규칙은 확인되지 않았다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"야외 잔디와 산책 공간은 가능성이 있으나 아동용 시설·안전 정보가 확인되지 않았다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"경관 감상과 휴식에는 맞을 수 있으나 보행 부담·편의시설 정보가 부족하다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 정원으로 겨울 날씨 영향을 받을 수 있어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 정원으로 겨울 날씨 영향을 받을 수 있어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"계절별 개방·식생 정보가 없어 봄 야외 방문 적합도는 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"계절별 개방·식생 정보가 없어 봄 야외 방문 적합도는 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"계절별 개방·식생 정보가 없어 야외 정원 방문 적합도는 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 경험이 확인되나 강수·더위와 실제 운영 정보가 없어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 경험이 확인되나 강수·더위와 실제 운영 정보가 없어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 경험이 확인되나 강수·더위와 실제 운영 정보가 없어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"계절별 개방·식생 정보가 없어 야외 정원 방문 적합도는 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"계절별 개방·식생 정보가 없어 야외 정원 방문 적합도는 보수적으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 정원으로 기온·바람 영향을 받을 수 있어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 정원으로 기온·바람 영향을 받을 수 있어 중간값으로 둔다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-009"]}
+  },
+  "hard_constraints": [{"kind":"outdoor_weather_and_access_unverified","applies_to":"visit_planning","condition":"대표 경험은 야외 잔디밭과 산책로이나 실시간 날씨, 개방 범위, 예약·대여 조건 및 무장애 동선은 확인되지 않음","status":"needs_review","action":"방문 전 공식 채널에서 당일 개방·예약 조건과 날씨를 확인하고, 이동약자·유아 동행은 동선과 편의시설을 별도 확인한다.","source_ids":["S1","S3"],"checked_at":"2026-08-24T00:00:00+09:00"}],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10729289",
+  "place_id": "10729289",
+  "name": "전못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.5,
+    "rationale": "제주대학교 학위논문은 ‘전못(Jeonmot)’을 제주시 아라 지역의 제주 습지 조사 지점으로 열거한다. 그러나 확인된 공개 출처는 수서곤충 분포를 위한 습지 조사 맥락뿐이며, 독립 관광·체험 장소로서의 운영, 일반 방문 안내 또는 안전한 관람 경험은 확인하지 못했다. 따라서 자연 습지 표식을 추천용 독립 방문 장소 벡터 대상으로 추정하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘전못’은 제주대학교 공개 학위논문에 Jeonmot으로 표기된 제주 습지 조사 지점과 명칭상 일치한다. 논문 표에는 행정구역 Ara와 좌표 33°29′28″N, 126°34′41″E가 함께 제시되지만, Kakao 레코드의 주소·좌표는 입력에 없어 동일 표식의 정확한 위치 교차 확인은 제한적이다.",
+    "typical_visit": "확인된 출처는 전못을 제주도 습지의 수서곤충 분포 조사 대상에 포함할 뿐, 일반 여행객 대상의 관람·산책·체험 운영을 설명하지 않는다.",
+    "experience_scope": "습지 조사 대상이라는 자연환경 맥락은 확인됐지만, 독립 방문지로서의 접근 허용, 동선, 수변 안전, 시설 및 운영 정보가 없다. 관광·체험 추천 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주대학교 학위논문 ‘제주도 습지내 수서곤충(딱정벌레목) 분포에 관한 연구’의 조사 지점 표에는 ‘전못 (Jeonmot)’이 제주시 아라(Ara) 지역의 습지로 열거되고, 좌표는 33°29′28″N, 126°34′41″E로 제시된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷은 Kakao place_id 10729289의 장소명을 ‘전못’으로 제공하지만 주소·좌표·업종·방문 운영 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 10729289가 논문 조사 지점과 정확히 같은 좌표를 가리키는지 여부",
+      "일반 방문객의 출입 허용 여부, 소유·관리 주체, 관람 동선, 주차·화장실 및 무장애 접근성",
+      "수변 안전시설, 계절·기상별 출입 통제 및 현장 개방 상태",
+      "관광·생태관찰 프로그램 또는 공식 방문 안내의 존재 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주대학교 대학원",
+        "type": "university_research_thesis",
+        "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/17826/2/%EC%A0%9C%EC%A3%BC%EB%8F%84%20%EC%8A%B5%EC%A7%80%EB%82%B4%20%EC%88%98%EC%84%9C%EA%B3%A4%EC%B6%A9%28%EB%94%B1%EC%A0%95%EB%B2%8C%EB%A0%88%EB%AA%A9%29%20%EB%B6%84%ED%8F%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "조사 지점 표에 Jeonmot(전못)을 포함한다.",
+          "해당 표는 전못의 행정구역을 Ara로, 좌표를 33°29′28″N·126°34′41″E로 제시한다.",
+          "문헌의 목적은 제주도 습지 수서곤충 분포 조사이며 관광 운영 정보는 제시하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10729289",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘전못’이고 place_id는 10729289다.",
+          "입력 패킷에는 주소, 좌표, 업종, 방문 운영 및 공개 후기 근거가 없다.",
+          "평점·리뷰 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_water_edge_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "전못은 습지 조사 지점이라는 자연환경 맥락만 확인됐고, 일반 방문객 출입 허용, 수변 안전, 시설 및 현행 개방 상태가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 향후 Kakao 좌표와 일치하는 공식·공공 방문 안내, 관리 주체의 출입·안전 정보를 확인한 뒤 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

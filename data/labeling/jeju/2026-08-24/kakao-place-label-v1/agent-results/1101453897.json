@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1101453897",
+  "place_id": "1101453897",
+  "name": "큰도물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공개 기록은 큰도물을 함덕해수욕장 서쪽 해안의 용천수를 이용한 옛 남탕으로 설명하며, 해안 산책 중 관찰할 수 있는 독립 자연·생활유산 지점으로 확인한다. Kakao 장소명도 같아 독립 방문 후보로 판정하되 최신 출입·안전 여건은 별도 확인이 필요하다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "큰도물은 함덕해수욕장 서쪽 해안에 있는 용천수 기반의 돌담 목욕터로 소개되며, 공개 기록에서는 함덕리의 큰도물 남탕으로 설명된다.",
+    "typical_visit": "함덕 해안을 걷다가 돌담으로 둘러진 용천수 목욕터와 현무암 해안 풍경을 짧게 관찰하는 야외 방문이다.",
+    "experience_scope": "공개 자료는 용천수·해안·돌담 목욕터라는 장소 성격을 확인한다. 실제 입수 가능 여부, 밀물·파도·미끄럼 위험, 수질, 시설 운영·관리, 무장애 접근성과 주차는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"공개 지역 기록은 큰도물을 함덕해수욕장 서쪽 해변의 용천수를 활용한 남탕으로 설명하며, 썰물 때 돌담 구조의 윤곽이 드러난다고 전한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주 지역 기사 자료는 함덕리 용천수 목록에 큰도물 남탕과 여탕을 포함하며, 큰도물이 마을의 물 이용 역사와 연결된 지명임을 보여 준다.","source_ids":["S2"]},
+      {"id":"F3","text":"입력 Kakao 공개 장소 레코드의 장소명은 ‘큰도물’이다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.","source_ids":["S3"]}
+    ],
+    "unknowns": ["최신 출입 가능 여부와 실제 입수·목욕 허용 여부를 확인하지 못했다.", "밀물·파도·미끄럼·수질 등 현장 안전 정보와 관리 주체를 확인하지 못했다.", "주차, 화장실, 쉼터 및 무장애 접근 정보를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"웰로","type":"public_local_record","url":"https://www.welfarehello.com/community/hometownNews/c4e3eee1-2d49-47bd-bb5a-5f5d4bc94542","checked_at":"2026-08-25","facts":["큰도물은 함덕해수욕장 서쪽 해변의 용천수를 활용한 남탕으로 소개된다.","기록은 밀물 때 잠기고 썰물 때 돌담 구조의 윤곽이 드러난다고 설명한다."]},
+      {"id":"S2","publisher":"제주의소리","type":"public_local_history_article","url":"https://www.jejusori.net/news/articleView.html?idxno=207591","checked_at":"2026-08-25","facts":["기사의 함덕리 용천수 목록에는 큰도물 남탕과 여탕이 포함된다.","기사는 산물이 제주 마을의 생활·역사와 연결된 물 자원임을 설명한다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_place_metadata","url":"https://place.map.kakao.com/1101453897","checked_at":"2026-08-25","facts":["입력 패킷의 Kakao 장소명은 큰도물이다.","평점과 후기 수는 라벨값의 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"함덕 해변의 용천수 목욕터이며 밀물·썰물과 해안 위치가 방문 관찰 경험에 직접 연결돼 해안 경험 비중을 높게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산책 외 레포츠·참여형 체험이나 실제 입수 가능 여부를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"용천수를 이용한 옛 목욕터와 함덕리 물 이용 역사에 연결된 장소라는 공개 기록을 근거로 지역 생활유산 경험 비중을 높게 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설이나 놀이 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"해변의 돌담과 용천수를 관찰하는 야외 해안 방문으로 소개돼 대표 경험의 실내 비율은 낮게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 야외 장소이고 밀물·썰물에 구조 노출이 달라진다는 기록을 근거로 날씨와 해상 상태의 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·휴식시설·소음 및 장기 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 접근로, 돌담 내부 진입, 노면·단차와 무장애 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"짧은 관찰은 가능해 보이나 실제 접근·관람 동선과 체류 여건이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"해변의 돌담 구조와 솟는 용천수가 해안 환경과 어우러지는 모습이 공개 기록의 핵심 관찰 내용이어서 경관 감상 가치를 높게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 용천수를 이용한 돌담 목욕터라는 구성은 일반 해변 산책 지점과 구별되는 특징으로 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"함덕리 용천수와 마을의 물 이용 역사에 연결된 장소라는 기록을 근거로 제주 지역 생활·자연과의 연결성을 높게 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 함덕을 대표하는 공식 상징 명소라는 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시각적 특징은 확인되지만 사진 촬영 또는 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문의 최신 안전·접근 여건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문 환경과 안전·동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 수용·안전 조건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 수심·파도·미끄럼·시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·단차·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"해안 야외 관찰은 겨울 기상 영향을 받을 수 있어 보수적으로 낮춘 값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"해안 야외 관찰은 겨울 기상 영향을 받을 수 있어 보수적으로 낮춘 값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"해안 야외 관찰은 여름 더위·강수 영향을 받을 수 있어 보수적으로 낮춘 값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"해안 야외 관찰은 여름 더위·강수 영향을 받을 수 있어 보수적으로 낮춘 값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"해안 야외 관찰은 겨울 기상 영향을 받을 수 있어 보수적으로 낮춘 값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_tide_and_access_safety_unknown","applies_to":"all_visitors","condition":"공개 기록은 큰도물이 밀물 때 잠기고 썰물 때 구조가 드러난다고 설명하지만, 최신 출입 허용 여부, 실제 입수 가능 여부, 수질, 파도·미끄럼 위험, 접근로와 무장애 시설은 확인되지 않음","status":"needs_review","action":"방문 전 현장 관리 안내와 조석·기상 정보를 확인하고, 안전 조건이 불명확하면 구조물 내부 진입·입수를 하지 않는다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

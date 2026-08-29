@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1584086676",
+  "place_id": "1584086676",
+  "name": "돌하르방",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명을 ‘돌하르방’으로만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 공개 검색에서 돌하르방은 제주를 대표하는 석상 일반명으로 확인되지만, 여러 관광지·상점·조형물과 구별할 수 없어 이 place_id의 정확한 대상과 독립 방문지 여부를 확인할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 패킷에서 확인되는 정보는 ‘돌하르방’이라는 장소명과 place_id뿐이다. 제주관광공사 공식 가이드북은 돌하르방을 제주 특유의 석상·대표 상징물로 설명하지만, 이 일반 명칭만으로 특정 조형물, 상점 또는 관광지와 연결할 수 없다.",
+    "typical_visit": "공식 관광 자료는 돌하르방을 제주 특유의 석상으로 설명한다. 다만 이 레코드가 가리키는 구체적 실물·위치·관리 주체 및 방문 경험은 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 공개 방문 후기 또는 운영 정보가 없다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았으며, 신원이 확정되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 공식 관광 가이드북은 돌하르방을 현무암으로 깎아 만든 제주도 특유의 석상이자 제주도의 대표적 랜드마크로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명 ‘돌하르방’과 place_id만 제공하며 주소, 좌표, 업종 및 공개 방문 후기 근거를 포함하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 조형물·시설·상점 또는 관광지와 그 주소·좌표·업종을 확인하지 못했다.",
+      "독립 여행 방문지인지, 다른 시설의 부속 조형물인지, 기존 장소와 중복되는지를 확인하지 못했다.",
+      "관람·체험 범위, 접근성, 안전, 운영 상태 및 계절별 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사",
+        "type": "official_tourism_guide",
+        "url": "https://www.visitjeju.net/pdf/Official%20Jeju%20Tourism%20Guidebook_kr.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "돌하르방을 현무암으로 깎아 만든 제주도 특유의 석상이며 제주도의 대표적 랜드마크로 설명한다.",
+          "이 일반 설명만으로 입력 Kakao place_id의 특정 장소 신원을 식별할 수는 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1584086676",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘돌하르방’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 지점·주소·좌표·업종·방문 근거가 없어 ‘돌하르방’ 일반 명칭이 가리키는 특정 대상, 독립 방문지 여부 및 중복 여부를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·업종·사진으로 신원을 먼저 교차 확인한다. 특정 독립 방문지로 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11031763",
+  "place_id": "11031763",
+  "name": "금산유허비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "금산유허비는 제주시 건입동 금산수원지에 세워진 기념 표석으로 확인된다. 금산수원지에는 물사랑 홍보관과 옛 취수펌프가 함께 있으며, 공개 자료는 유허비를 해당 수원지의 역사 맥락을 설명하는 표지로 제시한다. 따라서 독립적인 여행 방문지라기보다 금산수원지·물사랑 홍보관 방문에 종속된 시설물로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘금산유허비’는 제주 최초의 근대식 상수도 시설과 관련된 금산수원지에 놓인 유허비(기념 표석)로 확인됐다.",
+    "typical_visit": "금산수원지의 상수도 역사와 물사랑 홍보관을 둘러볼 때 함께 볼 수 있는 현장 표석이다.",
+    "experience_scope": "유허비 자체의 독립 관람·운영·체험 범위는 확인되지 않았다. 수원지 및 홍보관의 부속 표지이므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다. Kakao 평점과 리뷰 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "JIBS 제주방송은 금산수원지에 세워진 ‘금산유허비’를 사진 설명으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "JIBS 제주방송은 금산수원을 제주시 건입동 금산물 용천수를 이용한 제주 최초의 근대식 상수도 시설로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "같은 자료는 금산물 수원지에 물사랑 홍보관이 들어서 있고 홍보관 안에 옛 취수펌프가 남아 있다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "유허비 단독 관람을 위한 공식 운영시간·안내·접근 동선 및 독립 방문 수요",
+      "금산수원지와 물사랑 홍보관의 현재 개방 여부, 출입 제한, 무장애 접근성",
+      "Kakao 레코드의 좌표·주소·업종 등 추가 메타데이터"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "JIBS 제주방송",
+        "type": "reputable_local_news",
+        "url": "https://www.jibs.co.kr/news/articles/articlesDetail/33774",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "금산수원지에 세워진 금산유허비를 사진 설명으로 확인한다.",
+          "금산수원 상수도와 제주시 건입동 금산물 용천수의 역사적 맥락을 설명한다.",
+          "금산물 수원지에 물사랑 홍보관과 옛 취수펌프가 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11031763",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 금산유허비다.",
+          "입력의 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "금산유허비는 금산수원지의 상수도 역사 맥락을 나타내는 표석으로 확인되며, 단독 여행 방문지로서의 운영·관람 범위는 확인되지 않음",
+      "status": "confirmed",
+      "action": "금산수원지 또는 물사랑 홍보관을 독립 후보로 검수할 경우 그 후보의 현재 개방·안전·접근성 정보를 별도로 확인한다. 유허비 단독으로는 추천용 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

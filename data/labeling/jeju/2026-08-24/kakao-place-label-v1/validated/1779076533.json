@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1779076533",
+  "canonical_id": "kakao:1779076533",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명은 새연교의 음악분수를 명시한다. 상위 새연교의 계절성 부속 시설이며, 입력 후기도 음악분수 종료·다리 주변 파도 관람을 언급하므로 독립 추천 장소로 라벨링하지 않는다.",
+    "source_ids": [
+      "r1",
+      "r3",
+      "r4"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "parent_venue_and_seasonal_operation_required",
+      "detail": "새연교의 부속 시설로 취급하며 음악분수 운영 여부는 변동 가능하므로 방문 전 공식 정보 확인이 필요하다.",
+      "source_ids": [
+        "r4"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "r1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1779076533",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "새연교 방문 의견"
+        ]
+      },
+      {
+        "source_id": "r2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1779076533",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "촬영지 관련 방문자 의견"
+        ]
+      },
+      {
+        "source_id": "r3",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1779076533",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "파도·강풍 시 아동 안전 주의 언급"
+        ]
+      },
+      {
+        "source_id": "r4",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1779076533",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "음악 분수 시즌 종료 주장"
+        ]
+      }
+    ],
+    "limitations": [
+      "음악분수의 현재 운영 일정과 해안 안전 정보는 공식 또는 공공 출처로 확인해야 한다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

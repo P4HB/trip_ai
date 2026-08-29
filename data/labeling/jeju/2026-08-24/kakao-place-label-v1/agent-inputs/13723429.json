@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 561,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13723429.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13723429",
+    "provider": "kakao",
+    "place_id": "13723429",
+    "name": "제주올레1코스 공식안내소",
+    "url": "https://place.map.kakao.com/13723429",
+    "average_rating_5": "4.8",
+    "visitor_review_count": "9",
+    "blog_review_count": "13",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.05.18.",
+      "content": "올라가니까 경치도 좋고 만족스런 올레길 같습니다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.01.23.",
+      "content": "2025년 1월 17일 방문. 올레 1코스 시작 스탬프 여기 안에서도 찍을 수 있다.",
+      "tags": ""
+    },
+    {
+      "date": "2024.08.15.",
+      "content": "올레길 정보를 얻고 기념품도 살 수 있는 곳. 화장실과 삼다수 자판기가 있으니 오름 오르기전 채비 한번 하고가세요^^",
+      "tags": ""
+    },
+    {
+      "date": "2021.04.29.",
+      "content": "정말 친절하세요 1코스도 정말 예쁘고 좋아요 전망대에서 성산일출봉이랑 우도 보여서 감동",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

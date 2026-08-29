@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11950714",
+  "place_id": "11950714",
+  "name": "테디베어하우스 테지움 제주점",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 제주시 애월읍 평화로 2159의 테디베어하우스 테지움을 별도 체험형 오픈전시관으로 안내한다. Kakao 입력 후기의 실내 테마 공간·체험 경험도 같은 장소 성격과 일치해 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "테디베어하우스 테지움은 제주시 애월읍 평화로 2159에 있는 테디베어와 동물인형 체험형 오픈전시관이다.",
+    "typical_visit": "실내에서 테디베어·실물 크기 동물인형 전시를 보고 직접 만지거나 안고 사진을 찍는 테마형 관람 방문이다.",
+    "experience_scope": "공공 관광 안내는 실내 체험 전시·테마공원 성격과 어린이 동반 여행객 대상 특성을 확인한다. 최신 입장요금·운영시간·혼잡도, 체험 프로그램 운영, 무장애 동선과 개별 전시 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 테디베어하우스 테지움을 제주시 애월읍 평화로 2159의 테디베어와 동물인형을 직접 만지고 안아보고 사진 찍을 수 있는 체험형 오픈전시관으로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "Visit Jeju는 이곳을 실내·테마공원·아이·사계절·실내관광지로 분류하고, 사파리와 바닷속 이야기를 인형으로 구성해 아이 동반 여행객에게 사랑받아 왔다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "입력 Kakao 공개 후기는 다양한 테마 공간, 사진 촬영, 오르골 꾸미기 체험과 실내 방문 경험을 언급한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["최신 운영시간·휴무일·입장요금·체험 프로그램 제공 여부는 확인하지 못했다.", "전시별 접촉 가능 범위, 혼잡도, 소음 및 위생 상태는 시점에 따라 달라질 수 있어 확인하지 못했다.", "휠체어·유아차 동선, 계단, 휴식공간 및 보조기기 접근성의 최신 세부 조건은 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500651", "checked_at": "2026-08-24", "facts": ["테디베어하우스 테지움의 주소는 제주시 애월읍 평화로 2159이다.", "테디베어와 동물인형을 만지고 안고 사진 찍는 체험형 오픈전시관으로 안내한다.", "실내·테마공원·아이·사계절·실내관광지 태그가 제시된다.", "사파리·바닷속 이야기를 인형으로 구성하며 아이 동반 여행객에게 사랑받았다고 설명한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/11950714", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 실내 테마 공간과 사진 촬영 경험을 언급한다.", "입력된 공개 후기는 오르골 꾸미기 체험을 언급하지만, 해당 체험의 현재 제공 여부는 확인하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 인형 접촉·사진 촬영과 입력 후기의 오르골 꾸미기 언급을 근거로 참여형 경험 비중이 높다고 보되, 현재 체험 운영 범위는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술 전시 또는 전통 체험이 핵심이라는 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이곳을 테마공원으로 분류하고 테디베어·동물인형 기반 체험 전시로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 핵심 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 실내관광지이자 체험형 오픈전시관으로 분류하므로 대표 경험의 실내 비율이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 전시·체험이고 공식 안내에 사계절·실내관광지 태그가 있어 날씨 영향은 비교적 낮다고 추론한다. 이동·대기 조건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 공간·소음·혼잡도 및 느린 체류 환경의 최신 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내 시설이나 최신 계단·경사·무장애 동선 정보가 부족해 이용 부담은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요시간과 현재 체험 선택지·관람 동선 정보가 없어 체류시간 조절 용이성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 대표 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 테디베어와 실물 크기 동물인형을 직접 교감하는 오픈형 체험 전시로 설명해 고유한 구성의 근거가 있다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 지역의 자연·문화·생산자·생활과의 구체적 연결이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 테디베어와 동물인형을 직접 만지고 안아보고 함께 사진 찍는 체험관이라고 명시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 최신 동선·혼잡도·체험 이용 조건이 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"연인 동반 체류 환경과 현재 체험 이용 조건의 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"여러 테마 공간의 관람·사진 촬영과 입력 후기의 함께한 만들기 체험 언급을 근거로 친구 동반 적합도를 비교적 높게 보되, 현재 체험 운영은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 어린이·아이 태그를 제시하고 아이 동반 여행객에게 사랑받아 왔다고 설명한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 세대의 보행 부담, 휴식공간과 무장애 접근성의 최신 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 겨울에도 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"실내·사계절 관광지라는 공식 분류를 근거로 비교적 적합하다고 보되, 최신 운영일은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"dynamic_operation_and_accessibility_unknown","applies_to":"all_visitors","condition":"최신 운영시간·휴무·입장 및 체험 제공 여부, 혼잡도, 전시별 접촉 가능 범위와 무장애 동선은 확인하지 못했다.","status":"needs_review","action":"방문 전 운영사 또는 공식 관광 안내에서 당일 운영, 체험 가능 여부와 필요한 접근성 조건을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

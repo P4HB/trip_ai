@@ -1,0 +1,652 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8490981",
+  "place_id": "8490981",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 관광·지역 자료에서 조천읍 선흘리의 알밤오름(알바매기오름)과 탐방 입구가 확인되며, 입력의 등산 후기와도 일치한다.",
+    "source_ids": [
+      "src_visitjeju",
+      "src_oreum_blog",
+      "src_kakao_reviews"
+    ],
+    "rule_ids": [
+      "RULE-ELIGIBILITY-PLACE-IDENTIFIED",
+      "RULE-ELIGIBILITY-NOT-SUBORDINATE"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "알밤오름은 해발 394m의 오름으로 소개되고 정상에 오르는 탐방로가 확인된다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-THEME-MOUNTAIN-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 핵심 경험은 선흘리 내륙의 오름 탐방이며 해안·해양 경험 근거는 찾지 못했다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_jejunews"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-INFERENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "정상까지 오르는 탐방로가 있고 공개 방문 후기에 가파른 오르막·내리막과 등산화 필요가 반복 언급된다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-THEME-ACTIVITY-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "오름 지명과 지역 맥락은 있으나 문화유산·전시·전통 체험이 핵심이라는 근거는 확인하지 못했다.",
+      "source_ids": [
+        "src_jejunews"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-PRIOR"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 장소 성격은 자연 오름 탐방이며 테마파크 시설 근거는 없다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-PRIOR"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용이 이 장소의 독립적 방문 목적인 근거는 확인하지 못했다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-PRIOR"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험에 관한 근거가 없고 자연 탐방지로 확인된다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-PRIOR"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 기간성 축제·공연이 장소의 핵심이라는 근거는 확인하지 못했다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-THEME-NONCORE-PRIOR"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "입구와 정상으로 이어지는 야외 탐방로가 소개되어 대표 경험은 실외로 판단된다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_jejunews"
+      ],
+      "rule_ids": [
+        "RULE-ENVIRONMENT-OUTDOOR-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "야외 탐방로이며 공개 후기에서 비 온 뒤 미끄러운 길과 날씨 영향이 구체적으로 언급된다.",
+      "source_ids": [
+        "src_kakao_reviews",
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-ENVIRONMENT-WEATHER-DIRECT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "탐방객이 많지 않은 자연 오름으로 소개되지만, 가파른 길 때문에 휴식 중심 경험으로 단정하기는 어렵다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-BALANCED-INFERENCE"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "가파른 경사와 정비가 부족한 길, 등산화 권장 및 중간 휴식 필요가 공개 후기에서 확인된다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-PHYSICAL-EASE-DIRECT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "정상 탐방형 장소이나 공식 코스 시간 정보가 확인되지 않아 체류 시간 조절성은 중간값으로 둔다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-DURATION-INFERENCE"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "정상에서 제주공항과 도두봉이 보인다는 현장 소개와 정상 뷰에 대한 공개 후기가 확인된다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-SCENIC-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "알바매기라는 별칭과 선흘리 오름이라는 장소성은 확인되나, 다른 오름과 비교한 고유성 평가는 제한적이다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_jejunews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-DISTINCTIVENESS-INFERENCE"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 고유 화산지형인 오름이며 선흘리와 지역 버스 관광 경로에 연결되어 지역 자연 맥락이 강하다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_visitjeju"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-LOCAL-INFERENCE"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지역 관광 순환버스 경로에는 포함되지만 제주 전반을 대표하는 상징 명소라는 근거는 부족하다.",
+      "source_ids": [
+        "src_visitjeju"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-LANDMARK-INFERENCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "정상 조망과 뷰가 직접 소개·후기에서 확인되어 시각적 기록 가치는 높게 판단한다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-STYLE-PHOTO-DIRECT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 후기에서 혼자 오르면 무섭고 등산에 가깝다고 언급되어 단독 초보 방문에는 부담이 있다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-COMPANION-SOLO-DIRECT"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조망형 자연 탐방 경험은 함께 방문 가능하나 경사와 비정비 구간이 편의성을 제한한다.",
+      "source_ids": [
+        "src_oreum_blog",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-COMPANION-FIT-INFERENCE"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "활동성 있는 소규모 동행 탐방에는 맞을 수 있으나 난이도 정보가 제한적이다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-COMPANION-FIT-INFERENCE"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "가파른 오르내림과 미끄러운 비정비 길 언급으로 어린이 동반에는 주의가 필요하다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-COMPANION-SAFETY-DIRECT"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "경사·등산화 권장·휴식 필요 근거가 있어 보행 부담이 있을 수 있다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-COMPANION-SAFETY-DIRECT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사 탐방지이므로 겨울 날씨에는 보수적으로 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사 탐방지이므로 겨울 날씨에는 보수적으로 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "3": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 탐방의 계절 적합성을 고려한 기후 휴리스틱 값이며 실제 노면 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "4": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 탐방의 계절 적합성을 고려한 기후 휴리스틱 값이며 실제 노면 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "5": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 탐방의 계절 적합성을 고려한 기후 휴리스틱 값이며 실제 노면 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 비정비 탐방로의 기후·노면 변동을 고려해 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 비정비 탐방로의 기후·노면 변동을 고려해 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 비정비 탐방로의 기후·노면 변동을 고려해 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 비정비 탐방로의 기후·노면 변동을 고려해 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "10": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 탐방의 계절 적합성을 고려한 기후 휴리스틱 값이며 실제 노면 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "11": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 탐방의 계절 적합성을 고려한 기후 휴리스틱 값이며 실제 노면 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "src_oreum_blog"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 경사 탐방지이므로 겨울 날씨에는 보수적으로 중간 적합도로 둔다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-MONTH-OUTDOOR-CLIMATE"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "type": "mobility_caution",
+      "rationale": "가파른 오르내림, 비정비 구간 및 비 온 뒤 미끄러움이 언급되어 등산화·노면 상태 확인이 필요하다.",
+      "source_ids": [
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "RULE-HARD-CONSTRAINT-SAFETY"
+      ]
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "src_visitjeju",
+        "url": "https://www.visitjeju.net/bus/JejuTouristShuttleBusMap%28Kor%29.pdf",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 관광지 순환버스 지도에 알밤오름이 정류장·관광 경로로 표시된다."
+        ]
+      },
+      {
+        "source_id": "src_oreum_blog",
+        "url": "https://taeocho.tistory.com/609",
+        "publisher": "조태오",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "알밤오름은 조천읍 선흘리에 있으며 해발 394m, 비고 154m로 소개된다.",
+          "탐방로 입구와 정상 조망, 방문객이 많지 않은 탐방로가 소개된다."
+        ]
+      },
+      {
+        "source_id": "src_jejunews",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=84720",
+        "publisher": "제주일보",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "알밤오름은 알바매기로도 알려져 있으며 조천읍 선흘리 도로 인근에 있다고 소개된다."
+        ]
+      },
+      {
+        "source_id": "src_kakao_reviews",
+        "url": "https://place.map.kakao.com/8490981",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력에 제공된 익명화 공개 후기에는 가파른 길, 비 온 뒤 미끄러움, 비정비 구간, 등산화 권장이 언급된다.",
+          "입력에 제공된 익명화 공개 후기에는 정상 조망이 언급된다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

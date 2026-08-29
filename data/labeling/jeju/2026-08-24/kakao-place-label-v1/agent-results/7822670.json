@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7822670",
+  "place_id": "7822670",
+  "name": "대성이동굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드에는 장소명과 place_id 외에 주소·좌표·업종·공개 방문 근거가 없다. 제주다크투어의 공개 조사보고서 지도에는 선흘리 목시물굴 인근의 ‘대성이동굴’ 표기가 보이지만, 그 표기가 이 Kakao place_id와 같은 지점인지, 독립적으로 방문 가능한 장소인지 확인하는 공식·공공 출처는 찾지 못했다. 따라서 동명 지리 표기와 이 레코드를 동일시하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력에서 확인되는 정보는 ‘대성이동굴’이라는 명칭과 Kakao place_id뿐이다. 제주다크투어 공개 조사보고서의 목시물굴 위치 지도에는 ‘대성이동굴’ 및 ‘대성이굴’ 표기가 보이나, 해당 Kakao 레코드의 주소·좌표 또는 운영 주체와 연결되는 식별자는 제공되지 않았다.",
+    "typical_visit": "확인된 공공 자료는 인근 목시물굴의 제주4·3 유적 성격과 위치를 설명할 뿐, 대성이동굴 자체의 관람·체험·출입 가능 여부나 방문 동선을 설명하지 않는다.",
+    "experience_scope": "대성이동굴이라는 지명 표기 외에 이 레코드의 정확한 위치, 독립 방문지 여부, 출입 허용 여부, 안전·보전 조건을 확인하지 못했다. Kakao 평점·후기 수는 0으로 입력됐으나 라벨 근거로 사용하지 않았고, 추천용 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주다크투어의 제주지역 다크투어 유적지 안내판 조사보고서는 목시물굴을 제주시 조천읍 선흘리 산26의 제주4·3 유적지로 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 보고서의 목시물굴 위치 지도에는 인근 지명으로 ‘대성이동굴’과 ‘대성이굴’이 표기되지만, 이 표기만으로 Kakao place_id 7822670의 정확한 위치·동일성·방문 가능 여부는 확인할 수 없다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 7822670의 정확한 주소, 좌표, 업종과 지도상 대성이동굴 표기의 동일성을 확인하지 못했다.",
+      "동굴의 소유·관리 주체, 보전 상태, 일반인 출입 허용 여부, 안전시설 및 최신 현장 조건을 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람·체험·접근성 및 동반자·계절별 적합도 근거가 없다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주다크투어",
+        "type": "civil_society_research_report",
+        "url": "https://www.jejudarktours.org/documents/29/%EC%B5%9C%EC%A2%85_%EA%B3%B5%EA%B0%9C%EC%9A%A9_%EC%A0%9C%EC%A3%BC%EB%8B%A4%ED%81%AC%ED%88%AC%EC%96%B4_%EC%A0%9C%EC%A3%BC%EC%A7%80%EC%97%AD_%EB%8B%A4%ED%81%AC%ED%88%AC%EC%96%B4_%EC%9C%A0%EC%A0%81%EC%A7%80_%EC%95%88%EB%82%B4%ED%8C%90_%EC%A1%B0%EC%82%AC%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "목시물굴을 제주시 조천읍 선흘리 산26의 제주4·3 유적지로 안내한다.",
+          "목시물굴 위치 지도에 ‘대성이동굴’과 ‘대성이굴’ 표기가 보인다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7822670",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘대성이동굴’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·방문 근거가 없어 지도상 대성이동굴 표기와의 동일성, 독립 방문지 범위 및 동굴 출입·보전·안전 조건을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 관리기관의 위치·관리·출입 정보를 Kakao 레코드와 교차 확인한다. 동일성이 확인되더라도 출입 제한과 안전·보전 조건을 확인하기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

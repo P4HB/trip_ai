@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7912384",
+  "place_id": "7912384",
+  "name": "우도산호해변",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 제주관광공사의 우도 산호해변(서빈백사·홍조단괴해변) 공식 관광 안내와 일치한다. 독립된 해변 관광지로 소개되며 부속 시설·중복 장소라는 근거가 없다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "우도산호해변은 서빈백사 또는 홍조단괴해변으로도 불리는 우도 서쪽의 독립 해변 관광지다.",
+    "typical_visit": "하얀 홍조단괴 해변과 에메랄드·푸른 바다, 일몰 등 해안 경관을 감상하고 해변을 걷는 야외 방문으로 확인된다.",
+    "experience_scope": "공식 제주관광 안내는 해변의 홍조단괴, 우도 8경, 해안 경관과 사진 명소 성격을 안내한다. 수영 안전, 해상 교통, 접근로·무장애 시설 및 실제 계절별 이용 가능 여부는 최신 안내 확인이 필요하다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 우도 산호해변을 서빈백사·홍조단괴해변으로 소개하며, 홍조류가 굳어 형성된 하얀 해변이라고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주관광공사 Visit Jeju는 이 장소를 우도 8경 중 하나로, 햇빛과 수심에 따라 에메랄드·푸른빛을 보이는 해변 및 일몰 경관으로 소개한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "제주관광공사 우도 여행 안내는 홍조단괴 해변을 천연기념물로 보호되는 자연유산으로 안내하고, 하얀 해변을 걷거나 물가에서 바다를 바라보는 경험을 소개한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["수영·물놀이 안전시설과 당일 해상·기상 통제는 확인하지 못했다.", "휠체어 접근, 노면 상태, 화장실·주차 등 편의시설의 최신 상태는 확인하지 못했다.", "계절별 개방·이용 제한과 여객선 운항은 방문 당일 공식 안내를 재확인해야 한다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/en/detail/view?contentsid=CONT_000000000500474", "checked_at": "2026-08-24", "facts": ["우도 산호해변은 서빈백사·홍조단괴해변으로도 알려진 해변이다.", "우도 8경, 바다색·일몰·해안 경관을 소개한다."]},
+      {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://visitjeju.net/kr/detail/view?contentsid=CNTS_300000000014703", "checked_at": "2026-08-24", "facts": ["해변의 하얀 알갱이는 홍조류가 굳어 형성된 것이며 자연유산으로 보호된다.", "하얀 해변을 걷고 물가에서 바다를 바라보는 방문 경험을 소개한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 바다색, 해변, 해안 경관과 일몰을 이 장소의 대표 경험으로 직접 소개한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변 걷기 외에 레포츠·참여형 체험의 운영 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술·전통 체험이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 핵심 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 해변·물가·해안 경관 감상과 해변 걷기를 대표 경험으로 직접 소개해 실내 비율은 0으로 판정한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험이 노출된 해변과 바다·일몰 경관 감상이며 공식 우도 안내도 여객선 운항이 날씨·해상 상태에 따라 달라질 수 있다고 안내한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내는 물가에 앉아 바다를 바라보는 경험과 healing 성격을 직접 소개한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변 걷기 안내만으로는 노면, 경사, 계단, 무장애 접근성을 판단할 수 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변 감상 방문은 확인되지만 체류시간 선택 폭과 최신 이용 여건의 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 에메랄드·푸른 바다, 하얀 해변, 일몰을 이 장소의 대표 볼거리로 직접 소개한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내는 이 해변이 홍조류가 굳어 형성된 홍조단괴로 이루어진 독특한 해변이라고 직접 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 우도의 자연유산인 홍조단괴 해변과 우도 8경의 하나라는 지역적 연결을 직접 소개한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사 공식 안내가 우도 산호해변을 우도 8경 중 하나로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내는 하얀 해변과 바다색·일몰 경관을 소개하고 photospot 태그를 제공한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 해변의 낭만적인 일몰 경관을 소개하고 Couples 태그를 제공한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·수용·안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 수변 안전시설·노면·관람 조건 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해변은 겨울 바람·추위와 해상 교통 영향을 받을 수 있으나 실제 이용 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해변은 겨울 바람·추위와 해상 교통 영향을 받을 수 있으나 실제 이용 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 안내가 여름 햇빛에서 바다색이 뚜렷하다고 소개하지만 실제 기상·이용 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 안내가 여름 햇빛에서 바다색이 뚜렷하다고 소개하지만 실제 기상·이용 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 안내가 여름 햇빛에서 바다색이 뚜렷하다고 소개하지만 실제 기상·이용 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 계절 운영 정보가 없어 야외 해변 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해변은 겨울 바람·추위와 해상 교통 영향을 받을 수 있으나 실제 이용 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_water_safety_unknown","applies_to":"all_visitors","condition":"수영·물놀이 안전시설, 당일 기상·해상 통제, 여객선 운항, 접근로·노면·무장애 시설의 최신 상태를 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 제주관광·여객선 및 현장 최신 안내로 운항, 기상, 수변 안전과 접근 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

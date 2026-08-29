@@ -1,0 +1,617 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1812780933",
+  "place_id": "1812780933",
+  "name": "추자도 전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.5,
+    "rationale": "입력의 ‘추자도 전망대’는 대서리 인근 공개 지도 정보의 같은 명칭 명소 및 제주특별자치도의회 공개 문서에 이용 장소로 기재된 ‘상추자도 전망대’와 명칭·지역 맥락이 일치한다. 다만 세부 좌표와 시설 구성은 확인하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "research": {
+    "identity_summary": "추자도(상추자도 대서리권)의 야외 전망 장소로 파악된다.",
+    "typical_visit": "바다와 섬 경관을 짧게 감상하는 야외 방문으로 파악된다.",
+    "experience_scope": "공개 근거는 장소의 존재·이용 및 추자도 해안 경관 맥락을 확인한다. 이 표식의 정확한 좌표, 접근로, 편의·안전시설과 운영 조건은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 1812780933의 명칭을 ‘추자도 전망대’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 문서는 ‘상추자도 전망대’를 이용이 많은 장소로 기재한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "해양수산부 바다온은 추자도가 섬의 특성상 전 구간에서 바다를 볼 수 있고, 해안일주길의 주요 전망 포인트를 안내한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식과 ‘상추자도 전망대’의 정확한 좌표 일치",
+      "접근로의 경사·계단·난간·무장애 동선",
+      "현재 개방 시간, 주차·화장실, 강풍·우천 시 통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1812780933",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 추자도 전망대이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_environmental_review_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A033200.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "상추자도 전망대를 이용이 많은 장소로 기재한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "해양수산부 바다온",
+        "type": "official_tourism_information",
+        "url": "https://badaon.or.kr/seantour_map/travel/destination/detail.do?destId=FCID112461",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "추자도는 전 구간에서 바다를 볼 수 있는 섬으로 소개된다.",
+          "해안일주길의 주요 전망 포인트를 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전망대의 산·오름 지형 여부를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "추자도는 바다 조망이 가능한 섬으로 공식 안내되며, 전망대의 명칭·지역 맥락상 해양 경관 감상과 연결될 가능성이 높다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-CONTEXT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "레포츠 또는 참여형 체험의 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전망대 자체의 역사·문화 해설 경험을 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설·프로그램 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·음료·디저트 이용이 핵심이라는 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험의 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 기간 축제·행사가 장소의 핵심이라는 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전망대와 경관 감상으로 파악되는 대표 경험은 야외일 가능성이 높지만 시설 구성은 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-VIEWPOINT-CONTEXT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 전망·해양 경관 감상은 비와 바람의 영향을 받을 가능성이 높다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식 시설 또는 느린 체류 경험의 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "접근 경사·계단·노면과 무장애 정보가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "체류 시간이나 선택 동선 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 문서가 상추자도 전망대를 이용 장소로 기재하고, 공식 해양관광 정보가 추자도의 바다 조망 및 전망 포인트를 직접 안내한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-SCENIC-VIEWPOINT-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전망대 자체의 독자적 시설·형성 이력을 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "추자도의 섬·해안 경관 맥락에 놓인 전망 장소로 파악되지만 지역 생활문화와의 연결은 미확인이다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-NATURE-CONTEXT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표 상징·지정 명소라는 비교 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NEUTRAL"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "경관을 감상하는 전망 장소라는 직접 근거로 시각적 기록 가치를 추론하되 사진 촬영 안내는 확인하지 못했다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-SCENIC-PHOTO-INFERENCE"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 안전·안내 환경을 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "2인 방문 편의·경험의 직접 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 이용 편의·수용 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 안전시설과 접근 난이도 정보가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·계단·휴식·무장애 접근성 정보가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "MONTH-FALLBACK-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_viewpoint_access_and_weather_confirmation",
+      "applies_to": "all_visitors",
+      "condition": "야외 전망 장소로 파악되나 정확한 접근로, 현재 개방 여부, 강풍·우천 시 통제와 보행 안전시설은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현지 관리 주체 또는 관광 안내에서 위치, 개방 여부, 날씨와 보행 안전 조건을 확인한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

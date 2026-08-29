@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725563",
+  "place_id": "13725563",
+  "name": "잃어버린마을곤을동",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "제주관광공사의 Visit Jeju는 ‘곤을동4.3유적지’를 제주시 화북1동의 방문지로 안내하고, 디지털제주문화대전은 이를 제주4·3 때 초토화되어 터만 남은 마을 유적으로 정리한다. 입력의 ‘잃어버린마을곤을동’은 이 독립적인 4·3 역사 유적 방문지와 일치하므로 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "잃어버린마을곤을동은 제주시 화북1동에 있는 곤을동(곤흘동) 4·3 유적지, 즉 제주4·3 당시 소실된 마을 터를 가리킨다.",
+    "typical_visit": "남아 있는 마을 터와 제주4·3의 역사적 맥락을 살피고 기억하는 소규모 야외 문화·역사 방문이다.",
+    "experience_scope": "공개 관광·문화 자료는 유적의 위치와 4·3 역사, 마을 터의 성격을 확인한다. 최신 출입 가능 여부, 주차·화장실, 접근로의 노면·경사·계단, 무장애 접근성, 상시 해설·행사 및 악천후 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 곤을동4·3유적지를 제주시 화북1동 4438의 제주4·3 당시 주민들이 학살되고 불태워진 곤흘동 마을 유적으로 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"디지털제주문화대전은 곤을동을 제주시 화북1동에 있는 제주4·3 당시 초토화되어 터만 남은 마을로 정의하고, 집 터와 담장 등의 흔적이 비교적 뚜렷이 남아 있다고 설명한다.","source_ids":["S2"]},
+      {"id":"F3","text":"Visit Jeju의 제주4·3 다크 투어리즘 안내는 곤을동 마을이 1949년 1월의 토벌 과정에서 소실되어 67호의 마을이 사라졌다고 설명한다.","source_ids":["S3"]}
+    ],
+    "unknowns": ["최신 출입 가능 여부와 공식 관람 시간·요금·해설 운영을 확인하지 못했다.","주차·화장실·쉼터의 현재 상태와 접근로 노면·경사·계단, 휠체어·유모차 접근성을 확인하지 못했다.","악천후·야간 시 안전 통제와 어린이 동반 시 현장 안전 정보를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022852","checked_at":"2026-08-25","facts":["곤을동4·3유적지는 제주시 화북1동 4438에 안내된다.","제주4·3 당시 주민들이 학살되고 불태워진 곤흘동 마을 유적으로 소개한다."]},
+      {"id":"S2","publisher":"디지털제주문화대전","type":"public_encyclopedia","url":"https://jeju.grandculture.net/jeju/dir/GC00700182","checked_at":"2026-08-25","facts":["곤을동은 제주4·3 당시 초토화되어 터만 남은 마을로 정의된다.","집 터와 담장 등의 흔적이 비교적 뚜렷이 남아 있다고 설명한다."]},
+      {"id":"S3","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_article","url":"https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000015287&menuId=DOM_700000000010790","checked_at":"2026-08-25","facts":["곤을동은 제주4·3으로 잃어버린 마을이 된 곳으로 소개된다.","1949년 1월 토벌 과정에서 67호 마을이 사라진 경위를 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험의 상시 운영 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내와 공공 문화 백과가 제주4·3으로 소실된 마을 터와 그 역사를 직접 설명하므로 문화·역사 경험 비중이 높다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험은 마을 터와 남은 흔적을 살피는 야외 방문이므로 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 마을 터 방문이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·소음·쉼터 등 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로의 노면·경사·계단과 무장애 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류시간·동선·편의시설 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 대표 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3으로 소실된 곤을동의 마을 터와 남은 집 터·담장 흔적이라는 구체적 성격이 직접 확인된다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 화북1동 곤을동의 제주4·3 역사와 지역 공동체의 기억에 직접 연결된 장소다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 안내에서 제주4·3 유적지이자 다크 투어리즘 방문지로 다루므로 지역 역사 명소로의 의미는 높게 추론하되 제주 전체 대표성은 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전·동선 조건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 방문은 겨울 기상 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공개 출처는 유적의 역사·위치를 확인하지만 최신 출입 가능 여부, 접근로 노면·경사·계단, 주차·화장실, 무장애 시설과 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 관할 기관의 최신 안내로 출입 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11299651",
+  "place_id": "11299651",
+  "name": "보롬이",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju는 서귀포시 하논로의 ‘보롬이(하논, 화구구)’를 별도 관광지로 안내한다. 입력의 ‘낮은 오름’ 및 정상 쪽 길이 관련 공개 방문 경험도 이 독립 오름 방문지의 성격과 부합하므로 eligible로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 장소를 하논마르 응회환 분화구 안의 화구구이자 오름으로 직접 설명한다.","source_ids":["S1"],"rule_ids":["THEME-OREUM-DIRECT"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·바다·섬 또는 해양 활동이 대표 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"입력의 공개 방문 경험은 낮은 오름을 둘러보는 보행을 언급하지만, 공식 안내에는 지정 탐방 동선·난이도·체험 프로그램이 없다. 보행 방문 가능성만 반영한 잠정값이다.","source_ids":["S1","S2"],"rule_ids":["THEME-OUTDOOR-WALKING-CONTEXT"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지질 형성 설명 외에 역사·문화유산·예술·전통 체험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크 등 테마파크형 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 방문 목적인지 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 설명의 화구구·삼나무·해송·감귤원은 모두 야외 지형과 식생이다. 부대 실내 공간 여부는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-NATURAL-SITE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험으로 확인된 야외 오름 지형과 농경지 주변 보행은 비·바람·더위·추위 영향을 받을 가능성이 크다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설, 소음·혼잡도, 실제 체류 환경이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"입력에는 낮은 오름이라는 언급이 있으나 경사·노면·계단·무장애 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S2"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 체류 시간, 순환 동선, 단축 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내는 독특한 화구구, 삼나무·해송 식재와 정상부까지 이어지는 감귤원을 설명한다. 경관 감상이 대표 방문 목적으로 직접 강조되지는 않아 중간 잠정값이다.","source_ids":["S1"],"rule_ids":["STYLE-NATURAL-LANDSCAPE-CONTEXT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"하논마르 응회환 분화구 안에서 2차적으로 형성되어 네 개 원추형 소화산체로 구성된 화구구라는 고유한 지질 구성이 공식 안내로 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-GEOLOGY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 하논의 화산지형과 제주도 유일의 논, 주변 감귤원이라는 지역 자연·농업 맥락이 공식 안내에 직접 제시된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-LANDSCAPE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 서귀포를 대표하는 상징 명소라는 공적 지정·비교 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시각적 기록 또는 사진 촬영이 핵심 경험으로 직접 권장된 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류·편의 경험의 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 동선·안전·수용 여건이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 안전시설, 노면 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·식생 절정 정보가 없어 야외 오름의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_oreum_access_and_safety_unknown","applies_to":"all_visitors","condition":"보롬이는 야외 화구구·농경지 인접 오름이지만, 현재의 공식 출입 가능 여부, 정상 접근로·지정 탐방로, 사유지 경계, 노면·경사·계단, 주차·화장실·무장애 접근성과 악천후 통제 기준은 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광공사 또는 현장 최신 안내로 출입 가능 여부, 허용 탐방 동선, 사유지·농경지 훼손 금지, 기상에 따른 보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "identity_summary": "입력 장소 ‘보롬이’는 제주관광공사 Visit Jeju가 서귀포시 하논로에서 안내하는 ‘보롬이(하논, 화구구)’로 확인된다.",
+    "typical_visit": "하논마르 응회환 분화구 안의 화구구와 주변 삼나무·해송 식재지, 감귤원 및 하논의 농업·화산지형을 보는 야외 자연 방문지다.",
+    "experience_scope": "공식 자료는 지질·식생·주소를 확인하지만 최신 출입 동선, 운영·주차·편의시설, 안전 관리와 접근성은 제시하지 않는다. Kakao 평점·리뷰 수는 근거로 사용하지 않았고, 입력된 공개 후기의 내용만 장소 성격과 접근 미확인을 보조 확인하는 데 한정했다.",
+    "facts": [
+      {"id":"F1","text":"Visit Jeju는 보롬이(하논, 화구구)를 서귀포시 하논로의 관광지로 안내하며, 하논마르 응회환 분화구 안에서 2차로 형성된 화구구가 네 개의 원추형 소화산체로 구성된다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 북사면의 삼나무·해송 조림과 정상부까지 조성된 감귤원을 설명하며, 제주도의 유일한 논을 가진 곳으로 소개한다. 입력 공개 방문 경험은 낮은 오름을 둘러본 점과 정상 방향 길을 찾기 어려웠던 점을 언급한다.","source_ids":["S1","S2"]}
+    ],
+    "unknowns": ["현재 개방 여부, 진입점, 지정 탐방로 및 사유지·농경지 접근 규칙", "정상 접근로의 노면·경사·계단, 무장애 접근성, 주차·화장실·휴식 시설", "우천·강풍·폭염 시 안전 안내와 출입 통제"],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500247","checked_at":"2026-08-25T00:00:00+09:00","facts":["보롬이(하논, 화구구)의 주소를 제주특별자치도 서귀포시 하논로(서홍동)로 안내한다.","하논마르 응회환 분화구 안의 2차 화구구, 네 개 원추형 소화산체, 삼나무·해송 조림과 감귤원 및 제주도의 유일한 논을 설명한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/11299651","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷의 공개 방문 경험은 낮은 오름을 둘러본 점을 언급한다.","입력 패킷의 공개 방문 경험은 정상 쪽 길을 찾기 어려웠다는 접근 관련 정보를 언급한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

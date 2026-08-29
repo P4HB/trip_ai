@@ -1,0 +1,44 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25730521",
+  "canonical_id": "kakao:25730521",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 장소명 ‘토천’ 외에 주소·업종·좌표가 없고, 공개 검색에서도 이 Kakao 장소 ID와 연결되는 독립 방문 장소의 신원을 확인하지 못했다. 동명 지명·하천 관련 결과만 있어 장소를 추정해 라벨링할 수 없다.",
+    "source_ids": ["source_kakao_place", "source_public_search"],
+    "rule_ids": ["eligibility.identity_must_be_resolved", "policy.no_inferred_identity"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "high",
+  "research": {
+    "status": "completed",
+    "rationale": "공개 Kakao 장소 URL과 웹 검색을 확인했으나 식별 가능한 장소 사실을 확보하지 못했다.",
+    "rule_ids": ["source.public_research_required", "policy.no_inferred_identity"],
+    "sources": [
+      {
+        "source_id": "source_kakao_place",
+        "publisher": "Kakao Map",
+        "url": "https://place.map.kakao.com/25730521",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력의 Kakao 장소 ID 25730521에 대응하는 공개 장소 URL이다.",
+          "공개 접근 경로에서 주소·업종·설명 등 장소 식별 사실을 확인하지 못했다."
+        ]
+      },
+      {
+        "source_id": "source_public_search",
+        "publisher": "Public web search",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%ED%86%A0%EC%B2%9C",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "‘토천’ 검색 결과는 제주 지명·하천 등 동명 항목을 포함하며, Kakao 장소 ID 25730521의 독립 방문 장소 신원을 확인하지 못했다."
+        ]
+      }
+    ]
+  }
+}

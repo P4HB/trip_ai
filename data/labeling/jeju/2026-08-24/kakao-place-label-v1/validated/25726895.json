@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726895",
+  "place_id": "25726895",
+  "name": "삼수천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공개 문화사전은 ‘삼수천’을 삼소천의 이칭으로 제시하며, 삼소천은 제주시 봉개동에서 발원해 삼양동을 지나 바다로 흐르는 하천이자 많은 비가 와야 흐르는 건천이라고 기록한다. 입력 Kakao 레코드에는 장소명 외 주소·좌표·업종·방문 경험 근거가 없고, 이 표식의 특정 구간이 일반 여행객을 위한 독립 관광·체험 장소로 운영된다는 공개 근거도 확인하지 못했다. 따라서 선형 하천 지리 객체 자체는 독립 추천 후보 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "삼수천은 디지털제주문화대전에서 삼소천의 이칭으로 제시된 제주시 동부 하천 지명이다.",
+    "typical_visit": "확인된 공개 정보는 하천의 지명·수계 특성이다. 일반 여행객 대상의 독립 관람 시설, 상시 탐방 동선 또는 운영 프로그램은 확인하지 못했다.",
+    "experience_scope": "하천의 신원은 확인됐지만, 입력 Kakao 표식의 정확한 구간과 일반 방문객 접근·출입·안전 조건은 확인되지 않았다. 독립 관광 방문 경험을 추정하지 않으므로 추천 적합도 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "디지털제주문화대전은 삼소천을 제주시 봉개동에서 발원해 삼양2동과 삼양3동을 지나 바다로 흐르는 하천으로 설명하고, 삼수천을 그 이칭 중 하나로 든다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 자료는 삼소천(삼수천)을 비가 많이 내려야 물이 흐르는 건천이며 몇 곳에 다리가 놓인 하천으로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao place_id가 가리키는 정확한 하천 구간, 주소·좌표 및 현장 안내 시설을 확인하지 못했다.",
+      "일반 방문객의 상시 출입 가능 여부, 공식 산책·관람 동선, 주차·화장실·무장애 접근성과 관광·체험 프로그램을 확인하지 못했다.",
+      "강우 시 수량·범람·미끄럼 위험, 통제 기준 및 최신 안전 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국학중앙연구원 디지털제주문화대전",
+        "type": "public_cultural_encyclopedia",
+        "url": "https://jeju.grandculture.net/jeju/index/GC00701038?category=%EC%A7%80%EB%AA%85%2F%EA%B8%B0%EA%B4%80%EB%AA%85&depth=2&name=%EC%82%AC&page=11&search=%EC%82%BC%EC%96%913%EB%8F%99",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "삼수천은 삼소천의 이칭으로 제시된다.",
+          "삼소천은 봉개동에서 발원해 삼양2동·삼양3동을 지나 바다로 흐르는 하천으로 설명된다.",
+          "많은 비가 내려야 물이 흐르는 건천이며 몇 곳에 다리가 놓여 있다고 설명된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726895",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘삼수천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_access_and_flood_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "삼수천은 건천을 포함한 하천으로 확인됐지만, 이 Kakao 표식의 일반 방문객용 접근 구간·관광 운영 및 강우 시 수변 안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천 후보에서 제외한다. 향후 특정 구간에 대한 공식 관광·탐방 안내가 확인되면 그 구간을 별도 장소 레코드로 검수하고, 방문 전 최신 출입·강우·보행 안전 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

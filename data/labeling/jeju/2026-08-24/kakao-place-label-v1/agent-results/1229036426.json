@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1229036426",
+  "place_id": "1229036426",
+  "name": "잃어버린 마을 원동",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주4·3연구소가 ‘잃어버린 마을 원동’을 4·3유적지로 별도 등재하고, 제주일보도 애월읍 소길리 원동마을 터의 4·3 사건과 현재 남은 비석을 보도한다. 입력 Kakao 장소명과 이 유적지 명칭이 일치하므로 독립적인 역사 기억·탐방 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "잃어버린 마을 원동은 제주시 애월읍 소길리 일대의 제주4·3 관련 옛 원동마을 터를 가리키는 역사 유적지다.",
+    "typical_visit": "현장에 남은 표지·비석과 옛 마을 터를 통해 제주4·3으로 사라진 원동마을의 역사를 기억하는 야외 역사 탐방이다.",
+    "experience_scope": "공개 출처는 원동을 4·3유적지로 등재하고 마을의 역사 및 현재 남은 비석을 설명한다. 최신 개방 시간, 현장 안내판의 상태, 주차·화장실, 보행 노면, 실내 전시 및 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주4·3연구소 4·3유적지 목록에는 ‘잃어버린 마을 원동’이 별도 유적지로 등재돼 있다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주일보는 애월읍 소길리 원동마을이 제주4·3으로 사라졌고 현재는 비석만 남아 있다고 보도하며, 조선시대 제주목과 대정현을 잇는 길의 마을이었던 역사도 설명한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["최신 현장 개방·접근 가능 여부와 안내·추모 시설의 운영 상태를 확인하지 못했다.", "주차, 화장실, 휴식시설, 노면·경사·계단 및 무장애 접근 정보를 확인하지 못했다.", "계절별 현장 환경과 악천후 시 보행 안전 정보를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3연구소", "type": "public_research_institute_page", "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&wr_id=89", "checked_at": "2026-08-24", "facts": ["4·3유적지 페이지의 제목은 ‘잃어버린 마을 원동’이다.", "페이지는 제주4·3연구소가 운영하는 4·3유적지 자료에 속한다."]},
+      {"id": "S2", "publisher": "제주일보", "type": "news_feature", "url": "https://www.jejunews.com/news/articleView.html?idxno=2126585", "checked_at": "2026-08-24", "facts": ["원동마을은 제주시 애월읍 소길리에 있던 마을로 제주4·3 과정에서 사라졌다고 보도한다.", "현재 마을은 폐허가 되어 비석만 남았다고 보도한다.", "조선시대 제주목과 대정현을 잇는 길의 중간 지점이자 나그네가 쉬던 주막이 있던 마을로 설명한다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/1229036426", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 원동마을의 제주4·3 관련 사건을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해변·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 출처가 역사 유적지와 옛 마을 터로 설명하므로 신체 활동보다 역사 탐방이 대표 경험으로 보인다. 실제 탐방 동선은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3연구소가 이곳을 4·3유적지로 등재하고, 보도도 사라진 원동마을의 4·3 역사와 현장 비석을 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"현장에 남은 비석과 옛 마을 터를 보는 유적지로 설명돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"옛 마을 터와 비석을 보는 야외 유적지로 파악돼 비·바람·더위·추위가 대표 경험에 영향을 줄 가능성이 크다. 현장 시설은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음 및 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로, 노면·경사·계단과 무장애 정보가 부족해 신체적 이용 용이성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선, 안내 내용과 권장 체류시간 정보가 부족해 시간 조절 용이성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"사라진 원동마을의 제주4·3 기억을 보존하는 별도 유적지로 등재돼 다른 일반 야외 장소와 구별되는 역사 경험이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"애월읍 소길리 원동마을의 제주4·3 역사와 지역 옛길·주막 마을의 맥락이 출처에서 직접 설명된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월 지역을 대표하는 상징 명소라는 공적 지정·비교 근거를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 1월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 2월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 3월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 4월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 5월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 6월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 7월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 8월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 9월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 10월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 11월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적지 방문의 12월 적합도는 현장 기상·개방 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 현장 개방·접근 가능 여부, 주차·화장실, 노면·경사·계단, 무장애 접근성 및 악천후 보행 안전 정보를 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내로 접근 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

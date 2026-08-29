@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1232263885",
+  "place_id": "1232263885",
+  "name": "함덕4구 평사동 4.3성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "제주4·3연구소의 4·3유적지 목록이 ‘함덕4구 평사동 4.3성’을 독립된 유적지 항목으로 수록한다. 입력 Kakao 장소명도 정확히 일치하므로, 제주4·3 지역사를 짧게 살피는 독립 역사 방문지로 판정한다. 다만 최신 출입 경계와 현장 편의시설은 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "함덕4구 평사동 4.3성은 제주4·3연구소가 4·3유적지로 수록한 역사 유적이며, Kakao 입력 장소명과 일치한다.",
+    "typical_visit": "제주4·3의 지역사를 인지하며 유적 현장을 짧게 둘러보는 야외 역사·기억 방문으로 해석한다.",
+    "experience_scope": "공개 확인 자료는 이 장소의 유적지 등재와 명칭을 확인한다. 상설 전시·해설, 주차·화장실·쉼터, 무장애 동선, 사유지 경계, 노면 상태, 최신 출입·운영 상태는 확인하지 못했다. Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "제주4·3연구소 4·3유적지 목록은 ‘함덕4구 평사동 4.3성’을 별도 유적지 항목으로 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력 Kakao 장소명은 ‘함덕4구 평사동 4.3성’이며 제주4·3연구소의 유적지 항목 명칭과 일치한다.", "source_ids": ["S1", "S2"]}
+    ],
+    "unknowns": [
+      "현장의 정확한 출입 경계, 사유지 여부, 안내판, 보행 노면·경사, 주차와 화장실의 2026-08-25 상태를 확인하지 못했다.",
+      "상설 전시·해설, 그늘·실내 대피 공간, 휠체어 접근성과 안전시설 제공 여부를 확인하지 못했다.",
+      "제주4·3의 폭력과 피난 맥락을 다루는 장소의 어린이 동반 안내 및 정서적 지원 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3연구소", "type": "official_historical_archive", "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0&wr_id=67", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["4·3유적지 페이지의 제목은 ‘함덕4구 평사동 4.3성’이다.", "제주4·3연구소는 이 페이지를 4·3유적지 항목으로 제공한다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/1232263885", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘함덕4구 평사동 4.3성’이다.", "평점·리뷰 수와 작성자 정보는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해변 또는 해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3연구소가 이 장소를 별도 4·3유적지로 수록해 제주4·3 역사·기억이 방문의 핵심임을 직접 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문이나 상거래가 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"박물관·전시관이 아닌 유적지 항목 자체를 둘러보는 방문으로 해석되어 대표 경험은 주로 야외일 가능성이 높다. 실내 부대공간은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 유적 현장을 둘러보는 대표 방문으로 해석되어 비·바람·더위·추위 영향을 받을 수 있다. 차양과 실내 대피공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡·소음·쉼터와 정서적 체류 환경 정보가 부족해 휴식성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·계단·경사·무장애 동선 정보가 부족해 신체적 용이성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 체류시간·해설·부대시설 정보가 부족해 시간 조절 용이성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 대표 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 4·3유적지 목록이 고유 명칭의 별도 유적지 항목으로 수록해 다른 장소와 구별되는 역사·기억 경험을 직접 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"함덕4구 평사동이라는 지역명과 제주4·3 유적지 기록이 직접 연결되어 제주 지역사와의 연관성을 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"4·3 유적지임은 확인되지만 제주 또는 함덕권을 대표하는 상징 명소라는 공적 지정·대표성 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각 기록이 방문 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 접근·안전·해설과 정서적 지원 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"두 사람 방문에 특화된 동선·체험·안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 체류·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주4·3 역사 맥락의 현장이나 어린이 동반을 위한 안내·안전·콘텐츠 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 쉼터, 주차 및 무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 역사유적의 월별 운영·현장 상태를 확인하지 못해 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"historical_site_access_and_sensitivity","applies_to":"on_site_historical_visit","condition":"제주4·3 유적지로 수록된 야외 역사 방문지이나 최신 출입 경계·사유지 여부·보행 안전·현장 편의시설은 공개 자료에서 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 또는 현장 안내로 출입 가능 범위·사유지 경계·보행 안전을 확인하고, 동행자의 연령과 정서적 준비도에 맞춰 제주4·3의 역사적 맥락을 안내한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

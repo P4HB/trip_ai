@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10380414",
+  "place_id": "10380414",
+  "name": "본술산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.55,
+    "rationale": "공개 산 목록과 지리 색인이 본술산을 제주시 조천읍 대흘리의 명명된 산봉우리로 제시한다. 다만 관광지 운영·탐방로·출입 허용은 확인되지 않았고, 입력 공개 후기에는 인근 또는 표식 지점의 건축폐기물 야적장 언급이 있어 조건부 자연 방문 후보로만 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "본술산은 제주시 조천읍 대흘리에 있는 해발 111.2m로 제시된 명명된 산봉우리다.",
+    "typical_visit": "확인된 정체성 기준으로는 야외 자연 지형을 대상으로 하는 방문 후보이나, 공식 탐방 동선이나 관람 운영은 확인되지 않았다.",
+    "experience_scope": "최신 일반인 출입, 사유지 경계, 안전한 진입로, 주차·화장실·무장애 시설, 경관 조망 여부는 확인하지 못했다. 입력 공개 후기에는 건축폐기물 야적장이라는 현장 상태 언급이 있어 표식 위치와 접근성의 별도 확인이 필요하다.",
+    "facts": [
+      {"id": "F1", "text": "공개 산봉우리 목록은 본술산을 해발 111.2m, 좌표 33.50358·126.67731, 제주시 조천읍 대흘리의 산으로 열거한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 지리 색인은 본술산을 산봉우리(Peak)로 분류한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력 Kakao 공개 후기 요약에는 2023년 5월 해당 표식과 연관된 현장에 건축폐기물 야적장이라는 언급이 있다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["공식 관리 주체와 일반인 출입 허용 여부", "표식의 정확한 위치와 산봉우리 좌표의 일치", "탐방로·사유지·안전 통제 및 최신 노면 상태", "주차·화장실·무장애 접근성·소요시간", "경관 조망과 사진 촬영 지점"],
+    "sources": [
+      {"id": "S1", "publisher": "P2SKLife 공개 산봉우리 목록", "type": "public_geographic_index", "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C", "checked_at": "2026-08-25T12:00:00+09:00", "facts": ["본술산을 해발 111.2m, 제주시 조천읍 대흘리의 산으로 열거한다."]},
+      {"id": "S2", "publisher": "Mapcarta 공개 지리 색인", "type": "public_geographic_index", "url": "https://mapcarta.com/29726200", "checked_at": "2026-08-25T12:00:00+09:00", "facts": ["본술산을 Peak로 분류한다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 장소 메타데이터 및 입력 후기 요약", "type": "public_place_metadata", "url": "https://place.map.kakao.com/10380414", "checked_at": "2026-08-25T12:00:00+09:00", "facts": ["입력 패킷은 place_id 10380414와 본술산이라는 장소명을 제공한다.", "입력된 비식별 공개 후기 요약에 건축폐기물 야적장이라는 현장 언급이 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"두 공개 지리 색인이 본술산을 대흘리의 산봉우리로 제시한다. 탐방 가능 상태는 확인되지 않아 최고값은 사용하지 않는다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이용 가능한 레포츠 또는 참여형 체험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술 또는 전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트가 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문이나 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"산봉우리라는 지형 정체성상 대표 경험은 실내보다 야외일 것으로 판단한다. 실제 시설 구성은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험이 야외 산 지형이므로 날씨 영향이 비교적 클 것으로 판단한다. 실제 탐방로 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온한 체류 경험을 직접 확인한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"산 지형이며 공식 진입로·노면·경사 정보가 없고 현장 상태 우려가 언급되어 이용 용이성은 낮게 잠정 판단한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요시간·개방시간·이용 동선 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 직접 확인된 핵심 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"명명된 산봉우리라는 사실 외에 비교 가능한 고유 경험의 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 지리 자료가 제주 조천읍 대흘리의 자연 지형으로 명시해 제주 지역 자연과의 연결이 강하다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"지역 산봉우리로는 확인되지만 대표 명소·공식 관광 안내·공적 지정의 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"출입·동선·안전 상태가 불명확하고 현장 상태 우려가 있어 단독 방문은 사전 확인이 필요하다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"동반 방문도 불명확한 접근·안전 상태의 영향을 받으므로 낮게 잠정 판단한다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"동행 방문의 최신 동선과 안전 조건을 확인하지 못해 낮게 잠정 판단한다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"어린이 동반에 필요한 노면·안전시설 정보가 없고 현장 상태 우려가 있어 낮게 잠정 판단한다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"보행 부담·쉼터·무장애 접근성 정보를 확인하지 못해 낮게 잠정 판단한다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 산 지형의 겨울 기상 영향을 고려한 임시값이며 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 산 지형의 겨울 기상 영향을 고려한 임시값이며 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 산 지형의 여름 더위·강수 영향을 고려한 임시값이며 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 산 지형의 여름 더위·강수 영향을 고려한 임시값이며 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 산 지형의 겨울 기상 영향을 고려한 임시값이며 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_land_use_unknown","applies_to":"all_visitors","condition":"최신 일반인 출입, 사유지 경계, 탐방로·노면·안전 통제는 확인되지 않았고 입력 공개 후기에는 건축폐기물 야적장이라는 현장 언급이 있다.","status":"needs_review","action":"추천 또는 방문 안내 전 관할 지자체·토지 관리자 또는 최신 현장 안내로 표식 위치, 출입 허용, 안전한 접근 경로와 폐기물 적치 여부를 확인한다.","source_ids":["S1","S3"],"checked_at":"2026-08-25T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

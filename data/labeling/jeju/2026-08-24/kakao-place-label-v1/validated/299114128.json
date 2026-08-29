@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:299114128",
+  "place_id": "299114128",
+  "name": "금산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.3,
+    "rationale": "‘금산’은 제주 오름 지명·금악오름 별칭·제주시 연동의 지명 및 제주 밖 행정지명 등으로 다의적이다. 입력 Kakao 레코드에는 주소·좌표·업종·후기 근거가 없어 어느 장소를 의미하는지 확인할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "금산은 복수 지명·별칭으로 쓰이며 Kakao 표식의 정확한 대상은 미확정이다.",
+    "typical_visit": "확정된 장소가 없어 방문 경험을 판단하지 않는다.",
+    "experience_scope": "신원 확정 전에는 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한라일보는 제주 연동의 검은오름을 지역에서 금오름·금악 등으로도 부른다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 금악오름을 별도 관광지로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 주소·좌표·행정구역",
+      "금산이 지칭하는 산·오름·시설 여부",
+      "출입·안전·관리 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "reputable_news",
+        "url": "https://s1.ihalla.com/article.php?aid=1781546400787120370",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주 오름의 복수 명칭을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019460",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "금악오름을 별도 관광지로 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "ambiguous_place_name",
+      "applies_to": "recommendation_candidate",
+      "condition": "금산이라는 명칭이 복수 장소를 가리켜 Kakao 표식의 신원을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식 주소·좌표·사진으로 정확한 장소를 먼저 교차 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

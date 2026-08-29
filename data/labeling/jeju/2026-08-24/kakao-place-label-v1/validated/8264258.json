@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8264258",
+  "place_id": "8264258",
+  "name": "도용나무동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.7,
+    "rationale": "공개 검색 결과는 ‘도용나무동산’을 제주시 한경면 두모리에 있는 고도 37m의 산·봉 지명으로 한 차례 열거하지만, 이를 Kakao place_id 8264258과 교차 확인할 주소·좌표·공식 관리 정보는 제공하지 않는다. 또한 공개·공식 출처에서 탐방로, 개방 여부 또는 독립 방문지로서의 경험을 확인하지 못했으므로, 자연 지형일 가능성을 방문 가능한 여행 장소로 확정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드는 장소명 ‘도용나무동산’과 place_id만 제공한다. 공개 지명 목록 하나는 같은 이름을 제주시 한경면 두모리의 고도 37m 지형으로 표시하지만, 이 정보만으로 해당 Kakao 레코드와의 동일성 및 방문 가능 범위를 검증할 수 없다.",
+    "typical_visit": "신뢰할 만한 공개 출처에서 이 장소의 탐방, 관람, 시설, 운영 또는 접근 동선을 확인하지 못했다.",
+    "experience_scope": "입력에 주소·좌표·업종·공개 후기 근거가 없고, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다. 장소 신원과 독립 여행 방문지 범위가 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 산·봉 목록은 ‘도용나무동산’을 제주특별자치도 제주시 한경면 두모리, 고도 37m, 좌표 33.32971·126.19557로 열거한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 레코드는 명칭 ‘도용나무동산’과 place_id 8264258만 제공하며, 주소·좌표·업종·공개 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8264258의 정확한 주소·좌표와 공개 지명 목록의 도용나무동산이 같은 지점인지 확인하지 못했다.",
+      "현장 소유·관리 주체, 탐방로, 출입 허용 여부, 운영·개방 상태 및 안전 통제 정보를 확인하지 못했다.",
+      "독립 여행 방문지로서의 경관·체험·편의시설·접근성 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "P2SK 블로거 세상",
+        "type": "public_geographic_name_listing",
+        "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "도용나무동산을 제주시 한경면 두모리의 고도 37m 산·봉 지명으로 열거한다.",
+          "좌표를 33.32971, 126.19557로 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8264258",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘도용나무동산’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 주소·좌표·업종과 현장 관리·출입 정보가 없어 공개 지명과의 동일성, 독립 여행 방문지 범위 및 안전한 접근 가능 여부를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 지명·토지 또는 관리 주체 자료와 Kakao의 주소·좌표로 장소 신원을 먼저 교차 확인한다. 방문 가능한 독립 자연 탐방지로 확인되면 최신 출입 허용, 지정 동선, 기상·안전 통제 및 접근성을 별도 검수하고, 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

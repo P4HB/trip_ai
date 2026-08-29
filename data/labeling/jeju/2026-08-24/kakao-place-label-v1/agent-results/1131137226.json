@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1131137226",
+  "canonical_id": "kakao:1131137226",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "status_reason": "Kakao 장소명 삼사석은 제주시 화북동의 제주특별자치도 기념물 삼사석(三射石)과 명칭·소재지가 일치하는 독립 문화유산 방문지다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-01", "IDENTITY-PUBLIC-01"]
+  },
+  "atomic_labels": {
+    "theme.mountain": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "산·오름이 핵심 경험이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.ocean": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안 또는 해양 활동이 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.activity": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "참여형 체험이나 레포츠가 제공된다는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.culture_history": { "state": "numeric", "value": 1, "confidence": 0.95, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가유산포털이 삼사석을 제주특별자치도 기념물로 분류하고, Visit Jeju가 탐라 개국 신화 관련 유적으로 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-DIRECT-01"] },
+    "theme.theme_park": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 시설 또는 프로그램의 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.cafe": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·음료 이용이 방문 목적이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.traditional_market": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 기능의 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "theme.festival": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "장소 핵심이 되는 기간성 축제·공연의 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "environment.indoor_ratio": { "state": "numeric", "value": 0.25, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개의 대상은 보호 석실에 보관된 돌이며, 실내 관람시설의 근거는 확인되지 않아 대표 경험은 대부분 야외로 추정된다.", "source_ids": ["S2"], "rule_ids": ["ENV-INFERENCE-01"] },
+    "environment.weather_sensitivity": { "state": "numeric", "value": 0.75, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립 야외 유적 관람으로 소개되어 비·바람 등 날씨의 영향을 비교적 크게 받을 것으로 추정된다.", "source_ids": ["S2"], "rule_ids": ["ENV-INFERENCE-01"] },
+    "style_evidence.restfulness": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식·평온한 체류를 직접 설명한 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "style_evidence.physical_ease": { "state": "numeric", "value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "소개된 관람 대상은 작은 기념물 1기이나, 동선·경사·무장애 정보가 없어 중간값으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["ACCESS-INFERENCE-01"] },
+    "style_evidence.visit_duration_flexibility": { "state": "numeric", "value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "단일 기념물 관람지로 확인되지만 권장 체류시간이나 부대 프로그램 정보가 없어 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["DURATION-INFERENCE-01"] },
+    "style_evidence.scenic_value": { "state": "numeric", "value": 0.5, "confidence": 0.6, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 자연경관 태그를 부여하고 공식 사진을 제공하지만, 경관 감상이 핵심이라는 설명은 없다.", "source_ids": ["S2"], "rule_ids": ["SCENIC-DIRECT-01"] },
+    "style_evidence.distinctiveness": { "state": "numeric", "value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "탐라 개국 신화에서 세 신인이 쏜 화살이 꽂혔던 돌이라는 고유한 유래가 공식적으로 확인된다.", "source_ids": ["S2"], "rule_ids": ["DISTINCT-DIRECT-01"] },
+    "style_evidence.local_embeddedness": { "state": "numeric", "value": 1, "confidence": 0.95, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 탐라 개국 신화와 화북동의 제주특별자치도 기념물이라는 점이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["LOCAL-DIRECT-01"] },
+    "style_evidence.landmark_significance": { "state": "numeric", "value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "1971년 지정된 제주특별자치도 기념물로 국가유산포털에 등재되어 있고 제주 건국신화 유적이다.", "source_ids": ["S1", "S2"], "rule_ids": ["LANDMARK-DIRECT-01"] },
+    "style_evidence.photo_value": { "state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 대표 이미지는 있으나 사진 촬영 가치가 핵심이라는 직접 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] }
+  },
+  "companion_fit": {
+    "solo": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 혼자를 추천 대상 태그로 제시한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-DIRECT-01"] },
+    "couple": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 커플을 추천 대상 태그로 제시한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-DIRECT-01"] },
+    "friends": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 친구를 추천 대상 태그로 제시한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-DIRECT-01"] },
+    "kids": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 아이를 추천 대상 태그로 제시한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-DIRECT-01"] },
+    "parents": { "state": "numeric", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju가 부모를 추천 대상 태그로 제시한다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-DIRECT-01"] }
+  },
+  "month_fit": {
+    "1": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "2": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "3": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "4": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "5": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "6": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "7": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "8": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "9": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "10": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "11": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] },
+    "12": { "state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·행사·계절 적합성의 공개 근거가 부족하다.", "source_ids": [], "rule_ids": ["FALLBACK-01"] }
+  },
+  "hard_constraints": [
+    { "constraint": "weather_exposure", "status": "caution", "rationale": "대표 관람 대상이 야외 유적으로 소개되어 악천후에는 관람 편의가 낮을 수 있다.", "source_ids": ["S2"] },
+    { "constraint": "accessibility_unknown", "status": "unknown", "rationale": "공식 출처에서 경사, 계단, 휠체어 접근성 정보를 확인하지 못했다.", "source_ids": [] }
+  ],
+  "research": {
+    "sources": [
+      { "id": "S1", "url": "https://heritage.go.kr/heri/cul/culSelectDetail.do?ccbaAsno=0000040000000&ccbaCpno=2333900040000&ccbaCtcd=50&ccbaKdcd=23&pageNo=1_1_1_0", "publisher": "국가유산청 국가유산포털", "checked_at": "2026-08-25", "facts": ["제주특별자치도 기념물 삼사석(三射石)", "분류는 유적건조물/인물사건/역사사건", "소재지는 제주 제주시 화북동 1380번지", "지정일은 1971-08-26"] },
+      { "id": "S2", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500299", "publisher": "제주관광공사 Visit Jeju", "checked_at": "2026-08-25", "facts": ["삼사석은 제주 삼신인이 쏜 화살이 꽂혔던 돌을 보관한 곳으로 소개됨", "주소는 제주특별자치도 제주시 화북1동 1380-1", "태그는 부모·커플·혼자·친구·아이·문화유적지·자연경관·역사유적·어트랙션", "지름 약 55cm의 현무암 2개와 이를 보호하는 석실로 설명됨"] }
+    ],
+    "research_summary": "공공 문화유산 및 제주관광공사 출처로 독립된 제주 역사·문화유산 방문지임을 확인했다. 월별 운영 및 접근성 세부 정보는 확인하지 못했다."
+  },
+  "review_priority": "medium"
+}

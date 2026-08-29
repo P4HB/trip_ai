@@ -1,0 +1,647 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10417720",
+  "canonical_id": "kakao:10417720",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "물찻오름은 제주시 조천읍 교래리의 측화산·산정 화구호를 핵심 경험으로 하는 독립 자연 방문지로 식별된다. 다만 일반 탐방은 제한되고 행사 기간 한시 개방된 보도가 있어, 실제 추천 전 방문 가능일·예약·인원 조건의 재확인이 필요하다.",
+    "source_ids": [
+      "src_segye_20260609",
+      "src_mediajeju_20250521"
+    ],
+    "rule_ids": [
+      "eligibility.independent_visitor_destination",
+      "hard_constraint.dynamic_access_separate"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 보도에서 해발 718m의 측화산으로 설명하며, 탐방 대상은 오름과 정상부 화구호이다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 대표 경험은 내륙 오름·화구호 탐방으로, 해안·해양 활동 근거는 확인하지 못했다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "theme.absence_not_extreme"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "행사 기간 해설 동반 탐방으로 운영되며, 공개 후기에는 왕복 장거리 숲길 보행 경험이 언급된다.",
+      "source_ids": [
+        "src_segye_20260609",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "theme.participatory_outdoor_activity"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 자료는 화산·습지 자연환경과 탐방 운영에 집중되어 문화·역사 체험의 핵심성은 확인하지 못했다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.unknown_theme"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "자연 오름 탐방지이며 놀이공원형 시설·동물·수족관 경험은 확인하지 못했다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.unknown_theme"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 자료에서 카페·차·디저트 이용은 대표 방문 목적으로 확인되지 않았다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.unknown_theme"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 자료에서 시장 방문 또는 상거래 경험은 확인되지 않았다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.unknown_theme"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장소 자체는 오름이지만 2026년 사려니숲 에코힐링 체험행사에서 한시 개방 탐방 프로그램으로 운영됐다. 상시 축제 장소인지 여부는 확인이 필요하다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "theme.event_linked_not_core"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "측화산과 정상부 화구호를 걷는 자연 탐방으로 설명되어 대표 경험은 실외다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "environment.outdoor_natural_site"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 1,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "실외 산림·오름 탐방이며, 확인된 운영도 자연휴식년제와 한시 탐방 방식이다. 세부 기상 통제 기준은 미확인이다.",
+      "source_ids": [
+        "src_segye_20260609",
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "environment.outdoor_exposure"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "사려니숲 에코힐링 체험의 탐방 대상으로 소개돼 숲·습지 자연 감상 중심의 느린 체류 가능성을 시사한다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "style.nature_healing_inference"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "오름·숲길 탐방이며 공개 후기에는 장거리 보행 소요가 언급되지만, 공식 난이도·경사·무장애 정보는 확인하지 못했다.",
+      "source_ids": [
+        "src_kakao_reviews",
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.outdoor_hiking_access"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "한시 개방 행사에서는 회차·정원 방식으로 운영돼 방문 시간을 자유롭게 조절하기 어려운 편으로 보인다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "style.scheduled_entry"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "산등성이에 둘러싸인 화구호와 습지식물이 소개돼 자연 경관 감상이 주요 가치로 확인된다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "style.natural_scenery"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "분화구에 물이 고인 산정 화구호와 습지 생태가 장소의 구별되는 구성으로 소개된다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "style.unique_natural_feature"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주시 조천읍 교래리의 제주 오름·습지 생태 및 사려니숲길 보전 맥락과 직접 연결된다.",
+      "source_ids": [
+        "src_segye_20260609",
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "style.jeju_nature_connection"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "희귀 화구호를 품은 오름으로 보도되고 한시 탐방의 관심 대상이지만, 제주 대표 랜드마크로서의 공식 지정·위상은 확인하지 못했다.",
+      "source_ids": [
+        "src_segye_20260609",
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "style.regional_recognition_cautious"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "화구호·습지 식물과 산정 자연 경관이 확인되어 시각적 기록 가치는 있으나, 실제 조망 조건은 식생과 탐방 시점에 따라 달라질 수 있다.",
+      "source_ids": [
+        "src_segye_20260609",
+        "src_kakao_reviews"
+      ],
+      "rule_ids": [
+        "style.visual_feature"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "개별 동행 유형별 공식 안전·입장 규정은 확인하지 못했으며, 예약·해설 동반 탐방 조건을 사전 확인해야 한다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 공식 권장 근거는 확인하지 못했으며, 한시 탐방의 예약 가능 여부가 선행 조건이다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 공식 권장 근거는 확인하지 못했으며, 회차별 정원과 예약 조건을 확인해야 한다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 연령·보행 부담·안전 규정이 확인되지 않아 가족 적합도를 확정할 수 없다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 동반자의 보행 부담과 접근성 시설 정보가 확인되지 않아 적합도를 확정할 수 없다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.companion_unknown"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "2026년 6월에는 행사 한시 개방 사례가 있으나 향후 반복 여부·일정은 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "fallback.month_dynamic_event"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "일반 탐방 개방일과 계절별 체험 조건이 확인되지 않아 계절 적합도를 중립값으로 보류한다.",
+      "source_ids": [
+        "src_mediajeju_20250521"
+      ],
+      "rule_ids": [
+        "fallback.month_access_unknown"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_restriction",
+      "status": "needs_verification",
+      "rationale": "2025년 보도는 일반 탐방객 출입 제한 지속을, 2026년 보도는 행사 기간 한시 개방을 전한다. 추천·방문 전 최신 개방일, 사전예약, 회차별 정원 및 동행·안전 조건을 공식 안내로 확인해야 한다.",
+      "source_ids": [
+        "src_mediajeju_20250521",
+        "src_segye_20260609"
+      ],
+      "rule_ids": [
+        "hard_constraint.dynamic_access"
+      ]
+    }
+  ],
+  "research": {
+    "status": "researched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {
+        "id": "src_segye_20260609",
+        "publisher": "세계일보",
+        "url": "https://www.segye.com/newsView/20260609509584",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 조천읍 교래리의 해발 718m 측화산으로 소개한다.",
+          "2026년 사려니숲 에코힐링 행사 기간 자연휴식년제로 제한된 물찻오름을 한시 개방했다고 보도한다.",
+          "정상부에 100m가 넘는 화구호와 습지식물이 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "src_mediajeju_20250521",
+        "publisher": "미디어제주",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=358255",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2008년부터 일반 탐방객 출입이 제한돼 왔다고 보도한다.",
+          "개방을 위해 탐방로 정비가 필요하다고 전한다."
+        ]
+      },
+      {
+        "id": "src_kakao_reviews",
+        "publisher": "Kakao Map 공개 방문 후기 요약",
+        "url": "https://place.map.kakao.com/10417720",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력에 포함된 후기에는 숲길 보행, 해설 동반 탐방, 예약·회차 운영 경험이 언급된다.",
+          "후기는 보조 방문경험 근거이며 평점·후기 수를 점수 근거로 사용하지 않았다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 일반 개방 여부와 다음 한시 개방 일정",
+      "공식 탐방 코스 거리·난이도·경사 및 무장애 정보",
+      "연령·동행 유형별 입장·안전 규정"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

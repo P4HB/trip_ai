@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8244638",
+  "place_id": "8244638",
+  "name": "누루못굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "제주특별자치도 행정통계에 누루못굴은 성산읍 수산리의 동굴로 수록되어 신원·소재지는 확인된다. 그러나 일반 방문객을 위한 독립 관람·체험 장소, 개방·안전관리 또는 공식 탐방 안내는 공개 신뢰 출처에서 확인하지 못했다. 따라서 미개방 가능성이 있는 자연 동굴을 추천용 독립 방문지 벡터 대상으로 추정하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "누루못굴은 제주특별자치도 서귀포시 성산읍 수산리에 수록된 동굴명이다.",
+    "typical_visit": "공개 신뢰 출처에서 확인된 것은 지명·자연동굴 목록상 소재지뿐이며, 일반 관광객의 관람·탐방 경험은 확인되지 않았다.",
+    "experience_scope": "장소명과 수산리 소재는 교차 확인했지만, 공개 관광 안내나 운영 주체의 방문 정보가 없어 안전하게 이용 가능한 독립 여행 방문지로 간주할 수 없다. 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 2024 주요행정통계의 동굴명·소재지 목록은 누루못굴의 소재지를 서귀포시 성산읍 수산리로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 레코드는 장소명을 ‘누루못굴’로 제시하며, 제공된 공개 방문 후기 근거는 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 출입 가능 여부, 입구 위치, 탐방 동선, 관리 주체와 최신 안전 통제를 확인하지 못했다.",
+      "관람·체험을 위한 공식 관광 안내, 예약·가이드 프로그램, 주차·화장실·난간 및 무장애 접근성 정보를 확인하지 못했다.",
+      "동굴 내부 상태, 침수·낙석 등 현장 위험과 계절별 이용 가능성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도",
+        "type": "government_statistics_pdf",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2025/CLIKC2394003951198443_attach_2.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "2024 주요행정통계의 동굴명·소재지 목록은 누루못굴을 서귀포시 성산읍 수산리로 수록한다.",
+          "같은 목록은 동굴명과 소재지를 행정통계 항목으로 제시하며, 일반 관광객 관람 운영 정보는 제공하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8244638",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘누루못굴’이다.",
+          "입력 패킷에는 주소·좌표·업종·공개 방문 후기 근거가 없으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_cave_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "동굴 지명과 소재지는 확인됐지만 일반 관광객의 개방 여부, 진입 동선, 관리·안전 기준 및 공식 관람 운영을 확인하지 못함",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광·관리기관이 일반 방문과 안전 조건을 안내하면 적격성을 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

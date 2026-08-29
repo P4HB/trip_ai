@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14080397",
+  "canonical_id": "kakao:14080397",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력 후기는 제주올레 완주 인증·스탬프와 코스 안내를 위한 여행자센터 기능을 설명한다. 독립 목적지보다 올레길 이용을 보조하는 부속 시설로 보존한다.",
+    "source_ids": [
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "route_service_context_required",
+      "detail": "독립 목적지로 추천하지 않고 제주올레 7코스 이용·인증을 보조하는 시설로 취급해야 한다.",
+      "source_ids": [
+        "r1",
+        "r2"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "r1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/14080397",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "올레 완주 인증 방문 언급"
+        ]
+      },
+      {
+        "source_id": "r2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/14080397",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "안내와 스탬프 수첩 언급"
+        ]
+      },
+      {
+        "source_id": "r3",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/14080397",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "커피와 주변 섬 경관 언급"
+        ]
+      },
+      {
+        "source_id": "r4",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/14080397",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "일반 긍정 반응"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식·공공 상세 출처가 입력 패킷에 제공되지 않았다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

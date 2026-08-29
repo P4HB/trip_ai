@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17576607",
+  "place_id": "17576607",
+  "name": "제주미니미니랜드 아시아",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "Kakao 장소명 ‘제주미니미니랜드 아시아’는 상위 관광지인 제주미니미니랜드 안의 대륙별 전시 구역을 가리킨다. 공개 관광·언론 자료는 제주미니미니랜드를 유럽·아시아 등 여러 대륙 50여 국가의 축소 건축물을 함께 전시하는 하나의 미니어처 테마파크로 설명한다. ‘아시아’ 구역의 별도 입장·운영·독립 방문 경험은 확인되지 않아, 독립 추천 후보가 아닌 상위 테마파크의 하위 구역으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-SUBORDINATE-FACILITY", "ELIG-NO-INDEPENDENT-VISIT"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드의 ‘제주미니미니랜드 아시아’는 제주미니미니랜드에 귀속된 아시아 대륙 전시 구역으로 판단된다.",
+    "typical_visit": "방문자는 제주미니미니랜드라는 단일 야외 미니어처 테마파크에서 여러 대륙·국가의 축소 건축물을 함께 관람하는 것으로 공개 자료에 설명된다.",
+    "experience_scope": "아시아 구역만의 별도 입장권, 운영 주체, 관람 동선, 접근성 또는 독립 체험은 확인하지 못했다. 따라서 이 레코드에는 독립 장소용 적합도 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 place_id 17576607의 이름을 ‘제주미니미니랜드 아시아’로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주일보는 제주미니미니랜드를 세계 50여 개국 100여 점의 유명 건축물을 한 곳에서 볼 수 있는 미니어처 테마파크로 소개한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "여행 정보 페이지는 제주미니미니랜드가 유럽·아시아·아프리카·오세아니아·북/남미의 세계 건축물과 문화유산을 함께 축소 전시한 테마파크라고 설명한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표와 제주미니미니랜드 내부 아시아 전시 구역의 실제 위치는 확인하지 못했다.",
+      "아시아 구역의 별도 입장·운영·요금·체험·접근성 및 최신 개방 상태는 확인하지 못했다.",
+      "상위 제주미니미니랜드의 현재 운영 조건, 기상 안전 통제, 주차 및 무장애 동선은 이 결과에서 확정하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17576607",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 레코드의 장소명은 ‘제주미니미니랜드 아시아’이다.",
+          "평점과 리뷰 수는 라벨 판정 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주일보",
+        "type": "news_article",
+        "url": "https://jejunews.com/news/articleView.html?idxno=1717902",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주미니미니랜드는 세계 50여 개국 100여 점의 유명 건축물을 한 곳에서 볼 수 있는 미니어처 테마파크로 소개된다.",
+          "테마파크는 제주시 조천읍 교래리에 조성됐으며 문화예술 체험을 제공한 것으로 보도됐다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "NOL 인터파크투어 프리야",
+        "type": "travel_information_page",
+        "url": "https://tour.interpark.com/freeya/spot/view.aspx?SpotNo=77620",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주미니미니랜드는 유럽·아시아·아프리카·오세아니아·북/남미 대륙의 세계 유명 건축물과 문화유산을 축소 전시한 테마파크로 소개된다.",
+          "소개는 여러 대륙의 전시물을 하나의 테마파크 방문 경험으로 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_site_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘아시아’는 제주미니미니랜드의 대륙별 전시 구역으로 판단되며, 별도 운영 또는 독립 방문 경험은 확인되지 않았다.",
+      "status": "needs_review",
+      "rule_ids": ["HARD-SUBORDINATE-EXCLUDE"],
+      "action": "이 레코드를 독립 추천 후보로 사용하지 않는다. 필요하면 상위 장소 제주미니미니랜드의 별도 검수 결과를 사용하고, 최신 운영·입장 조건은 방문 전에 상위 운영 주체의 안내로 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

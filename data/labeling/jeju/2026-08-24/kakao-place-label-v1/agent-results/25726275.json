@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726275",
+  "place_id": "25726275",
+  "name": "방천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "Kakao Map 표식은 제주시 아라이동의 ‘방천’으로 표시되고, 제주특별자치도의회 공개 부록은 방천을 영평동에서 화북천 합류점까지 이어지는 지방하천으로 제시한다. 그러나 이 표식에 일반 여행객을 위한 독립 관광·관람·체험 공간, 공식 탐방 동선 또는 방문 운영은 확인되지 않았다. 하천 수계 자체를 독립 방문 경험 벡터 대상으로 추정하지 않아 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 표식 ‘방천’은 제주특별자치도 제주시 아라이동으로 표시된다. 제주특별자치도의회 공개 자료의 제주시 지방하천 현황은 같은 이름의 방천을 영평동 2235에서 화북천 합류점까지의 하천으로 제시한다.",
+    "typical_visit": "확인된 공개 신뢰 자료는 방천을 하천 관리·재해정보의 대상인 수계로 설명할 뿐, 일반 여행객을 위한 독립 관람·체험 시설이나 지정 탐방 경험은 안내하지 않는다.",
+    "experience_scope": "하천의 존재와 제주시 소재성은 확인되지만, Kakao 표식이 가리키는 특정 구간의 일반 출입·산책로·안전시설·운영 주체는 확인되지 않았다. 하천명 표식 자체는 이번 계약의 독립 관광·문화·자연·체험 방문 장소 41축에 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 메타데이터는 place_id 25726275의 장소명을 ‘방천’, 위치 설명을 제주특별자치도 제주시 아라이동으로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 부록의 제주시 지방하천 현황은 방천의 기점을 영평동 2235, 종점을 화북천 합류점, 연장을 10.0km로 제시한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 가리키는 방천의 정확한 하천 구간과 일반인 접근 지점은 확인하지 못했다.",
+      "일반 방문객을 위한 공식 산책·관람 동선, 개방 시간, 주차, 화장실, 난간·수변 안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "강우·태풍·범람 시 통제, 수위와 수질 등 변하는 현장 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726275",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소명 ‘방천’을 표시한다.",
+          "위치 설명을 제주특별자치도 제주시 아라이동으로 표시한다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "official_public_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 지방하천 현황에서 방천을 하천명으로 열거한다.",
+          "방천의 기점을 영평동 2235, 종점을 화북천 합류점, 연장을 10.0km로 제시한다.",
+          "이 자료는 일반 방문객용 관광·관람 운영 또는 특정 구간의 출입 안전을 안내하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "river_feature_not_independent_visit_experience",
+      "applies_to": "recommendation_candidate",
+      "condition": "방천은 지방하천으로 확인되지만, 이 Kakao 표식의 특정 구간에 대해 일반 방문객용 독립 관광·관람·체험 공간, 공식 접근 동선 및 수변 안전 관리가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광 안내 또는 일반인이 이용 가능한 특정 산책·관람 시설이 확인되면 그 개별 시설·구간을 별도 장소로 신원 확인 후 검수한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2110648536",
+  "place_id": "2110648536",
+  "name": "해거름마을공원 인증센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.9,"rationale":"행정안전부 자전거행복나눔은 해거름마을공원을 제주환상자전거길의 스탬프 지점으로 제시하고, 국가통계 자료도 이를 제주환상 자전거길의 10개 인증센터 중 하나로 열거한다. 별도 상업시설의 내부 부속물이 아니라 공공 자전거길 이용자가 독립적으로 들르는 공식 인증 지점이므로 적격으로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"해거름마을공원 인증센터는 제주시 한경면 판포리의 해거름마을공원에 있는 제주환상자전거길 공식 인증 지점이다.",
+    "typical_visit":"자전거 종주 중 인증을 하고, 공원의 바다·노을 전망, 산책로, 잔디밭과 놀이·운동 시설을 짧게 이용하는 야외 방문으로 확인된다.",
+    "experience_scope":"공원과 자전거길 인증 지점의 공개 안내를 근거로 한다. 이지제주의 접근성 조사는 2020-05-27 기준이므로 현재 운영·시설 상태와 기상 통제는 최신 현장 안내로 다시 확인해야 한다.",
+    "facts":[
+      {"id":"F1","text":"자전거행복나눔의 제주환상자전거길 코스 그림은 다락쉼터와 송악산 사이의 스탬프 지점으로 해거름마을공원을 제시한다.","source_ids":["S1"]},
+      {"id":"F2","text":"국가통계포털 공개 PDF의 2023년 기준 인증센터 설치 현황은 제주환상 자전거길의 10개 인증센터에 해거름마을공원을 포함한다.","source_ids":["S2"]},
+      {"id":"F3","text":"제주관광약자접근성안내센터는 해거름마을공원에 노을 전망대와 바다 전망, 잔디밭·놀이터·농구장·족구장이 있다고 안내한다.","source_ids":["S3"]},
+      {"id":"F4","text":"같은 접근성 안내는 2020-05-27 조사 기준 별도 주차장이 없고 주 출입구와 장애인 화장실 접근로에 낮은 경사·단차·요철이 있음을 적는다.","source_ids":["S3"]}
+    ],
+    "unknowns":["인증 부스와 공원 시설의 현재 개방 시간·운영 상태는 확인하지 못했다.","자전거길 및 공원의 강풍·강수 시 안전 통제와 최신 노면 상태는 확인하지 못했다.","2020년 접근성 조사 이후의 무장애 시설 변경 여부는 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"행정안전부 자전거행복나눔","type":"public_service","url":"https://www.bike.go.kr/bbs/road.do?bbsCtfrySubSn=56&bbsCtgrySn=8&key=2006176979144","checked_at":"2026-08-24","facts":["제주환상자전거길은 해안도로와 일주도로를 활용한 자전거길이다.","코스 그림에서 해거름마을공원은 다락쉼터와 송악산 사이의 스탬프 지점이다."]},
+      {"id":"S2","publisher":"국가지표체계·한국수자원공사 자료","type":"public_statistics_document","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/19/41/2024/CLIKC33574912360619567_attach_1.pdf","checked_at":"2026-08-24","facts":["2023년 기준 제주환상 자전거길은 234km이다.","인증센터 설치 현황의 10개 제주환상 인증센터에 해거름마을공원이 포함된다."]},
+      {"id":"S3","publisher":"제주관광약자접근성안내센터 이지제주","type":"public_tourism_accessibility","url":"https://easyjeju.net/pages.php?folders=tour&no=1071&p=tourist","checked_at":"2026-08-24","facts":["해거름마을공원 주소는 제주시 한경면 판포리 1605-1로 안내된다.","노을 전망대·바다 전망·잔디밭·놀이터·농구장·족구장이 안내된다.","접근성 정보는 2020-05-27 조사 기준이며 별도 주차장 없음, 낮은 경사·단차·요철을 기록한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 접근성 안내가 공원의 바다 전망을 대표 상세정보로 직접 제시한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 자전거길 안내와 인증센터 현황이 이곳을 제주환상자전거길의 인증 지점으로 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이공원형 유료·테마 경험의 근거가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적이라는 공적 안내가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 경험의 근거가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내의 전망대·바다 전망·잔디밭·놀이터·운동장은 야외 시설로 제시되어 대표 경험의 실내 비율은 낮다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 바다 전망과 야외 공원·자전거길 이용이므로 비·바람·더위의 영향을 비교적 받을 것으로 판단한다. 최신 기상 통제는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 노을·바다 전망과 잔디밭은 느린 휴식 체류를 뒷받침하지만, 혼잡도와 최신 휴식 환경은 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"낮은 경사·단차·요철이 보고되어 접근 부담은 완전히 낮다고 볼 수 없고, 전체 동선 정보도 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인증·전망·운동시설별 소요 시간과 현재 운영 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 특히 아름다운 노을 전망대와 바다 전망을 이 공원의 상세정보로 직접 제시한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"국토종주 제주환상 자전거길의 10개 공식 인증 지점이면서 노을·바다 전망을 갖춘 공원이라는 조합이 고유성을 뒷받침한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 234km 환상자전거길의 공식 인증 지점이고 제주 해안·바다 경관을 경험하는 공원으로 확인된다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가 공개 인증센터 현황이 제주환상 자전거길의 10개 인증센터 중 하나로 해거름마을공원을 직접 열거한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 아름다운 노을 전망대와 바다 전망을 제시하므로 시각 기록 가치는 비교적 높게 판단하되, 촬영 편의·규칙은 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"자전거길 인증과 전망 감상은 혼자도 가능한 독립 방문 경험이나 최신 안전·운영 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"노을·바다 전망과 공원 체류 요소는 둘이 함께하는 방문에 비교적 맞지만, 최신 편의시설 상태는 미확인이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"자전거길 경유와 농구장·족구장은 친구 동반 활동 가능성을 뒷받침하지만, 이용 가능 여부는 최신 확인이 필요하다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 아이들이 뛰어놀 수 있는 잔디밭과 놀이터를 직접 안내한다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"바다 전망과 공원 방문은 가능하나, 별도 주차장 부재와 경사·단차·요철 정보 때문에 보행 부담을 확정할 수 없어 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 바다 전망·자전거길 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 바다 전망·자전거길 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 바다 전망·자전거길 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 바다 전망·자전거길 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 바다 전망·자전거길 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[
+    {"kind":"access_and_safety_check","applies_to":"all_visitors","condition":"접근성 안내는 2020-05-27 조사 기준이고 별도 주차장 부재, 낮은 경사·단차·요철을 기록한다. 최신 노면·시설·기상 통제 상태는 미확인이다.","status":"needs_review","action":"방문 전 현장 또는 관할 기관의 최신 개방 여부, 주차·화장실, 자전거길 노면 및 강풍·강수 안전 안내를 확인한다.","source_ids":["S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority":"medium",
+  "generated_at":"2026-08-24"
+}

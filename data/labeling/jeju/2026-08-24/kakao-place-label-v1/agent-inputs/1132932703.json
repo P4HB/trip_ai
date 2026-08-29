@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2053,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1132932703.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1132932703",
+    "provider": "kakao",
+    "place_id": "1132932703",
+    "name": "사려니숲길 관광안내소",
+    "url": "https://place.map.kakao.com/1132932703",
+    "average_rating_5": "4.5",
+    "visitor_review_count": "22",
+    "blog_review_count": "43",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.02.14.",
+      "content": "무장애탐방로는 오후 4시 이후 입장 자제, 비자림로로 이어지는 사려니숲길은 5시 이후 통제입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2025.07.30.",
+      "content": "걸어도 걸어도 같은 풍경이라 지루해요. 삼거리 너머까지 갔다가 나무 뿌러져 있어서 돌아옴. 오소리, 노루 친구들을 만날 수 있음. 공기가 좋다",
+      "tags": ""
+    },
+    {
+      "date": "2024.04.12.",
+      "content": "입장료없이 30분정도 잘 걸었네요. 삼나무 숲이 멋져요~",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2023.08.02.",
+      "content": "한적하고 자연을 볼수있는 사려니 숲길",
+      "tags": "뷰"
+    },
+    {
+      "date": "2022.12.13.",
+      "content": "무료라 가는 곳, 정말 숲길 뿐이네요.. 월든삼거리까지 가려고 했는데 그냥 숲길뿐이라 중간에 포기하고 돌아왔어요.. 힐링을 원하는 분은 좋으실 것 같은데 추운 겨울에 걷기에는 좀 힘들고 지루하네요",
+      "tags": "입장료"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

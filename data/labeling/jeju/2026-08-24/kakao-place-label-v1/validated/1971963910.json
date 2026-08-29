@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1971963910",
+  "canonical_id": "kakao:1971963910",
+  "name": "한라산둘레길 안내센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공개 자료가 이 장소를 한라산둘레길 탐방객 안내·숲길 정보 제공을 위한 전용 안내센터로 설명한다. 이는 국가숲길 자체의 독립 방문 경험이 아니라 그 이용을 지원하는 부속 안내시설이다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-DESTINATION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "안내센터는 한라산둘레길 탐방 지원 시설이며 독립 여행지 라벨 대상이 아님",
+      "status": "confirmed",
+      "action": "한라산둘레길 자체를 별도 장소로 평가하고, 안내·운영 정보는 최신 공식 채널에서 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 2026년 제주시 용강동 한라생태숲 일원에 개장한 한라산둘레길 전용 안내센터와 일치한다.",
+    "facts": [
+      {
+        "text": "전용 안내센터는 한라산둘레길 탐방객 안내와 숲길 정보 제공을 위해 개장했다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "산림청 지정 국가숲길인 한라산둘레길에는 안내센터 등 관리·활성화 사업이 추진된다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "방문일의 운영시간·제공 서비스"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://v.daum.net/v/20260416065634567",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주시 용강동 한라생태숲 일원의 전용 안내센터 개장과 탐방 지원 목적을 보도한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국문화관광연구원",
+        "type": "public_policy_information",
+        "url": "https://www.tour.go.kr/FileSystem/UploadTemp/SendNewsLetter/week_poliy%282022_11_02%29.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라산둘레길의 국가숲길 지정과 안내센터·관리사업 계획을 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:8210291",
+  "place_id": "8210291",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "review_status": "needs_review",
+    "rationale": "입력명 '남거산'은 공개 산봉 목록에서 남거니오름의 별칭으로 확인된다. 다만 공식 탐방·관리 정보를 찾지 못해 세부 이용 조건은 검수 대상으로 남긴다.",
+    "rule_id": "REQ-012",
+    "source_ids": [
+      "src-1"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "src-1",
+        "url": "https://2fpretty0911.tistory.com/m/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%84%9C%EA%B7%80%ED%8F%AC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-185%EA%B0%9C",
+        "publisher": "유일무이산",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "남거니오름의 별칭으로 남거산과 낭끼오름을 제시한다.",
+          "제주특별자치도 서귀포시 성산읍 수산리 소재로 제시한다.",
+          "고도 185.6m와 좌표 33.43537, 126.84202를 제시한다."
+        ]
+      }
+    ],
+    "summary": "공개 산봉 목록으로 남거산과 남거니오름의 동일성을 확인했으나, 공식 탐방·관리 정보는 확인하지 못했다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "review_status": "needs_review",
+      "rationale": "출처가 남거산을 남거니오름의 별칭인 산봉으로 제시한다.",
+      "rule_id": "REQ-006",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "needs_review",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "산봉 목록 외 해양 경험의 근거가 없다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "오름 방문은 보행을 수반할 수 있으나 탐방로·활동 정보는 미확인이다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "역사·문화 경험의 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "테마파크형 시설 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "카페·차·디저트 이용 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "시장 방문 경험의 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "기간성 축제·공연 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "산봉이라는 장소 유형상 실내 경험은 낮게 추정하되 시설 정보가 없어 중립에 가깝게 둔다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "야외 산봉 방문은 기상 영향을 받을 가능성이 있으나 실제 개방·안전 기준은 미확인이다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "휴식 환경의 직접 근거가 없다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "고도는 확인되지만 접근·경사·계단 정보가 없어 부담을 판단할 수 없다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "체류 시간이나 동선 정보가 없다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "산봉임은 확인되나 이 장소 자체의 조망·경관 근거는 부족하다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "별칭과 위치 외 고유 경험의 근거가 부족하다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "researched_inference",
+      "review_status": "fallback",
+      "rationale": "제주 성산읍 소재 오름으로 제시되지만 지역 문화·생산자·생활 연결은 확인되지 않았다.",
+      "rule_id": "REQ-009",
+      "source_ids": [
+        "src-1"
+      ],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "지역 대표 명소라는 근거를 찾지 못했다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "사진 촬영 가치의 직접 근거가 없다.",
+      "rule_id": "REQ-009",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-006"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "안전·접근 정보가 없어 동행 형태별 적합도를 판단할 수 없다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "동행 형태별 이용 근거가 없다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "동행 형태별 이용 근거가 없다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "어린이 접근성·안전 정보가 없다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "review_status": "fallback",
+      "rationale": "경사·휴식·접근 정보가 없어 부모 동행 적합도를 판단할 수 없다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "review_status": "fallback",
+      "rationale": "개방·계절 운영 정보가 없어 중립값이다.",
+      "rule_id": "REQ-007",
+      "source_ids": [],
+      "status": "fallback",
+      "rule_ids": [
+        "REQ-007"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "access_and_safety_unverified",
+      "status": "unknown",
+      "rationale": "공식 탐방로, 개방 여부, 접근성과 안전 조건을 확인하지 못했다.",
+      "source_ids": []
+    }
+  ],
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

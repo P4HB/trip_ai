@@ -1,0 +1,652 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25379468",
+  "canonical_id": "kakao:25379468",
+  "name": "큰노루손이오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력 주소와 일치하는 제주시 봉개동의 ‘큰노리손이오름’이 제주특별자치도 오름 기본계획에 독립된 오름으로 수록되어 있다. 입력명의 ‘노루손이’는 해당 장소의 통용 표기 차이로 판단했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 1,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 기본계획은 이 장소를 표고 426.6m의 원추형 오름으로 명시하고 탐방로·정상부를 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-MOUNTAIN-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 조사 자료는 봉개동 내륙의 오름·수림·탐방로를 설명하며 해안 또는 해양 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "둘레길·멍석길·목재 계단으로 형성된 야외 탐방로가 직접 확인되어, 오름 보행 탐방이 대표 경험이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "노로손이·노리손이 등 다양한 옛 지명 표기가 기록되지만, 문화·역사 해설이 현장 방문 경험의 주된 구성인지는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-HISTORY-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조사 출처는 자연 오름과 탐방 시설만 기록하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름 탐방지로 확인되며 시장 또는 상거래 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 오름·탐방로로 기록될 뿐 특정 축제나 기간성 행사가 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "원추형 오름의 수림·등성이·둘레길·계단을 이용하는 야외 탐방지로 기록되며 실내 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 전면 야외 탐방로 보행이므로 강수·강풍·더위·추위의 영향을 크게 받는다. 최신 기상별 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해송이 조림된 자연 오름이지만 인접 폐기물 환경사업소의 지속 악취가 기록되어 평온한 휴식성은 중립으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-NATURE-WITH-AMENITY-LIMIT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "동쪽 등성이는 가파르고, 목재 계단은 폭이 좁아 어린이·노약자가 탐방하기 불편하다고 공공 계획이 명시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-TRAIL-BURDEN-DIRECT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "둘레길은 확인되지만 현행 권장 코스, 단독 체류시간 및 단축·회차 동선 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해송 수림과 오름 지형은 확인되지만 정상부 교목으로 정상 전망은 볼 수 없다고 기록되어 경관 감상 가치는 중립으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-SCENERY-WITH-VIEW-LIMIT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "원추형 오름, 다양한 옛 지명, 해송 조림이라는 특성은 확인되나 이를 제주 내에서 특별히 차별화된 체험으로 평가할 직접 근거는 부족하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 봉개동의 자연생태자원으로 수록되고, 제주어·한자 지명 변천 및 지역 오름 지형과 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-NATURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지방 공공 계획과 제주시 자연생태자원 목록에 수록됐으나, 제주 전체를 대표하는 공적 상징·주요 명소라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-LANDMARK-CONTEXT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해송 수림과 오름 지형은 시각 요소이나, 정상 전망 부재와 사진 촬영을 핵심 경험으로 권하는 공식 근거 부족을 함께 반영해 중립으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 탐방은 가능하나, 계획 문서에 관리되지 않은 진입부 가능성과 최신 안전·안내 정보 미확인이 기록돼 중립으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-ACCESS-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "목재 계단의 좁은 폭과 발 디딤 공간 때문에 어린이 탐방이 불편하다고 직접 기록돼 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-CHILD-TRAIL-BURDEN-DIRECT"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "가파른 동쪽 등성이와 좁은 원형 목재 계단으로 노약자 탐방이 불편하다고 직접 기록돼 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-SENIOR-TRAIL-BURDEN-DIRECT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정·기상 통제의 최신 근거가 없어 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "trail_access_and_safety_conditions_require_current_confirmation",
+      "applies_to": "all_visitors",
+      "condition": "2022년 제주특별자치도 오름 기본계획은 지도 탐색 시 관리되지 않은 탐방로를 따라 진입할 수 있고, 가파른 등성이·좁은 목재 계단·훼손 야자매트이 있으며 인접 폐기물 환경사업소 악취가 지속된다고 기록한다. 현재 상태·개방·통제는 미확인이다.",
+      "status": "needs_review",
+      "action": "방문 직전에 현장 최신 안내로 공식 진입로, 개방 여부, 탐방로 상태, 우천·강풍 시 통제와 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "카카오 입력의 ‘큰노루손이오름’은 동일 주소의 제주특별자치도 기본계획상 ‘큰노리손이오름’과 일치한다. 자료가 노로손이·노리손이 등 다수 표기를 함께 기록해 명칭 차이를 확인했다.",
+    "facts": [
+      {
+        "text": "큰노리손이오름은 제주시 봉개동 234-231번지의 표고 426.6m, 비고 52m, 둘레 1,044m인 원추형 오름으로 기록돼 있다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공공 현장조사는 동쪽 등성이가 가파르고 전 사면에 해송이 부분 조림됐으며, 둘레길·멍석길·목재 계단이 형성됐다고 기록했다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "같은 조사는 일부 지도 탐색 시 관리되지 않은 탐방로 진입 가능성, 정상 전망 부재, 폐기물 환경사업소 인접 악취, 어린이·노약자에게 불편한 좁은 목재 계단을 기록했다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주시 마을 특성 조사도 큰노루손이오름을 봉개동의 자연생태자원 목록에 포함한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "2026-08-25 기준 공식 개방 시간·입장료·관리 주체",
+      "현행 공식 진입로·주차·화장실·무장애 접근성",
+      "기상 및 재난 상황별 탐방로 통제 기준",
+      "2022년 기록된 악취·시설 훼손의 현재 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도",
+        "type": "official_public_plan",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781545913771_attach_1.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주특별자치도 오름 기본계획 2022는 큰노리손이오름의 주소·규모·형태·지명 표기를 수록한다.",
+          "동쪽 등성이 경사, 해송 조림, 탐방로 시설, 정상 전망 부재 및 인접 폐기물 환경사업소의 악취를 현장 조사 내용으로 기록한다.",
+          "좁은 목재 계단 때문에 어린이와 노약자의 탐방이 불편하다고 기록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주시",
+        "type": "official_public_survey",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시 봉개동 자연생태자원 목록에 큰노루손이오름을 포함한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

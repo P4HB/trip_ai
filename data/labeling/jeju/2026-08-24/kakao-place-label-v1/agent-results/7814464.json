@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7814464",
+  "place_id": "7814464",
+  "name": "당오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "입력 Kakao 레코드의 ‘당오름’은 제주관광공사 Visit Jeju가 송당 본향당에서 당오름 둘레길로 이어지는 3km, 약 1시간, 난이도 하의 공식 스탬프투어 코스로 안내한 장소명과 일치한다. 독립적인 야외 걷기 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "당오름은 제주시 구좌읍 송당리의 오름으로, 송당 본향당과 연결한 둘레길이 제주관광공사 국가유산 프로그램의 A코스에 포함된다.",
+    "typical_visit": "송당 본향당에서 당오름 둘레길을 따라 약 3km를 걷는 야외 산책·탐방 방문이다.",
+    "experience_scope": "공식 관광 안내는 당오름 둘레길의 코스 거리·소요 시간·난이도와 국가유산 스탬프투어 편입을 확인한다. 최신 개방 상태, 정확한 진입 동선, 노면·경사·계단, 주차·화장실·쉼터, 무장애 접근성과 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 2024 제주 국가유산 방문의 해 행사 장소에 당오름을 포함해 안내했다.","source_ids":["S1"]},
+      {"id":"F2","text":"같은 안내의 ‘여신에게 물어봐’ A코스는 송당 본향당에서 당오름 둘레길로 이어지며, 거리 3km, 소요 시간 1시간, 난이도 하로 제시된다.","source_ids":["S1"]},
+      {"id":"F3","text":"입력 Kakao 레코드의 장소명은 ‘당오름’이며, 평점·리뷰 수·작성자 정보는 라벨 근거로 사용하지 않았다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 좌표·주소와 공식 코스의 현장 진입 지점을 별도 교차 확인하지 못했다.",
+      "최신 출입 가능 여부, 사유지 여부, 주차·화장실·쉼터, 노면·경사·계단과 무장애 접근성은 확인하지 못했다.",
+      "계절별 식생·조망 상태와 강풍·강우 등 악천후 안전 통제는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000013272","checked_at":"2026-08-25T00:00:00+09:00","facts":["2024 제주 국가유산 방문의 해 행사 장소에 당오름을 포함한다.","송당 본향당→당오름 둘레길 A코스의 거리는 3km, 시간은 1시간, 난이도는 하로 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/7814464","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷의 Kakao 장소명은 ‘당오름’이다.","입력에는 공개 방문 후기 근거가 없으며 평점·리뷰 수와 작성자 식별 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 장소를 당오름 둘레길로 명시해 오름 탐방이 핵심 경험임을 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해변·해양 활동이 핵심이라는 근거를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"3km의 둘레길을 걷는 공식 코스가 확인돼 참여형 야외 보행 경험 비중을 비교적 높게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"국가유산 프로그램과 송당 본향당 연계는 확인되지만, 당오름 자체에서 문화유산 관람·전통 체험이 핵심이라는 근거는 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"과거 국가유산 행사의 장소였으나, 특정 축제·행사가 이 장소의 상시 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"둘레길을 걷는 야외 코스로 안내돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내 공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 둘레길 보행이므로 비·바람·더위·추위의 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 코스의 난이도가 하이고 3km·1시간으로 안내돼 보행 부담은 비교적 낮게 추론한다. 노면·경사·계단과 무장애 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"약 1시간 코스는 확인되지만 더 짧거나 긴 체류를 선택할 수 있는 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름 둘레길은 확인되지만 경관 감상 자체의 가치나 조망 지점이 직접 설명되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"송당 본향당 연계는 확인되지만 다른 오름과 비교한 고유 경험의 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 국가유산 프로그램이 송당 본향당과 당오름 둘레길을 하나의 스탬프투어 코스로 구성해 제주 지역 신화·유산 맥락과의 연결을 직접 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 국가유산 탐방 프로그램의 방문 지점이지만 제주 또는 지역을 대표하는 상징 명소라는 지정·비교 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 안전·동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 최신 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 동반에 필요한 보행 난이도, 쉼터와 무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 둘레길 보행은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 둘레길 보행은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 둘레길 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 둘레길 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 둘레길 보행은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"당오름의 최신 개방 여부, 진입로, 노면·경사·계단, 주차·화장실·쉼터, 무장애 시설 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광정보센터 또는 현장 최신 안내로 출입 가능 여부, 주차 및 기상·보행 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

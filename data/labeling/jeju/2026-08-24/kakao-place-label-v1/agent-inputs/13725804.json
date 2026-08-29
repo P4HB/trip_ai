@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2200,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13725804.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13725804",
+    "provider": "kakao",
+    "place_id": "13725804",
+    "name": "야자수동산",
+    "url": "https://place.map.kakao.com/13725804",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "9",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.09.02.",
+      "content": "야자수 사진으로 보이는게 다이지만 너무 커서 기분이 이상해지는... 사진찍으러 가기 좋은곳",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.14.",
+      "content": "사진으로 보이는게 다고 야자수도 왠지 시들시들하지만 올레길 7코스의 포인트!",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.05.",
+      "content": "여기 바다뷰며 뭐며 끝내줘요.주차는 느린우체통 앞에 하세오",
+      "tags": ""
+    },
+    {
+      "date": "2022.04.07.",
+      "content": "뷰도좋고 파도소리가 은근좋습니다",
+      "tags": ""
+    },
+    {
+      "date": "2021.02.23.",
+      "content": "올레 7코스 한적하게 산책하기 좋은 곳 할망라면은 코로나땜에 사람 몰릴까봐 시그니처 해물라면 안 판다네요ㅜ",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

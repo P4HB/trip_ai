@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2141655350",
+  "place_id": "2141655350",
+  "name": "작은작젯길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "공개 보도는 입력명 ‘작은작젯길’을 추자항 해변의 길로 특정하고, 길에 추자도 역사 관련 사진과 해설이 전시된다고 설명한다. 추자항 주변에서 별도로 걸으며 볼 수 있는 공개 탐방 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "작은작젯길은 제주특별자치도 제주시 추자도의 추자항 해변에 있는 보행 길로 확인된다.",
+    "typical_visit": "추자항 해변을 따라 짧게 걷고, 추자도 역사 관련 사진과 해설 전시를 보는 야외 산책·지역 해설 방문이다.",
+    "experience_scope": "확인 가능한 보도는 해변 위치, 길 이름의 뜻, 역사 사진·해설 전시를 뒷받침한다. 정확한 구간 길이, 포장·경사·무장애 접근성, 조명·난간, 최신 전시 상태와 운영·통제 정보는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "공개 보도는 작은작젯길이 추자항 해변에 있다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 보도는 ‘작지’가 추자도말로 작은 자갈을 뜻하며, 작은작젯길에 추자도 역사 관련 사진과 해설이 전시돼 있다고 설명한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["Kakao 표식의 정확한 시작·종점과 현재 보행 가능 구간", "노면, 경사, 계단, 난간, 야간 조명 및 휠체어 접근성", "전시물의 현재 유지 상태와 최신 개방·기상 통제 정보"],
+    "sources": [
+      {"id": "S1", "publisher": "오마이뉴스", "type": "reputable_news", "url": "https://www.ohmynews.com/NWS_Web/view/at_pg.aspx?CNTN_CD=A0002522673", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["작은작젯길은 추자항 해변에 있다고 보도했다.", "‘작지’는 추자도말로 작은 자갈을 뜻한다고 설명했다.", "길에 추자도 역사 관련 사진과 해설이 전시돼 있다고 보도했다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/2141655350", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘작은작젯길’이다.", "입력 패킷에는 평점과 후기 수가 0으로 표시되며, 이를 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 경험은 추자항 해변의 보행과 해설 전시이며 산·오름·봉우리 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 보도가 작은작젯길을 추자항 해변에 있는 길로 직접 설명하므로 해안 환경이 대표 경험의 핵심이다.","source_ids":["S1"],"rule_ids":["THEME-COAST-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"길을 따라 걷는 산책은 예상되나 구간 길이·난이도와 별도 레포츠·체험은 확인되지 않아 중간값으로 둔다.","source_ids":["S1"],"rule_ids":["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"길에 추자도 역사 관련 사진과 해설이 전시된다는 직접 근거가 있어 지역 역사 해설이 방문 경험의 중요한 구성이다.","source_ids":["S1"],"rule_ids":["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해변 길과 역사 사진·해설 전시 외 놀이·동물·전시시설 중심의 테마파크 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해변 보행길과 해설 전시로 확인되며 시장·상거래가 핵심 경험이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"상설 해변 길과 역사 사진·해설 전시는 확인되지만 특정 기간 축제·공연이 핵심이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"추자항 해변에 있는 길로 직접 소개돼 대표 방문 경험은 야외 보행이다. 실내 방문 공간은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-PROMENADE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해변의 야외 보행·전시 감상이므로 비·강풍·더위·추위 영향을 비교적 크게 받을 수 있다. 현장 통제 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["ENV-COASTAL-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변 보행길이라는 사실 외 혼잡도, 좌석·휴식시설, 소음과 실제 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행길이나 노면·경사·계단·난간과 무장애 정보가 확인되지 않아 이동 부담은 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 구간의 길이, 진입·회귀 동선, 전시 관람 시간과 휴식 여건이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"추자항 해변에 위치해 항구·해안 경관을 볼 가능성은 있으나 경관 감상이 공식적으로 핵심 가치로 소개되지는 않아 중간값으로 둔다.","source_ids":["S1"],"rule_ids":["STYLE-COASTAL-CONTEXT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"추자도말로 작은 자갈을 뜻하는 ‘작지’에서 유래한 명칭과 길 위의 추자도 역사 사진·해설 전시 조합이 직접 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-STORY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"추자도말의 지명 의미와 추자도 역사 관련 사진·해설을 통해 지역 언어와 역사 맥락이 직접 연결된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"추자항 해변의 지역 탐방 지점임은 확인되지만 제주 또는 추자도를 대표하는 공적 상징·지정 명소라는 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변과 역사 사진 전시는 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 보행 시 안전·안내·야간 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 보행 동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 보행의 수용·안전·편의 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 안전시설, 차량과의 분리, 난간 및 노면 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·전시·행사 정보가 확인되지 않아 해안 야외길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_path_access_and_weather_conditions_unknown","applies_to":"all_visitors","condition":"작은작젯길은 추자항 해변의 야외 보행길이나, 최신 개방 상태, 보행 구간, 노면·경사·난간·조명, 무장애 접근성 및 우천·강풍 시 통제 기준은 확인하지 못했다.","status":"needs_review","action":"방문 전 추자면 또는 현장 최신 안내로 보행 가능 구간, 기상·파랑에 따른 안전 통제와 동선 상태를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

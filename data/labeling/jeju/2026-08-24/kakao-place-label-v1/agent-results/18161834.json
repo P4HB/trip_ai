@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18161834",
+  "place_id": "18161834",
+  "name": "만장굴 안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "입력 Kakao 레코드의 명칭은 ‘만장굴 안내소’이며, 제주관광공사의 관광지 정보는 만장굴 자체를 유네스코 세계자연유산을 구성하는 용암동굴 관광지로 소개한다. ‘안내소’는 그 관광지의 안내·지원 기능을 뜻하는 명칭이므로, 독립적으로 추천할 방문 경험이 아니라 만장굴 방문에 종속된 시설로 보수적으로 판정한다. 입력에는 안내소의 독립 전시·체험·운영 범위를 뒷받침할 주소·업종·후기 근거가 없다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 레코드는 ‘만장굴 안내소’라는 명칭과 place_id만 제공한다. 공식 관광 정보에서 만장굴은 별도의 대표 관광지로 확인되며, 이 레코드는 그 관광지 안내 기능을 가리키는 부속 표식으로 판단했다.",
+    "typical_visit": "독립 방문 경험으로 확인하지 않는다. 만장굴 관람 전·후 안내 또는 현장 지원을 위한 시설로만 추정되며, 안내소 자체의 관람·체험 콘텐츠는 확인하지 못했다.",
+    "experience_scope": "제주관광공사는 만장굴의 자연유산·동굴 관람 경험을 설명하지만 ‘만장굴 안내소’ 자체의 독립 운영 범위는 제시하지 않는다. 따라서 안내소를 만장굴과 분리한 추천 후보로 취급하지 않고, 라벨 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 18161834의 명칭을 ‘만장굴 안내소’로 제시하며, 제공된 입력에는 주소·좌표·업종 및 공개 방문 후기 근거가 없다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사는 만장굴을 거문오름용암동굴계의 일부이자 유네스코 세계자연유산을 구성하는 용암동굴 관광지로 소개하고, 일반 관람객이 제2입구에서 약 1km 공개구간을 탐방한다고 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘만장굴 안내소’ 표식의 정확한 좌표·건물 범위와 만장굴 주 출입구·매표·안내 시설 간의 현장 관계를 공식 자료로 교차 확인하지 못했다.",
+      "안내소 자체의 독립 전시·체험, 이용 가능 시간, 접근성, 화장실·주차 및 최신 운영 상태는 확인하지 못했다.",
+      "만장굴 관광지의 관람 가능 여부와 공사·안전점검 등 변동 정보는 별도 최신 공식 공지를 확인해야 한다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/18161834",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘만장굴 안내소’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500182",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "만장굴은 거문오름용암동굴계의 일부이며 2007년 ‘제주 화산섬과 용암동굴’로 유네스코 세계자연유산에 등재됐다.",
+          "일반 관람객은 만장굴 제2입구에서 상류 방향 약 1km 공개구간을 탐방할 수 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘만장굴 안내소’는 공식 관광지로 확인된 만장굴의 안내·지원 기능을 가리키며, 독립적인 관람·체험 방문지 범위가 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "만장굴 자체와 분리해 추천하지 않는다. 안내소를 독립 후보로 취급해야 할 필요가 생기면 관리 주체의 최신 공식 자료로 정확한 위치, 독립 콘텐츠 및 이용 가능 상태를 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

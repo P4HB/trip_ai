@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17576702",
+  "place_id": "17576702",
+  "name": "방림원 수생식물관",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "입력 장소명은 방림원 내부의 수생식물관을 가리킨다. 제주관광공사 Visit Jeju는 같은 주소의 방림원을 실내전시관·야외정원 등을 포함하는 하나의 야생화 전시관·테마그린파크로 안내한다. 수생식물관의 독립 운영·별도 입장 또는 독립 방문지 근거는 확인되지 않아 방림원의 부속 시설로 보존한다.",
+    "duplicate_of": "방림원",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "방림원 수생식물관은 제주 한경면 방림원 내부의 수생식물 전시 시설로 표기된 Kakao 장소다.",
+    "typical_visit": "방림원 관람 중 수생식물을 보는 부속 전시 경험으로 보이며, 독립 방문 단위인지는 확인하지 못했다.",
+    "experience_scope": "공식 관광 안내는 방림원을 실내전시관과 야외정원 등을 갖춘 단일 야생화 전시관·테마그린파크로 안내한다. 수생식물관의 독립 입장, 운영, 이용 조건은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소명은 '방림원 수생식물관'으로, 방림원에 종속된 명칭을 사용한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주시 한경면 용금로 864의 방림원을 실내전시관, 야외정원, 동굴, 폭포 등을 포함한 세계 야생화 전시관·테마그린파크로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "수생식물관의 독립 입장권, 별도 운영시간 또는 독립 관람 동선을 확인하지 못했다.",
+      "수생식물관의 실제 위치와 현재 개방 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 메타데이터",
+        "type": "provider_place_metadata",
+        "url": "https://place.map.kakao.com/17576702",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 방림원 수생식물관이다.",
+          "입력에는 공개 방문 후기, 평점 또는 리뷰 수 근거가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500225",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "방림원 주소는 제주특별자치도 제주시 한경면 용금로 864이다.",
+          "방림원은 실내전시관, 야외정원, 동굴, 형제폭포, 방림굴 등을 갖춘 야생화 전시관·테마그린파크로 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "수생식물관은 방림원 내부 부속 시설로 보이며 독립 입장·운영·관람 단위가 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보로 점수화하지 않고, 필요하면 방림원 상세 정보의 부속 시설로만 표시한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

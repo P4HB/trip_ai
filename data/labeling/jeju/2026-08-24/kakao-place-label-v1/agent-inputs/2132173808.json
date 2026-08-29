@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 257,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/2132173808.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:2132173808",
+    "provider": "kakao",
+    "place_id": "2132173808",
+    "name": "고스트타운 고스트하우스",
+    "url": "https://place.map.kakao.com/2132173808",
+    "average_rating_5": "4.8",
+    "visitor_review_count": "5",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.05.08.",
+      "content": "혼자 왔는데 여럿이 갔으면 좋았을듯 #공포체험",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2021.07.29.",
+      "content": "날것의 무서움… VR 한번에 만원이면 비싸다고 생각 했는데, 오천원 추가 하면 한번씩 더 할수 있었거든요..? 더 할걸.. 아니 아예 패키지로 할걸.,, 들어가는 길목도 시골길이라 스산한게, 대낮에 가서 다행이지 해 지고 갔으면 울었을듯ㅠㅠㅠㅠㅜㅠㅋㅋㅋㅋㅋ",
+      "tags": ""
+    },
+    {
+      "date": "2026.02.26.",
+      "content": "하우스가제일무섭웠다 아줌마가vr해주실때 놀레키신다",
+      "tags": ""
+    },
+    {
+      "date": "2025.01.02.",
+      "content": "🐕 꿀잼ㅎㅎㅎ 진짜 무서움 ...ㄷㄷㄷㄷ",
+      "tags": "시설"
+    },
+    {
+      "date": "2024.12.04.",
+      "content": "손절할 친구 있으면 추천하기 딱 좋아요!너무 별로에요!!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:242379687",
+  "place_id": "242379687",
+  "name": "동지샘이못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 장소 메타데이터는 ‘동지샘이못’이라는 독립 표식만 제공하고 주소·좌표·상세 설명이 없다. 공개 문화단체의 용천수 기행 안내에는 애월 하가리의 ‘동지샘이’가 별도 방문 지점으로 수록되어 명칭상 관련 가능성은 있으나, 이 자료는 ‘동지샘이못’이라는 Kakao 표식과 동일 지점임을 확인할 위치 정보·관리 주체·출입 안내를 제공하지 않는다. 따라서 추천용 독립 방문지의 정확한 정체성과 일반 방문 가능 여부를 확인할 수 없어 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "동지샘이못은 Kakao 공개 장소 표식으로 수집됐으며, 공개 문화단체 자료에는 애월 하가리의 ‘동지샘이’가 용천수 기행 지점으로 언급된다. 두 명칭·지점이 같은 실물인지는 확인되지 않았다.",
+    "typical_visit": "공식 또는 공공 출처로 확인된 관람 동선, 운영 주체, 이용 방법이 없다.",
+    "experience_scope": "용천수로 추정되는 이름과 비공식 위치 연계만으로 자연·역사·경관 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 242379687, 장소명 동지샘이못 및 Kakao 장소 URL을 제공하며 평점과 공개 후기 수는 모두 0으로 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주문화포럼의 2023년 공개 용천수 기행 안내는 방문 지점 목록에 ‘하가리 연못’과 ‘동지샘이’를 각각 수록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식 동지샘이못이 공개 안내의 동지샘이와 같은 실물·위치를 가리키는지 확인하지 못했다.",
+      "정확한 주소·좌표, 관리 주체, 일반 방문객 출입 허용 및 공식 접근 동선을 확인하지 못했다.",
+      "현장 수질·수량, 시설, 보행 안전, 주차·화장실 및 계절별 이용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/242379687",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 242379687 및 동지샘이못이라는 장소명을 제공한다.",
+          "입력 패킷의 평점과 공개 후기 수는 모두 0이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "사단법인 제주문화포럼",
+        "type": "public_cultural_organization_notice",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=130343",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주문화포럼의 용천수 기행 안내는 하가리 연못과 동지샘이를 방문 지점으로 수록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식과 공개 자료의 동지샘이가 동일 지점인지, 일반 방문객의 출입 및 안전한 접근이 가능한지 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체·마을 또는 현장 최신 안내로 정확한 위치, 관리 주체, 출입 허용 여부와 안전한 접근 경로를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1908,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/616836970.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:616836970",
+    "provider": "kakao",
+    "place_id": "616836970",
+    "name": "모모쥬동물원",
+    "url": "https://place.map.kakao.com/616836970",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "23",
+    "blog_review_count": "377",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.18.",
+      "content": "전체적으로깔끔하고 야외카피바라직원분 정말친절하셨습니다. 그런데8.17일 기준 파충류존 남자직원분, 뱀과 사진찍는 체험을 하는중에 제가 목소리가 작아서 대답을 했는데도 내부가 시끄러워 안들리셨나본데 “한국말 할줄 알죠?”라고 마이크 키신채로 꼽주셔서 상당히 기분나빴습니다 ㅠ 기분좋게 여행와서 이러면 안되겠죠?? 줄스면서 말씀듣는대 평소말투도 좀 꺼드럭대시는거같긴하신데 이런부분개선하셔야될것같습니다 ㅋㅋ",
+      "tags": ""
+    },
+    {
+      "date": "2026.08.15.",
+      "content": "잼씀",
+      "tags": ""
+    },
+    {
+      "date": "2026.07.23.",
+      "content": "먹이도 직접 줄 수 있고 동물들이 너무 귀여워요😍",
+      "tags": ""
+    },
+    {
+      "date": "2026.04.06.",
+      "content": "동물들이 진짜진짜 귀엽고 체험요소가 많다 규모가 작아서 기대 안했는데 사육사 분들이 다양한 동물 쓰다듬고 안아볼수 있게 해줌 ㅜㅜ 카피바라... 토끼... 뱀... 도마뱀... 등등 체험할수 있게 해줘서 좋았음 사막여우는 자기만 해서 아쉬웠다",
+      "tags": "시설"
+    },
+    {
+      "date": "2025.12.21.",
+      "content": "규모가 생각보다 작긴 했는데.. 너무 귀엽고!! 먼저 다가오셔서 친절하게 설명해주시는 직원분들 첨봐여 굿굿 그리고 깔끔합니다 한번은가볼만한듯",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

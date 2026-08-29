@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1905,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26974939.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26974939",
+    "provider": "kakao",
+    "place_id": "26974939",
+    "name": "좌보미오름",
+    "url": "https://place.map.kakao.com/26974939",
+    "average_rating_5": "3.8",
+    "visitor_review_count": "10",
+    "blog_review_count": "5",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.11.17.",
+      "content": "초행길이라면 반드시 반시계방향으로 도세요. 시계방향으로는 초입 찾는게 쉽지 않습니다. 잘 닦여진 바나나메트나 데크계단은 없습니다만, 초입만 찾으면 다른 등반객들이 자연스레 만든 길이 쉽게 보여 어렵지 않습니다. 주차장에 주차하신 후 입구 오른쪽 아주 가까이에 길인가? 싶은 입구가 보입니다. (첫번째 사진의 빨간 선) 그 이후부턴 다음지도에 루트대로 이동하시면 됩니다. 좌보미 오름을 포함해서 5개의 봉우리를 오르락내리락 하면서 도시면 됩니다. 2.8km에 50분 소요됩니다. 간혹 가파른 길이 있지만, 짧아서 어렵지 않습니다. 정상에 오르면 사진처럼 동거미오름과 높은오름. 반대편으론 영주산등이 보입니다. 중간중간 가시나무와 소나무등이 있기 때문에 반드시 긴팔 긴바지 입으세요.",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.18.",
+      "content": "초심자는 길을 찾기 어려워요ㅠㅠ 주차장(블로그에 고마우신 분이 주소 주심)표선면 성읍리 산 14 으로 굽이굽이 들어가서 주차했어요. 주차하고 올라가는데, 입구를 못 찾아서 좌보미 알오름방향말고 좌보미오름쪽으로 출발했어요. 어차피 한바퀴 쭉 도는 건 마찬가지라고 생각해서 그냥 진행하는데, 한 사람 겨우 지나가는 좁고 가파른 경사의 등반길을 겨우 올라 알오름방향으로 가다 분명 길 따라 걸었는데 갑자기 길이 사라지고ㅠㅠ 숲 길 한참헤매다 네비켜고 겨우 겨우 다른 길로 하산했습니다. 가시나무도 넘 많아서 첨으로 조난신고하는 줄 알았어요ㅠㅠ 꼭 유경험자분 혹은 산을 잘 아시는 분과 오시길 추천드립니다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.03.25.",
+      "content": "생각했던 것보다 나쁘지 않았습니다 좌보미알오름을 시작으로 좌봉미 오름을 지나 세개의 능선을 따라 걷는게 운동도 돼고, 능선 정상에서 보는 풍경은 보는 각도에 따라서 풍경은 볼만합니다 트렉킹 하기에 딱 입니다^^^",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "193801101",
+  "canonical_id": "kakao:193801101",
+  "name": "지두청사",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "지두청사는 우도봉에서 내려다보는 우도 전경을 뜻하는 우도 8경의 하나로 공공 관광 자료에서 독립적으로 소개된다. 입력 공개 후기 또한 우도 방문 중 이 조망을 찾는 경험과 일치하므로, 별도 장소명이 아니라도 방문·조망 가능한 경관 경험으로 판정했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 관광 자료는 지두청사를 우도 최고봉 우도봉(소머리오름) 정상에서 보는 전경으로 설명한다.","source_ids":["S1","S2"],"rule_ids":["THEME-MOUNTAIN-VIEW-DIRECT"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"지두청사의 구성으로 우도 전경과 푸른 바다·해안 경관이 함께 직접 소개된다.","source_ids":["S1","S2"],"rule_ids":["THEME-COASTAL-VIEW-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도봉 정상에 오르는 야외 보행이 조망 경험의 접근 과정으로 소개되며, 정상 부근은 경사가 가팔라진다고 안내된다.","source_ids":["S2"],"rule_ids":["THEME-UPHILL-WALKING-DIRECT"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"우도 8경이라는 지역 경관 분류 외에 역사·문화유산·전시·전통 체험이 핵심이라는 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·전시 시설형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도봉 정상과 초원·바다를 바라보는 야외 조망 경험으로 소개된다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-VIEW-DIRECT"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 노출된 정상의 야외 조망·보행이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다. 실제 기상 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"조망의 정서적 평가와 휴식 시설·혼잡도 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"우도봉 들머리의 경사는 완만하나 정상에 가까울수록 가팔라진다는 안내를 근거로 보행 부담이 있을 수 있다고 판정한다. 노면·계단·무장애 정보는 미확인이다.","source_ids":["S2"],"rule_ids":["STYLE-UPHILL-BURDEN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"우도봉만 보고 돌아오는 코스는 약 30분, 등대까지 포함하면 약 1시간이라는 공개 안내를 근거로 짧은 방문부터 확장 방문까지 조절 가능하다고 판정한다.","source_ids":["S3"],"rule_ids":["STYLE-VISIT-DURATION-OPTIONS"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"한국관광공사와 공공 여행 자료가 지두청사를 우도 8경의 하나이자 우도봉에서 바라보는 우도·바다·초원의 전경으로 직접 소개한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-UDO-EIGHT-SCENIC-VIEW-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"지두청사는 우도봉에서 보는 고유한 전경에 붙은 우도 8경 제4경의 명칭으로 직접 소개된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-UDO-EIGHT-SCENIC-IDENTITY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도봉의 초원·우도 마을·포구·바다를 한눈에 보는 우도 고유의 경관으로 설명된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-LANDSCAPE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 관광 자료가 지두청사를 우도를 대표하는 우도 8경 중 제4경으로 명시한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-REGIONAL-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"푸른 바다·초원·우도 전경을 내려다보는 경관이 직접 확인되어 시각적 기록 가치가 높을 것으로 판정한다. 사진 촬영 권장·시설의 직접 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-VISUAL-LANDSCAPE-INFERENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 최신 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 편의·체류 환경의 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 수용·안전·동선 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 경사·노면·난간·안전시설 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정상 조망의 겨울 방문은 일반적인 추위·바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-WINTER-CAUTION"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정상 조망의 겨울 방문은 일반적인 추위·바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-WINTER-CAUTION"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정상 조망의 여름 방문은 일반적인 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-SUMMER-CAUTION"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정상 조망의 여름 방문은 일반적인 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-SUMMER-CAUTION"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 절정·개방 정보가 확인되지 않아 야외 조망의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정상 조망의 겨울 방문은 일반적인 추위·바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-WINTER-CAUTION"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_slope_weather_and_access_check","applies_to":"all_visitors","condition":"지두청사는 우도봉 정상으로 오르는 야외 조망 경험이며, 공개 안내는 정상 부근 경사가 가팔라진다고 설명한다. 최신 개방·보행로 상태, 우천·강풍 시 통제, 난간·노면·무장애 접근성과 시설은 확인하지 못했다.","status":"needs_review","action":"방문 전 우도 현장 또는 관리 주체의 최신 안내로 개방 여부, 날씨·풍랑 영향, 지정 보행로와 경사·안전 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status":"matched",
+    "checked_at":"2026-08-25T00:00:00+09:00",
+    "identity_summary":"지두청사는 고정 시설명이 아니라 우도봉에서 내려다보는 우도 전경에 붙은 우도 8경 제4경의 명칭이며, Kakao 입력의 방문·조망 맥락과 일치한다.",
+    "typical_visit":"우도봉으로 야외 보행해 정상 또는 인근 전망 지점에서 우도·푸른 바다·초원·마을과 포구의 전경을 감상하는 방문이다.",
+    "experience_scope":"공공 자료는 경관의 성격과 우도봉 접근의 경사를 확인한다. 최신 출입, 교통, 주차, 화장실, 노면·난간·무장애 접근성, 기상 통제와 계절별 현장 상태는 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"한국관광공사의 우도 여행 안내는 우도봉의 풍경을 우도 8경 제4경인 지두청사로 소개하며, 소가 누운 모습의 우도에서 우도봉을 쇠머리오름이라고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"공공 여행 자료는 지두청사를 우도 최고봉 소머리오름 정상에서 굽어보는 우도 전경으로 설명하고, 푸른 초원·마을·포구와 바다를 볼 수 있으며 정상 부근으로 갈수록 경사가 가팔라진다고 안내한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 여행 안내는 주차장에서 우도봉만 보고 돌아오는 코스를 약 30분, 등대까지 포함한 코스를 약 1시간으로 소개한다.","source_ids":["S3"]}
+    ],
+    "unknowns":["지두청사 표식의 정확한 범위와 현행 진입·주차·화장실 안내","최신 개방 여부, 우천·강풍·풍랑 시 통제와 현장 안전 조건","경사·노면·계단·난간, 휠체어·유모차 및 고령 방문자의 실제 접근성","공식적인 월별 절정 또는 사진 촬영 안내"],
+    "sources":[
+      {"id":"S1","publisher":"한국관광공사 대한민국 구석구석","type":"official_tourism_page","url":"https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=59790d3e-ba30-4fa4-9f0e-e94073f5f9db","checked_at":"2026-08-25","facts":["우도봉의 풍경을 우도 8경 제4경 지두청사로 소개한다.","소가 누운 형상의 우도에서 우도봉을 쇠머리오름이라고 설명한다."]},
+      {"id":"S2","publisher":"금융감독원 FSSZINE","type":"public_travel_information","url":"https://fsszine.or.kr/data/24_0708/sub/travel.php","checked_at":"2026-08-25","facts":["지두청사는 우도 최고봉 소머리오름 정상에서 굽어본 우도 전경이라고 설명한다.","정상 부근으로 갈수록 경사가 가팔라지고, 초원·마을·포구·바다 경관을 볼 수 있다고 안내한다."]},
+      {"id":"S3","publisher":"아보다","type":"public_travel_information","url":"https://2days.kr/23/07/14/40587/aboda/","checked_at":"2026-08-25","facts":["우도봉만 보고 돌아오는 코스를 약 30분으로 소개한다.","등대까지 포함한 코스는 약 1시간으로 소개한다."]}
+    ]
+  },
+  "generated_at":"2026-08-25"
+}

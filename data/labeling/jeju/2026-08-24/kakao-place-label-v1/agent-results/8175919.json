@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8175919",
+  "place_id": "8175919",
+  "name": "강홍식축항기념비",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "Kakao 공개 장소 페이지는 ‘강홍식축항기념비’라는 명칭과 제주시 한경면 두모리의 좌표를 제시하지만, 기념 대상인 강홍식의 신원, 기념비의 설치·관리 주체, 정확한 현장 성격과 일반 방문객 출입 가능 여부를 확인하는 공공·공식 상세 출처를 찾지 못했다. 두모포구 일대의 자연취락지구라는 지역 정보만으로는 이 표식이 안전하게 접근 가능한 독립 방문지인지 확정할 수 없으므로 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 공개 페이지상 강홍식축항기념비는 제주특별자치도 제주시 한경면 두모리에 표시된 기념비 표식이다. 다만 기념비의 역사·관리·방문 조건을 확인할 신뢰 가능한 상세 자료는 확인하지 못했다.",
+    "typical_visit": "확인 불가. 기념비 자체의 공개 관람 여부, 보행 접근로, 주차 및 안전 조건을 확인하지 못했다.",
+    "experience_scope": "명칭과 대략적 위치만으로 역사·문화 방문 경험, 체류 방식 또는 접근 난이도를 추정하지 않으며 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘강홍식축항기념비’이고, 설명에는 제주특별자치도 제주시 한경면 두모리로 표시된다. 페이지의 정적 지도 메타데이터는 WGS84 경도 126.181595396154, 위도 33.35754455647031을 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "국회도서관 정책정보로 공개된 제주시 도시관리계획 자료는 제주시 한경면 두모리 2427 일원의 ‘두모포구 우측지구’를 자연취락지구로 수록한다. 이 자료는 강홍식축항기념비의 설치·관리·방문 조건이나 Kakao 표식과의 정확한 동일성을 확인하지 않는다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "강홍식의 신원과 기념비 건립 배경, 설치 연도 및 관리 주체",
+      "Kakao 표식의 현장 기념비와 좌표의 정확한 일치 및 일반 방문객의 상시 출입 허용 여부",
+      "보행 접근로, 주차, 휠체어 접근성, 해안·항만 시설 인접 구간의 현재 안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8175919",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 강홍식축항기념비이다.",
+          "제주특별자치도 제주시 한경면 두모리로 표시되며 정적 지도 메타데이터에 경도 126.181595396154, 위도 33.35754455647031이 포함된다.",
+          "페이지는 기념비의 역사, 관리 주체 또는 일반 관람 조건을 제공하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_planning_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2021/CLIKC1005607274509589_attach_2.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주시 한경면 두모리 2427 일원의 두모포구 우측지구를 자연취락지구로 수록한다.",
+          "이 문서는 강홍식축항기념비라는 명칭, 해당 표식과의 동일성, 관리 또는 방문 조건을 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "기념비의 정확한 현장 동일성, 설치·관리 주체, 일반 방문객 출입 허용 및 안전한 접근 조건을 공공·공식 출처로 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 제주시 또는 항만·시설 관리 주체의 최신 안내로 기념비의 실재·공개 관람 여부·안전한 접근 경로를 확인한 뒤 독립 방문 장소이면 재라벨링한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

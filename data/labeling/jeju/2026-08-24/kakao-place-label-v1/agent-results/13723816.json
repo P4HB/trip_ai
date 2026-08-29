@@ -1,0 +1,28 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723816",
+  "canonical_id": "kakao:13723816",
+  "name": "올랭이소정상",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명 자체가 ‘정상’ 지점을 가리키고, 유일한 입력 방문 기록도 이 지점을 진모루동산 정상에서 안덕계곡을 보는 관점으로 설명한다. 독립 운영 장소가 아니라 상위 자연 지형 또는 탐방 동선의 세부 전망 지점으로 보이므로 별도 추천용 벡터를 부여하지 않는다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-SUBORDINATE-POINT", "ELIG-NO-INDEPENDENT-VISIT-EVIDENCE"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{"kind": "parent_place_and_access_unknown", "applies_to": "all_visitors", "condition": "정상 지점의 정확한 상위 장소, 탐방 허용 범위, 경사·노면, 기상 안전 및 무장애 접근성은 입력에서 확인되지 않았다.", "status": "needs_review", "action": "상위 자연 지형 또는 공식 탐방로의 최신 안내로 접근과 안전 조건을 확인한다.", "source_ids": ["S2"], "checked_at": "2026-08-28"}],
+  "review_priority": "high",
+  "research": {
+    "status": "subordinate_point_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 장소명은 올랭이소정상이며, 유일한 익명 방문 기록은 진모루동산 정상에서 안덕계곡을 보는 지점으로 설명한다. 외부 조사는 수행하지 않았다.",
+    "facts": [{"text": "입력 방문 기록은 진모루동산 정상에서 안덕계곡 조망을 언급한다.", "source_id": "S2"}],
+    "unknowns": ["올랭이소정상과 진모루동산의 공식 관계", "정확한 진입 위치와 상위 관리 주체", "탐방 허용 여부와 안전 시설", "경사·노면·무장애 접근성 및 계절 통제"],
+    "sources": [{"id": "S1", "publisher": "Kakao place agent input", "type": "input_metadata", "url": "https://place.map.kakao.com/13723816", "checked_at": "2026-08-28", "facts": ["입력 장소명은 올랭이소정상이며 Kakao place_id는 13723816이다."]}, {"id": "S2", "publisher": "Kakao place agent input", "type": "anonymized_visitor_review_evidence", "url": "https://place.map.kakao.com/13723816", "checked_at": "2026-08-28", "facts": ["익명화된 방문 기록은 진모루동산 정상과 안덕계곡 조망을 서술한다."]}]
+  },
+  "generated_at": "2026-08-28"
+}

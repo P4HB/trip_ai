@@ -1,0 +1,64 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11816046",
+  "canonical_id": "kakao:11816046",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "제주 곶자왈공유화재단의 자원조사 자료는 밧소랭이(물)를 저지리 명리동 주민의 식수와 가축 급수에 쓰였던 봉천수로 구체적으로 기록한다. 별도 자연·생활문화 방문 지점으로 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["eligibility.independent_place"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 방문 경험은 자료에서 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 방문 경험은 자료에서 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"참여형 체험이나 레포츠는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"밧소랭이는 명리동 주민의 식수·가축 급수에 쓰인 중요한 봉천수이며 물팡 흔적도 남아 있다고 기록됐다.","source_ids":["S1","S2"],"rule_ids":["direct.historic_local_water_source"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설·경험은 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용 장소라는 근거는 없다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험은 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"축제·기간성 행사는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"봉천수·물통으로 기록된 야외 자연 지점이다.","source_ids":["S1"],"rule_ids":["direct.outdoor_water_feature"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"지붕 없는 야외 물통·연못 지점이므로 강수와 기상 조건이 체류 경험에 영향을 줄 것으로 판단되나 최신 현장 조건은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["inference.outdoor_weather_exposure"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"저지리 산책 코스에서 밧소랭이 연못을 돌아 나오는 동선으로 소개되어 잠시 들르는 자연 지점으로 판단된다.","source_ids":["S2"],"rule_ids":["inference.walking_route_pause"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"밧소랭이 자체의 보행로·경사·단차 정보는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_access_evidence"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"독립 방문의 적정 체류시간과 동선 정보는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_evidence"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 핵심 가치라는 직접 설명은 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_scenic_evidence"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"주민 식수용과 우마 급수용 물통을 구분해 사용한 봉천수라는 구성은 구별되지만 관광 경험의 고유성은 별도 검토가 필요하다.","source_ids":["S1"],"rule_ids":["inference.historic_water_use"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"명리동 주민의 식수와 가축 급수, 물허벅을 놓는 물팡의 흔적이 기록되어 제주 마을 생활사와 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["direct.jeju_village_life_history"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 근거는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_landmark_evidence"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"촬영 명소 또는 시각 기록 가치에 대한 직접 근거는 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_photo_evidence"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"1인 방문 적합성을 뒷받침할 독립 근거가 부족하다.","source_ids":[],"rule_ids":["fallback.insufficient_companion_evidence"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 뒷받침할 독립 근거가 부족하다.","source_ids":[],"rule_ids":["fallback.insufficient_companion_evidence"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동반 방문 적합성을 뒷받침할 독립 근거가 부족하다.","source_ids":[],"rule_ids":["fallback.insufficient_companion_evidence"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반 시 안전·시설·동선 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_companion_evidence"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반 시 보행 편의·휴식 시설 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["fallback.insufficient_companion_evidence"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·수위·기상 적합성 정보가 없다.","source_ids":[],"rule_ids":["fallback.monthly_conditions_unknown"]}
+  },
+  "hard_constraints": [{"kind":"access_water_edge_and_site_conditions_unknown","applies_to":"all_visitors","condition":"야외 봉천수·물통 지점이나 최신 공개·출입 여부, 접근로·노면, 수변 안전, 주차·화장실 및 무장애 시설을 확인하지 못했다.","status":"needs_review","action":"방문 전 저지리 마을 또는 현장 최신 안내로 출입 가능 여부, 보행·수변 안전과 시설 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}],
+  "review_priority": "medium",
+  "research": {
+    "sources": [
+      {"id":"S1","publisher":"제주곶자왈공유화재단","type":"public_research_report","url":"https://jejutrust.net/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMjA3MjEzNmMzNzQ1MGE4OGE2IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjQwMjE2MjAxMGE5MTFmNDZmMyI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDI0MDIxNmQ5OTEzN2M2NzcxMWEiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MTM6IjY5OWVlZTFlYjgyMzciO3M6MTE6Im1lbWJlcl9jb2RlIjtOO30%3D","checked_at":"2026-08-25","facts":["밧소랭이(물)는 명리동 주민이 식수와 가축 음수를 구분해 쓰던 중요한 봉천수로 기록됐다.","작은 동쪽 물통은 식수용, 큰 서쪽 물통은 우마 급수용으로 사용됐고 물팡 흔적이 남아 있다고 기록됐다."]},
+      {"id":"S2","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_information","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000011139","checked_at":"2026-08-25","facts":["저지리 마을 길로 진입해 밧소랭이 연못을 돌아 나오는 코스를 추천한다.","저지곶자왈은 마을이 운영하는 장소이며 올레길 14-1 코스와 연결된다고 안내한다."]}
+    ]
+  }
+}

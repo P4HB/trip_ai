@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723730",
+  "canonical_id": "kakao:13723730",
+  "name": "해병대길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력은 경치가 좋고 주변에 즐길 곳이 있다는 일반적 방문 기록만 제공하며, 해병대길의 정확한 경로·구간·관리 주체·공공 접근 조건을 확인할 수 없다. 독립 탐방로 정체가 고정되지 않아 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-REQUIRES-REVIEW"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "route_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "정확한 경로·구간·공공 접근·노면·기상 안전·관리 주체를 입력 근거만으로 확인할 수 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처로 탐방로 정체·위치·개방과 안전 조건을 확인하기 전에는 추천 후보에 포함하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 장소명 ‘해병대길’과 일반적인 경치 언급만으로는 실제 길의 정체를 확인할 수 없다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력 방문 기록은 제주 기후·경치와 주변의 즐길 곳을 일반적으로 언급한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·경로·구간",
+      "공공 접근·관리 주체",
+      "노면·경사·무장애 접근성",
+      "기상·야간 안전과 개방"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/13723730",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 해병대길이며 Kakao place_id는 13723730이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/13723730",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 경치와 주변 방문 맥락을 일반적으로 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

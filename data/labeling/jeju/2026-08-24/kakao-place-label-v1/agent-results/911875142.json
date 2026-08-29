@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:911875142",
+  "place_id": "911875142",
+  "name": "한라산국립공원 _관음사5",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 ‘한라산국립공원 _관음사5’라는 비표준 표기와 place_id만 제공하며 주소·좌표·업종·설명·사진이 없다. 공개 공식·공공 자료는 한라산국립공원의 관음사 탐방로와 관음사 코스를 설명하지만 ‘관음사5’가 특정 탐방로 구간, 시설, 출입구 또는 상위 장소와 별개인 독립 방문지임을 식별하지 않는다. 따라서 접미 번호가 가리키는 실제 표식과 독립 여행지 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED", "ELIG-NO-SUFFIX-LOCATION-CROSSCHECK"],
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "입력의 식별 정보는 비표준 명칭 ‘한라산국립공원 _관음사5’와 place_id 911875142뿐이다. 관음사 탐방로 자체는 공개 자료로 확인되지만 ‘관음사5’라는 하위 명칭의 대상·위치·기능을 확인하지 못했다.",
+    "typical_visit": "관음사 탐방로는 한라산국립공원의 산행 경험에 해당하나, 이 Kakao 표식이 탐방로 입구·구간·휴게시설·관리시설 중 무엇인지 확인되지 않아 대표 방문 경험을 귀속하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 상세 설명, 운영·접근 안내 및 공개 방문 후기 근거가 없다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 18개 원자축, 동반자 5축 및 월별 12축을 생성하지 않는다.",
+    "facts": [
+      {"id": "F1", "text": "입력 Kakao 장소 레코드의 명칭은 ‘한라산국립공원 _관음사5’이고 canonical_id는 kakao:911875142이다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력 패킷에는 해당 Kakao 표식의 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 제공되지 않았다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "한국관광공사와 제주특별자치도 자료는 한라산의 관음사 코스·탐방로를 설명하지만 ‘관음사5’라는 명칭의 특정 지점·시설을 식별하지 않는다.", "source_ids": ["S2", "S3"]}
+    ],
+    "unknowns": ["접미 번호 ‘5’가 가리키는 정확한 주소·좌표, 시설·구간 유형과 한라산국립공원 관음사 탐방로와의 관계", "일반 방문객 출입 가능 범위, 관리 주체 및 최신 현장 상태", "안전한 접근 경로, 주차·보행 여건, 탐방예약·통제·기상·산악 안전 조건"],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map 공개 장소 메타데이터", "type": "public_map_listing", "url": "https://place.map.kakao.com/911875142", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘한라산국립공원 _관음사5’이며 place_id는 911875142이다.", "입력 패킷에는 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 없다.", "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S2", "publisher": "한국관광공사 대한민국 구석구석", "type": "official_tourism_information", "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b03c957f-90fa-4ff4-9c4e-6e443d2d3407", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["관음사를 한라산 기슭의 사찰과 템플스테이 운영 장소로 소개한다.", "‘관음사5’라는 한라산국립공원 하위 지점은 안내하지 않는다."]},
+      {"id": "S3", "publisher": "제주특별자치도 감사위원회", "type": "official_audit_document", "url": "https://audit.jeju.go.kr/news/activity/result.htm?act=download&no=1&seq=34763", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["한라산국립공원관리소 관음사 탐방로를 언급한다.", "‘관음사5’라는 특정 시설·지점의 식별 정보는 제공하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {"kind": "identity_and_mountain_access_unverified", "applies_to": "recommendation_candidate", "condition": "비표준 표기 ‘관음사5’의 실제 장소·시설 유형과 위치를 식별할 수 없어, 한라산 탐방로의 일반 출입·예약·통제·산악 안전 조건을 이 레코드에 안전하게 적용할 수 없음", "status": "needs_review", "action": "한라산국립공원 관리 주체 또는 Kakao의 주소·좌표·시설 정보를 확보해 실제 표식과 상위 탐방로의 관계, 출입 허용 범위 및 안전한 접근 경로를 먼저 확인한다. 확인 전에는 추천용 라벨 벡터를 생성하지 않는다.", "source_ids": ["S1", "S2", "S3"], "checked_at": "2026-08-28T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:228295093",
+  "place_id": "228295093",
+  "name": "눈오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공개 자료에는 제주에 ‘눈오름’ 또는 그 별칭을 쓰는 서로 다른 오름이 복수로 확인된다. 입력 Kakao 메타데이터는 명칭과 place_id만 제공하며 주소·좌표·공식 관리 정보가 없어 어느 오름을 가리키는지 신뢰성 있게 연결할 수 없다. 따라서 독립 추천 장소의 정체성과 안전한 방문 가능성을 확인할 때까지 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "눈오름은 제주 내 복수 지명에 쓰이는 이름으로 확인되지만, 입력 Kakao place_id 228295093이 어느 개별 오름을 뜻하는지 공개 신뢰 출처로 식별하지 못했다.",
+    "typical_visit": "대상 오름을 확정하지 못해 공식 출입 경로·관리 주체·탐방 방법을 확인하지 못했다.",
+    "experience_scope": "입력의 한 줄 공개 후기는 고사리 채취 관련 표현만 포함하며, 장소의 일반적 방문 경험이나 이용 가능성을 뒷받침하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 제주 자연유산 목록은 눈오름이라는 명칭이 제주시 해안동, 애월읍 봉성리, 애월읍 장전리 등 복수 위치에 쓰임을 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 228295093, 장소명 눈오름 및 Kakao 장소 URL을 제공하지만 주소·좌표·상세 설명은 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 어느 동명 오름을 가리키는지 확인하지 못했다.",
+      "일반 방문객의 출입 허용 여부, 공식 탐방로, 주차 및 보행 안전 조건을 확인하지 못했다.",
+      "관리 주체, 보전·사유지·목장 관련 제한과 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국미디어일보",
+        "type": "public_place_index",
+        "url": "https://www.koreamedia.net/news/view.asp?idx=14966&msection=10&ssection=74",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "제주 자연유산 오름 목록은 눈오름의 동명 지점들을 제주시 해안동, 애월읍 봉성리, 애월읍 장전리에 각각 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/228295093",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 228295093과 눈오름이라는 장소명을 제공한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동명 오름 중 Kakao 표식의 정확한 대상, 출입 허용 및 안전한 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 표식의 좌표와 관할 지자체·토지 관리자의 최신 출입·탐방 안내를 대조해 개별 장소를 확정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

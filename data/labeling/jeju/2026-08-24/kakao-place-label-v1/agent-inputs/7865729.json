@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1933,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/7865729.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:7865729",
+    "provider": "kakao",
+    "place_id": "7865729",
+    "name": "마보기",
+    "url": "https://place.map.kakao.com/7865729",
+    "average_rating_5": "4.4",
+    "visitor_review_count": "18",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.16.",
+      "content": "빠른 걸음으로 왕복 30분! 뷰, 평범!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.05.18.",
+      "content": "마보기로 시작해서 서영아리 정상까지 올라가기는 쉬운데 다시 내려오는게 많이 헷갈리기 때문에 트래킹 어플 필수입니다",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.04.16.",
+      "content": "정확히 포도호텔로타리 맞으편에 입구. 입구옆 가길에 3대정도 주차가능 왕복1시간 정도 조망괜찮음 지도에 나온 녹색 진입로는 벌목장입구 가지마셈",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.01.01.",
+      "content": "네비 알려주는대로 가면 미아 됩니다. 포도뮤지엄에서 포도호텔쪽으로 조금만 걸어가면 올라가는길 있습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2024.10.04.",
+      "content": "사람이 진짜 안 가는 곳 같아요… 정상에 올라와서 풍경은 너무 좋았는데 진심 가다가 뱀이 내 다리를 물어도 할 말 없을 정도로 길이 정리가 안되어 있어요. 중간중간 풀이 너무 자라서 쳐내면서 겨우 갔다가 내려왔습니다. 여름이라 반바지 입고 올라갔더니 나중에 풀독오름… 신발도 진흙탕 되어버리고, 풍경은 나쁘지않았으나 마음의 준비 하고 올라가세요.",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

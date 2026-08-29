@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1648,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1270449073.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1270449073",
+    "provider": "kakao",
+    "place_id": "1270449073",
+    "name": "사계리수국길",
+    "url": "https://place.map.kakao.com/1270449073",
+    "average_rating_5": "2.7",
+    "visitor_review_count": "6",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.05.14.",
+      "content": "최근에 방문해서 보고 왔습니다",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.05.",
+      "content": "22년 6월 5일 기준 수국 아직 활짝 개화하지 않았습니다 며칠 더 기다려야 할것 같네요",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.02.",
+      "content": "오늘 다녀왔는데 수국 아직안폈어요~ 초록꽃대정도 폈네요 1~2주 기다렸다가야할듯요~ 가실분들 참고하세요~",
+      "tags": ""
+    },
+    {
+      "date": "2021.06.23.",
+      "content": "수국길이라기엔 수국이 너무 뜨문뜨문 하네요.",
+      "tags": ""
+    },
+    {
+      "date": "2019.06.08.",
+      "content": "인터넷만 보고 기대하고 갔는데 수국이 너무 작고 몇그루없어서 수국길이란 명칭이 안어울려요.수국은 못보고 저희말고도 헛걸음하고 바로 떠나는 커플들만 볼수있었어요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

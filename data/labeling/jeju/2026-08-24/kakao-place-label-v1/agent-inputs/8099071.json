@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1536,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8099071.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8099071",
+    "provider": "kakao",
+    "place_id": "8099071",
+    "name": "최남단비",
+    "url": "https://place.map.kakao.com/8099071",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "25",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.04.05.",
+      "content": "사실 이거 보려고 온 게 컸어요!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.06.09.",
+      "content": "최남단비. ~~~",
+      "tags": ""
+    },
+    {
+      "date": "2023.09.12.",
+      "content": "배에 내려서 자장면 먹고 바닷바람을 맞으면서 마라도 한 바퀴 도는 그 추억이 생각나네요. ㅎㅎ 대한민국 최남단 기념비를 배경으로 기념사진 찍는 사람이 많습니다.",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2023.04.13.",
+      "content": "뷰가 넘 좋네요 바다가 이렇게 파랗다니.. 가는 길에 마라도 관광부스에서 역사나 꽃등 대충 보고 가니 더 좋았어여 근데 1년 느린우체통은 있긴 하지만 우편이 없으면 못보내더라구요 하ㅜ 미리 알았으면 사왔을텐데~~",
+      "tags": ""
+    },
+    {
+      "date": "2021.08.06.",
+      "content": "가족여행의 끝판왕 휴가를 맞아 찾은 마라도 대한민국최남단비 앞에서 평생 기억에 남을꺼 같아요 이글 보고 계시다면 다들 도전해 보세요 사진보시고 글읽어주시면 가족건강 사업대박 나시길 기원 합니다 모두모두 건강하세요^^",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

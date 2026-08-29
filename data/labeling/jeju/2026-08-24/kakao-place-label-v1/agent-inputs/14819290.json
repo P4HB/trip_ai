@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2262,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/14819290.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:14819290",
+    "provider": "kakao",
+    "place_id": "14819290",
+    "name": "설록다원도순",
+    "url": "https://place.map.kakao.com/14819290",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "7",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2020.06.27.",
+      "content": "너무 멋졌어요..오설록보다 훨 더 좋아요.. 정적인 곳입니디",
+      "tags": ""
+    },
+    {
+      "date": "2020.09.12.",
+      "content": "현재는 외부인 출입금지라고합니다",
+      "tags": ""
+    },
+    {
+      "date": "2020.08.04.",
+      "content": "절대 가지마세요. 직원인지 뭔지 하는넘이 여기는 관람하는데가 아닌데 왜왔냐고 인상쓰며 투덜투덜.... 자세히 보면 녹차나무에 덩쿨식물이 엉켜있는데 제거도 안하고 관리엉망 (녹차에 덩쿨식물잎이 섞여있지 않을까?)",
+      "tags": ""
+    },
+    {
+      "date": "2020.07.28.",
+      "content": "예쁘긴 한데 이젠 못 들어가요ㅠ 관광지 아니고 사유지라고 하네요~ 관계자외 출입금지 팻말도 있습니다",
+      "tags": ""
+    },
+    {
+      "date": "2020.03.05.",
+      "content": "아무도 몰랐으면 좋겠다 아직 알려지지 않아서 사람도 없고 입장료도 없고 너무 좋아요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,663 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "24022940",
+  "canonical_id": "kakao:24022940",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 자료에서 제주시 아라동의 소산오름/소산봉으로 확인되며, 짧은 오름 산책·트레킹 자체가 독립적인 방문 경험이다.",
+    "source_ids": [
+      "s1",
+      "s2",
+      "s3"
+    ],
+    "rule_ids": [
+      "identity.public_place",
+      "eligibility.independent_experience"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "소산오름은 표고 412m, 비고 48m의 작은 오름으로 소개된다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.mountain.natural_peak"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 방문 경험은 제주시 아라동 내륙의 오름·산천단 주변 산책이며 해안·해양 활동 근거는 확인되지 않았다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.ocean.no_confirmed_evidence"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "오름을 오르는 산책과 인접 트레킹 길 연결이 확인된다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.activity.walking"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "산천단과 한라산신제의 성소라는 역사·신앙 맥락, 아라동 역사문화탐방로 연결이 소개된다.",
+      "source_ids": [
+        "s2",
+        "s3"
+      ],
+      "rule_ids": [
+        "theme.culture_history.place_context"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 핵심 경험은 자연 오름 탐방이며 테마파크 시설 근거는 확인되지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.theme_park.no_confirmed_evidence"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 자료는 오름·산천단 탐방을 설명하며 카페 이용을 핵심 경험으로 확인하지 못했다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.cafe.no_confirmed_evidence"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 자료에서 시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.traditional_market.no_confirmed_evidence"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "특정 기간 축제·공연이 장소의 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "theme.festival.no_confirmed_evidence"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "오름을 오르는 야외 산책·트레킹 경로로 소개되어 대표 경험의 실내 비중은 낮다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "environment.indoor_ratio.outdoor_trail"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험이 야외 오름 산책·트레킹이므로 비·바람·기온의 영향을 받는다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "environment.weather_sensitivity.outdoor"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "짧고 부담이 적은 자연 산책이라는 근거는 있으나 휴식 시설·체류 환경은 충분히 확인되지 않았다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "style.restfulness.short_nature_walk"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "남녀노소가 시간·체력 부담 없이 찾을 수 있는 작은 오름으로 소개되고, 공개 리뷰에는 15~20분 코스라는 단서가 있다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "style.physical_ease.short_easy_trail"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "짧은 15~20분 오름 방문 단서와 삼의악·관음사 방향으로 이어지는 트레킹 연결 단서가 함께 확인된다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "style.duration.short_and_connected_route"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름 정상·자연길 탐방의 경관 가능성은 있으나 조망 품질을 직접 설명한 공공·공식 자료는 확인하지 못했다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "style.scenic_value.terrain_inference"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.65,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "산천단을 품은 소산오름의 전설과 한라산신제 관련 장소 맥락이 확인된다.",
+      "source_ids": [
+        "s2",
+        "s3"
+      ],
+      "rule_ids": [
+        "style.distinctiveness.cultural_nature_context"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 오름 지형과 산천단·한라산신제라는 지역 자연·신앙 맥락이 직접 연결된다.",
+      "source_ids": [
+        "s2",
+        "s3"
+      ],
+      "rule_ids": [
+        "style.local_embeddedness.jeju_context"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지역 역사·신앙 맥락은 확인되지만 제주 전역 대표 명소라는 공적 지정·관광 대표성 근거는 확인하지 못했다.",
+      "source_ids": [
+        "s2",
+        "s3"
+      ],
+      "rule_ids": [
+        "style.landmark_significance.local_not_islandwide"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름과 산천단의 자연·역사적 장면은 있으나 사진 촬영 가치에 대한 직접 근거는 제한적이다.",
+      "source_ids": [
+        "s2",
+        "s3"
+      ],
+      "rule_ids": [
+        "style.photo_value.limited_evidence"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "짧고 쉬운 오름 산책은 혼자 가능하나 공개 리뷰에 외진 분위기 단서가 있어 안전 여건 확인이 필요하다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "companion.solo.outdoor_caution"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "짧은 자연 산책에는 맞을 수 있으나 외진 구간 단서가 있어 시간대·안전 여건 확인이 필요하다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "companion.couple.outdoor_caution"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "함께 걷는 짧은 오름 방문에는 적합할 수 있으나 단독 체험지로서의 편의시설 정보는 부족하다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "companion.friends.short_walk"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "남녀노소가 부담 없이 찾을 수 있다는 소개는 있으나 유아 동반 안전·시설 정보가 충분하지 않다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "companion.kids.family_info_limited"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "작은 오름으로 시간·체력 부담이 적고 남녀노소가 찾을 수 있다고 소개된다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "companion.parents.physical_ease"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 산책이므로 제주 겨울의 추위·바람 영향을 고려한 기후 사전값이며 실시간 날씨는 반영하지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_winter"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 오름 산책이므로 제주 겨울의 추위·바람 영향을 고려한 기후 사전값이며 실시간 날씨는 반영하지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_winter"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책의 계절 전환기 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_shoulder"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책에 상대적으로 무난한 봄철이라는 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_spring"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책에 상대적으로 무난한 봄철이라는 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_spring"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책의 초여름 기후 사전값이며 강수·습도와 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_early_summer"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책이므로 제주 한여름의 더위·강수 영향을 고려한 기후 사전값이며 실시간 날씨는 반영하지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_summer"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책이므로 제주 한여름의 더위·강수 영향을 고려한 기후 사전값이며 실시간 날씨는 반영하지 않았다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_summer"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책의 계절 전환기 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_shoulder"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책에 상대적으로 무난한 가을철이라는 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_autumn"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책에 상대적으로 무난한 가을철이라는 기후 사전값이며 당일 비·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_autumn"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 산책의 초겨울 기후 사전값이며 추위·바람과 길 상태는 별도 확인이 필요하다.",
+      "source_ids": [
+        "s2"
+      ],
+      "rule_ids": [
+        "month.outdoor.jeju_early_winter"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "야외 오름·트레킹 방문이므로 당일 비·강풍·기온과 탐방로 상태를 확인해야 한다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "constraint.outdoor_weather"
+      ]
+    },
+    {
+      "constraint": "공개 리뷰에 외진 분위기 단서가 있어 단독 방문 시 시간대와 개인 안전 여건을 확인해야 한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "constraint.secluded_area"
+      ]
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "summary": "소산봉은 제주시 아라동의 소산오름으로, 산천단 주변에서 접근하는 짧은 야외 오름 산책 및 인접 트레킹 연결 경험으로 확인된다.",
+    "sources": [
+      {
+        "id": "s1",
+        "publisher": "Kakao Map",
+        "url": "https://place.map.kakao.com/24022940",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 소산봉이다.",
+          "공개 리뷰에는 15~20분 코스 및 삼의악·관음사 방향 트레킹 연결 단서가 있다."
+        ]
+      },
+      {
+        "id": "s2",
+        "publisher": "제주일보",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2161852",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "소산오름은 제주시 아라동의 표고 412m, 비고 48m 작은 오름으로 소개된다.",
+          "산천단 주변에서 오르며 남녀노소가 시간·체력 부담 없이 찾을 수 있다고 소개된다.",
+          "아라동역사문화탐방로·불교성지순례길 등과 연결된다고 소개된다."
+        ]
+      },
+      {
+        "id": "s3",
+        "publisher": "공공누리·제주특별자치도",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=38932",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주특별자치도 자료는 삼의악과 소산봉, 산천단의 위치 관계를 설명한다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 탐방로 운영시간·폐쇄 여부",
+      "정상 조망과 사진 촬영 지점",
+      "유아·고령자 접근성 및 편의시설"
+    ]
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

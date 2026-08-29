@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:492202244",
+  "place_id": "492202244",
+  "name": "우도해양관광",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 보도는 ㈜우도해양관광을 우도 해중전망대 조성사업의 참여 사업자로 설명한다. 이는 관광객이 독립적으로 방문·체험하는 관광지가 아니라 사업을 추진하는 법인에 관한 정보이며, 입력 Kakao 레코드도 명칭 외의 방문 경험·주소·업종을 제공하지 않는다. 따라서 현 단계에서는 여행지 추천 후보 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "우도해양관광은 공개 보도에서 우도 해중전망대 조성사업에 참여하는 법인으로 언급된다. 입력 Kakao 레코드에는 ‘우도해양관광’이라는 명칭과 place_id만 있어 해당 법인의 실제 사무소·사업장 위치나 공개 방문 서비스는 확인되지 않았다.",
+    "typical_visit": "관광객용 독립 방문 경험은 확인되지 않았다. 공개 자료가 설명하는 것은 법인이 참여하는 해중전망대 조성사업이며, 그 계획 시설의 실제 운영 여부나 이 Kakao 레코드와의 동일성은 확인되지 않았다.",
+    "experience_scope": "법인·사업자 레코드는 현재 여행지 추천의 독립 관광지·체험 장소 범위에 포함하지 않는다. 평점, 후기 수, 작성자 정보는 입력에 없으며 어떠한 라벨 근거로도 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 보도는 ㈜우도해양관광을 우도면 오봉리 전흘동포구 앞 해중전망대 조성사업의 참여 사업자로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘우도해양관광’으로 제공하지만 주소, 좌표, 업종, 공개 방문 후기 및 관광객용 서비스 안내를 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 법인의 사무소, 사업 현장 또는 다른 동명 장소 중 무엇인지 확인하지 못했다.",
+      "해중전망대 조성사업의 실제 준공·운영 여부와 관광객이 이용할 수 있는 시설·서비스를 확인하지 못했다.",
+      "정확한 주소, 좌표, 접근성, 운영 상태 및 최신 안전 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "삼다일보",
+        "type": "news_report",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=223742",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "보도는 ㈜우도해양관광이 우도 해중전망대 건설사업과 관련된 사업자라고 설명한다.",
+          "보도 시점의 해중전망대는 재추진·착공 계획 단계로 서술되어, 완공된 관광객 방문 시설이라는 근거가 아니다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/492202244",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘우도해양관광’이고 place_id는 492202244다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "business_entity_not_independent_visit",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 근거상 우도해양관광은 관광지 자체가 아닌 해중전망대 조성사업 참여 법인으로 확인되며, 입력 레코드의 관광객용 독립 방문 경험은 확인되지 않음",
+      "status": "needs_review",
+      "action": "향후 Kakao 주소·업종과 공식 운영 정보를 통해 실제 개방된 관광객용 시설임이 확인되면 별도 장소 레코드로 신원과 적격성을 재검토한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

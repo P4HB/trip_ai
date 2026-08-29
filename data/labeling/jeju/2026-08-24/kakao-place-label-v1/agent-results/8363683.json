@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8363683",
+  "place_id": "8363683",
+  "name": "새별오름관광타운",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공개 관광 자료는 제주시 애월읍 봉성리의 별도 자연관광지 ‘새별오름’을 안내하지만, 입력 Kakao 표식 ‘새별오름관광타운’이 그 오름 자체인지, 인근 관광·상업 시설인지, 또는 그 부속 표식인지 확인하는 공식·공공 자료를 찾지 못했다. 입력된 두 공개 후기는 오름과 핫도그를 각각 언급해 단일 독립 방문지의 경험 범위를 확정할 수 없으므로 추천용 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "새별오름관광타운은 Kakao Map에 등록된 명칭이나, 공개 관광 자료에서 확인되는 새별오름과의 동일성 및 독립 시설 여부는 확인하지 못했다.",
+    "typical_visit": "확인된 자료만으로는 이 Kakao 표식의 독립적인 관람·이용 동선을 특정할 수 없다.",
+    "experience_scope": "새별오름 일반 관광 정보는 이 표식의 시설·운영 범위 또는 동일성을 증명하지 않으므로, 오름의 특성을 이 레코드 라벨로 전이하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 관광정보를 인용한 공개 관광 페이지는 새별오름을 제주시 애월읍 봉성리 산 59-8의 대표 오름으로 소개하고, 정상까지 약 20분의 야외 오름길과 가을 억새를 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 ‘새별오름관광타운’이라는 명칭과 place_id 8363683을 제공한다. 입력된 공개 후기는 하나는 새별오름을, 다른 하나는 핫도그를 언급하지만, 이들이 같은 독립 시설의 대표 경험임을 확인할 수 없다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "새별오름관광타운이 새별오름 자체, 인근 관광단지, 음식 판매 시설 또는 다른 부속 표식인지 확인하지 못했다.",
+      "정확한 주소·좌표, 운영 주체, 일반 방문객 출입 가능 여부와 최신 운영 상태를 확인하지 못했다.",
+      "이 표식에 해당하는 관람 동선, 주차·화장실, 노면·경사, 무장애 접근 및 기상 안전 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Korea Trip Tips (한국관광공사 관광정보 인용)",
+        "type": "public_tourism_page",
+        "url": "https://www.koreatriptips.com/tourist-attractions/572973.html",
+        "checked_at": "2026-08-24",
+        "facts": ["새별오름을 제주시 애월읍 봉성리 산 59-8의 오름으로 소개한다.", "정상까지 약 20분, 가을 억새와 야외 경관을 안내한다.", "이 페이지에는 ‘새별오름관광타운’이라는 Kakao 장소 표식 또는 운영 시설의 동일성 정보가 없다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 방문 후기",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8363683",
+        "checked_at": "2026-08-24",
+        "facts": ["입력 패킷은 place_id 8363683 및 새별오름관광타운이라는 장소명을 제공한다.", "입력된 익명화 공개 후기는 새별오름과 핫도그를 각각 언급한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식이 새별오름 자체인지 인근 시설·부속 표식인지, 정확한 위치·운영 주체 및 일반 방문객의 출입·접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 운영 주체·관할 지자체 또는 현장 최신 안내로 표식의 정체성, 출입 허용, 실제 이용 내용과 안전한 접근 경로를 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

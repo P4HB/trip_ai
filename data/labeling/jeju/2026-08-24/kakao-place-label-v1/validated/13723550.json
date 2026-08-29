@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723550",
+  "place_id": "13723550",
+  "name": "오시록헌농로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "제주관광공사의 제주올레 14코스 공식 관광 안내는 오시록헌 농로를 큰소낭길 다음에 만나는 코스 내 구간으로 설명하며, 14코스 전체는 저지 예술 정보화 마을에서 한림항까지 이어지는 약 18.9km의 도보 코스라고 밝힌다. 따라서 입력 Kakao 장소 ‘오시록헌농로’는 독립 운영 방문지라기보다 제주올레 14코스의 경유 구간으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "오시록헌농로는 제주올레 14코스 안에서 큰소낭길 뒤에 이어지는 농로 구간이다.",
+    "typical_visit": "제주올레 14코스를 걷는 중 경유하는 야외 농로 구간이며, 독립 방문지 이용 방식은 확인하지 않는다.",
+    "experience_scope": "공식 관광 안내는 이 구간 주변의 초록 밭과 돌담 풍경을 14코스의 일부로 설명한다. 이 Kakao 지도 표식의 정확한 좌표 범위와 최신 우회·통제 여부는 별도로 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 13723550과 장소명 ‘오시록헌농로’를 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사의 제주올레 14코스 안내는 저지 예술 정보화 마을에서 한림항까지 이어지는 약 18.9km 코스에서 큰소낭길 다음에 오시록헌 농로를 만난다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 지도 표식이 가리키는 농로의 정확한 시작·끝 좌표 범위는 공개 공식 자료로 확인하지 못했다.",
+      "현재 통행 가능 여부, 우회 구간, 농로 노면 상태와 악천후 안전 조건은 최신 공식 코스 안내로 재확인이 필요하다.",
+      "농로 구간 자체의 독립 운영 주체, 편의시설 또는 별도 관람·체험 프로그램은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/13723550",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 13723550 및 장소명 오시록헌농로를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018728&menuId=DOM_000001718008000000",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 14코스는 저지 예술 정보화 마을에서 한림항까지 이어지는 약 18.9km의 도보 코스다.",
+          "큰소낭길을 지나면 오시록헌 농로를 만난다고 소개한다.",
+          "오시록헌 농로 주변에는 초록의 밭과 돌담 풍경이 있다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_route_and_current_access_required",
+      "applies_to": "all_visitors",
+      "condition": "이 표식은 제주올레 14코스의 경유 구간이며, 독립 방문지로서의 이용 방식과 현재 우회·통제·농로 보행 안전 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 추천으로 사용하지 말고 제주올레 14코스 정보에 종속시킨다. 실제 걷기 전에는 제주올레 공식 최신 안내로 코스 변경, 통행 가능 여부와 기상·노면 안전을 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

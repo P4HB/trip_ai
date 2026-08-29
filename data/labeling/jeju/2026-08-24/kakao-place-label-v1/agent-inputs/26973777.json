@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1143,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26973777.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26973777",
+    "provider": "kakao",
+    "place_id": "26973777",
+    "name": "동안경굴",
+    "url": "https://place.map.kakao.com/26973777",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "6",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.07.08.",
+      "content": "우도에 있는 동굴. 밑물이 빠지면 들어갈 수 있다고 합니다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.19.",
+      "content": "‼️노약자, 어린이 주의‼️ 전날 허리다쳤는데 무리하게 동굴 보러 갔다가 다칠 뻔했습니다. 어린이와 노약자는 안에 동굴까지 들어가는 건 추천하지 않습니다, 검멀레 해변만 만끽하셔도 될 것 같아요!",
+      "tags": ""
+    },
+    {
+      "date": "2021.08.07.",
+      "content": "파도가 쌔 동굴에 못들어갔다.. 아숩.. 보트여행은 좋았음 ^^b",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

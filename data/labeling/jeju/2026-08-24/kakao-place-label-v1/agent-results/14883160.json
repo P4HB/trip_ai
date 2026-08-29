@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14883160",
+  "canonical_id": "kakao:14883160",
+  "name": "추포도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 법령 별표에서 제주특별자치도 제주시 추자면 예초리에 소재한 섬으로 명시된 추포도(秋浦島)와 일치한다. 추자군도 구성의 유인도로도 학술 공공 백과에 기록되어 있어, 다른 장소의 부속 시설이나 동명 음식점이 아닌 독립 자연 방문지로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 보도는 섬 대부분이 산지이고 최고점이 있다고 설명하지만, 등산이 대표 방문 경험인지 확인하지 못했다.", "source_ids": ["S3"], "rule_ids": ["THEME-MOUNTAIN-CONTEXT"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추포도는 추자군도의 유인도이며 주변 해역의 어로 활동과 섬 환경이 공개 기록되어 해안·해양 환경이 장소 경험의 핵심이다.", "source_ids": ["S2"], "rule_ids": ["THEME-ISLAND-OCEAN-DIRECT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "섬의 해안·산지 환경은 확인되나, 걷기·낚시 등 특정 참여형 활동의 공식 운영 또는 현행 이용 조건은 확인하지 못했다.", "source_ids": ["S2", "S3"], "rule_ids": ["THEME-ACTIVITY-UNCONFIRMED"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자군도에는 독자적인 정주·어로 맥락이 기록되지만 추포도에서 역사·문화 해설이나 시설이 핵심 방문 경험인지는 확인되지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["THEME-CULTURE-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 출처는 섬과 해역을 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 섬의 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추포도는 섬으로 확인되며 시장 방문 경험이나 상설 시장 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "섬·해역·산지로 기록된 자연 지점이며 대표 방문 경험을 구성하는 실내 관광 시설은 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["ENV-OUTDOOR-ISLAND"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 환경이 해상 교통과 야외 섬·해안이므로 바람·비·파고 등 기상 조건의 영향을 받을 수 있다. 현행 결항·통제 기준은 확인하지 못했다.", "source_ids": ["S2", "S3"], "rule_ids": ["ENV-ISLAND-WEATHER-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "작은 섬이라는 사실 외에 조용한 체류·휴식 환경, 숙박 또는 혼잡도에 관한 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬의 산지 정보는 있으나 실제 보행로, 경사, 계단, 선착장 접근성과 무장애 동선은 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "상륙·체류 가능 여부와 왕복 교통, 단독 체류시간 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해양의 섬과 산지 지형은 확인되지만, 경관 감상이 공식적으로 대표 경험으로 소개되는 현행 관광 근거는 부족하다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-ISLAND-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자군도에 속한 별도 유인도라는 지리적 정체성은 확인되지만, 다른 섬과 구별되는 현행 방문 구성이 충분히 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ISLAND-IDENTITY"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "법령은 추포도를 제주시 추자면 예초리에 소재한 섬으로 명시하고, 추자군도 기록은 유인도·주변 해역의 지역 어로 맥락을 직접 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-ISLAND-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 문서에 행정상 섬 이름으로 수록되지만 제주 전체를 대표하는 공적 명소·상징이라는 지정 또는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬·해안 지형은 확인되나 사진 촬영이 직접 권장되거나 시각 기록 가치가 핵심이라는 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-VALUE-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·교통·통신·안내 조건이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 체류·교통·편의시설 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이동·수용·안전 조건이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 상륙·보행 동선 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 선착장 접근, 경사·휴식·무장애 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 상륙·개방·교통·행사 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-ISLAND-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "island_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "추포도는 해상 환경의 섬이나, 현재 상륙·여객·행정선 운항 여부, 기상·파고에 따른 결항 또는 출입 통제, 현장 보행 안전과 편의시설은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 추자면 행정기관·여객선사 또는 현장 최신 안내로 상륙 가능 여부, 운항·결항, 기상과 안전 조건을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘추포도’는 제주특별자치도 제주시 추자면 예초리에 소재한 추포도(秋浦島)와 일치한다. 서울 소재 동명 음식점 검색 결과와는 별개로, Kakao 장소 URL·제주 라벨 큐의 맥락은 이 제주 섬을 가리킨다.",
+    "facts": [
+      {"text": "공직선거관리규칙 별표는 추포도(秋浦島)의 소재지를 제주특별자치도 제주시 추자면 예초리로 수록한다.", "source_id": "S1"},
+      {"text": "한국민족문화대백과사전의 추자군도 항목은 상·하추자도, 추포도, 횡간도를 4개 유인도로 기록하며 주변 해역의 어로 활동을 설명한다.", "source_id": "S2"},
+      {"text": "공개 현지 보도는 추포도를 예초리 인근의 섬으로 소개하고 면적 약 0.1㎢, 최고점 113m 및 산지가 대부분이라는 자료를 인용한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["현재 일반 방문객의 상륙 가능 여부와 선착장·여객선 또는 행정선 운항 정보", "현행 보행로, 경사·계단, 화장실·휴식·무장애 접근성", "기상·파고에 따른 출입 통제 및 안전 지침", "현행 관광 프로그램·숙박·음식·사진 명소 여부"],
+    "sources": [
+      {"id": "S1", "publisher": "국가법령정보센터", "type": "government_legal_information", "url": "https://law.go.kr/LSW/flDownload.do?flSeq=133545839", "checked_at": "2026-08-25", "facts": ["법령 별표에 추포도(秋浦島)와 제주특별자치도 제주시 추자면 예초리 소재지가 수록돼 있다."]},
+      {"id": "S2", "publisher": "한국학중앙연구원 한국민족문화대백과사전", "type": "public_academic_encyclopedia", "url": "https://encykorea.aks.ac.kr/Article/E0057889", "checked_at": "2026-08-25", "facts": ["추자군도는 상·하추자도·추포도·횡간도의 4개 유인도와 38개 무인도로 구성된다고 설명한다.", "주변 해역의 어로 활동 맥락을 설명한다."]},
+      {"id": "S3", "publisher": "오마이뉴스", "type": "reputable_news", "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002523307", "checked_at": "2026-08-25", "facts": ["추포도가 제주시 추자면 예초리에 속한다고 보도한다.", "면적 약 0.1㎢, 최고점 113m, 대부분 산지라는 한국향토문화전자대전 인용 내용을 보도한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

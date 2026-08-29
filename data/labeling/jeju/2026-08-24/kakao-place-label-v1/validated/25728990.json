@@ -1,0 +1,112 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25728990",
+  "place_id": "25728990",
+  "name": "웅포천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공개 공공·준공공 하천 자료는 웅포천을 제주 한림 지역의 지방하천·하천수 관측 대상으로 기록한다. 입력 Kakao 레코드에는 별도의 방문 시설·관광 경험·운영 정보나 후기가 없고, 관광용 수영장인 옹포천어울공원수영장과도 별도 장소로 안내된다. 따라서 이 레코드는 독립 방문지보다 하천 지물로 판단해 추천 라벨링 범위에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "웅포천은 제주 한림 지역에 기록된 지방하천이다.",
+    "typical_visit": "확인된 공공 자료는 하천 관리·유량 정보만 제공하며, 이 명칭 자체의 독립 관광·방문 시설 경험은 확인하지 못했다.",
+    "experience_scope": "별도 관광시설인 옹포천어울공원수영장은 옹포천 용천수를 사용하는 여름철 수영장으로 안내되지만, 입력 장소명 웅포천과는 별개 레코드다. 웅포천 자체의 공식 탐방·개방·안전·편의시설 정보는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국건설기술연구원 건설기술정보시스템(CODIL) 공개 하천 목록은 웅포천을 하천코드 6020460의 제주 하천으로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 자료는 웅포천을 제주도 내 상시하천 유출량 현황의 한 대상(2022년 평균 112천m³/일)으로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "한국관광공사 대한민국 구석구석은 옹포천어울공원수영장을 옹포천의 용천수를 사용하는 여름철 한정 수영장으로 별도 관광지로 안내한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 레코드의 좌표·주소와 웅포천 하천 구간의 정확한 대응은 입력에 제공되지 않았다.",
+      "웅포천 자체에 일반 방문객용 탐방로, 개방 구간, 안전시설 또는 관광 운영이 있는지는 확인하지 못했다.",
+      "옹포천어울공원수영장의 최신 운영 여부·시기·이용 조건은 이 하천 레코드의 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국건설기술연구원 건설기술정보시스템(CODIL)",
+        "type": "public_infrastructure_document",
+        "url": "https://www.codil.or.kr/filebank/original/EC/OTKCEC200511/OTKCEC200511.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "웅포천은 하천코드 6020460, 제주 하천으로 수록된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_government_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A040886.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "웅포천은 제주도 내 상시하천 유출량 현황의 대상에 포함된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_listing",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=be4367e5-5e52-43aa-8867-b2c3fb913d12",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "옹포천어울공원수영장은 옹포천의 용천수를 사용하는 별도 여름철 수영장으로 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "not_independent_visitor_destination",
+      "applies_to": "all_visitors",
+      "condition": "확인된 웅포천 레코드는 하천 지물이며, 일반 방문객 대상의 독립 관광 운영·탐방 접근·안전 정보가 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "추천 후보에서 제외하고, 별도 관광시설을 다룰 때에는 해당 시설의 독립 장소 레코드와 최신 공식 안내를 사용한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

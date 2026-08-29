@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7825395",
+  "place_id": "7825395",
+  "name": "대미왓굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.5,
+    "rationale": "카카오맵 공개 장소 페이지가 대미왓굴이라는 독립 장소명과 제주시 한림읍 협재리 위치를 제시한다. 다만 공공·공식 상세 자료, 운영 주체 및 다른 시설의 부속물 여부는 확인하지 못했으므로 낮은 신뢰도로 별도 자연 방문 지점 후보로만 보존하고 검수가 필요하다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "대미왓굴은 카카오맵 공개 장소 페이지에 제주시 한림읍 협재리 소재로 등록된 장소다.",
+    "typical_visit": "명칭상 굴(동굴)로 등록되어 있으나, 실제 방문 가능 여부·내부 관람·탐방 경험은 공개 상세 출처에서 확인하지 못했다.",
+    "experience_scope": "공개 장소 페이지는 명칭과 행정리 수준 위치만 확인한다. 동굴의 성격, 개방 여부, 소유·관리 주체, 접근로, 안전시설, 편의시설 및 계절별 운영은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "카카오맵 공개 장소 페이지는 장소명을 대미왓굴로, 위치를 제주특별자치도 제주시 한림읍 협재리로 표시한다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "동굴 내부 또는 입구의 실제 개방·출입 허용 여부를 확인하지 못했다.",
+      "동굴의 자연·지질 특성, 관람 동선, 소요 시간 및 대표 체험을 확인하지 못했다.",
+      "접근로, 경사·노면, 조명, 추락·낙석 위험, 주차·화장실 및 무장애 시설을 확인하지 못했다.",
+      "계절별 통제와 우천·강풍 시 안전 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 페이지",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/7825395",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 대미왓굴로 표시된다.",
+          "위치는 제주특별자치도 제주시 한림읍 협재리로 표시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 메타데이터는 명칭과 위치만 제시하며 산·오름·산림 경관이 대표 경험이라는 근거는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 메타데이터에서 바다·해안·해양 활동이 대표 경험이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방·레포츠 또는 참여형 체험의 실제 운영·이용 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연 또는 전통 체험이 핵심이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설이나 운영의 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적인 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문 경험이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"명칭만으로는 실제 동굴 내부 관람의 가능 여부나 실내 공간 비중을 판단할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실제 방문 경험과 개방 환경이 확인되지 않아 날씨 영향 정도를 판단할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·소음·체류 환경 정보가 없어 휴식성을 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로, 경사·계단·노면·조명 및 무장애 정보가 없어 이용 난이도를 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간, 개방 시간, 탐방 동선 및 체류 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 직접적인 방문 가치라는 사진·공식 안내·공개 후기 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장소명은 확인되지만 지질·문화적 특징과 유사 장소 대비 고유성을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"협재리 위치는 확인되지만 제주 자연·문화·생산자·생활과의 구체적 연결을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 명소라는 공적 지정·관광 안내를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되는 공개 근거를 찾지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"출입·안전·동선 정보가 부족해 혼자 방문 적합도를 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 이용 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 동선·안전·수용 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 조명·난간·노면·안전시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방·방문 환경과 계절별 안전 안내가 없어 월별 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동굴의 최신 개방 여부, 소유·관리 주체, 접근로, 경사·노면, 조명, 추락·낙석 위험, 주차·화장실, 무장애 시설 및 악천후 안전 통제를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 관할 지자체 또는 현장 최신 안내로 출입 허용 여부와 동굴·보행 안전을 확인한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

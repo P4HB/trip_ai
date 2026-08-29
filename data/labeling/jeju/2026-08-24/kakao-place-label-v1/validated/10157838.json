@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10157838",
+  "place_id": "10157838",
+  "name": "공덕비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 일반명사 성격의 장소명 ‘공덕비’와 place_id만 제공하며 주소·좌표·사진·후기가 없다. 공개 검색에서는 제주시 건입동의 고서흥비 등 서로 다른 제주 공덕비 관련 자료가 확인되지만, 이 레코드가 어느 비석을 가리키는지 연결하는 식별 정보는 확인되지 않았다. 따라서 특정 유산·관람 경험으로 단정하거나 추천용 벡터를 부여하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 10157838의 표시는 ‘공덕비’이나, 공개 입력에 위치 또는 개별 비석 식별자가 없어 실제 대상을 특정할 수 없다.",
+    "typical_visit": "미확인: 특정 비석의 위치·접근성·안내 시설·관람 동선을 이 레코드에 연결할 근거가 없다.",
+    "experience_scope": "일반적인 ‘공덕비’라는 명칭만으로는 관광·문화 방문지로서의 독립 경험 범위를 확정할 수 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 공개 장소 메타데이터는 place_id 10157838, 장소명 ‘공덕비’, Kakao 장소 URL을 제공하며, 주소·좌표·공개 후기·운영 또는 시설 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 제공 공공누리 자료에는 제주시 건입동 공덕동산의 ‘제주_고서흥비’가 공덕비 관련 향토유산으로 나타나지만, 자료에는 Kakao place_id 10157838과의 동일성 연결 정보가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 레코드의 주소, 좌표, 비문 또는 피기념자 이름을 확인하지 못했다.",
+      "고서흥비를 포함한 공개 공덕비 자료 중 어느 대상이 이 레코드인지 확인하지 못했다.",
+      "일반 방문객의 접근·관람 가능 범위와 현장 안내·체류 경험을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/10157838",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 10157838과 장소명 ‘공덕비’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 공개 방문 후기와 개별 비석을 식별할 추가 정보가 없다.",
+          "평점 및 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "official_public_record",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&oc=&recommendIdx=39390",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공개 자료는 ‘제주_고서흥비’를 제주특별자치도 제주시 건입동 공덕동산의 제주특별자치도 향토유산 제12-34호로 표기한다.",
+          "이 공개 자료에는 Kakao place_id 10157838이 기재되지 않아 동일 장소임을 확인할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_not_resolved",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 위치와 개별 비석 식별자가 확인되지 않아, 공개 자료의 어느 공덕비와 대응하는지 확정할 수 없다.",
+      "status": "needs_review",
+      "action": "주소·좌표 또는 현장 표기 등 식별 근거를 확보해 동일성을 확인하기 전에는 추천 후보 및 라벨 벡터에 포함하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

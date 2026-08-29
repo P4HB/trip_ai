@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11042684",
+  "place_id": "11042684",
+  "name": "갑오탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘갑오탑’과 place_id만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 2026-08-24 공개 웹 검색에서도 제주 내 이 레코드와 주소·위치·성격을 교차 확인할 수 있는 공식·공공 상세 출처를 찾지 못했다. 따라서 동명 기념물인지, 독립 관광 방문지인지, 다른 시설의 부속 표식인지를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 식별 정보는 Kakao 장소명 ‘갑오탑’과 place_id 11042684뿐이며, 제주 내 정확한 위치와 장소 성격은 확인되지 않았다.",
+    "typical_visit": "장소 신원이 확정되지 않아 대표 방문 경험을 확인하거나 기술할 수 없다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영·관람 정보 및 공개 방문 후기 내용이 없다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았고, 공개 웹 검색도 이 Kakao 레코드의 신원을 확정하지 못했다. 추천용 방문 경험 및 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘갑오탑’, place_id를 11042684로 제공하며 주소·좌표·업종과 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-24 ‘제주 갑오탑’ 및 ‘갑오탑’ 공개 웹 검색에서 이 Kakao place_id와 제주 내 위치·장소 성격을 함께 확인하는 공식·공공 상세 페이지를 찾지 못했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 시설·기념물·부속 표식 여부를 확인하지 못했다.",
+      "제주 내 동명 대상과의 동일성, 독립 방문지 여부 및 기존 장소와의 중복 여부를 확인하지 못했다.",
+      "관람·체험, 접근성, 주차, 안전, 운영 상태 및 공개 방문 경험 근거를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11042684",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘갑오탑’이고 place_id는 11042684다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 내용이 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "search_verification",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EA%B0%91%EC%98%A4%ED%83%91",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "‘제주 갑오탑’과 ‘갑오탑’ 검색으로 이 Kakao place_id의 위치나 성격을 교차 확인하는 공식·공공 상세 출처를 찾지 못했다.",
+          "검색 결과만으로 동명 대상 또는 장소 유형을 확정하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·후기 내용이 없고 공개 신뢰 출처로 ‘갑오탑’의 제주 내 정확한 신원과 독립 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·시설 설명으로 신원을 먼저 교차 확인한다. 독립 관광 방문지로 확인되면 별도 조사 후 41축을 생성하고, 부속 표식 또는 중복이면 해당 적격 상태로 재판정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

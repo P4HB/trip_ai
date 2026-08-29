@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2057,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26458820.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26458820",
+    "provider": "kakao",
+    "place_id": "26458820",
+    "name": "성지도예",
+    "url": "https://place.map.kakao.com/26458820",
+    "average_rating_5": "4.4",
+    "visitor_review_count": "12",
+    "blog_review_count": "16",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.11.24.",
+      "content": "좋은체험 편하게 했엉ㅅㅇ",
+      "tags": "주차"
+    },
+    {
+      "date": "2025.04.19.",
+      "content": "도자기 만들기 재밌어요!! 사장님 두분께서 친절하게 잘 알려주셔서 감사했습니다! 부모님과 즐거운 시간 보낼 수 있어서 좋았어요><",
+      "tags": ""
+    },
+    {
+      "date": "2024.02.27.",
+      "content": "사장님분들 친절. 흙느낌도 좋고 공간이 너무너무너무 좋아요 또가고싶다 사장님.. 수원으로 오시면 안 돼요..?",
+      "tags": "시설"
+    },
+    {
+      "date": "2023.03.16.",
+      "content": "아이와 꼭 한번 해보고 싶었던 도자기 체험 아이도 저도 너무 즐거웠고 선생님의 설명이 아주 좋았습니다",
+      "tags": "주차"
+    },
+    {
+      "date": "2022.02.19.",
+      "content": "액티비티 찾다가 방문했어요. 당일 예약했는데도 가능했습니다. 사장님 두분이 정말 친절하세요. 981파크만큼 재밌었어요 981파크 제 후기 보세요 4등했어요 오랜만에 흙을 만져볼 수 있어서 즐거웠어요. 더 오랜만에 그림을 그려본 것 같아요. 더더 오랜만에 유치원 때 이후로 도자기를 만들어봤어요. 두달 뒤에 완성된 도자기가 도착한다고 합니다. 제주 여행이 잊혀질 쯤 도자기를 다시 만나면 성지도예와 제주도가 다시 생각날 거에요♡ 좋은 추억 만들고 갑니다! 가시기 전에! 무슨 도자기를 만들지, 어떤 그림을 그릴지 생각하는 게 좋을 것 같아요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

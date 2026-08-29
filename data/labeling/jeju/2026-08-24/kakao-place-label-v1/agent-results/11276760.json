@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11276760",
+  "place_id": "11276760",
+  "name": "병문천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 공공·관광 출처는 병문천을 제주시를 흐르는 하천으로 설명한다. 입력에는 별도의 탐방 시설, 관람 구간, 운영 주체 또는 독립 방문지로서의 이용 정보가 없으므로, 장소 자체가 아닌 광역 하천 지명 레코드로 판정해 추천용 방문지 범위에서는 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "병문천은 제주특별자치도 제주시를 흐르는 하천이다.",
+    "typical_visit": "확인된 자료는 하천의 지리·수문 및 역사적 맥락을 설명할 뿐, 독립적인 관광·체험·관람 프로그램이나 특정 방문 구간을 안내하지 않는다.",
+    "experience_scope": "입력 Kakao 레코드는 장소명과 URL 외에 주소·좌표·업종·공개 후기 근거를 제공하지 않는다. 하천 전체를 하나의 독립 여행 방문지로 취급할 수 있는 접근·안전·관람 정보도 확인하지 못했으므로 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 대한민국 구석구석의 제주시 소개는 한천·병문천 등을 한라산 북사면에서 발원해 제주시 도심을 관류하는 하천으로 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 기록사진 설명은 병문천을 산지천·한천과 함께 제주시내로 흘러내리는 큰 하천 중 하나로 설명하며, 현재 복개된 구간이 있음을 언급한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 하천 구간, 좌표와 현장 접근 지점은 입력에서 확인되지 않았다.",
+      "안전하게 일반 방문객이 이용할 수 있는 산책·관람 구간, 운영 프로그램, 출입 제한과 최신 수위·기상 안전 정보는 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았고, 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_page",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=5f261b94-ef07-49cc-9200-6a80bf7b6f13",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 소개는 한천, 병문천 등 하천이 한라산 북사면에서 발원해 도심을 관류한다고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도·공공누리",
+        "type": "public_record_page",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=38879",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "기록사진 설명은 병문천을 산지천, 한천과 함께 제주시내로 흘러내리는 큰 하천 중 하나로 설명한다.",
+          "설명은 병문천의 일부가 현재 복개됐다고 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11276760",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘병문천’이며 주소·좌표·업종·공개 방문 후기 근거는 제공되지 않았다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "not_independent_visit_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "병문천은 제주시를 관류하는 하천 지명으로 확인되며, 이 Kakao 레코드가 독립적으로 방문 가능한 특정 구간·시설·프로그램을 가리킨다는 근거가 없다.",
+      "status": "needs_review",
+      "action": "특정 산책로·공원·관람 시설 또는 접근 가능한 하천 구간으로 식별되는 공식 주소와 이용 안내가 확인되기 전까지 추천 후보에서 제외한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

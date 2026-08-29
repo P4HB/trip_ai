@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8073776",
+  "place_id": "8073776",
+  "name": "종남괴굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.8,
+    "rationale": "Kakao 공개 장소 페이지는 종남괴굴을 제주시 한림읍 협재리에 표시하지만, 이 표식이 어떤 자연지물·유적 또는 일반 방문 가능한 독립 장소인지 확인하는 공식·공공 출처를 찾지 못했다. 유사 명칭인 종남굴은 공개 국가도서관 서지에서 서귀포 위미 지역의 ‘잃어버린 마을’로만 확인되어, 명칭·위치가 다른 Kakao 표식과 동일하다고 볼 수 없다. 따라서 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 표식 ‘종남괴굴’은 제주시 한림읍 협재리에 표시되지만, 현행 독립 방문지로서의 정체성·관리·이용 가능 여부는 확인되지 않았다.",
+    "typical_visit": "공식적인 관람·탐방 방법, 출입 조건 또는 운영 정보를 확인하지 못했다.",
+    "experience_scope": "장소명과 Kakao의 행정리 표기 외에는 실제 방문 경험을 뒷받침하는 신뢰 가능한 공개 근거가 부족하므로, 자연 동굴·역사 유적·관광지라는 유형을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘종남괴굴’이며, 공개 메타데이터는 소재지를 제주특별자치도 제주시 한림읍 협재리로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국립중앙도서관 공개 서지는 ‘서귀포 위미마을 감성 힐링 여행’의 목차에 ‘잃어버린 마을 종남굴’을 수록한다. 이는 명칭이 유사하지만 지역과 표기가 달라 Kakao 표식과의 동일성을 확인하는 근거는 아니다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 지물 유형, 관리 주체, 지번 및 공식 명칭을 확인하지 못했다.",
+      "한림읍 협재리 Kakao 표식과 서귀포 위미 지역에 언급된 유사 명칭 지점의 관계 또는 동일성을 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 동선, 동굴·지형 안전 위험, 주차·화장실·무장애 접근성과 계절별 통제를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 페이지",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8073776",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 종남괴굴로 표시된다.",
+          "공개 메타데이터의 소재지는 제주특별자치도 제주시 한림읍 협재리다.",
+          "공개 메타데이터에서 관리 주체, 출입 조건, 공식 방문 안내를 확인하지 못했다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국립중앙도서관 ISBN·ISSN·UCI·납본 시스템",
+        "type": "public_library_bibliography",
+        "url": "https://www.nl.go.kr/seoji/contents/S80100000000.do?isbn=9791192819006&schM=intgr_detail_view_isbn",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공개 서지의 도서 목차에는 서귀포 위미마을 맥락의 ‘잃어버린 마을 종남굴’이 있다.",
+          "이 서지는 종남괴굴 Kakao 표식의 한림읍 협재리 위치·동일성·방문 가능 여부를 확인하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_status_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 표식의 정확한 지물 정체성, 일반인 출입 권한, 공식 접근 동선과 동굴·지형 안전 조건이 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "관할 지자체 또는 관리·토지 주체의 최신 안내로 표식의 정확한 명칭·위치·출입 가능 여부와 안전 조건을 확인한 뒤, 독립 방문지로 확인되면 재라벨링한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

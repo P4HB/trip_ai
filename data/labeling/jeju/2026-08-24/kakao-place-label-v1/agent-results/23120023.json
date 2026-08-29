@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:23120023",
+  "place_id": "23120023",
+  "name": "동복리 4.3사건희생자 위령탑",
+  "agent_identity": {"model": "gpt-5.6-terra", "reasoning_effort": "medium"},
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주4·3연구소의 4·3유적지 목록과 개별 유적지 페이지가 ‘동복리 4.3사건희생자 위령탑’을 독립 항목으로 수록한다. 따라서 동복리의 제주4·3 기억을 다루는 독립 역사 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "동복리 4.3사건희생자 위령탑은 제주4·3연구소가 4·3유적지로 수록한 동복리의 희생자 기억 위령탑이다.",
+    "typical_visit": "위령탑을 찾아 제주4·3 희생자와 지역의 역사적 기억을 되새기는 짧은 역사·추모 방문으로 판단된다.",
+    "experience_scope": "공개 신뢰 출처는 장소명과 4·3유적지 분류를 확인한다. 탑의 정확한 위치·조성 배경·현장 규모, 실내 공간, 해설, 주차·화장실, 노면·무장애 접근, 최신 개방 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주4·3연구소의 4·3유적지 목록은 ‘동복리 4.3사건희생자 위령탑’을 별도 유적지 항목으로 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주4·3연구소의 개별 유적지 페이지 제목은 ‘동복리 4.3사건희생자 위령탑’이며, 이를 4·3유적지로 분류한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["위령탑의 최신 출입·개방 상태와 정확한 현장 위치를 확인하지 못했다.", "실내 시설, 상시 해설, 주차·화장실·휴식공간 및 무장애 접근성은 unknown이다.", "현장 노면·경사·계단과 악천후 안전 통제 정보는 unknown이다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3연구소", "type": "public_history_site", "url": "https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&wr_id=80", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["개별 페이지는 ‘동복리 4.3사건희생자 위령탑’을 4·3유적지로 표시한다.", "4·3유적지 목록도 같은 명칭을 별도 항목으로 수록한다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/23120023", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘동복리 4.3사건희생자 위령탑’이다.", "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 출처에 산·오름·산림 경관이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 역사기관이 이 장소를 제주4·3 유적지의 희생자 위령탑으로 직접 수록해 역사·기억 방문 경험의 비중이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탑 주변의 실내·야외 이용 비율을 확인할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"대표 관람 공간과 실내 대체 여부를 확인하지 못해 날씨 민감도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·휴식공간·체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단과 무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문의 체류시간·동선·편의시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"동복리의 제주4·3사건 희생자를 기억하는 명시적 위령탑이라는 정체성이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"동복리와 제주4·3 희생자 기억이 장소명과 공공 역사 유적지 분류에 직접 결부된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공공 유적지 목록 수록은 확인되나 제주 전체 또는 지역 대표 명소라는 별도 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근성·안전·해설 운영 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반의 안전시설·난이도·정서적 안내 적합성을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 이용 공간과 겨울 기상 영향 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 이용 공간과 겨울 기상 영향 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 이용 공간과 여름 기상 영향 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 이용 공간과 여름 기상 영향 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·현장 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 이용 공간과 겨울 기상 영향 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"accessibility_unknown","applies_to":"mobility_limited_visitors","condition":"위령탑의 최신 개방·접근로, 노면·경사·계단, 주차·화장실·휴식시설 및 무장애 접근성을 확인하지 못했다.","status":"needs_review","action":"이동 제약이 있거나 어린이를 동반하는 방문자는 출발 전 관할 행정기관 또는 현장 안내로 접근성과 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24T12:00:00+09:00"},
+    {"kind":"sensitive_history","applies_to":"all_visitors","condition":"제주4·3사건 희생자를 기억하는 위령탑이다.","status":"confirmed","action":"방문·추천 설명에서 희생자 추모와 역사적 맥락을 존중하고 오락적 소비로 표현하지 않는다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24T12:00:00+09:00"
+}

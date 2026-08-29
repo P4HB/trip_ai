@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8040155",
+  "place_id": "8040155",
+  "name": "이붕탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "Kakao 공개 장소 페이지와 제주콘텐츠진흥원 자료는 ‘이붕탑’이라는 지명이 제주시 삼양일동·원당로 인근에 있음을 뒷받침한다. 그러나 공개적으로 확인 가능한 자료에는 탑의 성격, 조성 배경, 관람 범위, 독립 방문지 여부가 설명되지 않는다. 명칭과 위치만으로 문화유산·전망·기념물 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘이붕탑’은 Kakao 지도에서 제주특별자치도 제주시 삼양일동의 장소명으로 표시된다. 제주콘텐츠진흥원의 원당로 로케이션 자료도 삼양동 원당로 인근 시설로 이붕탑을 열거한다. 다만 두 자료 모두 장소의 성격과 방문 가능한 독립 관광지 여부를 설명하지 않는다.",
+    "typical_visit": "관람·체험·상업 시설·운영 정보가 공개 근거로 확인되지 않아 대표 방문 경험을 특정할 수 없다.",
+    "experience_scope": "입력 Kakao 평점과 후기 수는 0으로 제공되었으나 라벨 근거로 사용하지 않았다. 공개 근거가 장소의 명칭과 대략적 위치에 그쳐 추천용 방문 경험 및 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘이붕탑’이며 설명은 ‘제주특별자치도 제주시 삼양일동’으로 표시된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주콘텐츠진흥원 원당로 로케이션 자료는 제주시 삼양동 원당로 주변 시설로 ‘이붕탑’을 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이붕탑의 조성 목적, 역사·문화적 성격, 관리 주체와 공식 상세 안내를 확인하지 못했다.",
+      "독립적으로 방문·관람 가능한 장소인지, 관람 동선·접근성·안전시설과 최신 출입 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 없으며 평점·후기 수를 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8040155",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 페이지 제목은 ‘이붕탑’이다.",
+          "공개 페이지 설명은 ‘제주특별자치도 제주시 삼양일동’이다.",
+          "입력 패킷의 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주콘텐츠진흥원",
+        "type": "public_agency_location_database",
+        "url": "https://ofjeju.kr/bussiness/location/locationsearch.htm?act=view&id=137&page=16",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "원당로 자료는 제주시 삼양동의 원당로 주변에 이붕탑이 있다고 열거한다.",
+          "해당 자료는 이붕탑의 성격, 관람 방식 또는 운영 정보를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 자료는 이붕탑의 명칭과 삼양동 원당로 인근 위치만 확인하며, 장소의 성격·독립 관람 가능 여부·접근 및 안전 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "관리 기관 또는 현장 공식 안내로 탑의 성격, 방문 가능 범위, 최신 출입·접근·안전 정보를 먼저 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

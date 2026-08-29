@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11250681",
+  "place_id": "11250681",
+  "name": "종이빌래굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "Kakao Map 공개 장소 메타데이터는 ‘종이빌래굴’이라는 명칭과 제주시 한림읍 협재리의 지도 지점만 제공한다. 2026-08-24 공개 웹 조사에서는 이 Kakao 표식과 연결되는 공식·공공 자료를 찾지 못해, 해당 굴의 정확한 정체·관리 주체·일반인 출입 허용 여부 또는 독립 방문 경험을 확인할 수 없었다. 따라서 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao Map은 종이빌래굴을 제주시 한림읍 협재리의 지도 지점으로 표시하지만, 공개 신뢰 출처로 확인된 동굴의 성격·관리·방문 가능 정보는 없다.",
+    "typical_visit": "공식적인 관람·탐방 방식, 이용 시간, 출입 허용 여부를 확인하지 못했다.",
+    "experience_scope": "지도상의 명칭과 행정리 위치만 확인되며, 실제 관광·탐방 경험, 접근성 또는 안전 조건을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 메타데이터는 장소명을 종이빌래굴로, 주소를 제주특별자치도 제주시 한림읍 협재리로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-24에 장소명·제주·표기 변형을 기준으로 공개 웹을 조사했으나, 입력 Kakao place_id와 연결되어 위치·관리 주체·현재 이용 상태를 확인하는 공식 또는 공공 출처를 찾지 못했다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 가리키는 동굴의 정확한 범위·지질적 성격과 다른 동명 자연지물과의 구별 정보를 확인하지 못했다.",
+      "일반 방문객 출입 허용, 소유·관리 주체, 공식 탐방로, 예약·가이드·장비 필요 여부를 확인하지 못했다.",
+      "동굴 내부 조명·낙차·침수 위험, 기상 시 통제, 주차·화장실 및 무장애 접근성을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 공개 웹 검색",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/11250681",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 종이빌래굴로 제공된다.",
+          "공개 장소 메타데이터의 주소 표기는 제주특별자치도 제주시 한림읍 협재리다.",
+          "동일 장소의 관리·일반 방문 가능 상태를 뒷받침하는 공식 또는 공공 출처를 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_cave_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식과 실제 동굴의 동일성, 일반인의 출입 허용과 공식 동선, 동굴 내부 안전·기상 통제 및 편의시설을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체·토지 또는 동굴 관리 주체의 최신 안내로 정확한 위치, 출입 권한, 가이드·장비 필요 여부와 안전 통제를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

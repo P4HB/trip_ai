@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1426660726",
+  "place_id": "1426660726",
+  "name": "제주 비양도 호니토",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "국가유산청이 ‘제주 비양도 호니토’를 천연기념물 제439호의 지질·지형 자연유산으로 등록하고, 제주관광공사가 비양도 지질공원 탐방의 개별 명소로 안내한다. Kakao 명칭과 공식 명칭이 일치하므로 독립 탐방 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주 비양도 호니토는 제주시 한림읍 협재리 비양도 연안의 천연기념물 지질·지형 유산이다.",
+    "typical_visit": "비양도에 배로 들어간 뒤 해안 일주·지질공원 탐방 동선에서 호니토와 주변 해안 지형을 야외에서 관찰하는 방문이다.",
+    "experience_scope": "실내 전시·체험시설이 아니라 보호 대상 자연 지질지형의 야외 관찰 지점이다. 호니토 바로 앞의 정확한 노면, 안전시설, 무장애 접근성과 관람 제한은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국가유산청 국가유산포털은 제주 비양도 호니토를 천연기념물, 자연유산·지구과학기념물·지질지형으로 분류하고 면적 1,323㎡, 지정일 2004-04-09를 기록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주관광공사 Visit Jeju는 비양도를 한림읍 앞바다의 섬으로 소개하며, 해안 일주 약 1.3km에서 현무암과 지형을 만나고 비양도 지질공원 탐방 안내 지도에 명소가 정리돼 있다고 안내한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "Visit Jeju는 비양도 접근에 한림항 배편을 이용하며 기상에 따라 운항 일정이 변동될 수 있다고 안내한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["Kakao 핀과 호니토 안내판·보호구역 경계의 정확한 일치 좌표는 별도 확인하지 못했다.", "호니토 바로 앞의 계단·난간·노면·휠체어 접근성 및 현장 관람 제한은 unknown이다.", "배편의 현재 운항시간·요금과 현장 기상·폐쇄 여부는 변동 정보이므로 방문 전 확인이 필요하다."],
+    "sources": [
+      {"id": "S1", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_record", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1363904390000", "checked_at": "2026-08-24", "facts": ["제주 비양도 호니토는 천연기념물이다.", "분류는 자연유산·지구과학기념물·지질지형이다.", "소재지는 제주시 한림읍 협재리 산 128-2 등 지선에 인접한 공유수면이다."]},
+      {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500267", "checked_at": "2026-08-24", "facts": ["비양도는 한림읍 앞바다의 섬이다.", "해안 일주 약 1.3km에서 현무암과 지형을 만날 수 있다.", "비양도 지질공원 탐방 안내 지도에 섬의 명소가 정리돼 있다.", "기상에 따라 배편 일정이 변동될 수 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 분류와 방문 맥락은 해안 지질지형 관찰이며 산·오름 자체가 핵심 경험으로 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "보호구역 소재지가 비양도 연안 공유수면이고 대표 방문이 해안 일주와 해안 지형 관찰에 속한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 탐방에는 걷기가 수반되나 레포츠나 참여형 체험이 핵심이라는 근거는 없다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "국가 지정 유산으로서 해설 맥락은 있으나 공식 분류가 지질지형 자연유산이므로 문화·역사 경험의 비중은 제한적으로 기록한다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.theme_park": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 자료는 보호 대상 자연 지질지형과 탐방을 안내하며 놀이·동물·수족관형 시설은 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.cafe": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "확인된 장소 정체성은 천연기념물 지질지형이며 카페·차·디저트 이용 시설은 확인되지 않는다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.traditional_market": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 기록은 자연유산 지질지형으로만 식별하며 시장 기능은 확인되지 않는다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.festival": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "상설 자연유산 탐방 지점으로 확인되며 특정 기간 축제·공연이 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "environment.indoor_ratio": {"value": 0, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "지질지형 자연유산의 해안 탐방·관찰이 대표 경험이므로 실내 비율은 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 해안 지질 탐방이고 접근 배편도 기상에 따라 변동될 수 있어 날씨 영향이 비교적 크다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 풍경과 지질을 관찰하는 비상업적 야외 탐방이나 실제 혼잡도와 현장 체류 환경은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬 해안 일주 동선은 확인되지만 호니토 바로 앞의 노면·계단·난간과 무장애 접근성은 확인하지 못해 중립값으로 기록한다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "호니토 관찰은 섬 해안 일주 중 짧게 들를 수 있으나 배편과 전체 섬 동선이 체류 선택을 제약한다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안의 현무암·지형을 만나는 탐방으로 안내돼 자연 경관 관찰이 방문 가치에 크게 기여한다고 판단한다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.distinctiveness": {"value": 1, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가유산청이 별도 명칭·면적을 가진 천연기념물 지질지형으로 등록한 고유 자연유산이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "style_evidence.local_embeddedness": {"value": 1, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 비양도 연안에 위치한 제주 고유의 국가 지정 지질지형 자연유산이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "천연기념물 제439호로 별도 등록되고 비양도 지질공원 탐방 명소로 안내되는 국가 지정 자연유산이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 현무암과 지형 관찰이 안내되지만 호니토 자체를 공식 촬영 명소로 명시한 자료는 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "numeric", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "개별 지질·해안 관찰에 적합할 수 있으나 섬 접근과 현장 안전 정보는 별도 확인이 필요하다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "couple": {"state": "numeric", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 탐방을 함께 할 수 있으나 호니토 지점의 체류·편의시설 정보는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "friends": {"state": "numeric", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "소규모 해안 탐방은 가능하나 단체 활동 공간이나 안전시설 정보는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "kids": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "지질 관찰의 교육적 맥락은 있으나 보호구역 가까이의 난간·노면·안전 관리 정보가 없어 중립값으로 기록한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "parents": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "섬 해안 탐방은 가능하나 장거리 보행 부담, 휴식시설 및 무장애 접근성이 확인되지 않아 중립값으로 기록한다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 해안 탐방과 기상 영향 배편을 고려하면 겨울 바람·추위가 불리할 수 있다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 해안 탐방과 기상 영향 배편을 고려하면 겨울 바람·추위가 불리할 수 있다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 해안 탐방은 가능하나 강수·바람에 따른 배편과 현장 조건을 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실내 대체 공간이 확인되지 않은 야외 해안 탐방이라 한여름 더위와 강한 햇볕이 불리할 수 있다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"실내 대체 공간이 확인되지 않은 야외 해안 탐방이라 한여름 더위와 강한 햇볕이 불리할 수 있다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 지질 탐방이 가능하나 해상 교통과 현장 기상은 방문 전에 확인해야 한다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 해안 탐방과 기상 영향 배편을 고려하면 겨울 바람·추위가 불리할 수 있다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"island_transport_weather","applies_to":"visit","condition":"비양도 접근은 배편을 이용하며 기상에 따라 운항 일정이 변동될 수 있다.","status":"needs_review","action":"방문 전 선사 또는 공식 관광안내로 당일 운항·기상과 귀항 가능 여부를 확인한다.","source_ids":["S2"],"checked_at":"2026-08-24"},
+    {"kind":"accessibility_unknown","applies_to":"mobility_limited_visitors","condition":"호니토 바로 앞의 노면·계단·난간·무장애 접근성과 보호구역 관람 제한을 확인하지 못했다.","status":"needs_review","action":"이동 제약이 있는 방문자는 출발 전 현장 접근성과 관람 가능 구간을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

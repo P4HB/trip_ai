@@ -1,0 +1,118 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1851061731",
+  "place_id": "1851061731",
+  "name": "몽돌해변",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소는 제주시 내도동 465-2, 좌표 126.440973·33.496261의 ‘몽돌해변’ 표식이다. 제주관광공사는 인접한 내도동의 알작지를 몽돌로 이루어진 해변으로 공식 안내하고, Kakao의 기존 ‘알작지해변’ 표식(kakao:13323388)도 같은 방문 경험을 가리킨다. ‘몽돌해변’이라는 별도 시설·경계·독립 관광지 안내는 확인하지 못했으므로 알작지해변과 중복으로 판정한다.",
+    "duplicate_of": "kakao:13323388",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "eligibility.duplicate_existing_destination"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao의 ‘몽돌해변’ 표식은 제주시 내도동 465-2에 있으며, 제주관광공사가 안내하는 내도동 알작지 몽돌 해변 범위와 인접한다.",
+    "typical_visit": "공식 안내가 확인하는 방문 경험은 알작지의 둥근 자갈 해안과 파도·몽돌 소리, 해안 경관 감상이다.",
+    "experience_scope": "‘몽돌해변’이라는 명칭의 별도 운영 주체, 독립 시설 또는 알작지와 구분되는 방문 범위는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지는 place_id 1851061731의 명칭을 몽돌해변, 주소를 제주특별자치도 제주시 내도동 465-2, 정적 지도 좌표를 126.44097266698233·33.496260613013405로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao의 기존 place_id 13323388은 알작지해변이라는 장소명으로 등록되어 있다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 Visit Jeju는 알작지를 제주시 내도동의 해변으로 소개하며, 둥근 자갈과 몽돌 소리 및 해안 경관을 설명한다. 공식 좌표는 126.43913014627992·33.49593405066642이다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "‘몽돌해변’ 표식만의 독립 관광지 등록·운영 범위는 확인하지 못했다.",
+      "최신 현장 개방, 파도·강풍·우천 시 안전, 주차 및 무장애 접근 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1851061731",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "명칭은 몽돌해변이며 주소는 제주특별자치도 제주시 내도동 465-2이다.",
+          "공개 페이지의 정적 지도 좌표는 126.44097266698233, 33.496260613013405이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/13323388",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "place_id 13323388의 장소명은 알작지해변으로 등록되어 있다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018411",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "알작지는 제주시 내도동에 있는 해변으로 안내된다.",
+          "공식 안내는 한라산 계곡에서 운반되어 파도에 다듬어진 둥근 자갈과 몽돌 소리를 설명한다.",
+          "공식 좌표는 126.43913014627992, 33.49593405066642이다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_destination",
+      "applies_to": "all_visitors",
+      "condition": "몽돌해변 표식은 같은 내도동 알작지해변(kakao:13323388) 방문 범위와 중복된다.",
+      "status": "confirmed",
+      "action": "추천·일정 후보에는 kakao:13323388만 사용하고, 별도 관광지임을 뒷받침하는 공공 안내가 확인되기 전까지 이 표식은 병합한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

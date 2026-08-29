@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 409,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/260054074.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:260054074",
+    "provider": "kakao",
+    "place_id": "260054074",
+    "name": "제주올레21코스 공식안내소",
+    "url": "https://place.map.kakao.com/260054074",
+    "average_rating_5": "3.8",
+    "visitor_review_count": "5",
+    "blog_review_count": "4",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.05.06.",
+      "content": "스탬프북 구매 겸 굿즈 둘러보러 갔는데.. 와 너무너무 친절하심ㅎㅎ 이것저것 자세하게 설명해주시고~ 반갑게 맞아주셔서 기분이 너무 좋았다😄",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2024.04.17.",
+      "content": "올레길 처음 시작을 여기서 하는데, 자세히 설명해주셔서 너무 좋았어요! 올레길에 대한 자부심 또한 멋졌습니다👍 덕분에 많은 거 알아가요!",
+      "tags": ""
+    },
+    {
+      "date": "2023.01.26.",
+      "content": "리본 때문에 글 올리신 분은 아마도 공영방송에도 나온 내용으로 모 여행사에서 상표 도용한 리본 달고 있으니 안내사님이 올레리본으로 착각해서 한소리 한 것으로 추측 되므로 당연한 질타로 여겨 집니다~ 도용한 리본을 달고 다니면 부끄러운 줄 아셔야 하고 잡상인이 제작한 짝퉁 패스포트나 올레리본은 자랑거리가 못 됩니다~",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.28.",
+      "content": "주인분이 굉장히 적대적이십니다. 리본을 달고 다니는데 \"당신들이 리본 달고 다니니 사람들이 올레길 리본 떼어 달고 다니지 않냐\"는 해괴한 논리를 펼치시던데 도덕성이 떨어진 당사자에게 욕을 하셔야지 정상적으로 리본달고 다니는 사람들에게 애꿎은 감정풀이를 하는건 옳지 않습니다. 쉬러왔다가 짐을 얻고 가네요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

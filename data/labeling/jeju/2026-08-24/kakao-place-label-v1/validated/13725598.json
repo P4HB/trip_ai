@@ -1,0 +1,578 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725598",
+  "canonical_id": "kakao:13725598",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "카카오의 도댓불은 온평리포구의 전통 석조 등대라는 장소 정체성이 공개 자료의 온평포구 및 제주 도대불 설명과 일치하는 소규모 역사·해안 방문 지점으로 판단했다.",
+    "source_ids": [
+      "visitjeju_onpyeong_port",
+      "yna_dodaebul"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름 경험 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "온평포구의 해안 지점이라는 공개 포구 정보와 도대불의 포구 등대 기능을 연결해 평가했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port",
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "theme-primary-experience"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "참여형 활동이 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도대불은 제주 어촌 주민이 돌을 쌓아 관리한 전통 포구 등대이자 돌 문화유산으로 설명된다.",
+      "source_ids": [
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "theme-primary-experience"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 목적지 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 기능 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "축제·기간 행사 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "실내·실외 비율의 직접 확인이 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 포구의 옥외 역사 지점으로 추정되어 날씨 영향을 높게 기록했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port",
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "environment-weather-exposure"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 포구 소개가 잠시 쉬며 여유를 즐길 수 있는 해안 공간으로 안내한다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "style-evidence"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현장 보행 조건이 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "체류 시간 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "온평포구가 해안도로의 작은 포구·용천수 공원으로 소개되어 해안 경관 가능성을 반영했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "style-evidence"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전통 돌무더기 포구 등대인 도대불의 기능과 형태가 고유한 제주 경험으로 설명된다.",
+      "source_ids": [
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "style-evidence"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도대불은 제주 어촌 주민의 조업·귀항을 위해 만들어지고 관리된 지역 돌 문화유산으로 설명된다.",
+      "source_ids": [
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "style-evidence"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 돌 문화유산으로 평가되지만 온평리 개별 도댓불의 지정·대표성은 확인되지 않았다.",
+      "source_ids": [
+        "yna_dodaebul"
+      ],
+      "rule_ids": [
+        "style-evidence"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치의 직접 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용·안전 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문지의 계절 노출을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문지의 계절 노출을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문에 비교적 적합한 봄철로 추정했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문에 비교적 적합한 봄철로 추정했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문에 비교적 적합한 늦봄으로 추정했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안의 강수·바람 변동을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안의 더위·강수·바람 변동을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안의 더위·강수·바람 변동을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문에 비교적 적합한 초가을로 추정했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문에 비교적 적합한 가을로 추정했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문지의 계절 노출을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 옥외 방문지의 계절 노출을 고려했다.",
+      "source_ids": [
+        "visitjeju_onpyeong_port"
+      ],
+      "rule_ids": [
+        "month-climate-heuristic"
+      ]
+    }
+  },
+  "hard_constraints": [],
+  "research": {
+    "checked_at": "2026-08-28",
+    "sources": [
+      {
+        "source_id": "visitjeju_onpyeong_port",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000011913",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "온평포구는 해안길의 작은 포구이며 용천수 공원으로 조성되어 휴식을 즐길 수 있다고 소개된다."
+        ]
+      },
+      {
+        "source_id": "yna_dodaebul",
+        "url": "https://www.yna.co.kr/view/AKR20170527036900056",
+        "publisher": "연합뉴스",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "도대불·도댓불은 밤 조업 어선의 귀항을 위해 포구에 세운 돌무더기 등대이며 제주 어촌 주민이 직접 만들고 관리한 돌 문화유산으로 소개된다."
+        ]
+      }
+    ],
+    "identity_note": "입력 패킷의 카카오 장소명·온평리포구 맥락과 공개 자료의 도댓불 및 온평포구 설명을 대조했다. 카카오 평점·리뷰는 라벨 근거로 사용하지 않았다."
+  },
+  "review_priority": "medium",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

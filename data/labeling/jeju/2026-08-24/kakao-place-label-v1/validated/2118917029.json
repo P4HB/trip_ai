@@ -1,0 +1,593 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2118917029",
+  "canonical_id": "kakao:2118917029",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.6,
+    "review_status": "needs_review",
+    "rule_ids": [
+      "ELIG-PLACE-01",
+      "ELIG-JEJU-01"
+    ],
+    "source_ids": [
+      "src_kakao_place",
+      "src_bluesquare_doduhang",
+      "src_daangn_iho"
+    ],
+    "rationale": "입력의 Kakao 장소명과 공개 주변정보가 모두 제주시 도두·이호 해안 인근의 '핑크해안도로'를 명소/해안도로로 지칭하므로, 제주 관광 장소로 라벨링한다. 정확한 선형 구간과 시설 범위는 공식 상세 출처에서 확인하지 못해 검토가 필요하다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "산·오름이 핵심이라는 직접 근거가 없어 낮은 기본값을 사용한다."
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "THEME-COAST-01"
+      ],
+      "rationale": "공개 위치 설명이 이 장소를 푸른 바다와 해안도로 생활권의 핑크해안도로로 명시하므로 해안 경험 비중이 높다고 추론한다."
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "레포츠나 참여형 체험 운영 근거가 없다."
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "문화·역사 콘텐츠가 핵심이라는 근거가 없다."
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "테마파크형 시설 근거가 없다."
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "인근 카페는 언급되지만 이 장소 자체가 카페라는 근거는 없다."
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "시장 장소라는 근거가 없다."
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "특정 기간 행사·축제 장소라는 근거가 없다."
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-ROAD-01"
+      ],
+      "rationale": "해안도로로 소개된 선형 야외 명소이므로 대표 경험의 실내 비율은 낮다고 추론한다."
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-ROAD-01"
+      ],
+      "rationale": "야외 해안도로 경관 감상은 비·강풍·폭염 등 날씨의 영향을 크게 받을 것으로 추론한다."
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-ROAD-01"
+      ],
+      "rationale": "공개 설명의 산책·노을 감상 맥락상 느린 체류 가능성은 있으나 현장 환경 근거가 제한적이다."
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "경사, 보행로 폭, 단차 및 접근성에 관한 검증 가능한 정보가 없다."
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_bluesquare_doduhang"
+      ],
+      "rule_ids": [
+        "STYLE-LINEAR-POI-01"
+      ],
+      "rationale": "주변 정보에서 도보 접근 가능한 명소로 제시되지만 실제 경로 길이와 체류 방식은 확인되지 않았다."
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-SCENERY-01"
+      ],
+      "rationale": "푸른 바다, 해안도로, 노을 감상으로 설명된 입지여서 경관 감상 가치가 높다고 추론한다."
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "명칭의 유래나 고유 시설·경관 특성에 대한 신뢰할 수 있는 상세 근거가 없다."
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_bluesquare_doduhang",
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "STYLE-JEJU-COAST-01"
+      ],
+      "rationale": "제주시 도두·이호 해안 생활권의 지역 명소로 공개 정보에 연결되지만 지역 문화·생산자 연계는 확인되지 않았다."
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_bluesquare_doduhang"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-POI-01"
+      ],
+      "rationale": "도두항 인근 주변정보에 명소로 등재되어 지역 단위 인지도는 보이나 제주 대표 상징성의 직접 근거는 없다."
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-SCENERY-01"
+      ],
+      "rationale": "바다·해안도로·노을 감상으로 소개되어 시각적 기록 가치는 높다고 추론한다."
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "단독 방문의 실제 동선·안전 정보가 부족하다."
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "동반자별 편의 정보가 부족하다."
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "그룹 방문 적합성을 판단할 시설·동선 정보가 부족하다."
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "난간, 차량 분리, 보행로 등 아동 안전 정보가 부족하다."
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-INSUFFICIENT-EVIDENCE"
+      ],
+      "rationale": "주차, 단차, 휴식 시설 등 부모 동반 편의 정보가 부족하다."
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "source_ids": [],
+      "rule_ids": [
+        "FB-SEASONAL-EVIDENCE"
+      ],
+      "rationale": "월별 현장 운영·기상 영향의 장소별 근거가 없다."
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "야외 해안도로 성격으로 비·강풍·폭염 등 날씨가 방문 경험에 영향을 줄 수 있다.",
+      "source_ids": [
+        "src_daangn_iho"
+      ],
+      "rule_ids": [
+        "HC-WEATHER-OUTDOOR-01"
+      ]
+    },
+    {
+      "constraint": "보행로 상태, 차량과의 분리, 무장애 접근성, 주차 가능 여부는 확인하지 못했으므로 동반자 조건에 맞춰 현장 확인이 필요하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "HC-ACCESS-UNKNOWN-01"
+      ]
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "src_kakao_place",
+        "url": "https://place.map.kakao.com/2118917029",
+        "publisher": "Kakao Map",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 레코드가 이 Kakao 장소 URL과 장소명 핑크해안도로를 제공한다."
+        ]
+      },
+      {
+        "id": "src_bluesquare_doduhang",
+        "url": "https://bluesquare.app/parking/1476/",
+        "publisher": "블루스퀘어",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "도두항 인근 공영주차장 주변정보에서 핑크해안도로를 명소로, 도보 약 6분 거리로 표시한다.",
+          "해당 주차장은 제주 제주시 도두일동에 위치한다고 표시한다."
+        ]
+      },
+      {
+        "id": "src_daangn_iho",
+        "url": "https://realty.daangn.com/articles/3897903",
+        "publisher": "당근부동산",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시 이호일동의 위치 설명에서 핑크해안도로를 도보 2분 거리의 해안도로 생활권 명소로 언급한다.",
+          "같은 설명은 푸른 바다, 해안도로, 산책, 노을 감상을 서술한다."
+        ]
+      }
+    ],
+    "limitations": [
+      "공식 관광 상세 페이지 또는 행정기관의 핑크해안도로 개별 소개는 찾지 못했다.",
+      "공개 출처가 장소의 정확한 좌표·구간, 보행 환경, 운영·주차 정보를 확정하지 않아 관련 평가는 보수적으로 기록했다."
+    ]
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

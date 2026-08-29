@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723650",
+  "canonical_id": "kakao:13723650",
+  "name": "들렁궤 (폐쇄)",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "입력 자체가 폐쇄 상태를 명시하며, 공개 검색에서도 현재 방문 가능한 독립 관광지 운영 정보가 확인되지 않아 추천 라벨 대상에서 제외한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-CLOSED-OUT-OF-SCOPE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "closed_or_unsafe_access",
+      "applies_to": "all_visitors",
+      "condition": "입력명이 폐쇄 상태를 명시하고 현행 출입 가능 여부를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "현장 관리 주체의 최신 출입·안전 안내를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "들렁궤는 제주 지명 연구 자료에 수록되나 현행 관광지 운영 정보는 확인되지 않았다.",
+    "facts": [
+      {
+        "text": "제주 지명 연구 자료는 들렁궤를 수록한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "현재 정확한 위치",
+      "폐쇄 사유",
+      "출입·안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주대학교",
+        "type": "academic_research",
+        "url": "https://oldlib.jejunu.ac.kr/bitstream/2020.oak/18176/2/%EC%A0%9C%EC%A3%BC%20%EC%A7%80%EB%AA%85%EC%96%B4%EC%9D%98%20%ED%98%95%ED%83%9C%C2%B7%EC%9D%8C%EC%9A%B4%EB%A1%A0%EC%A0%81%20%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "들렁궤 지명을 수록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

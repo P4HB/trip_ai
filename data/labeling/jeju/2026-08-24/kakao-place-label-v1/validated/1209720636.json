@@ -1,0 +1,642 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1209720636",
+  "canonical_id": "kakao:1209720636",
+  "name": "몰래물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력의 ‘몰래물’은 도두 해안의 몰래물 쉼터 및 해안 용천수를 가리키는 명칭으로 확인된다. 공개 여행 자료는 이곳에 쉼터와 정지용 시비가 있고 바닷가 용천수가 남아 있다고 설명하며, 독립적으로 들를 수 있는 해안 역사·경관 지점으로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 방문 맥락은 도두 해안의 용천수와 쉼터이며 산·오름 탐방은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 자료는 몰래물을 용담 바다와 도두 바다의 경계에 있는 해안 지점으로 소개하고 바닷가 용천수를 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-COAST-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 쉼터와 용천수를 둘러보는 짧은 야외 체류 맥락은 확인되지만, 레포츠나 별도 참여형 체험 프로그램은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-LOW-INTENSITY-OUTDOOR"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "몰래물의 지명 뜻, 옛 마을의 역사와 공항 확장으로 인한 폐동, 향우회가 조성한 쉼터와 정지용 시비가 공개 자료에 설명된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-LOCAL-HISTORY-DIRECT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 자료는 해안 용천수·쉼터·옛 마을 이야기를 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 핵심 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "몰래물은 해안의 용천수와 옛 마을 흔적 맥락으로 소개되며 시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 해안 쉼터와 용천수로 소개될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "바다 경계의 해안 쉼터와 바닷가 용천수가 확인된 야외 지점이며 실내 대표 방문 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 바닷가의 야외 쉼터·용천수 관찰이므로 비·바람·더위·추위 영향을 받을 수 있다. 현장 통제 기준은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "옛 주민들이 해안 언덕에 쉼터를 조성했고 자료가 시비를 읽고 바닷가를 잠시 서성이는 경험을 직접 소개한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-REST-PLACE-DIRECT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 쉼터라는 성격은 확인되지만 진입 동선의 경사·계단·무장애 접근성은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "쉼터·용천수 관찰의 단독 체류시간과 주변 동선 조합 가능성은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "용담 바다와 도두 바다의 경계, 바닷가 용천수 및 해안 쉼터라는 경관 요소가 공개 자료에 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-COAST-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "폐동된 몰래물 마을의 기억을 위한 쉼터와 마르지 않은 해안 용천수, 정지용 시비의 결합이 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-HISTORY-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주어 지명 ‘몰래물’의 뜻, 도두동의 옛 자연마을과 해안 용천수의 생활사에 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-HERITAGE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "지역의 역사적 해안 지점이라는 의미는 확인되나 제주 전체를 대표하는 공적 랜드마크 지정·상징성은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-SIGNIFICANCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안·용천수·쉼터와 시비의 시각 요소는 확인되지만 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-COAST-VISUAL-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 안전·안내·통신 환경은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동의 안전시설·보호자 동반 기준·해안 접근 위험 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 쉼터의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_coastal_access_and_weather_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "몰래물은 야외 해안 쉼터·용천수 지점이나, 현재 접근 동선, 해안 안전시설, 우천·강풍 시 통제 및 무장애 접근성은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 최신 안내로 접근 가능 여부, 해안 안전과 기상에 따른 통제, 보행 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력의 몰래물은 공개 자료에서 도두 해안의 몰래물 쉼터와 바닷가 용천수를 뜻하는 지명·방문 지점으로 확인된다. 입력 리뷰의 ‘제주 용천수’ 언급도 이 식별과 부합하지만 리뷰 작성자 정보와 평점·건수는 사용하지 않았다.",
+    "facts": [
+      {
+        "text": "제주개발공사 웹진은 몰래물을 용담 바다와 도두 바다의 경계에 있는 곳으로 소개하며, 1999년 옛 주민들이 해안 언덕에 몰래물 쉼터를 조성했고 바닷가 용천수가 흐른다고 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주특별자치도 교육 플랫폼은 몰래물을 도두2동의 마을명·지명 자료로 수록한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 진입 위치와 현행 관리·개방 안내",
+      "해안 접근의 경사·계단·휠체어 접근성, 화장실·주차·휴식 시설",
+      "우천·강풍·파고 시 안전 통제와 용천수 접촉·음용 가능 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도개발공사",
+        "type": "public_travel_information",
+        "url": "https://webzine.jpdc.co.kr/html/vol02/sub02_01.php",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "몰래물의 지명 뜻과 옛 마을이 제주공항 확장으로 사라진 이력을 소개한다.",
+          "1999년 조성된 몰래물 쉼터와 바닷가에 남아 흐르는 용천수를 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "public_education_information",
+        "url": "https://www.jeju.go.kr/jedu/data/data.htm?act=view&category=3096&page=23&seq=1538438",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시 몰래물을 도두2동·몰래물마을·사수동 관련 제주어 교육 자료로 수록한다.",
+          "몰래물이 제주 도두 지역의 지명임을 확인한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

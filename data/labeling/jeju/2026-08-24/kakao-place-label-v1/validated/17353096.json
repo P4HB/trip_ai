@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17353096",
+  "place_id": "17353096",
+  "name": "터미널관광정보센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 ‘터미널관광정보센터’라는 명칭의 제주 관광안내 서비스 지점을 가리킨다. 공개 관광안내소 목록도 제주시 서광로 174의 ‘터미널 관광안내소’를 안내 정보 제공 시설로 분류한다. 이 레코드는 독립적으로 관람·체험·체류하는 여행 목적지가 아니라 터미널 이용자를 지원하는 안내 서비스이므로 추천용 방문 경험 벡터의 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 제주 터미널의 관광 정보·안내 서비스 지점을 뜻하며, 공개 관광안내소 목록에는 제주시 서광로 174의 ‘터미널 관광안내소’가 기재되어 있다.",
+    "typical_visit": "여행객에게 관광 정보와 안내를 제공하는 지원 시설로 파악되며, 자체 관람·체험을 목적으로 한 독립 관광지 경험은 확인되지 않았다.",
+    "experience_scope": "관광지 방문을 지원하는 안내 서비스이므로 여행지 추천의 41축 방문 경험 후보에는 포함하지 않는다. 현행 운영 시간·휴무·제공 언어·시설 접근성은 변동 가능 정보로 이 결과에서 확정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 17353096의 명칭을 ‘터미널관광정보센터’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 관광안내소 목록은 제주특별자치도 제주시 서광로 174에 ‘터미널 관광안내소’를 기재하고 관광 안내소로 분류한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 현행 상세 주소·좌표와 공개 목록의 안내소가 완전히 동일한 지점인지는 공식 운영 주체 자료로 재확인하지 못했다.",
+      "현재 운영 여부, 운영 시간, 휴무일, 제공 언어, 무장애 접근성과 현장 서비스 범위는 확인하지 못했다.",
+      "관광안내소 내부에 독립 관람·전시·체험으로 분리할 만한 방문 콘텐츠가 있는지는 확인되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17353096",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 장소명은 ‘터미널관광정보센터’다.",
+          "입력에 제공된 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "전국 관광 안내소 정보 정리",
+        "type": "public_tourism_information",
+        "url": "https://mr-momm.tistory.com/283",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "목록은 제주특별자치도 제주시 서광로 174의 ‘터미널 관광안내소’를 기재한다.",
+          "해당 항목을 관광 안내소 정보로 분류한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "support_service_not_recommendation_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "터미널관광정보센터는 관광지 방문을 돕는 안내 서비스로 식별되며, 독립적인 관람·체험·체류 장소로서의 범위와 운영 정보를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천·일정 후보에는 포함하지 않는다. 안내 서비스 안내가 필요하면 공식 운영 주체의 최신 위치와 운영 정보를 별도로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

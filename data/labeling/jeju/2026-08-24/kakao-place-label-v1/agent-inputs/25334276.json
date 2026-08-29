@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1912,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25334276.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25334276",
+    "provider": "kakao",
+    "place_id": "25334276",
+    "name": "원물오름",
+    "url": "https://place.map.kakao.com/25334276",
+    "average_rating_5": "4.1",
+    "visitor_review_count": "19",
+    "blog_review_count": "12",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.18.",
+      "content": "민둥산 처럼 동화같은 풍경에 올라오는 길에는 찔레 고사리 가시나무가 우거져서 아무도 없다는 게 장점입니다. 말 놓아 키우던 때 처럼 말똥은 없었지만 이정도인줄 알았으면 다른 오름 갔습니다 ㅎ 고사리꾼들이나 다닐까 예쁜옷 입고 올 만한 데는 아니에요 ㅎ 단디 옵서 올라갈 때 맨 뒤 사진의 왼쪽입니다",
+      "tags": ""
+    },
+    {
+      "date": "2026.06.08.",
+      "content": "뷰는 끝내 주는데, 올라갈때 힘들지요~ㅋ",
+      "tags": ""
+    },
+    {
+      "date": "2026.05.13.",
+      "content": "앞에 주차하고 가볍게 오르게 좋네요~ 날것 그대로인 산책로입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2026.01.30.",
+      "content": "원물에서 보는 모슬포와 산방산~~ 시원한 풍광~",
+      "tags": ""
+    },
+    {
+      "date": "2025.05.17.",
+      "content": "안덕충혼묘지에 주차하고 주차장 뒷쪽으로 원물 지나 초록색 철문 지나면 오름에 오르는 길이 보입니다. 아래 후기들 처럼 등산로가 따로 있지 않고 마지막 사진처럼 흙길 따라 올라가셔야 되요. 어제 비가 왕창 온 뒤 올라간거라 진짜 풍경이 말도 못하게 좋았어요(장관) 내려오기가 싫을정도.. 정상에 오르면 한라산 대병악 소병악 군산 산방산 그리고 저 멀리 송악산까지 보여요. 그리고 왠지 여기 고사리 스팟인 것 같습니다..!! 오름 올라가는 내내 양쪽으로 샛길이 엄청 많습니다. 오름 전체를 아주 샅샅이 훑어 고사리를 딴 흔적이 많이 보여요. 저도 어머니랑 등산로를 벗어나지 않고 올라갔다가 내려오는 길에만 저만큼 땄어요. 사진으로 보이는 것보다 훨씬 더 많습니다. 고사리 따러 가보시고 싶으신 분들 추천~",
+      "tags": "뷰|주차"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

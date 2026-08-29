@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1187396822",
+  "place_id": "1187396822",
+  "name": "우뭇개동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주다크투어가 성산일출봉 북쪽 우뭇개포구 방향의 야트막한 동산·잔디광장을 별도 제주4·3 역사현장으로 수록한다. 다른 시설의 부속 실내공간이 아닌 독립적으로 찾을 수 있는 역사 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "우뭇개동산은 서귀포시 성산읍 성산리 103-1, 성산일출봉 북쪽 우뭇개포구 방향의 야트막한 동산과 잔디광장 일대에 있는 제주4·3 역사현장이다.",
+    "typical_visit": "성산일출봉 인근의 야외 잔디 동산에서 장소의 역사 맥락과 주변 경관을 짧게 살피는 방문으로 파악된다.",
+    "experience_scope": "역사적 사건과 위치·야외 지형은 확인됐으나, 현재 안내판·해설·개방 상태, 정확한 동선, 노면·경사, 편의·무장애 시설은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주다크투어는 우뭇개동산을 1949년 1월 2일 오조리 주민들이 집단 총살된 제주4·3 역사현장으로 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"우뭇개동산은 성산일출봉 매표소 북쪽 샛길에서 보이는 무대와 잔디광장 일대이며, 우뭇개포구 방향의 야트막한 동산으로 소개된다.","source_ids":["S1"]},
+      {"id":"F3","text":"공개 안내는 위도 33.4626102, 경도 126.9366981 및 주소 성산읍 성산리 103-1을 제시한다.","source_ids":["S1"]}
+    ],
+    "unknowns": ["현재 안내판·해설·현장 표식과 출입 가능 상태", "정확한 보행 동선, 노면·경사·계단, 주차·화장실·쉼터", "휠체어·유아차 접근성 및 우천·강풍 시 안전 통제", "계절별 행사·개방 또는 관람 적기"],
+    "sources": [
+      {"id":"S1","publisher":"(사)제주다크투어","type":"heritage_research_listing","url":"https://www.jejudarktours.org/ko/historical-sites/%EC%9A%B0%EB%AD%87%EA%B0%9C%EB%8F%99%EC%82%B0/","checked_at":"2026-08-25","facts":["우뭇개동산의 제주4·3 역사와 위치·주소·좌표를 설명한다.","성산일출봉 북쪽 우뭇개포구 방향의 야트막한 동산과 잔디광장 일대라고 설명한다.","현재 안내판과 당시 흔적을 찾아보기 어렵다고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"야트막한 동산으로 확인되지만 산·오름 탐방이 핵심 방문 경험인지는 확인되지 않아 중간값으로 둔다.","source_ids":["S1"],"rule_ids":["THEME-LANDFORM-CONTEXT"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"우뭇개포구와 맞닿고 성산일출봉 북쪽에 위치하지만 해양 활동·해변 체류가 핵심 경험인지는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-COAST-CONTEXT"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 자료는 역사 현장과 잔디 동산을 설명하며 레포츠·참여형 체험 운영은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3 집단 총살 사건의 역사현장으로 구체적으로 수록돼 역사·기억 방문 성격이 직접 확인된다. 현장 해설 상태는 미확인이라 최고값은 부여하지 않는다.","source_ids":["S1"],"rule_ids":["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"놀이·동물·전시형 테마파크 시설이 아닌 역사 동산으로 소개된다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·차·디저트 이용이 독립 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"전통시장 또는 시장 방문 경험과 연결된 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"특정 기간 축제·공연이 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 장소가 야트막한 동산과 잔디광장 일대로 직접 설명돼 실내 비율은 낮게 판정한다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-DIRECT"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 동산·광장의 역사 맥락과 주변을 살피는 방문이므로 비·바람·더위·추위 영향을 크게 받을 수 있다. 실제 통제 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 실제 체류 환경을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동산의 경사·계단·노면과 무장애 동선 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개방시간, 해설 운영, 권장 소요시간과 단축 동선을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"성산일출봉이 올려다보이고 포구와 맞닿은 사진·위치 설명은 있으나 경관 감상이 독립 핵심 목적이라는 공식 설명은 부족하다.","source_ids":["S1"],"rule_ids":["STYLE-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"성산 일대의 구체적 제주4·3 사건과 연결된 별도 역사현장이라는 점은 고유성을 뒷받침한다. 현장에 이를 전달하는 표식은 미확인이다.","source_ids":["S1"],"rule_ids":["STYLE-HISTORIC-UNIQUENESS"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"오조리 주민 피해와 성산읍 성산리라는 구체적 제주4·3 지역사가 직접 연결된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 성산을 대표하는 상징 명소라는 공적 지정·방문 규모 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"성산일출봉과 포구가 보이는 현장 사진은 있으나 사진 촬영이 핵심 경험으로 권장되는지는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현행 출입·안전·안내·통신 환경이 확인되지 않아 혼자 방문 적합도는 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 노면·안전시설·보호자 기준이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 없어 야외 역사 장소의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_historic_site_access_and_safety_unknown","applies_to":"all_visitors","condition":"우뭇개동산은 야외 동산·잔디광장이나 현재 현장 표식·출입, 동선·노면·경사, 주차·화장실·무장애 시설, 우천·강풍 시 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 관할 지자체의 최신 안내로 실제 위치·출입 가능 여부와 보행·기상 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

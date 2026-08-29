@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24022943",
+  "place_id": "24022943",
+  "name": "당동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘당동산’과 place_id만 제공하며 주소·좌표·업종·공식 설명이 없다. 공개 지명 연구는 ‘당동산’이 서귀포 서홍, 제주 내도·아라·연동·오라·용담·해안 등 여러 지역에 존재하는 동명 지명임을 기록한다. 또한 공공 교통 정보에는 제주시의 ‘당동산’ 정류소가 별도로 확인된다. 따라서 이 Kakao 표식이 어느 동명 지형·신당·정류소 또는 다른 장소를 가리키는지, 독립 여행 방문지인지 교차 식별할 수 없어 신원 미확정으로 판정한다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED", "ELIG-NO-LOCATION-CROSSCHECK"],
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 식별 정보는 Kakao 장소명 ‘당동산’과 place_id 24022943뿐이다. ‘당동산’은 제주도 내 복수 지역의 동명 지명으로 기록되며, 입력에 주소나 좌표가 없어 어느 장소와 동일한지 확인하지 못했다.",
+    "typical_visit": "정확한 표식의 대상과 방문 가능 범위를 확인하지 못했으므로, 명칭만으로 산책·신당 관람·경관 감상 등의 방문 경험을 추정하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 없다. 입력에 포함된 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 18개 원자축, 동반자 5축 및 월별 12축을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 명칭은 ‘당동산’이고 canonical_id는 kakao:24022943이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 해당 Kakao 표식의 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 제공되지 않았다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F3",
+        "text": "제주 지명 연구는 ‘당동산’을 서귀포 서홍과 제주시 내도·아라·연동·오라·용담·해안 등 복수 지역의 지명으로 수록하며, 제주특별자치도 버스정보시스템도 ‘당동산’이라는 별도 정류소를 표시한다.",
+        "source_ids": ["S2", "S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 주소·좌표, 실제 지형·시설 유형 및 동명 장소와의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 일반 출입 가능 범위, 관리 주체, 최신 현장 상태와 안전한 접근 경로를 확인하지 못했다.",
+      "주차·보행·무장애 접근성, 편의시설, 계절·기상에 따른 방문 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/24022943",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘당동산’이며 place_id는 24022943이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주대학교 중앙도서관",
+        "type": "academic_geographic_name_research",
+        "url": "https://oldlib.jejunu.ac.kr/bitstream/2020.oak/18176/2/%EC%A0%9C%EC%A3%BC%20%EC%A7%80%EB%AA%85%EC%96%B4%EC%9D%98%20%ED%98%95%ED%83%9C%C2%B7%EC%9D%8C%EC%9A%B4%EB%A1%A0%EC%A0%81%20%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주 지명어 연구의 지명 색인은 ‘당동산’을 서귀포 서홍과 제주시 내도·아라·연동·오라·용담·해안의 복수 지역 지명으로 수록한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주특별자치도 버스정보시스템",
+        "type": "official_public_transport_information",
+        "url": "https://bus.jeju.go.kr/mobile/station/detailStation/405001768?lang=ko",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "공식 정류소 상세 페이지는 ‘당동산’ 정류소와 식별번호 405001768을 표시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·상세 안내가 없고 ‘당동산’이 제주 내 복수 지명 및 정류소 명칭으로 쓰여 실제 장소의 신원, 일반 출입 가능 범위와 안전한 접근 경로를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 관할 지자체·관리 기관의 주소·좌표·시설 정보를 확보해 실제 장소와의 동일성, 출입 허용 범위 및 현장 안전 조건을 먼저 확인한다. 확인 전에는 추천용 라벨 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

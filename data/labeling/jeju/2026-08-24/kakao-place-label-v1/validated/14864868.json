@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14864868",
+  "canonical_id": "kakao:14864868",
+  "name": "예도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "카카오맵 입력의 좌표와 주소는 추자면 영흥리의 예도와 일치한다. 제주일보는 이곳을 추자면 대서리에서 북동쪽 약 2km 떨어진 국유 무인도(예섬·이섬)로 소개하며, 두 봉우리와 식생을 기록한다. 일반 여행객을 위한 상시 상륙·관람 운영, 안전 관리 또는 독립 방문 동선은 신뢰할 수 있는 공개 출처에서 확인되지 않아, 추천용 독립 방문 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "예도는 제주특별자치도 제주시 추자면 영흥리 산66에 있는 예섬·이섬으로도 불리는 무인도다.",
+    "typical_visit": "공개 기사에서 섬의 위치, 국유지 상태, 두 봉우리와 식생은 확인되지만, 일반 관광객 대상의 상륙·관람·체험 운영은 확인되지 않았다.",
+    "experience_scope": "추자도 본섬에서 약 2km 떨어진 무인도로 확인된다. 안전한 독립 방문지로서의 상시 접근 수단, 허용 구역, 접안 시설, 탐방로 및 관리 주체의 방문 안내가 확인되지 않아 41축 추천 후보로 사용하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주일보는 예도를 제주시 추자면 영흥리 산66에 위치한 섬으로 소개하며, 추자면 대서리에서 북동쪽 약 2km 떨어져 있고 예섬·이섬이라고도 부른다고 보도했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 보도는 예도가 국유지이며 북서쪽에서 남동쪽으로 이어진 두 봉우리가 있는 섬이라고 기록했다. 카카오맵 장소 페이지도 입력 장소명 예도와 추자면 영흥리, 해당 좌표를 제시한다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 합법적 상륙 가능 여부, 출항·접안 방법, 허용 구역과 관리 주체의 최신 안내는 확인하지 못했다.",
+      "탐방로, 난간, 화장실, 응급 대응, 통신 및 무장애 접근성은 확인하지 못했다.",
+      "기상·파고에 따른 접근 통제와 현장 안전 상태는 변동 정보이며 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주일보",
+        "type": "reputable_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2137599",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "예도는 제주시 추자면 영흥리 산66에 위치하며 예섬·이섬이라고도 불린다.",
+          "예도는 추자면 대서리 북동쪽 약 2km 해상에 있고 국유지이며, 두 봉우리와 식생이 있는 무인도로 소개된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/14864868",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소명은 예도이며 주소 표기는 제주특별자치도 제주시 추자면 영흥리다.",
+          "장소 페이지의 지도 좌표는 경도 126.3120353965952, 위도 33.97641649274551이다.",
+          "평점·후기 수 및 공개 후기 내용은 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "uninhabited_island_visitor_access_and_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "예도는 추자도 본섬에서 떨어진 국유 무인도로 확인되지만, 일반 방문객의 상륙 허용, 접안, 탐방 동선, 안전시설 및 기상별 접근 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 주체의 공식 방문·상륙 안내와 안전 운영 근거가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

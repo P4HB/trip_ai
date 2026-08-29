@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725737",
+  "place_id": "13725737",
+  "name": "중엄새물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "국가자전거길 안내는 애월해안로 자전거길의 감상 포인트로 중엄새물을 명시하고, 해양수산부 연안포털도 중엄새물 인근 편의시설을 별도로 안내한다. 입력 공개 후기는 해안 절벽 아래에서 솟는 우물과 경관을 언급하므로, 다른 시설의 부속물이나 식당이 아닌 독립적으로 들를 수 있는 해안 자연·생활유산 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "중엄새물은 제주시 애월 해안로 구간에서 안내되는 해안의 샘물 지점이다.",
+    "typical_visit": "애월 해안로를 자전거로 달리거나 해안 경관을 보며 잠시 들르는 야외 방문이다.",
+    "experience_scope": "공공 안내는 자전거길의 감상 포인트와 중엄새물 인근 화장실을 확인한다. 샘물의 최신 수질·음용 가능 여부, 계단·노면 상태, 주차·무장애 접근, 파고·악천후 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국가자전거길 안내는 애월해안로입구(하귀)에서 한담공원으로 이어지는 10.7km 애월해안로 자전거길의 감상 포인트로 중엄새물을 명시하며, 이 해안로의 푸른 바다 경치와 제주 해안 생활문화를 소개한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "해양수산부 연안포털은 제주시 엄장해암길의 편의시설로 중엄새물 인근 화장실을 안내한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력 Kakao 공개 후기는 해안 절벽 아래에서 지하수가 솟는 우물, 깨끗한 물과 해안 경관을 언급한다. 이는 보조 방문 경험 근거이며 평점·리뷰 수는 사용하지 않았다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["샘물의 최신 수질과 음용 가능 여부를 확인하지 못했다.", "현장 계단·절벽 가장자리·노면 상태와 무장애 접근성을 확인하지 못했다.", "주차, 운영 관리, 악천후·파고 시 출입 안전 통제를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "행정안전부 국가자전거길", "type": "public_route_guide", "url": "https://www.bike.go.kr/resource/bike/file/100.pdf", "checked_at": "2026-08-24", "facts": ["애월해안로 자전거길은 하귀에서 한담공원까지 10.7km 구간이다.", "중엄새물은 이 노선의 감상 포인트로 명시돼 있다.", "안내는 이 해안로의 바다 경치와 해안을 터전으로 한 제주 사람들의 문화를 소개한다."]},
+      {"id": "S2", "publisher": "해양수산부 연안포털", "type": "public_coastal_route_page", "url": "https://www.infomarina.go.kr/coastScene/coastWayView.do?dt2=330&road_no=45", "checked_at": "2026-08-24", "facts": ["엄장해암길은 제주특별자치도 제주시의 4.8km 해안 누리길로 안내된다.", "안내의 화장실 편의시설 목록에 중엄새물 인근이 포함된다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/13725737", "checked_at": "2026-08-24", "facts": ["입력 공개 후기는 해안 절벽 아래의 샘물·우물과 해안 경관을 언급한다.", "입력 공개 후기는 쓰레기와 현장 청결 문제를 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자전거길 안내가 중엄새물을 바다 경치를 감상하는 애월해안로의 감상 포인트로 명시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"자전거길의 감상 포인트라는 사실은 확인되지만, 이 지점 자체에서 레포츠·참여 체험이 핵심이라는 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공적 역사·문화유산·전시·전통 체험으로 지정·안내된 근거를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 자전거길의 감상 포인트와 인근 해안 누리길로 안내돼 대표 경험은 야외라고 추론한다. 실내 부대공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"바다 경치를 보는 야외 해안 방문이 대표 경험이므로 비·강풍·파고 등 날씨의 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음·현장 청결의 최신 정보가 부족해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인근 화장실은 확인되지만 샘물 접근의 계단·노면·경사와 무장애 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안로의 감상 포인트라는 사실만으로 짧은 방문과 긴 체류 모두의 조절 용이성을 확정할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 안내가 이곳을 바다 경치를 감상하는 애월해안로의 감상 포인트로 직접 제시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"샘물 지점이라는 정체는 확인되나 다른 해안 샘물·경관지와 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안로 일반의 제주 해안 생활문화는 안내되지만 중엄새물 자체의 지역 생활·생산·문화 연결을 공적 출처로 구체 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다 경치는 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 공적 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 해안 접근 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전·동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 절벽 가장자리·계단·안전시설 정보가 없어 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"샘물의 최신 수질·음용 가능 여부, 해안 절벽 주변 계단·노면·난간 상태, 무장애 접근성과 악천후·파고 시 안전 통제는 공공 출처에서 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내로 접근 가능 여부와 기상·파고·보행 안전을 확인하고, 샘물은 음용 가능 여부가 별도로 확인되기 전에는 마시지 않는다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

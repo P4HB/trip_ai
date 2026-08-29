@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1578790060",
+  "canonical_id": "kakao:1578790060",
+  "name": "하논분화구 방문자센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력은 방문자센터에서 하논분화구를 내려다보고 해설을 듣는 경험을 언급한다. 독립 자연 방문지가 아닌 하논분화구 탐방을 지원하는 부속 안내시설로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-VISITOR-CENTER",
+      "ELIG-PARENT-NATURAL-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_crater_route_and_waterway_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력은 하논분화구의 길 찾기 어려움과 수로로 인한 어린이 안전 우려를 언급한다.",
+      "status": "needs_review",
+      "action": "분화구 방문 전 공식 최신 안내로 지정 동선·수로 주변 안전과 해설 운영을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 방문자센터가 하논분화구 탐방의 주차·해설 지점임을 설명한다.",
+    "facts": [
+      {
+        "text": "입력 방문 경험은 방문자센터 주차와 해설, 분화구 내 수로·길 찾기 어려움을 언급한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "현재 센터 운영·해설 일정",
+      "분화구 지정 동선",
+      "수로 안전·통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map public reviews",
+        "type": "kakao_review_evidence",
+        "url": "https://place.map.kakao.com/1578790060",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 방문 경험은 방문자센터 해설과 분화구 탐방 안전 우려를 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

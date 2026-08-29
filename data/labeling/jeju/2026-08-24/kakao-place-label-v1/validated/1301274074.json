@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1301274074",
+  "place_id": "1301274074",
+  "name": "공공디자인아트",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "입력명과 같은 ‘(주)공공디자인아트’는 공개 기업정보에서 제품 디자인업으로 분류된다. 관광·문화 관람 시설, 체험장 또는 일반 방문객 대상 프로그램이라는 공개 근거는 확인되지 않았으므로, 이 사업체 레코드에는 여행지 적합도 벡터를 생성하지 않는다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-BUSINESS-NONVISITOR-OUT-OF-SCOPE"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "공공디자인아트는 입력 Kakao 장소명과 동일한 명칭의 제품 디자인업 법인으로 확인된다.",
+    "typical_visit": "확인된 공개 정보는 제품 디자인 사업체의 기업·재무 분류이며, 일반 여행자가 관람·체험을 위해 방문하는 시설이라는 안내는 확인되지 않는다.",
+    "experience_scope": "제품 디자인업 사업체는 여행 중 이용할 수 있는 독립 관광지·문화시설·카페·시장·체험 장소의 범위에 해당하지 않는다. 현 레코드의 일반 방문객 출입, 전시·판매·체험 운영 여부는 확인되지 않아 적합도 라벨을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "사람인 기업정보는 ‘(주)공공디자인아트’를 제품 디자인업으로 분류한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷은 Kakao 장소명 ‘공공디자인아트’, place_id 1301274074와 빈 공개 리뷰 근거를 제공한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 레코드가 가리키는 정확한 사업장 주소와 현행 영업 상태는 확인하지 못했다.",
+      "일반 방문객 대상 전시, 판매, 체험, 예약 또는 출입 운영 여부는 확인하지 못했다.",
+      "접근성, 동행자별 이용 조건, 계절별 운영 정보는 확인되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "사람인 (NICE평가정보 출처 기업정보)",
+        "type": "public_business_information",
+        "url": "https://www.saramin.co.kr/zf_user/company-info/view-inner-finance/csn/SVdKejRNbWdGREJjblUwNk1DYW5uQT09/company_nm/(%EC%A3%BC)%EA%B3%B5%EA%B3%B5%EB%94%94%EC%9E%90%EC%9D%B8%EC%95%84%ED%8A%B8",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘(주)공공디자인아트’라는 기업명과 업종 ‘제품 디자인업’을 제시한다.",
+          "관광객 대상 관람·체험 시설이라는 정보는 제시하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1301274074",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 장소명은 ‘공공디자인아트’이고 place_id는 1301274074이다.",
+          "입력 패킷의 공개 리뷰 근거는 비어 있으며, 평점과 후기 수를 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "out_of_scope_business_and_visitor_experience_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "제품 디자인업 사업체로 확인됐으나 일반 관광객의 관람·체험·출입 운영은 확인되지 않음",
+      "status": "confirmed",
+      "rationale": "확인된 정체성이 독립 방문 경험이 아닌 제품 디자인업 사업체이므로 장소 적합도 벡터의 대상이 아니다.",
+      "rule_ids": [
+        "ELIG-BUSINESS-NONVISITOR-OUT-OF-SCOPE"
+      ],
+      "action": "추천용 41축 벡터를 생성하지 않는다. 향후 일반 방문객을 위한 공식 전시·체험·관람 안내가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

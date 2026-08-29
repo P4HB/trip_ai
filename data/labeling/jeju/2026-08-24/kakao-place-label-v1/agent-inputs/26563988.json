@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 612,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26563988.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26563988",
+    "provider": "kakao",
+    "place_id": "26563988",
+    "name": "한라산둘레길 사려니숲길",
+    "url": "https://place.map.kakao.com/26563988",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "9",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2021.07.07.",
+      "content": "오래전에 붉음오름 입구에서 출발해 2km정도 트레킹하다가 돌아온것이 아쉬워서 이번엔 날잡고 10km완주했는데... 가면 갈수록 숲길이 너무 단조로와 지루했습니다. ㅜㅜ 처음 갔을때 생각하면 별5개 줘야할거 같은 느낌이 듭니다. ㅎㅎ",
+      "tags": ""
+    },
+    {
+      "date": "2021.06.18.",
+      "content": "숲길은 너무 좋았습니다. 다만 눈살을 찌푸리게 하는 광경이 종종 있었습니다. 분명히 숲길의 나무 등을 훼손하지말고 채취하지말라는 안내가 있었습니다만 가위까지 가져와서 나뭇가지를 자르고 산초를 채취한답시고 나무를 세게 흔들고 잎을 따는 행위를 여러번 목격하여 불쾌했습니다. 하지말라고 했는데도 계속 하던분들 제발 그러지 맙시다. 우리의 자연입니다. 사람들 모여 있는 곳에서도 마스크 벗은 사람들도 많았습니다. 코로나19는 아직도 진행중입니다. 숲은 아무 잘못이 없지만 이용하는 몇몇 사람들은 잘못입니다. 양심 좀 챙겼으면 좋겠습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2019.10.28.",
+      "content": "사려니 숲길 10km입니다 카카오맵에 15km로 나와서 내기했다가 졌네요ㅠㅠ 북쪽입구(절물휴양림)에서 사려니 숲까지 5.6km 사려니숲에서 동쪽입구(붉은오름쪽)까지 3.4km이네요",
+      "tags": ""
+    },
+    {
+      "date": "2019.05.30.",
+      "content": "길이 잘 되어있고 입구 양쪽에 화장실도 있음. 입구 양쪽에 버스 이용하면 가기도 수월함. 길이 너무 잘 되어있어 단조로운게 흠. 중간에 오솔길 여럿 있긴 함. 자전거 안되요. 사려니숲길은 2시간 30분 걸렸는데 제주 가려고 교래입구 삼거리까지 걸으니 3시간 걸려요.",
+      "tags": ""
+    },
+    {
+      "date": "2017.10.04.",
+      "content": "카카오관계자님, 여기 안내에는 10km 로 설명하고 있으니 확인바랍니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

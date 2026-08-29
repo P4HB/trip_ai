@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2169,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/11635431.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:11635431",
+    "provider": "kakao",
+    "place_id": "11635431",
+    "name": "올레길 7코스(서귀포-월평 올레)",
+    "url": "https://place.map.kakao.com/11635431",
+    "average_rating_5": "4.5",
+    "visitor_review_count": "46",
+    "blog_review_count": "16",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.10.11.",
+      "content": "변경된 길도 충분히 아름답고 좋다. 생각보다 바다 근처인데 그늘이 많아서 햇볕 피하기 좋다. 추천",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.05.11.",
+      "content": "Please take note the “Jeju Ollegail Trail 7 “ already changed to end at Seogwipo bus terminal near to Seogwipo World Cup centre and Emart. The marking line on the Kakao map still remains the old marking line. So please double confirm at the Jeju Olle official website.",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.17.",
+      "content": "초반에 나오는 천지연폭포를 조망할수 있는 칠십리시공원으로부터 황우지선녀탕, 외돌개로 이어지는 길이 너무 멋지다...이후 바닷길을 오가며 범섬을 계속 바라보며 풍경감상하며 지루함없이 길을 걸을수있다...법환포구에 카페, 식당들이 있어서 이곳에서 식사및 쉬어가면 좋을듯~ 켄싱턴리조트이후 강정항과 도착점까지의 후반부는 포장길이라 발의 피로도가 강해지는게 아쉽다...",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

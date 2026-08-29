@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8190244",
+  "place_id": "8190244",
+  "name": "공덕비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "Kakao 공개 장소 페이지는 ‘공덕비’를 제주시 봉개동의 독립 장소로 표시한다. 봉개동 동원에는 조선시대 제주목사·판관의 공덕을 기리는 비석들이 남아 있다는 지역 역사 자료와 위치·명칭이 부합하므로, 개별 역사 비석을 관람하는 독립 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인된 핵심은 동원의 역사 비석 관람이며 산·오름 경관이 핵심이라는 근거는 없다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인된 장소는 제주시 봉개동 동원의 역사 비석이며 해안·해양 경험 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석 관람 외 참여형 체험이나 레포츠 운영은 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 역사 자료는 동원의 비석들을 제주목사와 판관의 공덕을 기리기 위해 세운 조선시대 비석으로 설명한다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-DIRECT-PLACE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사 비석 관람지 외 놀이·동물·수족관 등 테마파크형 경험 근거는 없다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용이 이 장소의 독립적 방문 목적인지 확인되지 않았다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "전통시장 또는 시장 운영과 연결되는 장소별 근거는 없다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 축제·공연이 이 비석 방문의 핵심이라는 공개 근거는 없다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "동원의 공덕비는 야외에 남아 있는 비석으로 소개되어 대표 관람은 실외에서 이뤄진다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-DIRECT-ENVIRONMENT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.7, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험이 야외에 설치된 비석을 보는 것이므로 강수·바람 등 날씨가 관람에 영향을 준다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-DIRECT-ENVIRONMENT"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.45, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "짧은 역사 비석 관람은 조용한 체류가 가능하나 휴식 공간이나 체류 환경은 공개 자료에서 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-CONSERVATIVE-INFERENCE"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석 위치의 보행로·경사·계단·무장애 접근 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "개별 비석의 관람 시간 또는 주변 동선과의 결합 가능성을 직접 확인하지 못했다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "자료는 비석의 역사성은 설명하지만 경관 감상 자체가 핵심 방문 가치라는 근거는 없다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-NONEXTREME"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "동원에는 1865~1892년에 세워진 제주목사·판관 4인의 공덕비가 남아 있어 구체적인 역사적 구성이 확인된다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-DIRECT-DISTINCTIVENESS"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "비석들은 제주목·판관의 선정을 기리고, 동원은 과거 제주목에서 정의현으로 가는 길의 쉼터였던 지역 역사와 연결된다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-DIRECT-LOCAL"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.45, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "지역 역사 자료에는 수록되지만 제주 전역을 대표하는 상징 명소인지의 객관적 근거는 확인하지 못했다.", "source_ids": ["S2", "S3"], "rule_ids": ["RULE-022-CONSERVATIVE-INFERENCE"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석의 시각적 기록 가치는 가능하나 사진 촬영 가치 또는 전망을 직접 설명하는 출처가 없어 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 관람의 안전·안내·접근 환경을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "두 사람 방문을 위한 특별한 경험이나 편의 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 관람의 수용성·해설·편의시설 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전, 흥미 요소 및 보호자 동반 조건을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 보행 부담, 휴식, 무장애 접근 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["RULE-022-FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "1월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "3월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "4월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "5월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "6월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "7월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "8월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "9월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "10월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "11월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "12월의 장소별 관람 여건을 확인하지 못해 야외 역사 비석의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["RULE-022-FALLBACK-CLIMATE"]}
+  },
+  "hard_constraints": [
+    {"kind": "weather_exposure", "applies_to": ["야외 공덕비 관람"], "condition": "대표 경험이 실외 비석 관람", "rationale": "동원의 공덕비는 야외 비석으로 소개되어 강수·강풍 시 관람 경험이 제한될 수 있다.", "source_ids": ["S2", "S3"], "status": "needs_review", "checked_at": "2026-08-25T00:00:00+09:00"},
+    {"kind": "accessibility_unverified", "applies_to": ["보행 접근", "휠체어·유아차 접근", "고령 방문"], "condition": "현장 보행로·경사·계단·주차·무장애 시설의 최신 공개 정보 미확인", "rationale": "공개 역사 자료는 비석의 역사와 야외 위치를 설명하지만 실제 접근성 정보를 제공하지 않는다.", "source_ids": ["S1", "S2"], "status": "needs_review", "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "research": {
+    "identity_summary": "Kakao 공개 장소 페이지의 이름은 ‘공덕비’이고 위치는 제주특별자치도 제주시 봉개동(126.6072044046605, 33.46872231325338)이다. 제주일보와 제주4·3평화재단 아카데미 자료가 봉개동 동원의 조선시대 공덕비 4기를 설명해, 이 레코드를 동원 역사 비석 관람지로 매칭했다.",
+    "typical_visit": "조선시대 제주목사와 판관의 선정을 기리는 야외 비석을 짧게 살펴보는 역사·문화 관람이다.",
+    "experience_scope": "독립 역사 비석 관람에 한정한다. 인접 시설, 상설 해설·전시, 화장실·주차, 영업·개방 시간 및 접근성은 확인하지 못했다. Kakao 평점·리뷰 수와 리뷰 작성자 정보는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "Kakao 공개 장소 페이지는 ‘공덕비’를 제주특별자치도 제주시 봉개동의 장소로 표시하고 좌표 126.6072044046605, 33.46872231325338을 제공한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주일보는 동원에 전시된 오래된 비석들이 정기원·백낙연 제주목사와 송상순·강인호 판관의 공덕을 기리기 위해 세워진 것이라고 설명한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "제주4·3평화재단 아카데미 자료는 동원을 제주목에서 정의현으로 가는 길의 쉼터로 설명하고, 1865·1881·1881·1892년에 세워진 공덕비 4기를 열거한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["Kakao 레코드가 동원 공덕비군 중 어느 특정 비석을 가리키는지", "최신 개방 상태·현장 안내·해설·주차·화장실", "보행로·경사·계단 및 무장애 접근성", "계절별 관람 여건"],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/8190244", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["장소명은 공덕비다.", "공개 메타데이터는 제주특별자치도 제주시 봉개동과 좌표 126.6072044046605, 33.46872231325338을 표시한다.", "평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S2", "publisher": "제주일보", "type": "local_news_history", "url": "https://www.jejunews.com/news/articleView.html?idxno=2211534", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["동원에 전시된 오래된 비석들은 정기원·백낙연 제주목사와 송상순·강인호 판관의 공덕을 기리기 위해 세워졌다.", "동원은 과거 제주목에서 정의현으로 가는 길에 있던 원으로 소개된다."]},
+      {"id": "S3", "publisher": "제주4·3평화재단", "type": "public_history_education", "url": "https://jeju43peace.or.kr/preview/1554261466795/index.html", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["동원에는 조선시대 공덕비 4기가 있다고 설명한다.", "자료는 정기원·백낙연·송상순·강인호 관련 비석과 1865~1892년 건립 연도를 열거한다."]}
+    ]
+  },
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

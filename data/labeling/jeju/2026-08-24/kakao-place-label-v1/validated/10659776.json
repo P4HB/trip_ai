@@ -1,0 +1,118 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10659776",
+  "place_id": "10659776",
+  "name": "연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘연대’라는 매우 일반적인 명칭과 두 건의 짧은 바다 전망 후기만 제공하며 주소·좌표·업종이 없다. 공개 웹에는 제주시 외도이동의 ‘카페연대’와 ‘연대포구’ 등 서로 다른 동명·유사명 장소가 확인되지만, 어느 장소가 이 Kakao place_id인지 신뢰할 수 있는 식별자나 주소로 교차 확인되지 않았다. 따라서 독립 여행 방문지의 신원과 범위를 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명 ‘연대’와 바다 전망·무료 주차를 언급한 공개 후기뿐이다. 웹에서 확인되는 제주시 외도이동의 카페연대 및 연대포구와의 동일성은 확인되지 않았다.",
+    "typical_visit": "동일한 Kakao place_id의 정확한 장소 유형과 대표 방문 경험을 확인하지 못했다.",
+    "experience_scope": "주소, 좌표, 업종, 공식 상세 페이지가 입력에 없고, 검색된 유사명 장소와 Kakao place_id의 연결 근거도 없다. 평점과 후기 수는 라벨 근거로 사용하지 않았으며, 신원 미확정 상태에서는 추천용 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 후기 두 건은 각각 바다가 들린다는 인상과 바다 전망·무료 주차를 언급하지만, 장소의 주소·유형·정확한 위치는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 여행·지역 정보는 제주시 외도이동에 ‘카페연대’라는 바다 포구 인근 카페가 있으며 주소를 연대마을길 34-3으로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "공개 관광 정보는 제주시 외도이동의 별도 장소 ‘연대포구’와 해안산책로·공용주차장을 안내한다. 입력 Kakao 레코드가 이 포구인지 카페인지 또는 다른 장소인지는 확인되지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 10659776의 정확한 주소, 좌표, 업종 및 공식 상호를 확인하지 못했다.",
+      "검색된 카페연대 또는 연대포구와 이 Kakao 레코드의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람·체험 범위, 최신 운영 상태, 접근성, 주차 및 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/10659776",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력된 공개 후기는 바다 전망을 언급한다.",
+          "입력된 공개 후기 중 하나는 무료 주차를 언급한다.",
+          "입력 패킷에는 주소, 좌표 및 업종이 제공되지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "다이닝코드",
+        "type": "reputable_secondary_place_page",
+        "url": "https://www.diningcode.com/profile.php?rid=wl1pi1JBEVRl",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "카페연대를 제주 카페·커피 장소로 표시한다.",
+          "카페연대의 주소를 제주특별자치도 제주시 연대마을길 34-3으로 표시한다.",
+          "이 페이지에는 Kakao place_id 10659776이 제시되지 않아 입력 레코드와의 동일성은 확인되지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "대한민국 구석구석",
+        "type": "public_tourism_page",
+        "url": "https://m.tripinfo.co.kr/info.html?content_id=2738683&content_type_id=12&rd=%2Frd%2Fm%2Finfo%2Ftrip",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "연대포구를 제주시 외도이동의 해안 산책로가 있는 장소로 안내한다.",
+          "연대포구 공용주차장과 해안산책로 등 이용시설을 안내한다.",
+          "이 페이지에는 Kakao place_id 10659776이 제시되지 않아 입력 레코드와의 동일성은 확인되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없고, 동명·유사명 카페연대 및 연대포구와의 동일성도 확인되지 않아 독립 여행 방문지의 신원과 경험 범위를 판정할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 장소 상세의 주소·좌표·업종을 확보해 place_id 10659776의 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

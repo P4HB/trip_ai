@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2224,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1974243984.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1974243984",
+    "provider": "kakao",
+    "place_id": "1974243984",
+    "name": "생이돌",
+    "url": "https://place.map.kakao.com/1974243984",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "21",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.05.28.",
+      "content": "경치 좋고 한적함",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.05.02.",
+      "content": "트멍길 마지막코스 벤치도 있고 앉아쉴수있는 공간있어요",
+      "tags": ""
+    },
+    {
+      "date": "2025.01.21.",
+      "content": "멋진 경관과 인적이 드믄 한적한 분위기의 조화",
+      "tags": "뷰"
+    },
+    {
+      "date": "2024.01.17.",
+      "content": "경관 너무 멋지지만 가는길이 거의 외길이라 운전 초보분들은 비추천합니다. 차 2~3대정도.. 주차가능. 전망대 아래로 들어가면 멋진 사진 찍을수있지만 자연 그자체라 조심하세영",
+      "tags": ""
+    },
+    {
+      "date": "2023.10.05.",
+      "content": "올레길 코스에 있는 경관 명소입니다. 외길이고 걷는 사람 위주의 좁은 도로라 차량으로의 진입은 불편할수 있습니다. 주차장은 작지만 잘 구비되어 있구요. 생이돌 가까이 계단을 내려갈수도 있고 옆 전망대에서도 절벽으로 나갈수 있는 길이 있어 보다 가까이 풍경을 볼수 있어요. 물이 너무 깨끗하고 색이 맑아서 물멍 때리기 좋구요. 생이돌 쪽 경치보다는 반대 방향의 용암이 흐른 모양대로 굳어진 해안선이 너무 멋있습니다. 아이들 동반시에는 위험하니 안전에 유의해주시길",
+      "tags": "뷰|주차"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

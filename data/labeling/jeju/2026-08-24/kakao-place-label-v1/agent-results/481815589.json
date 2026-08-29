@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "481815589",
+  "canonical_id": "kakao:481815589",
+  "name": "엉알길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 제주시 한경면 수월봉 아래의 엉알길로 확인된다. 공공 관광·접근성 안내가 독립적으로 방문 가능한 해안 산책·지질트레일 구간(엉알길 입구~자구내포구 입구)을 안내하므로 추천 후보로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "수월봉 아래 해안 지질트레일의 보행 구간으로 확인되며, 산·오름 정상 등반이 엉알길 자체의 핵심 경험이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내는 엉알길 구간을 해안절벽·바다·차귀도 경관을 보는 해안 산책로로 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-COASTAL-EXPERIENCE-DIRECT"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "엉알길은 3.3km 약 1시간 30분의 지질트레일 A코스이며, 공공 접근성 안내도 1.1km 보행 구간을 명시한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화산 퇴적구조와 세계지질공원 맥락이 직접 소개되어 교육적 자연유산 맥락은 있으나, 문화·역사 해설이 이 구간 방문의 주된 구성인지는 불명확하다.", "source_ids": ["S2"], "rule_ids": ["THEME-GEOHERITAGE-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 경험은 해안 지질트레일 보행과 경관 감상이며, 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 엉알길의 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 산책·지질 탐방 구간으로 확인되며, 전통시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 해안 산책·지질트레일로 안내될 뿐 특정 기간 축제·행사가 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해안절벽과 바다를 따라 걷는 야외 보행 구간으로 소개되며, 대표 경험에 포함되는 실내 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 해안 절벽 옆 야외 보행과 바다 경관 감상이므로 비·바람·더위·추위 영향을 크게 받을 수 있다. 실제 기상별 통제 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 풍경을 보며 걷는 산책로이나 3.3km 보행과 일부 경사 정보가 있어, 평온한 휴식 경험의 정도는 중립으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-COASTAL-WALK-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "수월봉 입구 접근로에 약 8~16도, 약 140m 내리막 경사가 있고 접근성 안내가 동행자 도움이 필요하다고 명시한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SLOPE-ASSISTANCE-DIRECT"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "A코스 전체는 3.3km 약 1시간 30분이고 별도 1.1km 휠체어 구간도 안내되나, 단축·회귀 동선의 일반 이용 조건은 충분히 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-DURATION-CONTEXT"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 해안절벽, 화산 퇴적구조, 바다와 차귀도 경관을 지질트레일의 수려한 풍경으로 직접 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-COASTAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "수월봉 해안의 화산재 지층·화산 퇴적구조를 보는 유네스코 세계지질공원 지질트레일이라는 고유한 구성이 직접 확인된다.", "source_ids": ["S2"], "rule_ids": ["STYLE-GEOHERITAGE-UNIQUE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 수월봉 아래 해안과 화산 퇴적구조, 제주어 지명인 엉알의 지질·지역 맥락에 직접 연결된 길이다.", "source_ids": ["S2"], "rule_ids": ["STYLE-JEJU-GEOHERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "엉알길은 유네스코 세계지질공원 수월봉 지질트레일의 A코스로 공식 관광 안내에 수록되어 지역 대표 지질 경관의 일부다.", "source_ids": ["S2"], "rule_ids": ["STYLE-GEOHERITAGE-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내는 해안절벽·차귀도·바다 경관과 화산 퇴적층의 절경을 소개하고, 공공 사진 갤러리도 수월봉 엉알길을 해안산책로·산책길 사진 주제로 분류한다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-PHOTO-SCENERY-DIRECT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 걷는 방문의 안전·통신·안내 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험이나 편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 안내가 수월봉 지질트레일을 친구 여행 태그와 함께 소개하지만 그룹 수용·안전 정보는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-FRIENDS-TAG-CONTEXT"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "자구내포구 쪽 1.1km 휠체어 구간과 화장실은 안내되지만, 경사와 동행자 도움 필요 정보가 있어 아동 동반 적합도는 중립으로 둔다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-ACCESSIBILITY-MIXED"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "휠체어 구간과 장애인 화장실은 안내되지만 수월봉 입구 쪽 경사와 동행자 도움 필요 정보가 있어 부모·고령 동반 적합도는 중립으로 둔다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-ACCESSIBILITY-MIXED"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 산책로의 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "coastal_trail_slope_and_weather_conditions", "applies_to": "mobility_limited_visitors", "condition": "제주관광약자접근성안내센터의 2020년 조사에는 수월봉 입구 엉알길 접근로에 약 8~16도, 약 140m 경사가 있고 동행자 도움이 필요하다고 적혀 있다. 현행 시설 상태와 기상·파랑에 따른 통제는 별도 확인이 필요하다.", "status": "needs_review", "action": "방문 전 최신 현장 안내로 접근로·보행로 개방 상태와 기상 조건을 확인하고, 이동약자는 자구내포구에서 되돌아오는 안내 동선 및 동행 지원 필요 여부를 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘엉알길’은 제주시 한경면 수월봉 아래 해안 지질트레일의 A코스 및 제주올레 12코스 인접 해안 산책 구간을 가리키는 것으로 공공 관광·접근성 안내에서 확인됐다.",
+    "facts": [
+      {"text": "제주관광약자접근성안내센터는 엉알길 입구~자구내포구 입구를 제주올레 12코스 휠체어 구간으로 안내하며, 길이는 1.1km라고 설명한다.", "source_id": "S1"},
+      {"text": "같은 접근성 안내는 수월봉 입구 접근로에 약 8~16도, 약 140m 경사가 있고 자구내포구에서 역방향으로 진입해 되돌아오는 방법을 권장하며, 자구내포구에 장애인 화장실이 있다고 적는다.", "source_id": "S1"},
+      {"text": "제주관광공사 Visit Jeju는 수월봉 지질트레일 A코스를 엉알길 3.3km·약 1시간 30분으로 소개하고, 화산 퇴적구조·해안절벽·경관을 유네스코 세계지질공원 맥락에서 설명한다.", "source_id": "S2"},
+      {"text": "한국관광공사 사진 갤러리는 ‘수월봉 엉알길’을 제주 지질트레일·올레길 12코스·해안산책로·산책길 키워드로 분류한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["카카오 표식이 가리키는 정확한 출입 지점", "현행 보행로 개방 시간과 공사·낙석·기상에 따른 통제 기준", "A코스 전 구간의 경사·노면·휠체어 접근성과 유아 동반 안전 조건", "월별 꽃·일몰 등 계절 절정 및 운영 변동"],
+    "sources": [
+      {"id": "S1", "publisher": "제주특별자치도 관광약자접근성안내센터", "type": "official_accessibility_information", "url": "https://easyjeju.net/m/pages.php?no=969&p=tourist", "checked_at": "2026-08-25", "facts": ["엉알길 입구에서 자구내포구 입구까지 1.1km 휠체어 구간의 주소·경관·편의시설을 안내한다.", "수월봉 입구 접근로의 경사와 자구내포구 역방향 진입 권장, 장애인 화장실 정보를 제공한다."]},
+      {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500388", "checked_at": "2026-08-25", "facts": ["수월봉 지질트레일 A코스 엉알길은 3.3km, 약 1시간 30분으로 소개된다.", "해안절벽의 화산 퇴적구조와 수려한 풍경을 즐기는 유네스코 세계지질공원 트레일로 소개한다."]},
+      {"id": "S3", "publisher": "한국관광공사", "type": "official_tourism_photo_archive", "url": "https://korean1.visitkorea.or.kr/kor/nphotogallery/photo.kto?func_name=photo_view&newphotoDTO.photo_code=1119015201806009k&newphotoDTO.searchWord=&newphotoDTO.sub_menu=plan&newphotoDTO.sub_menu_detail=45894", "checked_at": "2026-08-25", "facts": ["수월봉 엉알길 사진을 제주 지질트레일, 올레길 12코스, 해안산책로, 산책길 키워드로 제공한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

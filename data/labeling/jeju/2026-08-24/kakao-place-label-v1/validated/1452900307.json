@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1452900307",
+  "place_id": "1452900307",
+  "name": "건하",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘건하’, place_id와 URL만 제공하며 주소·좌표·업종·방문 후기 근거가 없다. 공개 검색에서 제주 제주시 탑동로 47의 법인 ‘주식회사 건하’가 확인되지만, 이 Kakao 레코드가 그 법인·제주오리엔탈카지노·다른 동명 장소 중 무엇을 뜻하는지 연결하는 신뢰 가능한 공개 근거는 찾지 못했다. 독립 여행 방문지와 정확한 장소 신원을 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 패킷에서 확인되는 정보는 ‘건하’라는 명칭, place_id와 Kakao Map URL뿐이다. 공개 기업 자료는 제주 제주시 탑동로 47 소재 ‘주식회사 건하’를 제시하지만 해당 자료만으로 이 place_id와의 동일성은 확인되지 않았다.",
+    "typical_visit": "검색된 법인 자료는 사업체 정보일 뿐, 이 Kakao 레코드가 관광객이 방문할 수 있는 독립 장소인지 또는 어떤 방문 경험을 제공하는지는 확인하지 못했다.",
+    "experience_scope": "주소·좌표·업종·공개 방문 경험 근거가 없는 동명 레코드이므로 추천용 방문 경험과 41축 적합도 벡터를 생성하지 않는다. 입력의 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘건하’로 제공하지만 주소, 좌표, 업종 및 공개 리뷰 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 기업 정보는 ‘주식회사 건하’의 주소를 제주특별자치도 제주시 탑동로 47로 제시하지만, 해당 기업 정보가 입력 Kakao place_id와 동일하다는 근거는 확인되지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 실제 장소 유형",
+      "입력명이 제주 제주시 탑동로 47의 주식회사 건하 또는 다른 동명 장소와 동일한지 여부",
+      "독립 여행 방문지로서의 관람·체험 범위, 접근성, 안전, 운영 상태 및 최신 이용 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1452900307",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘건하’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "더팀스",
+        "type": "public_business_directory",
+        "url": "https://www.theteams.kr/teams/390151",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "주식회사 건하의 소재지를 제주특별자치도 제주시 탑동로 47(삼도이동, 제주오리엔탈호텔)로 표시한다.",
+          "해당 공개 기업 페이지에는 입력 Kakao place_id와 연결하는 식별자는 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 지점·주소·좌표·업종이 없고, 공개 기업 정보와의 동일성도 확인되지 않아 장소 신원과 독립 여행 방문지 범위를 판단할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식 자료의 주소·좌표·업종을 확보해 장소 신원을 먼저 교차 확인한다. 신원이 확인된 뒤에만 여행 방문지 범위와 적합도 라벨을 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

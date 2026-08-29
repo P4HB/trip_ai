@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726376",
+  "place_id": "25726376",
+  "name": "병문천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공공·연구 자료는 병문천을 제주시를 흐르는 하천으로 확인하며, 일부 하류 구간은 복개된 것으로 설명한다. 그러나 입력 Kakao 레코드는 명칭 외에 특정 접근 지점·관람 동선·방문 운영 정보를 제공하지 않고, 확인한 자료에도 병문천 자체를 독립 관광·체험 장소로 운영한다는 근거가 없다. 따라서 선형 하천 지리 객체 자체는 추천용 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "병문천은 제주특별자치도 제주시를 흐르는 하천으로 확인된다. 제주학 연구자료는 오등리에서 발원해 삼도리를 거쳐 바다로 들어가는 하천으로 기록하며, 공공 기록사진 설명은 산지천·한천과 함께 제주시내로 흘러내리는 큰 하천 중 하나라고 설명한다.",
+    "typical_visit": "확인된 공공 자료는 병문천의 지리·역사 및 하천 특성을 설명할 뿐, 일반 여행객을 위한 독립 관람·체험 시설이나 운영 프로그램은 제시하지 않는다.",
+    "experience_scope": "하천이라는 지리 객체는 확인되지만 입력에는 주소·좌표·특정 접근 지점이 없고, 일반 방문객을 위한 공식 탐방 동선·상시 개방·안전 관리 조건도 확인되지 않았다. 본 라벨링의 독립 방문·체험 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주학 연구원의 하천 연구자료는 병문천을 제주읍 오등리에서 발원하여 삼도리를 거쳐 바다로 들어가는 하천으로 기록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 제공 공공 기록사진의 설명은 병문천을 산지천·한천과 함께 제주시내로 흘러내리는 큰 하천 중 하나로 소개하며, 현재는 복개된 모습을 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 레코드는 이름을 ‘병문천’으로 제공하며 주소, 좌표, 업종 및 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id가 가리키는 병문천의 정확한 구간·접근 지점·현장 안내 시설을 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 산책·관람 동선, 주차·화장실·무장애 접근성과 관리 주체를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 안전한 이용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주학연구센터",
+        "type": "public_research_report",
+        "url": "https://jst.re.kr/upload/pdf/RC00092517.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "병문천의 명칭 유래와 하구의 옛 지형을 설명한다.",
+          "병문천이 제주읍 오등리에서 발원하여 삼도리를 거쳐 바다로 들어간다고 기록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도·공공누리",
+        "type": "public_archival_record",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=38879",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "병문천을 산지천, 한천과 함께 제주시내로 흘러내리는 큰 하천 중 하나라고 설명한다.",
+          "기록사진 설명은 병문천이 현재 복개된 모습을 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726376",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘병문천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "하천이라는 지리·수계 객체는 확인됐지만, 독립 관광·체험 장소로서의 일반 방문 운영, 특정 접근 지점 및 강우 시 안전·접근 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광지 등록 또는 특정 구간의 공식 방문 안내가 확인되면 별도 장소 레코드로 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

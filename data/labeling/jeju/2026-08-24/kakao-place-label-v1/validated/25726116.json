@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726116",
+  "place_id": "25726116",
+  "name": "문서천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "국회도서관에 공개된 제주시 마을특성 조사 자료는 문서천을 조천읍 신촌리의 비가 많이 올 때만 물이 흐르는 건천이자 자연환경자원으로 기록한다. 그러나 입력 Kakao 레코드는 명칭 외의 특정 접근 지점·관람 동선·방문 운영 정보를 제공하지 않고, 확인한 공개 자료에도 문서천 자체를 독립 관광·체험 장소로 운영한다는 근거가 없다. 따라서 선형 하천 지리 객체 자체는 추천용 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "문서천은 제주시 조천읍 신촌리 일대의 건천으로, 공개 마을 조사에서 종인천과 함께 비가 많이 올 때 물이 흐르는 하천으로 기록된다.",
+    "typical_visit": "확인된 공공 자료는 문서천을 신촌리의 자연환경자원·하천으로 수록할 뿐, 일반 여행객을 위한 독립 관람·체험 시설이나 운영 프로그램은 제시하지 않는다.",
+    "experience_scope": "하천이라는 지리 객체는 확인되지만 입력에는 주소·좌표·특정 접근 지점이 없고, 일반 방문객을 위한 공식 탐방 동선·상시 개방·안전 관리 조건도 확인되지 않았다. 본 라벨링의 독립 방문·체험 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관 정책정보 자료로 공개된 제주시 마을특성 및 실태조사는 조천읍 신촌리에서 종인천과 문서천을 비가 많이 올 때만 물이 흐르는 건천으로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 조사 자료의 신촌리 자연환경자원 목록은 문서천을 하천·자연환경자원으로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id가 가리키는 문서천의 정확한 구간·접근 지점·현장 안내 시설을 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 산책·관람 동선, 주차·화장실·무장애 접근성과 관리 주체를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 안전한 이용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가학술정보·제주시 마을특성 및 실태조사",
+        "type": "public_research_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "신촌리의 종인천과 문서천은 비가 많이 올 때만 물이 흐르는 건천이라고 설명한다.",
+          "신촌리 자연환경자원 목록에 문서천을 하천으로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726116",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘문서천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "건천이라는 자연·수계 기능은 확인됐지만, 독립 관광·체험 장소로서의 일반 방문 운영, 특정 접근 지점 및 강우 시 안전·접근 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광지 등록 또는 특정 구간의 공식 방문 안내가 확인되면 별도 장소 레코드로 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

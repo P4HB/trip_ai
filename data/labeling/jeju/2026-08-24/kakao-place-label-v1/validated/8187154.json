@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8187154",
+  "canonical_id": "kakao:8187154",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 이름이 일반명사 ‘고인돌’뿐이고 주소·유적 번호·관리 주체가 없다. 제주에는 외도동, 하모리, 일과리, 가파도 등 여러 고인돌 및 고인돌군이 분포하며, 특히 가파도 추정 고인돌군은 조사 결과 고인돌 여부가 확정되지 않은 사례도 있다. 따라서 이 지도 항목의 정확한 유적을 식별할 수 없어 수치 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "source_jeju_museum",
+      "source_gapa_excavation",
+      "source_daejeong_history"
+    ],
+    "rule_ids": [
+      "eligibility.identity_unknown.generic_name",
+      "policy.no_forced_vector"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "exact_heritage_identity_required",
+      "rationale": "정확한 소재지·지정번호·관리 기관을 확인하기 전에는 특정 고인돌 유적의 방문·보존 조건을 판단할 수 없다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_jeju_museum",
+        "url": "https://jeju.museum.go.kr/_prog/download.php?filedir=%2FUpl%2Fkr%2Fbook%2Ffile%2F&filename=book_file_0_1687763145.pdf&ori_filename=%EC%A0%9C%EC%A3%BC+%EB%8F%8C%EB%AC%B8%ED%99%94+%EC%97%B0%EA%B5%AC+%EC%84%B1%EA%B3%BC%EC%99%80+%EA%B3%BC%EC%A0%9C.pdf",
+        "publisher": "국립제주박물관",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주지역에서 보고된 고인돌은 약 140기라고 설명한다."
+        ]
+      },
+      {
+        "source_id": "source_gapa_excavation",
+        "url": "https://portal.nrich.go.kr/kor/excavationChronologyView.do?idx=29070&menuIdx=566",
+        "publisher": "국가유산 지식이음",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "남제주 가파도 추정 고인돌 발굴조사 기록이 있다."
+        ]
+      },
+      {
+        "source_id": "source_daejeong_history",
+        "url": "https://jst.re.kr/upload/pdf/RC00000439.pdf",
+        "publisher": "제주학연구센터",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "대정읍 지역에 동일리·일과리·하모리·신도리·가파도 고인돌군이 분포한다고 기록한다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

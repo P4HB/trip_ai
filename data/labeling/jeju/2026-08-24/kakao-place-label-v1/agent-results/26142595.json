@@ -1,0 +1,101 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26142595",
+  "place_id": "26142595",
+  "name": "귀덕해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "Kakao 장소명과 공개 방문 후기는 제주 서부의 해안 경관을 보는 도로라는 동일한 방문 대상을 가리킨다. 독립 장소가 아닌 부속시설이라는 근거는 확인되지 않아, 경관 도로형 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "귀덕해안도로는 제주 서부 귀덕 일대에서 바다 경관을 보며 이동·정차하는 해안도로형 장소로 식별된다.",
+    "typical_visit": "차량 또는 자전거 이동 중 바다와 해안 풍경을 감상하고 짧게 정차하는 방문이다.",
+    "experience_scope": "실내 시설이나 단일 유료 관광지가 아니라, 야외 해안 경관과 도로 이동 자체가 중심인 개방형 장소다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소의 이름은 귀덕해안도로이며, 공개 방문 후기는 이를 제주 서쪽의 아름다운 해안도로라고 서술한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 공식 가이드북은 제주 해안도로 여행을 바람·바다·한라산과 제주 풍경을 배경으로 하는 도로여행으로 소개한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "귀덕해안도로의 공식 구간, 전용 주차·보행 시설과 무장애 접근성은 확인하지 못했다.",
+      "특정 계절의 혼잡도, 도로 통제 및 현장 안전 상태는 확인하지 못했다.",
+      "사진 명소로서의 공식 지정 또는 대표성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "카카오맵",
+        "type": "place_listing_and_public_review",
+        "url": "https://place.map.kakao.com/26142595",
+        "checked_at": "2026-08-24",
+        "facts": ["장소명은 귀덕해안도로다.", "공개 후기는 제주 서쪽의 아름다운 해안도로이며 뷰를 언급한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism_guide",
+        "url": "https://www.visitjeju.net/pdf/Official%20Jeju%20Tourism%20Guidebook_kr.pdf",
+        "checked_at": "2026-08-24",
+        "facts": ["공식 가이드북은 제주 해안도로 드라이브를 관광 체험으로 소개한다.", "해안 도로 여행의 배경으로 바람과 바다, 한라산 및 오름 풍경을 설명한다."]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인된 핵심 경험은 해안도로 경관이며 산·오름 방문이 이 장소의 목적이라는 직접 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "장소명과 공개 후기의 해안도로·바다 경관, 공식 가이드의 해안도로 설명을 종합하면 바다 경관이 핵심 경험으로 판단된다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-010"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "레포츠나 참여형 체험 운영은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사·문화유산·전시가 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 시설이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용을 제공하는 장소라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험을 제공한다는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 축제나 기간성 행사가 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "도로와 해안 경관을 중심으로 식별되어 대표 방문 경험의 실내 비율은 낮게 추정한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.6, "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 해안도로 경관이 중심이고 공식 가이드도 해안의 바람을 언급하므로 날씨 영향이 큰 편으로 추정한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "경관 감상·이동형 방문은 느린 체류가 가능하나, 정차 공간과 체류 환경은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "도로형 장소이나 보행로·경사·주차 및 무장애 정보가 없어 이용 부담을 확정할 수 없다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로 이동과 경관 감상은 짧은 정차부터 이동 중 감상까지 시간 조절이 가능한 방문 형태로 추정한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 후기가 아름다운 해안도로와 뷰를 언급하고, 공식 가이드도 해안도로의 바다 경관을 관광 가치로 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-010"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "귀덕 구간만의 고유 시설·지질·문화 요소는 확인하지 못해 일반 해안도로 경험 수준으로 보수적으로 둔다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 해안과 귀덕 지역명을 직접 지칭하는 경관 도로이지만 지역 생활·생산자·문화와의 구체적 연결은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주 또는 한림 지역을 대표하는 공식 명소라는 지정·선정 근거는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 후기의 뷰 언급은 시각적 기록 가능성을 뒷받침하지만 공식 포토 명소 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-010"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "개방형 경관도로이나 혼자 방문 시의 안전·정차 여건은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "couple": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상형 장소이나 동반 형태별 체험 차이는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "friends": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상형 장소이나 친구 동반에 특화된 활동·시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "kids": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "도로·해안 인접 구간의 어린이 보행 안전 및 편의시설 정보가 없어 적합도를 확정할 수 없다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "parents": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 동반 시 필요한 주차·휴식·보행 환경 정보가 없어 적합도를 확정할 수 없다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "month_fit": {
+    "1": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해안 야외 장소이나 귀덕 구간의 월별 실제 바람·통제·체감 조건은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "2": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해안 야외 장소이나 귀덕 구간의 월별 실제 바람·통제·체감 조건은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "3": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "4": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "5": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "6": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "7": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "8": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "9": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "10": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 방문 조건을 뒷받침하는 귀덕 구간의 현장 자료를 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "11": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해안 야외 장소이나 귀덕 구간의 월별 실제 바람·통제·체감 조건은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "12": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해안 야외 장소이나 귀덕 구간의 월별 실제 바람·통제·체감 조건은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "hard_constraints": [
+    {"kind": "weather_and_road_conditions", "applies_to": "visit_planning", "condition": "야외 해안도로 방문이므로 강풍·강수 및 도로 통제 여부를 출발 전 확인해야 한다.", "status": "needs_review", "action": "실시간 기상·교통·현장 안전 정보를 확인하고 조건이 나쁘면 방문을 보류하거나 대체한다.", "source_ids": ["S2"], "checked_at": "2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

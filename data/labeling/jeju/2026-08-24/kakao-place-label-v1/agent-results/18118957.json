@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18118957",
+  "place_id": "18118957",
+  "name": "제주돌 문화공원 미아보호소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "제주특별자치도의회 공개 시설 현황은 제주돌문화공원의 매·수표소, 휴게소, 미아보호소, 전시동 등을 함께 수록하고, 제주돌문화공원을 하나의 박물관·생태공원 관광지로 설명하는 공공 관광 정보가 확인된다. 따라서 입력 장소는 독립 방문 경험을 제공하는 관광지가 아니라 공원 이용객을 위한 관리·보호 시설 표식이므로 독립 추천 후보에서 제외한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주돌 문화공원 미아보호소는 제주돌문화공원 부지 내에 설치된 미아 보호를 위한 관리시설로 확인된다.",
+    "typical_visit": "독립 관광 목적지가 아니라 제주돌문화공원 관람 중 보호가 필요한 아동을 위한 공원 부속 관리시설이다.",
+    "experience_scope": "공개 자료는 이 시설이 공원 시설 현황에 포함됨을 확인하지만, 독립 방문·관람 대상이라는 근거는 확인되지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 공개 시설 현황은 제주돌문화공원의 시설로 매·수표소, 휴게소, 미아보호소, 전시동, 전통초가, 관리소, 화장실 등을 함께 열거한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원을 제주 돌 문화와 설문대할망·오백장군 신화를 주제로 조성한 박물관·생태공원으로 소개한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "미아보호소의 현재 운영 인력·이용 절차와 개방 시간은 확인하지 못했다.",
+      "이 시설의 독립적인 관람·체험 프로그램은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_facility_status_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A038491.pdf",
+        "checked_at": "2026-08-25",
+        "facts": ["제주돌문화공원 시설 현황에 미아보호소가 포함된다.", "미아보호소는 매·수표소, 휴게소, 전시동, 관리소 등과 함께 수록된다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_detail",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547&menuId=DOM_000002000000000081",
+        "checked_at": "2026-08-25",
+        "facts": ["제주돌문화공원은 제주 돌 문화와 신화를 주제로 한 박물관·생태공원으로 소개된다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "all_visitors",
+      "condition": "미아보호소는 제주돌문화공원 시설 현황에 포함된 관리·보호 시설이며, 독립 관광·관람 경험으로 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 않는다. 공원 방문 정보가 필요하면 제주돌문화공원 본 장소의 최신 관람·안내 정보를 별도로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 467,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8422867.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8422867",
+    "provider": "kakao",
+    "place_id": "8422867",
+    "name": "어대오름",
+    "url": "https://place.map.kakao.com/8422867",
+    "average_rating_5": "3.4",
+    "visitor_review_count": "11",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.04.",
+      "content": "짧아요 코스정리가 안되어 있네요",
+      "tags": ""
+    },
+    {
+      "date": "2024.04.13.",
+      "content": "입구는 덕천리 524-4 잘 안보이는 곳에 있어요 뷰는 많이 없지만 20분정도 트래킹 코스는 괜찮습니다",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.03.",
+      "content": "2016년 사진. 우리 꼬맹이와 길도 못찾고 가시에 찔리다가 포기했는데, 드디어 오늘 올랐음. 나에겐 오를 수 있음에 감사한 오름. 아담한 산책로이지만 초승달 모양을 온전히 누릴수 있어요~!!",
+      "tags": ""
+    },
+    {
+      "date": "2022.12.10.",
+      "content": "최근에 탐방로 정비하여 오르기 편합니다. 전망은 없구요. 입구는 카카오맵 위치 참고하세요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

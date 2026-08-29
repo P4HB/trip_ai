@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17576447",
+  "place_id": "17576447",
+  "name": "렛츠런파크제주 상설체험장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘렛츠런파크제주 상설체험장’으로, 상위 시설인 렛츠런파크 제주를 명시한다. 공개 보도는 렛츠런파크 제주 가족공원에서 어린이 승마체험·관상마체험장·말 먹이주기 같은 개별 체험 시설을 운영한다고 확인한다. 따라서 이 레코드는 독립 여행지라기보다 상위 공원 안의 세부 체험 시설로 보수 판정하며, 상위 장소와 중복된 추천용 41축 벡터를 부여하지 않는다.",
+    "duplicate_of": "렛츠런파크 제주",
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력은 ‘렛츠런파크제주 상설체험장’이라는 이름과 해당 place_id만 제공한다. 명칭 자체가 렛츠런파크 제주에 소속된 상설 체험 시설임을 나타내며, 공개 보도에서 같은 공원 내 복수의 체험 시설 운영이 확인된다.",
+    "typical_visit": "상위 렛츠런파크 제주에서는 가족공원 중심의 어린이 승마체험, 관상마 관람, 말 먹이주기 등 말 관련 체험 프로그램이 공개적으로 안내됐다. 이 개별 Kakao 레코드가 어느 특정 프로그램 또는 공간을 가리키는지는 확인하지 못했다.",
+    "experience_scope": "입력에는 주소·좌표·업종·후기가 없고, 상설체험장의 독립 입장·운영·프로그램 범위를 특정할 공식 상세 페이지도 확인하지 못했다. 상위 공원 내 부속 시설로 처리하며, Kakao 평점·리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘렛츠런파크제주 상설체험장’이며, 상위 시설인 렛츠런파크 제주를 명시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국마사회 제주본부의 렛츠런파크 제주 가족공원에는 어린이 승마체험, 관상마체험장, 말 먹이주기 등 개별 체험 시설·프로그램이 운영된다고 공개 보도됐다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 체험 프로그램·공간, 주소·좌표와 상위 공원 내부 위치를 확인하지 못했다.",
+      "독립 입장권, 운영일·시간, 연령·신장 제한, 예약 요건과 현재 운영 여부는 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17576447",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 상설체험장’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "헤드라인제주",
+        "type": "news_report",
+        "url": "https://www.headlinejeju.co.kr/news/articleViewAmp.html?idxno=564968",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "한국마사회 제주본부가 렛츠런파크 제주 가족공원에서 어린이 승마체험 프로그램을 운영한다고 보도했다.",
+          "같은 보도는 관상마체험장과 말 먹이주기 체험을 렛츠런파크 제주 내 체험 요소로 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 명칭과 공개 보도상 렛츠런파크 제주 내부의 세부 체험 시설로 판단되며, 독립 장소 범위와 이용 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "상위 ‘렛츠런파크 제주’와의 중복 관계를 유지한다. 독립 입장·주소·프로그램 범위가 공식 출처로 확인되기 전에는 별도 추천 후보 및 41축 벡터로 사용하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

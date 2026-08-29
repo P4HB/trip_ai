@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 664,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/7834108.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:7834108",
+    "provider": "kakao",
+    "place_id": "7834108",
+    "name": "돔배오름",
+    "url": "https://place.map.kakao.com/7834108",
+    "average_rating_5": "1.8",
+    "visitor_review_count": "4",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.25.",
+      "content": "돔배오름 주변 위성지도와 로드뷰를 보니 연학목장쪽 대문안으로 들어가기는 애매해서 가나안기도원방향으로 들어가봤어요 파란컨데이너에 계신 선생님이 모르는차가들어오니 쳐다보셔서 뒤쪽 돔배오름에 다녀올수있냐고 길을 물으니 10분이면 올라가긴하는데 없는길을 만드신거고 여름이면 그길도 없어진다고, 올라가봐야 공동묘지라고 하셨지만, 갈수있는 오름은 다 가보고싶은 사람인지라 감사인사를 드리고 조용히 다녀왔어요 나무숲을 지나 분화구에가니 초지가 펼쳐져있고 위성지도에서도 확인가능한 묘지들로 둘러쌓여있었고 도장깨기 다니는 사람이 아니면 갈이유가 없는 오름입니다 그래도 연학목장이 아닌 길을 찾으시는 도장깨기하시는분들께 도움이될까 후기남깁니다",
+      "tags": ""
+    },
+    {
+      "date": "2022.01.09.",
+      "content": "겨울철이라 그나마 둘레를 돌아볼수 있던곳 여름은 힘들겠어.. 사유지라 허락맡고 목장으로 통해서 가볼 수 있음. 분화구는 초지로 변신 조그만 둘레길 정비하고 전망대 세우면 좋을 곳.",
+      "tags": ""
+    },
+    {
+      "date": "2020.02.21.",
+      "content": "관리가 안된 오름. 초소는있는데 엉망이예요 길은 가시덤불..ㅎㅎ 분화구가 평평하고 넓어요. 참 쉬운오름 한라산. 바농.큰지그리 잘보여요 ㅎㅎ",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

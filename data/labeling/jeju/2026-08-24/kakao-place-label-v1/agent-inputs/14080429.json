@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1533,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/14080429.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:14080429",
+    "provider": "kakao",
+    "place_id": "14080429",
+    "name": "제주올레11코스 공식안내소",
+    "url": "https://place.map.kakao.com/14080429",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "4",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.01.26.",
+      "content": "스탬프 찍고 있는데 나오셔서 고생했다고 말씀해주시는데 너무 감사했다. 차를 세운 곳으로 돌아가는 방법도 알려주셨다.",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.09.",
+      "content": "멀리서 아주머니가 도착할것 같은 나를 보고 있다가.. 내가 안내소에 다와서 뭔가 물어볼것 같으니까, 아주머니가 들어가서 전화를 하고 있더라 (내 느낌엔 전화를 받는척 하는것 같았음) 표지석이 어디 있는지 물어 보고 싶었던 건데,,, 저기 표지석이 있구나 하고 그쪽으로 이동하면서 돌아보니 다시 나와서 내쪽을 보고 있는 아주머니... 뭐지?????",
+      "tags": ""
+    },
+    {
+      "date": "2023.08.22.",
+      "content": "친절하게 대해주셔서 감사합니다. 또한 추천해주신 식당도 너무 맛있어요 👍",
+      "tags": "시설"
+    },
+    {
+      "date": "2022.08.29.",
+      "content": "친절하십니다. ^^",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

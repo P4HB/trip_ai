@@ -1,0 +1,119 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17558799",
+  "place_id": "17558799",
+  "name": "선녀와나무꾼 테마공원 옛사골먹거리장터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘선녀와나무꾼 테마공원’에 속한 옛사골먹거리장터를 명시한다. 제주관광공사는 선녀와나무꾼을 실내 테마공원으로 소개하며 옛 장터를 재현한 장터 거리를 그 관람 구성으로 설명하고, 제주도우리의 관람 동선에도 ‘옛시골 먹거리 장터’가 공원 내부 순서로 제시된다. 따라서 독립 목적지가 아니라 상위 테마공원 관람에 포함되는 내부 전시·장터 재현 구역으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "옛사골먹거리장터는 Kakao에 선녀와나무꾼 테마공원의 명칭을 포함해 등록된 세부 장소이며, 공개 관광 자료에 나오는 공원 내부의 옛 장터·옛시골 먹거리 장터 재현 구역과 연관된다.",
+    "typical_visit": "선녀와나무꾼 테마공원 입장 후 1950~1970년대 생활상을 재현한 실내 관람 동선에서 옛 장터 분위기를 보는 세부 경험으로 파악된다.",
+    "experience_scope": "상위 장소 선녀와나무꾼 테마공원의 내부 구성으로 확인되어, 이 세부 표식에는 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 17558799의 명칭을 ‘선녀와나무꾼 테마공원 옛사골먹거리장터’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 선녀와나무꾼을 옛 추억을 회상하는 실내 테마공원으로 소개하고, 옛 장터 모습을 재현한 장터 거리를 그 관람 내용으로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주도우리는 선녀와나무꾼 테마공원 관람 코스에 ‘옛시골 먹거리 장터’를 내부 동선의 한 구간으로 열거한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 ‘옛사골먹거리장터’ 표기와 공개 관광 자료의 ‘옛시골 먹거리 장터’ 표기가 동일한 내부 구역의 최신 공식 명칭인지 별도 운영자 자료로 확인하지 못했다.",
+      "해당 세부 구역만의 별도 입장, 독립 영업 또는 음식 판매 여부는 확인하지 못했다.",
+      "현재 관람 가능 범위와 공원 운영·안전 조건은 방문 전 운영자 최신 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17558799",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 ‘선녀와나무꾼 테마공원 옛사골먹거리장터’로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500077",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "선녀와나무꾼은 옛 추억을 회상할 수 있는 실내 테마공원으로 소개된다.",
+          "옛 장터 모습을 재현한 장터 거리가 공원의 관람 내용으로 소개된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주도우리",
+        "type": "public_tourism_information",
+        "url": "https://www.jejudoori.com/6df67430-744d-440d-aa0a-925ff5c0b0d9",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "선녀와나무꾼 테마공원 관람 동선에 ‘옛시골 먹거리 장터’가 포함되어 있다.",
+          "공원은 각각의 테마별 실내 코스로 구성된다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "선녀와나무꾼 테마공원 내부 관람 동선의 세부 장터 재현 구역으로 판단됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 선녀와나무꾼 테마공원과 함께 검토",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12736195",
+  "place_id": "12736195",
+  "name": "동복 환해장성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소명은 Visit Jeju의 ‘동복환해장성’ 상세 페이지와 일치한다. 해당 페이지는 제주시 구좌읍 동복리의 제주특별자치도 기념물 제49-6호 해안 역사유적으로 설명하므로, 독립적인 관광 방문 경험을 가진 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "동복 환해장성은 제주특별자치도 제주시 구좌읍 동복리에 있는 해안 역사유적이다.",
+    "typical_visit": "남아 있는 해안 성벽과 주변 해안 풍경을 짧게 감상하는 야외 문화유적 방문이다.",
+    "experience_scope": "공식 관광 페이지가 역사유적·해안 성벽·주변 꽃과 경관을 설명한다. 상업시설, 실내 전시, 체험 프로그램, 접근성 및 당일 운영 상태는 확인하지 못했다. Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "Visit Jeju는 동복 환해장성을 제주특별자치도 기념물 제49-6호로, 외적 침입에 대비해 해안선을 따라 쌓은 성으로 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "Visit Jeju는 동복 환해장성이 약 150m 규모이며 현재 일부 성벽이 남아 있고, 위치를 제주시 구좌읍 동복리로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "Visit Jeju는 돌담 아래 갯무꽃과 유채꽃, 맑고 화창한 날의 풍경 감상을 소개한다.", "source_ids": ["S1"]},
+      {"id": "F4", "text": "입력에 포함된 익명화 Kakao 공개 리뷰 두 건은 각각 ‘뷰’ 태그와 배경·한라산 조망에 관한 서술을 제공한다. 이는 보조적 방문 경험 근거이며 평점·리뷰 수는 사용하지 않았다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "공식 페이지에서 최신 개방 시간, 휴무, 입장료, 주차 및 화장실 정보를 확인하지 못했다.",
+      "휠체어·유모차 동선, 성벽 주변 지면 상태와 세부 안전 접근성은 확인하지 못했다.",
+      "월별 개화 시점과 계절별 현장 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "Visit Jeju", "type": "official_tourism_site", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021178", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["제주특별자치도 기념물 제49-6호인 해안 역사유적과 제주시 구좌읍 동복리 위치를 안내한다.", "약 150m의 일부 성벽, 갯무꽃·유채꽃 및 맑고 화창한 날의 풍경 감상을 설명한다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/12736195", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 Kakao 장소명은 ‘동복 환해장성’이다.", "입력에 익명화된 공개 리뷰 두 건이 있으며 둘 다 조망에 관한 보조 서술이다.", "평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 근거는 해안 성벽·해안선 방문을 설명하며 산·오름 경험은 확인되지 않았다. 비핵심 기본값으로 보류한다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 페이지가 해안선을 따라 쌓은 성벽과 해안 풍경을 직접 설명하므로 해안 경험의 비중이 높다.","source_ids":["S1"],"rule_ids":["THEME-COAST-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료에서 레포츠·참여형 체험을 확인하지 못했다. 역사유적 감상 외 활동성을 추정하지 않는다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물 제49-6호와 외적 방어를 위한 성벽이라는 공식 설명이 역사유적 방문의 핵심성을 뒷받침한다.","source_ids":["S1"],"rule_ids":["THEME-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료에 놀이·동물·수족관·테마파크 시설을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료에 카페·음료·디저트 이용을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료에 시장 방문 경험을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료는 상설 역사유적을 설명하며 기간성 축제·공연을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["THEME-NONCORE-FALLBACK"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 설명의 대표 대상은 해안선을 따라 남은 성벽과 주변 풍경으로, 확인된 대표 경험은 야외다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-DIRECT"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험이 야외 성벽·해안 풍경 감상이고 공식 페이지도 맑고 화창한 날을 권하므로 날씨 영향이 클 것으로 판단한다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-WEATHER-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 성벽과 풍경을 감상하는 방문이지만, 휴식 시설·체류 환경은 확인되지 않아 중립으로 둔다.","source_ids":["S1"],"rule_ids":["STYLE-SCENIC-REST-INFERENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근 동선, 지면, 계단과 이동 보조 접근성을 확인하지 못해 편의성을 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["ACCESS-UNKNOWN-FALLBACK"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 자료에 권장 관람 시간이나 프로그램 길이가 없어 체류시간 조절성은 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["DURATION-UNKNOWN-FALLBACK"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 페이지가 돌담·갯무꽃·유채꽃과 해안 풍경을 한 폭의 그림처럼 소개하며, 입력의 익명화 리뷰도 조망을 보조적으로 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-SCENIC-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"외적 방어를 위해 해안선을 따라 축성된 지정 역사유적이라는 점이 일반 해안 경관과 구별되는 고유한 경험을 제공한다.","source_ids":["S1"],"rule_ids":["STYLE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 해안 방어 역사와 제주시 구좌읍 동복리의 해안 성벽이라는 공식 사실이 제주 지역 자연·역사와의 연결을 직접 보여준다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"지정 문화유적이지만 제주 전역 대표 명소로서의 상대적 상징성은 공식 자료만으로 비교 확인하지 못해 중립으로 둔다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-CONSERVATIVE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 페이지가 꽃과 돌담·해안 풍경을 시각적으로 소개하고 익명화 공개 리뷰도 조망을 언급하지만, 사진 촬영 시설·전망 포인트는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-VISUAL-INFERENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 경험이 독립적인 야외 역사·경관 감상이므로 혼자 방문에도 무리가 없을 것으로 추론하되, 동선 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["COMPANION-SELF_GUIDED-INFERENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"풍경 감상 근거는 있으나 동반 방문 편의·체류 시설을 확인하지 못해 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["COMPANION-UNKNOWN-FALLBACK"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단체 방문 적합성을 판단할 프로그램·편의시설 정보를 확인하지 못해 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["COMPANION-UNKNOWN-FALLBACK"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이용 체험, 난간·안전, 화장실 및 유모차 동선을 확인하지 못해 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["COMPANION-ACCESS-UNKNOWN-FALLBACK"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·지면·휴식공간·주차 등 부모 세대 동행 판단에 필요한 접근성 정보를 확인하지 못해 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["COMPANION-ACCESS-UNKNOWN-FALLBACK"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 1월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 2월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 3월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 자료는 유채꽃을 소개하지만 정확한 개화월을 확인하지 못해 4월 적합도는 중립 기본값으로 보류한다.","source_ids":["S1"],"rule_ids":["MONTH-SEASON-UNKNOWN-FALLBACK"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 5월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 6월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 7월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 8월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 9월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 10월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 11월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태·계절 프로그램을 확인하지 못해 야외 문화유적의 12월 적합도는 중립 기본값으로 보류한다.","source_ids":[],"rule_ids":["MONTH-OUTDOOR-UNKNOWN-FALLBACK"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_current_operation_unverified","applies_to":"on_site_visit","condition":"최신 개방 상태·출입 가능 구간·주차·화장실과 휠체어·유모차를 포함한 접근성 정보가 공식 상세 자료에서 확인되지 않음","status":"needs_review","action":"방문 전 현지 공공 안내 또는 관리 주체를 통해 당일 출입 가능 구간, 날씨·파도 관련 안전, 동선과 접근성을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

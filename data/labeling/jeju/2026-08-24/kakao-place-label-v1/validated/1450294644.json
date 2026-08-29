@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1450294644",
+  "canonical_id": "kakao:1450294644",
+  "name": "제주올레10코스 공식안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공개 관광·정책 자료는 이곳을 화순금모래해변에서 시작하는 제주올레 10코스의 공식 안내소로 기록한다. 독립 여행 목적지보다 해당 트레일의 안내·출발 지원 지점이므로 장소 단위 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NO-VECTOR-WHEN-SUBORDINATE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_information_currentness",
+      "applies_to": "trail_users",
+      "condition": "제주올레 코스는 우회·변경 사항이 발생할 수 있다.",
+      "status": "needs_review",
+      "action": "출발 전 제주올레 공식 홈페이지 또는 앱에서 최신 코스와 안전 안내를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 제주올레 10코스 시작부의 공식 안내소를 가리킨다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 제주올레 10코스가 화순금모래해변에서 하모체육공원 제주올레 안내소까지 이어진다고 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주 올레 관광 안내소 현황 자료에는 ‘10코스 공식안내소’가 수록돼 있다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "안내소의 현행 운영시간과 제공 서비스"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_listing",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018792&menuId=DOM_000001718008000000",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주올레 10코스의 경로와 사전 공식 홈페이지 확인 안내를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/2/8/2022/CLIKC505329548199099_attach_1.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "10코스 공식안내소의 존재를 제공한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

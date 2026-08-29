@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8098545",
+  "place_id": "8098545",
+  "name": "축성공덕비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "Kakao 공개 장소 페이지는 ‘축성공덕비’를 제주시 애월읍 신엄리의 개별 기념비 표식으로 제시한다. 확인 가능한 공개 자료는 신엄리 리사무소 경내에 송덕비·공덕비·기념비가 여럿 있다는 지역 서술을 제공하지만, 이 비석을 일반 여행객을 위한 독립 관광·문화 방문지로 운영하거나 관람 동선·체험을 제공한다는 공식·공공 안내는 확인하지 못했다. 따라서 지역 공공기념물 표식을 독립 추천 방문지의 완전 벡터 대상으로 과장하지 않고 범위 밖으로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 공개 페이지는 장소명 ‘축성공덕비’, 소재지 ‘제주특별자치도 제주시 애월읍 신엄리’, 좌표 126.36864559101878(경도)·33.46429638747351(위도)를 제시한다. 공개 검색으로 이 비석의 건립 주체·비문·지정 문화유산 여부는 확인하지 못했다.",
+    "typical_visit": "확인된 자료는 신엄리 리사무소 경내의 여러 송덕비·공덕비·기념비를 지역의 작은 기념 표식으로 서술할 뿐, 축성공덕비의 독립 관람·체험·운영 정보를 제공하지 않는다.",
+    "experience_scope": "이 레코드는 개별 공덕비 표식으로 식별되지만, 일반 여행객을 위한 독립 방문 목적지의 공식 안내, 관람 동선, 접근·안전 또는 프로그램을 확인하지 못했다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘축성공덕비’이며 소재지는 제주특별자치도 제주시 애월읍 신엄리로 표시된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 지역 여행기는 신엄리 리사무소 경내에 송덕비·공덕비·기념비가 여러 개 있다고 서술하지만, 축성공덕비를 독립 관광지로 안내하지는 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "축성공덕비의 건립 연도, 대상 인물·사업, 비문, 관리 주체와 문화유산 지정 여부를 확인하지 못했다.",
+      "이 표식의 정확한 경내 위치와 일반 관람 가능 여부, 접근 동선, 주차·안전 정보를 공식·공공 출처에서 확인하지 못했다.",
+      "독립 관광·문화 방문지로서의 운영, 전시, 해설 또는 체험 프로그램을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8098545",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 페이지 제목은 ‘축성공덕비’다.",
+          "공개 페이지는 소재지를 제주특별자치도 제주시 애월읍 신엄리로, 좌표를 경도 126.36864559101878·위도 33.46429638747351로 표시한다.",
+          "입력의 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "1800축복가정회 오순도순",
+        "type": "public_travel_account",
+        "url": "https://www.1800.or.kr/bbs/board.php?bo_table=comm_03&page=45&sod=asc&sop=and&sst=wr_hit&wr_id=9852",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "신엄리 리사무소 경내에 송덕비·공덕비·기념비들이 있다고 서술한다.",
+          "축성공덕비의 개별 비문·관리·관람 운영은 제시하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "independent_visit_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "축성공덕비는 신엄리의 개별 공덕비 표식으로 확인되지만, 일반 여행객을 위한 독립 관광·문화 방문지의 공식 관람·운영·안전 안내를 확인하지 못함",
+      "status": "needs_review",
+      "action": "공식·공공 관리 주체 자료로 비석의 정확한 위치, 공개 관람 가능 여부와 독립 문화관광 방문지 범위를 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

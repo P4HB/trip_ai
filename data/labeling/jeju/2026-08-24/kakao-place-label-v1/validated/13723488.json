@@ -1,0 +1,680 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723488",
+  "canonical_id": "kakao:13723488",
+  "name": "예초리기정길끝",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력명은 Visit Jeju가 추자면 예초리 산 1의 독립 관광지로 안내하는 ‘예초리기정길’의 끝 지점을 가리킨다. 해안 절벽과 숲길을 따라 걷는 공개 관광 동선으로 확인되어 독립 방문 가능한 자연 관광지로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기정길은 해안 절벽과 숲길을 걷는 장소로 소개되며 산·오름 자체가 핵심 경험이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 기정을 바닷가 절벽으로 설명하고 추자 바다를 옆에 둔 해안길로 소개한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-COAST-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 걷기·등산·도보여행 분류와 해안 절벽길·숲길을 걷는 설명으로 보행 탐방이 대표 경험임이 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화유산·전시·공연 또는 전통 체험이 대표 방문 경험이라는 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·커피·디저트 이용이 독립 방문 목적인 장소라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "전통시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "바닷가 절벽과 숲길을 따라 걷는 야외 관광지로 안내되어 대표 방문 경험의 실내 비율은 낮다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 노출된 해안 절벽길과 숲길 보행이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 것으로 판단한다. 현장 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 콘텐츠가 고즈넉한 길과 섬마을 정취, 바다 곁 숲속 탐험 같은 분위기를 설명해 느린 경관 산책의 휴식 성격을 뒷받침한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-CALM-WALK-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "거리·경사·계단·노면·무장애 접근성 정보가 확인되지 않아 신체 부담은 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "기정길 끝 지점의 단독 체류시간과 단축·연장 동선 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 바닷가 절벽과 추자 바다를 끼고 걷는 길, 절벽길 끝의 예초리 마을 풍경을 직접 소개한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "‘기정’이라는 제주어 해안 절벽과 예초리의 굽이진 절벽·숲길이라는 구성이 이 장소의 고유한 방문 맥락으로 직접 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-PLACE-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "추자도 예초리의 해안 지형과 제주어 ‘기정’, 예초리 마을과 해녀가 만드는 섬마을 정취에 연결된 장소로 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-CONTEXT-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 관광지로 안내되지만 제주 또는 추자도를 대표하는 공적 상징·지정 명소라는 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 절벽·바다·마을 풍경이 공식 이미지 갤러리와 관광 설명에서 확인되어 시각적 기록 가치를 높게 추론하되, 사진 촬영이 명시적 핵심 활동인지는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-SCENERY-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 최신 안전·통신·동선 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 방문의 편의·체류 여건 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 방문의 동선·수용·안전 여건 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반에 필요한 난간·노면·안전시설 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·계단·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_coastal_trail_access_and_weather_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "예초리기정길끝은 야외 해안 절벽·숲길 보행 장소이나, 최신 개방 상태, 구간 통제, 경사·계단·난간, 무장애 접근성, 우천·강풍 시 안전 기준은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 제주관광정보 또는 현장 최신 안내로 길의 개방 여부, 지정 동선, 기상에 따른 통제와 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘예초리기정길끝’은 Visit Jeju의 관광지 ‘예초리기정길’과 공개 여행 콘텐츠가 설명하는 해안 절벽길 끝 지점을 가리키는 것으로 일치한다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 예초리기정길을 제주시 추자면 예초리 산 1의 관광지로 안내하고, 기정을 바닷가 절벽을 뜻하는 제주어라고 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "Visit Jeju의 추자도 올레 콘텐츠는 이 구간을 추자 바다를 옆에 끼고 걷는 숲길·해안 절벽길로 소개하며, 절벽길 끝에 예초리 마을 풍경이 펼쳐진다고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "기정길 끝 지점의 정확한 현장 진입로와 최신 개방·통제 여부",
+      "거리, 경사, 계단, 난간, 노면, 화장실·휴식시설과 무장애 접근성",
+      "우천·강풍 등 악천후 시 보행 안전과 공식 통제 기준"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019082",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "예초리기정길을 제주시 추자면 예초리 산 1의 관광지로 안내한다.",
+          "기정은 바닷가에 있는 절벽을 뜻하는 제주어이며, 걷기·등산·자연경관·도보여행으로 분류한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_content",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=cnts_200000000013026",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "예초리 기정길을 추자 바다를 옆에 끼고 걷는 숲길 구간으로 소개한다.",
+          "기정은 해안절벽을 뜻하는 제주 방언이며, 절벽길 끝에 예초리 마을의 고즈넉한 풍경이 펼쳐진다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

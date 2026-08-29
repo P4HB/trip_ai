@@ -1,0 +1,104 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1658324120",
+  "place_id": "1658324120",
+  "name": "군산오름 전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "Visit Jeju는 안덕면 군산오름의 정상 조망과 탐방 정보를 제공하지만, 입력 Kakao 레코드는 ‘군산오름 전망대’라는 명칭 외 주소·좌표·업종을 제공하지 않는다. 군산오름 정상, 8부능선 주차장 인근 조망 지점, 동굴 인근 표식 중 어디를 가리키는지 공식 위치 자료로 확정할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "군산오름은 안덕면의 화산쇄설성 퇴적층 오름으로 공식 관광 안내에 확인되지만 ‘군산오름 전망대’ Kakao 표식의 정확한 위치 범위는 미확정이다.",
+    "typical_visit": "공식 후보는 정상에서 한라산·산방산·마라도 등 서귀포 일대를 조망하는 야외 오름 탐방이다.",
+    "experience_scope": "정확한 전망 지점·진입 경로·안전 범위가 미확정이므로 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 군산오름 정상에서 한라산·중문관광단지·마라도·산방산을 전망할 수 있고 도보 약 30분이 걸린다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 8부능선까지 차량 접근이 가능하나 주차 공간이 협소하다고 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표와 정상·주차장·동굴 인근 중 위치",
+      "현재 탐방로·주차·통신·기상 안전과 접근성",
+      "전망대 시설의 실제 존재·운영 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500068",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "군산오름 지형·정상 조망·도보 소요 정보를 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://m.visitjeju.net/share/list?q=%EA%B5%B0%EC%82%B0%28%EA%B5%B0%EC%82%B0%EC%98%A4%EB%A6%84%2C%EC%BD%94%EB%A9%94%EC%98%A4%EB%A6%84%29",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "8부능선 차량 접근과 협소한 주차 공간을 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1658324120",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 레코드는 장소명과 공개 방문 근거를 제공하지만 주소·좌표는 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_route_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao ‘군산오름 전망대’ 표식의 정확한 위치·시설 범위와 안전한 진입 경로를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 Kakao 좌표·현장 표지로 정확한 전망 지점을 먼저 교차 확인한다. 확인 전에는 추천용 35축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

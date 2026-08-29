@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:23275861",
+  "place_id": "23275861",
+  "name": "비블리아성서식물원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주관광공사의 공식 관광 정보에 한림읍 조성로 17의 비블리아성서식물원으로 등재되어 있으며, 성서 식물 해설을 제공하는 독립 관광지로 확인된다.",
+    "duplicate_of": null,
+    "evidence_ids": ["f1", "f2"]
+  },
+  "research": {
+    "identity_summary": "제주시 한림읍의 성서 주제 식물원이다. 식물을 통한 복음전파와 기독교 문화산업 기여를 목적으로 조성되었고, 예약 시 성서 식물 해설과 올리브잎차를 제공한다.",
+    "typical_visit": "식물원을 둘러보며 성서 식물 해설을 듣고 차를 경험하는 소규모 관람형 방문이다. 카카오 후기에서는 약 40분 관람 및 허브·향 체험이 언급되지만, 이는 보조 근거다.",
+    "experience_scope": "야외 식물원 관람을 중심으로 한 기독교·식물 교육 체험이며, 계절별 실제 운영·시설 접근성·행사 여부는 확인이 필요하다.",
+    "facts": [
+      {"id": "f1", "text": "제주관광공사 관광 정보는 이 장소를 한림읍 조성로 17의 비블리아성서식물원으로 소개하며, 식물을 통한 복음전파와 기독교 문화산업 기여를 위해 조성된 식물원이라고 설명한다.", "source_ids": ["s1"]},
+      {"id": "f2", "text": "제주관광공사 관광 정보는 미리 예약하면 성서식물 해설과 올리브잎차를 제공한다고 안내한다.", "source_ids": ["s1"]},
+      {"id": "f3", "text": "익명화된 카카오 후기에는 해설, 허브·향 체험, 차 제공 및 약 40분 관람 경험이 반복 언급된다.", "source_ids": ["s2"]}
+    ],
+    "unknowns": [
+      "현재 운영시간, 휴무일, 입장료 및 예약 가능 여부",
+      "실내 공간의 실제 비중과 우천 시 관람 가능 범위",
+      "유아차·휠체어를 포함한 동선 접근성",
+      "월별 식물 경관과 계절별 프로그램 운영"
+    ],
+    "sources": [
+      {"id": "s1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019444", "checked_at": "2026-08-24", "facts": ["장소명·주소·관광지 정체", "기독교 문화산업과 성서 식물원 목적", "예약 시 성서식물 해설 및 올리브잎차 제공"]},
+      {"id": "s2", "publisher": "카카오맵 공개 방문 후기", "type": "review_summary", "url": "https://place.map.kakao.com/23275861", "checked_at": "2026-08-24", "facts": ["해설과 허브·향·차 체험 언급", "약 40분 관람 경험 언급"]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "식물원 정체는 확인되지만 산·오름 경관이 핵심이라는 근거는 없다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공식 소개에서 해안·해양 경험은 확인되지 않는다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "성서 식물 해설과 차·향 체험이 확인되어 참여형 요소는 있으나 레포츠형 활동은 아니다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "기독교 문화산업 기여 목적과 성서 식물 해설이 공식 안내에 명시된다.", "source_ids": ["s1"], "rule_ids": ["REQ-006"]},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "공식 관광 정보의 태그에 테마공원이 포함되지만, 확인된 핵심은 소규모 식물원 관람이다.", "source_ids": ["s1"], "rule_ids": ["REQ-006"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "예약 체험에 올리브잎차 제공은 있으나 카페 이용이 독립적인 방문 목적이라는 근거는 없다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "시장 기능이나 상설·기간성 장터 근거가 없다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "특정 축제나 기간성 행사가 핵심이라는 근거가 없다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "식물원 관람이 확인되어 실외 중심으로 추정되지만 실내 시설 비중은 확인되지 않았다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "실외 식물원 관람 중심으로 추정되어 비·바람·더위의 영향을 받을 가능성이 크지만 우천 대체 공간은 미확인이다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "식물 관람과 차 제공, 후기의 휴식 경험 언급을 종합하면 평온한 체류 요소가 있으나 공식 휴식 시설은 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "식물원이라는 유형 외에 경사·계단·보행 동선 정보가 없어 이용 편의는 판단하기 어렵다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "해설 예약 체험과 약 40분 관람 후기가 있어 짧은 관람은 가능해 보이나 장시간 체류 선택지는 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "식물원과 공식 이미지 갤러리는 시각적 식물 감상이 방문 일부임을 뒷받침하나 대표 경관 수준은 미확인이다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "성서 식물과 기독교 문화라는 명확한 주제, 예약 해설이 일반 식물원과 구별되는 구성으로 공식 확인된다.", "source_ids": ["s1"], "rule_ids": ["REQ-006"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 한림의 독립 식물원이지만, 제주 고유 자연·생산자·생활과의 연결은 공식 정보에서 제한적으로만 확인된다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공식 관광지 등재 외에 제주를 대표하는 상징 명소라는 근거는 확인되지 않는다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 이미지 갤러리가 식물원 경관을 제시하지만 사진 촬영이 핵심 목적이라는 직접 안내는 없다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "개별 관람 가능성은 있으나 혼자 방문의 실제 편의 정보는 부족하다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "couple": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "식물 관람과 해설 체험은 동반 관람이 가능하나 커플 특화 근거는 부족하다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "friends": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "소그룹 관람 가능성은 있으나 단체 수용·예약 조건은 확인되지 않았다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "kids": {"state": "applicable", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "식물 해설과 향·차 체험은 교육적 요소가 있으나 연령 제한과 안전·접근성은 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "parents": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해설 중심의 느린 관람일 수 있으나 보행 부담과 휴식 시설을 확인하지 못했다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "2": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "3": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "4": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "5": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "6": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "7": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "8": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "9": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "10": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "11": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "12": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·식물 경관·우천 대체 정보가 없어 중립값으로 보류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "hard_constraints": [
+    {"kind": "reservation", "applies_to": "성서 식물 해설 및 올리브잎차 체험", "condition": "제주관광공사 안내상 해당 체험은 미리 예약한 경우 제공된다.", "status": "confirmed", "action": "방문 전 운영처에 예약 가능 여부와 조건을 확인한다.", "source_ids": ["s1"], "checked_at": "2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

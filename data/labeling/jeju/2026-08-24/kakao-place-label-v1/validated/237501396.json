@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:237501396",
+  "place_id": "237501396",
+  "name": "대덕산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력은 Kakao Map의 장소명 ‘대덕산’과 place_id만 제공하며 주소·좌표·카테고리·후기가 없다. ‘대덕산’은 국내에 동명 산이 여럿 있어, 신뢰할 수 있는 공개 출처에서 이 Kakao 표식이 제주도의 독립 방문지라는 점과 현재 탐방 가능 여부를 교차 확인하지 못했다. 따라서 추천용 장소 정체성을 확정할 수 없다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao Map에는 ‘대덕산’이라는 표식이 있으나, 제공된 공개 메타데이터만으로는 제주 내 어느 지형 또는 방문지를 뜻하는지 확인되지 않았다.",
+    "typical_visit": "공식·공공 출처로 탐방로, 출입 조건 또는 대표 방문 경험을 확인하지 못했다.",
+    "experience_scope": "동명 장소 혼동 가능성과 위치·접근 정보 부재 때문에 산·자연경관 방문지라는 유형 추론이나 추천 적합도 점수화를 하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao Map 공개 장소 메타데이터는 place_id 237501396의 명칭을 ‘대덕산’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 주소, 좌표, 분류, 공개 후기, 관리 주체 또는 탐방 정보가 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 제주도의 어느 실제 지형·시설과 일치하는지 확인되지 않았다.",
+      "일반 방문객의 출입 가능 여부, 탐방로, 주차·안전 시설과 관리 주체를 확인하지 못했다.",
+      "계절별 접근성 및 날씨 관련 방문 제약을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/237501396",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "공개 장소 표식의 명칭은 ‘대덕산’이다.",
+          "라벨링 입력에는 주소·좌표·카테고리·후기가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동명 산과의 구분, 제주 내 정확한 위치, 일반 방문객 출입 및 안전한 접근 동선이 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 공공 최신 지리·관리 안내로 장소 동일성, 출입 권한, 탐방로와 현장 안전 정보를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

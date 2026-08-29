@@ -1,0 +1,34 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7944951",
+  "place_id": "7944951",
+  "name": "선물도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.9,
+    "rationale": "입력에는 이름 ‘선물도’와 Kakao 장소 ID 외 주소·좌표·분류·방문 근거가 없고, 공개 검색에서도 제주도의 특정 섬·관광지·시설로 일치시키는 신뢰 가능한 출처를 찾지 못했다. 동일 또는 유사 명칭의 비장소 용례가 다수여서 정체를 확정할 수 없다.",
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "‘선물도’라는 입력명에 대응하는 제주 소재의 공공·공식 관광지 또는 지리 지형 레코드를 확인하지 못했다.",
+    "typical_visit": "식별된 독립 방문 경험이 없다.",
+    "experience_scope": "정체가 확인되지 않았으므로 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "입력 패킷은 ‘선물도’의 Kakao 장소 ID만 제공하며 주소·좌표·카테고리·공개 리뷰 근거를 제공하지 않는다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "‘선물도 제주’ 및 ‘제주 선물도 섬’ 공개 검색에서 해당 장소를 제주 지리 지형·관광지로 확인하는 공공 또는 공식 출처를 찾지 못했다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["실제 주소와 좌표", "장소 유형 및 공식 명칭", "독립 방문지·시설 여부", "관리 주체와 방문 가능 여부"],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map 입력 패킷", "type": "source_dataset", "url": "https://place.map.kakao.com/7944951", "checked_at": "2026-08-28", "facts": ["입력 장소명은 선물도이며 공개 리뷰 근거는 제공되지 않았다."]},
+      {"id": "S2", "publisher": "공개 웹 검색", "type": "research_check", "url": "https://www.google.com/search?q=%EC%84%A0%EB%AC%BC%EB%8F%84+%EC%A0%9C%EC%A3%BC", "checked_at": "2026-08-28", "facts": ["해당 입력명을 제주 특정 방문지로 교차 확인할 신뢰 가능한 결과를 찾지 못했다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{"kind": "identity_and_access_unverified", "applies_to": "recommendation_candidate", "condition": "선물도의 정확한 위치·장소 유형·공식 관리 정보가 확인되지 않음", "status": "needs_review", "action": "공식 지명·문화유산·관광 데이터 또는 Kakao 원본 좌표로 정체를 확인하기 전까지 추천 후보로 사용하지 않는다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-28"}],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

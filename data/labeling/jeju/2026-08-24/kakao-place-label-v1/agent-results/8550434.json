@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8550434",
+  "place_id": "8550434",
+  "name": "충혼비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력은 주소·좌표·사진·상세 설명 없이 일반명사형 장소명 ‘충혼비’만 제공한다. 국가보훈부 현충시설정보서비스에는 서귀포시 안에 고성리·신산리·토산리 등 서로 다른 충혼비가 별도 시설로 수록되어 있어, Kakao place_id 8550434가 어느 시설인지를 공개 근거로 고유하게 연결하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 장소명은 ‘충혼비’이나, 입력 패킷에 위치 식별자가 없어 제주 내 동명 현충시설 가운데 하나로 특정할 수 없다.",
+    "typical_visit": "정확한 대상 시설이 특정되지 않아 대표 방문 경험을 판정하지 않았다.",
+    "experience_scope": "국가보훈부 공개 목록은 제주 서귀포시의 여러 충혼비가 각각 별개 전몰용사 추모 비석임을 확인한다. 그러나 입력의 Kakao ID와 이 목록 항목 간 주소·좌표 대조 근거는 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가보훈부 현충시설정보서비스는 서귀포시 고성리·신산리·토산리의 충혼비를 서로 다른 비석 시설로 별도 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주연구원 공개 마을 자료는 서귀포시 신효동의 역사문화자원으로 충혼비를 별도 열거한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8550434의 주소와 좌표", 
+      "대상 충혼비의 정확한 마을명·건립 배경·관리 주체", 
+      "현재 출입 가능 여부와 접근로·노면·편의시설"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가보훈부 현충시설정보서비스",
+        "type": "public_government_service",
+        "url": "https://mfis.mpva.go.kr/memorial/mfisMovementList.do?pageIndex=169",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "서귀포시 고성리·신산리·토산리 충혼비가 각각 별도 시설로 수록된다.",
+          "해당 시설들은 전몰용사 추모를 위한 비석으로 설명된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주연구원",
+        "type": "public_research_document",
+        "url": "https://www.jst.re.kr/upload/pdf/RC00000068.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "서귀포시 신효동의 역사문화자원으로 충혼비가 열거된다.",
+          "이 자료만으로는 Kakao place_id 8550434와의 동일성을 확인할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_verification_required",
+      "applies_to": "all_visitors",
+      "condition": "동일 명칭의 제주 현충시설이 다수이며 이 입력에는 주소·좌표가 없어 대상 장소의 정확한 위치와 현재 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "Kakao 지도 상세의 주소 또는 좌표를 확보해 국가보훈부 현충시설 목록의 해당 시설과 대조한 뒤 적격성 및 라벨을 재판정한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

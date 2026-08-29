@@ -1,0 +1,90 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1306241973",
+  "place_id": "1306241973",
+  "name": "동회천 4.3희생자 위령비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "동회천 마을회가 조성한 제주4·3 희생자 추모 위령비로 확인되는 독립적인 역사·기억 방문 지점이다.",
+    "source_ids": ["src_jeju43_20260825", "src_darktour_20260825"],
+    "rule_ids": ["eligibility.independent_place"]
+  },
+  "research": {
+    "status": "researched",
+    "summary": "제주시 회천동 화천사 인근의 제주4·3 희생자 위령비로, 동회천 희생자 72명의 이름을 새기고 기억·추모하는 역사 현장이다. 매년 4월 2일 위령제가 열린다고 소개된다.",
+    "sources": [
+      {
+        "id": "src_jeju43_20260825",
+        "publisher": "제주4·3연구소",
+        "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주4·3연구소의 4·3 유적지 목록은 동회천 4.3희생자 위령비를 별도 유적지로 수록한다."
+        ]
+      },
+      {
+        "id": "src_darktour_20260825",
+        "publisher": "제주다크투어",
+        "url": "https://jejudarktours.org/ko/historical-sites/?page=2",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "동회천 마을회가 2007년 12월 화천사 옆 부지를 확보해 위령비를 조성했다고 소개한다.",
+          "각명비에는 동회천 4·3 희생자 72명의 이름이 새겨져 있으며 매년 4월 2일 위령제를 봉행한다고 소개한다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "현장 주차, 보행 난이도, 무장애 접근성과 휴식 시설은 확인하지 못했다.",
+      "위령제 외 상시 해설·관람 운영 여부는 확인하지 못했다."
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 위령비를 역사 유적지로 소개하며 산·오름 경관이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["src_jeju43_20260825", "src_darktour_20260825"], "rule_ids": ["inference.non_mountain_historic_site"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 방문 목적은 희생자 추모와 역사 기억이며 해안·해양 경험 근거는 없다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.non_ocean_historic_site"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "참여형 체험이나 레포츠가 아닌 추모비 관람 장소로 확인된다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.passive_memorial_visit"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주4·3 희생자 72명의 이름을 새긴 위령비로, 역사적 기억과 추모가 방문 경험의 직접적인 핵심이다.", "source_ids": ["src_jeju43_20260825", "src_darktour_20260825"], "rule_ids": ["evidence.43_memorial_history"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료의 장소 성격은 역사 추모 유적지이며 테마파크형 시설 근거는 없다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.non_theme_park_site"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·디저트 이용 정보가 아니라 위령비와 주변 유적지 정보가 확인된다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.non_cafe_site"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장 기능이 아닌 역사 추모를 위한 위령비로 소개된다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.non_market_site"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "매년 4월 2일 위령제가 열리지만, 장소 자체의 상시 핵심은 기간성 축제보다 역사 추모비 관람이다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.annual_memorial_not_festival"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화천사 옆에 조성된 위령비로 소개되어 대표 경험은 옥외 현장 관람으로 추론한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.outdoor_memorial"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 옥외 위령비 관람으로 보이므로 비·바람 등 날씨 영향을 받을 가능성이 높다고 추론한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.outdoor_weather_exposure"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추모와 기억을 위한 조용한 관람 성격은 확인되나 휴식 시설이나 체류 환경 정보는 부족하다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.reflective_memorial"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "위령비 접근의 거리·경사·계단·무장애 정보가 확인되지 않아 보수적 중간 폴백값을 쓴다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.accessibility_unknown"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 관람의 권장 체류 시간과 해설 운영 정보가 없어 중간 폴백값을 쓴다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["fallback.duration_unknown"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "주변 유적지를 함께 둘러볼 수 있다는 소개는 있으나 경관 감상 자체가 핵심이라는 직접 근거는 없다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.scenery_not_primary"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "동회천 4·3 희생자 72명의 이름을 새긴 각명비라는 구성이 직접 확인되어 고유성이 높다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["evidence.named_victims_memorial"]},
+    "style_evidence.local_embeddedness": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "동회천 마을회가 조성하고 동회천 희생자를 추모하는 제주4·3 역사 현장으로 지역의 기억과 직접 연결된다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["evidence.local_43_memory"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "4·3 유적지로 수록되지만 제주 전체를 대표하는 공식 상징·지정 여부는 확인하지 못했다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.local_historic_site_no_designation"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 가치나 촬영 환경을 직접 확인하지 못해 중간 폴백값을 쓴다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.photo_value_unknown"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립 역사 현장을 조용히 관람할 수 있으나 현장 편의 정보는 확인되지 않았다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.independent_memorial_visit"]},
+    "couple": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "함께 역사 현장을 관람할 수 있으나 동반 방문 편의 정보는 부족하다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.shared_historic_visit"]},
+    "friends": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "소규모 동행 관람은 가능하다고 보이나 단체 수용·편의 정보는 확인되지 않았다.", "source_ids": ["src_jeju43_20260825"], "rule_ids": ["inference.shared_historic_visit"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 교육 맥락은 있으나 어린이 대상 해설·안전·접근 정보가 부족하다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["inference.educational_site_unknown_safety"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "보행 난이도와 휴식 시설 정보가 확인되지 않아 중간 폴백값을 쓴다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.accessibility_unknown"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "4": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "매년 4월 2일 위령제를 봉행한다고 직접 소개되어 4월의 역사·추모 맥락 적합도가 높다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["evidence.annual_april2_memorial"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·안전 정보를 확인하지 못해 옥외 역사 현장의 보수적 기후 폴백값을 사용한다.", "source_ids": ["src_darktour_20260825"], "rule_ids": ["fallback.climate_unknown"]}
+  },
+  "hard_constraints": [
+    {"kind": "accessibility_and_outdoor_conditions", "applies_to": "recommendation_candidate", "condition": "옥외 위령비의 현장 접근성, 보행 난이도, 기상 시 안전과 현재 개방 상태는 확인되지 않았다.", "status": "needs_review", "action": "이동약자·어린이 동반 추천 전에는 최신 현장 접근·안전 정보를 확인한다.", "source_ids": ["src_darktour_20260825"], "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

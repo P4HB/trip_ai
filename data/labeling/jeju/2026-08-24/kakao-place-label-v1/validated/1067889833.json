@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1067889833",
+  "place_id": "1067889833",
+  "name": "한양동연못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 공개 후기에는 작고 아담한 연못이라는 방문 인상만 있다. 공개 신뢰 출처 조사에서는 한양동연못의 소재지, 관리 주체, Kakao 표식과의 동일성, 일반 방문객에게 개방된 독립 방문지 여부를 확인할 수 있는 공식·공공 자료를 찾지 못했다. 따라서 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명은 한양동연못이며, 제공된 공개 후기는 작은 연못으로 표현한다. 그러나 정확한 위치·공적 명칭·개방 상태를 확인하지 못했다.",
+    "typical_visit": "공식적인 관람 또는 산책 동선, 운영·출입 조건을 확인하지 못했다.",
+    "experience_scope": "연못이라는 명칭과 하나의 짧은 공개 방문 인상만 있어 실제 관광·휴식 경험, 접근성 및 안전을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력으로 제공된 익명화 Kakao 공개 후기 한 건은 이 장소를 작고 아담하며 예쁜 연못으로 표현하고 잠깐의 휴식을 언급한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식의 정확한 소재지와 공적 지명·연못의 동일성을 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 소유·관리 주체, 공식 산책 동선과 주차·화장실·무장애 시설을 확인하지 못했다.",
+      "수변 난간·수심·미끄럼·기상 시 안전 통제와 계절별 접근 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 방문 후기 요약",
+        "type": "public_review_summary",
+        "url": "https://place.map.kakao.com/1067889833",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 제공 후기에는 작고 아담하며 예쁜 연못이라는 표현과 잠깐의 휴식 권유가 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_water_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "공개 신뢰 출처에서 이 연못의 정확한 위치·관리 주체·일반인 출입 허용 및 수변 접근 안전을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체 또는 관리 주체의 최신 안내로 정확한 위치, 출입 권한, 수변 안전시설·기상 통제 및 접근 동선을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

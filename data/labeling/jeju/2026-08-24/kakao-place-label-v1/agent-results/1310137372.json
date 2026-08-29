@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1310137372",
+  "canonical_id": "kakao:1310137372",
+  "name": "도령마루",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 제주 관광 안내에서 입력명 도령마루를 제주시 7호 광장 일대의 제주4·3 역사 유적지로 별도 소개한다. 단, 도로 한가운데의 고립 지대라는 접근상 제약은 추천 전 별도 확인이 필요하다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내의 핵심은 7호 광장 일대 4·3 역사 유적이며 산·오름·산림 경관 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 제주시 7호 광장의 4·3 유적을 설명하며 해안·해양 활동이나 해변 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 현장 기억과 안내판 관람이 확인된 경험이며 레포츠·참여형 체험 프로그램은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내는 도령마루를 4·3 당시 많은 사람이 희생된 제주시 7호 광장 일대의 문화·역사 유적으로 직접 소개한다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개는 역사 유적과 추모 맥락이며 놀이·동물·수족관 등 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·커피·디저트 이용이 독립적인 방문 목적인 장소라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 4·3 역사 유적을 설명하며 전통시장 또는 시장 거래 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 역사 유적으로 소개되며 특정 기간 축제·공연이 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "7호 광장 일대의 도로 한가운데 고립 지대로 설명되는 야외 역사 현장이며 실내 관람 공간은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-SITE-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 유적지 접근과 안내 관람이므로 비·바람·더위·추위의 영향을 받을 수 있다. 기상 시 출입 통제 기준은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 추모·역사 기억의 현장과 도로 한가운데 고립된 접근 환경을 설명하므로 휴식·느린 체류 공간으로 확인되지는 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-MEMORIAL-NONRESTFUL-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내는 이 일대에 인도와 건널목이 없어 일반인이 접근하기 쉽지 않은 고립 지대라고 명시한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-ACCESS-BARRIER-DIRECT"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사 안내의 존재는 확인되지만 현장 관람 동선·체류 시간·단축 가능 여부는 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개의 중심은 4·3 역사와 추모 맥락이며 경관 감상 자체가 핵심 방문 가치라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SCENERY-NOT-PRIMARY"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "도령마루는 여러 마을 주민의 희생과 관련한 제주4·3 역사 현장으로 공식 관광 안내에서 별도 유적으로 소개된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-HISTORIC-SITE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 용담 지역의 옛 지명·제주시 7호 광장·제주4·3 희생의 역사로 직접 설명되는 장소라 지역 역사와의 연결이 핵심이다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주4·3 역사 유적으로 공식 관광 목록에 수록됐지만 제주 전체 대표 명소로서의 공적 지정·방문 규모는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-HISTORIC-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개 사진과 위치 정보는 있으나 사진 촬영 또는 시각적 기록이 핵심 경험으로 권장되는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-PHOTO-NOT-CONFIRMED"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "인도와 건널목이 없는 고립 지대라는 접근 제약이 확인돼 혼자 방문의 현장 안전·동선 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-ACCESS-CONSTRAINT"]},
+    "couple": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "두 명 방문을 위한 별도 편의는 확인되지 않았고, 인도·건널목 부재의 접근 제약이 대표 경험을 제한할 수 있다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-ACCESS-CONSTRAINT"]},
+    "friends": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "그룹 관람 시설은 확인되지 않았고, 인도·건널목 부재의 접근 제약이 대표 경험을 제한할 수 있다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-ACCESS-CONSTRAINT"]},
+    "kids": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 인도와 건널목 부재로 일반인 접근이 쉽지 않다고 명시하므로 보호자가 동반해도 아동 방문은 현장 안전 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-CHILD-ACCESS-DIRECT"]},
+    "parents": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 인도와 건널목 부재를 명시하며, 고령 방문자의 보행·횡단 안전과 무장애 접근성은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-SENIOR-ACCESS-DIRECT"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·추모 행사·계절 절정 정보가 확인되지 않아 야외 역사 유적의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "roadside_access_and_crossing_safety", "applies_to": "all_visitors", "condition": "도령마루 일대는 인도와 건널목이 없어 일반인이 접근하기 쉽지 않은 고립 지대로 소개된다.", "status": "needs_review", "action": "방문 전 최신 현장 접근 동선과 합법적·안전한 횡단 가능 여부를 확인하고, 안전한 보행 접근이 보장되지 않으면 방문 후보에서 제외한다.", "source_ids": ["S1"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘도령마루’는 공식 관광 안내의 ‘도령모루(도령마루)’와 일치하며 제주시 7호 광장 일대 제주4·3 역사 유적을 가리킨다.",
+    "facts": [
+      {"text": "공식 제주 관광 안내는 도령마루를 제주시 7호 광장 일대이며 4·3 당시 많은 사람이 희생된 문화·역사 유적으로 소개한다.", "source_id": "S1"},
+      {"text": "같은 안내는 이 일대가 도로 확장으로 지형이 변했고 인도와 건널목이 없어 일반인이 접근하기 쉽지 않은 고립 지대라고 설명한다.", "source_id": "S1"}
+    ],
+    "unknowns": ["현재의 안전한 보행 접근 경로와 현장 교통 통제", "무장애 접근성, 주차·화장실·휴식 시설", "월별 개방 제한·추모 행사 및 기상 시 안전 안내"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022848", "checked_at": "2026-08-25", "facts": ["도령모루(도령마루)를 제주시 7호 광장 일대의 4·3 문화·역사 유적으로 소개한다.", "인도와 건널목이 없어 일반인이 접근하기 쉽지 않은 고립 지대라고 설명한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

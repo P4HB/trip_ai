@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8650849",
+  "place_id": "8650849",
+  "name": "갯거리오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "공공 목록은 제주시 한림읍 명월리의 갯거리오름을 수록하지만, 입력 Kakao 장소에는 주소·좌표가 없고 공개 후기는 금악오름 인근의 별도 야외 지점을 가리킨다. 동명 오름 가능성을 해소하거나 Kakao 표식이 공공 목록의 지형과 일치함을 확인할 최신 공적 위치·관리 자료를 찾지 못했으므로, 추천용 독립 방문지 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "공공 자료에는 제주시 한림읍 명월리의 갯거리오름이 수록되어 있으나, 입력 Kakao 표식이 그 지형인지와 현재 일반 방문객이 이용할 수 있는 독립 장소인지는 확인하지 못했다.",
+    "typical_visit": "입력된 익명 공개 후기에는 짧은 오름 보행, 가시덤불, 관리가 부족한 길 및 금악오름 조망이 언급되지만, 해당 경험을 공식 방문 방식으로 일반화할 수 없다.",
+    "experience_scope": "위치 동일성, 토지·출입 권한, 공식 탐방 동선과 최신 안전·관리 상태가 불명확하므로 추천용 경험 벡터를 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가정책정보협의회 공개 자료의 제주 오름 목록은 갯거리오름을 제주시 한림읍 명월리 15번지 일대, 표고 84m·비고 15m의 복합형 오름으로 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 포함된 익명 Kakao 공개 후기에는 가시덤불, 관리가 부족한 길, 약 5분의 오름 보행 및 금악오름 조망에 관한 서술이 있다. 이는 위치 동일성을 확정하지 않는 보조 근거다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 장소 표식의 주소·좌표와 공공 목록의 명월리 갯거리오름이 같은 지점인지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 토지 소유·관리 주체, 공식 탐방로와 주차·화장실·안전시설을 확인하지 못했다.",
+      "최신 계절별 출입 통제, 가시덤불·노면 상태 및 우천·강풍 시 안전 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가정책정보협의회",
+        "type": "public_government_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "갯거리오름은 제주시 한림읍 명월리 15번지 일대에 수록된다.",
+          "표고 84m, 비고 15m, 복합형으로 수록된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기 요약",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/8650849",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 제공 후기에는 가시덤불과 관리가 부족한 길이 언급된다.",
+          "입력 제공 후기에는 금악오름 조망과 짧은 오름 보행이 언급된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식과 공공 목록 지형의 위치 동일성, 일반 방문객 출입 권한, 공식 동선 및 최신 노면·식생 안전 상태가 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관리 주체나 지자체의 최신 위치·출입·안전 정보를 확인하고, 독립 방문지로 식별된 경우에만 재라벨링한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

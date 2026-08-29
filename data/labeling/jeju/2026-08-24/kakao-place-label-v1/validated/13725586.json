@@ -1,0 +1,112 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725586",
+  "place_id": "13725586",
+  "name": "고성윗마을 갈림길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 경로 기록들은 이 명칭을 제주올레 2코스의 ‘갈림길’·도로상 통과 지점으로만 제시한다. 독립적으로 관람·체험·이용할 시설이나 목적지라는 근거는 확인되지 않아, 길찾기용 분기점을 추천 후보 장소로 보지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력의 ‘고성윗마을 갈림길’은 성산읍 고성리 일대 제주올레 2코스에서 언급되는 도로 분기점으로 확인된다.",
+    "typical_visit": "도보 여행자가 제주올레 2코스를 이동하며 지나가는 길찾기 기준점이다. 독립 방문 프로그램·시설·관람 경험은 확인되지 않았다.",
+    "experience_scope": "관광·문화·레저·식음 독립 방문지가 아닌 경로상 갈림길로 확인되어, 추천용 41축 적합도 벡터를 생성하지 않는다. Kakao 평점·후기 수와 작성자 정보는 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주올레 2코스 경로 설명은 광치기해변에서 대수산봉입구로 가는 구간에 ‘고성윗마을 갈림길’을 거리 표기와 함께 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "올레 2코스 도보 기록은 고성동서로를 따라 걷다가 산성효자로로 이어지는 위치를 ‘고성윗마을 갈림길’로 서술한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 레코드는 장소명을 ‘고성윗마을 갈림길’로 제공하며 공개 리뷰 근거는 비어 있다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "갈림길 자체에 독립적인 관광시설·안내시설·프로그램이 있는지는 공개 신뢰 출처로 확인하지 못했다.",
+      "도로 공사, 통행 조건과 현장 표지의 최신 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "천오백년의 우리 역사",
+        "type": "public_route_record",
+        "url": "https://cheonym.tistory.com/16507300",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "제주올레길 제2코스의 경유지 목록은 고성윗마을 갈림길을 광치기해변과 대수산봉입구 사이의 경로 지점으로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "브런치",
+        "type": "public_travel_record",
+        "url": "https://brunch.co.kr/%40jehsk52/109",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "올레 2코스 도보 기록은 고성동서로에서 산성효자로로 이어지는 문맥에서 고성윗마을 갈림길을 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13725586",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘고성윗마을 갈림길’이다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없으며, 평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "experience_scope",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소가 독립 방문지가 아니라 제주올레 2코스상 길찾기용 갈림길로 확인됨",
+      "status": "confirmed",
+      "action": "추천 후보와 41축 라벨 생성에서 제외한다. 올레 2코스 자체를 추천 대상으로 삼으려면 경로 단위 데이터 계약으로 별도 등록·검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

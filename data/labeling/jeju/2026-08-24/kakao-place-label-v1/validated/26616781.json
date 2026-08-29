@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:26616781",
+  "place_id": "26616781",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "review_status": "needs_review",
+    "inference_level": "researched_inference",
+    "rationale": "Kakao 입력의 ‘이덕구선조묘비’는 이덕구 가족묘와 관련된 선조 묘비 표식으로 해석된다. 제주다크투어의 역사현장 안내는 이덕구 가족묘 뒤편에 이덕구 할머니 강씨의 훼손된 비석이 옮겨져 있다고 설명하고, 가족묘 자체를 4·3 역사현장으로 안내한다. 따라서 독립 운영 방문지라기보다 가족묘 방문에서 접하는 세부 기념 표식으로 판정한다. 다만 Kakao 표식과 해당 비석의 정확한 좌표 일치는 공개 자료만으로 확인하지 못했다.",
+    "rule_id": "eligibility.subordinate_facility.memorial_feature_within_primary_site",
+    "source_ids": [
+      "src_jeju_darktour_lee_deokgu_family_grave",
+      "src_digital_jeju_culture_lee_deokgu"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "src_jeju_darktour_lee_deokgu_family_grave",
+        "url": "https://www.jejudarktours.org/ko/historical-sites/%EC%9D%B4%EB%8D%95%EA%B5%AC-%EA%B0%80%EC%A1%B1%EB%AC%98%EB%8F%99%ED%9A%8C%EC%B2%9C/",
+        "publisher": "(사)제주다크투어",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "이덕구 가족묘를 제주시 회천동의 제주 4·3 역사현장으로 안내한다.",
+          "가족묘 뒤편에 소낭굴 서쪽에 있던 이덕구 할머니 강씨의 훼손된 비석이 옮겨져 있다고 설명한다.",
+          "가족묘에는 이덕구의 가족 묘가 함께 있다고 설명한다."
+        ]
+      },
+      {
+        "source_id": "src_digital_jeju_culture_lee_deokgu",
+        "url": "https://jeju.grandculture.net/jeju/search/GC00701581?collection=text&facet=times%3A%ED%98%84%EB%8C%80%2F%ED%98%84%EB%8C%80%2Cfield%3A%EC%97%AD%EC%82%AC&keyword=%ED%95%9C%EB%9D%BC%EC%82%B0&page=1&pageSize=10",
+        "publisher": "디지털제주문화대전",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "이덕구를 제주 4·3사건 당시 제주도 인민유격대 사령관으로 소개한다.",
+          "이덕구의 출신지를 제주특별자치도 제주시 조천읍 신촌리로 수록한다."
+        ]
+      }
+    ],
+    "summary": "공개 역사현장 자료에서 이덕구 가족묘의 뒤편에 별도 선조 비석이 있음을 확인했다. 입력 Kakao 표식은 명칭상 이 세부 묘비를 가리키는 것으로 보이나, 독립 시설·별도 관람 동선 또는 Kakao 좌표의 일치는 확인되지 않았다."
+  },
+  "hard_constraints": [
+    {
+      "key": "subordinate_memorial_feature",
+      "status": "required",
+      "rationale": "이 표식은 이덕구 가족묘의 뒤편에 있는 선조 묘비와 연계된 세부 기념 요소로 판단된다. 독립 추천 후보로 사용하지 않고 가족묘 방문 정보의 부속 표식으로만 취급하며, 안내 전 정확한 위치와 출입 조건을 현장 또는 관리 주체 정보로 확인해야 한다.",
+      "source_ids": [
+        "src_jeju_darktour_lee_deokgu_family_grave"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "review_reason": "Kakao 장소명과 공개 역사현장 자료의 세부 비석을 연결하는 좌표·관리 자료가 없어 현장 동일성 확인이 필요하다.",
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

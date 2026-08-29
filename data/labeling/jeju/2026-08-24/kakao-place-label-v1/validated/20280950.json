@@ -1,0 +1,110 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20280950",
+  "place_id": "20280950",
+  "name": "제주올레 제주국제공항안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "공개 보도는 이 안내소가 제주국제공항 1층 도착 게이트 앞에 있는 작은 데스크형 제주올레 정보 제공 시설이라고 설명한다. 제주올레 코스 자체나 독립 체험·관람 장소가 아니라 공항 이용 중 제주올레 여행 정보를 제공하는 공항 내부 부속 안내시설이므로 독립 추천 후보에서 제외한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-DESTINATION"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 제주국제공항 안에서 제주올레 코스·교통·숙박 등 여행 정보를 제공하도록 설치된 제주올레 안내 데스크와 일치한다.",
+    "typical_visit": "공항 도착 또는 출발 과정에서 제주올레 관련 정보를 문의하거나 자료를 받는 보조 서비스 이용이다.",
+    "experience_scope": "공항 내부의 안내 데스크형 시설로 확인되어, 독립 여행지의 방문 경험으로 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "세계여행신문은 사단법인 제주올레가 제주국제공항 내 제주올레 안내소를 개설했으며, 제주국제공항 1층 도착 게이트 앞에 위치한다고 보도했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 보도는 안내소가 제주올레 코스 정보, 대중교통 이용 방법, 숙박 안내 등 제주올레 여행 정보를 제공하는 데스크형 공간이라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "안내소의 2026년 현재 운영 여부, 운영 시간, 정확한 터미널 내 위치와 제공 서비스 범위는 최신 운영자 또는 공항 안내로 확인하지 못했다.",
+      "독립 관람·체험 시설, 별도 입장, 관광지로서의 체류 동선은 확인되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "세계여행신문",
+        "type": "travel_industry_news",
+        "url": "https://www.gtn.co.kr/mobile/news_view.asp?news_seq=41308&s_key=",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주올레 안내소가 제주국제공항 1층 도착 게이트 앞에 설치됐다고 보도했다.",
+          "안내소는 제주올레 코스, 대중교통, 숙박 등 여행 정보를 제공한다고 보도했다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/20280950",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 레코드의 장소명은 ‘제주올레 제주국제공항안내소’이며 Kakao place_id는 20280950이다.",
+          "평점과 후기 수는 적격성 또는 라벨값의 근거로 사용하지 않았다."
+        ]
+      }
+    ],
+    "limitations": [
+      "S1은 안내소 개설 당시의 보도이므로 현재 운영 시간이나 서비스 제공 여부를 확정하지 않는다.",
+      "Kakao 평점과 후기 수, 후기 작성자 정보는 판단 근거로 사용하지 않았다."
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_airport_information_desk",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주올레 제주국제공항안내소는 제주국제공항 내부에서 제주올레 여행 정보를 제공하는 안내 데스크로 확인되며, 독립 관광지·체험 장소의 방문 범위는 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외한다. 제주올레 코스 이용 정보를 제공해야 하면 제주올레 또는 제주국제공항의 최신 공식 안내에서 운영 여부와 위치를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ELIG-SUBORDINATE-FACILITY",
+        "CONSTRAINT-INDEPENDENT-DESTINATION-REQUIRED"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

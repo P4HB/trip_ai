@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "place_id": "13725831",
+  "canonical_id": "kakao:13725831",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "카카오맵이 제주특별자치도 제주시 한경면 청수리의 독립 장소로 ‘효자정려’를 제공한다. 상호·시설의 부속 장소·중복 장소라는 근거는 확인되지 않았다.",
+    "source_ids": ["KAKAO-PLACE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 방문 경험이라는 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 또는 해양 활동이라는 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"참여형 체험이나 레포츠라는 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"장소명이 ‘효자정려’로 확인되어, 정려 기념물 자체가 방문의 역사·문화적 핵심이다.","source_ids":["KAKAO-PLACE"],"rule_ids":["IDENTITY-NAMED-HERITAGE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용 장소라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 기능이라는 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제·공연 장소라는 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"정려는 통상 기념비·정려각을 보는 소규모 현장 유산이므로 대표 경험의 실내 비중은 낮다고 추정했으나, 현장 구조 확인이 필요하다.","source_ids":["KAKAO-PLACE"],"rule_ids":["ARCHETYPE-OUTDOOR-MONUMENT"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"소규모 정려 현장 감상은 옥외 중심으로 추정되어 강수·강풍 시 경험에 영향을 받을 가능성이 있다.","source_ids":["KAKAO-PLACE"],"rule_ids":["ARCHETYPE-OUTDOOR-MONUMENT"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"체류 분위기 또는 휴식 공간에 대한 직접 설명이 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-DIRECT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 거리, 경사, 계단 및 무장애 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선과 운영·체류 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"주변 경관이나 조망의 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"효행을 기리는 정려라는 명칭과 기념물 성격은 일반 상업 시설과 구별되는 역사적 경험을 시사한다. 상세 연혁은 추가 확인이 필요하다.","source_ids":["KAKAO-PLACE"],"rule_ids":["IDENTITY-NAMED-HERITAGE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"제주시 한경면 청수리에 위치한 효행 기념물로 지역의 역사·마을 맥락과 연결될 가능성이 높다. 대상 인물과 연혁은 확인되지 않았다.","source_ids":["KAKAO-PLACE"],"rule_ids":["LOCATION-LOCAL-HERITAGE-INFERENCE"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 지정·대표성 또는 지역 인지도에 관한 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-SIGNIFICANCE-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치에 관한 공식 설명이나 이미지 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개별 방문 동선·안전·체류 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문 적합성을 뒷받침하는 현장 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 관람 공간·체험 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 흥미·안전·보호자 동반 조건에 관한 직접 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근성·휴식·보행 부담 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영 및 현장 기상 노출 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"access","condition":"정확한 접근 경로·주차·무장애 이용 가능 여부는 확인되지 않음","status":"unknown","action":"visit_before_verify","source_ids":[],"rule_ids":["GATE-ACCESS-UNKNOWN"]},
+    {"kind":"operations","condition":"개방 시간·휴무·관람 가능 범위는 확인되지 않음","status":"unknown","action":"visit_before_verify","source_ids":[],"rule_ids":["GATE-OPERATIONS-UNKNOWN"]},
+    {"kind":"weather","condition":"옥외 기념물로 추정되어 강수·강풍 시 현장 관람에 영향을 받을 수 있음","status":"caution","action":"check_forecast","source_ids":["KAKAO-PLACE"],"rule_ids":["GATE-OUTDOOR-WEATHER-INFERENCE"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": {"name":"효자정려","address":"제주특별자치도 제주시 한경면 청수리","longitude":126.24335447268511,"latitude":33.27351047705316,"identity_status":"confirmed"},
+    "sources": [
+      {"source_id":"KAKAO-PLACE","url":"https://place.map.kakao.com/13725831","publisher":"카카오맵","checked_at":"2026-08-25","facts":["장소명은 효자정려이다.","카카오맵 표기 주소는 제주특별자치도 제주시 한경면 청수리이다.","공개 페이지 메타데이터의 좌표는 경도 126.24335447268511, 위도 33.27351047705316이다."]}
+    ],
+    "limitations": ["공식·공공 상세 소개, 지정 현황, 대상 인물·연혁을 확인하지 못했다.","운영 시간, 이용료, 주차, 보행·무장애 접근성은 확인되지 않았다.","카카오 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]
+  }
+}

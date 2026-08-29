@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 444,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25343635.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25343635",
+    "provider": "kakao",
+    "place_id": "25343635",
+    "name": "입산봉",
+    "url": "https://place.map.kakao.com/25343635",
+    "average_rating_5": "2.8",
+    "visitor_review_count": "10",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.03.",
+      "content": "오름인증하러 다녀왔어요.",
+      "tags": ""
+    },
+    {
+      "date": "2025.02.20.",
+      "content": "오름전체가 빼곡히 묘로 가득합니다 공동묘지라는걸 알고있긴했으나 이렇게 빼곡하게 묘가 있을거라곤 예상하지못했는데... 일부가 아닌 산 전체가 묘지입니다... 빼곡한묘에 기분이 좀 그렇지만 온김에 가보자고 가면갈수록 길도 없어집니다... 길로 가다가... 묘 사이로 가다가... 수풀사이를 헤치고... 백개정도의 오름을 가봤는데 여기는 정말 말리고 싶네요...",
+      "tags": ""
+    },
+    {
+      "date": "2023.05.13.",
+      "content": "네비안내 진입로 찾기 쉽고 갓길주차 또는 농장에 주차. 분화구(농장) 외에는 정상까지 빼곡히 공동묘지. 정상뷰는 한라산과 바다, 김녕마을 사방조망.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2022.03.27.",
+      "content": "4월 한달간 입산봉(삿갓오름) 분지내 금산농장 유채꽃 사진터 개방 .입장료 1인당 천원 있어요 주차료는 무료 가을엔 9월~10월 메밀꽃밭으로 변경 운영됩니다 개방시간 오전 10시~오후 3시 (우천시 운영안함) 김녕남8길 31-11",
+      "tags": ""
+    },
+    {
+      "date": "2021.07.23.",
+      "content": "입산봉 묘지 천지라 꺼려졌지만, 가보면 원형의 분화구(농장으로 개간됨) 와 정상부 둘레길이 있고, 묘산봉쪽 뷰가 좋습니다. 정비는 안되어 흙길입니다. 금산농장쪽으로 올라가면 됩니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

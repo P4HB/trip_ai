@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1857402130",
+  "place_id": "1857402130",
+  "name": "액티브파크 카트",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "공식 제주관광정보가 액티브파크의 레저카트를 독립 체험 요소로 안내하며, 입력 장소명 및 주소도 해당 시설과 일치한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["s1", "s2"]
+  },
+  "research": {
+    "identity_summary": "제주시 한림읍 금능남로 76의 액티브파크 제주에서 이용하는 레저 카트 체험이다.",
+    "typical_visit": "카트 탑승을 중심으로 방문하며, 같은 시설의 클라이밍·키즈카페와 함께 이용할 수 있다.",
+    "experience_scope": "주된 경험은 참여형 카트 주행이며, 카트는 야외 환경과 기상 조건의 영향을 받을 수 있다.",
+    "facts": [
+      {"id": "f1", "text": "제주관광공사 Visit Jeju는 액티브파크 제주에 레저카트가 있으며 클라이밍과 키즈카페도 함께 운영된다고 안내한다.", "source_ids": ["s1"]},
+      {"id": "f2", "text": "공식 관광 정보의 주소는 제주시 한림읍 금능남로 76이며 입력 장소의 판매 페이지 주소와 일치한다.", "source_ids": ["s1", "s2"]},
+      {"id": "f3", "text": "공개 판매 안내는 카트 1인승과 2인승을 제공하고, 기상 악화 시 이용이 불가할 수 있으며 키 150cm 이상 탑승 조건을 명시한다.", "source_ids": ["s2"]}
+    ],
+    "unknowns": [
+      "카트 트랙의 정확한 길이, 1회 주행 시간, 계절별 실제 운영 여부는 확인하지 못했다.",
+      "개별 카트 체험의 현재 대기시간·예약 가능 여부는 확인 시점에 따라 달라질 수 있다."
+    ],
+    "sources": [
+      {"id": "s1", "publisher": "제주관광공사 Visit Jeju", "type": "public_tourism", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000010214&menuId=DOM_000001718004000000", "checked_at": "2026-08-24", "facts": ["액티브파크 제주에 레저카트, 클라이밍, 키즈카페가 있음", "주소는 제주시 한림읍 금능남로 76"]},
+      {"id": "s2", "publisher": "제주도 공공플랫폼 탐나오", "type": "public_booking_platform", "url": "https://www.tamnao.com/web/sp/detailPrdt.do?prdtNum=SP00002150", "checked_at": "2026-08-24", "facts": ["카트 상품의 키 150cm 이상 탑승 조건", "기상 악화 시 이용 불가 가능성", "1인승·2인승 카트 상품 안내"]},
+      {"id": "s3", "publisher": "Kakao Map 공개 방문 후기", "type": "review_summary", "url": "https://place.map.kakao.com/1857402130", "checked_at": "2026-08-24", "facts": ["입력에 포함된 익명화 후기 2건은 속도감과 활동성을 언급함"]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "산·오름·산림 경관이 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·해양 경험이 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "theme.activity": {"value": 1, "confidence": 0.95, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 정보가 레저카트를 액티브파크의 핵심 체험으로 명시한다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사·문화·전시 경험이 카트의 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "theme.theme_park": {"value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 정보가 카트·클라이밍·키즈카페를 갖춘 액티브파크를 테마공원으로 분류한다.", "source_ids": ["s1"], "rule_ids": ["REQ-006", "REQ-009"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용이 카트 체험의 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "전통시장 경험과 관련된 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 축제·공연이 핵심이라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.6, "status": "needs_review", "inference_level": "researched_inference", "rationale": "판매 안내가 기상 악화 시 카트 이용 불가 가능성을 명시하므로 대표 카트 경험은 실외 비중이 높은 것으로 추정했다.", "source_ids": ["s2"], "rule_ids": ["REQ-009"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 판매 안내가 기상 악화 시 이용 불가 가능성을 명시한다.", "source_ids": ["s2"], "rule_ids": ["REQ-009"]},
+    "style_evidence.restfulness": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "속도감 있는 카트 주행이 주된 경험이어서 느린 휴식형 체류 비중은 낮게 판단했다.", "source_ids": ["s1", "s3"], "rule_ids": ["REQ-009", "REQ-010"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "카트는 직접 조작하는 활동이지만, 안내된 제약은 키 기준이며 보행·경사 부담 정보는 확인되지 않았다.", "source_ids": ["s2"], "rule_ids": ["REQ-009"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "1회 체험 시간과 현장 체류 선택 폭을 확인하지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상 자체가 카트 방문의 핵심이라는 공신력 있는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.6, "status": "needs_review", "inference_level": "researched_inference", "rationale": "카트·클라이밍·키즈카페를 함께 둔 복합 액티비티 시설이지만, 카트 단독의 고유성은 추가 확인이 필요하다.", "source_ids": ["s1"], "rule_ids": ["REQ-009"]},
+    "style_evidence.local_embeddedness": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주 자연·문화·생산자·생활과의 직접적 연결을 확인하지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주 또는 한림을 대표하는 상징 명소라는 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]},
+    "style_evidence.photo_value": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 가치가 직접 확인되는 공식·공공 근거를 찾지 못했다.", "source_ids": [], "rule_ids": ["REQ-009"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "applicable", "value": 0.75, "confidence": 0.8, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "판매 안내에 1인승 카트 상품이 있다.", "source_ids": ["s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "couple": {"state": "applicable", "value": 0.5, "confidence": 0.6, "status": "needs_review", "inference_level": "researched_inference", "rationale": "2인승 상품이 있어 둘이 함께 이용할 수 있으나 연인 대상 구성은 별도 확인되지 않았다.", "source_ids": ["s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "friends": {"state": "applicable", "value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 상품 설명이 가족·친구·연인이 함께 즐기는 카트 대결을 안내한다.", "source_ids": ["s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "kids": {"state": "applicable", "value": 0.5, "confidence": 0.7, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "2인승과 성인·어린이 동승 안내가 있으나, 탑승에는 키 150cm 이상 조건이 있다.", "source_ids": ["s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "parents": {"state": "applicable", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "카트 체험은 성인도 이용 가능하나 고령자 접근성·건강 제약 정보는 확인되지 않았다.", "source_ids": ["s2"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "month_fit": {
+    "1": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "2": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "3": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "4": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "5": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "6": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "7": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "8": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "9": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "10": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "11": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]},
+    "12": {"state": "applicable", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "연중 운영 안내는 있으나 월별 실제 운행 조건을 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["REQ-007", "REQ-009"]}
+  },
+  "hard_constraints": [
+    {"kind": "height_requirement", "applies_to": "kids", "condition": "카트 상품은 키 150cm 이상 탑승 가능", "status": "confirmed", "action": "동반 아동의 키와 현장 탑승 가능 여부를 확인한다.", "source_ids": ["s2"], "checked_at": "2026-08-24"},
+    {"kind": "weather_operation", "applies_to": "all", "condition": "기상 악화 시 카트 이용이 불가할 수 있음", "status": "confirmed", "action": "방문 당일 기상 및 업체 운영 여부를 확인한다.", "source_ids": ["s2"], "checked_at": "2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

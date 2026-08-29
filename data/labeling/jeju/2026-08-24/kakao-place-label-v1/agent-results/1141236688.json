@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1141236688",
+  "canonical_id": "kakao:1141236688",
+  "name": "잃어버린 마을 새나무곶",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주4·3평화재단의 4·3유적지 공개 안내가 서귀포시 대정읍 신도리 1221번지 일대의 ‘잃어버린 마을 새나무곶’을 별도 유적으로 식별하고, 4·3 당시 소개 후 복구되지 않은 마을의 이력을 설명한다. 따라서 역사 기억을 목적으로 독립적으로 찾을 수 있는 장소로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "산·오름·봉우리 또는 산림 경관이 핵심 방문 경험이라는 근거를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·해양 활동이나 바다 경관이 핵심 방문 경험이라는 근거를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "신체 활동·레포츠 또는 참여형 체험이 대표 경험이라는 공개 근거가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.85, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주4·3평화재단은 이곳을 4·3유적지로 안내하며, 1948년 소개령 이후 복구되지 않은 마을의 역사와 희생 사실을 설명한다. 역사 기억이 방문의 핵심이다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORIC-SITE-DIRECT"]},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "놀이·동물·전시형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·커피·디저트 이용이 독립 방문 목적인 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 안내의 위치는 신도리 1221번지 일대이며 마을 유적지로 소개된다. 대표 경험은 야외 현장 탐방으로 보이고 실내 관람 공간은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-HISTORIC-SITE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 유적지 현장 탐방이므로 비·바람·더위·추위에 영향을 받을 수 있다. 현장 대피 또는 통제 기준은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식시설, 혼잡도, 소음 및 실제 체류 환경 정보가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "접근로의 노면·경사·계단, 보행거리 및 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 현장 탐방의 권장·최소 체류시간과 인근 동선 정보가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상 자체가 방문 가치로 공식 강조된 근거를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "새나무곶은 약 20호가 살던 마을이 1948년 소개 뒤 현재까지 복구되지 않은 ‘잃어버린 마을’로 공식 기록되어 고유한 역사 기억 경험을 지닌다.", "source_ids": ["S1"], "rule_ids": ["STYLE-UNIQUE-HISTORIC-ORIGIN-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "신도리 새나무곶의 설촌·소개·미복구 이력과 주민 피해가 제주4·3의 지역사 맥락으로 공식 안내된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 4·3유적지로 등록된 역사적 의미는 확인되지만, 제주 또는 대정 지역을 대표하는 상징 명소라는 공적 위상·방문 규모는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HISTORIC-SITE-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 또는 시각적 기록 가치가 공식적으로 핵심 경험으로 안내된 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 안전, 안내, 통신 및 현장 동선 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 체류 환경과 편의시설 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 방문의 동선, 수용 여건 및 안전 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반에 필요한 접근로·안전시설·보호자 안내 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 보행 난이도, 쉼터 및 무장애 접근성 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 유적지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_historic_site_access_and_safety_unknown", "applies_to": "all_visitors", "condition": "새나무곶은 야외 4·3 유적지이나 최신 현장 진입로, 개방·통제 여부, 주차·화장실, 노면·경사·무장애 접근성, 우천·강풍 시 안전 안내는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주4·3평화재단 또는 현장 최신 안내로 유적지 접근 가능 여부, 사유지·통행 제한, 기상에 따른 보행 안전을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘잃어버린 마을 새나무곶’은 제주4·3평화재단의 4·3유적지 항목명과 일치하며, 서귀포시 대정읍 신도리 1221번지 일대로 공개 안내된다.",
+    "facts": [
+      {"text": "제주4·3평화재단은 새나무곶을 서귀포시 대정읍 신도리 1221번지 일대의 4·3유적지로 안내한다.", "source_id": "S1"},
+      {"text": "공식 안내에 따르면 새나무곶은 약 20호가 살던 마을로, 1948년 11월 중순 소개령에 따라 주민들이 신도1리로 옮긴 뒤 복구되지 않아 잃어버린 마을로 남았다.", "source_id": "S1"},
+      {"text": "제주4·3평화재단 4·3유적지 목록에는 ‘잃어버린 마을 새나무곶’이 별도 항목으로 수록되어 있다.", "source_id": "S2"}
+    ],
+    "unknowns": ["현장 표석·유구의 현재 상태와 정확한 진입 지점", "최신 개방·통행 제한, 사유지 여부 및 주차·화장실", "보행 노면·경사·계단, 휠체어 접근성 및 악천후 안전 통제", "현장 해설·교육 프로그램 및 월별 운영 정보"],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3평화재단", "type": "official_memorial_site", "url": "https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0&wr_id=159", "checked_at": "2026-08-25", "facts": ["새나무곶의 위치를 서귀포시 대정읍 신도리 1221번지 일대로 안내한다.", "약 20호 주민의 마을이 1948년 11월 소개령 후 복구되지 않았다고 설명한다.", "새나무곶의 설촌과 주민 피해 관련 역사 정보를 기록한다."]},
+      {"id": "S2", "publisher": "제주4·3평화재단", "type": "official_memorial_site_index", "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0", "checked_at": "2026-08-25", "facts": ["제주4·3평화재단의 4·3유적지 목록에 ‘잃어버린 마을 새나무곶’이 별도 항목으로 표시된다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

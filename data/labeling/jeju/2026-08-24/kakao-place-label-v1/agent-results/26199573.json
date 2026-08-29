@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26199573",
+  "place_id": "26199573",
+  "name": "별도봉산책로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.75,"rationale":"입력명과 공개 보도가 제주시 별도봉의 곤을동 구간을 포함한 별도봉 산책로라는 독립 야외 보행 방문지를 일관되게 가리킨다.","source_ids":["S1","S2","S3"],"rule_ids":["ELIG-PLACE-IDENTIFIED","ELIG-INDEPENDENT-VISIT"]},
+  "research": {
+    "status":"matched",
+    "checked_at":"2026-08-25T00:00:00+09:00",
+    "identity_summary":"별도봉산책로는 제주시 화북동 별도봉 해안·정상 일대의 야외 산책 동선으로 확인된다.",
+    "typical_visit":"해안 절벽과 바다, 별도봉 지형을 보며 걷고 곤을동 옛 마을터 일대를 지나는 야외 산책이다.",
+    "experience_scope":"카페·시장·테마파크·상설 축제 시설은 이 장소의 대표 경험으로 확인되지 않았다.",
+    "facts":[
+      {"id":"F1","text":"제주일보는 별도봉의 바다와 접한 산세를 따라 산책로가 이어진다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"국립생태원 제주 생태자산 자료는 별도봉·곤을동 일대의 경관가치와 문화유산 가치를 기록하며 문화유산 예시로 곤을동 마을을 든다.","source_ids":["S2"]},
+      {"id":"F3","text":"2024년 보도는 별도봉 산책로 곤을동 구간 180m 중 낙석 위험 구간의 출입 통제가 있었음을 보도한다.","source_ids":["S3"]}
+    ],
+    "unknowns":["2026년 현재 곤을동 구간의 정확한 개방 범위와 우회로 상태","경사·계단·노면, 유모차·휠체어 접근성","주차·화장실·조명 및 야간 보행 조건","월별 안전 통제와 기상 악화 시 운영 기준"],
+    "sources":[
+      {"id":"S1","publisher":"제주일보","type":"reputable_news","url":"https://jejunews.com/news/articleView.html?idxno=2215321&replyAll=&reply_sc_order_by=C","checked_at":"2026-08-25T00:00:00+09:00","facts":["별도봉은 바다와 접한 산세를 따라 산책로가 이어진다고 소개한다."]},
+      {"id":"S2","publisher":"국립생태원","type":"public_research","url":"https://www.nie.re.kr/nie/cmmn/file/fileDown.do?atchFileId=MFILE_0001TRJSK0e55p0&fileSn=12","checked_at":"2026-08-25T00:00:00+09:00","facts":["별도봉·곤을동 일대의 경관가치와 문화유산 가치를 기록한다.","문화유산의 예시로 곤을동 마을과 안뜨럼물을 든다."]},
+      {"id":"S3","publisher":"헤드라인제주","type":"reputable_news","url":"https://www.headlinejeju.co.kr/news/articleView.html?idxno=543220","checked_at":"2026-08-25T00:00:00+09:00","facts":["2024년 정밀안전점검 결과에 따라 별도봉 산책로 곤을동 구간 일부의 낙석 위험 출입 통제가 보도됐다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"별도봉의 산세를 따라 걷는 산책로로 직접 설명된다.","source_ids":["S1"],"rule_ids":["THEME-MOUNTAIN-DIRECT"]},
+    "theme.ocean":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"바다와 접한 별도봉 산세를 따라 걷는 해안 산책로로 설명된다.","source_ids":["S1"],"rule_ids":["THEME-OCEAN-DIRECT"]},
+    "theme.activity":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험이 야외 산책로 보행이다.","source_ids":["S1"],"rule_ids":["THEME-WALKING-DIRECT"]},
+    "theme.culture_history":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"산책권역의 곤을동 마을은 공공 자료에서 문화유산 가치의 예시로 기록된다.","source_ids":["S2"],"rule_ids":["THEME-LOCAL-HERITAGE-DIRECT"]},
+    "theme.theme_park":{"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험은 자연·해안 산책이며 테마파크형 시설은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe":{"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"카페 이용이 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market":{"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"시장 방문이 대표 경험이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival":{"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"상설 산책로로 확인되며 특정 기간 행사가 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio":{"value":0.25,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"대표 방문이 별도봉의 해안 산세를 따라 걷는 야외 산책이다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity":{"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"해안·야외 보행이 대표 경험이어서 기상 영향을 받지만 현행 통제 기준은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness":{"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"자연 경관을 보며 걷는 산책 동선으로 확인되지만 휴식 시설·정온성은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["STYLE-NATURE-WALK-CONTEXT"]},
+    "style_evidence.physical_ease":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단과 무장애 접근성 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"단축 동선과 표준 체류시간이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"바다와 접한 산세 및 공공 자료의 경관가치가 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"해안 별도봉 산세와 곤을동 마을 문화유산이 결합된 산책권역으로 확인된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-PLACE-CONTEXT-DIRECT"]},
+    "style_evidence.local_embeddedness":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"제주 별도봉 자연경관 및 곤을동 마을 문화유산과 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-NATURE-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance":{"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"지역 경관·문화유산 가치는 확인되지만 제주 전체를 대표하는 공식 상징·지정 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"경관은 확인되지만 사진 촬영이 직접 권장되거나 핵심 경험이라는 독립 근거가 부족하다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"단독 보행의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 편의·안전 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"그룹 보행의 수용·편의 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"아동 안전시설·경로 난이도·보호자 기준이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정 정보가 확인되지 않아 야외 산책의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints":[{"kind":"trail_safety_and_current_access_requires_confirmation","applies_to":"all_visitors","condition":"2024년 곤을동 구간에는 낙석 위험에 따른 출입 통제가 보도됐으며, 2026년 현재의 개방 범위·우회로·기상 시 통제는 확인되지 않았다.","status":"needs_review","action":"방문 전 제주시 또는 현장 최신 공지로 곤을동 구간의 개방 여부, 우회 동선, 낙석·기상 안전 통제를 확인한다.","source_ids":["S3"],"checked_at":"2026-08-25T00:00:00+09:00"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-25"
+}

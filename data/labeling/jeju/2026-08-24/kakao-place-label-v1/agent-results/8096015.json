@@ -1,0 +1,62 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8096015",
+  "place_id": "8096015",
+  "name": "충혼비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 패킷에는 일반 명칭인 ‘충혼비’와 Kakao URL만 있고 주소·좌표·건립 대상·공식 안내·방문 근거가 제공되지 않았다. 같은 명칭의 기념비가 여럿일 수 있어, 특정 기념비의 정확한 위치·역사적 맥락·독립 관람 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명, place_id와 Kakao 장소 URL뿐이다. 어느 충혼비를 가리키는지, 정확한 위치·건립 대상·관리 주체는 입력 근거만으로 확인할 수 없다.",
+    "typical_visit": "명칭은 추모 기념비를 시사하지만, 현장 해설·보존 상태·관람 공간과 방문 경험을 공식·공공 근거 없이 확정하지 않는다.",
+    "experience_scope": "주소·좌표·공식 안내·공개 리뷰 근거가 제공되지 않았고, 평점과 리뷰 수는 모두 0으로 라벨 근거로 사용하지 않았다. 장소 신원이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 8096015의 장소명을 ‘충혼비’로 제공하고, 주소·좌표·업종·리뷰 근거는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8096015의 정확한 주소와 좌표, 기념비의 건립 대상과 역사적 맥락",
+      "공식 관리 주체, 현장 보존·해설·관람 범위, 접근성·안전·개방 상태와 최신 안내",
+      "동행자·월별 적합도를 판단할 수 있는 공식·공공 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8096015",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘충혼비’이고 place_id는 8096015다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점과 리뷰 수는 각각 0으로 제공되며 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_memorial_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 Kakao 레코드에 주소·좌표·건립 대상·공식 안내가 없어 특정 기념비의 신원, 관람 범위 및 최신 접근·안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 역사·보훈 안내와 Kakao 주소·좌표로 기념비 신원을 먼저 교차 확인한다. 독립 관람지로 확인되면 해설·보존 범위와 접근성·현장 안전을 별도 검수한 뒤에만 추천용 벡터를 생성한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

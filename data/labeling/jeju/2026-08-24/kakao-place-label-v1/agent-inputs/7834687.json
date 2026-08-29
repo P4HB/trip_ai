@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1931,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/7834687.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:7834687",
+    "provider": "kakao",
+    "place_id": "7834687",
+    "name": "돌오름",
+    "url": "https://place.map.kakao.com/7834687",
+    "average_rating_5": "3.5",
+    "visitor_review_count": "2",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2021.06.29.",
+      "content": "탐방객들이 밟아 만든 길이 있으며, 조릿대를 헤치는 코스도 짧아 이 정도면 굉장히 양호한 길 상태 같습니다. 정상뷰는 탁 트이진 않았고 단면만 딱 보여줍니다. 날이 안 좋아 구름이 자욱한데 저 뒤로 한라산이 있습니다. 1번 사진 정상에 걸린 산악회 리본들 2번 사진 돌오름 정상뷰 3번 편백나무 숲길",
+      "tags": ""
+    },
+    {
+      "date": "2021.03.28.",
+      "content": "숲길 걷다가 있길래 가는 오름 정도 한라산쪽 뷰만 일부 보이고 올라가는 길이나 정비는 안된 산책이 아닌 탐험? 수준의 마음가짐으로 사람들은 꽤 가는 듯 하다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

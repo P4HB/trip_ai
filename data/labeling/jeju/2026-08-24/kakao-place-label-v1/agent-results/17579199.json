@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17579199",
+  "place_id": "17579199",
+  "name": "렛츠런파크제주 원형놀이마당",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘렛츠런파크제주 원형놀이마당’으로, 렛츠런파크 제주 내부의 특정 놀이 공간임을 직접 나타낸다. 제주관광공사는 렛츠런파크 제주를 조랑말 승마체험·박물관·어린이 놀이시설 등을 포함한 하나의 말 테마파크로 소개한다. ‘원형놀이마당’ 자체의 독립 운영·입장·방문 경험은 공개 신뢰 출처에서 확인되지 않아, 공원 본체와 별도로 추천할 후보가 아닌 부속 시설로 보수 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드는 ‘렛츠런파크제주 원형놀이마당’이라는 시설명을 제공한다. 명칭상 렛츠런파크 제주에 종속된 놀이 공간이며, 공개 관광 정보는 렛츠런파크 제주를 여러 어린이 놀이시설을 포함하는 단일 테마공원으로 설명한다.",
+    "typical_visit": "원형놀이마당만의 독립 방문 경험은 확인하지 못했다. 확인 가능한 범위에서는 렛츠런파크 제주 방문 중 이용할 수 있는 부속 놀이 공간으로 취급한다.",
+    "experience_scope": "입력 장소명과 공공 관광 정보는 상위 공원 및 어린이 놀이시설 존재를 뒷받침하지만, 원형놀이마당의 정확한 위치·시설 구성·독립 입장 여부·이용 대상·운영 상태는 확인하지 못했다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 17579199의 명칭을 ‘렛츠런파크제주 원형놀이마당’으로 제시하며, 평점과 공개 후기 수는 모두 0으로 기록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사는 렛츠런파크 제주를 제주마 보호·육성을 위해 개장한 말 테마파크로 소개하고, 조랑말 승마체험·파크골프장·미니 조랑말 박물관 및 여러 어린이 놀이시설을 포함한다고 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "‘원형놀이마당’의 정확한 위치와 렛츠런파크 제주 내 다른 놀이시설과의 구분을 공식·공공 출처로 확인하지 못했다.",
+      "원형놀이마당 자체의 독립 입장·예약·이용 연령, 안전 관리, 접근성 및 최신 운영 상태를 확인하지 못했다.",
+      "입력에 제공된 평점·후기 수는 라벨값의 근거로 사용하지 않았으며 공개 방문 후기 내용도 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17579199",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘렛츠런파크제주 원형놀이마당’이다.",
+          "입력 패킷의 평점과 방문자·블로그 후기 수는 모두 0이다.",
+          "평점과 후기 수는 적합도 라벨의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019539",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "렛츠런파크 제주는 제주마 보호·육성을 위해 1990년 개장한 말 테마파크로 소개된다.",
+          "관광 정보는 이 공원에 조랑말 승마체험, 무료 파크골프장, 미니 조랑말 박물관 및 여러 어린이 놀이시설이 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_current_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "원형놀이마당은 렛츠런파크 제주 내부 부속 시설로 판정했으며, 독립 방문·입장 가능 여부와 최신 운영·안전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 후보로 노출하기 전에 한국마사회 또는 제주관광공사의 최신 안내로 시설의 정확한 위치, 상위 공원 입장 조건, 이용 연령·안전 및 운영 상태를 확인한다. 확인 전에는 상위 공원과 별도의 추천용 벡터를 만들지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17578680",
+  "canonical_id": "kakao:17578680",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 보도에서 제주 첨단과학기술단지의 카카오오름을 별도 지명·공원 개발 대상로 확인했다. 다만 현재 일반 방문 가능 여부는 확인되지 않았다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["identity.public-source-match", "scope.jeju-place"],
+    "confidence": 0.75,
+    "review_status": "needs_review"
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 자료가 카카오오름을 제주 영평동의 높이 362m 지형으로 수록한다.","source_ids":["S2"],"rule_ids":["theme.core-experience"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인된 지명·개발 정보에는 해안 또는 해양 활동 근거가 없다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름 지형이나 산책 가능성은 보이나 공식 탐방로·체험 정보가 확인되지 않았다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화유산·전시·전통 체험이라는 근거가 확인되지 않았다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카카오프렌즈 IP 공원 개발 계획은 확인됐으나 개장·운영 형태가 확인되지 않았다.","source_ids":["S1"],"rule_ids":["theme.core-experience","dynamic-fact.needs-confirmation"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"독립적인 카페 방문 목적을 뒷받침하는 근거가 없다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 목적이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제·공연 장소라는 근거가 없다.","source_ids":["S1"],"rule_ids":["theme.core-experience","fallback.insufficient-evidence"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대상은 오름 및 공원 개발 구역이어서 대표 경험은 실외로 추정되나 현장 시설은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["environment.visit-setting"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"실외 오름·공원 중심으로 알려져 날씨 영향이 클 것으로 추정되며, 현재 개방 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["environment.visit-setting","dynamic-fact.needs-confirmation"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"녹지·오름이라는 성격 외 휴식 경험의 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고도 정보는 있으나 경사·계단·탐방로 상태가 확인되지 않았다.","source_ids":["S2"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이용 동선과 개방 시간이 확인되지 않아 체류 시간 조절성을 확정할 수 없다.","source_ids":["S1"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름 지형이지만 조망·경관에 대한 공공 또는 공식 상세 근거가 부족하다.","source_ids":["S2"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"카카오 제주 본사 부지의 카카오오름과 카카오프렌즈 IP 공원 개발 계획이 확인되어 고유성이 있다.","source_ids":["S1"],"rule_ids":["style.evidence"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 영평동의 오름 지형이지만 기업 캠퍼스 부지여서 제주 지역 생활·문화와의 연결 정도는 추가 확인이 필요하다.","source_ids":["S1","S2"],"rule_ids":["style.evidence"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표 명소임을 뒷받침하는 공공 관광 근거가 부족하다.","source_ids":["S1"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치 또는 허용 여부를 확인할 직접 근거가 부족하다.","source_ids":["S1"],"rule_ids":["style.evidence","fallback.insufficient-evidence"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 개방·접근 조건이 확인되지 않아 단독 방문 적합성을 판단하기 어렵다.","source_ids":["S1"],"rule_ids":["companion.access-uncertain","fallback.insufficient-evidence"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 개방·접근 조건이 확인되지 않아 동반 방문 적합성을 판단하기 어렵다.","source_ids":["S1"],"rule_ids":["companion.access-uncertain","fallback.insufficient-evidence"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 개방·접근 조건이 확인되지 않아 동반 방문 적합성을 판단하기 어렵다.","source_ids":["S1"],"rule_ids":["companion.access-uncertain","fallback.insufficient-evidence"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공원 개발 계획만 확인됐고 아동 안전·시설·개방 조건은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["companion.access-uncertain","fallback.insufficient-evidence"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사, 휴식 시설, 접근 조건이 확인되지 않아 부모 동반 적합성을 판단하기 어렵다.","source_ids":["S1","S2"],"rule_ids":["companion.access-uncertain","fallback.insufficient-evidence"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"운영·개방 및 계절별 이용 근거가 부족하다.","source_ids":["S1"],"rule_ids":["month.access-uncertain","fallback.insufficient-evidence"]}
+  },
+  "hard_constraints": [
+    {"constraint":"현재 일반인 출입·개방 여부와 운영 시간은 방문 전 공식 채널로 확인 필요","source_ids":["S1"],"rule_ids":["dynamic-fact.requires-current-confirmation"],"status":"needs_review","rationale":"2026-03 보도는 향후 공원 개발·개방 계획을 보도했으며 현재 운영 상태는 명시하지 않는다."}
+  ],
+  "research": {
+    "sources": [
+      {"id":"S1","url":"https://www.yna.co.kr/view/AKR20260309150100056","publisher":"연합뉴스","checked_at":"2026-08-25","facts":"카카오 제주 본사 부지의 스페이스닷원 남측과 카카오오름 일대에 카카오프렌즈 IP 공원을 개발해 지역주민과 방문객에게 개방할 방침이라고 보도했다."},
+      {"id":"S2","url":"https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C","publisher":"P2SK 블로거 세상","checked_at":"2026-08-25","facts":"카카오오름을 제주 제주시 영평동, 높이 362m로 수록한다."}
+    ],
+    "rationale": "공식·공공 관광 상세 페이지는 찾지 못했으며, 신뢰도 높은 보도로 장소 정체와 향후 공원 개발 계획을 확인했다. 동적 접근 정보는 확정하지 않았다.",
+    "status": "needs_review"
+  },
+  "review_priority": "high"
+}

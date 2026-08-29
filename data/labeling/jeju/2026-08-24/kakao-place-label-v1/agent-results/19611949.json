@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "19611949",
+  "canonical_id": "kakao:19611949",
+  "name": "머체왓숲길 방문객지원센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "제주관광공사 VisitJeju는 머체왓숲길을 독립 관광지로 안내하면서 입구의 건강체험장과 안내센터를 숲길 코스·체험을 지원하는 시설로 설명한다. 입력명은 그 방문객지원센터와 일치하며, 별도의 독립 방문 경험보다는 머체왓숲길 탐방을 지원하는 부속 시설로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-SUBORDINATE-FACILITY", "ELIG-NOT-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{
+    "kind": "parent_trail_conditions_and_support_center_scope_unverified",
+    "applies_to": "recommendation_candidate",
+    "condition": "입력 장소는 머체왓숲길의 방문객 지원·안내 맥락으로 확인되나, 현재 센터의 독립 운영 범위·개방 시간·제공 서비스와 탐방로의 최신 통제·안전 상태는 확인하지 못했다.",
+    "status": "needs_review",
+    "action": "추천 후보는 독립 장소가 아닌 머체왓숲길에 연결한다. 방문 전 공식 안내로 센터 운영·예약 체험과 탐방로 개방·기상 안전 정보를 확인한다.",
+    "source_ids": ["S1", "S2"],
+    "checked_at": "2026-08-28"
+  }],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 제주관광공사 VisitJeju가 머체왓숲길 소롱콧길의 출발 지점으로 언급한 ‘안내센터’ 및 머체왓숲길 입구의 체험 시설 맥락과 일치한다. 개별 Kakao 레코드가 별도 운영하는 독립 관광 시설인지는 확인되지 않았다.",
+    "facts": [{
+      "text": "VisitJeju는 머체왓숲길을 여러 숲길 코스와 해설·트레킹·족욕·피크닉 체험을 갖춘 관광지로 안내한다.",
+      "source_id": "S1"
+    }, {
+      "text": "VisitJeju의 숲길 소개는 소롱콧길이 안내센터에서 출발한다고 설명한다.",
+      "source_id": "S2"
+    }],
+    "unknowns": ["카카오 장소가 가리키는 센터 건물·공간의 정확한 범위", "센터의 현재 개방 시간, 상시 제공 서비스와 독립 이용 가능 여부", "방문지원센터 자체를 목적지로 삼는 별도 관람·체험 동선"],
+    "sources": [{
+      "id": "S1",
+      "publisher": "제주관광공사 VisitJeju",
+      "type": "official_tourism_information",
+      "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008001&menuId=DOM_000001718001000000",
+      "checked_at": "2026-08-28",
+      "facts": ["머체왓숲길은 3개 숲길 코스와 숲 해설·트레킹·족욕·피크닉 프로그램을 운영하는 관광지로 안내된다.", "입구의 건강체험장과 카페·족욕 프로그램은 숲길 방문에 연계된 시설로 소개된다."]
+    }, {
+      "id": "S2",
+      "publisher": "제주관광공사 VisitJeju",
+      "type": "official_tourism_information",
+      "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000015798",
+      "checked_at": "2026-08-28",
+      "facts": ["머체왓 소롱콧길은 안내센터에서 출발해 숲길의 여러 지점을 지나는 경로로 소개된다.", "머체왓숲길과 소롱콧길의 거리·예상 소요 시간이 각각 안내된다."]
+    }]
+  },
+  "generated_at": "2026-08-28"
+}

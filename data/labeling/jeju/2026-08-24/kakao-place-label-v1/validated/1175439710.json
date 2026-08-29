@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1175439710",
+  "canonical_id": "kakao:1175439710",
+  "name": "중문관광단지안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력은 중문관광단지 내 관광 안내소다. 단지와 그 내부 관광지의 방문을 지원하는 안내 기능이며 독립 관광 경험이 아니므로 부모 관광단지의 하위 시설로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "tourist_information_service_operation_unknown",
+      "applies_to": "all_visitors",
+      "condition": "안내소의 실제 운영시간·제공 언어·접근성은 변동될 수 있다.",
+      "status": "needs_review",
+      "action": "방문 전 제주관광공사 또는 현장 최신 안내로 운영 여부를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 중문관광단지 내 관광 안내 기능을 수행하는 시설로 확인했다.",
+    "facts": [
+      {
+        "text": "제주관광공사 공식 관광 지도는 중문관광단지 내 관광안내소 위치를 제주국제컨벤션센터 1층으로 안내한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "관광약자 접근성 안내 자료는 한국관광공사 중문관광단지안내소를 수록한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "현재 안내소의 상세 서비스·운영시간",
+      "카카오 표식과 안내소의 정확한 실내 위치"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_map",
+        "url": "https://www.visitjeju.net/map/JEJU_MAP_KOREAN.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "중문관광단지 내 관광안내소 위치를 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도 관광약자접근성안내센터",
+        "type": "public_accessibility_guide",
+        "url": "https://api.visitjeju.net/file/bbsattachment/filepath/201806/08/a8e9980f-2f55-4ac7-9891-7ac069d871e0.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "중문관광단지안내소를 수록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

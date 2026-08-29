@@ -1,0 +1,64 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "27302956",
+  "canonical_id": "kakao:27302956",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 관광 안내와 제주시 조사 자료에서 안세미오름은 제주시 봉개동의 자연 오름·탐방로로 확인되며, 별도 시설의 하위 항목이나 다른 장소와의 중복이 아니다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTITY", "ELIG-DESTINATION-SCOPE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광 안내가 이 장소를 오름으로 소개하고 등산로 코스를 명시한다.","source_ids":["S1"],"rule_ids":["THEME-MOUNTAIN"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료에는 해안·해양 경험의 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"왕복 1시간 30분의 등산로와 425m 둘레길 탐방 코스가 안내된다.","source_ids":["S1"],"rule_ids":["THEME-ACTIVITY"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장소 자체의 역사·문화유산 체험이 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 놀이 경험의 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 기간 행사나 축제가 이 장소의 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 안내의 대표 경험은 숲길·등산로·둘레길을 걷는 야외 탐방이다.","source_ids":["S1"],"rule_ids":["ENV-INDOOR-RATIO"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 숲길과 등산로 탐방이므로 날씨가 체험에 상당히 영향을 준다고 판단했다.","source_ids":["S1"],"rule_ids":["ENV-WEATHER-OUTDOOR"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"울창한 숲과 대나무 숲길이 아름답고 산책하기 좋은 오름으로 소개된다.","source_ids":["S1"],"rule_ids":["STYLE-RESTFULNESS"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"등산로는 완만한 경사로 초보자도 쉽게 갈 수 있고, 30분 왕복 둘레길은 누구나 손쉽게 탐방 가능하다고 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-PHYSICAL-EASE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"약 1시간 30분 등산로와 약 30분 왕복 둘레길의 두 코스가 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-DURATION-FLEXIBILITY"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"해송·상수리·삼나무 숲과 대나무 숲길의 아름다움, 다양한 자연 풍경이 공식 관광 콘텐츠에 제시된다.","source_ids":["S1"],"rule_ids":["STYLE-SCENIC-VALUE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"명도암물 안쪽의 오름이며 인접한 밧세미오름과 형제 오름으로 소개되는 점을 고유성의 중간 근거로 반영했다.","source_ids":["S1"],"rule_ids":["STYLE-DISTINCTIVENESS"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 조사 자료는 안세미오름을 봉개동의 자연생태자원인 오름으로 열거한다.","source_ids":["S2"],"rule_ids":["STYLE-LOCAL-EMBEDDEDNESS"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 관광 콘텐츠가 탐방할 만한 오름으로 소개하지만, 제주를 대표하는 상징 명소라는 직접 근거는 제한적이다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식·공공 자료에서 사진 촬영 가치가 직접 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"짧은 둘레길과 완만한 등산로가 있어 단독 자연 탐방에 적합하다고 판단했다.","source_ids":["S1"],"rule_ids":["COMPANION-SOLO"]},
+    "couple": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"숲길 산책과 여러 탐방 코스가 있어 2인 자연 탐방에 적합하다고 판단했다.","source_ids":["S1"],"rule_ids":["COMPANION-COUPLE"]},
+    "friends": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"코스 선택이 가능하고 함께 걷는 야외 탐방 경험이 중심이므로 친구 동반 적합도를 반영했다.","source_ids":["S1"],"rule_ids":["COMPANION-FRIENDS"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"짧고 손쉬운 둘레길 안내는 긍정적이나 야외 탐방로이므로 개별 아동의 동행·안전 조건은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["COMPANION-KIDS"]},
+    "parents": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"완만한 경사와 손쉬운 30분 탐방 코스 안내를 근거로 부모 동반 자연 탐방 적합도를 반영했다.","source_ids":["S1"],"rule_ids":["COMPANION-PARENTS"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"climate_heuristic","rationale":"관광 안내가 사계절 방문을 긍정적으로 소개하지만 야외 탐방 특성상 월별 현장 날씨 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"climate_heuristic","rationale":"관광 안내가 사계절 방문을 긍정적으로 소개하지만 야외 탐방 특성상 월별 현장 날씨 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "3": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "4": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "5": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "6": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"climate_heuristic","rationale":"여름 신록의 숲 풍경은 안내되지만 야외 탐방의 날씨 민감성을 함께 반영했다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"climate_heuristic","rationale":"여름 신록의 숲 풍경은 안내되지만 야외 탐방의 날씨 민감성을 함께 반영했다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "9": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "10": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "11": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"climate_heuristic","rationale":"사계절 방문이 가능하다는 안내와 야외 숲길 탐방 특성을 반영했으며, 실시간 기상은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"climate_heuristic","rationale":"관광 안내가 사계절 방문을 긍정적으로 소개하지만 야외 탐방 특성상 월별 현장 날씨 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-OUTDOOR-SEASONALITY"]}
+  },
+  "review_priority": "medium",
+  "hard_constraints": [],
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {"source_id":"S1","publisher":"비짓제주","url":"https://v.daum.net/v/20240801090537106","checked_at":"2026-08-25T00:00:00+09:00","facts":["안세미오름은 제주시 봉개동의 명도암물 안쪽에 있는 오름이다.","울창한 숲과 대나무 숲길이 있으며 산책하기 좋은 오름으로 소개된다.","완만한 1시간 30분 왕복 등산로와 425m·30분 왕복 둘레길이 안내된다.","사계절 방문과 여름 신록의 숲 풍경을 소개한다."]},
+      {"source_id":"S2","publisher":"제주시·국회도서관 국가학술정보 공동활용체계","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf","checked_at":"2026-08-25T00:00:00+09:00","facts":["제주시 마을특성 조사에서 안세미오름은 봉개동의 자연생태자원 오름으로 열거된다.","같은 조사에는 안세미오름 탐방로 정비 사업이 기록되어 있다."]}
+    ],
+    "limitations": ["운영시간·휴무·입장 제한 등 변동 가능한 현장 정보는 공식 최신 공지에서 확인하지 못했다.","월별 적합도는 공개 관광 안내와 야외 탐방 특성에 근거한 보수적 추정이며 현장 기상은 반영하지 않는다."]
+  }
+}

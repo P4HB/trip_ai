@@ -1,0 +1,38 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1778423776",
+  "canonical_id": "kakao:1778423776",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명은 새섬공원 내부의 전망대를 명시한다. 상위 공원의 내부 조망 지점이므로 독립 추천 장소로 라벨링하지 않는다.",
+    "source_ids": []
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "parent_venue_required",
+      "detail": "독립 장소로 추천하지 않고 상위 새섬공원의 내부 지점으로 취급해야 한다.",
+      "source_ids": []
+    }
+  ],
+  "research": {
+    "sources": [],
+    "limitations": [
+      "입력 패킷에 공식·공공 상세 출처와 공개 리뷰 근거가 제공되지 않았다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25197241",
+  "canonical_id": "kakao:25197241",
+  "name": "노루손이오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "현재 결과 복구 과정에서 공공·공식 출처로 입력 표식의 정확한 위치와 관리 범위를 재확인하지 못했다. 입력의 공개 방문 근거만으로는 안전한 독립 추천 후보 정체를 확정하지 않는다.",
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력은 노루손이오름이라는 명칭과 공개 방문 근거를 제공하지만, 이 복구 기록에서는 공식 좌표·관리 정보를 확인하지 못했다.",
+    "typical_visit": "입력 근거에는 임도·둘레길·소나무 숲 보행이 언급된다.",
+    "experience_scope": "정체 확인 전까지 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷에는 노루손이오름의 둘레길·임도·소나무 숲 및 조망 관련 익명화된 공개 방문 근거가 제공됐다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 위치·관리 주체·개방 상태",
+      "공식 탐방로와 접근 안전 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing_and_sanitized_review_evidence",
+        "url": "https://place.map.kakao.com/25197241",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명과 공개 방문 근거를 제공한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공식 위치·관리·안전 정보 미확인",
+      "status": "needs_review",
+      "action": "공식 출처로 정체와 탐방 가능 여부를 확인하기 전까지 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1583255736",
+  "canonical_id": "kakao:1583255736",
+  "name": "남문지못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "남문지못은 대정읍 인성리의 연못·정자와 추사 유배 관련 입석이 있는 관광지로 확인된다. 다만 입력 Kakao 표식이 연못 전체, 남문지 역사 유적, 입석 또는 추사유배길 경유지 중 어느 범위를 가리키는지 좌표·주소 없이 확정하지 못해 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-AMBIGUOUS",
+      "ELIG-NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "site_extent_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "표식의 정확한 공간 범위와 현재 정자·연못 주변 접근 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 문화관광 안내와 최신 접근·안전 정보를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "남문지못은 추사 유배길의 역사 장소이자 대정읍 인성리의 연못으로 공개 소개된다. Kakao 표식의 세부 범위는 미확정이다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 남문지못에 추사 유배시절 모습을 담은 입석이 있다고 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "지역N문화는 남문지못을 인성리 마을 도로변의 작은 정자가 있는 못이며 추사유배길 방문객이 찾는 곳으로 소개한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 연못·정자·입석 중 정확한 범위",
+      "현행 접근·주차·화장실·무장애 정보",
+      "해설·행사 운영 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "public_travel_information",
+        "url": "https://www.visitjeju.net/en/detail/view?contentsid=CONT_000000000500087",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "추사 유배시절 관련 입석과 허련의 그림 이야기를 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "지역N문화",
+        "type": "public_culture_information",
+        "url": "https://ncms.nculture.org/story-of-our-hometown/story/910",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "남문지못의 위치·정자와 추사유배길 연계를 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

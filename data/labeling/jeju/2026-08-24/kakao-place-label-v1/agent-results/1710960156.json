@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1710960156",
+  "place_id": "1710960156",
+  "name": "하멜일행난파희생자위령비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘하멜일행난파희생자위령비’와 place_id만 제공하며 주소·좌표·업종·공개 후기·운영 정보가 없다. 2026-08-25에 이 정확한 명칭으로 공개 웹 검색을 했으나 해당 Kakao 레코드의 위치·관리 주체·독립 방문지 여부를 교차 확인할 공식·공공 상세 출처를 찾지 못했다. 명칭상 기념비일 가능성은 있으나 동명 표식 또는 비공식 지도 표기를 배제할 수 없으므로 신원을 추정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 Kakao place_id 1710960156과 명칭 ‘하멜일행난파희생자위령비’뿐이다. 제공된 Kakao 장소 URL은 공개 웹 도구에서 상세 내용을 확인할 수 없었고, 정확한 명칭의 공개 웹 검색도 이 레코드의 위치·유형을 확정하지 못했다.",
+    "typical_visit": "장소의 정확한 위치와 실제 구성·접근 상태가 확인되지 않아 대표 방문 경험을 추론하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 공개 후기 또는 공식 운영 정보가 없으며 Kakao 평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘하멜일행난파희생자위령비’이고 place_id는 1710960156이며, 입력에는 주소·좌표·업종·공개 후기 내용이 없다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-25에 ‘하멜일행난파희생자위령비 제주 공식’으로 공개 웹 검색했으나, 이 Kakao 레코드와 동일하다고 확인할 수 있는 공식·공공 장소 상세 출처를 찾지 못했다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 관리 주체 및 공개 접근 가능 여부",
+      "명칭이 가리키는 기념비의 실제 위치·규모와 독립 여행 방문지로서의 범위",
+      "접근성, 보행 안전, 개방 상태 및 계절·날씨 영향을 포함한 대표 방문 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1710960156",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘하멜일행난파희생자위령비’이며 place_id는 1710960156이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 공개 후기 내용 및 운영 정보가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%ED%95%98%EB%A9%9C%EC%9D%BC%ED%96%89%EB%82%9C%ED%8C%8C%ED%9D%AC%EC%83%9D%EC%9E%90%EC%9C%84%EB%A0%B9%EB%B9%84+%EC%A0%9C%EC%A3%BC+%EA%B3%B5%EC%8B%9D",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "정확한 장소명을 포함한 공개 웹 검색 결과에서 입력 Kakao 레코드의 위치·유형 또는 운영 주체를 교차 확인할 공식·공공 상세 출처를 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 상세 정보가 없어 장소 신원, 독립 여행 방문지 범위 및 현재 접근 가능 여부를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·유형·관리 정보를 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

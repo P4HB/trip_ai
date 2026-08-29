@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725762",
+  "canonical_id": "kakao:13725762",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력의 ‘가파마을 제단’은 가파도의 특정 제단을 가리키지만, 공개 조사에서 동일 명칭의 정확한 위치·관리 주체·방문 가능 여부를 확인하지 못했다. 가파도에는 상동 마을 할망당과 ‘가파도 제단(짓집)’ 등 서로 구별될 수 있는 제단 관련 기록이 있어, 이를 하나의 장소로 단정하거나 추천용 수치 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "source_gapado_study",
+      "source_triple_shrine",
+      "source_heritage_list"
+    ],
+    "rule_ids": [
+      "eligibility.identity_unknown.ambiguous_place_identity",
+      "policy.no_forced_vector"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "identity_and_community_practice_verification_required",
+      "rationale": "정확한 제단의 위치·공개 방문 가능 여부 및 마을 제의 관습을 현지 안내·관리 주체를 통해 확인하기 전에는 관광 방문지로 단정하지 않는다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_gapado_study",
+        "url": "https://www.jst.re.kr/upload/pdf/RC00096136.pdf",
+        "publisher": "제주학연구센터",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "가파도에서 마을제인 포제와 토신제가 이어져 왔다고 기록한다."
+        ]
+      },
+      {
+        "source_id": "source_triple_shrine",
+        "url": "https://triple.guide/attractions/93a96f87-170e-4942-87a9-1cfd495b87ce",
+        "publisher": "트리플",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "가파도 북쪽의 별도 지점 ‘상동 마을 할망당’을 제단으로 소개한다."
+        ]
+      },
+      {
+        "source_id": "source_heritage_list",
+        "url": "https://grant-documents.thevc.kr/269389_%EB%B6%99%EC%9E%841_2.pdf",
+        "publisher": "문화유산 연계 목록",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "목록에 ‘가파도 제단(짓집)’이라는 별도 표기가 있다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1728417838",
+  "canonical_id": "kakao:1728417838",
+  "name": "천변길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 일반 명칭 ‘천변길’과 카카오 장소 ID만 있고 주소·좌표·분류가 없다. 공개 검색에서는 제주 장소와 연결되는 신뢰할 만한 일치 자료를 찾지 못했으며, 동일 명칭이 여러 지역의 도로·산책로에 사용된다. 따라서 제주 내 특정 독립 방문 장소를 확정할 수 없다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-IDENTITY-INSUFFICIENT", "ELIG-NO-LOCATION-MATCH"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{
+    "kind": "place_identity_and_location_unknown",
+    "applies_to": "all_visitors",
+    "condition": "카카오 입력에 주소·좌표·시설 유형이 없어 실제 대상 및 제주 내 위치를 확인할 수 없다.",
+    "status": "needs_review",
+    "action": "카카오 장소 상세 또는 관리 주체의 주소·좌표·정식 명칭으로 동일성을 먼저 확인한 뒤 라벨링한다.",
+    "source_ids": ["S1", "S2"],
+    "checked_at": "2026-08-28"
+  }],
+  "review_priority": "high",
+  "research": {
+    "status": "unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "‘천변길’은 지명·도로명으로 널리 쓰이는 일반 명칭이다. 주어진 Kakao ID와 제주 내 특정 길을 연결할 주소 또는 좌표가 공개 입력에 없어 신원을 확정하지 못했다.",
+    "facts": [
+      {"text": "전주시 공식 관광 페이지는 서신동까지 이어지는 전주 천변길을 벚꽃길로 소개한다.", "source_id": "S1"},
+      {"text": "평창군 평창읍의 도로명주소에도 천변길이 사용되어 동일 명칭이 제주 외 지역에 존재함을 확인했다.", "source_id": "S2"}
+    ],
+    "unknowns": ["카카오 장소의 실제 주소와 좌표", "제주 내 일치 장소 여부", "길의 관리 주체·공개 접근성·시설 및 방문 경험"],
+    "sources": [
+      {"id": "S1", "publisher": "전주시", "type": "official_tourism_page", "url": "https://tour.jeonju.go.kr/board/view.jeonju?boardId=BBS_0000022&dataSid=13291&menuCd=DOM_000000101012000000&paging=ok&startPage=5", "checked_at": "2026-08-28", "facts": ["전주의 천변길이 서신동까지 이어지는 벚꽃길로 소개된다.", "일반 명칭만으로 제주 장소와 구분할 수 없음을 뒷받침한다."]},
+      {"id": "S2", "publisher": "도로명주소 정보", "type": "public_address_reference", "url": "https://dorojuso.kr/5176025024100290000000001/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%ED%8F%89%EC%B0%BD%EA%B5%B0-%ED%8F%89%EC%B0%BD%EC%9D%8D-%EC%B2%9C%EB%B3%80%EA%B8%B8-24-11", "checked_at": "2026-08-28", "facts": ["강원특별자치도 평창군 평창읍에도 천변길 도로명이 존재한다.", "입력명만으로 고유 장소를 식별할 수 없다."]}
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

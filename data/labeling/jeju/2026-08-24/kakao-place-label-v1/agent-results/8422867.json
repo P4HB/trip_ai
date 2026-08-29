@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8422867",
+  "place_id": "8422867",
+  "name": "어대오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주관광공사의 제주 관광 안내 지도는 어대오름을 독립 관광 지점으로 수록하고, 제주시 구좌읍 덕천리의 높이 210.5m 오름으로서 완만한 약 20분 오름길을 안내한다. 따라서 Kakao 장소명과 독립적인 야외 자연 방문 장소의 신원이 일치해 eligible로 판정한다. 다만 최신 개방·통제 및 현장 시설 상태는 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "어대오름은 제주시 구좌읍 덕천리의 독립적인 오름이며, 제주관광공사 관광 안내 지도에 관광지 순환버스 810의 경유 지점으로 수록된다.",
+    "typical_visit": "공식 관광 안내 자료가 제시하는 대표 경험은 정상까지 약 20분의 비교적 완만한 야외 오름길을 걷는 것이다.",
+    "experience_scope": "오름의 위치·높이·완만한 도보 경험·주차 공간은 공공 관광 안내에서 확인했다. 최신 출입 가능 여부, 탐방로 노면·계단, 화장실·무장애 시설, 기상별 통제와 계절별 현장 상태는 확인하지 못했다. 입력된 공개 후기는 약 20분 트래킹, 입구 위치 및 전망 제한을 언급하지만 평점·후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 제주 관광 안내 지도는 어대오름을 관광지 순환버스 810의 경유 지점으로 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 안내 자료는 어대오름을 높이 210.5m의 비교적 낮은 오름으로 설명하고, 정상까지 약 20분, 비교적 완만한 오름길이라 초보자도 즐기기 좋으며 주변에 주차 공간이 있다고 안내한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": [
+      "2026-08-24 현재 일반 탐방객의 출입 가능 여부, 사유지·보전구역 제한, 예약·허가 필요 여부를 확인하지 못했다.",
+      "공식 탐방로의 현재 노면·계단·경사, 입구 표지, 주차·화장실·쉼터 및 무장애 접근 정보를 확인하지 못했다.",
+      "월별 개방·통제, 강풍·호우·폭염·적설 시 현장 위험과 계절별 경관 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사", "type": "official_tourism_map", "url": "https://www.visitjeju.net/bus/JejuTouristShuttleBusMap%28Kor%29.pdf", "checked_at": "2026-08-24", "facts": ["어대오름을 관광지 순환버스 810 경유 지점으로 수록한다.", "어대오름을 높이 210.5m의 오름으로 설명하며 정상까지 약 20분, 비교적 완만한 오름길과 주변 주차 공간을 안내한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 장소 정보·방문 후기", "type": "public_map_listing", "url": "https://place.map.kakao.com/8422867", "checked_at": "2026-08-24", "facts": ["입력 패킷의 Kakao 장소명은 어대오름이다.", "입력된 공개 후기는 약 20분 트래킹, 입구 위치와 전망 제한을 언급한다.", "평점과 후기 수는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사 관광 안내가 높이 210.5m의 오름과 정상까지의 오름길을 직접 안내하므로 산·오름 경험이 핵심이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 정상까지 약 20분의 오름길을 대표 방문 경험으로 설명하므로 걷기 활동의 비중이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 대표 경험이 오름길을 걷는 야외 활동이므로 실내 비율이 낮다고 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 오름길 걷기이므로 비·바람·더위·추위의 영향을 비교적 크게 받는다고 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 실제 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 정상까지 약 20분이고 오름길이 비교적 완만해 초보자도 즐기기 좋다고 설명하므로 대표 동선의 신체 부담은 비교적 낮다. 최신 노면·무장애 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"약 20분 정상 소요 안내 외에 선택 가능한 동선·체류시설·시간 조절 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름의 자연 지형은 확인되지만 경관 감상 자체가 핵심 가치라는 공식 설명이 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유선형 능선이라는 명칭 유래는 안내되지만 다른 오름과 비교한 고유한 방문 경험의 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 구좌읍의 오름이라는 사실 외에 제주 지역 생활·생산자·문화와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 관광 지도 수록만으로 제주 또는 지역을 대표하는 상징 명소라고 단정할 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"방문객의 사진 촬영 또는 시각적 기록 가치가 직접 확인되는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"짧고 비교적 완만한 대표 오름길을 근거로 혼자 걷는 방문에 비교적 적합하다고 추론한다. 최신 출입·안전·동선 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"짧고 비교적 완만한 대표 오름길을 함께 걷는 방문에 비교적 적합하다고 추론한다. 최신 현장 여건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"짧고 비교적 완만한 대표 오름길을 함께 걷는 방문에 비교적 적합하다고 추론한다. 단체 수용·안전 여건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"초보자에 대한 공식 설명은 있으나 어린이 안전시설·노면·보호자 동반 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"완만한 약 20분 오름길은 안내되지만 보행 보조·쉼터·화장실·무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"어대오름의 최신 일반 출입 가능 여부, 사유지·보전구역 제한, 공식 진입로·노면·계단, 주차·화장실·쉼터·무장애 시설 및 악천후 안전 통제를 확인하지 못했다. 입력된 공개 후기는 입구 위치와 코스 정리 미흡을 언급한다.","status":"needs_review","action":"추천 또는 방문 전 관리 주체·지자체의 최신 출입 안내를 확인하고, 현장 진입로·기상·보행 안전을 별도 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

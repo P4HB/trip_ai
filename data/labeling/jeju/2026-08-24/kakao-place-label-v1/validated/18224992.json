@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18224992",
+  "place_id": "18224992",
+  "name": "제주돌문화공원 제주전통초가",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 표식의 명칭은 ‘제주돌문화공원 제주전통초가’다. 제주관광공사 Visit Jeju는 제주돌문화공원 3코스 ‘제주전통초가마을’을 공원 안에서 제주의 옛 마을을 본떠 세거리집·두거리집·말방앗간 등을 배치한 코스로 안내한다. 따라서 이 표식은 별도 운영되는 독립 여행지가 아니라 제주돌문화공원의 관람 동선 안에 포함된 부속 전시·관람 구역으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주돌문화공원 제주전통초가는 Kakao 지도에 표시된 제주돌문화공원 내 전통초가 관련 표식이며, Visit Jeju가 안내하는 공원 3코스 ‘제주전통초가마을’과 명칭·범위가 일치한다.",
+    "typical_visit": "제주돌문화공원의 유료 또는 공원 관람 동선 중 제주 옛 마을을 본뜬 전통초가와 관련 시설을 관람하는 경험이다. 독립 운영 장소로는 확인하지 않는다.",
+    "experience_scope": "공식 관광 안내는 공원과 3코스의 전시·관람 구성을 확인하지만, 이 Kakao 표식이 특정 초가 한 채인지 전통초가마을 전체인지, 최신 개방 구간·관람 동선·입장 조건·접근성은 별도로 확인하지 못했다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터의 place_id 18224992 명칭은 ‘제주돌문화공원 제주전통초가’이며, 공개 후기에는 ‘제주전통초가’라는 짧은 내용만 있다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원 3코스 ‘제주전통초가마을’이 제주의 옛 마을을 본떠 세거리집, 두거리집, 말방앗간 등을 배치해 옛 사람들의 삶을 엿볼 수 있도록 한 공원 내 코스라고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 제주전통초가마을 전체, 특정 전통초가 또는 다른 부속 시설 중 무엇을 정확히 가리키는지는 확인하지 못했다.",
+      "최신 개방 구간, 입장·관람 조건, 정비·공사 여부, 접근로·노면, 주차·화장실 및 무장애 시설은 확인하지 못했다.",
+      "독립 장소로서의 별도 운영시간·요금·안내 서비스는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/18224992",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 장소명은 ‘제주돌문화공원 제주전통초가’다.",
+          "입력된 공개 후기는 ‘제주전통초가’라는 짧은 내용이며, 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원은 돌문화를 보여 주는 박물관이자 생태공원으로 안내된다.",
+          "3코스 ‘제주전통초가마을’은 제주의 옛 마을을 본떠 세거리집, 두거리집, 말방앗간 등을 배치한 공원 내 코스라고 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_facility_scope_and_access_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "이 표식은 제주돌문화공원의 3코스 제주전통초가마을에 속하는 부속 관람 구역으로 확인된다. 표식의 정확한 범위와 최신 개방·입장·접근성 조건은 별도 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 않고 제주돌문화공원 상위 장소의 관람 정보에 포함한다. 방문 안내 전에는 공원 공식 최신 안내로 해당 구간의 개방·입장 및 접근 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

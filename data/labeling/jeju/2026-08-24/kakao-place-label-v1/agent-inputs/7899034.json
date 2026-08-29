@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 826,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/7899034.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:7899034",
+    "provider": "kakao",
+    "place_id": "7899034",
+    "name": "별도환해장성",
+    "url": "https://place.map.kakao.com/7899034",
+    "average_rating_5": "4.4",
+    "visitor_review_count": "7",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.11.18.",
+      "content": "⭐️1/2… 여기…노코멘트…🥱…",
+      "tags": ""
+    },
+    {
+      "date": "2025.09.11.",
+      "content": "훤히 보이는 바다가 아름답다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.14.",
+      "content": "예쁘다 :) 유채가 피는지 모르겠는데… 유채시즌에 또 보자",
+      "tags": ""
+    },
+    {
+      "date": "2021.10.21.",
+      "content": "성벽도 멋잇고 갈대도 멋있고 그네도 이뻐요",
+      "tags": ""
+    },
+    {
+      "date": "2021.10.10.",
+      "content": "고려말에는 몽고에 저항한 삼별초가 구축하고, 조선시대에는 왜구의 침략을 방어하기 위해 돌로 쌓아 만든 연대.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

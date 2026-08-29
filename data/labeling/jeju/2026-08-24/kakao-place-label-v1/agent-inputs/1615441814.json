@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1826,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1615441814.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1615441814",
+    "provider": "kakao",
+    "place_id": "1615441814",
+    "name": "가시림 수목원",
+    "url": "https://place.map.kakao.com/1615441814",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "45",
+    "blog_review_count": "203",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.06.",
+      "content": "해먹에 누워 새소리 바람소리 듣다보면ᆢ최상의 힐링타임을 갖게 됩니다~~",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2024.11.22.",
+      "content": "우연히 방문하게된 제주 가시림 아자기한 산책코스로 힐링 제대로 하고왔어요~ 귤따기 체험까지 좋았습니다 무농약 귤이라 바로 까먹었는데 맛나네요~ 동백꽃 만개할때 오면 넘 이쁠듯해서 그때 다시 오려고 합니다~~",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2024.03.27.",
+      "content": "초록초록하고 수선화가 예쁘게 피었어요. 유명한 이끼정원은 정말 멋있고 예뻤어요. 꽃이 진 동백나무는 사시사철 푸르른 너무군여^^ 또 낮은 오름은 수목원을 한눈에 볼 수 있어 예뻤어요. 아기자기하게 꾸며진 작은 길, 나무들.. 천천히 둘러보면 볼게 많고 여기저기 예쁜 꽃, 풀, 나무가 있어요. 산책이 아닌 나무, 꽃을 감상하면 시간 가는 줄 몰라요. 길마다 자갈, 멍석을 깔아놓아 걷기도 편하고 좋아요^^ 계절마다 다른 모습으로 제주 올때마다 좋네요 수목원 안, 까페도 너무 예뻐요 창가에 앉아 커피를 마시면 숨이 막힐정도로 아름다워요^^",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.07.29.",
+      "content": "사설 수목원인데 깔끔해요. 여름이라 꽃이 많이 피진 않았지만 조용히 잠깐 걷기 나쁘지 않습니다. 전 사려니숲 가는 길에 카페 갈 겸 들렀어요~ 입장료 행사 중이라 음료 가격에 소소하게 방문 잘 했어요",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2026.07.25.",
+      "content": "여름기간은 절대 비추. 카페를 목적으로 와서 구경하는거면 괜찮지만 수목원은 볼게 아무것도 없다. 에이드랑 아이스크림은 맛있다.",
+      "tags": "뷰|시설"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

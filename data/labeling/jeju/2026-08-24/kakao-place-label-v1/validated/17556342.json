@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17556342",
+  "place_id": "17556342",
+  "name": "휴애리자연생활공원 와룡바위",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.5,
+    "rationale": "입력 명칭이 휴애리자연생활공원 내 와룡바위를 가리키므로 독립 관광지가 아닌 공원 내 부속 지점으로 분류한다. 입력에는 별도 방문 경험·운영 근거가 없어 추천용 41축을 부여하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 장소명은 휴애리자연생활공원 와룡바위이며 공원 내 부속 지점으로 해석된다.",
+    "typical_visit": "독립 방문 경험 근거가 없다.",
+    "experience_scope": "부속 시설·지점에는 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 17556342의 장소명을 ‘휴애리자연생활공원 와룡바위’로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공원 내 정확한 위치·관람 범위",
+      "현재 공원 운영·입장·안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17556342",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘휴애리자연생활공원 와룡바위’이고 place_id는 17556342다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "park_subordinate_feature",
+      "applies_to": "recommendation_candidate",
+      "condition": "공원 내 부속 지점으로 독립 추천 후보가 아님",
+      "status": "needs_review",
+      "action": "공원 방문 전 공식 채널로 운영·입장·관람 범위를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

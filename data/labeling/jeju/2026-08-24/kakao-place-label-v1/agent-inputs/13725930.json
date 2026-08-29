@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1696,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13725930.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13725930",
+    "provider": "kakao",
+    "place_id": "13725930",
+    "name": "제주올레5코스 공식안내소",
+    "url": "https://place.map.kakao.com/13725930",
+    "average_rating_5": "3.4",
+    "visitor_review_count": "5",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.05.15.",
+      "content": "비온뒤... 청량한 올레길 행복한 명상길입니다.",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2024.03.26.",
+      "content": "친절하게 맞이해주셨어요~ 버스도 잘 알려주신 덕분에 올레스테이로 잘 돌아갈 수 있었습니다! 감사합니다~",
+      "tags": "시설"
+    },
+    {
+      "date": "2023.10.06.",
+      "content": "현재 직원분 진짜 불친절해요. 늦게 오는 친구 기다리려고 안내소 안 의자에 앉아서 조용히 핸드폰만 하고 있었어요. 다른 손님도 한명도 없고 저 혼자였는데, 대뜸 제가 앉아 있어서 불편해서 일을 못하겠다고 하시네요. 저는 진짜 말 한마디 안하고 앉아만 있었어요. 다른 올레꾼들이나 동네분들에게도 불친절하셨습니다. 특별한 일도 안 하시는 것 같던데, 다른 사람이 보면 안되는 일이 뭘까요? 올레 안내소에서 도대체 뭘 하시길래.",
+      "tags": ""
+    },
+    {
+      "date": "2023.09.27.",
+      "content": "19년에 계셨던 분은 친절하셨나봅니다.올레 안내소에서 이런분은 처음인데 다른분들은 살갑게 하시구 친절하신데 인사하니 네 라고 하더군요. 질문에도 단답, 핸드폰만 하고 불친절하고 몹시 무례합니다. 귀찮았는지 왜 질문하냐고 하더라구요. 몹시 어이없고 불쾌했어요. '안내소' 라는곳이 뭔가요? 여러 많은 지원자들 중 뽑혀서 월급받고 일하고 심지어 무료봉사도 아니잖아요. 올레 대표 이미지가 되는 분들 아닌가요? 제일 많은 올레꾼들이 마주하기에 교육도 받으시구. 올레길 몇년만에 걸으러 다시 왔는데 도대체 어떻게 이런 사람이 여기에 있지? 뭘까? 여러 생각이 들었네요. 올레길 이미지에 먹칠하는 분은 거기서 일하면 안될 것 같습니다. 정말 아닌 것 같습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2019.05.25.",
+      "content": "안내선생님 엄청 친절하시고 근처 숙소, 맛집 정보도 다 알려주세요! 감사합니다!!!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

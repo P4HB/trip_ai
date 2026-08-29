@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1693,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/19611949.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:19611949",
+    "provider": "kakao",
+    "place_id": "19611949",
+    "name": "머체왓숲길 방문객지원센터",
+    "url": "https://place.map.kakao.com/19611949",
+    "average_rating_5": "4.4",
+    "visitor_review_count": "55",
+    "blog_review_count": "23",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.05.24.",
+      "content": "말 그대로 숲길입니다. 머체왓숲길 쪽으로 가시면 트래킹 빡쎄게 하는 느낌입니다. 긴팔, 긴바지 필수입니다. 머체왓 전망대를 기준으로 내려가는 숲길은 비교적 걷기 수월하지만 독이 있어 만지면 안되는 천남성이 많이 자라고 있어서 주의하셔야 합니다. 다 돌고 차에 탔더니 진드기 친척같이 생긴 벌레 4마리가 몸에 붙어 왔더라구요. 입구에 있는 해충 기피제 꼭 뿌리세요. 어린이들 동반하시는 것은 말리고 싶습니다. 산책코스 아니고 트래킹코스입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2024.04.13.",
+      "content": "자연을 느낄 수 있는 곳. 어두운 숲길, 삼나무와 편백나무 숲 등. 길 안내가 자세히 안되어 있어서 길 잃기 쉬움.",
+      "tags": ""
+    },
+    {
+      "date": "2023.08.26.",
+      "content": "저는 소롱콧길 걸었는데 더운 여름에 걸어볼만한 숲길입니다~ 다음에 또 들를께요~",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2023.05.28.",
+      "content": "숲길도 좋고 족욕도 좋습니다. 피로가 싹 풀리는 느낌이었네요.",
+      "tags": "뷰|주차"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

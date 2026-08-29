@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "974774888",
+  "canonical_id": "kakao:974774888",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "개엄주리코지는 가파도 제주올레 10-1코스의 해안 경유 지점이며, 제주시 관광약자 정보는 이 지점의 정자를 코스 중간 시설로 안내한다. 독립 관광지보다 가파도 올레·섬 일주 경험에 종속된 전망·휴식 지점으로 처리한다.",
+    "source_ids": [
+      "source_visitjeju",
+      "source_jeju_tour",
+      "source_policy_news"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility.trail_waypoint",
+      "policy.no_forced_vector"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "parent_island_trail_conditions_required",
+      "rationale": "개엄주리코지 자체가 아니라 가파도 여객선 운항, 올레 10-1코스의 보행·날씨·해안 조건을 기준으로 방문을 판단해야 한다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_visitjeju",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019004",
+        "publisher": "비짓제주",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주올레 10-1코스는 가파도 상동포구부터 하동포구까지 약 4.3km이며 개엄주리코지를 경유한다고 안내한다."
+        ]
+      },
+      {
+        "source_id": "source_jeju_tour",
+        "url": "https://tour.jejudsi.kr/tour.htm?act=view&id=map32",
+        "publisher": "제주시 관광정보",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "가파도 관람 동선에 개엄주리코지정자를 포함하며 이를 7번 시설로 안내한다."
+        ]
+      },
+      {
+        "source_id": "source_policy_news",
+        "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148760004",
+        "publisher": "대한민국 정책브리핑",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "가파도 올레길이 개엄주리코지를 지나 하동포구로 이어지는 약 5km 코스로 소개된다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "medium",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:963264302",
+  "place_id": "963264302",
+  "name": "곰생이물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.35,
+    "rationale": "공개 자료는 서귀포시 동홍서로96번길의 ‘곰생이물 소하천 보수공사’와 태풍피해 복구를 언급한다. Kakao 레코드에는 주소·좌표·업종·후기 근거가 없어 하천·용천수·복구 구간 중 실제 표식 대상을 확인할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "곰생이물은 서귀포시의 소하천 관련 명칭으로 확인되지만 Kakao 표식의 구체적 자연·시설 대상은 미확정이다.",
+    "typical_visit": "공개 근거만으로는 독립 관광 방문 경험을 확인하지 못했다.",
+    "experience_scope": "정확한 장소·접근·안전 범위가 미확정이므로 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주도의회 공개 자료는 곰생이물 태풍피해 복구공사를 언급한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표·지목",
+      "일반인 출입·탐방 가능 여부",
+      "수위·우천·시설 안전"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_administrative_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034828.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "곰생이물 태풍피해 복구공사를 언급한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/963264302",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 레코드는 장소명 외 위치·후기 근거를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "water_feature_identity_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "곰생이물 표식의 정확한 하천·용천수·복구 구간과 출입·수위 안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 좌표·현장 안내로 장소 신원과 출입·기상 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

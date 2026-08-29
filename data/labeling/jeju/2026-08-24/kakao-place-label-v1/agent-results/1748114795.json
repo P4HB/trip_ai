@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1748114795",
+  "place_id": "1748114795",
+  "name": "두말치물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주특별자치도 관광약자접근성안내센터의 공공 안내는 두말치물을 조천리 용천수 탐방길의 표지판이 설치된 방문 지점으로 열거하고, 보장구 이용인 추천 구간에도 포함한다. 따라서 조천리 마을·해안 산책 경험 안에서 독립적으로 찾을 수 있는 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "두말치물은 제주 조천리 용천수 탐방길에 있는 용천수 지점이다.",
+    "typical_visit": "조천리 마을 안길의 표지판을 따라 용천수와 해안 풍경, 마을의 생활·이야기를 살피며 걷는 짧은 야외 탐방의 한 지점이다.",
+    "experience_scope": "공공 접근성 안내는 두말치물을 조천리 용천수 탐방길 및 보장구 이용인 추천 구간에 포함하고, 탐방길의 표지판·마을 안길·인근 화장실·주차 정보를 안내한다. 다만 두말치물 자체의 수질·음용 가능 여부, 수량·물때에 따른 현장 모습, 개별 시설과 최신 보행 안전 상태는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주특별자치도 관광약자접근성안내센터의 조천리 용천수 탐방길 안내는 용천수마다 표지판이 있고 마을 안길을 걷는 길이라고 설명하며, 23곳의 용천수가 남아 있다고 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"같은 공공 안내의 탐방길 지도와 보장구 이용인 추천 지도는 연북정 주차장에서 장수물 다음에 두말치물을 명시적으로 열거한다.","source_ids":["S1"]},
+      {"id":"F3","text":"공공 안내는 이 탐방길을 해안도로와 인접한 평화로운 어촌마을의 길로 설명하고, 용천수의 역사와 주민 생활의 이야기가 담겼다고 안내한다.","source_ids":["S1"]},
+      {"id":"F4","text":"입력 Kakao 공개 후기는 두말치물을 물이 풍부한 용천수로 설명하고 인근 무인카페를 언급하지만, 평점·후기 수는 라벨 근거로 사용하지 않았다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["두말치물 자체의 최신 수질·음용 가능 여부와 수량, 물때에 따른 현장 상태를 확인하지 못했다.","두말치물 바로 주변의 단차·노면·난간·휴식시설과 무장애 접근 조건은 개별 확인하지 못했다.","현장 주차·화장실·운영 상태와 차량 통행 위험은 방문 전에 최신 안내를 확인해야 한다."],
+    "sources": [
+      {"id":"S1","publisher":"제주특별자치도 관광약자접근성안내센터","type":"government_accessibility_guide","url":"https://tour.jejudsi.kr/files/dataset/infopdf/n_map04.pdf","checked_at":"2026-08-25T00:00:00+09:00","facts":["조천리 용천수 탐방길에는 23곳의 용천수가 남아 있고, 용천수마다 표지판이 설치되어 있다고 안내한다.","탐방길 지도와 보장구 이용인 추천 지도는 장수물 다음에 두말치물을 포함한다.","탐방길은 주로 마을 안길이며 해안도로와 인접해 있고, 주민과 차량 통행에 주의가 필요하다고 안내한다.","탐방길 구간에는 장애인 화장실이 없고 인근 시설을 이용할 수 있다고 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/1748114795","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력된 공개 후기는 두말치물을 수량이 풍부한 용천수라고 언급한다.","평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안과 인접한 탐방길이지만 두말치물 자체에서 해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"마을길 걷기는 확인되지만 레포츠 또는 참여형 체험이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내가 용천수의 역사와 주민 생활의 이야기를 탐방길의 흥미로 설명하므로 문화·생활사 탐방 비중을 높게 추론한다. 두말치물 단독의 문화재 지정은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"입력 후기가 인근 무인카페를 언급하지만 두말치물에서 카페 이용이 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"용천수 탐방길과 마을 안길을 걷는 경험으로 안내돼 대표 방문 경험의 실내 비율은 낮게 추론한다. 인근 실내 부대공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 마을·해안 인접 탐방 경험이므로 비·바람·더위·추위가 방문에 비교적 큰 영향을 준다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내가 탐방길을 평화로운 어촌마을의 길로 설명해 느린 산책·휴식 경험 가능성을 높게 추론한다. 혼잡도와 현장 휴식시설은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내의 보장구 이용인 추천 구간에 포함되지만, 두말치물 바로 주변의 단차·노면은 확인하지 못해 이용 편의성은 높게만 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"여러 용천수를 잇는 탐방길의 한 지점이므로 짧게 들르거나 전체 길과 연계해 체류 시간을 조절하기 쉽다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내가 탐방길을 해안 풍경과 바닷바람을 즐기는 길로 설명하므로 자연·마을 풍경 감상 가치를 높게 추론한다. 두말치물 단독의 조망은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"다수의 용천수 중 두말치물이 표지판이 있는 고유 지점으로 안내되고 풍부한 용천수라는 후기가 있어 고유성은 비교적 높게 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 안내가 조천리 용천수와 주민 생활·역사의 이야기를 이 탐방길의 핵심으로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역을 대표하는 상징 명소 또는 공적 지정이라는 근거를 두말치물 단독으로 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 풍경은 안내되지만 두말치물의 사진 촬영 또는 시각 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 최신 안전·동선 조건이 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경의 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전 조건이 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내가 탐방길의 추천 고객유형에 어린이·청소년과 보호자를 포함하지만, 두말치물 주변의 개별 수변 안전 조건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 안내가 어르신과 보행가능 지체장애인·보장구 이용인을 추천 고객유형 및 구간으로 안내하지만, 두말치물 주변의 개별 노면은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 인접 탐방은 겨울 날씨 영향을 받을 수 있어 보수적으로 판정한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 인접 탐방은 겨울 날씨 영향을 받을 수 있어 보수적으로 판정한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 인접 탐방은 여름 더위와 강수 영향을 받을 수 있어 보수적으로 판정한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 인접 탐방은 여름 더위와 강수 영향을 받을 수 있어 보수적으로 판정한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 조건 근거가 부족해 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 인접 탐방은 겨울 날씨 영향을 받을 수 있어 보수적으로 판정한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_access_and_safety_check","applies_to":"all_visitors","condition":"두말치물은 마을 안길·해안 인접 용천수 탐방의 한 지점이며, 물때에 따른 모습과 두말치물 주변의 수변·노면·단차, 최신 수질·음용 가능 여부는 확인되지 않았다. 공공 안내는 길에서 주민과 차량 통행에 주의하도록 안내한다.","status":"needs_review","action":"방문 전 현장·지자체 최신 안내로 접근 가능 여부, 노면·수변 안전, 차량 통행, 수질 및 음용 가능 여부를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

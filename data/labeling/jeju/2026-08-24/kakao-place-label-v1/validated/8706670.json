@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8706670",
+  "place_id": "8706670",
+  "name": "금성천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.85,
+    "rationale": "제주관광공사 관광정보와 공공 저작물은 금성천이 제주시 애월읍 금성리로 흘러드는 하천임을 확인한다. 다만 입력 Kakao 표식이 하천의 어느 구간 또는 일반 방문객이 이용할 수 있는 특정 관람 지점을 가리키는지, 공식 접근·탐방 동선이 있는지는 확인하지 못했다. 따라서 추천용 독립 방문지의 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "금성천은 제주시 애월읍 금성리로 흘러드는 하천이며, 금성포구는 그 하구에 위치한다.",
+    "typical_visit": "공식 관광 안내는 금성포구 주변에서 금성천과 바다가 합류하는 방향으로 걷는 맥락을 소개하지만, 금성천 자체의 독립 관람·산책·체험 지점은 확인하지 못했다.",
+    "experience_scope": "하천이라는 지리적 객체와 금성포구 인접성은 확인되지만, Kakao 표식의 정확한 범위, 일반인 출입 권한, 공식 산책로와 안전한 방문 동선은 확인되지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 금성포구가 애월읍 금성천 하구에 있으며 금성천과 바다가 합류하는 방향을 따라 걸을 수 있다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국저작권위원회 공유마당의 공공 저작물 설명은 금성천을 애월읍 한대오름 일대에서 발원해 금성리 바다로 흘러드는 하천으로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식이 금성천의 어느 구간 또는 실제 접근 가능한 지점을 뜻하는지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 산책로·관람로, 주차·화장실·무장애 접근성과 관리 주체를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 수변 접근의 안전성을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금성포구는 애월읍 금성천 하구에 위치한다.",
+          "금성천과 바다가 합류하는 방향으로 걷는 주변 맥락을 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국저작권위원회 공유마당",
+        "type": "public_government_content",
+        "url": "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?menuNo=200018&wrtSn=12456627",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금성천은 애월읍 한대오름 일대에서 발원해 금성리 바다로 흘러드는 하천으로 설명된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_water_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 표식의 정확한 방문 지점과 일반 출입 가능 여부를 확인하지 못했으며, 금성천은 하구와 연결된 하천이다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전 관할 지자체나 현장의 최신 안내로 정확한 접근 지점, 출입 허용 여부, 강우·수위·보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

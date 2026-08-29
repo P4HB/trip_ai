@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1915,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10255199.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10255199",
+    "provider": "kakao",
+    "place_id": "10255199",
+    "name": "대병악",
+    "url": "https://place.map.kakao.com/10255199",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "24",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.16.",
+      "content": "넓은 주차장에 초입에는 수국 꽃길, 나무 계단으로 15분 이상 등반! 어려운 길은 아닌데, 노약자나 슬리퍼는 많이 힘들듯... 능선 올라와서 오른쪽은 소병악! 왼쪽은 대병악! 오른쪽은 송악산 뷰, 왼쪽은 한라산 뷰 쏘쏘~ ※정상 올라갔다가 원점회귀 하는걸 적극 추천 합니다 저 처럼 이상한길로 빠져서 고생 하지마세요~~~ㅋㅋㅋ",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.06.08.",
+      "content": "2026.06.08 방문 입구쪽에 수국이 쭉 펴있어서 수국 플레이스로 알려진 곳. 생각보다 사람들이 많이 찾는 곳은 아니라서 그런지 정보가 부족한듯 싶어 추가합니다. 첫 사진에 보이는 간판에서 안으로 쭉 더 들어가셔야 합니다. 두번째 사진에 빨간색 동그라미친 곳까지는 차로 들어가야 합니다. 가시면 입구에 수국이 쫙 펴있는걸 볼 수 있습니다. 쭉 올라가시다보면 탐방로 좌측 우측 나오는데 좌측으로 가시면 꼭대기로 올라가실 수 있습니다. 경사가 높은편이며 15분 정도 소요됩니다. 안쪽으로 들어오면 주차하실 수 있는 공간이 꽤 있습니다. 마지막 사진이 정상에서 찍은 사진이며, 차량이 있는걸 보실 수 있습니다. 저는 모르고 맨 앞쪽에 대서 한참 걸어들어갔네요.",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2025.07.24.",
+      "content": "아직은 수국이 볼만합니다. 멀리 한라산이 구름뒤에 숨었고 고근산 월드컵경기장 산방산등이 잘 보이네요. 굿~~~",
+      "tags": ""
+    },
+    {
+      "date": "2023.12.01.",
+      "content": "계단으로 15분정도 걸림 경치는 꽤 괜찮음 노약자는 힘들듯싶습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.11.10.",
+      "content": "살짝 길찾기가 어려웠으나 괜찮은 곳입니다. 생각보다 정상에서 보는 풍광이 멋집니다. 길이 좀 정비되어 있지않지만 살짝 걷고 오르기좋습니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1687982750",
+  "place_id": "1687982750",
+  "name": "렛츠런파크제주 행복마루",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘렛츠런파크제주 행복마루’로, 독립 장소명이 아니라 렛츠런파크 제주에 귀속된 명칭이다. 제주관광공사 Visit Jeju는 렛츠런파크 제주를 말 테마파크와 여러 체험시설을 제공하는 독립 관광지로 안내한다. ‘행복마루’ 자체의 독립 위치·운영·관람 또는 체험 범위는 공개 신뢰 출처에서 확인하지 못했으므로, 상위 공원의 부속 시설로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드는 ‘렛츠런파크제주 행복마루’라는 상위 시설 결합 명칭만 제공한다. 공식 관광 안내는 렛츠런파크 제주를 애월읍의 독립 말 테마파크로 안내하지만, 행복마루의 독립 방문지 지위는 확인되지 않았다.",
+    "typical_visit": "공식 관광 안내상 상위 렛츠런파크 제주의 방문 경험은 제주마 경주, 조랑말 승마체험, 파크골프장, 미니 조랑말 박물관 및 어린이 놀이시설 등을 포함한다. 행복마루가 이 경험 중 무엇을 제공하는지와 일반 방문객 이용 범위는 확인하지 못했다.",
+    "experience_scope": "상위 공원의 위치와 테마파크 성격은 확인됐으나, 이 Kakao 레코드가 가리키는 행복마루의 정확한 위치, 기능, 독립 출입·이용 조건과 최신 운영 상태는 확인되지 않았다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 렛츠런파크 제주를 제주시 애월읍 평화로 2144의 말 테마파크로 안내하며, 제주마 경주와 승마체험·파크골프장·박물관·어린이 놀이시설을 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드의 장소명은 ‘렛츠런파크제주 행복마루’이며, 주소·좌표·업종·공개 방문 후기 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "행복마루의 정확한 물리적 위치와 상위 렛츠런파크 제주 내 기능을 확인하지 못했다.",
+      "행복마루의 독립 운영 여부, 일반 관광객 출입·이용 조건, 최신 운영 상태를 확인하지 못했다.",
+      "행복마루에 독립적인 관람·체험·휴식 경험, 접근성 또는 안전 정보가 있는지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019539",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주는 제주시 애월읍 평화로 2144에 안내된 말 테마파크다.",
+          "공식 안내는 제주마 경주, 조랑말 승마체험, 무료 파크골프장, 미니 조랑말 박물관, 어린이 놀이시설을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1687982750",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 행복마루’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_scope",
+      "applies_to": "recommendation_candidate",
+      "condition": "행복마루의 독립 위치·기능·관광객 이용 범위를 확인하지 못했으며, 입력 명칭이 독립 관광지로 확인된 렛츠런파크 제주에 귀속돼 있다.",
+      "status": "needs_review",
+      "action": "한국마사회 또는 현장 공식 안내에서 행복마루의 위치·기능·독립 이용 가능 여부를 확인한다. 독립 방문 경험으로 확인되기 전에는 상위 공원과 분리한 추천용 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

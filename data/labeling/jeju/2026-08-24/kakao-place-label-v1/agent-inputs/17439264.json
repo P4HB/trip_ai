@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1021,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17439264.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17439264",
+    "provider": "kakao",
+    "place_id": "17439264",
+    "name": "사수도",
+    "url": "https://place.map.kakao.com/17439264",
+    "average_rating_5": "4.5",
+    "visitor_review_count": "8",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.02.02.",
+      "content": "혼자멀리이뜸!!!",
+      "tags": ""
+    },
+    {
+      "date": "2026.04.23.",
+      "content": "장수도(사수도)는 전라남도의 고유한 영토입니다. 소안도 정남쪽 뱃길 따라 18k 외로운 섬 하나 새들의 고향 그 누가 아무리 자기네 땅이라고 우겨도 장수도는 완도 땅 완도군 소안면 당사리 산 26 동경 126.6 북위 34 평균 기온 15도 강수량은 천이백 장수도는 완도 땅 천연기념물 333호 바닷새류 서식지 흑비둘기 슴새에 후박나무 숲 21만 평방미터 우편 59166 장수도는 완도 땅 부군면 통폐합 직후에 임자 없는 섬이라고 억지로 우기면 정말 곤란해 울릉도는 경북 땅 추자도는 몰라도 장수도는 완도 땅",
+      "tags": ""
+    },
+    {
+      "date": "2025.11.11.",
+      "content": "영화에서 곧 죽는 그들: 아무리 명사수도 여기선 우리를 못맞출거...(4mang)",
+      "tags": ""
+    },
+    {
+      "date": "2025.09.29.",
+      "content": "싸우지망셍용...",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.08.",
+      "content": "부사수는 누구?",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

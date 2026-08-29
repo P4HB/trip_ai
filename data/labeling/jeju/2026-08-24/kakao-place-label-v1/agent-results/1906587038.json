@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1906587038",
+  "place_id": "1906587038",
+  "name": "다함께춤추자",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소 페이지 외에 ‘다함께춤추자’라는 제주 소재 장소의 운영 주체, 주소, 업종, 공개 방문 가능 여부를 확인하는 공식·공공 또는 독립적인 공개 자료를 찾지 못했다. 검색 결과의 동명 표현은 서울의 2009년 한일축제 행사명으로, 입력 장소와 동일하다는 근거가 없다. 따라서 여행 추천 장소로서의 신원을 확인할 수 없다.",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao Map에 ‘다함께춤추자’라는 이름의 장소 레코드는 있으나, 공개적으로 교차 확인 가능한 제주 방문지 신원 정보는 확인하지 못했다.",
+    "typical_visit": "확인 불가.",
+    "experience_scope": "장소의 업종·운영 상태·위치·방문 경험을 확인할 수 없어 추천용 축 라벨을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao Map 공개 장소 레코드의 명칭은 ‘다함께춤추자’이며 place_id는 1906587038이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "‘다함께춤추자’로 확인되는 공개 검색 결과는 2009년 서울 한일축제 행사명이며, 입력 Kakao 장소와의 동일성이나 제주 소재를 뒷받침하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "실제 주소와 제주 소재 여부를 확인하지 못했다.",
+      "업종, 운영 주체, 영업·개방 상태, 예약·입장 조건을 확인하지 못했다.",
+      "관광객이 이용할 수 있는 독립 방문지인지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 정보",
+        "type": "public_map_metadata",
+        "url": "https://place.map.kakao.com/1906587038",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 장소 레코드의 명칭은 ‘다함께춤추자’이고 place_id는 1906587038이다.",
+          "입력 인벤토리의 공개 평점과 방문자·블로그 리뷰 수는 모두 0으로 제공되지만, 이는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "MBC 뉴스",
+        "type": "news_article",
+        "url": "https://imnews.imbc.com/news/2009/culture/article/2445396_30937.html",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2009년 서울 한일축제한마당의 공식 개막 전 행사 명칭으로 ‘야! 오마츠리다! 다함께춤추자’가 언급된다.",
+          "기사에는 입력 Kakao 장소의 place_id, 주소, 운영 주체 또는 제주 소재를 연결하는 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_verification_required",
+      "applies_to": "recommendation_catalog",
+      "condition": "장소의 실제 위치, 업종, 운영·개방 상태와 관광객의 독립 이용 가능 여부가 교차 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 후보와 안내 경로에서 제외한다. 운영 주체 또는 공공·공식 출처로 주소, 업종, 최신 운영·개방 상태를 확인한 뒤에만 재판정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {}
+}

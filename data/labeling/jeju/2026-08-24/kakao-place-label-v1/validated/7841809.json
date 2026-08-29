@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7841809",
+  "place_id": "7841809",
+  "name": "동마루고개",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "카카오맵 공개 장소 페이지는 ‘동마루고개’를 제주특별자치도 제주시 애월읍 하귀1리에 위치한 지명으로 제시한다. 그러나 공개 검색과 신뢰 가능한 상세 출처에서는 이 지점의 정확한 지형·시설 유형, 일반 방문객을 위한 독립 관람·체험 여부, 출입·안전 조건을 확인하지 못했다. 이름만으로 관광·트레킹 방문지 또는 단순 지명·도로 지점을 단정할 수 없으므로 추천용 완전 벡터를 생성하지 않고 identity_unknown으로 보존한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "동마루고개는 카카오맵에 제주특별자치도 제주시 애월읍 하귀1리의 장소명으로 등록되어 있으나, 독립 방문지로서의 정확한 성격은 확인되지 않았다.",
+    "typical_visit": "공개 신뢰 출처에서 관광·체험·산책·전망 등 일반 방문객을 위한 대표 경험은 확인되지 않았다.",
+    "experience_scope": "공개 장소 페이지의 명칭과 위치만으로는 단순 지명·도로 지점인지 방문 가능한 자연·관광 지점인지 판별할 수 없다. 안전·접근·운영 조건을 추정하지 않으며, 본 라벨링에서는 추천 대상 벡터를 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "카카오맵 공개 장소 페이지의 제목은 ‘동마루고개’다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "카카오맵 공개 장소 페이지는 위치를 제주특별자치도 제주시 애월읍 하귀1리로, 정적 지도 좌표를 경도 126.4166369386684·위도 33.47423983924922로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "동마루고개의 정확한 지형·시설 유형과 공식 관리 주체를 확인하지 못했다.",
+      "일반 방문객의 출입 가능 여부, 관람·보행 동선, 주차, 화장실, 난간·안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "관광·레저 목적의 상시 개방, 프로그램 또는 공식 방문 안내는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7841809",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 장소 페이지의 제목은 ‘동마루고개’다.",
+          "공개 페이지의 설명은 제주특별자치도 제주시 애월읍 하귀1리다.",
+          "정적 지도 URL은 경도 126.4166369386684, 위도 33.47423983924922를 제시한다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 지도 목록으로 지명과 위치만 확인됐으며, 독립 방문지 여부·일반 방문객 출입·안전 및 접근 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 identity_unknown으로 보존한다. 공식 지명·관리 기관 또는 방문 안내 출처가 확인되면 유형과 독립 방문지 여부를 별도 검수한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,664 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1141154122",
+  "canonical_id": "kakao:1141154122",
+  "name": "오래물광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 관광·행정 자료가 오래물광장을 제주시 도두일동의 독립적인 광장으로 식별하고, 도두항 및 해안도로와 연결된 방문·행사 공간으로 설명한다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도두봉이 인근 지명으로 언급되지만, 광장 자체의 대표 경험이 산·오름 탐방이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내가 오래물광장을 용담·도두 해안도로 및 도두항 인근으로 특정하고, 광장에서 해안의 노을을 관람하는 일정을 안내한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-EXPERIENCE-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안도로 산책과 광장 체류가 가능한 맥락은 확인되지만, 이 광장 자체가 레포츠·참여형 체험의 상설 목적지인지는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-CONTEXT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.7,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "관광 안내는 오래물광장에서 해녀 공연을 관람하는 코스를 소개하며, 과거 도두오래물축제도 광장과 도두항 일원에서 열렸다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-CULTURAL-PROGRAM-DIRECT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 자료는 해안 광장·행사 공간을 설명하며 놀이기구·동물·전시 중심의 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·커피·디저트 이용이 오래물광장의 독립적인 핵심 방문 목적이라는 자료는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "광장 및 항만 인근 공간으로 확인되며 전통시장 또는 상설·비상설 시장 방문이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.7,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "도두오래물축제의 개최 장소가 오래물광장 및 도두항 일원으로 공개되어 있으나, 광장 방문이 항상 축제 경험인 것은 아니다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-FESTIVAL-VENUE-DIRECT"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안도로·도두항 일원의 광장 및 노을 관람 공간으로 설명되어 대표 경험은 야외 중심이다. 실내 방문 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-PLAZA"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 해안의 야외 광장 체류와 노을 관람이므로 비·바람·더위·추위의 영향을 받을 가능성이 크다. 현장 대피·통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안의 노을을 관람하는 체류 맥락은 확인되지만, 혼잡도·소음·쉼터 시설을 확인하지 못해 평온한 휴식 공간으로 단정하지 않는다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-SEASIDE-STAY-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "광장의 실제 단차·경사·보행면·무장애 접근성 및 휴식 시설을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-ACCESSIBILITY-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "광장 단독 체류시간, 상시 이용 규칙과 주변 동선의 실제 선택 폭을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 오래물광장에서 노을로 붉게 물드는 해안 풍경을 관람하는 코스를 소개하고, 인근 해안도로의 수평선 경관을 설명한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-SEASIDE-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도두항·해안도로 및 오래물축제와 연결되는 장소성은 확인되지만, 다른 제주 해안 광장과 비교한 고유성의 직접 근거는 부족하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-PLACE-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 도두일동의 오래물광장은 도두항 일원에서 열리는 지역 축제와 해녀 공연 관광 코스에 연결되어 제주 해안 마을 문화와의 연계가 확인된다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-CULTURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "관광 코스와 지역 축제 장소로 쓰이는 의미는 확인되지만, 제주 전체를 대표하는 공적 랜드마크 지정·상징성은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-LANDMARK-CONTEXT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "노을과 해안 경관은 확인되지만, 오래물광장 자체가 사진 촬영 명소로 공식적으로 권장되는지는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 조명·안전·안내 환경을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 경험·편의시설의 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 이용 편의·수용 인원 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 안전시설, 보호자 동반 기준 및 해안 인접 위험 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 이용·계절 절정 정보를 확인하지 않아 야외 광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_coastal_access_and_weather_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "오래물광장은 해안 인접 야외 공간이나 현재 개방·행사 일정, 우천·강풍 시 통제, 조명 및 해안 안전시설을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 도두동 행정복지센터 또는 현장 최신 안내로 행사·개방 여부, 기상에 따른 안전 조치와 동행자 접근성을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘오래물광장’은 공개 관광·행정 자료에서 제주시 도두일동 2605-5, 도두항 및 해안도로 인근의 동일한 광장으로 확인됐다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 도두동 무지개 해안도로 안내에서 오래물광장 위치를 제주시 도두일동 2605-5로 제시하고, 광장 맞은편 주차장을 언급한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주시 관련 공개 행사 안내는 제20회 도두오래물축제가 오래물광장 및 도두항 일원에서 열렸고 수상체험·공연·물고기잡이 프로그램이 있었다고 기록한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "Visit Jeju의 제주시 관광 코스 안내는 도두봉·오래물광장에서 노을과 해녀 공연을 관람하는 일정을 소개한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "상시 개방 시간과 광장 시설·주차장 현황",
+      "평상시 해녀 공연 또는 축제의 개최 여부와 최신 일정",
+      "보행면, 경사, 계단, 휠체어 접근성 및 화장실·쉼터",
+      "강풍·우천·파랑 등 해안 기상 시 안전 통제 기준"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007625&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "도두동 무지개 해안도로와 오래물광장 위치·인근 주차장 맥락을 안내한다.",
+          "용담이호해안도로와 도두봉 인근 해안 경관·산책 맥락을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "이슈제주 (제주시 행사 안내 인용)",
+        "type": "local_government_event_notice",
+        "url": "https://www.issuejeju.com/mybbs/bbs.html?bbs_code=tell&bbs_no=813821&cate=&keyword=&mode=view&page=104&search=&type=",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2022년 도두오래물축제의 장소가 오래물광장 및 도두항 일원이라고 안내한다.",
+          "해당 행사에 수상체험·무대공연·맨손물고기잡이가 포함됐다고 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism",
+        "url": "https://www.visitjeju.net/zh/festival/view?contentsid=CNTS_300000000014651",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시 관광 코스가 도두봉·오래물광장을 경유한다고 안내한다.",
+          "오래물광장에서 노을 및 해녀 공연 관람 경험을 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

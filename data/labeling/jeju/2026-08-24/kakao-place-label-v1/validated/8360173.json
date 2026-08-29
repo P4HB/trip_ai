@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8360173",
+  "place_id": "8360173",
+  "name": "망루대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘망루대’와 place_id만 제공하며 주소·좌표·업종·공개 방문 후기 근거가 없다. 공공 자료에는 외도동 역사문화자원으로 같은 명칭이 언급되지만, 해당 Kakao 레코드와의 위치·대상물 동일성을 확인할 식별 필드가 없다. 따라서 이 레코드를 그 문화자원 또는 다른 동명 시설로 단정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 식별자는 Kakao place_id 8360173과 ‘망루대’라는 일반 명칭뿐이다. 국가정책정보협의회가 공개한 제주시 마을특성 조사에는 외도동의 유형문화재 항목으로 ‘망루대’가 포함되지만, 입력에 주소·좌표가 없어 같은 대상인지 검증할 수 없다.",
+    "typical_visit": "공공 자료의 외도동 ‘망루대’는 역사문화자원 목록에 포함된다. 다만 이 레코드의 정확한 위치, 보존 상태, 관람 가능 여부 및 실제 방문 경험은 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영 안내, 공개 방문 후기 근거가 없다. 평점과 후기 수는 라벨 근거로 사용하지 않았으며, 신원이 확정되지 않았으므로 추천용 18개 원자·5개 동행·12개월 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘망루대’이고, 주소·좌표·업종 및 공개 방문 후기 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국가정책정보협의회 공개 ‘제주도 마을특성 및 실태조사(제주시)’는 외도동 역사문화자원의 유형문화재 목록에 ‘망루대’를 포함한다. 다만 해당 Kakao 레코드와의 동일성을 입증하는 주소·좌표는 제시되지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 외도동 역사문화자원 ‘망루대’와의 동일성을 확인하지 못했다.",
+      "관람 가능 여부, 접근성, 안전, 보존 상태, 운영 정보와 최신 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8360173",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘망루대’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국가정책정보협의회",
+        "type": "public_research_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 보고서의 외도동 역사문화자원 유형문화재 목록에 ‘망루대’가 포함된다.",
+          "보고서 검색 결과만으로는 Kakao place_id 8360173의 주소·좌표나 동일 대상을 확인할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없어 공공 자료의 외도동 역사문화자원 ‘망루대’ 또는 다른 동명 대상과의 동일성 및 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·대상물 설명으로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

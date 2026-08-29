@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1636958749",
+  "canonical_id": "kakao:1636958749",
+  "name": "고요세라믹",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "Kakao Map은 고요세라믹을 제주시 조천읍 신촌남1길 19의 도자기·도예촌으로 표시한다. 공개 작가 소개와 공방 게시물도 같은 주소의 고요한도자기 스튜디오를 확인해, 독립적으로 찾을 수 있는 도예 공방으로 판정했다. 최신 관람·구매·체험 운영 여부는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "고요세라믹은 제주시 조천읍 신촌남1길 19 1층에 등록된 도자기·도예 공방이다. 같은 주소의 고요한도자기 스튜디오와 고용석 작가 운영 공방 소개가 공개되어 있다.",
+    "typical_visit": "공개 근거가 확인하는 범위의 대표 경험은 작가의 도자 작업과 전시 이력이 있는 공방을 방문하는 실내 공예·예술 맥락이다. 관람, 작품 구매, 체험 수업의 실제 제공 여부와 예약 방식은 확인하지 못했다.",
+    "experience_scope": "주소·업종·공방 정체성은 교차 확인했지만, 최신 영업시간, 입장 가능 여부, 체험 프로그램, 가격, 주차, 화장실, 무장애 접근성과 안전 안내는 확인하지 못했다. 공개 게시물의 '방문 전 연락' 안내는 최신성 확인 없이 운영 확정 정보로 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"Kakao Map 장소 페이지는 고요세라믹을 '도자기,도예촌'으로 분류하고 주소를 제주특별자치도 제주시 조천읍 신촌남1길 19 1층으로 표시한다.","source_ids":["S1"]},
+      {"id":"F2","text":"고요한도자기 공개 Instagram 프로필은 'Art in KOYO - 高窯' 및 '고요한도자기 In Jeju'로 표시된다.","source_ids":["S2"]},
+      {"id":"F3","text":"DWBNEWS의 2023년 고용석 도예전 소개는 고용석 작가가 고요한도자기를 운영하며 스튜디오 주소가 제주특별자치도 제주시 신촌남1길 19라고 소개한다.","source_ids":["S3"]}
+    ],
+    "unknowns": [
+      "2026-08-25 기준 실제 영업·관람·구매·체험 제공 여부와 예약 필요 여부를 확인하지 못했다.",
+      "입장료·체험료, 주차, 화장실, 좌석, 계단·문턱 등 무장애 접근성과 어린이 안전 정보를 확인하지 못했다.",
+      "공방 내부의 전시 규모, 작품 판매 가능 여부 및 사진 촬영 허용 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/1636958749","checked_at":"2026-08-25T00:00:00+09:00","facts":["장소명은 고요세라믹이다.","카테고리는 도자기·도예촌이다.","주소는 제주특별자치도 제주시 조천읍 신촌남1길 19 1층이다."]},
+      {"id":"S2","publisher":"고요한도자기","type":"official_social_profile","url":"https://www.instagram.com/koyo_ceramic/","checked_at":"2026-08-25T00:00:00+09:00","facts":["프로필은 Art in KOYO - 高窯 및 고요한도자기 In Jeju로 표시된다.","검색에 노출된 공방 게시물은 고요한도자기 스튜디오 주소를 제주시 신촌남1길 19로 표시한다."]},
+      {"id":"S3","publisher":"DWBNEWS","type":"news_article","url":"https://www.dwbnews.kr/news/articleView.html?idxno=52981","checked_at":"2026-08-25T00:00:00+09:00","facts":["2023년 고용석 도예전 소개는 고용석 작가가 고요한도자기를 운영한다고 소개한다.","소개된 스튜디오 주소는 제주특별자치도 제주시 신촌남1길 19이다.","소개는 작가의 개인전과 단체전 이력을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 장소 성격은 실내 도예 공방이며 산·오름 경험이 핵심이라는 근거는 없다.","source_ids":["S1","S3"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"주소와 공방·도예 업종은 확인되지만 해안·해양 경험이 대표 방문 목적이라는 근거는 없다.","source_ids":["S1","S3"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"도예 작업 공방임은 확인되지만 방문객 체험·수업의 실제 제공 근거가 없어 참여형 활동 비중을 낮게 추론한다.","source_ids":["S1","S2","S3"],"rule_ids":["THEME-PROGRAM-UNVERIFIED"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"도예 공방과 작가의 전시 이력은 확인되나, 현재 방문객에게 전시·해설·관람이 제공되는지는 미확인이라 문화예술 맥락을 비교적 높게 추론한다.","source_ids":["S1","S2","S3"],"rule_ids":["THEME-ARTS-CRAFT"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 근거는 소규모 도예 공방을 가리키며 놀이·동물·수족관형 시설 경험은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"도자기 공방으로 확인되며 전통시장 또는 시장 방문 경험은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"작가의 과거 전시 이력은 있으나 이 장소에서 특정 기간 축제가 핵심이라는 근거는 없다.","source_ids":["S3"],"rule_ids":["THEME-PERIODIC-EVENT"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"1층 스튜디오와 도예 공방으로 확인돼 대표 방문 경험의 실내 비율이 높을 것으로 추론한다. 야외 공간 구성은 미확인이다.","source_ids":["S1","S3"],"rule_ids":["ENV-INDOOR-STUDIO"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 공방 방문은 실내 맥락이지만, 실제 관람 운영과 접근 동선이 미확인이라 날씨 영향은 낮게만 추론한다.","source_ids":["S1","S3"],"rule_ids":["ENV-INDOOR-INFERENCE"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도, 좌석, 소음과 자유 관람 환경을 확인하지 못해 휴식성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"1층 표기는 있으나 주차·출입구·문턱·화장실·무장애 접근 정보를 확인하지 못해 신체 부담은 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람·구매·체험의 실제 제공 및 예약·체류 규칙을 확인하지 못해 시간 조절 용이성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-OPERATION-UNKNOWN"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공예 작품의 시각성은 예상할 수 있으나, 장소의 경관 감상 자체가 방문 가치라는 공개 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["STYLE-SCENERY-UNVERIFIED"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"동일 주소의 작가 운영 도예 스튜디오와 다수 전시 이력은 확인되지만, 현재 공개 관람에서 드러나는 고유 경험은 미확인이라 비교적 높게 추론한다.","source_ids":["S2","S3"],"rule_ids":["STYLE-ARTIST-STUDIO"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 소재 공방임은 확인되나 제주 자연·문화·생산자와의 작품상 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["FALLBACK-LOCAL-CONNECTION-UNKNOWN"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"작가 전시 이력은 확인되지만 제주 또는 조천읍을 대표하는 공적 상징 명소라는 지정·안내는 확인되지 않았다.","source_ids":["S3"],"rule_ids":["STYLE-LANDMARK-UNVERIFIED"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 이미지 계정은 있으나 현장 촬영 허용과 방문객의 시각 기록 가치를 확인하지 못해 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-PHOTO-POLICY-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"예약·관람 규칙과 안전·접근 정보를 확인하지 못해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-VISIT-CONDITIONS-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 관람·체험 가능 여부와 체류 환경을 확인하지 못해 커플 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-VISIT-CONDITIONS-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 수용 인원과 예약·체험 가능 여부를 확인하지 못해 친구 동반 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-VISIT-CONDITIONS-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반 체험·안전 설비·보호자 규칙을 확인하지 못해 아이 동반 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-CHILD-SAFETY-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행·주차·좌석·무장애 접근 정보를 확인하지 못해 부모 동반 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 1월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 2월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 3월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 4월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 5월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 6월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 7월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 8월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 9월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 10월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 11월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내 공방으로 추정되나 실제 운영·방문 가능 여부를 확인하지 못해 12월 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-MONTHLY-OPERATION-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"operation_and_access_confirmation_required","applies_to":"all_visitors","condition":"장소 정체성과 주소는 확인됐지만 2026-08-25 기준 최신 영업·관람·구매·체험 제공, 예약 필요 여부, 비용, 주차 및 무장애 접근성은 공개 근거로 확인하지 못했다.","status":"needs_review","action":"방문 전 공방의 최신 공식 안내 또는 직접 연락으로 당일 방문 가능 여부, 예약·비용, 동반 인원 조건과 접근·안전 정보를 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "779183673",
+  "canonical_id": "kakao:779183673",
+  "name": "팽나무 보호수",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 장소명·Kakao URL과 제한된 리뷰 한 건만 있으며, 주소·좌표·보호수 지정 정보·수령·상세 설명이 없다. ‘팽나무 보호수’라는 일반 명칭과 마을 경관에 관한 짧은 방문 경험만으로는 어느 보호수인지, 독립 방문지인지 또는 마을 내 부속 표식인지를 구분할 수 없어 적격성을 확정하지 않는다.",
+    "source_ids": [
+      "K1",
+      "R1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "보호수의 정확한 위치와 지정 정보, 현장 접근 경로, 개방 상태, 안전·편의시설 정보가 입력에 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처와 현장 최신 안내로 해당 보호수의 정확한 위치·지정 현황·독립 방문 가능 여부·접근 정보를 확인한 뒤 재판정한다.",
+      "source_ids": [
+        "K1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "고정 입력 패킷의 장소명은 ‘팽나무 보호수’이나, 식별과 독립 방문지 판정에 필요한 주소·좌표·지정 정보·상세 설명이 제공되지 않았다. 제공된 공개 리뷰는 마을 경관의 긍정적 인상만 언급한다.",
+    "facts": [
+      {
+        "text": "입력 패킷은 Kakao place_id 779183673, 장소명 ‘팽나무 보호수’, Kakao 장소 URL을 제공한다.",
+        "source_id": "K1"
+      },
+      {
+        "text": "제공된 공개 리뷰는 마을 경관이 좋다는 방문자 인상을 언급한다.",
+        "source_id": "R1"
+      }
+    ],
+    "unknowns": [
+      "보호수의 정확한 위치와 지정·관리 주체",
+      "동일 명칭 보호수와의 구분 및 독립 방문지 여부",
+      "방문 가능 시간, 접근성, 안전 및 편의시설"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/779183673",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 ‘팽나무 보호수’로 제공된다.",
+          "입력의 visitor_review_count는 1, blog_review_count는 0이다."
+        ]
+      },
+      {
+        "id": "R1",
+        "publisher": "Kakao public review evidence",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/779183673",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "2023-12-24 공개 리뷰는 마을 경관이 좋다는 인상을 남겼다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

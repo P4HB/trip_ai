@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8186279",
+  "canonical_id": "kakao:8186279",
+  "name": "공덕비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "카카오맵의 공덕비 표식은 제주시 한경면 고산리에 있고, 제주대학교 연구는 고산1리 한장동의 조광운 공덕비를 해당 지역 농업·밭담과 관련된 독립 비석으로 설명한다. 위치와 명칭이 일치하는 역사 기념물로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 대상은 고산리 농업 경관의 공덕비이며 산·오름·봉우리 탐방이 핵심 경험이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 고산리의 농업과 밭담을 설명하며 해안·해양 경험을 제시하지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "비석과 그 형성 배경이 확인될 뿐 레포츠나 참여형 체험이 대표 방문 경험이라는 근거는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조광운 공덕비는 19세기 말 차귀 조방장이 농가를 동원해 밭담을 쌓아 농업 생산성을 높인 일을 기념해 고산리 농민들이 세운 비석으로 연구에서 설명된다.", "source_ids": ["S2"], "rule_ids": ["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "비석과 농업 경관에 관한 자료만 확인되며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 방문 목적이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "고산리의 공덕비로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제나 기간성 행사가 이 비석의 핵심이라는 자료는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공덕비는 고산1리 한장동의 농업 경관 안에 있는 비석으로 설명되어 실내 관람 비중은 낮게 추정되지만, 현장 부속 실내 시설은 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["ENV-OUTDOOR-MEMORIAL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 비석과 주변 농업 경관의 짧은 관람으로 보이므로 비·바람·더위·추위에 영향을 받을 수 있다. 현장 대피·통제 기준은 미확인이다.", "source_ids": ["S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식 공간·그늘·좌석 또는 느린 체류를 뒷받침하는 현장 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "진입 동선, 주차, 경사·계단 및 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "비석 단독 관람과 주변 경관을 포함한 체류시간·연계 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "연구는 고산리 농업환경을 다루지만 이 표식에서 감상 가능한 경관의 질이나 조망은 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "연구는 조광운 공덕비가 제주 농업지역에서 밭담과 관련된 유일한 비석일 가능성이 높고 고산리 농업환경의 독특한 생활문화 특징이라고 설명한다.", "source_ids": ["S2"], "rule_ids": ["STYLE-UNIQUE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "고산리 농민들이 차귀 조방장 조광운의 밭담 축조와 농업 생산성 향상 공적을 기념해 세운 비석으로 지역 농업생활과 직접 연결된다.", "source_ids": ["S2"], "rule_ids": ["STYLE-LOCAL-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "고산리 농업문화에서 고유한 비석이라는 의미는 확인되지만 제주 전체의 대표 명소·공식 지정 랜드마크라는 근거는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영이 공식적으로 권장되거나 시각적 기록 가치가 핵심이라는 자료는 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 보호자 동반 기준 및 현장 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 기념물의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_memorial_access_and_conditions_unknown", "applies_to": "all_visitors", "condition": "공덕비는 고산리 농업 경관의 야외 비석으로 확인되지만, 현행 개방 상태, 정확한 진입 동선, 주차·화장실, 우천·강풍 시 안전 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 최신 지도·현장 안내로 접근 가능 여부와 사유지·농경지 출입 제한, 기상에 따른 보행 안전을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "카카오맵 표식은 제주시 한경면 고산리(126.183632, 33.305511)의 ‘공덕비’다. 제주대학교 연구가 고산1리 한장동에 있는 조광운 공덕비를 설명해, 입력 장소를 해당 농업·밭담 기념비로 매칭했다.",
+    "facts": [
+      {"text": "카카오맵 장소 페이지는 입력 장소를 ‘공덕비’로 표기하고 주소를 제주특별자치도 제주시 한경면 고산리로 제시한다.", "source_id": "S1"},
+      {"text": "제주대학교 연구는 고산1리 한장동에 위치한 조광운 공덕비를 고산리의 독특한 생활문화 특징으로 제시한다.", "source_id": "S2"},
+      {"text": "연구에 따르면 조광운은 19세기 말 고산리와 주변 농가를 동원해 밭담을 쌓아 농작물 피해를 막고 생산성을 높였고, 고산리 농민들이 이를 기념해 공덕비를 세웠다.", "source_id": "S2"}
+    ],
+    "unknowns": ["공덕비 비문의 정확한 건립 연도와 현장 표식의 세부 명칭", "현행 진입·주차·화장실·무장애 접근성", "현장 관리 주체와 개방·농경지 출입 제한", "계절별 관람 적합성과 기상에 따른 통제"],
+    "sources": [
+      {"id": "S1", "publisher": "카카오맵", "type": "map_place_page", "url": "https://place.map.kakao.com/8186279", "checked_at": "2026-08-25", "facts": ["장소명은 공덕비로 표기된다.", "주소는 제주특별자치도 제주시 한경면 고산리로 제시된다."]},
+      {"id": "S2", "publisher": "제주대학교", "type": "academic_research", "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/21772/2/%EC%A0%9C%EC%A3%BC%EB%8F%84%20%EB%86%8D%EC%97%85%ED%99%98%EA%B2%BD%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EB%B0%AD%EB%8B%B4%EC%9D%98%20%EC%A1%B4%EC%9E%AC%ED%98%95%ED%83%9C%EC%99%80%20%EB%86%8D%EA%B0%80%EC%9D%B8%EC%8B%9D%EC%97%90%20%EB%8C%80%ED%95%9C%20%EC%97%B0%EA%B5%AC.pdf", "checked_at": "2026-08-25", "facts": ["고산1리 한장동에 조광운 공덕비가 위치한다고 서술한다.", "조광운의 밭담 축조 공적과 고산리 농민들의 기념비 건립 경위를 서술한다.", "제주 농업지역에서 밭담과 관련된 유일한 비석일 가능성이 높다고 평가한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

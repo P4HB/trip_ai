@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26136297",
+  "place_id": "26136297",
+  "name": "해안도로입구 금릉동쪽방면",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "명칭이 해안도로의 입구와 금릉 동쪽 방향을 나타내는 길찾기용 도로 지점이며, 독립적으로 방문·체험할 관광지나 시설이라는 근거는 확인되지 않았다. 인근 정보에서도 금능해수욕장과 별도로 표기되는 접근·방향 지점이므로 독립 추천 후보가 아닌 교통·길찾기 인프라로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "해안도로입구 금릉동쪽방면은 제주 금능 일대 해안도로 진입부의 동쪽 방면을 가리키는 Kakao 지도 장소 항목으로 식별된다.",
+    "typical_visit": "금능해수욕장과 주변 해안도로로 이동할 때 방향을 안내하는 길찾기 지점으로 사용된다.",
+    "experience_scope": "관광 체험을 제공하는 독립 목적지가 아니라 도로 접근·방향 안내 성격의 인프라이므로 개별 추천 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 장소 항목의 명칭은 '해안도로입구 금릉동쪽방면'으로, 해안도로 입구와 금릉 동쪽 방면을 함께 표기한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "금능해수욕장 주차장 주변 정보는 이 항목을 금능해수욕장과 별도의 인근 지점으로 나열하며, 두 곳 사이 거리를 약 1분으로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 도로시설 명칭, 관리 주체 및 정확한 좌표는 확인하지 않았다.",
+      "이 지도 항목이 버스정류장·교차로·방향 표지 중 어느 세부 유형인지는 확인하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "카카오맵",
+        "type": "map_listing",
+        "url": "https://place.map.kakao.com/26136297",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 '해안도로입구 금릉동쪽방면'이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "블루스퀘어",
+        "type": "local_information",
+        "url": "https://bluesquare.app/parking/17020/",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금능해수욕장 주차장 주변 정보에서 이 항목은 금능해수욕장과 별도로 약 1분 거리의 인근 지점으로 나열된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "도로 입구의 방향 안내·접근 인프라 항목으로 판정됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 필요 시 금능해수욕장 등 인근 독립 목적지의 접근 정보로만 사용",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

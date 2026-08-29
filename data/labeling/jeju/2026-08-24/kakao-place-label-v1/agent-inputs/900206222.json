@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 115,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/900206222.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:900206222",
+    "provider": "kakao",
+    "place_id": "900206222",
+    "name": "남당수",
+    "url": "https://place.map.kakao.com/900206222",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "1",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.03.26.",
+      "content": "남당수(갯물) <용천수> 제주특별자치도 제주시 애월읍 금성리 478-1번지 일원 남당물은 금성리 해안가 마을이 형성될 수 있었던 중요한 물 자원입니다. 남당은 뱃사람의 안전과 풍어, 가족의 건강을 기원하는 해신당으로, 이곳의 물은 제례의식에 사용되며 신성시 되었습니다. 현재 남당물은 말굽 모양의 담으로 둘러싸여 있습니다. 이는 남당물이 신성한 물로 여겨져 보호가 필요했기 때문입니다. 남당물은 여전히 그 신성함을 유지하며, 마을의 중요한 자원으로 관리되고 있습니다. 이곳의 물은 오랜 세월동안 마을 주민들의 생활과 밀접하게 연결되어 있으며, 무병장수와 재생의 의미를 담고 있습니다 <음용불가> 소중한 자연유산입니다. 출처 :제주특별자치도개발공사, 섬의 생명수제주산물",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

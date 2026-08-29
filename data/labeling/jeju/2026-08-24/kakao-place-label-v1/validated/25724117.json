@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25724117",
+  "place_id": "25724117",
+  "name": "광령천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘광령천’은 바로 앞서 확인된 Kakao 장소 25724119의 입력명과 동일하며, 두 레코드를 구별할 주소·좌표·시설·방문 근거가 제공되지 않았다. 공개 출처도 광령천을 하나의 제주 지방하천 및 무수천 계곡 경관으로 설명하므로, 이 레코드는 독립 후보가 아닌 동일 자연 방문지의 중복 표식으로 판정한다.",
+    "duplicate_of": {
+      "canonical_id": "kakao:25724119",
+      "name": "광령천"
+    },
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘광령천’은 무수천으로도 불리는 제주시·광령리 일대의 지방하천이다. 이 입력과 Kakao 25724119는 같은 이름 외에 구별 가능한 정체성 정보가 없다.",
+    "typical_visit": "지역문화포털은 광령천·무수천 계곡의 못과 기암으로 이루어진 광령 8경 및 탐방로를 소개한다. 그러나 이 레코드만의 별도 시설·관람·체험은 확인되지 않았다.",
+    "experience_scope": "동일 이름의 Kakao 25724119와 중복되므로 이 레코드에는 추천용 41축 벡터를 생성하지 않는다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한라산생태문화연구소의 한라산 총서는 광령천을 제주시 지역 하천으로 수록하고 무수천 등 여러 명칭이 있다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "지역문화포털은 광령천·무수천 계곡의 광령 8경과 탐방로 조성 맥락을 소개한다. 입력 레코드에는 이 자연지형의 특정 구간·독립 시설을 식별할 정보가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "두 Kakao 표식의 정확한 좌표·경계와 서로 다른 하천 구간인지 여부",
+      "이 레코드만의 독립 관리 주체·시설·방문 동선",
+      "현장 접근 및 기상·수위에 따른 최신 안전 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라산생태문화연구소",
+        "type": "research_publication",
+        "url": "https://jst.re.kr/upload/pdf/RC00092517.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "광령천의 행정 지정과 무수천 등 별칭, 제주시·외도동과의 지리적 맥락을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "지역문화포털",
+        "type": "public_culture_information",
+        "url": "https://ncms.nculture.org/ul-scenery/story/12382",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "광령천·무수천 계곡의 광령 8경과 탐방로 조성 맥락을 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_place_do_not_merge_as_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 25724117은 동일 이름의 Kakao 25724119와 구별되는 위치·시설·방문 경험 근거가 없어 같은 광령천 자연지형의 중복 표식으로 판정됨",
+      "status": "needs_review",
+      "action": "이 표식을 별도 추천 후보로 추가하지 말고, 필요하면 두 표식의 좌표와 현장 관리 안내로 서로 다른 공식 탐방 구간인지 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

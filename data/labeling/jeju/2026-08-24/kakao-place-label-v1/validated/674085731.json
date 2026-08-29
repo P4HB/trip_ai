@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "674085731",
+  "canonical_id": "kakao:674085731",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "inference_level": "direct_evidence",
+    "rationale": "공개 행정·관광 자료는 이 장소를 제주올레 19코스 출발지의 공식 안내소로 설명하며, 올레코스·주변 볼거리·교통 정보를 제공하는 지원 시설로 확인한다. 독립된 방문 경험인 19코스 자체가 아니라 그 코스 이용을 돕는 안내 거점이므로 추천용 장소 벡터 대상에서 제외한다.",
+    "source_ids": [
+      "src_jeju_city_olle_guidance_2020",
+      "src_visitjeju_olle19"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility",
+      "spec022.req012"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "research": {
+    "status": "matched",
+    "identity_rationale": "입력 명칭의 '제주올레19코스 공식안내소'는 공공 자료의 19코스 공식 안내소 및 조천항일기념관 인근 19코스 안내 거점 설명과 일치한다.",
+    "sources": [
+      {
+        "id": "src_jeju_city_olle_guidance_2020",
+        "publisher": "연합뉴스 (제주시 제공 소식)",
+        "url": "https://www.yna.co.kr/view/AKR20200313063700056",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시는 19코스 안내소를 포함한 올레 안내소에 안내사를 배치해 코스 정보, 주변 볼거리, 교통 정보를 제공한다고 밝혔다.",
+          "19코스 안내소 운영 장소로 조천항일기념관을 열거했다."
+        ]
+      },
+      {
+        "id": "src_visitjeju_olle19",
+        "publisher": "제주관광공사 Visit Jeju",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020312",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주올레 19코스는 조천 만세동산에서 시작해 김녕 서포구까지 이어지는 도보 여행 코스라고 안내한다.",
+          "19코스는 총 19.2km이며 약 6~8시간이 걸리는 것으로 소개한다."
+        ]
+      }
+    ],
+    "unknowns": [
+      "안내소의 현재 운영일·운영시간·제공 서비스 범위는 변동 가능하므로 본 라벨에서 확정하지 않았다."
+    ]
+  },
+  "review_priority": "medium",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

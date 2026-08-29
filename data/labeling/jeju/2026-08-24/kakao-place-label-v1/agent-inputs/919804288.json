@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1860,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/919804288.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:919804288",
+    "provider": "kakao",
+    "place_id": "919804288",
+    "name": "삼달리꽃밭에서",
+    "url": "https://place.map.kakao.com/919804288",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "31",
+    "blog_review_count": "99",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.02.20.",
+      "content": "눈 내린 2월 8일 방문했습니다. 동백꽃과 설경이 환상적이었습니다",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.02.19.",
+      "content": "동백꽃 만발하다 못해 떨어지고 있지만 내년 1월엔 꼭 동백꽃 보고 싶은 장소입니다 소형견인 울 강아지랑 입장이 가능해서 좋은 장소입니다 *^♡^* 내년에 제대로 보고 싶은 동백 꽃",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.02.08.",
+      "content": "동백꽃 예쁘게 피어있고 내부 카페도 깔끔하니 좋네요. 근데 아쉽게도 눈이 너무 와서 정원 구석구석 만끽하긴 어려웠습니다",
+      "tags": ""
+    },
+    {
+      "date": "2026.01.06.",
+      "content": "동백 개화 정도에 따라 할인율 조정하신다는데 전 70% 할인 가격인 4,500원(소인은 3,000원)에 보고 왔습니다. 동백은 30% 정도 개화해 조금 적게 핀 느낌이었지만 정원 자체가 너무 아기자기하고 이쁘게 잘 꾸며져 있어 보는 재미가 있었네요. 엄청난 정성이 느껴지는 정원이었어요. 다만 정상가가 15,000원으로 책정되어 있던데 커피 교환권 등이 포함된 가격이 아니라면 비싸게 느껴질 거 같긴 합니다. 그리고 15kg 미만 강아지 동반 가능한데 직접 산책 시키시려면 기저귀 착용해야 합니다. 그럼 유모차 태워서 구경해야지 했다가 쇄석 깔린 길이라 많이 고생했는데.. 강아지 동반하실 분들은 참고하세요.",
+      "tags": ""
+    },
+    {
+      "date": "2026.01.02.",
+      "content": "26년 초에 관람 유료화될 예정 카페는 10부터 영업",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

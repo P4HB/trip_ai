@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1125794314",
+  "place_id": "1125794314",
+  "name": "빠빠유기농블루베리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 장소 메타데이터는 상호명만 제공하며 주소, 카테고리, 후기 또는 공식 상세정보가 없다. 2026-08-24 공개 웹 검색에서도 이 상호와 제주 내 독립 방문 장소를 신뢰성 있게 연결하는 공식·공공 출처를 확인하지 못했으므로, 농장 체험·판매장·부속 시설 여부를 추정하지 않고 신원 미확인으로 보존한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "빠빠유기농블루베리는 Kakao Map에 등록된 장소명이나, 공개 신뢰 출처로 위치·운영 주체·방문 경험을 독립 확인하지 못했다.",
+    "typical_visit": "unknown",
+    "experience_scope": "상호명에 유기농 블루베리가 포함되지만 실제 농장, 체험, 판매장 또는 다른 시설의 부속 장소인지는 확인되지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 1125794314와 상호명 ‘빠빠유기농블루베리’를 제공하지만 주소·카테고리·공개 후기 수는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-24 해당 상호명과 제주를 대상으로 공개 웹 검색을 했으나 장소의 위치, 운영 형태 또는 방문 가능 경험을 확인하는 공식·공공 상세 출처를 찾지 못했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "주소·좌표와 운영 주체를 확인하지 못했다.",
+      "농장 체험, 판매, 관람 등 여행자가 이용할 독립 방문 경험의 존재를 확인하지 못했다.",
+      "현재 운영·개방 여부, 접근성, 예약·안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 메타데이터",
+        "type": "provider_place_metadata",
+        "url": "https://place.map.kakao.com/1125794314",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷에 등록된 장소명은 빠빠유기농블루베리다.",
+          "입력 패킷의 공개 방문 후기, 평점 및 리뷰 수 근거는 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "research_search_result",
+        "url": "https://www.google.com/search?q=%22%EB%B9%A0%EB%B9%A0%EC%9C%A0%EA%B8%B0%EB%86%8D%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%22",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공식·공공 상세 출처에서 이 장소의 신원과 방문 경험을 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "장소의 정확한 위치, 독립 방문 가능 여부, 최신 운영·출입 조건 및 안전·접근성 정보를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "공식 운영 주체 또는 최신 공공 안내에서 신원·주소·방문 가능 여부를 확인한 뒤 적격성과 라벨을 재판정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

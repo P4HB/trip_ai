@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "18376919",
+  "canonical_id": "kakao:18376919",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 지리·관광 자료에서 하추자도는 제주시 추자면에 있는 유인 섬으로 식별되며, 해안 경관과 지역 생활문화가 독립적인 방문 경험을 이룬다.",
+    "source_ids": ["S1", "S2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"섬 내부 산지 방문이 대표 경험인지 확인할 공개 관광 근거가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.ocean": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"하추자도는 암석해안·몽돌 해변이 발달한 섬으로 설명된다.","source_ids":["S1"],"rule_ids":["THEME-ISLAND-COAST"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"걷기·낚시 등 특정 참여 활동이 이 장소 자체의 대표 경험이라는 충분한 공개 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"전라도 문화권과 유사한 생활 풍속·언어, 황경한 묘소 등 지역 문화·역사 요소가 확인되지만, 개별 문화유산 관람이 섬 전체의 주된 방문 목적이라는 자료는 제한적이다.","source_ids":["S1"],"rule_ids":["THEME-LOCAL-CULTURE-HISTORY"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 체험의 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용이 독립적인 핵심 방문 목적이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 방문이 장소의 핵심 경험이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"추자도 참굴비축제의 존재는 확인되나, 하추자도 자체가 특정 기간성 행사의 장소인지와 최신 일정은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"확인된 대표 자원은 섬의 해안·해변·자연 경관으로 실외 경험이다.","source_ids":["S1"],"rule_ids":["ENVIRONMENT-COASTAL-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 자연 경관 중심의 섬 방문이며 정기여객선 접근이 확인되어, 바람·파랑 등 날씨와 해상 운항 조건의 영향을 받을 수 있다.","source_ids":["S1","S2"],"rule_ids":["ENVIRONMENT-ISLAND-WEATHER-ACCESS"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 환경·조용한 체류를 직접 설명한 신뢰할 만한 자료가 부족하다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"섬 내 보행로·경사·무장애 시설과 이동 난이도를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류 시간, 교통편별 일정 제약, 섬 내 운영 정보를 충분히 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"암석해안·몽돌 해변과 추자십경 장작평사에 해당하는 해안 경관이 공개 자료에 기재된다.","source_ids":["S1"],"rule_ids":["STYLE-COASTAL-SCENERY"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"제주도 유인도 중 우도 다음 규모이며, 전라도 문화권과 유사한 생활문화 및 독특한 해안 지형이 함께 확인되어 고유성이 있다.","source_ids":["S1"],"rule_ids":["STYLE-ISLAND-LOCAL-DISTINCTIVENESS"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 추자면의 유인 섬으로서 주민의 어업 생활, 지역 해산물, 전라도 문화권과 유사한 생활 풍속·언어가 직접 기록되어 있다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-LIVING-CULTURE"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 전체 또는 해당 지역의 대표 상징 명소라는 공신력 있는 평가 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치가 직접 안내된 자료를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 해상교통·섬 내 이동과 안전 조건을 충분히 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문에 맞는 동선·시설 정보를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 단위 활동·교통·숙박 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 해안 안전·이동·편의시설 정보를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반 시 필요한 보행 부담·교통·의료 및 편의시설 정보를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 여객선 운항과 현장 조건을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "derived_labels": {},
+  "hard_constraints": [
+    {"kind":"island_ferry_access_and_coastal_weather_conditions","applies_to":"all_visitors","condition":"하추자도는 제주도 북쪽의 유인 섬이며 추자도와 목포·완도를 잇는 정기여객선 운항이 공개 자료에 기재된다. 최신 배편, 결항, 섬 내 교통·보행로, 해안 안전시설 및 악천후 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 선사·여객터미널 또는 공식 관광안내로 왕복 여객선 운항·결항, 섬 내 이동, 기상·파랑에 따른 해안 접근 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "noneligible": {},
+  "review_priority": "high",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": {"name":"하추자도","type":"inhabited island","location":"제주특별자치도 제주시 추자면","facts":["한국민족문화대백과사전은 하추자도를 제주시 추자면의 섬으로 설명한다.","하추자도에는 암석해안과 몽돌 해변이 발달해 있고, 어업 중심 주민 생활 및 전라도 문화권과 유사한 생활문화가 기록되어 있다.","비짓제주는 추자도를 섬속의섬 테마여행으로 소개하며 마을순환버스가 상추자와 하추자를 오간다고 안내한다."],"source_ids":["S1","S2"]},
+    "sources": [
+      {"id":"S1","url":"https://encykorea.aks.ac.kr/Article/E0060728","publisher":"한국민족문화대백과사전","checked_at":"2026-08-25","facts":["하추자도는 제주시 추자면의 유인 섬이며 면적 4.18㎢, 암석해안과 몽돌 해변이 발달했다고 설명한다.","전라도 문화권과 유사한 생활 풍속·언어, 어업 중심의 주민 생활, 추자대교와 정기여객선 운항을 기재한다."]},
+      {"id":"S2","url":"https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013026&menuId=DOM_000005000000000221","publisher":"제주관광공사 비짓제주","checked_at":"2026-08-25","facts":["추자도를 섬속의섬 제주여행 테마로 소개하고, 마을순환버스가 상추자도와 하추자도를 오간다고 안내한다."]}
+    ],
+    "limitations": ["하추자도 전체의 최신 여객선 시간표·결항 기준, 섬 내 도로·보행로·무장애 시설, 해안 안전시설 및 월별 이용 조건은 확인하지 못했다.","Kakao 평점·리뷰 수 및 리뷰 작성자 정체는 라벨 근거로 사용하지 않았다."]
+  }
+}

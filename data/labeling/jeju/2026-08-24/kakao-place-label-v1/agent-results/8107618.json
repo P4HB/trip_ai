@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8107618",
+  "place_id": "8107618",
+  "name": "토끼섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소명 ‘토끼섬’은 제주관광공사의 하도리 앞 토끼섬 관광지 안내 및 국가유산포털의 ‘제주 토끼섬 문주란 자생지’와 위치·대상이 일치한다. 독립적인 자연유산 경관 방문지로 식별되므로 적격으로 판정한다. 다만 공식 안내는 섬으로의 도보 이동이 위험하므로 자제하라고 하므로, 섬 내부 진입을 전제한 추천에는 안전 제약을 적용해야 한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "토끼섬은 제주시 구좌읍 하도리 굴동포구에서 약 50m 떨어진 작은 섬이며, 국내 유일의 문주란 자생지인 천연기념물이다.",
+    "typical_visit": "하도리 해안·굴동포구에서 작은 섬과 백사장, 현무암 동산, 문주란 군락을 바라보는 야외 자연경관 방문이다. 공식 안내는 간조 때에도 주변 수심과 패인 곳 때문에 섬으로 걸어가는 것을 자제하라고 한다.",
+    "experience_scope": "해양·자연유산 경관 감상과 문주란 개화기 관찰이 핵심이다. 실내 시설·유료 체험·테마파크·시장·카페 경험은 확인하지 못했으며, 평점·리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 토끼섬을 제주시 구좌읍 하도리 굴동포구에서 약 50m 떨어진 작은 섬으로 설명하며, 백사장과 약 10m 높이의 현무암 동산으로 이루어졌다고 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"국가유산포털은 ‘제주 토끼섬 문주란 자생지’를 천연기념물로, 제주시 구좌읍 하도리 산85 소재의 3,174㎡ 자연유산으로 등록한다. 문주란은 7~9월 흰 꽃을 피우며 국내에서는 토끼섬에서만 자생한다고 설명한다.","source_ids":["S2"]},
+      {"id":"F3","text":"Visit Jeju는 토끼섬 주변이 간조시에도 성인 허벅지 높이 이상의 수심과 깊게 패인 곳이 있어 위험하므로 섬으로의 도보 이동을 자제하라고 안내한다.","source_ids":["S1"]}
+    ],
+    "unknowns": ["섬 내부의 현재 개방·출입 통제, 주차, 화장실, 무장애 접근성은 확인하지 못했다.","문주란의 해당 연도 개화 상태와 정확한 물때는 방문 전 별도 확인이 필요하다.","공식 안내의 도보 이동 자제 외 최신 안전 통제·기상 상황은 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_site","url":"https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500652","checked_at":"2026-08-24T20:34:54+09:00","facts":["하도리 굴동포구에서 약 50m 떨어진 작은 섬, 백사장과 현무암 동산, 문주란 자생지를 안내한다.","문주란은 7월 말부터 9월까지 핀다고 안내한다.","간조시에도 위험한 수심·패인 곳 때문에 섬으로의 도보 이동을 자제하라고 안내한다."]},
+      {"id":"S2","publisher":"국가유산포털","type":"official_government_site","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1363900190000&pageNo=1_1_2_0","checked_at":"2026-08-24T20:34:54+09:00","facts":["제주 토끼섬 문주란 자생지를 천연기념물로 등록한다.","하도리 해안에서 약 50m 떨어진 토끼섬의 모래땅에 문주란 군락이 형성되어 있다고 설명한다.","문주란은 7~9월 흰 꽃을 피우며 국내에서는 제주 토끼섬에서만 자란다고 설명한다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8107618","checked_at":"2026-08-24T20:34:54+09:00","facts":["입력 Kakao 장소명은 ‘토끼섬’이다.","평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"현무암 동산이 있으나 산·오름 탐방이 핵심이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["THEME-SCOPE-V1"]},
+    "theme.ocean":{"value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"해안에서 떨어진 섬, 백사장과 조석에 따른 분리가 공식 확인되어 해양 경관이 핵심이다.","source_ids":["S1","S2"],"rule_ids":["THEME-COAST-DIRECT-V1"]},
+    "theme.activity":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내상 감상 중심 자연유산이며 별도 레포츠·참여 체험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-SCOPE-V1"]},
+    "theme.culture_history":{"value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"천연기념물로 지정·보호되는 자연유산 방문 가치가 직접 확인된다.","source_ids":["S2"],"rule_ids":["THEME-HERITAGE-DIRECT-V1"]},
+    "theme.theme_park":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"자연 섬·자생지 안내만 확인되며 테마파크형 시설 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-SCOPE-V1"]},
+    "theme.cafe":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광·유산 안내에 카페 이용 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-SCOPE-V1"]},
+    "theme.traditional_market":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내상 자연유산 섬으로, 시장 방문 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-SCOPE-V1"]},
+    "theme.festival":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"문주란 개화는 계절 자연현상이며 특정 축제·기간 행사로는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-SCOPE-V1"]},
+    "environment.indoor_ratio":{"value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 설명의 방문 대상은 해안에서 떨어진 섬·백사장·현무암 동산·자생 식물 군락으로 모두 야외 자연환경이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-DIRECT-V1"]},
+    "environment.weather_sensitivity":{"value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"야외 해상 섬이며 공식 안내가 조석·수심에 따른 도보 이동 위험을 명시하므로 날씨와 해상 조건 영향이 매우 크다.","source_ids":["S1","S2"],"rule_ids":["ENV-MARINE-CONDITION-DIRECT-V1"]},
+    "style_evidence.restfulness":{"value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"소규모 자연경관 감상은 느린 체류가 가능하나, 안전 경고와 편의시설 정보 부재로 높은 휴식성을 단정하지 않는다.","source_ids":["S1","S2"],"rule_ids":["STYLE-EXPERIENCE-INFERENCE-V1"]},
+    "style_evidence.physical_ease":{"value":0.25,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"섬 도보 이동은 위험하여 자제하라는 공식 안내가 있어 접근·보행 부담이 낮다고 볼 수 없다. 육지부 조망 접근성은 미확인이다.","source_ids":["S1"],"rule_ids":["STYLE-SAFETY-INFERENCE-V1"]},
+    "style_evidence.visit_duration_flexibility":{"value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안에서의 짧은 조망은 가능해 보이나 내부 접근 안전, 시설, 체류 동선이 미확인이라 유연성을 중간으로 보수 판정한다.","source_ids":["S1"],"rule_ids":["STYLE-DURATION-INFERENCE-V1"]},
+    "style_evidence.scenic_value":{"value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"백사장·현무암 동산·해상 섬과 문주란 군락이 공식 관광·유산 자료에 명시되어 경관 감상이 핵심이다.","source_ids":["S1","S2"],"rule_ids":["STYLE-SCENIC-DIRECT-V1"]},
+    "style_evidence.distinctiveness":{"value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국내 유일의 문주란 자생지이자 천연기념물이라는 고유성이 공식 확인된다.","source_ids":["S2"],"rule_ids":["STYLE-UNIQUE-DIRECT-V1"]},
+    "style_evidence.local_embeddedness":{"value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 하도리 해안의 고유 자연유산과 국내 유일 문주란 자생지로 제주 자연환경과 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-DIRECT-V1"]},
+    "style_evidence.landmark_significance":{"value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"1962년 지정된 천연기념물이며 국내 유일 문주란 자생지로 국가유산적 대표성이 직접 확인된다.","source_ids":["S2"],"rule_ids":["STYLE-LANDMARK-DIRECT-V1"]},
+    "style_evidence.photo_value":{"value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 섬·백사장·문주란의 관광 이미지 갤러리를 제공하며 시각적 경관이 방문 경험으로 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-PHOTO-DIRECT-V1"]}
+  },
+  "companion_fit": {
+    "solo":{"value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 조망 중심의 소규모 자연유산 방문은 혼자 가능하나 안전·접근 정보가 제한적이다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-SAFETY-INFERENCE-V1"]},
+    "couple":{"value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안·섬 경관 감상은 둘이 함께 가능하나 섬 도보 이동 위험 때문에 중간 적합도로 보수 판정한다.","source_ids":["S1"],"rule_ids":["COMPANION-SAFETY-INFERENCE-V1"]},
+    "friends":{"value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"자연경관 관찰은 친구 동행으로 가능하나 활동·시설 경험은 확인되지 않았고 접근 안전 제약이 있다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-SAFETY-INFERENCE-V1"]},
+    "kids":{"value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 간조시에도 깊은 수심과 패인 곳으로 섬 도보 이동을 자제하라고 하므로 어린이 동반 내부 접근에는 부적합하다. 육지부 조망 여건은 미확인이다.","source_ids":["S1"],"rule_ids":["COMPANION-SAFETY-INFERENCE-V1"]},
+    "parents":{"value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"도보 이동 위험과 무장애·보행 편의 미확인 때문에 부모·고령 동반 적합도를 낮게 보수 판정한다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-INFERENCE-V1"]}
+  },
+  "month_fit": {
+    "1":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "2":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "3":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "4":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "5":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "6":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 자료는 문주란 개화가 7월부터라고 하므로, 6월은 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":["S1","S2"],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "7":{"value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료가 문주란의 7~9월 개화를 안내하므로, 개화 관찰 가능성이 있는 달로 높게 판정한다. 해당 연도 상태는 별도 확인이 필요하다.","source_ids":["S1","S2"],"rule_ids":["MONTH-BLOOM-INFERENCE-V1"]},
+    "8":{"value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료가 문주란의 7~9월 개화를 안내하므로, 개화 관찰 가능성이 있는 달로 높게 판정한다. 해당 연도 상태는 별도 확인이 필요하다.","source_ids":["S1","S2"],"rule_ids":["MONTH-BLOOM-INFERENCE-V1"]},
+    "9":{"value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료가 문주란의 7~9월 개화를 안내하므로, 개화 관찰 가능성이 있는 달로 높게 판정한다. 해당 연도 상태는 별도 확인이 필요하다.","source_ids":["S1","S2"],"rule_ids":["MONTH-BLOOM-INFERENCE-V1"]},
+    "10":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 자료의 문주란 개화기는 9월까지이며, 10월은 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":["S1","S2"],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "11":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]},
+    "12":{"value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·접근 자료가 없어 야외 해안 경관의 일반적 중간 적합도로만 폴백한다.","source_ids":[],"rule_ids":["MONTH-FALLBACK-V1"]}
+  },
+  "hard_constraints": [
+    {"kind":"marine_access_safety","applies_to":"island_on_foot_access","condition":"Visit Jeju는 간조시에도 성인 허벅지 높이 이상의 수심과 깊게 패인 곳이 있어 토끼섬으로의 도보 이동을 자제하라고 안내함","status":"needs_review","action":"섬 내부 도보 접근을 추천·일정 동선으로 제시하지 않는다. 방문 전 공식 안전 통제, 기상과 물때를 별도 확인하고 육지부의 안전한 조망 가능 여부도 현장·공식 정보로 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24T20:34:54+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

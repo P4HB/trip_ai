@@ -1,0 +1,38 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723869",
+  "canonical_id": "kakao:13723869",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 패킷에는 일반적인 장소명 ‘퇴적암지대’와 접근이 어렵다는 한 건의 방문 기록만 있으며, 위치·지질 대상·독립 방문지 여부를 식별할 공식·공공 또는 상세 메타데이터가 없다. 동일·인접 지질 지점과의 구분도 불가능해 추천용 벡터를 부여하지 않는다.",
+    "source_ids": ["kakao-place-metadata", "kakao-review-2023-11-14"],
+    "rule_ids": ["eligibility.identity-unknown", "fallback.insufficient-evidence"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": ["입력의 2023년 방문 기록은 관리가 되지 않아 진입하기 어렵다고 서술한다. 현재 접근 가능 여부와 안전 상태는 확인되지 않았으므로 방문 전 최신 현장 정보를 별도로 확인해야 한다."],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/13723869",
+        "checked_at": null,
+        "facts": ["장소명: 퇴적암지대", "입력 패킷에 별도의 주소·좌표·카테고리 정보가 없음"]
+      },
+      {
+        "source_id": "kakao-review-2023-11-14",
+        "publisher": "Kakao 공개 방문 기록",
+        "url": "https://place.map.kakao.com/13723869",
+        "checked_at": "2023-11-14",
+        "facts": ["관리 상태 때문에 들어가기 힘들었다는 과거 방문 기록"]
+      }
+    ],
+    "limitations": ["공식·공공 상세 출처와 지리적 식별 정보가 입력에 없음", "방문 기록은 현재 관리·접근 상태를 보장하지 않음"]
+  },
+  "review_priority": "high"
+}

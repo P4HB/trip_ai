@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10789590",
+  "place_id": "10789590",
+  "name": "족은개오리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "제주특별자치도 오름 기본계획은 족은개오리를 자연휴양림 내부에 있는 오름 9개 중 하나로 수록한다. 입력의 단일 공개 근거도 오름 인증 방문만 언급하며 독립 관리·관람·운영 정보는 제시하지 않는다. 현재 추천 후보군에서는 상위 자연휴양림·숲길 탐방 경험의 세부 지형으로 통합한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-RECORD",
+      "ELIG-INDEPENDENT-VISIT-NOT-CONFIRMED"
+    ]
+  },
+  "research": {
+    "identity_summary": "족은개오리는 제주 자연휴양림 내부 오름 목록에 수록된 제주 오름이다.",
+    "typical_visit": "자연휴양림·숲길 탐방 과정의 오름 보행 경험으로 보인다.",
+    "experience_scope": "상위 자연휴양림·숲길의 세부 지형으로 판정하여 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 오름 기본계획은 자연휴양림 내 오름 목록에 족은개오리를 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력의 익명화된 카카오 공개 방문 근거는 오름 인증 방문만 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "상위 자연휴양림 내 정확한 위치·지정 탐방로",
+      "독립 개방·관리·안전 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도",
+        "type": "public_plan",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781545913771_attach_1.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "자연휴양림 내 오름 목록에 족은개오리를 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing_and_sanitized_review_evidence",
+        "url": "https://place.map.kakao.com/10789590",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 족은개오리이며 오름 인증 관련 공개 방문 근거가 제공됐다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "recreation_forest_subfeature_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "족은개오리는 자연휴양림 내 오름으로 수록되며 독립 접근·운영 정보가 확인되지 않음",
+      "status": "needs_review",
+      "action": "상위 자연휴양림 또는 공식 숲길 탐방 후보로 통합하고, 지정 탐방로·출입 제한을 확인하기 전까지 별도 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1307528178",
+  "canonical_id": "kakao:1307528178",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "review_status": "confirmed",
+    "inference_level": "direct_evidence",
+    "rationale": "제주4·3연구소의 4·3유적지 목록과 개별 페이지가 이 장소를 ‘잃어버린 마을 죽성 새가름’이라는 독립 유적지로 수록한다. 따라서 단순 부속시설이나 식별 불가 항목으로 보지 않았다.",
+    "source_ids": ["jeju43_site"],
+    "rule_ids": ["eligibility.independent_listed_historic_site"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"죽성은 제주읍에서 가장 높은 곳에 있던 중산간 마을로 설명되어 자연·중산간 환경이 방문 맥락에 포함된다. 다만 산행 자체가 핵심이라는 근거는 없다.","source_ids":["jst_hwajeon","ihalla_jukseong"],"rule_ids":["theme.contextual_nature"]},
+    "theme.ocean": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료는 죽성을 제주시 오등동의 고지대 중산간 화전마을·4·3 유적으로 설명하며 해안·바다·해양 활동을 방문 경험으로 제시하지 않는다.","source_ids":["jst_hwajeon","ihalla_jukseong"],"rule_ids":["theme.absent_when_direct_sources_describe_nonmarine_site"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"걷기 외 레포츠나 참여형 체험 운영 여부를 확인하지 못했다.","source_ids":["jeju43_site"],"rule_ids":["fallback.insufficient_activity_evidence"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"새가름은 4·3으로 사라진 죽성의 자연마을이며 제주4·3연구소가 별도 유적지로 수록한다. 역사 기억과 옛 마을 터가 핵심 방문 맥락이다.","source_ids":["jeju43_site","jst_hwajeon","ihalla_jukseong"],"rule_ids":["theme.historic_memory_site"]},
+    "theme.theme_park": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 유적지·마을사 자료에는 놀이공원형 시설, 동물·수족관 또는 워터파크 경험이 제시되지 않는다.","source_ids":["jeju43_site","jst_hwajeon"],"rule_ids":["theme.absent_when_direct_sources_describe_historic_site"]},
+    "theme.cafe": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 유적지·마을사 자료에는 카페·차·커피·디저트 이용이 이 장소의 방문 목적으로 제시되지 않는다.","source_ids":["jeju43_site","jst_hwajeon"],"rule_ids":["theme.absent_when_direct_sources_describe_historic_site"]},
+    "theme.traditional_market": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 유적지·마을사 자료에는 시장 운영 또는 시장 방문 경험이 제시되지 않는다.","source_ids":["jeju43_site","jst_hwajeon"],"rule_ids":["theme.absent_when_direct_sources_describe_historic_site"]},
+    "theme.festival": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료는 상설 역사 유적지·옛 마을 터로 소개하며 특정 기간 축제나 공연을 핵심으로 제시하지 않는다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["theme.absent_when_direct_sources_describe_historic_site"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"자료는 옛 마을 안길·집터와 대나무 숲으로 남은 장소를 설명하고 실내 관람 공간을 제시하지 않는다.","source_ids":["ihalla_jukseong"],"rule_ids":["environment.outdoor_remains"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 시설보다 옛 마을 터·안길의 야외 관찰에 기반하므로 비와 바람 등 날씨 영향을 받을 가능성이 크다. 실제 운영·접근 조건은 확인하지 못했다.","source_ids":["ihalla_jukseong"],"rule_ids":["environment.outdoor_site_weather_exposure"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대나무 숲과 옛 마을 터를 둘러보는 야외 역사 유적이라는 성격상 조용한 체류 가능성은 있으나 휴식 시설은 확인되지 않았다.","source_ids":["ihalla_jukseong"],"rule_ids":["style.quiet_outdoor_historic_site"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고지대 중산간 옛 마을이라는 점 외에 보행로, 경사, 계단, 주차 및 무장애 접근 정보를 확인하지 못했다.","source_ids":["jst_hwajeon"],"rule_ids":["fallback.insufficient_accessibility_evidence"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"별도 유적지로 수록된 야외 옛 마을 터이므로 표지·안길 관찰 중심의 짧은 방문은 가능해 보이나, 현장 동선·관람 소요 시간은 확인되지 않았다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["style.unstructured_outdoor_visit"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"기사에는 옛 마을 안길과 집터를 뒤덮은 대나무가 남아 있다고 설명되지만, 경관 감상이 이 장소의 주된 방문 목적이라는 직접 근거는 없다.","source_ids":["ihalla_jukseong"],"rule_ids":["style.landscape_feature_present"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"새가름은 4·3으로 사라진 죽성의 구성 마을 중 하나로 별도 유적지로 수록되어, 일반 마을 경관과 구별되는 역사 기억의 장소성을 가진다.","source_ids":["jeju43_site","jst_hwajeon"],"rule_ids":["style.distinct_historic_memory"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"죽성은 오등리의 화전·농축업 생활과 제주4·3의 지역사를 함께 보여 주는 옛 마을로 설명된다.","source_ids":["jst_hwajeon","ihalla_jukseong"],"rule_ids":["style.jeju_local_history"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주4·3연구소가 별도 유적지로 관리·수록하지만, 제주 전체를 대표하는 대형 상징 명소라는 근거는 확인하지 못했다.","source_ids":["jeju43_site"],"rule_ids":["style.listed_historic_site_limited_scope"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대나무 숲 속 옛 마을 안길·집터라는 시각 요소는 확인되나, 촬영 명소 또는 사진 활동이 핵심이라는 직접 근거는 없다.","source_ids":["ihalla_jukseong"],"rule_ids":["style.visual_remains_present"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"조용한 야외 역사 유적의 일반적 단독 관람 가능성을 반영했으며 현장 이용 정보는 미확인이다.","source_ids":["jeju43_site"],"rule_ids":["companion.historic_site_prior"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"소규모 야외 역사 유적의 일반적 동반 관람 가능성을 반영했으며 실제 편의시설은 미확인이다.","source_ids":["jeju43_site"],"rule_ids":["companion.historic_site_prior"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"소규모 일행의 역사 유적 방문 가능성을 일반 prior로만 반영했다.","source_ids":["jeju43_site"],"rule_ids":["companion.historic_site_prior"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"4·3 역사 학습 맥락은 있으나 안전·동선·해설 제공 여부가 미확인이라 중립값으로 두었다.","source_ids":["jeju43_site","jst_hwajeon"],"rule_ids":["companion.historic_site_prior"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"중산간 옛 마을 터의 실제 보행 난이도와 휴식·무장애 시설이 확인되지 않아 낮은 불확실 fallback으로 둔다.","source_ids":["jst_hwajeon"],"rule_ids":["fallback.insufficient_accessibility_evidence"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"climate_heuristic","rationale":"연중 상설 역사 유적지이나 야외 옛 마을 터여서 계절별 접근·기상 조건을 확인하지 못해 중립값이다.","source_ids":["jeju43_site","ihalla_jukseong"],"rule_ids":["month.outdoor_historic_site_unknown_conditions"]}
+  },
+  "hard_constraints": [
+    {"kind":"accessibility_uncertain","status":"needs_review","rationale":"중산간 옛 마을 터의 실제 보행로·경사·무장애 접근·주차 정보를 공개 근거에서 확인하지 못했다.","source_ids":["jst_hwajeon"],"rule_ids":["constraint.verify_access_before_recommending"]},
+    {"kind":"weather_exposure","status":"needs_review","rationale":"실내 관람 공간이 확인되지 않은 야외 옛 마을 터이므로 악천후 시 경험과 접근성이 달라질 수 있다.","source_ids":["ihalla_jukseong"],"rule_ids":["constraint.outdoor_weather_check"]}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status":"completed_with_gaps",
+    "sources":[
+      {"source_id":"jeju43_site","url":"https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0&wr_id=48","publisher":"제주4·3연구소","checked_at":"2026-08-25T00:00:00+09:00","facts":["‘잃어버린 마을 죽성 새가름’을 4·3유적지로 별도 수록한다."]},
+      {"source_id":"jst_hwajeon","url":"https://jst.re.kr/upload/pdf/RC00095030.pdf","publisher":"제주학연구센터","checked_at":"2026-08-25T00:00:00+09:00","facts":["오등리 죽성은 큰가름·새가름 등 자연마을로 이루어졌다.","죽성 전체는 현재 잃어버린 마을이 되었고 4·3 이전 중산간 농축업 마을이었다."]},
+      {"source_id":"ihalla_jukseong","url":"https://s1.ihalla.com/article.php?aid=1701270000750055378","publisher":"한라일보","checked_at":"2026-08-25T00:00:00+09:00","facts":["죽성은 오등리 중심마을이었으나 잃어버린 마을이 되었다.","옛 마을 안길과 집터에는 대나무가 무성하다고 보도했다."]}
+    ],
+    "gaps":["정확한 현장 위치·관람 동선·개방 여부·주차·무장애 접근·화장실 정보","계절별 접근성 및 안전 정보","해설·교육 프로그램 또는 체험 운영 여부"]
+  }
+}

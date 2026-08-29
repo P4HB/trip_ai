@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1911,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17630155.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17630155",
+    "provider": "kakao",
+    "place_id": "17630155",
+    "name": "토이파크",
+    "url": "https://place.map.kakao.com/17630155",
+    "average_rating_5": "3.4",
+    "visitor_review_count": "27",
+    "blog_review_count": "10",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.09.",
+      "content": "오랜만에 재방문 했습니다. 남녀노소 구분없이 1인당 무조건 1만원.. 여기에 커피도 나오고 자그마한 선물에 말에게 당근먹이주기 체험..북카페 이용과 오락실게임과 총쏘기게임... 그거에 비하면 입장료가 비싸게 안느껴지지만 그래도 어린이와 어른 요금 구분하면 좋겠고 제주도민도 혜택이 좀 있으면 지역주민들도 더 갈것 같고..장난감 할인은 굳이 필요없는데.. 집에 다있고 부르면 다 오는것들이라..^^ 사장님 친절하시고 천천히 둘러보시면 참 좋은곳입니다.",
+      "tags": "주차|입장료"
+    },
+    {
+      "date": "2024.09.06.",
+      "content": "어렸을때 가지고 싶었던 용자물들이 많아서 좋았습니다. 아쉬운게 있다면 몇몇개는 합체가 잘못되어있는것도 있기도 했지만 데이트하기엔 정말 좋았어요. -도황 십간지네-",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2023.01.22.",
+      "content": "개인이 관리하는 곳이라 그런지 관리의 한계가 느껴지는 곳 볼거리는 많은데 엄청 고퀄의 피규어는 별로 없고 브릭들에 먼지가 넘 많아요 엉뚱한 곳에 꽂혀 계속 노는 아들덕에 시간은 잘 때우고 나왔어요",
+      "tags": ""
+    },
+    {
+      "date": "2026.07.10.",
+      "content": "체험할것도 많고 아이가 재밌어해요!",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.05.05.",
+      "content": "어린이날 애들 데리고가서 잘 놀다 갑니다. 사장님이 친절하세요",
+      "tags": "시설"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

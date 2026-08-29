@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1266592394",
+  "place_id": "1266592394",
+  "name": "카약&트라익파크",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 판매 안내는 이 명칭을 비체올린테마파크의 제주카약과 트라익파크 이용 상품으로 제시하며, 트라익파크 단품 이용 시 공원 관람이 가능하다고 명시한다. 따라서 독립 관광지 전체가 아니라 비체올린테마파크 안에서 선택하는 개별 체험 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "카약&트라익파크는 제주시 한경면 판조로 253-6의 비체올린테마파크에서 제공되는 카약 및 트라익 개별 체험 시설이다.",
+    "typical_visit": "테마파크 내 카약 또는 트라익 체험을 선택해 이용하는 활동형 방문으로 확인된다.",
+    "experience_scope": "공개 판매 페이지가 시설의 위치와 일부 이용 조건을 제공하지만, 이 Kakao 장소 표식의 별도 운영 주체·독립 입장 구조는 확인하지 못했다. 상위 테마파크와 분리된 추천 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 판매 페이지의 상품명은 '비체올린테마파크 제주카약 + 트라익파크'이며 이용 장소를 제주시 한경면 판조로 253-6으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 트라익파크 단품 상품 구매 시 공원 관람이 가능하다고 적고, 트라익파크를 공원 내 선택 체험으로 설명한다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식과 판매 페이지의 시설 표기가 현재도 동일하게 운영되는지 공식 운영자 안내로 확인하지 못했다.",
+      "카약과 트라익의 최신 운영일, 기상 취소 기준, 정확한 코스와 안전 설비는 확인하지 못했다.",
+      "상위 비체올린테마파크의 별도 Kakao 장소와의 최신 중복 관계는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "마이리얼트립 공개 판매 페이지",
+        "type": "public_commercial_activity_listing",
+        "url": "https://experiences.myrealtrip.com/products/6114924",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "상품명은 비체올린테마파크 제주카약 + 트라익파크이다.",
+          "이용 장소는 제주특별자치도 제주시 한경면 판조로 253-6으로 안내된다.",
+          "트라익파크 단품 상품 구매 시 공원 관람이 가능하다고 안내된다.",
+          "트라익파크 이용에는 연령·신장 조건이 안내되며 현장 직원이 탑승을 제한할 수 있다고 적혀 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "program_eligibility",
+      "applies_to": "trike_participants",
+      "condition": "공개 판매 안내상 트라익파크는 12세 이상 65세 이하, 신장 150cm 이상 조건이 있으며, 조건 충족 여부와 별도로 현장 직원 판단으로 탑승이 제한될 수 있다.",
+      "status": "needs_review",
+      "action": "예약 또는 방문 전에 운영자의 최신 연령·신장·건강·기상 안전 조건과 실제 운영 여부를 확인한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    },
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_system",
+      "condition": "카약&트라익파크는 비체올린테마파크 내 개별 체험으로 확인되어 독립 관광지 후보로 병합하거나 별도 완전 라벨 벡터를 부여하지 않는다.",
+      "status": "confirmed",
+      "action": "상위 테마파크 또는 최종 중복·부속 시설 병합 정책에서만 체험 정보를 검토한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

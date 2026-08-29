@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25575355",
+  "place_id": "25575355",
+  "name": "신엄리원담",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공개 지역 답사 자료는 신엄리 2722번지 해안가의 ‘신엄리 돈물원담’을 안내하고, 제주시의 원담 복원 보도를 인용한 복수 언론은 신엄리 돈물원을 복원 대상 전통 어로시설로 명시한다. 입력명의 ‘신엄리원담’은 이 장소를 가리킬 가능성이 높아 독립 방문 지점으로 판정하되, Kakao 좌표와 최신 현장 상태의 직접 대조는 하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "신엄리원담은 애월읍 신엄리 해안의 돈물원담으로 안내되는 제주 전통 원담일 가능성이 높은 돌 어로시설이다.",
+    "typical_visit": "조수간만에 따라 드러나는 해안 돌담과 제주 전통 어로문화를 관찰하는 야외 방문으로 파악된다.",
+    "experience_scope": "신엄리 돈물원의 복원 계획 및 전통 어로시설 성격은 확인했으나, 현재의 보존 상태·공개 출입·관람 동선·체험 운영·주차·화장실·무장애 접근은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "공개 제주올레 답사 자료는 신엄리 돈물원담을 신엄리 2722번지 해안가에 있는 장소로 적고, 녹고물개와 검은빌레 사이에 만들어졌다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주시 발표을 인용한 보도는 신엄리 돈물원을 포함한 8곳을 전통 어로시설 원담 복원 대상으로 들고, 원담을 자연 지형과 조차를 이용해 돌을 쌓아 고기를 잡는 시설로 설명한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["Kakao 등록 지점이 신엄리 돈물원담과 정확히 동일한 좌표인지 최신 지도 자료로 대조하지 못했다.", "현재 돌담의 보존 상태, 출입 허용, 물때별 관찰 가능 여부와 체험 운영 여부를 확인하지 못했다.", "해안 보행로의 노면·미끄럼·파도 위험, 주차·화장실·쉼터 및 무장애 접근 정보를 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주올레 답사 공개 기록", "type": "public_local_reference", "url": "https://sangmin-1.tistory.com/15969728", "checked_at": "2026-08-24", "facts": ["신엄리 돈물원담을 신엄리 2722번지 해안가로 안내한다.", "돈물원담은 녹고물개와 검은빌레 사이에 있다고 설명한다."]},
+      {"id": "S2", "publisher": "경향신문 (제주시 발표 인용)", "type": "public_news_reference", "url": "https://www.khan.co.kr/article/201305122220345", "checked_at": "2026-08-24", "facts": ["제주시의 원담 복원 대상에 신엄리 돈물원이 포함됐다.", "원담은 해안 자연 지형과 조차를 이용해 고기를 잡기 위해 돌을 쌓은 시설이라고 보도한다.", "보도 시점은 2013년이므로 현재 운영·접근 상태를 보장하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"신엄리 해안가의 조차를 이용한 원담으로 확인되어 해안·바다 관찰이 대표 경험의 큰 부분일 것으로 추론한다. 현재 접근 가능 구간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 참여형 어로 체험 또는 레포츠 운영을 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"제주시 복원 대상의 전통 어로시설 원담으로 확인되어 제주 어촌 생활문화·전통 어로의 맥락이 방문 가치에 큰 비중을 가진다고 추론한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"해안가 돌 어로시설로 안내되어 대표 경험의 실내 비율은 낮다고 추론한다. 부속 실내 시설은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"조차를 활용하는 야외 해안 시설이므로 비·바람·파도 및 물때가 관찰과 보행에 비교적 큰 영향을 줄 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음·체류 환경 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 노면, 단차, 미끄럼 위험 및 무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선·소요시간·물때별 방문 가능 시간의 최신 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 직접 확인된 대표 방문 가치라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 고유의 조차 활용 돌 어로시설이며 신엄리 돈물원으로 특정되어, 일반 해안과 구별되는 경험 요소가 큰 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"원담은 제주 해안의 자연 지형·조차를 이용한 전통 어로시설로 설명돼 제주 지역 자연과 생활문화의 연결성이 높다고 추론한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월을 대표하는 명소라는 최신 공적 지정·관광 안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·물때·해안 안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 관람 동선과 해안 안전 조건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 관람·체험 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 조간대 안전·노면·난간·체험 운영 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근 및 해안 안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 파도 영향을 받을 수 있으나 현장 출입 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 파도 영향을 받을 수 있으나 현장 출입 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위·강수·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위·강수·파도 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 파도 영향을 받을 수 있으나 현장 출입 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"identity_and_current_access_confirmation","applies_to":"all_visitors","condition":"입력 Kakao 지점과 신엄리 돈물원담의 정확한 좌표 일치, 최신 보존·공개 출입 상태는 확인하지 못했다.","status":"needs_review","action":"방문 전 최신 지도와 현장·관할 지자체 안내로 장소 동일성 및 출입 가능 여부를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"},
+    {"kind":"coastal_tide_and_safety","applies_to":"all_visitors","condition":"원담은 조차를 이용한 해안 시설이며 물때·파도·젖은 암반에 따른 현장 접근 안전 조건은 확인하지 못했다.","status":"needs_review","action":"해안으로 내려가거나 관찰할 경우 물때·기상과 현장 안전 안내를 사전에 확인하고 위험 시 접근하지 않는다.","source_ids":["S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

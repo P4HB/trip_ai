@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723644",
+  "place_id": "13723644",
+  "name": "폭낭쉼터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 장소의 카카오 공개 페이지는 제주시 한경면 저지리의 ‘폭낭쉼터’로 식별된다. 제주관광공사 Visit Jeju는 저지곶자왈 탐방 정보를 안내하면서 내비게이션 검색어를 ‘저지곶자왈 폭낭쉼터’로 제시하고, 해당 곶자왈의 숲길 탐방 경험을 설명한다. 따라서 폭낭쉼터는 저지곶자왈 방문을 위한 지점·쉼터로 판단되며 독립 추천 후보의 완전 벡터는 부여하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "폭낭쉼터는 제주시 한경면 저지리에 등록된 장소이며, 공개 관광 안내에서 저지곶자왈과 결합한 내비게이션 검색어로 확인된다.",
+    "typical_visit": "저지곶자왈의 숲길·올레길 탐방 맥락에서 접근하거나 잠시 쉬는 지점으로 식별된다.",
+    "experience_scope": "독립 관광시설이 아니라 저지곶자왈 방문 경험에 종속된 쉼터·탐방 지점으로 보아 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "카카오맵 공개 장소 페이지는 장소명을 ‘폭낭쉼터’로, 위치를 제주특별자치도 제주시 한경면 저지리로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju의 저지곶자왈 안내는 올레길 14-1 코스와 연결된 숲 탐방을 설명하고 내비게이션 검색어로 ‘저지곶자왈 폭낭쉼터’를 제시한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "폭낭쉼터 자체의 별도 운영 주체, 독립 프로그램 또는 최신 개방·시설 정보는 확인하지 못했다.",
+      "카카오 장소 페이지의 주소 표기와 관광 안내의 검색어 연결만으로는 쉼터의 정확한 관리 범위를 확정할 수 없다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "카카오맵",
+        "type": "place_listing",
+        "url": "https://place.map.kakao.com/13723644",
+        "checked_at": "2026-08-24",
+        "facts": ["장소명은 ‘폭낭쉼터’다.", "공개 페이지의 위치 표기는 제주특별자치도 제주시 한경면 저지리다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000011139&menuId=DOM_200000000010740",
+        "checked_at": "2026-08-24",
+        "facts": ["저지곶자왈은 마을에서 운영하는 장소이며 올레길 14-1 코스 일부와 연결된다.", "안내는 내비게이션 검색어로 ‘저지곶자왈 폭낭쉼터’를 제시한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "저지곶자왈 탐방에 종속된 쉼터·접근 지점으로 판단되며, 독립 관광시설임을 뒷받침하는 공개 근거는 확인하지 못함",
+      "status": "needs_review",
+      "action": "독립 추천 후보 벡터에서 제외하고 저지곶자왈 방문 정보의 부속 지점으로 검토",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

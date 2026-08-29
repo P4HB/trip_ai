@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1412161264",
+  "canonical_id": "kakao:1412161264",
+  "name": "성안올레 2코스",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사 비짓제주는 성안올레 2코스를 산지천에서 출발해 탑동광장·용연구름다리·관덕정 등을 잇는 약 6km·약 2시간의 제주시 원도심 도보 코스로 공개한다. 입력 장소명과 공식 코스명이 일치하고, 독립적으로 방문 가능한 관광 도보 경로이므로 eligible로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 경로는 제주시 원도심과 해안·도심 명소를 연결하며 산·오름 경험은 핵심으로 제시되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 2코스는 탑동광장, 서자복, 용연구름다리를 경유하며, 2026 도보투어 설명은 먹돌해안의 이야기를 2코스 주제로 제시한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-COASTAL-ROUTE-DIRECT"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "성안올레 2코스는 약 6km, 약 2시간이 걸리는 원도심 도보 코스로 공개되어 걷기가 핵심 활동이다.", "source_ids": ["S1"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "비짓제주는 성안올레를 제주의 역사·문화·예술과 제주 사람들의 삶의 터전을 감상하는 원도심 올레길로 소개하고, 2코스에는 관덕정과 오현단이 포함된다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORY-CULTURE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개된 코스 구성은 도심 보행과 역사·해안 경유지이며 놀이·동물·전시 중심 테마파크 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 코스 안내에서 카페·음료·디저트 이용은 독립적인 핵심 방문 목적으로 제시되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "2코스의 공식 경유지는 탑동광장·용연구름다리·관덕정 등이며 전통시장 방문은 핵심 경로로 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "성안올레 2코스는 상설 도보 경로로 소개된다. 2026년 해설 동행 프로그램은 별도 기간 행사이므로 코스 자체를 축제로 보지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PERMANENT-ROUTE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험은 산지천·광장·해안·다리·골목을 잇는 약 6km의 도보 코스로 공개되어 야외 비중이 높다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 도심·해안 보행이므로 비·강풍·폭염·한파의 영향을 받을 수 있다. 공식 해설 투어도 기상·현장 여건에 따라 변동될 수 있다고 알린다.", "source_ids": ["S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "약 2시간의 도심 걷기 코스이나, 휴식·정적 체류가 주목적이라는 직접 근거는 확인하지 못해 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["STYLE-URBAN-WALK-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "약 6km·2시간 보행 정보는 있으나 경사, 계단, 노면, 무장애 동선과 휴식 시설의 최신 정보가 없어 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "전체 코스의 약 2시간 소요는 확인되나 구간별 진입·이탈과 단축 동선의 공식 정보가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-FLEXIBILITY-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "2코스는 탑동광장, 서자복, 용연구름다리 등 바다와 도심 경관을 잇고, 공식 소개는 원도심의 자연 가치와 아름다움을 함께 느끼는 코스로 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "성안올레는 과거 성으로 둘러싸였던 제주시 원도심의 역사·문화·해안 이야기를 연결하는 고유한 도보 경로이며, 2코스는 먹돌해안을 주제로 제시된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-UNIQUE-ROUTE-STORY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 소개는 성안올레를 제주의 역사와 제주 사람들의 삶의 터전을 둘러보는 원도심 길로 설명한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "관덕정 등 알려진 원도심 명소를 연결하고 제주시가 공식 도보투어로 운영하지만, 코스 자체의 제주 전체 대표 랜드마크 지위는 별도로 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안·광장·구름다리와 원도심 경관은 확인되나 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 걷기 안전, 안내, 야간 조도와 통신 환경의 최신 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 편의·경험에 대한 직접 평가 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 보행 편의와 수용 환경 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 보행 안전, 도로 횡단, 보호자 동반 기준과 시설 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사, 계단, 휴식, 무장애 접근성 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "코스 자체의 월별 접근·운영 정보가 부족해 야외 도보 경험의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "코스 자체의 월별 접근·운영 정보가 부족해 야외 도보 경험의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "코스 자체의 월별 접근·운영 정보가 부족해 야외 도보 경험의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 4월부터 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 5월에 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 6월에 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "공식 해설 동행 프로그램은 혹서기에 미운영이나, 코스 자체의 접근 가능 여부는 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "공식 해설 동행 프로그램은 혹서기에 미운영이나, 코스 자체의 접근 가능 여부는 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 9월에 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 10월에 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "해설 동행 프로그램은 11월에 운영되나, 코스 자체의 월별 적합성 근거가 충분하지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "코스 자체의 월별 접근·운영 정보가 부족해 야외 도보 경험의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_urban_walk_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "성안올레 2코스는 약 6km의 야외 원도심·해안 도보 경로다. 현재 구간 통제, 보도·횡단 안전, 경사·계단, 무장애 접근성 및 기상 악화 시 현장 조건은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주시 또는 성안올레 운영 안내로 최신 경로, 기상에 따른 변동, 보행 안전과 동행자별 접근성을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘성안올레 2코스’는 제주관광공사 비짓제주가 공개한 제주시 원도심 성안올레의 2코스와 일치한다.",
+    "facts": [{"text": "비짓제주는 성안올레를 제주시 원도심의 역사·문화·예술과 제주 사람들의 삶의 터전을 둘러보는 올레길로 소개한다.", "source_id": "S1"}, {"text": "성안올레 2코스는 산지천에서 탑동광장·서자복·용연구름다리·무근성길·관덕정·오현단·제이각·제주칠성로상점가를 거쳐 산지천으로 돌아오는 약 6km·약 2시간 코스로 공개된다.", "source_id": "S1"}, {"text": "2026년 제주시 원도심 도보투어 안내는 성안올레 2코스를 고씨주택에서 산지천·산짓물광장·탑동광장·서자복·용연구름다리·무근성길·관덕정으로 잇고, 먹돌해안을 주제로 소개한다.", "source_id": "S2"}],
+    "unknowns": ["Kakao 표식의 정확한 출발 지점과 현행 안내 표지", "각 구간의 최신 보도 상태·경사·계단·횡단 안전 및 무장애 접근성", "코스 자체의 상시 접근 가능 여부와 우천·강풍·폭염 시 통제"],
+    "sources": [{"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000012898", "checked_at": "2026-08-25", "facts": ["성안올레의 원도심 역사·문화·예술 탐방 성격과 2코스 약 6km·약 2시간 정보를 제공한다.", "2코스의 주요 경유지를 공개한다."]}, {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism", "url": "https://m.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014329", "checked_at": "2026-08-25", "facts": ["2026 원도심 도보투어의 성안올레 2코스 경로와 먹돌해안 주제를 제공한다.", "해설 동행 프로그램은 4월부터 11월까지이며 기상과 현장 여건에 따라 변동될 수 있다고 안내한다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:241150751",
+  "place_id": "241150751",
+  "name": "사근이오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "지역 보도는 사근이오름을 식은이오름의 별칭으로 명시하고, 구좌읍 상덕천삼거리 인근의 독립 오름과 탐방 입구를 설명한다. 국토지리정보원 고시 기반 지명 정보도 식은이오름을 구좌읍 덕천리의 오름으로 제시한다. 입력 Kakao 후기의 봄 벚꽃 언급도 야외 오름이라는 성격과 모순되지 않아 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "사근이오름은 식은이오름·시근이오름·웃식은이오름으로도 불리는 제주시 구좌읍 덕천리의 오름이다.",
+    "typical_visit": "입구에서 야외 오솔길과 억새 구간을 걸어 말굽형 굼부리와 산체를 보는 비정비 자연 탐방이다.",
+    "experience_scope": "지역 보도는 입구 철문, 오솔길, 억새로 가려지는 길 흔적과 정상의 수목을 설명한다. 최신 개방 여부, 토지 소유·출입 조건, 정식 탐방로, 주차·화장실, 무장애 시설 및 악천후 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주일보는 식은이오름을 사근이오름·시근이오름·웃식은이오름으로도 부르며, 구좌읍 상덕천삼거리 인근의 야트막한 말굽형 오름으로 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주일보 탐방기는 입구 철문 뒤 오솔길을 따라가면 억새가 길을 가리고 길 흔적이 흐릿해지며, 정상은 소나무 때문에 주변 조망이 없다고 기록한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "국토지리정보원 고시 기반 공개 지명 정보는 식은이오름을 제주시 구좌읍 덕천리 1450의 지명으로 제시한다.", "source_ids": ["S3"]},
+      {"id": "F4", "text": "입력된 Kakao 공개 방문 후기는 봄철 벚꽃 군락이 예쁘다는 경험을 언급한다. 이 후기는 보조 경험 근거이며 평점·후기 수는 사용하지 않았다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "2026-08-24 기준 실제 철문 개방, 사유지 출입 허가 및 탐방 가능 여부를 확인하지 못했다.",
+      "공식 탐방로, 노면·경사·계단, 주차·화장실·휴식시설, 무장애 접근 및 구조·안전 안내를 확인하지 못했다.",
+      "벚꽃의 정확한 개화 시기와 현재 식생·길 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주일보", "type": "regional_news_feature", "url": "https://www.jejunews.com/news/articleView.html?idxno=2214445", "checked_at": "2026-08-24", "facts": ["사근이오름은 식은이오름의 별칭으로 소개된다.", "구좌읍 상덕천삼거리 인근에 입구 철문이 있다고 설명한다.", "탐방 중 억새가 길을 가리고 정상은 소나무로 주변 조망이 없다고 기록한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/241150751", "checked_at": "2026-08-24", "facts": ["입력된 익명화 공개 후기는 봄철 벚꽃 군락의 경관을 언급한다.", "평점과 후기 수는 라벨값의 근거로 사용하지 않았다."]},
+      {"id": "S3", "publisher": "국토지리정보원 고시 기반 모두지명", "type": "public_geographic_name_record", "url": "https://modoo.io/toponym/56808", "checked_at": "2026-08-24", "facts": ["식은이오름의 주소를 제주시 구좌읍 덕천리 1450으로 제시한다.", "국토지리정보원 고시 제2003-315호와 고시일을 함께 제시한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"출처가 이 장소를 말굽형 오름으로 명시하고 산체·굼부리 탐방을 설명한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 핵심 경험이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"오솔길과 억새 구간을 걸어 정상에 이르는 탐방 기록을 근거로 야외 보행 참여 경험으로 판단하되, 정식 동선은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"입구부터 오솔길·억새·정상을 걷는 야외 오름 경험으로 설명돼 대표 경험의 실내 비율이 낮다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"비정비 야외 오솔길과 억새 구간을 걷는 경험이므로 강수·바람·더위·추위의 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"탐방 기록에 억새가 길을 가리고 길 흔적이 흐릿하다고 되어 있어 보행의 예측 가능성과 이용 편의가 낮다고 추론한다. 실제 난이도는 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"거리·소요시간·정식 코스와 체류 시설 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"말굽형 굼부리와 식생은 확인되지만 정상 조망은 없다고 기록돼 경관 감상 가치의 정도를 충분히 판정하기 어렵다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"별칭과 말굽형 지형은 확인되지만 다른 오름과 비교한 고유 경험의 충분한 근거가 없다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 구좌읍의 지형이라는 사실 외에 지역 생활·생산자·문화와 직접 연결된 근거가 부족하다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표 명소·상징이라는 공적 지정 또는 관광 안내 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"입력 후기의 봄 벚꽃 언급은 보조 경험 근거이나 사진 촬영 가치를 직접 확인하는 자료가 부족하다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 안전한 동선 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"길이 억새에 가려지고 길 흔적이 흐릿하다는 기록상 어린이 동반의 안전·길찾기 부담이 있을 수 있다. 실제 연령별 안전 조건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"비정비 탐방로와 불명확한 길 흔적은 보행 편의에 부담이 될 수 있다. 경사·노면·무장애 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"비정비 야외 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"비정비 야외 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"입력된 공개 후기에서 봄철 벚꽃 군락을 언급해 봄철 경관 경험의 가능성을 보조 근거로 반영한다. 정확한 개화 시기는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"비정비 야외 탐방은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"비정비 야외 탐방은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"비정비 야외 탐방은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"지역 보도는 억새가 길을 가리고 길 흔적이 흐릿한 구간을 기록했으나, 최신 출입 가능 여부와 정식 탐방로·노면·경사·안전 시설은 확인되지 않았다.","status":"needs_review","action":"방문 전 토지·출입 조건과 최신 개방 여부를 공식 현장 안내로 확인하고, 악천후에는 비정비 야외 보행을 피한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17355561",
+  "canonical_id": "kakao:17355561",
+  "name": "탑동관광정보안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명과 Kakao 지도 페이지는 제주시 탑동의 관광정보안내소를 가리키며, 제주관광공사 공개 관광지도도 이를 ‘탑동 관광안내센터’로 주요 관광안내소 중 하나로 표기한다. 이는 인근 여행지 방문을 돕는 안내 서비스·시설이지 자체 관람·체험을 제공하는 독립 여행 방문지는 아니므로 subordinate_facility로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드 ‘탑동관광정보안내소’는 제주특별자치도 제주시 삼도이동 1263에 표시된 탑동 관광안내 시설로 확인된다.",
+    "typical_visit": "여행자는 탑동과 제주 시내 관광을 위한 안내·문의 목적으로 이 시설을 이용할 수 있다.",
+    "experience_scope": "관광안내 서비스는 주변 관광지 방문을 지원하는 부속 시설이며, 독립적인 관광·문화·자연 체험 장소로서의 일관된 방문 경험 벡터를 제공하지 않는다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사의 제주 관광지도는 주요 관광안내소 목록에 ‘탑동 관광안내센터’와 전화번호 064-728-3919를 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao 지도 장소 페이지는 ‘탑동관광정보안내소’를 제주특별자치도 제주시 삼도이동 1263으로 표시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현행 안내소 운영 시간, 제공 언어, 휴무일 및 무장애 접근성은 이번 공개 출처에서 확인하지 못했다.",
+      "Kakao 레코드명과 관광지도 명칭의 최신 행정상 표기 차이는 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 (Visit Jeju)",
+        "type": "official_public_tourism_map",
+        "url": "https://www.visitjeju.net/map/JEJU_MAP_KOREAN_SUMMER.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 관광지도는 주요 관광안내소 중 하나로 ‘탑동 관광안내센터’를 표기한다.",
+          "해당 안내센터의 연락처로 064-728-3919를 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17355561",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소 페이지 제목은 ‘탑동관광정보안내소’다.",
+          "페이지의 공개 설명은 주소를 제주특별자치도 제주시 삼도이동 1263으로 표시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7999061",
+  "place_id": "7999061",
+  "name": "열녀비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.65,
+    "rationale": "입력 Kakao 레코드에는 ‘열녀비’라는 일반 명칭 외에 주소·좌표·업종·공개 방문 후기가 없다. 공공 조사자료는 서귀포시 표선면 성읍리의 ‘열녀송씨비’와 그 인물을 설명하지만, 이 Kakao place_id가 해당 비석인지 다른 동명 기념비인지 교차 확인하지 못했다. 따라서 특정 문화유산과의 동일성이나 독립 여행 방문지 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력에서 확인 가능한 정보는 장소명 ‘열녀비’와 place_id뿐이다. 공공 서귀포시 마을조사에는 성읍리의 열녀송씨비가 기록되지만, 입력 레코드와의 동일성은 확인되지 않았다.",
+    "typical_visit": "공공 자료가 설명하는 성읍리 열녀송씨비는 송천향의 수절 설화와 아들 강운의 효심 정려비가 함께 언급되는 역사문화 자원이다. 다만 이 Kakao 레코드가 그 장소임을 확인하지 못했다.",
+    "experience_scope": "입력에는 주소·좌표·업종·공개 후기·운영 및 관람 정보가 없다. 평점과 후기 수는 라벨 근거로 사용하지 않았으며, 신원 미확정 상태이므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관 공개 자료인 ‘제주특별자치도 마을특성 및 실태조사 용역(서귀포시)’은 표선면 성읍리 역사문화자원으로 열녀송씨비를 기록하고, 송천향의 수절 설화와 곁의 아들 강운 정려비를 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘열녀비’로만 제공하고 주소·좌표·업종·공개 방문 후기 근거를 제공하지 않아, 공공 자료의 성읍리 열녀송씨비와 동일한 장소인지 확인할 수 없다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표·업종과 성읍리 열녀송씨비와의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 실제 관람 범위, 최신 출입 가능 여부, 접근성, 주차, 안전 및 운영 정보를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_research_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_2.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "서귀포시 표선면 성읍리의 역사문화자원에 열녀송씨비가 포함된다.",
+          "자료는 송천향의 수절 설화와 열녀비 곁의 아들 강운 정려비를 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7999061",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘열녀비’다.",
+          "입력 패킷에는 주소·좌표·업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·방문 근거가 없어 성읍리 열녀송씨비 또는 다른 동명 기념비와의 동일성, 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·현장 안내로 신원을 먼저 교차 확인한다. 동일한 기념비로 확인되면 관람 범위와 최신 접근·안전 정보를 별도 검수하며, 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

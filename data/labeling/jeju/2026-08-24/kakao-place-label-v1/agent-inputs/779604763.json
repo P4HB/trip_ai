@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 243,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/779604763.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:779604763",
+    "provider": "kakao",
+    "place_id": "779604763",
+    "name": "왕벚꽃거리",
+    "url": "https://place.map.kakao.com/779604763",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "10",
+    "blog_review_count": "8",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.04.01.",
+      "content": "260331 튤립과 벚꽃을 함께볼수있어 좋아요 꽤 많이 피었고 오늘 비가오고 내일은 더 필듯합니다 벚꽃야경은 조명색좀 파스텔톤으로 바꾸면 더 예쁠것같지만, 서쪽에 밤산책을 할곳이 마땅치않기에 서쪽에 일정이 있으시다면 들르면 좋아요^^ (개인적으로 제주 최애 벚꽃야경은 전농로입니다ㅎㅎ) 예쁜 봄 벚꽃주간 모두 즐기셔요🌸",
+      "tags": ""
+    },
+    {
+      "date": "2026.04.05.",
+      "content": "1. 벚꽃과 빛의 만남이라? 굳굳..🥹 2. 벚꽃 축제도 한다고 하던데, 내가 갔을 땐 이미 끝났었음! 3. 차없는 거리❌️!! 차도라 버스나 자동차가 다님! 모두 조심하며 구경하세요~ 4. 주차는 근처 길가에 했어요!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.04.10.",
+      "content": "조명이 꽃을 가리네요. 🌸 만으로도 충분하고, 거리만 깨끗하게 유지되고 주차 가능한 것만하면 좋은데 전선에 감긴 나무가 안타깝네요.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.03.27.",
+      "content": "3월 27일 기준 벚꽃 하나도 안 핌.",
+      "tags": ""
+    },
+    {
+      "date": "2026.03.22.",
+      "content": "와 대박!!!여렇게 예쁘단니 여기 꼭!!가봐야 겠어요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

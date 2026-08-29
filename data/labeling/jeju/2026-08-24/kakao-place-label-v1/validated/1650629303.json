@@ -1,0 +1,132 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1650629303",
+  "place_id": "1650629303",
+  "name": "렛츠런파크제주 해피빌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력 Kakao 장소명은 ‘렛츠런파크제주 해피빌’이다. 공개 렛츠런파크 제주 안내는 관람대가 럭키빌(신관람대)과 해피빌(구관람대)의 두 동으로 구성되며, 경마 관람·매표·경마 진행 및 중계를 위한 시설이라고 설명한다. 한국마사회 전자조달 공개 계약정보도 제주 제주시설부의 ‘해피빌’ 시설 공사를 수록한다. 따라서 해피빌은 렛츠런파크 제주 안의 관람대 건물로 확인되며 독립 추천 후보가 아닌 상위 공원 방문 경험의 부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "해피빌은 렛츠런파크 제주 관람대를 이루는 구관람대 건물로 식별된다.",
+    "typical_visit": "렛츠런파크 제주에서 경마 관람, 매표, 경마 진행·중계를 지원하는 관람대 이용 경험의 일부로 안내된다.",
+    "experience_scope": "상위 장소인 렛츠런파크 제주 내부 관람대이므로 이 결과에서는 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1650629303의 명칭을 ‘렛츠런파크제주 해피빌’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 렛츠런파크 제주 안내는 관람대가 경마 관람·매표·경마 진행 및 중계를 위한 시설이며, 럭키빌(신관람대)과 해피빌(구관람대) 두 동으로 구성된다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "한국마사회 전자조달 공개 계약정보는 제주 제주시설부의 ‘해피빌 옥외 데크 공사’를 수록한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 건물 출입구·층·좌표와 관람대 안내상의 해피빌 표기가 일치하는지는 별도 도면으로 확인하지 못했다.",
+      "해피빌의 최신 개방 구역, 경마일 외 이용 가능 여부, 입장·매표 조건 및 접근성은 최신 한국마사회 안내로 확인이 필요하다.",
+      "해피빌 단독의 별도 관람·체험 상품 또는 독립 운영 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1650629303",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 ‘렛츠런파크제주 해피빌’이다.",
+          "입력 패킷에는 주소·좌표·업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "오케이레이스",
+        "type": "public_facility_information",
+        "url": "https://www.okrace.co.kr/okrace_story/park_jeju9.php",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주 관람대는 관람객의 경마 관람, 매표, 경마 진행 및 중계를 위한 시설이라고 설명한다.",
+          "관람대는 럭키빌(신관람대)과 해피빌(구관람대)의 두 동으로 구성된다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한국마사회 전자조달",
+        "type": "official_procurement_information",
+        "url": "https://ebid.kra.co.kr/cti/cons/list.do?const_end_date=2024-10-03&const_start_date=2024-07-03&cont_method=&cont_name=&end_amount=&order_place=&page=2&select_method=&start_amount=&work_type=01",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 계약정보에는 제주 제주시설부의 ‘해피빌 옥외 데크 공사’가 수록돼 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "렛츠런파크 제주 관람대를 이루는 해피빌(구관람대) 건물로 확인됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 렛츠런파크 제주와 함께 검토",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    },
+    {
+      "kind": "access_and_operations_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "해피빌의 최신 개방 구역, 경마일 외 이용 가능 여부, 입장·매표 조건 및 접근성은 확인하지 못함",
+      "status": "needs_review",
+      "action": "방문 안내 전 한국마사회 또는 렛츠런파크 제주의 최신 공식 공지로 운영·입장·접근 조건을 확인",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

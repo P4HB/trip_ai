@@ -1,0 +1,531 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723890",
+  "canonical_id": "kakao:13723890",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "서귀포시 안덕면 사계리의 화산지형 해변으로, 설쿰바당은 용머리해안 일대와 사계포구에 이르는 해안이며 공식 관광 정보가 경관·포토·해안산책 장소로 소개한다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해변 지형이 핵심이며 산·오름 방문 경험은 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "사계 해변과 용머리해안 일대부터 사계포구에 이르는 바다·해변 지형으로 공식 소개된다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "coastal_direct"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 정보의 분류가 해안산책·걷기/등산을 포함한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "activity_direct"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 설명의 핵심은 화산지형과 해변 경관이며 문화유산 관람은 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설은 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 이용이 핵심 방문 목적이라는 근거는 없다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 경험은 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제나 기간성 행사가 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "theme_scope"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 정보가 해변·해안가·바다 풍경을 대표 경험으로 설명하는 야외 장소다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "outdoor_direct"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "바람이 남긴 해변으로 소개되고 해안 산책이 대표 경험이어서 날씨 영향이 크다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "outdoor_direct"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "바다 풍경을 바라보는 자연 경관지이나 휴식 시설의 수준은 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "style_conservative"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 산책은 가능하나 지면 상태·무장애 접근성은 확인되지 않았다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 산책과 경관 감상 목적의 짧은 방문은 가능하나 체류 인프라는 확인되지 않는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "route_context"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "갈색·검은색 모래와 구멍 난 해변, 산방산·용머리해안·섬 조망을 공식 설명이 직접 제시한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "scenic_direct"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "80만 년 흔적의 화산 지형과 독특한 색감의 해변으로 공식 소개된다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "geology_direct"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주어 ‘설쿰바당’ 명칭과 사계리 화산·해안 지형의 지역성이 공식·공공 자료로 확인된다.",
+      "source_ids": [
+        "s1",
+        "s2"
+      ],
+      "rule_ids": [
+        "local_direct"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광지로 소개되지만 제주 전역의 대표 상징 명소라는 직접 근거는 확인하지 못했다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "significance_conservative"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 정보가 경관/포토 및 포토스팟으로 분류하고 독특한 색감의 바다 풍경을 설명한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "photo_direct"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 산책과 경관 감상은 혼자 가능하나 현장 안전 여건을 확인해야 한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 경관과 포토스팟 성격이 동반 방문에 적합하나 날씨 영향을 받는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 산책과 경관 감상에 적합하나 날씨 영향을 받는다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "자연 관찰은 가능하나 해안 안전·지면 상태를 확인해야 한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "경관 감상은 가능하나 해안 접근 상태와 날씨를 확인해야 한다.]",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "access_uncertainty"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 해안 상태와 현장 안전 정보를 확인하지 못해 보수적 기본값을 사용한다.",
+      "source_ids": [
+        "s1"
+      ],
+      "rule_ids": [
+        "month_fallback"
+      ]
+    }
+  },
+  "hard_constraints": [
+    "해안 야외 지점이므로 강풍·파랑·기상 및 현장 안전 상태를 방문 전에 확인하고, 위험 구역에는 접근하지 않는다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "s1",
+        "url": "https://visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007346",
+        "publisher": "Visit Jeju",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": "사계리의 설쿰바당을 80만 년 화산 지형의 해변으로 소개하며 해안산책·경관/포토·포토스팟으로 분류한다."
+      },
+      {
+        "source_id": "s2",
+        "url": "https://www.jeju.go.kr/jedu/data/data.htm?act=view&page=106&seq=1538334",
+        "publisher": "제주어 교육 플랫폼 페우다",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": "설쿰바당을 검은 모래·사암·구멍 등의 제주어 교육 자료 주제로 제공한다."
+      }
+    ]
+  },
+  "review_priority": "medium"
+}

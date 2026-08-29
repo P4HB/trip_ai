@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723562",
+  "place_id": "13723562",
+  "name": "비양도망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "공개 보도와 현장 기록은 우도 동북쪽의 비양도 안쪽에 있는 비양도망대를 독립적인 돌 전망·망대 시설로 설명한다. 입력 Kakao 후기도 같은 장소에서의 풍경과 사진 경험을 언급하므로, 단순 부속 표지가 아닌 독립 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "비양도망대는 제주 우도 동북쪽에 다리로 연결된 비양도 안쪽의 돌 망대·전망 지점이다.",
+    "typical_visit": "우도·비양도 해안길을 걸어 또는 이동해 망대에 올라 주변 바다와 섬 풍경을 보는 짧은 야외 방문이다.",
+    "experience_scope": "망대의 정확한 축조 연대·원래 기능에는 출처 간 표현 차이가 있어 단정하지 않았다. 최신 개방, 계단 상태, 안전시설, 주차·화장실, 무장애 접근과 기상 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"한겨레 여행 기사는 우도 동북쪽 비양도가 다리로 연결된 작은 섬이며 그 안쪽에 비양도망대가 있다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주일보는 우도 비양도에 과거의 망대가 남아 있고 본섬과 연결된 길을 통해 육상 통행이 가능하다고 보도한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 현장 기록은 비양도망대를 돌 전망대로 소개하며 가파른 계단과 사진 촬영 경험을 언급한다.","source_ids":["S3","S4"]}
+    ],
+    "unknowns": ["망대의 공식 지정 여부와 정확한 축조 연대·원래 기능을 확인하지 못했다.","최신 출입 가능 여부, 운영 시간, 주차·화장실 및 무장애 접근 정보를 확인하지 못했다.","계단의 안전 상태와 강풍·우천 시 통제 여부를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"한겨레","type":"news_feature","url":"https://v.daum.net/v/20170622151607538","checked_at":"2026-08-24","facts":["비양도는 우도 동북쪽에 붙은 작은 섬이며 다리로 걸어서 건널 수 있다고 설명한다.","비양도 안쪽에 비양도망대가 있고 앞에 바다가 펼쳐진다고 설명한다."]},
+      {"id":"S2","publisher":"제주일보","type":"news_feature","url":"https://www.jejunews.com/news/articleView.html?idxno=2116735","checked_at":"2026-08-24","facts":["우도 비양도는 우도 본섬 동쪽의 작은 섬으로 소개된다.","과거의 망대가 남아 있으며 연결 길로 육상 통행이 가능하다고 보도한다."]},
+      {"id":"S3","publisher":"공개 여행 기록","type":"public_web_page","url":"https://tired-panda.tistory.com/93","checked_at":"2026-08-24","facts":["비양도망대를 돌 전망대로 소개한다.","현장 기록은 망대 계단이 가파르다고 언급하고 사진 촬영 장면을 제시한다."]},
+      {"id":"S4","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/13723562","checked_at":"2026-08-24","facts":["입력된 공개 후기는 비양도의 풍경과 사진 촬영 경험을 언급한다.","입력된 공개 후기는 비양도 등대 접근이 물때 영향을 받을 수 있다는 방문 경험을 언급하지만, 이는 망대 자체의 운영 정보는 아니다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 경험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 보도는 비양도망대가 바다 앞 비양도 안쪽에 있고 망대 앞에 바다가 펼쳐진다고 설명해 해안·해양 경관이 대표 경험임을 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"비양도까지 걷고 망대 계단을 오르는 이동은 확인되지만 레포츠나 참여형 체험 자체가 핵심이라는 근거는 부족하다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주일보는 비양도에 과거의 망대가 남아 있다고 보도해 역사적 시설 관람이 장소 경험의 핵심 요소임을 확인한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등의 테마파크형 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"섬 안쪽의 망대와 바다 조망, 야외 계단 경험이 확인돼 대표 방문 경험의 실내 비율은 낮게 추론한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안 망대와 바다 조망이 대표 경험이며 비양도에서 강한 바람이 언급돼 날씨 영향이 비교적 크다고 추론한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"바다를 보는 짧은 야외 체류는 확인되나 혼잡도·휴식시설 정보가 없어 휴식성은 중립으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 기록에 가파른 계단이 언급되지만 전체 이동거리·노면·무장애 정보가 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"망대 관람 자체는 짧은 방문이 가능해 보이나 우도 이동 및 주변 동선까지 포함한 체류 조절성은 확인하지 못했다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"보도는 망대 앞의 바다와 비양도의 해안 풍경을 설명하고, 공개 현장 기록도 전망대에서의 풍경을 제시한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"우도에 딸린 작은 섬 안쪽의 과거 망대라는 조합은 구별되는 경험으로 보이나 비교 평가 자료는 부족하다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도 비양도에 남은 과거 망대라는 지역 역사·해안 환경과의 연결이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 우도를 대표하는 공적 상징 명소라는 지정·비교 근거를 확인하지 못해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 현장 기록은 망대에서 사람들이 사진을 찍는 장면과 드론 촬영을 제시하고, 입력 공개 후기도 사진 촬영 경험을 언급한다.","source_ids":["S3","S4"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 최신 안전·동선 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류와 이동 조건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 계단 이용·수용 여건 정보가 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"가파른 계단 언급은 있으나 어린이 안전시설·난이도 정보가 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"계단과 보행 부담·쉼터·무장애 정보가 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 망대 방문은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 망대 방문은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 망대 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 망대 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 조건 자료가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 망대 방문은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"비양도까지의 이동, 망대 계단의 최신 상태, 난간·조명, 강풍·우천 시 출입 통제, 주차·화장실 및 무장애 접근 정보는 확인하지 못했다. 공개 현장 기록은 계단이 가파르다고 언급한다.","status":"needs_review","action":"방문 전 우도 도항·현장 안내로 이동 가능 여부와 기상, 계단 안전 및 접근 여건을 확인한다.","source_ids":["S1","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

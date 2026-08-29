@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1004679271",
+  "canonical_id": "kakao:1004679271",
+  "name": "물영아리 탐방안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명과 친절한 안내 언급은 물영아리 탐방을 지원하는 안내소를 가리킨다. 독립 관광 경험이 아니라 상위 탐방지 방문을 지원하는 부속 시설로 판정해 추천용 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-TRAILHEAD-AMENITY"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_conditions_and_center_operation_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력에는 비 온 뒤 방문 제안과 안내 친절도가 언급되나 현재 안내소 운영, 탐방로 개방·수위·기상 안전은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "탐방 전 공식 최신 안내로 안내소 운영, 입산·탐방 조건과 비 온 뒤 안전을 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "subordinate_facility_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 물영아리 탐방안내소를 상위 물영아리 탐방을 지원하는 안내 시설로 시사한다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력에는 비 온 뒤 방문 제안과 안내 인력에 대한 경험이 있다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "현재 안내소 운영·관리 주체",
+      "상위 탐방로 개방·예약·통제",
+      "비 온 뒤 수위·노면·기상 안전",
+      "주차·화장실·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/1004679271",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 물영아리 탐방안내소이며 Kakao place_id는 1004679271이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/1004679271",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 비 온 뒤 방문과 안내 경험을 서술한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

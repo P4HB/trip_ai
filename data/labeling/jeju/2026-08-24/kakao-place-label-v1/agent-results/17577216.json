@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17577216",
+  "place_id": "17577216",
+  "name": "에코랜드테마파크 라벤더팜역",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 관광 안내는 에코랜드 테마파크가 여러 역으로 나뉜 시설이며 라벤더팜역을 그 내부의 한 역으로 명시한다. 라벤더팜역에서는 계절 꽃과 정원을 즐길 수 있지만, 이는 에코랜드 테마파크 입장·열차 동선 안의 구역 경험이다. 따라서 별도 독립 여행지 후보가 아니라 상위 에코랜드테마파크에 종속된 역·구역으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "에코랜드테마파크 라벤더팜역은 제주 조천읍 에코랜드 테마파크 내부에 있는 테마별 역 중 하나로 확인된다.",
+    "typical_visit": "에코랜드 테마파크의 기차·역 동선에서 계절 꽃밭과 조경 정원을 둘러보는 구역 방문이다.",
+    "experience_scope": "라벤더팜역은 독립 운영 관광지가 아니라 에코랜드 테마파크에 포함된 역·정원 구역이다. 상위 테마파크와 중복되는 추천 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터의 장소명은 ‘에코랜드테마파크 라벤더팜역’이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 VisitJeju는 에코랜드 테마파크가 서로 다른 테마의 역으로 구성되어 있으며, 라벤더팜역에서 계절 꽃과 조경 정원을 즐길 수 있다고 소개한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "라벤더팜역 구역의 최신 열차 정차, 입장 및 운영 조건은 별도 확인이 필요하다.",
+      "계절 꽃과 현장 프로그램의 실제 운영 여부·기간은 변동될 수 있다.",
+      "접근성, 보행 노면, 기상 안전 조건은 이 조사에서 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17577216",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 장소명은 ‘에코랜드테마파크 라벤더팜역’이다.",
+          "평점과 후기 수는 적합도 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/en/detail/view?contentsid=CONT_000000000500438&menuId=DOM_000001917007000000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "에코랜드 테마파크는 서로 다른 테마의 역으로 구성된다.",
+          "라벤더팜역에서는 계절 꽃과 조경 정원을 즐길 수 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_to_parent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "라벤더팜역은 에코랜드 테마파크의 테마별 역·구역으로 확인되어 상위 테마파크와 별도 독립 방문지로 중복 추천하면 안 된다.",
+      "status": "confirmed",
+      "action": "이 레코드는 독립 41축 후보에서 제외하고, 필요하면 상위 에코랜드테마파크의 구역 또는 일정 내 세부 정차지로만 참조한다.",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    },
+    {
+      "kind": "dynamic_operations_verification_required",
+      "applies_to": "all_visitors",
+      "condition": "열차 정차, 계절 꽃·야간 프로그램 및 현장 운영 조건은 변동 가능하며 이번 조사에서 최신 조건을 확정하지 않았다.",
+      "status": "needs_review",
+      "action": "방문 안내 전 에코랜드 공식 공지 또는 현장 안내로 방문일의 운영·입장 조건을 확인한다.",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

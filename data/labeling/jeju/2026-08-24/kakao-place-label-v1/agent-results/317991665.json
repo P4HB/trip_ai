@@ -1,0 +1,58 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:317991665",
+  "place_id": "317991665",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 1,
+    "inference_level": "direct_evidence",
+    "rationale": "선흘의자동굴은 카페 비케이브 사유지 안에 포함된 동굴 포토존이며, 카페 음료 구매 고객만 출입할 수 있는 부속 방문 요소로 확인된다. 독립 추천 장소 벡터가 아니라 모(母) 시설인 비케이브의 부속 시설로 분류한다.",
+    "source_ids": [
+      "source_1"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility.private-premises-access"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "access_dependency",
+      "rationale": "카페 비케이브 사유지 내 시설로서 카페 음료 구매 고객에 한해 출입 가능하다고 공개 자료가 안내한다.",
+      "source_ids": [
+        "source_1"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "source_1",
+        "url": "https://webzine.jpdc.co.kr/html/vol52/sub02_02.php",
+        "publisher": "제주특별자치도개발공사 삼다소담 웹진",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "선흘의자동굴을 포함한 장소는 조천읍의 카페 비케이브로 소개된다.",
+          "선흘의자동굴은 카페 사유지에 포함되어 있으며 카페에서 음료를 구매한 고객만 동굴에 출입할 수 있다고 안내한다.",
+          "동굴 안의 작은 의자는 사진 촬영 요소로 소개된다."
+        ]
+      },
+      {
+        "source_id": "source_2",
+        "url": "https://www.tel-co.net/travel/spot/204",
+        "publisher": "여행의기술",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "선흘의자동굴은 제주 제주시 조천읍 선흘리의 동굴로 소개되며, 의자가 비치된 사진 촬영 장소로 설명된다.",
+          "해당 페이지는 커피·음료·디저트 메뉴와 카페 주차장을 함께 안내한다."
+        ]
+      }
+    ],
+    "summary": "공개 자료상 카페 비케이브 방문 경험에 종속된 동굴 포토존으로 식별된다."
+  },
+  "review_priority": "high"
+}

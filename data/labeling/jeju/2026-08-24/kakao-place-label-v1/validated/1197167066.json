@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1197167066",
+  "place_id": "1197167066",
+  "name": "화순지서 옛터 앞 삼거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.5,
+    "rationale": "입력 장소명은 ‘화순지서 옛터 앞 삼거리’로, 특정 옛터 자체가 아니라 그 앞의 교차로·방향 지점을 가리킨다. 입력에는 독립적인 관람·체험·운영 공간이라는 근거가 없으므로, 교통·위치 표식은 추천용 독립 방문지 범위 밖으로 판정한다. 역사 표식이나 관람 시설의 존재는 추정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명, place_id와 Kakao 장소 URL뿐이다. 명칭은 화순지서 옛터 앞의 삼거리를 가리키며, 독립 장소가 아닌 위치·교통 표식으로 해석된다.",
+    "typical_visit": "입력 근거에는 방문객이 이 삼거리 자체에서 관람·체험할 수 있는 시설이나 역사 해설·보존 공간 정보가 없다.",
+    "experience_scope": "주소·좌표·공식 안내·공개 리뷰 근거가 제공되지 않았고, 평점과 리뷰 수는 모두 0으로 라벨 근거로 사용하지 않았다. 위치 표식에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 1197167066의 장소명을 ‘화순지서 옛터 앞 삼거리’로 제공하고, 주소·좌표·업종·리뷰 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 삼거리 위치와 현장 표식·안내판의 존재",
+      "화순지서 옛터의 보존·관람 범위와 이 삼거리 레코드와의 공간적 관계",
+      "도로 교통·보행 안전 및 최신 현장 접근 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1197167066",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘화순지서 옛터 앞 삼거리’이고 place_id는 1197167066다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점과 리뷰 수는 각각 0으로 제공되며 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "road_junction_not_independent_visit_site",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 장소가 교차로·위치 표식으로 보이며 독립적인 관람·체험 공간과 보행 안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "역사 유적을 찾는 경우 공식·공공 안내에서 화순지서 옛터의 실제 관람 지점과 안전한 접근 경로를 별도로 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

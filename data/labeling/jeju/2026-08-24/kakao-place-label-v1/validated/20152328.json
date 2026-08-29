@@ -1,0 +1,693 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20152328",
+  "place_id": "20152328",
+  "name": "염섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "염섬은 제주 제주시 추자면 예초리 산87의 특정도서로 확인되고, 추자도 해상관광협동조합 유람선의 독립 경유지다. 관광객의 상륙은 확인하지 못했지만 해상 유람으로 경관을 경험하는 독립 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "염섬은 제주특별자치도 제주시 추자면 예초리 산87에 있는 특정도서 제208호의 무인도다.",
+    "typical_visit": "추자도 유람선 1·3코스가 염섬을 경유하며, 운영·보도 자료는 염섬의 코끼리바위와 해상 경관 감상을 소개한다. 상륙 관람은 확인하지 못했다.",
+    "experience_scope": "공개 자료는 특정도서의 생태·해안 지형 및 유람선 경유를 확인한다. 상륙 허가, 현행 운항일·요금·예약, 선내 시설과 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관이 공개한 특정도서 지정현황은 염섬을 제주 제주시 추자면 예초리 산87, 특정도서 제208호로 기재하고 해식동·시아치 경관, 맹금류 서식과 해양 생물다양성을 지정 사유로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "추자도 해상관광협동조합 유람선은 염섬을 1코스와 3코스의 경유지로 공개하며, 입출항 시간은 현지 사정에 따라, 코스는 기상 상황에 따라 변경될 수 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "연합뉴스는 추자도 해상관광 유람선에서 염섬 코끼리바위를 감상할 수 있다고 보도했다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-25 기준 실제 유람선 운항일·시간·요금·예약 가능 여부",
+      "관광객의 염섬 상륙·출입 허가 및 보전구역 출입 조건",
+      "승하선, 선내 좌석·화장실, 보행·휠체어 접근성과 아동·고령자 안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책연구포털",
+        "type": "public_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/228/1076/2023/CLIKC6674734884381160_attach_1.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "염섬의 특정도서 번호, 위치, 면적과 지정 사유를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "추자도 해상관광협동조합",
+        "type": "operator_information",
+        "url": "https://www.chujado.kr/page/time-schedule.php",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "유람선 1·3코스의 경유지에 염섬을 포함한다.",
+          "입출항 시간과 코스가 현지·기상 상황에 따라 변동될 수 있다고 안내한다.",
+          "게시 시간표는 2026년 2~3월 정보여서 현재 운항 사실로 단정하지 않았다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "연합뉴스",
+        "type": "news_report",
+        "url": "https://www.yna.co.kr/view/AKR20230717111700056",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "추자도 해상관광 유람선의 염섬 코끼리바위 경관 감상 정보를 보도한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 자료의 핵심은 해상 무인도·해안 지형이며 산·오름 또는 산림을 걷는 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "무인도 자체와 유람선 해상 경유가 대표 경험으로 확인되어 바다·섬 경관 비중이 높다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-MARINE-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "유람선으로 경관을 보는 참여형 이동은 확인되지만 상륙 탐방·레포츠 운영은 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-TOUR-EXPERIENCE"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화 관람 또는 전통 체험의 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 경험의 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·커피·디저트 이용 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 또는 상거래 기능 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "축제·공연·기간 행사 근거가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 경험은 유람선에서 보는 해상·무인도 경관이며 장소의 실내 방문 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-MARINE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "운항 코스가 기상 상황에 따라 변경될 수 있다고 운영 주체가 안내한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-SEA-WEATHER-DIRECT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식시설·혼잡도·체류 환경 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "승하선 난이도·선내 이동·무장애 접근성 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현행 운항 시간·소요시간과 개별 체류 선택 폭을 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "특정도서 지정 자료가 해식동·시아치 경관을, 유람선 자료가 염섬 경유를, 보도가 코끼리바위 감상을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-MARINE-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "특정도서 지위와 해식동·시아치 및 생물다양성이라는 고유 자연 특징이 공식 문서에 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-GEOLOGY-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 추자면의 특정도서이며 추자도 유람선 코스에 포함되어 추자군도의 해양 자연환경과 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-MARINE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "유람선 복수 코스의 독립 경유지이나 제주 또는 추자도를 대표하는 상징 명소라는 직접 근거는 부족하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-ROUTE-STOP-INFERENCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시각적 해안 지형은 확인되지만 사진 촬영 가치가 직접 안내된 근거는 없어 중립값이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현행 운항·승선 절차와 단독 방문 안전 지원 정보를 확인하지 못해 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 이용 편의 또는 좌석·체류 조건 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 예약·정원·안전 조건 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 승선·구명장비·상륙과 보호자 동반 조건이 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 승하선·선내 이동·무장애 접근성 정보가 없어 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "현행 월별 운항·상륙 가능 여부가 확인되지 않아 중립값이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-SEA-ACCESS-UNKNOWN"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "boat_access_and_weather_conditions_must_be_confirmed",
+      "applies_to": "all_visitors",
+      "condition": "염섬은 유람선 공개 코스의 해상 경유지이나 입출항 시간은 현지 사정, 코스는 기상 상황에 따라 변경될 수 있다. 조사 시점의 실제 운항·예약·결항 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 추자도 해상관광협동조합의 최신 시간표와 예약 가능 여부, 기상·해상 여건에 따른 변경·결항 및 안전 안내를 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "island_landing_and_protected_area_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "염섬은 특정도서로 확인되지만 관광객 상륙·출입 허가와 보전구역 준수 조건은 이 조사에서 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "섬 상륙을 계획한다면 관할 행정기관 또는 공식 운항사에 출입 허가·보전 규정·현장 안전 통제를 먼저 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "mobility_and_child_safety_unknown",
+      "applies_to": "kids_and_parents",
+      "condition": "승하선, 선내 이동, 상륙 시 보행 난이도, 휠체어 접근성과 아동·고령자 안전·구명장비 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "동행자의 이동 능력에 맞춰 운항사에 승하선 지원, 좌석·화장실, 구명장비와 아동·고령자 이용 조건을 사전 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

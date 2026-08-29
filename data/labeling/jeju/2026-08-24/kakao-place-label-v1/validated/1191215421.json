@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1191215421",
+  "canonical_id": "kakao:1191215421",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명은 외돌개를 조망하는 전망대를 명시하고, 입력 후기도 외돌개 방문·주변 산책·경관을 설명한다. 상위 외돌개의 부속 조망 지점으로 보존한다.",
+    "source_ids": [
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "parent_venue_and_low_light_caution",
+      "detail": "독립 목적지로 추천하지 않고 상위 외돌개의 부속 전망 지점으로 취급하며, 일몰 후 어두워진다는 방문자 의견이 있어 현장 안전 정보를 확인해야 한다.",
+      "source_ids": [
+        "r5"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "r1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1191215421",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "주변 걷기 언급"
+        ]
+      },
+      {
+        "source_id": "r2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1191215421",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "외돌개 전설과 산책 언급"
+        ]
+      },
+      {
+        "source_id": "r3",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1191215421",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "방문 의견"
+        ]
+      },
+      {
+        "source_id": "r4",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1191215421",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "경관·주차·주변 요소 언급"
+        ]
+      },
+      {
+        "source_id": "r5",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1191215421",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "노을 경관과 해진 뒤 어두움 언급"
+        ]
+      }
+    ],
+    "limitations": [
+      "주차와 일몰 후 안전 정보는 공식 또는 공공 출처로 확인해야 한다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1256565713",
+  "place_id": "1256565713",
+  "name": "KBS제주 9.15순직방송인 추모비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "공개 자료는 이 추모비가 KBS 제주방송국 구내에 세워진 9·15 순직 방송인 추모 시설이라고 설명한다. 독립적으로 운영되는 관광·전시 방문지나 별도 관람 동선은 확인되지 않아, KBS 제주방송국 부지의 기념 표식으로 분류한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "KBS제주 9.15순직방송인 추모비는 1952년 9월 15일 제주방송국 습격 사건으로 순직한 방송인을 기리는 기념비로, 공개 자료상 제주시 연동의 KBS 제주방송국 구내에 있다.",
+    "typical_visit": "독립 관광 프로그램이나 별도 관람 운영은 확인하지 못했으며, KBS 제주방송국 부지 내 기념 표식을 보는 성격으로 파악된다.",
+    "experience_scope": "역사적 추모 표식이라는 성격은 확인되지만, 독립 방문지로 필요한 공식 관람 동선·개방 시간·출입 허용·해설 운영은 확인하지 못했다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 메타데이터의 place_id 1256565713 명칭은 ‘KBS제주 9.15순직방송인 추모비’다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 역사 자료는 이 추모비가 1952년 9월 15일 순직한 제주방송국 방송인을 기려 세운 비이며, 제주시 연동 KBS 제주방송국 구내에 있다고 설명한다.",
+        "source_ids": ["S2", "S3"]
+      }
+    ],
+    "unknowns": [
+      "KBS 제주방송국 부지의 일반인 출입 허용 여부와 추모비만을 위한 독립 관람 동선·개방 시간은 확인하지 못했다.",
+      "추모비의 최신 보존 상태, 현장 해설·안내, 주차·화장실·무장애 접근성과 안전 관리 조건은 확인하지 못했다.",
+      "Kakao 지도 표식의 정확한 현장 좌표와 KBS 제주방송국 내 설치 위치의 일치는 별도 공식 자료로 교차 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1256565713",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 ‘KBS제주 9.15순직방송인 추모비’로 표시된다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주4·3평화재단",
+        "type": "public_historical_site_listing",
+        "url": "https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0&wr_id=58",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "4·3유적지 목록에 ‘KBS제주 9.15순직방송인 추모비’가 수록되어 있다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "우리 현대사의 아픔을 찾아서",
+        "type": "public_historical_record",
+        "url": "https://www.dmook.co.kr/fileRoot/kr/w/o/wonypark/DigitalAlbumRoot/110605161322/data/koreawar.htm",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공개 기록은 9.15순직방송인 추모비의 위치를 제주 제주시 연동 302-3 KBS 제주방송국 내로 표기한다.",
+          "공개 설명은 이 비가 1952년 9월 15일 순직한 제주방송국 방송인을 기리는 추모비임을 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_memorial_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "추모비는 KBS 제주방송국 구내 기념 표식으로 확인되지만, 일반인의 부지 출입과 추모비 독립 관람 동선·개방 시간은 확인되지 않음",
+      "status": "needs_review",
+      "action": "독립 추천 후보에서는 제외한다. 역사 안내에 언급할 경우 KBS 제주방송국 또는 관리 주체의 최신 출입·관람 안내를 먼저 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

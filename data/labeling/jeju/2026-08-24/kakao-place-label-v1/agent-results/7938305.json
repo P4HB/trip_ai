@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7938305",
+  "place_id": "7938305",
+  "name": "서문",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "Kakao 지도 레코드는 ‘서문’이라는 일반 명칭과 제주시 애월읍 상귀리 1071-2의 위치만 확인된다. 공개 검색과 공공·공식 출처 조사에서 이 좌표의 시설 유형, 운영 주체, 역사·관광 자원 여부 또는 독립 방문지 범위를 교차 확인하지 못했다. 동명 지명·건축물·표지 등을 임의로 특정하지 않고 신원 미확정으로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao Map place_id 7938305는 ‘서문’으로 표기되며 주소와 좌표는 확인된다. 그러나 공개 신뢰 출처로는 이 레코드가 가리키는 시설 또는 방문 경험을 특정할 수 없었다.",
+    "typical_visit": "확인된 장소 유형과 이용 목적이 없어 대표 방문 경험을 판단하지 않는다.",
+    "experience_scope": "명칭·주소만으로는 독립 여행 방문지인지, 다른 시설의 출입구·지명·표지인지 판별할 수 없다. 적격 상태가 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘서문’이며, 주소는 제주특별자치도 제주시 애월읍 상귀리 1071-2로 표시된다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 Kakao Map 공개 페이지의 정적 메타데이터에는 WGS84 좌표 126.40410327812359(경도), 33.45196141957711(위도)가 표시되지만, 시설 종류·운영 정보·방문 안내는 확인되지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "‘서문’이 가리키는 정확한 시설 유형, 명칭의 의미와 독립 장소 여부를 확인하지 못했다.",
+      "공식·공공 출처에서 운영 주체, 관람·체험 내용, 접근성, 편의시설, 안전 안내와 최신 운영 상태를 확인하지 못했다.",
+      "입력 패킷에는 공개 방문 후기 근거가 없으며 Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7938305",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 페이지 제목은 ‘서문’이다.",
+          "공개 페이지 메타데이터는 제주특별자치도 제주시 애월읍 상귀리 1071-2와 경도 126.40410327812359, 위도 33.45196141957711을 표시한다.",
+          "확인 가능한 정적 공개 정보에는 시설 분류, 운영 주체, 방문·관람 안내가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "일반 명칭 ‘서문’과 지도상 주소·좌표 외에 시설 유형, 독립 방문지 여부 및 운영 정보를 교차 확인할 수 없음",
+      "status": "needs_review",
+      "action": "지자체·소유/운영 주체 또는 Kakao의 상세 업종 정보로 장소 신원과 독립 방문지 범위를 확인한다. 확인 전에는 추천 후보에서 제외하고 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

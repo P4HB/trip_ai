@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10135822",
+  "canonical_id": "kakao:10135822",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 지도 자료에서 구재기동산은 제주특별자치도 제주시 한경면 두모리의 봉우리(peak)로 식별된다.",
+    "source_ids": ["src_mapcarta", "src_mountain_list"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 지도 자료가 구재기동산을 peak로 분류한다.","source_ids":["src_mapcarta"],"rule_ids":["THEME-MOUNTAIN-PEAK"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해양 경험 여부를 확인할 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"봉우리 접근의 실제 활동·탐방 난이도 정보가 확인되지 않았다.","source_ids":["src_mapcarta"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화·역사 경험을 뒷받침하는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용을 뒷받침하는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 경험을 뒷받침하는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"축제 또는 기간성 행사 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"장소 유형이 봉우리(peak)인 자연 지형으로 확인되어 대표 경험은 실외다.","source_ids":["src_mapcarta"],"rule_ids":["ENVIRONMENT-PEAK-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"실외 자연 지형이라는 확인 사실을 바탕으로 날씨 영향이 클 것으로 추정하되, 실제 접근·탐방 정보는 확인되지 않았다.","source_ids":["src_mapcarta"],"rule_ids":["ENVIRONMENT-OUTDOOR-WEATHER"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 체류 방식이나 휴식 환경을 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·경사·계단 등 이용 난이도 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류 시간 또는 운영 정보를 확인할 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"봉우리라는 유형 외에 경관 감상 가치의 직접 근거가 없다.","source_ids":["src_mapcarta"],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장소 고유 경험이나 구성에 관한 공개 설명을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"제주시 한경면 두모리에 위치한 제주 자연 지형으로 확인되지만, 지역 문화·생산자와의 추가 연결 정보는 없다.","source_ids":["src_mapcarta","src_mountain_list"],"rule_ids":["STYLE-LOCAL-NATURAL-LANDFORM"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표 명소 또는 상징성에 관한 공신력 있는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치나 조망을 직접 확인할 자료가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 접근성과 안전 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 판단할 체험 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동반 활동·시설 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 접근·안전 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반의 보행 부담과 편의시설 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·운영·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "derived_labels": {},
+  "hard_constraints": [],
+  "noneligible": {},
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": {"name":"구재기동산","type":"peak","location":"제주특별자치도 제주시 한경면 두모리","facts":["Mapcarta는 구재기동산을 peak로 표시한다.","공개 산명 목록은 구재기동산의 해발 28m와 두모리 위치를 기재한다."],"source_ids":["src_mapcarta","src_mountain_list"]},
+    "sources": [
+      {"id":"src_mapcarta","url":"https://mapcarta.com/29726198","publisher":"Mapcarta / OpenStreetMap","checked_at":"2026-08-25","facts":["한경면 지도에서 구재기동산을 Peak로 표시한다."]},
+      {"id":"src_mountain_list","url":"https://htpkim.tistory.com/16154861","publisher":"htpkim.tistory.com","checked_at":"2026-08-25","facts":["구재기동산을 제주도 제주시 한경면 두모리 소재, 28m로 기재한다."]}
+    ],
+    "limitations": ["공식 관광 상세 페이지, 탐방로, 접근성, 편의시설, 계절별 이용 정보는 확인하지 못했다.","Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]
+  }
+}

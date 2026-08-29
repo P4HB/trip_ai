@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:23121313",
+  "place_id": "23121313",
+  "name": "아쿠아플라넷제주 상고지언덕",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "Kakao 공개 장소 페이지는 입력 표식을 ‘아쿠아플라넷제주 상고지언덕’으로, 아쿠아플라넷 제주 공식 주소와 같은 서귀포시 성산읍 섭지코지로 95로 표시한다. 공식 운영자 안내는 이 주소의 아쿠아플라넷 제주를 아쿠아리움·오션아레나·마린사이언스 관람을 묶어 운영하는 시설로 소개한다. 따라서 ‘상고지언덕’은 독립 운영·예약·입장 정보를 확인할 수 있는 별도 여행지가 아니라 아쿠아플라넷 제주 경내의 지도 표식/부속 지점으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 표식은 ‘아쿠아플라넷제주 상고지언덕’이며, Kakao 공개 페이지에 표시된 주소가 아쿠아플라넷 제주 공식 주소와 일치한다.",
+    "typical_visit": "독립 방문 경험으로 확인하지 않았다. 공개 운영자 안내상 이 주소의 대표 방문 경험은 아쿠아플라넷 제주의 아쿠아리움·오션아레나·마린사이언스 관람이며, 상고지언덕은 그 경내 부속 표식으로 취급한다.",
+    "experience_scope": "상고지언덕 자체의 별도 운영 주체, 입장·예약, 독립 관람 콘텐츠, 접근 경로 또는 안전 안내는 공개 공식 자료에서 확인하지 못했다. 따라서 추천용 독립 장소 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지는 place_id 23121313의 명칭을 ‘아쿠아플라넷제주 상고지언덕’으로, 주소를 제주특별자치도 서귀포시 성산읍 섭지코지로 95로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "아쿠아플라넷 제주 공식 사이트는 같은 주소를 운영 시설 주소로 제시하고, 입장권으로 아쿠아리움·오션아레나·마린사이언스 3개관을 관람할 수 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "상고지언덕 자체가 공식 시설명인지, 경내 정확한 위치와 독립적인 관람·이용 범위는 확인하지 못했다.",
+      "상고지언덕에 별도 입장, 예약, 운영 시간, 요금 또는 안전·접근성 안내가 있는지는 확인하지 못했다.",
+      "아쿠아플라넷 제주 본 시설과 상고지언덕 표식의 현행 지도 운영 관계는 공식 도면으로 재확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/23121313",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘아쿠아플라넷제주 상고지언덕’으로 표시된다.",
+          "주소는 제주특별자치도 서귀포시 성산읍 섭지코지로 95로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "아쿠아플라넷 제주",
+        "type": "official_operator_site",
+        "url": "https://www.aquaplanet.co.kr/jeju/index.do",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "운영 시설 주소는 제주특별자치도 서귀포시 성산읍 섭지코지로 95로 안내된다.",
+          "아쿠아플라넷 제주 입장권으로 아쿠아리움, 오션아레나, 마린사이언스 3개관을 관람할 수 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "상고지언덕은 아쿠아플라넷 제주와 주소·명칭 맥락이 연결된 부속 지도 표식으로 보이며, 독립 방문지로서의 운영·입장·안전·접근 정보는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 않는다. 상고지언덕 자체를 안내해야 하면 아쿠아플라넷 제주 운영자에게 경내 위치와 접근 가능 여부를 최신 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

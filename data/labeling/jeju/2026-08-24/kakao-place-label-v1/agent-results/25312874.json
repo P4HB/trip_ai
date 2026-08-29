@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25312874",
+  "place_id": "25312874",
+  "name": "앞산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "Kakao 장소 페이지는 이 레코드를 제주특별자치도 제주시 추자면 묵리의 ‘앞산’으로 표시하고, 공공 문화 아카이브는 묵리 마을을 돈배산·앞산·뒤산이 에워싼다고 기록한다. 그러나 공개 신뢰 출처에서 이 산의 독립 관광·탐방지 운영, 방문 동선 또는 체험 안내는 확인하지 못했다. 따라서 지형 표식 자체를 추천용 독립 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao place_id 25312874의 ‘앞산’은 제주특별자치도 제주시 추자면 묵리에 표시된 지형 표식이며, 묵리 주변의 앞산이라는 지역 명칭과 일치한다.",
+    "typical_visit": "확인된 공개 자료는 묵리 주변 지형으로서의 앞산만 언급하며, 일반 관광객을 위한 독립 관람·탐방·체험 프로그램 또는 방문 안내는 제시하지 않는다.",
+    "experience_scope": "지형 명칭과 위치는 확인됐으나, 독립 여행 방문지로서의 상시 개방, 지정 탐방로, 안전관리, 접근 조건 또는 이용 경험을 확인하지 못했다. 이 라벨링의 독립 방문·체험 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map의 해당 장소 페이지는 장소명을 ‘앞산’으로, 위치를 제주특별자치도 제주시 추자면 묵리로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "서울우리소리박물관의 한국민요대전 제주도편 아카이브는 추자면 묵리 마을 주위를 돈배산·앞산·뒤산이 에워싼다고 기록한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "앞산의 일반 방문객 출입 가능 여부, 공식 탐방로·진입 지점, 토지·관리 주체와 최신 개방 상태를 확인하지 못했다.",
+      "경사·노면·계단, 추락·기상 안전, 주차·화장실·휴식 시설 및 무장애 접근성 정보를 확인하지 못했다.",
+      "관광·레저 목적의 상시 운영, 안내·해설, 체험 프로그램 또는 공인된 방문 경험을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25312874",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소명을 ‘앞산’으로 표시한다.",
+          "장소 설명에 제주특별자치도 제주시 추자면 묵리를 표시한다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "서울우리소리박물관",
+        "type": "public_cultural_archive",
+        "url": "https://museum.seoul.go.kr/sekm/front/archive/searchView.do?locale=&recordId=27576&search=%ED%95%9C%EA%B5%AD%EB%AF%BC%EC%9A%94%EB%8C%80%EC%A0%84+%EC%A0%9C%EC%A3%BC%EB%8F%84%ED%8E%B8",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "한국민요대전 제주도편 아카이브는 추자면 묵리 마을 주위를 돈배산·앞산·뒤산이 에워싼다고 기록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_independent_visit_scope_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "묵리 주변 지형 표식인 앞산의 신원은 확인됐지만 일반 방문객을 위한 독립 탐방·관람 운영, 출입·접근·안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광·탐방 안내와 최신 출입 조건이 확인되면 독립 방문지 해당 여부를 별도 검수한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

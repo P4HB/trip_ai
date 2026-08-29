@@ -1,0 +1,102 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12802833",
+  "place_id": "12802833",
+  "name": "월령코지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.95,
+    "rationale": "공식 운영 페이지가 이 장소를 객실·예약·요금 안내를 제공하는 바다전망 펜션으로 명시한다. 현 라벨링 범위의 독립 방문·체험 장소가 아니라 숙박시설이므로 추천용 장소 벡터 대상에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "research": {
+    "identity_summary": "월령코지는 제주시 한림읍 월령리 바닷가에 있는 바다전망 펜션(숙박시설)이다.",
+    "typical_visit": "객실 숙박을 중심으로 이용하며, 바다 조망은 숙박 경험의 부대 특성이다.",
+    "experience_scope": "독립 관광·체험 장소가 아닌 숙박업소로 확인되어 본 장소 라벨링 범위에서는 제외한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "운영 페이지는 월령코지를 '제주도 바다전망 펜션'으로 소개하고 객실 안내·예약, 요금·이용안내, 부대시설 메뉴를 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "운영 페이지는 바닷가 바로 앞의 조용한 바닷가 위치와 전 객실 바다전망을 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "숙박 예약 페이지도 월령코지를 펜션으로 분류하고 한림읍 월령리 344에 위치한 숙소로 표기한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 레코드의 현재 업종 분류와 정확한 좌표는 입력 패킷에 제공되지 않았다.",
+      "숙박객 외 일반 방문객에게 제공되는 독립 체험·관람 프로그램은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "월령코지",
+        "type": "official_site",
+        "url": "https://jejudocozy.modoo.at/",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "월령코지를 제주도 바다전망 펜션으로 소개한다.",
+          "객실 안내 및 예약, 요금 및 이용안내, 부대시설 정보를 제공한다.",
+          "바닷가 바로 앞이며 전 객실 바다전망이라고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주도닷컴",
+        "type": "booking_listing",
+        "url": "https://www.jeju.to/CS/Goods/Lodge/detail.aspx?cid=59",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "월령코지펜션을 제주 서부의 숙소로 분류한다.",
+          "한림읍 월령리 344와 펜션 형태를 표기한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type",
+      "applies_to": "recommendation_candidate",
+      "condition": "숙박시설로 확인되어 독립 방문·체험 장소만 대상으로 하는 본 라벨링 후보 범위에 해당하지 않음",
+      "status": "confirmed",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

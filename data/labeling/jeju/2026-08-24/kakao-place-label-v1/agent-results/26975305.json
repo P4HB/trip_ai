@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "26975305",
+  "canonical_id": "kakao:26975305",
+  "name": "제주일출봉해안 일제동굴진지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.8,"rationale":"국가유산 콘텐츠와 제주 공공 방문지 자료가 서귀포시 성산읍 성산리의 ‘제주 일출봉 해안 일제 동굴진지’를 일제강점기 일본군이 구축한 해안 군사시설로 각각 확인한다. 성산일출봉 해안을 따라 남아 있는 독립 역사 유적으로 방문 가능한 장소로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"입력명은 서귀포시 성산읍 성산리의 제주 일출봉 해안 일제 동굴진지와 일치한다.",
+    "typical_visit":"성산일출봉 해안의 동굴 형태 군사 유적과 주변 해안 경관을 야외에서 살피는 역사·자연 연계 방문이다.",
+    "experience_scope":"국가유산 콘텐츠는 이 유적을 성산포 해안 상륙에 대비한 일본군 군사시설이며 제주 해안 동굴진지 중 큰 규모라고 설명한다. 실제 동굴 내부 출입, 최신 개방·통제, 보행 동선 및 편의시설은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"국가유산진흥원 콘텐츠는 성산일출봉 해안을 따라 일제강점기 일본군이 인위적으로 만든 동굴 형태 군사 진지가 있으며, 성산포 해안 상륙에 대비한 시설이라고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주 공공 방문지 자료는 제주 일출봉 해안 일제 동굴진지의 주소를 서귀포시 성산읍 성산리 78로, 설명을 일제강점기 일본군이 구축한 동굴 진지로 제시한다.","source_ids":["S2"]},
+      {"id":"F3","text":"국가유산진흥원 콘텐츠는 이 유적을 제주섬에 남은 해안 동굴진지 가운데 큰 규모라고 설명한다.","source_ids":["S1"]}
+    ],
+    "unknowns":["동굴 내부와 해안 구간의 최신 출입 가능 여부 및 관람 동선","만조·파랑·강풍·우천 시 안전 통제와 접근 조건","경사·계단·노면, 무장애 접근, 주차·화장실 등 편의시설"],
+    "sources":[
+      {"id":"S1","publisher":"국가유산진흥원","type":"public_heritage_content","url":"https://uci.k-heritage.tv/resolver/I801%3A1808002-001-V00007?t=2","checked_at":"2026-08-25T00:00:00+09:00","facts":["성산일출봉 해안의 일제강점기 일본군 동굴 형태 군사 진지를 설명한다.","성산포 해안 상륙에 대비한 군사시설이며 제주 해안 동굴진지 중 큰 규모라고 설명한다."]},
+      {"id":"S2","publisher":"제주특별자치도 공공 방문 유적지 자료","type":"public_heritage_information","url":"https://www.visitjeju.or.kr/comm/notice.htm?act=download&no=5&page=13&seq=57317","checked_at":"2026-08-25T00:00:00+09:00","facts":["제주 일출봉 해안 일제 동굴진지의 주소를 서귀포시 성산읍 성산리 78로 제시한다.","일제강점기 일본군이 구축한 동굴 진지로 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"유적이 성산일출봉 해안에 있으나, 확인된 핵심은 산 정상 탐방이 아니라 해안 동굴 군사 유적이다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 출처가 성산일출봉 해안을 따라 조성된 동굴 진지와 성산포 해안 상륙 대비 시설로 설명한다.","source_ids":["S1","S2"],"rule_ids":["THEME-COASTAL-HERITAGE-DIRECT"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"야외 유적 관찰은 예상되지만, 확정된 탐방 거리·체험 프로그램·신체 활동 강도 정보가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACTIVITY-UNKNOWN"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"일제강점기 일본군의 해안 군사시설과 동굴 진지라는 역사 유적 성격이 공공 출처로 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·전시형 테마파크 경험에 관한 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료·디저트 이용이 독립 방문 목적인지 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 경험에 관한 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 기간 축제·공연이 이 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해안을 따라 있는 동굴 형태 유적이라는 설명으로 대표 방문은 야외 해안 관찰 비중이 높다고 추론한다. 동굴 내부 관람 가능 여부는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-COASTAL-OUTDOOR"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안의 야외 유적 관찰이므로 비·바람·파랑 등 기상 조건의 영향을 비교적 크게 받을 수 있다. 실제 통제 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 공간·혼잡도·소음과 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 접근로의 경사·계단·노면과 무장애 정보가 없어 신체 부담은 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 관람 시간과 대체·단축 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"성산일출봉 해안이라는 위치와 해안 동굴 유적은 확인되지만, 경관 감상이 공식적으로 핵심 방문 가치로 강조되는지는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-COASTAL-VISUAL-CONTEXT"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 출처가 제주에 남은 해안 동굴진지 가운데 큰 규모의 일본군 군사시설이라고 설명해 고유한 역사 경험이 직접 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 성산일출봉 해안에 남은 일제강점기 군사 유적으로 제주 지역의 역사와 장소성에 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"국가유산 콘텐츠와 제주 공공 방문지 목록에 수록된 역사 유적이나, 제주 전체를 대표하는 상징 명소로서의 비교 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-PUBLIC-HERITAGE-CONTEXT"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 유적의 시각적 기록 가치가 공식적으로 강조된 근거를 찾지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류와 관람 동선의 편의 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 수용·안전·동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 해안 안전·난간·노면 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·계단·휴식·무장애 접근 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유적의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints":[{"kind":"coastal_heritage_access_and_safety_unknown","applies_to":"all_visitors","condition":"해안 동굴 유적의 최신 개방 구간, 동굴 내부 출입, 만조·파랑·강풍·우천 시 통제, 노면·계단 및 무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내 또는 제주 관광·유산 관리 주체를 통해 출입 가능 구간, 조석·기상 안전 및 보행 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-25"
+}

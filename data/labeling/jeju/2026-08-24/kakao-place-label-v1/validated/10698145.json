@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10698145",
+  "canonical_id": "kakao:10698145",
+  "name": "운지악",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력은 운지악을 남원2리 포제단과 감귤밭 구석의 짧은 매트길이 있는 작은 지점으로 설명한다. 독립적인 오름 탐방지라기보다 마을 포제단·농경지 주변의 소규모 부속 지점으로 보여 추천용 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-POINT",
+      "ELIG-NO-INDEPENDENT-VISIT-EVIDENCE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "ritual_site_and_farmland_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력에는 포제단·감귤밭·도로변 주차가 언급되나 현재 공공 접근, 사유지 경계, 의례·예절, 주차와 보행 안전은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 공식 또는 마을 최신 안내로 공공 접근 허용 여부와 포제단·농경지의 예절·안전 조건을 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "subordinate_point_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 운지악을 남원2리 포제단과 감귤밭 주변의 짧은 보행 지점으로 설명한다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력에는 남원2리 포제단, 감귤밭 구석의 짧은 매트길과 도로변 주차가 언급된다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "입력에는 짧은 산책길·오름 인증 경험이 언급된다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "공식 장소 경계와 관리 주체",
+      "포제단의 의례·보호·방문 예절",
+      "농경지·사유지 접근 허용 여부",
+      "현재 보행로·주차·안전"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/10698145",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 운지악이며 Kakao place_id는 10698145이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/10698145",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 포제단, 감귤밭 주변의 짧은 길과 접근 경험을 서술한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

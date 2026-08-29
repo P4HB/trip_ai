@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1704,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/2081648578.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:2081648578",
+    "provider": "kakao",
+    "place_id": "2081648578",
+    "name": "국립산림과학원 난대아열대산림연구소 한남연구시험림",
+    "url": "https://place.map.kakao.com/2081648578",
+    "average_rating_5": "5.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.18.",
+      "content": "비는 왔지만 분위기는 최고. 상냥한 숲해설가 선생님이 동행해 주셔서 더욱 값진 시간.",
+      "tags": ""
+    },
+    {
+      "date": "2021.09.06.",
+      "content": "한남시험림 탐방은 예약이 필요한데 검색창에 숲나들e를 쳐서 왼쪽 상단의 숲길을 클릭하고 들어가거나 https://www.foresttrip.go.kr/indvz/main.do?hmpgId=ID05030007 여기서 가능하고 탐방은 최소 3일 전에 예약해야 갈 수 있다. (회원가입 필요!) 차로만 갈 수 있는데 주차장은 남원읍 서성로 651번길 235 를 찍고 가면 되고 주차하고 살짝 걸어 올라가면 입구가 보인다. 앞에서 설명도 잘해주시고 입산 허가서 겸 지도를 주시는데 목에 찰 수 있어 가면서 핸드폰으로 길 찾아보지 않고 편히 갔다. 사려니오름을 빼면 삼나무 우거진 평지라 걷기 좋았고, 사려니 오름도 올라갈때 계단길을 15분정도 가야하지만 내려오는길이 이국적이라 좋았다. 가파른 나무 계단길은 마치 나무로 짜여진 롤러코스터 위에서 내려다 보는 느낌이고, 옆길이 꼬불꼬불한 산 길이라 가파르게 내려가지 않아도 되어 좋았다. 방문객 수를 제한하니 사람 부대끼지 않고 숲을 즐길 수 있는 것 같다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

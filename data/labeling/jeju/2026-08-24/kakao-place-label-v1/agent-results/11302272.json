@@ -1,0 +1,57 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11302272",
+  "canonical_id": "kakao:11302272",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status": "eligible", "rationale": "입력 근거가 병곳오름의 숲길, 정상, 탐방 시간과 경사를 구체적으로 설명하는 독립적인 오름 방문지임을 확인한다.", "source_ids": ["kakao_review_1", "kakao_review_2", "kakao_review_3", "kakao_review_4"]},
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.9, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "후기들이 오름을 오르고 정상에 이르는 경험을 일관되게 설명한다.", "rule_ids": ["direct-review-place-type"], "source_ids": ["kakao_review_1", "kakao_review_2", "kakao_review_3", "kakao_review_4"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "정상에서 남쪽 먼바다를 볼 수 있다는 후기가 있으나, 해양 활동이 핵심은 아니다.", "rule_ids": ["direct-review-scenery"], "source_ids": ["kakao_review_4"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "왕복 20~30분의 등산과 가파른 구간이 직접 언급되어 걷기 활동이 핵심이다.", "rule_ids": ["direct-review-activity"], "source_ids": ["kakao_review_1", "kakao_review_2", "kakao_review_3"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "입력 근거에서 역사·문화 체험을 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "입력 근거에서 테마파크형 시설을 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·식음 경험은 입력 근거에 없다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "축제 또는 기간성 행사는 입력 근거에 없다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.9, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "숲길·탐방로·정상 경관으로 이루어진 야외 경험이 확인된다.", "rule_ids": ["direct-review-setting"], "source_ids": ["kakao_review_2", "kakao_review_4"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "눈이 쌓이면 오르기 힘들고 미끄러우며 봄·가을 재방문이 좋다는 후기가 있다.", "rule_ids": ["direct-review-weather"], "source_ids": ["kakao_review_3"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "숲길과 경관 감상은 확인되나, 휴식 중심 체류에 대한 근거는 제한적이다.", "rule_ids": ["direct-review-setting"], "source_ids": ["kakao_review_4"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "짧고 탐방로가 정리됐다는 후기와 꽤 가파르고 눈길이 힘들다는 후기가 함께 있다.", "rule_ids": ["direct-review-access"], "source_ids": ["kakao_review_2", "kakao_review_3", "kakao_review_4"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "왕복 또는 하산까지 20~30분 정도라는 후기가 있어 짧은 등산 일정으로 조절하기 쉽다.", "rule_ids": ["direct-review-duration"], "source_ids": ["kakao_review_1", "kakao_review_2", "kakao_review_4"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "정상 경관과 남쪽 먼바다 조망, 매력적인 숲길이 직접 언급된다.", "rule_ids": ["direct-review-scenery"], "source_ids": ["kakao_review_3", "kakao_review_4"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "정상과 숲길의 매력은 언급됐지만, 다른 오름과 비교해 흔한 오름이라는 평가도 있다.", "rule_ids": ["direct-review-distinctiveness"], "source_ids": ["kakao_review_1", "kakao_review_4"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "제주의 오름 탐방과 숲·바다 조망 경험이 언급된다.", "rule_ids": ["direct-review-local-nature"], "source_ids": ["kakao_review_1", "kakao_review_4"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "입력 후기만으로 지역 대표 명소로서의 상징성은 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "정상과 먼바다 조망은 언급됐으나 사진 촬영 경험은 직접 확인되지 않았다.", "rule_ids": ["direct-review-scenery"], "source_ids": ["kakao_review_4"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "오름 도장깨기를 하는 방문객에게 권한다는 후기가 있다.", "rule_ids": ["direct-review-companion"], "source_ids": ["kakao_review_1"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 형태별 만족 근거가 부족하다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 형태별 만족 근거가 부족하다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": []},
+    "kids": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "가파른 구간과 눈길의 미끄러움이 언급돼 아동 동반 적합성은 추가 확인이 필요하다.", "rule_ids": ["direct-review-access"], "source_ids": ["kakao_review_2", "kakao_review_3"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "짧은 탐방 시간과 가파른 구간이 함께 언급되어 개인별 보행 능력 확인이 필요하다.", "rule_ids": ["direct-review-access"], "source_ids": ["kakao_review_1", "kakao_review_2"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "겨울에도 초록 숲길과 정상 조망을 경험한 후기가 있으나 눈길 위험이 언급된다.", "rule_ids": ["direct-review-seasonality"], "source_ids": ["kakao_review_3", "kakao_review_4"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "3": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "후기에서 봄 재방문이 좋다고 언급한다.", "rule_ids": ["direct-review-seasonality"], "source_ids": ["kakao_review_3"]},
+    "4": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "후기에서 봄 재방문이 좋다고 언급한다.", "rule_ids": ["direct-review-seasonality"], "source_ids": ["kakao_review_3"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "5월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "6월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "7월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "8월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "9월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "10": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "후기에서 가을 재방문이 좋다고 언급한다.", "rule_ids": ["direct-review-seasonality"], "source_ids": ["kakao_review_3"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "11월의 현장 경험은 입력 근거에 없다.", "rule_ids": ["fallback-season-unknown"], "source_ids": []},
+    "12": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "겨울 숲길 경험은 있으나 눈이 쌓이면 오르기 힘들다는 후기가 있다.", "rule_ids": ["direct-review-weather"], "source_ids": ["kakao_review_3", "kakao_review_4"]}
+  },
+  "hard_constraints": [{"constraint": "weather_and_surface", "detail": "눈이 쌓이거나 미끄러운 신발을 신은 경우 오르기 어렵고 미끄러울 수 있다.", "source_ids": ["kakao_review_3"]}],
+  "research": {"sources": [
+    {"source_id": "kakao_review_1", "publisher": "Kakao Map visitor review", "url": "https://place.map.kakao.com/11302272", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["작은 오름, 주차, 약 30분, 오름 탐방자 추천 언급"]},
+    {"source_id": "kakao_review_2", "publisher": "Kakao Map visitor review", "url": "https://place.map.kakao.com/11302272", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["짧지만 가파름, 왕복 20~30분, 정리된 탐방로 언급"]},
+    {"source_id": "kakao_review_3", "publisher": "Kakao Map visitor review", "url": "https://place.map.kakao.com/11302272", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["눈길 위험, 정상 경관, 봄·가을 재방문 언급"]},
+    {"source_id": "kakao_review_4", "publisher": "Kakao Map visitor review", "url": "https://place.map.kakao.com/11302272", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["숲길, 약 20분, 정상의 남쪽 바다 조망 언급"]}
+  ], "limitations": ["공식·공공 상세 출처는 입력 패킷에 제공되지 않았다.", "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]},
+  "review_priority": "high"
+}

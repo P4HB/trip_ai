@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1865,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8212572.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8212572",
+    "provider": "kakao",
+    "place_id": "8212572",
+    "name": "궁대악",
+    "url": "https://place.map.kakao.com/8212572",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "16",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.06.",
+      "content": "2026.06.06 방문 제주자연생태공원과 연결된 궁대오름이다. 자연이 잘 보존되어 있고, 특히 진드기 퇴치 약물 처리를 해주셔서 사람이 오르기엔 더욱 안전한 것 같다. 오르는데 약 20~30분 내외로 걸리는 수준이며 오르막이 힘들지 않아 비교적 쉽게 정상에 오를 수 있다. 대부분은 생태공원만 가고 궁대오름은 안 오시기 때문에 궁대오름에 있는 동안 사람은 한명도 보지 못했다. 조용하게 오름을 즐기기엔 제격이다. 자그마한 생태연못도 있다.",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2024.12.25.",
+      "content": "💚제주자연생태공원 에 주차 어렵지않은 길, 탐방로 들어가면 대부분 그늘이라 솔솔 걷기 좋아요. 생이길-노루길로 오는 길은 나무가 많이 죽어있어 아쉬움",
+      "tags": "시설"
+    },
+    {
+      "date": "2024.02.16.",
+      "content": "자연생태공원 간 길에 갔는데 사람도 별로 없고 탁 트여서 예뻐요",
+      "tags": "주차|입장료"
+    },
+    {
+      "date": "2024.01.13.",
+      "content": "제주자연생태공원에 주차하고 쉽게 오를수 있는 궁대오름, 곰까지 구경할수 있으니 일석이조",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

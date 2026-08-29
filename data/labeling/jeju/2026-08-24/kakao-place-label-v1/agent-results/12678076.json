@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "12678076",
+  "canonical_id": "kakao:12678076",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "국가유산포털이 제주특별자치도 기념물 최영장군사당을 단독 사우 건조물로 등재하며, 관광공사 여행 정보도 해당 사당을 추자도의 방문 지점으로 안내한다.",
+    "source_ids": ["S1", "S2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 안내는 사당이 상추자도 산 정상에 위치한다고 설명한다.","source_ids":["S2"],"rule_ids":[]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"추자도 섬의 높은 지점에서 군도를 조망할 수 있으나, 사당의 주된 정체성은 해양 활동이 아니라 역사 사우다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"관광공사 안내의 추자도 올레 동선에서 들를 수 있으나, 사당 자체의 핵심 경험은 참여형 활동으로 확인되지 않는다.","source_ids":["S2"],"rule_ids":[]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털은 이곳을 제주특별자치도 기념물의 사우 유적으로 분류하고, 최영 장군과 추자도 주민의 역사적 인연을 설명한다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료는 역사 사우로만 확인하며 테마파크형 시설 구성의 직접 정보가 없다.","source_ids":["S1"],"rule_ids":[]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 카페·음료 이용 공간 또는 그 이용 목적은 확인되지 않는다.","source_ids":["S1"],"rule_ids":[]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 시장 기능이나 상설 판매 활동은 확인되지 않는다.","source_ids":["S1"],"rule_ids":[]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"주민 제례의 전승은 설명되지만 일반 방문객 대상 축제·공연의 일정과 운영 정보는 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"국가유산은 1동 사우 건조물이나, 관광공사 안내는 산 정상에서의 조망을 함께 언급해 대표 경험은 주로 야외로 판단된다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"산 정상에 있는 야외 유적·조망 지점이므로 바람과 비 등 기상 조건이 접근과 관람에 영향을 줄 가능성이 높다.","source_ids":["S2"],"rule_ids":[]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"작은 역사 사우와 섬 조망은 조용한 체류를 제공할 수 있으나 휴식 시설·체류 환경은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"산 정상 위치가 확인되어 평탄한 접근으로 단정할 수 없고, 경사·계단·무장애 동선 정보는 확인되지 않는다.","source_ids":["S2"],"rule_ids":[]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"사우 관람과 조망을 결합할 수 있으나 현장 관람 시간·동선·체류 권장 시간은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 안내는 이곳에서 추자군도를 한눈에 담을 수 있다고 설명한다.","source_ids":["S2"],"rule_ids":[]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"최영 장군이 풍랑을 피해 머문 뒤 주민에게 어로법을 가르쳤다는 추자도 고유의 전승과 그를 기리는 사우가 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"추자도 주민이 장군을 기려 사당을 세우고 봉향해 온 지역 전승이 공식 관광·유산 자료에 기록돼 있다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물로 지정된 지역 유산이지만, 제주 전역을 대표하는 상징성의 직접 비교 근거는 없다.","source_ids":["S1"],"rule_ids":[]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"관광공사 안내가 산 정상에서 추자군도를 한눈에 담는 조망을 직접 소개한다.","source_ids":["S2"],"rule_ids":[]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"역사 관람과 조망은 혼자도 가능하나 최신 접근·안전 조건은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"역사 관람과 섬 조망을 함께 할 수 있으나 편의시설과 동선은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"추자도 올레 동선의 역사 지점으로 방문 가능하나 단체 체험·시설 정보는 확인되지 않는다.","source_ids":["S2"],"rule_ids":[]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"역사 전승 학습 요소가 있으나 산 정상 접근과 아동 안전·편의시설 정보는 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"문화유산 관람 가치는 있으나 경사·계단·무장애 접근성 정보가 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":[]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·기상·행사 정보가 확인되지 않아 중립값으로 보류한다.","source_ids":[],"rule_ids":[]}
+  },
+  "review_priority": "medium",
+  "hard_constraints": [
+    {"kind":"heritage_site_access_and_weather_conditions_unknown","applies_to":"all_visitors","condition":"산 정상에 있는 야외 문화유산이나 최신 개방 시간, 접근로·경사·계단, 주차·화장실, 무장애 시설 및 우천·강풍 시 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 국가유산포털·제주특별자치도 또는 현장 최신 안내로 관람 가능 여부와 접근·보행·기상 안전 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "research": {
+    "checked_at":"2026-08-25",
+    "sources":[
+      {"source_id":"S1","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=23%2C00110000%2C50&pageNo=1_1_2_0&pageNo__=5_2_1_0","publisher":"국가유산포털","checked_at":"2026-08-25","facts":["제주특별자치도 기념물 최영장군사당으로 등재됨","유적건조물·인물기념·사우, 1동","소재지는 제주시 추자면 대서리"]},
+      {"source_id":"S2","url":"https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=10bbffa0-63a4-4642-81c0-1054dde84be9","publisher":"한국관광공사 대한민국 구석구석","checked_at":"2026-08-25","facts":["사당은 상추자도 산 정상에 위치하며 추자군도 조망을 소개함","최영 장군과 추자도 주민의 역사적 인연 및 사당 건립 전승을 설명함","추자도 올레 18-1코스의 방문 지점으로 소개함"]}
+    ],
+    "summary":"공식·공공 자료로 역사 사우와 추자도 조망 지점이라는 정체성을 확인했다. 최신 개방·접근·편의·안전 정보와 월별 운영 정보는 확인하지 못했다."
+  }
+}

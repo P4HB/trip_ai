@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1985,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10880885.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10880885",
+    "provider": "kakao",
+    "place_id": "10880885",
+    "name": "퍼시픽리솜 마린스테이지",
+    "url": "https://place.map.kakao.com/10880885",
+    "average_rating_5": "2.9",
+    "visitor_review_count": "40",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2021.10.08.",
+      "content": "Dolphin show is good 3 shows per day timings are 11:00 13:00 15:30",
+      "tags": ""
+    },
+    {
+      "date": "2021.02.20.",
+      "content": "너무 멋진 공연이었습니다. 소름끼쳤어요ㅎㅎ 추천",
+      "tags": ""
+    },
+    {
+      "date": "2020.09.24.",
+      "content": "중간에 시간이 비어서 부모님때문에 급하게 예매하고 봤습니다. 우한폐렴으로 한자리씩 띄어앉을수 있게되어있고 체온체크 및 방명록작성 잘 지켜지더라구요. 쇼는 너무 아이들 기준에 맞춰서 진행되어서 성인들 보기엔 초반에 많이 지루했습니다. 돌고래들 너무 이쁜데ㅠㅠㅠ 잘 보살펴서 나중에 넓은 바다로 나가서 헤엄칠수 있는 날이 꼭 왔으면 좋겠네요.",
+      "tags": ""
+    },
+    {
+      "date": "2020.08.11.",
+      "content": "애기들데리고 가면 좋을것같아용 돌고래 나올때까지 좀 지루해용",
+      "tags": ""
+    },
+    {
+      "date": "2019.07.03.",
+      "content": "처음부터 끝까지 공연에서 눈을 뗄 수 없을만큼 재미있었고 동심으로 돌아가는 듯한 느낌도 받아 좋았습니다. 귀여운 동물 친구들이 좋은 환경에서 지내고 있을 거라 믿습니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

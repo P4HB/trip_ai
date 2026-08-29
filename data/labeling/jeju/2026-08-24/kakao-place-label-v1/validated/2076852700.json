@@ -1,0 +1,669 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2076852700",
+  "place_id": "2076852700",
+  "name": "용둠벙 숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가균형발전종합정보시스템은 추자도 대왕산 기슭의 용둠벙과 이를 잇는 ‘용둠벙 산책로’를 관광객·주민의 휴식 공간으로 정비한 독립 탐방지로 소개한다. 철도산업정보센터의 추자도 여행 안내도 ‘용둠벙 숲길(대왕산 둘레길)’과 전망대를 별도 방문지로 안내해 입력명과의 동일성을 뒷받침한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "용둠벙 숲길은 제주특별자치도 제주시 추자도 대왕산 기슭의 용둠벙으로 이어지는 야외 산책로·둘레길과 전망대 방문 맥락을 가리킨다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가균형발전종합정보시스템은 용둠벙을 대왕산 기슭의 연못으로 설명하고, 용둠벙 산책로에 제주석 경계석·판석 포장·야자매트·퍼걸러 등을 설치해 관광객과 주민이 쉬어갈 공간을 조성했다고 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "철도산업정보센터의 추자도 여행 안내는 ‘용둠벙 숲길(대왕산 둘레길)’ 끝 전망대에서 바다 풍경을 볼 수 있다고 안내하며, 대왕산 입구 정류장에서 도보 약 900m로 찾아가기를 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "국가균형발전종합정보시스템은 대왕산이 넝쿨이 많고 바람이 거센 장소이며, 용둠벙으로 내려가는 계단의 시설물 파손과 안전사고 위험을 언급했다. 해당 자료는 지속적 정비 계획을 설명한 것으로 최신 현장 상태는 확인되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 개방 여부, 실제 보행 구간과 전망대·계단의 최신 상태",
+      "우천·강풍 시 통제 및 안전시설의 현재 운영",
+      "주차·화장실·휴식시설과 무장애 접근성의 최신 상태",
+      "계절별 절정·행사·운영 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "나비스(NABIS) 국가균형발전종합정보시스템",
+        "type": "public_government_information",
+        "url": "https://www.nabis.go.kr/outstandRegionDetailView.do?menucd=190&outstandNo=708",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "용둠벙은 추자도 대왕산 기슭의 연못이며, 용둠벙 산책로는 관광객·주민을 위한 휴식 공간으로 정비되었다.",
+          "대왕산의 강풍, 넝쿨, 용둠벙 하행 계단의 안전 위험 및 지속 정비 계획을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "철도산업정보센터",
+        "type": "public_travel_information",
+        "url": "https://www.kric.go.kr/jsp/board/portal/sub05/res/themeEssayDetail.jsp?board_cd=M020204&board_seq=2950&pageNo=2&q_naGubun=&q_naGubunALL=all&q_name=all&q_value=",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘용둠벙 숲길(대왕산 둘레길)’의 전망대에서 바다 풍경을 볼 수 있다고 소개한다.",
+          "대왕산 입구 정류장에서 도보 약 900m의 찾아가기 정보를 제시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 여행 안내가 이 장소를 ‘대왕산 둘레길’로 직접 표기하며 대왕산을 걷는 방문 경험을 설명한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-MOUNTAIN-TRAIL-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "숲길 끝 전망대에서 바다 풍경을 보는 경험이 직접 안내된다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-VIEW-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "야외 산책로·둘레길을 따라 전망대까지 보행하는 것이 확인된 대표 방문 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "용 전설은 소개되지만 역사·문화 해설이나 유산 관람이 핵심 경험이라는 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·전시형 테마파크 경험 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·음료·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "산책로·둘레길·전망대의 야외 보행과 바다 조망이 대표 경험으로 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대왕산은 바람이 거센 장소로 소개되고 대표 경험이 야외 보행·전망이므로 날씨 영향이 크다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-WIND-DIRECT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 자료가 산책로 정비 목적을 관광객과 주민이 쉬어갈 수 있는 공간 조성으로 직접 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-REST-SETTING-DIRECT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "용둠벙으로 내려가는 계단의 넝쿨·시설물 파손 및 안전 위험이 공공 자료에 언급돼 보행 부담이 적다고 보기 어렵다. 최신 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-STAIR-SAFETY-BURDEN-DIRECT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 방문 시간, 단축·연장 동선과 현장 체류 편의가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "전망대에서 시원한 바다 풍경을 볼 수 있다는 공개 여행 안내가 확인된다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SCENIC-CORE-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대왕산 기슭의 ‘용이 살던 연못’ 전설과 용둠벙으로 이어지는 산책로라는 고유한 자연·이야기 맥락이 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-NATURAL-STORY-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "추자도 대왕산·용둠벙의 지역 지명과 주민·관광객을 위한 정비 사업이 직접 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-NATURAL-CONTEXT-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 또는 추자도를 대표하는 공적 상징 명소라는 지정·비교 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-RECOGNITION-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "바다 조망은 확인되지만 사진 촬영이 공식적으로 핵심 경험으로 안내되는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 최신 안전·통신·조명·개방 조건을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 체류·안전·동선 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 방문의 수용성·동선·주차 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "용둠벙 하행 계단의 시설물 파손과 안전사고 위험이 공공 자료에 언급되어 아동 동반 적합성을 높게 평가하기 어렵다. 최신 상태는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-CHILD-STAIR-SAFETY-DIRECT"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "계단·보행 안전 위험이 언급되고 무장애 동선이 확인되지 않아 이동 부담이 큰 방문객의 적합성을 높게 평가하기 어렵다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-SENIOR-STAIR-SAFETY-DIRECT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·계절 절정 정보가 없어 야외 숲길의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_trail_stairs_wind_and_current_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "야외 대왕산 둘레길·전망대 방문지이며 공공 자료에 강풍, 넝쿨, 용둠벙 하행 계단의 시설물 파손과 안전 위험이 언급된다. 현재 개방·정비 상태와 우천·강풍 통제, 무장애 접근성은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 추자면 또는 현장 최신 안내로 개방 여부, 지정 보행로·계단 상태, 강풍·우천 통제, 조명·안전시설 및 이동약자 동선을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

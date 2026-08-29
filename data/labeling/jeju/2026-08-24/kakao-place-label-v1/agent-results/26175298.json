@@ -1,0 +1,69 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26175298",
+  "place_id": "26175298",
+  "name": "서부두명품횟집거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사 Visit Jeju가 150m 구간에 횟집 18곳이 모인 원조 횟집거리로 별도 소개하는 독립 관광 방문지다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["eligibility.independent_place"]
+  },
+  "research": {
+    "status": "researched",
+    "identity_summary": "서부두명품횟집거리는 제주시 건입동 서부두의 해산물·활어회 특화거리다.",
+    "typical_visit": "여러 횟집 가운데 식당을 선택해 제주산 활어회·해산물을 먹고, 인접 해안 산책로에서 바다를 보는 방문이다.",
+    "unknowns": ["개별 업소의 최신 영업시간·가격·휴무와 좌석, 주차·무장애 접근성은 확인하지 못했다.", "거리 전체의 최신 안전·혼잡 및 악천후 조건은 방문 전 확인이 필요하다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://visitjeju.net/en/detail/view?contentsid=CNTS_200000000012455", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["약 150m에 횟집 18곳이 모인 원조 횟집거리로 소개된다.", "1965년 포장마차에서 시작해 현재의 횟집거리로 지정됐다고 소개된다.", "서쪽 방파제까지 산책로가 있어 제주 바다를 느끼며 걸을 수 있다고 안내한다."]},
+      {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000012446", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["건입동에 있으며 공항에서 차로 약 10분 거리로 소개된다.", "활어회와 해산물 요리를 먹고 아름다운 바다 풍경을 볼 수 있는 곳으로 소개된다.", "2·3대째 이어온 횟집을 포함해 장기간 운영된 업소들이 있다고 소개된다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내의 핵심은 횟집거리와 해안 산책이며 산·오름 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.primary_experience"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 인접 방파제 산책로와 제주 바다 풍경을 직접 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["evidence.seaside_walk"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "식사와 짧은 해안 산책은 확인되나 레포츠나 참여형 체험이 핵심이라는 근거는 부족하다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.dining_with_walk"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "1965년부터 이어진 횟집거리의 이력은 확인되지만 역사·문화 해설이 대표 방문 경험인지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["inference.food_street_history"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 식당 밀집 거리와 해안 산책을 설명하며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.primary_experience"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "활어회·해산물 식당 거리로 소개되며 카페·차·디저트가 독립 방문 목적이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.primary_experience"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "개별 횟집이 모인 식당 거리이며 전통시장 방문이나 상거래가 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.primary_experience"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 횟집거리로 소개될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.primary_experience"]},
+    "environment.indoor_ratio": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험에는 식당 이용과 방파제 산책이 함께 있으나 개별 업소와 야외 체류 비중을 정량화할 정보는 부족하다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.mixed_dining_outdoor"]},
+    "environment.weather_sensitivity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "실내 식당 이용이 중심이지만 해안 산책과 바다 조망의 체감은 날씨 영향을 받으므로 중간값으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.mixed_dining_outdoor"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "식사 뒤 방파제 방향으로 느긋하게 걸을 수 있다고 안내되나 혼잡도·소음·휴식시설 정보는 부족하다.", "source_ids": ["S1"], "rule_ids": ["inference.seaside_stroll"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "식당가와 산책로의 경사·계단·무장애 접근성 정보를 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.accessibility_unknown"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "식사와 인접 산책을 조합할 수 있으나 개별 업소 대기·식사시간 등 체류 조절 정보가 부족하다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.dining_with_walk"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 방파제까지의 산책과 아름다운 제주 바다 풍경을 직접 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["evidence.seaside_scenery"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "약 150m에 18개 횟집이 모인 원조 활어회 거리라는 구성과 오랜 이력이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["evidence.specialized_food_street"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 신선한 제주 활어회·해산물과 지역에서 이어진 횟집거리를 직접 소개한다.", "source_ids": ["S1", "S2"], "rule_ids": ["evidence.jeju_seafood_culture"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주관광공사가 별도 관광지로 소개하지만 제주 전체를 대표하는 상징 명소라는 공적 지정 근거는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.official_listing"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다 풍경은 확인되지만 사진 촬영 자체가 이 장소의 핵심 가치라는 직접 근거는 부족하다.", "source_ids": ["S1", "S2"], "rule_ids": ["inference.seaside_visual"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 좌석·대기·안전 등 최신 이용 여건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.visitor_fit_unknown"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 식사와 해안 산책은 가능하나 업소별 좌석·대기 정보가 없어 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.visitor_fit_unknown"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "여러 명 방문의 좌석·예약·대기 여건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.visitor_fit_unknown"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "어린이 동반에 필요한 개별 업소 편의·해안 보행 안전 정보를 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.visitor_fit_unknown"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "보행 경사·쉼터·무장애 접근과 개별 업소 편의 정보를 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1", "S2"], "rule_ids": ["fallback.visitor_fit_unknown"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 최신 운영·기상·해안 안전 조건을 확인하지 못해 중립 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.monthly_conditions_unknown"]}
+  },
+  "hard_constraints": [{"kind": "business_hours_and_accessibility_unknown", "applies_to": "all_visitors", "condition": "개별 업소의 최신 영업시간·휴무·가격·좌석과 거리의 주차·무장애 접근성, 악천후 시 해안 산책 안전은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 선택한 업소와 현장 안내에서 영업·대기·주차 및 기상 안전 조건을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25T00:00:00+09:00"}],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

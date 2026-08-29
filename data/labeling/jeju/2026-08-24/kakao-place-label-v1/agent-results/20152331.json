@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20152331",
+  "place_id": "20152331",
+  "name": "수령섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘수령섬’은 해양수산부가 1961년 고시명으로 설명한 뒤 2003년 ‘수령여’로 명칭 변경 고시했다고 밝힌 같은 무인도와 일치한다. 추자도 해상관광협동조합 유람선의 공개 코스에도 수령섬이 독립 경유지로 제시되어, 해상에서 경관을 경험할 수 있는 독립 관광 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "수령섬은 제주특별자치도 제주시 추자면 대서리 산152의 특정도서 제206호이며, 해양수산부가 현재 통용 명칭을 수령여로 설명한 무인도다.",
+    "typical_visit": "추자항에서 출항하는 유람선 코스에서 수령섬을 경유하며 해상·섬 경관을 보는 방문으로 확인된다. 상륙 관람은 확인하지 못했다.",
+    "experience_scope": "공개 자료는 무인도·특정도서 지위, 해안 지형과 생태, 유람선 경유 코스를 확인한다. 상륙 허가·개방 여부, 현행 운항일·요금, 선내·현장 편의시설과 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "해양수산부는 수령여를 제주 제주시 추자면의 준보전무인도서 및 특정도서로 소개하고, 수령섬 고시명에서 수령여로 명칭이 변경되었다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "추자도 해상관광협동조합 유람선은 1코스와 3코스의 경유지로 수령섬을 공개하며, 입출항 시간과 코스는 현지 사정 및 기상에 따라 변동될 수 있다고 안내한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "해양수산부는 수령여의 수직절리와 조수웅덩이, 다양한 동식물 서식을 설명한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": [
+      "2026-08-25 기준 실제 유람선 운항일·시간·요금·예약 가능 여부",
+      "관광객의 수령섬 상륙·출입 허가 여부와 보전구역 출입 조건",
+      "선박 승하선, 선내 좌석·화장실, 보행·휠체어 접근성과 아동·고령자 안전 조건"
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "해양수산부 무인도서 종합정보제공", "type": "official_government_information", "url": "https://uii.mof.go.kr/UII/mn/bbs/notice/detail.do?bbsSn=11&keyword=&searchType=all", "checked_at": "2026-08-25", "facts": ["수령여의 무인도서·특정도서 지위와 수령섬에서의 명칭 변경을 설명한다.", "위치·지형·조수웅덩이와 동식물 서식 정보를 제공한다."]},
+      {"id": "S2", "publisher": "추자도 해상관광협동조합", "type": "operator_information", "url": "https://www.chujado.kr/page/time-schedule.php", "checked_at": "2026-08-25", "facts": ["유람선 1코스와 3코스 경유지에 수령섬을 포함한다.", "입출항 시간은 현지 사정, 운항 코스는 기상 상황에 따라 변동될 수 있다고 안내한다.", "페이지의 게시 시간표는 2026년 2~3월 정보여서 현재 운항 사실로 단정하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료의 핵심은 해상 무인도·암석 지형과 생태이며 산·오름 또는 산림 경관을 걷는 방문 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"추자도 인근 무인도 자체와 유람선 해상 경유가 대표 경험으로 확인되어 바다·섬 경관의 비중이 높다.","source_ids":["S1","S2"],"rule_ids":["THEME-MARINE-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"유람선으로 경관을 보는 참여형 이동 경험은 확인되지만, 상륙 탐방·레포츠·신체 활동의 운영은 확인되지 않았다.","source_ids":["S2"],"rule_ids":["THEME-TOUR-EXPERIENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사 해설·문화유산 관람·전시 또는 전통 체험이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험은 무인도와 해상 경관을 유람선에서 보는 야외 시야 중심이며, 장소 자체의 실내 방문 공간은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-MARINE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"운항 코스가 기상 상황에 따라 변경될 수 있다고 운영 주체가 안내하므로, 해상 경관 방문은 날씨·해상 여건의 영향을 크게 받는다.","source_ids":["S2"],"rule_ids":["ENV-SEA-WEATHER-DIRECT"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·체류 환경 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"승하선 난이도, 선내 이동, 상륙 가능 여부와 무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현행 운항 시간·소요시간과 개별 체류 선택 폭을 확인하지 못해 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 자료가 수직절리와 조수웅덩이 등 해안 지형을 설명하고, 운영 주체가 수령섬을 유람선 경관 코스에 포함한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-MARINE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"수령섬에서 수령여로 변경 고시된 고유 명칭, 특정도서 지위, 수직절리와 조수웅덩이의 지형 특징이 공식적으로 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-GEOLOGY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 추자면의 특정도서이며 추자도 해상 유람선 코스에 포함되어 추자군도의 해양 자연환경과 직접 연결된다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-MARINE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"해양수산부가 2026년 3월 이달의 무인도서로 선정했고, 지역 유람선의 복수 비경 코스에 독립 경유지로 포함한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-OFFICIAL-FEATURED-ISLAND"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시각적 해안 지형은 확인되지만 사진 촬영 또는 기록 가치가 직접 안내된 근거는 없어 중립값이다.","source_ids":["S1"],"rule_ids":["FALLBACK-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현행 운항·승선 절차와 단독 방문 안전 지원 정보를 확인하지 못해 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 이용 편의 또는 좌석·체류 조건 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 예약·정원·안전 조건 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 승선·구명장비·상륙과 보호자 동반 조건이 확인되지 않아 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 승하선·선내 이동·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현행 월별 운항·상륙 가능 여부가 확인되지 않아 해상 경관 방문의 중립값이다.","source_ids":["S2"],"rule_ids":["CLIMATE-SEA-ACCESS-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"boat_access_and_weather_conditions_must_be_confirmed","applies_to":"all_visitors","condition":"수령섬은 유람선 공개 코스의 해상 경유지이나, 입출항 시간은 현지 사정에 따라, 코스는 기상 상황에 따라 변경될 수 있다. 조사 시점의 실제 운항·예약·결항 조건은 확인하지 못했다.","status":"needs_review","action":"방문 전 추자도 해상관광협동조합의 최신 시간표와 예약 가능 여부, 기상·해상 여건에 따른 변경·결항 및 안전 안내를 확인한다.","source_ids":["S2"],"checked_at":"2026-08-25"},
+    {"kind":"island_landing_and_protected_area_access_unknown","applies_to":"all_visitors","condition":"수령섬은 준보전무인도서 및 특정도서로 확인되지만 관광객 상륙·출입 허가와 보전구역 준수 조건은 이 조사에서 확인하지 못했다.","status":"needs_review","action":"섬 상륙을 계획한다면 관할 행정기관 또는 공식 운항사에 출입 허가·보전 규정·현장 안전 통제를 먼저 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"},
+    {"kind":"mobility_and_child_safety_unknown","applies_to":"kids_and_parents","condition":"승하선, 선내 이동, 상륙 시 보행 난이도, 휠체어 접근성과 아동·고령자 안전·구명장비 조건을 확인하지 못했다.","status":"needs_review","action":"동행자의 이동 능력에 맞춰 운항사에 승하선 지원, 좌석·화장실, 구명장비와 아동·고령자 이용 조건을 사전 확인한다.","source_ids":["S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

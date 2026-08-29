@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2045475997",
+  "canonical_id": "kakao:2045475997",
+  "name": "파라다이스카지노 안내데스크 제주국제공항",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명은 제주국제공항 안의 ‘파라다이스카지노 안내데스크’로, 카지노 방문 경험 자체가 아닌 사업자 안내·지원 기능을 가리킨다. 파라다이스카지노 공식 자료는 제주 카지노를 제주국제공항에서 약 5분 거리의 별도 카지노 영업장으로 소개한다. 따라서 이 레코드는 독립적으로 추천할 관광 방문지가 아니라 본 영업장에 종속된 공항 안내 접점으로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-SUBORDINATE-FACILITY", "ELIG-NON-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_information_desk_not_recommendation_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "이 레코드는 제주국제공항 내 파라다이스카지노 안내데스크로 식별되며, 독립적인 관광·관람·체험 방문지를 나타내지 않는다.",
+      "status": "confirmed",
+      "action": "추천 후보와 41축 적합도 벡터에서 제외한다. 카지노 방문지를 평가해야 하면 안내데스크가 아닌 실제 파라다이스카지노 제주 영업장을 별도 장소로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "rule_ids": ["ELIG-SUBORDINATE-FACILITY", "CONSTRAINT-EXCLUDE-NON-INDEPENDENT-VISIT"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력 Kakao 명칭의 ‘안내데스크’와 ‘제주국제공항’은 공항 내 고객 안내 접점을 뜻한다. 공식 카지노 소개는 제주 카지노 영업장을 공항에서 약 5분 거리의 별도 장소로 설명한다.",
+    "facts": [
+      {
+        "text": "파라다이스카지노 공식 제주 소개는 제주 카지노가 제주국제공항에서 5분 거리에 있다고 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "입력 Kakao 레코드의 장소명은 ‘파라다이스카지노 안내데스크 제주국제공항’이며, 리뷰 근거는 제공되지 않았다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "공항 안내데스크의 현행 운영 여부·위치·운영 시간은 확인하지 못했다.",
+      "이 레코드는 독립 방문지로 적격하지 않으므로 동행자별·월별 적합도는 산정하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "파라다이스 카지노",
+        "type": "official_business_site",
+        "url": "https://www.paradisecasino.co.kr/mobile/",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공식 사이트는 파라다이스 카지노 제주를 제주국제공항에서 5분 거리에 위치한 카지노 영업장으로 소개한다.",
+          "제주 카지노와 제주국제공항 내 안내데스크는 동일한 독립 방문지로 소개되지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/2045475997",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘파라다이스카지노 안내데스크 제주국제공항’이다.",
+          "입력 패킷에는 공개 리뷰 근거가 없으며 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

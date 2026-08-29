@@ -1,0 +1,658 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1699149087",
+  "place_id": "1699149087",
+  "name": "용암길탐방로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력명은 거문오름 국제트레킹의 ‘용암길’과 일치한다. 제주관광공사 안내와 2026년 행사 보도는 이를 거문오름에서 분출한 용암이 흘러간 길을 걷는 약 6km 탐방 코스로 설명한다. 행사 기간에만 개방되는 독립적 자연·도보 방문 경험으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "용암길탐방로는 제주시 조천읍 거문오름 국제트레킹에서 운영하는 ‘용암길’로 확인됐다.",
+    "typical_visit": "행사 기간 탐방안내소에서 안내·출입 절차를 거쳐 거문오름에서 분출한 용암이 흘러간 길을 약 6km, 약 3시간 30분 걷는 야외 탐방이다.",
+    "experience_scope": "용암길은 일반인 출입이 제한되고 행사 기간에만 열린다. 현재 개방 여부·당해 일정·출입 조건은 변동 정보이므로 확정하지 않았으며, 기상 악화 시 통제될 수 있다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 용암길을 거문오름에서 분출된 용암이 흘러내려간 길로, 행사 기간 특별 개방하는 약 6km·약 3시간 30분 코스로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju 안내에는 탐방안내소에서 사전 안내와 출입증 수령 후 탐방하고, 강수량 또는 심한 안개 등 기상 악화 시 통제될 수 있다는 2023 행사 운영 정보가 있다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "2026년 보도는 일반인 출입이 제한된 용암길이 거문오름 국제트레킹 행사 기간에만 열리며, 약 6km·약 3시간 30분 코스라고 전한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-25 이후의 다음 개방 일정과 신청·입장 절차",
+      "노면, 경사, 계단, 화장실, 주차 및 무장애 접근성",
+      "행사 외 기간의 출입 가능 여부와 최신 기상·안전 통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022034",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "거문오름 국제트레킹에서 용암길을 걸을 수 있는 기회를 안내한다.",
+          "용암길은 거문오름에서 분출된 용암이 흘러내려간 길이며 행사 기간 특별 개방하는 약 6km·약 3시간 30분 코스라고 안내한다.",
+          "2023 행사 안내에는 기상 악화 시 탐방 통제와 입장 절차가 적혀 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "조선일보",
+        "type": "reputable_news",
+        "url": "https://v.daum.net/v/20260804131508121",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2026년 거문오름 국제트레킹 기간 일반인 출입이 제한된 용암길을 닷새간 연다고 보도했다.",
+          "용암길은 행사 기간에만 열리는 약 6km·약 3시간 30분 코스라고 보도했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 거문오름에서 출발하는 용암길과 오름 탐방 맥락을 직접 설명한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-OREUM-TRAIL-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해안·해양 활동이 핵심이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "약 6km를 약 3시간 30분 걷는 탐방 코스로 안내돼 도보 활동이 대표 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "세계자연유산 거문오름의 지질·자연유산 맥락은 확인되나 역사·문화 해설 자체가 용암길 방문의 핵심인지는 충분히 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-HERITAGE-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "놀이·동물·전시형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·음료·디저트 이용이 독립 방문 목적인 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문이나 상거래가 대표 경험이라는 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내와 최근 보도 모두 거문오름 국제트레킹 행사 기간에 용암길을 특별 개방한다고 설명한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-EVENT-DIRECT"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "용암이 흘러간 길을 걷는 약 6km 야외 탐방로로 안내되어 대표 경험의 실내 비율은 낮다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 장시간 야외 보행이며 공식 안내에 강수량·심한 안개 시 통제가 명시돼 날씨 영향이 크다고 판단한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-WEATHER-CONTROL-CONTEXT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼잡도·휴식 시설·소음 및 체류 환경을 충분히 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-REST-UNKNOWN"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "약 6km·3시간 30분의 야외 보행 코스이고 등산화·긴 옷 등 복장 안내가 있어 부담이 낮지 않은 것으로 잠정 판단한다. 실제 노면과 경사는 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LONG-TRAIL-BURDEN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "안내된 대표 코스가 약 6km·3시간 30분이고 행사·출입 시간에 묶여 있어 체류 시간을 자유롭게 조절하기는 제한적이라고 판단한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-EVENT-ROUTE-DURATION"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 거문오름의 용암이 흘러간 자연 경관을 따라 걷는 코스로 소개하고 포토스팟·도보여행 태그를 제공한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-GEOLOGIC-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "일반 출입이 제한되고 행사 기간에만 특별 개방되는, 거문오름 용암의 흐름을 따르는 코스라는 고유성이 직접 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SPECIAL-ACCESS-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 거문오름에서 분출된 용암의 경로와 제주 세계자연유산 행사에 직접 연결된 탐방 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-JEJU-GEOHERITAGE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내가 이 코스를 거문오름·세계자연유산 국제트레킹의 핵심 특별 개방 경험으로 안내한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-WORLD-HERITAGE-EVENT-DIRECT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 페이지가 거문오름 국제트레킹에 포토스팟 태그와 현장 이미지를 제공해 시각적 기록 가치가 직접 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-PHOTOSPOT-DIRECT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 탐방의 최신 안전·안내·통신 여건이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 편의·동반 체류 조건이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 수용·안전·동선 운영 정보를 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반에 필요한 노면·안전시설·연령 기준이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "과거 행사 안내는 6월 개방 사례를 보이지만 연도별 일정이 변동될 수 있어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "2026년 행사가 8월 13~17일에 용암길을 열었다는 최근 보도가 있으나 다음 연도 일정은 확정되지 않아 검토가 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "MONTH-RECENT-EVENT-EVIDENCE"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "공개된 연간 개방 일정이 없어 월별 적합도를 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-MONTH-SCHEDULE-UNKNOWN"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "event_limited_access_and_weather_controls",
+      "applies_to": "all_visitors",
+      "condition": "용암길은 일반인 출입이 제한되고 거문오름 국제트레킹 행사 기간에만 특별 개방된다. 최신 행사 일정·입장 절차는 변동되며, 과거 공식 안내에는 강수량 25mm 초과 또는 심한 안개 시 탐방 통제가 명시됐다.",
+      "status": "needs_review",
+      "action": "방문 전 제주관광공사·거문오름 국제트레킹의 당해 공식 공지로 개방 날짜, 입장 마감, 출입증·안전 안내, 기상 통제와 허용 장비를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

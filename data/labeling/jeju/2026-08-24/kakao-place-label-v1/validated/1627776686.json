@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1627776686",
+  "place_id": "1627776686",
+  "name": "저지오름 분화구",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "Kakao 지도 표식의 명칭은 ‘저지오름 분화구’이며, 제주관광공사 Visit Jeju는 저지오름 자체를 깊이 62m의 깔때기형 분화구를 가진 하나의 오름으로 소개하고 그 내부에 분화구 관찰로가 이어진다고 안내한다. 따라서 이 표식은 독립 운영 방문지가 아니라 저지오름 탐방 경험의 지형 세부 지점으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "저지오름 분화구는 제주시 한경면 저지리의 저지오름 안에 있는 깔때기형 분화구를 가리키는 Kakao 지도 세부 표식이다.",
+    "typical_visit": "저지오름의 둘레길과 정상둘레길을 걷는 상위 오름 탐방 동선에서 분화구를 관찰하는 경험으로 파악된다.",
+    "experience_scope": "상위 장소 저지오름의 지형·탐방 동선 일부이므로 이 결과에서는 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 지도 공개 장소 메타데이터는 place_id 1627776686의 장소명을 ‘저지오름 분화구’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 저지오름을 해발 239m, 깊이 62m의 깔때기 형태 분화구를 가진 화산체로 설명하고, 분화구 관찰로에 닿는 정상둘레길을 저지오름 탐방로의 일부로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 세부 표식의 정확한 좌표와 저지오름 분화구 관찰로의 대응 관계는 별도 공공 좌표 자료로 확인하지 못했다.",
+      "분화구 관찰로의 현재 개방 여부, 노면·계단 상태, 주차·화장실·무장애 시설 및 악천후 통제는 최신 운영 안내로 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1627776686",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘저지오름 분화구’로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000014166&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "저지오름은 해발 239m, 비고 100m, 깊이 62m의 깔때기 형태 분화구를 가진 화산체로 안내된다.",
+          "저지오름에는 분화구 관찰로에 닿는 정상둘레길을 포함한 여러 탐방로가 안내된다.",
+          "해당 콘텐츠는 작성 이후 정보가 바뀔 수 있어 방문 전 확인을 권고한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "저지오름 내부의 분화구 관찰 지형·탐방 동선 세부 지점으로 확인됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 저지오름과 함께 검토",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    },
+    {
+      "kind": "access_and_safety_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "분화구 관찰로의 최신 개방 여부와 노면·계단·기상 안전 조건은 확인하지 못함",
+      "status": "needs_review",
+      "action": "방문 전 제주관광공사 또는 현장 최신 안내로 탐방로 개방과 기상·보행 안전을 확인",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

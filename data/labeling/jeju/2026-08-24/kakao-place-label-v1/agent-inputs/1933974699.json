@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1705,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1933974699.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1933974699",
+    "provider": "kakao",
+    "place_id": "1933974699",
+    "name": "사라오름 전망대",
+    "url": "https://place.map.kakao.com/1933974699",
+    "average_rating_5": "4.8",
+    "visitor_review_count": "9",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.23.",
+      "content": "뷰가 좋아요. 추천합니다.",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2024.12.05.",
+      "content": "👍",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2024.02.13.",
+      "content": "백록담을 가든 못가든 꼭 한번은 들러야될 곳",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.07.03.",
+      "content": "호수 들르면서 전망대까지 와서 쉬었다가 갔어요",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2025.01.03.",
+      "content": "신기하게 여기만 바람이 많이 분다 구름때문에 한라산 정상을 못본게 아쉽다",
+      "tags": "뷰|주차|+1"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25222743",
+  "place_id": "25222743",
+  "name": "들레오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "입력 장소는 제주시 월평동의 들레오름이라는 지형으로 확인된다. 그러나 최신 공개 후기 증거는 진입에 사유지를 지나야 한다고 일관되게 말하고, 신뢰 가능한 최신 관광 안내에서는 일반 탐방객을 위한 공식 진입로·개방·안전 운영을 확인하지 못했다. 오래된 공공 체험학습 목록의 자연체험·오름답사 등재만으로 현재의 공개 방문 가능성을 확정할 수 없으므로, 현 시점에는 독립 추천 방문지 벡터 대상에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "private_land_access_and_current_public_opening_unverified",
+      "applies_to": "all_visitors",
+      "condition": "입력된 공개 방문 후기들은 들레오름 진입에 사유지를 지나야 한다고 말하며, 최신 공식 탐방로·개방 시간·토지 출입 허가·안전 관리 정보를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보와 안내 경로에서 제외한다. 재검수 시 토지 소유·관리 주체 또는 제주시의 최신 공식 안내로 합법적 공개 진입로, 탐방 허용 여부, 공사·통제 상태와 우천·야간 안전 조건을 확인한 뒤에만 eligible 라벨을 생성한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "identity_summary": "들레오름은 제주시 월평동 665-2 일대의 말굽형 오름으로 기록된 지형이며, 최근 지역 언론도 월평동의 표고 347.9m·자체 높이 40m인 들레오름으로 소개한다.",
+    "typical_visit": "과거 공공 체험학습 장소 현황에는 자연체험·오름답사 대상으로 열거됐지만, 최신 공개 근거로는 일반 여행자의 합법적·안전한 독립 탐방 운영을 확인하지 못했다.",
+    "experience_scope": "장소 신원은 확인됐으나, 여행 추천 대상에는 현재 공개 접근과 안전한 방문 동선이 전제된다. 입력 후기에서 사유지 통과 문제가 반복되고 공식 최신 개방 안내가 없으므로, 접근 조건 확인 전에는 적합도·동반자·월별 축을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한라일보는 들레오름을 제주시 월평동의 오름으로 소개하며 표고 347.9m, 자체 높이 40m라고 기록했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 관련 공개 연구자료의 오름 목록은 들레오름을 제주시 월평동 665-2번지의 말굽형 오름으로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력된 Kakao 공개 방문 후기 증거에는 사유지를 지나야 한다는 내용이 반복되며, 한 후기에는 사유지·목장 통과를 피하라는 현장 경험이 담겨 있다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 합법적으로 이용 가능한 일반 탐방객 진입로와 토지 소유자·관리 주체의 출입 허용 여부",
+      "공식 탐방로, 개방 시간, 주차·화장실, 경사·노면·무장애 접근성과 현장 안전시설",
+      "공사·사유지·기상에 따른 최신 통제 및 구조·비상 대응 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "reputable_local_news",
+        "url": "https://m.ihalla.com/article.php?aid=1767636000780706370",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "들레오름은 제주시 월평동에 있다.",
+          "표고 347.9m, 자체 높이 40m로 소개한다.",
+          "남쪽 등성이 월평동 다라쿳 일대에 제주첨단과학기술단지 2단지 부지 조성 공사가 진행 중이라고 보도했다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가학술정보·제주특별자치도 관련 공개 연구자료",
+        "type": "public_research_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "오름 목록은 들레오름을 제주시 월평동 665-2번지로 기록한다.",
+          "표고 347.9m, 비고 40m, 말굽형(남서향)으로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기 증거",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/25222743",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력된 공개 후기 증거는 사유지를 지나가야 한다고 말한다.",
+          "입력된 다른 공개 후기 증거는 사유지·목장 통과 문제를 언급한다.",
+          "평점, 후기 수 및 작성자 정체는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "500774513",
+  "canonical_id": "kakao:500774513",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력 후기는 해안 풍광·일몰·바다 조망과 강풍·더위를 언급하지만, 공식·공공 출처 없이 정확한 접근 구간과 해안 안전 조건을 확인할 수 없다.",
+    "source_ids": [
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "coastal_access_and_weather_safety_verification_required",
+      "detail": "강풍·폭염이 언급된 해안 지점이므로 공식 출처로 접근 허용과 안전 정보를 확인해야 한다.",
+      "source_ids": [
+        "r4",
+        "r5"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "r1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/500774513",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "황우지 폐쇄 후 도보 접근, 바람·일몰 언급"
+        ]
+      },
+      {
+        "source_id": "r2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/500774513",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "겨울 풍광 언급"
+        ]
+      },
+      {
+        "source_id": "r3",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/500774513",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "일반 방문 의견"
+        ]
+      },
+      {
+        "source_id": "r4",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/500774513",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "강풍 언급"
+        ]
+      },
+      {
+        "source_id": "r5",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/500774513",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "여름 더위·바다 조망·사진 언급"
+        ]
+      }
+    ],
+    "limitations": [
+      "해안 접근·안전 정보는 공식 또는 공공 출처로 확인해야 한다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723591",
+  "canonical_id": "kakao:13723591",
+  "name": "한반도여",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 여행 기사와 입력 리뷰는 우도 해안의 조간대에 나타나는 한반도 형상 암반 ‘한반도여’를 같은 장소로 설명한다. 별도 상호 시설은 아니지만 해안에서 관찰하는 독립 자연 경관 지점으로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-NATURAL-ATTRACTION"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 조간대 암반을 관찰하는 곳으로 확인되며 산·오름·숲 경관이 핵심이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "한반도여는 우도 해안의 바다 속 암반이며 조수 간만에 수면 위로 나타나는 자연물로 소개된다.", "source_ids": ["S1"], "rule_ids": ["THEME-COASTAL-FEATURE-DIRECT"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 대표 경험은 해안에서 암반을 보는 것이며 수상·레포츠 또는 참여형 체험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화산 활동으로 형성된 자연 암반이라는 설명은 있으나 문화유산·전시·역사 해설이 핵심 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-NATURAL-FEATURE-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 설명은 해안 자연 암반을 다루며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 암반 관찰 지점으로 소개되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조수에 따라 보이는 상설 자연물이며 특정 기간 축제·공연이 장소의 핵심이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "바다 속 또는 해면 가까이의 암반을 해안에서 보는 야외 자연 경관으로 설명되며 실내 공간은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-COAST-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "암반이 조수 간만에 따라 물 위에 나타나거나 잠긴다고 소개되어 관찰 가능성은 해상·조석 조건의 영향을 직접 받는다.", "source_ids": ["S1"], "rule_ids": ["ENV-TIDAL-EXPOSURE-DIRECT"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안 경관 관찰이라는 점 외에 조용한 체류·휴식 환경이나 혼잡도는 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "정확한 관찰 지점의 보행 거리, 계단, 난간 및 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "조석에 따라 보이는 사실은 확인되지만 단독 관람 시간과 주변 동선 선택 폭은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "한반도와 닮은 형상의 바다 암반을 보는 것이 공개 기사와 입력 리뷰에서 일관되게 설명되는 방문 가치다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-NATURAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "한반도 모양으로 인식되는 조간대 현무암질 암반이라는 형상 자체가 장소를 구별하는 직접 확인된 특징이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-DISTINCTIVE-FORM-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "우도 해안의 조수·화산지질과 결합한 자연물로 공개 소개되어 제주 지역 자연환경과 직접 연결된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-GEOLOGY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "우도의 기암괴석 이야기에서 한반도바위로 소개되나 제주 전체를 대표하는 공적 랜드마크 지정 또는 상징성은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "한반도 모양의 암반과 성산일출봉 조망이라는 시각적 특징이 입력 공개 리뷰에 있으나 공식 촬영 안내는 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["STYLE-VISUAL-FORM-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 방문의 안전·동선·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험과 해안 관찰 편의 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 이용 동선·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 해안 접근 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 보행 부담·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 관찰 가능 조석표·개방·계절 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-TIDAL-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "tidal_and_coastal_access_conditions_unknown", "applies_to": "all_visitors", "condition": "한반도여는 조수 간만에 따라 드러나거나 잠기는 해안 암반이나, 안전한 관찰 지점, 진입 가능 여부, 당일 조석·파랑·기상 통제 정보는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 현지 최신 조석·기상과 해안 안전 안내를 확인하고, 임의로 암반 또는 위험 해안으로 접근하지 않는다.", "source_ids": ["S1"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘한반도여’는 우도 해안에서 조수에 따라 드러나는 한반도 모양 암반을 뜻하는 공개 명칭으로 확인됐다.",
+    "facts": [
+      {"text": "제주투데이는 우도 지석묘 부근에 한반도여가 나타나며, ‘여’는 조수 간만에 따라 물 위에 나타났다 잠기는 해면 가까이의 바위라고 설명한다.", "source_id": "S1"},
+      {"text": "같은 기사는 한반도바위를 약 200만 년 전 화산 활동으로 형성된 한반도와 비슷한 바다 속 현무암질 암반으로 소개한다.", "source_id": "S1"},
+      {"text": "입력 Kakao 공개 리뷰는 우도에서 성산일출봉을 다른 각도에서 보고 한반도 모양 바위를 볼 수 있다고 기술한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["정확한 안전 관찰 지점과 현행 접근 동선", "당일 조석·파랑·기상에 따른 관찰 가능 여부와 통제", "계단·난간·무장애 접근성 및 편의시설", "월별 최적 관찰 시각·계절성"],
+    "sources": [
+      {"id": "S1", "publisher": "제주투데이", "type": "local_news", "url": "https://www.ijejutoday.com/news/articleView.html?idxno=178376", "checked_at": "2026-08-25", "facts": ["우도 한반도여를 조수 간만에 따라 드러나고 잠기는 해면 가까이의 바위로 설명한다.", "한반도와 비슷한 모양의 바다 속 현무암질 암반으로 소개한다."]},
+      {"id": "S2", "publisher": "Kakao Place 입력 공개 리뷰 요약", "type": "user_review_evidence", "url": "https://place.map.kakao.com/13723591", "checked_at": "2026-08-25", "facts": ["입력에 포함된 비식별 공개 리뷰는 한반도 모양 바위와 성산일출봉 방향 조망을 언급한다.", "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

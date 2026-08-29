@@ -1,0 +1,101 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1629897035",
+  "place_id": "1629897035",
+  "name": "배롱낙원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "한국영상위원회 공개 로케이션 DB에는 같은 이름의 배롱낙원이 서귀포시 남원읍의 개별 섭외형 로케이션으로 등록되어 있다. 입력 Kakao 후기 역시 배롱나무를 언급해 명칭상 연관성은 뒷받침한다. 다만 입력 패킷에는 주소·좌표·업종이 없고, 해당 Kakao 표식이 이 로케이션과 동일한지 및 일반 방문객에게 독립 관광지로 개방되는지는 공식·공공 출처로 확인하지 못했다. 따라서 추천용 독립 방문지 정체성을 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "배롱낙원은 한국영상위원회 공개 로케이션 DB에서 서귀포시 남원읍 생기악로 53-40의 기타 로케이션으로 등록되어 있으나, 입력 Kakao place_id와의 정확한 동일성 및 일반 관광객 이용 가능 여부는 확인되지 않았다.",
+    "typical_visit": "확인된 자료는 영상 촬영을 위한 개별 섭외 방식을 안내할 뿐, 일반 방문객의 관람·체험 동선이나 운영 방식을 제시하지 않는다.",
+    "experience_scope": "나무가 있는 장소일 가능성을 시사하는 후기와 촬영 로케이션 등록만으로는 독립 관광·체험 장소의 실제 이용 경험, 개방 여부 또는 접근 조건을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국영상위원회 필름코리아 로케이션 DB는 배롱낙원을 제주특별자치도 서귀포시 남원읍 생기악로 53-40의 기타 로케이션으로 등록하고, 촬영 섭외방법을 개별진행으로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1629897035의 장소명을 배롱낙원으로 제공하며, 익명화된 공개 후기 한 건에는 아기 배롱나무가 있었다는 방문 묘사가 있다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 표식의 주소·좌표·업종이 제공되지 않아 필름코리아에 등록된 배롱낙원과 같은 장소인지 확정하지 못했다.",
+      "일반 방문객의 출입 허용, 관람·체험 운영, 예약 또는 이용 조건을 확인하지 못했다.",
+      "최신 개방 상태, 접근로·주차·화장실 이용 조건, 무장애 접근 및 기상별 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "사단법인 한국영상위원회 필름코리아",
+        "type": "public_location_database",
+        "url": "https://filmkorea.or.kr/location/location_view.jsp?id=286387&page=23&s_category01_code=02&s_category02_code=01",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "배롱낙원을 제주특별자치도 서귀포시 남원읍 생기악로 53-40의 기타 로케이션으로 표시한다.",
+          "촬영 섭외방법은 개별진행으로 표시한다.",
+          "주차 가능 대수와 인근 공용화장실 이용 안내가 있으나, 일반 관광객 대상 편의시설·개방 안내인지는 확인되지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 익명화된 공개 후기 요약",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1629897035",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 1629897035와 장소명 배롱낙원을 제공한다.",
+          "입력에 포함된 익명화된 후기 한 건은 아기 배롱나무를 언급한다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 일반 방문객 이용 조건이 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_public_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 Kakao 표식과 공개 로케이션 DB의 동일성, 그리고 일반 방문객의 독립 방문·출입 가능 여부가 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 지도상 정확한 주소·좌표를 대조하고, 소유자·관리 주체 또는 최신 공식 안내로 일반 방문 허용과 안전한 접근 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

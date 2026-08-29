@@ -1,0 +1,646 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:18039333",
+  "place_id": "18039333",
+  "name": "사라봉공원 김만덕묘탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "review_status": "needs_review",
+    "inference_level": "direct_evidence",
+    "rationale_ko": "제주관광공사 Visit Jeju가 사라봉 모충사 묘탑을 김만덕을 기리는 만덕제의 개최 장소로 직접 안내한다. 김만덕의 유해가 봉안된 묘탑이라는 공개 기록도 일치해, 공원 안의 단순 편의시설이 아닌 독립적으로 식별되는 역사 추모 지점으로 판정한다.",
+    "rule_id": "eligibility.independent_historic_memorial.v1",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "사라봉 안에 있다는 사실 외에 산·오름 탐방이 이 묘탑의 핵심 경험이라는 근거는 없다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "묘탑의 역사 추모 경험과 해안·해양 활동의 직접 연결 근거는 확인되지 않았다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "fallback",
+      "rationale": "레포츠 또는 참여형 체험이 묘탑 방문의 핵심이라는 근거는 없다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 1,
+      "confidence": 0.9,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed",
+      "rationale": "공식 관광 안내는 이 장소에서 김만덕의 기일에 가까운 날 만덕제 봉행과 김만덕상 시상식이 열린다고 밝히며, 묘탑은 김만덕을 기리는 역사 추모 지점으로 확인된다.",
+      "rule_ids": [
+        "theme.culture_history.historic_memorial_direct.v1"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거가 없다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "전통시장 또는 시장 상거래가 핵심 방문 경험이라는 근거가 없다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "needs_review",
+      "rationale": "만덕제가 이곳에서 연례로 열리는 것은 확인되지만, 묘탑 자체는 상설 역사 추모 시설이므로 축제가 장소의 주된 경험인 정도는 낮게 판정한다.",
+      "rule_ids": [
+        "theme.festival.ancillary_annual_event.v1"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "needs_review",
+      "rationale": "사라봉 모충사 묘탑에서 열리는 야외 추모 행사가 확인되나, 묘탑 일대의 실내 공간 구성은 확인하지 못했다.",
+      "rule_ids": [
+        "environment.outdoor_memorial_inference.v1"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "needs_review",
+      "rationale": "대표 방문이 야외 묘탑 앞 추모·관람 공간에서 이뤄지는 것으로 확인되어 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다.",
+      "rule_ids": [
+        "environment.outdoor_weather_inference.v1"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "평온한 휴식 환경, 혼잡도, 쉼터의 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "진입 동선의 거리·경사·계단 및 무장애 접근성 정보가 확인되지 않아 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "fallback",
+      "rationale": "묘탑 단독 관람시간과 주변 공원·모충사 연계 동선의 선택 폭을 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "묘탑 자체 또는 이 지점의 경관 감상이 핵심 방문 가치라는 직접 근거는 확인되지 않았다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed",
+      "rationale": "김만덕을 기리는 모충사 묘탑으로 특정되고, 김만덕의 유해가 봉안된 역사적 추모물이라는 점이 고유하게 확인된다.",
+      "rule_ids": [
+        "style.distinctiveness.named_memorial_direct.v1"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed",
+      "rationale": "김만덕은 제주를 대표하는 나눔 실천 인물로 소개되며, 사라봉 모충사 묘탑에서 제주특별자치도와 김만덕재단이 만덕제를 개최한다.",
+      "rule_ids": [
+        "style.local_embeddedness.jeju_figure_direct.v1"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "confirmed",
+      "rationale": "제주 공식 관광 안내가 사라봉 모충사 묘탑을 김만덕 기일의 공식 추모·시상 행사가 열리는 장소로 안내해 지역 역사 상징 지점임을 뒷받침한다.",
+      "rule_ids": [
+        "style.landmark_significance.official_commemoration_direct.v1"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "사진 촬영 또는 시각 기록 가치가 직접 강조된 근거를 확인하지 못했다.",
+      "rule_ids": [
+        "fallback.insufficient_evidence.v1"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "status": "fallback",
+      "rationale": "혼자 방문의 안전·안내·동선 정보를 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.companion_unknown.v1"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "status": "fallback",
+      "rationale": "커플 동행의 체류·편의 정보를 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.companion_unknown.v1"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "status": "fallback",
+      "rationale": "친구 그룹의 동선·수용 여건 정보를 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.companion_unknown.v1"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "status": "fallback",
+      "rationale": "아동 동반에 필요한 안전시설과 접근 정보를 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.companion_unknown.v1"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "archetype_prior",
+      "source_ids": [],
+      "status": "fallback",
+      "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보를 확인하지 못해 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.companion_unknown.v1"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "10": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "inference_level": "direct_evidence",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "confirmed",
+      "rationale": "공식 관광 안내는 김만덕 기일인 10월 22일에 가까운 일요일에 이곳에서 만덕제가 열린다고 안내한다.",
+      "rule_ids": [
+        "month.10.annual_mandeokje_direct.v1"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "fallback",
+      "rationale": "월별 개방·행사·계절 절정 정보가 부족해 야외 추모지의 중립값으로 둔다.",
+      "rule_ids": [
+        "fallback.month_unknown.v1"
+      ]
+    }
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "restfulness·physical_ease·visit_duration_flexibility의 계약식 결과다.",
+      "rule_id": "derived.quantize.healing_slow.v1",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "scenic_value를 계약에 따라 복사했다.",
+      "rule_id": "derived.copy.scenic_value.v1",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "계약상 상수값이다.",
+      "rule_id": "derived.constant.0_5.v1",
+      "source_ids": []
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "local_embeddedness를 계약에 따라 복사했다.",
+      "rule_id": "derived.copy.local_embeddedness.v1",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "review_status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale_ko": "landmark_significance를 계약에 따라 복사했다.",
+      "rule_id": "derived.copy.landmark_significance.v1",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "review_status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale_ko": "photo_value를 계약에 따라 복사했다.",
+      "rule_id": "derived.copy.photo_value.v1",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_memorial_access_and_weather_unknown",
+      "applies_to": "all_visitors",
+      "condition": "사라봉 모충사 안의 야외 묘탑이지만 최신 개방시간, 현장 동선·계단·경사, 무장애 접근성 및 악천후 시 안전·통제 안내는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 또는 관리 주체의 최신 안내로 출입 가능 여부, 보행 동선과 기상 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주시 사라봉 모충사에 있는 김만덕 묘탑으로 공개 관광·언론 자료에서 교차 확인된다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 사라봉 모충사 묘탑에서 김만덕 기일에 가까운 일요일 만덕제 봉행 및 김만덕상 시상식이 열린다고 안내한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주일보는 모충사에 조성된 김만덕 의인 묘탑 아래에 김만덕 유해가 봉안됐다고 보도한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "묘탑의 최신 개방·출입 시간",
+      "주차·화장실·휴식 시설",
+      "경사·계단·휠체어 접근성과 악천후 통제"
+    ],
+    "sources": [
+      {
+        "source_id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000015412",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "만덕제 봉행 및 김만덕상 시상식이 건입동 사라봉 모충사에서 개최된다고 안내한다.",
+          "행사 장소를 제주특별자치도 제주시 사라봉길 75로 안내한다."
+        ]
+      },
+      {
+        "source_id": "S2",
+        "publisher": "제주일보",
+        "type": "reputable_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=1764790",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "모충사에 20m 높이의 의녀반수 김만덕 의인 묘탑이 조성됐다고 보도한다.",
+          "김만덕 유해가 묘탑 아래에 봉안됐다고 보도한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

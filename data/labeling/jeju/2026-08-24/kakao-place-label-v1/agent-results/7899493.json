@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7899493",
+  "place_id": "7899493",
+  "name": "보호수",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 일반명사인 ‘보호수’라는 장소명과 place_id만 제공하며 주소·좌표·업종·사진·후기·관리기관 안내가 없다. 공개 검색으로도 이 place_id 또는 명칭을 특정 제주 보호수와 교차 확인할 신뢰할 수 있는 상세 출처를 찾지 못했다. 따라서 실제 수목의 위치·수종·보호수 지정 및 독립 방문지 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 정보는 Kakao 장소명 ‘보호수’와 place_id 7899493뿐이며, 어느 제주 보호수를 가리키는지 공개 신뢰 출처로 확인하지 못했다.",
+    "typical_visit": "보호수는 지정·보호 대상 수목을 뜻할 수 있으나, 이 Kakao 레코드가 가리키는 실제 수목과 독립 관광 방문 경험은 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 공개 후기 및 공식 관리·방문 안내가 없다. 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 명칭은 ‘보호수’이고 canonical_id는 kakao:7899493이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 주소·좌표·업종·사진·공개 후기와 공식 운영·관리 안내가 제공되지 않아 동일한 실제 수목을 교차 확인할 수 없다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표와 실제 보호수의 위치·접근 경로를 확인하지 못했다.",
+      "수종·수령·보호수 지정번호·관리기관, 지정 사유와 현재 생육·안전 상태를 확인하지 못했다.",
+      "독립 관광 방문지로서의 관람 범위, 출입 가능 여부, 주차·보행 안전·무장애 접근성과 계절별 접근 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7899493",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘보호수’이며 place_id는 7899493이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진, 공개 후기 및 공식 운영·관리 안내가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 실제 위치·좌표·수종·관리기관·공식 안내가 없고, 공개 신뢰 출처로 동일한 제주 보호수의 위치와 독립 방문지 범위를 교차 확인하지 못함",
+      "status": "needs_review",
+      "action": "지자체 또는 산림 관련 보호수 관리대장과 Kakao의 주소·좌표 정보를 확보해 실제 수목과의 동일성, 일반 방문 가능 범위를 먼저 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

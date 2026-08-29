@@ -1,0 +1,667 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1389831138",
+  "canonical_id": "kakao:1389831138",
+  "name": "성안올레 1코스",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 제주 관광 안내가 산지천을 출발해 동자복·건입동 벽화길·산지등대·사라봉·모충사·동문시장 등을 잇는 약 6km, 약 2시간의 제주시 원도심 도보 코스로 성안올레 1코스를 명시한다. 독립적으로 따라갈 수 있는 방문 코스이므로 적격으로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 코스에는 사라봉이 포함되지만, 산행이나 정상 등반 자체가 주된 목적이라고까지는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-ROUTE-HILL-CONTEXT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "산지등대와 제주항 인근 구간이 포함되지만, 공식 소개의 핵심은 원도심 역사·문화 도보 탐방이며 해양 활동은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-ROUTE-CONTEXT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내가 1코스를 약 6km, 약 2시간의 도보 코스로 제시하므로 걷기가 핵심 방문 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 원도심의 역사·문화·예술과 제주 사람들의 삶의 터전을 감상하는 길로 소개되고, 모충사·운주당지구역사공원 등 역사 지점이 경로에 포함된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-HISTORY-CULTURE-DIRECT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 경로와 소개는 도심 도보·역사·자연 탐방을 설명하며 놀이공원형 시설 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "경로 주변 개별 카페 정보는 있을 수 있으나 카페·음료 이용이 1코스의 독립적 핵심 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주동문시장이 코스 경유지로 명시되지만, 시장 쇼핑이 전체 코스의 유일한 핵심 경험은 아니므로 중간값으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-MARKET-ROUTE-STOP"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "걷기 축제가 이 코스를 활용한 사례는 있으나, 성안올레 1코스 자체는 상설 도보 경로로 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PERMANENT-ROUTE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "산지천·골목길·등대·사라봉 등 공개된 대표 경로가 야외 도보 지점으로 구성된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-ROUTE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 약 2시간의 야외 도보이므로 비·바람·더위·추위가 이용에 큰 영향을 줄 수 있다. 기상별 통제 기준은 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 여행 기사가 원도심을 ‘놀멍 쉬멍 여유롭게’ 즐기는 길로 소개하고, 1코스는 약 2시간 도보 코스다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SLOW-WALK-DIRECT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "약 6km 도보와 사라봉 구간이 확인되지만, 전 구간 경사·계단·보도 상태 및 무장애 접근성은 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-ROUTE-BURDEN-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전체 기준 소요는 약 2시간으로 제시되지만, 공식 출처에서 중간 이탈·단축 동선의 이용 편의는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-DURATION-PARTIAL-EVIDENCE"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개가 원도심의 자연 가치와 아름다움을 느끼는 길로 설명하며, 산지등대와 사라봉을 포함한 경관 지점을 경로로 제시한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "옛 제주성 안쪽의 원도심을 따라 역사·문화·자연을 함께 걷는 별도의 성안올레 1코스로 공식 안내된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-ROUTE-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주의 옛 원도심, 지역 주민의 삶의 터전, 동문시장과 역사 지점을 연결하는 코스로 소개된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-CONTEXT-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주시 원도심을 알리는 공식 도보 코스이나 제주 전체 대표 명소로서의 공적 지정이나 비교 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-CITY-ROUTE-SIGNIFICANCE"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "벽화길·등대·사라봉 등 시각적 지점이 포함되나, 사진 촬영이 공식적으로 핵심 방문 경험으로 권장되는지는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-ROUTE-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내의 성안올레 이용 대상에 ‘혼자’가 명시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-OFFICIAL-TAG"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내의 성안올레 이용 대상에 ‘커플’이 명시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-OFFICIAL-TAG"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내의 성안올레 이용 대상에 ‘친구’가 명시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-OFFICIAL-TAG"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동용 안전시설, 구간 난이도 및 보호자 동반 기준을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 안내의 성안올레 이용 대상에 ‘부모’가 명시된다. 다만 실제 무장애 접근성은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-OFFICIAL-TAG"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상설 개방·계절 절정·통제 정보를 확인하지 못해 야외 도보 코스의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_urban_walking_route_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "성안올레 1코스는 약 6km의 야외 원도심 도보 경로이다. 현재 표지·공사·보도 상태, 사라봉 구간의 경사·계단, 우천·강풍 시 안전 및 무장애 접근성은 이번 조사에서 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "출발 전 제주시 또는 성안올레 운영 안내로 최신 경로·프로그램 운영 여부를 확인하고, 기상과 보행 여건에 맞는 신발·우천 대비를 갖춘다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주시 원도심을 순환하는 공식 성안올레의 1코스와 일치한다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 성안올레를 제주시 원도심의 역사·문화·예술과 삶의 터전을 둘러보는 약 2시간 도보 코스로 소개하며, 1코스를 약 6km로 제시한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "성안올레 1코스는 산지천, 동자복, 건입동 벽화길, 산지등대, 사라봉, 모충사, 두맹이 골목, 운주당지구역사공원, 제주동문시장 등을 잇는 경로로 공개 안내된다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한국관광공사 여행기사는 성안올레 1코스를 산지천에서 출발하는 원도심 도보 투어로 소개하고, 2024년 기준 해설사 동행 도보투어의 계절 운영 사례를 안내했다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "2026년 현재 전 구간 표지·공사·임시 우회와 자율 탐방 가능 여부",
+      "사라봉 및 전 구간의 경사·계단·보도 상태와 휠체어 접근성",
+      "기상 악화 시 통제 및 안전 안내",
+      "아동 동반 시 적합성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000012898&menuId=DOM_000001718008000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "성안올레의 원도심 도보 코스 성격과 약 2시간 소요를 설명한다.",
+          "1코스의 약 6km 거리와 주요 경유지를 제시한다.",
+          "이용 대상 태그에 부모·커플·친구·혼자·액티비티를 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=09df6589-d39a-4dbd-a712-92088dd11646",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "성안올레 1코스를 제주시 원도심의 역사·문화·자연을 둘러보는 도보 코스로 소개한다.",
+          "2024년 기준 1코스의 경로와 해설사 동행 프로그램 운영 사례를 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

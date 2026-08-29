@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10556114",
+  "canonical_id": "kakao:10556114",
+  "name": "소정방굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "입력 방문 경험은 소정방굴 접근로가 펜스로 막혀 있고 위험 때문에 폐쇄됐으며 멀리서 감상하라고 언급한다. 현재 공개적으로 안전하게 방문 가능한 장소라는 근거가 없어 범위 밖으로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-CLOSED-OR-UNSAFE-ACCESS",
+      "ELIG-PUBLIC-ACCESS-UNCONFIRMED"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "closed_and_hazardous_cave_access",
+      "applies_to": "all_visitors",
+      "condition": "입력은 접근로 펜스·위험으로 인한 폐쇄를 언급한다.",
+      "status": "needs_review",
+      "action": "관리 주체의 공식 재개방·안전 안내가 확인되기 전에는 방문지로 추천하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 소정방굴을 소정방폭포·허니문하우스 인근에서 멀리 볼 수 있는 폐쇄 접근 지점으로 설명한다.",
+    "facts": [
+      {
+        "text": "입력 방문 경험은 위험으로 인해 접근로가 폐쇄되고 멀리서 감상해야 한다고 언급한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "현재 공식 개방 상태",
+      "관리 주체와 안전 기준",
+      "재개방·통제 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map public reviews",
+        "type": "kakao_review_evidence",
+        "url": "https://place.map.kakao.com/10556114",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 방문 경험은 폐쇄·위험과 원거리 감상을 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

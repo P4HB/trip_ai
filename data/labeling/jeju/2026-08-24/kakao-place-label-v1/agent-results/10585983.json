@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10585983",
+  "canonical_id": "kakao:10585983",
+  "name": "안덕계곡 상록수림",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 국가유산포털의 천연기념물 ‘제주 안덕계곡 상록수림’ 및 제주관광공사 VisitJeju의 ‘안덕계곡 상록수림지대’와 일치한다. 공개 관광 안내가 독립적인 자연 탐방지로 주소와 이용 정보를 제공하므로 여행 방문지로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "U자형 계곡과 절벽·난대 상록수림이 핵심 경관으로 확인되나 산·오름 정상 탐방은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-NATURAL-LANDSCAPE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내의 핵심은 내륙 계곡·하천변 상록수림이며 해안·해양 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "잘 가꾸어진 산책길을 따라 계곡과 상록수림을 둘러보는 보행 경험은 확인되지만 거리·난이도는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "천연기념물 지정과 선사시대 주거지 추정 바위 그늘집터, 유배 인물의 기록이 소개되나 문화 해설이 대표 체험인지 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-HERITAGE-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 자료는 보호 상록수림과 계곡 산책을 설명하며 놀이·동물·전시형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 핵심 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 천연기념물 상록수림과 계곡 경관을 설명하며 시장 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 자연유산 탐방지로 소개되며 특정 축제나 기간성 행사가 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "계곡·하천변 난대 상록수림과 산책길을 걷는 야외 탐방지로 직접 소개되며 실내 대표 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 계곡 산책과 숲 관찰이므로 기상 영향을 받을 수 있다. 최신 통제·안전 기준은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "VisitJeju는 맑은 물·울창한 숲·새소리의 풍경과 산책 중 상념이 사라지는 경험을 소개한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURE-REST-DIRECT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "산책길 존재는 확인되나 경사·계단·노면·무장애 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "독립 탐방지는 확인되지만 체류시간·단축 동선·관람 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "기암 절벽, 암반 사이의 맑은 물, 울창한 상록수림이 안덕계곡의 핵심 경관으로 직접 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-NATURAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "약 300종 식물이 분포한 난대 상록수림이 천연기념물 제377호로 지정·보호되고 있는 고유성이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-HERITAGE-NATURE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 안덕면 감산리의 난대 상록수림을 보전하는 국가유산이며 제주 관광 공식 안내에 지역 자연유산으로 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-NATURAL-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가유산포털에 천연기념물 제377호 ‘제주 안덕계곡 상록수림’으로 등재되고 제주 공식 관광 콘텐츠에서 독립 명소로 안내된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-DESIGNATED-HERITAGE-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "절벽·계곡물·상록수림의 시각적 경관은 확인되지만 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SCENIC-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 편의·체험 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 이용 편의와 수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 경로 난이도 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정·통제 정보가 확인되지 않아 야외 자연 탐방지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_natural_heritage_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "야외 계곡·보호 상록수림 탐방지이나, 현재 탐방로 개방, 기상·수위에 따른 통제, 실제 경사·계단 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 관리 주체 또는 현장 최신 안내로 개방 여부, 지정 탐방로, 기상·수위에 따른 안전 및 보행 접근성을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-28"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명 ‘안덕계곡 상록수림’은 국가유산 천연기념물 제377호 ‘제주 안덕계곡 상록수림’과 제주관광공사 관광 안내의 ‘안덕계곡 상록수림지대’를 가리키는 것으로 확인됐다.",
+    "facts": [{"text": "VisitJeju는 안덕계곡의 기암 절벽·계곡물·산책길과 약 300종 식물로 구성된 천연기념물 상록수림을 소개한다.", "source_id": "S1"}, {"text": "국가유산포털은 제주 안덕계곡 상록수림을 천연기념물 제377호로 등재한다.", "source_id": "S2"}],
+    "unknowns": ["정확한 현재 탐방 가능 구간과 개방 시간", "기상·수위·재난에 따른 실시간 통제 기준", "경사·계단·노면, 화장실 및 무장애 접근성", "동반자별 안전·편의 및 계절별 최적 방문 근거"],
+    "sources": [{"id": "S1", "publisher": "제주관광공사 VisitJeju", "type": "official_tourism_information", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500410", "checked_at": "2026-08-28", "facts": ["안덕계곡은 기암 절벽과 맑은 계곡물, 난대 상록수림이 어우러진 관광지로 소개된다.", "천연기념물 제377호 상록수림에 약 300종의 식물이 분포한다고 안내한다.", "주소와 연중무휴 이용 정보를 제공한다."]}, {"id": "S2", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_registry", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=16%2C03770000%2C50&pageNo=1_1_1_1", "checked_at": "2026-08-28", "facts": ["‘제주 안덕계곡 상록수림’은 국가유산포털에 천연기념물 제377호로 등재돼 있다."]}]
+  },
+  "generated_at": "2026-08-28"
+}

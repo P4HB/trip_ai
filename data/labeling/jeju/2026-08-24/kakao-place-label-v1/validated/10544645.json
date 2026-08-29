@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10544645",
+  "canonical_id": "kakao:10544645",
+  "name": "수월이못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "수월이못(수월이물)은 대정읍 안성리 북쪽의 내륙 습지·연못으로 공개 소개되며 면적 자료도 존재한다. 다만 입력 Kakao 표식의 정확한 습지 경계·관찰 지점과 일반 방문 가능 범위가 확인되지 않아 추천용 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-AMBIGUOUS",
+      "ELIG-NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "wetland_access_and_conservation_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "습지의 현재 접근 허용 범위, 사유지·농경지 경계, 수위와 생태 보전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 안내와 지자체·토지관리 주체의 최신 출입·보전 안내를 확인하고 습지와 농경지에 임의 진입하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 대정읍 안성리의 수월이못·수월이물로 조사되지만, Kakao 표식의 세부 범위는 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 수월이못을 대정읍 안성리 마을 북쪽의 넓은 못이며 수월이물로도 부른다고 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주특별자치도의 습지 자료는 수월이못을 대정읍 소재 내륙 호수습지로 분류하고 면적 4,497㎡를 제시한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 습지·관찰 지점 범위",
+      "현재 접근 가능 구역과 사유지·농경지 경계",
+      "생태 관찰 시설·주차·화장실·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "public_travel_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500389",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "수월이못의 안성리 위치와 수월이물이라는 별칭·전승을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2025/CLIKC2394003951198443_attach_2.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "수월이못을 대정읍 내륙 호수습지로 분류하고 면적을 기록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

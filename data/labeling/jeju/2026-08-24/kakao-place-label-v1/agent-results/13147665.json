@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13147665",
+  "canonical_id": "kakao:13147665",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "source_ids": ["visit_jeju_2026-08-25", "nie_ecosystem_2019"],
+    "rule_ids": ["identity.public_natural_attraction", "eligibility.non_food_destination"],
+    "rationale": "공식 관광 페이지와 국립생태원 자료가 제주시 외도동의 월대천을 자연 경관·생태 하천·여가 장소로 식별한다. 음식점이나 개별 부대시설이 아닌 독립 방문 대상이다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.no_mountain_feature"],"rationale":"공식 소개의 핵심은 하천·수변 경관이며 산·오름 경험은 제시되지 않는다."},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["theme.coastal_estuary"],"rationale":"밀물 때 해수가 역류해 담수와 만나는 기수 하천으로 소개되지만, 바다·해변 자체가 대표 경험은 아니다."},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.outdoor_participation"],"rationale":"공식 소개가 과거 축제의 테우 체험, 맨손 장어잡기, 플로깅 등 자연 활용 체험을 확인한다."},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["theme.local_landscape_history"],"rationale":"풍류를 즐기던 명승지로 알려졌고 제주시 숨은 비경 31선으로 소개되나, 문화유산 시설 중심 장소는 아니다."},
+    "theme.theme_park": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.no_theme_park"],"rationale":"공식 소개는 자연 하천과 지역 축제를 설명하며 테마파크 시설은 제시하지 않는다."},
+    "theme.cafe": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.no_cafe"],"rationale":"공식 소개에 카페·차·디저트 이용이 핵심 경험으로 제시되지 않는다."},
+    "theme.traditional_market": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.no_market"],"rationale":"공식 소개에 시장 기능이나 상설 판매 공간은 제시되지 않는다."},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["theme.recurring_local_festival"],"rationale":"월대천 일원에서 개최되는 지역 축제와 과거 체험 프로그램이 공식 소개에 확인되나, 하천 자체는 연중 자연 방문지이기도 하다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["environment.outdoor_natural_site"],"rationale":"하천·수변 나무·생태 환경을 중심으로 한 야외 장소로 소개된다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","kakao_reviews_input"],"rule_ids":["environment.outdoor_water_activity"],"rationale":"대표 경험이 야외 하천과 수변 체험이며, 제공된 공개 리뷰도 태풍 뒤 수량과 여름 수온을 언급한다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["style.natural_scenic_rest"],"rationale":"수령이 오래된 나무와 하천 풍광, 경관가치·치유 가치가 공식·공공 자료에 확인된다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["fallback.access_conditions_unknown"],"rationale":"야외 하천 방문지라는 점은 확인되지만 보행 동선·경사·무장애 접근 정보가 충분하지 않아 중간값으로 보수적으로 기록한다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"researched_inference","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["style.walk_waterplay_flexible"],"rationale":"경관 감상, 수변 체류와 자연 활용 체험이 함께 제시되어 짧은 산책부터 여름철 체험까지 체류 시간을 조절할 여지가 있다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["style.official_scenic_value"],"rationale":"공식 관광 소개가 아름다운 자연경관과 수백 년 된 팽나무·소나무 풍광을 명시하고, 공공 생태자산 자료도 경관가치를 매우 높게 평가한다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["style.estuarine_ecosystem"],"rationale":"해수와 담수가 만나는 기수 환경 및 은어·숭어·뱀장어 서식, 오래된 수변 나무가 고유한 구성으로 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["style.jeju_local_ecosystem_and_community"],"rationale":"제주 외도동의 생태 하천이며 지역 축제와 지역 생태자산으로 공식·공공 자료에 기록된다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25","nie_ecosystem_2019"],"rule_ids":["style.local_hidden_scenery"],"rationale":"제주시 숨은 비경 31선으로 소개되어 지역적 인지도는 확인되나 제주 전역의 대표 상징 명소로 단정할 근거는 부족하다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["style.scenic_visual_interest"],"rationale":"공식 소개가 아름다운 자연경관과 오래된 수변 나무의 운치 있는 풍광을 직접 설명한다."}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"researched_inference","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["companion.scenic_walk_solo"],"rationale":"자연경관 감상과 수변 산책 성격이 확인되어 개인 방문에도 적합하다고 추론한다."},
+    "couple": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"researched_inference","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["companion.scenic_walk_couple"],"rationale":"수변 풍광과 느린 산책·체류 경험이 확인되어 동반 산책 방문에 적합하다고 추론한다."},
+    "friends": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["companion.group_outdoor_activity"],"rationale":"축제의 자연 활용 체험과 플로깅 등 함께 참여할 수 있는 활동이 공식 소개에 확인된다."},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["visit_jeju_2026-08-25","kakao_reviews_input"],"rule_ids":["fallback.water_safety_conditions_unknown"],"rationale":"여름 물놀이 이용 단서는 있으나 수심·수질·안전 관리의 현재 상태를 공식적으로 확인하지 못해 중간 적합도로 보수적으로 기록한다."},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["fallback.access_conditions_unknown"],"rationale":"경관 감상 방문 가능성은 있으나 보행·휴식·무장애 접근의 현재 정보를 확인하지 못해 중간 적합도로 보수적으로 기록한다."}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_winter_low"],"rationale":"야외 수변 장소이므로 겨울철에는 대표 체험의 계절 적합도가 낮을 수 있으나 현재 운영 정보는 확인되지 않았다."},
+    "2": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_winter_low"],"rationale":"야외 수변 장소이므로 겨울철에는 대표 체험의 계절 적합도가 낮을 수 있으나 현재 운영 정보는 확인되지 않았다."},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_shoulder"],"rationale":"야외 경관 감상은 가능하나 수변 활동의 현재 계절 운영 정보가 없어 중간값으로 기록한다."},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_shoulder"],"rationale":"야외 경관 감상은 가능하나 수변 활동의 현재 계절 운영 정보가 없어 중간값으로 기록한다."},
+    "5": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_warm_season"],"rationale":"야외 하천 경관 방문에 비교적 유리한 따뜻한 계절로 추정되나 현장 운영 상태는 확인하지 않았다."},
+    "6": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_warm_season"],"rationale":"야외 하천 경관 방문에 비교적 유리한 따뜻한 계절로 추정되나 현장 운영 상태는 확인하지 않았다."},
+    "7": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.official_july_festival"],"rationale":"공식 관광 페이지가 7월 월대천 축제와 과거 자연 활용 체험을 소개한다."},
+    "8": {"state":"numeric","value":0.75,"confidence":0.6,"status":"confirmed","inference_level":"direct_evidence","source_ids":["kakao_reviews_input"],"rule_ids":["month.summer_water_visit"],"rationale":"제공된 공개 리뷰가 8월의 수량·수온 및 물놀이 경험을 언급한다. 수질·수심은 당일 조건에 따라 확인이 필요하다."},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_shoulder"],"rationale":"야외 경관 감상은 가능하나 수변 활동의 현재 계절 운영 정보가 없어 중간값으로 기록한다."},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_shoulder"],"rationale":"야외 경관 감상은 가능하나 수변 활동의 현재 계절 운영 정보가 없어 중간값으로 기록한다."},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_shoulder"],"rationale":"야외 경관 감상은 가능하나 수변 활동의 현재 계절 운영 정보가 없어 중간값으로 기록한다."},
+    "12": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["month.outdoor_winter_low"],"rationale":"야외 수변 장소이므로 겨울철에는 대표 체험의 계절 적합도가 낮을 수 있으나 현재 운영 정보는 확인되지 않았다."}
+  },
+  "hard_constraints": [
+    {"constraint":"하천 수위·수질·기상과 현장 안전 통제는 변동 가능하므로 물놀이·수변 접근 전 공식 현장 안내를 확인해야 한다.","source_ids":["kakao_reviews_input"],"rule_ids":["constraint.dynamic_water_safety"],"status":"needs_review"},
+    {"constraint":"유아·보행 취약자의 접근성, 주차와 화장실의 현재 이용 가능 여부는 공식 최신 정보를 확인하지 못했다.","source_ids":["visit_jeju_2026-08-25"],"rule_ids":["constraint.accessibility_unknown"],"status":"needs_review"}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "sources": [
+      {"source_id":"visit_jeju_2026-08-25","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000013559&menuId=DOM_000001718007000000","publisher":"제주관광공사 Visit Jeju","checked_at":"2026-08-25","facts":["월대천 축제는 제주시 외도동 월대천 일원에서 개최되는 지역 축제로 소개된다.","500년 이상 팽나무와 250년 이상 소나무가 하천을 따라 있으며, 밀물 때 해수와 담수가 만나는 생태 하천으로 소개된다.","과거 축제에서 테우 체험·맨손 장어잡기·플로깅이 진행됐다."]},
+      {"source_id":"nie_ecosystem_2019","url":"https://www.nie.re.kr/nie/cmmn/file/fileDown.do?atchFileId=MFILE_0001TRJSK0e55p0&fileSn=12","publisher":"국립생태원","checked_at":"2026-08-25","facts":["공공 생태자산 자료는 월대천(외도 월대천)을 제주시 월대6길 17의 생태자산으로 수록한다.","경관가치·문화유산·여가 및 관광·사회적 관계·교육 연구의 생태계서비스를 높게 평가한다."]},
+      {"source_id":"kakao_reviews_input","url":"https://place.map.kakao.com/13147665","publisher":"카카오맵 공개 장소 리뷰","checked_at":"2026-08-25","facts":["제공된 익명 공개 리뷰에는 여름철 수량·수온·그늘·물놀이 이용 경험 및 수질·주차 관련 상반된 언급이 있다."]}
+    ],
+    "summary":"월대천은 제주시 외도동의 기수 생태 하천이자 경관·산책·계절 체험 방문지다. 동적 물놀이 안전과 접근성은 별도 확인이 필요하다."
+  }
+}

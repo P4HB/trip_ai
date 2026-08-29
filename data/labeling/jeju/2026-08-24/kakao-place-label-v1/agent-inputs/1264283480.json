@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1168,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1264283480.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1264283480",
+    "provider": "kakao",
+    "place_id": "1264283480",
+    "name": "터진목",
+    "url": "https://place.map.kakao.com/1264283480",
+    "average_rating_5": "5.0",
+    "visitor_review_count": "4",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.08.05.",
+      "content": "프릳츠 바로 옆이라서 커피 마시고 둘러보기 좋은 곳인데 이렇게 아름다운 해변에서 끔찍한 학살이 일어났단 사실이 믿기지 않는다 희생자분들의 명복을 빕니다",
+      "tags": ""
+    },
+    {
+      "date": "2025.01.24.",
+      "content": "영주 10경 중의 제1경인 성산일출봉과 마주한 이곳 성산포 터진목은 4.3 당시 성산면 지역 주민들이 토벌대에 끌려와 학살당한 한과 눈물이 서린 현장이다. 4.3 당시 성산포에는 서북청년으로 구성된 특별 중대가 주둔하고 있었다. 특히 서청특별중대가 이곳에 주둔하기 시작하면서부터 성산면 지역 일대는 죽음과 통곡의 소리가 끊이지 않은 곳으로 변하고 말았다. - 출처: 안내문",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.26.",
+      "content": "😢😢",
+      "tags": ""
+    },
+    {
+      "date": "2025.05.28.",
+      "content": "지나가는 길에 봤는데 너무 마음이 아팠습니다",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

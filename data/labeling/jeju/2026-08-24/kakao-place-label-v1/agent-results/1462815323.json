@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1462815323",
+  "canonical_id": "kakao:1462815323",
+  "name": "참굴비상",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 도보여행 기록들은 참굴비상을 추자대교 인근 제주올레 18-1코스의 명명된 참굴비 조형물·경유 지점으로 구체적으로 제시한다. 상위 시설 내부의 부속 전시물이라는 근거는 확인되지 않아, 길 위에서 별도로 찾아보고 멈춰 볼 수 있는 공개 조형 방문 지점으로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 기록은 추자대교 인근의 길가 조형물로 설명하며 산·오름 경험이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도 해안 섬의 올레길과 추자대교 인근에 놓인 조형물이지만, 해양 활동이나 해변 체험 자체가 이 조형물의 핵심 방문 경험인지는 확인되지 않았다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-COASTAL-CONTEXT"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조형물은 제주올레 18-1코스의 경유 지점으로 확인되지만, 조형물 자체의 핵심 경험은 레포츠나 참여형 체험이 아니라 짧은 관람이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-ROUTE-WAYPOINT"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 기록은 이를 참굴비 조형물로 명시하고, 제주관광공사는 추자도가 참굴비로 잘 알려진 섬이며 지역 음식·생활문화와 연결된다고 소개한다. 다만 해설·전시가 확인되지 않아 중간값으로 둔다.", "source_ids": ["S1", "S3"], "rule_ids": ["THEME-LOCAL-CULTURE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "단일 야외 조형물과 길 경유지로 확인되며 놀이·동물·수족관형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "참굴비를 상징하는 조형물이지만 시장 또는 상설 장터 방문 경험으로 소개되지는 않는다.", "source_ids": ["S1", "S3"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도 참굴비 축제의 존재는 관광 안내에 언급되지만, 이 조형물이 특정 기간 축제의 운영 장소라는 근거는 확인되지 않았다.", "source_ids": ["S3"], "rule_ids": ["THEME-FESTIVAL-NOT-CONFIRMED"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "참굴비상은 추자대교 인근 길가의 조형물로 기록되어 대표 관람은 야외에서 이뤄진다. 실내 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-LANDMARK"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 길가 조형물의 짧은 관람이므로 비·바람·더위·추위의 영향을 받을 수 있다. 현장 대피 시설이나 기상 통제 기준은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "조형물 주변에서 휴식·체류를 뒷받침하는 쉼터나 조용한 관람 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "길가 조형물임은 확인되지만 실제 보행로 폭, 턱, 경사, 휠체어 접근성은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주올레의 경유 지점인 점은 확인되지만 단독 관람의 체류시간과 선택 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도의 올레길과 추자대교 인근이라는 경관 맥락은 확인되지만, 이 지점의 조망 자체가 공식적으로 핵심 방문 가치로 소개되지는 않았다.", "source_ids": ["S1", "S3"], "rule_ids": ["STYLE-COASTAL-ROUTE-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추자도의 대표 특산 맥락인 참굴비를 형상화한 명명된 단일 조형물로 확인되어, 일반 길 경유지와 구별되는 소재와 형태가 직접 확인된다.", "source_ids": ["S1", "S3"], "rule_ids": ["STYLE-UNIQUE-SYMBOL-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조형물의 참굴비 소재는 제주관광공사가 추자도의 대표 특산·음식 문화로 소개하는 참굴비와 직접 연결된다.", "source_ids": ["S1", "S3"], "rule_ids": ["STYLE-LOCAL-PRODUCT-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 18-1코스의 구체적 경유 지점으로 반복 제시되지만, 제주 또는 추자도 전체를 대표하는 공적 랜드마크 지정·상징성은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특색 있는 참굴비 조형물임은 확인되지만, 사진 촬영이 공식적으로 권장되거나 핵심 경험으로 안내되는지는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 보행 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설·보호자 동반 기준·도로변 위험 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 조형물의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "roadside_outdoor_access_conditions_unknown", "applies_to": "all_visitors", "condition": "참굴비상은 추자대교 인근 제주올레길의 야외 길가 조형물로 기록되어 있으나, 현재 보행 분리·차량 통행, 현장 난간·턱, 기상 악화 시 접근과 최신 공사·통제 정보는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주올레 최신 코스 공지와 현장 안내로 우회·통제 여부를 확인하고, 도로변에서는 차량과 기상 상황에 유의한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘참굴비상’은 추자대교 인근 제주올레 18-1코스에 있는 참굴비 조형물·경유 지점으로 공개 기록과 일치한다.",
+    "facts": [
+      {"text": "공개 도보 기록은 참굴비상을 제주올레 18-1코스에서 추자대교 뒤에 지나는 참굴비 조형물로 제시한다.", "source_id": "S1"},
+      {"text": "최근 공개 코스 기록은 참굴비상에서 길을 건너 반대편 산길로 진행한다고 설명한다.", "source_id": "S2"},
+      {"text": "제주관광공사 Visit Jeju는 추자도가 참굴비로 잘 알려졌고, 올레 18-1코스가 추자도의 자연을 걷는 여정이라고 소개한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["조형물의 설치 주체·설치 연도와 공식 안내판 내용", "정확한 보행 접근성, 주차·화장실·휴식 시설", "현재 도로·올레길 우회 및 기상 악화 시 현장 통제"],
+    "sources": [
+      {"id": "S1", "publisher": "개인 도보여행 기록", "type": "public_travel_record", "url": "https://lyj1749.tistory.com/714?category=801666", "checked_at": "2026-08-25", "facts": ["참굴비상을 추자대교 뒤 제주올레 18-1코스의 경유 지점으로 열거한다.", "참굴비상을 배경으로 한 사진과 코스 진행 맥락을 기록한다."]},
+      {"id": "S2", "publisher": "개인 도보여행 기록", "type": "public_travel_record", "url": "https://sungbh98.tistory.com/1460", "checked_at": "2026-08-25", "facts": ["참굴비상을 ‘참굴비 조형물’로 명시한다.", "조형물이 있는 곳에서 길을 건너 산길로 진행한다고 설명한다."]},
+      {"id": "S3", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013026&menuId=DOM_000001832000000000", "checked_at": "2026-08-25", "facts": ["추자도는 참굴비로 잘 알려져 있다고 소개한다.", "추자도 올레 18-1코스를 따라 걷는 여정이 섬의 자연을 느끼는 방식이라고 소개한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

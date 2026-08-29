@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 691,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8191401.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8191401",
+    "provider": "kakao",
+    "place_id": "8191401",
+    "name": "구그네오름",
+    "url": "https://place.map.kakao.com/8191401",
+    "average_rating_5": "1.5",
+    "visitor_review_count": "4",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.04.25.",
+      "content": "선양목장옆이라 말과 근처 소들을 볼수 있음. 사유지를 지나가야 하므로 허락을 받고 가는게 좋아요. 주변분들은 오름의 다른이름은 기시네라고 하시던데, 가시네로 나와 있네요!",
+      "tags": ""
+    },
+    {
+      "date": "2020.02.03.",
+      "content": "아담한오름 뒷동산 수준~ㅎㅎ 입구가 목장으로 막혀있어요.",
+      "tags": ""
+    },
+    {
+      "date": "2026.03.13.",
+      "content": "못가요. 가지마세요. 오름주변 동쪽도 서쪽도 목장 위성지도 참고해 길찾아헤매어봤지만 못가요 목장에 사람이 나오길 기다렸다가 목장 관계자분께 오름에 잠시 다녀와도되냐고 물었지만 구제역도 있고 출입안된다는 답을 듣고 위성지도 참고해 길찾아 다른쪽 길을찾아 헤매어봤지만 철조망으로 막아둔 목장으로 진입할수있는곳이 없어요",
+      "tags": ""
+    },
+    {
+      "date": "2021.02.04.",
+      "content": "진입할수없는 오름 이예요~~",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

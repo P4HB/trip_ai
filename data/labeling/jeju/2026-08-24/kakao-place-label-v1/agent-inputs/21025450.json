@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 609,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/21025450.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:21025450",
+    "provider": "kakao",
+    "place_id": "21025450",
+    "name": "한라산 성판악탐방안내소",
+    "url": "https://place.map.kakao.com/21025450",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "31",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.23.",
+      "content": "좋았습니다. 추천합니다.",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2025.01.09.",
+      "content": "성판악탐방로로 하산 하였는데, 정비 잘 되어 있습니다",
+      "tags": ""
+    },
+    {
+      "date": "2026.06.21.",
+      "content": "대한민국 최고봉 한라산. 40대 되서 처음 와보네요 뭐하고 살았나 몰라~~ 이젠 겨울의 한라산을 가보고 싶네요",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

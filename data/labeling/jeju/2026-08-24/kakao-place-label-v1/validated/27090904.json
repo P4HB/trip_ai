@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27090904",
+  "place_id": "27090904",
+  "name": "제주여미지식물원매표소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력명은 여미지식물원의 매표소로, 식물원 입장을 위한 하위 운영 시설이다. 독립 여행지로 별도 추천하지 않고 상위 여미지식물원에 병합한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "매표소는 서귀포시 중문관광로 93 여미지식물원의 입장 시설이다.",
+    "typical_visit": "식물원 입장권을 구매하는 지원 시설이며 독립 방문 경험이 아니다.",
+    "experience_scope": "상위 식물원의 온실·정원 경험을 이 매표소 레코드에 별도 라벨링하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 여미지식물원을 중문관광로 93의 실내 식물원과 외부 정원으로 구성된 관광지로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "매표소의 당일 운영·대기·결제 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500442",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "여미지식물원의 위치·온실·외부 정원과 관람 정보를 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_ticket_office",
+      "applies_to": "recommendation_candidate",
+      "condition": "매표소는 상위 여미지식물원 방문을 위한 입장 시설",
+      "status": "confirmed",
+      "action": "상위 여미지식물원으로 병합하고 매표소를 독립 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

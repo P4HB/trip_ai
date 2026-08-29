@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1320,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8215394.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8215394",
+    "provider": "kakao",
+    "place_id": "8215394",
+    "name": "부림온천",
+    "url": "https://place.map.kakao.com/8215394",
+    "average_rating_5": "3.4",
+    "visitor_review_count": "14",
+    "blog_review_count": "4",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.01.",
+      "content": "2026년 6월 23일 제주 도착하여 우천으로 골프장 취소후 들렀던 부림온천 1층 \"카카오 스크린골프연습장\" 에서 재밋는 시간을 보냈습니다.",
+      "tags": "시설|주차|+1"
+    },
+    {
+      "date": "2022.04.08.",
+      "content": "이름만 온천. 동네 목욕탕. 물도 온천물아닌 그냥 보통물. 온천 매니아인데.. 그냥 따뜻한물.ㅋ 이젠 육지사람들도 목욕이용가능하고, 별 다를거없어요. 그냥. 목욕하고싶은 분만 가시길..ㅋ",
+      "tags": ""
+    },
+    {
+      "date": "2025.05.16.",
+      "content": "주차도 좋고 남탕 물을 안갈아요 ㅎㅎ 3-4일에 한번가는듯.. 주인한테 말을 해도 안되네요 답이없음.. 사우나하고 개운해야하는데 오히려 더 찝찝한느낌들때인 날이 있네여",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.24.",
+      "content": "온탕 온도가 딱 적당해서 좋다. 너무 미지근하지도, 델 것처럼 뜨겁지도 않고 딱 좋다. 세신관리사가 때 미는 강도를 알맞게 조절한다. 내 아파하는 표정을 보더니 살살~ 밀어주셨다.",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2024.07.27.",
+      "content": "좋아요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

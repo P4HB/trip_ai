@@ -1,0 +1,64 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17439264",
+  "canonical_id": "kakao:17439264",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "사수도는 일반 방문객을 위한 관광 시설이 아니라, 제주 추자면에 있는 무인도서이자 바닷새류 번식지 천연기념물로 확인된다. 공개된 공식 자료에서 일반 관광객의 정기적 방문·상륙 운영이 확인되지 않아, 접근 가능한 여행지 추천 후보로 라벨링하지 않는다.",
+    "source_ids": [
+      "src_mof_2018_sasudo",
+      "src_heritage_sasudo"
+    ],
+    "rule_ids": [
+      "ELIGIBILITY-OUT-OF-SCOPE-NONVISITOR-PROTECTED-ISLAND"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "high",
+  "hard_constraints": [
+    {
+      "kind": "access",
+      "applies_to": "일반 여행객 방문",
+      "condition": "사수도는 무인도서이며 바닷새류 번식지 천연기념물이다. 공개 공식 자료에서 일반 관광객을 위한 정기 상륙·관람 운영이 확인되지 않는다.",
+      "status": "confirmed",
+      "action": "exclude",
+      "source_ids": [
+        "src_mof_2018_sasudo",
+        "src_heritage_sasudo"
+      ],
+      "rule_id": "GATE-ACCESS-NONVISITOR-PROTECTED-ISLAND"
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "source_id": "src_mof_2018_sasudo",
+        "url": "https://www.mof.go.kr/doc/ko/selectDoc.do?bbsSeq=10&docSeq=19052&menuSeq=971",
+        "publisher": "해양수산부",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "사수도는 제주도 추자면에 속하는 무인도서로 소개된다.",
+          "사수도는 멸종위기 새들의 보금자리로 소개된다."
+        ]
+      },
+      {
+        "source_id": "src_heritage_sasudo",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?assetnamel=&ccbaAsno=03330000&ccbaCpno=1363903330000&ccbaCtcd=50&ccbaKdcd=16&ccbaLcto=01&culPageNo=3&header=region&pageNo=1_1_3_0&returnUrl=%2Fheri%2Fcul%2FculSelectRegionList.do&s_ctcd=50&s_kdcd=",
+        "publisher": "국가유산청 국가유산포털",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주 사수도 바닷새류(흑비둘기, 슴새) 번식지는 천연기념물로 분류된다.",
+          "소재지는 제주 제주시 추자면 사수도 일원이며, 지정일은 1982-11-16이다."
+        ]
+      }
+    ],
+    "unresolved": [
+      "일반 관광객의 상륙 허용 여부, 허가 절차 및 운영 시점은 공식 방문 안내에서 확인하지 못했다."
+    ]
+  }
+}

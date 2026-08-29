@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7849255",
+  "place_id": "7849255",
+  "name": "동알오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.65,
+    "rationale": "동알오름은 대정읍의 송악산 인근 세 알오름 가운데 동쪽의 낮은 오름으로 확인되며, 송악산·알뜨르비행장·일제 군사 유적을 잇는 탐방 맥락에서 다뤄진다. 그러나 공식 탐방로·현재 출입 허용·정상 접근·안전 관리 정보를 확인하지 못했다. 송악산 권역의 구성 지형으로 보존하고 독립 추천 벡터는 생성하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 서귀포시 대정읍 상모리 일대의 동알오름과 일치하며, 공공 조사 자료는 해발 약 45m의 대정읍 오름으로 열거한다.",
+    "typical_visit": "동알오름은 송악산 인근 자연 지형이며, 일제강점기 군사 유적과 알뜨르비행장·송악산 권역을 잇는 평화·역사 탐방 코스의 한 지점으로 언급된다.",
+    "experience_scope": "정확한 공식 탐방로·개방 상태 및 관리 주체를 확인하지 못했다. 입력의 비식별 후기는 진입로를 찾기 어렵고 관리가 미흡하다고 언급하나 이를 직접 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공공 마을 실태조사는 대정읍의 송악산과 동알오름을 각각 해발 104m, 45m로 열거한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "통일교육 자료의 현장 답사 일정은 알뜨르비행장·셋알오름 고사포진지·동알오름 일제강점기 진지동굴·송악산 해안 진지동굴을 연계해 다룬다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 탐방로와 현재 오름 정상·진지동굴 출입 허용 범위",
+      "토지 소유·관리 주체와 보행·낙석·기상 안전 조건",
+      "무장애 접근성·주차·화장실 및 해설 운영"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 마을특성 및 실태조사",
+        "type": "public_local_survey",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_2.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "대정읍의 동알오름과 송악산의 존재·고도를 열거한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "통일교육원",
+        "type": "public_education_material",
+        "url": "https://www.uniedu.go.kr/uniedu/atchfile/down/F000087298.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "동알오름 일제강점기 진지동굴을 송악산·알뜨르비행장 권역의 연계 탐방 대상으로 열거한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_oreum_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "동알오름은 송악산 권역의 낮은 오름·군사 유적 연계 지형이며 현재 공식 탐방로·출입·안전 조건이 확인되지 않음",
+      "status": "needs_review",
+      "action": "송악산 권역 방문 시 공인된 탐방로·현장 안내의 허용 구간만 이용하고, 동알오름을 독립 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

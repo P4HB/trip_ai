@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17990587",
+  "place_id": "17990587",
+  "name": "카카오 생태연못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "카카오의 공식 오시는 길은 제주 본사를 제주시 첨단로 242의 사업장으로 안내한다. 입력 레코드명은 독립 관광지가 아닌 카카오 생태연못이라는 사업장 내 경관·조경 시설을 가리키며, 이를 독립적으로 방문·운영·추천할 수 있다는 공적 근거는 확인하지 못했다. 따라서 본사 부지의 종속 시설로 보수적으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소는 ‘카카오 생태연못’이다. 공개 검색으로는 해당 연못의 별도 관리 주체·관광 운영·독립 출입 정보를 확인하지 못했으며, 카카오 공식 안내는 제주 본사 주소를 제시한다.",
+    "typical_visit": "확인 가능한 정보 범위에서는 카카오 제주 사업장 맥락의 조경·경관 시설로만 보이며, 일반 관광객을 위한 독립 체험·예약·프로그램은 확인하지 못했다.",
+    "experience_scope": "장소의 정확한 부지 내 위치와 일반인 출입 가능 여부, 연못의 생태·조경 구성, 접근 동선은 확인되지 않았다. 사업장 내 부속 시설을 별도 추천 후보로 만들지 않기 위해 선호·동행·월별 벡터를 부여하지 않는다. 입력의 평점·후기 수는 판단에 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"카카오 공식 투자정보의 오시는 길은 제주 사업장 주소를 제주특별자치도 제주시 첨단로 242로 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"입력 Kakao 레코드의 명칭은 ‘카카오 생태연못’이며, 제공된 공개 후기는 연못이라는 짧은 인상만 제공한다. 평점·후기 수와 작성자 식별 정보는 라벨 근거로 사용하지 않았다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 카카오 제주 사업장 안의 어느 연못을 가리키는지와 사업장 부지와의 정확한 관계",
+      "일반인의 상시 출입·관람 가능 여부, 운영·안전 규칙, 접근로·무장애 시설과 계절별 상태",
+      "연못의 생태 교육·전시·관광 프로그램 또는 독립 방문지로서의 관리 정보"
+    ],
+    "sources": [
+      {"id":"S1","publisher":"카카오","type":"official_corporate_site","url":"https://www.kakaocorp.com/ir/wayToCome?lang=ko","checked_at":"2026-08-25T00:00:00+09:00","facts":["카카오는 제주특별자치도 제주시 첨단로 242를 제주 사업장 주소로 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/17990587","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷의 장소명은 카카오 생태연못이다.","제공된 공개 후기에는 연못에 대한 짧은 인상만 있으며, 평점·후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {"kind":"subordinate_facility_and_public_access_unknown","applies_to":"recommendation_candidate","condition":"카카오 제주 사업장 맥락의 연못으로 보이나 일반 관광객의 독립 방문·출입 가능 여부와 정확한 시설 관계를 확인하지 못했다.","status":"needs_review","action":"이 레코드를 독립 41축 추천 후보로 사용하지 않는다. 필요 시 카카오의 현행 방문 안내 또는 현장 표지로 공개 출입 및 시설 관계를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8659492",
+  "canonical_id": "kakao:8659492",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "광령천은 애월읍 광령리에서 발원해 외도동 방향으로 흐르는 약 18km 규모의 지방하천(무수천·외도천으로도 불림)으로 확인된다. 입력에는 특정 탐방 구간·시설·관광 포인트가 아닌 하천 전체명만 있으며, 개별 방문 경험과 접근 지점이 특정되지 않았다. 따라서 일반 여행지 한 곳으로 완전 수치 벡터를 부여하지 않고 범위 밖으로 보류한다.",
+    "source_ids": [
+      "source_halla_rivers",
+      "source_doopedia",
+      "source_waterway"
+    ],
+    "rule_ids": [
+      "eligibility.out_of_scope.broad_geographic_feature",
+      "policy.no_forced_vector"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "visit_point_required",
+      "rationale": "하천 전체명만으로는 실제 방문 가능한 구간, 접근 방법 및 현장 안전 조건을 특정할 수 없다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_halla_rivers",
+        "url": "https://jst.re.kr/upload/pdf/RC00092517.pdf",
+        "publisher": "제주학연구센터",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "광령천은 행정적으로 1936년부터 지정·고시된 지방2급 하천이다.",
+          "기점은 애월읍 광령리이고 종점은 제주시 외도동으로 설명된다.",
+          "무수천·외도천 등 여러 이름으로도 불린다."
+        ]
+      },
+      {
+        "source_id": "source_doopedia",
+        "url": "https://www.doopedia.co.kr/photobox/comm/community.do?GAL_IDX=221101001318982&_method=view",
+        "publisher": "두피디아 포토커뮤니티",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "광령천은 한라산 중산간지대에서 발원해 북쪽으로 흘러 도근천에 합류하는 지방하천으로 소개된다.",
+          "하천연장은 18.3km이며 상류는 평상시에 물이 거의 흐르지 않는 건천이라고 설명된다."
+        ]
+      },
+      {
+        "source_id": "source_waterway",
+        "url": "https://law.go.kr/LSW/flDownload.do?bylClsCd=200201&flNm=%5B%EB%B3%84%ED%91%9C+1%5D+%ED%95%98%EC%B2%9C%EC%9D%98+%EC%84%B8%EB%B6%80%EC%A1%B0%EC%82%AC+%EC%A7%80%EC%A0%90&flSeq=150724697",
+        "publisher": "국가법령정보센터",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "하천 세부조사 지점 자료는 광령천을 제주시 외도일동 월대교의 제주북해 수계 하천으로 기록한다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

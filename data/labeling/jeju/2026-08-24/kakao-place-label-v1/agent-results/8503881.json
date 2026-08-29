@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8503881",
+  "canonical_id": "kakao:8503881",
+  "name": "100주년기념탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘100주년기념탑’이라는 일반 명칭과 소수의 익명 방문 문구만 제공하며, 주소·좌표·업종·건립 주체가 없다. 공개 웹 검색에서도 이 place_id와 제주 내 특정 기념탑을 연결하는 신뢰 가능한 출처를 확인하지 못했다. 같은 명칭의 기념탑이 여러 지역·기관에 존재할 수 있으므로, 일출·사진 언급만으로 제주 내 독립 여행지의 신원과 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 정보는 Kakao place_id 8503881과 ‘100주년기념탑’이라는 일반 명칭뿐이며, 제주 내 정확한 위치·대상·관리 주체를 확인하지 못했다.",
+    "typical_visit": "입력의 익명 방문 문구에는 일출 관람과 사진 촬영 언급이 있으나, 장소의 정확한 신원·공간 범위·공식 이용 가능 여부를 입증하지 않는다.",
+    "experience_scope": "정확한 장소 신원이 확정되지 않았으므로 독립 여행 방문지인지, 다른 시설의 부속 기념물인지, 혹은 중복 레코드인지 판단할 수 없다. 추천용 방문 경험 벡터를 생성하지 않는다. Kakao 평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘100주년기념탑’이고 place_id는 8503881이다. 입력에는 주소, 좌표, 업종, 건립 주체 또는 공식 운영 정보가 없다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 제공된 익명 방문 문구는 일출 관람 및 사진 촬영을 언급하지만, 제주 내 특정 기념탑의 위치·명칭 유래·독립 방문지 여부를 식별하는 정보는 포함하지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종, 건립 대상 및 관리 주체를 확인하지 못했다.",
+      "제주 내 독립 방문지인지, 다른 관광지·기관의 부속 기념물인지, 기존 장소와 중복되는지 확인하지 못했다.",
+      "최신 출입 가능 여부, 접근로, 안전, 편의시설, 운영 및 계절별 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing_and_anonymized_review_evidence",
+        "url": "https://place.map.kakao.com/8503881",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘100주년기념탑’이며 place_id는 8503881이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 건립 주체 및 공식 운영 정보가 제공되지 않았다.",
+          "익명 방문 문구에는 일출·사진 관련 언급이 있으나, 평점·후기 수·작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "주소·좌표·업종·건립 주체가 없어 이 레코드의 정확한 제주 내 기념탑 신원과 독립 여행지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 관리 주체의 주소·좌표·시설 설명으로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하거나 일출·사진 언급을 방문 적합도 근거로 사용하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "531281780",
+  "canonical_id": "kakao:531281780",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "장소명 '제주고등학교 중농탑'은 제주고등학교라는 모시설의 교내 기념탑을 지칭한다. 독립 여행지로 확인할 근거가 없어 모시설에 종속된 시설로 분류한다.",
+    "source_ids": [
+      "source-1",
+      "source-2"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "low",
+  "hard_constraints": [
+    {
+      "type": "access_scope",
+      "status": "needs_review",
+      "rationale": "학교 부지 내 시설로 보이며, 일반 관광객의 상시 독립 방문 가능 여부를 확인하지 못했다.",
+      "source_ids": [
+        "source-1",
+        "source-2"
+      ],
+      "rule_ids": [
+        "constraint.access_scope"
+      ]
+    }
+  ],
+  "research": {
+    "status": "confirmed",
+    "sources": [
+      {
+        "id": "source-1",
+        "url": "https://place.map.kakao.com/531281780",
+        "publisher": "Kakao",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "등록 장소명은 '제주고등학교 중농탑'이다."
+        ]
+      },
+      {
+        "id": "source-2",
+        "url": "https://school.jje.go.kr/jeju/lm/location/locationMapView.do?lmLocationSn=107452&mi=107452",
+        "publisher": "제주고등학교",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주고등학교는 제주특별자치도 제주시 1100로 3213에 있는 학교로 안내된다."
+        ]
+      }
+    ],
+    "rationale": "공개 장소명과 학교의 공식 위치 안내를 대조해, 중농탑은 제주고등학교에 종속된 시설로 판정했다.",
+    "rule_ids": [
+      "eligibility.subordinate_facility"
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10307727",
+  "canonical_id": "kakao:10307727",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "입력 기록은 도청오름에 해안경비대 시설이 있고 시설물로 인해 접근금지 지역이며 오를 수 없다고 반복해서 언급한다. 일반 방문지로 추천할 수 없어 완전 라벨 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "kakao-place-metadata",
+      "kakao-review-2025-09-08",
+      "kakao-review-2021-06-01",
+      "kakao-review-2023-11-30"
+    ],
+    "rule_ids": [
+      "eligibility.out-of-scope-restricted-access",
+      "evidence.kakao_supplementary"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    "입력 기록은 해안경비대 시설과 접근금지 구역을 언급한다. 표지판·출입 통제를 준수해야 하며 접근이나 탐방을 추천하지 않는다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/10307727",
+        "checked_at": null,
+        "facts": [
+          "장소명: 도청오름"
+        ]
+      },
+      {
+        "source_id": "kakao-review-2025-09-08",
+        "publisher": "Kakao 공개 방문 기록",
+        "url": "https://place.map.kakao.com/10307727",
+        "checked_at": "2025-09-08",
+        "facts": [
+          "접근금지 표지판을 언급"
+        ]
+      },
+      {
+        "source_id": "kakao-review-2021-06-01",
+        "publisher": "Kakao 공개 방문 기록",
+        "url": "https://place.map.kakao.com/10307727",
+        "checked_at": "2021-06-01",
+        "facts": [
+          "해안경비대 시설이라는 기록"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식 출입 통제 고지의 최신 상태는 입력에 없음",
+      "공개 방문 기록은 현재 출입 규칙을 보장하지 않음"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

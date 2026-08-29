@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27347125",
+  "place_id": "27347125",
+  "name": "납덕이",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "국회도서관 소장 공공 조사자료는 납덕이를 제주특별자치도 무인도서 실태조사 대상 섬으로 수록한다. 공개 낚시 매체는 이를 추자도 인근 갯바위 낚시 포인트로 설명하지만, 일반 여행객을 위한 독립 관광·관람 장소의 운영·접근·안전 안내는 확인되지 않았다. 따라서 일반 여행 추천의 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "납덕이는 제주특별자치도 무인도서 실태조사에 수록된 무인도서이며, 공개 낚시 기사에서 추자도 주변의 갯바위 낚시 지명으로도 확인된다.",
+    "typical_visit": "확인된 공개 맥락은 선박으로 접근하는 갯바위 낚시 지점이다. 일반 관광객 대상 상시 관람·체험 장소로서의 운영 정보는 확인되지 않았다.",
+    "experience_scope": "무인도서·갯바위라는 장소 유형과 낚시 지명 맥락은 확인되지만, 일반 방문객의 합법적 접근, 하선, 시설, 안전관리와 독립 관광지 운영이 확인되지 않았다. 추천용 방문 경험 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관 소장 ‘(제2차) 무인도서 실태조사(5차년도): 제주특별자치도’의 목차는 납덕이를 조사 대상 무인도서로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "낚시춘추 기사는 추자도 납덕이에서의 갯바위 낚시와 큰납덕이·작은납덕이의 지형을 설명한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 27347125의 정확한 좌표 및 납덕이 내 지정 표식 위치",
+      "일반 방문객의 상시 접근·하선 가능 여부, 허가·선박 이용 조건과 출입 제한",
+      "현장 안전시설, 기상·파고에 따른 통제, 통신·구조 여건 및 관광객용 운영 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "대한민국 국회도서관",
+        "type": "public_research_report",
+        "url": "https://dl.nanet.go.kr/detail/MONO12023000013101",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주특별자치도 무인도서 실태조사 자료의 목차에 납덕이가 조사 대상 무인도서로 수록되어 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "낚시춘추",
+        "type": "specialist_media",
+        "url": "https://fishingseasons.co.kr/contents_view_detail.asp?b_no=11012",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 납덕이를 갯바위 루어낚시 포인트로 소개한다.",
+          "큰납덕이·작은납덕이가 검은여와 오동여에 이어지는 지형이라는 설명을 제공한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/27347125",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘납덕이’이며 place_id는 27347125다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "remote_uninhabited_islet_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "무인도서·갯바위 낚시 지점이라는 맥락만 확인됐고, 일반 방문객의 접근·하선·출입 조건과 기상·해상 안전관리 및 관광지 운영은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 공식 관광·해양 관리 주체가 일반 방문객용 접근과 안전 운영을 명시하면 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

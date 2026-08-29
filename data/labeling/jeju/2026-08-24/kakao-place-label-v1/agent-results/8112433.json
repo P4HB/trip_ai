@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8112433",
+  "place_id": "8112433",
+  "name": "판포오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주 관광정보 공식 포털이 판포오름(널개오름)을 한경면 판포리의 독립 관광지이자 오름·걷기/등산 장소로 수록한다. 상위 시설의 부속물 또는 다른 장소의 중복이라는 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "판포오름(널개오름, 板浦岳)은 제주시 한경면 판포리에 있는 표고 93.2m의 오름으로, 두 산체와 동쪽으로 열린 말굽형 분화구를 가진다.",
+    "typical_visit": "농로를 따라 오름 기슭에 접근해 능선과 숲, 판포마을·비양도·한림 방향 풍경을 보는 야외 걷기·등산 방문으로 파악된다.",
+    "experience_scope": "공식 관광 정보는 지형·풍경과 과거 안내 동선을 설명한다. 현재의 개방 여부, 실제 이용 가능한 등산로, 노면·경사, 주차·화장실·무장애 시설 및 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주 관광정보 공식 포털은 판포오름(널개오름)을 제주시 한경면 판포리의 표고 93.2m 오름으로 소개하며, 두 산체, 동쪽으로 열린 말굽형 분화구, 평탄한 능선과 판포마을·비양도·한림 방향 풍경을 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력된 공개 Kakao 방문 후기에는 길을 잃거나 정상 접근이 어렵고 관리되지 않은 길·가시덤불을 경험했다는 서술이 포함되어 있다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "공식 안내에 적힌 농로 접근 동선과 정상 접근이 현재도 실제로 이용 가능한지 확인하지 못했다.",
+      "현재 개방 여부, 토지 출입 허용, 경사·계단·노면, 주차·화장실·쉼터 및 무장애 시설을 확인하지 못했다.",
+      "강풍·우천·폭염 시 안전 통제와 계절별 탐방 가능 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500660&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "판포오름(널개오름, 板浦岳)을 제주시 한경면 판포리의 관광지로 수록한다.",
+          "표고 93.2m이며 두 산체와 동쪽으로 열린 말굽형 분화구를 설명한다.",
+          "오름·걷기/등산, 자연경관 태그와 농로를 통한 접근 안내, 판포마을·비양도·한림 방향 풍경을 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/8112433",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 후기에는 길을 잃음, 정상 접근 곤란, 관리되지 않은 길과 가시덤불에 관한 경험 서술이 있다.",
+          "입력된 후기 한 건은 정상에서 비양도가 보인다는 관찰을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 정보가 이 장소를 표고가 있는 오름으로 수록하고 오름·걷기/등산으로 분류하므로 산·오름 경험이 핵심이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내와 후기에서 비양도 방향 풍경을 언급하지만, 해안·해양 활동 자체가 이 오름의 핵심 경험인지는 확인되지 않아 중립값으로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"direct_evidence","rationale":"공식 관광 정보가 오름·걷기/등산으로 분류하고 농로를 따라 기슭에 이르는 동선을 설명하므로 야외 보행 활동의 비중이 높다. 현재 이용 가능 동선은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설이나 운영의 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적인 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 자연 지형인 오름, 능선, 숲과 분화구의 야외 방문을 설명하므로 대표 경험의 실내 비중은 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 오름 보행과 능선·원경 감상이므로 비·바람·더위의 영향을 비교적 받을 것으로 추론한다. 실제 안전 통제는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·혼잡도·소음 및 실제 체류 환경 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 경사·계단·노면·무장애 정보가 없고 후기에는 길 관리·접근 곤란 서술이 있어 보행 부담을 확정할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 이용 가능한 탐방 코스, 공식 소요 시간 및 개방 시간 정보가 없어 체류 시간 조절성을 판단할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 평탄한 능선과 판포마을·비양도·한림 방향으로 펼쳐지는 풍경을 직접 설명하므로 경관 감상이 중요한 방문 가치다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 두 산체, 별칭이 있는 주봉·부봉, 동쪽으로 열린 말굽형 분화구를 구체적으로 설명해 장소 고유 구성이 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 한경면 판포리의 오름이며 판포마을과 지역 지명·농경지·식생을 공식 안내가 직접 연결하므로 제주 지역 자연·생활과의 연관성이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 관광지 수록은 확인되지만 제주 또는 해당 지역을 대표하는 상징 명소라는 별도 지정·안내는 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 풍경 설명은 있으나 사진 촬영 또는 시각 기록 가치가 직접 확인되는 근거는 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 탐방로·출입·안전 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현재 동선·안전·체류 환경을 확인하지 못해 동반 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행에 필요한 현재 동선·안전시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·안전시설과 실제 탐방 가능 상태가 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·노면·쉼터·무장애 접근성 및 실제 등산로 상태가 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_trail_safety_unknown","applies_to":"all_visitors","condition":"현재 공식 개방 여부, 토지 출입 허용, 실제 등산로·정상 접근 가능 여부, 노면·가시덤불·경사, 주차·화장실·무장애 시설과 기상 시 안전 통제는 확인하지 못했다. 입력 공개 후기에는 길을 잃거나 정상 접근이 어렵다는 경험 서술도 있다.","status":"needs_review","action":"방문 전 관할 지자체 또는 현장 최신 안내로 출입 허용, 실제 접근로와 등산로 상태, 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

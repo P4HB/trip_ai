@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1412236336",
+  "place_id": "1412236336",
+  "name": "화북동 용천수",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘화북동 용천수’라는 포괄적 명칭 외에 주소·좌표·업종을 제공하지 않는다. 공개 자료는 화북포구 일대에 대명물·가래물·중부락물·비석물·큰이물 등 여러 용천수가 존재함을 보여 주지만, 이 place_id가 어느 특정 용천수 또는 독립 방문 지점을 뜻하는지는 교차 확인되지 않았다. 따라서 신원과 독립 방문지 범위를 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력은 ‘화북동 용천수’라는 장소명만 제공한다. 공개 자료에서 화북동 화북포구 일대에는 복수의 서로 다른 용천수가 확인되므로, 이 명칭만으로 특정 용천수와 Kakao place_id의 대응을 확정할 수 없다.",
+    "typical_visit": "제주도의 용천수는 해안 등 저지대에서 솟는 지하수이며, 화북동 구간은 용천수 답사 코스 자료에 포함되어 있다. 그러나 이 Kakao 레코드가 어느 지점인지와 실제 접근·관람 경험은 확인되지 않았다.",
+    "experience_scope": "주소·좌표·업종·공식 운영 또는 안전 안내가 입력에 없고, 공개 자료도 이 place_id를 특정 용천수명과 연결하지 않는다. 입력의 평점과 리뷰 수, 짧은 공개 리뷰는 라벨값 근거로 사용하지 않았다. 신원이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘화북동 용천수’이며, 주소·좌표·업종 정보는 제공되지 않았다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주환경운동연합 자료는 화북포구 일대에 대명물, 가래물·중부락물·비석물, 큰이물 등 다양한 용천수가 남아 있다고 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "동아일보가 소개한 제주도 용천수 답사 코스의 화북 구간에는 동주원물, 중부락물(비석물·해신물), 고래물, 대명물이 별도로 열거된다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 화북동의 어느 특정 용천수를 가리키는지 확인하지 못했다.",
+      "정확한 주소·좌표, 현장 접근성, 안전 상태, 관람 가능 여부와 최신 운영·관리 상태를 확인하지 못했다.",
+      "이 레코드가 독립 추천 후보인지 또는 다른 화북동 용천수의 중복·포괄 표기인지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1412236336",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘화북동 용천수’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 장소를 특정할 수 있는 상세 안내가 없다.",
+          "평점·리뷰 수 및 공개 리뷰는 라벨값 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주 환경운동연합",
+        "type": "public_organization_article",
+        "url": "https://jeju.ekfem.or.kr/posts/eVtdJl",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "화북포구 일대에는 대명물, 가래물·중부락물·비석물, 큰이물 등 다양한 용천수가 남아 있다고 설명한다.",
+          "큰이물의 위치를 제주시 화북1동 1627-2 일대로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "동아일보",
+        "type": "news_article",
+        "url": "https://www.donga.com/news/Society/article/all/20091104/23878206/1",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주도가 용천수를 찾아가는 산물 여행 코스를 개발했다고 보도했다.",
+          "화북 구간에는 동주원물, 중부락물(비석물·해신물), 고래물, 대명물이 별도로 열거된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 포괄 명칭만으로는 화북동의 여러 용천수 중 어느 지점인지와 독립 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도에서 주소·좌표를 확보하고, 해당 지점을 특정 용천수의 공식·공공 관리 또는 현장 안내와 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

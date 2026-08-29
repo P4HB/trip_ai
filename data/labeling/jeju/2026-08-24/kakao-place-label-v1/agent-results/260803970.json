@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:260803970",
+  "place_id": "260803970",
+  "name": "제주올레 18-1코스 공식안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘제주올레 18-1코스 공식안내소’로, 제주올레 18-1코스 이용을 위한 안내 시설임을 직접 나타낸다. 제주관광공사 Visit Jeju는 이 안내소를 추자도 올레 18-1코스 정보의 한 항목으로 제시하고, 주요 여행 경험은 추자도 안을 걷는 약 18.2km의 코스라고 설명한다. 따라서 안내소는 코스 출발·이용을 지원하는 부속 지점이며 그 자체로 독립적인 추천 방문 경험을 제공하는 후보로는 판정하지 않는다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주올레 18-1코스 공식안내소는 제주특별자치도 제주시 추자면 대서리 19-1에 제시된 추자도 올레 18-1코스의 공식 안내 지점이다.",
+    "typical_visit": "추자도 올레 18-1코스 걷기 전후에 코스 관련 정보를 확인하는 보조 시설 이용으로 파악된다.",
+    "experience_scope": "공개 관광 정보가 설명하는 대표 경험은 추자도 18-1코스의 장거리 야외 도보 여행이며, 입력 장소는 이를 지원하는 공식 안내소다. 안내소 자체의 독립 관람·체험 콘텐츠는 확인되지 않아 추천용 18개 원자 축, 동반자·월별 적합도 벡터를 생성하지 않는다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았고 공개 후기 작성자 정체도 기록하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 입력 패킷은 place_id 260803970의 장소명을 ‘제주올레 18-1코스 공식안내소’로 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 추자도 올레 18-1코스를 제주항에서 약 1시간 반 걸리는 추자도 안을 걷는 약 18.2km, 약 8시간의 도보 코스로 소개하고, 공식안내소를 제주시 추자면 대서리 19-1로 제시한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "안내소의 최신 운영 시간, 휴무일, 제공 언어, 판매 품목과 현장 서비스 범위는 최신 공식 운영 공지로 확인하지 못했다.",
+      "입력 Kakao 표식과 Visit Jeju에 제시된 안내소 주소의 좌표 단위 일치는 별도 좌표 자료로 교차 확인하지 못했다.",
+      "18-1코스는 우회·변경될 수 있으므로 실제 보행 전 최신 제주올레 공식 코스 정보와 선박·기상 조건 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/260803970",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 ‘제주올레 18-1코스 공식안내소’다.",
+          "입력에 포함된 공개 후기는 안내 서비스 이용 경험을 언급하지만, 평점·후기 수 및 작성자 식별 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013026&menuId=DOM_000005000000000221",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 올레 18-1코스를 제주에서 가장 높은 올레길로 소개하며, 경사의 오르내림과 가파른 길, 바닷바람에 대비하도록 안내한다.",
+          "제주올레 공식 안내소(추자도)의 주소를 제주시 추자면 대서리 19-1로 제시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주올레 18-1코스 공식안내소는 추자도 올레 18-1코스 이용 정보를 지원하는 안내 시설로 확인되며, 독립적인 관람·체험 여행지 범위는 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고, 추자도 올레 18-1코스 보행을 선택한 이용자에게만 안내·지원 지점으로 함께 표시한다. 방문 전에는 최신 공식 안내로 안내소 운영 여부, 코스 변경, 선박 및 기상 조건을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

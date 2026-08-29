@@ -1,0 +1,621 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25280784",
+  "place_id": "25280784",
+  "name": "서우봉",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 함덕서우봉해변 옆의 관광지 서우봉으로 식별하며, 둘레길·산책길과 계절 경관을 안내한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "visitjeju-seoubong"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주시 조천읍 함덕리의 함덕서우봉해변 옆 오름 관광지다.",
+    "typical_visit": "둘레길과 약 2.5km 산책로를 걸으며 바다·유채꽃·코스모스 경관을 감상하는 방문이다.",
+    "experience_scope": "야외 자연경관과 걷기가 핵심이며, 정자와 제주어 안내 표지가 부수적으로 제공된다.",
+    "facts": [
+      "Visit Jeju는 서우봉을 함덕서우봉해변 옆의 관광 명소로 소개한다.",
+      "올레길 19코스 일부이며 둘레길과 산책길이 있다.",
+      "봄 유채꽃과 가을 코스모스 경관을 안내하며, 코스모스는 11월 중순까지 볼 수 있다고 안내한다.",
+      "산책로는 약 2.5km이고 정자가 있다."
+    ],
+    "unknowns": [
+      "당일 출입 통제, 주차 가능 여부와 보행 난이도는 변동 가능하므로 방문 전 확인이 필요하다.",
+      "공식 출처에서 휠체어 접근성이나 어린이용 안전시설은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "source_id": "visitjeju-seoubong",
+        "publisher": "제주관광공사 Visit Jeju",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500335",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "함덕서우봉해변 인접",
+          "둘레길·산책길",
+          "봄 유채꽃",
+          "가을 코스모스",
+          "약 2.5km 산책로",
+          "정자"
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 정보가 서우봉을 오름으로 분류하고 걷기·등산 태그와 둘레길을 안내한다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "함덕서우봉해변 옆에 있으며 공식 소개문이 푸른 바다와 어우러진 풍경을 핵심으로 제시한다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "둘레길과 산책길을 걷는 활동이 공식 안내된 대표 경험이다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주어 의미를 병기한 안내 표지는 있으나 문화·역사 체험이 핵심이라는 근거는 부족하다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 설명에서 테마파크형 시설·놀이 경험은 확인되지 않는다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": []
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 설명에서 카페·차·디저트 이용은 확인되지 않는다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": []
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 설명에서 시장 방문 경험은 확인되지 않는다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": []
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "계절 꽃 경관은 안내되지만 장소 자체의 특정 축제·기간 행사는 확인되지 않는다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "둘레길·산책길과 자연 경관이 대표 경험으로 안내된 야외 장소다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 걷기와 계절 꽃·바다 경관이 핵심이므로 날씨가 경험에 상당한 영향을 준다고 판단한다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "정자에 앉아 경치를 감상할 수 있고 산책로가 안내된다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "약 2.5km 산책로는 있으나 오름 지형의 경사·계단과 전 구간 난이도는 공식 정보에서 확인되지 않는다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "둘레길·산책길·정자 등 선택 가능한 야외 동선이 공식 안내된다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개가 푸른 바다와 유채꽃밭이 어우러진 풍경을 핵심으로 설명한다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해변 인접 오름의 바다 경관과 봄 유채꽃·가을 코스모스 조합이 공식적으로 소개된다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "함덕리 주민이 조성한 산책로와 제주어 의미를 병기한 안내 표지가 공식 설명에 나온다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주관광공사가 관광 명소로 소개하지만 제주 전역을 대표하는 상징성의 비교 근거는 제한적이다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 설명이 바다·유채꽃·코스모스의 경관을 제시하고 관광지 이미지 갤러리를 제공한다.",
+      "rule_ids": [
+        "REQ-006"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "혼자 걸을 수 있는 둘레길·산책길 중심의 야외 관광지로 판단한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "경관 감상과 산책이 가능한 장소라는 공식 안내를 바탕으로 동반 방문 적합도를 판단한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "여러 사람이 함께 걸으며 경관을 감상할 수 있는 공개 산책 동선으로 판단한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "야외 산책 경험은 가능하나 어린이 안전·편의시설과 전체 보행 난이도는 확인되지 않았다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정자와 산책로는 확인되지만 경사·휴식 접근성·무장애 정보가 충분하지 않다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "겨울의 실제 개방·보행 상태 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 꽃 개화와 보행 상태의 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "3": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 정보가 봄의 유채꽃 경관을 안내한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "4": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 정보가 봄의 유채꽃 경관을 안내한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "5월의 꽃 상태와 현장 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "6월의 현장 기상·보행 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "7월의 현장 기상·보행 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "8월의 현장 기상·보행 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "9월의 코스모스 개화와 현장 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    },
+    "10": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 정보가 가을의 코스모스 경관을 안내한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "11": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 정보가 11월 중순까지 코스모스를 볼 수 있다고 안내한다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": [
+        "visitjeju-seoubong"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "12월의 현장 기상·보행 조건에 대한 직접 정보가 부족해 중립값으로 둔다.",
+      "rule_ids": [
+        "REQ-007"
+      ],
+      "source_ids": []
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_conditions",
+      "applies_to": "all_visitors",
+      "condition": "오름은 사유지·출입 제한 또는 통제가 있을 수 있으므로 방문 전 제주관광정보센터 등을 통해 확인이 필요하다.",
+      "status": "caution",
+      "action": "당일 출입 가능 여부를 확인한다.",
+      "source_ids": [
+        "visitjeju-seoubong"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    },
+    {
+      "kind": "mobility_accessibility",
+      "applies_to": "reduced_mobility",
+      "condition": "공식 출처에서 경사·계단·무장애 동선 정보가 확인되지 않았다.",
+      "status": "unknown",
+      "action": "이동 약자는 현장 접근성과 보행 난이도를 사전 확인한다.",
+      "source_ids": [
+        "visitjeju-seoubong"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

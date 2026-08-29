@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1914,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1151810838.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1151810838",
+    "provider": "kakao",
+    "place_id": "1151810838",
+    "name": "댕냥별",
+    "url": "https://place.map.kakao.com/1151810838",
+    "average_rating_5": "3.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "87",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.30.",
+      "content": "댕냥별에서 고양이 인형과 강아지 인형을 구출할때 정말 진지 했고 정말 스릴감 100%! 구츨한 강아지 꾸밀때 정말 재미있었어요! 추천합니다!",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2025.08.07.",
+      "content": ".......... 정말 죄송한데 이게 뭐하는건지.... 컨셉은 좋았지만 체험이 너무 부실하네요....... 80~90년대 아이들 상대라면 좋을거같지만 요즘 아이들 수준이 많이 올라서 많이 분발하셔야할거같네요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "915096634",
+  "canonical_id": "kakao:915096634",
+  "name": "가시리숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력의 유일한 방문 경험은 블라제리조트 입구 인근의 웨딩 사진 촬영 지점을 가시리 숲길로 부른다. 이 표식이 공개 숲길인지, 리조트 또는 사유지의 부속 포토존인지와 공식 접근 규칙을 확인할 근거가 없어 독립 방문지로 확정할 수 없다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-UNRESOLVED", "ELIG-OFFICIAL-SOURCE-MISSING"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "property_access_and_photo_activity_unconfirmed",
+      "applies_to": "all_visitors",
+      "condition": "입력은 리조트 입구 인근의 웨딩 사진 촬영 지점을 언급하지만 공개 출입, 주차, 보행 구간과 촬영 허용 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 해당 리조트 또는 현장 최신 안내로 공개 접근과 촬영 허용·주차 조건을 확인한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 근거만으로는 가시리숲길이 독립 공공 숲길인지 또는 블라제리조트 인근 부속 포토존인지 식별할 수 없다.",
+    "facts": [{"text": "입력 방문 경험은 블라제리조트 입구의 가시리 숲길을 웨딩 사진 촬영 포토존으로 언급한다.", "source_id": "S1"}],
+    "unknowns": ["정확한 장소 경계와 관리 주체", "공개 출입·주차 조건", "촬영 허용 및 현장 안전 조건"],
+    "sources": [{"id": "S1", "publisher": "Kakao Map public reviews", "type": "kakao_review_evidence", "url": "https://place.map.kakao.com/915096634", "checked_at": "2026-08-28", "facts": ["입력에 포함된 방문 경험은 블라제리조트 입구 인근 웨딩 사진 포토존을 언급한다."]}]
+  },
+  "generated_at": "2026-08-28"
+}

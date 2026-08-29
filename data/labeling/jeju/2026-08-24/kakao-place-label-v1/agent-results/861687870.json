@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:861687870",
+  "place_id": "861687870",
+  "name": "송당곶자왈",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 VisitJeju가 송당곶자왈을 구좌~성산 곶자왈 지대에 속한 독립 관광지로 소개하고 위치·주차 단서를 제공한다. 상위 시설의 부속 지점 또는 기존 장소와의 중복이라는 근거는 확인하지 못했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "송당곶자왈은 제주관광공사가 소개하는 구좌~성산 곶자왈 지대의 짧은 숲 방문지다.",
+    "typical_visit": "메이즈랜드 방면 도로의 표지 인근에서 주차한 뒤 비교적 짧은 곶자왈 숲을 감상하는 야외 방문 경험이다.",
+    "experience_scope": "공식 소개는 숲의 위치·특성과 짧은 방문 규모를 뒷받침한다. 최신 공식 탐방로 상태, 정확한 입구, 무장애 설비와 기상 통제는 확인하지 못했으며, 입력된 익명화 공개 후기는 돌길·입구 혼동 가능성을 보조적으로 언급한다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 VisitJeju는 송당곶자왈을 구좌~성산 곶자왈 지대에 포함되는 숲으로 소개하며, 다른 곶자왈보다 거리는 짧지만 곶자왈의 특성을 갖춘 숲이라고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"VisitJeju는 메이즈랜드를 검색해 가다가 송당곶자왈 표지 인근에 주차하라고 안내한다.","source_ids":["S1"]},
+      {"id":"F3","text":"입력으로 제공된 익명화 Kakao 공개 후기는 짧은 코스, 돌길, 입구 혼동 가능성 및 여름 풍혈 체감을 언급한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["현재 공식 개방 시간, 허용 탐방 동선과 정확한 주차·입구 위치를 확인하지 못했다.","노면·경사·난간·화장실·무장애 시설과 우천·강풍 시 안전 통제를 확인하지 못했다.","계절별 폐쇄·훼손·정비 상태를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 VisitJeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000013092","checked_at":"2026-08-24T12:00:00+09:00","facts":["송당곶자왈은 구좌~성산 곶자왈 지대에 포함된다.","다른 곶자왈보다 거리가 짧은 숲으로 소개된다.","메이즈랜드 방면 도로의 표지 인근 주차를 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기 요약","type":"public_review_summary","url":"https://place.map.kakao.com/861687870","checked_at":"2026-08-24T12:00:00+09:00","facts":["입력 제공 후기에는 짧은 코스와 돌길, 입구 혼동 가능성에 관한 방문 경험이 있다.","입력 제공 후기에는 여름 풍혈 체감에 관한 서술이 있다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 소개가 곶자왈 숲의 자연 탐방을 확인하지만 산·오름 지형이 핵심이라는 직접 설명은 없어 중간값으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소개에서 바다·해안·해양 활동이 핵심이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"짧은 숲 탐방에는 보행이 수반되나 공식 난이도·코스 정보가 없어 중간값으로만 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연이 핵심이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설이나 운영 경험의 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 방문 목적인 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능을 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거를 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개가 곶자왈 숲이라는 야외 자연 방문지를 직접 설명하므로 대표 경험의 실내 비중은 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 숲 보행이고 입력 후기에서 돌길이 언급돼 날씨와 노면의 영향을 비교적 받을 것으로 추론하나 공식 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개는 짧은 숲에서 지친 일상에 휴식이 필요할 때 방문할 곳으로 직접 제안한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 소개는 거리가 짧다고 하나, 입력 후기에는 돌길이 언급돼 보행 부담을 확정할 수 없어 중간값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 소개와 입력 후기는 짧은 방문 규모를 시사하지만, 공식 코스·소요 시간·운영 시간 정보가 없어 중간값으로만 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개가 곶자왈의 진면목을 갖춘 숲으로 설명해 숲 경관 감상이 방문 가치임을 직접 뒷받침한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"구좌~성산 곶자왈 지대의 짧은 숲이라는 특성은 확인되지만 다른 곶자왈과 구별되는 고유 구성의 공식 상세 근거가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사가 제주 4대 곶자왈 구분과 구좌~성산 곶자왈 지대 안의 송당곶자왈을 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 소개 대상이지만 제주 또는 지역을 대표하는 상징 명소라는 지정·선정 근거는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되는 공식 근거가 부족해 중립값으로 기록한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"짧은 숲 방문은 가능하나 공식 동선·안전 정보가 없고 입력 후기의 입구 혼동·돌길 언급이 있어 중간값으로만 둔다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 및 안전 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 적합성을 판단할 시설·안전 정보가 부족하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기의 돌길과 공식 안전·무장애 정보 부재 때문에 어린이 동반 적합성을 보수적으로 낮게 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"돌길 언급과 경사·난간·휴게시설 미확인 때문에 보행 부담 가능성을 보수적으로 반영한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문의 겨울 적합도에 일반 기후 휴리스틱만 적용했으며 현장 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문의 겨울 적합도에 일반 기후 휴리스틱만 적용했으며 현장 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수 영향을 받을 수 있으나 최신 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문은 여름 더위와 강수 영향을 받을 수 있으나 최신 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲 방문의 겨울 적합도에 일반 기후 휴리스틱만 적용했으며 현장 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"현재 공식 개방 시간, 허용 동선, 정확한 입구·주차 위치, 노면·경사·난간·무장애 시설 및 기상 시 안전 통제는 확인하지 못했다. 입력된 익명화 공개 후기에는 입구 혼동과 돌길에 관한 서술이 있다.","status":"needs_review","action":"방문 전 제주관광공사 또는 현장 최신 안내로 출입 가능 여부, 허용 동선, 입구·주차 위치와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24T12:00:00+09:00"
+}

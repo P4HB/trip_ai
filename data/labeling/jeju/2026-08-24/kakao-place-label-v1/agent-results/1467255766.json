@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1467255766",
+  "place_id": "1467255766",
+  "name": "백응선선생묘소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘백응선선생묘소’라는 명칭과 place_id만 제공한다. 공개 자료에서 백응선은 제주 조천만세운동 관련 독립운동가 명단에 포함되지만, 그 자료는 이 Kakao 레코드가 가리키는 묘소의 위치·관리 주체·공개 답사 지점 여부를 확인하지 않는다. 동명·동일성 및 독립 여행 방문지 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 레코드의 확인 가능한 정보는 ‘백응선선생묘소’라는 명칭과 Kakao place_id뿐이다. 공개 근대사 사적지 목록에는 백응선이 조천만세운동 관련 인물로 열거되나, 목록은 해당 묘소와 이 레코드의 동일성을 확인하지 않는다.",
+    "typical_visit": "묘소라는 명칭으로 보아 추모·역사 관찰 장소일 가능성은 있으나, 정확한 위치·공개 출입·답사 안내와 현장 경험을 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영·출입 정보 또는 공개 후기 근거가 없다. 평점과 후기 수는 라벨 근거로 사용하지 않았다. 장소 신원이 확정되지 않아 추천용 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {"id": "F1", "text": "입력 Kakao 레코드는 장소명을 ‘백응선선생묘소’로 제공하지만 주소·좌표·업종·운영 정보는 제공하지 않는다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 근대사 사적지 목록은 제주 조천만세운동 관련 인물의 생가 목록에 백응선을 열거한다. 이 목록은 ‘백응선선생묘소’의 위치·출입·답사 지점 여부를 명시하지 않는다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표와 백응선 독립운동가 관련 묘소와의 동일성을 확인하지 못했다.",
+      "묘소의 소유·관리 주체, 최신 공개 출입 허용 범위, 사유지 여부와 답사 방문지 범위를 확인하지 못했다.",
+      "접근로·노면·주차·화장실·무장애 시설, 안전 및 악천후 통제 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/1467255766", "checked_at": "2026-08-25", "facts": ["입력 패킷의 Kakao 장소명은 ‘백응선선생묘소’다.", "입력 패킷에는 주소·좌표·업종·운영 정보와 공개 방문 후기 근거가 없다.", "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S2", "publisher": "앨범쟁이(AlbumMania) 근대사 사적지 탐방", "type": "public_history_listing", "url": "https://www.dmook.co.kr/gallery/albumlist.asp?col=10&page=15&row=10&vmode=contents", "checked_at": "2026-08-25", "facts": ["제주시 조천읍 조천만세동산 관련 목록은 조천만세운동 14명의 생가 인물 중 하나로 백응선을 열거한다.", "해당 목록은 백응선선생묘소의 주소·좌표·출입 조건 또는 Kakao place_id와의 연결을 제공하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {"kind": "identity_and_access_unverified", "applies_to": "recommendation_candidate", "condition": "Kakao 레코드에 주소·좌표·관리 정보가 없고, 공개 자료로도 백응선 독립운동가 관련 묘소와의 동일성 및 공개 출입 범위를 확인할 수 없음", "status": "needs_review", "action": "공식 보훈·지자체·문화유산 또는 현장 관리 주체의 주소·묘소 안내로 신원과 공개 출입 허용 범위를 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

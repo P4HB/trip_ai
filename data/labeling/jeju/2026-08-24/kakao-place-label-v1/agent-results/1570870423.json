@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1570870423",
+  "place_id": "1570870423",
+  "name": "신촌환해장성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "제주개발공사 웹진은 신촌리 서원동 바다 앞의 신촌리 환해장성을 직접 소개하며, 고려·조선시대 바닷가 침입 방어를 위해 쌓은 돌성이라고 설명한다. 입력의 고유 명칭과 일치하는 독립 역사 경관 지점으로 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "신촌환해장성은 제주시 조천읍 신촌리 해안의 돌성 유적으로, 바닷가 침입 방어를 위해 고려·조선시대에 축조된 환해장성의 신촌리 구간이다.",
+    "typical_visit": "해안가에 남은 돌성의 구조와 어촌 해안 경관, 제주 돌문화·방어 역사를 짧게 살피는 야외 방문 경험이다.",
+    "experience_scope": "공개 자료는 해안의 역사 돌성이라는 정체성과 배경을 확인한다. 현재 개방 상태, 정확한 보행 동선, 주차·화장실·무장애 시설 및 계절별 현장 안전은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주개발공사 웹진은 신촌리 서원동 바다 앞에 신촌리 환해장성이 있다고 소개한다.","source_ids":["S1"]},
+      {"id":"F2","text":"같은 자료는 환해장성을 고려와 조선시대에 바닷가 접안 가능 지점의 침입을 방비하려 돌로 쌓은 성으로 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"디지털제주문화대전은 환해장성을 제주 해안에 축조된 고려 후기 석성으로 설명하며, 제주 해안선 방어를 위한 석성이라는 일반 배경을 제시한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["현재 출입 허용 범위와 공식 관람 동선을 확인하지 못했다.","주차, 화장실, 쉼터, 경사·계단·노면과 무장애 접근성 정보를 확인하지 못했다.","계절·기상별 현장 안전과 관리 상태를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주개발공사","type":"public_organization_webzine","url":"https://webzine.jpdc.co.kr/html/vol13/sub02_01.php","checked_at":"2026-08-25T00:00:00+09:00","facts":["신촌리 서원동 바다 앞에 신촌리 환해장성이 있다고 소개한다.","환해장성은 고려·조선시대 바닷가 접안 가능 지점의 침입 방어를 위해 돌로 쌓은 성이라고 설명한다."]},
+      {"id":"S2","publisher":"디지털제주문화대전","type":"public_cultural_encyclopedia","url":"https://jeju.grandculture.net/jeju/dir/GC00702683?category=%ED%91%9C%EC%A0%9C%EC%96%B4&depth=3&name=%ED%95%98&search=%ED%95%98&type=titleKor","checked_at":"2026-08-25T00:00:00+09:00","facts":["환해장성은 제주특별자치도 제주시 해안에 축조된 고려 후기 석성으로 설명된다."]},
+      {"id":"S3","publisher":"Kakao Map 공개 장소 메타데이터","type":"public_place_metadata","url":"https://place.map.kakao.com/1570870423","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷은 place_id 1570870423과 신촌환해장성이라는 장소명을 제공한다.","평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료가 신촌리 서원동 바다 앞 해안의 방어 돌성으로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험 운영은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"고려·조선시대 해안 침입 방어를 위해 쌓은 돌성이라는 역사적 성격이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설·경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"researched_inference","rationale":"해안가 돌성 유적이라는 직접 확인된 성격상 대표 경험은 실내보다 야외에 놓인 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"researched_inference","rationale":"해안가 야외 돌성 관람이므로 바람·비 등 날씨가 대표 경험에 영향을 줄 가능성이 높다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"쉼터·혼잡도·소음과 체류 환경 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·경사·계단·노면 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 관람 소요시간·개방시간·동선 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 위치는 확인되지만 경관 감상 자체가 핵심이라는 직접 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 해안 방어를 위해 축조된 돌성이라는 고유한 역사·구성의 경험이 직접 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"신촌리 해안의 제주 돌문화 및 지역 방어 역사와 직접 연결된 유적이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 문화 백과와 지역 공공 웹진이 환해장성을 제주 해안 방어 석성·지역 돌문화 유적으로 직접 다룬다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영이 대표 방문 가치라는 근거는 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"안전·동선·접근 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 적합성을 판단할 시설·안전 정보가 부족하다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 접근로·난간·안전시설 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 개방·현장 상태 정보가 없어 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"현재 공식 개방 여부, 접근로, 계단·노면, 주차·화장실 및 무장애 시설은 확인하지 못했다.","status":"needs_review","action":"방문 또는 추천 전에 관할 지자체·현장 최신 안내로 출입 가능 여부와 접근·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

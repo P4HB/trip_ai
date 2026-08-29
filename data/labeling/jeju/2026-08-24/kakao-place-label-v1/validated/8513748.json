@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8513748",
+  "place_id": "8513748",
+  "name": "제주도관광협회 종합안내센터 제주국제공항 국내선",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "제주도관광협회는 제주국제공항 종합관광안내소를 설치·운영해 왔음을 공개하고, 제주관광공사 Visit Jeju는 제주국제공항 1층의 제주공항안내소를 관광 정보와 지도 배포처로 안내한다. 입력 명칭의 국내선 안내센터는 공항 내 관광안내 기능을 제공하는 부속 안내시설로 확인되며, 독립 여행 방문지로서의 완전 적합도 벡터 대상이 아니다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주도관광협회 종합안내센터 제주국제공항 국내선은 제주국제공항 내 제주 여행 정보를 제공하는 관광안내 시설이다.",
+    "typical_visit": "제주 도착·출발 시 공항 안에서 관광 정보와 여행 지도를 받는 보조 안내 이용이다.",
+    "experience_scope": "공항 이용에 종속된 관광안내 서비스 시설이며, 독립 관광·체험 목적지로 확인되지 않는다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주도관광협회 연혁은 제주국제공항 종합관광안내소를 1985년 8월 29일 설치했다고 밝힌다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju의 관광지도 배포 안내는 제주국제공항 1층 제주공항안내소를 관광 안내 지도 배포처로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "국내선 안내센터의 최신 정확한 위치, 운영시간, 제공 언어와 서비스 범위는 이번 판정에서 확인하지 못했다.",
+      "안내소는 공항 부속시설이므로 독립 관광 방문지에 필요한 관람·체험·접근성 적합도는 적용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도관광협회",
+        "type": "official_organization_history",
+        "url": "https://visitjeju.or.kr/info/info/history.htm",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "협회 연혁은 제주국제공항 종합관광안내소 설치를 1985년 8월 29일로 기록한다.",
+          "제주도관광협회가 관광안내 관련 사업을 수행하는 기관임을 확인할 수 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/u/2dp",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "관광지도 오프라인 배포처 목록은 제주국제공항 1층의 제주공항안내소를 안내한다.",
+          "해당 안내소의 주소는 제주특별자치도 제주시 공항로 2 제주국제공항으로 제시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_airport_information_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주국제공항 내 관광안내 기능을 제공하는 공항 부속시설로 확인되어 독립 여행 방문지 추천 후보 범위에 해당하지 않음",
+      "status": "confirmed",
+      "action": "독립 여행지 추천 벡터에서는 제외하고, 필요 시 공항 도착·출발 안내 정보로만 별도 취급한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

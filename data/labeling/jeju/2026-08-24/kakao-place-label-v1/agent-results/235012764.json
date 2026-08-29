@@ -1,0 +1,57 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "235012764",
+  "canonical_id": "kakao:235012764",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "큰두레왓은 한라산 북사면 해발 약 1,630m의 고원·오름 지형으로 확인되지만, 독립적으로 관리·안내되는 방문 시설 또는 공식 탐방지 정보는 확인하지 못했다. 검색된 산행 기록도 큰두레왓으로의 접근이 초행자에게 고난도이며 지도 점선길과 실제 길이 맞지 않을 수 있다고 서술한다. 따라서 현 단계의 일반 여행지 추천 후보로 완전 수치 벡터를 부여하지 않고 범위 밖으로 보류한다.",
+    "source_ids": ["source_jejuazbang", "source_halla_article", "source_hiking_record"],
+    "rule_ids": ["eligibility.out_of_scope.unmanaged_geographic_feature", "policy.no_forced_vector"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "access_verification_required",
+      "rationale": "공식 탐방로·출입 가능 여부 및 안전한 독립 접근 경로를 이 결과에서 확인하지 못했다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_jejuazbang",
+        "url": "https://jejuazbang.tistory.com/3182",
+        "publisher": "제주아즈방",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "큰두레왓은 제주시 오라동 산107번지의 해발 1,628.4m 지형으로 소개된다.",
+          "관음사 코스의 등반로가 이 일대를 지난다고 서술한다."
+        ]
+      },
+      {
+        "source_id": "source_halla_article",
+        "url": "https://www.ihalla.com/article.php?aid=1754935200775289370",
+        "publisher": "한라일보",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "큰두레왓은 한라산 북사면 표고 약 1,630m의 위가 평평한 고원성 지형으로 설명된다."
+        ]
+      },
+      {
+        "source_id": "source_hiking_record",
+        "url": "https://lieuth.tistory.com/7091454",
+        "publisher": "숲길로",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "산행 기록은 초행자가 큰두레왓까지 길을 잃지 않고 찾기 어렵고 지도 점선길이 실제와 맞지 않을 수 있다고 적었다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high"
+}

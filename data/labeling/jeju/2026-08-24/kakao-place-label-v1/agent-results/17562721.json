@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17562721",
+  "place_id": "17562721",
+  "name": "제주돌문화공원 역사속의돌문화",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 표식의 명칭은 ‘제주돌문화공원 역사속의돌문화’로 상위 장소 제주돌문화공원을 명시한다. 제주관광공사 Visit Jeju는 제주돌문화공원을 박물관·생태공원으로 안내하고, 공원 2코스에서 선사시대부터 근현대까지의 돌문화를 만날 수 있다고 설명한다. 따라서 이 표식은 공원 전체와 별도로 운영되는 독립 방문지가 아니라 공원 관람 동선 안의 역사·돌문화 전시 세부 항목으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "‘제주돌문화공원 역사속의돌문화’는 제주돌문화공원 내부의 역사·돌문화 전시를 가리키는 Kakao 지도 세부 표식으로 확인된다.",
+    "typical_visit": "제주돌문화공원 관람 중 제주 돌문화의 역사 전시를 보는 세부 경험으로 파악되며, 독립 관람지로 확인하지 않는다.",
+    "experience_scope": "공식 관광 안내는 제주돌문화공원의 박물관·생태공원 성격과 공원 내 돌문화 전시를 설명한다. 이 표식만의 별도 입장, 독립 운영, 관람 동선 또는 편의·접근 조건은 확인하지 못했으므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 입력 장소의 명칭은 ‘제주돌문화공원 역사속의돌문화’이며, 명칭 자체에 제주돌문화공원이 포함돼 있다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원을 제주 돌문화를 보여 주는 박물관이자 생태공원으로 소개하며, 공원 2코스에서 선사시대부터 근현대까지의 돌문화를 만날 수 있다고 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 세부 표식 ‘역사속의돌문화’의 공식 전시실명, 정확한 위치 및 독립 관람 범위는 확인하지 못했다.",
+      "이 세부 항목만의 별도 입장·운영·예약 여부와 최신 전시 상태는 확인하지 못했다.",
+      "현재 접근 동선, 무장애 시설, 휴관·안전 안내는 제주돌문화공원 운영 주체의 최신 공지로 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17562721",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 Kakao 장소명은 ‘제주돌문화공원 역사속의돌문화’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원은 제주 돌문화를 보여 주는 박물관이자 생태공원으로 소개된다.",
+          "공원 2코스 돌문화야외전시장은 제주돌문화전시관과 선사시대부터 근현대까지의 돌문화를 만날 수 있는 구성을 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_exhibit",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘역사속의돌문화’ 표식은 제주돌문화공원 관람 경험에 포함되는 역사·돌문화 전시 세부 항목이며, 독립 장소로서의 운영·관람 범위가 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고, 필요 시 상위 장소 제주돌문화공원의 전시 구성으로만 함께 안내한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25"
+}

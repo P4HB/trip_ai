@@ -1,0 +1,105 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17577094",
+  "place_id": "17577094",
+  "name": "한라수목원 화목원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘한라수목원 화목원’과 공개 관광 안내의 ‘사계절 꽃이 피어있는 화목원’이 일치한다. 해당 안내는 화목원을 한라수목원의 10개 식물원 가운데 하나로 설명하므로, 한라수목원과 분리된 독립 여행지가 아니라 수목원 안의 전시 구역으로 판정한다.",
+    "duplicate_of": "kakao:8641180",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-FACILITY"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "한라수목원 화목원은 제주시 수목원길 72 한라수목원 안의 화목원 전시 구역으로 확인된다.",
+    "typical_visit": "한라수목원을 방문하며 사계절 꽃이 피는 화목원을 포함한 여러 식물원을 산책·관람하는 경험의 일부다.",
+    "experience_scope": "공개 관광 안내는 화목원을 한라수목원의 구성 식물원으로 소개한다. 화목원만을 별도 운영·입장·예약하는 독립 시설이라는 근거는 확인되지 않아 추천용 독립 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 장소명을 ‘한라수목원 화목원’으로, 주소를 제주특별자치도 제주시 수목원길 72로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 한라수목원에 상록수가 울창한 교목원, 사계절 꽃이 피는 화목원, 죽림원 등 10개의 식물원이 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 가리키는 화목원의 정확한 현장 범위와 별도 안내 표지 위치는 확인하지 못했다.",
+      "화목원 단독의 최신 개방 구간, 계절별 식재 상태, 접근성 및 우천·강풍 시 관람 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17577094",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 한라수목원 화목원이다.",
+          "입력 수집 레코드는 주소를 제주특별자치도 제주시 수목원길 72로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000016149",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "한라수목원은 도심 속 공원으로 소개된다.",
+          "한라수목원에는 사계절 꽃이 피는 화목원을 포함한 10개의 식물원이 있다고 안내한다.",
+          "여러 식물원과 편의 시설을 포함한 한라수목원 전체가 산책과 휴식에 좋은 곳으로 소개된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "화목원은 한라수목원의 구성 전시원으로 확인되어 단독 추천 후보로 분리하지 않는다.",
+      "status": "confirmed",
+      "action": "방문 추천이 필요하면 한라수목원 대표 장소의 최신 개방·계절 전시·접근성 정보를 별도로 확인해 사용한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ELIG-SUBORDINATE-FACILITY"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

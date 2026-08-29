@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 427,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8194588.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8194588",
+    "provider": "kakao",
+    "place_id": "8194588",
+    "name": "김녕굴",
+    "url": "https://place.map.kakao.com/8194588",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "7",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.10.16.",
+      "content": "평소에는 입구를 막아둡니다. 일년에 한번 특정기간에만 전문가를 동행하여 김녕사굴에 들어가볼수있는 특별탐사대 프로그램이 운영중입니다 관심있으시면 신청해보세요",
+      "tags": ""
+    },
+    {
+      "date": "2023.05.04.",
+      "content": "보호중이라 직접 들어가진 못하지만 김녕사굴에 얽힌 전설등이 적힌 안내판도 근처에 있고, 남들이 안가는 조용하고 이야깃거리가 있는걸 찾아 보고 싶은 사람은 한번쯤 근처 코스와 엮어서 지나는길에 들려볼만함",
+      "tags": ""
+    },
+    {
+      "date": "2025.07.06.",
+      "content": "1박2일 종민 세호 선호가 불끄고 따라하기 액신 게임 한곳 ~",
+      "tags": ""
+    },
+    {
+      "date": "2023.03.05.",
+      "content": "김녕사굴과 판관서련의 제주설화",
+      "tags": ""
+    },
+    {
+      "date": "2022.04.29.",
+      "content": "아직 못들어가요. 안전상 문제로 폐쇄래요. 기대했는데",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

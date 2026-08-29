@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "613867384",
+  "canonical_id": "kakao:613867384",
+  "name": "한라산국립공원 _성판악3",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘한라산국립공원 _성판악3’이라는 비표준 표기와 place_id만 제공하며 주소·좌표·업종·공개 방문 후기 근거가 없다. 제주관광공사는 한라산국립공원의 공식 성판악 탐방로를 안내하지만, 이 레코드의 접미사 ‘_성판악3’이 그 탐방로·탐방안내소 또는 다른 내부 표식을 가리킨다는 공개 식별 근거는 확인하지 못했다. 따라서 유사 명칭만으로 기존 성판악 장소와 병합하거나 독립 방문지로 확정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 레코드는 한라산국립공원과 성판악을 결합한 비표준 명칭만 제공한다. 공식 관광 안내에는 성판악코스가 한라산국립공원의 공식 탐방로로 확인되지만, Kakao place_id 613867384와 그 공식 탐방로의 동일성은 확인되지 않았다.",
+    "typical_visit": "공식 자료상 성판악코스는 한라산 정상 방향의 야외 탐방로다. 다만 이 레코드가 그 코스, 탐방안내소 또는 별도의 내부 표식인지 미확정이므로 이 레코드의 방문 경험으로 귀속하지 않는다.",
+    "experience_scope": "입력에는 정확한 위치·업종·운영 정보·공개 후기 근거가 없으며, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다. 신원이 확인될 때까지 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 한라산국립공원의 공식 탐방로에 성판악코스를 포함하고, 성판악코스를 해발 750m 성판악 입구에서 백록담 동릉으로 이어지는 9.6km 코스로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 place_id 613867384 및 ‘한라산국립공원 _성판악3’이라는 장소명만 제공하며 주소, 좌표, 업종 및 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 613867384의 정확한 위치와 성판악 탐방로·성판악탐방안내소·다른 내부 표식 중 대응 대상",
+      "독립 방문지 여부 및 기존 성판악 관련 Kakao 장소와의 중복 여부",
+      "운영·접근성·안전·당일 탐방 통제 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500685",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "한라산국립공원의 공식 탐방로는 성판악을 포함한 7개 코스다.",
+          "성판악코스는 해발 750m 성판악 입구에서 속밭·사라오름입구·진달래밭대피소를 거쳐 백록담 동릉으로 이어지는 9.6km 코스로 안내된다.",
+          "성판악코스의 예약 구간과 탐방 가능 여부는 별도 안내 대상이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/613867384",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘한라산국립공원 _성판악3’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "비표준 Kakao 장소명 ‘한라산국립공원 _성판악3’과 공식 성판악 탐방로·안내소 사이의 정확한 대응 관계 및 독립 방문지 범위를 확인하지 못함",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식 지도에서 주소·좌표·시설 유형을 확인해 성판악 탐방로, 탐방안내소 또는 다른 기존 장소와의 관계를 먼저 판정한다. 확인 전에는 추천용 41축 벡터를 생성하거나 기존 장소와 병합하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

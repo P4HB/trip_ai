@@ -1,0 +1,583 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "598536263",
+  "canonical_id": "kakao:598536263",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.5,
+    "rationale": "장소명과 두 기록은 가시리 4·3 희생자를 추모하는 독립 위령비를 일관되게 가리킨다. 다만 공식 안내와 시설·접근 정보는 입력에 없다.",
+    "source_ids": [
+      "kakao-place-metadata",
+      "kakao-review-2026-08-19",
+      "kakao-review-2026-04-11"
+    ],
+    "rule_ids": [
+      "eligibility.independent_place",
+      "evidence.kakao_supplementary"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해양 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "활동 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "장소명과 희생자 추모·미기재 희생자 언급으로 역사 기억과 추모가 핵심 경험이다.",
+      "source_ids": [
+        "kakao-place-metadata",
+        "kakao-review-2026-04-11"
+      ],
+      "rule_ids": [
+        "evidence.review-stated-memorial"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 이용 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "축제 경험 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "산책길에 잠시 들렀다는 기록으로 대표 경험은 실외일 가능성이 높다.",
+      "source_ids": [
+        "kakao-review-2026-04-11"
+      ],
+      "rule_ids": [
+        "inference.outdoor-memorial"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "기상 영향 정보를 확인할 수 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식 체류 정도 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "접근성·보행 정보가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "체류 시간 정보가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경관 감상 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "다른 추모 장소와의 비교 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "가시리 4·3 희생자 추모라는 장소명과 기록으로 지역 역사 기억과의 연결이 강하다.",
+      "source_ids": [
+        "kakao-place-metadata",
+        "kakao-review-2026-04-11"
+      ],
+      "rule_ids": [
+        "evidence.review-stated-memorial"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표성의 비교 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 가치 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "단독 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "부모 동반 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "2026년 4월 기록은 있으나 월 전체 방문 조건은 미확인이다.",
+      "source_ids": [
+        "kakao-review-2026-04-11"
+      ],
+      "rule_ids": [
+        "evidence.review-stated-visit-month"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "2026년 8월 기록은 있으나 월 전체 방문 조건은 미확인이다.",
+      "source_ids": [
+        "kakao-review-2026-08-19"
+      ],
+      "rule_ids": [
+        "evidence.review-stated-visit-month"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 방문 조건 근거가 없다.",
+      "source_ids": [
+        "kakao-place-metadata"
+      ],
+      "rule_ids": [
+        "fallback.insufficient-evidence"
+      ]
+    }
+  },
+  "hard_constraints": [
+    "추모 장소이므로 희생자와 유족에 대한 존중을 전제로 조용한 관람이 필요하다. 개방 시간·주차·시설 정보는 입력에 없어 방문 전 확인해야 한다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/598536263",
+        "checked_at": null,
+        "facts": [
+          "장소명: 가시리 4.3희생자 위령비"
+        ]
+      },
+      {
+        "source_id": "kakao-review-2026-04-11",
+        "publisher": "Kakao 공개 방문 기록",
+        "url": "https://place.map.kakao.com/598536263",
+        "checked_at": "2026-04-11",
+        "facts": [
+          "산책 중 추모를 위해 들렀다는 기록"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식·공공 상세 출처가 입력에 없음",
+      "운영·접근 조건을 확인할 근거가 없음"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

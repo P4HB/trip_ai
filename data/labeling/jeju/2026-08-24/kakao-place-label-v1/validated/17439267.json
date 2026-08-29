@@ -1,0 +1,118 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17439267",
+  "place_id": "17439267",
+  "name": "청도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소의 좌표·주소 표시는 제주시 추자면 신양리이며, 환경부 영산강유역환경청의 특정도서 목록은 같은 위치의 청도를 특정도서 제133호로 확인한다. 공공 목록은 지형·경관 및 생물종 보전을 지정 사유로 제시하고, 공개 보도는 이 섬을 무인도로 설명한다. 일반 여행자가 독립적으로 이용할 수 있는 관광 방문지의 상시 접근·운영 조건은 확인되지 않았으므로 추천용 방문 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소 ‘청도’는 제주특별자치도 제주시 추자면 신양리 산150에 있는 특정도서 제133호 청도(무인도)를 가리킨다.",
+    "typical_visit": "환경부 공개 목록에서 청도는 역빈·파식대·노치·해식동과 생물종을 보전 사유로 지정된 특정도서로 확인된다. 일반 관광객을 위한 정기 여객·상륙·관람 운영은 확인되지 않았다.",
+    "experience_scope": "신원과 보호대상 섬이라는 성격은 확인됐지만, 일반 여행자의 합법적·안전한 상륙과 독립 관광 방문을 뒷받침하는 공식 운영 안내를 확인하지 못했다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map의 공개 장소 페이지는 입력 장소명을 ‘청도’, 위치를 제주특별자치도 제주시 추자면 신양리로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "영산강유역환경청 특정도서 목록은 청도를 특정도서 제133호로, 위치를 제주시 추자면 신양리 산150으로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "영산강유역환경청 목록은 청도의 지정 사유를 역빈·파식대·노치·해식동 발달에 따른 지형·경관 우수성과 다양한 생물종 서식으로 제시하며, 공개 보도는 청도를 추자도 인근 무인도로 설명한다.",
+        "source_ids": [
+          "S2",
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 상륙 허가·금지 여부와 적용되는 보전 규정은 확인하지 못했다.",
+      "정기 교통편, 공식 탐방 동선, 안전시설, 안내 인력, 화장실 및 비상 대응 체계는 확인하지 못했다.",
+      "기상·해상 상태에 따른 접근 가능 여부와 현장 통제는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17439267",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 장소 페이지의 명칭은 ‘청도’다.",
+          "공개 페이지의 위치 표시는 제주특별자치도 제주시 추자면 신양리다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "환경부 영산강유역환경청",
+        "type": "government_information",
+        "url": "https://www.mcee.go.kr/ysg/web/board/list.do?boardCategoryId=&boardMasterId=801&menuId=10149",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "청도를 특정도서 제133호로 제시한다.",
+          "위치를 제주특별자치도 제주시 추자면 신양리 산150, 지정일을 2003년 7월 18일로 제시한다.",
+          "역빈·파식대·노치·해식동 발달과 다양한 생물종 서식을 지정 사유로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "SBS 뉴스",
+        "type": "reputable_news",
+        "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007032698",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "청도를 추자도에서 배편으로 약 10분 거리의 무인도로 설명한다.",
+          "청도가 지형·경관적 가치로 특정도서로 지정됐다고 보도한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "protected_uninhabited_island_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "청도는 특정도서 제133호로 확인되고 무인도라는 공개 보도가 있으나, 일반 여행자의 상륙·탐방 허가, 교통편 및 현장 안전·보전 운영은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 적합도 벡터를 생성하지 않는다. 향후 관할 환경청 또는 공식 관리 주체가 일반 탐방의 합법적 접근 조건과 안전 운영을 명시하면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

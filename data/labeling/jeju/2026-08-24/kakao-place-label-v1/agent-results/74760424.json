@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "74760424",
+  "canonical_id": "kakao:74760424",
+  "name": "새미숲",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju는 회천동 새미숲(회천동 2390)을 숲길 걷기 방문지로 명시한다. 제주도는 같은 새미숲 일대에 유아동네숲터를 조성했다고 밝혀, 입력명은 독립적으로 찾아갈 수 있는 자연·숲 체험 장소로 확인된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험은 회천동의 숲길과 숲 놀이이며, 산·오름 정상이나 등산이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"공개 안내는 내륙 회천동 새미숲의 숲길·놀이시설을 설명하며 해안·해양 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value":0.75,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju는 숲길 걷기를 소개하고, 제주도 조성 유아동네숲터에는 흔들다리·밧줄암벽·그네·통나무오르기 등 자연체험형 놀이시설이 있다.","source_ids":["S1","S2"],"rule_ids":["THEME-WALKING-DIRECT","THEME-ACTIVITY-FACILITY-DIRECT"]},
+    "theme.culture_history": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"동회천 마을의 역사·석불제와 연관된 숲이라는 지역 보도는 있으나, 문화 해설·유산 관람이 현재 대표 방문 경험인지는 확인되지 않았다.","source_ids":["S3"],"rule_ids":["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"유아 대상 자연 놀이시설은 확인되지만, 놀이공원처럼 유료·상설 테마파크형 방문지라는 근거는 없다.","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"숲길과 자연 놀이·체험 공간으로 확인되며 시장 방문 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"특정 기간의 축제·공연이 이 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value":0.25,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 안내가 숲길 걷기와 숲속 자연체험형 놀이시설을 대표 경험으로 설명한다. 실내 방문 공간은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value":0.75,"confidence":0.6,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 활동이 야외 숲길 보행과 숲속 놀이시설 이용이므로 비·바람·더위·추위에 영향을 받을 가능성이 크다. 악천후 운영 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju는 새소리·물소리·바람소리를 들으며 숲길을 걷고 자연 속에서 재충전하는 경험으로 새미숲을 소개한다.","source_ids":["S1"],"rule_ids":["STYLE-FOREST-REST-DIRECT"]},
+    "style_evidence.physical_ease": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"숲길과 놀이시설은 확인되지만, 경사·노면·계단·무장애 동선과 이용 난이도를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"숲길 단독 체류 시간, 놀이시설 이용 시간 및 단축 동선을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju는 자연의 소리를 들으며 걷는 숲길을 소개하고, 지역 보도는 새미숲을 다양한 식생을 지닌 제주 특유의 난대림으로 설명한다.","source_ids":["S1","S3"],"rule_ids":["STYLE-FOREST-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"난대림 식생과 유아동네숲터라는 특징은 확인되지만 다른 제주 숲과 비교한 고유성의 충분한 근거는 확인되지 않았다.","source_ids":["S2","S3"],"rule_ids":["STYLE-UNIQUE-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value":0.75,"confidence":0.7,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"회천동 새미숲은 제주 특유 난대림 식생과 동회천 마을의 역사·석불제 맥락에 연결되며, 제주도가 지역 유아 숲 체험 공간으로 조성했다.","source_ids":["S2","S3"],"rule_ids":["STYLE-LOCAL-FOREST-DIRECT"]},
+    "style_evidence.landmark_significance": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 회천동을 대표하는 공적 랜드마크·지정 명소라는 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"숲 경관은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 최신 안전·안내·통신 환경을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류 환경과 편의시설 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"친구 그룹의 수용·안전·동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"value":0.75,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"제주도는 새미숲 일대에 유아가 자연 속에서 뛰놀고 생태체험을 하는 유아동네숲터와 8종 자연체험형 놀이시설을 조성했다고 밝혔다.","source_ids":["S2"],"rule_ids":["COMPANION-KIDS-FACILITY-DIRECT"]},
+    "parents":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도, 쉼터, 화장실 및 무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju의 가을 제주 관광 안내가 회천동 새미숲을 숲길 걷기 장소로 직접 제시한다.","source_ids":["S1"],"rule_ids":["MONTH-SEASONAL-TOURISM-DIRECT"]},
+    "10":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju의 가을 제주 관광 안내가 회천동 새미숲을 숲길 걷기 장소로 직접 제시한다.","source_ids":["S1"],"rule_ids":["MONTH-SEASONAL-TOURISM-DIRECT"]},
+    "11":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju의 가을 제주 관광 안내가 회천동 새미숲을 숲길 걷기 장소로 직접 제시한다.","source_ids":["S1"],"rule_ids":["MONTH-SEASONAL-TOURISM-DIRECT"]},
+    "12":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind":"outdoor_forest_access_weather_and_child_supervision_unknown","applies_to":"all_visitors","condition":"새미숲은 야외 숲길·자연 놀이 공간이나, 현재 개방 시간, 현장 주차·화장실, 경사·계단·무장애 접근성, 우천·강풍 시 통제와 유아 놀이시설별 이용·보호자 동반 기준은 확인하지 못했다.","status":"needs_review","action":"방문 전 제주도 산림 관련 최신 안내 또는 현장 안내로 개방 여부, 기상·보행 안전, 시설 상태와 아동 보호자 동반·이용 기준을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status":"matched",
+    "checked_at":"2026-08-25T00:00:00+09:00",
+    "identity_notes":"입력명 새미숲은 Visit Jeju가 제주시 회천동 2390으로 안내한 숲길이며, 제주도의 유아동네숲터 조성 보도와도 회천동 새미숲으로 일치한다.",
+    "facts":[{"text":"Visit Jeju의 가을 관광 안내는 회천동 새미숲(제주시 회천동 2390)을 숲길 걷기 장소로 제시한다.","source_id":"S1"},{"text":"제주도는 회천동 새미숲 일대에 유아동네숲터를 조성했으며 8종 자연체험형 놀이시설과 가족 참여형 운영을 설명했다.","source_id":"S2"},{"text":"지역 보도는 새미숲을 다양한 식생을 지닌 제주 특유 난대림이자 동회천 마을 역사와 연결된 숲으로 소개한다.","source_id":"S3"}],
+    "unknowns":["Kakao 표식의 정확한 진입 지점과 최신 운영·개방 시간","주차·화장실·휴식시설, 노면·경사·계단 및 무장애 접근성","악천후·산불 등 상황의 통제, 유아 놀이시설별 최신 안전·이용 기준"],
+    "sources":[{"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000013149","checked_at":"2026-08-25","facts":["회천동 새미숲을 제주시 회천동 2390으로 표기한다.","가을 야외활동 안내에서 새소리·물소리·바람소리를 들으며 숲길을 걷는 장소로 소개한다."]},{"id":"S2","publisher":"제주특별자치도 (뉴스1 보도)","type":"government_announcement_report","url":"https://v.daum.net/v/285dakVZZn","checked_at":"2026-08-25","facts":["제주도는 회천동 새미숲 일대에 유아동네숲터를 조성했다고 밝혔다.","흔들다리, 밧줄암벽, 밧줄그네, 통나무오르기 등 8종 자연체험형 놀이시설과 보호자 가족 참여형 공간을 설명했다."]},{"id":"S3","publisher":"제주의소리","type":"local_news_feature","url":"https://www.jejusori.net/news/articleView.html?idxno=425610","checked_at":"2026-08-25","facts":["새미숲은 약 1만8815㎡ 규모의 제주 특유 난대림으로 다양한 식생을 지닌다고 보도했다.","동회천 마을의 역사·석불제 맥락 및 새미숲 산책로를 소개했다."]}]
+  },
+  "generated_at":"2026-08-25"
+}

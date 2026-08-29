@@ -1,0 +1,69 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13723871",
+  "canonical_id": "kakao:13723871",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "Kakao 장소명 외도월대와 공개 후기의 월대천 물놀이·산책 경험이 서로 일치한다.",
+    "source_ids": ["SRC-001", "SRC-002"],
+    "rule_ids": ["IDENTITY-KAKAO-PLACE-AND-REVIEW-MATCH"]
+  },
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"id": "SRC-001", "publisher": "Kakao Map", "url": "https://place.map.kakao.com/13723871", "checked_at": "2026-08-25", "facts": ["공개 방문자 후기는 이곳을 아이와 이용한 안전한 물놀이 장소로, 맑은 담수 하천에서 수영·물고기 관찰이 가능한 곳으로 묘사한다.", "후기는 고요하고 아름다운 산책로라는 경험도 언급한다."]},
+      {"id": "SRC-002", "publisher": "제주올레", "url": "https://jejuolle.org/route_info", "checked_at": "2026-08-25", "facts": ["외도월대는 제주올레 17-2코스의 외도월대 구간 명칭으로 공개되어 있다."]},
+      {"id": "SRC-003", "publisher": "한라일보", "url": "https://pdf.ihalla.com/sectionpdf/20240722-100265.pdf", "checked_at": "2026-08-25", "facts": ["보도는 외도동과 외도파출소가 월대천 물놀이 구역의 위험 요소 및 안전요원을 점검·교육했다고 전한다."]}
+    ],
+    "limitations": ["공식 장소 상세의 보행 동선·무장애 시설·수심·운영 여부는 확인하지 못했다.", "계절별 수온·수질·안전요원 운영은 변동 가능하므로 방문 전 확인이 필요하다."]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["THEME-NO-MOUNTAIN-EVIDENCE"],"rationale":"확인된 대표 경험은 하천 물놀이와 산책이며 산·오름 경험 근거는 없다."},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-002"],"rule_ids":["THEME-COASTAL-ROUTE-CONTEXT"],"rationale":"해안 올레 구간 맥락은 있으나 직접 확인된 핵심 체험은 담수 하천이다."},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["THEME-WATER-PLAY"],"rationale":"공개 후기에 수영과 물놀이가 가능한 방문 활동으로 명시된다."},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-002"],"rule_ids":["THEME-NO-CULTURE-EVIDENCE"],"rationale":"올레 경로명 외에 역사·문화유산 체험 근거는 확인되지 않았다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["THEME-NO-THEMEPARK-EVIDENCE"],"rationale":"자연 하천·산책 장소로 묘사되며 테마파크 시설 근거는 없다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["THEME-NO-CAFE-EVIDENCE"],"rationale":"카페·음료 이용이 핵심이라는 근거는 확인되지 않았다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["THEME-NO-MARKET-EVIDENCE"],"rationale":"시장 방문 경험 근거는 확인되지 않았다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"archetype_prior","source_ids":["SRC-001"],"rule_ids":["THEME-NO-FESTIVAL-EVIDENCE"],"rationale":"기간성 축제·공연이 핵심이라는 근거는 확인되지 않았다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001","SRC-002"],"rule_ids":["ENV-OUTDOOR-WATERWAY-AND-TRAIL"],"rationale":"확인된 물놀이 하천과 산책로 경험은 야외이다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001","SRC-003"],"rule_ids":["ENV-OUTDOOR-WATER-SAFETY"],"rationale":"야외 하천 물놀이·산책이 대표 경험이고 안전 점검도 물놀이 구역을 대상으로 한다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["STYLE-QUIET-WALK"],"rationale":"공개 후기가 고요하고 아름다운 산책 경험을 직접 언급한다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["STYLE-ACCESS-UNKNOWN"],"rationale":"산책·물놀이 이용은 확인되지만 경사, 계단, 노면과 무장애 정보는 미확인이다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["STYLE-WALK-OR-WATER-PLAY"],"rationale":"산책과 물놀이처럼 짧게 또는 오래 조절 가능한 활동이 함께 언급된다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["STYLE-SCENERY-REVIEW"],"rationale":"공개 후기가 아름다운 산책로와 숨은 비경, 맑은 하천을 직접 묘사한다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001"],"rule_ids":["STYLE-CLEAR-FRESHWATER-WILDLIFE"],"rationale":"맑은 담수 하천에서 수영하고 은어·가마우지를 관찰하는 경험이 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-002","SRC-003"],"rule_ids":["STYLE-LOCAL-TRAIL-AND-COMMUNITY-SAFETY"],"rationale":"제주올레 구간이며 지역 행정·경찰의 월대천 물놀이 안전 관리 맥락이 확인된다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-002"],"rule_ids":["STYLE-ROUTE-WAYPOINT-NOT-REGIONAL-ICON"],"rationale":"올레 경로의 명명 지점인 것은 확인되나 제주를 대표하는 상징 명소라는 근거는 부족하다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["STYLE-VISUAL-SCENERY-NO-PHOTO-CLAIM"],"rationale":"경관 묘사는 있으나 사진 촬영이 직접 확인되지는 않았다."}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["COMPANION-QUIET-WALK"],"rationale":"고요한 산책과 자연 관찰 경험은 1인 방문에도 맞지만 현장 접근성은 미확인이다."},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["COMPANION-SCENIC-WALK"],"rationale":"아름다운 산책로와 자연 경관 경험이 확인되나 편의시설 정보는 부족하다."},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["COMPANION-GROUP-WATER-PLAY"],"rationale":"수영·물놀이가 가능한 야외 활동으로 확인되나 단체 수용 여건은 미확인이다."},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["SRC-001","SRC-003"],"rule_ids":["COMPANION-KIDS-WATER-PLAY-WITH-SAFETY"],"rationale":"아이와 물놀이한 후기와 물놀이 구역 안전요원 점검 보도가 확인되지만, 수심 등 현장 안전 확인이 필요하다."},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","source_ids":["SRC-001"],"rule_ids":["COMPANION-ACCESS-UNKNOWN"],"rationale":"산책 경험은 있으나 경사·계단·휴식시설 정보가 없어 보수적으로 중간 적합도로 둔다."}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WATER-WINTER"],"rationale":"야외 하천 물놀이 중심 경험은 겨울에 제한될 가능성이 있다."},
+    "2":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WATER-WINTER"],"rationale":"야외 하천 물놀이 중심 경험은 겨울에 제한될 가능성이 있다."},
+    "3":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WALK-SHOULDER"],"rationale":"산책은 가능하나 물놀이 적합성은 날씨와 현장 조건에 좌우된다."},
+    "4":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WALK-SHOULDER"],"rationale":"산책은 가능하나 물놀이 적합성은 날씨와 현장 조건에 좌우된다."},
+    "5":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WALK-SHOULDER"],"rationale":"산책은 가능하나 물놀이 적합성은 날씨와 현장 조건에 좌우된다."},
+    "6":{"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001","SRC-003"],"rule_ids":["MONTH-WATER-PLAY-WARM-SEASON"],"rationale":"확인된 물놀이 경험상 따뜻한 계절의 상대 적합도를 높게 추정하되 현장 안전 조건을 확인해야 한다."},
+    "7":{"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001","SRC-003"],"rule_ids":["MONTH-WATER-PLAY-WARM-SEASON"],"rationale":"확인된 물놀이 경험상 따뜻한 계절의 상대 적합도를 높게 추정하되 현장 안전 조건을 확인해야 한다."},
+    "8":{"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001","SRC-003"],"rule_ids":["MONTH-WATER-PLAY-WARM-SEASON"],"rationale":"확인된 물놀이 경험상 따뜻한 계절의 상대 적합도를 높게 추정하되 현장 안전 조건을 확인해야 한다."},
+    "9":{"state":"numeric","value":0.75,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001","SRC-003"],"rule_ids":["MONTH-WATER-PLAY-WARM-SEASON"],"rationale":"확인된 물놀이 경험상 따뜻한 계절의 상대 적합도를 높게 추정하되 현장 안전 조건을 확인해야 한다."},
+    "10":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WALK-SHOULDER"],"rationale":"산책은 가능하나 물놀이 적합성은 날씨와 현장 조건에 좌우된다."},
+    "11":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WATER-COOL"],"rationale":"야외 하천 물놀이 중심 경험은 기온 저하 시 제한될 가능성이 있다."},
+    "12":{"state":"numeric","value":0.25,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["SRC-001"],"rule_ids":["MONTH-OUTDOOR-WATER-WINTER"],"rationale":"야외 하천 물놀이 중심 경험은 겨울에 제한될 가능성이 있다."}
+  },
+  "hard_constraints": [
+    {"type":"water_safety","status":"caution","source_ids":["SRC-003"],"rule_ids":["CONSTRAINT-WATER-SAFETY-CHECK"],"rationale":"물놀이 구역의 위험 요소와 안전요원 점검이 보도되어, 수심·유속·기상·통제 여부를 방문 직전에 확인해야 한다."},
+    {"type":"accessibility_unknown","status":"needs_review","source_ids":["SRC-001"],"rule_ids":["CONSTRAINT-ACCESS-UNVERIFIED"],"rationale":"경사·계단·노면·무장애 시설은 확인되지 않았다."}
+  ],
+  "review_priority": "medium"
+}

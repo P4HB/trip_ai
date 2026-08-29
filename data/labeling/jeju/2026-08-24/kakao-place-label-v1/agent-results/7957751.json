@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7957751",
+  "place_id": "7957751",
+  "name": "소여도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주시 마을특성 공공조사는 구좌읍 동복리 해안의 자연생태자원으로 소여도를 열거하고, 공개 지역 기록도 소여도를 동복리의 자연·문화자원으로 확인한다. 해안에서 관찰하는 독립 자연 경관 지점으로는 판정할 수 있으나, 섬 자체의 상륙·출입 및 안전 관리 정보는 확인되지 않아 이용 범위는 보수적으로 다룬다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao ‘소여도’는 제주시 구좌읍 동복리 해안의 자연자원으로 공개 공공조사와 지역 기록에 같은 이름으로 나타난다.",
+    "typical_visit": "동복방파제·동복 해안에서 바다 위 소여도를 바라보는 짧은 야외 경관 관찰로만 확인했다. 섬으로의 상륙이나 체험 운영은 확인하지 못했다.",
+    "experience_scope": "동복리 해안의 독립 자연 경관 표식으로 라벨링한다. 정확한 상륙 가능 여부, 소유·관리 주체, 조석·파랑·미끄럼 등 수변 안전과 편의시설은 확인되지 않았으므로 이를 방문 적합도나 접근 가능으로 단정하지 않는다.",
+    "facts": [
+      {"id":"F1","text":"제주시 마을특성 및 실태조사는 동복리 해안이 대부분 암석 해안이며 자연생태자원으로 해변, 소여도, 관광체험어장을 열거한다.","source_ids":["S1"]},
+      {"id":"F2","text":"한라일보의 동복리 마을 기록은 소여도를 동복리의 자연·문화자원 가운데 하나로 열거한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 위치 안내는 동복방파제에서 소여도가 바다 위에 보인다고 설명해 동복 해안 인근 경관 표식임을 보조적으로 뒷받침한다.","source_ids":["S3"]}
+    ],
+    "unknowns": [
+      "소여도 섬 자체의 상륙 허용 여부, 관리 주체, 소유·보호 구역 지정과 최신 출입 통제를 확인하지 못했다.",
+      "해안 관찰 지점의 주차·화장실·난간·무장애 접근성, 조석·파랑·강풍 시 안전 조건과 최신 보행 동선을 확인하지 못했다.",
+      "입력 Kakao 레코드에는 평점과 후기 수만 있으며, 이를 라벨값 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주시·국회도서관 정책정보서비스","type":"government_research_report","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf","checked_at":"2026-08-24","facts":["조사 대상 동복리는 제주시 동쪽 약 20km의 해안 마을이며 해안은 대부분 암석 해안으로 설명된다.","동복리 자연생태자원 표에 해변, 소여도, 관광체험어장이 열거된다."]},
+      {"id":"S2","publisher":"한라일보","type":"regional_news_feature","url":"https://s1.ihalla.com/article.php?aid=1704380400751532289","checked_at":"2026-08-24","facts":["동복리의 자연과 문화자원으로 소여도, 관광체험어장, 환해장성 등을 열거한다.","이 기록은 소여도의 상륙 허용이나 안전·운영 조건을 제공하지 않는다."]},
+      {"id":"S3","publisher":"공개 위치 안내","type":"public_web_record","url":"https://bluesquare.app/parking/17314/","checked_at":"2026-08-24","facts":["동복방파제에서 소여도가 바다 위에 떠 있는 모습을 볼 수 있다고 안내한다.","이는 위치·경관 확인의 보조 자료이며 섬 상륙 또는 최신 안전 조건의 공식 안내는 아니다."]},
+      {"id":"S4","publisher":"Kakao Map 공개 장소 메타데이터","type":"public_place_metadata","url":"https://place.map.kakao.com/7957751","checked_at":"2026-08-24","facts":["입력 패킷의 장소명은 소여도이고 place_id는 7957751이다.","입력 패킷에는 주소·좌표·업종·공개 후기 내용이 없으며, 평점과 후기 수를 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공조사는 동복리 해안을 암석 해안으로 설명하며 자연자원에 소여도를 열거하고, 보조 기록도 바다 위의 소여도를 설명한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"걷기·수상활동·체험 프로그램의 확인 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 경험이 동복 해안에서의 자연 경관 관찰이므로 실내 비율은 낮게 추론한다. 부대 실내공간은 확인하지 못했다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안의 야외 경관 관찰이므로 강풍·비·파랑 등 날씨 영향을 비교적 크게 받을 것으로 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·소음·쉼터와 체류 환경의 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관찰 지점의 보행 동선·경사·난간과 섬 접근 가능 여부가 확인되지 않아 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"정식 관람 동선·체류 시간·편의시설 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"동복방파제에서 바다 위 소여도를 볼 수 있다는 보조 기록과 해안 자연자원 분류를 근거로 경관 관찰 가치를 비교적 높게 추론한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지형·생태·문화적 고유성의 상세 설명이 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공조사와 지역 기록이 모두 소여도를 동복리의 자연자원으로 직접 열거한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 지정·비교 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 관찰·체류 환경과 최신 안전 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 동선·수용·안전 여건 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 수변 안전시설·난간·보행 동선 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·쉼터·무장애 접근성 및 수변 안전 정보가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관의 월별 적합도를 뒷받침할 운영·현장 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"islet_access_and_coastal_safety_unknown","applies_to":"all_visitors","condition":"소여도는 동복리 해안의 자연자원·바다 위 경관으로 확인됐지만, 섬 자체의 상륙 허용, 관리 주체, 조석·파랑·강풍 시 출입 통제와 관찰 지점의 수변 안전시설·무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"추천에서는 동복 해안의 관찰형 경관으로만 안내하고, 섬 상륙·수변 접근을 제안하기 전에는 관리 주체 또는 현장 최신 안내로 출입 권한, 기상·조석 및 안전 조건을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

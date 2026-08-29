@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1917000545",
+  "place_id": "1917000545",
+  "name": "큰샘",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘큰샘’과 place_id만 제공하며 주소·좌표·업종·후기가 없다. ‘큰샘’은 제주 지역에서 샘을 부르는 일반적 명칭으로도 쓰여 동명 지점이 있을 수 있으나, 이 레코드가 가리키는 정확한 샘 또는 독립 방문지를 공개 출처로 확인하지 못했다. 따라서 방문 경험과 추천 대상 적격성을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력에 확인 가능한 식별 정보는 ‘큰샘’이라는 명칭과 place_id뿐이다. 공개 학술 자료는 제주에서 마을의 물을 쓰는 샘을 ‘큰샘’으로 부르는 용례를 설명하지만, 특정 장소·주소와 이 레코드의 동일성은 확인하지 못했다.",
+    "typical_visit": "이 레코드가 가리키는 대상이 특정 용천수, 마을 공동 샘, 상호명 또는 다른 시설인지 확인되지 않아 대표 방문 경험을 판정할 수 없다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영 정보와 공개 후기 근거가 없으며, Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘큰샘’으로만 제공하며 주소, 좌표, 업종, 공개 방문 후기 증거를 포함하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주지역 용천수 이용관행 연구는 제주에서 마을이 사용하는 샘을 ‘큰샘’으로 부르는 용례가 있음을 설명한다. 이 일반 용례만으로는 입력 Kakao 레코드의 정확한 지점을 식별할 수 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 1917000545의 정확한 주소, 좌표, 업종 및 실제 대상 유형을 확인하지 못했다.",
+      "특정 용천수·마을 공동 샘·상업시설 등 동명 후보와 이 레코드의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람·체험, 운영 상태, 접근성, 안전 및 최신 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1917000545",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘큰샘’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 증거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주대학교 도서관",
+        "type": "academic_repository",
+        "url": "https://mslib.jejunu.ac.kr/bitstream/2020.oak/21415/2/%EC%A0%9C%EC%A3%BC%EC%A7%80%EC%97%AD%20%EC%9A%A9%EC%B2%9C%EC%88%98%EC%9D%98%20%EC%9D%B4%EC%9A%A9%EA%B4%80%ED%96%89%20%EC%97%B0%EA%B5%AC.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 지역 용천수 이용관행 연구는 마을 사람들이 사용하는 샘을 ‘큰샘’으로 부르는 용례를 설명한다.",
+          "자료는 이 Kakao place_id의 장소 주소 또는 동일성을 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·운영 정보가 없어 ‘큰샘’의 정확한 대상과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공·공식 출처의 주소·좌표·대상 유형으로 신원을 먼저 교차 확인한다. 특정 방문지로 확인되면 최신 출입·수질·안전·접근성 및 운영 정보를 별도 검수한 뒤 추천용 벡터를 생성한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

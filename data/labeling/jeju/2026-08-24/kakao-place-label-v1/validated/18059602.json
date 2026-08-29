@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "18059602",
+  "canonical_id": "kakao:18059602",
+  "name": "제주민속촌 토속신앙촌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명에 제주민속촌이 상위 장소로 포함되어 있고, 방문 경험도 제주민속촌 내부에서 인상 깊었던 곳이라고 설명한다. 토속신앙촌은 제주민속촌의 독립 대체 장소가 아닌 내부 전시·관람 구역으로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-EXHIBIT-AREA",
+      "ELIG-PARENT-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_attraction_access_conditions_apply",
+      "applies_to": "all_visitors",
+      "condition": "입력은 토속신앙촌이 제주민속촌 내부 관람 구역임을 시사하지만, 당일 상위 시설의 운영·입장·관람 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 제주민속촌의 최신 운영 및 내부 관람 구역 개방 안내를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명과 방문 경험이 모두 제주민속촌 내부의 토속신앙촌 구역을 가리킨다.",
+    "facts": [
+      {
+        "text": "입력 방문 경험은 토속신앙촌을 제주민속촌에서 인상 깊었던 곳이라고 언급한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "상위 제주민속촌의 현재 운영·입장 조건",
+      "토속신앙촌의 독립 개방 여부",
+      "상세 전시·체험 구성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map public reviews",
+        "type": "kakao_review_evidence",
+        "url": "https://place.map.kakao.com/18059602",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력에 포함된 방문 경험은 이 장소가 제주민속촌 내부임을 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

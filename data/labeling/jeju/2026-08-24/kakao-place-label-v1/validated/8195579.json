@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8195579",
+  "place_id": "8195579",
+  "name": "고창언영사비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 지도 검색은 ‘고창언영사비’를 제주시 한경면 신창리의 단일 표식으로만 확인한다. 명칭상 비석 표식임은 알 수 있으나, 인물·건립 배경·관리 주체, 일반 방문객용 관람 동선 또는 독립 관광·문화 체험으로서의 운영을 공식·공공 상세 출처에서 확인하지 못했다. 표식의 존재만으로 추천용 독립 방문 경험을 가정하지 않아 현재 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "고창언영사비는 Kakao place_id 8195579로 등록된 제주시 한경면 신창리의 지명·비석 표식이다.",
+    "typical_visit": "공개 신뢰 출처에서 확인되는 것은 지도상 표식과 행정구역뿐이며, 일반 여행객의 관람·해설·체험 또는 독립 방문 동선은 확인되지 않았다.",
+    "experience_scope": "입력명에 ‘영사비’가 포함되지만, 이를 특정 인물의 기념비나 역사문화 방문지로 구체화할 공공·공식 자료를 찾지 못했다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았고, 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Daum 지도 검색의 장소 결과는 ‘고창언영사비’를 제주시 한경면 신창리로 표시하고, Kakao 장소 식별자 8195579 및 지도 좌표를 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명 ‘고창언영사비’, place_id 8195579와 지도 URL만 제공하며, 평점·방문자 후기·블로그 후기 수는 모두 0으로 표시된다. 이 수치는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "고창언의 신원, 비석의 건립 연도·내용, 문화유산 지정 여부 및 관리 주체를 확인하지 못했다.",
+      "일반 방문객의 출입 가능 여부, 관람 동선, 안내판·해설, 주차·화장실, 무장애 접근성과 안전시설을 확인하지 못했다.",
+      "공식 관광·문화유산 안내에서 독립 방문지로 운영되는지와 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Daum 검색 지도 장소 결과",
+        "type": "public_map_search_listing",
+        "url": "https://search.daum.net/search?q=%EA%B3%A0%EC%B0%BD%EC%96%B8%EC%98%81%EC%82%AC%EB%B9%84",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소 결과의 명칭은 고창언영사비다.",
+          "주소 표시는 제주특별자치도 제주시 한경면 신창리다.",
+          "지도 결과는 Kakao 장소 식별자 8195579를 연결한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터 (입력 패킷)",
+        "type": "public_place_listing",
+        "url": "https://place.map.kakao.com/8195579",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 고창언영사비이고 place_id는 8195579다.",
+          "입력 패킷에는 장소 설명, 주소, 업종, 운영·관람 정보 및 공개 후기 근거가 제공되지 않았다.",
+          "평점과 방문자·블로그 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "memorial_marker_identity_and_public_visit_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "고창언영사비의 지도상 명칭과 신창리 위치는 확인됐지만, 표식의 역사적 성격·관리 주체와 일반 방문객 대상의 독립 관람·출입·안전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 제주특별자치도·제주시 또는 문화유산 관리 기관의 자료로 표식의 신원, 일반 공개 여부와 독립 방문 경험을 확인한 경우에만 적격성을 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

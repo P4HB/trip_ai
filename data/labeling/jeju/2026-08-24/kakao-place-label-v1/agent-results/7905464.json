@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7905464",
+  "place_id": "7905464",
+  "name": "빌레못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "공개 예약 플랫폼의 매장 페이지가 제주시 애월읍 곽납로 133-7의 빌레못을 디저트카페로 안내하고 수플레·커피 메뉴와 방문 편의 정보를 제공한다. 독립적으로 방문할 수 있는 카페 장소로 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "빌레못은 제주시 애월읍 곽납로 133-7에 공개 안내된 디저트카페다.",
+    "typical_visit": "수플레, 케이크와 커피·음료를 주문해 카페에 체류하는 방문이다.",
+    "experience_scope": "공개 매장 페이지는 디저트카페 성격, 일부 메뉴, 유아용 의자·반려동물 동반 가능 표기와 주차 가능 표기를 제공한다. 실제 실내외 좌석 비율, 정원·경관, 무장애 접근성, 최신 영업 여부와 세부 반려동물 이용 조건은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "테이블링의 빌레못 매장 페이지는 제주 제주시 애월읍 곽납로 133-7의 장소를 디저트카페로 분류하고 수플레, 케이크, 커피·라떼 메뉴를 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 공개 매장 페이지는 유아용 의자 구비, 반려동물 입장 가능, 주차 가능, 예약·포장 가능 표기를 제공한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["최신 영업일·영업시간, 휴무, 메뉴·가격과 반려동물 동반의 세부 조건은 변동될 수 있어 현장 또는 매장 최신 안내 확인이 필요하다.", "실내외 좌석 비율, 정원·경관, 혼잡도, 화장실 및 무장애 접근성은 확인하지 못했다.", "유아용 의자가 어린이 방문 전반의 안전·편의 또는 수용 가능 인원을 보장하지는 않는다."],
+    "sources": [
+      {"id": "S1", "publisher": "테이블링", "type": "public_business_listing", "url": "https://www.tabling.co.kr/place/677cd26f66de5f069889b692", "checked_at": "2026-08-24", "facts": ["빌레못은 제주 제주시 애월읍 곽납로 133-7에 안내된 디저트카페다.", "수플레, 케이크, 커피·라떼 등 메뉴가 공개돼 있다.", "유아용 의자 구비, 반려동물 입장 가능, 주차 가능, 예약·포장 가능 표기가 있다.", "영업 정보는 월요일과 수요일부터 일요일까지 11:00~19:00, 화요일 휴무로 게시돼 있으나 변동 가능하다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동 또는 바다 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 매장 페이지가 이 장소를 디저트카페로 분류하고 수플레·케이크·커피 메뉴를 안내한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페이나 공개 정보로 대표 경험의 실내외 좌석 비율을 확인할 수 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내외 좌석 구성과 날씨별 이용 경험 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 환경, 혼잡도, 소음 또는 체류 분위기의 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"출입구·주차장부터 좌석까지의 보행, 계단 및 무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"예약·포장 표기는 있으나 실제 체류 시간 선택 폭을 뒷받침하는 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 대표 방문 가치라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"수플레 등 메뉴는 확인되지만 다른 카페와 비교할 고유 경험의 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 지역의 자연·문화·생산자·생활과의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역을 대표하는 상징 명소라는 공적 지정 또는 안내 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 이용할 때의 좌석·안전·체류 환경 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"2인 체류 환경의 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 좌석·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"유아용 의자 구비 표기는 어린이 동반 편의의 긍정 근거이나, 전체 안전·좌석·메뉴 조건은 미확인이라 보수적으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 쉼터, 화장실 및 무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 이용 환경의 직접 근거가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"dynamic_business_information","applies_to":"all_visitors","condition":"공개 매장 페이지의 영업시간·휴무, 반려동물 입장, 주차, 유아용 의자 및 예약·포장 가능 표기는 변동될 수 있으며, 접근성·세부 이용 조건은 확인하지 못했다.","status":"needs_review","action":"방문 전 매장 또는 최신 공개 안내로 영업 여부·동반 조건·주차와 접근성 조건을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

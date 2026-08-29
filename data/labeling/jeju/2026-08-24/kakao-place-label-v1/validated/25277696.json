@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25277696",
+  "canonical_id": "kakao:25277696",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 일반 지명 ‘샘이골’과 Kakao 장소 URL만 있고 주소·좌표·대상 유형·공식 상세 정보·방문 기록이 없다. 어느 골짜기 또는 부속 지점인지 식별할 수 없어 추천용 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "kakao-place-metadata"
+    ],
+    "rule_ids": [
+      "eligibility.identity-unknown",
+      "fallback.insufficient-evidence"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    "정확한 위치, 출입·보행·수변 안전 조건이 입력 패킷에 없어 방문 전 별도 확인이 필요하다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/25277696",
+        "checked_at": null,
+        "facts": [
+          "장소명: 샘이골",
+          "입력 패킷에는 주소·좌표·카테고리·공개 방문 기록이 없음"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식·공공 상세 출처가 입력에 없음",
+      "장소 식별과 탐방 조건을 확인할 근거가 없음"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

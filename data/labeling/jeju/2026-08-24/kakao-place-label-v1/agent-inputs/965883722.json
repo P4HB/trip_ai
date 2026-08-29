@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1256,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/965883722.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:965883722",
+    "provider": "kakao",
+    "place_id": "965883722",
+    "name": "바운스슈퍼파크 제주센터",
+    "url": "https://place.map.kakao.com/965883722",
+    "average_rating_5": "3.4",
+    "visitor_review_count": "46",
+    "blog_review_count": "176",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.12.15.",
+      "content": "아이들이 너무 좋아해요! 주말에는 사람이 많았는데 얼집 땡땡이치고 평일 낮에 오니 한가하고 넘 좋네요ㅎㅎ 키즈카페랑 테마파크 많이 가봤지만 어른들을 위한 오락공간이 따로 없어서 아쉬웠는데 여긴 어른들을 위한 공간도 있어서 심심할 틈이 없어요! 미끄럼방지 양말 필수고 제주오면 한번 와보세요 애기들 진짜 좋아해요 -주말은 2시간이고 평일은 3시간이에요 - 네이버 리뷰 20분 추가라고 되어있지만 20분을 아이 수대로 n/20 나눠서 줘요ㅋ 저같은 경우 아이가 2명이라 20분 반으로 넣어서 10씩 추가됐어요(어른은 안 침). 아이가 한명이 아니면 리뷰는 굳이 하나마나~ -어른 표 끊을 때 입장권이냐 이용권이냐에 따라 어른이 이용하는 시설이 달라져요. 어른도 이용권을 끊으면 내부의 모든 시설을 혼자 다 타고 이용할 수 있어요. -매표소에서 줄 서기 전에 엘베에 내리면 QR코드 스캐너가 있어요. 거기서 대기표 받아서 매표소에서 줄서야돼요. 안그럼 매표소에서 뒤로가서 대기표 끊으라고 해서 시간낭비해요(사람없어도 대기표 끊으라고 빠꾸시킴) -미끄럼방지 양말 성인&아이 필수입니다. 챙겨오시거나 카운터에서 구매하세요~ 구매 추천합니다, 살땐 고민햤는데 양말이 고퀄입니다 -유용하다면 좋아요 눌러주세요ㅎ",
+      "tags": ""
+    },
+    {
+      "date": "2026.08.17.",
+      "content": "무작정 보호자 입장 6천원은 선넘은듯..앉아있어도 6천ㅋㅋ 커피쿠폰이라도 주던가 ㅋ 매점도 냉동식품 렌지 돌려주는건데 너무비싸고~ 돈에환장했네 소떡 꼴랑 이허접한거 4천원받으면서 전자렌지 돌리는게끝~ 소스는 냉장고에서 꺼내서 그냥줘서 차갑고ㅋ 돈받으려면 정성있는척이라도좀해라..",
+      "tags": ""
+    },
+    {
+      "date": "2023.09.21.",
+      "content": "놀이시설이 많이있고 시간마다 할수있는게 많고 너무너무 좋았어요!",
+      "tags": "시설"
+    },
+    {
+      "date": "2022.03.11.",
+      "content": "아이들이 너무 좋아하는곳 하교하고 평일 오후에 들어오니 한산하고 좋네요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

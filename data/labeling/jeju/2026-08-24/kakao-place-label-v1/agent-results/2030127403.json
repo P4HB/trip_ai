@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2030127403",
+  "canonical_id": "kakao:2030127403",
+  "name": "안세미오름 습지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 관광 안내의 안세미오름과 제주대학교 습지 식물상 자료의 ‘봉개동 안세미오름 주변’ 내륙습지가 같은 봉개동 자연 탐방 맥락으로 확인된다. 입력명은 그 주변 습지를 가리키는 별도 지도 장소명으로 볼 수 있어 자연 관찰 후보로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-NATURE-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내는 안세미오름을 봉개에 위치한 오름으로 소개하고, 습지 조사 자료도 안세미오름 주변의 내륙습지를 기록한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-OREUM-NATURE-DIRECT"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소 맥락은 봉개동의 오름 주변 내륙습지이며 해안·해양 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름과 주변 자연을 찾는 탐방 맥락은 확인되지만, 이 습지의 지정 탐방로·체험 프로그램 또는 보행 거리는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-NATURE-OBSERVATION-CONTEXT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "안세미오름 이름의 유래는 안내되지만 역사·문화 해설이 습지 방문의 핵심 구성이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 오름 숲과 내륙습지를 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름 주변 내륙습지로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 자연환경으로 기록될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조사 자료는 안세미오름 주변의 소택형 내륙습지를 기록하고, 관광 안내도 오름의 숲과 대나무 숲길을 소개한다. 실내 대표 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-NATURE-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 습지·오름 주변 자연 관찰이므로 비·바람·더위·추위의 영향을 크게 받을 수 있다. 현장 통제 기준은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "울창한 숲과 대나무 숲길이 있는 오름 주변 자연환경은 확인되지만, 습지에서의 휴식 시설·체류 환경은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURE-REST-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "습지까지의 실제 보행로, 경사·계단, 데크와 무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "습지 단독 체류시간과 단축·연계 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "관광 안내는 안세미오름의 울창한 숲과 대나무 숲길을 아름다운 자연경관으로 소개하지만, 입력 습지 자체의 조망·경관 특성은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURE-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주대학교 자료가 안세미오름 주변을 소택형 내륙습지로 별도 기록했으나, 방문객 관점의 고유 시설·해설 요소는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-WETLAND-IDENTITY-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 봉개동 안세미오름 주변의 내륙습지로 기록되고, 안세미오름은 명도암물 안쪽이라는 지역 지명 유래와 함께 제주 관광 안내에 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-NATURE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "안세미오름은 공식 관광 안내에 수록됐지만 이 습지가 제주 전체를 대표하는 공적 랜드마크로 지정·소개되는지는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름의 숲·대나무 숲길은 시각적 자연환경으로 소개되지만, 입력 습지의 사진 촬영이 직접 권장되거나 핵심 경험이라는 근거는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설에 대한 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 습지 주변 경로 난이도와 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 습지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "wetland_and_oreum_access_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "안세미오름 주변 습지는 야외 자연환경이나, 정확한 진입 지점, 현행 개방 여부, 습지 접근 허용 범위, 우천·강풍 시 안전, 경사·계단 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 현장 최신 안내 또는 제주 관광·지자체 안내로 접근 허용 여부, 지정 탐방로, 기상에 따른 통제와 보행 안전을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 공식 관광 안내의 안세미오름과 제주대학교 자료에 별도 기록된 ‘봉개동 안세미오름 주변’ 내륙습지에 부합한다. 정확한 지도 핀의 현장 진입점은 공개 출처만으로 확정하지 못했다.",
+    "facts": [{"text": "Visit Jeju는 안세미오름을 봉개에 위치한 오름으로 소개하며, 해송·상수리나무·삼나무의 울창한 숲과 대나무 숲길이 있다고 안내한다.", "source_id": "S1"}, {"text": "제주대학교의 제주도 수생 및 습지 식물상 자료는 ‘봉개동 안세미오름 주변’을 면적 259㎡의 소택형 내륙습지로 기록한다.", "source_id": "S2"}, {"text": "같은 공식 안내는 안세미오름이 명도암물 안쪽에 있어 이름 붙었고 밧세미오름과 형제 오름이라고 설명한다.", "source_id": "S1"}],
+    "unknowns": ["입력 지도 표식의 정확한 진입 지점과 현행 접근·개방 여부", "습지 주변 탐방로, 데크, 경사·계단, 휠체어 접근성과 화장실·휴식 시설", "우천·강풍·산불 위험 시 통제와 안전 안내", "습지 관찰에 적합한 계절·월별 생태 정보"],
+    "sources": [{"id": "S1", "publisher": "Visit Jeju", "type": "official_tourism", "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_300000000013039", "checked_at": "2026-08-25", "facts": ["안세미오름의 봉개 위치·명칭 유래와 오름 성격을 안내한다.", "해송·상수리나무·삼나무 숲 및 대나무 숲길을 소개한다."]}, {"id": "S2", "publisher": "제주대학교 OAK", "type": "academic_repository", "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/20686/2/%EC%A0%9C%EC%A3%BC%EB%8F%84%EC%9D%98%20%EC%88%98%EC%83%9D%20%EB%B0%8F%20%EC%8A%B5%EC%A7%80%20%EC%8B%9D%EB%AC%BC%EC%83%81.pdf", "checked_at": "2026-08-25", "facts": ["봉개동 안세미오름 주변을 소택형 내륙습지로 기록한다.", "해당 습지의 면적 259㎡와 조사 좌표를 제시한다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

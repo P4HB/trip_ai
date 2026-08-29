@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2258,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/2021267161.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:2021267161",
+    "provider": "kakao",
+    "place_id": "2021267161",
+    "name": "한라산국립공원 돈내코 탐방안내소",
+    "url": "https://place.map.kakao.com/2021267161",
+    "average_rating_5": "3.6",
+    "visitor_review_count": "7",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.10.",
+      "content": "현무암 계단.. 울퉁불퉁해서 내려올때 힘드네요 왕복 14km의 긴 거리동안 사람 1명도 마주치지않았습니다",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.24.",
+      "content": "사람없고 조용한 탐방로 원하면 한번쯤 와볼만함 뷰도 나름 괜찮음 다만 교통편이 좀 불편함",
+      "tags": "뷰"
+    },
+    {
+      "date": "2024.05.23.",
+      "content": "돈내코탐방안내소에 있는 버스시간이 정확하네요. 한라산 돈내코코스 등산시 아주 유용함. 카카오맵 안내는 잘 안됨. 버스정류장에서 돈내코입구까지 묘지를 지나 꽤 긴 아스팔트길입니다. 20분~25분 소요.",
+      "tags": ""
+    },
+    {
+      "date": "2022.11.10.",
+      "content": "지도상 위치가 이상하지만... 미리 입산시간 확인하고 올라가세요 혹시 시간 못맞춰 입산금지여도 안내원에게 얘기하고 한라산 둘레길 걸어보아요 단 전번 남기고 반드시 둘레길로 가야됩니다 CCTV 있고 걸리면 벌금입니다",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.14.",
+      "content": "참 재미없는 코스. 윗세오름, 남벽분기점, 평궤대피소까지만 경치가 좋음. 그 이후로 돈내코까지 내려오는길은 정말 재미없음. 여기서 올라가는것은 더 지루할듯 싶음..",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

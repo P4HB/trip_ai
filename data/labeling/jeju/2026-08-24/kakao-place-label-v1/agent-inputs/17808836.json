@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1671,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17808836.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17808836",
+    "provider": "kakao",
+    "place_id": "17808836",
+    "name": "이상한나라의앨리스 서광카트장",
+    "url": "https://place.map.kakao.com/17808836",
+    "average_rating_5": "4.9",
+    "visitor_review_count": "7",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.15.",
+      "content": "대박 개존잼 꼭 가보셈 !!🚗❤️ 네이버 예약하면 만원초반대 !! 커브길 많아서 스릴 대박임요 !! 초등학생도 가넝 ~!!",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.01.20.",
+      "content": "제주도 올때마다 카트타고 제주도 카트 다 타봤습니다!! 제주도에서 제일 빠른카트입니다 서킷 카트인 분들은 여기로가세요!!! 코스는 조금 부족하긴한데 이만한 카트 없습니다 꼭 믿고 가보세요!",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2025.05.14.",
+      "content": "속도빠르고 사람없고 친절하시고 너무좋아용",
+      "tags": ""
+    },
+    {
+      "date": "2021.10.14.",
+      "content": "9.81파크랑 여기 두군데 다 가봤는데 갠적으론 여기가 더 재밌네요~루지는 브레이크만 있어서 재미가 떨어짐",
+      "tags": ""
+    },
+    {
+      "date": "2021.09.12.",
+      "content": "음 친절하시고 넘좋네요^-^~^",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

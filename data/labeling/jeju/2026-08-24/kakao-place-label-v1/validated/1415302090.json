@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1415302090",
+  "place_id": "1415302090",
+  "name": "이달봉 초대소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 '이달봉 초대소'라는 이름과 place_id만 제공한다. 제주관광공사 공개 콘텐츠는 인근 자연 방문지인 이달오름(이달봉)을 설명하지만, '초대소'라는 Kakao 표식이 그 오름의 공식 명칭·입구·시설·운영 주체 중 무엇과 일치하는지는 확인하지 못했다. 이름이 비슷하다는 이유만으로 이달오름의 독립 방문지 라벨을 전용할 수 없으므로 추천용 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "이달봉 초대소는 Kakao 공개 장소 메타데이터에만 이름과 place_id로 제시된다. 공식 관광 콘텐츠의 이달오름(이달봉)과 명칭 일부가 겹치지만, 동일 장소 또는 그 부속 시설이라는 연결 근거는 확보하지 못했다.",
+    "typical_visit": "정확한 대상·위치·방문 방식 및 일반 방문객 이용 가능 여부를 확인하지 못했다.",
+    "experience_scope": "공식 자료로 확인된 이달오름의 트레킹 경험을 이 Kakao 표식에 귀속하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 VisitJEJU 콘텐츠는 이달오름을 이달이촛대봉과 이달봉 두 봉우리로 구성된 자연 방문지로 소개하고, 두 봉우리 트레킹에 약 1~1시간 30분이 걸린다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1415302090, 장소명 '이달봉 초대소', Kakao 장소 URL을 제공하며, 공개 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "'이달봉 초대소'가 VisitJEJU의 이달오름·이달봉, 그 입구, 사유 시설 또는 다른 장소 중 무엇을 가리키는지 확인하지 못했다.",
+      "정확한 주소·좌표, 관리 주체, 일반 방문객 출입 허용 여부와 최신 운영 상태를 확인하지 못했다.",
+      "접근로, 주차, 화장실, 노면·경사, 무장애 시설 및 기상 악화 시 안전 통제를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJEJU",
+        "type": "official_tourism_content",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008836",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "이달오름은 이달이촛대봉과 이달봉의 두 봉우리로 구성된다고 소개한다.",
+          "두 봉우리를 차례로 트레킹하는 데 약 1~1시간 30분이 걸린다고 안내한다.",
+          "해당 콘텐츠에는 '이달봉 초대소'라는 명칭이나 Kakao place_id 1415302090의 연결 정보가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1415302090",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 1415302090 및 '이달봉 초대소'라는 장소명을 제공한다.",
+          "입력 패킷에는 공개 후기 근거가 포함되지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식의 정확한 대상·위치와 일반 방문객 출입·이용 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 장소의 최신 주소·카테고리와 관할 지자체 또는 관리 주체의 출입·안전 안내를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

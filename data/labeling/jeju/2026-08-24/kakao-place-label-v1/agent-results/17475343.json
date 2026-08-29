@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17475343",
+  "place_id": "17475343",
+  "name": "월랑봉",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "제주관광공사 Visit Jeju와 한국관광공사 공개 관광정보가 월랑봉을 다랑쉬오름의 별칭으로, 제주시 구좌읍 세화리의 독립 관광지로 안내한다. 정상 분화구와 주변 오름·들판 조망을 목적으로 하는 야외 탐방 장소이므로 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "월랑봉은 제주 동부의 다랑쉬오름을 가리키는 명칭이며, 제주시 구좌읍 세화리에 있는 오름 관광지다.",
+    "typical_visit": "정상까지 올라 깊고 뚜렷한 분화구와 주변 오름·들판을 조망하는 야외 탐방 경험이다.",
+    "experience_scope": "공식 관광 안내로 오름, 분화구, 조망, 주소 및 상시 개방·무료 안내를 확인했다. 최신 출입 제한, 탐방로 노면·경사·계단, 주차, 화장실, 무장애 접근 및 기상 안전 통제는 이번 조사에서 확정하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 다랑쉬오름(월랑봉)을 제주 동부의 대표적 오름으로 소개하고, 정상부의 깊고 뚜렷한 분화구와 주변 오름·들판 조망을 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "한국관광공사 공개 관광정보는 다랑쉬오름(월랑봉)의 주소를 제주시 구좌읍 세화리 산6으로 안내하며, 연중무휴·상시 개방·무료 정보를 수록한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "최신 탐방로 개방 여부와 현장 출입 제한을 확인하지 못했다.",
+      "탐방로의 경사·계단·노면, 주차·화장실 및 무장애 접근성 정보를 확인하지 못했다.",
+      "월별 식생·혼잡도와 악천후 안전 통제의 최신 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500118", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["다랑쉬오름(월랑봉)을 제주 동부의 대표적 오름으로 소개한다.", "정상부의 깊고 뚜렷한 분화구와 주변 오름·들판 조망을 안내한다.", "주소를 제주특별자치도 제주시 구좌읍 세화리 2705로 표시한다."]},
+      {"id": "S2", "publisher": "한국관광공사 공개 관광정보 (지역N문화 제공)", "type": "public_tourism_information", "url": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=577461", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["다랑쉬오름(월랑봉)을 관광지로 수록하고 주소를 제주특별자치도 제주시 구좌읍 세화리 산6으로 안내한다.", "연중무휴, 상시 개방, 무료로 수록한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/17475343", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘월랑봉’이다.", "입력에는 공개 방문 후기 내용이 없으며 평점·후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 장소를 제주 동부의 대표적 오름으로 소개하고 정상 분화구 탐방을 대표 경험으로 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해변·섬 또는 해양 활동이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"정상과 분화구를 보기 위해 야외 오름을 탐방하는 경험이 확인돼 신체 활동 비중을 비교적 높게 추론한다. 실제 동선 난이도는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 이 장소의 핵심 방문 경험이라는 직접 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 핵심 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"정상·분화구·주변 경관을 보는 오름 탐방으로 공식 안내되어 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 정상과 경관 조망이 대표 경험이므로 비·바람·더위·추위가 방문 경험에 비교적 크게 영향을 준다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음 및 실제 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"오름 정상과 분화구를 탐방하는 야외 보행이 대표 경험이어서 신체 부담이 낮다고 보기는 어렵다. 정확한 경사·계단·노면은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"정상 분화구와 조망을 중심으로 하는 독립 야외 탐방지여서 정상 조망 중심의 짧은 방문과 주변 경관 감상을 포함한 체류를 조절할 수 있다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 정상부 분화구와 주변 오름·들판 조망을 이 장소의 핵심 특징으로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 제주 동부의 대표적 오름이자 깊고 뚜렷한 정상 분화구를 가진 곳으로 소개해 고유한 구성이 직접 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 동부의 오름 지형과 주변 오름·들판 경관 자체를 경험하는 장소로 공식 관광 안내에 직접 수록되어 제주 자연환경과의 연결이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사 안내가 다랑쉬오름(월랑봉)을 제주 동부의 대표적 오름으로 명시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 뚜렷한 분화구와 주변 오름·들판 조망을 근거로 시각적 기록 가치를 비교적 높게 추론한다. 사진 촬영 여건의 직접 안내는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 안전·동선·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 경사·노면·안전시설 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 현장 안전·개방·식생 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 탐방로 개방 여부, 경사·계단·노면, 주차·화장실, 무장애 접근성 및 악천후 안전 통제를 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광정보센터 또는 현장 최신 안내로 출입 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24T00:00:00+09:00"
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17580298",
+  "place_id": "17580298",
+  "name": "렛츠런파크제주 신관람대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 시설 안내는 렛츠런파크 제주 관람대를 경마 관람·매표·경마 진행·중계를 위한 시설로 설명하고, 럭키빌(신관람대)과 해피빌(구관람대)을 같은 관람대의 두 동으로 명시한다. 따라서 입력 장소는 독립 여행지가 아니라 렛츠런파크 제주 내부의 부속 관람 시설로 판정한다.",
+    "duplicate_of": "렛츠런파크 제주",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘렛츠런파크제주 신관람대’는 렛츠런파크 제주 관람대 중 럭키빌(신관람대)을 가리키는 것으로 확인된다.",
+    "typical_visit": "경마 관람객이 경주를 관람하고 매표·경마 진행·중계 서비스를 이용하는 렛츠런파크 제주 내부 시설이다.",
+    "experience_scope": "이 레코드는 렛츠런파크 제주라는 상위 여행지 안의 특정 관람동을 별도 장소로 분리한 것이다. 상위 공원의 말 테마 체험과 관람대의 최신 운영·입장 조건은 구분해 확인해야 하므로 독립 추천용 적합도 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "오케이레이스의 렛츠런파크 제주 관람대 안내는 관람대가 경마 관람, 매표, 경마 진행 및 중계를 위한 시설이며 럭키빌(신관람대)과 해피빌(구관람대)의 두 동으로 구성된다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 렛츠런파크 제주를 제주마 보호·육성을 위해 개장한 말 테마공원으로 소개하고, 경마와 승마체험·파크골프·어린이 놀이시설 등을 상위 공원의 체험으로 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 패킷의 Kakao 장소 레코드는 장소명을 ‘렛츠런파크제주 신관람대’로 제공하며 평점과 후기 수는 0으로 표시한다. 평점·후기 수는 라벨 또는 적격성의 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "신관람대의 최신 개방일, 입장권·이용 조건, 좌석·무장애 접근성, 주차 및 안전 운영을 확인하지 못했다.",
+      "이 Kakao 레코드가 상위 렛츠런파크 제주와 별도로 운영되는 독립 관광 프로그램을 제공한다는 근거를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "오케이레이스",
+        "type": "public_facility_information_page",
+        "url": "https://www.okrace.co.kr/okrace_story/park_jeju9.php",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "관람대는 경마 관람, 매표, 경마 진행 및 중계를 위한 시설로 안내된다.",
+          "관람대는 럭키빌(신관람대)과 해피빌(구관람대)의 두 동으로 구성된다고 안내된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019539",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주는 제주마 보호·육성을 위해 1990년 개장한 테마공원으로 소개된다.",
+          "상위 공원은 경마, 승마체험, 파크골프, 어린이 놀이시설 등 다양한 체험을 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17580298",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 신관람대’다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없고, 평점 및 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "신관람대는 렛츠런파크 제주 관람대의 한 동으로, 경마 관람·매표·중계를 위한 상위 공원 내부 부속 시설이다.",
+      "status": "confirmed",
+      "action": "이 레코드는 독립 추천 후보에서 제외한다. 상위 장소 ‘렛츠런파크 제주’의 방문 경험을 평가할 때에만 관람대 이용 조건을 별도 최신 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    },
+    {
+      "kind": "dynamic_operations_unknown",
+      "applies_to": "visitors_using_grandstand",
+      "condition": "신관람대의 최신 개방, 경마일 입장, 좌석, 접근성 및 안전 운영 조건은 이번 조사에서 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 렛츠런파크 제주 공식 최신 안내에서 관람대 이용 가능 여부와 입장·안전 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

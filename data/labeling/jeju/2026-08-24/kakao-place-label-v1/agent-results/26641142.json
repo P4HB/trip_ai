@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26641142",
+  "place_id": "26641142",
+  "name": "제주항관광안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "입력 Kakao 장소명은 ‘제주항관광안내소’이며, 제주 관광 안내 자료에도 같은 명칭과 전화번호가 주요 관광안내소로 수록되어 있다. 관광안내소는 제주 방문지를 안내하는 지원 시설로서 독립적인 관광·체험 방문지의 적합도 벡터를 만들 대상이 아니므로 부속 지원시설로 판정한다. 다만 최신 운영 주체, 운영 시간 및 제주항 내 정확한 위치는 확인하지 못했다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주항관광안내소는 Kakao 지도에 등록된 제주항 관광 안내 시설이며, 제주 관광 안내 자료에 관광안내소 및 전화번호 064-758-7181로 수록되어 있다.",
+    "typical_visit": "입도·출항객에게 관광 정보를 제공하는 안내 지원 시설로 파악되며, 독립 관광지로서의 관람·체험 경험은 확인되지 않는다.",
+    "experience_scope": "관광지 탐색·추천을 지원하는 안내소이므로 방문 경험의 독립 단위가 아니다. 최신 운영 시간, 실제 안내 서비스 범위, 항만 내 정확한 위치와 접근 조건은 이번 조사에서 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 26641142의 명칭을 ‘제주항관광안내소’로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주 관광 안내 자료는 ‘제주항관광안내소’와 전화번호 758-7181을 관광안내소 목록에 수록한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "제주항 내 정확한 위치와 현재 운영 주체를 확인하지 못했다.",
+      "최신 운영 시간, 휴무일, 외국어 안내 및 무장애 접근성 정보를 확인하지 못했다.",
+      "안내소 자체에 독립적인 관람·체험·경관 경험이 있는지 확인되지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/26641142",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주항관광안내소’다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "public_tourism_information",
+        "url": "https://api.visitjeju.net/file/bbsattachment/filepath/201806/08/a8e9980f-2f55-4ac7-9891-7ac069d871e0.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "관광안내소 목록에 제주항관광안내소와 전화번호 758-7181이 수록되어 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "support_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주항관광안내소는 관광 정보를 제공하는 지원 시설로 확인되며, 독립 여행 방문지 경험으로 확인되지 않음",
+      "status": "needs_review",
+      "action": "관광지 적합도·일정 추천 후보에서는 제외한다. 운영 시간 또는 현장 안내가 필요하면 제주특별자치도·항만의 최신 공식 안내로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

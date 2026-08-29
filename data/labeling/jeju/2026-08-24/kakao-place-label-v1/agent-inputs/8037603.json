@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 476,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8037603.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8037603",
+    "provider": "kakao",
+    "place_id": "8037603",
+    "name": "은다리오름",
+    "url": "https://place.map.kakao.com/8037603",
+    "average_rating_5": "2.3",
+    "visitor_review_count": "3",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2020.02.02.",
+      "content": "입구가 막히고 길이 안보여 빙빙돌다가 정상쪽으로 바로 올라왔어요. 올라오는길에 두산봉. 우도 .성산일출봉 잘보여요. 정상뷰도 괜찮네요. 용눈이.동거문이.높은산.백약이 보임",
+      "tags": ""
+    },
+    {
+      "date": "2018.03.13.",
+      "content": "산책로가 없어 오르기에 쉽지 않다~^^ 정상에서 보이는 다랑쉬 아끈다랑쉬 용눈이오름이 아름답다 멀리는 지미오름과 우도가 한눈에 들어왔다~^^2",
+      "tags": ""
+    },
+    {
+      "date": "2021.09.13.",
+      "content": "말 키우는 오름입니다. 사유지인 듯 네이버나 카카오맵지도 검색시 등반로가 표시되나 말 다녔던 길에 불과 정식 등반로도 아닙니다. 오름 매니아가 아니라면 일반인이 갈 데는 아닙니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

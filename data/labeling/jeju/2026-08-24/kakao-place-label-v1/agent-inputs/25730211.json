@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 410,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25730211.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25730211",
+    "provider": "kakao",
+    "place_id": "25730211",
+    "name": "천미천",
+    "url": "https://place.map.kakao.com/25730211",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "6",
+    "blog_review_count": "32",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.11.23.",
+      "content": "? 왜 실패하셨는지.. 맑은날 블루보틀 한잔 사들고 블루보틀 주차장 지나 옆길로 50m만 가면됨. 꼭 가보시길!",
+      "tags": ""
+    },
+    {
+      "date": "2025.05.27.",
+      "content": "와 진드기 오져여..강어지 데려가는건 비추",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.11.",
+      "content": "제주도에서 잔잔한 강을 볼 수 있다니. 우거진 나무들도 아름답다. 후기를 보면 알겠지만 블루보틀 인파와 상관없이 아직 사람이 적다. 물수제비용 납작한 돌을 미리 구해가면 좋다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2022.08.05.",
+      "content": "숨겨진 비경이라고해서 가봤더니...실패,좌절 사람들 많이 찾는곳을 역시나 가야하나...",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

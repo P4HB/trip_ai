@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24662866",
+  "place_id": "24662866",
+  "name": "어음천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공공 자료는 어음천을 제주시 애월 지역의 지방하천으로, 별도 생태 자료는 봉성리의 어음천 해암교습지를 하천습지로 제시한다. 그러나 Kakao 표식이 이 하천의 어느 구간을 가리키는지, 독립적인 방문지·탐방 동선인지, 일반 방문객의 출입 가능 여부를 연결하는 공식·공공 자료는 확인하지 못했다. 따라서 추천용 독립 장소의 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "어음천은 제주시 애월 지역에 있는 지방하천으로 확인되지만, 입력 Kakao 장소 표식의 정확한 구간과 관광 방문지로서의 실체는 확인하지 못했다.",
+    "typical_visit": "공식 탐방로·관람 동선·운영 주체 또는 방문객 이용 방법을 확인하지 못했다.",
+    "experience_scope": "하천·하천습지라는 지리·생태 분류 외에는 실제 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 공개 부록은 어음천을 납읍리 640에서 금성천 합류점까지의 제주시 하천으로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "국립생태원 공개 습지 목록은 제주시 애월읍 봉성리의 어음천 해암교습지를 R4 하천습지로 수록한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 24662866, 장소명 어음천, Kakao 장소 URL을 제공하며 평점과 후기 수는 모두 0이다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 공공 자료의 어음천 또는 어음천 해암교습지 중 어느 정확한 위치를 가리키는지 확인하지 못했다.",
+      "일반 방문객을 위한 공식 출입 지점, 탐방 동선, 주차·화장실·무장애 시설 및 관리 주체를 확인하지 못했다.",
+      "하천 구간의 최신 출입 통제, 수위·기상에 따른 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "government_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": ["어음천을 제주시 애월 지역의 지방하천으로 수록하고, 납읍리 640에서 금성천 합류점까지의 구간 정보를 제시한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "국립생태원",
+        "type": "government_ecology_inventory",
+        "url": "https://www.nie.re.kr/nie/cmmn/file/fileDown.do?atchFileId=748b733666a3426885b7e612f2bcb630&fileSn=1",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": ["어음천 해암교습지를 제주시 애월읍 봉성리의 R4 하천습지로 수록한다."]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/24662866",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": ["입력 패킷은 place_id 24662866과 장소명 어음천을 제공하며, 평점 및 방문·블로그 후기 수는 0이다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식의 정확한 하천 구간, 일반 방문객 출입 허용, 접근로와 수위·기상에 따른 안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체·관리 주체의 최신 안내로 정확한 위치, 출입 허용 여부, 안전한 접근 경로와 기상·수위 안전을 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

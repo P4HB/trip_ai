@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17638607",
+  "place_id": "17638607",
+  "name": "월정모살길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘월정모살길’이라는 명칭과 place_id만 제공하며 주소·좌표·업종·방문 후기 근거가 없다. 공개 신뢰 출처에서 월정리해수욕장과 올레·지질트레일 연결 정보는 확인했으나, 이 Kakao 레코드가 그 해변의 별칭·산책 구간·별도 시설 중 무엇인지 교차 확인할 수 없었다. 이름만으로 독립 여행 방문지 또는 기존 해변의 중복이라고 단정하지 않아 신원 미확정으로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 Kakao 입력은 장소명 ‘월정모살길’과 place_id뿐이다. VisitJeju는 월정리해수욕장을 별도 관광지로 소개하고 올레 20코스 및 김녕·월정 지질트레일과의 연결을 언급하지만, 월정모살길이라는 명칭 또는 Kakao place_id와의 동일성은 확인하지 못했다.",
+    "typical_visit": "VisitJeju가 소개한 월정리해수욕장에서는 해변 경관 감상, 휴식과 계절·운영 조건에 따른 물놀이·수상레포츠가 가능하다고 하나, 이를 ‘월정모살길’ 레코드의 대표 경험으로 귀속할 근거는 없다.",
+    "experience_scope": "주소·좌표·관리 주체·공식 안내·공개 리뷰 근거가 없어 이 레코드가 독립 관광지인지, 월정리해수욕장 또는 보행로의 중복·부속 표기인지 확인되지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았으며 추천용 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘월정모살길’이며, 주소·좌표·업종·공개 방문 후기 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "VisitJeju는 월정리해수욕장을 별도 관광지로 소개하고 제주올레 20코스 및 김녕·월정 지질트레일과의 연결을 언급하지만, ‘월정모살길’ 명칭이나 Kakao place_id 17638607과의 동일성은 명시하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 위치, 주소, 업종 및 관리·운영 주체를 확인하지 못했다.",
+      "월정모살길이 월정리해수욕장, 올레길·지질트레일의 일부, 별도 보행로 또는 다른 동명 장소인지 확인하지 못했다.",
+      "독립 여행 방문지로서의 접근성, 체류 경험, 안전·계절 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17638607",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘월정모살길’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "VisitJeju",
+        "type": "official_tourism_site",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500496&menuId=DOM_000001719002000000",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "월정리해수욕장은 제주 동쪽 월정리에 있는 해변 관광지로 소개된다.",
+          "소개문은 제주올레 20코스 및 김녕·월정 지질트레일과의 연결을 언급한다.",
+          "해당 페이지에는 ‘월정모살길’ 또는 Kakao place_id 17638607의 명시적 식별 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·관리 주체가 없어 월정리해수욕장 또는 보행로와의 동일성, 중복 여부 및 독립 여행지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처에서 정확한 위치와 장소 유형을 먼저 확인한다. 기존 월정리해수욕장·올레 구간의 중복이면 duplicate 또는 subordinate_facility로 재판정하고, 별도 방문지로 확인될 때만 41축을 생성한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

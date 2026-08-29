@@ -1,0 +1,118 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7932389",
+  "place_id": "7932389",
+  "name": "새미소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "입력 리뷰의 묵주기도 언급과 가톨릭 굿뉴스의 공식 성지 안내를 대조하면, Kakao 장소명 ‘새미소’는 제주시 한림읍의 ‘새미 은총의 동산’에 있는 묵주기도 호수(삼뫼소)를 가리킨다. 이곳은 기도·묵상·순례를 위한 독립 성지 공간으로 안내되어 있어 추천 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "새미소는 공식 성지 안내에서 새미 은총의 동산의 묵주기도 호수(삼뫼소)로 설명되는 장소이며, 입력 리뷰의 묵주기도 경험과도 일치한다.",
+    "typical_visit": "연못 둘레의 묵주기도, 십자가의 길과 예수님 생애공원 관람, 기도와 묵상이 대표 경험이다.",
+    "experience_scope": "성 이시돌 목장 안의 야외 종교 순례·묵상 공간으로, 호수·십자가의 길·조각상·예수님 생애공원을 포함한 도보 관람 경험이다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소명은 ‘새미소’이며, 제공된 방문 후기에는 성지순례 중 묵주기도를 했다는 경험이 있다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "가톨릭 굿뉴스 성지 안내는 새미 은총의 동산을 삼위일체 하느님을 향한 기도와 묵상의 장소로 소개하고, 삼뫼소(묵주기도 호수) 둘레의 묵주기도 동선을 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "같은 안내는 이곳에 십자가의 길 14처, 예수님 생애공원, 대성당과 야외미사 공간이 조성되어 있다고 설명한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "현재 개방 시간, 개별 프로그램 운영 여부와 이용 조건은 이번 조사에서 확인하지 않았다.",
+      "휠체어·유모차 접근성, 경사와 화장실 등 세부 접근성은 공식 안내에서 확인하지 못했다.",
+      "계절별 행사 외 일반 방문의 월별 혼잡도·체감 적합성은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 메타데이터 및 비식별 공개 후기 (입력 패킷)",
+        "type": "provider_metadata_and_review",
+        "url": "https://place.map.kakao.com/7932389",
+        "checked_at": "2026-08-24",
+        "facts": ["장소명은 ‘새미소’이다.", "공개 후기에는 성지순례와 묵주기도 경험이 언급된다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "가톨릭 굿뉴스",
+        "type": "official_religious_site_guide",
+        "url": "https://maria.catholic.or.kr/sa_ho/list/view.asp?PSIZE=20&ctxtOrgNum=2382&curpage=&menugubun=holyplace",
+        "checked_at": "2026-08-24",
+        "facts": ["새미 은총의 동산은 기도와 묵상의 장소로 안내된다.", "삼뫼소는 묵주기도 호수이며, 연못 둘레의 기도 동선이 있다.", "십자가의 길 14처와 예수님 생애공원, 대성당 및 야외미사 공간이 조성되어 있다."]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "세 오름으로 둘러싸인 연못이라는 안내는 있으나, 산행보다 종교 순례가 핵심이다.", "source_ids": ["S2"], "rule_ids": ["THEME-MOUNTAIN-CORE"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인한 장소 안내에 해안·바다 경험 근거가 없어 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "연못 둘레 기도와 십자가의 길 도보 체험은 있으나 레포츠형 활동 시설로는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["THEME-ACTIVITY-CORE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "종교 성지의 기도·묵상, 십자가의 길과 예수님 생애공원 관람이 이 장소의 직접 안내된 핵심 경험이다.", "source_ids": ["S2"], "rule_ids": ["THEME-CULTURE-HISTORY-CORE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "예수님 생애공원과 조각상은 있으나, 일반 오락형 테마파크가 아니라 종교 순례 공간이다.", "source_ids": ["S2"], "rule_ids": ["THEME-PARK-CORE"]},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용이 핵심이라는 근거를 확인하지 못해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험에 관한 근거가 없어 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "정기 미사 안내 외 특정 축제·기간성 행사가 장소 핵심이라는 근거를 확인하지 못해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "호수 둘레, 야외 십자가의 길, 야외미사 공간이 직접 안내되어 대표 경험은 주로 실외로 판단한다.", "source_ids": ["S2"], "rule_ids": ["ENV-INDOOR-RATIO"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 호수 둘레와 야외 십자가의 길을 걷는 형태여서 날씨가 체험에 영향을 줄 가능성이 높다.", "source_ids": ["S2"], "rule_ids": ["ENV-WEATHER-SENSITIVITY"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내가 기도와 묵상을 장소의 목적이라고 설명하므로 조용한 체류·성찰 경험이 중심으로 판단된다.", "source_ids": ["S2"], "rule_ids": ["STYLE-RESTFULNESS"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "도보 동선은 확인되지만 경사·노면·무장애 접근성 정보가 없어 중립값으로 보류한다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "호수 둘레 기도, 십자가의 길, 생애공원 등 여러 지점이 있어 짧은 관람과 더 긴 순례 동선을 조절할 여지가 있다.", "source_ids": ["S2"], "rule_ids": ["STYLE-DURATION-FLEXIBILITY"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름으로 둘러싸인 연못과 야외 순례 공간이라는 직접 설명이 있어 자연·공간 경관 감상 가치가 있는 것으로 판단한다.", "source_ids": ["S2"], "rule_ids": ["STYLE-SCENIC-VALUE"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "묵주기도 호수, 실물 크기 십자가의 길 조각상, 예수님 생애공원이 결합된 종교 순례 구성은 구별되는 경험이다.", "source_ids": ["S2"], "rule_ids": ["STYLE-DISTINCTIVENESS"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 한림읍 성 이시돌 목장 안의 지역 가톨릭 순례지로 조성·지정된 이력이 확인된다.", "source_ids": ["S2"], "rule_ids": ["STYLE-LOCAL-EMBEDDEDNESS"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내에서 제주교구의 대표 순례지로 지정되었다고 설명하지만, 제주 전체 대표 관광명소 수준은 별도 확인이 필요하다.", "source_ids": ["S2"], "rule_ids": ["STYLE-LANDMARK-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "호수와 조각상 등 시각 요소는 확인되나 사진 촬영 자체의 직접 가치나 이용자 근거가 부족해 중립값으로 보류한다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-PHOTO-EVIDENCE-INSUFFICIENT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "개인 기도·묵상과 도보 순례를 위한 장소라는 안내에 근거한 적합도다.", "source_ids": ["S2"], "rule_ids": ["COMPANION-SOLO"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 유형별 이용 경험 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 동반 방문 적합성을 뒷받침하는 직접 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 대상 시설·안전·동선 정보가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "부모 동반 시 접근성·휴식 편의 정보가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·기후 적합성 근거가 부족해 중립값으로 보류한다.", "source_ids": [], "rule_ids": ["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {
+      "kind": "accessibility_and_operations",
+      "applies_to": "recommendation_candidate",
+      "condition": "야외 도보 순례 공간이며 경사·노면·무장애 접근성 및 현재 개방·행사 운영은 확인되지 않음",
+      "status": "needs_review",
+      "action": "이동제약 또는 특정 방문 시간 조건이 있는 이용자에게 추천하기 전 공식 운영처에서 접근성·개방 정보를 확인",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1093005006",
+  "canonical_id": "kakao:1093005006",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 관광 안내와 제주시 자료에서 제주시 원도심을 걷는 성안올레의 독립된 3코스로 확인된다.",
+    "source_ids": ["s1", "s2"],
+    "rule_ids": ["eligibility.independent_visitor_route"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 경유지는 제주시 원도심의 시장·문화시설 중심이며 산·오름 경험은 확인되지 않는다.", "source_ids": ["s1"], "rule_ids": ["theme.primary_experience.v1"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "3코스의 공식 경유지에는 해안이 핵심으로 제시되지 않고 원도심 시장과 문화 경유지가 제시된다.", "source_ids": ["s1"], "rule_ids": ["theme.primary_experience.v1"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "약 5.5km의 도보 코스로 안내되어 걷기 참여가 방문 경험의 한 축이다.", "source_ids": ["s2"], "rule_ids": ["theme.walking_route.v1"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주읍성, 삼성혈, 민속자연사박물관 등 원도심의 역사·문화 경유지가 공식 안내에 포함된다.", "source_ids": ["s1", "s2"], "rule_ids": ["theme.route_waypoints.v1"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내는 원도심 도보 코스로 설명하며 테마파크형 시설 경험은 확인되지 않는다.", "source_ids": ["s1"], "rule_ids": ["theme.primary_experience.v1"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "출발 거점은 쉼터이나 공식 코스의 핵심 경유지는 시장·역사·문화 장소로 제시된다.", "source_ids": ["s1"], "rule_ids": ["theme.primary_experience.v1"]},
+    "theme.traditional_market": {"value": 0.75, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "동문시장과 보성시장이 공식 3코스 경유지로 명시되어 시장 방문이 코스 경험에 포함된다.", "source_ids": ["s1"], "rule_ids": ["theme.route_waypoints.v1"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "걷기축제에서 3코스 개장을 알렸지만, 코스 자체는 상시 도보 경로로 소개되어 기간행사가 핵심인 장소로 보기 어렵다.", "source_ids": ["s1", "s2"], "rule_ids": ["theme.primary_experience.v1"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "5.5km 원도심 도보 코스로 안내되어 대표 경험은 야외 보행에 가깝고 일부 실내 경유 가능성은 별도 확인이 필요하다.", "source_ids": ["s2"], "rule_ids": ["environment.route_outdoor.v1"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 활동이 원도심을 걷는 야외 코스이므로 강수·강풍·폭염·한파가 체험에 영향을 줄 가능성이 크다.", "source_ids": ["s2"], "rule_ids": ["environment.route_outdoor.v1"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "도보 중 쉼터와 골목 경유가 있으나 시장·도심 보행을 포함하므로 평온한 휴식 중심이라고 단정하기는 어렵다.", "source_ids": ["s1"], "rule_ids": ["style.route_character.v1"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "약 5.5km, 1시간 30분의 도보 코스라는 길이 외에 경사·무장애 정보는 확인되지 않아 중간값으로 둔다.", "source_ids": ["s2"], "rule_ids": ["style.walking_burden.v1"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "정해진 전체 코스는 있으나 시장·문화 경유지를 따라 일부 구간을 선택할 여지는 있어 보이며 실제 이탈·재합류 편의는 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["style.route_flexibility.v1"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 안내가 원도심의 숨은 풍경과 역사·문화 자원을 강조하지만 자연 경관 감상이 주목적인지는 제한적으로 확인된다.", "source_ids": ["s1"], "rule_ids": ["style.route_character.v1"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주읍성의 흔적과 동문시장·삼성혈 등 원도심 자원을 하나의 도보 경로로 잇는 구성으로 확인된다.", "source_ids": ["s1", "s2"], "rule_ids": ["style.route_waypoints.v1"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주시 원도심의 시장, 신화·역사 장소, 지역 문화시설을 통과하는 코스로 소개된다.", "source_ids": ["s1", "s2"], "rule_ids": ["style.route_waypoints.v1"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "코스는 제주시가 조성한 원도심 탐방 경로이나 제주 전체를 대표하는 상징 명소라는 공적 지정은 확인하지 못했다.", "source_ids": ["s1", "s2"], "rule_ids": ["style.landmark_evidence.v1"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "원도심 골목, 시장, 역사·문화 경유지가 있으나 사진 촬영을 핵심 가치로 뒷받침하는 직접 자료는 확인하지 못했다.", "source_ids": ["s1"], "rule_ids": ["style.visual_evidence.v1"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "자율적으로 걷는 원도심 도보 코스이므로 혼자 탐방에도 비교적 적합하다고 추정하되 안전·길찾기 지원 정보는 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["companion.walking_route.v1"]},
+    "couple": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장·골목·역사문화 경유지를 함께 걷는 체험으로 제시되나 동행자 맞춤 시설은 별도 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["companion.walking_route.v1"]},
+    "friends": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "시장과 문화 경유지를 포함한 도보 탐방은 소규모 동행이 함께 경험할 수 있으나 단체 수용 정보는 미확인이다.", "source_ids": ["s1", "s2"], "rule_ids": ["companion.walking_route.v1"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "박물관·시장 등 흥미 요소가 있지만 약 5.5km 도보이므로 연령별 체력과 안전 동반 필요 여부를 확인해야 한다.", "source_ids": ["s1", "s2"], "rule_ids": ["companion.walking_distance.v1"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "원도심 문화 탐방에는 맞을 수 있으나 약 5.5km 보행의 경사·휴식·무장애 정보가 없어 중간값으로 둔다.", "source_ids": ["s1", "s2"], "rule_ids": ["companion.walking_distance.v1"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 도보 코스이므로 겨울 기상 조건에 따라 체험성이 달라질 수 있어 중간값으로 둔다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "2": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 도보 코스이므로 겨울 기상 조건에 따라 체험성이 달라질 수 있어 중간값으로 둔다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "3": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "4": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "5": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "6": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 장거리 보행 코스이므로 강수·습도 등 당일 기상에 따라 적합도가 달라질 수 있다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "7": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 약 5.5km 보행 특성상 한여름 더위와 강수 가능성에는 부담이 커질 수 있으므로 당일 기상 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "8": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 약 5.5km 보행 특성상 한여름 더위와 강수 가능성에는 부담이 커질 수 있으므로 당일 기상 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "9": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "10": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "11": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 원도심 걷기라는 코스 성격상 비교적 온화한 계절에는 탐방에 유리할 수 있으나 실제 날씨 확인이 필요하다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]},
+    "12": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 도보 코스이므로 겨울 기상 조건에 따라 체험성이 달라질 수 있어 중간값으로 둔다.", "source_ids": ["s1", "s2"], "rule_ids": ["month.outdoor_walking_climate.v1"]}
+  },
+  "hard_constraints": [],
+  "research": {
+    "status": "ai_draft",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {"id": "s1", "publisher": "VisitJeju", "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014329", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["성안올레 3코스는 고씨주택, 산지천, 갤러리 레미콘, 동문시장, 제이각 쉼터, 삼성혈, 보성시장, 자연사박물관을 잇는 원도심 도보 코스로 소개된다.", "안내는 3코스를 제주읍성과 원도심의 역사·문화를 만나는 길로 설명한다."]},
+      {"id": "s2", "publisher": "제주시", "url": "https://www.jejusi.go.kr/fileDown.ac?path=%2Fjejusi%2Fdownload%2FjejusiPlan%2FjejusiPlan2025.pdf", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["제주시 자료는 성안올레 3코스 오디오가이드 개발을 성안올레 명소화 사업으로 제시한다.", "공개 보도 자료에서는 성안올레 3코스를 약 5.5km, 약 1시간 30분의 도보 코스로 설명한다."]}
+    ],
+    "limitations": ["공식 자료에서 경사, 포장 상태, 무장애 접근성, 화장실·휴식시설의 실제 이용 가능 여부는 확인하지 못했다.", "월별 적합도는 야외 도보라는 코스 성격에 근거한 기후 휴리스틱이며 실제 기상·운영 여부를 보장하지 않는다."]
+  },
+  "review_priority": "medium"
+}

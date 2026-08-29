@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10661486",
+  "place_id": "10661486",
+  "name": "열녀비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.8,
+    "rationale": "Kakao 공개 페이지의 애월읍 금성리 좌표와 공개 지역 기록을 대조하면, 이 장소는 곽지 해안 초입의 김천덕 열녀비로 식별된다. 독립된 역사 표지석이며 상위 시설의 부속물이나 기존 장소와의 중복 근거는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "열녀비는 제주시 애월읍 금성리로 표기된 Kakao 장소이며, 공개 지역 기록상 곽지 해안 초입의 김천덕 열녀비로 파악된다.",
+    "typical_visit": "제주올레 15-B 코스 및 곽금올레 인근에서 작은 역사 표지석과 해설을 살피는 짧은 야외 역사·지역문화 방문으로 파악된다.",
+    "experience_scope": "공개 자료는 위치 맥락·비석의 인물과 유래를 확인한다. 최신 현장 보존 상태, 출입 동선, 주차·화장실, 무장애 접근성, 해설판 상태 및 악천후 안전은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"Kakao 공개 장소 페이지는 장소명을 열녀비로, 주소를 제주특별자치도 제주시 애월읍 금성리로 제시하며 좌표를 함께 제공한다.","source_ids":["S1"]},
+      {"id":"F2","text":"지역 보도는 곽지 해수욕장 초입의 김천덕 열녀비를 작은 오래된 비석으로 소개하고, 김천덕의 정려와 비석의 이설·재각자 및 2009년 해설비 설치를 설명한다.","source_ids":["S2"]},
+      {"id":"F3","text":"제주올레 15-B 코스 소개는 곽지백사장 초입에 열녀 사노 김천덕의 정려비가 있다고 기록한다.","source_ids":["S3"]}
+    ],
+    "unknowns": [
+      "Kakao 표식과 공개 기록의 현장 위치가 완전히 같은 지점인지 최신 공공 좌표 대조는 하지 못했다.",
+      "현재 출입 허용 범위, 표지석·해설판의 보존 상태, 주차·화장실·쉼터와 무장애 접근성은 확인하지 못했다.",
+      "계절별 해안 기상·노면과 야간 안전 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"카카오맵","type":"public_place_metadata","url":"https://place.map.kakao.com/10661486","checked_at":"2026-08-24","facts":["장소명은 열녀비이며 주소는 제주특별자치도 제주시 애월읍 금성리로 표시된다.","공개 페이지 메타데이터에는 WGS84 좌표 126.30021528593257, 33.44380562310638이 표시된다."]},
+      {"id":"S2","publisher":"삼다일보","type":"public_local_history_article","url":"https://www.samdailbo.com/news/articleView.html?idxno=146728","checked_at":"2026-08-24","facts":["곽지 해수욕장 초입의 김천덕 열녀비를 소개한다.","김천덕의 정려와 비석의 1863년 재각자, 2009년 해설비 설치를 설명한다."]},
+      {"id":"S3","publisher":"제주의소리","type":"public_trail_article","url":"https://www.jejusori.net/news/articleView.html?idxno=408592","checked_at":"2026-08-24","facts":["제주올레 15-B 코스의 곽지백사장 초입에 열녀 사노 김천덕의 정려비가 있다고 기록한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료에서 산·오름·산림 경관이 이 표지석 방문의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"곽지 해안 초입이라는 위치 맥락은 있으나 해양 활동이나 해안 경관 감상이 표지석의 핵심 경험이라는 근거는 부족하다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레 코스 인근이라는 사실 외에 신체 활동·레포츠 또는 참여형 체험 운영은 확인되지 않았다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 지역 기록이 김천덕의 정려 사연과 비석의 이설·재각자·해설비를 직접 설명하므로 역사·지역문화가 대표 경험이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적인 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 기록은 해수욕장·올레길 초입에 놓인 작은 비석과 해설비로 설명해 대표 경험이 야외 표지석 방문임을 직접 뒷받침한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안 초입의 야외 비석을 살피는 방문이므로 비·바람·더위 등의 영향을 비교적 받을 것으로 추론한다. 실제 노면·통제 기준은 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·소음·체류 환경 정보가 없어 휴식성은 중립값으로 기록한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단 및 무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간·개방 시간·현장 해설 운영을 확인하지 못해 체류시간 조절성은 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 초입이라는 위치 외에 경관 감상 자체가 이 표지석의 직접적인 방문 가치라는 근거는 부족하다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"김천덕의 정려와 재각자·이설 이력이 있는 특정 역사 표지석이라는 기록은 고유성을 뒷받침한다. 다른 유사 역사 표지석과의 비교 근거는 부족하다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 기록이 곽지 지역의 김천덕 정려와 마을 해설비, 제주올레 구간을 직접 연결한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레와 지역 기록에 소개되지만 제주 또는 애월을 대표하는 상징 명소라는 공적 지정·공식 안내는 확인하지 못했다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값으로 기록한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문에 필요한 최신 출입·안전·동선 정보가 없어 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경·동선 정보가 부족해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·교육 안내·안전시설 정보가 없어 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 표지석 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 표지석 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 표지석 방문은 여름 더위와 강수의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 표지석 방문은 여름 더위와 강수의 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 표지석 방문은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공개 자료는 역사 표지석의 위치와 유래를 확인하지만, 최신 출입 허용 범위·노면·주차·화장실·무장애 접근성 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 또는 추천 안내 전에 현장·제주올레·관할 지자체의 최신 안내로 접근 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

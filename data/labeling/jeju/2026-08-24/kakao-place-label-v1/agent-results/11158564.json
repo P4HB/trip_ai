@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11158564",
+  "place_id": "11158564",
+  "name": "전주이씨계성군장손가묘지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "Kakao 공개 장소 페이지는 이 레코드를 제주시 조천읍 신촌리의 ‘전주이씨계성군장손가묘지’로 표시한다. 명칭과 위치로 묘지라는 장소 성격은 확인되지만, 일반 여행객을 위한 독립 관람·체험 방문지로서의 공식 운영·개방·안전 안내는 공개 신뢰 출처에서 확인하지 못했다. 추모·묘지 공간의 방문 가능성을 임의로 가정하지 않기 위해 추천용 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드와 공개 장소 페이지는 장소명을 ‘전주이씨계성군장손가묘지’, 위치를 제주특별자치도 제주시 조천읍 신촌리 1006으로 표시한다.",
+    "typical_visit": "공개 확인 자료에서 묘지라는 명칭과 위치 외에 일반 관광객을 위한 관람·해설·체험 또는 방문 운영은 확인되지 않았다.",
+    "experience_scope": "신원은 지명과 주소로 확인되지만, 추모·묘지 공간의 일반 출입·관람 허용 여부와 독립 여행 방문 경험은 확인되지 않는다. 그러한 조건을 추정해 적합도 점수를 만들지 않으며 본 라벨링의 추천 후보 범위에서 제외한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지의 제목과 입력 패킷의 장소명은 모두 ‘전주이씨계성군장손가묘지’다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao 공개 장소 페이지는 이 장소의 주소를 제주특별자치도 제주시 조천읍 신촌리 1006으로, 지도 좌표를 경도 126.6265539856142·위도 33.51516031843628로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 출입 허용 여부, 관리 주체, 관람 동선, 주차, 화장실 및 무장애 접근성은 확인하지 못했다.",
+      "관광·문화유산 방문지로서의 공식 안내, 해설, 체험 또는 상시 개방 여부를 확인하지 못했다.",
+      "현장 안전 상태와 추모 공간에 적용되는 방문 예절·제한은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11158564",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 장소 페이지의 제목은 ‘전주이씨계성군장손가묘지’다.",
+          "공개 장소 페이지는 주소를 제주특별자치도 제주시 조천읍 신촌리 1006으로 표시한다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_experience_scope_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "묘지라는 장소 성격과 위치만 확인됐으며 일반 여행객의 출입 허용, 관람 운영, 안전·접근 조건 및 독립 방문지 범위는 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 공공 문화유산 등록 또는 관리 주체의 공식 방문 안내가 확인되면 독립 방문지 적격성을 별도 검수한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

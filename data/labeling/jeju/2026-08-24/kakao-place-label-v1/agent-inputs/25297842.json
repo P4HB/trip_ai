@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 568,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25297842.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25297842",
+    "provider": "kakao",
+    "place_id": "25297842",
+    "name": "식산봉",
+    "url": "https://place.map.kakao.com/25297842",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "14",
+    "blog_review_count": "10",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.08.",
+      "content": "고즈넉하니 한바퀴 돌고 오기 좋습니다^^",
+      "tags": ""
+    },
+    {
+      "date": "2025.03.04.",
+      "content": "오조리사무소에 주차후 오조포구를 거쳐 식산봉을 올랐다. 황근의 자생 보호지이고 높게 뻗은 소나무가 특징. . 잔잔한 아름다움. 조용하고 제주스러운 포구와 짧은 등산코스가 무리없이 다녀올만하다.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2024.08.18.",
+      "content": "오조리포구길과 이어진 오름. 올라가는 길이 잘 정비되어 있고 58.6m의 낮은 높이라 5분 정도면 정상이다. 꼭대기 전망대에 오르면 우거진 나무들 사이로 절묘하게 보이는 일출봉, 우도, 두산봉 덧, 오조리포구에는 유독 왜구의 침입이 잦았는데, 조방장이란 사람이 이 오름을 군량미를 쌓아놓은것 처럼 꾸며 병사도 많아보이게 하였다는 데서 식산봉이란 이름이 유래하였다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.09.25.",
+      "content": "오조리포구는 성산의 보물입니다",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

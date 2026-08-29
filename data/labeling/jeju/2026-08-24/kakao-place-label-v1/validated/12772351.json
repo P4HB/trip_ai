@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12772351",
+  "place_id": "12772351",
+  "name": "고분양태",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "국가유산포털은 고분양태를 제주시 소재의 제주특별자치도 무형유산으로 분류하고, 한국민족문화대백과사전은 갓의 차양을 만드는 전통 공예 기법으로 설명한다. 하지만 입력 Kakao 레코드에는 이를 관람·체험할 수 있는 개별 장소, 전수관, 공방 또는 프로그램의 주소·운영·방문 안내가 없다. 무형유산 종목 자체를 독립 여행 방문지로 간주하지 않아 추천용 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "고분양태는 제주특별자치도 무형유산으로 지정된 갓양태 전통 공예 종목이다. 입력은 해당 종목명만 제공하며, 특정 전승 교육관·공방·전시 또는 체험 장소와 연결하는 식별 정보는 제공하지 않는다.",
+    "typical_visit": "공개 자료는 무형유산의 정의·지정·전승 현황을 설명한다. 이 Kakao 레코드에 대응하는 상시 관람·체험 장소, 운영 주체 또는 방문 동선은 확인하지 못했다.",
+    "experience_scope": "무형유산 종목이라는 신원은 확인됐지만, 지명이나 독립적으로 방문 가능한 시설·프로그램이 확인되지 않았다. 공예 종목 자체에 관광 방문 경험·동반자·월별 적합도 점수를 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가유산포털은 고분양태를 2002년 5월 7일 지정된 제주특별자치도 무형유산으로 분류하고 소재지를 제주특별자치도 제주시로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국민족문화대백과사전은 고분양태를 갓의 차양 부분을 500가닥의 살로 엮은 최상품 갓양태로 정의하며, 제주에서 전승되는 전통 공예로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 주소·좌표·시설 또는 전승자 작업 공간",
+      "일반 방문객이 이용할 수 있는 현재 전시·체험·교육 프로그램, 예약 방식, 운영 시간과 비용",
+      "관람 동선, 접근성, 주차 및 안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가유산청 국가유산포털",
+        "type": "official_heritage_record",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2223900120000&pageNo=1_1_1_1",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "고분양태를 제주특별자치도 무형유산으로 분류한다.",
+          "지정일은 2002년 5월 7일이며 소재지는 제주특별자치도 제주시로 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "type": "public_encyclopedia",
+        "url": "https://encykorea.aks.ac.kr/Article/E0067045",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "고분양태를 갓의 차양 부분을 500가닥의 살로 엮은 최상품 갓양태로 정의한다.",
+          "제주에서 전승되는 갓양태 제작의 역사와 현황을 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/12772351",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 12772351과 장소명 ‘고분양태’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종, 운영·방문 안내 및 공개 방문 후기 근거가 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "intangible_heritage_record_not_a_verified_visit_venue",
+      "applies_to": "recommendation_candidate",
+      "condition": "고분양태는 무형유산 종목으로 확인됐으나, 이 Kakao 레코드가 일반 방문 가능한 특정 전수관·공방·전시 또는 체험 프로그램인지와 주소·운영 조건을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 특정 공개 관람·체험 장소와 최신 공식 방문 안내가 같은 Kakao 레코드에 연결되면 그 시설을 별도 장소 후보로 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1253721952",
+  "place_id": "1253721952",
+  "name": "조천-함덕 곶자왈 지대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 학술 자료는 ‘조천-함덕 곶자왈지대’를 단일 방문 시설이 아니라 세 개의 현무암질 곶자왈 용암이 분포하는 광범위한 지형 권역으로 설명한다. 각 용암류는 길이 7~12.5 km, 폭 1~4 km 규모여서, 입력 Kakao 레코드가 특정 출입 지점·탐방로·관람 시설을 가리킨다고 확인할 수 없다. 따라서 독립적으로 방문·추천할 수 있는 한 장소의 41축 벡터 대상이 아닌 지리·지질 권역으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 명칭은 대한지질학회가 사용한 ‘조천-함덕 곶자왈지대’와 일치하며, 제주 동북부의 곶자왈 지형 권역을 뜻한다.",
+    "typical_visit": "확인된 출처는 이 권역의 지질·지하수 보전 특성을 설명할 뿐, 이 Kakao place_id에 연결되는 단일 탐방시설, 공식 출입 지점 또는 운영되는 관광 경험을 제시하지 않는다.",
+    "experience_scope": "지형 권역 자체는 하나의 경계가 확정된 관광지·시설이 아니며 복수의 용암류에 걸친다. 특정 방문지와의 동일성, 접근 방식, 안전·출입 조건, 운영 정보가 확인되지 않아 추천 적합도는 산정하지 않았다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "대한지질학회 게재 논문은 조천-함덕 곶자왈지대를 곶자왈 용암이 분포하는 지형 권역으로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 논문은 이 권역에 조천-대흘, 함덕-와산, 선흘의 세 현무암질 곶자왈 용암이 분포하며, 각각 수 km 이상의 길이와 폭을 가진다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 레코드는 ‘조천-함덕 곶자왈 지대’라는 장소명과 한 건의 자연 경관 후기만 제공하며 주소·좌표·공식 시설 안내는 포함하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 지도 지점과 권역 경계를 확인하지 못했다.",
+      "공식 탐방로, 출입 허용 여부, 안전 안내, 주차·편의시설 및 최신 운영 조건을 확인하지 못했다.",
+      "이 광역 지형 권역 안에서 독립 추천 대상으로 삼을 특정 자연 명소 또는 시설을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "대한지질학회 / Korea Citation Index",
+        "type": "academic_article_index",
+        "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART000996885",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "논문 제목은 ‘제주도 곶자왈지대의 용암No. 1. 조천-함덕 곶자왈지대’다.",
+          "초록은 조천-함덕 곶자왈지대에 세 개의 현무암질 곶자왈 용암이 분포한다고 설명한다.",
+          "초록은 조천-대흘 용암 11 km, 함덕-와산 용암 12.5 km, 선흘 용암 7 km의 규모를 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1253721952",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘조천-함덕 곶자왈 지대’다.",
+          "입력 패킷에는 주소, 좌표, 업종 또는 공식 시설 안내가 없다.",
+          "입력 패킷의 공개 후기는 자연 속 경험과 경관 태그를 언급하지만, 평점·후기 수와 함께 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "broad_geographic_area_not_discrete_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "조천-함덕 곶자왈 지대는 수 km 규모의 복수 곶자왈 용암류가 분포한 지형 권역이며, 입력 레코드는 특정 방문 시설·탐방로·출입 지점을 식별하지 않는다.",
+      "status": "needs_review",
+      "action": "특정 공식 탐방지 또는 접근 가능한 개별 자연 명소가 확인되면 그 시설의 고유 식별자와 안전·접근 근거로 별도 후보를 생성한다. 확인 전에는 이 광역 권역을 추천 후보에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

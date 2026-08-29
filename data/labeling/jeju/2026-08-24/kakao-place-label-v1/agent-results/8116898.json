@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8116898",
+  "place_id": "8116898",
+  "name": "충혼비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘충혼비’와 place_id만 제공하며 주소·좌표·업종·공개 후기가 없다. 제주특별자치도의회 자료에는 제주시 공설묘지 인근의 충혼비가, 서귀포시 공식 시민기자 콘텐츠에는 하원동의 별도 6.25 충혼비가 확인되어 제주 안에서도 동명 기념비가 복수 존재한다. 이 레코드가 어느 기념비인지 공개 신뢰 출처로 교차 확인할 수 없으므로 독립 방문지 신원과 범위를 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao 레코드에서 확인되는 정보는 ‘충혼비’라는 일반 명칭과 place_id뿐이다. 제주 내 서로 다른 위치의 동명 충혼비가 공개 자료에 확인되나, 입력에는 이를 특정 장소와 연결할 주소·좌표·유형 정보가 없다.",
+    "typical_visit": "충혼비는 일반적으로 추모·기념 목적의 비석을 뜻할 수 있으나, 이 레코드의 정확한 대상과 관람 가능 여부는 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영·관람 정보와 공개 방문 후기 근거가 없다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았으며, 장소 신원이 확정되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘충혼비’로만 제공하며 주소, 좌표, 업종 및 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 자료는 제주시 공설묘지 인근 산록북로 변에 충혼비가 다른 비석과 함께 이설되어 있다고 기록한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "서귀포시 공식 시민기자 콘텐츠는 서귀포시 하원동 628-3 하원마을 입구에 별도의 ‘하원동 6.25 충혼비’가 있다고 안내한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 기념 대상과 제주 내 공개된 동명 충혼비 중 어느 장소와 같은지 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람 범위, 접근성, 주차, 안전, 관리 주체 및 최신 관람 가능 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8116898",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘충혼비’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "local_government_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A039777.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 의견서는 제주시 공설묘지 부지의 지장물 이설 뒤 산록북로 변에 충혼비가 있다고 기록한다.",
+          "문서는 같은 위치에 충혼비 외 반공애국투사충혼비와 박진경 대령 추도비도 있다고 기록한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "서귀포시",
+        "type": "official_city_content",
+        "url": "https://blog.naver.com/seogwipo-si/223917661351",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "서귀포시 공식 시민기자 콘텐츠는 하원동 628-3 하원마을 입구의 ‘하원동 6.25 충혼비’를 안내한다.",
+          "해당 비석은 한국전쟁 때 산화한 하원동 출신 24명을 기리는 것으로 소개된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·후기가 없어 제주 내 복수의 동명 충혼비 중 정확한 대상, 독립 방문지 범위와 최신 접근·관람 상태를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 관리 기관의 정확한 주소·좌표와 기념 대상 정보를 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

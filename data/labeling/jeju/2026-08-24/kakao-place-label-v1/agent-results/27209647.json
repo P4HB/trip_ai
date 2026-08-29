@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "27209647",
+  "canonical_id": "kakao:27209647",
+  "name": "제주시관광안내센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명은 제주시 관광 정보를 제공하는 안내센터를 명시하고, 제공된 공개 후기 역시 관광 안내지 비치·관광 안내 및 자전거길 인증 이용을 언급한다. 이는 주변 여행을 지원하는 안내 서비스·시설이며 자체 관람·체험을 제공하는 독립 여행 방문지는 아니므로 subordinate_facility로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드의 명칭은 ‘제주시관광안내센터’이며, 제공된 공개 후기의 관광 안내·안내지·제주환상자전거길 인증 언급은 관광객 지원 시설이라는 명칭의 기능과 일치한다.",
+    "typical_visit": "여행자는 제주 관광 정보와 안내지를 얻거나 제주환상자전거길 인증을 위해 이 센터를 이용할 수 있다.",
+    "experience_scope": "관광안내와 자전거길 인증은 다른 여행지 방문을 지원하는 서비스다. 독립적인 자연·문화·관람·체험 방문지로서의 일관된 경험 벡터를 제공하지 않으므로 추천용 41축 벡터를 만들지 않았다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 장소명을 ‘제주시관광안내센터’로 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "작성자 식별 정보를 제외한 제공 공개 후기에는 관광 정보·안내지, 관광 안내, 화장실 이용 및 제주환상자전거길 인증 이용이 언급된다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 레코드의 정확한 주소·좌표, 운영 주체 및 최신 운영 시간은 입력과 확인한 공개 출처에서 확인하지 못했다.",
+      "현행 제공 언어, 휴무일, 무장애 접근성 및 자전거길 인증의 최신 범위는 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing_and_anonymized_review_evidence",
+        "url": "https://place.map.kakao.com/27209647",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주시관광안내센터’다.",
+          "제공된 작성자 비식별 공개 후기에는 관광 정보·안내지, 관광 안내 및 제주환상자전거길 인증 이용이 언급된다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "generated_at": "2026-08-25"
+}

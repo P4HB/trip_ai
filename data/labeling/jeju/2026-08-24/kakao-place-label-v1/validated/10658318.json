@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10658318",
+  "place_id": "10658318",
+  "name": "연태탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.6,
+    "rationale": "Kakao 공개 장소 페이지는 입력명과 일치하는 ‘연태탑’을 서귀포시 성산읍 고성리로 표시한다. 다만 공개 페이지와 검색 가능한 신뢰 출처에서 업종, 운영 주체, 관광·관람·체험 내용 또는 독립 방문지 성격을 확인하지 못했다. 명칭만으로 음식점 등 장소 유형을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao Map 공개 페이지에서 연태탑이라는 명칭과 제주특별자치도 서귀포시 성산읍 고성리 소재 표시는 확인했다. 그 밖의 업종·상세 주소·운영 정보는 공개 신뢰 출처에서 확인하지 못했다.",
+    "typical_visit": "확인 가능한 장소 유형과 제공 경험이 없어 전형적인 방문 경험을 판정하지 않는다.",
+    "experience_scope": "Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다. 독립 여행 방문지 여부와 실제 경험 범위가 확인되지 않았으므로 추천용 축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지의 제목은 ‘연태탑’이며, 설명에는 제주특별자치도 서귀포시 성산읍 고성리라고 표시된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "확인한 Kakao 공개 페이지와 공개 웹 검색 결과에서는 이 레코드의 업종, 운영 주체, 상세 방문 경험 또는 관광지로서의 독립성을 뒷받침하는 신뢰 출처를 찾지 못했다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "연태탑의 업종, 운영 주체, 상세 주소, 최신 운영 상태와 Kakao 레코드의 정확한 장소 유형을 확인하지 못했다.",
+      "관광·관람·체험을 제공하는 독립 여행 방문지인지, 일반 상업시설인지 확인하지 못했다.",
+      "접근성, 주차, 안전, 동반자별 이용 조건 및 계절별 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10658318",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 페이지 제목은 ‘연태탑’이다.",
+          "공개 페이지 설명은 제주특별자치도 서귀포시 성산읍 고성리를 표시한다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EC%97%B0%ED%83%9C%ED%83%91",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소의 업종·운영 주체·방문 경험을 확인할 수 있는 공식·공공 또는 신뢰할 만한 상세 출처를 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소명과 읍·리 단위 소재지만 확인되며 업종, 운영 주체, 독립 여행 방문지 범위 및 이용 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "공식 운영자 또는 공공 관광·사업자 정보로 업종과 실제 장소 범위를 교차 확인한다. 확인 전에는 추천 후보 및 적합도 벡터에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

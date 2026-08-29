@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26295374",
+  "place_id": "26295374",
+  "name": "섭지코지전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘섭지코지전망대’이며, 제주관광공사 Visit Jeju는 섭지코지를 해안·등대·기암괴석·초원을 함께 둘러보는 하나의 관광지로 소개한다. 공개 방문 후기도 섭지코지의 조망을 언급한다. 다만 공식 관광 안내에서 이 이름의 독립 운영 관광지·시설을 확인하지 못했으므로, 섭지코지 방문 경험 안의 조망 지점 표식으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "섭지코지전망대는 Kakao 지도에 등록된 ‘섭지코지전망대’ 표식이다. 공식 관광 자료는 섭지코지를 해안 경관·등대·기암괴석·초원이 결합된 관광지로 안내하지만, 이 표식 자체를 독립 시설 또는 별도 관광지로 식별하지는 않는다.",
+    "typical_visit": "독립 방문 경험으로 확정하지 않으며, 섭지코지 해안 관광·산책 중 경관을 보는 조망 지점으로 파악한다.",
+    "experience_scope": "공식 자료는 섭지코지 전체의 자연 경관과 볼거리를 설명하고, 입력된 공개 후기는 섭지코지 조망을 언급한다. 이 Kakao 표식의 정확한 위치, 관리 주체, 독립 운영 여부, 접근·안전 조건은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 섭지코지를 등대, 기암괴석, 초원, 말 체험 등 볼거리가 있는 관광지로 소개한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 공개 방문 후기는 ‘섭지코지’의 뷰가 좋다는 방문 경험을 언급한다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘섭지코지전망대’ 표식의 정확한 좌표·경계와 섭지코지 내 실제 조망 지점의 일치는 공식 자료로 확인하지 못했다.",
+      "전망대 자체의 관리 주체, 독립 운영·관람 체계, 시설·해설 여부는 확인하지 못했다.",
+      "현재 출입 가능 여부, 접근로·경사·노면, 주차·화장실·무장애 시설 및 악천후 안전 통제는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://visitjeju.net/kr/detail/view?contentsid=CONT_000000000500343&menuId=DOM_000001817000000002",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "섭지코지는 등대, 기암괴석, 초원, 말 체험 등 볼거리가 있는 관광지로 소개된다.",
+          "섭지코지의 주차장과 화장실 등 편의시설이 안내된다.",
+          "‘섭지코지전망대’라는 독립 관광지 또는 운영 시설의 안내는 확인하지 못했다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소·방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/26295374",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘섭지코지전망대’다.",
+          "입력된 공개 방문 후기는 섭지코지의 뷰가 좋다는 경험을 언급한다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_access_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "이 Kakao 표식이 섭지코지 내 어느 조망 지점인지, 독립 방문지로 운영되는지와 현재 야외 접근·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 추천 또는 방문 안내 전 관할 관광 안내·현장 최신 정보로 표식의 위치, 독립성, 출입 가능 여부와 기상·보행 안전을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1425,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/27087339.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:27087339",
+    "provider": "kakao",
+    "place_id": "27087339",
+    "name": "아라동역사문화탐방로 1코스",
+    "url": "https://place.map.kakao.com/27087339",
+    "average_rating_5": "1.0",
+    "visitor_review_count": "1",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2020.10.20.",
+      "content": "아라동 둘레길은 자동차 전용인가? 세미오름가는 둘레길이라고 해서 맵 보고 찾아 가는데 시속 100키로로 달리는 차도를 건너야하고 겨우 횡단보도 찾아서 입구 갔더니 사유지라 막혀있음. 삼의봉 찾아갔더니 공사중이라고 막아놓음. 포기하고 돌아가려는데 어두워져서 차들은 더 빨리 달림. 죽을뻔하다 살아남. 도보로 절대 가지마세요.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

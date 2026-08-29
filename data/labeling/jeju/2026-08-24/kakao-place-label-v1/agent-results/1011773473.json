@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1011773473",
+  "place_id": "1011773473",
+  "name": "후포해변",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju는 후포해변을 제주시 추자면 대서리의 독립 관광지로 안내하며, 파도에 닳아 둥글어진 몽돌이 있는 해변과 작은 휴양지라는 대표 경험을 직접 설명한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "후포해변은 제주시 추자면 대서리 267(대서5길 87)에 안내된 추자도의 해변 관광지다.",
+    "facts": [
+      {"id": "F1", "text": "Visit Jeju는 후포해변을 파도에 부딪혀 둥글어진 몽돌이 있는 해변으로 소개하고, 탈의실과 편의시설을 갖춘 작은 휴양지로 안내한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["최신 개방·입수 가능 여부와 계절별 시설 운영", "해변 접근로·노면·무장애 동선, 안전시설과 주차·화장실의 최신 상태", "파랑·강풍·기상 악화 시 통제와 안전 기준"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019073&menuId=DOM_000001718000000000", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["후포해변의 추자면 대서리 소재지, 몽돌 해변, 탈의실·편의시설을 갖춘 작은 휴양지라는 설명을 제공한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내는 몽돌 해변을 대표 경험으로 설명하며 산·오름 경관이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 장소를 몽돌이 있는 해변으로 직접 소개한다.","source_ids":["S1"],"rule_ids":["THEME-COASTAL-EXPERIENCE-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해양 레포츠·수영·체험 프로그램이 대표 경험이라는 직접 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술·전통 체험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문 경험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PRIMARY-EXPERIENCE-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 몽돌 해변에 있으며 실내 공간이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPERIENCE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"노출된 해변에서의 경관·휴양 경험은 비·바람·파랑·기온의 영향을 받을 수 있으나 현장 통제 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 탈의실과 편의시설을 갖춘 작은 휴양지로 직접 소개한다.","source_ids":["S1"],"rule_ids":["STYLE-REST-SETTING-DIRECT"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해변 접근로의 경사·노면·계단과 무장애 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"짧은 방문과 장기 체류의 실제 선택 폭, 현장 체류 편의 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 해변·경관/포토·자연경관으로 분류하고 몽돌 해변을 직접 설명한다.","source_ids":["S1"],"rule_ids":["STYLE-SCENIC-CORE-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"파도에 닳아 둥글어진 몽돌이 이 해변의 직접 확인된 고유 구성이다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-NATURAL-FEATURE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 추자면에 위치한 몽돌 해변이라는 지역 자연환경과의 직접 연결이 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-NATURAL-CONTEXT-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 추자도를 대표하는 상징 명소라는 공적 지정·근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-RECOGNITION-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 장소를 경관/포토 및 포토스팟으로 직접 분류한다.","source_ids":["S1"],"rule_ids":["STYLE-PHOTO-EXPERIENCE-DIRECT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 안전·통신·조명·접근 조건을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류·안전·동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 수용성·주차·동선 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 해변 안전시설·보호자 기준과 입수 조건을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 보행 난이도·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·시설 운영 정보를 확인하지 못해 야외 해변의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_weather_wave_access_and_facility_conditions_unknown","applies_to":"all_visitors","condition":"대표 경험이 노출된 해변에 있으나 파랑·강풍·우천 시 안전·통제, 해변 접근로와 노면, 입수 가능 여부 및 탈의실·편의시설의 현재 운영 상태를 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광정보센터 또는 현장 최신 안내로 기상·파랑 조건, 접근 안전, 입수·시설 운영 여부와 이동약자 동선을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

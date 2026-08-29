@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 730,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10186346.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10186346",
+    "provider": "kakao",
+    "place_id": "10186346",
+    "name": "넙거리오름",
+    "url": "https://place.map.kakao.com/10186346",
+    "average_rating_5": "3.3",
+    "visitor_review_count": "3",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.10.31.",
+      "content": "한남사려니오름숲 정상을 구경하고 내려오다보니 좌측에 작은 넙거리오름이 있어 들렀다 왔어요 2025년 사려니오름숲 개방이 마지막 날이라 넙거리오름도 처음이자 마지막이라는 생각에 구석 구석 잘 담이오려고 노력했는데.. 넙거리 오름은 분화구를 중심으로 둘레길로 이루오져 있고 데크와 흙길이 조화롭고 둘러보기 편했어요 분화구쪽으로는 큰 나무들이 줄 지어서 길게 뻗어있어서 멋진 풍경이였으나 정상은 다소 초라하지만, 쉬었다 가라고 의자도 준비 되어있었어요~",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.02.15.",
+      "content": "아래 bogi님이 얘기하신 넙거리 오름은 동명의 다른곳이에요. 남원읍 한남리에 있는 넙거리오름은 한남사려니오름숲 예약을 통해서 갈수있는 오름이 맞지만, 교래에 있는 이 넙거리오름은 탐방이 불가합니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8001851",
+  "place_id": "8001851",
+  "name": "열녀문",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 장소명은 '열녀문'뿐이고 후기·평점 외의 장소 사실도 제공되지 않았다. 공개·공공 자료 조사에서 이 Kakao ID와 정확히 대응하는 제주 소재지, 대상 인물·건축물, 관리 주체 또는 일반 방문객의 접근 가능 여부를 확인하지 못했다. 사전의 일반적인 '열녀문' 정의는 이 표식의 실제 장소 정체성을 증명하지 않으므로, 추천용 독립 방문지로 식별할 수 없어 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao의 장소 ID 8001851은 '열녀문'이라는 이름으로만 제공됐으며, 공개 조사로는 제주 내 정확한 대상과 위치를 신뢰성 있게 특정하지 못했다.",
+    "typical_visit": "공식 안내에서 실제 방문 경험, 운영 또는 접근 동선을 확인하지 못했다.",
+    "experience_scope": "이름의 일반적 의미와 실제 Kakao 표식의 일치가 검증되지 않아 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 8001851, 명칭 '열녀문', Kakao Map URL만 제공하며 방문 후기·평점 수치는 0으로 기록돼 있다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국립국어원 한국어기초사전은 '열녀문'을 열녀를 기리기 위해 세운 붉은 문으로 정의한다. 이는 단어의 일반적 뜻이며 이 Kakao 표식의 위치·대상·현존 여부를 확인하는 근거는 아니다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 제주 내 정확한 좌표·주소와 실제 구조물 또는 지형과의 일치 여부",
+      "대상 인물, 문화재 지정·관리 주체, 현존 상태와 일반 방문객의 출입 가능 여부",
+      "접근로, 주차·화장실·무장애 시설, 보행·기상 안전 및 최신 운영 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 목록",
+        "type": "public_place_listing",
+        "url": "https://place.map.kakao.com/8001851",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 Kakao place_id 8001851의 명칭을 '열녀문'으로 기록한다.",
+          "입력 패킷에는 주소·좌표·상세 소개·공개 후기 내용이 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국립국어원 한국어기초사전",
+        "type": "public_dictionary",
+        "url": "https://krdict.korean.go.kr/eng/dicSearch/SearchView?ParaWordNo=67819",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "'열녀문'은 열녀를 기리기 위해 세운 붉은 문이라는 일반 명사 정의가 있다.",
+          "사전 항목은 Kakao place_id 8001851의 개별 위치나 방문 가능 여부를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "정확한 대상·위치, 현존 여부, 토지·시설 관리 주체 및 일반 방문객의 출입 가능 여부를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 표식의 정확한 위치를 공공 문화유산·지자체 자료 또는 관리 주체의 최신 안내와 대조하고, 출입·보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

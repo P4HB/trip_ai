@@ -1,0 +1,101 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14572409",
+  "canonical_id": "kakao:14572409",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "review_status": "needs_review",
+    "rule_ids": ["ELIG-PLACE-IDENTITY", "ELIG-TOURISM-PLACE", "DYNAMIC-ACCESS-SEPARATE"],
+    "source_ids": ["S1", "S2", "S3"],
+    "rationale": "방선문 계곡은 제주시 한천 상류의 국가지정 명승·자연경관 방문지로 식별된다. 다만 최근 공개 후기에는 출입 통제가 반복 언급되고 최근 공개 탐방 기록도 있어 현재 접근 가능 여부가 확정되지 않는다. 이는 장소 적격성 대신 별도 하드 제약으로 처리한다."
+  },
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500226",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-25",
+        "facts": ["공식 관광 상세 페이지가 방선문을 제주 관광지로 제공한다."]
+      },
+      {
+        "id": "S2",
+        "url": "https://www.yna.co.kr/view/AKR20180511048100056",
+        "publisher": "연합뉴스",
+        "checked_at": "2026-08-25",
+        "facts": ["방선문 계곡은 제주시 한천 상류의 바위·절벽 경관이며, 봄꽃 풍경은 영주십경의 하나로 소개된다.", "주변 바위의 마애명으로 자연경관과 역사문화 요소를 가진 복합유산으로 평가되며 2013년 국가지정문화재 명승으로 지정됐다고 보도한다.", "2018년 방선문 문화예술축제의 숲길 걷기 행사는 4.7km 코스였다."]
+      },
+      {
+        "id": "S3",
+        "url": "https://place.map.kakao.com/14572409",
+        "publisher": "카카오맵 공개 방문자 후기(입력 증거)",
+        "checked_at": "2026-08-25",
+        "facts": ["2020~2023년 공개 후기에는 출입 통제와 물이 없는 건천 상태가 언급된다.", "2025년 공개 후기에는 비가 많이 와야 물이 흐른다는 언급이 있다."]
+      },
+      {
+        "id": "S4",
+        "url": "https://www.jejusi.go.kr/file/jejusi/download/bangseonmoon.pdf",
+        "publisher": "제주시 오라동주민센터·제주대학교 스토리텔링연구개발센터",
+        "checked_at": "2026-08-25",
+        "facts": ["방선문으로 향하는 숲길 자료는 약 1.7km, 도보 35분의 코스를 제시한다."]
+      },
+      {
+        "id": "S5",
+        "url": "https://macarthurschool.com/82138",
+        "publisher": "맥아더스쿨",
+        "checked_at": "2026-08-25",
+        "facts": ["2026년 1월 공개 탐방기는 방선문이 한천의 건천 구간에 있는 명승지라고 기술한다."]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2","S4"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"],"rationale":"한천 상류의 숲길·계곡 자연경관 방문이 핵심이므로 산림 경관 성격은 중간 수준이다."},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"],"rationale":"한천 상류의 내륙 계곡으로 소개되어 해안·해양 경험은 핵심이 아니다."},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2","S4"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"],"rationale":"숲길 도보 코스가 확인되어 걷기 활동은 방문 경험의 한 요소이나 레포츠 중심은 아니다."},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"],"rationale":"국가지정 명승과 다수의 마애명이 확인되어 역사·문화유산 감상 가치가 높다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"],"rationale":"테마파크형 시설 경험을 뒷받침하는 근거를 찾지 못해 보수적으로 폴백했다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"],"rationale":"카페·차·디저트 방문이 핵심이라는 근거를 찾지 못해 보수적으로 폴백했다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"],"rationale":"시장 방문 경험을 뒷받침하는 근거를 찾지 못해 보수적으로 폴백했다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"],"rationale":"과거 문화예술축제 개최 근거는 있으나 상설 축제 장소라는 현재 근거는 없어 낮게 반영했다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2","S4"],"rule_ids":["ENV-OUTDOOR-EXPERIENCE"],"rationale":"계곡·바위·절벽과 야외 숲길이 대표 경험으로 확인되어 실내 비율은 없다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2","S3","S5"],"rule_ids":["ENV-WEATHER-DEPENDENCE"],"rationale":"야외 계곡·숲길이고 건천 특성 및 강우 시 물 흐름이 확인되어 날씨 영향이 매우 크다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["STYLE-EXPERIENCE-EVIDENCE"],"rationale":"숲길 걷기 행사가 힐링 목적을 표방한 근거가 있어 평온한 체류 가치는 중간 수준이다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["S3","S4"],"rule_ids":["STYLE-ACCESS-BURDEN"],"rationale":"도보 숲길 접근이 필요하고 출입 통제 이력이 있어 신체 부담이 적은 장소로 보기 어렵다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2","S4"],"rule_ids":["STYLE-DURATION-FLEXIBILITY"],"rationale":"짧은 경관 감상과 1.7km 또는 행사 4.7km 걷기 근거가 함께 있어 체류 시간 조절 가능성은 중간이다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["STYLE-SCENIC-EVIDENCE"],"rationale":"바위·절벽 경관과 봄꽃 풍경이 영주십경으로 소개되어 경관 감상이 핵심이다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["STYLE-DISTINCTIVENESS-EVIDENCE"],"rationale":"방선문의 독특한 바위 경관과 마애명 복합유산, 국가지정 명승 지위가 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["STYLE-LOCAL-EMBEDDEDNESS"],"rationale":"제주 한천·영주십경·제주 목사와 문인들의 마애명으로 제주 자연·역사와의 연결성이 직접 확인된다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["STYLE-LANDMARK-SIGNIFICANCE"],"rationale":"국가지정 명승이자 제주 영주십경의 한 경관으로 지역 대표성이 확인된다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2"],"rule_ids":["STYLE-VISUAL-RECORD"],"rationale":"절벽·바위와 봄꽃의 시각 경관 근거가 있어 사진 가치는 중간 이상으로 추정하되 직접 촬영 수요 근거는 부족하다."}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["S3","S4"],"rule_ids":["COMPANION-ACCESS-CAUTION"],"rationale":"개별 도보 탐방은 가능하나 접근·출입 상태 확인이 선행되어야 한다."},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2","S3"],"rule_ids":["COMPANION-ACCESS-CAUTION"],"rationale":"경관 감상에는 맞지만 현재 출입 상태가 불명확해 조건부 적합이다."},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["S2","S3"],"rule_ids":["COMPANION-ACCESS-CAUTION"],"rationale":"함께하는 숲길 걷기에는 맞지만 출입·안전 확인이 필요하다."},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["S3","S4"],"rule_ids":["COMPANION-ACCESS-CAUTION"],"rationale":"야외 도보 접근과 출입 통제 이력 때문에 어린이 동반 적합성은 낮게 본다."},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["S3","S4"],"rule_ids":["COMPANION-ACCESS-CAUTION"],"rationale":"도보 숲길과 현재 접근 불확실성으로 부모 동반 적합성은 낮게 본다."}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["FALLBACK-CURRENT-ACCESS-UNKNOWN"],"rationale":"현재 출입 가능 여부를 확인하지 못해 보수적 폴백이다."},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["FALLBACK-CURRENT-ACCESS-UNKNOWN"],"rationale":"현재 출입 가능 여부를 확인하지 못해 보수적 폴백이다."},
+    "3":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S2"],"rule_ids":["MONTH-SPRING-SCENERY","CURRENT-ACCESS-UNKNOWN"],"rationale":"봄꽃 경관의 계절적 장점은 있으나 현재 접근 상태가 미확인이다."},
+    "4":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["MONTH-SPRING-SCENERY","CURRENT-ACCESS-UNKNOWN"],"rationale":"봄철 영산홍 등 꽃 풍경이 대표 경관으로 직접 소개되지만 현재 접근 상태가 미확인이다."},
+    "5":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"direct_evidence","source_ids":["S2"],"rule_ids":["MONTH-SPRING-SCENERY","CURRENT-ACCESS-UNKNOWN"],"rationale":"5월 봄꽃 경관과 문화행사 보도가 있으나 현재 접근 상태가 미확인이다."},
+    "6":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S3"],"rule_ids":["MONTH-RAIN-DEPENDENCE","CURRENT-ACCESS-UNKNOWN"],"rationale":"강우 시 물 흐름 가능성은 있으나 기상·현재 접근 상태에 좌우된다."},
+    "7":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S3"],"rule_ids":["MONTH-RAIN-DEPENDENCE","CURRENT-ACCESS-UNKNOWN"],"rationale":"강우 시 물 흐름 가능성은 있으나 기상·현재 접근 상태에 좌우된다."},
+    "8":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S3"],"rule_ids":["MONTH-RAIN-DEPENDENCE","CURRENT-ACCESS-UNKNOWN"],"rationale":"강우 시 물 흐름 가능성은 있으나 기상·현재 접근 상태에 좌우된다."},
+    "9":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S3"],"rule_ids":["MONTH-RAIN-DEPENDENCE","CURRENT-ACCESS-UNKNOWN"],"rationale":"강우 시 물 흐름 가능성은 있으나 기상·현재 접근 상태에 좌우된다."},
+    "10":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"climate_heuristic","source_ids":["S4"],"rule_ids":["MONTH-WALKING-CONDITIONS","CURRENT-ACCESS-UNKNOWN"],"rationale":"야외 숲길 걷기 계절로 추정되나 현재 접근 상태가 미확인이다."},
+    "11":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["FALLBACK-CURRENT-ACCESS-UNKNOWN"],"rationale":"현재 출입 가능 여부를 확인하지 못해 보수적 폴백이다."},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["FALLBACK-CURRENT-ACCESS-UNKNOWN"],"rationale":"현재 출입 가능 여부를 확인하지 못해 보수적 폴백이다."}
+  },
+  "hard_constraints": [
+    {"id":"HC-CURRENT-ACCESS-VERIFY","type":"access_status","status":"needs_review","source_ids":["S3","S5"],"checked_at":"2026-08-25","rationale":"공개 후기에는 반복된 출입 통제가 있고 최근 공개 탐방 기록도 있어, 추천·방문 전 관리기관 또는 현장 안내로 구간 접근 가능 여부를 확인해야 한다."},
+    {"id":"HC-WEATHER-AND-TRAIL-SAFETY","type":"weather_and_trail","status":"needs_review","source_ids":["S3","S4"],"checked_at":"2026-08-25","rationale":"건천 특성으로 강우에 따라 물 흐름이 달라지며 야외 숲길 접근이 필요하므로 악천후·현장 안전 안내를 확인해야 한다."}
+  ],
+  "review_priority": "high"
+}

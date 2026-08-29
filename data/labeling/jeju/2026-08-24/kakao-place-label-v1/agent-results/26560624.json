@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "26560624",
+  "canonical_id": "kakao:26560624",
+  "name": "칠성로쇼핑거리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주 원도심의 독립적인 보행 쇼핑거리로 공공 관광 접근성 안내와 제주관광공사 자료에서 확인된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"원도심 쇼핑거리로 소개되며 산·오름 탐방은 대표 경험이 아니다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"도심 상점가의 쇼핑 경험이 확인되며 해안·해양 활동은 대표 경험이 아니다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"보행 거리이나 레포츠·참여형 체험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 원도심의 상징이라는 지역사적 맥락은 확인되지만, 역사 해설·유산 관람이 주된 경험인지는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"상점과 보행로가 밀집한 거리로 안내되며 상설 테마파크 시설은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·분식점이 있는 거리라는 안내는 있으나 카페 이용 자체가 독립적인 핵심 목적이라는 근거는 부족하다.","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"동문시장과 인접하지만 칠성로는 의류·신발·액세서리 상점이 밀집한 별도 쇼핑거리로 소개된다.","source_ids":["S1","S2"],"rule_ids":["THEME-ADJACENT-PLACE-NOT-PRIMARY"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"간혹 행사가 열린다는 안내와 과거 야간 행사는 확인되지만, 상시 핵심 경험은 쇼핑거리 방문이다.","source_ids":["S1","S2"],"rule_ids":["THEME-PERIODIC-EVENT-CONTEXT"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 보행로를 따라 개별 상점에 드나드는 방문 형태로 소개되어 실내·실외 경험이 혼합된 것으로 잠정 판정한다.","source_ids":["S1","S2"],"rule_ids":["ENV-MIXED-STREET-RETAIL"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"보행 쇼핑거리 방문은 날씨 영향을 받을 수 있으나 현재 차양·아케이드 상태와 기상 대응 정보는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE-UNKNOWN"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식공간·혼잡도·소음에 대한 충분한 최신 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 접근성 안내는 칠성로에 단차와 경사가 없고 유효폭이 적정하다고 안내한다. 다만 일부 보차구분 없는 구간이 있다.","source_ids":["S2"],"rule_ids":["STYLE-ACCESSIBILITY-DIRECT"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"다양한 상점이 밀집한 보행 거리이므로 통과·짧은 쇼핑·복수 상점 방문으로 체류를 조절할 여지가 있다.","source_ids":["S1","S2"],"rule_ids":["STYLE-OPEN-STREET-FLEXIBILITY"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"거리 전경은 확인되지만 경관 감상 자체가 핵심 가치라는 충분한 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사는 칠성로를 제주 원도심의 상징이자 쇼핑거리 1번지로 소개한다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-URBAN-IDENTITY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 원도심의 상징으로 소개되고 동문시장과 가까워 제주인의 삶을 엿볼 수 있는 곳으로 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-URBAN-CONTEXT-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사가 제주 원도심의 상징으로 직접 소개한 대표 쇼핑거리다.","source_ids":["S1"],"rule_ids":["STYLE-URBAN-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"과거 야간 행사에서 포토존이 운영된 사실은 있으나 상시 사진 촬영이 장소의 핵심 경험인지는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["STYLE-EVENT-PHOTO-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 야간 안전·혼잡도와 안내 환경이 충분히 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문에 특화된 체류·편의 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 수용·휴식 여건 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반 시 보차 혼재 구간의 안전과 편의시설 정보가 충분하지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"평탄한 보행 정보는 있으나 고령 방문자의 휴식·혼잡도·전체 접근성은 충분히 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·행사 정보가 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-MIXED-RETAIL-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind":"pedestrian_street_access_and_current_store_operations","applies_to":"all_visitors","condition":"일부 구간은 보차구분이 없다고 공공 접근성 안내가 명시한다. 개별 상점 운영시간, 현재 행사·공사 및 혼잡도는 조사 시점에 확인하지 못했다.","status":"needs_review","action":"방문 전 보행 시 차량 주의가 필요하며, 목적 상점의 운영 여부와 현장 동선·행사를 확인한다.","source_ids":["S2"],"checked_at":"2026-08-25T00:00:00+09:00"}],
+  "review_priority": "medium",
+  "research": {
+    "status":"matched",
+    "checked_at":"2026-08-25T00:00:00+09:00",
+    "identity_notes":"입력명은 제주시 일도일동 관덕로11길 일대의 칠성로 보행 쇼핑거리를 가리킨다.",
+    "facts":[{"text":"제주관광공사는 칠성로를 제주 원도심의 상징이자 쇼핑거리 1번지로 소개하며 동문시장과의 인접성을 설명한다.","source_id":"S1"},{"text":"제주관광약자접근성안내센터는 의류·신발·액세서리 쇼핑몰이 밀집한 거리로 소개하고, 단차·경사가 없고 유효폭이 적정하나 보차구분 없는 구간이 있다고 안내한다.","source_id":"S2"}],
+    "unknowns":["개별 점포의 현재 영업시간과 휴무","현재 아케이드·차양 상태 및 우천 시 보행 여건","행사·공사에 따른 최신 동선과 혼잡도"],
+    "sources":[{"id":"S1","publisher":"제주관광공사","type":"official_tourism_information","url":"https://www.visitjeju.net/korean/Bd/view.php?bno=1767&btable=report_info&lcate=&p=99","checked_at":"2026-08-25T00:00:00+09:00","facts":["칠성로를 제주 원도심의 상징이자 쇼핑거리 1번지로 소개한다.","동문시장과 가깝고 제주인의 삶을 엿볼 수 있는 곳이라고 소개한다."]},{"id":"S2","publisher":"제주관광약자접근성안내센터","type":"public_accessibility_information","url":"https://easyjeju.net/pages.php?no=726&p=tourist","checked_at":"2026-08-25T00:00:00+09:00","facts":["의류·신발·액세서리 등 다양한 상품의 쇼핑몰이 밀집한 거리로 소개한다.","단차와 경사가 없고 유효폭이 적정하나 중간 부근에 보차구분 없는 구간이 있다고 안내한다."]}]
+  },
+  "generated_at":"2026-08-25"
+}

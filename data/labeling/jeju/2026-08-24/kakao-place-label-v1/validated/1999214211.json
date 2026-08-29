@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1999214211",
+  "canonical_id": "kakao:1999214211",
+  "name": "갯무꽃밭",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명 ‘갯무꽃밭’만으로는 특정 장소를 식별할 수 없다. 공식 관광 안내에는 구좌읍 세화리의 다랑쉬오름 갯무꽃밭과 성읍 갯무꽃밭 등 서로 다른 장소가 함께 제시되지만, 입력에는 주소·좌표·대표 이미지·리뷰 근거가 없어 Kakao 표식이 어느 꽃밭인지 연결할 수 없다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-AMBIGUOUS",
+      "ELIG-LOCATION-UNRESOLVED"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "‘갯무꽃밭’이라는 일반 명칭은 제주 내 복수의 계절성 야외 꽃밭에 사용되며, 입력 Kakao 표식의 정확한 위치·토지 소유·공개 접근 여부와 개화 상태를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "정확한 좌표 또는 주소를 확인한 뒤 해당 토지의 출입 허용 여부, 개화 시기, 주차·보행 동선과 현장 안전 안내를 재조사한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "공식 관광 자료가 갯무꽃밭을 단일 고유명으로 취급하지 않는다. 다랑쉬오름 갯무꽃밭(제주시 구좌읍 세화리 2658)과 성읍 갯무꽃밭이 별도 장소로 소개되어, 주소 없는 입력명은 일대일 매칭 근거가 부족하다.",
+    "facts": [
+      {
+        "text": "제주관광공사 관광 안내는 봄 웨딩스냅 추천 장소로 ‘다랑쉬오름 갯무꽃밭’을 제주시 구좌읍 세화리 2658 주소와 함께 제시한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주특별자치도·제주관광공사 꽃 목록은 ‘성읍 갯무꽃밭’을 별도 장소로 수록한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 1999214211의 실제 좌표·주소와 어느 갯무꽃밭을 뜻하는지",
+      "정확한 장소의 토지 소유·출입 허용 여부",
+      "개화 시기와 현재의 관람 가능 여부",
+      "주차·보행·무장애 접근성과 기상 안전 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_300000000013506&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "다랑쉬오름 갯무꽃밭을 봄 웨딩스냅 추천 장소로 소개한다.",
+          "해당 장소의 주소를 제주시 구좌읍 세화리 2658로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도·제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_300000000014161&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주 꽃 목록에 성읍 갯무꽃밭을 별도 장소로 수록한다.",
+          "갯무꽃이 계절성 꽃 목록의 항목임을 보여 준다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

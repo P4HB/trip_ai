@@ -1,0 +1,602 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1302548378",
+  "canonical_id": "kakao:1302548378",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력 패킷의 장소명은 녹산로이며, 공개 방문 후기는 봄철 벚꽃·유채꽃을 감상하는 도로 경관 방문 경험을 일관되게 설명한다.",
+    "source_ids": [
+      "kakao_review_1",
+      "kakao_review_3",
+      "kakao_review_4"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거는 도로와 꽃 경관을 설명할 뿐 산·오름 경험은 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거에서 해안 또는 해양 활동을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에 자전거 여행 중 이 길을 방문했다는 경험이 있으나, 신체 활동이 장소의 주목적인지는 추가 확인이 필요하다.",
+      "rule_ids": [
+        "direct-review-experience"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거에서 역사·문화유산 또는 예술 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거에서 테마파크형 시설이나 체험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거에서 카페·차·디저트 이용을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "입력 근거에서 시장 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에 유채꽃축제 쪽 꽃밭과 개화 상태가 언급되지만, 녹산로 자체가 축제 장소인지는 확인되지 않았다.",
+      "rule_ids": [
+        "direct-review-context"
+      ],
+      "source_ids": [
+        "kakao_review_3"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에서 길을 따라 꽃밭과 경관을 보는 야외 방문 경험이 확인되며, 실내 공간 정보는 없다.",
+      "rule_ids": [
+        "direct-review-setting"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "봄철 개화 시기와 벚꽃·유채꽃의 상태가 방문 경험에 직접 언급되어 계절·날씨 영향이 크다.",
+      "rule_ids": [
+        "direct-review-seasonality"
+      ],
+      "source_ids": [
+        "kakao_review_1",
+        "kakao_review_3",
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에서 길을 따라 꽃을 감상하고 사진을 찍은 느린 야외 체류 경험이 확인된다.",
+      "rule_ids": [
+        "direct-review-experience"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "도로 방문이라는 점 외에 보행 거리, 경사, 접근성 정보가 부족하다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "자전거 이동 중 방문과 꽃 사진 촬영 사례가 있어 통과형 방문과 감상 체류가 모두 가능해 보이나, 운영 정보 확인이 필요하다.",
+      "rule_ids": [
+        "direct-review-experience"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "여러 후기가 봄철 벚꽃·유채꽃과 이어지는 꽃밭 경관을 핵심 경험으로 설명한다.",
+      "rule_ids": [
+        "direct-review-scenery"
+      ],
+      "source_ids": [
+        "kakao_review_1",
+        "kakao_review_3",
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "끝없이 이어진 유채꽃밭과 벚꽃·유채의 동시 감상 후기가 이 도로의 구별되는 계절 경관을 시사한다.",
+      "rule_ids": [
+        "direct-review-scenery"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에 제주 봄철 유채·벚꽃 경관과 유채꽃축제 주변 맥락이 언급되어 지역 계절 풍경과의 연결을 확인할 수 있다.",
+      "rule_ids": [
+        "direct-review-context"
+      ],
+      "source_ids": [
+        "kakao_review_3",
+        "kakao_review_4"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "후기만으로 제주 또는 지역 대표 명소로서의 공인된 상징성은 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "후기에서 예쁜 꽃밭과 사진 촬영 경험을 직접 언급한다.",
+      "rule_ids": [
+        "direct-review-photo"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "혼자 꽃 사진을 많이 찍고 왔다는 방문 후기가 있다.",
+      "rule_ids": [
+        "direct-review-companion"
+      ],
+      "source_ids": [
+        "kakao_review_4"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 형태별 이용 편의 정보가 부족하다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 형태별 이용 편의 정보가 부족하다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반 시 안전·편의 시설 정보가 부족하다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "부모 동반 시 보행 부담과 편의 시설 정보가 부족하다.",
+      "rule_ids": [
+        "fallback-insufficient-evidence"
+      ],
+      "source_ids": []
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "입력 근거가 봄철에 집중되어 1월 경험은 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "2": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "2월 후기 날짜는 있으나 개화·방문 적합성에 대한 내용이 없다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": [
+        "kakao_review_2"
+      ]
+    },
+    "3": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "3월 말 유채꽃과 벚꽃의 개화 상태를 언급한 후기가 있다.",
+      "rule_ids": [
+        "direct-review-seasonality"
+      ],
+      "source_ids": [
+        "kakao_review_3",
+        "kakao_review_4"
+      ]
+    },
+    "4": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "4월 초 유채꽃이 한창이고 벚꽃을 볼 수 있었다는 후기가 있으며, 4월 10일에도 꽃 경관이 언급됐다.",
+      "rule_ids": [
+        "direct-review-seasonality"
+      ],
+      "source_ids": [
+        "kakao_review_1",
+        "kakao_review_4"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "5월의 꽃 경관 또는 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "6": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "6월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "7": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "7월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "8": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "8월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "9": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "9월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "10": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "10월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "11": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "11월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    },
+    "12": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "12월의 방문 경험을 확인하지 못했다.",
+      "rule_ids": [
+        "fallback-season-unknown"
+      ],
+      "source_ids": []
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "seasonal_scenery",
+      "detail": "벚꽃·유채꽃 경관은 개화 시기와 현장 상태에 따라 달라질 수 있어 방문 전 별도 확인이 필요하다.",
+      "source_ids": [
+        "kakao_review_1",
+        "kakao_review_3",
+        "kakao_review_4"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao_review_1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1302548378",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "봄철 꽃 경관 언급"
+        ]
+      },
+      {
+        "source_id": "kakao_review_2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1302548378",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "2월 작성 후기 존재"
+        ]
+      },
+      {
+        "source_id": "kakao_review_3",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1302548378",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "3월 말 유채꽃·벚꽃 개화 상태 언급"
+        ]
+      },
+      {
+        "source_id": "kakao_review_4",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/1302548378",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "자전거 이동, 유채꽃밭, 사진 촬영, 봄철 경관 언급"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식·공공 상세 출처는 입력 패킷에 제공되지 않았다.",
+      "Kakao 공개 리뷰는 보조 근거이며 평점·리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

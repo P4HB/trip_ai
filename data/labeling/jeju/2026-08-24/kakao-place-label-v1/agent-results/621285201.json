@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:621285201",
+  "place_id": "621285201",
+  "name": "곶바구리",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 패킷에는 ‘곶바구리’라는 Kakao 장소명, URL과 익명 공개 리뷰 한 건만 있고 주소·좌표·업종·공식 안내가 없다. 리뷰는 연꽃·정자와 산책 경험을 언급하지만 이 장소의 정확한 위치, 관리 주체, 독립 방문지 여부를 확인하지 못하므로 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명, place_id, Kakao 장소 URL 및 익명 방문 경험 요약 한 건뿐이다. 정확한 위치와 ‘곶바구리’가 가리키는 시설·공간의 범위는 입력 근거만으로 확인할 수 없다.",
+    "typical_visit": "익명 공개 리뷰는 연꽃, 정자 및 산책 경험을 언급한다. 다만 이 단일 보조 근거만으로 시설 성격이나 독립 방문 경험을 확정하지 않는다.",
+    "experience_scope": "주소·좌표·업종·공식 운영 안내가 제공되지 않았다. Kakao 평점과 리뷰 수는 라벨값의 직접 근거로 사용하지 않았으며, 장소 신원이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 621285201의 장소명을 ‘곶바구리’로 제공하며, 주소·좌표·업종은 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷의 익명 공개 리뷰 한 건은 연꽃과 정자를 언급하며 산책 목적으로 방문하기 좋았다고 적었다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 621285201의 정확한 주소와 좌표, 시설 유형 및 독립 장소 여부",
+      "공식 관리 주체, 연꽃·정자·산책 공간의 실제 범위, 접근성·안전·개방 상태와 최신 운영 안내",
+      "동행자·월별 적합도를 판단할 수 있는 공식·공공 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/621285201",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘곶바구리’이고 place_id는 621285201다.",
+          "입력 패킷에는 주소, 좌표 및 업종 정보가 없다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 익명 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/621285201",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력에 제공된 익명 리뷰는 연꽃과 정자를 언급하고 산책 목적으로 방문하기 좋았다고 표현한다.",
+          "리뷰는 장소 신원과 시설의 공식 운영·안전 정보를 확정하는 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 Kakao 레코드에 주소·좌표·업종·공식 안내가 없어 정확한 장소 범위, 독립 방문지 여부 및 최신 접근·안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 안내와 Kakao 주소·좌표로 장소 신원을 먼저 교차 확인한다. 독립 방문지로 확인되면 산책 공간의 접근성, 수변·정자 안전 및 기상·통제 조건을 별도 검수한 뒤에만 추천용 벡터를 생성한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25729361",
+  "canonical_id": "kakao:25729361",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "inference_level": "researched_inference",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIGIBILITY-OUT-OF-SCOPE-NONDESTINATION"
+    ],
+    "rationale": "공개 자료에서 이호천은 제주시 이호동 일대의 지방하천·하천범람 관리 대상이며, 독립적으로 운영되는 관광·체험 장소라는 근거를 확인하지 못했다. 따라서 장소 추천용 방문지 라벨링 범위에서는 제외한다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "research": {
+    "status": "confirmed",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "SOURCE-PUBLIC-DETAIL-PREFERRED",
+      "ELIGIBILITY-OUT-OF-SCOPE-NONDESTINATION"
+    ],
+    "rationale": "공공 재난지도와 수자원 자료로 하천 정체성을 교차 확인했다.",
+    "sources": [
+      {
+        "source_id": "S1",
+        "url": "https://bangjae.jeju.go.kr/files/map4/jejusi_030.pdf",
+        "publisher": "제주특별자치도",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "문서 제목은 제주시 이호동·도두동·노형동 재난지도이며 이호천 하천범람을 다룬다.",
+          "이호천은 재난·하천 관리 맥락의 지리 요소로 확인된다."
+        ]
+      },
+      {
+        "source_id": "S2",
+        "url": "https://www.kwra.or.kr/%21/download/?ct=76&filename=2_%ED%99%8D%EC%88%98%EB%9F%89+%EC%82%B0%EC%A0%95+%ED%91%9C%EC%A4%80%EC%A7%80%EC%B9%A8+%EB%B6%80%EB%A1%9D.pdf&oi=7681&path=%2Fmedia%2F17%2Ffixture%2FBoardFiles%2F2_%ED%99%8D%EC%88%98%EB%9F%89+%EC%82%B0%EC%A0%95+%ED%91%9C%EC%A4%80%EC%A7%80%EC%B9%A8+%EB%B6%80%EB%A1%9D.pdf",
+        "publisher": "한국수자원학회",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "홍수량 산정 표준지침 부록은 이호천하구와 이호천시점을 이호천 유역 특성·홍수량 고시 항목으로 제시한다.",
+          "자료는 이호천을 하천으로 분류한다."
+        ]
+      }
+    ]
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1530,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/24325311.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:24325311",
+    "provider": "kakao",
+    "place_id": "24325311",
+    "name": "송악산 인증센터",
+    "url": "https://place.map.kakao.com/24325311",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "10",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.11.24.",
+      "content": "제주도 걸어서 300km 종주하기 성공하고 일주일뒤 바로 자전거로 제주도 종주하기 하러 왔다. 화장실 주변에 두곳 있고. 먹거리 많음. 늘 사람 많아서 좋음.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2024.07.08.",
+      "content": "네번째 들른 곳,, 생각보다 오래걸려서 꽤나 고생함,, 특히 숙소를 못잡아서,, 쓸때없이 5키로를 숙소방가느라 더 고생함 ㅠㅜ 여기서 하루 쉰다 생각하시고 숙소들 미리 잡으세요,,",
+      "tags": ""
+    },
+    {
+      "date": "2022.04.27.",
+      "content": "호떡 맛이 좋아요~ 사장님께서 여행정보도 주시고 500원 할인도 해주는 넉넉함이 좋아요~",
+      "tags": ""
+    },
+    {
+      "date": "2022.07.03.",
+      "content": "스탬프 조금만 관리해주시면 더 좋을 거 같아요. 옆집 자전거 할인 굿~~~",
+      "tags": ""
+    },
+    {
+      "date": "2021.10.15.",
+      "content": "인증센타옆, 아이스크림가게, 자전거타면 10%할인, 사장님, 생큐~",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

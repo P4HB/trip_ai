@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1863,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25212873.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25212873",
+    "provider": "kakao",
+    "place_id": "25212873",
+    "name": "독자봉",
+    "url": "https://place.map.kakao.com/25212873",
+    "average_rating_5": "3.8",
+    "visitor_review_count": "10",
+    "blog_review_count": "6",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.07.23.",
+      "content": "시작지점에 화장실, 해충기피제 비치되어있고 계단따라 2-3분만 올라가면 됩니다. 쉬엄쉬엄 코스로 아주 굿",
+      "tags": "시설|주차"
+    },
+    {
+      "date": "2023.05.02.",
+      "content": "성산일출봉 볼 수 있는 전망대 있구요. 노루도 봤어요. (대면했을때, 소리내거나 다가가지 않음 도망가지 않아요^^) 그리고, 고사리가 많네요~~",
+      "tags": ""
+    },
+    {
+      "date": "2022.01.24.",
+      "content": "굼부리로 들어갈 수 있는 귀한 오름. 굼부리에 심지어 평상과 의자가 모여있는 쉼터가 있음.",
+      "tags": ""
+    },
+    {
+      "date": "2021.05.31.",
+      "content": "올랫길 3-A코스가 지나가는 오름이네요 평범한 나즈막한 말굽형 오름이며, 정상에서의 뷰는 그닥 볼것은 없으나 오름 둘레길은 걸을만 합니다 조용하게 걷기에는 추천합니다 오름에 화장실 설치된곳이 드문데 이곳에는 화장실도 있네요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

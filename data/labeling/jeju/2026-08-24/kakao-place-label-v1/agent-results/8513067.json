@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8513067",
+  "place_id": "8513067",
+  "name": "조부연대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "입력 Kakao 장소명 ‘조부연대’는 제주특별자치도의회 공개 기록에 외도2동 1978 소재의 연대로 수록된 고유 문화유산명과 일치한다. 제주학연구센터 자료도 외도2동 연대마을의 조선시대 해안 신호시설로 설명한다. 최신 개방·시설 정보는 확인하지 못했으나, 독립적으로 방문 가능한 역사 장소로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "조부연대는 제주시 외도2동에 있었던 조선시대 해안 연대(煙臺) 신호시설로, 공개 의회 기록은 소재지를 외도2동 1978로 수록한다.",
+    "typical_visit": "외도2동 연대마을 해안의 역사 유적과 주변 해안 경관을 짧게 살피는 야외 방문으로 파악된다.",
+    "experience_scope": "공개 자료는 역사적 기능, 외도2동 소재, 2011년 보수 및 인근 관광 산책로 조성 사실을 확인한다. 최신 개방 시간, 현존 구조물 상태, 진입로·주차·화장실·무장애 접근성, 파도·강풍 시 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주특별자치도의회 공개 2002년도 행정사무감사 부록의 문화재 표는 ‘조부연대’를 연대로 수록하고 소재지를 외도2동 1978로 적는다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주학연구센터의 해양유적 연구는 조부연대를 외도2동 연대마을의 해안 유적으로 다루며, 2011년 보수와 2012년 연대포구~해수사우나 관광 산책로 조성 사실을 기록한다.","source_ids":["S2"]},
+      {"id":"F3","text":"제주학연구센터의 한라산 하천 총서는 외도2동의 조부연대를 조선시대 왜적 침입 때 연기로 알리던 장소로 설명한다.","source_ids":["S3"]}
+    ],
+    "unknowns": [
+      "이 Kakao 레코드의 주소·좌표가 공개 유적 기록의 소재지와 직접 대조되지는 않았다.",
+      "최신 개방 여부, 현존 구조물 상태, 안내판·주차·화장실·무장애 시설과 보행 노면을 확인하지 못했다.",
+      "강풍·파랑·우천 시 해안 접근 안전과 현장 통제 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주특별자치도의회","type":"public_record","url":"https://record.council.jeju.kr/sydocument/appendix/a7/P02368.pdf","checked_at":"2026-08-24","facts":["2002년도 행정사무감사 부록의 문화재 표는 조부연대를 연대로 수록한다.","같은 표의 소재지는 외도2동 1978이다."]},
+      {"id":"S2","publisher":"제주학연구센터","type":"public_research_report","url":"https://jst.re.kr/upload/pdf/RC00000586.pdf","checked_at":"2026-08-24","facts":["조부연대는 2011년에 보수된 것으로 연구 보고서에 기록된다.","2012년 연대포구에서 해수사우나까지 관광용 산책로가 조성된 것으로 기록된다."]},
+      {"id":"S3","publisher":"제주학연구센터","type":"public_research_report","url":"https://jst.re.kr/upload/pdf/RC00092517.pdf","checked_at":"2026-08-24","facts":["외도2동의 조부연대는 조선시대 왜적 침입 때 연기를 피워 알렸던 장소로 설명된다."]},
+      {"id":"S4","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8513067","checked_at":"2026-08-24","facts":["입력 패킷의 Kakao 장소명은 조부연대다.","입력 패킷에는 주소·좌표·업종·공개 방문 후기 근거가 없다.","평점과 후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 유적과 인근 해안 산책로 근거는 있으나 해양 활동·해변 이용이 핵심이라는 근거는 없어 중립값으로 보수 판정한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 기록과 연구 자료가 조선시대 해안 신호시설인 연대로 직접 설명하므로 역사·문화유산 경험 비중을 높게 판정한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 연대 유적과 해안 산책로라는 공개 설명으로 대표 경험은 야외 중심으로 추론한다. 실내 부대시설은 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안의 야외 유적·산책로 방문은 비·바람·파랑 영향을 비교적 크게 받을 것으로 추론하되, 현장 통제 기준은 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음 및 체류 환경 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단과 무장애 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"유적 관람 시간과 휴식·주변 산책의 실제 동선 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 유적과 관광 산책로 근거는 있으나 경관 감상 자체의 가치가 직접 평가된 자료는 없어 중립값으로 보수 판정한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"조선시대 해안 군사 신호시설이라는 기능과 고유 유적명이 확인되어 장소 고유성은 높게 추론한다. 현존 구성의 상세는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"외도2동의 조선시대 해안 방어·통신 체계와 연결된 지역 유적으로 공개 기록이 직접 확인한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 문화재 표 수록과 지역 역사성은 확인되지만 제주 또는 외도 지역의 대표 상징 명소라는 현재 관광적 위상 근거는 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되는 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 실제 동선 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·동선·안전 여건 정보가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 난간·노면·안전시설 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 여부, 현존 구조물 상태, 해안 진입로·노면·난간, 주차·화장실·무장애 시설과 강풍·파랑·우천 시 안전 통제는 공개 신뢰 출처로 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 제주시의 최신 안내로 접근 가능 여부, 해안 기상과 보행 안전, 동반자별 접근성을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1916893260",
+  "canonical_id": "kakao:1916893260",
+  "name": "묵리우물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 여행 기록과 출판 여행 안내에서 하추자도 묵리마을의 옛 공동 식수원인 ‘묵리우물’로 일치하게 확인된다. 제주올레 18-1 코스의 독립적인 경유 지점으로 소개되어 방문 가능한 소규모 장소로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "묵리마을의 우물과 올레 경유지로 확인되며 산·오름 경관이 핵심 경험이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도에 있으나 확인된 대상은 마을 안의 담수 우물로, 해안·해양 활동이 핵심은 아니다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 18-1 코스의 경유 지점으로 소개되지만 우물 단독의 참여형 활동이나 보행 난이도는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-ROUTE-WAYPOINT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "묵리 주민의 식수원으로 2017년까지 사용됐고, 원통형 잡석 메쌓기 방식의 우물로 소개되어 지역 생활사와 축조 방식이 핵심 맥락이다.", "source_ids": ["S1"], "rule_ids": ["THEME-LOCAL-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 출처는 마을 우물과 올레길 경유를 설명하며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을의 옛 우물로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제·기간성 행사와 연결된다는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "마을 길가의 원통형 우물로 소개되어 대표 경험은 야외로 보이나, 주변 덮개·실내 편의공간의 현황은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-SITE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 마을길에서 짧게 보는 우물이라는 확인된 맥락상 비·바람·더위·추위에 노출될 수 있다. 현장 차양과 기상 통제는 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "우물 주변의 휴식 공간·체류 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "우물까지의 경사, 계단, 노면과 무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "올레길 경유 지점인 것은 확인되나 단독 방문 시간과 체류 선택지는 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "석축 우물의 형태는 확인되지만 경관 감상 자체가 대표 방문 가치라는 직접 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SCENIC-EVIDENCE-LIMITED"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "옛 공동 식수원이라는 생활사와 원통형 잡석 메쌓기 축조 형태가 직접 소개되어, 일반적인 도로 경유지와 구별되는 고유성이 확인된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-UNIQUE-FORM-AND-HISTORY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "묵리 주민이 오랫동안 식수로 이용한 우물로 소개되어 추자도 묵리의 생활과 직접 연결된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-LIVELIHOOD-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 18-1 코스의 명시적 경유지이지만, 제주 전체 또는 추자도를 대표하는 공적 상징·지정물이라는 근거는 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "석축 형태는 확인되지만 사진 촬영이 권장되거나 핵심 경험이라는 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험이나 편의시설 정보가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 우물 주변 보호와 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 우물 경유지의 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_well_access_and_safety_conditions_unknown", "applies_to": "all_visitors", "condition": "묵리우물은 야외 마을길의 옛 우물이나, 현재 접근·개방 상태, 우물 주변 보호시설, 야간 조명, 우천·강풍 시 보행 안전과 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주올레 또는 현장 최신 안내로 해당 구간의 접근 가능 여부와 기상·보행 안전을 확인하고, 우물 구조물에는 접근하지 않는다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘묵리우물’은 하추자도 묵리마을에 있는 옛 공동 식수원으로, 제주올레 18-1 코스의 경유 지점으로 공개 소개된 장소와 일치한다.",
+    "facts": [{"text": "묵리우물은 묵리 주민들이 사용하던 식수원으로 2017년까지 식수로 사용됐으며, 원통형 잡석 메쌓기 방식으로 축조됐다고 여행 기록이 소개한다.", "source_id": "S1"}, {"text": "여행 출판물의 제주올레 18-1 코스 목차는 하추자도 구간의 경유지로 묵리우물을 명시한다.", "source_id": "S2"}],
+    "unknowns": ["현행 운영·개방 여부와 정확한 진입 위치", "수질·식수 사용 가능 여부", "우물 주변 난간·덮개·야간 조명 및 무장애 접근성", "우천·강풍 시 현장 보행 안전"],
+    "sources": [{"id": "S1", "publisher": "개인 여행 기록 블로그", "type": "public_travel_information", "url": "https://sangmin-1.tistory.com/15969708", "checked_at": "2026-08-25", "facts": ["묵리슈퍼 인근의 묵리우물을 옛 주민 식수원으로 소개한다.", "2017년까지 식수로 사용됐고 원통형 잡석 메쌓기 방식으로 축조됐다고 설명한다."]}, {"id": "S2", "publisher": "테마여행신문 TTN", "type": "published_travel_guide", "url": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/480D210602260", "checked_at": "2026-08-25", "facts": ["제주올레 18-1 코스 추자올레의 하추자도 구간 경유지로 묵리우물을 수록한다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

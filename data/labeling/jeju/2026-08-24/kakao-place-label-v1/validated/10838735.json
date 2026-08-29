@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10838735",
+  "place_id": "10838735",
+  "name": "한라산 민대가리동산(촛대봉)",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 기관 자료는 촛대봉(민대가리오름)을 한라산 윗세오름 인근의 한라산국립공원 내 등산 금지 구역으로 설명하며 일반인의 출입이 어렵다고 안내한다. 공개 연구는 민대가리동산이 촛대봉·민오름이라는 별칭을 가진 해발 1,600.5m 오름임을 뒷받침한다. 그러나 일반 여행객이 이용할 수 있는 독립 방문지의 공식 개방·동선·안전 운영은 확인되지 않아 추천용 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "한라산 민대가리동산은 촛대봉 또는 민오름으로도 불리는 한라산 고지대 오름이다.",
+    "typical_visit": "공개 기관 안내에서 민대가리오름(촛대봉)은 윗세오름 북쪽의 한라산국립공원 내 지형으로 언급되며, 해당 구역은 일반인의 출입이 어려운 등산 금지 구역으로 설명된다.",
+    "experience_scope": "장소의 지형적 신원은 확인되지만, 독립 관광지로서 일반 방문객에게 개방된 관람·등산 동선과 안전·접근 운영은 확인되지 않았다. 접근 제한이 안내된 자연 지형을 일반 추천 후보의 완전 적합도 벡터로 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주콘텐츠진흥원 로케이션 검색의 한라산 윗세오름 안내는 족은오름 북쪽에 촛대봉 또는 민대가리오름이 있다고 설명하고, 한라산국립공원 내 등산 금지 구역이어서 일반인의 출입이 어렵다고 명시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주학연구센터 공개 연구는 민대가리동산을 민오름·촛대봉으로도 불리는 제주시 애월읍 광령리의 해발 1,600.5m 원추형 오름으로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객에게 허용된 민대가리동산 자체의 공식 탐방 동선, 입산 절차, 계절별 통제, 주차·화장실·대피시설은 확인하지 못했다.",
+      "현시점의 출입 통제 상태와 기상·안전 경보는 변할 수 있으므로 공식 한라산국립공원 공지 확인 없이 확정하지 않는다.",
+      "입력 패킷에는 공개 방문 후기 근거가 없으며, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주콘텐츠진흥원",
+        "type": "public_institution_location_page",
+        "url": "https://www.ofjeju.kr/bussiness/location/locationsearch.htm?act=view&id=258&page=6",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "윗세오름의 족은오름 북쪽에 촛대봉 또는 민대가리오름이 있다고 설명한다.",
+          "한라산국립공원 내 등산 금지 구역이어서 일반인의 출입이 어렵다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주학연구센터",
+        "type": "public_research_report",
+        "url": "https://jst.re.kr/upload/pdf/RC00012947.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "민대가리동산은 민오름 또는 촛대봉으로 불리는 오름이라고 설명한다.",
+          "제주시 애월읍 광령리 산 138-1에 위치한 해발 1,600.5m 오름으로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10838735",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘한라산 민대가리동산(촛대봉)’이다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없고, 평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "restricted_area_and_visitor_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 기관 자료가 한라산국립공원 내 등산 금지 구역으로 안내해 일반인 출입이 어렵고, 독립 방문객용 공식 개방·안전 동선은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 한라산국립공원 관리 주체의 일반 탐방 허용 및 공식 이용 안내가 확인되면 적격성을 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

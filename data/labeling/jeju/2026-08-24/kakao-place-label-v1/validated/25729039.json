@@ -1,0 +1,106 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25729039",
+  "place_id": "25729039",
+  "name": "원장천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 하천 현황 자료에서 원장천은 제주시 노형동에서 이호동으로 이어지는 지방하천으로 확인된다. 반면 입력명 자체는 하천 수계이며, 독립 관광·체험 장소로서의 운영, 일반 방문객용 진입·관람 동선 또는 안전 관리 안내는 신뢰할 수 있는 공개 출처에서 확인하지 못했다. 따라서 수계 지명만으로 추천용 독립 방문 장소 벡터를 만들지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "원장천은 제주특별자치도 제주시 노형동에서 이호동으로 이어지는 지방하천이다.",
+    "typical_visit": "공개 자료는 하천의 행정·치수상 위치와 하천 등급을 제시하지만, 원장천 전체를 독립 관광·체험 방문지로 운영한다는 안내는 확인되지 않았다.",
+    "experience_scope": "장소명이 선형 수계 전체를 가리키며 정확한 방문 지점도 입력에 없다. 일반 관광객의 출입, 관람 동선, 수변 안전과 접근 조건을 확인할 수 없어 독립 방문 장소 범위에 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가 하천 관련 공개 자료의 제주 지방하천 표는 원장천을 하천 코드 6020350의 지방하천으로, 기점을 제주시 노형동, 종점을 제주시 이호동으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "디지털제주문화대전의 내도동 설명은 원장천이 이호1동과 외도1동의 경계가 된다고 설명해 제주시 서부의 하천 지명임을 뒷받침한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 가리키는 정확한 하천 구간과 일반 방문객용 진입 지점은 확인하지 못했다.",
+      "산책로·주차·화장실·난간·수변 안전시설 및 휠체어 접근성은 확인하지 못했다.",
+      "일반 관광·레저 목적의 상시 개방·운영 안내와 우천·호우 시 통제 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국토교통부 산하 국토교통기술대전·CODIL",
+        "type": "government_technical_document",
+        "url": "https://www.codil.or.kr/filebank/original/EC/OTKCEC200512/OTKCEC200512.pdf?stream=T",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 지방하천 표에 원장천을 하천 코드 6020350으로 제시한다.",
+          "원장천의 기점은 제주시 노형동, 종점은 제주시 이호동으로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "디지털제주문화대전",
+        "type": "public_cultural_encyclopedia",
+        "url": "https://jeju.grandculture.net/jeju/toc/GC00700487?search=A2%2F1",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "내도동의 동쪽 경계가 원장천이며 이호1동과 접한다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25729039",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘원장천’이다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_identity_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "지방하천이라는 신원은 확인됐지만, 입력 표식의 정확한 구간과 독립 관광 방문지로서의 개방·동선·수변 안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 탐방 안내와 특정 방문 지점이 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

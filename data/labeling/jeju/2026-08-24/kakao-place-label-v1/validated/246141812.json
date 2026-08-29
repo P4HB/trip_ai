@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:246141812",
+  "place_id": "246141812",
+  "name": "메인동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.6,
+    "rationale": "입력 Kakao 레코드는 ‘메인동산’이라는 이름과 장소 URL만 제공하며 주소·좌표·업종·공개 방문 후기 근거가 없다. 공개 검색에는 제주시 구좌읍 한동리의 ‘메인동산’이라는 지형명이 보이지만, 이 정보만으로 해당 Kakao place_id와 동일한 지점인지 또는 일반 방문객을 위한 독립 여행 방문지인지 확인할 수 없다. 지형·출입·안전·방문 범위를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드의 확인 가능한 신원 정보는 장소명 ‘메인동산’과 place_id뿐이다. 공개 산 목록은 같은 이름의 지형을 제주시 구좌읍 한동리, 해발 86.8m로 수록하지만 Kakao ID와의 직접 연결은 확인되지 않았다.",
+    "typical_visit": "공개 신뢰 출처에서 이 Kakao 레코드의 관광·산책·등산 등 실제 방문 경험, 공식 관리 주체, 일반 출입 안내를 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종 및 공개 후기 텍스트가 없다. 평점과 후기 수는 라벨 근거로 사용하지 않았고, 장소 신원과 방문 범위가 확정되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 이름을 ‘메인동산’으로 제공하며 평점 0.0, 방문 후기 0건, 블로그 후기 0건으로 기록돼 있다. 주소·좌표·업종·후기 본문은 입력에 없다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 산 목록은 ‘메인동산’을 제주특별자치도 제주시 구좌읍 한동리의 해발 86.8m 지형명으로 수록한다. 다만 이 목록은 Kakao place_id나 일반 방문객 이용 조건을 제시하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표와 공개 산 목록의 메인동산이 같은 지점인지 확인하지 못했다.",
+      "일반 방문객 출입 가능 여부, 소유·관리 주체, 산책·등산 동선, 주차, 화장실, 노면·경사·무장애 접근성과 안전 시설을 확인하지 못했다.",
+      "관광·체험 목적의 독립 방문지로서 운영·안내가 있는지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/246141812",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘메인동산’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 텍스트가 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "P2SK 블로거 세상",
+        "type": "public_geographic_list",
+        "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "목록은 메인동산을 제주시 구좌읍 한동리, 해발 86.8m로 수록한다.",
+          "목록은 해당 Kakao 장소 ID, 출입 가능 여부 또는 관광지 운영 정보를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_visitor_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·후기 본문이 없고, 공개 지형명 자료도 해당 place_id와의 동일성 및 일반 방문객 출입·안전 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 자료에서 주소·좌표와 관리·출입 정보를 먼저 교차 확인한다. 독립 관광·산책·등산 방문지로 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

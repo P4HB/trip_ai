@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:114274632",
+  "place_id": "114274632",
+  "name": "말머리 바위",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 장소 메타데이터는 명칭 ‘말머리 바위’와 place_id만 제공하며 주소·좌표·분류·운영 주체가 없다. 2026-08-25 공개 웹 검색에서는 제주에 있는 이 Kakao 표식과 동일하다고 확인할 수 있는 공식·공공 관광 자료를 찾지 못했고, 동명 결과는 다른 지역의 바위 또는 해외 명소였다. 따라서 정확한 장소 동일성을 확인하기 전에는 독립 추천 후보로 사용할 수 없다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 지도 표식 ‘말머리 바위’(place_id 114274632)의 제주 내 정확한 위치와 대상 지형물은 공개 공식·공공 자료로 확인하지 못했다.",
+    "typical_visit": "정확한 장소 동일성이 확인되지 않아 대표 방문 경험을 확정하지 않는다.",
+    "experience_scope": "명칭만으로 산·해안·문화 명소 등 경험 유형을 추정하지 않았다. Kakao 평점 및 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터의 place_id는 114274632이고 장소명은 ‘말머리 바위’이며, 제공된 평점·방문자 후기 수·블로그 후기 수는 모두 0이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "‘제주 말머리 바위’ 및 동명 변형어 공개 검색 결과로는 해당 Kakao 표식과 제주 내 위치·대상을 교차 확인할 수 있는 공식 또는 공공 관광 상세 페이지를 찾지 못했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "제주 내 정확한 주소·좌표, 실제 지형물의 위치 및 관리 주체를 확인하지 못했다.",
+      "독립 관광지 여부, 상위 시설 또는 다른 장소와의 중복 여부를 확인하지 못했다.",
+      "접근로·노면·안전 위험, 주차·화장실, 무장애 접근성, 개방 상태 및 계절·기상 영향은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/114274632",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 장소명은 ‘말머리 바위’이고 place_id는 114274632이다.",
+          "입력 패킷에 주소·좌표·분류·운영 주체는 제공되지 않았다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EB%A7%90%EB%A8%B8%EB%A6%AC+%EB%B0%94%EC%9C%84",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주에 있는 입력 Kakao 표식과 동일성을 확인하는 공식·공공 상세 자료를 찾지 못했다.",
+          "동명 검색 결과에는 다른 지역 또는 해외의 서로 다른 장소가 포함되어 명칭만으로 동일성을 판정할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_location_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력명 ‘말머리 바위’의 제주 내 정확한 위치와 대상 지형물, 독립 장소 여부가 공식·공공 자료로 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보와 일정·접근성 판단에서 제외한다. 주소 또는 좌표와 공식·공공 안내를 확보해 동일성을 확인한 뒤 재조사한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {}
+}

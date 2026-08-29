@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1770131464",
+  "place_id": "1770131464",
+  "name": "송당저수지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "제주시 저수지 현황 공공데이터는 송당저수지를 한국농어촌공사가 관리하는 저수지로 제시하고, 제주 농업기술원 공개 자료는 송당저수지의 저수율과 농업용수 공급을 다룬다. 독립 관광·체험 장소로서의 운영 또는 일반 방문 경험은 공개 신뢰 출처에서 확인하지 못했으므로, 농업용 수리시설을 추천용 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "송당저수지는 제주시 조천읍 송당리에 있는 한국농어촌공사 관리 저수지다.",
+    "typical_visit": "공개 신뢰 출처에서는 농업용수 저장·공급 시설이라는 기능만 확인되며, 일반 관광객을 위한 독립 관람·체험 프로그램은 확인되지 않았다.",
+    "experience_scope": "장소의 신원과 저수지 관리 기능은 확인되지만, 관광·레저 방문지로서의 상시 개방·안전관리·이용 조건은 확인되지 않았다. 본 라벨링의 독립 방문·체험 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주시 저수지 현황 공공데이터는 송당저수지의 위치를 조천읍 송당리 494, 관리주체를 한국농어촌공사, 유효저수량을 784,000톤으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 농업기술원 공개 언론보도 자료는 송당저수지 저수율과 가뭄 시 농업용수 공급 상황을 다룬다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 출입 가능 여부, 관람 동선, 주차, 화장실, 난간·수변 안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "관광·레저 목적의 상시 개방, 프로그램, 운영 주체의 방문 안내는 확인하지 못했다.",
+      "수위·수질·시설 운영처럼 변하는 현장 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 제주시·공공데이터포털",
+        "type": "government_open_data",
+        "url": "https://www.data.go.kr/data/15056214/fileData.do?recommendDataYn=Y",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "송당저수지를 조천읍 송당리 494로 제시한다.",
+          "관리주체를 한국농어촌공사, 유효저수량을 784,000톤으로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도 농업기술원",
+        "type": "government_publication",
+        "url": "https://agri.jeju.go.kr/jadx/web/main.do?cropCode=FM10",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 언론보도 자료는 송당저수지 저수율 저하와 가뭄 상황을 다룬다.",
+          "송당저수지에서 농업용수가 공급되는 상황을 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1770131464",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘송당저수지’다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "농업용 저수지라는 시설 기능은 확인됐지만 독립 관광·체험 장소로서의 일반 방문 운영과 안전·접근 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관광지 등록 또는 공식 방문 안내가 확인되면 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

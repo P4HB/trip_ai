@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7946995",
+  "canonical_id": "kakao:7946995",
+  "name": "석두청산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사 Visit Jeju는 석두청산을 하추자도의 추자10경 명소로 안내한다. 신양항 정면의 석지머리·청도와 푸른 소나무 경관을 가리키는 독립적인 경관 감상 대상임이 공공·공식 자료에서 일치해 확인된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "석두청산은 산과 기암절벽, 암반 사이의 푸르름으로 설명되지만 정상 등반이 대표 경험이라는 직접 안내는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-LANDSCAPE-CONTEXT"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "신양항 정면의 청도와 기암절벽·푸른 소나무를 보는 추자10경으로 안내되어 해안·섬 경관 감상이 핵심이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-COASTAL-SCENERY-DIRECT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "석두청산 자체에서 하는 보행·레포츠·참여형 체험의 내용과 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-ACTIVITY-UNKNOWN"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "추자10경이라는 지역 경관 명칭 외에 역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "놀이·동물·수족관·전시형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "청도와 석지머리의 산·기암절벽·소나무를 보는 자연 경관으로 안내되어 대표 경험은 야외에 있다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-SCENERY"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 해안·섬 경관 감상이므로 비·바람·시정의 영향을 비교적 크게 받을 수 있다. 현장 기상 통제 기준은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "쉼터, 혼잡도, 소음, 실제 체류 환경 정보가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "진입 동선의 거리·경사·계단·노면과 무장애 접근성 정보가 없어 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상에 필요한 체류시간이나 짧은 방문·장기 체류 선택지 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.85, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 안내가 청도의 푸른 소나무를 석두청산으로, 공공 조사와 제주일보가 기암절벽과 푸른 산의 절경으로 설명해 경관 감상 자체가 핵심이다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-SCENIC-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "사람 머리 모양으로 비유되는 석지머리와 청도의 기암절벽·암반 사이 푸르름이라는 고유한 경관 묘사가 확인된다.", "source_ids": ["S2", "S3"], "rule_ids": ["STYLE-UNIQUE-LANDSCAPE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "하추자도 신양항 앞 청도·석지머리의 경관이며 추자10경으로 지역 관광 안내에 포함되어 있다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDSCAPE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주관광공사와 제주시 공공 마을조사가 모두 석두청산을 추자10경의 하나로 명시한다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-REGIONAL-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "기암절벽과 푸른 산·소나무의 시각적 경관은 확인되지만 사진 촬영 또는 기록 활동이 직접 권장되는지는 확인하지 못했다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 접근·안전·안내 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 체류·편의 환경의 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 방문의 동선·수용·안전 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반에 필요한 난간·노면·안전시설과 보호자 조건이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·계단·휴식시설·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·계절 절정 정보가 확인되지 않아 야외 경관지의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "coastal_viewpoint_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "석두청산은 하추자도 신양항 앞 청도·석지머리의 야외 해안 경관이나, 현재 접근 가능 지점, 진입로·난간·노면, 무장애 접근성, 해상·강풍·우천 시 안전 및 통제 정보는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 추자면 또는 현장 최신 안내로 경관 감상 가능 지점, 이동 동선, 기상·해안 안전 및 출입 통제를 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 석두청산은 하추자도 신양항 정면의 석지머리·청도 경관을 가리키는 추자10경 제5경으로 확인됐다.",
+    "facts": [{"text": "제주관광공사 Visit Jeju는 석두청산을 석지머리 청도의 푸른 소나무로 설명하며 하추자도 명소로 소개한다.", "source_id": "S1"}, {"text": "제주시 마을특성 조사 자료는 석두청산을 하추자도 석지머리의 사람 머리 모양 산과 암반 사이의 푸르름으로 설명한다.", "source_id": "S2"}, {"text": "제주일보는 청도가 신양리에서 약 1.5km 떨어져 있고, 푸른 산과 병풍 같은 기암절벽이 석두청산의 절경을 이룬다고 보도했다.", "source_id": "S3"}],
+    "unknowns": ["Kakao 표식의 정확한 관람·진입 지점", "최신 출입 가능 여부, 주차·화장실·휴식시설", "보행 노면·난간·무장애 접근성과 악천후 안전 통제"],
+    "sources": [{"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000007317&menuId=DOM_000002000000000221", "checked_at": "2026-08-25", "facts": ["하추자도 명소로 석두청산을 석지머리 청도의 푸른 소나무로 소개한다."]}, {"id": "S2", "publisher": "제주시", "type": "public_research_report", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf", "checked_at": "2026-08-25", "facts": ["석두청산은 하추자도 석지머리의 사람 머리 모양 산과 암반 사이의 푸르름이라는 추자10경의 하나로 설명된다."]}, {"id": "S3", "publisher": "제주일보", "type": "reputable_news", "url": "https://www.jejunews.com/news/articleView.html?idxno=2133605", "checked_at": "2026-08-25", "facts": ["청도는 신양리에서 약 1.5km 떨어져 있으며, 푸른 산과 기암절벽 경관이 석두청산에 속한다고 보도했다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

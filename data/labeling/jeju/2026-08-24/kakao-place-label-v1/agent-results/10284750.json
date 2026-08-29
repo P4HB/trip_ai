@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10284750",
+  "place_id": "10284750",
+  "name": "뒷동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 사업체 색인과 숙박 예약 페이지는 입력명의 뒷동산을 제주시 구좌읍 종달로3길 41-7의 펜션·민박 숙소로 일치시킨다. 예약 페이지는 한 팀이 단독 이용하는 객실 숙박과 숙소 내 부대시설을 안내하지만, 현재 41축 라벨링의 독립 관광·문화·자연·체험 방문 장소 범위에 해당하는 별도 공개 방문 프로그램은 확인되지 않았다. 따라서 숙박업소 자체에는 추천용 방문 경험 벡터를 생성하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘뒷동산’은 제주특별자치도 제주시 구좌읍 종달로3길 41-7의 제주민박 뒷동산과 주소 및 명칭이 일치한다.",
+    "typical_visit": "확인된 이용 범위는 예약을 통한 독채 민박 숙박과 숙소 내 시설 이용이다.",
+    "experience_scope": "숙박 예약·객실·숙소 부대시설 이용은 여행의 숙소 선택과 관련되지만, 이번 데이터 계약의 독립 관광·문화·자연·체험 방문 장소 41축에는 포함하지 않는다. 현재 객실 가용성·요금·체크인 조건 및 부대시설 제공 여부는 점수화하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 사업체 색인은 뒷동산의 주소를 제주특별자치도 제주시 구좌읍 종달로3길 41-7로 표시하고, 업종을 숙박·일반 숙박·펜션 및 민박업으로 분류한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "숙박 예약 페이지는 ‘제주민박뒷동산’을 같은 주소의 숙박 상품으로 표시하고, 한 팀이 단독으로 사용하는 숙소 및 객실 숙박을 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "현재 객실 가용성, 요금, 체크인·체크아웃 및 예약 조건은 확인·라벨링하지 않았다.",
+      "숙박객이 아닌 일반 여행객에게 제공되는 별도 관람·체험 프로그램이나 공개 출입 범위는 확인하지 못했다.",
+      "주차, 무장애 접근성 및 숙소 부대시설의 현재 운영 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "업체창고",
+        "type": "public_business_directory",
+        "url": "https://place.udanax.org/p/2935582/%EB%92%B7%EB%8F%99%EC%82%B0",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "뒷동산의 주소를 제주특별자치도 제주시 구좌읍 종달로3길 41-7로 표시한다.",
+          "업종을 숙박·일반 숙박·펜션 및 민박업으로 분류한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "NOL",
+        "type": "public_booking_listing",
+        "url": "https://nol.yanolja.com/stay/domestic/10063651?ratePlanId=910520&roomTypeId=742545",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주민박뒷동산을 제주특별자치도 제주시 구좌읍 종달로3길 41-7의 숙박 상품으로 표시한다.",
+          "한 팀이 단독으로 건물을 사용하는 숙소와 객실 숙박을 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10284750",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘뒷동산’이다.",
+          "입력의 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "lodging_not_independent_visit_vector",
+      "applies_to": "recommendation_candidate",
+      "condition": "뒷동산은 공개 사업체·예약 자료상 펜션/민박 숙박업소이며, 이번 41축의 독립 관광·문화·자연·체험 방문 장소 범위에 해당하지 않는다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 숙박 추천 기능의 별도 데이터 계약이 승인되면 최신 운영·예약 조건을 별도로 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1691,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/27085551.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:27085551",
+    "provider": "kakao",
+    "place_id": "27085551",
+    "name": "사려니숲",
+    "url": "https://place.map.kakao.com/27085551",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "23",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.13.",
+      "content": "전 구간을 가려면 약 10km를 걸어야 하니 준비가 필요합니다. 입구 근처 산책로만 돌아다녀도 만족스럽네요.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.05.06.",
+      "content": "여기 진짜 강추 합니다! 냄새가 진짜 숲의 냄새? 어쨌든 너무 좋고 길을 걸어다니는게 힐링이 됩니다☺️ 제 제주 여행중 단연코 1등이라고 말할수 있어요🫶🏻 정말 좋고 제주에 다시 오면 꼭 오고 싶네요🥰 걷는거 싫어하는 저도 정말 힐링하며 걸었습니다. 걷는게 귀찮다고 안가지 말고 꼭 오세요😸",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2024.12.31.",
+      "content": "주차장에서 물찻오름까지 걸었습니다~ 약 3시간정도 숲속길을 걸었어요. 너무 좋았습니다. 숲길 걷는거 좋아하신다면 추천. 물찻오름은 보호 관리상 폐쇄 되어서 아쉽네요 주말은 방문 차량이 많으니 피하심이...",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

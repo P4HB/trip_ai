@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:656533961",
+  "name": "토끼나무숲길",
+  "place_id": "656533961",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "high",
+  "hard_constraints": [
+    {
+      "kind": "private_property_and_no_public_access_confirmation",
+      "applies_to": "all_visitors",
+      "condition": "입력에 포함된 방문 경험에는 사유지 목장 내부이며 숲 안 출입 시 퇴장을 요구한다는 내용이 있다. 공개 접근 가능 구역과 허용 방문 방식은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 소유자 또는 현장 최신 안내를 통해 공개 출입 가능 여부와 허용 구역을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "입력의 방문 경험 근거에서 사유지 목장 내부이며 숲 안 출입 시 퇴장을 요구한다고 언급한다. 공개적으로 이용 가능한 독립 방문지라는 근거가 확인되지 않아 범위 밖으로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-PUBLIC-ACCESS-UNCONFIRMED",
+      "ELIG-PRIVATE-PROPERTY"
+    ]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력의 장소명은 토끼나무숲길이며, 입력 근거는 이 장소를 사유지 목장 내부의 사진 촬영 지점으로 설명한다.",
+    "facts": [
+      {
+        "text": "사유지 목장 내부라는 방문 경험 진술이 있다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "숲 안으로 들어가면 퇴장을 요구한다는 방문 경험 진술이 있다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "사진 촬영 장소라는 방문 경험 진술이 있다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "공개 출입 가능 여부와 허용 구역",
+      "소유자 또는 관리 주체의 최신 방문 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map public reviews",
+        "type": "kakao_review_evidence",
+        "url": "https://place.map.kakao.com/656533961",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력에 포함된 방문 경험은 이 장소가 사유지 목장 내부라고 언급한다.",
+          "입력에 포함된 방문 경험은 숲 안 출입 시 퇴장을 요구한다고 언급한다.",
+          "입력에 포함된 방문 경험은 사진 촬영 장소라고 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

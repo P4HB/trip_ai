@@ -1,0 +1,577 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1747677716",
+  "canonical_id": "kakao:1747677716",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "서귀포시 무릉중앙로21번길 190의 해안 방파제로, 돌밭과 바다가 만나는 경관 및 해안에서의 야생 돌고래 관찰 가능성으로 알려진 독립 방문 지점이다. 돌고래 출현은 보장되지 않는 자연 관찰 경험으로 취급한다.",
+    "source_ids": [
+      "source_triple",
+      "source_dolphin_guide"
+    ],
+    "rule_ids": [
+      "eligibility.eligible.independent_visit_point",
+      "policy.dynamic_wildlife_not_guaranteed"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 핵심 경험은 해안 방파제와 바다 경관이며 산·오름 경험은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.ocean": {
+      "value": 1,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "소개 자료가 돌밭과 바다가 만나는 방파제로 설명해 해안·해양 경관이 방문 경험의 중심임을 직접 뒷받침한다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "방파제에서의 관찰·산책 외 별도 레포츠 또는 참여형 체험은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guide"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 자료는 자연 해안과 돌고래 관찰을 다루며 문화·역사 시설 경험은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guide"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "방파제·해안 지점으로 소개되며 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "입력 및 조사 자료에서 카페·식음 경험은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "입력 및 조사 자료에서 시장 경험은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기간성 축제나 공연이 장소의 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "theme.core_experience"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "방파제와 바다 경관을 보는 야외 지점으로 소개되어 실내 체험 비중은 낮게 추정한다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "environment.visit_setting"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 해안 방파제에서의 경관·야생동물 관찰은 바람·비·파고 등 날씨 조건의 영향을 크게 받는다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guidance"
+      ],
+      "rule_ids": [
+        "environment.outdoor_weather"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "정적인 바다 경관 관찰 지점이지만 방파제 환경과 돌고래 대기 경험의 실제 휴식성은 개인과 날씨에 따라 달라진다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "style.place_archetype"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "도로 인근 방파제 방문은 짧게 가능해 보이나 돌밭·해안 노출 구간의 보행 상태와 무장애 접근성은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guide"
+      ],
+      "rule_ids": [
+        "style.access_burden"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 경관 감상은 짧게도 가능하지만 야생 돌고래 관찰은 출현 여부와 대기 시간에 좌우된다.",
+      "source_ids": [
+        "source_dolphin_guide",
+        "source_dolphin_guidance"
+      ],
+      "rule_ids": [
+        "style.duration_flexibility"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "여행 정보가 넓은 돌밭과 바다가 만나는 독특한 풍경의 방파제로 직접 소개한다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "style.direct_scenic_evidence"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 방파제에서 야생 돌고래를 관찰할 가능성이 알려져 있어 일반 방파제와 구별되는 경험으로 추정하되 출현은 보장하지 않는다.",
+      "source_ids": [
+        "source_dolphin_guide",
+        "source_dolphin_guidance"
+      ],
+      "rule_ids": [
+        "style.wildlife_observation_not_guaranteed"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 남서부 해안의 돌밭·바다 및 제주 남방큰돌고래 서식 해역 관찰 맥락과 연결되지만 지역문화 해설·시설은 확인되지 않았다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guidance"
+      ],
+      "rule_ids": [
+        "style.local_nature_connection"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "관광 정보에 해안 관찰 지점으로 소개되지만 제주를 대표하는 공인 랜드마크라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "source_triple",
+        "source_dolphin_guide"
+      ],
+      "rule_ids": [
+        "style.landmark_evidence"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "돌밭과 바다가 만나는 독특한 풍경으로 직접 소개되어 시각 기록 가치가 확인된다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "style.direct_visual_evidence"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "짧은 해안 경관·야생동물 관찰은 혼자서도 가능한 경험으로 추정한다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "companion.outdoor_viewing"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "바다 경관을 함께 감상하는 짧은 방문에 어울릴 수 있으나 편의시설 정보는 확인되지 않았다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "companion.outdoor_viewing"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 경관과 야생 돌고래 관찰 가능성은 친구 동행의 공동 관찰 경험에 맞을 수 있다.",
+      "source_ids": [
+        "source_dolphin_guide"
+      ],
+      "rule_ids": [
+        "companion.outdoor_viewing"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야생 돌고래 관찰은 흥미 요소가 될 수 있으나 방파제·해안 안전과 바람 조건을 보호자가 확인해야 한다.",
+      "source_ids": [
+        "source_dolphin_guide",
+        "source_dolphin_guidance"
+      ],
+      "rule_ids": [
+        "companion.coastal_safety"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "짧은 경관 감상은 가능하나 방파제의 노출 환경과 보행·접근 상태가 확인되지 않아 보통 수준으로 둔다.",
+      "source_ids": [
+        "source_triple"
+      ],
+      "rule_ids": [
+        "companion.access_uncertain"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "해안 야외 관찰지이나 월별 방문 적합도에 관한 장소별 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month.insufficient_place_evidence"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "type": "coastal_safety_and_wildlife",
+      "rationale": "방파제의 바람·파고·미끄럼 위험을 현장에서 확인하고, 야생 돌고래 출현은 보장하지 않으며 먹이주기·수영·접근을 하지 않는다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_triple",
+        "url": "https://triple.guide/attractions/dd005cc0-69f0-4bb7-995d-467ca3421d23",
+        "publisher": "트리플",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "주소는 제주특별자치도 서귀포시 무릉중앙로21번길 190으로 제시된다.",
+          "넓은 돌밭과 바다가 만나는 독특한 풍경의 방파제로 소개된다."
+        ]
+      },
+      {
+        "source_id": "source_dolphin_guide",
+        "url": "https://jejulian.tistory.com/45?category=1169023",
+        "publisher": "제줄리안",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "무릉리 근처의 조용한 방파제이며 늦은 오후 돌고래 무리가 나타날 수 있는 관찰 지점으로 소개된다.",
+          "영락1리 정류장에서 도보 약 8분이라는 접근 정보가 서술된다."
+        ]
+      },
+      {
+        "source_id": "source_dolphin_guidance",
+        "url": "https://static.jejuair.net/hpgg/resources/pdf/jeju_southern_bottlenose_dolphin_ecotourism_rule_file.pdf",
+        "publisher": "JEJUair × 생명다양성재단",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주 남방큰돌고래는 제주 바다를 터전으로 하는 야생동물로 설명된다.",
+          "관찰 시 먹이주기·수영·가까운 접근을 금지하는 생태관광 수칙을 제시한다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

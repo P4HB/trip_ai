@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1406565611",
+  "canonical_id": "kakao:1406565611",
+  "name": "산지천 전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주시 관광약자 접근성 안내가 산지천 산포광장 전망대를 별도 반환점·조망 지점으로 특정하고, 경사와 조망 대상을 독립적으로 안내한다. 산지천 공원의 일부이지만 그 자체로 찾아가 조망하는 공개 방문 지점이므로 적격으로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"공개 안내는 도심 하천·항구를 조망하는 전망대로 설명하며 산·오름·산림 경관이 대표 경험이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"전망대는 산지포구 전체와 부두를 조망하는 곳으로 공식 안내된다. 해양 활동은 아니지만 항구·수변 경관이 핵심 방문 경험이다.","source_ids":["S1"],"rule_ids":["THEME-WATERFRONT-VIEW-DIRECT"]},
+    "theme.activity": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"전망대까지 보행로와 오르막이 확인되지만, 레포츠나 참여형 체험이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내는 이곳을 조선시대 제주도의 관문이었던 산지포구 자리로 설명한다. 역사적 장소를 조망하는 경험이 직접 확인된다.","source_ids":["S1"],"rule_ids":["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"공공 전망·산책 시설로 안내되며 놀이·동물·전시 중심 테마파크 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"입력 장소 자체에서 카페·음료·디저트 이용이 독립적인 방문 목적인 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"동문시장 인근 산지천 맥락은 확인되지만, 전망대 자체가 시장 방문 경험을 제공한다는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"산지천 일원 축제와 과거 포토존 운영은 확인되지만, 현재 전망대의 상시 핵심 경험이 특정 기간 행사인지는 확인되지 않았다.","source_ids":["S2","S3"],"rule_ids":["THEME-EVENT-CONTEXT"]},
+    "environment.indoor_ratio": {"value":0.25,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"산지천·산짓물공원·부두를 바라보는 야외 전망대와 외부 보행로로 안내된다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-VIEWPOINT"]},
+    "environment.weather_sensitivity": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 보행과 항구·하천 조망이므로 비·바람·더위·추위 영향을 비교적 크게 받는다. 악천후 통제 기준은 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"조망·산책 맥락은 확인되지만, 혼잡도·휴식 시설과 느린 체류 환경이 충분히 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공식 접근성 안내는 전망대 보행로에 유효공간이 넓은 약 6도 오르막이 있다고 밝히며, 전체 추천 산책로는 대체로 평탄하다고 설명한다.","source_ids":["S1"],"rule_ids":["STYLE-ACCESSIBILITY-DIRECT"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"전망대 단독 체류시간이나 운영 시간은 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value":0.75,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"전망대에서 산짓물공원, 산지천, 부두, 김만덕기념관과 산지포구 전체를 조망할 수 있다고 공식 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"조선시대 제주 관문인 산지포구 자리에 마련되어 그 항구 전체를 조망하는 구성은 장소 고유의 경험으로 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-HISTORIC-SITE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value":0.75,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"제주 원도심 산지포구의 역사와 산지천·산짓물공원·김만덕기념관을 연결해 조망하는 장소로 직접 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-CONTEXT-DIRECT"]},
+    "style_evidence.landmark_significance": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"제주 관문의 역사적 산지포구를 바라보는 지점이라는 지역적 의미는 확인되지만, 제주를 대표하는 공적 랜드마크 지정·상징성은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 공개 자료는 산지천 전망대에서 슈퍼문 조형물·LED 빛 터널·네온사인 스트릿 포토존을 운영한 사실을 기록한다. 현재 운영 여부는 별도 확인이 필요하다.","source_ids":["S3"],"rule_ids":["STYLE-PHOTO-EXPERIENCE-DIRECT"]}
+  },
+  "companion_fit": {
+    "solo":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 안전·안내·야간 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 체류 환경이나 편의시설 근거가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"친구 그룹의 이용 편의와 수용 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 난간·안전시설·보호자 동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공식 접근성 안내는 대체로 평탄한 산책로와 전망대의 유효공간이 넓은 약 6도 오르막을 제시한다. 개별 보행 능력에 따른 주의는 필요하다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESSIBILITY-DIRECT"]}
+  },
+  "month_fit": {
+    "1":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사 정보가 부족한 야외 전망대여서 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_viewpoint_slope_and_weather","applies_to":"all_visitors","condition":"야외 전망대의 대표 동선에는 약 6도 오르막이 있으며, 악천후 시 안전·통제와 최신 운영 상태는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 제주시 최신 안내로 보행로 상태와 기상에 따른 이용 가능 여부를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status":"matched",
+    "checked_at":"2026-08-25T00:00:00+09:00",
+    "identity_notes":"입력명은 제주시 산지천 산포광장에 있는 야외 조망 시설을 가리키며, 공공 관광 접근성 안내에서 ‘산지천 전망대’로 별도 표기된다.",
+    "facts":[
+      {"text":"제주시 관광약자 접근성 안내는 산지천 산포광장 전망대를 조선시대 제주 관문인 산지포구 자리에 설치된 조망 지점으로 소개하며, 산지천·부두·김만덕기념관 등을 볼 수 있다고 안내한다.","source_id":"S1"},
+      {"text":"같은 안내는 전망대 보행로에 유효공간이 넓은 약 6도 오르막이 있다고 명시한다.","source_id":"S1"},
+      {"text":"제주관광약자접근성안내센터는 산지천을 제주시내 하천을 따라 조성된 광장 공원으로 소개하고 전망대 오르막 구간을 약 4.7~7.1도로 기록한다.","source_id":"S2"},
+      {"text":"제주시의회 공개 자료는 산지천 전망대에서 슈퍼문 조형물, LED 빛의 터널, 네온사인 스트릿 포토존을 운영한 계획을 기록한다.","source_id":"S3"}
+    ],
+    "unknowns":["전망대의 현재 야간 조명·포토존 운영 여부와 운영 시간","악천후 시 통제·폐쇄 기준","주차·화장실의 현행 이용 조건과 전망대까지의 정확한 무장애 동선"],
+    "sources":[
+      {"id":"S1","publisher":"제주특별자치도 관광약자 접근성 안내","type":"official_tourism_accessibility_information","url":"https://tour.jejudsi.kr/tour.htm?act=view&id=n_map64","checked_at":"2026-08-25","facts":["산지천 전망대의 역사적 위치·조망 대상을 안내한다.","전망대 보행로의 약 6도 오르막 및 산책로 접근성 정보를 안내한다."]},
+      {"id":"S2","publisher":"제주관광약자접근성안내센터","type":"official_accessibility_information","url":"https://easyjeju.net/pages.php?no=725&p=tourist","checked_at":"2026-08-25","facts":["산지천은 제주시내 하천을 따라 조성된 광장 공원으로 소개된다.","전망대 오르막 구간은 약 4.7~7.1도라고 기록한다."]},
+      {"id":"S3","publisher":"제주시의회 회의록 공개자료","type":"local_government_public_record","url":"https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A037268.pdf","checked_at":"2026-08-25","facts":["산지천 전망대의 슈퍼문 조형물·LED 빛의 터널·네온사인 스트릿 포토존 운영 계획을 기록한다.","해당 자료는 과거 계획 기록이므로 현행 운영 여부는 보장하지 않는다."]}
+    ]
+  },
+  "generated_at":"2026-08-25"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "126300709",
+  "canonical_id": "kakao:126300709",
+  "name": "제주농업생태원 폭포",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 장소명·Kakao URL만 있고 주소·좌표·농업생태원 내 정확한 위치·폭포의 독립성·상세 설명·리뷰 근거가 없다. 부속 조경 요소인지 독립 방문지인지 판정할 수 없어 적격성을 확정하지 않는다.",
+    "source_ids": [
+      "K1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "facility_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "농업생태원 폭포의 정확한 위치, 개방·접근 및 안전 정보가 입력에 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 최신 안내로 독립 시설 여부와 접근·운영 조건을 확인한다.",
+      "source_ids": [
+        "K1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "장소명 외 식별 근거가 제공되지 않았다.",
+    "facts": [
+      {
+        "text": "입력 장소명은 제주농업생태원 폭포이다.",
+        "source_id": "K1"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·독립성·관리 주체",
+      "개방·접근·안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/126300709",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 제주농업생태원 폭포이며 리뷰 근거는 비어 있다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

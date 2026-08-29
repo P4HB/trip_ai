@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1223295170",
+  "place_id": "1223295170",
+  "name": "잃어버린 마을 자리왓",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.95,"rationale":"제주관광공사와 제주다크투어가 제주시 애월읍의 독립된 제주4·3 역사 현장·잃어버린 마을터로 직접 안내한다. 상업 시설의 부속물이 아닌 방문 가능한 역사·기억 장소다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"자리왓은 제주시 애월읍 봉성리의 제주4·3 역사 현장으로, 1948년 소개령과 초토화작전 뒤 복구되지 않은 잃어버린 마을터다.",
+    "typical_visit":"야외 마을터에서 표석, 큰 팽나무, 옛 올레와 집터 흔적을 통해 제주4·3의 역사와 지역 기억을 살피는 방문이다.",
+    "experience_scope":"역사 현장과 야외 흔적은 확인됐지만, 최신 개방 여부·접근로·노면·주차·화장실·무장애 시설·운영 시간은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 자리왓을 토벌대의 초토화작전으로 사라진 마을터이자 제주4·3 문화유적지·역사유적으로 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 왕돌거리의 큰 팽나무, 좁고 구불구불한 옛 올레와 집터 흔적을 말해주는 대밭이 남아 있다고 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"제주다크투어는 자리왓이 35가구가 살던 중심마을로서 1948년 소개령 뒤 폐허가 됐고, 현재 표석과 큰 팽나무가 남아 있다고 안내한다.","source_ids":["S2"]}
+    ],
+    "unknowns":["현재 출입 가능 구간과 최신 보행·주차·편의시설 정보는 확인하지 못했다.","계절별 현장 통제, 노면 상태, 무장애 접근성과 안전 설비는 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"public_tourism","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022874","checked_at":"2026-08-24","facts":["제주시 애월읍 봉성리의 제주4·3 역사유적·잃어버린 마을터로 안내한다.","큰 팽나무·옛 올레·집터 흔적을 설명한다."]},
+      {"id":"S2","publisher":"(사)제주다크투어","type":"historical_site_guide","url":"https://www.jejudarktours.org/ko/historical-sites/%EC%9E%90%EB%A6%AC%EC%99%93/","checked_at":"2026-08-24","facts":["1948년 소개령과 폐촌 경위를 안내한다.","표석과 큰 팽나무가 남아 있는 야외 현장으로 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 탐방이 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 관광 안내와 역사 현장 안내가 제주4·3의 폐촌과 마을터를 직접 기록해 역사·기억이 대표 경험임을 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트가 독립 방문 목적인 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"확인된 대표 현장은 팽나무, 옛 올레, 대밭과 집터 흔적이 남은 야외 마을터다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 마을터 방문이므로 날씨 영향을 비교적 받을 것으로 추론하나 실제 동선·통제 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"추모·기억 성격은 확인되나 휴식 환경과 시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단·무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 소요 시간과 개방 시간 정보가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"팽나무와 대밭·집터는 확인되지만 경관 감상 자체가 핵심 가치라는 근거는 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3으로 사라진 자리왓의 구체적 폐촌 역사와 남은 현장 흔적이 직접 기록된 고유한 역사 경험이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주시 애월읍 봉성리의 제주4·3 역사와 마을의 생활 흔적에 직접 연결돼 있다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 관광 안내에 등재된 역사유적이지만 제주 전체를 대표하는 상징 명소라는 공식 지정은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"촬영 목적 또는 사진 가치에 대한 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문의 체류 환경·동선 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 시설·안전 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·난간·안전시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터는 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터는 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터는 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터는 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터는 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"역사 현장과 야외 마을터인 사실은 확인됐지만 최신 출입 경로, 노면, 주차, 조명, 화장실 및 무장애 시설은 확인하지 못했다.","status":"needs_review","action":"방문 전 Visit Jeju 또는 현장 최신 안내로 출입 가능 여부, 접근 경로와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-24"
+}

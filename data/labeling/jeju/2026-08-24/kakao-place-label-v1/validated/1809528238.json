@@ -1,0 +1,118 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1809528238",
+  "place_id": "1809528238",
+  "name": "모진이 무지개해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소는 신양리 56-1, 좌표 126.334333·33.946133으로 표시되고, 기존 후보 모진이몽돌해변(kakao:13723641)은 신양리 56, 좌표 126.334371·33.945726이다. 제주관광공사는 신양리 56의 모진이몽돌해변만을 독립 관광지로 안내하며, 이 표식의 ‘무지개해안도로’를 별도 관광지로 확인하는 공식·공공 안내는 찾지 못했다. 두 표식은 약 45m 이내로 동일 해변 방문 범위에 해당하므로 중복으로 판정한다.",
+    "duplicate_of": "kakao:13723641",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "eligibility.duplicate_existing_destination"
+    ]
+  },
+  "research": {
+    "identity_summary": "모진이 무지개해안도로 Kakao 표식은 추자면 신양리 56-1에 있고, 공식 관광 안내의 모진이몽돌해변(신양리 56) 바로 인접한다.",
+    "typical_visit": "공식 안내가 확인하는 독립 방문 경험은 모진이몽돌해변의 몽돌 해안 감상과 여름 해수욕이다.",
+    "experience_scope": "‘모진이 무지개해안도로’라는 독립 관광지의 운영 주체·별도 시설·별도 관람 범위는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지는 place_id 1809528238의 명칭을 모진이 무지개해안도로, 주소를 제주시 추자면 신양리 56-1, 지도 좌표를 126.33433321764115·33.94613287185615로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "기존 Kakao 후보 place_id 13723641은 모진이몽돌해변으로, 주소 신양리 56 및 지도 좌표 126.33437100308565·33.94572559087584를 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 Visit Jeju는 신양리 56의 모진이몽돌해변을 약 100m의 몽돌밭이 이어진 관광지로 안내하며, 검색 결과에서 이 위치의 독립 관광지는 모진이몽돌해변 1건으로 제시한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "모진이 무지개해안도로라는 명칭의 별도 공공 등록 관광지나 독립 방문 경험을 확인하지 못했다.",
+      "Kakao 표식의 별도 접근·주차·보행 안전 및 최신 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1809528238",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "명칭은 모진이 무지개해안도로이며 주소는 제주특별자치도 제주시 추자면 신양리 56-1이다.",
+          "공개 페이지의 정적 지도 좌표는 126.33433321764115, 33.94613287185615이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/13723641",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "place_id 13723641의 명칭은 모진이몽돌해변이며 주소는 제주특별자치도 제주시 추자면 신양리 56이다.",
+          "공개 페이지의 정적 지도 좌표는 126.33437100308565, 33.94572559087584이다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019087&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "모진이몽돌해변의 주소는 제주특별자치도 제주시 추자면 신양리 56으로 안내된다.",
+          "해당 해변은 약 100m의 몽돌밭으로 소개되며, 여름에는 해수욕이 가능하다고 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_destination",
+      "applies_to": "all_visitors",
+      "condition": "모진이 무지개해안도로 표식은 동일 방문 범위의 모진이몽돌해변(kakao:13723641)과 중복된다.",
+      "status": "confirmed",
+      "action": "추천·일정 후보에는 kakao:13723641만 사용하고, 별도 관광지임을 뒷받침하는 공공 안내가 확인되기 전까지 이 표식은 병합한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

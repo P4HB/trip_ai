@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723463",
+  "place_id": "13723463",
+  "name": "저지고망숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "제주관광공사 Visit Jeju와 제주특별자치도 제공 관광 경로 데이터는 제주올레 14코스가 저지에서 시작하는 야외 도보 코스이며 숲길을 지난다고 안내한다. 공개 코스 기록은 저지마을회관 뒤의 이 구간을 저지고망숲길로 표기한다. 별도 유료시설의 부속물이나 기존 장소와 중복된 시설이라는 근거는 없어, 명명된 공개 보행 구간으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "저지고망숲길은 제주시 한경면 저지마을에서 시작하는 제주올레 14코스의 저지 인근 숲길 보행 구간으로 파악된다.",
+    "typical_visit": "제주올레 14코스를 걷는 중 저지마을 인근의 숲길과 농촌 경관을 체험하는 야외 도보 방문이다.",
+    "experience_scope": "공식 관광 안내는 14코스 전체의 거리·소요 시간·숲길 경유를 확인한다. 저지고망숲길 단독 구간의 거리, 경사·노면, 휴식·무장애 시설, 최신 개방·우회·안전 상태는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 제주올레 14코스가 저지 예술 정보화 마을에서 한림항까지 약 18.9km, 6~7시간 걸리는 길이며 중산간의 돌담길·밭길·숲길 등을 지난다고 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주특별자치도 제공 전국길관광정보표준데이터 기반 경로는 제주올레 14코스를 총 19km, 6~7시간으로 기록하고, 길소개를 고요하고 아늑한 초록의 올레라고 설명한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 제주올레 14코스 도보 기록은 저지마을회관 다음 경유지로 저지고망숲길을 표기하며, 고망은 구멍을 뜻하는 제주어라고 설명한다.","source_ids":["S3"]}
+    ],
+    "unknowns": [
+      "저지고망숲길 단독 구간의 최신 개방 여부와 우회·통제 정보는 확인하지 못했다.",
+      "노면, 경사, 계단, 조명, 화장실, 주차, 쉼터 및 무장애 접근성은 확인하지 못했다.",
+      "이 구간만의 월별 식생·행사·안전 운영 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018728","checked_at":"2026-08-24","facts":["제주올레 14코스는 저지 예술 정보화 마을에서 한림항까지 약 18.9km, 6~7시간의 도보 코스다.","코스는 중산간의 돌담길·밭길·숲길 등을 지난다.","코스 우회·변경이 있을 수 있어 방문 전 제주올레 공식 홈페이지 확인을 안내한다."]},
+      {"id":"S2","publisher":"제주특별자치도 제공 전국길관광정보표준데이터 기반 전국 길 관광지도","type":"public_tourism_data","url":"https://flt.purpleo.co.kr/view/346","checked_at":"2026-08-24","facts":["제주올레 14코스의 총길이는 19km, 총소요시간은 6~7시간으로 기록돼 있다.","길소개는 고요하고 아늑한 초록의 올레와 시원하게 생동하는 파랑의 올레가 이어진다고 설명한다.","데이터 제공기관은 제주특별자치도이고 관리기관은 제주올레사무국으로 기록돼 있다."]},
+      {"id":"S3","publisher":"제주올레 14코스 공개 도보 기록","type":"public_trail_record","url":"https://jejulover.tistory.com/134","checked_at":"2026-08-24","facts":["저지마을회관 뒤 경유지로 저지고망숲길을 표기한다.","고망은 구멍을 뜻하는 제주어라고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 안내와 공개 경로 자료가 저지에서 시작하는 14코스를 숲길·초록의 올레로 설명하고, 장소명도 숲길이다. 단독 구간의 식생과 경관 범위는 미확인이라 0.75로 제한한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"14코스 전체에는 해안 구간이 있으나, 저지고망숲길은 저지마을 인근 숲길로 표기돼 이 장소 자체의 핵심 경험은 해양 활동·해안 경관이 아닌 것으로 보인다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주올레 14코스는 6~7시간의 야외 도보 코스이며, 이 장소는 그 숲길 경유 구간으로 파악된다. 단독 구간의 거리와 난이도는 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 이 숲길의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료가 숲길을 포함한 야외 도보 코스로 안내하므로 대표 경험의 실내 비율은 낮다고 추론한다. 단독 구간의 쉼터·실내 시설은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 숲길 보행이 대표 경험이어서 비·바람·더위 등 기상의 영향을 비교적 받을 것으로 추론한다. 최신 통제 기준은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 경로 자료가 14코스를 고요하고 아늑한 초록의 올레로 설명해 느린 야외 보행·휴식 경험을 뒷받침한다. 이 구간의 소음·쉼터는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"저지고망숲길의 경사·계단·노면과 무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"14코스 전체 소요시간은 확인되지만 이 단독 구간의 거리·소요시간·진입 선택지는 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공식·공공 경로 자료가 코스의 초록 숲길 경관을 설명하므로 숲길 경관 감상 가치를 추론한다. 단독 구간의 조망·경관 품질은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주어 지명 설명은 있으나 다른 숲길과 구별되는 경험을 공신력 있는 자료로 충분히 확인하지 못해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"제주올레의 저지마을 출발 구간이며 장소명에 제주어 고망이 쓰여 지역 경로·언어 맥락과 연결된다. 단독 구간의 지역문화 해설은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 해당 지역의 대표 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"독립적인 야외 도보 경유 구간으로 파악되지만, 최신 통제·노면·안전 정보가 부족해 0.75로 제한한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 도보 코스의 명명된 경유 구간으로 소규모 동행 보행에 적합할 수 있으나, 단독 구간의 안전·동선은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길의 실제 월별 노면·개방 상태를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상의 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_trail_access_and_weather_unknown","applies_to":"all_visitors","condition":"저지고망숲길은 제주올레 야외 보행 경유지로 파악되나, 최신 출입·우회·노면·경사·안전시설·무장애 접근 상태는 공식 출처로 확인하지 못했다.","status":"needs_review","action":"방문 전 제주올레의 최신 코스 통제·우회 안내와 당일 기상, 현장 보행 가능 여부를 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

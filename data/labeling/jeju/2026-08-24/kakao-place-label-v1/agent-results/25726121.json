@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726121",
+  "place_id": "25726121",
+  "name": "문수천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.8,
+    "rationale": "공개 공공 하천 자료는 문수천을 제주시 한림 지역의 지방하천으로, 동명리 70 부근에서 용포천 합류점까지의 하천으로 기록한다. 다만 입력 Kakao 표식이 일반 방문객을 위한 특정 관람 지점인지, 하천 어느 구간을 뜻하는지와 공식 출입·탐방 동선은 확인하지 못했다. 따라서 추천용 독립 방문지 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "문수천은 제주시 한림 지역의 지방하천으로, 동명리 70 부근에서 용포천 합류점까지 이어지는 하천으로 공공 자료에 기록된다.",
+    "typical_visit": "일반 관광객을 위한 공식 관람·산책·체험 경험 또는 특정 방문 지점은 공개 공공 자료에서 확인하지 못했다.",
+    "experience_scope": "하천이라는 지리적 객체는 확인되지만, Kakao 표식의 정확한 범위, 일반인 출입 권한 및 안전한 방문 동선은 확인되지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국하천협회가 공개한 한국하천일람은 문수천을 제주 제주시 한림 지역의 지방하천으로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 자료의 제주시 하천 목록은 문수천의 기점을 동명리 70, 종점을 용포천 합류점으로 기록한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식이 문수천의 어느 구간 또는 접근 지점을 뜻하는지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 산책로·관람로, 주차·화장실·무장애 접근성과 관리 주체를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 안전한 이용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회",
+        "type": "public_river_registry",
+        "url": "https://www.riverlove.or.kr/files/riverData/aaeeb7c31d2261d3b16464f05d42f021.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "문수천을 제주 제주시 한림 지역의 지방하천으로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_council_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주시 하천 목록은 문수천의 기점을 동명리 70, 종점을 용포천 합류점으로 기록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_flood_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 표식의 정확한 방문 지점과 일반 출입 가능 여부는 확인되지 않았으며, 문수천은 공공 하천 목록에 기록된 하천이다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전 관할 지자체의 최신 안내로 정확한 접근 지점, 출입 허용 여부, 강우·범람 시 통제와 보행 안전을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

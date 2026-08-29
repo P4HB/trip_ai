@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119058",
+  "place_id": "18119058",
+  "name": "제주 돌문화공원 고인돌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "입력 명칭은 ‘제주 돌문화공원 고인돌’로, 제주돌문화공원이라는 더 큰 공원 안의 개별 석조·전시 표식을 가리킨다. 제주관광공사 안내는 공원을 제주 돌문화 박물관·생태공원으로 설명하고, 관람로 3코스와 야외 전시·선사시대부터 근현대까지의 돌문화 전시를 안내한다. 그러나 ‘고인돌’ 표식 자체를 별도 운영·입장·관람 대상으로 식별하는 공식 자료는 확인하지 못했다. 따라서 공원 전체 방문 경험에 종속된 부속 전시물로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 레코드는 ‘제주 돌문화공원 고인돌’이라는 명칭과 place_id만 제공한다. 공개 관광 안내에서 제주돌문화공원은 돌문화 박물관·생태공원 및 여러 관람 코스로 구성된 단일 관광지이며, 이 레코드의 ‘고인돌’은 그 내부의 개별 석조·전시 표식으로 해석된다.",
+    "typical_visit": "독립 방문지로 확인하지 않으며, 제주돌문화공원의 돌문화·야외 전시와 관람 동선 중 볼 수 있는 부속 전시물로 파악된다.",
+    "experience_scope": "공식 관광 안내는 제주돌문화공원 전체의 박물관·생태공원 성격, 야외 전시 및 관람 코스를 설명한다. Kakao ‘고인돌’ 표식의 정확한 위치, 개별 유물의 성격·관리 주체·해설·보존 상태와 공원 동선 내 접근 조건은 별도로 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터의 장소명은 ‘제주 돌문화공원 고인돌’이며, place_id는 18119058이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 제주돌문화공원을 제주 돌문화를 보여 주는 박물관이자 생태공원으로 소개하며, 관람로 3코스에 야외 전시와 선사시대부터 근현대까지의 돌문화 전시가 포함된다고 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘고인돌’ 표식의 정확한 좌표와 제주돌문화공원 내부 위치를 공식 자료로 교차 확인하지 못했다.",
+      "고인돌 자체가 원위치 유적인지, 이전·복원·전시된 석조물인지와 개별 해설·관리 정보는 확인하지 못했다.",
+      "공원 및 표식의 최신 관람 가능 여부, 개별 접근 동선·경사·노면, 무장애 접근과 악천후 안전 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/18119058",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주 돌문화공원 고인돌’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547&menuId=DOM_000001817000000004",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원은 제주도의 돌문화를 보여 주는 박물관이자 생태공원으로 소개된다.",
+          "공원 관람로는 3코스로 구성되며, 야외 전시와 선사시대부터 근현대까지의 돌문화 전시가 안내된다.",
+          "해당 안내는 제주돌문화공원 전체를 다루며 Kakao ‘고인돌’ 표식의 개별 위치·해설 또는 독립 운영을 확인하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_feature_and_access_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘고인돌’은 제주돌문화공원 전체 관람 경험에 속한 개별 표식으로 판단되며, 표식 자체의 정확한 위치·독립 관람 범위와 최신 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보에는 공원 전체의 별도 검증된 레코드만 사용하고, 이 표식을 독립 방문지로 안내하기 전에는 공원 공식 안내로 위치·관람 동선과 최신 접근 조건을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

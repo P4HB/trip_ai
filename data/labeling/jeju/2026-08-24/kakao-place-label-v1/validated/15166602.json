@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:15166602",
+  "place_id": "15166602",
+  "name": "한라산 샘터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력의 공개 방문 근거는 한라산 관음사 등산 중 만나는 샘터라고 설명한다. 이는 한라산 탐방로 이용을 지원하는 급수 지점으로, 독립 관광지·운영 시설이 아니므로 상위 한라산국립공원 관음사 탐방 경험으로 통합한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION-IDENTIFIED"
+    ]
+  },
+  "research": {
+    "identity_summary": "한라산 샘터는 관음사 등산 동선에서 언급되는 급수 지점이다.",
+    "typical_visit": "한라산 관음사 탐방로 등산 중의 물 보충·휴식 경험의 일부다.",
+    "experience_scope": "한라산 탐방로의 지원 시설로 판정하여 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력의 익명화된 카카오 공개 방문 근거는 여름에 관음사로 오르는 중 샘터를 만난다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·공식 명칭·관리 주체",
+      "음용 가능 여부와 수질·계절별 운영",
+      "탐방로·기상·안전 통제 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing_and_sanitized_review_evidence",
+        "url": "https://place.map.kakao.com/15166602",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라산 관음사 등산 중 샘터를 만난다는 공개 방문 근거가 제공됐다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_water_point_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "샘터는 한라산 관음사 탐방로의 급수·휴식 지점이며 수질·운영·접근 정보가 미확인",
+      "status": "needs_review",
+      "action": "상위 한라산국립공원 관음사 탐방으로 통합하고, 물은 공식 음용 가능 안내가 있는 경우에만 이용하며 최신 탐방 통제를 따른다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10543541",
+  "place_id": "10543541",
+  "name": "솔동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 '솔동산'이라는 이름과 place_id만 제공하며 주소·좌표·후기·상세 설명이 없다. 제주관광공사의 공식 관광정보는 서귀포시 서귀동의 '솔동산로/솔동산 문화의 거리'를 별도 관광지로 설명하지만, 이 Kakao 표식이 그 거리 전체, 8경 중 한 지점, 또는 다른 동명 지점을 가리킨다는 직접 대조 근거는 확보하지 못했다. 따라서 독립 추천 방문지의 정체성을 확인할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "'솔동산'은 공식 관광정보에서 서귀포시 서귀동 솔동산로 및 솔동산 문화의 거리 맥락으로 소개되지만, 입력 Kakao place_id 10543541의 정확한 위치와 그 관광지와의 동일성은 확인하지 못했다.",
+    "typical_visit": "Kakao 표식의 정확한 대상이 확인되지 않아 대표 방문 경험을 판정하지 않는다.",
+    "experience_scope": "제주관광공사 자료는 솔동산로와 문화의 거리의 역사·문화 산책 맥락을 설명한다. 그러나 입력 장소의 좌표·주소·운영 또는 출입 정보를 제공하지 않으므로 이 장소에 그대로 귀속하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 10543541의 장소명을 '솔동산'으로 제공하지만, 주소·좌표·공개 후기·상세 설명은 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 비짓제주는 서귀포시 서귀동의 솔동산로를 관광지로 수록하고, 솔동산 문화의 거리를 이중섭거리 끝에서 자구리 해안에 이르는 골목으로 설명한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 10543541의 정확한 좌표와 주소를 확인하지 못했다.",
+      "Kakao 표식이 공식 관광지 '솔동산로/솔동산 문화의 거리'와 같은 대상인지 확인하지 못했다.",
+      "일반 방문객의 출입 범위, 최신 동선, 편의시설, 보행 안전 및 운영 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/10543541",
+        "checked_at": "2026-08-24",
+        "facts": ["입력 패킷은 place_id 10543541 및 장소명 '솔동산'을 제공한다.", "입력 패킷의 평점과 방문자·블로그 후기 수는 모두 0이며, 주소·좌표·후기 본문은 없다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021526",
+        "checked_at": "2026-08-24",
+        "facts": ["솔동산로를 제주특별자치도 서귀포시 서귀동의 관광지로 수록한다.", "솔동산 8경과 솔동산 문화의 거리의 역사·문화 맥락을 소개한다."]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_000000000021333",
+        "checked_at": "2026-08-24",
+        "facts": ["솔동산 문화의 거리를 이중섭거리 끝의 서귀포수협에서 자구리 해안에 이르는 골목으로 설명한다.", "해당 거리가 2013년에 조성되었고 자연·예술·문학이 어우러진 길이라고 소개한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao place_id 10543541가 가리키는 정확한 지점과 공식 관광지와의 동일성, 일반 방문객의 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao 지도상 좌표·주소와 관할 관광 안내를 대조해 장소 신원, 출입 범위 및 최신 보행 안전 정보를 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

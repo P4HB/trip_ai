@@ -1,0 +1,123 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7995731",
+  "place_id": "7995731",
+  "name": "애향탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.45,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘애향탑’과 place_id만 제공하고 주소·좌표·업종·공개 후기 근거가 없다. 공개 자료에는 제주시 조천읍 신촌리의 재일동포 공적 기념비와 서귀포시 성산읍 온평리의 애향탑·충혼비가 모두 확인되어, 이 레코드가 어느 장소인지 신뢰 가능한 출처로 교차 식별할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력에는 ‘애향탑’이라는 명칭 외에 위치 정보가 없다. 제주 내 동명 기념물이 복수 확인되어 장소 신원을 확정할 수 없다.",
+    "typical_visit": "신촌리 후보는 재일동포의 고향 공헌을 기리는 마을 기념비이며, 온평리 후보는 충혼비 옆의 애향탑으로 소개된다. 그러나 입력 레코드와 어느 후보가 일치하는지는 미확정이다.",
+    "experience_scope": "정확한 장소, 독립 방문지 범위, 최신 접근·운영·안전 정보를 확인하지 못했다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원 확인 전에는 추천용 축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한라일보는 제주시 조천읍 신촌리 마을회관 앞 애향탑이 일본에서 고향을 도운 이들의 마음을 기리기 위해 세워졌다고 보도한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주뉴스는 신촌리사무소 옆 애향탑에 신촌리 출신 재일교포의 고향 헌신 성금 내용이 기재돼 있다고 보도한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제이누리는 서귀포시 성산읍 온평리의 충혼비가 애향탑 바로 옆에 세워져 있다고 소개한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표·표지 사진과 신촌리 또는 온평리 동명 기념물의 동일성을 확인하지 못했다.",
+      "정확한 기념 대상·설치 이력, 최신 접근성·주차·운영·안전 정보를 확인하지 못했다.",
+      "입력에는 공개 방문 후기의 내용이 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "reputable_news",
+        "url": "https://www.ihalla.com/read.php3?aid=1525687200594724289",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "신촌리 마을회관 앞 애향탑의 고향 공헌 기념 맥락을 보도한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주뉴스",
+        "type": "reputable_news",
+        "url": "https://www.jejunews.biz/news/articleView.html?idxno=63110",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "신촌리사무소 옆 애향탑과 재일교포 고향 헌신 기념 내용을 보도한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제이누리",
+        "type": "public_local_information",
+        "url": "https://www.jnuri.net/news/article.html?no=45460",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "온평리 충혼비가 애향탑 바로 옆에 있다고 소개한다."
+        ]
+      },
+      {
+        "id": "S4",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7995731",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘애향탑’이며 주소·좌표·업종·공개 후기 근거가 제공되지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없어 제주 내 복수의 ‘애향탑’ 가운데 어느 기념물을 가리키는지 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 주소·좌표·표지 정보로 정확한 기념물을 먼저 교차 확인한다. 신원이 확정되기 전에는 추천용 35축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

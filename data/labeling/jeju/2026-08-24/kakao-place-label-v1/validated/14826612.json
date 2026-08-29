@@ -1,0 +1,90 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14826612",
+  "canonical_id": "kakao:14826612",
+  "name": "모슬봉내린길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명 ‘모슬봉내린길’은 독립 장소명이 아니라 모슬봉에서 내려가는 길을 뜻하는 경로·방향 표식이다. 공공 안내가 모슬봉을 제주올레 11코스의 경유 오름으로 소개하지만, 이 place_id에 대응하는 독립 운영 장소·관람시설은 확인되지 않아 상위 올레·모슬봉 탐방의 부속 경로로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-DESTINATION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_route_and_safety_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "모슬봉 하산 경로로 보이는 장소이나 입력에는 주소·좌표·경사·바닥·개방·통제 정보가 없고, 정확한 길의 범위와 현재 안전 상태를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 제주올레 또는 현장 최신 안내로 허용 탐방로·우회·통제와 기상에 따른 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 모슬봉의 하산길을 뜻하는 경로 표식으로 해석된다. 독립적인 관광지·시설명으로 확인되는 공개 근거는 찾지 못했다.",
+    "facts": [
+      {
+        "text": "입력 Kakao 레코드는 장소명을 ‘모슬봉내린길’로 제공하며 주소·좌표·업종·공개 방문 후기 근거를 제공하지 않는다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공공 안내는 모슬봉이 하모체육공원에서 무릉리까지 이어지는 제주올레 11코스의 오름 경유 지점이며, 전체 코스가 난이도 중인 17.3km 산길·마을길 보행이라고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 하산길 구간과 좌표",
+      "독립적인 안내·운영·편의시설 또는 별도 방문 목적 여부",
+      "현재 개방·우회·통제, 경사·계단·바닥 상태와 무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/14826612",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘모슬봉내린길’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도교육청 학생해양수련원",
+        "type": "public_educational_information",
+        "url": "https://sjsea.sje.go.kr/mnu/00045/program/00003/expDetail.do?ctgry=exp2&idx=00039&pageIndex=3",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주올레 11코스는 하모체육공원에서 무릉리까지 17.3km·난이도 중의 마을길·산길 코스이며 모슬봉을 지난다고 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

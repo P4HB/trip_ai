@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11019303",
+  "place_id": "11019303",
+  "name": "노루물/노리물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "입력명의 노루물/노리물은 공개 사업장 자료의 ‘노루물 민박’과 일치한다. 해당 자료는 이를 제주시 애월읍 광령리의 농어촌민박업으로, 별도 공개 업체 정보는 펜션형 숙박업으로 분류한다. 숙박 제공은 여행 중 필요한 서비스이지만 이 라벨링의 독립 관광·문화·자연·체험 방문 장소 41축 대상은 아니므로 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "노루물/노리물은 공개 사업장 자료에서 ‘노루물 민박’으로 확인되는 제주시 애월읍 광령리의 농어촌민박업소다.",
+    "typical_visit": "공개 자료에서 확인되는 대표 이용은 객실을 예약해 숙박하는 것이며, 독립 관광·전시·자연 탐방·체험 프로그램의 상시 방문지는 확인되지 않았다.",
+    "experience_scope": "민박업 신원과 소재지는 확인됐지만, 숙박 이외에 일반 여행자를 위한 독립 방문 경험의 공식 운영·개방 조건은 확인하지 못했다. 숙박시설 자체는 이번 장소 추천용 41축 벡터 범위에 넣지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "지방행정 인허가 데이터 기반 공개 사업장 자료는 ‘노루물 민박’을 농어촌민박업으로, 제주시 애월읍 광령리 102번지 1호(광령8길 60) 소재로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 업체 정보는 노루물민박을 여행숙박·숙박·펜션으로 분류하고, 펜션형 민박과 객실 소개를 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소명 ‘노루물/노리물’이 현재 공개된 민박 사업장명과 동일하게 유지되는지와 최신 영업 상태는 공식 최신 원자료로 재확인하지 못했다.",
+      "객실 가용성, 요금, 체크인·체크아웃, 부대시설, 주차 및 무장애 접근성은 변동 정보이거나 확인하지 못했다.",
+      "숙박 외 독립 관광·체험 프로그램의 현재 운영 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "지방행정 인허가 데이터 개방 기반 공개 사업장 정보",
+        "type": "government_open_data_republication",
+        "url": "https://frh.purpleo.co.kr/view/30952",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "사업장명은 ‘노루물 민박’으로 표시된다.",
+          "개방서비스명은 농어촌민박업이며, 소재지는 제주시 애월읍 광령리 102번지 1호 및 광령8길 60으로 표시된다.",
+          "페이지에 표시된 데이터 갱신일은 2023-04-16이며 최신 영업 상태의 실시간 보증으로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "로컬뷰",
+        "type": "public_business_listing",
+        "url": "https://www.localview.co.kr/store/detail.asp?seq=701044349",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "노루물민박을 여행숙박·숙박·펜션으로 분류한다.",
+          "제주시 애월읍 광령리 102-1 및 광령8길 60 주소와 펜션형 민박·객실 소개를 표시한다.",
+          "영업시간은 입력된 정보가 없다고 표시하며, 동적 예약·운영 조건의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11019303",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘노루물/노리물’이다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "lodging_not_independent_visit_vector",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 자료상 농어촌민박·펜션 숙박업소로 확인되며, 이번 41축의 독립 관광·문화·자연·체험 방문 장소 범위에 해당하지 않는다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 숙박 추천 기능의 별도 데이터 계약이 승인되면 해당 계약으로 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

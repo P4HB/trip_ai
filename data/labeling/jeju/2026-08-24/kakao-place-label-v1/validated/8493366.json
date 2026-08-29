@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8493366",
+  "place_id": "8493366",
+  "name": "열녀비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력과 Kakao 공개 장소 페이지는 장소명을 ‘열녀비’로만 제공하며 주소·좌표·상세 설명·후기가 없다. 공개 문화유산 자료에는 서로 다른 인물·지역의 열녀비가 존재하므로, 이 Kakao place_id가 어느 비석을 가리키는지 신뢰성 있게 연결할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 8493366은 ‘열녀비’라는 일반 명칭으로만 확인되어 개별 유산의 위치·대상 인물·지정 현황을 식별할 수 없다.",
+    "typical_visit": "개별 장소 신원이 확인되지 않아 대표 방문 경험을 판단하지 않았다.",
+    "experience_scope": "장소명이 열녀를 기리는 비석을 뜻할 가능성은 있으나, 동명·유사 명칭 유산과의 동일성을 확인할 주소·좌표·공식 상세 자료가 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지와 입력 패킷은 place_id 8493366의 이름을 ‘열녀비’로 제시하며, 입력에는 주소·좌표·방문 후기·평점 외의 장소 설명이 없다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국학중앙연구원 HeritageWiki의 ‘고려 정씨 열녀비’ 해설은 한남리의 정씨 열녀비를 별도 유산으로 설명한다. 이 자료에는 Kakao place_id 8493366 또는 이를 같은 장소로 연결하는 좌표가 없다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 소재지와 좌표를 확인하지 못했다.",
+      "기리는 인물, 건립·지정 현황 및 개별 문화유산 명칭을 확인하지 못했다.",
+      "현재 출입 가능 여부, 접근로, 노면, 주차·화장실·무장애 시설과 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_listing",
+        "url": "https://place.map.kakao.com/8493366",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공개 장소 페이지의 장소명은 ‘열녀비’이다.",
+          "입력 패킷에는 주소·좌표·공개 방문 후기 및 상세 설명이 제공되지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국학중앙연구원 HeritageWiki",
+        "type": "public_cultural_heritage_reference",
+        "url": "https://dh.aks.ac.kr/~heritage/wiki/index.php/%EA%B3%A0%EB%A0%A4_%EC%A0%95%EC%94%A8_%EC%97%B4%EB%85%80%EB%B9%84",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "고려 정씨 열녀비는 한남리의 정씨를 기리는 별도 유산으로 소개된다.",
+          "해당 해설에는 Kakao place_id 8493366과의 동일성 연결 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "장소의 정확한 위치·대상 유산·현장 출입 및 보행 안전 정보를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "공식 문화유산·지자체 자료 또는 Kakao의 주소·좌표가 확보된 뒤 동일 장소 여부와 최신 출입·안전 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

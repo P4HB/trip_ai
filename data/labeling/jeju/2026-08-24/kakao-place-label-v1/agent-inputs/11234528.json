@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2087,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/11234528.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:11234528",
+    "provider": "kakao",
+    "place_id": "11234528",
+    "name": "쳇망오름",
+    "url": "https://place.map.kakao.com/11234528",
+    "average_rating_5": "2.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.03.25.",
+      "content": "표고 : 444.6m 비고 : 55m 네비 : 제주 표고 사려니농장 첫번째 사진쪽에서 시작해 쳇망오름을 다녀올수 있고,. 비고 55m로 느껴지지 않게 조금만 올라가면 정상이다. __________________________________________ 본인은 구두리 가문이를 거쳐 쳇망에 다녀왔다. 정해진 등반로가 없고, gpx를 참고해 먼저 다녀가신분들의 흔적을 따라 쳇망오름 정상에 올라갔다가 먼저 다녀가신분들의 시그널을 쫓아 다른길로 내려왔다. 맞은편쪽은 사유지로 출입금지 현수막이 보이고, 뷰도없고 일반인에게 추천하지 않는다. 구두리 가문이 쳇망 세 오름 연계시 이동거리 7km정도로 소요시간은 두시간이 조금 넘게 걸린다. 오름도장깨기하는 분들을 위해 후기는 남겨두지만 쳇망오름의 매력은 딱히 느끼지못했다..",
+      "tags": ""
+    },
+    {
+      "date": "2021.04.12.",
+      "content": "구두리, 가문이 오름 가는 목장길 따라가다 길 개척하며 올라가는 수준. 등반로 없음. 나지막하나, 분화구 크기가 꽤 되는 것으로 추정됨. 뷰없슴",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

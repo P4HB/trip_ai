@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8649358",
+  "place_id": "8649358",
+  "name": "고내봉",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 고내봉(고내오름·고니오름·망오름)을 애월읍 고내리의 기생화산이자 별도 관광지로 안내하고, 정상 전망대·등산로·체육시설을 설명한다. 입력 Kakao 공개 후기도 정상 조망과 짧은 오름 경험을 언급해 독립적인 야외 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "고내봉은 제주시 애월읍 고내리 산 3-1에 위치한 고내오름·고니오름·망오름으로도 불리는 기생화산 오름이다.",
+    "typical_visit": "세 곳의 입구 중 한 곳에서 야외 등산로를 따라 정상 전망대에 올라 주변 풍경을 보고, 정상의 체육시설과 산책로를 이용하는 짧은 걷기 방문이다.",
+    "experience_scope": "공식 관광 안내와 제주특별자치도 오름 기본계획은 위치, 여러 봉우리, 봉수대터, 산책로·전망대·체육시설 및 일부 포장 구간을 확인한다. 최신 개방 여부, 각 입구의 실제 노면·경사, 주차·화장실, 무장애 접근과 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "Visit Jeju는 고내봉을 애월읍 고내리의 높이 135m 기생화산으로 소개하며, 정상까지 약 20분, 세 곳의 오름길, 정상 전망대와 체육시설, 올레 15코스와의 연결을 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주특별자치도 오름 기본계획은 고내봉의 봉수대터, 소나무림, 여러 봉우리와 주봉까지 조성된 산책로를 기록하며, 임도 차량 통행과 탐방객 접촉 우려를 지적한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력 Kakao 공개 방문 후기는 짧은 오름, 정상의 주변 오름·애월 바다 조망, 일부 경사와 비 오는 날 미끄러움에 관한 방문 경험을 언급한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["최신 개방·출입 제한 및 각 입구의 운영 상태를 확인하지 못했다.", "주차, 화장실, 난간, 계단, 경사, 노면과 무장애 시설의 최신 상태를 확인하지 못했다.", "강풍·폭우·폭염·한파 시 통제와 실제 안전 조건은 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021251", "checked_at": "2026-08-24", "facts": ["고내봉은 제주시 애월읍 고내리 산 3-1의 기생화산으로 안내된다.", "정상까지 약 20분이며 세 곳의 오름길, 정상 전망대·체육시설과 올레 15코스 연결을 안내한다.", "등산로 약 3분의 2는 시멘트 포장이나 길이 좁고 위험할 수 있어 입구 인근 주차와 도보를 안내한다."]},
+      {"id": "S2", "publisher": "제주특별자치도", "type": "public_policy_document", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781545913771_attach_1.pdf", "checked_at": "2026-08-24", "facts": ["고내봉은 여러 봉우리, 소나무림, 정상 봉수대터와 주봉까지의 산책로가 기록된 오름이다.", "임도 차량 통행이 잦아 탐방객과 차량의 접촉이 우려된다고 기록한다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/8649358", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 짧은 오름과 정상의 주변 오름·애월 바다 조망을 언급한다.", "입력된 공개 후기는 반대편 하산길의 급경사와 비 오는 날 미끄러움을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내와 공공 오름 기본계획이 고내봉을 기생화산 오름으로 직접 설명하고, 정상·여러 봉우리·산책로를 대표 요소로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기에 애월 바다 조망이 언급되지만, 해안·해양 활동 자체가 이 오름의 핵심 방문 경험이라는 근거는 없다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"정상까지 오르는 등산로와 산책로, 체육시설이 안내돼 야외 보행·운동 경험의 비중이 높다고 추론한다. 최신 동선과 안전 상태는 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식·공공 자료가 과거 봉수와 정상 봉수대터를 직접 기록해 역사 요소가 방문 장소의 확인 가능한 구성임을 보여준다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 등산로·정상 전망대·야외 체육시설을 근거로 대표 방문 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 오름길과 정상 조망이 대표 경험이며, 입력 후기에는 비 오는 날 미끄러운 경사가 언급돼 날씨 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 환경, 혼잡도, 소음과 실제 체류 여건의 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 약 20분 소요, 일부 시멘트 포장과 의자·걷기 길은 보행 부담이 비교적 낮음을 시사한다. 다만 좁고 위험한 길 및 경사 구간도 언급돼 최신 무장애 수준은 판단하지 않는다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"정상까지 약 20분이라는 공식 안내와 정상 전망대·체육시설은 짧은 걷기 방문으로도 이용 가능함을 시사한다. 장기 체류 여건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 정상 전망대에서 풍경을 감상하도록 설치됐다고 설명하고, 입력 후기 역시 주변 오름과 애월 바다 조망을 언급한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"주봉과 네 개의 별칭 봉우리, 봉수대터라는 구성은 구별되는 경험 요소이나 다른 오름과의 비교 근거가 없어 고유성 판단은 보수적으로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식·공공 자료가 제주시 애월읍 고내리의 제주 오름, 봉수대터 및 올레 15코스 연결을 직접 기록해 지역 자연·역사와의 연결이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월 지역을 대표하는 상징 명소라는 공식 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전망은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선·안전 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 경사·노면·난간·안전시설 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도, 쉼터와 무장애 접근성의 최신 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공식 안내는 일부 포장 등산로가 좁고 위험할 수 있다고 설명하고 공공 계획은 임도 차량 통행에 따른 접촉 우려를 기록한다. 최신 개방 여부, 입구별 노면·경사·난간, 주차·화장실, 무장애 시설 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 제주관광정보센터 또는 현장 최신 안내로 출입 가능 여부, 선택 입구와 보행·차량 안전, 기상 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

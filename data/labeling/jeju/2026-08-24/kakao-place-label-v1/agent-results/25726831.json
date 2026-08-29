@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25726831",
+  "canonical_id": "kakao:25726831",
+  "name": "산지천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 제주시 도심을 흐르는 산지천 및 그 복원 하천변 산책·문화공간을 가리킨다. 공공 문화·관광 출처에서 독립적으로 방문 가능한 산책로와 문화광장으로 소개되어 적격으로 판정했다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 출처는 도심 하천·산책로·광장 경험을 설명하며 산·오름·숲 경관이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산포조어의 역사적 맥락과 하구 인접성은 확인되지만, 장소의 대표 방문 경험은 해변·해양 활동보다 도심 하천변 산책과 문화공간이다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "복원 뒤 시민과 관광객이 이용하는 산책로로 조성됐다는 공개 설명이 있어 가벼운 걷기가 대표 경험의 하나다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산지천은 영주십경 산포조어의 장소이자 용천수·마을 형성 및 하천 복원 역사가 소개되며, 주변에는 문화광장과 사진 갤러리도 조성됐다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORY-CULTURE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사된 장소 성격은 공공 하천변 산책·문화공간이며 놀이기구·동물·수족관 중심 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식·공공 소개에서 카페·차·디저트 이용이 산지천의 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "인근 동문시장과의 관계를 언급한 안내는 있으나 산지천 자체는 하천변 공원·광장으로, 시장 방문이 그 자체의 핵심 경험은 아니다.", "source_ids": ["S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "한국관광공사와 제주관광공사 안내에는 산지천 일원에서 산지천축제가 열리며 민속·체험·공연 프로그램이 운영된다고 명시돼 있다. 다만 상시 경험은 아니다.", "source_ids": ["S2", "S3"], "rule_ids": ["THEME-RECURRING-FESTIVAL-DIRECT"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험은 복원 하천을 따라 조성된 산책로와 문화광장을 이용하는 야외 활동이며, 산지천 자체의 실내 방문 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-PUBLIC-SPACE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 하천변 보행과 광장 체류이므로 비·바람·더위·추위의 영향을 크게 받을 수 있다. 기상별 통제 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "하천 복원 뒤 산지천은 시민과 관광객이 힐링할 수 있는 산책로와 문화광장으로 탈바꿈했다고 공공 문화 출처가 설명한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-REST-DIRECT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "도심 하천변 산책로라는 점은 가벼운 보행을 시사하지만, 전 구간의 경사·계단·휠체어 접근성과 보행 폭은 확인하지 못해 중간 잠정값으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-URBAN-WALKWAY-PARTIAL"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책로·광장·문화공간이 함께 소개되지만, 산지천 단독의 표준 체류시간이나 전 구간 동선은 확인되지 않아 중간 잠정값이다.", "source_ids": ["S1"], "rule_ids": ["STYLE-DURATION-PARTIAL"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산지천은 영주십경의 산포조어 장소로 소개되고, 복원된 하천과 산책로가 시민·관광객의 방문 경관으로 설명된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "용천수, 산포조어, 오염 하천에서 생태공원으로의 장기 복원 이력은 일반적인 도심 산책로와 구별되는 산지천 고유의 구성이다.", "source_ids": ["S1"], "rule_ids": ["STYLE-UNIQUE-HISTORY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산지천의 용천수와 마을 형성, 제주 영주십경 및 제주 칠머리당 영등굿을 잇는 축제 프로그램은 제주 지역의 자연·생활·민속 맥락과 직접 연결된다.", "source_ids": ["S1", "S3"], "rule_ids": ["STYLE-LOCAL-CONTEXT-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공공 문화 출처는 산지천을 제주를 대표하는 영주십경 중 산포조어의 장소로 설명한다. 이는 지역의 역사적 상징성을 뒷받침한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-REGIONAL-LANDMARK-DIRECT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "하천 경관과 영주십경의 역사적 시각성은 확인되지만, 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 야간 안전, 안내, 혼잡도와 편의시설 정보가 충분히 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 이용 편의나 경험 품질의 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "어린이의 수변 안전시설, 보호자 동반 기준 및 전 구간 보행 안전이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 1월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 2월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 3월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 4월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 5월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 6월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 7월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 8월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "산지천축제의 과거·정기 안내는 있으나 2026년 9월 개최와 세부 일정은 확인하지 못해 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S2", "S3"], "rule_ids": ["CLIMATE-EVENT-CURRENT-UNKNOWN"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 10월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 11월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2026년 12월의 행사·개방·기상 대응 정보가 확인되지 않아 야외 하천변의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_waterfront_conditions_unknown", "applies_to": "all_visitors", "condition": "산지천은 야외 하천변 산책·광장 공간이며, 현재 보행로 상태·공사·수위·기상 악화 시 안전 안내와 통제 여부는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주시 또는 현장 최신 안내로 산책로 개방, 수변 안전, 기상·행사에 따른 통제를 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘산지천’은 제주시 도심의 산지천 및 복원 하천변 산책·문화공간을 가리키는 공개 명칭으로 확인됐다.",
+    "facts": [
+      {"text": "공공 문화 포털은 산지천을 영주십경 산포조어의 장소로 소개하고, 1995~2016년 하천복원·생태공원 조성 뒤 산책로와 문화광장으로 탈바꿈했다고 설명한다.", "source_id": "S1"},
+      {"text": "제주 관광약자접근성안내센터는 산지천을 따라 조성된 광장 공원에서 탐라문화제 등 다양한 축제와 행사가 열린다고 안내한다.", "source_id": "S2"},
+      {"text": "한국관광공사 축제 안내는 산지천축제의 제주 칠머리당 영등굿, 낚시·짚배 만들기·어린이 체험 및 공연 프로그램을 소개한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["Kakao 표식이 가리키는 정확한 하천 구간과 진입 지점", "현재 산책로 개방·공사·수변 안전 및 야간 조명 상태", "전 구간의 경사·계단·휠체어 접근성 및 화장실·휴식시설", "2026년 산지천축제 개최일과 프로그램"],
+    "sources": [
+      {"id": "S1", "publisher": "인문360 (문화체육관광부 공공 문화 포털)", "type": "public_culture_information", "url": "https://inmun360.culture.go.kr/content/657.do?cid=2370815&mode=view", "checked_at": "2026-08-25", "facts": ["산지천은 영주십경 산포조어의 장소와 용천수·마을 형성의 역사로 소개된다.", "1995~2016년 하천복원·생태공원 조성 뒤 산책로와 문화광장으로 변화했다고 설명한다."]},
+      {"id": "S2", "publisher": "제주관광약자접근성안내센터", "type": "public_travel_information", "url": "https://easyjeju.net/pages.php?no=725&p=tourist", "checked_at": "2026-08-25", "facts": ["제주시내 산지천을 따라 조성된 광장 공원이라고 안내한다.", "탐라문화제와 다양한 축제·행사가 열리는 곳이라고 안내한다."]},
+      {"id": "S3", "publisher": "한국관광공사 대한민국 구석구석", "type": "official_tourism_information", "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=1b97bad9-ab5e-4756-9b7e-ae819c450481", "checked_at": "2026-08-25", "facts": ["산지천축제의 민속 의례·체험·공연 프로그램을 소개한다.", "축제 정보는 해당 시점의 행사 안내이며 2026년 개최 일정의 확정 근거로 사용하지 않았다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

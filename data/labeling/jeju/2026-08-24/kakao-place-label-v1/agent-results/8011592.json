@@ -1,0 +1,35 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8011592",
+  "place_id": "8011592",
+  "name": "영락해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "Kakao 지도는 ‘영락해안도로’를 서귀포시 대정읍 일과리의 좌표 표기로 제공한다. 공개 검색에서는 영락·신도·고산 해안도로 또는 고산일과해안도로처럼 경계와 명칭이 다른 연속 도로들이 확인되지만, 이 place_id가 어느 공식 도로 구간·관리 주체·독립 방문 포인트를 의미하는지 공공·공식 출처로 교차 확인하지 못했다. 일반 도로를 임의의 여행지 벡터로 확정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao place_id 8011592는 ‘영락해안도로’라는 이름과 제주특별자치도 서귀포시 대정읍 일과리 표기를 제공한다. 지도 정적 URL은 경도 126.23582520943597, 위도 33.235394930557455를 포함한다. 다만 이 명칭의 정확한 공식 도로 구간 및 독립 관광지 여부는 확인하지 못했다.",
+    "typical_visit": "비공식 여행 안내에는 영락해안도로를 해안 드라이브·자전거·도보 구간으로 설명하는 사례가 있으나, 이 Kakao 표기와의 정확한 동일성 및 공공 관리·안전 정보를 확인하지 못했다.",
+    "experience_scope": "입력 패킷의 비식별 공개 후기는 해안 풍경·도보·드라이브 및 돌고래 목격 경험을 언급하지만, 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원과 독립 방문지 범위가 확정되지 않아 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {"id": "F1", "text": "Kakao 지도 장소 페이지는 place_id 8011592의 이름을 ‘영락해안도로’, 주소를 ‘제주특별자치도 서귀포시 대정읍 일과리’로 표시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "Kakao 지도 장소 페이지의 정적 지도 URL은 이 지점을 경도 126.23582520943597, 위도 33.235394930557455로 표시한다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": ["이 Kakao place_id가 가리키는 공식 도로 구간의 시작·종점과 관리 주체", "일반 도로 외에 독립된 관광·보행·자전거 시설로서의 범위", "보행·자전거 안전, 주차, 기상·파랑 시 통제 및 접근 조건"],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/8011592", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["장소명과 대정읍 일과리 표기, 정적 지도 좌표를 제공한다.", "입력 패킷에는 비식별 공개 후기만 있으며 평점·후기 수는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S2", "publisher": "Korea By Bike", "type": "third_party_travel_information", "url": "https://koreabybike.com/%EA%B2%BD%EB%A1%9C/%EC%A0%9C%EC%A3%BC%ED%99%98%EC%83%81%EC%9E%90%EC%A0%84%EA%B1%B8/%EC%A0%9C%EC%A3%BC%EC%8B%9C%EB%B6%80%ED%84%B0-%EB%8C%80%EC%A0%95%EC%9D%8D%EA%B9%8C%EC%A7%80/", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["영락해안도로라는 명칭을 신도항 인근 해안 자전거·보행 구간에 사용하지만, Kakao place_id와의 정확한 범위 동일성은 확인되지 않았다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{"kind": "identity_and_road_access_unverified", "applies_to": "recommendation_candidate", "condition": "일반 도로 표기의 정확한 공식 구간·독립 방문지 범위와 보행·자전거 안전 조건을 확인할 수 없음", "status": "needs_review", "action": "관리 기관 또는 공공 관광 자료로 정확한 구간과 허용된 보행·자전거·정차 조건, 기상 시 안전 통제를 먼저 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-28T00:00:00+09:00"}],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

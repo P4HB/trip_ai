@@ -1,0 +1,591 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "755324204",
+  "canonical_id": "kakao:755324204",
+  "name": "볼고롱동백",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력 방문 기록은 볼고롱동백을 동백 개화와 정원 조망·사진 촬영을 위해 입장하는 독립 동백정원으로 일관되게 설명한다. 다만 공식 운영 정보와 현행 입장 조건은 입력에서 확인되지 않았다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산·오름 경험 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해안·해양 경험 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "신체 활동·레포츠가 핵심이라는 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화 해설이나 체험 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "입장하여 동백 정원을 관람하고 전망대에서 조망하는 유료 정원형 시설로 보이나 테마파크형 체험의 범위는 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-GARDEN-VISIT-CONTEXT"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·음료·디저트 이용 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 경험 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 축제·기간 행사 정보가 없어 낮은 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "동백나무와 정원, 전망대 조망이 언급되는 야외 정원으로 보이나 실내 공간은 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-GARDEN-CONTEXT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 동백 정원 관람과 사진 촬영이므로 비·바람·추위 영향을 받을 수 있다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "한가롭게 사진을 찍고 덜 붐볐다는 기록이 있어 느린 정원 관람 경험이 강한 편으로 잠정 판정했다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-GARDEN-REST-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "버스정류장과 가깝다는 기록은 있으나 정원 내 경사·계단·무장애 접근성은 미확인이다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진·정원 관람 동선은 언급되나 체류 시간과 선택 동선 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "만개한 동백, 꽃잎 경관과 전망대 정원뷰가 반복 언급되어 경관 감상이 중요한 경험으로 보인다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-CAMELLIA-SCENERY-CONTEXT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "핑크 동백, 전망대와 비교적 한적한 동백정원 경험이 언급되지만 고유한 공식 구성은 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-GARDEN-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 동백정원이라는 맥락 외 지역 자연·문화와의 구체적 연결 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-LOCAL-UNKNOWN"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표성이나 공식 지정 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "동백과 꽃잎, 정원뷰를 어디서나 촬영하기 좋다는 기록이 반복되어 사진 기록 가치는 높은 편으로 잠정 판정했다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-PHOTO-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 안전·안내 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 편의·경험 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹 이용 편의 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 안전·동반 기준이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "1월 초에도 꽃과 꽃잎이 풍성했다는 입력 기록이 있어 높은 편으로 잠정 판정하되 해마다 개화 시기는 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "MONTH-CAMELLIA-OBSERVATION"
+      ]
+    },
+    "2": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "2월 겨울 제주 동백 정원의 아름다움이 언급되지만 현행 개화·운영은 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "MONTH-CAMELLIA-OBSERVATION"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "3월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "4월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "5월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "6월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "7월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "8월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "9월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "10월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "11월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "12월 개화·운영 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-GARDEN-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "current_garden_operation_and_access_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력에는 입장과 대중교통 접근의 과거 경험이 있으나 현행 입장료, 개방 시간, 개화 상태, 기상 통제 및 무장애 접근성은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 최신 공식 안내로 운영 여부, 입장 조건, 개화 상태, 기상 영향과 접근성을 확인한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 방문 기록은 볼고롱동백을 동백 개화·사진 촬영과 정원 조망을 위해 입장하는 독립 정원으로 설명한다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력에는 1월·2월의 동백 개화와 정원·전망대 조망이 언급된다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "입력에는 비교적 한적한 사진 촬영과 버스정류장 인접이라는 경험이 포함된다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "공식 운영 주체와 현재 운영 시간",
+      "현행 입장료·대중교통·주차 조건",
+      "현재 개화 상태와 계절별 관람 품질",
+      "정원 내 경사·계단·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/755324204",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 볼고롱동백이며 Kakao place_id는 755324204이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/755324204",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 동백 정원 개화, 사진 촬영, 전망대 및 접근 경험을 서술한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

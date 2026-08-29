@@ -1,0 +1,124 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119062",
+  "place_id": "18119062",
+  "name": "제주돌문화공원 원두막휴게소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력명은 ‘제주돌문화공원 원두막휴게소’로, 제주돌문화공원의 명칭 아래에 붙은 휴게소다. 공공 관광 안내와 공원 관련 자료는 이 공원의 휴게음식점·휴게소를 공원 방문을 돕는 부대·편의시설로 설명한다. 따라서 독립 여행지라기보다 제주돌문화공원 방문 경험에 종속된 시설로 판정하며, 공원 본체와 중복되는 추천 벡터를 만들지 않는다.",
+    "duplicate_of": "kakao:제주돌문화공원",
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 레코드는 ‘제주돌문화공원 원두막휴게소’로 명명되어 있다. 공개 공공·관광 자료는 제주돌문화공원을 제주시 조천읍 남조로 2023의 박물관·생태공원으로 소개하고, 휴게소·휴게음식점을 공원 내 편의·부대시설로 분류한다. ‘원두막휴게소’의 독립 사업체 주소·운영 주체·별도 관광 경험은 확인되지 않았다.",
+    "typical_visit": "확인된 범위에서 휴게소는 제주돌문화공원 관람 중 이용하는 편의시설이다. 휴게소 자체의 독립적인 전시·체험·관람 목적은 확인되지 않았다.",
+    "experience_scope": "본 레코드는 공원 본체의 종속 편의시설로 판정했으므로, 공원 방문 경험을 중복해 추천용 41축 벡터로 생성하지 않는다. Kakao 평점·후기 수는 입력에 있었으나 라벨 판정 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘제주돌문화공원 원두막휴게소’다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 제주돌문화공원을 박물관이자 생태공원으로 소개하고 카페와 휴게음식점을 부대시설로 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주돌문화공원 관련 공개 자료는 공원의 편의시설 구성에 휴게소를 포함한다고 설명한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "‘원두막휴게소’의 정확한 공원 내 위치, 현행 운영시간, 판매 품목 및 운영 주체는 확인하지 못했다.",
+      "이 레코드가 공원 외부에서 별도로 방문 가능한 독립 시설이라는 공식 근거는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/18119062",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주돌문화공원 원두막휴게소’다.",
+          "입력의 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_site",
+        "url": "https://visitjeju.net/kr/detail/view?contentsid=CONT_000000000500547",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원은 제주의 돌문화를 보여 주는 박물관이자 생태공원으로 소개된다.",
+          "공원 부대시설로 카페와 휴게음식점이 안내된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "국가법령정보센터",
+        "type": "official_legal_information",
+        "url": "https://www.law.go.kr/LSW/ordinInfoP.do?ordinSeq=1900253",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원 조성 및 관리 운영 조례는 공원의 시설물과 운영 범위를 규정한다.",
+          "공원은 제주시 조천읍 남조로 2023에 위치한다."
+        ]
+      },
+      {
+        "id": "S4",
+        "publisher": "경남신문",
+        "type": "reputable_news",
+        "url": "https://www.knnews.co.kr/news/articleView.php?gubun=&idxno=1478057",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주돌문화공원의 구성에는 전시·관리시설과 함께 주차장·휴게소 등의 편의시설이 포함된다고 보도했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "원두막휴게소는 공개 근거상 제주돌문화공원 방문에 부속된 편의시설로 판정되어 독립 여행지 후보로 추천하면 공원 본체 경험을 중복할 수 있다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보에서는 제외하고, 필요하면 제주돌문화공원 상세의 현장 편의시설 정보로만 표시한다. 현행 운영 여부·시간은 방문 전 공원 공식 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

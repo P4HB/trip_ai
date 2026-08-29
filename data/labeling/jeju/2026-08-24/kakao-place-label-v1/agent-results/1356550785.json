@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1356550785",
+  "place_id": "1356550785",
+  "name": "비양도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "입력명 ‘비양도’는 Visit Jeju가 우도 인근의 ‘섬 속의 섬’으로 소개하는 비양도와 일치한다. 공식 안내가 섬의 전망 언덕, 정자, 야영장, 등대 및 썰물 때 열리는 보행로를 독립적인 탐방 경험으로 설명하므로 추천 후보가 되는 독립 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "이 Kakao 장소는 제주시 우도 인근의 비양도이며, 제주시 한림읍의 동명 비양도와 구별되는 우도 권역의 작은 섬으로 확인됐다.",
+    "typical_visit": "돌담 주변의 전망 언덕·정자·야영장과 바다의 등대를 둘러보고, 썰물 때 열리는 보행로와 해안 경관을 보는 야외 탐방이다.",
+    "experience_scope": "공식 관광 안내는 전망 시설, 야영장, 등대와 썰물 보행로를 설명한다. 최신 입도·야영·보행 가능 여부, 조석·파랑에 따른 통제, 정확한 동선·경사·무장애 접근성 및 편의시설은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주관광공사 Visit Jeju는 우도 가까이에 있는 비양도를 ‘섬 속의 섬’으로 소개하며, 돌담 위 전망 언덕에 전망대·정자·야영장이 있다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 안내는 바다에 홀로 선 등대와 썰물 때 비양도와 등대 사이에 열리는 보행로를 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "입력 Kakao 공개 방문 근거는 등대, 물에 잠긴 길 및 풍경을 언급하며 공식 안내의 해안 경관·보행로 맥락과 부합한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "현재 입도·야영·등대 주변 접근 및 썰물 보행로의 개방 여부와 운영 시간",
+      "조석·파랑·강풍 시 보행로 안전 기준 및 현장 통제",
+      "정확한 보행 거리, 노면·경사·계단, 화장실·휴식 시설 및 무장애 접근성"
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://m.visitjeju.net/en/themtour/view?contentsid=CNTS_000000000021174&menuId=DOM_000002000000000221", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["우도 가까이의 비양도는 제주시 한림읍의 동명 섬과 구별되는 ‘섬 속의 섬’으로 소개된다.", "돌담 위 전망 언덕에 전망대·정자·야영장이 있다고 안내한다.", "바다의 등대와 썰물 때 등대까지 열리는 보행로를 안내한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 근거", "type": "public_review_evidence", "url": "https://place.map.kakao.com/1356550785", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력된 공개 방문 근거는 풍경, 등대 및 물에 잠긴 길을 언급한다.", "평점·후기 수·작성자 식별 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"전망 언덕은 확인되지만 산·오름·산림 경관이 핵심 방문 경험이라는 안내는 없어 낮게 판정한다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"작은 섬의 등대와 썰물 보행로, 바다 풍경을 둘러보는 해안 경험이 공식적으로 소개된다.","source_ids":["S1","S2"],"rule_ids":["THEME-COAST-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"썰물 때 열리는 길을 걷고 언덕·등대를 둘러보는 보행 경험은 확인되나, 거리와 난이도는 미확인이다.","source_ids":["S1"],"rule_ids":["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 대표 경험은 섬의 언덕·정자·등대·보행로를 둘러보는 야외 활동이므로 실내 비율은 낮게 추론한다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"해안의 등대와 썰물 보행로를 이용하는 야외 경험이어서 비·바람·파랑 및 조석의 영향을 비교적 크게 받을 수 있다.","source_ids":["S1"],"rule_ids":["ENV-COASTAL-WEATHER-TIDE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"전망 언덕의 전망대·정자와 섬의 바다 경관을 둘러보는 느린 야외 체류 맥락이 공식 안내에 직접 제시된다.","source_ids":["S1"],"rule_ids":["STYLE-SCENIC-REST-DIRECT"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"언덕과 썰물 보행로는 확인되지만 거리·노면·경사·계단·무장애 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전망·등대·보행로의 단독 체류시간과 이동 조건이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 전망 언덕, 바다의 등대와 썰물 보행로를 설명하고, 입력 방문 근거도 풍경과 등대를 언급한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-COASTAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도 가까이의 ‘섬 속의 섬’이라는 지리적 성격과 썰물 때 등대까지 열리는 보행로가 고유한 경험으로 공식 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-GEOGRAPHY-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"우도 권역의 작은 섬, 돌담과 해안 등대로 이루어진 제주 섬 경관·생활권 맥락이 공식 관광 안내에 직접 연결된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-ISLAND-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광 안내에 소개되는 우도 권역 명소이나, 제주 전체를 대표하는 공적 상징·지정 근거는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["STYLE-REGIONAL-ATTRACTION"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 전망대, 바다의 등대와 썰물 보행로라는 시각적 해안 경관을 제시하고 입력 방문 근거도 풍경을 언급한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-VISUAL-LANDSCAPE-DIRECT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 입도·조석 안전·동선과 통신 환경이 확인되지 않아 혼자 방문 적합도는 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문의 실제 동선·안전·체류 여건 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 이용 시 인원 수용·이동·안전 조건 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 보행로·난간·조석 안전 및 보호자 조건 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문자의 경사·노면·휴식·무장애 접근성 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·조석·현장 안전 정보가 없어 야외 해안 탐방의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-COASTAL-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"tide_weather_and_access_confirmation_required","applies_to":"all_visitors","condition":"비양도와 등대 사이 보행로는 공식 안내상 썰물 때 열린다. 최신 입도·보행로 개방, 조석·파랑·강풍 안전, 야영 가능 여부와 현장 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 관광·현장 최신 안내와 조석 정보를 확인하고, 보행로가 잠기거나 기상이 나쁘면 해당 구간에 진입하지 않는다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"},
+    {"kind":"mobility_accessibility_unknown","applies_to":"kids_and_mobility_limited_visitors","condition":"전망 언덕과 해안 보행로의 실제 거리·노면·경사·계단·난간 및 무장애 접근성은 확인하지 못했다.","status":"needs_review","action":"어린이·고령자·이동 보조기기 이용자는 출발 전 현장 접근성과 동반 보호 필요 여부를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

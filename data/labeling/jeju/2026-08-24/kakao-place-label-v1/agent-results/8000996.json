@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8000996",
+  "place_id": "8000996",
+  "name": "영등하루방",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "입력 Kakao 레코드는 장소명과 한 건의 접근 불가 방문 경험만 제공하며 주소·좌표·업종이 없다. 공개 자료에는 조천읍 신흥리의 방사탑 위 돌하루방을 ‘영등하루방’으로 부르는 사례와, 성산읍 시흥리의 동명 장소를 가리키는 여행 기록이 함께 확인된다. 이 place_id가 어느 동명 대상인지 신뢰 가능한 출처로 교차 확인할 수 없으므로 독립 방문지 여부와 추천 적합도를 추정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "‘영등하루방’은 제주에서 동명 또는 유사 명칭으로 쓰이는 대상이 확인되지만, 입력 Kakao 레코드는 정확한 위치·유형을 제공하지 않아 특정 대상과 동일시할 수 없다.",
+    "typical_visit": "조천읍 신흥리 사례는 마을 수호·방사 기능과 연결된 탑 위의 돌하루방으로 설명된다. 그러나 이 Kakao 레코드가 해당 민속 경관인지, 성산읍 시흥리의 동명 장소인지, 다른 대상인지는 확인되지 않았다.",
+    "experience_scope": "입력 공개 방문 경험은 철문 때문에 볼 수 없었다는 접근 상황만 전한다. 현재 개방 여부, 소유·출입 조건, 정확한 위치, 관람 범위, 접근성 및 안전 정보가 확인되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광신문은 조천읍 신흥리에서 탑 위에 돌하루방을 세워 ‘영등하루방’이라 부르며, 보통 거욱대라고도 한다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 여행 기록에는 ‘영등하루방’을 서귀포시 성산읍 시흥리의 장소로 적은 사례가 있어, 명칭만으로는 입력 레코드의 위치를 확정할 수 없다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 공개 방문 경험은 철문으로 막혀 있어 볼 수 없었다는 내용이며, 이 레코드의 주소·좌표·업종은 입력에 없다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8000996의 정확한 주소, 좌표, 행정구역 및 대상 유형을 확인하지 못했다.",
+      "조천읍 신흥리의 방사탑·거욱대 사례, 성산읍 시흥리의 동명 장소 또는 다른 동명 대상과의 동일성을 확인하지 못했다.",
+      "현재 개방·출입 조건, 관리 주체, 관람 범위, 접근성, 주차 및 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광신문",
+        "type": "regional_news_article",
+        "url": "https://www.jjtnews.com/news/articleView.html?idxno=6658",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "조천읍 신흥리에서 탑 위에 돌하루방을 세워 ‘영등하루방’이라 부르기도 하며 보통 거욱대라고 한다고 설명한다.",
+          "방사탑·거욱대는 마을의 안녕과 수호에 관한 민속 신앙의 맥락에서 설명된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 여행 기록",
+        "type": "public_travel_record",
+        "url": "https://ghaun.tistory.com/1037?category=1109204",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "기록의 여행 경로는 ‘영등하루방’을 서귀포시 성산읍 시흥리의 장소로 적는다.",
+          "공식·공공 위치 확인 자료가 아니므로 Kakao 레코드와의 동일성 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/8000996",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 공개 방문 경험은 철문으로 막혀 있어 볼 수 없었다는 접근 상황을 언급한다.",
+          "입력 패킷에는 장소명 외 주소, 좌표 및 업종 정보가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "동명 대상이 복수 확인되고 Kakao 레코드에 주소·좌표·업종이 없으며 입력 공개 방문 경험은 철문으로 인한 접근 불가만 전함",
+      "status": "needs_review",
+      "action": "공식 또는 Kakao의 주소·좌표·업종으로 정확한 대상을 먼저 교차 확인하고, 현재 출입 가능 여부와 관람 조건을 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

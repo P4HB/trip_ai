@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11739827",
+  "place_id": "11739827",
+  "name": "닭머르",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "공개 바다여행 정보에서 닭머르해안길의 전망대·산책로 구간으로 확인되며, Kakao 장소명 및 리뷰의 해안 경관 장소 설명과 일치한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["src_badaon", "src_kakao"]
+  },
+  "research": {
+    "identity_summary": "제주시 조천읍 신촌리 일대의 닭머르해안길·전망대 중심 해안 산책 명소이다.",
+    "typical_visit": "나무데크 전망대와 해안 산책로를 따라 바다 경관을 보고 사진을 촬영하는 짧은 야외 방문이다.",
+    "experience_scope": "해안 경관 감상과 산책이 핵심이며, 카페·시장·유료 체험시설의 운영 여부는 확인하지 않았다.",
+    "facts": [
+      "바다온은 닭머루 입구에서 신촌포구까지 나무데크 전망대와 산책로가 이어진다고 안내한다.",
+      "바다온은 가을부터 초겨울을 방문하기 좋은 시기로, 한적한 산책과 사진 촬영에 적합하다고 소개한다.",
+      "Kakao 입력의 비식별 리뷰도 일몰, 억새, 바다 전망, 올레길 18코스 및 화장실을 언급한다."
+    ],
+    "unknowns": [
+      "무장애 동선, 난간·낙상 위험, 주차 수용량 및 현재 화장실 운영 상태는 공식 자료로 확인하지 않았다.",
+      "월별 접근성·안전성과 야간 이용 가능 여부는 확인하지 않았다."
+    ],
+    "sources": [
+      {
+        "source_id": "src_badaon",
+        "url": "https://www.badaon.or.kr/seantour_map/travel/destination/detail.do?destId=DEST025168",
+        "publisher": "바다온 바다여행",
+        "checked_at": "2026-08-25T12:00:00+09:00",
+        "facts": ["나무데크 전망대와 산책로", "가을~초겨울 방문 적기", "산책·사진 촬영 중심"]
+      },
+      {
+        "source_id": "src_kakao",
+        "url": "https://place.map.kakao.com/11739827",
+        "publisher": "Kakao Place 공개 장소·리뷰 입력",
+        "checked_at": "2026-08-25T12:00:00+09:00",
+        "facts": ["장소명 닭머르", "입력 리뷰의 일몰·억새·해안 경관·올레길 18코스 언급"]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공개 근거는 해안 산책로만 확인하며 산·오름 경험 여부는 확인되지 않았다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "theme.ocean": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해안길, 바다 경관, 신촌포구 구간이 직접 안내된다.", "rule_ids": ["core-experience-direct"], "source_ids": ["src_badaon", "src_kakao"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책로는 확인되나 레포츠·참여형 체험이 핵심인지는 확인되지 않았다.", "rule_ids": ["walking-not-sport-uncertain"], "source_ids": ["src_badaon"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사·문화유산·전시 경험의 공식 근거를 찾지 못했다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 시설 여부의 근거가 없다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트가 장소의 핵심이라는 근거가 없다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험의 근거가 없다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 행사나 축제의 근거가 없다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 시설이 야외 나무데크 전망대와 해안 산책로로 안내된다.", "rule_ids": ["outdoor-facility-direct"], "source_ids": ["src_badaon"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 해안 산책·경관 감상이 핵심이라 날씨 영향이 클 것으로 판단하되 세부 기상 기준은 미확인이다.", "rule_ids": ["outdoor-experience-inference"], "source_ids": ["src_badaon"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "한적하게 산책을 즐기는 장소로 직접 소개된다.", "rule_ids": ["restful-description-direct"], "source_ids": ["src_badaon"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "데크 산책로는 확인되나 경사·계단·무장애 정보가 없어 이용 부담은 중립으로 둔다.", "rule_ids": ["accessibility-unknown-neutral"], "source_ids": ["src_badaon"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "전망대와 산책로로 구성되어 짧은 경관 감상과 산책 체류 모두 가능하다고 추론한다.", "rule_ids": ["walk-length-flexibility-inference"], "source_ids": ["src_badaon"]},
+    "style_evidence.scenic_value": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "바다여행 정보가 해안 경관과 사진 촬영을 장소의 방문 경험으로 직접 소개한다.", "rule_ids": ["scenic-core-direct"], "source_ids": ["src_badaon", "src_kakao"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 데크·전망대 구성은 확인되지만 제주 내 차별성의 비교 근거가 부족하다.", "rule_ids": ["distinctiveness-unknown-neutral"], "source_ids": ["src_badaon"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "신촌포구까지 이어지는 제주 해안 산책 경험으로 지역 자연과의 연결은 확인되나 생활문화 연결은 미확인이다.", "rule_ids": ["local-nature-inference"], "source_ids": ["src_badaon"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 관광 정보에 등재됐으나 지역 대표 상징성의 공식 비교 근거는 없다.", "rule_ids": ["landmark-unknown-neutral"], "source_ids": ["src_badaon"]},
+    "style_evidence.photo_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 사진 촬영에 제격이라고 직접 소개한다.", "rule_ids": ["photo-description-direct"], "source_ids": ["src_badaon"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "한적한 해안 산책 중심이라 혼자 방문 적합성을 추론한다.", "rule_ids": ["companion-walk-inference"], "source_ids": ["src_badaon"]},
+    "couple": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "경관 감상과 사진 촬영 중심 경험을 근거로 동반 2인 적합성을 추론한다.", "rule_ids": ["companion-scenic-inference"], "source_ids": ["src_badaon"]},
+    "friends": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산책과 사진은 가능하지만 단체 활동 시설은 확인되지 않았다.", "rule_ids": ["companion-facility-unknown-neutral"], "source_ids": ["src_badaon"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·전망대 안전 설비와 아동 동반 적합성 정보가 부족하다.", "rule_ids": ["fallback-neutral"], "source_ids": []},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "보행 경사와 휴식시설의 충분성 정보가 부족하다.", "rule_ids": ["fallback-neutral"], "source_ids": []}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 실제 이용 조건의 근거가 부족하다.", "rule_ids": ["month-fallback-neutral"], "source_ids": []},
+    "9": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 가을부터 초겨울을 방문하기 좋은 시기로 소개한다.", "rule_ids": ["season-direct"], "source_ids": ["src_badaon"]},
+    "10": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 가을부터 초겨울을 방문하기 좋은 시기로 소개한다.", "rule_ids": ["season-direct"], "source_ids": ["src_badaon"]},
+    "11": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 가을부터 초겨울을 방문하기 좋은 시기로 소개한다.", "rule_ids": ["season-direct"], "source_ids": ["src_badaon"]},
+    "12": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 안내가 초겨울을 방문하기 좋은 시기로 소개한다.", "rule_ids": ["season-direct"], "source_ids": ["src_badaon"]}
+  },
+  "hard_constraints": [
+    {"kind": "weather_exposure", "applies_to": "all_visitors", "condition": "야외 해안 데크와 산책로가 대표 경험이며 세부 기상·안전 운영 기준은 미확인", "status": "needs_review", "action": "방문 전 현지 날씨와 공식 안전 안내를 확인", "source_ids": ["src_badaon"], "checked_at": "2026-08-25T12:00:00+09:00"},
+    {"kind": "mobility_access", "applies_to": "limited_mobility_visitors", "condition": "경사·계단·무장애 동선 정보 미확인", "status": "needs_review", "action": "방문 전 접근성 정보를 확인", "source_ids": [], "checked_at": "2026-08-25T12:00:00+09:00"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T12:00:00+09:00"
+}

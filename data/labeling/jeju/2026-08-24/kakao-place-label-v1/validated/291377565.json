@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:291377565",
+  "place_id": "291377565",
+  "name": "쉼터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명을 ‘쉼터’로만 제공하며 주소·좌표·업종·상세 설명·공개 후기 근거가 없다. ‘쉼터’는 특정 장소를 식별할 수 없는 일반 명칭이고, place_id를 검색한 공개 웹 결과도 해당 Kakao 장소의 신원이나 위치를 확인하지 못했다. 따라서 독립 여행 방문지 여부와 방문 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 Kakao 입력 정보는 이름 ‘쉼터’와 place_id뿐이다. 공개 검색으로 이 식별자와 연결되는 제주 장소의 주소·운영 주체·업종을 확인하지 못했다.",
+    "typical_visit": "이 레코드가 가리키는 장소 유형과 대표 방문 경험은 확인되지 않았다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 설명 및 공개 방문 후기 근거가 없다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았으며, 신원이 확정되지 않아 추천용 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘쉼터’이며, 주소·좌표·업종·상세 설명·공개 후기 근거가 제공되지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "place_id ‘291377565’ 및 장소명 ‘쉼터’를 이용한 공개 웹 검색은 이 Kakao 장소의 위치 또는 운영 주체를 확인하는 결과를 제공하지 못했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종, 운영 주체 및 독립 여행 방문지 여부를 확인하지 못했다.",
+      "관람·체험 내용, 접근성, 편의시설, 안전, 주차 및 최신 운영 상태를 확인하지 못했다.",
+      "입력에는 라벨 근거로 사용할 공개 방문 후기 정보가 없다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/291377565",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘쉼터’다.",
+          "입력 패킷에는 주소, 좌표, 업종, 상세 설명 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Public web search",
+        "type": "search_engine_results",
+        "url": "https://www.google.com/search?q=%22291377565%22+%EC%89%BC%ED%84%B0",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "검색 결과에서 Kakao place_id 291377565와 연결되는 제주 장소의 위치, 업종 또는 운영 주체를 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 특정 장소를 식별할 주소·좌표·업종·설명이 없고, 공개 웹 조사로도 신원과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·업종·운영 주체로 신원을 먼저 교차 확인한다. 확인 전에는 추천 후보 및 라벨 벡터에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

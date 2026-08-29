@@ -1,0 +1,102 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:683394986",
+  "place_id": "683394986",
+  "name": "베트남참전위령탑 고 송서규대령 동상",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "국가보훈부 현충시설정보서비스는 2006년 제주시 노형동에 베트남참전용사의 명예선양과 호국정신 계승을 위해 ‘베트남 참전 위령탑과 송서규 대령 동상’을 함께 건립했다고 기록한다. 입력은 이 복합 현충시설 안의 송서규 대령 동상을 특정한 하위 표식이므로, 상위 베트남참전위령탑과 중복되는 독립 여행지로 라벨링하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-MEMORIAL-CONTENT"
+    ],
+    "duplicate_of": "베트남참전위령탑",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 베트남참전위령탑과 함께 조성된 고 송서규 대령 동상을 가리키는 것으로 확인된다.",
+    "typical_visit": "추모·기억·역사 관람 경험은 베트남참전위령탑 부지와 그 안의 동상·기념물에 함께 귀속된다. 동상 단독의 독립 운영·관람 경험은 확인되지 않는다.",
+    "experience_scope": "입력 표식은 상위 현충시설의 세부 구성물이다. 상위 기념시설과 중복되는 추천용 18개 원자축, 동반자 5축 및 월별 12축을 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가보훈부 현충시설정보서비스는 2006년 5월 베트남 참전 위령탑과 송서규 대령 동상이 함께 건립됐다고 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 자료는 베트남참전위령탑 및 송서규대령 동상을 현충시설 부지의 병렬 시설로 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "동상의 개별 관리·보존 상태와 현재 현장 표식",
+      "상위 위령탑 부지의 최신 개방·행사·촬영 규칙",
+      "주차·보행·무장애 접근성과 우천 시 안전 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가보훈부 현충시설정보서비스",
+        "type": "official_memorial_registry",
+        "url": "https://mfis.mpva.go.kr/memorial/mfisMovementList.do?pageIndex=64",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "건립추진위원회가 2006년 제주시 노형동 산19-2에 베트남 참전 위령탑과 송서규 대령 동상을 건립했다고 기록한다.",
+          "건립 목적을 베트남 참전용사의 명예선양과 호국정신 계승으로 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "official_council_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A039777.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "도의회 자료는 베트남참전위령탑 및 송서규대령 동상을 현충시설 부지 내 시설로 함께 열거한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_memorial_structure",
+      "applies_to": "recommendation_candidate",
+      "condition": "송서규 대령 동상은 베트남참전위령탑과 함께 조성된 상위 현충시설의 구성물로 단독 추천 시 상위 장소의 추모·역사 경험과 중복됨",
+      "status": "confirmed",
+      "action": "추천·라벨링은 상위 ‘베트남참전위령탑’ 단위로 처리하고, 동상은 경내 세부 POI·길찾기 정보로만 사용한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

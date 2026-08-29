@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26563988",
+  "place_id": "26563988",
+  "name": "한라산둘레길 사려니숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "(사)한라산둘레길과 제주관광공사 Visit Jeju가 모두 사려니숲길을 제주시와 서귀포시를 잇는 약 10km의 독립적인 숲길로 안내한다. 입력 Kakao 장소명과 공개 후기의 10km 트레킹 경험도 이 공식 안내와 일치하므로 독립 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "사려니숲길은 제주시 봉개동 절물오름 남쪽 비자림로에서 물찻오름을 지나 서귀포시 표선면 가시리 붉은오름 입구까지 이어지는 약 10km의 한라산둘레길 숲길이다.",
+    "typical_visit": "숲길을 걸으며 한라산 동측 국유림의 숲 경관을 경험하는 야외 트레킹 방문이다.",
+    "experience_scope": "공식·공공 안내는 숲길의 위치와 거리, 버스 접근, 우천·입산 시간 등 이용 통제를 제시한다. 현재 개방 구간, 노면·무장애 접근성, 화장실·휴식시설 및 개인별 보행 난이도는 이 조사로 확정하지 않는다.",
+    "facts": [
+      {"id": "F1", "text": "(사)한라산둘레길은 사려니숲길을 비자림로에서 물찻오름을 거쳐 붉은오름까지 이어지는 10km 숲길로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주관광공사 Visit Jeju는 사려니숲길을 약 10km의 숲길로 소개하고, 기상 및 현장 통제에 따라 탐방로와 소요 시간이 달라질 수 있어 공식 공지 확인을 안내한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "산림청 산하 숲나들e의 한라산둘레길 안내는 우천일과 비가 온 뒤 2일간 통행 금지, 하절기·동절기 입산 시간 통제를 안내한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "방문 시점의 구간별 개방 여부와 현장 기상 통제 상태를 확인하지 못했다.",
+      "노면, 경사, 계단, 휠체어 접근성, 휴식시설과 화장실의 최신·전 구간 정보를 확인하지 못했다.",
+      "월별 식생 절정이나 혼잡도, 사진 촬영 환경을 직접 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "(사)한라산둘레길", "type": "official_operator_site", "url": "https://hallatrail.or.kr/salyeonisup", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["사려니숲길은 비자림로에서 물찻오름을 지나 붉은오름까지 이어지는 10km 숲길이다.", "비자림로 및 남조로 방면 버스 노선을 안내한다."]},
+      {"id": "S2", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500281&menuId=DOM_000001718007000000", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["사려니숲길은 약 10km의 숲길이며 사려니오름의 이름을 따 불린다고 안내한다.", "기상 및 현장 통제에 따라 탐방로와 소요 시간이 달라질 수 있으므로 방문 전 공식 공지를 확인하도록 안내한다."]},
+      {"id": "S3", "publisher": "국립자연휴양림관리소 숲나들e", "type": "public_forest_information", "url": "https://www.foresttrip.go.kr/pot/frtrl/ar/selectAroundRoadNtn8.do?hmpgId=FRTRL&menuId=002001016", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["한라산둘레길은 국가숲길로 안내된다.", "우천일 및 비가 온 뒤 2일간 통행 금지와 계절별 입산 시간 통제를 안내한다."]},
+      {"id": "S4", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/26563988", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력된 공개 후기는 약 10km 완주, 숲길 보행, 입구 화장실 및 버스 접근 경험을 언급한다.", "평점과 후기 수는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 운영자와 제주관광공사 안내가 한라산 동측 국유림의 사려니숲길을 대표 방문 경험으로 명시한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"약 10km 숲길을 걷는 대표 경험을 근거로 참여형 야외 보행 비중을 높게 판정한다. 개인별 난이도는 미확인이다.","source_ids":["S1","S2","S4"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 약 10km 야외 숲길 보행으로 안내돼 실내 공간 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 숲길 보행이 대표 경험이고 공식·공공 안내가 우천 후 통행 금지와 기상·현장 통제를 명시해 날씨 영향이 크다고 판정한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경의 충분한 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"10km 거리 외에 노면·경사·계단·무장애 접근성 정보가 충분하지 않아 이용 용이성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전체 거리와 일부 입구 정보는 확인되지만, 짧은 방문부터 긴 체류까지의 선택 가능성을 뒷받침하는 공식 동선 근거가 충분하지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광·운영 안내가 숲길 자체와 한라산 동측 국유림의 자연 환경을 대표 경험으로 제시하므로 경관 감상 가치를 높게 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"사려니오름 명칭을 딴 한라산둘레길의 독립 10km 구간이라는 공식 안내를 근거로 고유한 숲길 경험 비중을 높게 판정한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 한라산 동측 국유림과 사려니오름의 자연 환경을 직접 경험하는 숲길이라는 안내를 근거로 제주 자연과의 연결성을 높게 판정한다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"산림청 산하 플랫폼이 한라산둘레길을 국가숲길로 안내하고 공식 관광 안내가 이 구간을 별도 관광지로 제공하므로 지역 대표성은 높게 추론한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"자연 숲 경관은 확인되지만 사진 촬영 또는 시각 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·동선·통신 및 현재 통제 정보를 확인하지 못해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 현재 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전·동선 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면, 안전시설, 이동거리 선택 및 현장 통제 정보를 확인하지 못해 중립값이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 쉼터, 무장애 접근성 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상 영향을 받을 수 있으며 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상 영향을 받을 수 있으며 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 여름 더위와 강수 영향을 받을 수 있으며 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 여름 더위와 강수 영향을 받을 수 있으며 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길 보행은 겨울 기상 영향을 받을 수 있으며 현장 상태는 미확인이다.","source_ids":["S2","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"weather_and_access_control","applies_to":"all_visitors","condition":"우천일 및 비가 온 뒤 2일간 통행 금지와 계절별 입산 시간 통제가 안내되며, 실제 탐방로·구간 통제는 기상과 현장 상황에 따라 달라질 수 있다.","status":"needs_review","action":"방문 직전에 한라산둘레길 또는 현장 공식 공지로 개방 구간, 기상 통제와 입산 가능 시간을 확인한다.","source_ids":["S2","S3"],"checked_at":"2026-08-25T00:00:00+09:00"},
+    {"kind":"accessibility_unverified","applies_to":"kids_and_parents","condition":"노면, 경사, 계단, 무장애 접근성 및 필요한 휴식·위생시설의 전 구간 최신 정보를 확인하지 못했다.","status":"needs_review","action":"어린이·고령자 또는 이동 제약이 있으면 출발 전 공식 안내센터와 현장 안내로 구간별 보행 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

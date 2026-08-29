@@ -1,0 +1,90 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17806435",
+  "canonical_id": "kakao:17806435",
+  "name": "황우치해변",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "제주콘텐츠진흥원은 ‘황우치해변’ 로케이션 영상을 제공하지만, 공식 관광 자료에서 상세 안내되는 ‘황우지해안’은 외돌개 인근의 다른 지명·장소일 수 있다. 입력 표식이 어느 해안을 가리키는지, 현재의 일반 접근·안전 관리 범위를 확정하지 못했으므로 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-ACCESS-UNKNOWN",
+      "ELIG-NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "coastal_site_identity_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "표식이 가리키는 정확한 해안과 현행 출입·해양 안전 관리 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 정확한 지도 위치와 현장 출입 통제·기상·파도 안내를 확인하고 통제선 밖으로 이동하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "‘황우치해변’은 제주콘텐츠진흥원의 로케이션 명칭으로 확인되나, Visit Jeju의 ‘황우지해안’과 표기·위치가 달라 동일 장소인지 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "제주콘텐츠진흥원은 ‘2024 황우치해변 영상’을 제주 로케이션 콘텐츠로 제공한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "Visit Jeju의 황우지해안은 외돌개 인근 해안으로 출입 통제선을 넘지 말 것을 안내한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "황우치해변 Kakao 표식의 정확한 좌표·경계",
+      "황우지해안과의 동일성 여부",
+      "현행 일반 접근·수영 가능 여부와 안전 관리",
+      "주차·화장실·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주콘텐츠진흥원",
+        "type": "public_location_content",
+        "url": "https://www.ofjeju.kr/communication/works/location.htm?act=view&seq=2073280",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "황우치해변이라는 제주 로케이션 명칭의 존재를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_listing",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018383&menuId=DOM_000001718002000000",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "황우지해안의 위치 설명과 출입 통제 안전 안내를 제공한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

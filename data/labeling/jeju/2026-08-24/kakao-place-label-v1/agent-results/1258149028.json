@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1258149028",
+  "canonical_id": "kakao:1258149028",
+  "name": "조천지서 앞밭",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주4·3연구소가 ‘조천지서 앞밭’을 독립 4·3 유적지로 등재하고, 제주다크투어도 조천리 1219-6번지 일대의 학살 현장으로 특정한다. 단순 부속 시설이 아닌 역사 현장 방문 대상으로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소는 조천리의 4·3 역사 현장으로, 산·오름·산림 경관이 핵심 방문 경험이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 유적 안내는 조천지서 앞밭의 역사 사건을 설명하며 해안·해양 경험은 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "역사 현장 답사 외 신체 활동·레포츠·참여형 체험이 핵심이라는 정보는 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주4·3연구소가 이 장소를 4·3 유적지로 등재했고, 자료는 1949년 조천면 주민이 집단학살된 역사 현장이라고 직접 설명한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HISTORY-SITE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료에서 놀이·동물·전시 시설 중심의 테마파크형 경험은 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·커피·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "4·3 역사 유적지로 확인되며 시장 방문 경험은 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 기간 축제·공연·행사가 이 장소의 핵심이라는 근거는 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "‘앞밭’으로 특정된 야외 역사 현장이며 공개 자료에서 실내 관람 공간은 확인되지 않는다.", "source_ids": ["S2"], "rule_ids": ["ENV-OUTDOOR-HISTORIC-SITE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 역사 현장 방문이므로 비·바람·더위·추위의 영향을 받을 수 있으나 현장 대피·통제 정보는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "집단학살의 기억을 다루는 역사 현장으로 확인되어 휴식·평온이 핵심 경험이라고 보기 어렵다. 실제 휴식 공간 여부는 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SOLEMN-HISTORIC-SITE"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "정확한 보행 거리, 경사·계단, 포장 상태와 무장애 접근성 자료를 찾지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장 표지·해설·인근 답사 동선 및 단독 체류시간이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 장소의 역사적 의미를 설명하며 경관 감상 자체가 방문 가치라는 근거는 제시하지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-SCENERY-NOT-CONFIRMED"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조천면 주민과 중산간에서 내려온 주민들이 1949년 집단학살된 특정 4·3 현장이라는 고유한 역사적 성격이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-UNIQUE-HISTORIC-EVENT-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조천리와 조천면 주민의 제주4·3 경험 및 지역 역사 현장으로 직접 기록되어 제주 지역사와 밀접하게 연결된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주4·3연구소의 유적지 목록에 독립 항목으로 수록되고 4·3 역사 답사 자료에 포함되지만, 제주 전체를 대표하는 공적 랜드마크 지정 여부는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-REGISTERED-HISTORY-SITE"]},
+    "style_evidence.photo_value": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 역사적 사실을 중심으로 설명하며 사진 촬영 또는 시각 기록이 핵심 경험이라는 근거는 확인되지 않는다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-PHOTO-NOT-CONFIRMED"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 방문의 안전·안내·통신·현장 접근 조건을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 형태별 이용 편의와 현장 해설 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 방문의 안내·수용·안전 조건을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반의 보행 안전·해설 적합성 정보가 없고 학살 역사라는 민감한 내용의 사전 안내가 필요해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·해설·행사 정보가 확인되지 않아 야외 역사 현장의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "historical_trauma_content_and_site_access_unknown", "applies_to": "all_visitors", "condition": "제주4·3 집단학살을 다루는 엄숙한 역사 현장이다. 현장 표지, 실제 개방·사유지 여부, 보행 동선, 무장애 접근성과 기상 시 안전 조건은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주4·3 관련 공식 안내 또는 현장 최신 정보로 접근 가능 여부와 동선을 확인하고, 동반자에게 역사적 내용을 사전 안내한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 제주4·3연구소가 수록한 ‘조천지서 앞밭’ 유적지와 일치한다. 제주다크투어는 이를 조천리 1219-6번지 일대의 4·3 학살 현장으로 구체화한다.",
+    "facts": [
+      {"text": "제주4·3연구소의 4·3유적지 목록에는 ‘조천지서 앞밭’이 독립 항목으로 수록되어 있다.", "source_id": "S1"},
+      {"text": "제주다크투어는 조천지서 앞밭을 조천리 1219-6번지 일대의 학살터로 설명하며, 1949년 조천면 주민과 중산간에서 내려온 주민 약 120여 명이 학살된 곳으로 소개한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["현재 현장 표지와 실제 접근·관람 가능 여부", "보행 거리·포장·경사·계단 및 무장애 접근성", "월별 운영·해설·행사와 우천·강풍 시 안전 안내"],
+    "sources": [
+      {"id": "S1", "publisher": "제주4·3연구소", "type": "historical_research_institute", "url": "https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0&wr_id=66", "checked_at": "2026-08-25", "facts": ["‘조천지서 앞밭’을 제주4·3 유적지로 독립 수록한다."]},
+      {"id": "S2", "publisher": "(사)제주다크투어", "type": "public_historical_information", "url": "https://www.jejudarktours.org/ko/historical-sites/%EC%A1%B0%EC%B2%9C%EC%A7%80%EC%84%9C-%ED%98%84-%EC%A1%B0%EC%B2%9C%ED%8C%8C%EC%B6%9C%EC%86%8C/", "checked_at": "2026-08-25", "facts": ["조천지서 앞밭을 조천리 1219-6번지 일대의 학살터로 설명한다.", "1949년 조천면 주민과 중산간에서 내려온 주민들이 이곳에서 집단학살됐다고 설명한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

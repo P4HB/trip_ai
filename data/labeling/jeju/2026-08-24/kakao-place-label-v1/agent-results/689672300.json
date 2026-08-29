@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:689672300",
+  "place_id": "689672300",
+  "name": "불탑사오층석탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "공개 문화유산 자료는 제주 불탑사 오층석탑을 제주시 불탑사 경내의 고려시대 오층 석탑이자 보물로 확인한다. 입력 Kakao 명칭과 문화유산 명칭이 일치하므로 독립 문화유산 방문 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주 불탑사 오층석탑은 제주시 삼양일동 불탑사에 있는 고려시대 현무암 오층 석탑으로 보물이다.",
+    "typical_visit": "공개 자료상 대표 경험은 불탑사 경내에서 제주 지역의 불교 문화유산인 오층 석탑을 관찰하는 짧은 야외 문화유산 방문이다.",
+    "experience_scope": "석탑의 시대·재료·유형·소재지·보물 지정은 확인했지만, 사찰의 최신 개방 시간, 관람 동선, 주차·화장실, 경내 안전시설 및 무장애 접근성은 확인하지 못했다. 입력 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "한국민족문화대백과사전은 제주 불탑사 오층석탑을 제주특별자치도 제주시 불탑사에 있는 고려시대 현무암 오층 불탑으로 설명하고, 보물로 1993년 11월 19일 지정되었으며 소재지는 제주시 원당로16길 41이라고 제시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "국립문화유산연구원의 국가유산 지식이음 수리공사연표는 불탑사 오층석탑의 지정종목을 보물로, 시행청을 제주특별자치도 제주시로 제시한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "한국민족문화대백과사전은 이 석탑이 제주도에 현존하는 유일한 석탑이라고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F4", "text": "입력 Kakao 장소명은 불탑사오층석탑이며, 공개 방문 후기 근거는 제공되지 않았다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "사찰 및 석탑의 최신 개방 시간, 휴무일, 예약·입장 절차와 관람 가능 구역은 확인하지 못했다.",
+      "현장 주차, 화장실, 안내·해설, 보행로·계단·노면, 휠체어 접근성 및 안전시설은 확인하지 못했다.",
+      "월별 현장 혼잡도·행사와 악천후 시 관람 제한은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "한국학중앙연구원 한국민족문화대백과사전", "type": "public_encyclopedia", "url": "https://encykorea.aks.ac.kr/Article/E0025044", "checked_at": "2026-08-25", "facts": ["제주 불탑사에 있는 고려시대 현무암 오층 석탑이다.", "보물로 지정되었고 소재지는 제주시 원당로16길 41이다.", "제주도에 현존하는 유일한 석탑으로 설명한다."]},
+      {"id": "S2", "publisher": "국립문화유산연구원 국가유산 지식이음", "type": "official_heritage_research_portal", "url": "https://portal.nrich.go.kr/kor/chronologyUsrView.do?ch_seq=11715&menuIdx=596", "checked_at": "2026-08-25", "facts": ["불탑사 오층석탑의 지정종목은 보물이다.", "수리공사 시행청은 제주특별자치도 제주시로 제시된다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/689672300", "checked_at": "2026-08-25", "facts": ["입력 패킷의 장소명은 불탑사오층석탑이다.", "평점과 후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.ocean": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·해양 활동 또는 바다 경관이 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.activity": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "레포츠·참여형 체험이 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.culture_history": {"state": "numeric", "value": 0.75, "confidence": 0.95, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 문화유산 자료가 고려시대 오층 석탑과 보물 지정을 확인하므로 역사·불교 문화유산 관찰이 핵심 경험이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "theme.theme_park": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.cafe": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.traditional_market": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "theme.festival": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "environment.indoor_ratio": {"state": "numeric", "value": 0.25, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "사찰 경내의 석탑 관찰이라는 확인된 경험을 근거로 대표 방문 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "environment.weather_sensitivity": {"state": "numeric", "value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 석탑 관찰로 추론되는 대표 경험은 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다. 차양과 운영 정책은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.restfulness": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식시설·혼잡도·소음·체류 환경 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.physical_ease": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "접근로, 노면, 경사·계단과 무장애 접근 정보를 확인하지 못해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "관람 동선·해설·체류 시간과 출입 조건이 확인되지 않아 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.scenic_value": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "주변 경관 감상이 핵심이라는 공신력 있는 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.distinctiveness": {"state": "numeric", "value": 0.75, "confidence": 0.85, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 백과사전이 제주도에 현존하는 유일한 석탑으로 설명하므로, 제주 문화유산 안에서 구별되는 고유성이 직접 확인된다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "style_evidence.local_embeddedness": {"state": "numeric", "value": 0.75, "confidence": 0.9, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 불탑사의 고려시대 현무암 석탑이라는 공개 자료가 제주 지역의 역사·불교 문화유산과의 직접 연결을 확인한다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-011"]},
+    "style_evidence.landmark_significance": {"state": "numeric", "value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "researched_inference", "rationale": "보물 지정 및 제주도 현존 유일 석탑이라는 자료를 근거로 지역 문화유산의 상징성은 비교적 높게 추론한다. 대표 명소로서의 공식 방문 지표는 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]},
+    "style_evidence.photo_value": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-006", "REQ-008", "REQ-009", "REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "couple": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 체류 환경과 관람 동선 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "friends": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "여러 명 방문 시 수용·동선·안전 여건 정보가 부족해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "kids": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "어린이 동반에 필요한 접근로·안전시설·관람 조건 정보가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "parents": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 석탑 관찰은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "2": {"state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 석탑 관찰은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "3": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "4": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "5": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "6": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "7": {"state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 석탑 관찰은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "8": {"state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 석탑 관찰은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "9": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "10": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "11": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]},
+    "12": {"state": "numeric", "value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 석탑 관찰은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["REQ-007", "REQ-008", "REQ-009", "REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind": "temple_site_access_and_safety_unknown", "applies_to": "all_visitors", "condition": "공개 자료는 석탑의 문화유산 사실과 소재지를 확인하지만, 사찰의 최신 개방 시간·관람 구역, 접근로·노면, 주차·화장실, 안전시설 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 불탑사 또는 제주특별자치도·제주시의 최신 현장 안내로 관람 가능 여부, 경내 동선과 보행·기상 안전을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

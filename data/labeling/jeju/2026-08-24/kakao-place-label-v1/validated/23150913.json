@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "23150913",
+  "canonical_id": "kakao:23150913",
+  "name": "휘닉스제주섭지코지 바람의언덕",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력명의 ‘바람의언덕’은 휘닉스 아일랜드 공식 단지 안내에서 번호 12의 ‘기타 시설’로 표시된다. 공식·보도 자료도 이를 휘닉스 제주 섭지코지 안의 유채꽃 버스투어 경유 지점으로 소개하므로, 독립 운영 장소가 아니라 리조트 단지에 종속된 경관·휴식 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_scope",
+      "applies_to": "recommendation_candidate",
+      "condition": "바람의언덕은 휘닉스 아일랜드 공식 단지 안내의 기타 시설이며, 별도 독립 방문지의 운영·접근·관람 범위는 확인되지 않음",
+      "status": "needs_review",
+      "action": "리조트 전체 또는 별도의 독립 운영 장소로 확정하기 전에는 이 부속 시설에 추천용 41축 벡터를 부여하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "identity_summary": "입력명은 휘닉스 아일랜드 제주 단지 내 ‘바람의언덕’과 일치한다. 공식 단지 안내는 이를 12번 기타 시설로 열거한다.",
+    "typical_visit": "공개 보도는 바람의언덕을 섭지코지 유채꽃밭과 청초밭 영농조합을 함께 둘러보는 휘닉스 제주 섭지코지의 40분 버스투어 경유 지점으로 소개한다.",
+    "experience_scope": "리조트 단지 내 경관·휴식 지점으로 확인되며, 독립적인 여행 추천 장소로서의 별도 운영 범위는 확인되지 않았다. Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "휘닉스 아일랜드 공식 단지 안내는 바람의언덕을 번호 12의 ‘기타 시설’로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국경제 보도는 휘닉스 제주 섭지코지의 유채꽃 버스투어가 섭지코지 유채꽃밭과 청초밭 영농조합을 지나 바람의언덕까지 둘러보는 40분 코스라고 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "바람의언덕의 독립 운영 주체, 별도 입장·개방 시간 및 상시 접근 가능 여부",
+      "리조트 비투숙객의 현행 접근 조건, 보행 동선, 안전·무장애 접근성",
+      "계절별 유채꽃 또는 투어 운영 여부와 최신 기상·통제 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "휘닉스 아일랜드",
+        "type": "official_site",
+        "url": "https://phoenixhnr.co.kr/static/jeju/guide/operation/map",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "단지 안내도는 바람의언덕을 12번 ‘기타 시설’로 열거한다.",
+          "같은 안내도는 휘닉스 아일랜드 단지의 리조트, 빌라, 건축·아트, 체험·휴식 및 기타 시설을 함께 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국경제",
+        "type": "reputable_news",
+        "url": "https://www.hankyung.com/article/2021022332311",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "휘닉스 제주 섭지코지의 유채꽃 버스투어가 바람의언덕을 포함한 40분 코스라고 보도했다.",
+          "해당 투어는 휘닉스 제주 섭지코지의 프로그램으로 소개됐다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

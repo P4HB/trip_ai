@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1307676391",
+  "canonical_id": "kakao:1307676391",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "review_status": "confirmed",
+    "inference_level": "direct_evidence",
+    "rationale": "제주4·3연구소가 동일 명칭을 4·3유적지로 등재하며, 한라일보 조사도 죽성 큰가름을 포함한 죽성을 현재 잃어버린 마을로 설명한다.",
+    "source_ids": ["s1", "s2"],
+    "rule_ids": ["identity.official_43_site", "eligibility.independent_historic_site"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"보도는 죽성 옛길 주변에 대나무가 무성하다고 기록하며, 장소가 아라동 중산간의 옛 마을 흔적이라는 점에서 자연 지형 체류 경험이 일부 예상된다.","source_ids":["s2"],"rule_ids":["theme.nature_setting"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 해안·바다 또는 해양 활동 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_ocean_evidence"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 레포츠나 참여형 체험 프로그램 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_activity_evidence"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3연구소의 4·3유적지 항목이며, 죽성은 사라진 옛 마을과 화전·공동체 유산의 흔적으로 보도된다.","source_ids":["s1","s2"],"rule_ids":["theme.43_historic_site"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 테마파크형 시설 또는 유료 오락 경험 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_theme_park_evidence"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 카페·음료·디저트 이용 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_cafe_evidence"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 시장 또는 상거래 방문 경험 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_market_evidence"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 출처에는 기간성 축제·공연·행사 정보가 없다.","source_ids":["s1","s2"],"rule_ids":["fallback.no_festival_evidence"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"보도는 표지석 주변의 옛 마을 안길과 집터, 무성한 대나무를 현장 요소로 설명해 대표 경험이 야외 유적 탐방임을 뒷받침한다.","source_ids":["s2"],"rule_ids":["environment.outdoor_ruin_site"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 대체 공간 없는 야외 옛길·집터 탐방이므로 강수와 더위·추위가 체류에 큰 영향을 줄 것으로 판단한다.","source_ids":["s2"],"rule_ids":["environment.outdoor_weather_exposure"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대나무가 무성한 옛길과 집터를 걷는 조용한 유적 탐방이지만, 휴식 시설 여부는 확인되지 않았다.","source_ids":["s2"],"rule_ids":["style.quiet_outdoor_visit"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·노면·주차·무장애 접근성 정보가 확인되지 않아 이용 편의성을 판단할 근거가 부족하다.","source_ids":["s1","s2"],"rule_ids":["fallback.accessibility_unknown"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"특정 입장 프로그램보다 옛길·집터·표지석을 살피는 야외 유적지로 소개되어 체류 시간을 자율적으로 조절할 가능성이 있다.","source_ids":["s2"],"rule_ids":["style.self_paced_site"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"대나무가 무성한 옛길과 남은 마을 흔적은 시각적 관찰 요소이나, 경관 명소라는 직접 평가는 확인되지 않았다.","source_ids":["s2"],"rule_ids":["style.visual_ruin_setting"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3 유적지로 개별 등재된 잃어버린 마을 큰가름의 역사와 잔존 흔적이 장소 고유성을 이룬다.","source_ids":["s1","s2"],"rule_ids":["style.unique_43_history"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"죽성의 제주 화전 생활·마을공동체 유산과 제주4·3의 지역사가 장소의 핵심 내용으로 직접 확인된다.","source_ids":["s1","s2"],"rule_ids":["style.jeju_local_history"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 4·3유적지로 보존·기억의 지역적 의미는 크지만, 제주 전역 대표 명소로서의 인지도 근거는 확인되지 않았다.","source_ids":["s1","s2"],"rule_ids":["style.regional_memorial_significance"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대나무가 무성한 옛길, 집터와 표지석이 사진으로 보도되었으나 사진 촬영 명소라는 직접 근거는 없다.","source_ids":["s2"],"rule_ids":["style.visual_documentation"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"자율적으로 걷고 역사 흔적을 살피는 유적지이나 현장 접근성·안내 수준은 미확인이다.","source_ids":["s1","s2"],"rule_ids":["companion.self_paced_history"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"조용한 야외 역사 탐방을 함께 할 수 있으나 편의시설·체류 환경은 확인되지 않았다.","source_ids":["s1","s2"],"rule_ids":["companion.quiet_history"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"소그룹 역사 탐방에는 가능하나 단체 활동·시설 정보는 확인되지 않았다.","source_ids":["s1","s2"],"rule_ids":["companion.group_history"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 대상 해설·안전·놀이 요소 정보가 확인되지 않았다.","source_ids":["s1","s2"],"rule_ids":["fallback.kids_facilities_unknown"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도와 접근성·휴식 시설 정보가 확인되지 않았다.","source_ids":["s1","s2"],"rule_ids":["fallback.parents_accessibility_unknown"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 확인되지 않아 일반적인 야외 유적지 계절성만 반영했다.","source_ids":["s1","s2"],"rule_ids":["fallback.monthly_conditions_unknown"]}
+  },
+  "hard_constraints": [
+    {"constraint":"접근성·보행 난이도·주차와 화장실 등 편의시설은 확인되지 않았다.","status":"needs_review","source_ids":["s1","s2"],"rule_ids":["constraint.accessibility_unknown"],"rationale":"공식 유적지 목록과 보도 모두 현장 이용 편의·무장애 정보를 제공하지 않는다."},
+    {"constraint":"야외 옛길·집터 중심의 장소이므로 방문 전 강수·강풍 등 당일 날씨와 현장 접근 가능 여부 확인이 필요하다.","status":"needs_review","source_ids":["s2"],"rule_ids":["constraint.outdoor_weather"],"rationale":"보도된 대표 현장 요소가 실외의 옛길·집터와 대나무 숲이다."}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": {"status":"confirmed","rationale":"공식 4·3유적지 제목과 카카오 장소명이 일치한다.","source_ids":["s1"],"rule_ids":["identity.name_match"]},
+    "sources": [
+      {"source_id":"s1","publisher":"제주4·3연구소","url":"https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&wr_id=47","checked_at":"2026-08-25","facts":["4·3유적지 항목의 제목은 '잃어버린 마을 죽성 큰가름'이다."]},
+      {"source_id":"s2","publisher":"한라일보","url":"https://s1.ihalla.com/article.php?aid=1701270000750055378","checked_at":"2026-08-25","facts":["죽성은 큰가름 등 5개 자연마을로 이루어졌고 현재 잃어버린 마을로 설명된다.","덕흥사 입구 주변의 옛 마을 안길과 집터에는 대나무가 무성하다고 보도됐다.","죽성의 화전 및 마을공동체 유산이 언급된다."]}
+    ],
+    "unknowns": ["현장 주소·운영 시간·개방 상태", "보행 난이도와 무장애 접근성", "주차·화장실·안내 해설 등 방문 편의시설", "월별 현장 조건"]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "15919502",
+  "canonical_id": "kakao:15919502",
+  "name": "오등감귤체험관광농원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 감귤 체험 관광농원이며, 공개 방문 후기에서 이 장소의 감귤 따기·감귤 그림 그리기와 귤밭 사진 촬영 경험이 구체적으로 확인된다. 독립적으로 예약·방문 가능한 참여형 농원 체험 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "오등감귤체험관광농원은 Kakao Map에 등록된 제주 감귤 체험 농원으로, 입력된 공개 방문 후기에서 감귤 따기와 농원 체험이 확인된다.",
+    "typical_visit": "감귤밭에서 귤을 따고, 일부 방문자는 감귤에 그림을 그리거나 귤밭을 배경으로 사진을 찍는 참여형 야외 농원 체험이다.",
+    "experience_scope": "공개 후기에서 체험 내용은 확인되지만, 최신 운영일·예약·요금·품종·수확 가능 여부, 정확한 실내 공간, 주차·화장실·무장애 접근성과 악천후 운영은 확인하지 못했다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"입력된 Kakao Map 공개 방문 후기는 아이들이 감귤을 따고 감귤에 그림을 그린 체험을 했다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"입력된 Kakao Map 공개 방문 후기는 혼자 감귤 따기 체험을 했고, 귤밭 사진이 예쁘다고 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"제주특별자치도 농업기술원은 노지감귤을 일반적으로 9월 말~10월 극조생, 11~12월 조생, 12월 이후 보통온주 수확으로 구분한다. 이 일반 재배 정보만으로 이 농원의 개별 체험 운영일을 확정할 수는 없다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["최신 감귤 체험 운영 여부와 예약·요금·수확 품종은 확인하지 못했다.", "농원 내 실내·야외 공간 비율, 화장실·주차·휠체어 접근성 및 안전설비는 확인하지 못했다.", "월별 실제 체험 가능일과 우천·강풍 시 운영 방침은 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/15919502","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력된 공개 후기는 감귤 따기, 감귤 그림 그리기, 귤밭 사진 촬영 및 혼자 방문 경험을 언급한다.","평점과 후기 수 및 작성자 식별 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id":"S2","publisher":"제주특별자치도 농업기술원","type":"public_agricultural_guidance","url":"https://agri.jeju.go.kr/agri/communication/hardship.htm?act=view&seq=53104","checked_at":"2026-08-25T00:00:00+09:00","facts":["노지감귤은 일반적으로 9월 말~10월, 11~12월, 12월 이후의 수확 시기로 구분된다고 안내한다.","이는 개별 체험농원의 최신 운영 일정이나 체험 가능 여부를 보증하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 방문 후기에 감귤을 직접 따고 그림을 그리는 참여형 체험이 구체적으로 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이공원·동물원 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험이 귤밭에서의 수확·사진 촬영이어서 실내 비율은 낮게 추론하되, 부대 실내공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 귤밭 야외 수확과 사진 촬영이므로 비·바람·더위의 영향을 비교적 크게 받을 것으로 추론한다. 우천 운영은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음과 체류 환경의 직접 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행거리·노면·경사·계단·무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"체험 시간·예약 제도와 자유 체류 가능 범위가 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 방문 후기가 귤밭에서 찍은 사진이 예쁘다고 직접 언급해, 귤밭 경관이 방문 경험의 시각적 가치로 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"감귤 수확과 그림 그리기 경험은 확인되지만 다른 농원과 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 감귤밭에서 감귤을 직접 수확하는 체험이 확인되어 제주 지역 생산물과의 연결이 직접 드러난다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 방문 후기가 귤밭 사진이 예쁘다고 직접 언급해 사진 촬영 가치가 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 방문 후기에 혼자 감귤 따기 체험을 했다는 경험이 직접 확인된다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 동반 체류 환경·예약 조건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 친구 방문의 수용 인원·동선·예약 조건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 방문 후기에 아이들이 즐겁게 귤을 따고 그림을 그렸다는 체험이 직접 확인된다. 최신 안전·보호자 요건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노년 동반에 필요한 노면·휴식·무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 1월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 2월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 3월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 4월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 5월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 6월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 7월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"개별 농원의 8월 체험 운영과 수확 가능 품종이 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"제주 일반 노지감귤 수확 전후이지만 개별 농원의 9월 체험 운영은 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 공개 후기에 10월 감귤 따기 체험 방문이 있고, 제주 농업기술원도 일반 노지감귤의 9월 말~10월 수확을 안내한다. 최신 운영은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 농업기술원이 일반 노지 조생감귤의 11~12월 수확을 안내하지만, 이 농원의 최신 체험 운영은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 농업기술원이 일반 노지 조생감귤의 11~12월 수확을 안내하지만, 이 농원의 최신 체험 운영은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"seasonal_operation_and_reservation_unknown","applies_to":"all_visitors","condition":"감귤 수확·체험은 계절·품종·농원 운영 및 예약 조건에 좌우되나 이 농원의 최신 운영일, 수확 가능 품종, 예약·요금·우천 운영을 확인하지 못했다.","status":"needs_review","action":"방문 전 농원 또는 Kakao Map의 최신 공지로 체험 가능일, 예약, 요금, 수확량 및 우천 운영을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"},
+    {"kind":"accessibility_and_safety_unknown","applies_to":"kids_and_parents","condition":"농원 내 노면·경사·계단, 화장실·주차, 무장애 접근성과 아동 안전관리 조건을 확인하지 못했다.","status":"needs_review","action":"어린이·고령 동반 전 현장에 보행·휴식·화장실·주차 및 안전 안내를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

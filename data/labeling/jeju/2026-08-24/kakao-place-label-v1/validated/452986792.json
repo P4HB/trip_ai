@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:452986792",
+  "place_id": "452986792",
+  "name": "레드스톤에스테이트 부설연구농장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 명칭은 ‘레드스톤에스테이트 부설연구농장’으로, 독립 관광지명보다 법인의 부속 연구농장을 뜻한다. 공개 기업 정보에서 레드스톤에스테이트는 제주동물테마파크 영문명을 사용하고 유원지·테마파크 운영 및 동물 사육 사업을 하는 법인으로 확인되지만, 이 부설연구농장 자체를 일반 방문객에게 독립적으로 개방·운영하는 관광·체험 장소라는 근거는 확인하지 못했다. 따라서 법인·사업 시설에 딸린 부속 시설로 보존하며 추천용 완전 벡터는 부여하지 않는다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 452986792는 ‘레드스톤에스테이트 부설연구농장’으로 표시되며, 공개 기업 정보의 레드스톤에스테이트 법인과 명칭상 연결되는 부속 연구농장 표식이다.",
+    "typical_visit": "일반 관광객을 위한 독립 관람·체험·예약 프로그램, 출입 동선 또는 방문 안내는 공개 신뢰 출처에서 확인하지 못했다.",
+    "experience_scope": "법인의 동물테마파크·사육 관련 사업 맥락은 확인되지만, 부설연구농장을 독립 방문지로 취급할 근거가 없으므로 상위 시설 또는 사업 운영에 종속된 시설로 분류한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 공개 장소 메타데이터는 place_id 452986792와 장소명 ‘레드스톤에스테이트 부설연구농장’을 제공하며, 주소·좌표·공개 후기·운영 또는 방문 시설 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 기업 정보는 (주)레드스톤에스테이트의 영문명을 JEJU ANIMAL THEME PARK로, 주요 업종을 유원지 및 테마파크 운영업으로 제시하며 사육 관련 사업 내용을 함께 표시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 표식의 정확한 주소·좌표와 레드스톤에스테이트 법인 사업장 내 위치를 확인하지 못했다.",
+      "일반 방문객의 출입 허용 여부, 관람·체험 프로그램, 예약 방식, 운영 주체의 공식 방문 안내를 확인하지 못했다.",
+      "접근로, 주차, 화장실, 동물·농장 시설 안전, 무장애 접근성과 같은 현장 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/452986792",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷은 place_id 452986792와 장소명 ‘레드스톤에스테이트 부설연구농장’을 제공한다.",
+          "입력 패킷에는 주소, 좌표, 공개 방문 후기, 운영 또는 방문 안내가 없다.",
+          "평점 및 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Bizno",
+        "type": "public_business_record",
+        "url": "https://bizno.net/article/6168146101",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "(주)레드스톤에스테이트의 영문 회사명은 JEJU ANIMAL THEME PARK로 표시된다.",
+          "공개 사업자 정보는 유원지 및 테마파크 운영업과 말 및 양 사육업을 사업 분류·주요 제품으로 표시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "부설연구농장이라는 명칭과 법인 사업 맥락은 확인됐지만, 독립 관광·체험 장소로서의 일반 방문 운영, 정확한 위치, 접근 및 시설 안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 subordinate_facility로 보존한다. 운영 주체의 공식 방문 안내와 독립 이용 조건이 확인되면 상위 시설과의 관계를 포함해 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

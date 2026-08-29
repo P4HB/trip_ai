@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8404203",
+  "place_id": "8404203",
+  "name": "북문",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명은 ‘북문’이며 공개 리뷰는 이를 항파두리 방문 뒤 함께 찾는 지점으로 언급한다. 국가유산포털은 항파두리 항몽 유적을 제주시 관리의 단일 사적(면적 1,097,490㎡)으로 등록한다. ‘북문’ 자체를 독립 관광지·별도 관리 시설로 확인하는 공식·공공 자료는 찾지 못했으므로, 이 레코드는 해당 유적의 출입·구성 지점을 가리키는 부속 표식으로 보수적으로 판정하며 별도 추천 벡터를 생성하지 않는다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao의 ‘북문’ 레코드는 공개 리뷰에서 항파두리와 함께 언급되며, 항파두리 항몽 유적과 연관된 북쪽 출입·구성 지점으로 추정된다.",
+    "typical_visit": "독립 운영되는 관광·체험 장소가 아니라 항파두리 항몽 유적을 둘러볼 때 마주칠 수 있는 지점으로 보인다. 북문만의 별도 관람·운영 정보는 확인하지 못했다.",
+    "experience_scope": "공식 자료는 항파두리 항몽 유적 전체의 국가유산 지정과 관리 주체는 확인하지만, Kakao의 ‘북문’이 정확히 어느 시설물인지 또는 독립 관람 대상으로 운영되는지는 확인하지 않는다. 따라서 부속 지점으로 보존하고 추천용 완전 벡터에서는 제외한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가유산포털은 제주 항파두리 항몽 유적을 사적으로 등록하고, 소재지를 제주시 애월읍 고성리 1126-1번지 외, 면적을 1,097,490㎡, 관리단체를 제주시로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 공개 장소 메타데이터의 장소명은 ‘북문’이며, 작성자 식별정보를 제외한 공개 리뷰 한 건은 항파두리를 둘러본 뒤 이곳도 방문하라고 언급한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘북문’ 표식이 항파두리 항몽 유적의 어느 정확한 시설물·좌표를 가리키는지 공식 자료로 확인하지 못했다.",
+      "북문 단독의 관리 주체, 관람 시간, 출입 허용, 안전·무장애 접근 조건은 확인하지 못했다.",
+      "북문을 별도 관광·체험 장소로 운영한다는 공식 안내는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가유산청 국가유산포털",
+        "type": "government_heritage_registry",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=13%2C03960000%2C50&pageNo=1_1_2_0",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "제주 항파두리 항몽 유적을 사적으로 등록한다.",
+          "소재지, 단일 지정 면적 및 관리단체 제주시를 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 익명화된 공개 리뷰",
+        "type": "public_map_listing_and_review",
+        "url": "https://place.map.kakao.com/8404203",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 8404203, 장소명 ‘북문’ 및 Kakao 장소 URL을 제공한다.",
+          "입력 패킷의 익명화된 공개 리뷰는 항파두리와 이 지점을 함께 언급한다.",
+          "평점과 리뷰 수는 라벨값의 직접 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_feature_and_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘북문’의 정확한 시설물 신원과 항파두리 유적 내 독립 관람·출입 조건을 공식 자료로 확인하지 못했으며, 단독 추천 장소로서의 운영 근거가 없다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 향후 제주시 또는 국가유산 관리 자료가 이 표식의 정확한 위치와 독립 관람 성격을 확인하면 부속 여부를 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

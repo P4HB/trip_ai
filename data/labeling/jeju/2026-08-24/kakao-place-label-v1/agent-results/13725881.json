@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725881",
+  "canonical_id": "kakao:13725881",
+  "name": "고사리숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 자료에서 ‘고사리숲길’은 제주올레 13코스(용수포구~저지예술정보화마을)에 포함된 명명된 숲길 구간으로 확인된다. 입력명과 해당 탐방 구간의 명칭이 일치해 독립적으로 지도 탐색·방문 가능한 야외 탐방지로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-ROUTE-SEGMENT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "고사리숲길은 제주올레 13코스의 숲길 구간으로 확인되지만, 산·오름 정상이나 능선 경관이 핵심 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해당 숲길은 13코스의 내륙 숲길 구간으로 제시되며, 해안·해양 활동이 이 구간의 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "고사리숲길은 용수포구에서 저지예술정보화마을로 잇는 제주올레 13코스의 경유 숲길로 공개되어, 도보 탐방이 대표 경험이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "13코스에는 지역 마을과 여러 경유지가 포함되지만, 고사리숲길 자체의 역사·문화 해설이나 유산 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사된 자료는 자연 숲길과 도보 코스를 설명하며 테마파크형 시설·프로그램은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 고사리숲길의 독립적 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "숲길 탐방 구간으로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 올레 숲길 구간으로 확인될 뿐, 특정 기간의 축제·공연·행사가 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "고사리숲길은 제주올레 도보 코스의 숲길 구간으로 제시된다. 대표 경험의 실내 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 숲길 보행이므로 비·바람·더위·추위의 영향을 크게 받을 수 있다. 현행 통제·대피 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "숲길을 걷는 자연 탐방 경험은 확인되지만, 이 구간이 휴식·정적 체류를 직접 표방하거나 관련 시설을 제공한다는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-FOREST-REST-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "13코스 전체는 15.9km, 4~5시간, 난이도 2단계로 제시되지만 고사리숲길 개별 구간의 경사·노면·계단·무장애 정보가 없어 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "전체 13코스의 거리와 예상 시간은 확인되지만 고사리숲길 단독 체류시간과 단축·회차 동선은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "명칭과 공개 경로 설명으로 고사리가 우거진 숲길 경관은 확인되지만, 공식 자료에서 이 구간의 경관 자체를 대표 명소로 평가한 근거는 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["STYLE-FOREST-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "고사리가 무성한 길 양편의 식생에서 유래한 고유 명칭은 확인되지만, 다른 숲길과 구별되는 공적 지정·독자 구성은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-NAMED-NATURAL-FEATURE"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 13코스의 조수리 일대 숲길로 공개되어 제주 지역 도보여행 맥락에는 연결되지만, 이 구간 자체의 지역 주민·생산자·생활문화 연결은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-ROUTE-CONTEXT"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 13코스의 명명된 경유 구간임은 확인되지만 제주 또는 한경면을 대표하는 공적 랜드마크·상징으로 지정되었다는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-ROUTE-LANDMARK"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲길 식생은 확인되지만 사진 촬영이 공식적으로 권장되거나 시각 기록 가치가 직접 확인되는 자료는 찾지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경은 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설의 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 경로 난이도와 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 숲길의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_trail_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "고사리숲길은 야외 숲길 구간이나 현재 개방 여부, 우천·강풍 시 통제, 노면 상태, 실제 경사·계단, 휴식·화장실 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주올레 또는 현장 최신 안내로 13코스 운영·우회·통제와 기상에 따른 보행 안전, 접근성과 편의시설을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘고사리숲길’은 고살리숲길(서귀포 하례리)과 철자가 유사하지만, 공개 경로 자료에서 제주올레 13코스의 ‘고사리숲길’이라는 정확한 명칭이 확인됐다. 이에 따라 제주시 한경면 조수리 일대의 올레 구간으로 판정했다.",
+    "facts": [{"text": "공공 정책자료의 제주올레 코스 표는 13코스를 용수포구에서 저지예술정보화마을까지 15.9km, 4~5시간, 난이도 2단계로 제시하고 그 경유지에 고사리숲길을 포함한다.", "source_id": "S1"}, {"text": "공개 탐방 기록은 고사리가 무성한 길 양편의 식생 때문에 제주올레가 이 구간을 고사리숲길로 명명했다고 설명하고, 해당 구간을 13코스의 간세 이정표 지점으로 기록한다.", "source_id": "S2"}],
+    "unknowns": ["카카오 표식의 정확한 진입 지점과 현행 경로 변경·폐쇄 여부", "개별 숲길 구간의 거리, 경사, 노면, 계단, 휠체어 접근성 및 편의시설", "월별 식생 절정, 개방 시간과 우천·강풍·산불 위험 시 통제 기준"],
+    "sources": [{"id": "S1", "publisher": "대한민국국회도서관 정책정보포털 (제주올레 현황 수록 공공 문서)", "type": "public_document", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/2/8/2022/CLIKC505329548199099_attach_1.pdf", "checked_at": "2026-08-25", "facts": ["제주올레 13코스의 경유지에 고사리숲길을 수록했다.", "13코스의 전체 거리 15.9km, 예상 4~5시간, 난이도 2단계를 수록했다."]}, {"id": "S2", "publisher": "윤승빈의 블로그", "type": "public_travel_information", "url": "https://sungbh98.tistory.com/1447", "checked_at": "2026-08-25", "facts": ["고사리가 무성한 숲의 길 양편 식생에서 고사리숲길 명칭이 유래했다고 설명했다.", "제주올레 13코스의 고사리숲길 간세 이정표 지점을 기록했다."]}]
+  },
+  "generated_at": "2026-08-25"
+}

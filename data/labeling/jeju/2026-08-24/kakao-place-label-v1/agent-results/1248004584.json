@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1248004584",
+  "place_id": "1248004584",
+  "name": "잃어버린 마을 다랑쉬마을",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.95,"rationale":"제주관광공사 Visit Jeju가 같은 명칭·주소의 장소를 4·3으로 전소된 다랑쉬마을 터인 관광지·문화유적지로 별도 안내하고, 제주4·3평화재단 유적지 목록에도 같은 장소가 수록되어 있다. 독립적인 역사·문화 방문지로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"잃어버린 마을 다랑쉬마을은 제주시 구좌읍 다랑쉬로 406-25에 안내된 제주4·3 역사유적·마을터다.",
+    "typical_visit":"야외 마을터에서 표석, 남은 못 터·집터 주변 식생 등 옛 마을의 흔적을 보며 제주4·3의 역사와 지역 생활사를 되새기는 방문이다.",
+    "experience_scope":"공식 관광 안내는 장소의 역사적 성격과 주소를 확인한다. 최신 개방 시간·주차·화장실, 실제 보행 동선과 무장애 접근성, 다랑쉬굴 내부 출입 및 안전 조건은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"Visit Jeju는 이곳을 1948년 11월경 4·3사건으로 전소되어 잃어버린 구좌읍 다랑쉬마을 터로 소개하고, 관광지·문화유적지·역사유적·마을산책 태그와 주소를 제공한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 팽나무 주변 못 터, 집터 주변 대나무 등 옛 인가의 흔적과 인근 다랑쉬굴 유해 발굴이 4·3의 아픔을 환기했다고 설명한다. 제주4·3평화재단 유적지 목록에도 ‘잃어버린 마을 다랑쉬마을’이 수록돼 있다.","source_ids":["S1","S2"]}
+    ],
+    "unknowns":["최신 개방·출입 제한, 주차·화장실·안내시설과 무장애 접근성은 확인하지 못했다.","마을터의 현장 동선, 노면·경사·야간 안전 및 악천후 통제는 확인하지 못했다.","다랑쉬굴은 인근 별도 지점이므로 이 장소 방문에 포함되는지와 내부 출입 조건을 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022845","checked_at":"2026-08-24","facts":["다랑쉬마을을 4·3으로 전소된 잃어버린 마을 터로 소개한다.","주소를 제주시 구좌읍 다랑쉬로 406-25로 안내한다.","4·3, 문화유적지, 역사유적, 마을산책 등으로 분류한다.","마을터에 남은 옛 인가 흔적과 인근 다랑쉬굴 유해 발굴의 역사적 맥락을 설명한다."]},
+      {"id":"S2","publisher":"제주4·3평화재단","type":"official_historic_site_index","url":"https://jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0","checked_at":"2026-08-24","facts":["제주4·3 유적지 목록에 ‘잃어버린 마을 다랑쉬마을’을 수록한다."]},
+      {"id":"S3","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/1248004584","checked_at":"2026-08-24","facts":["입력된 공개 후기는 4·3의 기억과 장소의 정서적·경관적 인상을 언급하지만, 평점·후기 수는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인근 다랑쉬오름이 언급되나 대표 방문 경험이 산·오름 등반이라는 근거는 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"마을터 산책 외 신체 활동·체험이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내와 4·3평화재단 목록이 이곳을 제주4·3 역사유적·문화유적지로 명시한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 마을 ‘터’와 남은 야외 흔적을 대표 경험으로 설명하므로 실내 비율은 낮게 추론한다. 실내 부대시설은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 마을터를 걷고 흔적을 관찰하는 방문으로 안내돼 날씨 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·소음·혼잡·체류 환경의 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실제 보행 거리·노면·경사·계단·무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 동선과 체류 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"마을터의 경관 감상 자체가 핵심 방문 가치라는 공식 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 4·3으로 전소된 잃어버린 마을 터와 그 흔적·기억의 맥락을 구체적으로 설명해 고유한 역사 경험을 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주4·3, 구좌읍의 옛 농경·생활사와 마을 흔적을 직접 다루는 장소로 공식 안내된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주관광공사 관광지와 제주4·3평화재단 유적지 목록에 수록된 제주4·3 역사유적이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각 기록 가치가 직접 강조된 공식 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 개방·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류·동선 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문의 동선·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 안전시설·노면·교육 안내 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터 방문은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터 방문은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 마을터 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방·출입 제한, 주차·화장실, 실제 보행 동선·노면·무장애 접근성 및 악천후 안전 통제를 확인하지 못했다. 인근 다랑쉬굴의 출입·안전 조건도 별도 확인이 필요하다.","status":"needs_review","action":"방문 전 Visit Jeju 또는 현장 최신 안내로 마을터와 인근 시설의 접근·안전 조건을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-24"
+}

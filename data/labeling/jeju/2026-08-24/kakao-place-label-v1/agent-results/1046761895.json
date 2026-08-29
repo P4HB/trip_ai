@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1046761895",
+  "place_id": "1046761895",
+  "name": "해녀불턱",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao Map의 이 place_id는 제주시 구좌읍 김녕리의 해녀불턱으로 표시되며, 제주관광공사 Visit Jeju는 김녕해수욕장에서 제주올레 20코스를 따라 만나는 김녕·월정리 사이 해안도로의 ‘해녀불턱’을 관광 촬영 지점으로 안내한다. 독립적인 해안 산책·경관 감상 방문지로 확인되어 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "해녀불턱은 Kakao Map에서 제주시 구좌읍 김녕리로 표시된 해안 방문 지점이며, Visit Jeju가 김녕해수욕장과 월정리 사이 해안도로·제주올레 20코스상의 해녀불턱으로 소개하는 곳이다.",
+    "typical_visit": "김녕해수욕장 쪽에서 올레길 해안 동선을 따라 걸으며 바다·현무암 해안 풍경과 노을을 감상하고 사진을 남기는 짧은 야외 방문이다.",
+    "experience_scope": "공식 관광 안내는 해안 산책, 조수와 일몰에 따라 달라지는 풍경, 촬영 지점을 확인한다. 최신 파고·물때, 바위 접근 허용 범위, 난간·노면·무장애 시설, 주차·화장실 및 현장 안전 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"Visit Jeju는 김녕해수욕장에서 제주올레 20코스를 따라 걷다 만나는 해녀불턱을 안내하며, 김녕과 월정리 사이 해안도로의 장소라고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 해녀불턱 인근 해안 촬영 지점의 모습이 썰물·밀물과 일몰에 따라 달라지고, 바다·하늘·인물을 배경으로 한 사진 촬영을 소개한다.","source_ids":["S1"]},
+      {"id":"F3","text":"Kakao Map 장소 페이지는 이 place_id의 장소명을 해녀불턱, 위치를 제주특별자치도 제주시 구좌읍 김녕리로 표시한다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "현 시점의 물때·파고·기상에 따른 바위와 해안 접근 가능 여부를 확인하지 못했다.",
+      "주차, 화장실, 쉼터, 난간, 노면·경사·계단 및 무장애 접근성 정보를 확인하지 못했다.",
+      "해녀불턱 구조물의 보존 상태와 현장 안전 통제·출입 제한의 최신 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000010433","checked_at":"2026-08-24","facts":["김녕해수욕장에서 제주올레 20코스를 따라 걷다 해녀불턱을 만날 수 있다고 안내한다.","김녕과 월정리 사이 해안도로의 해녀불턱을 촬영 지점으로 소개한다.","해안 풍경은 썰물·밀물 및 일몰에 따라 달라지며, 바닷가 사진 촬영은 날씨의 영향을 받는다고 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/1046761895","checked_at":"2026-08-24","facts":["장소명은 해녀불턱으로 표시된다.","공개 페이지 메타데이터는 위치를 제주특별자치도 제주시 구좌읍 김녕리로 표시한다.","입력에 제공된 공개 후기는 해질녘 경관과 바위길 보행을 언급하지만, 평점·후기 수·작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 김녕과 월정리 사이 해안도로의 바닷가 경관과 촬영 경험을 대표 방문 내용으로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레길을 따라 걷는 동선은 확인되지만 레포츠·참여형 체험이 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해녀불턱 명칭의 문화적 맥락 외에 현장 해설·전시·전통 체험이 핵심이라는 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 해안도로·올레길·바닷가 촬영 경험을 근거로 대표 방문은 주로 야외라고 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 해안 사진의 날씨 영향과 썰물·밀물·일몰에 따른 풍경 변화를 명시한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·소음·쉼터·체류 환경 정보가 부족해 휴식성은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 산책 동선은 확인되지만 노면·경사·계단·난간 및 무장애 정보가 없어 신체적 용이성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"올레길 경유와 사진 촬영은 확인되지만 체류 시간·시설·동선 선택폭 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 해안 지점을 바다·하늘·일몰을 배경으로 한 촬영 장소로 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 김녕해수욕장과 월정리 사이에서 해녀불턱을 찾아야 하는 비밀 촬영 지점으로 특정해 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"김녕리 해안과 제주올레 20코스에 결합된 해녀불턱이라는 지역 장소임을 근거로 제주 자연·생활문화와의 연결을 높게 추론한다. 현장 해설·현재 이용은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공적 지정 또는 제주·김녕을 대표하는 상징 명소라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"Visit Jeju가 해녀불턱 인근을 웨딩·실루엣 사진 촬영 지점으로 안내하고 촬영 방법을 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 해안 접근·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내가 웨딩·실루엣 사진 촬영 사례를 제시해 두 사람의 경관 감상·촬영 방문 적합성을 높게 추론한다. 현장 안전은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 체류·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 난간·노면·파도·물때 안전 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 쉼터, 주차 및 무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 바람·기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 바람·기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 여름 더위·강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 경관 방문은 겨울 바람·기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"tide_weather_and_rocky_shore_safety","applies_to":"coastal_walk_and_photo_visit","condition":"공식 안내는 이 해안 촬영 지점의 풍경이 썰물·밀물·일몰 및 날씨에 따라 달라진다고 설명한다. 현 시점의 파고·물때, 바위·해안 접근 허용 범위, 노면 상태와 안전 통제는 확인되지 않았다.","status":"needs_review","action":"방문 직전 물때·기상과 현장 출입·파도·미끄럼 위험을 공식 안전 안내 또는 현장 표지로 확인하고, 위험 시 바위·수변 접근과 촬영을 피한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

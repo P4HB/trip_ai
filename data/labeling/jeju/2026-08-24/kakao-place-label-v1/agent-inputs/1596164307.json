@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2029,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1596164307.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1596164307",
+    "provider": "kakao",
+    "place_id": "1596164307",
+    "name": "도리빨",
+    "url": "https://place.map.kakao.com/1596164307",
+    "average_rating_5": "4.9",
+    "visitor_review_count": "14",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.08.17.",
+      "content": "돌&바위가 많아 위험하지만 물고기는 정말 많음",
+      "tags": ""
+    },
+    {
+      "date": "2025.09.08.",
+      "content": "후기가 많이 없지만 알만하신 분들은 이미 다녀가셨을 것 같아요 :) 물고기가 다양하고 무리지어 많이 다니기 때문에 스노쿨링하기 매우 좋고 육지 친구들 데리고 가면 신기해하고 다들 좋아합니다 ꈍ◡ꈍ (간조만조 상관없이 놀기 좋음. 깊은 포인트가 입구에서 멀지 않음.) 다만 들어가는 곳부터 돌들이 무수히 많고 들쭉날쭉하게 있어서 쉽게 다칠 수 있으니 조심! ̆̈ 하셔야 하는 곳이랍니다. 또 물의 출렁임이 심하다보니 초보이신 분들은 멀미를 하시기도 하더라구요. *축구장주차장에 화장실이 있지만 평일엔 이용 가능 시간이 있고 주말엔 잠겨있으니 참고하셔요!",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2025.08.26.",
+      "content": "댕쩌는곳 나만알고싶은곳 ㅜ 여기가 최고임 스노쿨링명소 물들어올때 빠질때 잘확인하고 가세요 ! 물들어올때 파도도 높아지고 나가는 파도도 있어서 위험할수있음 항상 안전하게 물놀이 하세요🩵💙",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2026.07.08.",
+      "content": "안개끼고 파도심하게치는날은 들어가지마시길 맑을땐 최고",
+      "tags": ""
+    },
+    {
+      "date": "2025.09.24.",
+      "content": "다른 지역 스노클링 포인트가 바람때문인지 전부 서해바다 동급이 되어서 어쩔 수 없이 찾은 도리빨 포인트. 확실히 돌만 있어서 물이 탁하지 않고 스노클링이 가능했습니다. 바위 밖은 파도가 쌘 것 같았지만, 도리빨 내부는 평온했습니다. 멸치때, 복어, 각종 생선들도 구경하고 나름 볼만 했습니다. 다만, 바위가 너무 많아서, 얕은물쪽이 더 힘들어서 깊은 바다쪽으로 출입을 했습니다. 바위 때문에 너무 힘들어서 다시 찾지는 않을 것 같습니다.",
+      "tags": "뷰|시설|+1"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

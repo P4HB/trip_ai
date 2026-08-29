@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 253,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10798266.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10798266",
+    "provider": "kakao",
+    "place_id": "10798266",
+    "name": "족은바리메",
+    "url": "https://place.map.kakao.com/10798266",
+    "average_rating_5": "3.0",
+    "visitor_review_count": "5",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.09.12.",
+      "content": "인적이 드물고 비온후에는 타이어매트 엄청 미끄러워서 조심해야됩니다. 관리도 잘안되어있고 큰,족은 오름 있으면 큰만 다니시는게 나아요.",
+      "tags": ""
+    },
+    {
+      "date": "2025.03.16.",
+      "content": "바리메주차장에서 200m정도 더 들어가면 두번째 사진속 족은바리메 입구가 나온다. 족은이지만 큰바리메와 상승고도, 거리, 시간등은 비슷하지만, 큰바리메는 정상 분화구둘레길에서 한라산과 제주 서남쪽뷰를 시원하게 볼수있지만, 족은바리메는 쉼터에서 보이는 한라산뷰 외에는 나무 사이사이로 보이는 뷰가 전부이다. 가파른 내리막길에서의 관리되지않은 폐타이어는 미끄러워 주의가 필요하기도 하고, 평소 트레킹을 즐기지 않는분께는 추천하지않는다. 하지만 제주 구석구석을 탐험하는 오름매니아분들이라면 (내기준) 제주 50대오름 정도안에는 들어가는 가볼만한 오름이니 주차한김에 족은 노꼬메도 같이 다녀오라고 얘기하고 싶다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.06.16.",
+      "content": "큰바리메 오름이 정상까지 직진만 하는 오름 이라면 족은바리메는 달팽이 껍데기마냥 빙빙 돌아가면서 올라가는 오름 입니다 고무 매트로 탐방로 되어 있으며 시작점에서 왼쪽으로 도는곳은 그나마 괜찮은데 오른쪽은 풀이 많이 우거지고 탐방로 훼손도 심함 긴바지 필수! 다시 가보고 싶나요? 글쎄....",
+      "tags": ""
+    },
+    {
+      "date": "2025.07.30.",
+      "content": "뷰가 별로고 길이 험하다. 반시계 방향으로 도세요",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.24.",
+      "content": "내리막길 폐타이어가 아주 위험해 보임 빠른교체가 필요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

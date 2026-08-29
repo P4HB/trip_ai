@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:262832080",
+  "place_id": "262832080",
+  "name": "쉼터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "입력 Kakao 레코드는 장소명을 ‘쉼터’로만 제공하며 주소·좌표·업종·운영 정보가 없다. 2026-08-25 공개 웹 검색에서도 이 place_id 또는 제주 소재의 특정 독립 방문지와 연결되는 신뢰 가능한 상세 출처를 찾지 못했다. ‘쉼터’는 일반명이라 동명 시설과 혼동할 가능성이 높으므로, 장소 유형·신원·독립 여행 방문지 여부를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 Kakao 식별 정보는 place_id 262832080, 명칭 ‘쉼터’, 공개 장소 URL뿐이다. 이 명칭은 특정 제주 장소를 고유하게 식별하지 못하며 공개 검색으로 교차 확인 가능한 주소나 운영 주체를 찾지 못했다.",
+    "typical_visit": "확정된 장소 유형이나 실제 방문 경험을 확인하지 못했다. 따라서 명칭의 사전적 의미나 동명 시설의 특성을 이 레코드에 적용하지 않았다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영 안내 및 공개 후기 근거가 없다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았으며, 신원이 확정될 때까지 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 place_id 262832080의 장소명을 ‘쉼터’로 제공하며, 주소·좌표·업종 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-25 공개 웹 검색에서 place_id 262832080 또는 제주 특정 장소로 식별되는 ‘쉼터’의 공식·공공 상세 정보를 확인하지 못했다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종, 운영 주체 및 제주 내 위치를 확인하지 못했다.",
+      "독립 여행 방문지인지, 다른 시설의 부속 쉼터인지, 중복 장소인지 확인하지 못했다.",
+      "관람·체험, 접근성, 주차, 안전, 운영 시간 및 최신 이용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/262832080",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘쉼터’이며 place_id는 262832080이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 운영 안내 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Public web search",
+        "type": "web_search",
+        "url": "https://www.google.com/search?q=%22262832080%22+%EC%89%BC%ED%84%B0",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "place_id 262832080과 연결되는 제주 특정 장소의 공식·공공 상세 출처를 확인하지 못했다.",
+          "일반명 ‘쉼터’만으로는 동명 시설을 배제하고 단일 장소 신원을 확정할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·운영 정보가 없고, 일반명 ‘쉼터’가 제주 내 특정 독립 장소와 교차 확인되지 않음",
+      "status": "needs_review",
+      "action": "Kakao 또는 운영 주체의 주소·업종·좌표 정보로 신원을 먼저 교차 확인한다. 독립 방문지 여부와 실제 경험 범위가 확인되기 전에는 추천 후보 및 라벨 벡터로 사용하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

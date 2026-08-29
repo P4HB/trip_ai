@@ -1,0 +1,60 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7998991",
+  "canonical_id": "kakao:7998991",
+  "name": "약수장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력 Kakao 레코드는 일반명 ‘약수장’과 place_id만 제공하며 주소·좌표·업종·공개 후기가 없다. 공개 검색에서는 제주 내 이 레코드와 동일하다고 확인할 수 있는 공식·공공 장소 정보를 찾지 못했다. 따라서 특정 약수터·시설의 독립 방문지 적격성이나 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-UNKNOWN", "ELIG-NO-UNVERIFIED-VECTOR"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없어 이 장소의 정확한 위치, 독립 방문지 여부 및 최신 이용 조건을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao의 주소·좌표·업종 또는 공식 관리 안내로 장소를 먼저 교차 확인한다. 신원과 독립 방문 범위가 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명 ‘약수장’은 일반적인 시설명이며, 입력의 단일 place_id와 제주 내 특정 장소를 연결하는 주소·좌표·공식 명칭을 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "입력 Kakao 레코드는 장소명을 ‘약수장’으로 제공하며, 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표와 제주 내 위치",
+      "장소의 실제 유형, 독립 추천 후보 여부 및 관리 주체",
+      "최신 이용 가능 여부, 수질·안전 조건 및 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7998991",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘약수장’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

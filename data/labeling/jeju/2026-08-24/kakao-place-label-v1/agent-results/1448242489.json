@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1448242489",
+  "place_id": "1448242489",
+  "name": "돌사랑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 공개 후기는 돌을 애호하는 운영자가 관리한 작고 한적한 공간, 인공폭포와 원두막을 언급한다. 그러나 공식·공공 상세 출처에서 이 카카오 장소 ID와 명칭을 제주 내 특정 주소·운영 주체·독립 방문지로 교차 확인하지 못했으며, 동일 명칭의 다른 사업체 검색 결과도 있어 신원을 확정할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "카카오 장소명은 돌사랑이지만, 공개 조사만으로 제주 내 정확한 위치와 독립 관광·방문 장소로서의 신원을 확인하지 못했다.",
+    "typical_visit": "입력된 공개 후기는 작은 한적한 공간에서 돌과 인공폭포 소리를 보고 쉬는 경험을 시사하지만, 이는 장소 신원이 확인되지 않은 보조 단서다.",
+    "experience_scope": "공식·공공 출처로 장소 ID, 주소, 운영 형태, 개방 여부, 접근·안전 정보를 확인하지 못했다. 따라서 추천용 수치 라벨을 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 후기는 이 장소를 작고 한적하며, 운영자의 돌에 대한 애정이 느껴지는 공간으로 묘사하고 인공폭포 소리와 원두막을 언급한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 웹 검색에서는 제주 장소명 돌사랑을 이 카카오 장소 ID와 동일한 주소·운영 주체·독립 방문 경험으로 확인하는 공식·공공 상세 자료를 찾지 못했다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "정확한 주소·좌표와 운영 주체를 확인하지 못했다.",
+      "독립 방문지인지, 개인 사유 공간 또는 다른 시설의 부속 공간인지 확인하지 못했다.",
+      "최신 개방 여부, 이용 조건, 주차·화장실, 노면·무장애 접근 및 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/1448242489",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력된 공개 후기는 작고 한적한 공간, 돌에 대한 운영자의 애정, 인공폭포 소리와 원두막을 언급한다.",
+          "입력된 공개 후기는 개인의 방문 경험이며, 장소의 정확한 신원이나 운영·안전 조건을 확정하는 근거는 아니다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EB%8F%8C%EC%82%AC%EB%9E%91",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주 돌사랑이라는 일반 명칭에 대한 검색 결과는 있었으나, 카카오 장소 ID 1448242489의 주소·운영 주체·독립 방문지 신원을 확인하는 공식·공공 상세 출처는 찾지 못했다.",
+          "동일 명칭이 다른 지역·업종에도 사용되어 명칭만으로 신원을 확정할 수 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "장소의 정확한 신원, 공공·사유지 여부, 최신 개방 및 이용 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보로 사용하기 전에 카카오 장소의 주소와 독립 장소 여부, 현장 개방·안전 조건을 공식 운영자 또는 현장 최신 안내로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

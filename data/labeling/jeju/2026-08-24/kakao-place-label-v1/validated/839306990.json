@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "839306990",
+  "canonical_id": "kakao:839306990",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 ‘제주수산동굴’ 명칭과 URL만 있고 동굴 위치·출입 허용·안전·공식 상세 정보·방문 기록이 없다. 독립 관람 동굴인지 접근 제한 지질 지점인지 식별할 수 없어 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "kakao-place-metadata"
+    ],
+    "rule_ids": [
+      "eligibility.identity-unknown",
+      "fallback.insufficient-evidence"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    "동굴의 출입 허용과 안전·보전 조건은 입력에 없어 방문 전 확인이 필요하다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/839306990",
+        "checked_at": null,
+        "facts": [
+          "장소명: 제주수산동굴",
+          "공개 방문 기록 없음"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식 상세 출처가 입력에 없음"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

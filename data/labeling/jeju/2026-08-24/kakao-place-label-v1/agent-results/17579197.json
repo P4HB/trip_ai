@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17579197",
+  "place_id": "17579197",
+  "name": "렛츠런파크제주 매직포니",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "입력 명칭은 렛츠런파크제주 안의 ‘매직포니’를 가리키며, 제주관광공사 관광정보는 매직포니를 렛츠런파크 제주가 제공하는 어린이 놀이시설 가운데 하나로 명시한다. 독립 관광지가 아니라 상위 테마공원의 부속 놀이시설이므로 별도 추천 후보로 라벨링하지 않는다.",
+    "duplicate_of": "렛츠런파크 제주",
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "‘렛츠런파크제주 매직포니’는 제주특별자치도 제주시 애월읍의 렛츠런파크 제주 내부 어린이 놀이시설 매직포니를 가리킨다.",
+    "typical_visit": "상위 장소인 렛츠런파크 제주의 말 테마파크 방문 중 이용할 수 있는 어린이 놀이시설이다.",
+    "experience_scope": "공개 관광정보가 매직포니를 렛츠런파크 제주 내 여러 어린이 놀이시설 중 하나로 열거한다. 이 결과는 상위 공원과 분리된 독립 추천 후보를 만들지 않으며, 운영 여부·이용 조건 등 변동 정보는 확인하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 VisitJeju는 렛츠런파크 제주를 말 테마파크로 소개하며 어린이 놀이시설로 자전거 광장, 매직포니, 트로이 목마, 담덕의 꿈을 함께 열거한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드의 장소명은 ‘렛츠런파크제주 매직포니’이며, 상위 장소명과 시설명을 결합한 표기다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "매직포니의 2026-08-24 실제 운영 여부, 이용 가능 연령·요금·안전 조건",
+      "상위 렛츠런파크 제주와 별도의 독립 출입·예약·운영 주체 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_site",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019539",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "렛츠런파크 제주는 말 테마파크로 소개된다.",
+          "매직포니는 렛츠런파크 제주 내 어린이 놀이시설로 열거된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17579197",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 매직포니’다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "매직포니는 공개 관광정보에서 렛츠런파크 제주 내부의 어린이 놀이시설로 확인되며 독립 방문지로 분리할 근거가 없다.",
+      "status": "needs_review",
+      "action": "상위 장소 ‘렛츠런파크 제주’의 시설·체험 정보에 포함해 검수하고, 독립 운영·출입·예약 체계가 공식적으로 확인되기 전에는 별도 41축 추천 후보로 병합하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

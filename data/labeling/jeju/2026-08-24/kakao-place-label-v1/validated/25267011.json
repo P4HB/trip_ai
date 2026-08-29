@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25267011",
+  "place_id": "25267011",
+  "name": "살핀오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.8,
+    "rationale": "공개 정책자료는 살핀오름을 한라산국립공원 내 오름으로 열거한다. 그러나 일반 여행객이 이용할 수 있는 지정 탐방로, 공식 방문 안내 또는 독립 관광·체험 장소로서의 운영은 공개 신뢰 출처에서 확인하지 못했다. 입력에 포함된 공개 후기도 탐방로가 없다고 하나 이는 보조 근거일 뿐이다. 접근·안전·출입 조건을 확인하지 않은 국립공원 내 비지정 지점을 추천용 방문 장소 벡터로 만들지 않기 위해 범위 밖으로 보수 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "살핀오름은 공개 정책자료의 한라산국립공원 내 오름 목록에 포함되어 있으며, 입력 Kakao 레코드의 장소명도 ‘살핀오름’이다.",
+    "typical_visit": "공개 신뢰 출처에서 관광객용 공식 탐방·관람 경험이나 지정 동선은 확인하지 못했다.",
+    "experience_scope": "국립공원 안의 자연 지형이라는 신원은 확인되지만, 일반 방문객의 출입 허용, 지정 탐방로, 안전·접근 시설 및 운영 주체의 방문 안내가 확인되지 않았다. 따라서 독립 여행 방문 장소로서 41축 적합도를 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관 지방의회 정책정보 자료의 자연공원법 지정 오름 표는 한라산국립공원 46개소 목록에 살핀오름을 포함한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 패킷은 장소명을 ‘살핀오름’으로 제시하며, 작성자 식별정보를 제외한 공개 후기 1건에는 국립공원 안이고 탐방로가 없다는 방문 경험 진술이 있다. 이 후기는 접근 가능 여부의 확정 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 현재 출입 허용 여부와 지정 탐방로·탐방 예약 필요 여부를 확인하지 못했다.",
+      "공식 방문 동선, 주차, 화장실, 난간, 통신, 구조 접근성 및 무장애 접근성을 확인하지 못했다.",
+      "기상·산불통제·자연보호 등 시점에 따라 달라지는 출입 제한은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 지방의회 정책정보",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2020/CLIKC4547807476801273_attach_1.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "자연공원법으로 지정된 오름 표에서 한라산국립공원 46개소 목록에 살핀오름을 포함한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing_and_input_review_summary",
+        "url": "https://place.map.kakao.com/25267011",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘살핀오름’이다.",
+          "입력 패킷의 작성자 식별정보를 제외한 공개 후기에는 국립공원 안이며 탐방로가 없다는 진술이 있다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "national_park_visitor_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "한라산국립공원 내 살핀오름으로 확인되지만, 일반 여행객을 위한 공식 지정 탐방로·출입 허용·안전 및 접근 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공원관리 주체의 공식 탐방·출입 안내가 확인되면 독립 방문지 적격성을 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

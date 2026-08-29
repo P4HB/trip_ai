@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "26564426",
+  "canonical_id": "kakao:26564426",
+  "name": "추자도해안일주길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "해양수산부 연안포털이 제주시의 ‘추자도 해안일주길’을 15km, 420분, 어려움 난이도의 독립 해안 걷기 코스로 안내한다. 입력 장소명과 공식 누리길명이 일치하므로 독립 방문 가능한 여행 장소로 판정했다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 코스는 해안과 항·해변·전망대를 잇는 길로 안내되며, 산·오름·봉우리 경험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"해양수산부가 해안일주길로 지정하고, 추자항에서 출발해 바다와 섬들을 조망하며 해변·항을 지나는 코스를 직접 안내한다.","source_ids":["S1"],"rule_ids":["THEME-COASTAL-EXPERIENCE-DIRECT"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내상 전체 15km를 약 420분에 걷는 난이도 ‘어려움’의 누리길이므로 보행 활동이 핵심 경험이다.","source_ids":["S1"],"rule_ids":["THEME-WALKING-DIRECT"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 소개에는 최영 장군의 추자도 체류 역사와 사당 이정표가 언급되지만, 사당은 원래 일주 코스에서 제외된 곳으로 안내되어 역사 체험이 주된 경험인지는 불확실하다.","source_ids":["S1"],"rule_ids":["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 자료는 자연 해안 걷기 코스와 전망 지점을 설명하며 테마파크형 시설·놀이 경험은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 편의시설에는 추자항 인근 매점만 제시되며, 카페·음료·디저트가 독립 방문 목적이라는 근거는 없다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 보행 코스로 확인되며 전통시장 또는 상거래가 핵심 방문 경험이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"상설 해안 누리길로 안내되며 특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"항·해변·전망대와 해안 구간을 걷는 공식 코스이며, 대표 경험에 포함된 실내 방문 공간은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 장거리 야외 해안 보행과 바다 조망이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다. 현행 기상 통제 기준은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 경관은 확인되나 혼잡도·소음·휴식 환경과 실제 느린 체류 경험 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 자료가 15km, 420분, 난이도 ‘어려움’으로 직접 안내하므로 신체 부담이 적은 편은 아니다.","source_ids":["S1"],"rule_ids":["STYLE-TRAIL-DIFFICULTY-DIRECT"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 기본 코스가 15km·420분의 긴 순환 보행으로 제시되어 짧은 방문부터 긴 체류까지의 시간 조절은 제한적이라고 잠정 판정한다. 구간별 진입·이탈 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["STYLE-LONG-ROUTE-FLEXIBILITY"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 코스 설명은 등대산공원, 묵리고개·오지박 전망대 등에서 푸른 바다와 여러 섬을 조망하는 경관을 직접 제시한다.","source_ids":["S1"],"rule_ids":["STYLE-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"한반도와 제주 본섬 사이의 추자도에서 항·섬·해변·전망대를 잇는 15km 해안 누리길이라는 독특한 구성과 위치가 공식 소개에서 확인된다.","source_ids":["S1"],"rule_ids":["STYLE-UNIQUE-ROUTE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"코스는 추자항·묵리항·예초항과 추자도의 지명·역사 맥락을 따라 구성되어 해당 섬의 자연과 지역 생활권에 직접 연결된다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-COAST-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"국가 해안누리길로 관리되는 사실은 확인되지만, 제주 또는 추자도를 대표하는 상징 명소라는 별도 지정·평가 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"여러 전망대와 바다·섬 조망은 확인되지만 사진 촬영 또는 시각적 기록이 공식적으로 핵심 경험으로 권장되는지는 확인하지 못했다.","source_ids":["S1"],"rule_ids":["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장거리·어려움 코스라는 사실 외에 단독 보행 안전, 통신, 안내와 구조 여건을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 2인 방문의 안전·휴식·동선 적합성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 보행의 수용·안전·교통 편의 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 코스가 15km·420분의 어려움 난이도로 안내되어 일반적 아동 동반 보행 부담이 클 수 있다. 연령별 안전 기준과 단축 동선은 미확인이다.","source_ids":["S1"],"rule_ids":["COMPANION-LONG-DIFFICULT-TRAIL"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"15km·420분의 어려움 난이도는 보행 부담 가능성을 시사한다. 고령 방문자를 위한 무장애 접근·휴식·의료 접근 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["COMPANION-LONG-DIFFICULT-TRAIL"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안길의 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind":"long_difficult_outdoor_trail_conditions","applies_to":"all_visitors","condition":"추자도 해안일주길은 공식 기준 약 15km·420분·난이도 어려움의 야외 해안 보행 코스다. 최신 구간 개방, 기상·해상 경보 시 통제, 노면·경사·계단, 무장애 접근과 응급 지원 여건은 확인하지 못했다.","status":"needs_review","action":"방문 전 해양수산부 연안포털 또는 현장 관리 주체의 최신 안내로 코스 개방 여부, 기상, 신발·식수 준비, 구간별 보행 안전과 단축·중단 가능 지점을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "identity_summary": "입력명 ‘추자도해안일주길’은 해양수산부 연안포털의 ‘추자도 해안일주길’과 일치하는 제주시 추자도의 해안누리길이다.",
+    "typical_visit": "추자항에서 출발해 등대산공원, 해변, 항과 전망대를 지나는 장거리 야외 해안 걷기와 바다·섬 조망 방문이다.",
+    "experience_scope": "공식 자료가 거리·소요시간·난이도·코스 경로·일부 편의시설을 제공한다. 최신 운영·개방, 교통, 구간별 노면·무장애 접근과 기상 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"해양수산부 연안포털은 추자도 해안일주길을 제주특별자치도 제주시의 해안누리길로, 약 15km·420분·난이도 어려움으로 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"공식 코스는 추자항에서 시작해 등대산공원·후포해변·묵리고개 전망대·묵리항·모진이해변·신대해변·예초항·오지박전망대 등을 지나 추자항으로 돌아오며, 바다와 섬 조망을 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"공식 편의시설 안내에는 화장실 8개소, 추자항 식수, 추자항 인근 매점이 제시된다.","source_ids":["S1"]}
+    ],
+    "unknowns": [
+      "2026-08-25 기준의 실제 구간 개방·통제, 운영 주체 연락처와 기상 악화 시 안전 지침",
+      "각 구간의 노면·경사·계단, 휠체어·유아차 접근성 및 응급 지원 여건",
+      "계절별 풍속·강수·더위에 따른 실제 탐방 적합성과 월별 행사·절정 정보"
+    ],
+    "sources": [
+      {"id":"S1","publisher":"해양수산부 연안포털","type":"official_public_information","url":"https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=44","checked_at":"2026-08-25","facts":["추자도 해안일주길의 지역, 거리, 소요시간, 난이도와 코스 경로를 안내한다.","추자항·등대산공원·해변·항·전망대와 바다·섬 조망을 설명한다.","화장실, 식수, 매점의 위치를 안내한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

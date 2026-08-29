@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "996030876",
+  "canonical_id": "kakao:996030876",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주시 노형동 방일리공원에 설치된 일본군 '위안부' 문제 및 제주 4·3 기억을 담은 야외 평화기념 조형물로 확인되어, 제주 내 독립 방문 지점으로 라벨링한다.",
+    "source_ids": ["s1", "s2"],
+    "rule_ids": ["ELIG-PLACE", "ELIG-JEJU"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"공원 내 기념조형물로 확인되며 산·오름 방문 경험은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 장소 정체성은 도심 공원의 평화기념 조형물이며 해양 경험은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"자료상 레포츠나 참여형 체험 시설은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"일본군 '위안부' 문제와 제주 4·3을 함께 기억하는 의미가 공개 인터뷰에서 직접 설명된다.","source_ids":["s2"],"rule_ids":["THEME-DIRECT"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"방일리공원의 기념조형물로 확인되며 테마파크형 시설은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 방문 대상은 기념조형물이며 카페 이용 목적은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"장소는 방일리공원의 평화기념 조형물로 확인되며 시장 기능은 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"제막 행사 보도는 있으나 상시 방문 경험이 특정 기간 축제인 근거는 확인되지 않았다.","source_ids":["s1"],"rule_ids":["THEME-IDENTITY"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 보도에서 방일리공원에 설치되는 조형물로 명시되어 대표 경험은 야외 관람이다.","source_ids":["s1"],"rule_ids":["ENV-DIRECT"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험이 야외 공원 조형물 관람이므로 비·바람 등 날씨의 영향을 받는다.","source_ids":["s1"],"rule_ids":["ENV-OUTDOOR"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"조형물을 보며 기억과 평화의 의미를 되새기는 정적인 관람 성격으로 판단했다.","source_ids":["s2"],"rule_ids":["STYLE-INTERPRET"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공원 내 조형물이나 실제 동선·무장애 정보가 확인되지 않아 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-ACCESS"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 체류시간 정보가 없어 짧은 조형물 관람이라는 일반적 특성에 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-DURATION"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공원 경관 자체의 가치에 관한 근거가 부족해 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-SCENIC"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주의 바람, 현무암, 돌담, 동백꽃으로 지역적 의미를 표현한 소녀상이라는 설명이 확인된다.","source_ids":["s2"],"rule_ids":["STYLE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"현무암·돌담과 제주 4·3의 상징인 동백꽃을 작품 구성과 의미에 담았다고 설명된다.","source_ids":["s2"],"rule_ids":["STYLE-DIRECT"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 최초 설치를 보도한 지역 평화기념물이나, 관광 대표성의 정량 근거는 부족하다.","source_ids":["s1"],"rule_ids":["STYLE-LOCAL-LANDMARK"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시각적 조형물이지만 사진 촬영 가치에 관한 직접 근거가 부족해 중립값을 적용했다.","source_ids":["s2"],"rule_ids":["FALLBACK-PHOTO"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"개별 기념 관람은 가능하나 실제 편의 정보는 부족하다.","source_ids":["s1"],"rule_ids":["COMPANION-IDENTITY"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"함께 짧게 관람할 수 있으나 커플 특화 경험 근거는 없다.","source_ids":["s1"],"rule_ids":["COMPANION-IDENTITY"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"소규모 동반 관람은 가능하나 그룹 활동 근거는 없다.","source_ids":["s1"],"rule_ids":["COMPANION-IDENTITY"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"역사·평화 교육적 의미가 있으나 아동 대상 시설·해설은 확인되지 않았다.","source_ids":["s2"],"rule_ids":["COMPANION-EDUCATION"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근성·휴식시설 정보가 부족해 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-COMPANION"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"계절별 운영·관람 정보가 없어 야외 기념조형물의 중립값을 적용했다.","source_ids":["s1"],"rule_ids":["FALLBACK-MONTH"]}
+  },
+  "hard_constraints": [
+    {"constraint":"weather_exposure","status":"caution","rationale":"야외 공원 조형물 관람이므로 악천후에는 만족도가 낮아질 수 있다.","source_ids":["s1"],"rule_ids":["CONSTRAINT-OUTDOOR"]},
+    {"constraint":"accessibility_unknown","status":"needs_review","rationale":"현장 동선과 무장애·주차·화장실 정보는 이번 조사에서 확인되지 않았다.","source_ids":["s1"],"rule_ids":["CONSTRAINT-ACCESS"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "sources": [
+      {"source_id":"s1","url":"https://www.headlinejeju.co.kr/news/articleView.html?idxno=260284","publisher":"헤드라인제주","checked_at":"2026-08-25","facts":["제주시 노형동 방일리공원에서 평화의 소녀상 제막식이 열릴 예정이라고 보도했다.","제주 최초 설치의 의미를 다뤘다."]},
+      {"source_id":"s2","url":"https://jejumbc.com/Radio_ING/45/menu71/29/read/4236","publisher":"제주MBC","checked_at":"2026-08-25","facts":["제주 평화의 소녀상에 바람에 흩날리는 머리칼, 현무암, 돌담, 동백꽃을 담았다고 설명한다.","동백꽃은 제주 4·3의 상징이며 일본군 위안부 문제 해결과 4·3의 정명을 함께 말하는 의미를 설명한다."]}
+    ],
+    "limitations": ["공식 운영 주체의 최신 시설·접근성·운영시간 정보는 확인하지 못했다.", "계절별 관람 적합도는 직접 근거가 부족해 fallback으로 기록했다."]
+  }
+}

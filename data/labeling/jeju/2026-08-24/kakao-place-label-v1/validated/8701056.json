@@ -1,0 +1,113 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8701056",
+  "place_id": "8701056",
+  "name": "강정동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "공개 공공 자료들은 강정동산을 저지예술정보화마을과 문도지오름 사이에 있는 제주 올레 14-1 코스의 경유지로만 제시한다. 이 Kakao 표식이 독립 방문지로 운영·안내되는지, 정확한 현장 범위와 출입 조건은 공식·공공 상세 자료로 확인하지 못했으므로 독립 추천 후보가 아닌 코스 내 부속 경유지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "강정동산은 제주 한경면 저지리 일대에서 제주 올레 14-1 코스가 지나는 명칭 있는 지점으로 공개 자료에 나타난다.",
+    "typical_visit": "공개 자료가 확인하는 범위에서는 저지예술정보화마을에서 문도지오름·오설록 방면으로 이어지는 올레 도보 코스의 경유 경험이다.",
+    "experience_scope": "공식·공공 자료는 코스 내 위치 관계와 전체 코스 거리·소요시간을 확인하지만, 강정동산 자체의 별도 관람·휴식 시설, 운영 주체, 독립 방문 동선, 최신 개방 및 안전 정보를 제공하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국립축산과학원 공개 자료는 저지예술정보화마을에서 강정동산, 문도지오름 정상, 곶자왈을 지나 오설록녹차밭으로 이어지는 14코스를 9.3km, 3~4시간으로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국회도서관 정책정보 첨부 PDF는 제주 올레 14-1 코스를 저지예술정보화마을→강정동산→저지곶자왈→문도지오름출구→저지상수원→오설록녹차밭으로 열거한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 8701056의 명칭을 강정동산으로 제공하지만, 입력된 공개 후기는 장소의 존재 여부에 의문을 제기할 뿐 독립 방문 경험을 뒷받침하지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표가 공공 자료의 강정동산 경유지와 일치하는지 확인하지 못했다.",
+      "독립 방문객을 위한 별도 시설·운영 주체·공식 관람 안내와 최신 출입 가능 여부를 확인하지 못했다.",
+      "접근로, 노면·경사, 주차·화장실, 무장애 시설 및 악천후 안전 통제를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국립축산과학원",
+        "type": "government_publication",
+        "url": "https://www.nias.go.kr/front/soboarddown.do?boardSeqNum=16&cmCode=M200514104838363&fileSeqNum=16",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공개 자료는 저지예술정보화마을-강정동산-문도지오름 정상-곶자왈-오설록녹차밭의 9.3km, 3~4시간 도보 경로를 언급한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 정책정보",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/2/8/2022/CLIKC505329548199099_attach_1.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "첨부 자료는 제주 올레 14-1 코스의 경유지로 강정동산을 열거하고 전체 거리를 9.3km, 소요시간을 3~4시간으로 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 입력된 공개 방문 후기",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8701056",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 명칭 강정동산과 place_id 8701056을 제공한다.",
+          "입력된 공개 후기는 독립 방문 경험이나 시설 정보를 제공하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "Kakao 표식과 공공 자료의 경유지 일치, 독립 방문지로서의 최신 출입 허용, 접근로·노면 및 안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보로 승격하거나 방문 안내를 제공하기 전에 제주올레 또는 관할 지자체·현장 최신 안내로 표식 위치, 독립 방문 가능 여부와 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

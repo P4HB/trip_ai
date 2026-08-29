@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8663817",
+  "canonical_id": "kakao:8663817",
+  "name": "구사산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명 구사산은 제주시 조천읍 북촌리의 표고 102m 구사산으로 공공 문서에서 개죽은산·오름으로도 확인되며, 공개 등산 기록에도 독립 탐방 대상으로 나타난다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공공 문서는 구사산을 개죽은산·오름으로 병기하고, 다른 공공 자료는 북촌리 표고 102m의 구사산으로 적시한다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-MOUNTAIN-DIRECT"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소 성격은 북촌리의 오름이며, 해안·해양 체험이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 기록에서 구사산이 등산·하이킹 경로의 대상임은 확인되나, 공식 탐방로와 난이도는 확인되지 않았다.", "source_ids": ["S3"], "rule_ids": ["THEME-HIKING-CONTEXT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "지질·지형 맥락은 공공 자료에 있으나 역사·문화 해설이 핵심 방문 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 정보는 자연 오름이며 놀이·동물·전시형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적인 장소라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "구사산은 오름으로 확인되며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 축제·기간성 행사가 장소의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "확인된 대상이 야외 오름·산지 지형이므로 대표 경험의 실내 비율은 낮게 판정한다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-NATURAL-LANDFORM"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 오름 접근·보행이므로 비·바람·더위·추위의 영향을 받을 수 있다. 현장 통제 기준은 미확인이다.", "source_ids": ["S1", "S3"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "자연 지형임은 확인되지만 휴식·평온 경험을 직접 설명한 공공 안내는 찾지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "오름이라는 점 외에 경사, 노면, 계단, 무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S3"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "구사산 단독 탐방의 소요 시간과 단축 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S3"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "오름 지형은 확인되지만 조망·경관의 질을 직접 설명한 신뢰할 만한 안내를 찾지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "개죽은산이라는 별칭과 북촌리의 낮은 오름이라는 식별 특성은 확인되나, 방문 경험의 고유성은 추가 확인이 필요하다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-NAMED-LANDFORM-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공공 자료가 구사산을 제주시 조천읍 북촌리의 오름으로 명시하고 제주 지역 용암류·지형 연구 맥락에서 다룬다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-GEOLOGY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공적 대표 명소 지정이나 제주 전역의 상징성은 확인되지 않아 낮은 잠정값으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LANDMARK-EVIDENCE-LIMITED"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 가치나 촬영 지점에 대한 직접 근거를 찾지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시의 안전, 안내, 통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험과 편의시설 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의와 수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 경로 난이도와 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사, 휴식, 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_mountain_access_and_conditions_unknown", "applies_to": "all_visitors", "condition": "구사산은 야외 오름이나 현재 공식 진입로·개방 여부, 사유지 통과 여부, 노면·경사, 우천·강풍 시 통제와 안전 안내를 확인하지 못했다.", "status": "needs_review", "action": "방문 전 관리 주체 또는 현장 최신 안내로 합법적 진입 가능 여부, 지정 동선, 기상에 따른 통제와 보행 안전을 확인한다.", "source_ids": ["S1", "S2", "S3"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 구사산은 공공 문서에서 제주시 조천읍 북촌리의 구사산(개죽은산·오름)으로 확인된다. 공개 등산 기록도 같은 별칭을 사용한다.",
+    "facts": [
+      {"text": "제주특별자치도의회 공개 부록은 사업지 인근 지형을 구사산(개죽은산, 오름)으로 표기한다.", "source_id": "S1"},
+      {"text": "국회도서관 정책정보 수록 자료는 구사산을 제주시 조천읍 북촌리, 표고 102m로 제시한다.", "source_id": "S2"},
+      {"text": "공개 등산 기록은 동백동산~개죽은산(구사산)을 제주 하이킹 경로로 기록한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["현재 공식 관리 주체와 개방·진입 조건", "공식 탐방로, 주차, 화장실, 안전·무장애 시설", "월별 통제, 계절 경관과 권장 방문 시기"],
+    "sources": [
+      {"id": "S1", "publisher": "제주특별자치도의회", "type": "official_public_document", "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a10/A024520.pdf", "checked_at": "2026-08-25", "facts": ["제주시 조천읍 북촌리 산51 인근의 구사산을 개죽은산·오름으로 병기한다."]},
+      {"id": "S2", "publisher": "국회도서관 국가정책정보협의회", "type": "official_public_document", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781319411233_attach_1.pdf", "checked_at": "2026-08-25", "facts": ["구사산을 제주시 조천읍 북촌리의 표고 102m 지형으로 제시한다."]},
+      {"id": "S3", "publisher": "Ramblr", "type": "public_user_generated_travel_record", "url": "https://www.ramblr.com/web/mymap/trip/1258467/10814647/", "checked_at": "2026-08-25", "facts": ["동백동산~개죽은산(구사산)을 제주 등산·하이킹 경로로 기록한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1810534573",
+  "place_id": "1810534573",
+  "name": "추자호",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 자료는 추자호를 제주시 해양수산과가 운영비·유류비·수리비를 편성하는 행정선으로, 추자면의 추포도·횡간도를 운항해 생필품 전달과 행정·응급 이송을 지원하는 공공 교통수단으로 설명한다. 독립적으로 방문·관람·체험하는 관광 장소라는 운영 근거는 확인하지 못했으므로, 이동수단 자체를 추천용 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "추자호는 제주특별자치도 제주시 추자면의 부속섬을 운항하는 행정선이다.",
+    "typical_visit": "공개 자료에서 확인되는 이용 맥락은 추포도·횡간도 주민을 위한 생필품 운송, 행정 지원 및 응급환자 이송 같은 공공 교통·행정 기능이다.",
+    "experience_scope": "선박은 목적지나 독립 관광·체험 시설이 아니라 이동과 공공 업무를 위한 행정선으로 확인된다. 관광객이 독립 방문지로 이용할 수 있는 관람·체험 운영, 승선 조건 또는 상시 관광 서비스는 확인하지 못했으며, 변동 가능한 운항 정보는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 예산 부속서에는 제주시 해양수산과의 공공운영비·시설비 항목으로 행정선(추자호)의 제세공과금, 유류비, 수리비가 제시된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "보도자료는 추자호를 추자면 추포도·횡간도를 운항하는 16톤 행정선으로 설명하고, 주민 생필품 전달과 관내 도서 행정관리·응급환자 이송 지원 기능을 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 운항 여부, 시간표, 승선 대상·요금과 기상 결항 조건은 확인 시점에 따라 달라질 수 있어 확정하지 않았다.",
+      "관광객 대상의 독립 관람·체험 프로그램 또는 상시 관광 서비스는 공개 신뢰 출처에서 확인하지 못했다.",
+      "현재 선박 교체·운영 상태와 실제 승선 가능 여부는 별도 공식 운항 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "government_budget_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A042041.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 해양수산과 예산에 행정선(추자호) 제세공과금과 유류비가 공공운영비로 편성돼 있다.",
+          "행정선(추자호) 수리비가 시설비 항목으로 편성돼 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "파이낸셜뉴스",
+        "type": "news_report",
+        "url": "https://www.fnnews.com/news/202011010907075817",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자호는 추자면의 횡간도·추포도를 운항한 16톤 행정선으로 소개된다.",
+          "주민 생필품 전달, 도서 행정관리 및 응급환자 이송 지원 기능이 설명된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1810534573",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘추자호’다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "transport_vessel_not_independent_visit_place",
+      "applies_to": "recommendation_candidate",
+      "condition": "행정선이라는 공공 교통·행정 기능은 확인됐으나 독립 관광·관람·체험 장소 운영은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 독립 관광 상품 또는 공식 관광 방문 안내가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

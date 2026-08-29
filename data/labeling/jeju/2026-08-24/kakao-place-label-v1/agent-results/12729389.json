@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12729389",
+  "place_id": "12729389",
+  "name": "해신사",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.9,"rationale":"한국학중앙연구원 백과사전과 제주관광공사 안내는 해신사를 제주시 화북동 별도포구에 남아 있는, 해상 안전을 기원하던 독립 역사 사당으로 확인한다. 다른 시설의 부속 항목 또는 중복 후보라는 근거는 확인되지 않았다.","duplicate_of":null,"source_ids":["S1","S2"],"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"해신사는 제주시 화북동 별도포구에 있는 제주특별자치도 기념물로, 조선시대 제주 관헌이 해상 안전 운항을 기원하던 사당이다.",
+    "typical_visit":"별도포구와 화북동의 역사문화유산을 함께 둘러보며 해상의 안전을 기원한 지역 신앙과 조선시대 포구 역사를 이해하는 짧은 야외 문화유산 방문이다.",
+    "experience_scope":"공공 출처는 해신사의 위치·지정·역사·해신제 전통 및 별도포구와의 관계를 확인한다. 현재 내부 관람, 개방시간, 현장 해설, 주차·화장실, 접근로·경사·무장애 시설은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"한국학중앙연구원 한국민족문화대백과사전은 해신사를 제주시 화북동의 조선후기 해로 안전을 기원하던 신당으로 설명하고, 제주특별자치도 기념물로 지정되었다고 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주관광공사 Visit Jeju는 별도포구에 해상을 왕래할 때 안전을 기원하던 사당 해신사가 남아 있으며, 현재도 정월 보름과 선박 출항 전에 해신제를 지낸다고 안내한다.","source_ids":["S2"]}
+    ],
+    "unknowns":["현재 내부 관람과 개방시간, 해신제의 실제 일정·참관 가능 여부는 확인하지 못했다.","접근로·노면·경사·계단, 주차·화장실·쉼터 및 무장애 접근성은 확인하지 못했다.","강풍·비·폭염 등 기상 시 출입·안전 통제와 현장 안내는 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"한국학중앙연구원 한국민족문화대백과사전","type":"public_encyclopedia","url":"https://encykorea.aks.ac.kr/Article/E0062630","checked_at":"2026-08-25","facts":["해신사는 제주특별자치도 제주시 화북동에 있는 조선후기 해로 안전을 기원하던 신당이다.","1974년 제주특별자치도 기념물로 지정되었으며 화북동 선창 곁에 있다."]},
+      {"id":"S2","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_service","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021409","checked_at":"2026-08-25","facts":["별도포구에는 해상 왕래의 안전을 기원하던 사당 해신사가 남아 있다.","화북동에는 해신사 등 문화유적이 있어 포구와 함께 둘러볼 수 있다고 안내한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 대표 방문 경험이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"해신사는 별도포구에 남아 있는 해상 왕래의 안전을 기원한 사당으로 공식 관광 안내가 직접 설명하므로 해양·해안 맥락이 핵심이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험 운영의 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"조선후기 해로 안전을 기원한 신당이자 제주특별자치도 기념물이라는 공공 출처의 직접 설명으로 역사·문화유산이 핵심이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 방문 목적이라는 근거가 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"해신제 전통은 확인되지만 현재 참관 가능한 축제·공연 형태나 정확한 운영 범위가 미확인이므로 기간성 행사 적합도는 중립으로 기록한다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사당 건물의 내부 관람 가능 여부와 대표 관람 동선의 실내 비중을 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"별도포구의 역사유산을 함께 둘러보는 야외 방문 맥락이므로 날씨 영향을 비교적 받을 것으로 추론하나 현장 기상 통제 기준은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 시설·혼잡도·체류 환경 정보가 없어 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·노면·경사·계단·무장애 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 권장 소요시간·개방시간·해설 운영 정보가 확인되지 않아 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 출처가 포구와 주변 해안 산책 경관을 언급하지만 해신사 자체의 경관 감상이 핵심이라는 직접 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"조선시대 관헌의 해상 안전 기원 사당이며 현재도 해신제 전통이 안내되어 고유한 역사·신앙 경험이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주의 관문 역할을 한 화북동 별도포구에서 이어진 해상 안전 기원과 해신제 전통을 공식 출처가 직접 설명하므로 제주 지역 문화와의 연결이 매우 높다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물로 지정되고 별도포구의 역사문화유산으로 공식 안내되어 화북동 지역의 역사적 명소 의미가 높다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·동선·접근 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 적합성을 판단할 시설·안전 정보가 부족하다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·교육 안내 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"포구 주변 야외 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"포구 주변 야외 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"포구 주변 야외 방문은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"포구 주변 야외 방문은 여름 더위와 강수 영향을 받을 수 있으나 실제 현장 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 계절 적합도에 일반 기후 휴리스틱만 적용했으며 현장 조건은 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"포구 주변 야외 방문은 겨울 기상 영향을 받을 수 있으나 실제 출입·노면 상태는 미확인이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"현재 내부 관람·개방시간, 접근로·노면·경사, 주차·화장실·무장애 시설과 기상 시 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 최신 현장 또는 관할 안내로 관람 가능 여부와 보행·기상 안전을 확인하고, 제향 공간의 현장 예절을 따른다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-25"
+}

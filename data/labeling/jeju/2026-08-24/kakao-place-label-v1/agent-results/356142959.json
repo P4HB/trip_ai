@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:356142959",
+  "place_id": "356142959",
+  "name": "최영장군사당",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "rationale": "제주관광공사 Visit Jeju와 한국학중앙연구원 한국민족문화대백과사전은 추자면 대서리의 최영장군사당을 최영 장군을 기리는 사당이자 제주특별자치도 기념물로 각각 안내한다. 특정 시설의 부속물이 아닌 별도 역사·문화 방문지로 식별된다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "최영장군사당은 제주시 추자면 대서리에 있는 고려 말 최영 장군을 기리는 사당이다.",
+    "typical_visit": "추자도에서 사당 건물과 최영 장군 및 지역 어로 전승의 관계를 살피는 소규모 야외 역사문화 방문이다.",
+    "experience_scope": "공식 안내는 역사적 배경, 지역 주민의 풍어·풍농 기원 제례, 주소를 확인한다. 최신 개방 시간, 내부 관람 허용 여부, 접근로·계단·화장실·무장애 시설, 추자도 교통 및 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "Visit Jeju는 최영장군사당을 추자도 사람들이 최영 장군의 은덕을 기리며 풍어를 기원하는 관광지·문화유적지로 안내하고, 대서3길 10 주소와 최영 장군의 어망 전수 전승 및 제례를 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "한국민족문화대백과사전은 이 사당을 제주시 추자면에 있는 최영의 은덕을 기리기 위해 세운 사당으로 설명하며, 1981년 제주특별자치도 기념물 지정 사실을 기록한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력 Kakao 공개 후기는 추자도 내 두 곳 중 한 곳이라는 방문 맥락과 장소에 대한 긍정적 인상을 짧게 언급하지만, 세부 시설이나 이용 조건은 확인하지 않는다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["최신 개방 시간과 내부 관람·제례 시 출입 조건을 확인하지 못했다.", "현장 접근로, 계단·노면, 주차·화장실, 무장애 시설과 휴식시설을 확인하지 못했다.", "추자도 왕복 교통의 최신 운항·기상 결항 조건을 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500627", "checked_at": "2026-08-24", "facts": ["최영장군사당은 추자도 대서리에 안내된 관광지·문화유적지다.", "최영 장군이 주민에게 어망을 만들고 고기 잡는 법을 가르쳤다는 전승과 주민의 풍어·풍농 기원 제례를 설명한다.", "주소는 제주특별자치도 제주시 추자면 대서3길 10으로 안내한다."]},
+      {"id": "S2", "publisher": "한국학중앙연구원 한국민족문화대백과사전", "type": "public_encyclopedia", "url": "https://encykorea.aks.ac.kr/Article/E0057479", "checked_at": "2026-08-24", "facts": ["최영 장군 사당은 제주특별자치도 제주시 추자면의 사당이다.", "1981년 제주특별자치도 기념물로 지정됐다고 기록한다.", "매년 백중날과 음력 섣달 그믐에 풍어와 풍농을 비는 제례를 올린다고 설명한다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/356142959", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 추자도 내 방문 맥락과 장소에 대한 짧은 인상을 언급한다.", "평점과 후기 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"추자도에 있으나 해안·해양 활동이 이 사당의 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내와 공공 백과사전이 최영 장군 전승, 지역 제례 및 제주특별자치도 기념물인 사당을 직접 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"정기 제례는 확인되지만 특정 축제·공연이 일반 방문의 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"사당과 그 역사 전승을 살피는 방문으로 안내돼 대표 경험은 주로 외부 문화유적 관람으로 추론한다. 내부 관람 조건은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 문화유적 방문으로 안내돼 비·바람 등 날씨가 접근과 관람에 비교적 영향을 준다고 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·계단·노면과 무장애 시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선과 체류 시간 선택지를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 핵심이라는 직접 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"최영 장군의 추자도 체류와 어망 전수 전승, 이를 기리는 지역 제례가 이 사당의 고유한 구성으로 공식 안내에 직접 제시된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 자료가 추자도 주민의 어로 전승과 풍어·풍농을 비는 제례를 직접 설명해 지역 생활·문화와의 연결이 확인된다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"한국민족문화대백과사전이 1981년 제주특별자치도 기념물 지정 사실을 기록하고, Visit Jeju도 별도 관광지·문화유적지로 안내한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 접근·안전·관람 조건 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·수용·안전 여건 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·교통·현장 기상 조건을 확인하지 못해 일반 야외 방문의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 시간, 내부 관람·제례 시 출입 조건, 접근로·계단·노면, 무장애 시설 및 추자도 교통·악천후 통제는 공개 공식 안내에서 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 제주관광정보의 최신 안내로 개방 여부, 추자도 이동편 및 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

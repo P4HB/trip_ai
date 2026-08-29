@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1540,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8011592.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8011592",
+    "provider": "kakao",
+    "place_id": "8011592",
+    "name": "영락해안도로",
+    "url": "https://place.map.kakao.com/8011592",
+    "average_rating_5": "5.0",
+    "visitor_review_count": "4",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.05.05.",
+      "content": "꼭 이 위치까지 오지 않더라도 협재에서 해안따라 쭉 오다가 경치 좋은 곳에서 잠시 쉬다 보면 돌고래 등짝이 보이기도 한다",
+      "tags": ""
+    },
+    {
+      "date": "2025.11.24.",
+      "content": "천천히 드라이브하거나 걷기 좋은 길 운이 좋으면 돌고래를 볼수있는 길 나는 봤지요♡",
+      "tags": "뷰"
+    },
+    {
+      "date": "2017.10.13.",
+      "content": "가지볼거에요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

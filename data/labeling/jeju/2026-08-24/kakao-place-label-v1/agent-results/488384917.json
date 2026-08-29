@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:488384917",
+  "place_id": "488384917",
+  "name": "드림타워카지노 안내데스크 제주국제공항",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 제주국제공항의 ‘드림타워카지노 안내데스크’이며, 한국공항공사 공개 현장설명서는 제주국제공항 국제선 1층의 안내업으로 카지노 데스크를 별도 기재한다. 따라서 이 레코드는 독립적인 관광·체험 방문지가 아니라 카지노 이용을 안내하는 공항 내 부속 창구로 판단한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"],
+    "rule_ids": ["RULE-ELIGIBILITY-SUBORDINATE-FACILITY", "RULE-INDEPENDENT-VISIT-REQUIRED"]
+  },
+  "research": {
+    "identity_summary": "드림타워카지노 안내데스크 제주국제공항은 제주국제공항 내 카지노 관련 안내 창구로 표시된 Kakao 장소 레코드이다.",
+    "typical_visit": "독립적인 관광 방문 경험이 아니라 카지노 이용 관련 안내를 제공하는 공항 내 부속 서비스로 판단된다.",
+    "experience_scope": "공개 공항 자료는 국제선 1층 안내업에 카지노 데스크가 있음을 확인한다. 해당 표식의 세부 운영 주체·운영시간·제공 범위는 확인하지 않았으며, 이는 변동 가능한 정보다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터의 place_id 488384917 명칭은 ‘드림타워카지노 안내데스크 제주국제공항’이다.",
+        "source_ids": ["S1"],
+        "rule_ids": ["RULE-IDENTITY-PLACE-METADATA"]
+      },
+      {
+        "id": "F2",
+        "text": "한국공항공사 현장설명서는 제주국제공항 국제선 1층 안내업에 ‘카지노 데스크’를 기재한다.",
+        "source_ids": ["S2"],
+        "rule_ids": ["RULE-SUBORDINATE-SERVICE-COUNTER"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 공항 내 위치와 드림타워카지노 운영 주체의 현장 운영 여부는 별도 공식 페이지로 확인하지 못했다.",
+      "운영시간, 이용 대상 및 안내 범위는 확인하지 않았으며 변동될 수 있다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/488384917",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 드림타워카지노 안내데스크 제주국제공항으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국공항공사",
+        "type": "official_airport_document",
+        "url": "https://www.alio.go.kr/download/download.json?fileNo=2868755",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주국제공항 국제선 1층 안내업에 카지노 데스크가 기재되어 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_service_counter_not_independent_destination",
+      "applies_to": "all_visitors",
+      "condition": "공항 내 카지노 안내데스크는 독립적인 관광·체험 방문지가 아닌 부속 안내 서비스다.",
+      "status": "ineligible_for_independent_recommendation",
+      "action": "독립 여행지 후보로 추천하지 않고, 필요 시 상위 카지노 또는 공항 서비스의 최신 공식 안내에서 이용 조건을 별도로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "rule_ids": ["RULE-ELIGIBILITY-SUBORDINATE-FACILITY", "RULE-HARD-CONSTRAINTS-SEPARATE-FROM-FIT"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

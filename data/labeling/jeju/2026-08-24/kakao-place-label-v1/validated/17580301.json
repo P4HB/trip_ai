@@ -1,0 +1,58 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17580301",
+  "canonical_id": "kakao:17580301",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "source_ids": [
+      "src_jeju_halla_arboretum"
+    ],
+    "rule_ids": [
+      "eligibility.subordinate_facility"
+    ],
+    "rationale": "명칭의 ‘관목원’은 한라수목원 안의 주제원 하나를 가리킨다. 독립 방문지로 식별할 근거가 아니라 상위 수목원의 내부 시설·구역으로 확인되어, 중복 추천을 막기 위해 하위 시설로 분류했다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "low",
+  "hard_constraints": [
+    {
+      "constraint": "상위 장소 한라수목원 내부의 주제원",
+      "source_ids": [
+        "src_jeju_halla_arboretum"
+      ],
+      "rule_ids": [
+        "eligibility.subordinate_facility"
+      ],
+      "rationale": "관목원은 상위 수목원과 분리하여 독립 장소로 추천하지 않는다.",
+      "status": "confirmed"
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "src_jeju_halla_arboretum",
+        "url": "https://www.jeju.go.kr/sumokwon/index.htm",
+        "publisher": "제주특별자치도 한라수목원",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "한라수목원은 제주특별자치도가 운영하는 수목원이다.",
+          "한라수목원은 교목원·관목원 등을 포함한 주제원으로 구성된다.",
+          "따라서 관목원은 한라수목원 내부의 하위 구역이다."
+        ]
+      }
+    ],
+    "summary": "공개 기관 안내를 기준으로 한라수목원 관목원은 상위 수목원의 내부 주제원으로 판정했다."
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

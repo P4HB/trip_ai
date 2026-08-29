@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2047,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17382302.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17382302",
+    "provider": "kakao",
+    "place_id": "17382302",
+    "name": "성읍랜드",
+    "url": "https://place.map.kakao.com/17382302",
+    "average_rating_5": "2.9",
+    "visitor_review_count": "14",
+    "blog_review_count": "22",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.11.21.",
+      "content": "친절하시고 좋았습니다 체험으로 가봤던 승마장 중 제일 재밌었어요",
+      "tags": "주차"
+    },
+    {
+      "date": "2021.10.11.",
+      "content": "ATV 진짜 너무 재미있어요!! 네이버로 ATV 30분코스를 예약하고 갔는데 안타깝게도 정부 규제? 때문에 코스 공사중이라 10~15분 코스만 가능하다고 하셔서 짧은걸로 탔는데 너무너무 아쉬울 정도로 재미있었어요. 인솔해주시는 직원분이 처음엔 좀 무서웠는데 작동법이랑 주의사항 설명해주시고, 옷에 흙 많이 묻으니까 긴팔로 입으라고 하시더니 직접 찾아서 뒤집어진 것도 바로 해서 털어서 주시는데 감동받았어요.. 옷에 상상이상으로 흙이 묻으니까 정말 버릴 옷입고 가세요..(설마 그정도겠어 하고 그냥 갔는데 바지, 블라우스 다 검정색 됐어요..ㅎㅎ) 심지어 얼굴도 검정색 되니까 불편해도 꼭 고글 착용하고 물티슈 챙겨가세요.",
+      "tags": ""
+    },
+    {
+      "date": "2024.10.13.",
+      "content": "친절한지 알았는데 딱 정시에 시작한다고 무조건 기다리게함",
+      "tags": ""
+    },
+    {
+      "date": "2023.10.08.",
+      "content": "2020.11월 후기들 단체 별점 조작이네요.",
+      "tags": ""
+    },
+    {
+      "date": "2023.05.17.",
+      "content": "승마 체험 시켜주시는 분 너무 친절하시고 재밌어요 ㅎㅎ 카트도 트랙 넓고 꽤 빨라서 재밌었습니다!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

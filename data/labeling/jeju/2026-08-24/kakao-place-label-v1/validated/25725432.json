@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25725432",
+  "place_id": "25725432",
+  "name": "대포천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공개 하천 자료는 대포천을 서귀포시 대포 지역의 지방하천으로 열거하지만, 카카오 항목이 일반 방문 가능한 하천 경관·산책 구간인지 단순 수계 표기인지 확인할 수 없다. 독립 여행지 판정을 보류한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "대포천은 서귀포시 대포 지역의 지방하천으로 자료에 열거되나, 카카오 항목의 방문 범위는 확인하지 못했다.",
+    "typical_visit": "확인 불가",
+    "experience_scope": "하천 수계라는 식별 외에 공식 탐방·산책·관람 구간, 접근점 또는 이용 시설 정보가 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가정책정보협의회 자료의 제주 하천 목록은 대포천을 서귀포시 대포의 지방하천으로, 대포 2070번지선 해안을 종점으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "카카오 항목의 정확한 좌표와 하천 구간",
+      "일반 출입 및 산책 가능 여부",
+      "안전시설·수위·기상 통제·주차와 편의시설"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가정책정보협의회",
+        "type": "public_river_inventory",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2013/CLIKC2002114545002495_attach_3.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "대포천을 서귀포시 대포의 지방하천으로 열거한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_verification_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "하천의 일반 접근·관람 가능 구간과 수변 안전 조건이 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "공식 하천·관광 안내 또는 현장 관리 주체를 통해 정확한 접근 지점, 출입 가능 여부와 기상·수위 안전 조건을 확인한 뒤 재판정한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:648454678",
+  "place_id": "648454678",
+  "name": "제주제일농원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 제주제일농원이라는 명칭과 place_id만 제공하며, 공개 사업체 색인은 제주시 애월읍 봉성 지역의 동명 농원을 나열한다. 그러나 두 기록이 같은 실체인지, 일반 방문객에게 독립적인 관람·체험을 제공하는지, 관리 주체와 출입 조건은 공식·공공 상세 출처로 확인하지 못했다. 따라서 추천용 독립 방문지 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주제일농원은 Kakao 장소명과 공개 사업체 색인의 애월읍 봉성 지역 동명 농원 기록으로만 확인되며, 실제 운영 내용과 관광 방문지 여부는 확인되지 않았다.",
+    "typical_visit": "일반 방문객을 위한 관람·체험·판매 이용 방식은 확인하지 못했다.",
+    "experience_scope": "농원이라는 명칭만으로 농장 체험, 경관 관람 또는 상업 시설 이용 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 사업체 색인 검색 결과는 제주제일농원을 제주특별자치도 제주시 애월읍 봉성 지역의 동명 농원으로 나열한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 648454678, 장소명 제주제일농원 및 Kakao 장소 URL을 제공하며 공개 방문 후기와 평점 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식과 공개 사업체 색인의 동명 농원이 동일한 실체인지 확인하지 못했다.",
+      "농원의 재배·판매·체험 운영 내용과 일반 방문객의 출입 허용 여부를 확인하지 못했다.",
+      "정확한 위치, 관리 주체, 예약·영업 여부, 접근로·주차·보행 안전 및 무장애 시설을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "비즈노 공개 사업체 색인",
+        "type": "public_business_index",
+        "url": "https://www.bizno.net/?query=%EC%A0%9C%EC%9D%BC%EB%86%8D%EC%9B%90",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "검색 결과에 제주제일농원이 제주특별자치도 제주시 애월읍 봉성 지역의 동명 농원으로 나열된다.",
+          "검색 결과만으로 해당 Kakao 표식과의 동일성 및 방문객 대상 운영은 확인되지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/648454678",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 648454678 및 제주제일농원이라는 장소명을 제공한다.",
+          "입력 패킷에는 방문 후기 증거가 없으며, 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "동일성, 일반 방문객 출입, 운영 내용과 접근·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 운영자나 관할 공공기관의 최신 안내로 장소 동일성, 방문객 이용 가능 여부와 안전한 접근 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

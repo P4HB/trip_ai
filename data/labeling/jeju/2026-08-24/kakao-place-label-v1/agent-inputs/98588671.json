@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1679,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/98588671.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:98588671",
+    "provider": "kakao",
+    "place_id": "98588671",
+    "name": "제주신화전설탐방로",
+    "url": "https://place.map.kakao.com/98588671",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "3",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.01.04.",
+      "content": "붉은말의해에 붉은말을볼수있네요. . 제주의 각종설화와 설화에 연계한 조형물을 볼수있어요. . 편하게 걷기좋은 공원길과 곶자왈길을 동시에 가볍게 경험할수있어요. 넓게 돌면 1시간정도 소요됩니다. 가끔 재방문의사 있습니다.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2025.06.28.",
+      "content": "조용하고 주차장 넓은데 사람없고 평온한 곳",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2024.12.02.",
+      "content": "녹차밭으로 유명한 오설록 인근에 있는 제주신화전설탕방로입니다. 도보하면서 제주도의 신화를 간략하게 볼수 있는 조용한 산책길 입니다. 걷는 동안에는 눈길을 걷는듯한 뽀드득 소리가 납니다. 입장료가 없고 주차장이 넓게 시설이 잘 되어 있습니다. 하지만 화장실은 안보이네요. 둘레를 도는 시간은 1시간 예상되고 코스가 많아서 20분 내외로 짧게도 걸을수 있습니다. 네이버맵에서는 소개가 됐는데 카카오맵에는 없네요. 추천합니다. 제주도는 시에서 관리하는 무료 관광지가 규모도 크고 시설도 잘되어 있고 볼거리도 많습니다.",
+      "tags": "뷰|시설|+1"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

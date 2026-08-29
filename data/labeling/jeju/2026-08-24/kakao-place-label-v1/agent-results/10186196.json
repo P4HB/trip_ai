@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10186196",
+  "canonical_id": "kakao:10186196",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "국립생태원 자료와 제주 관련 공공 계획 자료에서 조천읍의 호수습지로 확인되며, 공개 장소 정보와 일치한다.",
+    "source_ids": ["src_nie_ecosystem", "src_clik_wetland"],
+    "rule_ids": ["REQ-012", "identity-public-place-match"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 핵심 유형은 호수습지이며 산·오름 방문 경험은 확인되지 않았다.", "source_ids": ["src_clik_wetland"], "rule_ids": ["theme-primary-experience"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소 유형은 내륙 호수습지로, 해양 자체가 핵심 경험이라는 근거는 없다.", "source_ids": ["src_clik_wetland"], "rule_ids": ["theme-primary-experience"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "생태 관찰 외 레포츠·참여형 체험 운영 정보는 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-insufficient-activity-evidence"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "마을 주민이 1933년 인공연못을 조성해 농업과 가축 용수로 사용했다는 지역 유래가 공개돼 있다.", "source_ids": ["src_wheelnavi"], "rule_ids": ["theme-direct-history"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "호수습지 확인 외 놀이공원형 시설·운영 근거는 찾지 못했다.", "source_ids": ["src_clik_wetland"], "rule_ids": ["fallback-insufficient-facility-evidence"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "입력 장소는 연못이며 카페 이용이 독립적 핵심 목적이라는 공식 근거가 없다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-place-identity"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 기능이나 상설 판매 운영을 확인하지 못했다.", "source_ids": ["src_clik_wetland"], "rule_ids": ["fallback-insufficient-market-evidence"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 행사나 축제의 상시 핵심성은 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-insufficient-festival-evidence"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료가 호수습지와 생태관찰을 설명하므로 대표 경험은 야외로 판단했다.", "source_ids": ["src_nie_ecosystem", "src_welfarehello"], "rule_ids": ["environment-outdoor-nature-inference"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 호수습지 관찰이어서 강수·바람·기온의 영향을 비교적 크게 받을 것으로 판단했다.", "source_ids": ["src_nie_ecosystem", "src_welfarehello"], "rule_ids": ["environment-outdoor-weather-inference"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "작은 습지의 수생 생물과 조류를 관찰하는 장소로 소개되어 느린 자연 관찰 체류에 적합하다고 판단했다.", "source_ids": ["src_welfarehello"], "rule_ids": ["style-nature-observation-inference"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "연못 관찰 장소이나 보행로 경사·노면·무장애 접근의 최신 현장 정보가 부족하다.", "source_ids": ["src_wheelnavi"], "rule_ids": ["fallback-accessibility-unverified"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "습지 관찰 장소이지만 권장 체류시간이나 프로그램 운영 정보가 확인되지 않았다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-duration-unverified"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "국립생태원 자료는 해당 습지의 경관가치를 평가 항목으로 제시한다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["style-direct-scenic-evidence"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "제주 조천읍의 개별 호수습지로 등재돼 있고, 공개 소개에는 다양한 수생 생물의 생태학습장이라는 설명이 있다.", "source_ids": ["src_clik_wetland", "src_welfarehello"], "rule_ids": ["style-direct-place-character"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "direct_evidence", "rationale": "신촌리 주민이 조성해 농업·가축 용수로 이용한 연못이라는 지역 생활사와 연결이 공개돼 있다.", "source_ids": ["src_wheelnavi"], "rule_ids": ["style-direct-local-history"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공공 문서의 습지 목록에는 포함되지만 제주 대표 명소로서의 공식 지정·방문 규모 자료는 확인하지 못했다.", "source_ids": ["src_clik_wetland"], "rule_ids": ["fallback-landmark-significance-unverified"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "연못과 수생 생물 관찰 가능성은 확인되지만 사진 촬영 가치에 대한 공공·공식 근거는 부족하다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-photo-value-unverified"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "생태 관찰 장소이나 혼자 방문의 편의·안전 정보가 부족하다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-companion-unverified"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "연못 산책 가능성 외 동반 방문 적합성 근거가 부족하다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-companion-unverified"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹용 시설과 체험 운영 여부를 확인하지 못했다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-companion-unverified"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "생태학습장 소개는 있으나 수변 안전시설과 보호자 동반 필요 조건의 최신 정보가 부족하다.", "source_ids": ["src_welfarehello"], "rule_ids": ["fallback-kids-safety-unverified"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "접근성·휴식시설의 최신 확인이 없어 중립 fallback으로 기록한다.", "source_ids": ["src_wheelnavi"], "rule_ids": ["fallback-parents-accessibility-unverified"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 습지이나 월별 현장 개방·관찰 조건을 확인하지 못했다.", "source_ids": ["src_nie_ecosystem"], "rule_ids": ["fallback-monthly-climate-unknown"]}
+  },
+  "hard_constraints": ["야외 수변 습지이므로 동행 아동의 근접 관찰 시 보호자 안전 확인이 필요하다.", "보행로·주차·화장실·개방시간의 최신 정보는 방문 전 별도 확인이 필요하다."],
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {"source_id": "src_nie_ecosystem", "url": "https://www.nie.re.kr/nie/cmmn/file/fileDown.do?atchFileId=MFILE_0001TRJSK0e55p0&fileSn=12", "publisher": "국립생태원", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["남생이못의 생태계서비스·경관가치·서식처 관련 자료를 확인했다."]},
+      {"source_id": "src_clik_wetland", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2025/CLIKC2394003951198443_attach_2.pdf", "publisher": "국회도서관 지방의회·지방행정자료", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["남생이못은 제주시 조천읍 소재, 면적 4,091㎡의 호수습지로 목록화돼 있다."]},
+      {"source_id": "src_wheelnavi", "url": "https://wheelnavi.kr/accessible/villagewalk/bukchon/walk1.htm", "publisher": "휠내비길서비스", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["1933년 주민들이 조성해 농업·가축 용수로 이용했다는 유래를 소개한다."]},
+      {"source_id": "src_welfarehello", "url": "https://www.welfarehello.com/community/hometownNews/%EB%82%A8%EC%83%9D%EC%9D%B4%EB%AA%BB-%EC%8A%B5%EC%A7%80%EC%83%9D%ED%83%9C%EA%B4%80%EC%B0%B0%EC%9B%90--002fe030-3141-4c33-96d0-3ca855891d9f", "publisher": "웰로", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["남생이못 습지생태관찰원은 다양한 수생 생물과 조류가 관찰되는 작은 습지로 소개된다."]}
+    ],
+    "limitations": ["공식 운영 주체의 최신 개방시간·시설·접근성 정보는 확인하지 못했다.", "Kakao 평점·리뷰 수와 작성자 신원은 라벨 근거로 사용하지 않았다."]
+  },
+  "review_priority": "high"
+}

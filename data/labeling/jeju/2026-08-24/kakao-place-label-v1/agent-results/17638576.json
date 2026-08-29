@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17638576",
+  "place_id": "17638576",
+  "name": "성세기태역길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주관광공사 Visit Jeju와 바다온 관광 안내가 성세기태역길을 제주올레 20코스 김녕-하도 구간의 명명된 경유지로 수록한다. 김녕성세기해변과 월정리 사이의 바다·해안 경관을 걷는 독립적인 야외 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "성세기태역길은 제주시 구좌읍 김녕 일대 제주올레 20코스의 명명된 해안 보행 구간이다.",
+    "typical_visit": "김녕성세기해변에서 이어지는 바닷가 길을 걸으며 하얀 모래, 검은 갯바위, 연푸른 바다와 바람 풍경을 감상하는 야외 방문이다.",
+    "experience_scope": "공식 관광 안내는 이 길이 올레 20코스의 시작 구간이며 김녕에서 월정으로 이어지는 해안 경관·보행 경험임을 확인한다. 정확한 구간 길이, 최신 통행 상태, 노면·경사, 화장실·쉼터, 무장애 접근성과 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 성세기태역길을 제주올레 20코스의 시작 구간으로 소개하며, 김녕에서 월정까지 풍력발전기와 하얀 모래·검은 갯바위·연푸른 바다가 이어지는 해안 풍경을 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"바다온 관광 안내는 제주올레 20코스의 경유 순서에 성세기태역길을 수록하고, 김녕서포구부터 해녀박물관까지 17.6km, 5~6시간, 난이도 중의 해안 걷기 코스라고 안내한다.","source_ids":["S2"]},
+      {"id":"F3","text":"Visit Jeju는 성세기를 작은 성, 태역을 잔디라는 제주어로 설명하며 이 구간이 제주 자연·언어·해안 경관과 연결됨을 소개한다.","source_ids":["S1"]}
+    ],
+    "unknowns": [
+      "성세기태역길 자체의 정확한 거리와 최신 통행 가능 여부를 확인하지 못했다.",
+      "노면, 경사, 계단, 조명, 화장실, 쉼터, 주차 및 무장애 접근성 정보를 확인하지 못했다.",
+      "강풍·강수·폭염 시 현장 안전 통제와 계절별 방문 여건을 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009493","checked_at":"2026-08-24","facts":["성세기태역길은 제주올레 20코스의 시작 구간으로 소개된다.","김녕에서 월정으로 이어지는 구간은 바람, 풍력발전기, 하얀 모래, 검은 갯바위와 연푸른 바다 풍경을 포함한다.","성세기는 작은 성, 태역은 잔디를 뜻하는 제주어로 안내된다.","공식 분류 태그에 커플·혼자·친구, 경관/포토, 휴식/힐링, 액티비티, 올레가 포함된다."]},
+      {"id":"S2","publisher":"바다온","type":"public_tourism_page","url":"https://badaon.or.kr/seantour_map/travel/destination/detail.do?destId=FCID001321","checked_at":"2026-08-24","facts":["제주올레 20코스의 경유지에 성세기태역길이 포함된다.","코스 전체는 17.6km, 5~6시간, 난이도 중으로 안내된다.","제주 북동쪽 바닷가의 바다 경관을 감상하며 걷는 코스라고 안내된다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 또는 산림 경관이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 바다, 해안 풍경, 모래와 갯바위를 따라 걷는 대표 경험을 명시한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"올레 20코스의 명명된 해안 보행 구간이며 코스 전체가 17.6km 걷기 여정으로 안내돼 참여형 보행 경험 비중을 높게 추론한다. 이 구간 자체의 거리와 난이도는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지명 유래는 안내되지만 역사 유적 관람·전시·전통 체험이 이 길의 핵심이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 경관을 따라 걷는 길로 공식 안내돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"바람과 해안 경관을 걷는 완전 야외 경험이므로 비·바람·더위·추위의 영향을 비교적 크게 받는다고 추론한다. 현장 통제는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 피서객이 적은 해변을 걷고 상념하는 정취와 휴식/힐링 태그를 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단·보행거리와 무장애 정보가 부족해 이용 편의성은 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전체 코스 시간은 안내되지만 이 구간 단독의 체류 선택 폭을 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 하얀 모래·검은 갯바위·연푸른 바다와 해안 풍경을 이 구간의 방문 경험으로 설명한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주어 지명 유래와 바람·풍력발전기·해안 풍경을 결합한 올레 구간으로 공식 관광 안내에서 구별되는 경험을 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 제주어 지명 유래와 제주 해안 자연 경관을 이 길의 맥락으로 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 해당 지역을 대표하는 상징 명소라는 공적 지정이나 비교 근거를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 해안의 색채와 지형 풍경을 상세히 소개하고 경관/포토 태그를 부여한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 올레 구간을 혼자 여행 태그와 함께 소개한다. 최신 통행·안전 여건은 별도 확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 올레 구간을 커플 여행 태그와 함께 소개한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 이 올레 구간을 친구 여행 태그와 함께 소개한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 거리·노면·안전시설·관람 조건 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"완전 야외 해안 보행은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"완전 야외 해안 보행은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"완전 야외 해안 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"완전 야외 해안 보행은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 보행의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"완전 야외 해안 보행은 겨울 바람과 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"성세기태역길 자체의 최신 통행 가능 여부, 정확한 거리, 노면·경사·계단, 조명, 화장실·쉼터·주차, 무장애 접근성과 강풍·강수 시 안전 통제를 확인하지 못했다.","status":"needs_review","action":"방문 전 제주올레 또는 현장 최신 안내로 통행 가능 여부, 날씨와 보행·접근성 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1138945035",
+  "canonical_id": "kakao:1138945035",
+  "name": "쳇망어음 주둔소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "4·3유적지 목록은 쳇망어음 주둔소를 수록하지만, 지명 연구는 쳇망어음을 상천리 산31번지 일대로 설명하는 반면 유적지 목록은 다른 도로명 소재지를 제시한다. 입력에 좌표·관리 정보가 없어 이 카카오 표식과 유적의 정확한 위치를 확정하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-LOCATION-CONFLICT",
+      "ELIG-NO-CANONICAL-LOCATION-MATCH"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "historical_site_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "유적의 정확한 위치·보존 상태·공개 접근 조건을 이 카카오 ID와 연결해 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "제주4·3평화재단 또는 관할 지자체의 현장 좌표·방문 안내로 동일성을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "쳇망어음 주둔소라는 역사 유적 후보는 확인됐으나, 출처 간 지명 범위와 소재 표기가 달라 이 장소 ID와의 위치 매칭을 보류했다.",
+    "facts": [
+      {
+        "text": "제주4·3평화재단 유적지 목록은 쳇망어음 주둔소를 수록한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주학연구센터 조사 자료는 쳇망어음을 상천리 산31번지 일대의 지명으로 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 장소의 좌표",
+      "실제 유적의 현행 접근·보존 조건",
+      "유적 안내·해설·안전시설"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주4·3평화재단",
+        "type": "official_memorial_site_list",
+        "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "쳇망어음 주둔소와 소재지 정보를 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주학연구센터",
+        "type": "academic_research",
+        "url": "https://jst.re.kr/upload/pdf/RC00095030.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "쳇망어음 지명과 상천리 산31번지 일대 설명을 수록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

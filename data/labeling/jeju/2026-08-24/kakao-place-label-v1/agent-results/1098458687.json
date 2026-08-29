@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1098458687",
+  "place_id": "1098458687",
+  "name": "담수장옆길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "공개된 하추자도 걷기 기록은 ‘담수장 옆길’을 추자담수장 인근의 제주올레 18-1 구간 경유 지점으로만 열거한다. 독립적인 관광·체험 장소, 산책로 운영 주체 또는 별도 방문 경험은 확인되지 않아, 담수장과 연결로를 지칭하는 부속 길 표기로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘담수장옆길’은 공개 하추자도 걷기 기록에서 묵리교차로와 추자담수장 사이에 나열된 경유 지점과 일치한다.",
+    "typical_visit": "확인된 맥락은 하추자도 일주·트레킹 동선의 통과 구간이며, 독립된 관광지로서의 체험·운영 정보는 확인되지 않았다.",
+    "experience_scope": "여행 추천의 독립 장소 벡터 대신, 담수장 인근 길이라는 부속 지점으로 처리한다. Kakao 평점·후기 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 하추자도 걷기 기록의 제주올레 18-1 경로 목록에는 ‘묵리교차로 - 담수장 옆길 - 추자담수장 - 은달산 길 입구’가 순서대로 적혀 있다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 기록은 하추자도 트레킹 경로에 ‘묵리 4거리 - 담수장 - 추자교 3거리’를 포함해 담수장을 동선상의 시설·경유 지점으로 제시한다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id의 정확한 좌표와 공식 관리 주체",
+      "일반 방문객을 위한 독립 산책로·관람 시설·운영 안내",
+      "길의 현재 통행 가능 여부, 접근성 및 안전 관리 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "산야55 티스토리",
+        "type": "personal_travel_record",
+        "url": "https://ouo3710.tistory.com/196",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "하추자도 제주올레 18-1의 경유 목록에 ‘담수장 옆길’과 ‘추자담수장’을 인접하게 열거한다.",
+          "하추자도 트레킹 경로에 담수장을 경유 지점으로 포함한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1098458687",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘담수장옆길’이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 운영 정보 및 공개 후기 근거가 없다.",
+          "평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_route_segment_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘담수장옆길’은 공개 기록상 추자담수장 인근 트레킹 동선의 경유 표기이며, 독립 방문지·산책로로서의 범위와 현재 통행·안전 정보가 확인되지 않음",
+      "status": "needs_review",
+      "action": "공식 도로·올레 경로 또는 관리 주체 자료로 정확한 위치와 일반 통행 가능 여부를 확인한다. 독립 관광 경험으로 확인되기 전에는 추천 후보 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

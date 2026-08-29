@@ -1,0 +1,126 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11350729",
+  "place_id": "11350729",
+  "name": "티엘씨레저",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 기업 정보에서 티엘씨레저는 제주 제주시 삼무로 67을 사업장 주소로 둔 카지노·레저·숙박업 법인으로 확인된다. 같은 주소의 공개 경제지표는 제주썬호텔 내 제주썬카지노의 법인명을 (주)지앤엘로 제시한다. 입력 Kakao 레코드는 법인명 ‘티엘씨레저’만을 가리키며, 독립적으로 예약·관람·체험할 수 있는 여행 방문 장소나 별도 방문 경험이라는 근거는 확인되지 않았다. 따라서 운영 법인 표식은 추천용 독립 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ],
+    "rule_ids": [
+      "eligibility.out_of_scope.operator_entity",
+      "scope.independent_visitor_experience_required"
+    ]
+  },
+  "research": {
+    "identity_summary": "티엘씨레저는 공개 기업 정보에서 제주 제주시 삼무로 67을 사업장 주소로 둔 카지노·레저·숙박업 법인으로 확인된다. 입력 Kakao 표식은 이 법인명을 사용한다.",
+    "typical_visit": "공개 자료에서 확인되는 것은 법인의 사업·주소 정보이며, ‘티엘씨레저’ 자체를 여행자가 독립적으로 방문하는 관람·체험 장소로 소개하는 운영 안내는 확인하지 못했다.",
+    "experience_scope": "동일 주소에는 제주썬호텔 내 카지노 영업장이 공개 자료에 존재하지만, 입력 표식은 호텔·카지노의 방문자용 장소명이 아니라 운영 법인명이다. 법인 표식을 독립 추천 후보로 만들지 않으며, 호텔 또는 카지노가 필요하면 별도 공식 방문자용 장소 레코드로 확인해야 한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "인크루트의 기업 정보는 티엘씨레저의 업종을 카지노·레저산업·요식업 및 숙박업으로, 기업 위치를 제주도 제주시 삼무로 67(연동)으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ],
+        "rule_ids": [
+          "identity.public_business_source"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주경제지표는 제주시 삼무로 67(연동) 제주썬호텔 내 제주썬카지노의 법인명을 (주)지앤엘로 제시한다. 이는 해당 주소가 방문자용 호텔·카지노 시설과 연관됨을 보여 주지만, 입력의 과거 법인명 표식 자체가 독립 관광지임을 뜻하지는 않는다.",
+        "source_ids": [
+          "S2"
+        ],
+        "rule_ids": [
+          "scope.operator_entity_not_independent_destination"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 핀 위치·업종 표기와 현재 법인명·운영 관계는 입력 패킷에 주소·좌표·업종이 없어 직접 확인하지 못했다.",
+      "티엘씨레저 법인 명의로 일반 여행자를 위한 독립 관람·체험·예약 프로그램이 운영되는지는 확인하지 못했다.",
+      "호텔·카지노의 현재 운영시간, 입장 자격, 연령·국적 요건, 예약 및 접근 조건은 변동 정보이므로 이 결과에서 확정하지 않는다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "인크루트",
+        "type": "public_business_information",
+        "url": "https://www.incruit.com/company/206622/",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "기업명은 티엘씨레저로 표시된다.",
+          "업종은 카지노·레저산업·요식업 및 숙박업, 기업 위치는 제주도 제주시 삼무로 67(연동)으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주경제통상진흥원·제주특별자치도 관광산업과 자료 인용",
+        "type": "public_economic_indicator",
+        "url": "https://startupjeju.org/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMTEyMjFiOTA4ZDcxZjQwYWNkIjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjUwNzI4NzU0NDNkM2Q1ZjI0MGNjIjtzOjk6ImZpbGVfY29kZSI7czoyMjoicDIwMjUwNzI4NTNlYzE3YjI5MTdkZDEiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MTM6IjY5Y2U0ZjkxODA5OGUiO3M6MTE6Im1lbWJlcl9jb2RlIjtOO30%3D",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2025 제주경제지표의 카지노 현황은 제주썬카지노의 법인명을 (주)지앤엘로 제시한다.",
+          "해당 영업장소는 제주시 삼무로 67(연동) 제주썬호텔 내로 제시된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11350729",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 Kakao 장소명은 티엘씨레저이다.",
+          "입력에는 주소, 좌표, 업종, 공개 방문 후기 근거가 없으며 평점·리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "operator_entity_not_independent_visitor_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 표식은 카지노·레저·숙박업 법인명으로 확인되며, 법인 자체의 독립 여행 방문·관람·체험 경험과 이용 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "이 법인 표식에는 추천용 41축 벡터를 생성하지 않는다. 여행자가 이용할 호텔 또는 카지노를 후보로 다룰 필요가 있으면 현재 운영 법인, 공식 방문자용 명칭, 입장·연령·국적 등 동적 이용 조건을 별도 장소 레코드에서 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "hard_constraint.operator_entity_scope",
+        "hard_constraint.dynamic_access_requires_current_source"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

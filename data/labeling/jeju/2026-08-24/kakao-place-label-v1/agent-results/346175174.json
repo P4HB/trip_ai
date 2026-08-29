@@ -1,0 +1,84 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:346175174",
+  "place_id": "346175174",
+  "name": "의녀 홍윤애 지묘",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "Kakao 입력은 장소명과 URL, 한 건의 짧은 공개 방문 경험만 제공하며 주소·좌표·업종·공식 안내가 없다. 제주관광공사 자료는 전농로에 ‘홍윤애 무덤터 표지석’이 있음을 안내하지만, 이 Kakao place_id가 그 표지석인지 실제 묘소인지 또는 다른 동명 지점인지 교차 확인하지 못했다. 따라서 독립 여행지로서의 신원과 범위를 확정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명은 ‘의녀 홍윤애 지묘’이다. 입력의 공개 방문 경험은 조선시대 의녀 홍윤애의 묘라고 서술한다. 제주관광공사 관광 자료에는 전농로 벚꽃길의 홍윤애 무덤터 표지석이 언급되지만, 입력 Kakao 장소와 같은 위치·시설이라는 직접 연결 정보는 없다.",
+    "typical_visit": "신원이 확정된다면 역사 인물 관련 묘소 또는 표지석을 짧게 찾는 방문일 가능성은 있으나, 현 단계에서 실제 대상의 관람 범위·접근·관리 상태를 확인하지 못했다.",
+    "experience_scope": "Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 장소의 정확한 위치 및 독립 관광자원 여부가 확인되지 않아 추천용 방문 경험과 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘의녀 홍윤애 지묘’로 표시하며 주소·좌표·업종은 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 포함된 2023년 공개 방문 경험은 이 장소를 조선시대 의녀 홍윤애의 묘라고 서술하지만, 위치·시설 관리 정보는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 Visit Jeju의 전농로 벚꽃길 안내는 거리 안에 홍윤애 무덤터 표지석과 제주 유배 관련 사랑 이야기가 있다고 설명한다. 이 안내는 입력 Kakao 장소와의 동일성을 명시하지 않는다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 주소, 좌표, 실제 시설 형태와 관리 주체를 확인하지 못했다.",
+      "전농로의 홍윤애 무덤터 표지석과 이 입력 장소가 동일한지 확인하지 못했다.",
+      "독립 여행 방문지로서의 개방 여부, 접근성, 관람 범위와 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/346175174",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘의녀 홍윤애 지묘’다.",
+          "입력 패킷에는 주소, 좌표, 업종 또는 공식 운영 안내가 없다.",
+          "입력에 포함된 공개 방문 경험 한 건은 의녀 홍윤애의 묘라고 서술한다.",
+          "평점·후기 수와 작성자 식별 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://m.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000015347",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "전농로 벚꽃길 안내는 거리 안에 홍윤애 무덤터 표지석과 제주 유배 관련 사랑 이야기가 있다고 설명한다.",
+          "이 관광 안내에는 Kakao place_id 346175174 또는 ‘의녀 홍윤애 지묘’와의 동일성 표기가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "정확한 위치·시설 형태가 없어 전농로 홍윤애 무덤터 표지석, 실제 묘소 또는 다른 동명 지점 중 무엇인지 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 관광·문화재 자료 또는 Kakao의 주소·좌표·업종 정보로 장소 신원을 먼저 교차 확인한다. 독립적으로 방문 가능한 역사 장소임이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

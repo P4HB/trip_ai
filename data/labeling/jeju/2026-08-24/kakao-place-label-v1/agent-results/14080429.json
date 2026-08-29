@@ -1,0 +1,48 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "14080429",
+  "canonical_id": "kakao:14080429",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 1,
+    "rationale": "제주올레11코스 공식안내소는 제주올레 11코스(모슬포~무릉) 이용자를 위한 코스 안내·인증 지원 시설로 확인된다. 제주올레 10코스의 종점이자 11코스 안내소로도 표기되어, 독립 관광 경험이 아니라 제주올레 코스에 종속된 운영 시설로 처리한다.",
+    "source_ids": ["source_olle_facility_list", "source_olle_course"],
+    "rule_ids": ["eligibility.subordinate_facility.trail_information_center", "policy.no_forced_vector"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "parent_trail_required",
+      "rationale": "안내소 자체가 아니라 제주올레 11코스의 거리·안전 수칙·운영 정보를 기준으로 방문을 판단해야 한다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_olle_facility_list",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/2/8/2022/CLIKC505329548199099_attach_1.pdf",
+        "publisher": "국회도서관 지방의회 정책정보",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주올레 관광 안내소 목록에 11코스 공식안내소가 포함돼 있다."
+        ]
+      },
+      {
+        "source_id": "source_olle_course",
+        "url": "https://rivertrail.net/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyNDAxMjUwNWI3Njg0MTRmM2YwIjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjQxMTA0Zjc3ZmRiZDZkNDlhOCI7czo5OiJmaWxlX2NvZGUiO3M6MjoiMjAyNTAxMTMxNWYwZDRnMGU0NGUwYjA5MWUiO3M6MTE6Im1lbWJlcl9jb2RlIjtOO30%3D",
+        "publisher": "대한민국 걷기여행길 정보",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주올레 10코스 위치 정보가 제주올레 11코스 안내소(서귀포시 대정읍 하모리 2140)로 표기된다.",
+          "안내소는 제주올레 코스의 안내·완보 지원 체계 안에 제시된다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "medium"
+}

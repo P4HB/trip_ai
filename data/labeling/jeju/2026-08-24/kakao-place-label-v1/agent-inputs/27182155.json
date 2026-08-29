@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 240,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/27182155.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:27182155",
+    "provider": "kakao",
+    "place_id": "27182155",
+    "name": "한라산국립공원 어리목탐방로",
+    "url": "https://place.map.kakao.com/27182155",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "11",
+    "blog_review_count": "26",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.09.10.",
+      "content": "분위기와 어승생오름 화장실도 깨끗하고 버스정류장 그리고 주차장 휴게실도 간단한 음료수자판기 겨울철 아이젠도있네요",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2024.11.14.",
+      "content": "어리목 코스는.. *. 시내버스의 경우 어리목 입구에서 하차하시고 20여분 걸어오시면 정면에 어리목 입구가 나오고, 왼쪽 사무실 방향이 어승생악 입구입니다. *. 자차로 가실분은 어리목 주차장 네비찍고 오세요. 어리목 코스는 바닥에 발부리에 걸리는 현무암들이 많아 바닥을 많이 보셔야합니다. 처음 출발후 15분후에 만나는 어리목교 천아계곡은 물살에 닳고닳은 돌들과 계곡의 시원함 그리고 푸릇한 나무들이 눈을 맑게 해줍니다. 어리목 목교부터 사제비 동산까지는 쉴새없는 완만한 경사로가 있는데.. 개인적으로는 변화가없는 경사로기에 따분하고 지치고 정신이 맹해지며 목적없이 걷게 되더라고요. 조릿대 밭과 데크만 따라걸어요. 사제비 동산 입구의 샘에서 물도 축이고.. 탁트인 사제비 동산은 눈을 편안케 하지만 의외로 여름엔 햇빛이 강하고 겨울엔 바람이 많이 불어요. 사제비 동산부터 코스가 쉬워 도보로 산책하듯 걷는게 너무 좋았어요. 푸른 목장에 온듯한 만세동산은 영실코스보다 시각적으로 편안하고 감탄이 더 나와요. 5월에는 영실 코스의 철쭉이 좋겠지만, 그 이후 계절은 저는 사제비동산~만세동산~윗세오름 대피소까지 그 경치때문이라도 나은거 같아요. 푸릇푸릇한 그 경치는 계속 생각나요. 하루 날잡아 가실거 추천을 하자면.. 자차보다 버스를 이용하시고요... 영실에서 출발해서 윗새오름 대피소에서 휴식후, 어리목코스로 하산하시고, 하산하시면.. 어리목 주차장에서 왕복 1시간 소요되는 어승생악을 가보시는걸 추천해요.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2023.01.12.",
+      "content": "풍경은 좋지만 어리목 목교-사제비동산 구간이 너무 힘들어요ㅜ.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2017.02.02.",
+      "content": "161112 ws",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

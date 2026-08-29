@@ -1,0 +1,85 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8402972",
+  "canonical_id": "kakao:8402972",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "Kakao place metadata identifies 알오름 at Jeju-si Hwabukil-dong (33.519127, 126.549506). A Jeju Provincial Council map labels the nearby feature as 알오름(별도봉), and VisitJEJU documents Byeoldobong in the same Hwabukil-dong area as an outdoor oreum walking destination.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-IDENTITY-LOCATION-CORROBORATED", "ELIG-TOURISM-PLACE"]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "S1",
+        "url": "https://place.map.kakao.com/8402972",
+        "publisher": "Kakao Map",
+        "checked_at": "2026-08-25",
+        "facts": ["Place title is 알오름.", "Open-graph metadata gives address 제주특별자치도 제주시 화북일동 4504 and coordinates 126.54950610010988 longitude, 33.519127138262014 latitude."]
+      },
+      {
+        "source_id": "S2",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A042092.pdf",
+        "publisher": "Jeju Provincial Council",
+        "checked_at": "2026-08-25",
+        "facts": ["The published location map labels the Jeju-si feature as 알오름(별도봉)."]
+      },
+      {
+        "source_id": "S3",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500243",
+        "publisher": "Jeju Tourism Organization (VisitJEJU)",
+        "checked_at": "2026-08-25",
+        "facts": ["Byeoldobong is in Hwabukil-dong, Jeju-si.", "It is an oreum with a walking trail and coastal cliff views of Jeju Port and the blue sea.", "The page describes it as a place for couples or families to walk."]
+      }
+    ],
+    "identity_note": "The similarly named Seongsan/pyoseon Aloreum is excluded by the Kakao address and coordinates; this record is the Hwabukil-dong Aloreum associated with Byeoldobong.",
+    "label_basis": "No Kakao rating, review count, or review text was used as label evidence. Dynamic access, closures, amenities, and seasonal conditions were not confirmed."
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"The corroborated place is explicitly labelled as an oreum associated with Byeoldobong.","source_ids":["S2","S3"],"rule_ids":["THEME-OREUM-CORE"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"The associated walking experience includes views of Jeju Port, the blue sea, and coastal cliffs, though it is not a beach or marine-activity destination.","source_ids":["S3"],"rule_ids":["THEME-COASTAL-VIEW"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"Walking/oreum hiking is directly described as the representative visit activity.","source_ids":["S3"],"rule_ids":["THEME-WALKING-CORE"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"No official source establishes history, heritage, art, or a cultural program as a core experience.","source_ids":[],"rule_ids":["FALLBACK-NO-CULTURE-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"No official source establishes a theme-park experience.","source_ids":[],"rule_ids":["FALLBACK-NO-THEMEPARK-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"No official source establishes cafe use as a destination purpose.","source_ids":[],"rule_ids":["FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"No official source establishes a market experience.","source_ids":[],"rule_ids":["FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"No official source establishes a festival or time-limited event.","source_ids":[],"rule_ids":["FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"The documented representative experience is an outdoor oreum and cliffside walking trail.","source_ids":["S3"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"Because the documented experience is wholly outdoors on an oreum and coastal cliff trail, weather materially affects the visit; current closure and weather rules were not verified.","source_ids":["S3"],"rule_ids":["ENV-OUTDOOR-WEATHER-INFERENCE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"A scenic walking trail supports a moderate slow-stroll/rest experience, but quietness and crowd conditions are not established.","source_ids":["S3"],"rule_ids":["STYLE-SCENIC-WALK-INFERENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"The source supports walking but does not verify the Aloreum route's grade, steps, surface, or accessibility.","source_ids":["S1","S3"],"rule_ids":["STYLE-ROUTE-DIFFICULTY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"A walking destination can support a modestly adjustable visit, but a route length or duration for this precise point was not confirmed.","source_ids":["S3"],"rule_ids":["STYLE-WALK-DURATION-INFERENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"Official information directly highlights ocean, port, and coastal-cliff views from the associated oreum trail.","source_ids":["S3"],"rule_ids":["STYLE-OFFICIAL-SCENIC-VIEW"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"Its association with the Aloreum–Byeoldobong coastal oreum landscape is distinguishing, but a separate signature experience for the exact pin is not documented.","source_ids":["S1","S2","S3"],"rule_ids":["STYLE-PLACE-ASSOCIATION-INFERENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"This is a named Jeju oreum in Hwabukil-dong, documented by Jeju public bodies as part of the local natural landscape.","source_ids":["S2","S3"],"rule_ids":["STYLE-JEJU-OREUM-LOCAL"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"The feature is publicly mapped and associated with Byeoldobong, but evidence does not establish it as a top-tier Jeju landmark.","source_ids":["S2","S3"],"rule_ids":["STYLE-LOCAL-LANDMARK-INFERENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"Official information directly emphasizes coastal cliffs, sea, port, and broad ocean views, which supply visual-record value.","source_ids":["S3"],"rule_ids":["STYLE-DOCUMENTED-VISTA"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"It is an outdoor walking destination, but the precise route safety and current access for an unaccompanied visitor are unverified.","source_ids":["S3"],"rule_ids":["COMPANION-OUTDOOR-ACCESS-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"VisitJEJU explicitly describes the associated walking place as suitable for couples.","source_ids":["S3"],"rule_ids":["COMPANION-OFFICIAL-COUPLE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"Scenic group walking is plausible, but no friend-group facilities or exact route details are confirmed.","source_ids":["S3"],"rule_ids":["COMPANION-SCENIC-WALK-INFERENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"The associated place is officially described for family walks, but this exact outdoor route's terrain and edge safety are not verified.","source_ids":["S3"],"rule_ids":["COMPANION-FAMILY-WALK-ACCESS-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"The walking setting may suit some parents, but route grade, resting facilities, and accessibility are unverified.","source_ids":["S3"],"rule_ids":["COMPANION-ACCESS-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current January access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current February access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current March access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current April access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current May access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current June access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current July access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current August access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current September access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current October access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current November access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"Outdoor walking suitability is seasonally weather-dependent; current December access information was not verified.","source_ids":["S3"],"rule_ids":["MONTH-OUTDOOR-CLIMATE-DEFAULT"]}
+  },
+  "hard_constraints": [
+    {"kind":"outdoor_route_access_and_weather_confirmation","applies_to":"all_visitors","condition":"This is an outdoor oreum/coastal walking setting. Current entry permission, route condition, cliff-edge safety, weather controls, parking, toilets, and barrier-free access were not confirmed.","status":"needs_review","action":"Before visiting, confirm current access and any weather or safety notices with the relevant Jeju tourism or local management contact; choose a route appropriate to the party's mobility.","source_ids":["S1","S3"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "medium"
+}

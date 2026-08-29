@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:10834738",
+  "place_id": "10834738",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "review_status": "needs_review",
+    "inference_level": "researched_inference",
+    "rationale": "Kakao 입력에는 주소·좌표·리뷰가 없고 이름도 일반명사인 ‘충혼묘비’뿐이다. 제주관광공사의 제주시 충혼묘지 4·3추모비는 묘지 안의 특정 추모비로 확인되지만, 이 Kakao 레코드가 그 추모비인지 또는 다른 충혼묘지의 묘비인지는 공개 근거만으로 일치 확인할 수 없다.",
+    "rule_id": "eligibility.identity_unknown.unresolved_place_identity",
+    "source_ids": [
+      "src_visitjeju_chunghon_43_memorial",
+      "src_jeju_council_chunghon_cemeteries"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "src_visitjeju_chunghon_43_memorial",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022886",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 충혼묘지에 박진경 대령 추도비(4·3추모비)가 세워져 있다고 안내한다.",
+          "해당 관광지의 주소는 제주특별자치도 제주시 노형동 산 19-2로 안내한다."
+        ]
+      },
+      {
+        "source_id": "src_jeju_council_chunghon_cemeteries",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A042041.pdf",
+        "publisher": "제주특별자치도의회 기록관",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주특별자치도 충혼묘지의 명칭·위치·관할구역을 수록하며 제주시와 읍면 지역에 여러 충혼묘지가 있음을 보여준다."
+        ]
+      }
+    ],
+    "summary": "공개 관광·공공 기록은 제주에 복수의 충혼묘지가 있고 제주시 충혼묘지 안에는 별도 추모비가 있음을 확인한다. 그러나 입력 Kakao 레코드에는 이를 특정할 주소·좌표가 없다."
+  },
+  "hard_constraints": [
+    {
+      "key": "identity_verification_required",
+      "status": "required",
+      "rationale": "Kakao 레코드에 주소·좌표가 없어 대상 추모비 또는 충혼묘지를 특정한 뒤에만 추천 후보로 취급할 수 있다.",
+      "source_ids": [
+        "src_visitjeju_chunghon_43_memorial",
+        "src_jeju_council_chunghon_cemeteries"
+      ]
+    }
+  ],
+  "review_priority": "high",
+  "review_reason": "장소 식별이 해결되지 않아 추천용 적격 여부를 재확인해야 한다.",
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

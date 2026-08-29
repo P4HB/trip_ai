@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8379747",
+  "place_id": "8379747",
+  "name": "비치미오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "비치미오름은 공개 관광 정보와 공공 습지 현황 자료의 지명·송당리 위치·목장 주변 환경으로 독립된 자연 방문지임을 교차 확인할 수 있다. 다만 공개 지도 후기는 사유지 통과와 차단된 입구를 반복적으로 언급해, 실제 출입 가능 여부는 추천 전에 별도 확인해야 한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "비치미오름은 제주시 구좌읍 송당리 산255-1의 오름으로 안내되며, 공공 습지 자료에는 인근 비치미오름못이 송당리 산275, 목장 환경으로 기록된다.",
+    "typical_visit": "공개 관광 안내는 주차장에서 정상까지 오르막 보행과 정상 경관 감상을 대표 경험으로 설명한다. 등산로 정비 상태와 접근 가능 여부는 출발 전에 다시 확인해야 한다.",
+    "experience_scope": "산책·등반과 경관 감상이 핵심인 야외 자연 방문지로 라벨링했다. Kakao 평점과 후기 수는 사용하지 않았으며, 제공된 공개 후기의 사유지·철조망 언급은 접근성 하드 제약의 보조 근거로만 사용했다.",
+    "facts": [
+      {"id": "F1", "text": "공개 관광 안내는 비치미오름을 제주 제주시 구좌읍 송당리 산255-1의 상시개방·무료 오름으로 표기하고, 정상까지 오르막 보행 및 정상 경관을 소개한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 안내는 등산로 정비가 잘 되어 있지 않고 노약자에게 오르막이 힘들 수 있으며, 화장실이 없다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "람사르 습지정보서비스에 공개된 제주도 습지 현황 자료는 비치미오름못을 제주시 구좌읍 송당리 산275, 주변 환경 목장으로 기록한다.", "source_ids": ["S2"]},
+      {"id": "F4", "text": "입력의 익명화된 Kakao 공개 후기들은 사유지·철조망·입구 차단 가능성과 미끄러운 구간을 언급한다. 이는 현행 출입 허가나 상태를 확정하는 근거는 아니다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "2026-08-24 기준 실제 등산로 개방, 사유지 통과 허용, 주차 가능 구역 및 안전 안내를 공식 관리 주체 자료로 확인하지 못했다.",
+      "계절별 통행 상태·기상 위험·어린이 및 보행 약자 이용 적합성을 공식 출처로 확인하지 못했다.",
+      "공개 관광 안내의 상시개방 표기와 Kakao 후기의 차단 언급이 충돌하므로 어느 한쪽을 최신 사실로 단정하지 않았다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "여행의기술 (제주관광공사 출처 표기 포함)", "type": "public_tourism_listing", "url": "https://www.tel-co.net/travel/spot/795", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["비치미오름의 명칭·송당리 산255-1 위치·무료·상시개방 표기를 제공한다.", "정상 경관, 오르막 보행, 비정비 등산로, 화장실 없음 및 소요시간 안내를 제공한다."]},
+      {"id": "S2", "publisher": "Ramsar Sites Information Service", "type": "public_environment_report", "url": "https://rsis.ramsar.org/RISapp/files/28411793/documents/KR1648_mgt1605.pdf?language=es", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["제주도 내륙습지 표에 비치미오름못을 제주시 구좌읍 송당리 산275로, 주변 환경을 목장으로 기록한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing_and_anonymized_reviews", "url": "https://place.map.kakao.com/8379747", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 패킷의 장소명은 비치미오름이다.", "익명화된 공개 후기에는 사유지·철조망·차단 입구·미끄러운 구간 관련 주장이 있으나 최신 공식 출입 상태는 확인하지 못했다.", "평점·후기 수·작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 관광 안내가 비치미오름을 오름으로 소개하고 정상까지의 오르막 보행을 안내한다.", "rule_ids": ["PLACE-TYPE-MOUNTAIN-DIRECT"], "source_ids": ["S1"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "archetype_prior", "rationale": "확인된 대표 경험은 내륙 오름 보행과 정상 경관이며 바다·해안 체험은 확인되지 않았다.", "rule_ids": ["THEME-NONCORE-PRIOR"], "source_ids": ["S1"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상까지 오르막을 걷는 야외 등반이 안내된 대표 경험이므로 참여형 신체 활동 비중을 높게 추정한다.", "rule_ids": ["ACTIVITY-HIKING-INFERENCE"], "source_ids": ["S1"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인한 자료는 지형·경관·등반 안내 중심이며 문화·역사 관람 프로그램은 확인하지 못했다.", "rule_ids": ["THEME-UNKNOWN-FALLBACK"], "source_ids": ["S1"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "자연 오름 외 놀이·동물·수족관·워터파크형 시설은 확인하지 못했다.", "rule_ids": ["THEME-UNKNOWN-FALLBACK"], "source_ids": ["S1"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용 시설은 확인하지 못했다.", "rule_ids": ["THEME-UNKNOWN-FALLBACK"], "source_ids": ["S1"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험이나 상설 판매 공간은 확인하지 못했다.", "rule_ids": ["THEME-UNKNOWN-FALLBACK"], "source_ids": ["S1"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "기간성 축제·공연 운영은 확인하지 못했다.", "rule_ids": ["THEME-UNKNOWN-FALLBACK"], "source_ids": ["S1"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 정상·오르막·등산로 경험은 야외이며 실내 방문 공간은 확인되지 않았다.", "rule_ids": ["ENVIRONMENT-OUTDOOR-INFERENCE"], "source_ids": ["S1"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 오르막·비정비 등산로 경험이므로 비·바람 등 기상 조건이 방문에 크게 영향을 줄 것으로 추정한다.", "rule_ids": ["ENVIRONMENT-OUTDOOR-WEATHER"], "source_ids": ["S1", "S3"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "자연 경관 감상은 휴식 경험이 될 수 있으나, 오르막·접근 불확실성이 함께 있어 중립으로 둔다.", "rule_ids": ["STYLE-BALANCED-INFERENCE"], "source_ids": ["S1", "S3"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "오르막, 비정비 등산로 및 노약자 부담 안내가 있어 보행 부담이 낮다고 보기 어렵다.", "rule_ids": ["STYLE-PHYSICAL-EASE-HIKING"], "source_ids": ["S1"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상 왕복과 분화구 둘레길에 서로 다른 소요시간 안내가 있으나 실제 개방·접근 상태가 불확실하다.", "rule_ids": ["STYLE-DURATION-MODERATE"], "source_ids": ["S1", "S3"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공개 관광 안내가 정상에서 여러 오름과 한라산까지 펼쳐지는 경관 감상을 직접 소개한다.", "rule_ids": ["STYLE-SCENIC-DIRECT"], "source_ids": ["S1"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "말굽형 화구와 인근 능선 연결이라는 설명은 있으나 비교 가능한 고유성 평가는 제한적이다.", "rule_ids": ["STYLE-DISTINCTIVENESS-MODERATE"], "source_ids": ["S1"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 오름 지형과 송당리 목장 주변 환경이 확인되어 제주 자연·지역 경관과의 연결성이 높다고 추정한다.", "rule_ids": ["STYLE-LOCAL-NATURE"], "source_ids": ["S1", "S2"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공개 관광 안내는 있으나 제주를 대표하는 상징 명소라는 공적 평가를 확인하지 못했다.", "rule_ids": ["STYLE-LANDMARK-UNKNOWN"], "source_ids": ["S1"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상 경관은 시각적 기록 가치를 시사하지만 사진 촬영을 핵심 활동으로 확인한 직접 근거는 없다.", "rule_ids": ["STYLE-PHOTO-SCENIC-INFERENCE"], "source_ids": ["S1"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "자연 보행형 장소이나 실제 출입·길 상태가 불확실해 단독 방문 적합도를 확정할 수 없다.", "rule_ids": ["COMPANION-ACCESS-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 감상은 동반 방문에 활용될 수 있으나 접근성 불확실성 때문에 중립 fallback으로 둔다.", "rule_ids": ["COMPANION-ACCESS-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "등반·경관 활동이 가능하나 출입 허용과 길 상태를 확인하지 못해 중립 fallback으로 둔다.", "rule_ids": ["COMPANION-ACCESS-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "kids": {"value": 0.25, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "오르막·비정비 등산로·접근 불확실성으로 어린이 동반의 일반적 이용 편의는 낮게 추정한다.", "rule_ids": ["COMPANION-KIDS-TRAIL"], "source_ids": ["S1", "S3"]},
+    "parents": {"value": 0.25, "confidence": 0.7, "status": "needs_review", "inference_level": "researched_inference", "rationale": "노약자에게 오르막이 힘들 수 있다는 안내와 비정비 등산로 때문에 보행 부담이 큰 동행에는 낮게 추정한다.", "rule_ids": ["COMPANION-PARENTS-TRAIL"], "source_ids": ["S1"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "2": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "3": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "4": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "5": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "6": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "7": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "8": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "9": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "10": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "11": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]},
+    "12": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 오름이지만 월별 개방·기상·통행 상태를 확인하지 못해 중립 fallback이다.", "rule_ids": ["MONTH-OUTDOOR-UNKNOWN"], "source_ids": ["S1", "S3"]}
+  },
+  "hard_constraints": [
+    {"kind": "access_and_landowner_permission_unverified", "applies_to": "recommendation_candidate", "condition": "공개 관광 안내의 상시개방 표기와 Kakao 공개 후기의 사유지·철조망·차단 입구 주장이 충돌해, 현재 합법적 접근 경로와 소유자 통과 허용 여부를 확인하지 못함", "status": "needs_review", "action": "추천·일정에 포함하기 전 공식 관리 주체 또는 토지 소유자 기준의 최신 개방 여부·합법 접근 경로를 확인한다. 확인 전에는 일반 추천에서 제외하거나 명시적 접근 확인 조건으로만 제시한다.", "source_ids": ["S1", "S3"], "checked_at": "2026-08-24T00:00:00+09:00"},
+    {"kind": "trail_safety_and_facility_limits", "applies_to": "visit_planning", "condition": "오르막과 비정비 등산로, 화장실 없음이 안내되며 공개 후기에는 미끄러운 구간 주장이 있음", "status": "needs_review", "action": "방문 전 기상·현장 통행 상태를 확인하고, 보행 약자·어린이 동반은 대체 장소를 우선 검토한다.", "source_ids": ["S1", "S3"], "checked_at": "2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

@@ -1,0 +1,661 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:760494494",
+  "place_id": "760494494",
+  "name": "팔자좋아길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.55,
+    "rationale": "공개 Kakao 장소 레코드의 명칭과 공개 자료의 ‘팔자좋아길(상덕천둘레길)’ 언급이 일치하며, 해당 자료는 북오름과 연결된 산책로로 설명한다. 다만 공식 관리주체·정확한 전 구간·현재 통행 가능 여부는 확인되지 않아 낮은 신뢰도의 검수 대상 적격 후보로만 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘팔자좋아길’은 공개 Kakao 지도에 등록된 장소이며, 공개 숙소 안내는 이를 ‘팔자좋아길(상덕천둘레길)’로 부르며 북오름과 맞닿은 산책로라고 설명한다. 공개 방문 후기는 안내 부족, 사유지 구간 및 도로변 보행 위험을 주장하지만 2021년 작성이라 현재 상태는 미확인이다.",
+    "typical_visit": "확인 가능한 설명상 도보 산책·둘레길 이용이 대표 경험으로 보인다. 길의 공식 노선, 안내·안전시설, 난이도, 주차와 화장실은 확인하지 못했다.",
+    "experience_scope": "독립적인 야외 산책로 후보이나, 공개 신뢰 출처에서 최신 통행 가능 구간과 관리 정보를 확인하지 못했다. Kakao 평점과 리뷰 수는 어떠한 라벨값 산정에도 사용하지 않았고, 공개 후기의 작성자 식별 정보는 출력하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 레코드는 place_id 760494494와 장소명 ‘팔자좋아길’을 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 숙소 안내는 ‘팔자좋아길(상덕천둘레길)’을 북오름과 맞닿은 건강길·산책로로 설명한다.",
+        "source_ids": [
+          "S3"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "공개 Kakao 방문 후기에는 안내 부족, 사유지로 인한 우회 문제와 도로변 보행 위험 주장이 있다. 작성일은 2021-05-05로 현재 상태를 확정하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "공식 관리기관, 정확한 시작·종점과 최신 개방·통행 가능 구간을 확인하지 못했다.",
+      "등급, 소요 시간, 경사·노면, 화장실·주차, 유아·고령자 접근성과 안전시설을 확인하지 못했다.",
+      "사유지·도로변 관련 공개 후기의 내용이 현재도 유효한지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/760494494",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "입력 패킷의 공개 Kakao 장소 레코드명은 ‘팔자좋아길’이다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/760494494",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "공개 후기 내용은 안내 부족, 사유지 구간 및 도로변 보행 위험을 주장한다.",
+          "후기 내용은 보조 근거이며 작성자 식별 정보와 평점은 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "리브애니웨어",
+        "type": "public_listing",
+        "url": "https://m.liveanywhere.me/ko/accommodations/45377",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "공개 숙소 소개는 ‘팔자좋아길(상덕천둘레길)’을 북오름과 맞닿은 산책로로 언급한다.",
+          "이는 숙소 사업자의 주변 안내로, 공식 탐방로 관리 정보는 아니다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "북오름과의 연결 언급만으로 산·오름 경관이 핵심 경험인지 확정할 수 없어 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해안·바다 요소를 확인한 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 설명의 산책로·둘레길 언급으로 도보 활동 가능성은 보이나 실제 코스 범위와 이용 여건이 불명확하다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "역사·문화 자원의 존재를 확인한 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 여부를 확인할 정보가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용 시설이라는 근거가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 기능을 확인할 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "기간성 축제·행사와의 연결을 확인할 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "산책로라는 공개 설명으로 야외 이용일 가능성은 높지만, 전체 구간·부대 실내 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 산책로로 설명되어 날씨 영향 가능성은 높으나 공식 노선·차양·대피 여건은 미확인이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산책로라는 설명만으로 실제 휴식감과 혼잡도를 확인할 수 없어 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 후기에 안내 부족과 도로변 보행 위험 주장이 있어 이용 편의가 낮을 수 있으나 현재 상태·난이도는 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공식 거리·소요 시간·진입 지점이 확인되지 않아 체류시간 조절 가능성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "북오름 인접 언급 외에 경관 자체의 가치를 직접 확인한 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "상덕천둘레길이라는 별칭 외에 고유한 코스 구성·해설을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 내 위치로 보이나 지역 자연·문화·생활과의 구체적 연결을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표성이나 공인 명소 지위를 확인한 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치나 시각 요소를 직접 확인한 출처가 없어 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현재 통행·안내·안전 정보가 부족해 혼자 방문 적합성을 중립값으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현재 통행·안내·안전 정보가 부족해 커플 방문 적합성을 중립값으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "현재 통행·안내·안전 정보가 부족해 친구 동행 적합성을 중립값으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 후기의 안내 부족·도로변 보행 위험 주장이 있어 아동 동행에는 주의가 필요하나 현재 상태는 미확인이다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.35,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 후기의 안내 부족·도로변 보행 위험 주장과 난이도 미확인으로 부모·고령 동행 편의는 낮을 수 있다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 1월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 2월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 3월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 4월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 5월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 6월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 7월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 8월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 9월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 10월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 11월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·기상 대응 정보가 없어 12월 적합성을 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "REQ-009",
+        "REQ-011"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "route_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공식 관리 정보와 최신 통행 가능 구간이 확인되지 않았고, 2021년 공개 후기에는 사유지 구간·안내 부족·도로변 보행 위험 주장이 있다.",
+      "status": "needs_review",
+      "action": "추천 전 공식 관리기관 또는 현장 최신 정보로 노선, 사유지 회피, 도로 보행 구간 및 안전을 확인한다. 확인 전에는 아동·고령자·야간 방문에 사용하지 않는다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24T12:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

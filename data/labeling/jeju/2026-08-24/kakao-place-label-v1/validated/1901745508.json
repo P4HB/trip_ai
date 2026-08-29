@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1901745508",
+  "place_id": "1901745508",
+  "name": "선재동자탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘선재동자탑’과 place_id만 제공하며 주소·좌표·업종·소개·공개 후기가 없다. 공개 웹 검색에서도 이 레코드의 정확한 위치와 어떤 사찰·시설에 속하는지 신뢰 가능한 출처로 확인하지 못했다. 동명 불상 또는 탑의 일반적 성격만으로 제주 내 독립 방문지 여부를 추정할 수 없으므로 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력 레코드에서 확인 가능한 정보는 ‘선재동자탑’이라는 명칭과 place_id뿐이다. 공개 검색으로 이 표식의 제주 내 정확한 소재지, 관리 주체 및 독립 방문지 여부를 교차 확인하지 못했다.",
+    "typical_visit": "선재동자라는 불교 도상 명칭만으로는 이 Kakao 표식이 탑·석상·사찰 부속 조형물 중 무엇인지, 관람 가능한지 또는 어떤 방문 경험을 제공하는지 판정할 수 없다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 소개, 운영 안내 및 공개 후기 근거가 없다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았고, 장소 신원이 확정되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘선재동자탑’, place_id를 ‘1901745508’로 제공하며, 주소·좌표·업종·소개와 공개 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 웹 검색으로 ‘선재동자탑’이라는 명칭과 이 Kakao place_id에 대응하는 제주 내 위치·관리 주체·독립 방문지 정보를 신뢰 가능한 출처에서 확인하지 못했다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 실제 시설 유형과 관리 주체를 확인하지 못했다.",
+      "사찰 또는 다른 시설의 부속 조형물인지, 독립적으로 방문 가능한 여행지인지 확인하지 못했다.",
+      "관람 가능 여부, 운영·개방 상태, 접근성, 안전·편의시설과 계절별 방문 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1901745508",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘선재동자탑’이고 place_id는 ‘1901745508’이다.",
+          "입력 패킷에는 주소, 좌표, 업종, 소개 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%EC%84%A0%EC%9E%AC%EB%8F%99%EC%9E%90%ED%83%91",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "검색 결과에서 이 Kakao 레코드와 일치하는 제주 소재지·관리 주체·시설 설명을 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 위치·업종·설명·운영 정보가 없어 선재동자탑의 실제 시설 유형, 접근 가능 여부와 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 지도·관광 자료로 정확한 주소와 관리 주체를 먼저 교차 확인한다. 사찰 부속 조형물로 확인되면 독립 추천 후보가 아닌 상위 사찰·관광지의 부속 시설인지 검토하고, 확인 전에는 추천용 35축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

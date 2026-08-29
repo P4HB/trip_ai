@@ -1,0 +1,664 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "18742637",
+  "canonical_id": "kakao:18742637",
+  "name": "삼의봉",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공공 오름 기본계획은 세미오름의 별칭으로 삼의봉·삼의악을 명시하고, 공개 장소 정보도 같은 아라1동 산24-2의 오름으로 식별한다. 따라서 입력명은 독립적으로 방문 가능한 제주 오름을 가리킨다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 기본계획과 공개 장소 정보에서 삼의봉은 세미오름·삼의악의 별칭을 가진 제주 오름으로 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-OREUM-DIRECT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 장소는 아라1동의 오름이며 해안·해양 활동이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "입력 증거는 정상까지 오르는 길과 정상 이후 트레킹 코스를 직접 설명하므로 등산·보행이 대표 경험이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-WALKING-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름의 여러 지명 별칭은 확인되지만 역사·문화 해설이나 전시가 핵심 방문 경험이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조사된 정보는 자연 오름과 등산 동선을 가리키며 테마파크형 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장소는 산·고개 및 오름으로 분류되며 시장 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 자연 탐방지로 확인될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "오름 정상과 트레킹 코스를 이용하는 야외 자연 탐방지로 확인된다. 실내 방문 공간은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 오름 보행과 정상 조망이므로 비·바람·더위·추위 영향을 크게 받을 수 있다. 현행 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 속 오름 탐방이라는 점은 확인되나 휴식 공간·느린 체류를 직접 권장하는 정보는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-NATURE-REST-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "입력 증거는 진입로가 가파르다고 설명한다. 전체 거리·계단·무장애 동선은 확인되지 않아 낮은 잠정값이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-TRAIL-WALKING-BURDEN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정상과 트레킹 코스는 확인되지만 표준 체류시간, 단축 동선과 되돌아보기 편의는 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "입력 증거는 정상에서 한라산, 제주시내, 공항, 제주항을 조망할 수 있고 경치가 좋다고 직접 설명한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-VIEWPOINT-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "세미오름·삼의악 등 여러 별칭과 제주시 조망은 확인되지만, 다른 오름과 구별되는 공식 고유 경험은 충분히 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-IDENTITY-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 아라1동에 위치한 제주 오름이며, 제주 지명과 자연 지형의 맥락에 직접 연결된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-NATURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주시와 한라산을 조망하는 지역 자연 지점으로 확인되나 제주 전체의 대표 명소·공식 상징이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-REGIONAL-VIEWPOINT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산과 제주시내·공항·제주항을 조망하는 정상 풍경이 직접 언급되어 시각적 기록 가치가 확인된다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-VIEWPOINT-DIRECT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 편의·체험에 대한 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "가파른 진입로가 언급되며 아동 안전시설·보호자 동반 기준이 확인되지 않아 낮은 잠정값이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "COMPANION-TRAIL-SLOPE-CAUTION"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "가파른 진입로가 언급되며 경사·계단·휴식 시설·무장애 접근성 정보가 확인되지 않아 낮은 잠정값이다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "COMPANION-MOBILITY-CAUTION"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_oreum_access_and_weather_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "삼의봉은 야외 오름 탐방지이며 입력 증거에는 지도상 표식과 다른 실제 입구, 사유지 진입 주의, 가파른 진입로가 언급된다. 현재 개방 여부, 지정 진입로, 기상·산불 시 통제, 경사·계단과 편의시설은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 최신 안내 또는 관할 기관에 실제 진입로와 사유지 출입 제한, 개방·통제, 날씨에 따른 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명 ‘삼의봉’은 제주특별자치도의 세미오름을 가리키는 별칭이며 삼의악·삼의양악 등과 함께 공공 기본계획에 수록된다. 공개 장소 정보의 주소도 제주시 아라1동 산24-2로 일치한다.",
+    "facts": [
+      {
+        "text": "제주특별자치도 오름 기본계획은 세미오름이 제주시 아라1동 산24-2에 위치하며 의악·삼의양악·사모악·삼의악·삼의봉 등의 별칭이 있다고 수록한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공개 관광 장소 정보는 삼의봉의 주소를 제주특별자치도 제주시 아라1동 산24-2로 안내하고, 장소를 제주 제주시의 방문지로 분류한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "입력에 제공된 익명화된 카카오 공개 리뷰 증거는 정상에서 한라산·제주시내·공항·제주항을 조망할 수 있으며, 진입로가 가파르고 실제 입구와 사유지 주의가 필요하다고 설명한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "공식 관리 주체와 현행 개방 시간",
+      "공식 지정 탐방로, 실제 입구 및 주차 정보",
+      "경사·계단·무장애 접근성, 화장실과 휴식 시설",
+      "우천·강풍·산불 위험 시 통제 기준 및 월별 탐방 적기"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도",
+        "type": "public_plan",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781545913771_attach_1.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "‘오름 기본계획 2022’는 세미오름의 위치와 삼의봉·삼의악 등 별칭을 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "트리플",
+        "type": "public_travel_information",
+        "url": "https://triple.guide/attractions/03f65f73-0e40-4488-ac12-cee571913bf2",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "삼의봉의 주소를 제주특별자치도 제주시 아라1동 산24-2로 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "카카오맵 공개 리뷰 증거 (입력 제공)",
+        "type": "user_generated_content",
+        "url": "https://place.map.kakao.com/18742637",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "정상 조망, 가파른 진입로, 실제 입구 및 사유지 주의에 관한 공개 리뷰 증거가 입력에 제공됐다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

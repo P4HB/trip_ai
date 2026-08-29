@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:14666420",
+  "place_id": "14666420",
+  "name": "제주녹색농원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "Kakao 장소 페이지는 입력 표식 ‘제주녹색농원’을 제주시 칠오름길 31로 표시한다. 같은 명칭·주소의 공개 유통전문판매업 현황은 이를 유통전문판매업 사업장으로 열거하며, 제품 비교 페이지도 제주 영귤차 제조사로만 확인한다. 일반 여행객을 위한 농장 관람·체험·판매장 또는 독립 방문 프로그램은 확인하지 못했으므로, 사업장·제조사 정보를 관광 방문 경험으로 전이하지 않고 추천용 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "business_premises_not_verified_as_public_visit_experience",
+      "applies_to": "recommendation_candidate",
+      "condition": "표식은 유통전문판매업 사업장 및 영귤차 제조사 맥락으로는 확인되지만, 일반 방문객의 농장·매장 출입 허용, 체험·관람 제공, 예약, 주차, 보행 안전 및 최신 영업 상태는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 운영 주체의 최신 공식 안내로 일반 고객 대상 독립 판매·체험·관람 서비스와 이용 조건이 확인될 때만 장소 범위 적격성을 별도 재검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "identity_summary": "제주녹색농원은 Kakao 지도에서 제주시 칠오름길 31에 표시되는 사업장이다. 공개 유통전문판매업 현황은 같은 명칭·주소를 유통전문판매업으로, 제품 비교 자료는 제주 영귤차의 제조사로 제시한다.",
+    "typical_visit": "검증한 공개 자료에서 확인되는 활동은 식품 유통·제조 사업이며, 일반 여행객용 농장 관람·수확·체험 또는 상시 판매장 방문 경험은 확인되지 않았다.",
+    "experience_scope": "사업장과 제품 제조사라는 사실은 확인했으나, 관광·체험 방문지로서의 공개 운영 근거는 없다. 농원이라는 명칭이나 제품 제조 사실만으로 자연 경관·체험·동행자·계절 적합도를 추정하지 않는다. Kakao 평점과 리뷰 수는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 장소 페이지는 place_id 14666420의 장소명을 ‘제주녹색농원’, 주소를 제주특별자치도 제주시 칠오름길 31로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 유통전문판매업 현황 색인은 제주녹색농원(전화번호 064-758-8884)을 제주특별자치도 제주시 칠오름길 31의 유통전문판매업체로 열거한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "다나와 제품 비교 페이지는 ‘제주녹색농원 제주 영귤차세트’를 차 세트로, 제조사를 제주녹색농원으로 표시한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 사업장·농장·판매장 출입 허용 여부와 사전 예약 필요성을 확인하지 못했다.",
+      "관람·수확·시음·교육 등 여행객용 체험 또는 공개 프로그램의 제공 여부를 확인하지 못했다.",
+      "현재 영업 상태, 판매 가능 품목, 운영 시간, 주차·화장실·무장애 접근성 및 현장 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/14666420",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 제주녹색농원이다.",
+          "공개 페이지의 설명은 제주특별자치도 제주시 칠오름길 31이다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 유통전문판매업 현황 색인",
+        "type": "public_business_registry_index",
+        "url": "https://mbolt.tistory.com/1482",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주녹색농원을 유통전문판매업 현황에 열거한다.",
+          "제주시 칠오름길 31과 전화번호 064-758-8884를 함께 제시한다.",
+          "이 색인은 일반 방문객 대상 관광·체험 프로그램을 설명하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "다나와",
+        "type": "public_product_catalog",
+        "url": "https://prod.danawa.com/info/?pcode=4401749",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주녹색농원 제주 영귤차세트를 차 세트로 표시한다.",
+          "제조사를 제주녹색농원으로 표시한다.",
+          "제품 정보는 사업장 관람·체험 또는 현장 판매장 운영을 입증하지 않는다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

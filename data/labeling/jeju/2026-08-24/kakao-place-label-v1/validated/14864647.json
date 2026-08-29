@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:14864647",
+  "place_id": "14864647",
+  "name": "수덕도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 보도는 수덕도를 제주시 추자면 신양리에서 약 3.5km 떨어진 무인도이자 신양2리새마을회 소유 사유지로 설명한다. 추자 4경 ‘수덕낙안’ 및 하추자도에서 조망하는 사자섬이라는 경관 정체성은 확인되지만, 수덕도 자체에 일반 여행객이 독립적으로 입도·관람할 수 있는 공식 개방, 교통편, 안전 관리 또는 체험 운영은 확인하지 못했다. 따라서 조망 대상인 비접근 무인도 표식을 추천용 독립 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "수덕도는 제주시 추자면 신양리 남쪽 해상에 있는 무인도로, 사자를 닮은 모습 때문에 사자섬으로도 불린다.",
+    "typical_visit": "공개 여행 기록은 하추자도 대왕산·올레길 등 육상 동선에서 수덕도를 조망하는 경험을 소개한다. 수덕도 자체의 일반 방문·입도 프로그램은 확인되지 않았다.",
+    "experience_scope": "수덕도는 해상 경관·조망 대상으로는 식별되지만, 일반 여행객이 합법적이고 안전하게 독립 방문할 수 있는 현행 공식 개방·운항·동선 정보가 확인되지 않았다. 이 Kakao 표식 자체에는 완전 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주일보는 수덕도를 제주시 추자면 신양리에서 약 3.5km 떨어진 남쪽 끝의 무인도, ‘사자섬’으로 소개하며 신양2리새마을회 소유 사유지라고 보도했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주투데이는 하추자도 앞바다의 무인도 수덕도를 사자섬으로 소개하고, 날씨가 좋을 때 하추자도 육상에서 수덕도 너머 제주도를 조망할 수 있다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 수덕도 상륙 허가·예약 절차, 정기 또는 허가된 운항편과 현행 출입 규정은 확인하지 못했다.",
+      "섬 내부의 보행 동선, 난간·표지, 화장실, 통신, 응급 대응 및 무장애 접근성은 확인하지 못했다.",
+      "기상·파고에 따른 입도 가능 여부와 현장 안전 통제는 변동 정보이며 최신 관리 주체 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주일보",
+        "type": "local_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2118827",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "수덕도를 제주시 추자면 신양리에서 약 3.5km 떨어진 무인도이자 사자섬으로 소개한다.",
+          "수덕도가 신양2리새마을회 소유 사유지라고 보도한다.",
+          "수덕낙안을 추자 4경으로 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주투데이",
+        "type": "local_news",
+        "url": "https://www.ijejutoday.com/news/articleView.html?idxno=300508",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "하추자도 앞바다의 수덕도를 무인도 및 사자섬으로 소개한다.",
+          "날씨가 좋을 때 하추자도에서 수덕도 너머 제주도를 볼 수 있다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/14864647",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘수덕도’다.",
+          "평점·후기 수 및 공개 후기의 평가는 라벨값 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "uninhabited_private_island_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "수덕도는 무인도·사유지로 확인됐으나 일반 여행객의 현행 입도 허가, 운항, 안전 관리 및 방문 동선은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 주체의 일반 방문 허용 및 안전한 공식 입도 안내가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

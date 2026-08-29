@@ -1,0 +1,90 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11192360",
+  "canonical_id": "kakao:11192360",
+  "name": "우도저수지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "입력명은 제주시 우도면 연평리의 저수지로 공개 행정·조사 자료에서 확인된다. 다만 확인된 자료는 농업·용수 시설 또는 시설 활용을 검토한 계획을 설명할 뿐, 현재 독립 관광·체험 장소로 운영되거나 일반 방문객을 위한 관람 동선이 있다는 근거는 제시하지 않는다. 따라서 현 시점에는 추천용 독립 방문 장소 범위 밖의 기반시설로 보수적으로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INFRASTRUCTURE-OUT-OF-SCOPE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "public_access_and_current_use_unknown",
+      "applies_to": "all_visitors",
+      "condition": "우도저수지는 저수지·용수 시설로 확인되지만, 현재 일반인의 출입 가능 여부, 안전펜스·수변 접근 제한, 관람 동선, 운영 주체 및 관광시설 전환 여부는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "관광 추천 후보로 사용하려면 우도면 또는 시설 관리 주체의 최신 출입·안전·관광 운영 안내를 별도로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘우도저수지’는 제주시 우도면 연평리 382에 있는 저수지라는 공공 조사 자료의 표기와 일치한다.",
+    "facts": [
+      {
+        "text": "람사르협약 정보서비스에 공개된 제주 습지 기본현황 자료는 우도저수지를 제주시 우도면 연평리 382의 ‘저수지’로 수록한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "국회도서관에 공개된 우도면 자원조사·활용방안 자료는 우도저수지와 담수화시설이 과거 용수 공급 시설이었고, 시설 활용 전환을 검토한 계획을 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "저수지의 2026년 현재 용도와 일반인 출입·수변 접근 가능 여부",
+      "관광·휴양 시설 전환 계획의 실제 시행 여부와 현재 운영 주체",
+      "주차, 화장실, 지정 보행로, 난간·안전 통제 및 무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Ramsar Sites Information Service",
+        "type": "public_environmental_document",
+        "url": "https://rsis.ramsar.org/RISapp/files/28411793/documents/KR1648_mgt1605.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "우도저수지를 제주시 우도면 연평리 382 소재 저수지로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_planning_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2012/CLIKC2002270123245059_attach_1.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "우도저수지와 담수화시설의 기존 용수 공급 기능 및 활용 전환 검토 계획을 설명한다.",
+          "이 문서는 2012년 계획 자료이므로 현재 관광 운영이나 출입 가능 여부를 확정하지 않는다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

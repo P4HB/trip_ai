@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 430,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/861687870.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:861687870",
+    "provider": "kakao",
+    "place_id": "861687870",
+    "name": "송당곶자왈",
+    "url": "https://place.map.kakao.com/861687870",
+    "average_rating_5": "3.7",
+    "visitor_review_count": "7",
+    "blog_review_count": "1",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.02.01.",
+      "content": "제주 곶자왈 모습을 잘 느낄 수 있는 곶자왈.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.09.13.",
+      "content": "그냥 송당 곶자왈치면 어딘지 몰라 헤메십니다. 밑에분이 올린 주소 치고 가셔야해요. 그럼 2코스입구예요. 길은 나름 잘 닦아놨는데 중간중간 돌길이 섞여있어서 운동화 필수고 코스자체는 15분?20분 정도라 짧았어요. 가꿔지지 않은 원시림 그 자체였고 다른 곶자왈에 비해 작은 규모입니다! 잠시 들르기는 좋아요.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.08.17.",
+      "content": "혼자는 못와요 무서워요 무서워서 빨리 걸어왔어요 ㅋㅋ 달팽이가 있어요!!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.08.07.",
+      "content": "한여름인데 풍혈 완전 냉장고네요 아래주소로 저수지 옆에 주차하고 2코스나 3코스로 들어가면 좋아요. 2~3코스 출구연결구간은 마지막사진처럼 길이 사라져가니 감안하세요. 송당리 326-1",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.23.",
+      "content": "관리도 나름 잘 되어있고 곶자왈 느낌도 좋았지만, 입구가 헷갈려서 찾는데 고생해서 별점 3개예요 😢 굳이 찾아갈 정도까진 아니고 근처면 가보세요!",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

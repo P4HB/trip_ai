@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 180,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/26980110.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:26980110",
+    "provider": "kakao",
+    "place_id": "26980110",
+    "name": "하가리연꽃마을",
+    "url": "https://place.map.kakao.com/26980110",
+    "average_rating_5": "2.9",
+    "visitor_review_count": "10",
+    "blog_review_count": "9",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.02.11.",
+      "content": "오랫만에 왔는데 이런 사연이. 사진 참고",
+      "tags": ""
+    },
+    {
+      "date": "2021.12.19.",
+      "content": "그저 운전하면서 지나치곤 했지만 이번엔 산책을 해보았어요 너무 평호롭고 좋아요. 근처 주제넘은서점이 오전에만 문을여는 서점이네요 ^^ 담에 오전에 들러봐야겠어요",
+      "tags": ""
+    },
+    {
+      "date": "2024.07.14.",
+      "content": "청거북 방생도 문제지만 핑계대지 말자. 인공섬과 분수대 설치하면서 식생이 다 파괴되었다. 주변 나무 다 베어불고. 굳이 돈들여서 생태 망치는 엉터리 행정. 시공사만 돈 벌었겠지. 지금은 녹조와 악취만 가득하다..ㅉㅉ 참 예뻣던 곳인데.. 몇몇 무지한 사람들이 마을을 망친다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.07.13.",
+      "content": "여기 19년 정도부터 연꽃 없습니다. 처음엔 코로나 때문에 몰리지 말라고 안하나 했는데 작년올해 허탕치고 다른 이유가 있는건가 싶네요. 연꽃으로 이득보는 곳들이랑 협의가 안된건지.. 여튼 왔다가 허탕치는분들 없길 바랍니다.",
+      "tags": ""
+    },
+    {
+      "date": "2021.08.29.",
+      "content": "연꽃이 필 때 가세요 연못을 가로지르는 데크와 정자가 있어 참 좋습니다 옆에 더럭분교도 있어서 사진 찍기 좋아요 두 곳 모두 무료개방이지요",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

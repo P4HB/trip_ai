@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723496",
+  "place_id": "13723496",
+  "name": "광치기중간",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘광치기중간’의 공개 후기들은 광치기와 성산일출봉 조망을 같은 방문 경험으로 설명한다. 제주관광공사 공식 안내의 광치기해변은 성산일출봉과 섭지코지 사이 길목의 해변으로 소개되며, 기존 추천 가능 TourAPI 장소 ‘광치기해변’(2564158) 및 Kakao 장소 13723499와 같은 해변 경험을 가리킨다. 별도 독립 관광지나 시설이라는 근거가 없으므로 중복으로 판정한다.",
+    "duplicate_of": {
+      "canonical_id": "kakao:13723499",
+      "tourapi_contentid": "2564158",
+      "name": "광치기해변"
+    },
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "‘광치기중간’은 광치기해변 내부 또는 인접한 중간 지점을 가리키는 Kakao 표식으로 보인다. 공식 관광 안내와 기존 TourAPI 레코드는 광치기해변을 성산일출봉과 섭지코지 사이의 해변으로 확인한다.",
+    "typical_visit": "광치기해변의 해안 경관과 성산일출봉 조망이 확인되는 방문 경험이다. 이 레코드만의 독립된 시설·관람·체험은 확인되지 않았다.",
+    "experience_scope": "기존 추천 가능 장소 광치기해변과 중복되므로 이 레코드에는 추천용 41축 벡터를 생성하지 않는다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 광치기해변을 성산일출봉에서 섭지코지로 향하는 길목의 해변으로 소개한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "기존 TourAPI 장소 레코드 2564158의 명칭은 광치기해변이며 주소는 서귀포시 성산읍 고성리 224-33이다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 패킷의 비식별 공개 방문 근거는 광치기와 성산일출봉 조망을 언급하지만, ‘광치기중간’만의 별도 관광 경험이나 시설은 제시하지 않는다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식 ‘광치기중간’의 정확한 경계·좌표와 광치기해변 내 세부 위치",
+      "별도 명칭·관리 주체·독립 운영 시설의 존재 여부",
+      "현장 접근·주차·기상 및 조석에 따른 안전·통제의 최신 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018413&menuId=DOM_200000000010960",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": ["광치기해변은 성산일출봉에서 섭지코지로 향하는 길목에 있다.", "광치기해변의 해안·경관·포토 경험을 안내한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 TourAPI 제주 스냅샷",
+        "type": "source_dataset",
+        "url": "data/tourapi/jeju/2026-08-09/jeju_places.jsonl#contentid=2564158",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": ["contentid 2564158의 제목은 광치기해변이다.", "레코드는 서귀포시 성산읍 고성리 224-33과 좌표 126.9246505478, 33.4515393485를 보존한다."]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing_and_sanitized_review_evidence",
+        "url": "https://place.map.kakao.com/13723496",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": ["입력 장소명은 광치기중간이다.", "작성자 정보가 제거된 공개 방문 근거는 광치기 및 성산일출봉 조망을 언급한다.", "평점·리뷰 수는 라벨 근거로 사용하지 않았다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_place_do_not_merge_as_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "광치기중간은 기존 추천 가능 장소 광치기해변과 같은 해변 경관 경험을 가리키며 독립 방문지 근거가 확인되지 않음",
+      "status": "needs_review",
+      "action": "이 표식을 별도 추천 후보로 추가하지 말고, 필요하면 현장 좌표와 관리 주체의 공식 안내로 광치기해변 내 세부 위치만 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

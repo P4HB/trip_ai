@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1315762161",
+  "place_id": "1315762161",
+  "name": "새미동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "한국관광공사 여행기사는 새미동산을 펜션과 카페를 함께 운영하며 수국 정원, 산책로와 데크길을 이용할 수 있는 장소로 안내한다. 입력 Kakao 장소명과 공개 방문 근거의 수국·감귤 체험·펜션 언급도 이 방문 경험과 부합하므로 독립 여행 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "새미동산은 한국관광공사가 소개한 제주 수국 정원 방문지로, 카페와 펜션을 함께 운영하는 장소다.",
+    "typical_visit": "수국 정원과 펜션 뒤 산책로·데크길을 걷고, 마련된 테이블과 의자에서 꽃 경관을 감상하며 카페를 이용하는 야외 중심 방문이다.",
+    "experience_scope": "공식 여행기사는 2025년 6월 15일 촬영 기준 수국 정원·산책로·데크길과 카페·펜션 운영을 설명한다. 꽃 개화, 체험 제공, 요금, 영업·휴무, 주차, 노면·무장애 접근성과 동물 체험의 최신 운영 여부는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "한국관광공사 여행기사는 새미동산을 카페와 펜션을 함께 운영하는 수국 명소로 소개하고, 정원의 테이블·의자, 펜션 뒤 산책로와 주변 데크길을 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력 Kakao 공개 방문 근거에는 수국 사진 방문, 감귤 체험과 펜션 운영에 관한 언급이 있으며, 평점·후기 수는 라벨 근거로 사용하지 않았다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "한국관광공사 기사는 2025년 6월 15일 기준으로 새미동산의 수국 모습을 촬영해 소개했다.", "source_ids": ["S1"]}
+    ],
+    "unknowns": [
+      "수국·감귤·동물 체험의 2026년 실제 제공 기간과 이용 조건을 확인하지 못했다.",
+      "최신 영업시간, 휴무일, 입장료, 카페 이용 조건과 펜션 예약 가능 여부를 확인하지 못했다.",
+      "주차, 화장실, 경사·계단·노면, 유모차·휠체어 접근성과 동물 체험 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "한국관광공사 대한민국 구석구석", "type": "official_tourism_article", "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=f5daa981-9af7-4ac8-a82d-98ee5d0ada8d", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["2025년 6월 15일 기준 촬영한 제주 수국 명소로 새미동산을 소개한다.", "새미동산은 펜션과 카페를 함께 운영한다고 설명한다.", "수국 정원에 테이블과 의자가 있고, 펜션 뒤 산책로와 주변 데크길에서 수국과 경관을 감상할 수 있다고 설명한다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 근거", "type": "public_review_evidence", "url": "https://place.map.kakao.com/1315762161", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷의 장소명은 ‘새미동산’이다.", "입력된 공개 방문 근거는 수국 사진 방문, 감귤 체험 및 펜션 운영을 언급한다.", "평점·후기 수와 작성자 정체는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 또는 산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"산책로와 데크길 보행은 확인됐으나 레포츠 또는 참여형 체험이 대표 경험이라는 충분한 근거는 없어 중립값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·예술·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이공원형 시설 또는 상시 동물 체험이 대표 경험이라는 최신 공식 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"한국관광공사 안내가 이 장소가 카페를 함께 운영한다고 직접 설명하므로 카페 이용은 독립 방문 목적의 중요한 부분이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"수국 정원은 확인되지만 특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 수국 정원·산책로·데크길의 야외 감상으로 안내되어 실내 비율은 낮게 추론한다. 카페·펜션 내부 이용 비율은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 수국 정원과 산책로·데크길 감상이므로 강수·바람·더위 등의 영향을 비교적 크게 받는다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 테이블과 의자에 앉아 여유롭게 수국을 감상할 수 있다고 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"정원 산책로와 데크길은 확인됐으나 경사·계단·노면·무장애 접근성 정보가 없어 신체 부담은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"정원·산책로 감상과 카페 이용이 함께 안내되어 짧은 관람과 비교적 느린 체류를 조절할 여지가 있다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 수국 정원, 산책로의 파란 수국과 데크길에서 보는 풍경을 방문 가치로 직접 소개한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"카페·펜션과 결합된 수국 정원, 뒤편 산책로 및 데크길이라는 구성이 공식 안내에서 직접 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 소재 정원이라는 점 외에 제주 지역 생산자·생활·문화와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 해당 지역을 대표하는 상징 명소라는 공적 지정 또는 비교 근거를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 데크길에서 펜션을 배경으로 사진을 찍기 좋다고 직접 설명하고, 입력 공개 방문 근거도 수국 사진 방문을 언급한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"혼자 정원·산책로를 걷고 앉아 꽃을 감상하는 경험은 가능하다고 보이나 최신 안전·동선 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"수국 정원 감상과 로맨틱한 사진 촬영 공간이라는 공식 설명을 근거로 커플 적합도를 비교적 높게 추론한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"함께 정원과 카페를 이용할 수 있으나 단체 수용성·최신 이용 조건이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 동물 체험의 최신 제공 여부, 안전시설·노면·화장실 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·계단·휴식시설의 전체 범위와 무장애 접근성 정보가 부족해 부모 동반 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정원 중심 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정원 중심 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 개화·운영 정보가 없어 야외 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 개화·운영 정보가 없어 야외 방문의 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 해당 연도 개화·운영 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"한국관광공사 기사가 2025년 6월 15일 기준 새미동산 수국 모습을 직접 소개해 수국 감상 경험의 근거가 있다. 해당 연도 상태는 재확인이 필요하다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 해당 연도 개화·운영 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정원 중심 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 계절별 정원 상태와 운영 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 계절별 정원 상태와 운영 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"공식 확인된 계절별 정원 상태와 운영 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 정원 중심 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"seasonal_and_operational_status_unknown","applies_to":"all_visitors","condition":"수국 소개는 2025년 6월 15일 촬영 기준이며 2026년 꽃 개화, 감귤·동물 체험, 영업·휴무, 요금과 예약 가능 여부는 확인되지 않음","status":"needs_review","action":"방문 전 공식 채널 또는 현장 안내로 목적 계절의 개화 상태, 체험 제공 및 최신 운영 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"},
+    {"kind":"accessibility_and_safety_unknown","applies_to":"kids_and_mobility_limited_visitors","condition":"산책로·데크길은 확인됐으나 주차, 화장실, 경사·계단·노면, 유모차·휠체어 접근성과 동물 체험 안전 조건은 확인되지 않음","status":"needs_review","action":"어린이·고령자·이동약자 동반 전 최신 접근성 및 안전 안내를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

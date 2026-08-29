@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1306740757",
+  "canonical_id": "kakao:1306740757",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.95,
+    "source_ids": ["src_jeju43", "src_yna"],
+    "rule_ids": ["eligibility.public_historic_site"],
+    "rationale": "제주4·3평화재단은 웃인다라를 4·3 초토화 뒤 재건되지 않은 잃어버린 마을로 설명하고, 연합뉴스는 아라동 4·3길의 탐방 지점으로 확인한다."
+  },
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "src_jeju43",
+        "url": "https://jeju43peace.or.kr/kor/sub01_06_01_09.do",
+        "publisher": "제주4·3평화재단",
+        "checked_at": "2026-08-25",
+        "facts": ["웃인다는 아라1구의 자연마을이었고 1948년 11월 14일 전소됐다.", "주민들이 인다마을에 정착하면서 웃인다는 잃어버린 마을이 됐다."]
+      },
+      {
+        "id": "src_yna",
+        "url": "https://www.yna.co.kr/view/AKR20221213097200056",
+        "publisher": "연합뉴스",
+        "checked_at": "2026-08-25",
+        "facts": ["아라동 4·3길 1코스는 웃인다라를 경유한다.", "아라동 4·3길은 4·3 유적지와 마을명소를 탐방하는 17.3km 도보 길이다."]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_mountain_evidence"],"rationale":"산·오름이 핵심이라는 공개 근거를 확인하지 못했다."},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_ocean_evidence"],"rationale":"해안·해양 경험이 핵심이라는 공개 근거를 확인하지 못했다."},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["theme.walking_route_participation"],"rationale":"4·3 도보 길의 경유지이므로 걷기 참여가 가능하나, 장소 자체의 체험 운영은 확인되지 않았다."},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43","src_yna"],"rule_ids":["theme.historic_memory_site"],"rationale":"4·3으로 사라진 마을의 역사와 기억이 이 장소의 확인된 핵심이다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_theme_park_evidence"],"rationale":"테마파크형 시설이라는 공개 근거를 확인하지 못했다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_cafe_evidence"],"rationale":"카페·음료 이용이 목적이라는 공개 근거를 확인하지 못했다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_market_evidence"],"rationale":"시장 방문 경험이라는 공개 근거를 확인하지 못했다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["theme.no_festival_evidence"],"rationale":"기간성 축제가 장소의 핵심이라는 공개 근거를 확인하지 못했다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_yna"],"rule_ids":["environment.outdoor_walking_route"],"rationale":"공개 설명상 4·3 도보 길의 야외 경유 역사 지점이며 실내 대표 경험은 확인되지 않는다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["environment.outdoor_route_weather"],"rationale":"야외 도보 길의 경유지이므로 비·강풍·폭염은 방문 경험에 크게 영향을 줄 수 있다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_jeju43"],"rule_ids":["style.historic_memorial_not_rest_focus"],"rationale":"역사 기억 장소로서의 의미는 확인되나 휴식이 주된 방문 가치는 아니다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["style.walking_route_moderate_ease"],"rationale":"도보 탐방 경유지이나 현장 경사·노면·접근성 정보는 확인되지 않아 중간값으로 둔다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["style.route_stop_flexible_duration"],"rationale":"도보 길의 한 지점이라 짧게 경유하거나 주변 역사 지점과 함께 탐방할 수 있으나 체류 정보는 미확인이다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["style.no_scenic_evidence"],"rationale":"경관 감상이 핵심이라는 공개 근거를 확인하지 못했다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43"],"rule_ids":["style.lost_village_history"],"rationale":"4·3 초토화 이후 재건되지 않아 잃어버린 마을이 된 고유한 역사적 맥락이 직접 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43"],"rule_ids":["style.jeju_43_local_history"],"rationale":"아라동의 마을사와 제주4·3이라는 제주 지역사의 직접적인 현장이다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna","src_jeju43"],"rule_ids":["style.official_route_stop"],"rationale":"공식 4·3길의 역사 지점이지만 제주 전체를 대표하는 상징 명소라는 근거는 제한적이다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["style.no_photo_evidence"],"rationale":"사진 촬영 가치가 직접 확인되는 공개 근거를 찾지 못했다."}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["companion.self_guided_route"],"rationale":"도보 길의 역사 지점으로 개인 탐방에 적합할 수 있으나 안전·접근성 정보는 미확인이다."},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["companion.shared_historic_walk"],"rationale":"함께 걷는 역사 탐방은 가능하나 로맨틱·휴식형 목적지 근거는 없다."},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["companion.shared_historic_walk"],"rationale":"일행과의 역사 도보 탐방은 가능하나 단체 편의시설 정보는 확인되지 않았다."},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_jeju43"],"rule_ids":["companion.historic_content_context_needed"],"rationale":"역사 교육 맥락은 있으나 4·3의 무거운 내용과 아동 적합성·시설 정보가 미확인이다."},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_yna"],"rule_ids":["companion.accessibility_unknown"],"rationale":"역사 탐방 수요는 가능하나 야외 도보와 현장 접근성 정보가 부족하다."}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_winter_caution"],"rationale":"야외 방문이므로 겨울 기상 영향 가능성을 반영한 보수적 기본값이다."},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_winter_caution"],"rationale":"야외 방문이므로 겨울 기상 영향 가능성을 반영한 보수적 기본값이다."},
+    "3": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "4": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "5": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_rain_caution"],"rationale":"야외 도보 경유지에 적용한 강수 영향 가능성의 보수적 기본값이다."},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_heat_rain_caution"],"rationale":"야외 도보 경유지에 적용한 더위·강수 영향 가능성의 보수적 기본값이다."},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_heat_rain_caution"],"rationale":"야외 도보 경유지에 적용한 더위·강수 영향 가능성의 보수적 기본값이다."},
+    "9": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "10": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "11": {"state":"numeric","value":0.75,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_mild_season"],"rationale":"야외 도보 경유지에 적용한 계절성 기본값이며 현장 운영 정보는 미확인이다."},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["month.outdoor_winter_caution"],"rationale":"야외 방문이므로 겨울 기상 영향 가능성을 반영한 보수적 기본값이다."}
+  },
+  "hard_constraints": [
+    {"type":"accessibility_unknown","source_ids":["src_yna"],"rule_ids":["constraint.no_verified_accessibility"],"rationale":"공개 자료에서 현장 경사, 노면, 화장실, 주차, 휠체어 접근성은 확인되지 않았다."},
+    {"type":"outdoor_weather_exposure","source_ids":["src_yna"],"rule_ids":["constraint.outdoor_route"],"rationale":"4·3 도보 길의 야외 경유지이므로 방문 전 기상과 현장 상태 확인이 필요하다."}
+  ],
+  "review_priority": "medium"
+}

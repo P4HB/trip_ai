@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20082075",
+  "place_id": "20082075",
+  "name": "밖미역섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "밖미역섬은 추자도 해역의 무인 암석섬·갯바위 낚시 지점으로 확인된다. 공개 자료는 360도 해안 영상과 전문 낚시인의 선박 하선·낚시 활동을 보여주지만, 일반 여행객을 위한 독립 관람·상륙 운영, 정기 접근 수단 또는 안전 관리·개방 안내는 확인되지 않았다. 따라서 일반 여행 추천의 독립 방문 장소 벡터 대상이 아닌 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘밖미역섬’은 추자도 해역에 있는 섬·갯바위 지점으로 공개 자료에서 확인된다.",
+    "typical_visit": "확인된 자료는 해안 경관 360도 영상과 낚시 출조에서의 선박 하선 및 갯바위 낚시를 설명한다.",
+    "experience_scope": "장소의 해상 자연 지형과 낚시 지점이라는 신원은 확인됐으나, 일반 여행객 대상의 합법적 상륙·관람, 선착·승선, 보행 동선, 안전시설 및 상시 운영 안내가 확인되지 않았다. 본 라벨링의 일반 여행 방문 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "바다타임은 ‘[추자도] 밖미역섬 360° VR 영상’을 제공하고, 제주 해안 절경 감상을 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "낚시춘추의 추자도 출조 기사는 선장이 낚시인들을 밖미역섬에 하선시켰고 강한 조류가 받히는 갯바위에서 긴꼬리벵에돔·볼락·돌돔 낚시가 이뤄진다고 설명한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 합법적 상륙·출입 가능 여부와 관련 허가·보호구역 조건을 확인하지 못했다.",
+      "관광객용 정기 운항, 선착장, 관람 동선, 안전시설, 화장실 또는 무장애 접근성은 확인하지 못했다.",
+      "관광·레저 목적으로 상시 개방하거나 운영하는 주체의 최신 방문 안내는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "바다타임",
+        "type": "marine_information_service",
+        "url": "https://www.badatime.com/jeju-vr/Sftjvq4APpY",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도 밖미역섬의 360도 해안 영상을 제공한다.",
+          "제주 해안 절경 감상 정보를 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "낚시춘추",
+        "type": "specialist_activity_report",
+        "url": "https://m.fishingseasons.co.kr/news_Detail.asp?b_no=12718",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "낚시 출조에서 선장이 낚시인들을 밖미역섬에 하선시킨 사례를 보도한다.",
+          "강한 조류가 받히는 곳이며 긴꼬리벵에돔, 볼락, 돌돔 낚시 자원이 언급된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/20082075",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘밖미역섬’이다.",
+          "평점·후기 수와 공개 리뷰 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "uninhabited_rocky_islet_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "밖미역섬은 해상 암석섬·갯바위 낚시 지점으로 확인됐지만 일반 방문객의 상륙 가능 여부, 운항·접근 방법, 기상·파고에 따른 통제 및 현장 안전 관리가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공공기관 또는 관리 주체의 일반 방문·안전 안내가 확인되면 접근 가능성과 운영 조건을 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

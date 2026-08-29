@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2038933507",
+  "place_id": "2038933507",
+  "name": "남당암수 정자",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "제주관광공사 Visit Jeju는 금성포구에서 남당암수 해안절벽 앞의 민물 샘과 함께 바다를 바라보는 정자를 소개한다. 따라서 입력의 ‘남당암수 정자’는 독립 운영·관람 목적지가 아니라 남당암수 용천수와 금성포구 해안 경관 경험에 딸린 조망 시설로 판단한다. Kakao 표식과 해당 정자의 정확한 현장 일치는 별도 공공 좌표 자료로 확인하지 못했다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "남당암수 정자는 제주 애월읍 금성포구 인근 남당암수 용천수·해안절벽 앞에 있는 조망용 정자로 파악된다.",
+    "typical_visit": "금성포구와 남당암수의 해안·용천수 경관을 둘러보는 과정에서 바다를 바라보는 부속 조망 지점으로 이용되는 것으로 파악된다.",
+    "experience_scope": "공식 관광 정보는 남당암수의 샘과 해안절벽 앞 정자를 함께 소개한다. 정자 자체의 독립 운영, 별도 관람 동선·시설, 최신 접근·안전 조건은 확인하지 못했으므로 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 금성천과 바다가 만나는 방향에 민물이 솟는 남당암수 해안절벽이 있고, 그 앞에 바다를 바라보는 정자가 있다고 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 2038933507의 장소명을 ‘남당암수 정자’로 제공하며, 평점과 공개 후기 건수는 모두 0으로 제공된다. 평점·건수는 라벨값 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 Visit Jeju가 언급한 남당암수 앞 정자와 정확히 같은 위치인지 확인하는 공공 좌표 자료를 찾지 못했다.",
+      "정자 자체의 관리 주체, 별도 운영·관람 여부와 최신 보존 상태를 확인하지 못했다.",
+      "현재 출입 가능 여부, 접근로·노면·난간, 주차·화장실·무장애 시설 및 악천후 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금성포구는 제주시 애월읍 금성리 573-1로 안내된다.",
+          "금성천과 바다가 만나는 방향에 민물이 솟는 남당암수 해안절벽이 있다고 소개한다.",
+          "남당암수 해안절벽 앞에 바다를 바라보는 정자가 있다고 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/2038933507",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 2038933507과 장소명 ‘남당암수 정자’를 제공한다.",
+          "입력 패킷에는 평점 0.0, 방문자 후기 0건, 블로그 후기 0건이 제공된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility_and_access_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "남당암수·금성포구 경관에 딸린 정자로 판단되며, Kakao 표식과의 정확한 일치 및 최신 출입·보행 안전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 말고, 필요하면 관할 지자체 또는 현장 최신 안내로 표식 위치·출입 가능 여부와 접근 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

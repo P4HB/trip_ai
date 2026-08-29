@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119069",
+  "place_id": "18119069",
+  "name": "제주 돌문화공원 원당사지오층석탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.99,
+    "rationale": "제주시 관광 안내의 제주돌문화공원 시설·환경 자료는 공원 내 ‘원당사지 오층석탑’을 고려시대 원당사지(현 불탑사)에 있는 보물 제1187호 오층석탑의 복제물이라고 직접 설명한다. 따라서 입력 Kakao 표식은 독립 방문지가 아니라 제주돌문화공원 관람 동선의 세부 전시물로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 제주돌문화공원 안에 전시된 원당사지 오층석탑 복제물을 가리킨다.",
+    "typical_visit": "제주 돌문화와 관련 전시를 관람하는 제주돌문화공원 방문 중 보는 세부 전시물이다.",
+    "experience_scope": "제주시 관광 안내가 공원 내 복제 전시물임을 명시하므로, 이 결과에서는 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주시 관광 안내의 제주돌문화공원 시설·환경 자료는 원당사지 오층석탑을 고려시대 원당사지(현 불탑사)에 있는 보물 제1187호 오층석탑의 복제물이라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주돌문화공원은 제주의 돌문화를 한곳에서 볼 수 있는 공원으로 소개되며, 야외 전시장에 여러 돌문화 전시물을 둔다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "복제 석탑만의 별도 관람·해설 또는 독립 운영 여부는 확인하지 않았다.",
+      "현재 제주돌문화공원의 운영 시간, 휴원일, 입장 조건 및 현장 전시 상태는 최신 공식 공지로 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주시 관광정보",
+        "type": "official_tourism_information",
+        "url": "https://tour.jejudsi.kr/files/dataset/infopdf/n_map41.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원 시설·환경 자료는 원당사지 오층석탑을 보물 제1187호 원당사지 오층석탑의 복제물이라고 설명한다.",
+          "원본은 고려시대 원당사지, 현 불탑사에 있는 석탑으로 설명된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "대한민국 구석구석",
+        "type": "public_tourism_information",
+        "url": "https://www.koreatriptips.com/cultural-facilities/1544730.html",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원은 제주의 돌문화를 한곳에서 볼 수 있는 공원으로 소개된다.",
+          "야외 전시장에는 돌하르방·방사탑·정주석·동자석 등 돌문화 전시물을 볼 수 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주돌문화공원 내부의 원당사지 오층석탑 복제 전시물로 확인됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 제주돌문화공원 관람 경험과 함께 검토",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

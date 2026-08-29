@@ -1,0 +1,111 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25728187",
+  "place_id": "25728187",
+  "name": "어음천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공공 자료는 어음천을 제주시 애월읍 납읍리에서 금성천 합류점으로 이어지는 지방하천으로 확인한다. 그러나 입력 Kakao 표식이 이 긴 하천의 어느 지점·접근 지점·독립 방문 경험을 가리키는지, 일반 방문객에게 안전하게 개방된 탐방지인지 확인하는 공식 자료는 찾지 못했다. 따라서 추천용 독립 방문지 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "어음천은 제주시 애월읍 일대의 지방하천으로, 공개 행정 자료에서 납읍리 640번지선에서 금성천 합류점까지 이어지는 하천으로 기록된다.",
+    "typical_visit": "특정 관람·체험 지점, 공식 탐방 동선 또는 일반 방문객 이용 방법은 확인하지 못했다.",
+    "experience_scope": "하천이라는 지리·관리 대상이라는 사실만 확인했으며, Kakao 표식의 정확한 구간과 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 공개 재해정보지도는 제주시 애월읍 어음리·납읍리 일대 지도에 어음천을 하천으로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 의회 공개 부록의 제주시 지방하천 현황은 어음천의 시점을 납읍리 640, 종점을 금성천 합류점으로, 하천 연장을 15.0km로 기록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 25728187과 장소명 어음천을 제공하지만 좌표·상세 설명·공개 후기는 제공하지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 15km 하천의 어느 구간 또는 접근 지점을 가리키는지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 탐방로, 주차·화장실, 보행·수변 안전시설 및 무장애 접근성을 확인하지 못했다.",
+      "우천·홍수·강풍 등 기상 시 통제와 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 재난안전대책본부",
+        "type": "public_government_map",
+        "url": "https://bangjae.jeju.go.kr/files/map4/jejusi_018.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "애월읍 어음리·납읍리 일대 재해정보지도에 어음천이 하천으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_government_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "어음천은 납읍리 640에서 금성천 합류점까지의 지방하천으로 수록되며 총연장은 15.0km이다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/25728187",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 25728187 및 장소명 어음천을 제공하며, 공개 후기 증거는 비어 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "하천의 정확한 표식 구간, 일반 출입·접근 조건, 수변·기상 안전 통제와 편의시설을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체의 최신 안내로 정확한 접근 지점, 출입 허용 여부와 기상·수변 안전 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

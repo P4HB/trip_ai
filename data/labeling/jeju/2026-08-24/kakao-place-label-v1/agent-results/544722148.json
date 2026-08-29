@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:544722148",
+  "place_id": "544722148",
+  "name": "연동관광안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "공개 지자체 관광지도는 ‘연동관광안내소’를 관광 정보 문의를 위한 안내소로 표기한다. 여행 중 정보 획득에는 유용할 수 있으나, 관람·체험·경관 감상처럼 독립적으로 추천할 방문 경험을 제공하는 장소라는 근거는 확인되지 않았다. 따라서 여행지 추천 후보가 아닌 보조 안내 시설로 분류한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드의 장소명은 ‘연동관광안내소’다. 공개 지자체 관광지도에도 같은 명칭의 관광안내소와 전화번호가 표시되어 관광 정보 제공 시설로 확인된다.",
+    "typical_visit": "제주 여행 중 관광 정보나 안내를 문의하는 보조 서비스 시설로 이용하는 범위가 확인된다.",
+    "experience_scope": "공개 출처는 안내소의 존재와 연락처를 확인하지만, 독립 관광지로서의 관람·체험 콘텐츠는 제시하지 않는다. 입력 패킷의 Kakao 평점과 리뷰 수는 0이며 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 544722148의 명칭을 ‘연동관광안내소’로 제시하며, 공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "서귀포시가 제공한 제주 관광 지도에는 ‘연동관광안내소’가 관광 정보 문의용 관광안내소로 표시되고 전화번호 064-728-3878이 함께 기재되어 있다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "안내소의 정확한 현장 주소, 운영 시간, 휴무, 제공 언어와 현재 운영 여부는 최신 공식 안내로 확인하지 못했다.",
+      "독립 관광지로서의 관람·체험·경관 또는 사진 촬영 경험은 공개 출처에서 확인하지 못했다.",
+      "이 Kakao place_id와 지자체 관광지도 표식의 정확한 좌표 일치는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/544722148",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 연동관광안내소이다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "서귀포시",
+        "type": "official_tourism_map",
+        "url": "https://www.seogwipo.go.kr/files/board/bf6b83e5-2a8f-4200-8f8f-2421794bb621.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 관광 지도는 연동관광안내소를 관광안내소로 표기한다.",
+          "지도에는 연동관광안내소의 전화번호로 064-728-3878을 기재한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "support_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "관광 정보 문의를 위한 안내소로 확인되며 독립 관광지의 관람·체험 경험은 확인되지 않음",
+      "status": "confirmed",
+      "action": "여행지 추천 후보 벡터에는 포함하지 않고, 필요할 때 현장 정보 지원 시설로만 별도 안내한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1800116456",
+  "canonical_id": "kakao:1800116456",
+  "name": "보롬왓수국길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공식 관광 안내는 보롬왓 주차장에서 카페 방향으로 가는 표지판을 따라가면 보롬왓 수국길을 만난다고 설명하며, 수국길이 보롬왓의 산책길을 따라 이어진다고 소개한다. 따라서 입력 장소는 보롬왓 관광지 안의 계절성 산책 구간으로, 독립 장소가 아닌 부속 경험으로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-ROUTE",
+      "ELIG-PARENT-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "seasonal_flower_and_parent_venue_conditions",
+      "applies_to": "all_visitors",
+      "condition": "수국길은 보롬왓 내부 산책 구간이며 공식 안내상 수국은 6~7월에 강조된다. 당일 개화·입장·운영 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "방문 전 보롬왓의 최신 안내로 입장 가능 여부, 개화 상태 및 운영 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명 보롬왓수국길은 공식 관광 안내에서 보롬왓 내부 표지판을 따라 만나는 보롬왓 수국길로 소개된 대상과 일치한다.",
+    "facts": [
+      {
+        "text": "공식 관광 안내는 보롬왓 주차장에서 카페 쪽으로 가는 표지판을 따라가면 보롬왓 수국길을 만난다고 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공식 관광 안내는 보롬왓 수국길이 보롬왓카페의 산책길을 따라 이어지며 6~7월에 수국을 볼 수 있다고 소개한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "수국길의 현재 개화 상태",
+      "보롬왓의 현재 입장·운영 조건",
+      "수국길 구간의 보행·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012263",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "보롬왓 내부 표지판을 따라가면 수국길에 이른다고 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000014332",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "보롬왓카페의 산책길을 따라 6~7월 수국길이 이어진다고 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

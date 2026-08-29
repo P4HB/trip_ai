@@ -1,0 +1,114 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25179216",
+  "place_id": "25179216",
+  "name": "골머리오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 자료는 골머리오름을 한라산국립공원 내 해발 약 848m의 지질·지형 지명으로 언급한다. 그러나 입력과 확인한 공개 자료에는 독립 탐방지로서의 공식 진입 지점, 탐방로, 운영·안전 안내가 없어, 특정 이용 가능한 방문지로 확정할 수 없는 지형명 레코드는 추천 후보 범위에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ],
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "R-ELIGIBILITY-INDEPENDENT-DESTINATION",
+      "R-INELIGIBLE-EMPTY-LABEL-MAPS"
+    ]
+  },
+  "research": {
+    "identity_summary": "골머리오름은 한라산국립공원 내에 분포하는 해발 약 848.4m의 오름·지형 지명으로 확인된다.",
+    "typical_visit": "공개 확인 자료는 골머리오름을 지질 분포 또는 천왕사 뒤편 경관의 일부로 언급할 뿐, 독립적인 관광·체험 시설이나 공식 탐방 프로그램으로 소개하지 않는다.",
+    "experience_scope": "입력 Kakao 레코드에는 장소명과 URL 외 주소·좌표·업종·방문 근거가 없다. 접근 가능한 탐방 구간과 안전·운영 정보가 확인되지 않아 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국지질학회 공개 논문은 골머리오름을 한라산국립공원 내 해발 848.4m 지점의 조면암 분포 지형으로 열거한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 기사 검색 결과는 천왕사 뒤편 골머리오름 바위가 가을 경관의 일부라고 언급하지만, 독립 탐방지 이용 안내는 제시하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 정확한 좌표와 접근 지점은 입력에서 확인되지 않았다.",
+      "일반 방문객용 공식 탐방로, 출입 가능 여부, 주차·안전·계절별 이용 안내는 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 없으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국지질학회",
+        "type": "academic_article_pdf",
+        "url": "https://jgsk.or.kr/xml/01053/01053.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "논문은 골머리오름(해발 848.4m)을 한라산국립공원 내 조면암류가 분포하는 지점으로 열거한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Daum 뉴스",
+        "type": "news_article",
+        "url": "https://v.daum.net/v/LQUK0Jc8EL",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "기사에는 천왕사 뒤편 골머리오름 바위와 단풍 경관이 언급된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25179216",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘골머리오름’이며 주소·좌표·업종·공개 방문 후기 근거는 제공되지 않았다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "unconfirmed_public_access",
+      "applies_to": "recommendation_candidate",
+      "condition": "지질·지형 지명은 확인되지만 이 레코드 자체의 공식 접근 지점, 탐방로, 출입 가능 여부와 안전 안내가 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "공식 탐방 안내가 있는 독립 방문지 또는 접근 가능한 특정 구간으로 확인되기 전까지 추천 후보에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

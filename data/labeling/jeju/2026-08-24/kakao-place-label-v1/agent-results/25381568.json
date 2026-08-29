@@ -1,0 +1,83 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25381568",
+  "place_id": "25381568",
+  "name": "큰산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "큰산은 연합뉴스가 독산에서 큰산까지 이어지는 나바론절벽과 그를 따르는 나바론 하늘길의 종점으로 설명한 독립 지형 방문 지점이다. 입력 Kakao 공개 방문 후기도 추자 하늘길의 등대와 레이다기지 사이 코스로 이 위치를 뒷받침한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "큰산은 상추자도의 나바론절벽·나바론 하늘길 구간에 있는 산 지형 방문 지점이다.",
+    "typical_visit": "나바론 하늘길을 따라 야외로 걷고, 해안 절벽과 바다·인근 섬 풍경을 조망하는 방문이다.",
+    "experience_scope": "공식 관광 안내와 보도는 나바론 하늘길의 절벽 능선 보행, 가파른 계단과 해안·섬 조망을 확인한다. 큰산 단독의 최신 출입 가능 범위, 안전시설, 무장애 접근, 편의시설과 월별 운영 정보는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "연합뉴스는 나바론 하늘길이 독산에서 큰산까지 이어지는 나바론절벽을 따라 만든 약 3km 길이라고 보도했다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "연합뉴스는 이 길에 가파른 계단·오르내림, 해안 절벽과 푸른 바다·인근 섬 조망이 있다고 보도했다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "입력 Kakao 공개 방문 후기는 큰산을 추자하늘길의 추자 등대와 레이다기지 사이 중간 코스로 설명한다.", "source_ids": ["S2"]},
+      {"id": "F4", "text": "제주관광공사 Visit Jeju는 추자올레 18-1코스를 난도가 높고 경관이 아름다운 코스로 소개하며, 거센 바닷바람과 가파른 길이 많다고 안내한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "큰산의 최신 출입 가능 구간, 노면·난간·계단 상태와 우천·강풍 시 통제 여부를 확인하지 못했다.",
+      "화장실·주차·휴식시설, 아동·고령자 접근성 및 무장애 정보는 확인하지 못했다.",
+      "큰산 단독의 계절별 개방·행사·경관 절정 정보는 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "연합뉴스", "type": "reputable_news", "url": "https://www.yna.co.kr/view/AKR20160620038200056", "checked_at": "2026-08-25", "facts": ["나바론 하늘길은 독산에서 큰산까지 이어지는 나바론절벽을 따라 조성된 약 3km 길이다.", "가파른 계단과 오르내림이 있으며 해안 절벽·바다·인근 섬을 조망할 수 있다고 보도했다.", "추자도 산행 구간은 산세가 험하고 음식과 물을 구하기 어려운 곳이 있을 수 있다고 안내했다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/25381568", "checked_at": "2026-08-25", "facts": ["입력된 공개 방문 후기는 큰산을 추자하늘길 중간 코스이자 추자 등대와 레이다기지 사이로 언급한다."]},
+      {"id": "S3", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_page", "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013026&menuId=DOM_000002100000000221", "checked_at": "2026-08-25", "facts": ["추자올레 18-1코스는 난도가 높고 경관이 아름다운 코스로 소개된다.", "추자도에는 가파른 길이 많고 거센 바닷바람에 대비하도록 안내한다.", "나바론 하늘길은 절벽 능선을 따라 걷는 트레킹 구간으로 소개된다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"큰산은 나바론절벽을 따르는 하늘길의 종점으로 직접 소개되고, 대표 경험이 산 능선의 야외 보행이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"나바론절벽 길에서 해안 절벽, 바다와 인근 섬을 조망하는 경험이 직접 확인된다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"가파른 계단과 반복되는 오르내림을 포함한 나바론 하늘길 도보·트레킹이 대표 경험으로 직접 확인된다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"조사 출처는 자연 지형과 도보길을 설명하며 역사·문화유산·전시·전통 체험이 큰산의 핵심 방문 경험이라는 근거는 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"자연 지형과 야외 도보길로 확인되며 놀이·동물·전시형 테마파크 경험은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·음료·디저트 이용이 독립적 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"산·절벽 도보 탐방지로 확인되며 시장 방문 경험은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"상설 자연 지형과 도보길로 안내될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험은 해안 절벽 능선의 야외 보행과 조망이며 실내 방문 공간은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"야외 절벽길 보행이 대표 경험이고 공식 관광 안내가 거센 바닷바람에 대비하도록 안내해 날씨 영향이 직접 확인된다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상은 확인되지만 혼잡도·휴식시설·소음과 느린 체류 환경 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"가파른 계단, 심한 경사와 오르내림이 직접 확인돼 보행 부담이 비교적 클 것으로 판단한다. 최신 노면·난간·무장애 정보는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"약 3km 전체 길이는 소개되지만 큰산 단독의 짧은 방문과 장기 체류 선택 가능성은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"수직 해안 절벽과 푸른 바다·인근 섬 조망이 나바론 하늘길을 찾는 핵심 가치로 직접 소개된다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"독산에서 큰산까지 이어지는 나바론절벽을 따라 조성된 하늘길과 수직 해안 절벽의 조합이 고유 경험으로 직접 소개된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"큰산은 추자도의 나바론절벽·추자올레 도보여행 맥락에 직접 연결된 지역 자연 지형이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"나바론절벽은 추자 사람들이 자랑하는 비경이며, 큰산까지 이어지는 하늘길은 추자도 도보여행의 핵심 구간으로 직접 소개된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"절벽과 바다의 시각 경관은 확인되지만 큰산에서 사진 촬영 또는 기록 가치가 직접 권장된 근거가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문 시 최신 안전·안내·통신 및 통제 환경을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선·안전 정보가 부족해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전·휴식 여건을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 난간·노면·안전시설과 보호자 안내 기준을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"가파른 계단과 경사는 확인됐으나 고령 방문자의 휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 통제 정보가 없어 야외 산길의 중립 fallback으로 둔다.","source_ids":["S1","S3"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"steep_outdoor_trail_and_weather_access","applies_to":"all_visitors","condition":"큰산을 포함한 나바론 하늘길은 가파른 계단과 오르내림이 있는 야외 해안 절벽·산길이며, 공식 관광 안내는 거센 바닷바람에 대비하도록 안내한다. 최신 개방 구간·노면·난간 상태와 우천·강풍 시 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 추자면 최신 안내로 개방 여부와 기상·보행 안전을 확인하고, 아동·보행 취약자는 동행과 경로 적합성을 별도로 판단한다.","source_ids":["S1","S3"],"checked_at":"2026-08-25"},
+    {"kind":"remote_island_provisions","applies_to":"all_visitors","condition":"보도는 추자도 산행 구간 주변에서 음식과 물을 구하기 어려운 곳이 있을 수 있다고 안내한다.","status":"needs_review","action":"산길 출발 전 필요한 물과 식량을 준비하고, 해상 교통 및 현지 이동 정보는 방문 시점에 별도로 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

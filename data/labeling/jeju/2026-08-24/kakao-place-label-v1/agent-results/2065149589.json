@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2065149589",
+  "canonical_id": "kakao:2065149589",
+  "name": "추자도숭어체험장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사 Visit Jeju가 ‘신양리 마을에 조성되어 있는 숭어 체험장’으로 별도 관광지 항목을 제공하고, 추자 지역 자연환경을 주제로 한 숭어·어패류 체험 시설과 휴식·체험 공간으로 설명한다. 입력명과 공개 관광지명이 일치하는 독립 방문 장소로 판정했다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개의 핵심은 추자 지역의 숭어·어패류 체험이며 산·오름 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 소개가 추자 지역 자연환경을 주제로 한 숭어와 어패류 체험 시설로 설명해 해양·연안 자원이 핵심 방문 맥락임을 직접 확인한다.", "source_ids": ["S1"], "rule_ids": ["THEME-MARINE-EXPERIENCE-DIRECT"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "숭어 및 다양한 어패류 체험 시설을 제공하는 체험 공간으로 공식 소개되어 참여형 활동이 핵심이다.", "source_ids": ["S1"], "rule_ids": ["THEME-HANDS-ON-EXPERIENCE-DIRECT"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "지역 수산 자원과 연결된 체험 시설임은 확인되지만 역사·문화 해설이나 유산 관람이 주된 구성이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "어촌 체험·휴식 공간으로 설명되며 놀이기구·동물원·수족관형 테마파크 운영은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개에 카페·차·커피·디저트 이용이 독립적 핵심 목적이라는 내용은 없다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "수산물 시장 조성이 사업 목적에 포함된다는 소개는 있으나, 현행 전통시장 방문 경험으로 운영되는지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-MARKET-OPERATION-UNCONFIRMED"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 체험장으로 소개될 뿐 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "체험 시설과 휴식 공간은 언급되지만 실내외 구성과 실제 이용 동선은 공개 소개에서 확인되지 않아 낮은 잠정값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["ENV-FACILITY-DETAIL-UNKNOWN"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 추자 지역의 해양 수산자원 체험에 연결되므로 비·바람·파도 등 해안 날씨의 영향을 받을 수 있다. 우천 대체 공간과 통제 기준은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["ENV-MARINE-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "관광객과 주민에게 휴식 공간을 제공하려는 시설로 소개되나, 실제 체류 환경과 조용한 휴식 경험은 확인되지 않아 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["STYLE-REST-SPACE-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "진입 동선, 바닥 상태, 계단·경사, 화장실 및 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "체험의 예약·운영 시간, 단독 관람 가능 여부와 평균 체류시간이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자 지역의 자연환경을 주제로 한 공간이나, 특정 해안 경관·조망점이 대표 가치로 공식 설명되지는 않아 중간 잠정값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURAL-SETTING-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추자 지역의 특색 있는 자연환경을 주제로 숭어와 다양한 어패류 체험을 구성한 시설로 공식 소개되어 고유한 경험 구성이 확인된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-UNIQUE-MARINE-EXPERIENCE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추자 지역 자연환경, 숭어·어패류 및 수산물이라는 지역 수산자원과 직접 연결된 체험 시설로 설명된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-MARINE-RESOURCE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광지로 등재되어 있으나 제주 또는 추자도를 대표하는 지정 명소·상징이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-TOURISM-LISTING-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 페이지에 대표 이미지가 있으나 촬영이 핵심 경험 또는 공식 권장 활동이라는 근거는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-VISUAL-EVIDENCE-LIMITED"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 예약 방식, 현장 안전·안내와 통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 페이지의 분류 태그에 커플과 체험관광이 함께 제시되나, 실제 2인 프로그램·편의시설은 확인되지 않아 잠정값이다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-OFFICIAL-TAG-CONTEXT"]},
+    "friends": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 관광 페이지의 분류 태그에 친구와 체험관광이 함께 제시되나, 그룹 수용 인원·예약 조건은 확인되지 않아 잠정값이다.", "source_ids": ["S1"], "rule_ids": ["COMPANION-OFFICIAL-TAG-CONTEXT"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "어패류 체험 시설이 언급되지만 아동 연령 기준, 보호자 동반 규칙과 안전설비를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 이동 부담, 그늘·휴식·무장애 접근성과 화장실 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 운영·예약 가능 여부와 계절별 체험 프로그램이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-MARINE-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "marine_experience_operation_and_access_conditions_unknown", "applies_to": "all_visitors", "condition": "체험장으로 공식 등재되어 있으나 현행 운영·예약 여부, 개방 시간, 체험 가능 어종, 우천·강풍 시 운영, 해안 안전수칙과 접근성은 공개 소개에서 확인하지 못했다.", "status": "needs_review", "action": "방문 전 Visit Jeju 최신 안내 또는 현장·관리 주체를 통해 운영 여부, 예약 조건, 기상·해상 상황에 따른 체험 가능 여부와 안전·접근성 정보를 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘추자도숭어체험장’은 Visit Jeju의 동일 명칭 관광지로 확인됐다. 공식 소개는 신양리 마을의 숭어 체험장으로, 추자 자연환경을 주제로 한 숭어·어패류 체험과 휴식 공간 조성 맥락을 제시한다.",
+    "facts": [
+      {"text": "Visit Jeju는 추자도숭어체험장을 ‘신양리 마을에 조성되어 있는 숭어 체험장’으로 소개한다.", "source_id": "S1"},
+      {"text": "공식 상세 페이지는 농어촌형 체험휴양마을 조성사업의 하나로 추자 지역 자연환경을 주제로 숭어·다양한 어패류 체험 시설과 수산물 시장, 휴식 및 체험 공간을 조성하려는 시설이라고 설명한다.", "source_id": "S1"},
+      {"text": "공식 관광 페이지의 분류 태그에는 액티비티, 친구, 커플, 체험관광, 수상레저 및 포토 관련 항목이 제시된다.", "source_id": "S1"}
+    ],
+    "unknowns": ["현재 운영·개방 시간, 예약 방법, 요금과 실제 체험 가능 어종", "우천·강풍·해상 상황에 따른 운영 중단 및 안전 통제", "정확한 진입 동선, 주차·화장실·무장애 접근성 및 아동·고령자 안전 정보"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://www.visitjeju.net/zh/detail/view?contentsid=CNTS_000000000019104", "checked_at": "2026-08-25", "facts": ["추자도숭어체험장을 신양리의 숭어 체험장으로 소개한다.", "추자 자연환경을 주제로 한 숭어·어패류 체험 시설, 수산물 시장, 휴식·체험 공간 조성 맥락을 설명한다.", "관광 분류 태그에 액티비티·친구·커플·체험관광·수상레저·포토 관련 항목을 제시한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

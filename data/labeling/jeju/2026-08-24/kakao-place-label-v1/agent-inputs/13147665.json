@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1347,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13147665.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13147665",
+    "provider": "kakao",
+    "place_id": "13147665",
+    "name": "월대천",
+    "url": "https://place.map.kakao.com/13147665",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "6",
+    "blog_review_count": "50",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2020.08.28.",
+      "content": "어제 태풍왔는데 물이 많지 않아서 놀랐음. 물도 적당히 깊고, 수온도 그리 차지 않으며, 나무그늘이 있어 아이들 놀기 좋음. 안전요원, 화장실, 자리 등 부대시설도 괜찮음.",
+      "tags": ""
+    },
+    {
+      "date": "2026.07.22.",
+      "content": "하천에서 놀아서 그런가 물이 더러워서 시야 확보가 어려워 다칠수도 있음 깊이는 제 기준에서는 적당하지는 않고 재미는 있음 주차 넘무 어려워어엉",
+      "tags": "시설"
+    },
+    {
+      "date": "2016.11.30.",
+      "content": "제주 숨은비경31 해수와 담수가 만나는 기수역 은어 숭어가 사는 생태하천",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

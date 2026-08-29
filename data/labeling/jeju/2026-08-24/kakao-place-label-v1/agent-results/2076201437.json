@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2076201437",
+  "place_id": "2076201437",
+  "name": "지크이엑스",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘지크이엑스’와 place_id만 제공하며 주소·좌표·업종·공개 후기가 없다. 공개 웹 검색에서는 같은 명칭의 제주 소재 법인이 유원지·테마파크 운영업으로 나타나지만, 이 Kakao place_id가 그 법인 또는 특정 방문 지점이라는 연결 근거를 찾지 못했다. 독립 여행 방문지 신원을 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED", "ELIG-NO-VISIT-SCOPE-EVIDENCE"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 Kakao 입력 정보는 place_id 2076201437과 명칭 ‘지크이엑스’뿐이다. 공개 검색 결과에는 동명 제주 법인이 있으나, 입력 Kakao 레코드와 그 법인·방문 가능 장소를 동일시할 주소·좌표·공식 장소 페이지를 확인하지 못했다.",
+    "typical_visit": "동명 법인이 유원지 및 테마파크 운영업으로 분류된 공개 기업 정보는 발견됐지만, 이 레코드가 실제 관광 시설인지 법인 사무소·등록 표식인지 확인되지 않아 대표 방문 경험을 추론하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영 정보 및 공개 방문 후기 근거가 없으며 Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘지크이엑스’, place_id는 2076201437이며 평점과 방문자·블로그 리뷰 수는 모두 0으로 제공된다. 입력에는 주소·좌표·업종·공개 후기 본문이 없다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 기업 정보 검색 결과는 ‘(주)지크이엑스’를 제주 제주시 소재 유원지 및 테마파크 운영업으로 표시하지만, 해당 정보만으로 이 Kakao place_id가 그 법인 또는 방문 가능한 특정 시설임을 확인할 수 없다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 실제 장소 유형",
+      "동명 제주 법인과 이 Kakao 레코드의 동일성, 그리고 독립 관광·체험 시설의 존재 여부",
+      "방문 가능 여부, 운영·개방 상태, 접근성, 안전 및 대표 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/2076201437",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘지크이엑스’이며 place_id는 2076201437이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "사람인",
+        "type": "public_business_information",
+        "url": "https://www.saramin.co.kr/zf_user/company-info/view-inner-finance/csn/dVFVbWxFSUM1MVVBMDRMWWo4ZURWdz09/company_nm/%28%EC%A3%BC%29%EC%A7%80%ED%81%AC%EC%9D%B4%EC%97%91%EC%8A%A4",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 기업 정보는 ‘(주)지크이엑스’를 제주 제주시 소재 유원지 및 테마파크 운영업으로 표시한다.",
+          "기업 정보에는 이 Kakao place_id와 직접 연결할 주소·좌표 또는 개별 방문 시설 식별자가 제시되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없어 장소 신원, 동명 법인과의 동일성 및 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·시설 유형으로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "rule_ids": ["HARD-IDENTITY-VERIFICATION-REQUIRED"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

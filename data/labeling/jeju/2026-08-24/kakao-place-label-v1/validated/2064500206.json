@@ -1,0 +1,116 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2064500206",
+  "place_id": "2064500206",
+  "name": "추자도무지개해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력명은 ‘추자도무지개해안도로’이나, 공개 관광 자료에서 ‘도두 무지개 해안도로’는 제주시 용담이호해안도로의 무지개색 방호벽 구간으로 확인된다. 추자도 자체는 별도의 섬 관광지로 확인되지만, 해당 섬의 ‘무지개해안도로’를 특정하는 공식·공공 상세 출처, 주소 또는 좌표를 찾지 못했다. 두 장소를 같은 장소로 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력은 ‘추자도무지개해안도로’라는 명칭과 place_id를 제공한다. Visit Jeju는 무지개 해안도로를 도두동의 용담이호해안도로 구간으로 소개하며, 추자도는 제주 본섬 북쪽의 별도 도서 관광지로 안내한다. 입력 표식이 도두동 장소의 잘못된 명칭인지, 추자도의 비공식 표식인지, 또는 다른 장소인지 공개 근거만으로 판별할 수 없다.",
+    "typical_visit": "미확인: 입력 레코드의 정확한 위치와 대표 방문 경험이 확정되지 않아 일반적인 방문 경험을 추론하지 않는다.",
+    "experience_scope": "장소 신원과 위치가 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다. Kakao 평점·후기 수 및 공개 후기 내용은 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 2064500206과 장소명 ‘추자도무지개해안도로’를 제공하지만, 주소·좌표·업종·운영 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 ‘도두 무지개 해안도로’를 용담이호해안도로를 따라 있는 무지개색 방호벽 구간으로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "Visit Jeju는 추자도를 상추자도·하추자도 등을 묶은 제주 북쪽의 별도 섬 관광지로 소개한다. 이 자료에는 추자도 무지개해안도로가 기재되지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 2064500206의 정확한 주소, 좌표, 업종 및 실제 지도 핀 위치",
+      "입력명이 도두 무지개 해안도로의 오기인지, 추자도의 비공식 표식인지 또는 다른 동명·유사명 장소인지 여부",
+      "독립 여행 방문지로서의 접근성, 안전, 운영·개방 상태와 대표 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/2064500206",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 2064500206과 장소명 ‘추자도무지개해안도로’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 운영 정보가 없다.",
+          "평점·후기 수와 공개 후기 내용은 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000010346",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "도두 무지개 해안도로를 용담이호해안도로의 무지개색 방호벽 구간으로 소개한다.",
+          "해당 장소는 도두동 무지개해안도로로 안내된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018441&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도는 상추자도·하추자도를 묶은 제주 북쪽의 섬 관광지로 소개된다.",
+          "이 관광지 상세에는 무지개해안도로가 기재되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_location_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 장소명은 추자도를 포함하지만, 공개 관광 자료의 무지개 해안도로는 도두동 장소로 확인되어 이 Kakao 레코드의 정확한 위치·동일성·방문 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·현장 표기 정보로 실제 핀과 장소 신원을 먼저 교차 확인한다. 확인 전에는 추천 후보 및 라벨 벡터에 포함하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

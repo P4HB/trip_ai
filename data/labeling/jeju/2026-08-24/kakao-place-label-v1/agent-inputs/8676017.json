@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1348,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8676017.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8676017",
+    "provider": "kakao",
+    "place_id": "8676017",
+    "name": "권제오름",
+    "url": "https://place.map.kakao.com/8676017",
+    "average_rating_5": "4.4",
+    "visitor_review_count": "5",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.02.20.",
+      "content": "권제오름과 더불어 가을에 유명한 은행나무길도 함께 걷기 좋아요. 뒷동산처럼 가볍게 산책하기 좋은곳^^",
+      "tags": ""
+    },
+    {
+      "date": "2026.03.07.",
+      "content": "오름거리는 매우짧고 정상뷰같은건 없지만 제주대학교 산책로가 잘되어있어요. 일부러 갈이유는 없지만 벚꽃철에 제대에 오시거나, 인근에 볼일이 있다면 들러서산책하기 괜찮아요",
+      "tags": ""
+    },
+    {
+      "date": "2023.02.02.",
+      "content": "다녀는 왔지만 잘은 모르겠는...",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "228825285",
+  "canonical_id": "kakao:228825285",
+  "name": "백리악",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 ‘백리악’이라는 장소명과 Kakao 식별자 외에 실제 지형·위치·탐방로·관리 주체·방문 경험이 없다. 명칭만으로 공공 접근 가능한 독립 오름인지 확인할 수 없어 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-REQUIRES-REVIEW"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "oreum_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "정확한 위치·입구·탐방 허용·경사·노면·기상 안전을 입력 근거만으로 확인할 수 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처로 장소의 정체·탐방 가능 여부와 안전 조건을 확인하기 전에는 추천 후보에 포함하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 장소명 ‘백리악’ 외에 리뷰 또는 장소 설명이 제공되지 않아 정체를 확인할 수 없다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력 장소명은 백리악이며 Kakao place_id는 228825285이다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·입구",
+      "공공 탐방 허용과 관리 주체",
+      "거리·경사·노면·무장애 접근성",
+      "기상·산불 위험 시 안전"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/228825285",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 백리악이며 리뷰 근거는 제공되지 않았다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

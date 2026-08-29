@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1314532155",
+  "place_id": "1314532155",
+  "name": "사려니숲길 탐방안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력명은 사려니숲길의 탐방안내소로, 숲길 이용을 지원하는 안내 시설을 명시한다. 독립적인 관광지·체험 장소가 아니라 상위 방문지 사려니숲길 탐방 경험의 지원 구성물로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION-IDENTIFIED"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 사려니숲길의 탐방안내소를 가리킨다.",
+    "typical_visit": "사려니숲길 숲길 탐방·자연 경관 감상의 안내 및 진입 지원 경험의 일부다.",
+    "experience_scope": "상위 장소 사려니숲길의 안내 시설로 판정하여 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력의 공식 장소명 자체가 사려니숲길의 탐방안내소임을 명시하며, 안내소는 숲길 탐방을 지원하는 시설 유형이다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "안내소의 현재 운영 시간·제공 서비스",
+      "상위 숲길의 해당 진입점·현장 통제 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "source_dataset",
+        "url": "https://place.map.kakao.com/1314532155",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 사려니숲길 탐방안내소이다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_trail_information_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "탐방안내소는 사려니숲길 이용을 지원하는 구성 시설",
+      "status": "confirmed",
+      "action": "추천에서는 상위 장소 사려니숲길로 통합하고, 운영 시간·탐방 통제·안전 정보는 현장 최신 안내를 따른다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

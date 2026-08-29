@@ -1,0 +1,126 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:19533696",
+  "place_id": "19533696",
+  "place_name": "한림공원 야자수길",
+  "name": "한림공원 야자수길",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 1,
+    "rationale": "한림공원 공식 안내와 제주관광공사 관광 정보는 야자수길을 한림공원을 구성하는 9개 테마·관람 구역 중 하나로 명시한다. 독립 운영 장소가 아니라 한림공원 입장 후 이용하는 내부 산책 구역이므로, 한림공원과 별개 추천 후보로는 생성하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "duplicate_of": "한림공원"
+  },
+  "research": {
+    "identity_summary": "한림공원 야자수길은 제주시 한림읍 한림공원 내부의 야자수·선인장 산책 구역이다.",
+    "typical_visit": "한림공원 입장객이 공원의 다른 정원·시설과 함께 관람하는 내부 산책 구역이다.",
+    "experience_scope": "높이 자란 야자수와 선인장으로 조성된 경관·산책 경험을 제공하지만, 한림공원에서 분리된 독립 운영 관광시설로 확인되지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한림공원 공식 홈페이지는 야자수길을 공원 콘텐츠로 소개하며, 야자수와 선인장으로 조성된 길이라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 비짓제주는 한림공원을 야자수길 등을 포함한 9개 테마로 이루어진 테마파크로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주시 관광 정보는 한림공원 관광지 페이지에서 이미지·명칭으로 ‘한림공원 야자수길’을 제시하고, 한림공원을 야자수군락과 송림으로 둘러싸인 관광지로 설명한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "야자수길 자체의 별도 입장권·운영시간·독립 운영 주체는 확인하지 않았으며, 변동 가능한 이용 조건은 한림공원 공식 안내에서 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한림공원",
+        "type": "official_place_page",
+        "url": "https://hallimpark.com/park2",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "야자수길을 한림공원 콘텐츠로 소개한다.",
+          "야자수와 선인장으로 조성된 길이라고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500690&menuId=DOM_200000000010960",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한림공원은 야자수길을 포함한 9개 테마로 이루어진 테마파크로 안내된다.",
+          "야자수길은 공원 내부 산책 경험으로 소개된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주시 관광 정보",
+        "type": "public_tourism_page",
+        "url": "https://tour.jejudsi.kr/tour.htm?act=view&id=map16",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한림공원 관광지 페이지에 ‘한림공원 야자수길’이 공원 이미지·명칭으로 제시된다.",
+          "한림공원을 야자수군락과 울창한 송림으로 둘러싸인 관광지로 소개한다."
+        ]
+      }
+    ]
+  },
+  "preference_atomic": {},
+  "companion_context": {},
+  "month_context": {},
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type",
+      "applies_to": "recommendation_candidate",
+      "condition": "한림공원 내부 관람 구역으로 확인되어 독립 방문·운영 장소가 아님",
+      "status": "confirmed",
+      "action": "한림공원과 중복된 독립 추천 후보 벡터에서는 제외하고, 필요하면 한림공원 상위 장소의 세부 경험 설명에만 반영",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

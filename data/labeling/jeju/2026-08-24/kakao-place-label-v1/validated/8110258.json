@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8110258",
+  "place_id": "8110258",
+  "name": "큰내도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘큰내도’와 place_id만 제공하며 주소·좌표·업종·공개 방문 후기 정보가 없다. 2026-08-25 공개 웹 검색에서는 ‘큰내도 교차로’라는 도로·정류장 맥락의 언급은 확인됐지만, 이 Kakao place_id가 그 표식인지 또는 독립 여행 방문지인지 연결하는 신뢰 가능한 출처를 찾지 못했다. 따라서 장소 유형·신원을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 Kakao place_id 8110258와 명칭 ‘큰내도’뿐이다. 공개 웹에는 ‘큰내도 교차로’라는 교통·도로 맥락의 동명 언급이 있으나, 입력 Kakao 레코드와 동일하다고 확인할 주소·좌표·유형 정보가 없다.",
+    "typical_visit": "장소 유형과 대표 방문 경험이 확인되지 않아 일반적인 방문 경험을 추론하지 않는다.",
+    "experience_scope": "입력에 주소, 좌표, 업종, 공개 후기 또는 공식 운영 정보가 없고, Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘큰내도’이고 place_id는 8110258이며, 평점과 방문자·블로그 리뷰 수는 모두 0으로 제공된다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-25에 ‘큰내도 제주도’와 ‘큰내도’를 공개 웹에서 검색했으나, ‘큰내도 교차로’라는 동명 교통·도로 표식 언급 외에 이 Kakao 레코드를 특정할 주소·좌표·유형 또는 공식·공공 관광 상세 출처를 확인하지 못했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 장소 유형",
+      "‘큰내도’가 교통·도로 표식, 비공식 지명 또는 독립 여행 방문지인지 여부",
+      "독립 여행 방문지로서의 접근성, 안전, 운영·개방 상태와 대표 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8110258",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘큰내도’이며 place_id는 8110258다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%ED%81%B0%EB%82%B4%EB%8F%84+%EC%A0%9C%EC%A3%BC%EB%8F%84",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "검색 결과에는 ‘큰내도 교차로’라는 도로·교통 맥락의 동명 언급이 있었으나, 이 입력 Kakao 레코드와 동일하다고 확인할 수 있는 주소·좌표·유형 정보는 없었다.",
+          "입력 Kakao 레코드를 독립 관광·방문지로 확인할 공식·공공 상세 출처를 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없어 장소 신원과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·유형 정보로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

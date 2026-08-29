@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8229121",
+  "canonical_id": "kakao:8229121",
+  "name": "고인돌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명은 유형명뿐이고 주소·좌표·설명·리뷰가 없다. 제주에는 외도동 고인돌군과 삼양동 유적 내 고인돌 등 복수의 후보가 공개되어 있으나, Kakao 장소 ID가 어느 유적 또는 개별 고인돌을 가리키는지 공개 자료만으로 식별할 수 없다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-AMBIGUOUS",
+      "ELIG-INSUFFICIENT-PLACE-IDENTIFIERS"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "high",
+  "research": {
+    "status": "ambiguous",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "‘고인돌’이라는 단독 명칭은 외도동 고인돌군, 제주 삼양동 유적 등 서로 다른 제주 유적 후보와 일치할 수 있다. 입력에는 후보를 구별할 주소나 좌표가 없다.",
+    "facts": [
+      {
+        "text": "한국민족문화대백과사전은 외도동 고인돌을 외도천 이웃 구릉지대의 철기시대 지석묘군으로 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한국관광공사 열린관광은 제주 삼양동 유적에 고인돌을 포함한 선사 유구가 있다고 소개한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 ID의 실제 좌표와 주소",
+      "개별 고인돌·고인돌군·삼양동 유적 중 정확한 대상",
+      "현장 접근성 및 보존·관람 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "type": "public_encyclopedia",
+        "url": "https://encykorea.aks.ac.kr/Article/E0051456",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주 외도동 고인돌은 제주시 외도천 이웃 구릉지대의 철기시대 지석묘이며 인근 광령리와 함께 20여 기가 군집한다고 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 열린관광",
+        "type": "official_tourism",
+        "url": "https://access.visitkorea.or.kr/ms/detail.do?cotId=a83bf8ce-8e36-418b-9e38-128f1bf79625",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주 삼양동 유적에는 고인돌을 포함한 청동기~초기 철기시대 유구가 있다고 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

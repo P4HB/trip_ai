@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10547111",
+  "canonical_id": "kakao:10547111",
+  "name": "수악계곡",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명과 1131도로·숲터널 인근이라는 짧은 리뷰만으로는 정확한 계곡 위치, 독립 방문·출입 가능 여부와 안전 조건을 확인할 수 없다.",
+    "source_ids": [
+      "K1",
+      "R1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "valley_access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "계곡의 정확한 접근·출입·수위·기상 안전 정보가 없다.",
+      "status": "needs_review",
+      "action": "공식 최신 안내로 위치와 안전 조건을 확인한다.",
+      "source_ids": [
+        "K1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "리뷰만으로 식별 불충분.",
+    "facts": [
+      {
+        "text": "리뷰는 1131도로 숲터널 가는 길에 있다고 언급한다.",
+        "source_id": "R1"
+      }
+    ],
+    "unknowns": [
+      "위치·출입·안전"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/10547111",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 수악계곡이다."
+        ]
+      },
+      {
+        "id": "R1",
+        "publisher": "Kakao public review evidence",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/10547111",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "공개 리뷰는 1131도로 인근을 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

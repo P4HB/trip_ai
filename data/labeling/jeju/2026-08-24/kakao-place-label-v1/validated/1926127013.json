@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1926127013",
+  "place_id": "1926127013",
+  "name": "신물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.8,
+    "rationale": "입력 Kakao 장소 표식은 이름 ‘신물’과 장소 ID만 제공하며, 공개 검색에서도 제주 내 이 표식의 주소·좌표·장소 유형·운영 주체를 특정하는 공식 또는 공공 신뢰 출처를 확인하지 못했다. 따라서 독립적으로 방문 가능한 장소인지, 다른 시설의 부속 표식인지, 또는 비관광 지명인지 판정할 수 없어 추천용 정체성은 확인 불가로 처리한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1"
+    ],
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao Map의 ‘신물’ 표식은 존재하지만, 공개적으로 확인 가능한 장소 정체성·위치·방문 가능 정보가 부족하다.",
+    "typical_visit": "확인 가능한 공식 방문 방식, 동선 또는 운영 정보를 찾지 못했다.",
+    "experience_scope": "장소 유형과 접근 가능성이 확인되지 않았으므로 관광·체험·자연 방문 경험을 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao Map 공개 장소 표식은 place_id 1926127013과 명칭 ‘신물’을 제공하지만, 리뷰 본문·주소·좌표·카테고리·전화번호는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식의 실제 지리적 위치와 제주 내 동명 표식과의 일치를 확인하지 못했다.",
+      "장소 유형, 관리·운영 주체, 일반 방문객 출입 허용 여부와 독립 방문지 여부를 확인하지 못했다.",
+      "접근로, 사유지 여부, 주차·화장실·무장애 시설 및 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 표식",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1926127013",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "공개 장소 URL의 식별자는 1926127013이다.",
+          "입력 패킷은 해당 표식의 명칭을 ‘신물’로 기록한다.",
+          "입력 패킷에는 익명화된 공개 리뷰 본문이 제공되지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "장소의 실제 위치, 유형, 출입 권한 및 안전한 접근 동선을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 Kakao Map의 최신 상세 정보와 관리 주체 또는 공공 최신 안내를 통해 장소 정체성·출입 가능 여부·접근 안전을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

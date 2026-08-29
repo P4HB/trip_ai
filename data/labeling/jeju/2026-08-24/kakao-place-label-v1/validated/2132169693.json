@@ -1,0 +1,100 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2132169693",
+  "place_id": "2132169693",
+  "name": "벵뒤못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "한국관광공사 공개 여행 콘텐츠는 벵뒤못을 제라진 캠프의 오프로드 체험 중 만나는 연못으로 설명하고, 체험이 이뤄지는 선새미 목장은 제라진 캠프 사유지이므로 무단 출입할 수 없다고 명시한다. 따라서 입력 Kakao 표식 ‘벵뒤못’은 자유롭게 독립 방문하는 장소라기보다 제라진 오프로드 체험에 포함되는 접근 제한 자연 경관 지점으로 판정한다. 최신 투어 운영·출입 조건은 별도 확인이 필요하다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "벵뒤못은 제주 제라진 캠프 오프로드 체험 동선에서 소개되는 연못으로 확인되며, 해당 체험 구역은 사유지 접근 제한이 있는 선새미 목장과 연결된다.",
+    "typical_visit": "제라진 캠프 오프로드 체험 중 오름·말 떼·연못이 있는 자연 경관을 보는 방문 경험으로 소개된다.",
+    "experience_scope": "공개 관광 자료가 무단 출입 불가한 제라진 캠프 사유지 내 체험 동선을 설명하므로, 벵뒤못만을 자유롭게 방문할 수 있는 독립 추천 후보로 보지 않고 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 2132169693의 명칭을 ‘벵뒤못’으로 제시하며, 공개 리뷰에는 제라진오프로드 사유지라는 접근 관련 언급이 있다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 공개 콘텐츠는 제라진 캠프 오프로드 체험이 말 떼·오름·연못을 함께 경험하게 한다고 설명하고, 체험이 이루어지는 윗밤오른 인근 선새미 목장은 제라진 캠프 사유지이므로 무단 출입이 불가하다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao ‘벵뒤못’ 표식의 정확한 좌표와 한국관광공사 콘텐츠에서 말하는 연못의 일치 여부를 좌표로 교차 확인하지 못했다.",
+      "2026-08-25 현재 제라진 오프로드 체험의 운영 여부, 예약·입장 방식 및 벵뒤못 접근 허용 범위는 확인하지 못했다.",
+      "체험 외 독립 방문을 허용하는 공식 접근로, 안전 시설 및 기상별 통제 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터 및 작성자 식별정보를 제외한 입력 리뷰 요약",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/2132169693",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘벵뒤못’이며 place_id는 2132169693이다.",
+          "입력 패킷의 공개 리뷰는 제라진오프로드 사유지라는 접근 관련 내용을 담고 있다.",
+          "평점과 리뷰 수는 라벨값의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사",
+        "type": "official_tourism_information",
+        "url": "https://www.kric.go.kr/jsp/board/portal/sub05/res/themeEssayDetail.jsp?board_cd=M020204&board_seq=3555&q_naGubunALL=all",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제라진 캠프 오프로드 체험은 말 떼·오름·연못 등 제주 자연 요소를 함께 경험하게 한다고 소개된다.",
+          "오프로드 체험이 이루어지는 윗밤오른 인근 선새미 목장은 제라진 캠프 사유지이므로 무단 출입이 불가하다고 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "access_limited_subordinate_experience",
+      "applies_to": "recommendation_candidate",
+      "condition": "벵뒤못은 제라진 캠프 사유지의 오프로드 체험 동선에서 소개되며, 공개 관광 자료는 해당 목장의 무단 출입 불가를 안내한다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고, 최신 운영·예약 및 합법적 접근 조건이 확인된 제라진 오프로드 체험의 부속 경관으로만 검토한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

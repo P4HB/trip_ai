@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25198519",
+  "canonical_id": "kakao:25198519",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status": "eligible", "confidence": 0.5, "rationale": "장소명과 방문 기록은 움푹 팬 분화구 및 경관을 가진 독립 오름 자연 지점을 가리킨다. 다만 현재 접근·탐방 조건은 입력에 없다.", "source_ids": ["kakao-place-metadata", "kakao-review-2020-03-12", "kakao-review-2026-07-10"], "rule_ids": ["eligibility.independent_place", "evidence.kakao_supplementary"]},
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "장소명이 오름이며 움푹 팬 분화구를 직접 언급한 기록이 있어 화산 지형 자연 경관이 핵심이다.", "source_ids": ["kakao-place-metadata", "kakao-review-2020-03-12"], "rule_ids": ["evidence.review-stated-crater"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·해양 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "등반·산책 난이도 또는 활동 경험의 근거가 부족하다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "역사·문화 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·음료 이용의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "축제·기간성 행사의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "분화구와 청보리·조망을 언급한 기록으로 대표 경험은 실외일 가능성이 높다.", "source_ids": ["kakao-review-2020-03-12", "kakao-review-2026-07-10"], "rule_ids": ["inference.outdoor-volcanic-landscape"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 실외 분화구·경관 감상에 기반하므로 날씨와 계절의 영향이 클 가능성이 높지만 운영 기준은 확인되지 않았다.", "source_ids": ["kakao-review-2020-03-12", "kakao-review-2026-07-10"], "rule_ids": ["inference.outdoor-volcanic-landscape"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식 체류의 정도를 판단할 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경사·보행로·계단 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "탐방 거리와 체류 시간 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "2026년 기록이 뷰를 매우 좋다고 직접 평가하고, 2020년 기록도 분화구와 청보리 경관을 언급한다.", "source_ids": ["kakao-review-2026-07-10", "kakao-review-2020-03-12"], "rule_ids": ["evidence.review-stated-view"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "움푹 팬 분화구 안에 청보리가 자라는 모습이 언급돼 지형과 계절 경관의 고유성이 확인된다.", "source_ids": ["kakao-review-2020-03-12"], "rule_ids": ["evidence.review-stated-crater"]},
+    "style_evidence.local_embeddedness": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주 지역 자연·문화와의 연결 정도를 판단할 추가 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "지역 대표 명소·상징성의 비교 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "경관 언급은 있으나 사진 촬영 가치의 직접 근거가 없다.", "source_ids": ["kakao-review-2026-07-10"], "rule_ids": ["fallback.insufficient-evidence"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 탐방의 안전·동선 정보를 확인할 수 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 동행 적합성을 판단할 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 동행 적합성을 판단할 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반에 필요한 안전·보행 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "부모 동반에 필요한 접근성·휴식 시설 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "1월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "2": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "2월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "3": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "2020년 3월 분화구에 청보리가 자랐다는 기록이 있어 해당 시기 경관의 관련성이 확인되지만 현재 재배·개방 상태는 미확인이다.", "source_ids": ["kakao-review-2020-03-12"], "rule_ids": ["evidence.review-stated-seasonal-landscape"]},
+    "4": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "4월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "5": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "5월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "6": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "6월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "7": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "2026년 7월의 긍정적 경관 기록은 있으나 월 전체의 탐방·기상 적합성을 확정할 수 없어 중립값으로 둔다.", "source_ids": ["kakao-review-2026-07-10"], "rule_ids": ["evidence.review-stated-visit-month"]},
+    "8": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "8월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "9": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "9월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "10": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "10월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "11": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "11월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]},
+    "12": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "12월 탐방·경관 상태 정보가 없어 중립값으로 둔다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-outdoor"]}
+  },
+  "hard_constraints": ["분화구의 실제 출입 허용 구간, 탐방로·주차·안전 조건 및 청보리 경관의 현재 상태는 입력 패킷에서 확인되지 않는다. 방문 전 최신 현장 정보와 사유지·보전 지침을 확인해야 한다."],
+  "research": {"sources": [{"source_id": "kakao-place-metadata", "publisher": "Kakao", "url": "https://place.map.kakao.com/25198519", "checked_at": null, "facts": ["장소명: 논오름"]}, {"source_id": "kakao-review-2026-07-10", "publisher": "Kakao 공개 방문 기록", "url": "https://place.map.kakao.com/25198519", "checked_at": "2026-07-10", "facts": ["경관이 좋다는 방문 기록"]}, {"source_id": "kakao-review-2020-03-12", "publisher": "Kakao 공개 방문 기록", "url": "https://place.map.kakao.com/25198519", "checked_at": "2020-03-12", "facts": ["움푹 팬 분화구와 청보리를 언급"]}], "limitations": ["공식·공공 상세 출처가 입력에 없음", "과거 방문 기록은 현재 개방·재배·탐방 조건을 보장하지 않음"]},
+  "review_priority": "high"
+}

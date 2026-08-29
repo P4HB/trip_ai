@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:260892170",
+  "place_id": "260892170",
+  "name": "제주올레18코스 공식안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘제주올레18코스 공식안내소’다. 제주특별자치도 공개 안내는 18코스의 출발점이 김만덕기념관으로 옮겨졌고 ‘김만덕기념관 안에 자리한 안내소’에서 정보와 제주올레 굿즈를 제공한다고 명시한다. 따라서 이 레코드는 독립적인 여행 방문지가 아니라 김만덕기념관 및 제주올레 18코스 이용을 보조하는 내부 안내 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘제주올레18코스 공식안내소’는 제주올레 18코스의 안내 기능을 가진 시설이며, 공개 제주특별자치도 안내상 김만덕기념관 내부에 위치한다.",
+    "typical_visit": "제주올레 18코스 이용자가 코스 정보와 제주올레 굿즈를 얻기 위해 잠시 들르는 안내소로 소개된다.",
+    "experience_scope": "이 장소는 김만덕기념관 안의 안내 시설로 확인되어 독립 관광지로서의 18개 경험 축, 동반자·월별 적합도 벡터를 생성하지 않는다. Kakao 평점·후기 수 및 후기 작성자 정보는 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 공개 안내는 제주올레 18코스 출발 지점이 관덕정 분식에서 김만덕기념관으로 옮겨졌다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 ‘김만덕기념관 안에 자리한 안내소’에서 다양한 정보와 제주올레 굿즈를 제공한다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 관광정보는 제주올레 18코스를 걷기·등산·도보여행으로 소개하며, 코스 변경 가능성이 있으므로 방문 전 제주올레 공식 홈페이지 확인을 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "안내소의 현재 운영 시간, 휴무일, 실제 제공 서비스 및 내부 접근성은 최신 공식 운영 공지로 확인하지 못했다.",
+      "입력 Kakao 표식의 정확한 층·좌표와 김만덕기념관 내부 안내소 표식의 완전한 일치는 별도 지도 좌표 자료로 교차 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도 (웰로 공개 게재)",
+        "type": "official_government_information",
+        "url": "https://www.welfarehello.com/community/hometownNews/%EC%99%B8%EA%B5%AD%EC%9D%B8%EB%93%A4%EB%8F%84-%EB%B0%98%ED%95%9C-%EC%A0%9C%EC%A3%BC-%EC%98%AC%EB%A0%88%EA%B8%B8-%EC%9B%8C%ED%82%B9%EB%A9%94%EC%9D%B4%ED%8A%B8%EC%99%80-%ED%95%A8%EA%BB%98-%EA%B1%B7%EB%8A%94-18%EC%BD%94%EC%8A%A4--8bacec58-1f97-4a3d-b5bc-77c2424d6cd0",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주올레 18코스의 출발 지점이 김만덕기념관으로 옮겨졌다고 안내한다.",
+          "김만덕기념관 안에 자리한 안내소가 정보와 제주올레 굿즈를 제공한다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020187&menuId=DOM_000001718008000000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주올레길 18코스를 걷기·등산·도보여행 관광지로 소개한다.",
+          "코스 우회와 변경이 있을 수 있어 방문 전 제주올레 공식 홈페이지 확인을 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주올레18코스 공식안내소는 김만덕기념관 안의 코스 정보·굿즈 제공 안내 시설로 확인되어, 독립 여행지 추천 후보로 평가하지 않는다.",
+      "status": "confirmed",
+      "action": "여행 추천 시 이 안내소 자체가 아니라 김만덕기념관 또는 제주올레 18코스 같은 독립 방문 경험을 별도 후보로 평가한다. 방문 전에는 최신 공식 안내로 안내소 운영 여부와 코스 변경 사항을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

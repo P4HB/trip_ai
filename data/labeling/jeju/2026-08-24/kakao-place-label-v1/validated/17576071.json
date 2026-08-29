@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17576071",
+  "canonical_id": "kakao:17576071",
+  "name": "제주러브랜드 퍼포먼스광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 명칭은 ‘제주러브랜드 퍼포먼스광장’으로, 공개 관광 자료가 제주러브랜드 전체를 하나의 성(性) 테마 조각공원이자 거대한 예술 공간으로 소개하는 것과 일치한다. ‘퍼포먼스광장’ 자체의 별도 운영·입장·독립 방문 경험은 확인되지 않아, 제주러브랜드 내부의 광장/시설 표식으로 판정했다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-FACILITY"
+    ]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "Kakao 장소명 ‘제주러브랜드 퍼포먼스광장’은 제주러브랜드라는 상위 테마조각공원의 명칭을 직접 포함하며, 독립 관광지보다 그 내부 광장 표식으로 식별된다.",
+    "typical_visit": "제주러브랜드의 야외·실내 조각 작품을 관람하는 상위 공원 방문의 일부로 이용될 수 있으나, 퍼포먼스광장 단독의 관람·공연 운영은 확인하지 못했다.",
+    "experience_scope": "공개 자료는 제주러브랜드 전체의 성 테마 조각공원·예술 공간 성격을 설명한다. 퍼포먼스광장의 정확한 경계, 상시 공연 여부, 별도 입장·운영 및 접근 조건은 확인되지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 공개 장소 메타데이터는 place_id 17576071의 명칭을 ‘제주러브랜드 퍼포먼스광장’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사는 제주러브랜드를 성을 주제로 한 테마조각공원이며 공원 전체를 하나의 거대한 예술 공간으로 활용한 장소로 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "퍼포먼스광장의 상위 공원 내부 정확한 위치와 독립 출입 가능 여부",
+      "상시 또는 예정 공연·행사, 별도 운영 시간과 입장 조건",
+      "광장 자체의 좌석·그늘·화장실·무장애 접근성과 악천후 안전 안내"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17576071",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 제주러브랜드 퍼포먼스광장으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500550&newopen=yes",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주러브랜드를 성을 주제로 한 테마조각공원으로 소개한다.",
+          "공원 전체를 하나의 거대한 예술 공간으로 활용한다고 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_current_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "퍼포먼스광장은 제주러브랜드 내부 시설로 판단되며, 독립 출입·상시 공연·현재 운영 및 악천후 시 이용 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 장소로 추천하지 말고, 상위 제주러브랜드 방문 전 공식 최신 안내에서 운영·입장 및 행사·기상 관련 이용 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CONSTRAINT-SUBORDINATE-FACILITY",
+        "CONSTRAINT-DYNAMIC-ACCESS-CHECK"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

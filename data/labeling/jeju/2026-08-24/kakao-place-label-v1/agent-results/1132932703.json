@@ -1,0 +1,44 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1132932703",
+  "canonical_id": "kakao:1132932703",
+  "name": "사려니숲길 관광안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명은 사려니숲길 관광안내소로, 장소명 자체가 사려니숲길 탐방을 지원하는 안내시설임을 나타낸다. 공식 관광 안내는 사려니숲길을 약 10km의 독립 숲길로 소개하며, 입력의 방문 경험도 숲길 보행·자연 경험을 설명한다. 따라서 안내소는 숲길 자체와 분리된 부속 안내시설로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-SUBORDINATE-TOURIST-INFORMATION", "ELIG-PARENT-TRAIL"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_conditions_are_separate_from_information_center",
+      "applies_to": "all_visitors",
+      "condition": "입력의 후기에는 무장애탐방로와 비자림로 방향 숲길의 시간대별 통제가 언급되며, 공식 관광 안내는 사려니숲길의 기상·현장 통제에 따른 변동 가능성을 고지한다. 이는 관광안내소 자체가 아닌 상위 숲길 방문 조건이다.",
+      "status": "needs_review",
+      "action": "사려니숲길 방문 전 공식 최신 안내로 탐방로 개방·통제와 안내소 운영 상태를 각각 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력의 관광안내소는 사려니숲길 탐방을 위한 안내 지점이며, 공개 관광 지도에는 사려니숲길 탐방안내소가 교래입구·붉은오름에 표시된다.",
+    "facts": [
+      {"text": "공식 관광 안내는 사려니숲길을 비자림로에서 물찻오름을 지나 붉은오름 입구까지 이어지는 약 10km 숲길로 소개한다.", "source_id": "S1"},
+      {"text": "제주 관광안내도에는 사려니숲길 탐방안내소가 교래입구와 붉은오름에 표시된다.", "source_id": "S2"}
+    ],
+    "unknowns": ["이 Kakao 표식이 가리키는 안내소의 정확한 출입구", "현재 안내소 운영 시간과 편의시설", "당일 사려니숲길 구간별 통제 상태"],
+    "sources": [
+      {"id": "S1", "publisher": "Visit Jeju", "type": "official_tourism_information", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500281&menuId=DOM_200000000011000", "checked_at": "2026-08-28", "facts": ["사려니숲길의 구간·길이·탐방 조건을 안내한다."]},
+      {"id": "S2", "publisher": "서귀포시", "type": "official_tourism_map", "url": "https://www.seogwipo.go.kr/files/board/bf6b83e5-2a8f-4200-8f8f-2421794bb621.pdf", "checked_at": "2026-08-28", "facts": ["사려니숲길 탐방안내소 위치를 관광지도에 표시한다."]}
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

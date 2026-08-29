@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25727457",
+  "place_id": "25727457",
+  "name": "소왕천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "제주특별자치도의회 공개 하천 목록은 소왕천을 유수암 1056-2에서 하기리 1816까지 이어지는 지방하천으로 기록한다. 공개 지도 자료도 이를 stream으로 표기한다. 그러나 확인한 공공·지도 자료에는 일반 여행객을 위한 독립 관광·체험 장소, 공식 탐방 동선 또는 방문 운영 안내가 없고 입력 Kakao 표식도 특정 접근 지점을 제시하지 않는다. 따라서 선형 하천 지리 객체 자체는 추천용 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "소왕천은 제주시 애월권에서 유수암 1056-2를 기점으로 하기리 1816까지 이어지는 지방하천으로 공공 자료에 기록된 하천이다.",
+    "typical_visit": "확인된 공개 자료에서 소왕천의 기능은 하천·수계 및 행정 관리 대상이다. 일반 여행객을 위한 독립 관람·산책·체험 프로그램이나 특정 방문 시설은 확인하지 못했다.",
+    "experience_scope": "하천이라는 지리적 객체와 행정상 구간은 확인되지만, Kakao 표식이 가리키는 특정 접근 지점, 일반 출입 허용, 안전한 동선 및 관광지 운영은 확인되지 않았다. 이 작업의 독립 방문·체험 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 공개 제주시 하천 목록은 소왕천의 기점을 유수암 1056-2, 종점을 하기리 1816으로 기록하고 하천 길이를 12.0km로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Mapcarta 공개 지도 페이지는 Sowangcheon(소왕천)을 제주도의 stream으로 표기한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 표식이 소왕천의 어느 구간 또는 접근 지점을 뜻하는지 확인하지 못했다.",
+      "일반 방문객의 출입 허용, 공식 산책로·관람로, 주차·화장실·무장애 접근성 및 관리 주체를 확인하지 못했다.",
+      "강우·범람 시 통제 범위와 평상시 수변·보행 안전 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_council_document",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주시 하천 목록은 소왕천의 기점을 유수암 1056-2, 종점을 하기리 1816으로 기록한다.",
+          "소왕천 길이를 12.0km로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Mapcarta",
+        "type": "public_map_reference",
+        "url": "https://mapcarta.com/24734142",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "Sowangcheon의 한국어 표기를 소왕천으로 제시한다.",
+          "소왕천을 제주도의 stream으로 분류한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25727457",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 소왕천이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "place_type_and_visitor_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "소왕천은 공공 자료에 지방하천으로 기록되어 있으나, 독립 관광·체험 장소로서의 특정 접근 지점, 일반 방문 운영 및 강우·범람 시 안전·접근 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 특정 구간의 공식 관광·탐방 안내와 최신 출입·안전 조건이 확인되면 별도 장소 레코드로 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

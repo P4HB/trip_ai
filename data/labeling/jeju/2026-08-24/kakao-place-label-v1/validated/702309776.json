@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "702309776",
+  "canonical_id": "kakao:702309776",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 ‘난산로벚꽃길’ 명칭과 URL만 있고 도로 구간·현재 개화·안전한 보행·공식 안내·방문 기록이 없다. 독립 방문지인지 일반 도로의 표식인지 식별할 수 없어 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "kakao-place-metadata"
+    ],
+    "rule_ids": [
+      "eligibility.identity-unknown",
+      "fallback.insufficient-evidence"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    "도로 구간·보행 안전·현재 개화 상태는 입력에 없어 방문 전 확인이 필요하다."
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao-place-metadata",
+        "publisher": "Kakao",
+        "url": "https://place.map.kakao.com/702309776",
+        "checked_at": null,
+        "facts": [
+          "장소명: 난산로벚꽃길",
+          "공개 방문 기록 없음"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식 상세 출처가 입력에 없음"
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

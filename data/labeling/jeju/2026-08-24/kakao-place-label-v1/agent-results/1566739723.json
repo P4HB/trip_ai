@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1566739723",
+  "canonical_id": "kakao:1566739723",
+  "name": "히어로플레이파크 제주점",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 판매 안내와 입력된 방문 후기는 제주 연동의 히어로플레이파크 제주점을 어린이 중심의 대형 실내 놀이·체험 공간으로 일관되게 가리킨다. 독립적으로 입장·방문하는 장소이므로 적격으로 판정한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"공개 안내와 입력 후기는 실내 놀이 시설을 설명하며 산·오름 경관이 핵심 경험이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"확인된 대표 경험은 실내 놀이·체험이며 해안·해양 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 판매 안내는 체험 시설·놀이기구·디지털존을 갖춘 실내 테마파크로 소개하고, 입력 후기에도 다양한 놀이 존과 아이들의 놀이 경험이 확인된다.","source_ids":["S1","S2"],"rule_ids":["THEME-PARTICIPATORY-PLAY-DIRECT"]},
+    "theme.culture_history": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"역사·문화유산·전시·공연 또는 전통 체험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 판매 안내가 이 장소를 가족형 초대형 실내 테마파크로 소개하며, 체험 시설·놀이기구·디지털존을 명시한다.","source_ids":["S1"],"rule_ids":["THEME-INDOOR-THEME-PARK-DIRECT"]},
+    "theme.cafe": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기에는 판매 음식 선택지가 언급되지만, 카페·음료·디저트 이용이 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"주말 색칠·보물찾기 이벤트 후기는 있으나 특정 기간 축제·공연이 장소의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S2"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value":0.75,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 판매 안내가 가족형 실내 테마파크라고 명시하고, 입력 후기 역시 실내 놀이 존 이용을 설명한다.","source_ids":["S1","S2"],"rule_ids":["ENV-INDOOR-DIRECT"]},
+    "environment.weather_sensitivity": {"value":0.25,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험이 실내 테마파크 이용으로 소개된다. 입력 후기에는 주차장과 이어져 비 오는 날 방문하기 편하다는 실제 방문 근거도 있다.","source_ids":["S1","S2"],"rule_ids":["ENV-INDOOR-WEATHER-SHELTER-DIRECT"]},
+    "style_evidence.restfulness": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"활동형 놀이와 다양한 놀이 존이 핵심으로 확인되며, 평온한 휴식·느린 체류가 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["STYLE-ACTIVE-PLAY-CONTEXT"]},
+    "style_evidence.physical_ease": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"실내 시설임은 확인되지만 놀이기구별 신체 부담, 계단·엘리베이터, 무장애 동선은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.75,"confidence":0.75,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 판매 안내는 기본 이용권을 주중 3시간·주말 2시간 및 반일 5시간으로 제시해 복수의 체류 시간 선택지를 직접 확인한다.","source_ids":["S1"],"rule_ids":["STYLE-TIMED-PASS-OPTIONS-DIRECT"]},
+    "style_evidence.scenic_value": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"공개 안내와 입력 후기는 놀이·체험 시설을 설명하며 경관 감상이 방문 가치의 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["STYLE-SCENERY-NOT-CONFIRMED"]},
+    "style_evidence.distinctiveness": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대형 가족형 실내 테마파크와 체험·놀이기구·디지털존 구성은 확인되지만, 제주점만의 고유한 구성인지 비교할 충분한 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["STYLE-DISTINCTIVENESS-LIMITED"]},
+    "style_evidence.local_embeddedness": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"제주 연동 소재 지점임은 확인되지만 제주 자연·문화·생산자 또는 지역 생활과 연결된 경험이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-CONNECTION-NOT-CONFIRMED"]},
+    "style_evidence.landmark_significance": {"value":0.25,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"지역을 대표하는 공적 명소·상징으로 지정되거나 안내된 근거는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-NOT-CONFIRMED"]},
+    "style_evidence.photo_value": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"실내 놀이 시설 구성은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-PHOTO-VALUE-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"어린이 중심 시설이지만 단독 성인 이용의 입장 조건·경험은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"커플 대상 이용 조건과 경험은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"어린이 외 친구 그룹의 이용 조건·수용 여건은 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value":1,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 판매 안내는 아이들과 함께 즐기는 가족형 실내 테마파크로 소개하고, 입력 후기들은 아이들이 다양한 놀이 존과 이벤트를 즐긴다고 직접 설명한다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-KIDS-DIRECT"]},
+    "parents": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담, 휴식 좌석, 무장애 접근성과 고령 방문자 이용 조건이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "2": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "3": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "4": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "5": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "6": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "7": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "8": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "9": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "10": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "11": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]},
+    "12": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 실내 테마파크 이용이므로 계절 날씨 영향은 비교적 낮다고 추론하되, 해당 월의 최신 운영일은 확인이 필요하다.","source_ids":["S1"],"rule_ids":["MONTH-INDOOR-LOW-WEATHER-IMPACT"]}
+  },
+  "hard_constraints": [
+    {"kind":"admission_age_and_guardian_conditions_need_confirmation","applies_to":"kids_and_guardians","condition":"어린이 중심 실내 놀이 시설이며 입력 후기에는 12개월 이전 영아가 큰 아이들과 섞일 때 주의가 필요하다는 방문 경험이 있다. 최신 연령별 입장·보호자 동반·안전 규정은 확인이 필요하다.","status":"needs_review","action":"방문 전 공식 판매처 또는 매장에 연령별 입장권, 보호자 동반, 양말·안전 규정과 혼잡 시간대를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"},
+    {"kind":"operating_hours_and_reservation_need_confirmation","applies_to":"all_visitors","condition":"공개 판매 정보에는 시간제 이용권과 과거 운영 정보가 있으나, 현재 운영일·시간·요금·예약 가능 여부는 변동될 수 있다.","status":"needs_review","action":"방문 전 공식 채널 또는 판매처에서 해당 날짜의 운영 시간, 입장 가능 여부와 요금을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 공개 판매 페이지의 ‘히어로플레이파크 제주점’과 일치하며, 제주 제주시 연동 소재의 어린이 중심 실내 테마파크로 확인됐다.",
+    "facts": [
+      {"text":"공개 판매 안내는 히어로플레이파크를 아이들과 함께 즐기는 가족형 초대형 실내 테마파크로 소개하고 체험 시설·놀이기구·디지털존을 언급한다.","source_id":"S1"},
+      {"text":"입력된 Kakao 공개 방문 후기는 다양한 놀이 존, 아이들의 놀이 경험, 주말 이벤트와 주차장 연결 실내 방문 경험을 언급한다.","source_id":"S2"}
+    ],
+    "unknowns": ["최신 운영일·운영시간·요금·예약 및 혼잡도", "연령별 입장·보호자 동반·안전 규정", "시설별 신체 부담, 계단·엘리베이터와 무장애 접근성"],
+    "sources": [
+      {"id":"S1","publisher":"NOL 인터파크투어","type":"public_ticket_information","url":"https://travel.interpark.com/tna/products/c64d0502-585a-467e-899f-71bcb6d16fdc","checked_at":"2026-08-25","facts":["히어로플레이파크 제주점을 제주 제주시 연동 소재로 안내한다.","가족형 실내 테마파크와 시간제 소인 이용권 정보를 소개한다.","운영·이용 정보는 현장 상황에 따라 변동될 수 있다고 안내한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/1566739723","checked_at":"2026-08-25","facts":["입력된 공개 후기는 다양한 놀이 존과 아이들의 이용 경험을 언급한다.","입력된 공개 후기는 비 오는 날 주차장에서의 접근 편의와 영아·큰 아이 혼재 시 주의 경험을 언급한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

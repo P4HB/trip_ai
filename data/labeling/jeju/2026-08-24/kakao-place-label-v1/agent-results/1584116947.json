@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1584116947",
+  "canonical_id": "kakao:1584116947",
+  "name": "돌하르방",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘돌하르방’은 한림공원 공식 시설 안내와 제주관광공사 Visit Jeju의 ‘돌하르방식당’에 해당한다. 두 출처는 식당이 한림공원 재암민속마을 안에 위치한다고 직접 설명한다. 독립 관광지·체험시설이 아니라 한림공원 관람 중 이용하는 식음 시설이므로, 공원 본체와 중복되는 독립 추천 후보로는 분류하지 않는다.",
+    "duplicate_of": "한림공원",
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 1584116947의 ‘돌하르방’은 제주시 한림읍 한림로 300의 한림공원 재암민속마을 내부에 있는 돌하르방식당으로 식별된다.",
+    "typical_visit": "한림공원 관람 동선에서 제주 향토 음식을 이용하는 식음 편의시설로 파악된다.",
+    "experience_scope": "공식·공공 관광 자료가 식당을 한림공원 및 재암민속마을 내부에 둔 시설로 설명한다. 식당 자체의 독립 입장·방문 동선은 확인하지 못했으므로, 상위 공원 관람 경험과 중복하지 않도록 단독 추천용 41축 벡터를 생성하지 않는다. Kakao 평점과 후기 수는 판정 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 place_id 1584116947의 장소명을 ‘돌하르방’으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한림공원 공식 시설 안내는 돌하르방 식당을 공원 시설로 소개하고, 제주 흑돼지 철판구이·몸국·비빔밥 등 제주 향토 음식을 제공한다고 안내한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 Visit Jeju는 돌하르방식당이 재암민속마을의 초가지붕 집들을 지나 볼 수 있으며, 재암민속마을이 한림공원 가운데에 있다고 설명한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "식당만을 위한 별도 출입구, 한림공원 입장권 없이 이용 가능한지 여부 및 독립 방문 동선",
+      "현재 영업 여부, 영업시간·휴무, 메뉴·가격과 예약 조건",
+      "식당 내부와 접근 경로의 최신 무장애 접근성, 좌석·화장실·주차 이용 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1584116947",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘돌하르방’이다.",
+          "입력의 평점과 후기 수는 라벨 판정 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한림공원",
+        "type": "official_business_site",
+        "url": "https://hallimpark.com/facility",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공식 시설 안내는 돌하르방 식당을 한림공원 시설로 수록한다.",
+          "공식 안내는 이 식당을 30년 전통의 제주 향토음식점으로 소개하고 제주 흑돼지 철판구이, 몸국, 비빔밥 등을 열거한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000501216",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "돌하르방식당은 재암민속마을의 초가지붕 집들을 지나 돌담을 따라 걸으면 볼 수 있는 식당으로 소개된다.",
+          "재암민속마을은 한림공원 가운데에 위치한다고 안내된다.",
+          "식당은 제주 토종 돼지고기·채소·해산물을 사용하는 제주 향토 음식점으로 소개된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "돌하르방식당은 공개 공식·관광 자료상 한림공원 재암민속마을 내부의 식음 시설로 확인되어, 단독 추천 시 한림공원 관람 경험과 중복될 수 있다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보에서는 제외하고, 필요하면 한림공원 상세에서 현장 식음 편의시설로만 표시한다. 방문 전 한림공원 공식 안내로 현재 접근·운영 조건을 확인한다.",
+      "source_ids": ["S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25"
+}

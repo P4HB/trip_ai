@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726274",
+  "place_id": "25726274",
+  "name": "방천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘방천’과 place_id만 제공하며 주소·좌표·업종·소개가 없다. 제주 공공 문서에는 화북천 수계의 지방하천 ‘방천’이 나타나지만, 이 레코드가 그 하천의 어느 지점인지 또는 동명 다른 표식인지 공개 정보로 교차 확인할 수 없다. 따라서 독립 여행 방문지 여부와 실제 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력의 확인 가능한 식별자는 ‘방천’과 Kakao place_id뿐이다. 제주 지방하천 목록에는 화북천 수계의 방천이 있으나, 해당 Kakao 표식과의 동일성이나 표식 위치는 확인되지 않았다.",
+    "typical_visit": "제주 공공 문서상 방천은 하천명으로 수록되지만, 이 Kakao 레코드가 하천 접근 지점·산책로·시설 또는 다른 동명 장소인지 확인할 수 없어 방문 경험을 확정할 수 없다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영 정보와 공개 방문 후기 근거가 없다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았고, 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도 지방하천 목록에는 화북천 수계의 지방하천으로 ‘방천’이 수록되어 있다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘방천’으로만 제공하며 주소·좌표·업종·소개·공개 후기 근거를 제공하지 않아, 공공 문서의 하천과 같은 대상인지 확인할 수 없다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 25726274의 정확한 좌표, 주소, 업종 및 표식 유형을 확인하지 못했다.",
+      "입력명이 제주 화북천 수계의 방천과 동일한지, 또는 어느 접근·관람 지점을 가리키는지 확인하지 못했다.",
+      "독립 여행 방문지로서의 접근성, 안전, 운영·통제, 체험 범위와 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도",
+        "type": "public_government_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2013/CLIKC2002114545002495_attach_3.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 지방하천 목록은 방천을 화북천 수계의 지방하천으로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726274",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘방천’이며, 주소·좌표·업종·소개·공개 방문 후기 근거는 제공되지 않았다.",
+          "평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_visit_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 위치·업종·표식 설명이 없어 ‘방천’이 특정 하천 지점 또는 독립 방문지인지와 실제 접근·안전 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도에서 좌표·주소·표식 유형을 먼저 확인하고, 해당 지점이 독립적으로 방문 가능한 여행 장소인지와 최신 접근·안전 정보를 별도 검수한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

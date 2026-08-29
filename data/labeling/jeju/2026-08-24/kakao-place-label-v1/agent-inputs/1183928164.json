@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 583,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1183928164.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1183928164",
+    "provider": "kakao",
+    "place_id": "1183928164",
+    "name": "서북청년회 주둔지·성산동국민학교 옛터",
+    "url": "https://place.map.kakao.com/1183928164",
+    "average_rating_5": "3.3",
+    "visitor_review_count": "15",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.08.05.",
+      "content": "진짜로 오리배 주차장 되버림 안내판도 사라지고 아픈 역사지만 사적지인데 이렇게 방치해도 괜찮은지 모르겠지만 이런 말 역시 제주를 모르는 육지사람이나 할수있는 말 같기도 하고요…안타까고 뭐라 말을 못하겠음",
+      "tags": ""
+    },
+    {
+      "date": "2026.07.11.",
+      "content": "장기독재집권 할려고 제주 도민들 애고 어른이고 노인이고 싹 빨갱이로 몰아 학살한 파렴치 매국노 이승만. 그리고 이승만의 졸개 인간성 말살 쓰레기들 서북청년단",
+      "tags": ""
+    },
+    {
+      "date": "2025.11.29.",
+      "content": "-30k 😎 멸공!",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.26.",
+      "content": "😨😱😢😭",
+      "tags": ""
+    },
+    {
+      "date": "2023.08.21.",
+      "content": "서청단원들은 못된 짓을 많이 했다. 주민들을 모아놓고 서로 뺨때리기를 시키기도 했다. 할아버지와 손자 간에도 빰때리기를 강요했다. 세게 때리지 않으면 달려들어 죽도록 팼다. 돈을 모아 가든가, 소를 끌고 가야 그 짓이 끝났다. 주정공장 창고 부근에는 부녀자와 처녀들의 비명소리가 끊이지 않았다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

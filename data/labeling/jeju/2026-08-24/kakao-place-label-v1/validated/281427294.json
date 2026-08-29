@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "281427294",
+  "canonical_id": "kakao:281427294",
+  "name": "제주동백마을숲",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력명과 공개 후기는 작은 동백 숲·마을 산책 공간을 시사하지만, 공식·공공 출처에서 이 Kakao 표식의 주소·관리 주체·정확한 장소 범위를 확인하지 못했다. 동명 동백수목원 등과의 동일성도 추정하지 않는다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-UNVERIFIED"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소의 정확한 위치·운영·접근·개화 정보가 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "공식 주소·좌표 또는 관리 주체 정보로 장소 신원을 확정한 뒤 라벨링한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "not_matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "공식 관광 검색에서는 입력명과 정확히 일치하는 장소를 찾지 못했다.",
+    "facts": [
+      {
+        "text": "입력 패킷의 공개 후기는 동백나무 숲과 짧은 마을 산책을 언급하지만, 평점·후기 수는 라벨 근거로 사용하지 않았다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치와 관리 주체",
+      "동백수목원 등 유사 명칭 장소와의 동일성",
+      "개방·접근·계절 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map input evidence",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/281427294",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 패킷에는 장소명과 공개 후기만 제공되고 주소·좌표·업종은 없다.",
+          "평점·후기 수는 라벨값 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

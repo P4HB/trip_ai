@@ -1,0 +1,105 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25729036",
+  "place_id": "25729036",
+  "name": "원장천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 하천 자료와 제주도의회 공개 자료는 원장천을 제주시 노형동에서 이호동으로 이어지는 지방하천으로 확인한다. 관광·레저 방문지로서의 공식 운영, 일반 방문객용 동선 또는 체험·관람 안내는 신뢰 가능한 공개 출처에서 확인하지 못했으므로, 하천 자체를 독립 추천 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "원장천은 제주특별자치도 제주시 노형동에서 이호동 구간에 있는 지방하천이다.",
+    "typical_visit": "공개 자료에서는 하천 지정·관리 정보와 구간만 확인되며, 일반 관광객을 위한 독립 관람·체험 장소나 상시 방문 운영은 확인되지 않았다.",
+    "experience_scope": "하천의 신원과 행정상 위치는 확인되지만, 관광·레저 목적의 방문지로서 안전관리, 접근 동선, 이용 조건 또는 운영 주체의 방문 안내는 확인되지 않았다. 따라서 본 라벨링의 독립 방문·체험 장소 범위에 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국가 하천 정보 공개 자료는 원장천을 제주특별자치도 제주시 노형·이호 구간의 지방하천으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도의회 공개 부록은 원장천의 기점을 노형동 3404, 종점을 이호동 1082로 제시하고 연장을 6.36km로 기록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 출입 가능 구간, 보행 동선, 주차, 화장실, 수변 안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "관광·레저 목적의 상시 개방, 프로그램 또는 공식 방문 안내는 확인하지 못했다.",
+      "수량, 수질, 정비 상태, 통제처럼 변하는 현장 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회",
+        "type": "public_river_data",
+        "url": "https://www.riverlove.or.kr/files/riverData/aaeeb7c31d2261d3b16464f05d42f021.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "원장천을 제주특별자치도 제주시 노형·이호 구간의 지방하천으로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "government_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "원장천의 기점을 노형동 3404, 종점을 이호동 1082로, 연장을 6.36km로 기록한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25729036",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘원장천’이다.",
+          "평점·후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_experience_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "지방하천이라는 행정상 신원은 확인됐지만 독립 관광·체험 장소로서 일반 방문 운영, 안전 및 접근 조건이 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광·방문 안내가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

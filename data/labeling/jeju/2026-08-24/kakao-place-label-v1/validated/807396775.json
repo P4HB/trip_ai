@@ -1,0 +1,632 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "807396775",
+  "canonical_id": "kakao:807396775",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 자료에서 제주시 아라동 편백나무숲의 숲길·데크 이용 장소로 확인되어 독립적인 방문 경험으로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "R1"
+    ],
+    "status_detail": "confirmed"
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "편백나무숲과 숲길 산책·산림욕이 장소의 직접 확인된 핵심 경험이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "확인한 공개 자료에 해안·해양 경험 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "숲길 산책과 맨발걷기 산책로 이용이 직접 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "문화·역사 방문 경험은 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 경험은 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 이용이 핵심 방문 목적이라는 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "기간성 축제·공연이라는 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "확인된 대표 경험은 편백나무숲의 야외 숲길과 야외 데크 이용이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 숲길·데크에서 이루어지므로 날씨의 영향을 받는다고 판단했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R3"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "데크에서 쉬거나 낮잠을 자고 산림욕을 즐기기 좋다고 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "가벼운 숲길 산책은 확인되지만 전체 경사·무장애 수준은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R3"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "숲길 산책뿐 아니라 무료 데크에서 도시락·휴식을 할 수 있어 체류 시간을 조절할 수 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "빽빽이 우거진 편백나무숲 자체가 산림욕과 휴식의 방문 대상이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "편백숲·맨발 산책로 경험은 확인되나 제주 내 상대적 고유성은 비교 근거가 부족하다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주시 아라동의 자연 숲길로 확인되지만 지역 문화·생산자 연결 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R3"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표 랜드마크라는 공공·공식 근거를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치에 대한 직접 근거를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "한적하게 산림욕을 즐기기 좋다고 소개되어 혼자 걷고 쉬는 경험과 맞는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 관계별 권장 근거가 없어 중립값으로 보류했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "무료 데크에서 도시락과 휴식을 할 수 있어 함께 머무는 활동이 직접 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "토양 조사가 어린이 놀이공간 기준을 충족했으나, 가족·연령별 적합성은 별도로 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "부모 동반 적합성 및 보행 부담의 직접 근거가 부족하다.",
+      "source_ids": [],
+      "rule_ids": [
+        "R2"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "계절별 현장 경험 근거가 부족해 야외 숲길의 중립 기본값으로 보류했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R2"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "type": "activity_restriction",
+      "condition": "취사와 야영은 금지되어 있다.",
+      "applies_to": [
+        "picnic",
+        "overnight"
+      ],
+      "status": "confirmed",
+      "rationale": "공개 소개 글이 해당 금지 사항을 명시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R1"
+      ]
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "identity_rationale": "공개 자료의 제주시 아라동 편백나무숲 및 제주시 편백나무숲·맨발황톳길 언급이 입력 장소의 명칭·경험과 일치한다.",
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "효성 블로그",
+        "url": "https://blog.hyosung.com/5897",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주 아라동 아라일동 산 37-1의 편백나무숲으로 소개한다.",
+          "무료 데크, 산림욕·숲길 산책, 도시락·휴식 이용과 취사·야영 금지를 명시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "뉴스N제주",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=268126",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주특별자치도 보건환경연구원의 조사 대상으로 제주시 편백나무숲·맨발황톳길을 열거한다.",
+          "해당 조사 대상지의 토양·모래가 어린이 놀이공간 법정 안전 기준을 충족했다고 보도한다."
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "R1",
+        "rationale": "공개 출처에서 장소의 숲길·데크·맨발걷기·이용 제한을 직접 확인한 축은 direct_evidence로 기록한다."
+      },
+      {
+        "id": "R2",
+        "rationale": "직접 근거가 부족한 축은 0.25 confidence와 fallback 상태로 극단값을 피한다."
+      },
+      {
+        "id": "R3",
+        "rationale": "야외 숲길이라는 확인 사실에서 날씨 민감도와 보행 편의성을 제한적으로 추론하며 needs_review로 남긴다."
+      }
+    ],
+    "unknowns": [
+      "운영 시간과 휴무",
+      "전체 동선의 경사·휠체어 접근성",
+      "계절별 혼잡도와 이용 적합성"
+    ]
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

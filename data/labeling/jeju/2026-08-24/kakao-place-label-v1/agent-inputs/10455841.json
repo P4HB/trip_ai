@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2043,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10455841.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10455841",
+    "provider": "kakao",
+    "place_id": "10455841",
+    "name": "붉은오름",
+    "url": "https://place.map.kakao.com/10455841",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "20",
+    "blog_review_count": "6",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.02.14.",
+      "content": "붉은오름 자연휴양림은 추천하지만 붉은오름은 딱히 오를 필요 있을까 싶어요. 가파른 목재계단길 350m를 쉼없이 올라야 하고, 전망대를 제외하곤 뷰가 없는 능선인데 오르막 내리막이 꽤 있습니다. 사방이 나무로 둘러싸여 아래의 상잣성 숲길과 분위기가 크게 다르지 않고 뷰가 없으니 힘들여 올라온 보람이 없네요.",
+      "tags": ""
+    },
+    {
+      "date": "2025.03.22.",
+      "content": "나무계단으로 되어있어 오르기 편하지만 경사가 굉장히 가파릅니다. 그래도 쉬지않고 오르면 삼십분안에 정상찍고 내려올수 있어요. ! 정상에서 보이는 한라산뷰가 아름다워요",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2024.12.24.",
+      "content": "붉은오름휴양림에서 숙박하면서 오늘 아침 오름에 올라갔어요~ 날씨가 넘넘 좋아 한라산이 잘~ 보였어요~ 올라가는 길도 넘넘 예뻤고, 정상에 갔을때 사방이 뻥~ 뚫려 좋았어요~ 강추합니다~^^",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

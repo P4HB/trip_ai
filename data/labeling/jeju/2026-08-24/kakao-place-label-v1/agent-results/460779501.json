@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:460779501",
+  "place_id": "460779501",
+  "name": "제주용담동유적",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털은 이 장소를 제주시 용담이동 소재 사적 ‘제주 용담동 유적’으로 등재하며, 한국민족문화대백과사전은 청동기시대부터 철기시대에 걸친 대규모 선사 취락 유적으로 설명한다. 별도 문화유산 방문 대상으로 식별되어 eligible로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주 용담동 유적은 제주특별자치도 제주시 용담이동 서천길 8-0에 소재한 사적이다.",
+    "typical_visit": "현장 유적의 역사적 의미를 인지하고 외부 공간과 안내 자료를 통해 선사시대 유적을 살펴보는 문화유산 방문으로 추정된다.",
+    "experience_scope": "국가유산포털은 사적 지정, 위치, 면적과 관리자 정보를 확인한다. 공개된 근거에서는 현장 관람 동선, 안내·전시 시설, 개방 시간, 주차, 화장실, 그늘·휴식 시설, 노면 및 무장애 접근성을 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국가유산포털은 제주 용담동 유적을 사적으로 등재하고, 유적분포지 분류, 2012년 5월 17일 지정, 제주시 용담이동 소재 및 제주시 관리 정보를 제시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "한국민족문화대백과사전은 제주 용담동 유적을 청동기시대부터 철기시대에 걸쳐 조성된 대규모 선사 취락 유적으로 설명한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": ["현장 개방 여부와 관람 가능 구역의 최신 상태를 확인하지 못했다.", "현장 안내판·전시, 주차, 화장실, 휴식 시설 및 접근성 정보를 확인하지 못했다.", "현장 동선의 노면·경사·계단과 악천후 시 안전 조건을 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_page", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1333905220000&pageNo=1_1_2_0", "checked_at": "2026-08-25", "facts": ["제주 용담동 유적은 사적이다.", "소재지는 제주특별자치도 제주시 서천길 8-0 (용담이동)이다.", "유적 면적은 10,279㎡이고 관리단체는 제주시로 제시된다.", "지정일은 2012년 5월 17일이다."]},
+      {"id": "S2", "publisher": "한국민족문화대백과사전", "type": "public_encyclopedia_page", "url": "https://encykorea.aks.ac.kr/Article/E0076251", "checked_at": "2026-08-25", "facts": ["제주 용담동 유적은 청동기시대부터 철기시대에 걸친 대규모 선사 취락 유적이다.", "국가유산 명칭과 사적 지정 정보를 수록한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털의 사적 등재와 백과사전의 선사 취락 유적 설명이 역사·문화유산이 장소 정체성의 핵심임을 직접 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"국가유산포털이 유적분포지와 10,279㎡의 면적을 제시하므로 대표 경험은 외부 유적 공간 중심으로 추론한다. 실내 안내·전시 공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"유적분포지의 외부 공간을 살펴보는 방문으로 추론되어 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다. 현장 시설은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 소음, 혼잡도와 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 노면·경사·계단과 무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선, 안내 프로그램과 권장 체류 시간 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 방문 가치라는 직접 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"백과사전이 청동기시대부터 철기시대에 걸친 대규모 선사 취락 유적으로 설명하고, 국가유산포털이 개별 사적으로 등재해 고유한 역사유산 정체성을 직접 확인한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 용담동에 위치한 선사 취락 유적이며 국가유산포털의 사적 등재와 백과사전의 제주 선사 유적 설명이 제주 지역 역사와의 직접 연결을 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털이 국가 지정 사적으로 등재한 제주 용담동 유적이므로 해당 지역의 공적 역사유산으로서 의미가 직접 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 개방·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 관람 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 안전시설·관람 조건·노면 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·현장 상태 정보가 없어 일반 야외 문화유산 방문의 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"공식 국가유산 정보에서 유적의 위치·지정·관리 정보는 확인되나, 최신 개방 상태, 관람 가능 구역, 동선의 노면·경사·계단, 주차·화장실, 무장애 시설과 악천후 안전 조건은 확인하지 못했다.","status":"needs_review","action":"방문 전 제주시 또는 현장 최신 안내로 개방 여부, 관람 동선과 보행·기상 안전 조건을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1258658929",
+  "place_id": "1258658929",
+  "name": "문원공원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명과 일치하는 공개 기업 정보는 ‘(주)문원공원’을 제주시 정존11길 31, 4층 소재의 자연공원 운영 법인으로 표시한다. 공개 근거에서 관광객이 방문하는 공원·관람·체험 시설이나 독립 여행 방문 경험은 확인되지 않아, 이 Kakao 레코드는 여행지 추천 대상 범위 밖의 사업체로 보수적으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "공개 기업 정보는 ‘(주)문원공원’을 제주 소재 자연공원 운영 법인으로 식별한다. 입력 Kakao 레코드에는 같은 이름 외에 주소·좌표·업종·후기가 제공되지 않았다.",
+    "typical_visit": "확인된 자료는 법인의 사업 분야와 사무실 주소만 제시하며, 여행객을 위한 공원 관람이나 체험 공간을 안내하지 않는다.",
+    "experience_scope": "공개 근거로는 독립적인 관광 방문지의 위치·시설·관람 또는 체험 경험을 확인할 수 없다. 사업체 자체는 본 라벨링의 여행지 추천 범위에 포함하지 않으며 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "사람인 기업 정보는 ‘(주)문원공원’의 업종을 자연공원 운영업으로, 주소를 제주 제주시 정존11길 31, 4층으로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "NICE 기업 정보는 ‘(주)문원공원’을 제주 제주시 소재 자연공원 운영업 법인으로 표시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao place_id의 주소, 좌표, 업종 및 독립 방문지 시설 여부가 제공되지 않았다.",
+      "법인이 운영하는 개별 공원이나 관광객 대상 시설이 이 Kakao 레코드와 동일한지 확인하지 못했다.",
+      "운영 시간, 이용 조건, 접근성 및 최신 방문 가능 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "사람인",
+        "type": "public_business_directory",
+        "url": "https://www.saramin.co.kr/zf_user/company-info/view/csn/b3JBNlI4K2h5cXFVYmZRdkREaU1HZz09/company_nm/%28%EC%A3%BC%29%EB%AC%B8%EC%9B%90%EA%B3%B5%EC%9B%90",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘(주)문원공원’의 업종을 자연공원 운영업으로 표시한다.",
+          "주소를 제주 제주시 정존11길 31, 4층으로 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "NICE 기업정보",
+        "type": "public_business_directory",
+        "url": "https://m.nicebizinfo.com/ep/EP0100M002GE.nice?kiscode=J17574",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘(주)문원공원’을 제주 제주시 소재 법인으로 표시한다.",
+          "표준산업분류를 자연공원 운영업(R90232)으로 표시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1258658929",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘문원공원’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "out_of_scope_business_entity",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 근거는 제주 소재 자연공원 운영 법인과 사무실 주소만 확인하며, 이 Kakao 레코드가 관광객이 방문할 수 있는 독립 공원·관람·체험 시설임을 확인하지 못함",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식 운영 주체의 주소·업종·시설 안내로 독립 방문지 여부를 교차 확인한다. 실제 관광 공원 시설로 확인되면 별도 장소 레코드로 재라벨링하며, 확인 전에는 추천 후보에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

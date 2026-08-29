@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17580579",
+  "canonical_id": "kakao:17580579",
+  "name": "카멜리아힐 용소폭포",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "카멜리아힐 공식 지도는 용소폭포를 유료 수목원 내부의 18개 관람 지점 중 하나로 열거한다. 독립 장소가 아니라 카멜리아힐 방문 경험에 포함되는 하위 시설로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_attraction_entry_and_operations",
+      "applies_to": "all_visitors",
+      "condition": "용소폭포는 카멜리아힐 내부 관람 지점으로 운영시간과 입장 조건은 부모 수목원 정책에 따른다.",
+      "status": "needs_review",
+      "action": "카멜리아힐의 최신 입장·운영 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 카멜리아힐 내부 지도에 표시된 용소폭포와 일치한다.",
+    "facts": [
+      {
+        "text": "카멜리아힐 공식 지도는 용소폭포를 수목원 내부 17번 관람 지점으로 표시한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공공 여행정보는 카멜리아힐 이용 가능 시설 목록에 용소폭포를 포함한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "용소폭포 단독 운영·접근성",
+      "수량과 관람 조건의 계절별 변동"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "카멜리아힐",
+        "type": "official_operator_map",
+        "url": "https://esoism.wixsite.com/camelliahill/map",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "용소폭포를 카멜리아힐 내부 지도 항목으로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "바다온 바다여행",
+        "type": "public_travel_information",
+        "url": "https://badaon.or.kr/seantour_map/travel/destination/detail.do?destId=FCID111755",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "카멜리아힐 이용 가능 시설에 용소폭포를 포함한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

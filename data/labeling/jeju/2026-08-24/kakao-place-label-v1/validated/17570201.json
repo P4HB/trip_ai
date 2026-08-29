@@ -1,0 +1,101 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17570201",
+  "place_id": "17570201",
+  "name": "제주목관아 영주협당",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력명 ‘제주목관아 영주협당’은 제주목관아의 한 건물을 가리킨다. 제주관광공사 Visit Jeju는 영주협당을 제주목관아지에서 확인된 중심 건물 약 30여 채 중 하나로 열거하며, 공공 기록도 영주협당을 제주목관아 복원 관아시설의 하나로 설명한다. 따라서 독립 관광지가 아니라 제주목관아 관람 경험에 포함되는 부속 역사 건물로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "영주협당은 제주특별자치도 제주시 관덕로 25의 제주목관아지 안에 복원·안내되는 관아 건물이다.",
+    "typical_visit": "제주목관아 역사유적 관람 동선에서 다른 관아 시설과 함께 보는 건물로 확인되며, 영주협당 단독의 독립 운영 관광 경험은 확인되지 않았다.",
+    "experience_scope": "입력 Kakao 표식은 제주목관아의 세부 건물과 일치한다. 모시설인 제주목관아는 별도 방문지로 안내되므로 이 세부 표식에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주목관아지를 발굴한 결과 문헌상 중심 건물인 홍화각·연희각·우연당·귤림당·영주협당 등 30여 채의 건물 흔적이 확인됐다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공공누리의 제주특별자치도 기록은 영주협당을 제주목관아지 복원 관아시설의 하나로 열거하고, 제주목관아지를 사적 제380호로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "영주협당 자체의 별도 관람·운영 시간, 전시·해설 및 접근성 정보",
+      "현재 제주목관아의 관람 동선, 시설 운영 및 기상·공사에 따른 제한 사항",
+      "영주협당 단독 표식의 최신 현장 보존·개방 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500551&menuId=DOM_000001718003000000",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주목관아는 제주시 관덕로 25에 있는 조선시대 제주도 관청으로 안내된다.",
+          "영주협당은 제주목관아지에서 확인된 중심 건물 약 30여 채 중 하나로 열거된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공공누리·제주특별자치도",
+        "type": "public_record",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=38948",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "영주협당은 제주목관아지 복원 관아시설의 하나로 열거된다.",
+          "제주목관아지는 사적 제380호로 설명된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_and_current_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "영주협당은 제주목관아의 부속 관아 건물로 확인됐으며, 단독 관광지로서의 별도 운영·접근·안전 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천·방문 안내 시 제주목관아를 모시설로 참조하고, 최신 관람 가능 여부와 해설·이동약자 동선은 제주목관아 공식 또는 현장 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

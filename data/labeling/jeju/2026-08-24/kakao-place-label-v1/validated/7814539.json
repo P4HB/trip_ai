@@ -1,0 +1,719 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7814539",
+  "place_id": "7814539",
+  "name": "당오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소 페이지의 주소가 제주시 구좌읍 송당리 산 199-1이고, 제주시 공공 관광자료가 송당리 당오름을 별도 산책길로 안내한다. 따라서 입력 레코드는 송당리의 독립적인 야외 오름 방문지로 식별된다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소는 제주시 구좌읍 송당리 산 199-1의 당오름이다. 제주시 공공 관광자료의 ‘송당 당오름 산책길과 소원길’과 지명·행정구역이 일치한다.",
+    "typical_visit": "대표 경험은 송당리 당오름의 야외 산책·보행과 자연 관찰이다. 입력에 포함된 공개 방문 경험은 나무가 우거진 숲길·둘레길을 걷고 조용히 쉬는 경험을 언급한다.",
+    "experience_scope": "야외 자연 방문지로서 추천 후보가 될 수 있으나, 경사·노면·출입·주차·기상 통제와 같은 현장·운영 정보는 최신 공식 안내로 확인되지 않았다. 평점과 후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 장소 페이지는 당오름의 주소를 제주특별자치도 제주시 구좌읍 송당리 산 199-1로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주시 공공 관광자료는 ‘송당 당오름 산책길과 소원길’을 안내하며, 당오름을 구좌읍 송당리에 있는 오름으로 기재한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 패킷의 비식별 공개 방문 경험은 나무가 우거진 숲길·둘레길 보행, 조용한 분위기, 정상 조망의 제한을 언급한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 탐방로 길이, 경사, 노면, 유모차·휠체어 접근성 및 화장실·주차 여부를 최신 공식 출처로 확인하지 못했다.",
+      "계절별 개방 여부, 산불·기상 통제, 안전 안내와 실제 소요 시간은 방문 전에 공식·지자체 안내로 재확인해야 한다.",
+      "입력의 공개 방문 경험은 보조 근거이며, 개별 작성자 정보는 사용하거나 출력하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7814539",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "장소명은 당오름이다.",
+          "공개 페이지 메타데이터는 주소를 제주특별자치도 제주시 구좌읍 송당리 산 199-1로 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주시",
+        "type": "public_tourism_pdf",
+        "url": "https://tour.jejudsi.kr/files/dataset/infopdf/n_map29.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "자료 제목은 송당 당오름 산책길과 소원길이다.",
+          "자료는 당오름을 구좌읍 송당리에 있는 오름으로 기재한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 경험(입력 패킷)",
+        "type": "public_review_summary",
+        "url": "https://place.map.kakao.com/7814539",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "비식별 공개 텍스트는 숲속 둘레길과 나무 그늘을 언급한다.",
+          "비식별 공개 텍스트는 조용한 숲길 보행 및 정상 조망 제한을 언급한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 1,
+      "confidence": 0.9,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공공 관광자료가 송당리의 당오름 산책길을 명시하므로 오름·야외 보행이 핵심 경험이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 경험은 내륙 오름 산책이며 해안·해양 경험 근거는 확인되지 않았으나, 부재만으로 0을 확정하지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.65,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "산책길·둘레길을 걷는 야외 보행이 직접 언급되어 참여형 신체 활동성이 중간 이상으로 판단된다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공공 자료의 ‘소원길’ 명칭은 지역 신앙·마을 맥락을 시사하지만, 현장 해설·유산 체험 범위는 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 장소 성격은 자연 오름 산책길이며 테마파크형 시설 근거는 없지만 부재만으로 0을 확정하지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "확인된 핵심 경험은 야외 산책이며 카페 이용이 독립 목적이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "오름 산책길로 확인되며 시장 방문 경험 근거는 없으나 비직접 0은 사용하지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "기간성 축제·공연이 장소 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "오름 산책길과 숲길 보행이 확인되어 대표 경험은 야외 중심으로 보이나, 실내 시설 부재를 확정하지 않았다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "rationale": "대표 경험이 야외 보행이므로 비·바람·더위 등 날씨의 영향을 중간 이상으로 보수 추정한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 방문 경험이 조용한 숲길과 새소리를 들으며 걷는 경험을 언급해 휴식성은 중간 이상으로 판단한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산책길 보행은 확인되지만 경사·노면·계단·보조기기 접근성 자료가 없어 부담 수준을 중립값으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "둘레길 보행은 확인되지만 공식 코스 길이와 소요 시간 정보가 없어 체류 시간 조절성은 중립값으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲길 자연 관찰은 확인되지만 입력 공개 경험은 정상 조망 제한도 언급하므로 경관 가치를 중립으로 보수 판정한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "송당리 당오름 산책길·소원길이라는 지역 고유 명칭은 확인되나, 고유 체험의 상세 범위는 추가 확인이 필요하다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주시 공공 관광자료가 송당리 당오름 산책길과 소원길로 안내해 제주 지역 자연·마을 맥락과의 연결이 확인된다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공공 관광자료에 수록된 지역 오름이나 제주를 대표하는 상징 명소 수준의 근거는 충분히 확인되지 않아 중립값으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "숲길 자연 환경은 확인되지만 사진 촬영 가치의 직접 근거가 부족하고 정상 조망 제한 언급도 있어 중립값으로 보류한다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-006",
+        "REQ-009"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "조용한 숲길·둘레길 보행 경험이 언급되어 혼자 자연 산책에 중간 이상 적합하나 안전·길찾기는 별도 확인이 필요하다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "야외 산책은 함께 할 수 있으나 휴식 시설·코스 난이도 정보가 부족해 중립으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "둘레길 보행은 확인되지만 단체 동선·시설 정보가 부족해 중립으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "야외 자연 관찰 가능성은 있으나 경사·노면·안전 시설을 확인하지 못해 중립으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "산책길 보행은 확인되지만 경사와 휴식·접근 시설을 확인하지 못해 중립으로 보류한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 보행지이나 월별 개방·노면·기상 자료가 없어 중립으로 보류한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "REQ-007",
+        "REQ-009"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_weather_and_access_verification",
+      "applies_to": "visit_planning",
+      "condition": "대표 경험이 야외 오름·숲길 보행이며 최신 탐방로 개방, 기상·산불 통제, 노면과 접근성 정보는 확인되지 않음",
+      "status": "needs_review",
+      "action": "방문 전 제주시·현장 관리 주체의 개방·기상·안전 안내와 실제 동행자의 보행 가능성을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

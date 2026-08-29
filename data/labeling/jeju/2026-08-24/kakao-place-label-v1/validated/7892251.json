@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7892251",
+  "canonical_id": "kakao:7892251",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.95,
+    "review_status": "confirmed",
+    "inference_level": "direct_evidence",
+    "rule_ids": [
+      "eligibility.geographic_feature_not_discrete_visitor_poi",
+      "eligibility.named_place_identity_confirmed"
+    ],
+    "source_ids": [
+      "source_jeju_kogl_byeongmuncheon",
+      "source_river_registry_byeongmuncheon"
+    ],
+    "rationale": "공공 출처는 병문천을 제주시를 가로질러 흐르는 지방하천으로 설명하며, 길이와 시·종점도 하천 전체 범위로 제시한다. 입력 Kakao 장소명은 이 광범위한 하천 지물을 가리키며, 독립된 방문·관람 경험을 제공하는 단일 관광 POI라는 근거는 확인되지 않아 본 방문지 라벨링 범위에서 제외한다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "low",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "source_id": "source_jeju_kogl_byeongmuncheon",
+        "url": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=38879",
+        "publisher": "제주특별자치도 (공공누리 수록)",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "병문천은 산지천, 한천과 함께 제주시내로 흘러내리는 큰 하천으로 설명된다.",
+          "해당 자료는 병문천의 복개 전 모습을 설명하며 현재 복개된 상태임을 언급한다."
+        ]
+      },
+      {
+        "source_id": "source_river_registry_byeongmuncheon",
+        "url": "https://www.riverlove.or.kr/files/riverData/aaeeb7c31d2261d3b16464f05d42f021.pdf",
+        "publisher": "국가하천정보센터",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "하천 현황 자료는 병문천을 제주특별자치도 제주시의 지방하천으로 수록한다.",
+          "자료에는 병문천의 시작 지점이 제주시 오라, 종점이 제주시 용담으로 제시되어 하천 전체를 뜻하는 지명임을 뒷받침한다."
+        ]
+      }
+    ],
+    "rationale": "공식·공공 자료로 장소 정체를 교차 확인했다. 공개 자료에서 단일 방문시설의 운영 주체, 관람 구간, 이용 안내 또는 관광객 대상 체험은 확인되지 않았다."
+  },
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

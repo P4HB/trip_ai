@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1787902595",
+  "place_id": "1787902595",
+  "name": "고랫머들",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "공개 경로 기록에서 고랫머들은 제주올레 11코스의 성제숯굿터와 무릉곶자왈 안내판 사이에 있는 안내 표식으로, 과거 맷돌용 돌을 채취한 곳을 설명하는 지점으로 확인된다. 독립적으로 운영·관람되는 관광지라기보다 무릉곶자왈·올레길 탐방 중 만나는 소규모 경로 내 지점이므로 독립 추천 후보에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘고랫머들’은 제주올레 11코스의 무릉곶자왈 인근에 있는 안내 지점을 가리키며, 맷돌용 돌 채취 이력을 설명하는 표식으로 공개 경로 기록에 나타난다.",
+    "typical_visit": "무릉곶자왈 숲길 또는 제주올레 11코스를 걷는 중 안내판을 통해 지역의 돌 채취 이력을 살피는 짧은 경유 지점이다.",
+    "experience_scope": "공식 관광 안내에서 독립 관광지로 등록된 무릉곶자왈은 숲길 걷기·자연경관 경험을 제공하지만, 입력 장소 고랫머들은 그 인근 경로의 안내 지점이다. 고랫머들 단독의 운영·관람·체험을 확인하지 못했으므로 독립 장소용 추천 벡터를 생성하지 않는다. Kakao 평점과 후기 수 및 입력에 포함된 공개 후기는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Visit Jeju는 무릉곶자왈을 서귀포시 대정읍 무릉리 산 1의 숲길·걷기/등산 관광지로 소개하며, 제주올레 코스를 따라 만날 수 있다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주올레 11코스 답사 기록은 성제숯굿터와 고랫머들 안내판을 지난 뒤 무릉곶자왈 안내판에 이른다고 기록하며, 고랫머들을 맷돌용 돌을 채취하던 곳으로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 1787902595의 정확한 좌표·주소와 안내 표식의 현행 위치를 공식 자료로 교차 확인하지 못했다.",
+      "고랫머들 단독의 운영 주체, 관람 시간, 안전·접근성·주차·편의시설 및 최신 현장 상태를 확인하지 못했다.",
+      "고랫머들을 무릉곶자왈과 분리해 방문할 수 있는 독립 관광 경험은 확인되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020975",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "무릉곶자왈을 제주올레 코스를 따라 만날 수 있는 숲길·걷기/등산 관광지로 소개한다.",
+          "우거진 숲과 바위·나무덩굴로 인해 어두워지기 전 탐방과 걷기 편한 복장을 권고한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "성봉현 개인 여행 기록",
+        "type": "public_route_record",
+        "url": "https://sungbh98.tistory.com/1319",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주올레 11코스에서 성제숯굿터와 고랫머들 안내판을 지난 뒤 무릉곶자왈 안내판에 이르는 순서를 기록한다.",
+          "고랫머들을 맷돌을 만들기 위해 돌을 채취했던 곳으로 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_route_marker_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "고랫머들은 공개 경로 기록상 무릉곶자왈 인근 제주올레 11코스의 안내 표식으로 확인되며, 단독 관광지의 운영·관람 범위와 최신 접근·안전 정보는 확인되지 않음.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 노출하지 않는다. 무릉곶자왈 또는 제주올레 11코스를 추천할 경우에만 최신 코스 개방 여부, 일몰 전 보행, 노면과 기상 안전을 공식·현장 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

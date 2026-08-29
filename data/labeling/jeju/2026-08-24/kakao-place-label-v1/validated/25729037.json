@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25729037",
+  "place_id": "25729037",
+  "name": "원장천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 행정·학술 자료에서 원장천은 제주시 노형동에서 이호동으로 이어지는 하천으로 확인된다. 입력에는 하천을 별도 관광·체험 시설로 식별할 정보가 없으며, 하천 자체는 이 라벨링의 독립 여행 방문지 범위에 맞지 않아 out_of_scope으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 원장천은 제주시에 있는 하천명으로 공개 행정·학술 자료에서 확인된다.",
+    "typical_visit": "확인된 대상은 하천 수계·지리 지물이며, 독립 관광시설, 관람 프로그램 또는 방문자 서비스는 확인되지 않았다.",
+    "experience_scope": "하천명만으로는 추천 가능한 독립 방문지 경험을 정의할 수 없고, 입력에는 특정 산책로·공원·관광시설을 가리키는 근거도 없다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주도의회 공개 하천 정비 관련 자료는 원장천의 시작 위치를 노형동 3404, 종점 위치를 이호동 1082로, 하천 길이를 6.36km로 기재한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주대학교 학위논문은 원장천을 제주도 하천으로 분류하고 시작점을 제주 노형, 종점을 제주 이호로 제시한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 레코드가 특정 하천 구간, 산책로, 공원 또는 방문객 시설을 의미하는지 확인할 수 없다.",
+      "공식적으로 운영되는 독립 관광·체험 프로그램, 접근 동선, 안전·통제 및 최신 현장 안내는 확인되지 않았다.",
+      "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "public_government_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "공개 표에서 원장천의 시점은 노형동 3404, 종점은 이호동 1082, 하천 길이는 6.36km로 제시된다.",
+          "원장천은 제주시 하천 정비 대상 목록에 포함된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주대학교 교육대학원",
+        "type": "academic_thesis",
+        "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/17999/2/%EC%A0%9C%EC%A3%BC%EB%8F%84%20%ED%95%98%EC%B2%9C%EC%9D%98%20%ED%95%98%EA%B3%84%EB%A7%9D%20%EB%B6%84%EC%84%9D.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "논문은 원장천을 제주도 하천의 하계망 분석 대상 하천으로 분류한다.",
+          "표에서 원장천의 시작점은 제주 노형, 종점은 제주 이호로 제시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "non_destination_geographic_feature",
+      "applies_to": "recommendation_candidate",
+      "condition": "원장천은 확인된 하천 지리 지물이며, 입력만으로 특정 독립 관광시설 또는 안전하게 방문 가능한 구간을 식별할 수 없음",
+      "status": "needs_review",
+      "action": "특정 산책로·공원·관광시설을 뜻하는 별도 장소 레코드와 공식 운영 근거가 확인되기 전에는 추천 후보에서 제외한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

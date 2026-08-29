@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:10753236",
+  "place_id": "10753236",
+  "name": "이스렁오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.6,
+    "rationale": "국립국어원 자료는 ‘이스렁오름’을 제주 애월읍의 오름 지명으로 수록한다. 그러나 입력 Kakao 레코드에는 주소·좌표·업종·공개 방문 후기·운영 또는 출입 정보가 없고, 이 place_id가 해당 지형과 정확히 일치하는지 및 독립 방문지로 이용 가능한지를 교차 확인할 공개 신뢰 출처를 찾지 못했다. 따라서 오름의 방문 경험이나 추천 적합도를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "‘이스렁오름’은 국립국어원 공개 자료에서 제주 애월읍의 오름 지명으로 수록된다. 다만 입력 Kakao 레코드와 그 지명의 위치·객체 동일성은 주소나 좌표 없이 확인할 수 없다.",
+    "typical_visit": "신뢰 가능한 관광·공공 상세 안내에서 이 장소의 실제 탐방 동선, 개방 상태, 경관 또는 체험을 확인하지 못했다.",
+    "experience_scope": "입력에는 장소명과 Kakao place_id만 있으며 주소·좌표·업종·공개 후기 근거가 없다. Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 18개 원자축, 동행 5축 및 월 12축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국립국어원 공개 자료의 제주 지방 지명 목록은 애월읍 항목에 ‘이스렁오름’을 수록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘이스렁오름’으로 제공하지만 주소·좌표·업종·공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 국립국어원 자료의 애월읍 이스렁오름과 동일한 지형·위치를 가리키는지 확인하지 못했다.",
+      "최신 출입 가능 여부, 토지 소유·탐방 제한, 접근로, 주차, 화장실, 노면·경사·계단 및 무장애 접근성을 확인하지 못했다.",
+      "대표 경관, 방문 동선, 체류 시간, 계절별 안전과 동행자별 이용 적합성을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국립국어원",
+        "type": "public_language_geography_reference",
+        "url": "https://www.korean.go.kr/nkview/nklife/1994_1/1994_0106.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주 지방 지명 자료의 애월읍 목록에 ‘이스렁오름’이 수록된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/10753236",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘이스렁오름’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·방문 근거가 없어 애월읍 이스렁오름과의 동일성, 최신 출입 가능 여부 및 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 관광·지자체·토지관리 안내 또는 Kakao의 주소·좌표 정보로 신원과 최신 탐방 가능 여부를 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7912596",
+  "place_id": "7912596",
+  "name": "사낭굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "Kakao 공개 장소 메타데이터는 사낭굴이라는 명칭과 제주시 애월읍 어음리의 좌표를 제시한다. 별도의 공개 교통 정보에는 인근에 사낭굴[동]·사낭굴[서] 정류소가 확인되지만, 이 Kakao 표식이 굴·지명·정류소 중 무엇을 가리키는지와 일반 방문객을 위한 독립 관광 경험인지를 확인하는 공식·공공 상세 자료는 찾지 못했다. 따라서 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "사낭굴은 Kakao Map에 제주시 애월읍 어음리의 장소 표식으로 등록되어 있다. 다만 공개 조사만으로는 표식이 실제 굴, 지명 또는 인접 버스정류장과 어떤 관계인지 확정할 수 없다.",
+    "typical_visit": "공식 관람·탐방 동선, 운영 주체 및 이용 방법을 확인하지 못했다.",
+    "experience_scope": "사낭굴[동]·사낭굴[서]라는 버스정류장 명칭의 존재만 확인되며, 이를 독립 방문지의 경험·시설·출입 조건으로 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map 공개 장소 페이지는 place_id 7912596의 명칭을 사낭굴로, 소재지를 제주특별자치도 제주시 애월읍 어음리로 제시하며 지도 중심 좌표를 경도 126.33693174361021, 위도 33.405217316675035로 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 제주 버스 정류소 정보는 사낭굴[동]과 사낭굴[서] 정류소를 별도 정류소로 열거하고, 사낭굴[서] 인근 노선으로 291·292·794 계열을 제시한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 실제 굴, 지명, 정류소 또는 다른 시설 중 무엇인지 확인하지 못했다.",
+      "일반 방문객의 출입 허용 여부, 관리 주체, 관람·탐방 동선과 독립 방문 경험을 확인하지 못했다.",
+      "접근로, 주차, 노면·안전시설, 무장애 접근성 및 최신 현장 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/7912596",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "사낭굴이라는 장소명과 제주특별자치도 제주시 애월읍 어음리 소재지가 공개된다.",
+          "공개 페이지의 정적 지도 메타데이터는 경도 126.33693174361021, 위도 33.405217316675035를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주도 시내버스타요 공개 정류소 정보",
+        "type": "public_transit_directory",
+        "url": "https://citybus.yohan1002.com/%EC%A0%9C%EC%A3%BC%EB%8F%84/%EC%A0%95%EB%A5%98%EC%86%8C/%EA%B3%84%EC%9B%90%EB%8F%99-%EC%84%9C",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "사낭굴[서]와 사낭굴[동]을 인근의 별도 정류소로 열거한다.",
+          "사낭굴[서] 방향에서 291·292·794 계열 버스 노선을 제시한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "표식의 실제 대상, 일반 방문객 출입 허용 여부, 관리 주체와 안전한 접근 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 제주특별자치도·제주시의 지명·시설 안내 또는 현장 최신 안내로 표식의 정체성과 출입·안전 조건을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

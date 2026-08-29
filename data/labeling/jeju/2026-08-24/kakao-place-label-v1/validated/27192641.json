@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27192641",
+  "place_id": "27192641",
+  "name": "만장굴입구매표소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘만장굴입구매표소’이며, 제주관광공사 Visit Jeju는 만장굴의 일반 관람객이 제2입구를 이용한다고 안내한다. 따라서 이 레코드는 만장굴 방문을 지원하는 입구 매표 기능으로 판정하며, 동굴 자체와 분리해 추천할 독립 여행 경험은 확인되지 않는다.",
+    "duplicate_of": "manjanggul-visitor-experience",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "만장굴입구매표소는 Kakao 장소명상 만장굴 입구의 매표 기능을 가리킨다. Visit Jeju는 만장굴의 일반 관람객 이용 입구를 제2입구로 안내한다.",
+    "typical_visit": "매표소 자체는 만장굴 관람을 위한 입구·이용 지원 시설로 보이며, 독립적인 관광 경험으로는 확인되지 않는다.",
+    "experience_scope": "Visit Jeju가 설명하는 용암동굴 탐방·경관·세계자연유산 가치는 만장굴 본체의 경험이다. 이 Kakao 레코드에는 입구매표소의 별도 전시·체험·관람 범위를 확인할 공식 근거가 없으므로 본체 장소의 41축을 복제하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘만장굴입구매표소’로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 만장굴에 동굴 천장 붕괴로 형성된 3개 입구가 있고, 일반 관람객은 제2입구를 이용한다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "Visit Jeju가 설명하는 만장굴의 용암동굴 지형·생성물·세계자연유산 가치는 만장굴 관광지의 관람 경험에 관한 것이며, 입력 레코드의 매표소가 별도 관광 경험이라는 근거는 아니다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입구매표소의 최신 운영 시간, 관람권 판매 여부, 휴무 및 실제 현장 운영 상태는 변동 정보라 별도 확인하지 않았다.",
+      "이 Kakao 레코드의 정확한 좌표·주소, 입구 번호 및 만장굴 본체 레코드와의 공급자 관계는 입력 패킷만으로 확정하지 않았다.",
+      "매표소에 독립 방문 목적이 될 전시·체험·휴게 기능이 있는지 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/27192641",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘만장굴입구매표소’다.",
+          "입력 패킷의 공개 후기는 매표소 응대 및 당시 관람 불가 공지를 언급하지만, 평점·후기 수·작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500182",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "만장굴은 거문오름용암동굴계의 일부이며 유네스코 세계자연유산으로 등재됐다고 안내한다.",
+          "만장굴에는 3개의 입구가 있고 일반 관람객은 제2입구를 이용하며, 제2입구에서 상류 방향 약 1km 구간을 탐방할 수 있다고 안내한다.",
+          "용암동굴 내부의 지형·생성물은 만장굴 관광지의 관람 대상이라고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드가 만장굴입구매표소로 표기되고, 공식 관광 안내의 일반 관람객 이용 입구와 연결되는 매표·입구 지원 시설로 보인다. 만장굴 본체와 별개인 여행 경험은 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "이 레코드는 독립 추천 후보와 41축 벡터에서 제외한다. 만장굴 본체의 관람 경험은 별도 정식 장소 레코드에서만 판정한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

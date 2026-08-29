@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10977875",
+  "canonical_id": "kakao:10977875",
+  "name": "화북천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "화북천은 제주시 화북동에서 화북포구 방향으로 흐르는 공개 지명 하천으로, Visit Jeju가 화북 마을의 흔적 여행 동선에서 직접 소개한다. 특정 시설의 부속물이 아닌 접근 가능한 자연·마을 탐방 맥락의 장소로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 자료는 화북천을 제주시의 하천으로 설명하며 산·오름 탐방이 핵심 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화북천이 화북포구 방향으로 흐른다는 설명은 있으나 해변·해양 활동이 이 장소의 핵심 방문 경험인지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "Visit Jeju가 화북천을 포함한 마을 흔적 여행 동선을 소개하지만, 화북천 자체의 지정 산책로·거리·체험 운영은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-WALKING-CONTEXT"]},
+    "theme.culture_history": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화북천은 화북 마을의 오래된 자원으로 소개되고 역사 흔적 여행 맥락에 포함되지만, 하천 자체의 문화유산 해설·전시가 핵심인지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORY-CONTEXT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 출처는 하천과 마을 탐방 맥락만 설명하며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 화북천의 독립적인 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "하천과 화북 마을의 탐방 맥락은 확인되나 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 기간 축제·공연이 화북천의 핵심 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "확인된 장소 정체가 야외 하천과 마을 동선이므로 대표 방문 경험은 실외에 있다. 실내 관람 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-NATURAL-FEATURE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 하천 방문은 강수와 풍속의 영향을 받으며, 제주시 공식 재난 안내는 화북천 연북7교 일대를 도로침수 우려지역으로 제시한다. 정확한 출입 통제 기준은 확인되지 않았다.", "source_ids": ["S2", "S3"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE", "ENV-FLOOD-RISK-CONTEXT"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "마을 탐방 맥락은 확인되지만 휴식 공간·소음·체류 환경에 대한 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "정확한 접근 지점, 보행로 포장·경사·계단 및 무장애 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "화북천 단독 체류시간과 단축·연계 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 여행 안내가 하천을 마을 흔적 여행에 포함하지만, 특정 경관 감상이 핵심이라는 직접 안내는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-NATURAL-VISUAL-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화북천은 제주 도심의 간헐 하천이라는 지리적 특성이 확인되나, 다른 하천과 구별되는 독자적 방문 구성은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-NATURAL-FEATURE-CONTEXT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "Visit Jeju는 화북천을 화북 마을의 귀한 자원으로 설명하고 마을 흔적 여행 동선에 포함한다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-COMMUNITY-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주시의 주요 하천 가운데 하나로 확인되지만 제주 전체를 대표하는 공적 랜드마크·상징성 지정은 확인되지 않았다.", "source_ids": ["S2"], "rule_ids": ["STYLE-REGIONAL-FEATURE-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 하천과 마을 탐방 맥락은 확인되나 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 체류 경험·편의시설 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 안전시설, 수변 접근 방지와 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_waterway_access_and_heavy_rain_conditions_unknown", "applies_to": "all_visitors", "condition": "화북천은 야외 하천이며, 제주시 공식 재난 안내에 화북천 연북7교 일대가 도로침수 우려지역으로 표시된다. 해당 Kakao 표식의 정확한 접근 지점, 하천변 출입 가능 구간 및 강수 시 통제 기준은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주시 재난안전 안내와 현장 표지로 강수 예보, 침수·통제 여부 및 안전한 공공 보행 동선을 확인한다. 하천 수로·제방으로의 진입은 현장 허용 안내가 있을 때만 한다.", "source_ids": ["S1", "S3"], "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘화북천’은 제주시 화북동·화북포구 방향의 하천으로 공개 여행·지리 자료에서 확인된다.",
+    "facts": [
+      {"text": "Visit Jeju는 화북포구 방향으로 흐르는 화북천을 화북 마을의 귀한 자원으로 설명하고 흔적 여행 동선에서 소개한다.", "source_id": "S1"},
+      {"text": "한국민족문화대백과는 화북천을 제주시의 크고 작은 하천 가운데 하나로 열거하고, 제주시 하천들이 강우시에만 물이 흐르는 건천이라고 설명한다.", "source_id": "S2"},
+      {"text": "제주시 재난안전대책본부는 화북천 연북7교 일대를 도로침수 우려지역으로 제시한다.", "source_id": "S3"}
+    ],
+    "unknowns": ["Kakao 표식의 정확한 위치와 해당 구간의 공공 접근·산책 가능 범위", "보행로 포장·경사·계단·무장애 접근성 및 화장실·휴식 시설", "강수·태풍 시 실제 출입 통제와 수변 안전 관리", "월별 경관·행사·권장 방문 시기"],
+    "sources": [
+      {"id": "S1", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_site", "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000008896", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["화북천이 화북포구 방향으로 흐르고 화북 마을의 귀한 자원이었다고 소개한다.", "화북천을 화북 지역 흔적 여행의 방문 동선에서 소개한다."]},
+      {"id": "S2", "publisher": "한국학중앙연구원 한국민족문화대백과사전", "type": "public_encyclopedia", "url": "https://encykorea.aks.ac.kr/Article/E0051447", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["제주시의 하천으로 화북천을 열거한다.", "제주시의 하천들은 강우시에만 물이 흐르는 건천이라고 설명한다."]},
+      {"id": "S3", "publisher": "제주시 재난안전대책본부", "type": "official_public_safety_site", "url": "https://bangjae.jeju.go.kr/ctrltower/state/flooding/road.htm", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["화북천 연북7교 일대 130m를 도로침수 우려지역으로 제시한다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

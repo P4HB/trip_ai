@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1302445901",
+  "canonical_id": "kakao:1302445901",
+  "name": "영일동 방사탑 등대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 자료에서 우도 조일리 영일동 포구의 독립된 옛 도대불(방사탑)로 확인된다. 마을의 해양 신앙과 항로 표식 기능을 함께 지닌 개별 역사·문화 방문 지점으로 판정했다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 위치와 경험은 영일동 포구의 해안 문화유산이며 산·오름·봉우리 탐방은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "영일동 포구 앞에 있으며 과거 등대(도대불) 역할을 한 방사탑으로 소개되어 해안·해양 맥락이 핵심이다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-COASTAL-HERITAGE-DIRECT"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "자료는 탑의 역사·형태와 포구 위치를 설명하며 레포츠나 참여형 체험은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "마을의 액막이 방사탑이자 옛 도대불로 기록되고, 제주도 유일의 사다리꼴 영일동 할망하르방 방사탑이라는 역사·민속 맥락이 직접 소개된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["THEME-HERITAGE-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "포구의 소규모 석조 문화유산으로 설명될 뿐 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 자료에서 카페·음료·디저트 이용이 독립적인 방문 목적인지 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "영일동 포구의 방사탑·도대불로 조사됐으며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "상설 방사탑 유산으로 소개될 뿐 특정 기간 축제나 공연이 핵심이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "포구 앞 해변에 서 있는 방사탑·옛 등대로 설명되어 대표 경험은 야외 관람이다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["ENV-OUTDOOR-HERITAGE-DIRECT"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 포구 해안의 야외 석조물 관람이므로 비·바람·더위·추위 영향을 받을 수 있다. 현장 통제 기준은 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안 포구의 정적 관람 성격은 추정할 수 있으나 휴식·느린 체류가 대표 경험이라는 직접 안내는 확인하지 못해 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["FALLBACK-REST-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "탑 주변의 실제 보행면, 단차, 난간 및 무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 관람의 체류시간이나 연계 동선이 공개 자료에서 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주일보는 이 방사탑이 있는 곳을 우도의 대표적 해안 절경 중 한 곳으로 소개하며, 탑의 균형미도 언급한다.", "source_ids": ["S2"], "rule_ids": ["STYLE-COASTAL-SCENERY-DIRECT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "영일동 할망하르방 방사탑은 제주도 방사탑 중 유일한 사다리꼴로 직접 소개되어 형태와 기능의 고유성이 확인된다.", "source_ids": ["S2"], "rule_ids": ["STYLE-UNIQUE-FORM-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "영일동 포구 마을의 액막이 신앙과 어부의 항로 표식 기능에 연결된 방사탑·도대불로 기록되어 제주 지역 생활문화와의 연결이 직접 확인된다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-LOCAL-MARITIME-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "우도 지역의 특색 있는 문화유산으로 소개되지만 공적 지정 여부나 제주 전체를 대표하는 랜드마크라는 근거는 확인하지 못했다.", "source_ids": ["S1", "S2", "S3"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 절경과 독특한 탑 형태는 확인되지만 사진 촬영이 공식적으로 핵심 경험으로 안내되는지는 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["STYLE-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 관람 시 안전·안내·통신 환경을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 이용 편의나 체험 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 관람의 수용성·편의시설 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반 시 해안가 안전, 난간 및 보호자 안내를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·단차·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 유산의 중립 fallback으로 둔다.", "source_ids": ["S1", "S2"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_coastal_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "야외 포구의 소규모 석조 유산이나 현재 진입 동선, 해안 난간·파랑 위험, 기상 시 접근 통제와 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 우도 현장 최신 안내로 접근 가능 여부, 해상·기상 조건 및 해안 안전을 확인한다.", "source_ids": ["S1", "S2", "S3"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 우도 조일리 영일동 포구의 방사탑을 옛 등대(도대불)로 표기한 명칭과 일치한다.",
+    "facts": [
+      {"text": "제주학연구센터 연구는 영일동 방사탑이 영일동 포구 앞에 있으며 과거 등대로 사용됐다고 기록한다.", "source_id": "S1"},
+      {"text": "제주일보는 영일동 할망하르방 방사탑을 제주도 방사탑 중 유일한 사다리꼴로 소개하고 도대불 역할을 했다고 보도했다.", "source_id": "S2"},
+      {"text": "연합뉴스는 조일리 영일동 방사탑 등대가 옛 모습을 간직해 현대식 명칭보다 도대불로 부르는 것이 낫다는 지역 의견을 전했다.", "source_id": "S3"}
+    ],
+    "unknowns": ["정확한 현장 진입 지점과 현재 관람 가능 범위", "주변 보행면·단차·난간 및 휠체어 접근성", "계절·기상에 따른 포구 접근 통제와 안전 안내", "공적 문화재 지정 및 현장 운영 주체"],
+    "sources": [
+      {"id": "S1", "publisher": "제주학연구센터", "type": "research_report", "url": "https://jst.re.kr/upload/pdf/RC00000586.pdf", "checked_at": "2026-08-25", "facts": ["영일동 방사탑의 위치를 영일동으로, 보존 상태를 현존으로 기록한다.", "영일동 포구 앞에 있어 과거 등대로 사용됐다고 설명한다."]},
+      {"id": "S2", "publisher": "제주일보", "type": "reputable_news", "url": "https://www.jejunews.com/news/articleView.html?idxno=2200347", "checked_at": "2026-08-25", "facts": ["영일동 할망하르방 방사탑은 제주도 방사탑 중 유일한 사다리꼴이라고 소개한다.", "이 방사탑이 도대불(등대) 역할도 했다고 설명하며 주변을 우도의 대표적 해안 절경 중 하나로 소개한다."]},
+      {"id": "S3", "publisher": "연합뉴스", "type": "reputable_news", "url": "https://www.yna.co.kr/view/AKR20170206088900056", "checked_at": "2026-08-25", "facts": ["조일리 영일동 방사탑 등대를 옛 모습을 간직한 도대불로 명명하자는 지역 의견을 보도했다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

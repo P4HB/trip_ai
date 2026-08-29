@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25263528",
+  "place_id": "25263528",
+  "name": "사재비동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 장소명은 ‘사재비동산’이나, 확인한 공공 관광·국립공원 안내는 한라산 어리목탐방로의 ‘사제비동산’만 표기한다. 두 표기가 같은 Kakao 지도 표식·좌표를 가리킨다는 공식 식별 근거가 입력에 없으므로, 유사 명칭만으로 추천용 독립 장소로 확정하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "공식 안내에서 사제비동산은 한라산 어리목탐방로의 명명된 고지 경유 지점으로 확인되지만, 입력의 ‘사재비동산’ Kakao 표식이 그 장소와 동일한지는 확인하지 못했다.",
+    "typical_visit": "사제비동산으로 식별될 경우 어리목탐방로를 따라 걷는 산행 중 경유하는 야외 고지 지점이다. 입력 표식의 정확한 동일성은 미확인이다.",
+    "experience_scope": "공공 자료는 사제비동산의 어리목탐방로상 위치와 고도·지형 특성을 설명한다. 입력 Kakao 표식의 좌표, 현재 탐방로 개방·통제, 노면·적설·강풍 상태, 무장애 접근성과 편의시설은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 운영 Visit Jeju는 한라산 어리목코스가 어리목계곡·사제비동산·만세동산·윗세오름으로 이어진다고 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "Visit Jeju는 어리목계곡에서 약 한 시간 올라가면 사제비물이 있는 해발 1,420m의 사제비동산에 이를 수 있다고 소개한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "한라산탐방 예약시스템은 어리목탐방로의 사제비동산 구간 경사가 가파르며, 사제비샘에서 식수를 구할 수 있으나 건기에는 샘이 마를 수 있다고 안내한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao ID 25263528의 좌표·표식이 공공 안내의 ‘사제비동산’과 동일한지 확인하지 못했다.",
+      "현재 탐방로 개방·입산 통제, 예약 필요 여부, 노면·적설·강풍 상태와 안전시설을 확인하지 못했다.",
+      "주차·화장실·쉼터·무장애 접근성 및 현재 샘물의 음용 가능 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 (Visit Jeju)",
+        "type": "official_tourism_guide",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020151&menuId=DOM_000001917011000000",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "한라산 어리목코스는 어리목계곡, 사제비동산, 만세동산, 윗세오름으로 이어진다고 안내한다.",
+          "어리목코스는 4.7km이며 2~3시간가량 소요된다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 (Visit Jeju)",
+        "type": "official_tourism_guide",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019989",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "어리목계곡에서 약 한 시간 올라가면 사제비물이 있는 해발 1,420m의 사제비동산에 이를 수 있다고 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한라산탐방 예약시스템",
+        "type": "official_park_guide",
+        "url": "https://visithalla.jeju.go.kr/contents/contents.do?id=7",
+        "checked_at": "2026-08-24T12:00:00+09:00",
+        "facts": [
+          "어리목탐방로의 사제비동산 구간은 경사가 가파르다고 안내한다.",
+          "사제비샘에서 식수를 구할 수 있으나 건기에는 샘이 마를 수 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_high_elevation_trail_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 Kakao 표식과 공공 안내의 사제비동산이 동일한지 확인되지 않았고, 해당 명칭의 탐방로 구간은 고지·가파른 경사로 안내된다. 현재 개방·기상·노면 및 샘물 상태는 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 한라산국립공원 최신 안내로 Kakao 표식의 장소 일치, 탐방로 개방·예약·기상·노면 상태와 안전한 접근 조건을 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T12:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

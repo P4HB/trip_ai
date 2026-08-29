@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 968,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/874900604.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:874900604",
+    "provider": "kakao",
+    "place_id": "874900604",
+    "name": "도구리알",
+    "url": "https://place.map.kakao.com/874900604",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "30",
+    "blog_review_count": "25",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2024.11.07.",
+      "content": "⭐️1/2… 여기…노코멘트…",
+      "tags": ""
+    },
+    {
+      "date": "2024.03.29.",
+      "content": "마을버스가 잘 안다님 주민분들이 버스 기다리는거 보고 가는길이라고 태워주심 사진을 찍는걸 좋아하는 사람은 한번쯤 가보는거 추천",
+      "tags": "뷰"
+    },
+    {
+      "date": "2023.12.02.",
+      "content": "바람 정말 많이 불어서 힘들었지만 사진은 평화로워보이네요. 정말 이거 하나보러가는 거지만 주변이 예쁘니까 지나가는 길에 잠시 들러보심이..",
+      "tags": "뷰"
+    },
+    {
+      "date": "2023.07.24.",
+      "content": "해안도로인데 정말 멋있어요 바람 엄청 붑니다 모자 용왕님한테 반납할 뻔ㅋ",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2023.04.22.",
+      "content": "돌고래를 못봐서 아쉽지만 그래도 좋았어요",
+      "tags": "뷰"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

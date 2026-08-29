@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25174790",
+  "place_id": "25174790",
+  "name": "걸쇠오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 ‘걸쇠오름’과 place_id만 제공하며 주소·좌표·공식 설명이 없다. 공개 지명 자료는 ‘걸쇠오름’을 제주시 연동의 걸시오름(걸세오름) 별칭으로도, 서귀포시 남원읍 하례리의 걸서악(동걸세) 별칭으로도 사용한다. 입력에 위치 식별자가 없으므로 어느 상이한 오름을 가리키는지, 그 탐방·출입 범위를 교차 확인할 수 없어 신원 미확정으로 판정한다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-IDENTITY-UNVERIFIED", "ELIG-HOMONYMOUS-NATURAL-FEATURE"],
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "‘걸쇠오름’은 복수의 제주 오름에 쓰이는 별칭이다. 민간·지명 자료는 제주시 연동의 걸시오름과 서귀포시 남원읍 하례리의 걸서악을 각각 걸쇠오름과 연결하므로, 위치가 없는 입력 표식의 실제 대상을 확정하지 못했다.",
+    "typical_visit": "실제 오름마다 지형·경관·탐방로·출입 조건이 달라질 수 있어, 산행·전망·사진·동반자 적합도를 특정 장소에 귀속하지 않는다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 없다. Kakao 평점·후기 수와 공개 리뷰 작성자 정보는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 18개 원자축, 동반자 5축 및 월별 12축을 생성하지 않는다.",
+    "facts": [
+      {"id": "F1", "text": "입력 Kakao 장소 레코드의 명칭은 ‘걸쇠오름’이고 canonical_id는 kakao:25174790이다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력 패킷에는 해당 Kakao 표식의 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 제공되지 않았다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "공개 지명 자료는 제주시 연동의 걸시오름을 걸쇠오름·걸세오름으로, 서귀포시 남원읍 하례리의 걸서악을 동걸세·걸쇠오름으로 표기한다.", "source_ids": ["S2", "S3"]}
+    ],
+    "unknowns": ["이 Kakao place_id가 제주시 연동 걸시오름, 서귀포시 남원읍 하례리 걸서악 또는 다른 동명 표식을 가리키는지", "실제 대상의 관리 주체, 사유지·보호구역 여부, 일반 방문객 출입 가능 범위와 최신 현장 상태", "안전한 접근 경로, 주차·보행 여건, 경사·노면·통신·기상 및 산불 위험에 따른 방문 조건"],
+    "sources": [
+      {"id": "S1", "publisher": "Kakao Map 공개 장소 메타데이터", "type": "public_map_listing", "url": "https://place.map.kakao.com/25174790", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["입력 패킷의 Kakao 장소명은 ‘걸쇠오름’이며 place_id는 25174790이다.", "입력 패킷에는 주소, 좌표, 업종, 사진, 상세 설명 및 운영·접근 안내가 없다.", "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S2", "publisher": "한국미디어일보", "type": "geographic_reference", "url": "https://koreamedia.net/news/view.asp?idx=14966", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["제주 오름 목록은 걸서악을 ‘동걸세, 걸쇠오름’으로 표기하고 서귀포시 남원읍 하례리 산124번지 일대로 수록한다.", "같은 목록은 걸시오름을 걸세오름으로 표기하고 제주시 연동 산150번지로 수록한다."]},
+      {"id": "S3", "publisher": "제주환경일보", "type": "local_environment_media", "url": "https://www.newsje.com/news/articleView.html?idxno=117129", "checked_at": "2026-08-28T00:00:00+09:00", "facts": ["걸세오름을 다루는 오름 자료는 ‘걸세’가 제주 방언의 걸쇠를 뜻한다고 설명한다.", "입력 Kakao 표식의 정확한 대상·좌표를 제공하지 않는다."]}
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {"kind": "identity_and_mountain_access_unverified", "applies_to": "recommendation_candidate", "condition": "‘걸쇠오름’이 복수 오름의 별칭으로 쓰이고 Kakao 레코드에 좌표·주소가 없어 실제 대상, 일반 출입 허용 범위와 안전한 접근 경로를 확인할 수 없음", "status": "needs_review", "action": "Kakao 또는 관할 지자체·산림 관리 기관의 주소·좌표·탐방로 정보를 확보해 실제 오름과의 동일성, 사유지·보호구역 여부, 출입 허용 범위와 안전한 접근 경로를 먼저 확인한다. 확인 전에는 추천용 라벨 벡터를 생성하지 않는다.", "source_ids": ["S1", "S2", "S3"], "checked_at": "2026-08-28T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

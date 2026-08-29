@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2128753833",
+  "canonical_id": "kakao:2128753833",
+  "name": "송악산 잔디광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "송악산 잔디광장은 송악산 탐방로 안의 잔디 휴식·조망 구역으로 소개된다. 송악산 및 둘레길 방문 경험의 일부이지 별도 운영·독립 방문 목적이 확인된 장소가 아니므로 추천용 완전 벡터 대상에서 제외한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-TRAIL-AMENITY"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "outdoor_trail_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "송악산 탐방로와 잔디 구역의 현재 출입·기상·안전 상태는 변동될 수 있다.",
+      "status": "needs_review",
+      "action": "방문 전 현장 탐방 안내와 최신 기상·통제 공지를 확인하고 지정 동선을 따른다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 송악산 자체와 구별되는 탐방로 내 잔디광장 표식을 가리킨다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 송악산의 적당한 높이 산책길과 넓은 잔디밭을 함께 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "송악산 탐방 사진 기록은 잔디광장을 송악산 탐방로에서 전망대 쪽으로 가는 구간으로 표시한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "표식의 정확한 공간 경계",
+      "잔디광장 단독의 공식 운영·시설·행사 여부",
+      "현재 주차·화장실·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "public_travel_information",
+        "url": "https://m.visitjeju.net/en/detail/view?contentsid=CONT_000000000500378&menuId=DOM_000001718002000000",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "송악산 산책길과 넓은 잔디밭을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "개인 여행 기록",
+        "type": "blog",
+        "url": "https://sungbh98.tistory.com/1316",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "송악산 잔디광장을 탐방로의 한 구간으로 기록한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:356693676",
+  "place_id": "356693676",
+  "name": "나뚜라리농원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공개 사업체 정보는 나뚜라리농원을 제주시 고사리길 소재의 개인 면세 사업자로 표시하고, 공개 쇼핑 색인은 이 명칭으로 제주 감귤·카라향 등의 산지 직송 상품을 판매하는 것을 보여 준다. 반면 일반 여행객에게 현장 관람·체험·휴식 방문을 제공한다는 공식·공공 안내는 확인하지 못했다. 따라서 이 레코드는 현재 확인 가능한 범위에서 농산물 전자상거래·생산 사업체이며, 독립 여행지 추천 후보 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"],
+    "rule_ids": ["ELIG-IDENTITY-MATCHED", "ELIG-CURRENT-VISIT-SCOPE-UNVERIFIED", "ELIG-PRIVATE-COMMERCE-OUT-OF-SCOPE"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "current_public_visit_availability_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "나뚜라리농원의 일반 방문객 출입, 농장 관람·체험 제공, 예약·영업 조건 및 현장 안전·편의시설을 최신 공식 또는 공공 출처로 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "운영 주체의 최신 공식 안내 또는 관할 공공 관광 정보로 현장 방문 가능 여부와 독립 체험·관람 범위를 확인하기 전에는 여행 추천 후보로 노출하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched_private_commerce_scope_unverified",
+    "checked_at": "2026-08-25",
+    "identity_notes": "입력 Kakao 장소명 ‘나뚜라리농원’은 공개 사업체 정보와 공개 쇼핑 색인의 동명 판매자 명칭에 일치한다. 사업체 정보의 제주시 고사리길 소재 기록과 이 Kakao 표식의 주소·좌표는 입력에 없어 정확한 지점 동일성은 독립적으로 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 패킷은 place_id 356693676의 장소명을 ‘나뚜라리농원’으로 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개 사업체 정보는 나뚜라리농원을 제주특별자치도 제주시 고사리길 소재의 개인 면세 사업자로 표시한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "공개 쇼핑 색인은 나뚜라리농원 명의로 제주 카라향·감귤·한라봉 등 농산물 산지 직송 상품을 나열한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id와 공개 사업체 정보의 정확한 현장 지점·운영 주체 동일성을 확인하지 못했다.",
+      "일반 방문객의 농장 출입, 관람·체험·판매장 이용, 예약 및 최신 영업 조건을 확인하지 못했다.",
+      "접근로, 주차, 화장실, 보행 안전, 무장애 시설과 계절별 현장 이용 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/356693676",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘나뚜라리농원’이다.",
+          "입력 패킷에는 주소·좌표·업종 정보가 없다.",
+          "평점과 공개 후기 수·내용은 라벨값 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "KOBDi 공개 사업체 정보",
+        "type": "public_business_index",
+        "url": "https://kobdi.co.kr/bizpage/12616145/",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "나뚜라리농원을 제주특별자치도 제주시 고사리길 소재 사업체로 표시한다.",
+          "사업자 유형을 개인 면세 사업자로 표시한다.",
+          "이 페이지는 일반 방문객 대상 관람·체험 운영 여부를 제시하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "쿠차 쇼핑 검색",
+        "type": "shopping_search_index",
+        "url": "https://m.coocha.co.kr/search/search.do?keyword=%EC%B9%B4%EB%9D%BC%ED%96%A5",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "나뚜라리농원 명의의 제주 카라향 산지 직송 상품을 나열한다.",
+          "검색 결과에는 감귤·한라봉 등 제주 농산물 판매 항목도 나타난다.",
+          "상품 검색 결과는 현장 관광·관람 또는 체험 서비스의 제공을 확인하지 않는다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

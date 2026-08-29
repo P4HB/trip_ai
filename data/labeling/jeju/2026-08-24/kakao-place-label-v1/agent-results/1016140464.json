@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1016140464",
+  "place_id": "1016140464",
+  "name": "김녕불턱",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "입력 Kakao 레코드의 장소명 ‘김녕불턱’은 제주특별자치도 세계유산본부의 2026 제주 국가유산 방문의 해가 해녀박물관·청굴물과 함께 독립적으로 제시한 시크릿 코스 방문 지점과 일치한다. 세부 위치·시설은 확인되지 않았지만, 국가유산 탐방 코스의 독립 방문 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "김녕불턱은 제주특별자치도 세계유산본부가 2026 제주 국가유산 방문의 해의 시크릿 코스 2에 해녀박물관·청굴물과 함께 제시한 국가유산 탐방 지점이다.",
+    "typical_visit": "공식 프로그램 설명상 ‘물결을 거스르는 바다의 길’이라는 주제의 탐방 코스에서 제주인의 삶과 지혜를 만나는 방문 지점이다.",
+    "experience_scope": "공식 출처는 코스 편입과 주제만 확인한다. 정확한 주소·좌표, 불턱 구조물의 현황, 현장 해설·전시·체험, 보행 노면, 휴식·편의시설, 개방 상태와 계절별 이용 조건은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주특별자치도 세계유산본부의 2026 제주 국가유산 방문의 해는 시크릿 코스 2를 제주해녀박물관, 김녕불턱, 청굴물로 구성해 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "같은 공식 안내는 시크릿 코스 2를 ‘물결을 거스르는 바다의 길’로 부르며 제주인의 강인한 삶과 지혜를 만나는 코스라고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "입력 Kakao 레코드의 장소명은 ‘김녕불턱’이며 평점·리뷰 수·작성자 정보는 라벨 근거로 사용하지 않았다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소·좌표와 공식 코스 지점의 현장 위치를 교차 확인하지 못했다.",
+      "불턱의 보존 상태, 출입 가능 여부, 현장 해설·전시·체험과 최신 운영 정보를 확인하지 못했다.",
+      "보행 노면·경사·계단, 주차·화장실·쉼터, 어린이·고령자 접근성과 악천후 안전 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주특별자치도 세계유산본부", "type": "official_heritage_program_page", "url": "https://jejuheritage.kr/391", "checked_at": "2026-08-24", "facts": ["시크릿 코스 2의 지점으로 제주해녀박물관, 김녕불턱, 청굴물을 제시한다.", "코스 2를 ‘물결을 거스르는 바다의 길’로 소개하며 제주인의 강인한 삶과 지혜를 만나는 내용이라고 설명한다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/1016140464", "checked_at": "2026-08-24", "facts": ["입력 패킷의 Kakao 장소명은 ‘김녕불턱’이다.", "입력에는 주소·좌표·업종·공개 방문 후기 근거가 없으며, 평점·리뷰 수·작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"코스 제목에 바다의 길이 언급되지만 이 지점에서 해안·해양 활동이 핵심이라는 직접 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 지점의 걷기·레포츠·참여형 체험 내용을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 세계유산본부가 국가유산 방문의 해 탐방 코스 지점으로 제시하고 제주인의 삶과 지혜를 만나는 코스로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관·워터파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 또는 상거래가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"2026년 프로그램의 코스 지점이라는 사실 외에 특정 축제·공연·기간성 행사가 이 장소의 핵심 경험이라는 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"현장 공간 구성과 실내 시설 유무를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실외·실내 비중과 악천후 시 이용 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 공간·혼잡도·소음·체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행거리·노면·경사·계단·무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 동선·체류 시간·부대시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 대표 방문 가치라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"국가유산 탐방 코스의 한 지점임은 확인되지만 다른 장소와 비교할 고유 경험의 상세 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 국가유산 탐방 코스가 이 지점을 제주인의 삶과 지혜를 만나는 바다의 길 맥락에 포함하므로 제주 지역 문화와의 연결을 높게 추론한다. 현장 해설의 유무는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 코스 지점이지만 제주 또는 지역을 대표하는 상징 명소라는 지정·비교 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"안전·동선·현장 이용 조건이 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 보행·안전·편의시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령자 보행 난이도·쉼터·무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장 공간과 계절별 이용 조건이 확인되지 않아 일반 기후 휴리스틱의 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_identity_detail_unknown","applies_to":"all_visitors","condition":"공식 출처는 김녕불턱의 국가유산 탐방 코스 편입만 확인하며, 정확한 위치·개방 상태·현장 동선·시설·접근성·기상 안전 정보는 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 국가유산 프로그램 또는 현장 최신 안내로 위치, 출입 가능 여부와 보행·기상 안전 조건을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

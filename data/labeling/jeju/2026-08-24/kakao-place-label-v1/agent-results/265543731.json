@@ -1,0 +1,38 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "265543731",
+  "canonical_id": "kakao:265543731",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력의 장소명 ‘벨섬’과 한 건의 일반적 만족 후기만으로는 실제 장소의 위치·유형·독립 방문 대상 여부를 식별할 수 없다.",
+    "source_ids": ["kakao_review_1"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "identity_verification_required",
+      "detail": "공식 또는 공공 출처로 장소의 위치와 유형을 확인한 뒤 라벨링해야 한다.",
+      "source_ids": []
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "kakao_review_1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/265543731",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": ["볼거리와 재미에 대한 일반적 방문 만족 언급"]
+      }
+    ],
+    "limitations": [
+      "입력 패킷에 공식·공공 상세 출처, 주소, 장소 유형이 제공되지 않았다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high"
+}

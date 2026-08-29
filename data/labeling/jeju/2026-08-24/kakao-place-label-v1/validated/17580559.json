@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17580559",
+  "place_id": "17580559",
+  "name": "제주미니미니랜드 아프리카",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 표식명은 ‘제주미니미니랜드 아프리카’이다. 공개 여행 안내는 제주미니미니랜드를 유럽·아시아·아프리카 등을 포함한 세계 6대주의 축소 건축물 120여 점을 함께 전시하는 하나의 테마파크로 설명한다. 따라서 ‘아프리카’는 이 테마파크의 대륙별 전시 구역을 가리키는 부속 표식이며, 독립 입장·운영이 확인된 별도 여행 방문지로는 판정하지 않는다.",
+    "duplicate_of": "kakao:제주미니미니랜드 (parent place ID not identified)",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-SUBORDINATE-FACILITY"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 레코드는 ‘제주미니미니랜드 아프리카’라는 Kakao 지도 표식이다. 공개 여행 안내에서 제주미니미니랜드는 아프리카를 포함한 여러 대륙의 미니어처 건축물을 한 테마파크로 묶어 전시한다고 설명하므로, 이 표식은 아프리카 전시 구역으로 판단했다.",
+    "typical_visit": "제주미니미니랜드 전체 관람 중 아프리카 관련 축소 건축물을 보는 구역으로 파악되며, 별도 입장권·운영주체·독립 관람 동선은 확인하지 못했다.",
+    "experience_scope": "상위 테마파크의 개별 전시 구역이므로 독립 추천용 방문 경험·동반자·월별 적합도 벡터를 생성하지 않는다. 현재 상위 시설의 명칭·운영 및 해당 구역의 실제 개방 상태는 최신 공식 안내로 재확인이 필요하다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 17580559의 명칭을 ‘제주미니미니랜드 아프리카’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 여행 안내는 제주미니미니랜드를 아프리카를 포함한 세계 6대주 50여 국가의 유명 건축물·문화유산 120여 점을 축소 전시한 하나의 테마파크로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식 ‘아프리카’의 정확한 현장 위치, 독립 출입구·입장권·운영 주체는 확인하지 못했다.",
+      "상위 시설의 현재 명칭, 실제 운영·개방 여부, 관람 동선, 접근성 및 안전 안내는 최신 공식 출처로 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 없으며 Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17580559",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 장소명은 ‘제주미니미니랜드 아프리카’이며 place_id는 17580559이다.",
+          "입력의 평점과 후기 수는 라벨 판단에 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "NOL 인터파크투어 프리야 여행정보",
+        "type": "public_travel_information",
+        "url": "https://tour.interpark.com/freeya/spot/view.aspx?SpotNo=77620",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주미니미니랜드를 명소·놀이/테마공원으로 분류한다.",
+          "아프리카를 포함한 세계 6대주의 유명 건축물·문화유산 등을 축소한 120여 점을 하나의 테마파크에 전시한다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_feature_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "‘제주미니미니랜드 아프리카’는 상위 테마파크의 대륙별 전시 구역으로 판단되며, 별도 방문지로서의 독립 운영·출입·접근 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 후보에는 상위 시설을 한 번만 사용하고, 최신 공식 안내로 상위 시설의 운영 상태와 관람 가능 여부를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

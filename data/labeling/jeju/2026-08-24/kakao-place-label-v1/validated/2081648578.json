@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "2081648578",
+  "canonical_id": "kakao:2081648578",
+  "name": "국립산림과학원 난대아열대산림연구소 한남연구시험림",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "공식 규정과 숲나들e는 한남연구시험림의 예약 탐방을 확인하지만, 입력 Kakao 표식이 연구소 본청·시험림 전체·특정 탐방 코스 중 어느 범위를 가리키는지는 공식 좌표·주소로 교차 확인하지 못했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-NOT-EXACTLY-MATCHED"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_scope_and_advance_reservation_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 표식의 정확한 시설·코스 범위가 확인되지 않았고, 한남연구시험림 탐방은 사전예약·통제 조건이 있다.",
+      "status": "needs_review",
+      "action": "공식 주소·좌표와 탐방 예약 정보를 교차 확인해 표식 범위를 확정한 뒤 라벨링한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "partial_match",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 한남연구시험림과 명칭상 일치하지만 Kakao 표식의 정확한 공간 범위는 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "공식 규정은 한남연구시험림의 사전예약 탐방·시간·통제 조건을 정한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "숲나들e는 한남사려니오름숲을 한남연구시험림으로 안내한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 위치·범위",
+      "당일 탐방 가능·예약 상태",
+      "구간별 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가법령정보센터",
+        "type": "official_regulation",
+        "url": "https://law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000073603",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한남연구시험림 탐방객 관리 규정을 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "산림청 숲나들e",
+        "type": "official_forest_platform",
+        "url": "https://www.foresttrip.go.kr/pot/rm/cs/selectCrcmrSghtngDtlView.do?cntnsId=1812994&hmpgId=ID05030007&insttId=ID05030007&menuId=003001",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한남사려니오름숲을 한남연구시험림으로 안내한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

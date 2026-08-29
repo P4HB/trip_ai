@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:15171269",
+  "place_id": "15171269",
+  "name": "한라산 오름샘터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소명 ‘한라산 오름샘터’는 제주특별자치도 세계유산본부 연구보고서에서 영실·병풍바위·선작지왓·윗세오름으로 이어지는 한라산 등산로 조사 지점 ‘오름샘터’와 일치한다. 이 자료는 오름샘터를 독립 운영 관광지로 소개하지 않고 탐방 동선 안의 지점으로만 다룬다. 따라서 한라산 탐방 경험에 종속된 샘터·경유 표식으로 보수적으로 판정하며, 추천용 완전 41축 벡터는 부여하지 않는다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력의 ‘한라산 오름샘터’는 제주특별자치도 세계유산본부 연구보고서에 표기된 한라산 등산로상의 ‘오름샘터’와 명칭·맥락이 일치한다.",
+    "typical_visit": "독립 방문지로 확인하지 않으며, 한라산 고지대 탐방 중 통과하거나 확인하는 경유 지점으로만 파악된다.",
+    "experience_scope": "공개 신뢰 출처는 오름샘터를 한라산 탐방·조사 동선의 지점으로 확인할 뿐, 독립 시설의 운영·해설·체류 경험이나 현재 접근 조건은 제공하지 않는다. 입력 패킷에도 주소·좌표·업종·리뷰 근거가 없다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터의 place_id 15171269 명칭은 ‘한라산 오름샘터’이며, 공개 방문 후기 근거는 제공되지 않았다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 세계유산본부의 2023 연구보고서는 영실-병풍바위-선작지왓-윗세오름-오름샘터를 한라산 구상나무 병해 조사·채집의 접근 가능한 등산 동선으로 기록하고, 지도에 오름샘터를 해당 탐방로 지점으로 표기한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 좌표와 연구보고서 지도상 오름샘터의 좌표 일치는 별도 공식 좌표 자료로 확인하지 못했다.",
+      "오름샘터 자체의 현재 이용 가능 여부, 수질·음용 가능성, 시설 상태, 계절별 통제와 안전 조건은 확인하지 못했다.",
+      "독립 방문지로서의 체류·편의·접근성 정보는 공개 신뢰 출처에서 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/15171269",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘한라산 오름샘터’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도 세계유산본부",
+        "type": "official_research_report",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a12/A042273.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "2023년 연구보고서는 영실-병풍바위-선작지왓-윗세오름-오름샘터를 접근 가능한 한라산 조사·채집 동선으로 기록한다.",
+          "보고서 지도는 오름샘터를 한라산 탐방로상의 지점으로 표기한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_trail_waypoint_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "오름샘터는 공개 연구자료에서 한라산 탐방 동선 안의 경유 지점으로만 확인되며, 독립 방문지·시설로서의 운영과 현재 접근·안전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 승격하지 않는다. 한라산 탐방 안내에 연결할 경우 관할 관리기관의 최신 탐방로 개방, 기상 통제, 샘터 이용·안전 정보를 별도로 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

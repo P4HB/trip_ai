@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8082298",
+  "canonical_id": "kakao:8082298",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공식 관광 포털이 조천과 함덕을 잇는 해안도로를 독립 관광지로 소개하며, 해안 경관을 감상하는 드라이브 경험을 명시한다.",
+    "source_ids": ["visitjeju-joham-coastal-road"],
+    "rule_ids": ["ELIGIBILITY-INDEPENDENT-TOURISM-EXPERIENCE"]
+  },
+  "atomic_labels": {
+    "theme.mountain": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개에는 도로에서 한라산과 오름을 볼 수 있다고 하나, 산 방문이 이 도로의 핵심 경험은 아니다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.ocean": { "value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 소개가 해안선을 따라 달리고 바다와 가까운 도로에서 바다를 느끼는 경험을 명시한다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.activity": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 활동은 드라이브와 경관 감상이며 레포츠·참여형 체험 시설은 확인되지 않았다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.culture_history": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "경로 인근 연북정과 조천 항일 만세운동의 역사가 소개되지만, 도로의 주된 경험은 자연 경관이다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.theme_park": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공식 소개에서 테마파크형 시설이나 운영 프로그램은 확인되지 않는다.", "source_ids": [], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.cafe": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개는 중간에 쉬어갈 카페가 많지 않다고 하며, 카페 이용은 독립 핵심 목적이 아니다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.traditional_market": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공식 소개에서 시장 방문 경험은 확인되지 않는다.", "source_ids": [], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "theme.festival": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "특정 기간 축제나 상설 공연이 이 장소의 핵심이라는 근거는 확인되지 않는다.", "source_ids": [], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"] },
+    "environment.indoor_ratio": { "value": 0, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 소개가 해안선을 따라 달리는 야외 도로와 바다·마을 경관을 대표 경험으로 설명한다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["ENVIRONMENT-REPRESENTATIVE-EXPERIENCE"] },
+    "environment.weather_sensitivity": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 해안 드라이브와 경관 감상이 핵심이므로 강풍·강수·시정 변화가 경험에 영향을 줄 가능성이 높다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["ENVIRONMENT-OUTDOOR-WEATHER"] },
+    "style_evidence.restfulness": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다와 마을을 구경하며 달리는 경관 감상 중심의 경험으로 설명된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-EXPERIENCE-INFERENCE"] },
+    "style_evidence.physical_ease": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 자동차 드라이브이나, 운전 가능 여부와 정차·보행 여건은 별도 확인이 필요하다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-ACCESS-NEEDS-REVIEW"] },
+    "style_evidence.visit_duration_flexibility": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "약 6km 해안도로를 이동하며 해변·관곶 등 경관을 선택적으로 볼 수 있어 체류 길이를 조절할 여지가 있다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-EXPERIENCE-INFERENCE"] },
+    "style_evidence.scenic_value": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개가 에메랄드빛 바다, 백사장, 제주시 야경 및 바다와 가까운 도로의 경관을 핵심으로 제시한다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-SCENIC-FACTS"] },
+    "style_evidence.distinctiveness": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다 위를 달리는 듯한 가까운 해안 도로와 조천·함덕을 잇는 경로 구성이 구별점으로 소개된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-EXPERIENCE-INFERENCE"] },
+    "style_evidence.local_embeddedness": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 해안, 마을, 밭담, 한라산·오름 조망과 연결된 경로로 소개된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-LOCAL-CONTEXT"] },
+    "style_evidence.landmark_significance": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주 공식 관광 포털에 독립 관광지로 등재됐으나, 제주 전역을 대표하는 상징성의 강도는 추가 검토가 필요하다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-LANDMARK-REVIEW"] },
+    "style_evidence.photo_value": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 소개와 이미지 갤러리가 해안·백사장·야경 등 시각 경관을 강조하지만 촬영 여건의 직접 확인은 제한적이다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["STYLE-SCENIC-FACTS"] }
+  },
+  "companion_fit": {
+    "solo": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 페이지의 추천 태그에 혼자가 포함된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["COMPANION-OFFICIAL-TAG"] },
+    "couple": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 페이지의 추천 태그에 커플이 포함된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["COMPANION-OFFICIAL-TAG"] },
+    "friends": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 페이지의 추천 태그에 친구가 포함된다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["COMPANION-OFFICIAL-TAG"] },
+    "kids": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 페이지의 추천 태그에 아이가 포함된다. 다만 차량 이동·도로 주변 안전은 별도 확인이 필요하다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["COMPANION-OFFICIAL-TAG"] },
+    "parents": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 관광 페이지의 추천 태그에 부모가 포함된다. 운전 및 정차 접근성은 별도 확인이 필요하다.", "source_ids": ["visitjeju-joham-coastal-road"], "rule_ids": ["COMPANION-OFFICIAL-TAG"] }
+  },
+  "month_fit": {
+    "1": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "2": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "3": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 추정값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "4": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 추정값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "5": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 추정값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "6": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "7": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "8": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "9": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 추정값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "10": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 추정값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "11": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] },
+    "12": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "야외 해안 경관형 장소의 계절 적합도 기본값이며 실제 여행일의 날씨와 도로 상황을 확인해야 한다.", "source_ids": [], "rule_ids": ["MONTH-OUTDOOR-CLIMATE-HEURISTIC"] }
+  },
+  "derived_labels": {},
+  "hard_constraints": [
+    {
+      "applies_to": ["all"],
+      "condition": "대표 경험이 야외 해안도로 이동이므로 실제 방문일의 기상, 도로 통제, 운전 가능 여부와 안전한 정차 위치를 확인해야 한다.",
+      "status": "needs_review",
+      "action": "여행 전 도로·기상 정보를 확인하고, 운전이 어렵거나 악천후이면 대체 실내·저노출 장소를 사용한다.",
+      "source_ids": ["visitjeju-joham-coastal-road"],
+      "rule_ids": ["HARD-CONSTRAINT-OUTDOOR-ROAD-SAFETY"]
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "visitjeju-joham-coastal-road",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019212",
+        "publisher": "Visit Jeju",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "조천과 함덕을 잇는 약 6km 해안도로로 소개된다.",
+          "바다, 마을, 밭담, 한라산과 오름 조망 및 관곶·함덕서우봉해변 경로가 소개된다.",
+          "추천 태그에 친구, 커플, 부모, 혼자, 아이, 드라이브, 맑음이 포함된다."
+        ]
+      }
+    ]
+  }
+}

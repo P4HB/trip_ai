@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7894206",
+  "canonical_id": "kakao:7894206",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "제주관광공사 VisitJeju가 별도연대를 제주시 화북1동의 관광지이자 역사유적으로 소개한다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-TOURISM-PLACE"]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "S1",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021194",
+        "publisher": "제주관광공사 VisitJeju",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "별도연대는 제주시 화북동 동쪽 연대동산에 있으며, 해상 접근 적의 동태를 살피고 신호를 보내던 시설로 소개된다.",
+          "연대는 해변 지역에 설치되며, 별도연대는 2001년 복원되었다.",
+          "타원형의 독특한 방호벽 시설이 있고, 환해장성·화북포구·사라봉·별도봉을 조망할 수 있으며 올레 18코스에서 쉬어갈 수 있다고 안내한다.",
+          "접근 필요도는 '아주 어려움'으로 표시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"주변 사라봉과 별도봉을 조망할 수 있으나, 장소의 핵심은 산 방문이 아닌 연대 유적이다.","source_ids":["S1"],"rule_ids":["AXIS-MOUNTAIN-CONTEXT"]},
+    "theme.ocean": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"해상 접근 적을 감시하던 해변 지역 연대이며 화북포구를 조망한다.","source_ids":["S1"],"rule_ids":["AXIS-OCEAN-COASTAL"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"올레 18코스를 걷다 잠시 쉬어갈 수 있는 지점으로 안내된다.","source_ids":["S1"],"rule_ids":["AXIS-ACTIVITY-WALKING"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"횃불과 연기로 군사 정보를 전하던 역사적 연대 유적이며 복원 이력이 확인된다.","source_ids":["S1"],"rule_ids":["AXIS-CULTURE-HISTORY-HERITAGE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 뒷받침하는 공개 상세 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용이 핵심 경험이라는 공개 상세 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문이 핵심 경험이라는 공개 상세 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제·공연이 장소의 핵심이라는 공개 상세 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"해변 지역의 연대와 조망·올레길 휴식 경험으로 소개되는 야외 유적이다.","source_ids":["S1"],"rule_ids":["AXIS-INDOOR-OUTDOOR-SITE"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"야외 해변 지역 유적에서 걷기와 조망을 하는 대표 경험이므로 날씨 영향이 크다.","source_ids":["S1"],"rule_ids":["AXIS-WEATHER-OUTDOOR"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"올레 18코스를 걷다가 잠시 쉬어갈 수 있는 곳으로 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-REST-STOP"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 상세 안내의 접근 필요도가 '아주 어려움'으로 표시된다.","source_ids":["S1"],"rule_ids":["STYLE-EASE-ACCESS-NEED"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"올레길 이동 중 잠시 쉬는 방문이 가능하다고 안내되나, 체류시간 선택 폭의 상세 정보는 없다.","source_ids":["S1"],"rule_ids":["STYLE-DURATION-STOP"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"환해장성·화북포구와 사라봉·별도봉을 감상할 수 있다고 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-SCENIC-VIEW"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 전형 연대와 달리 타원형의 독특한 방호벽 시설이 있다고 안내된다.","source_ids":["S1"],"rule_ids":["STYLE-DISTINCTIVE-ARCHITECTURE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 화북의 해상 방어·신호 체계와 조천·수근 연대를 연결한 지역 역사 유적이다.","source_ids":["S1"],"rule_ids":["STYLE-LOCAL-HISTORY"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 관광지로 소개되는 역사 유적이나 제주 전체의 대표 상징성에 관한 직접 근거는 제한적이다.","source_ids":["S1"],"rule_ids":["STYLE-LANDMARK-SCOPE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.65,"status":"confirmed","inference_level":"direct_evidence","rationale":"해안·포구·봉우리 조망이 가능한 야외 유적이며 공식 이미지 갤러리가 제공된다.","source_ids":["S1"],"rule_ids":["STYLE-PHOTO-SCENIC"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"올레길 중간의 역사·조망 지점이나 접근 난이도가 높다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-AND-WALK"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"조망과 역사 관람은 가능하나 접근 난이도가 높다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-AND-VIEW"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"함께 걷고 조망할 수 있으나 접근 난이도가 높다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-AND-WALK"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 접근 필요도가 '아주 어려움'으로 표시되어 어린이 동반 적합성에 주의가 필요하다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-NEED"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 접근 필요도가 '아주 어려움'으로 표시되어 이동 부담에 주의가 필요하다.","source_ids":["S1"],"rule_ids":["COMPANION-ACCESS-NEED"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·계절 경험의 직접 근거가 부족한 야외 유적이다.","source_ids":[],"rule_ids":["FALLBACK-SEASONAL-UNKNOWN"]}
+  },
+  "review_priority": "medium",
+  "hard_constraints": []
+}

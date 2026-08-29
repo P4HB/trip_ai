@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "24325311",
+  "canonical_id": "kakao:24325311",
+  "name": "송악산 인증센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "송악산 인증센터는 제주환상자전거길 10개 공식 인증센터 중 송악산 지점의 종주 스탬프·인증 기능을 수행하는 부속 시설이다. 송악산 자연관광지와 자전거길 이용의 지원 지점이지 독립적인 방문 경험을 제공하는 장소로 확인되지 않아 추천용 완전 벡터 대상에서 제외한다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-SUBORDINATE-FACILITY", "ELIG-ROUTE-CERTIFICATION-POINT"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "route_certification_facility_status_unknown",
+      "applies_to": "bicycle_route_users",
+      "condition": "인증센터의 스탬프·사이버 인증 장치 운영 상태와 현장 접근 조건은 변동될 수 있다.",
+      "status": "needs_review",
+      "action": "종주 인증이 목적이면 방문 전 자전거행복나눔의 최신 자전거길·인증센터 안내를 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 제주환상자전거길의 송악산 인증센터를 가리킨다. 이는 송악산 자체나 송악산 둘레길과 구별되는 자전거 국토종주 인증 지점이다.",
+    "facts": [
+      {
+        "text": "국토종주 자전거길 인증제 자료의 제주환상 구간 인증센터 목록에 송악산이 포함된다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "자전거행복나눔의 체험후기 분류는 송악산인증센터를 제주환상자전거길의 인증센터로 다룬다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "현재 인증 장치와 스탬프의 실제 운영 상태",
+      "현장 주차·화장실·휴식시설의 인증센터 전용 여부",
+      "송악산 관광지와 인증센터 표식의 정확한 공간 경계"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가학술정보 클라우드",
+        "type": "public_policy_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/19/41/2024/CLIKC5803912580090020_attach_1.pdf",
+        "checked_at": "2026-08-28",
+        "facts": ["국토종주 자전거길 인증제의 제주환상 구간 인증센터 목록에 송악산을 포함한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "자전거행복나눔",
+        "type": "official_public_service",
+        "url": "https://bike.go.kr/bbs/view.do?bbsSn=35093&key=2008148348515",
+        "checked_at": "2026-08-28",
+        "facts": ["송악산인증센터를 국토종주 자전거길의 제주환상자전거길 인증 지점으로 분류한다."]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28"
+}

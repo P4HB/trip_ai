@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "13725814",
+  "canonical_id": "kakao:13725814",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "identity": {
+    "name": "노루쉼터",
+    "place_type": "제주올레 14-1코스 곶자왈 구간의 야외 정자형 쉼터",
+    "identity_status": "confirmed",
+    "rationale": "공개 여행 기록은 노루쉼터를 저지 곶자왈 사이의 정자로 설명하고, 제주관광공사 관광정보는 같은 14-1코스를 곶자왈을 지나는 도보 코스로 설명한다.",
+    "source_ids": ["s1", "s2"]
+  },
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "독립적으로 지도에 표시된 야외 쉼터이며, 제주올레 14-1코스 보행 경험 중 휴식 지점으로 방문할 수 있다.",
+    "source_ids": ["s1", "s2"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"문도지오름과 곶자왈을 지나는 올레 구간의 쉼터이나, 쉼터 자체가 산 정상·등산 명소라는 직접 근거는 없다.","source_ids":["s1","s2"],"rule_ids":["THEME-TRAIL-CONTEXT"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인한 자료는 내륙 곶자왈·올레 구간만 설명하며 해안 경험 근거는 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-OCEAN-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 관광정보가 이 지점을 포함한 14-1코스를 약 17km, 5~6시간의 도보 코스로 설명한다.","source_ids":["s1"],"rule_ids":["THEME-WALKING-TRAIL"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 쉼터의 역사·전시·전통 체험을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-CULTURE-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-THEMEPARK-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노루쉼터 자체의 카페·음료 이용 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 목적 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제·공연 장소라는 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 기록이 곶자왈 사이의 정자라고 설명하므로 대표 경험은 실외 중심이다.","source_ids":["s2"],"rule_ids":["ENV-OUTDOOR-PAVILION"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 이용이 곶자왈을 지나는 야외 도보 코스에 결합되어 있어 날씨의 영향을 크게 받는다.","source_ids":["s1","s2"],"rule_ids":["ENV-OUTDOOR-TRAIL"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"장소명과 공개 기록 모두 쉼터·정자라는 휴식 기능을 직접 가리킨다.","source_ids":["s2"],"rule_ids":["STYLE-REST-STOP"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"쉼터 자체는 휴식 공간이지만 접근은 난이도 중의 장거리 올레 및 길 잃음 주의가 언급된 구간에 의존한다.","source_ids":["s1"],"rule_ids":["STYLE-TRAIL-ACCESS"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"정자형 경유 쉼터로 확인되어 짧은 휴식에는 적합하나, 독립적으로 긴 체류를 지원하는 시설 근거는 없다.","source_ids":["s2"],"rule_ids":["STYLE-REST-STOP-DURATION"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"곶자왈을 지나는 정자로 확인되어 자연 경관 맥락은 있으나, 이 쉼터만의 조망 가치에 대한 직접 설명은 부족하다.","source_ids":["s1","s2"],"rule_ids":["STYLE-FOREST-CONTEXT"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"다른 쉼터와 구별되는 고유 시설·프로그램 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-DISTINCTIVENESS-EVIDENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 고유 자연환경인 곶자왈과 제주올레 14-1코스의 경로 맥락에 직접 연결된다.","source_ids":["s1","s2"],"rule_ids":["STYLE-JEJU-OLLE-GOTJAWAL"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-LANDMARK-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 쉼터의 사진 촬영 가치를 직접 확인한 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-NO-PHOTO-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.25,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 관광정보는 코스 내 인가가 없어 두 명 이상 동행을 권고하며, 여성 혼자 걷기에는 적합하지 않다고 안내한다.","source_ids":["s1"],"rule_ids":["COMP-SOLO-TRAIL-CAUTION"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"두 명 이상 동행 권고가 있는 보행 코스의 경유 쉼터여서 2인 동행에 상대적으로 맞는다.","source_ids":["s1"],"rule_ids":["COMP-PAIR-TRAIL"]},
+    "friends":{"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"두 명 이상 동행 권고가 있는 야외 도보 코스의 경유 쉼터다.","source_ids":["s1"],"rule_ids":["COMP-GROUP-TRAIL"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반 안전·편의시설 또는 연령 제한을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-NO-KIDS-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"접근 구간이 난이도 중의 장거리 도보 코스이나, 고령자 접근성 시설 정보는 확인하지 못했다.","source_ids":["s1"],"rule_ids":["COMP-PARENTS-TRAIL-ACCESS"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 1월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 2월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 3월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 4월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 5월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 6월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 7월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 8월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 9월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 10월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 11월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"이 쉼터의 12월 운영·접근성 근거를 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"safety","applies_to":"제주올레 14-1코스 경유 방문","condition":"코스 내 인가가 없고 길을 잃으면 위험할 수 있어 표식을 확인하고 물·간식을 미리 준비해야 한다.","status":"confirmed","action":"verify","source_ids":["s1"],"checked_at":"2026-08-25","rule_ids":["GATE-OLLE-TRAIL-SAFETY"]},
+    {"kind":"companionship","applies_to":"단독 보행","condition":"공공 관광정보가 두 명 이상 동행을 권고하며, 곶자왈 구간은 여성 혼자 걷기에 적합하지 않다고 안내한다.","status":"confirmed","action":"caution","source_ids":["s1"],"checked_at":"2026-08-25","rule_ids":["GATE-OLLE-SOLO-CAUTION"]}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "research_status": "researched",
+    "summary": "노루쉼터는 제주올레 14-1코스의 저지 곶자왈 구간에 있는 야외 정자형 휴식 지점으로 확인했다. 독립 관광시설의 운영·편의 정보와 계절별 정보는 확인하지 못했다.",
+    "facts": [
+      {"fact":"제주올레 14-1코스는 약 17km, 5~6시간의 도보 코스이며 곶자왈을 지난다.","source_ids":["s1"]},
+      {"fact":"공개 여행 기록은 노루쉼터를 곶자왈 사이의 정자로 설명한다.","source_ids":["s2"]},
+      {"fact":"14-1코스는 인가·식당·상점이 없는 구간이 있으며 두 명 이상 동행과 사전 물·간식 준비를 권고한다.","source_ids":["s1"]}
+    ],
+    "unknowns": ["노루쉼터 단독의 공식 운영 주체·운영시간", "휠체어·유모차 등 접근성", "화장실·음수·주차 등 현장 편의시설", "월별 폐쇄·통행 가능 여부"],
+    "sources": [
+      {"source_id":"s1","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018726&menuId=DOM_000001718000000000","publisher":"제주관광공사 Visit Jeju","checked_at":"2026-08-25","facts":["14-1코스 거리·소요시간·난이도", "곶자왈 경유", "인가·상점 부재 및 동행·준비 권고"]},
+      {"source_id":"s2","url":"https://choews1019.tistory.com/15854725","publisher":"여행 블로그 게시물","checked_at":"2026-08-25","facts":["문도지오름에서 곶자왈을 지나 명이동못 방향으로 이어지는 길", "곶자왈 사이의 노루쉼터 정자"]}
+    ],
+    "search_attempts": ["노루쉼터 제주", "노루쉼터 제주특별자치도", "제주올레 14-1코스 노루쉼터"]
+  }
+}

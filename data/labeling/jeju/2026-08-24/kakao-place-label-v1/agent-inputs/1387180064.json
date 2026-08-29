@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2048,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1387180064.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1387180064",
+    "provider": "kakao",
+    "place_id": "1387180064",
+    "name": "한라산둘레길 숲길센터",
+    "url": "https://place.map.kakao.com/1387180064",
+    "average_rating_5": "4.9",
+    "visitor_review_count": "15",
+    "blog_review_count": "69",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.12.04.",
+      "content": "사려니는 '살안이' 혹은 '솔안' 라고 불리는데 여기에 쓰이는 '살' 혹은 '솔' 은 신성한 곳 또는 신령스러운 곳이라는 신역 )의 산명( 송)에 쓰이는 말이다. 즉 사려니는 '신성한 곳' 이라는 뜻이다. 시려니술길은 서귀포시 남원읍 한남리 사려니오름에서 물차호름을 거쳐 제주시 조천읍 교래리 비자림로까지 이어지는 약 15km의 숲길을 말한다. 해발 500~ 600m의 유네스코 생물권보전지역에 위치한 사려니 숲길은 완만한 평탄지형으로 물찻오름, 말찻오름, 괴평이오름, 마은이오름, 붉은오름, 거린오름 및 사려니오름과 천미천 ㆍ서중천 계곡을 끼고 있다. 전형적인 온대산림인 사려니숲길에는 졸참나무, 서어나무, 산딸나무, 때죽나무, 단풍나무 등 천연림과 인공조림된 삼나무, 편백나무 등이 다양하게 서식하고 있어 에코힐링(eco-healing)을 체험할 수 있는 최적의 힐링 숲이다. 숲길 곳곳에는 잣성(중산간 목초지에 만들어진 목장 경계용 돌담)과 숯가마터 등 흔적이 남아있어 제주의 산림목축 문화를 엿볼 수 있는 숲길로. 신성한 생명의 공간이자 자연 생태문화를 체험하는 소통의 공간이다.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2025.04.28.",
+      "content": "비가와서 사진이 조금 스산해보이긴 하는데 직접 가서 보면 진짜 분위기 좋습니다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.07.28.",
+      "content": "사려니 숲길에서 푸른 숲과 맑은 공기를 마음껏 느끼며 힐링했어요. 천천히 걷기만 해도 기분이 좋아지는 곳, 다시 찾고 싶은 숲길입니다. 🌿",
+      "tags": "시설"
+    },
+    {
+      "date": "2026.06.19.",
+      "content": "참 걷기 좋습니다",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "8534694",
+  "canonical_id": "kakao:8534694",
+  "name": "장군바위",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "공개 자료와 입력 리뷰는 마라도의 해안 암석 지형 장군바위를 가리킨다. 그러나 Kakao 표식이 장군바위 자체, 인접 해안 산책로, 낚시터 또는 관찰 지점 중 어느 범위를 가리키는지 좌표·주소 없이 확정하지 못해 완전 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-AMBIGUOUS",
+      "ELIG-NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "island_transport_and_coastal_access_conditions",
+      "applies_to": "all_visitors",
+      "condition": "마라도 입도 여객선 운항과 해안 관찰 지점의 접근·안전 상태는 날씨와 현장 조건에 따라 변동될 수 있다.",
+      "status": "needs_review",
+      "action": "방문 전 선사와 마라도 현장 안내에서 운항·체류시간·해안 접근 안전 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 마라도의 장군바위로 조사되지만 동일 해안 지형 내 Kakao 표식의 정확한 공간 경계는 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 마라도의 자연 명소로 장군바위와 해식동굴·절벽을 함께 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한국관광연구원 자료는 마라도 관광자원에 장군바위 해안경관을 포함한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "마라도 여객선은 운항시간과 섬 체류시간이 기상·선사 사정에 따라 변동될 수 있다고 안내한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 정확한 암석·산책로·관찰 지점 범위",
+      "현재 해안 접근 허용 범위와 난간·안전시설",
+      "당일 입도 운항·체류·기상 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Visit Jeju",
+        "type": "public_travel_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007862",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "마라도의 자연 명소로 장군바위와 해식동굴·절벽을 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광연구원",
+        "type": "research_report",
+        "url": "https://datalab.visitkorea.or.kr/common/board/Download.do?bcIdx=11720&cbIdx=1129&streFileNm=697f6955-aa75-11e3-8ad6-85f103564988.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "마라도 관광자원 목록에 장군바위 해안경관을 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "마라도여객선",
+        "type": "transport_operator",
+        "url": "https://www.maradoferry.co.kr/htm/intr01.htm",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "기상·선사 사정에 따른 운항시간과 체류시간 변동 가능성을 안내한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

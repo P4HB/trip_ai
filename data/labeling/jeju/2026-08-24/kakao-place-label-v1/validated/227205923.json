@@ -1,0 +1,680 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "227205923",
+  "canonical_id": "kakao:227205923",
+  "name": "북수구광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공공기관 자료에서 제주시 일도일동의 북수구광장으로 확인되며, 야외무대와 문화행사·공연·체험이 열리는 독립적인 공공 광장이다.",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 용도는 도심 야외광장과 행사 무대이며 산·오름·산림 경관 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "출처는 원도심의 야외광장과 행사 공간임을 보여 주며 해안·해양 활동이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공연 관람과 만들기 체험이 실제 행사 구성에 포함됐지만, 상시 참여형 활동 시설인지 확인되지 않아 중간값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-EVENT-PARTICIPATION"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 자료는 북수구광장에서 음악공연·전시·만들기 체험을 운영했고, 제주시 계획은 원도심 문화행사를 이 광장과 연계한다고 명시한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-CULTURAL-EVENT-DIRECT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외무대가 있는 공공 광장으로 확인되며 놀이기구·동물·상설 전시 중심의 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카페·음료·디저트 이용이 이 광장의 독립적 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "동문시장 인근이라는 지리 정보와 달리, 북수구광장 자체가 전통시장이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 계획은 원도심 페스티벌을 북수구광장과 연계하고, 공식 행사 기록은 이곳에서 공연·퀴즈·체험·사진전이 열린 사실을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-EVENT-VENUE-DIRECT"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "북수구광장은 야외무대와 야외 행사 공간으로 공식 기록되어 대표 방문 경험은 실외다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-PUBLIC-SPACE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 기능이 야외광장·야외무대 행사이며, 2024년 비가림막과 무대 데크 정비가 완료됐다고 보도됐다. 개별 방문과 행사는 기상 영향을 받을 수 있다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "광장에서 짧게 머무를 수는 있으나, 휴식·평온이 핵심 경험으로 공식 소개되는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-PUBLIC-SPACE-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "광장과 야외무대는 확인되지만 보행면, 경사, 계단, 무장애 동선의 최신 정보가 없어 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESSIBILITY-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상시 광장 공간을 짧게 둘러볼 수 있고, 공식 기록의 부대행사는 2시간 동안 진행됐다. 다만 평상시 체류시설은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-OPEN-SPACE-FLEXIBILITY"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "야외광장이라는 사실만 확인됐고 경관 감상이 주요 방문 가치라는 직접 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "rule_ids": [
+        "FALLBACK-SCENERY-UNKNOWN"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "원도심 문화행사와 연계되는 야외무대 광장이라는 특징은 확인되나, 다른 제주 공공광장과 비교한 고유성의 충분한 근거는 없다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "rule_ids": [
+        "STYLE-PLACE-ROLE-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 계획은 북수구광장을 칠성로·탐라문화광장과 함께 원도심 문화행사 연계 장소로 명시하며, 도민 대상 행사가 실제 개최됐다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-CIVIC-CULTURE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "원도심의 공공 행사 거점이라는 지역적 의미는 확인되지만 제주를 대표하는 관광 랜드마크라는 공식 지정·소개는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-CIVIC-LANDMARK-CONTEXT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "행사 사진전이 열린 사실과 별개로, 광장 자체의 사진 촬영 가치가 직접 강조된 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문 시 안전·조명·현장 안내의 최신 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 체류 경험이나 편의시설의 직접 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 실제 이용 편의와 행사 수용 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "체험 행사가 열린 기록은 있으나 상시 아동 안전시설·보호자 동반 조건이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 보행면·쉼터·무장애 접근성 정보가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S3"
+      ],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 상시 행사·운영 정보가 없어 야외광장의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_event_and_access_conditions_unknown",
+      "applies_to": "all_visitors",
+      "condition": "북수구광장은 야외광장·야외무대이며, 현재 행사 일정, 비·강풍 시 운영, 야간 조명, 화장실·주차, 보행면과 무장애 접근성은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 제주시 또는 행사 주최 측의 최신 안내로 행사 유무, 기상 대응, 접근·주차와 보행 안전을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 북수구광장은 공공 자료에 제주 북수구광장·북수구 광장으로 표시되는 제주시 원도심의 야외 공공광장과 일치한다.",
+    "facts": [
+      {
+        "text": "기상청의 2023년 제주기상 100주년 문화제 기록은 제주 북수구광장에서 버스킹 공연, OX 퀴즈, 만들기 체험과 사진전시를 진행했다고 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주시 2025년 시정운영계획은 탐라문화광장·북수구광장·칠성로를 원도심 문화행사 연계 장소로 제시한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "2024년 6월 보도는 제주시가 북수구 광장 내 야외무대의 비가림막, 무대 데크, LED 투광등 개선공사를 완료했다고 전한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "광장의 최신 개방 상태와 상시 운영·행사 일정",
+      "보행면·경사·화장실·주차·무장애 접근성과 야간 안전",
+      "행사 없는 날의 체류 편의와 사진·경관 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "기상청",
+        "type": "official_government_press_release",
+        "url": "https://www.kma.go.kr/kma/servlet/NeoboardProcess?bid=press2&callback=&fno=3&k=ATC202304281436323_9502b43b-c762-4e72-bb0a-4d9544dde8e5.pdf&mode=download&num=12286&ses=USER_SESSION",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2023년 제주기상 100주년 문화제의 부대행사가 제주 북수구광장에서 열렸다.",
+          "공연·퀴즈·만들기 체험·사진전시가 행사 구성에 포함됐다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주시",
+        "type": "official_local_government_plan",
+        "url": "https://www.jejusi.go.kr/fileDown.ac?path=%2Fjejusi%2Fdownload%2FjejusiPlan%2FjejusiPlan2025.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "2025년 시정운영계획은 원도심 페스티벌의 문화행사 연계 장소로 탐라문화광장, 북수구광장, 칠성로를 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://www.yna.co.kr/view/AKR20240620066800056",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주시는 북수구 광장 내 야외무대의 비가림막·무대 데크·LED 투광등 개선공사를 완료했다고 보도됐다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

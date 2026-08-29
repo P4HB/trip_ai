@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11255609",
+  "canonical_id": "kakao:11255609",
+  "name": "제주중문관광단지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "제주중문관광단지는 다수 숙박·관광·상업 시설을 포괄하는 대규모 종합 관광단지·개발 구역이다. 하나의 독립 방문 경험으로 41축을 부여하면 내부 개별 장소의 특성을 섞게 되므로 단일 장소 라벨링 범위 밖으로 처리한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-AREA-AGGREGATE",
+      "ELIG-NOT-SINGLE-VISIT-PLACE"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "aggregate_area_requires_component_selection",
+      "applies_to": "all_visitors",
+      "condition": "관광단지에는 서로 다른 운영·요금·접근성·계절성을 가진 다수 시설이 포함된다.",
+      "status": "needs_review",
+      "action": "추천·라벨링 시에는 단지 대신 내부의 개별 관광지·숙박·문화·자연 시설을 선택한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 제주중문관광단지라는 개발·관리 단위 전체를 가리킨다.",
+    "facts": [
+      {
+        "text": "한국관광공사 자료는 제주중문관광단지를 국제 수준의 종합관광 휴양지로 조성하는 개발 계획을 설명한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한국관광공사 자료는 단지 개발·관리 운영을 전담한 조직과 단지의 중추적 역할을 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 표식이 가리키는 정확한 단지 내 위치",
+      "대표 방문 시설·운영 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사",
+        "type": "official_history",
+        "url": "https://tong.visitkorea.or.kr/ktobiz/upload/public/50th/KTO_50th_16-113.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주중문관광단지의 종합 개발 계획을 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사",
+        "type": "official_history",
+        "url": "https://tong.visitkorea.or.kr/ktobiz/upload/public/50th/KTO_50th_114-195.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "제주중문관광단지의 개발·관리 운영 맥락을 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

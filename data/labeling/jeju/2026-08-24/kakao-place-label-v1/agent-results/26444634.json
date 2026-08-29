@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26444634",
+  "place_id": "26444634",
+  "name": "탐라양씨 건승원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명과 place_id만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 공개 웹 검색에서도 이 정확한 명칭의 공식·공공 상세 자료를 확인하지 못해, 양씨 문중 관련 시설인지와 독립 여행 방문지 여부를 신뢰성 있게 판정할 수 없다. 따라서 유형이나 방문 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 Kakao 장소명 ‘탐라양씨 건승원’과 place_id 26444634뿐이다. 주소, 좌표, 업종 및 외부에서 교차 확인 가능한 공식·공공 상세 정보가 없어 정확한 시설 신원을 확정할 수 없다.",
+    "typical_visit": "공개 신뢰 출처로 이 장소의 관람·참배·체험·운영 정보를 확인하지 못했다. 명칭만으로 종중 시설, 사당 또는 관광 방문지라는 유형을 단정하지 않는다.",
+    "experience_scope": "입력에는 방문 경험, 접근성, 운영 상태 또는 공개 후기 근거가 없으며 Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 레코드는 place_id 26444634와 장소명 ‘탐라양씨 건승원’을 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 이 장소의 주소, 좌표, 업종, 공개 방문 후기 및 운영 안내가 없으며, 공개 웹 검색에서도 정확한 명칭과 연결되는 공식·공공 상세 출처를 확인하지 못했다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 26444634의 정확한 주소, 좌표, 업종 및 시설 유형을 확인하지 못했다.",
+      "독립 여행 방문지인지, 관람·참배·체험이 가능한지와 최신 운영 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/26444634",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘탐라양씨 건승원’이며 place_id는 26444634다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "public_web_search",
+        "url": "https://www.google.com/search?q=%22%ED%83%90%EB%9D%BC%EC%96%91%EC%94%A8+%EA%B1%B4%EC%8A%B9%EC%9B%90%22",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "정확한 명칭으로 확인 가능한 공식 또는 공공기관 상세 페이지를 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없고, 정확한 명칭과 연결되는 공식·공공 상세 출처를 확인하지 못함",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소와 시설 유형으로 신원을 먼저 교차 확인한다. 독립 여행 방문 경험이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

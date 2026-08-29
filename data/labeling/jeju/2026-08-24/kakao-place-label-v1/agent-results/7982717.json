@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7982717",
+  "canonical_id": "kakao:7982717",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 지도와 제주 습지 식물 조사 자료에서 신도저수지는 제주 서귀포시 대정읍 신도리의 저수지로 식별된다.",
+    "source_ids": ["src_mapcarta", "src_jeju_wetland_study"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 경험을 뒷받침하는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험이 핵심이라는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"참여형 활동이나 레포츠를 확인할 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.culture_history": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화 경험을 뒷받침하는 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설이라는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용을 확인할 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험을 확인할 공개 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"축제 또는 기간성 행사 정보가 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"저수지는 수체와 주변 경작지·식재 수목으로 설명된 야외 자연·농업 경관이다.","source_ids":["src_jeju_wetland_study"],"rule_ids":["ENVIRONMENT-RESERVOIR-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 저수지와 주변 경관에 기반하므로 날씨 영향을 받을 것으로 추정되나, 현장 이용 조건은 확인되지 않았다.","source_ids":["src_jeju_wetland_study"],"rule_ids":["ENVIRONMENT-OUTDOOR-WEATHER"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 목적의 이용 환경이나 체류 방식은 확인되지 않았다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·경사·보행면·무장애 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"체류 시간 또는 이용 가능 시간 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"저수지 주변 수체·소나무·경작지가 확인되지만, 관광 경관 감상 가치의 직접 설명은 없다.","source_ids":["src_jeju_wetland_study"],"rule_ids":["STYLE-RESERVOIR-LANDSCAPE"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고유한 방문 경험이나 구성에 관한 공개 설명을 확인하지 못했다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 대정읍의 경작지 주변 저수지로 확인되나, 지역 문화·생산자와의 방문 경험 연결은 확인되지 않았다.","source_ids":["src_jeju_wetland_study","src_mapcarta"],"rule_ids":["STYLE-LOCAL-RESERVOIR"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표 명소 또는 상징성의 공신력 있는 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 가치에 관한 직접 근거가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 접근성과 안전 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"커플 방문 적합성을 판단할 체험 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"친구 동반 활동·시설 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 동반에 필요한 접근·안전 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반의 보행 부담과 편의시설 정보를 확인할 수 없다.","source_ids":[],"rule_ids":["FALLBACK-INSUFFICIENT-EVIDENCE"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·현장 조건 정보가 없다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "derived_labels": {},
+  "hard_constraints": [{"kind":"outdoor_access_and_weather_conditions_unknown","applies_to":"all_visitors","condition":"신도저수지는 야외 저수지이나 현재 출입 가능 구간, 주변 보행로, 수변 안전시설, 우천·강풍 시 통제 여부를 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 관리 주체의 최신 안내로 출입 가능 여부, 보행 안전, 기상 관련 통제를 확인한다.","source_ids":["src_jeju_wetland_study","src_mapcarta"],"checked_at":"2026-08-25"}],
+  "noneligible": {},
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "identity": {"name":"신도저수지","type":"reservoir","location":"제주특별자치도 서귀포시 대정읍 신도리","facts":["Mapcarta는 신도저수지를 Jeju-do의 reservoir로 분류한다.","제주 습지 식물 조사 자료는 신도저수지가 대정읍에서 한경 방향 국도 인근에 있고 주변이 경작지이며 소나무가 식재됐다고 기재한다."],"source_ids":["src_mapcarta","src_jeju_wetland_study"]},
+    "sources": [
+      {"id":"src_mapcarta","url":"https://mapcarta.com/24733488","publisher":"Mapcarta / OpenStreetMap","checked_at":"2026-08-25","facts":["신도저수지를 Jeju-do 소재 reservoir로 표시하고 좌표와 해발을 제공한다."]},
+      {"id":"src_jeju_wetland_study","url":"https://jst.re.kr/upload/pdf/RC00096661.pdf","publisher":"제주학연구센터","checked_at":"2026-08-25","facts":["신도저수지를 제주도의 인공습지 조사 대상 중 하나로 다룬다.","저수지 주변은 경작지이고 주변에 소나무가 식재되어 있으며 일부 매립되었다고 기재한다."]}
+    ],
+    "limitations": ["공식 관광 상세 페이지, 관리 주체, 공개·출입 조건, 보행로와 편의시설 정보는 확인하지 못했다.","Kakao 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."]
+  }
+}

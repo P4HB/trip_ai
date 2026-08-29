@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17781640",
+  "canonical_id": "kakao:17781640",
+  "name": "서걸세",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력 리뷰들은 계단 보행·전망·동걸세 인접성을 설명하지만 주소·좌표·공식 관리·정식 탐방로·안전 안내가 없다. 동명 또는 인접 오름과의 정확한 구분과 독립 방문 조건을 공식적으로 확인하지 못해 적격성을 확정하지 않는다.",
+    "source_ids": [
+      "K1",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_access_and_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "공개 리뷰는 약 10분 계단 보행을 언급하지만 실제 진입로·개방·계단 상태·기상 안전과 무장애 정보는 확인되지 않는다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 최신 안내로 정확한 위치, 탐방로·계단 안전과 개방 조건을 확인한다.",
+      "source_ids": [
+        "R2",
+        "R3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "복수의 공개 방문 경험은 오름을 시사하나 공식 장소 식별·관리 정보를 제공하지 않는다.",
+    "facts": [
+      {
+        "text": "공개 리뷰들은 계단 보행, 전망, 동걸세 인접성을 언급한다.",
+        "source_id": "R2"
+      }
+    ],
+    "unknowns": [
+      "공식 명칭·정확한 위치·관리 주체",
+      "정식 접근·안전·개방 조건"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/17781640",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 서걸세이다."
+        ]
+      },
+      {
+        "id": "R1",
+        "publisher": "Kakao public review evidence",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/17781640",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "리뷰는 동걸세 인접성을 언급한다."
+        ]
+      },
+      {
+        "id": "R2",
+        "publisher": "Kakao public review evidence",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/17781640",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "리뷰는 계단 보행과 전망을 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

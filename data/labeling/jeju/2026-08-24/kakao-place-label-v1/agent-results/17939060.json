@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17939060",
+  "place_id": "17939060",
+  "name": "한림공원 공원안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "입력 장소명은 한림공원의 공원안내소를 명시하며, 한림공원 공식 웹사이트는 한림공원을 여러 테마와 부대시설을 갖춘 단일 관람 공원으로 안내한다. 안내소는 공원 이용을 지원하는 내부 서비스 지점이므로 독립 방문 경험을 제공하는 추천 후보가 아니라 상위 한림공원에 종속된 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "한림공원 공원안내소는 Kakao 장소명으로 식별된 한림공원 내 방문 안내 서비스 지점이다.",
+    "typical_visit": "한림공원 관람 전후에 동선·이용 정보를 안내받기 위한 보조 시설 이용이다.",
+    "experience_scope": "상위 장소 한림공원의 이용을 지원하는 안내소이므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한림공원 공식 웹사이트는 한림공원을 10만평 규모의 테마파크로 소개하고, 9개 테마와 관람·이용 안내를 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao 장소 입력은 이 레코드의 이름을 ‘한림공원 공원안내소’로 제공하여 한림공원에 속한 안내소임을 나타낸다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "공원안내소의 별도 운영 시간, 제공 언어 및 무장애 안내 서비스는 공개 공식 자료에서 확인하지 못했다.",
+      "안내소의 정확한 내부 위치와 당일 운영 여부는 방문 전 한림공원 최신 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한림공원",
+        "type": "official_park",
+        "url": "https://www.hallimpark.com/",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "한림공원을 10만평 규모의 테마파크로 소개한다.",
+          "9개 테마와 공원 이용 안내를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "provider_place",
+        "url": "https://place.map.kakao.com/17939060",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘한림공원 공원안내소’로 표시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "한림공원 이용을 지원하는 내부 공원안내소로 식별됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 한림공원과 함께 검토",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24"
+}

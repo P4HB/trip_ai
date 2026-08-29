@@ -1,0 +1,641 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:12736232",
+  "place_id": "12736232",
+  "name": "삼양환해장성",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "삼양동 해안에 남은 환해장성 구간으로 제주도 기념물로 지정·관리되는 독립 역사유적이다.",
+    "source_ids": [
+      "src_jeju_council_20260825",
+      "src_visitjeju_20260825"
+    ],
+    "rule_ids": [
+      "eligibility.independent_cultural_heritage"
+    ]
+  },
+  "research": {
+    "status": "researched",
+    "summary": "삼양환해장성은 고려시대 방어를 위해 축성된 제주 해안 장성의 삼양 구간으로, 삼양동 포구·방파제 인근의 해안 역사유적이다.",
+    "sources": [
+      {
+        "id": "src_jeju_council_20260825",
+        "publisher": "제주특별자치도의회",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a6/A008272.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "환해장성은 고려 원종 11년(1270) 삼별초의 제주 입거를 방어하기 위해 해안선에 축성한 해안 장성으로 설명된다.",
+          "삼양을 포함해 현재 형태가 남은 10개소가 제주도기념물로 지정·관리된다고 기록되어 있다."
+        ]
+      },
+      {
+        "id": "src_visitjeju_20260825",
+        "publisher": "제주관광공사 Visit Jeju",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007284",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "삼양동 포구의 삼양방파제 한편에 환해장성 터가 자리한다고 안내한다.",
+          "해당 포구·방파제는 제주 올레 18코스에 속하며 조용한 산책·휴식 장소로 소개된다."
+        ]
+      },
+      {
+        "id": "src_jeju_grandculture_20260825",
+        "publisher": "한국학중앙연구원 디지털제주문화대전",
+        "url": "https://jeju.grandculture.net/jeju/dir/GC00702683?category=%ED%91%9C%EC%A0%9C%EC%96%B4&depth=3&name=%ED%95%98&search=%ED%95%98&type=titleKor",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "환해장성은 고려 말까지 보수·정비되어 왜구 침입 방어에 이용됐으며, 삼양 등 10개소가 제주도기념물로 지정돼 관리된다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "해안 장성 유적으로 확인되어 산·오름 경관은 핵심 경험으로 보이지 않지만 완전 부재는 확정하지 않는다.",
+      "source_ids": [
+        "src_jeju_council_20260825"
+      ],
+      "rule_ids": [
+        "prior.coastal_heritage"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안선에 축성된 장성이며 삼양동 포구·방파제 한편에 위치한다고 확인된다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "evidence.coastal_defense_wall"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포구 인근 해안 유적을 보며 걷는 방문은 가능하나 참여형 체험·레포츠 운영은 확인되지 않았다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.coastal_walk_heritage"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "고려시대 방어를 위해 축성된 해안 장성이며 제주도기념물로 지정·관리되는 역사유적이다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_jeju_grandculture_20260825"
+      ],
+      "rule_ids": [
+        "evidence.designated_historical_fortification"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "역사유적·해안 포구 인근 장소로 확인되어 테마파크형 경험은 핵심으로 보이지 않는다.",
+      "source_ids": [
+        "src_jeju_council_20260825"
+      ],
+      "rule_ids": [
+        "prior.coastal_heritage"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용 시설이나 운영 근거를 찾지 못해 해안 유적 유형의 낮은 사전값을 적용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "prior.coastal_heritage"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "전통시장 방문이 핵심이라는 근거가 없어 해안 유적 유형의 낮은 사전값을 적용한다.",
+      "source_ids": [
+        "src_jeju_council_20260825"
+      ],
+      "rule_ids": [
+        "prior.coastal_heritage"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 기간 축제·공연이 장소의 핵심이라는 근거를 찾지 못했다.",
+      "source_ids": [
+        "src_jeju_council_20260825"
+      ],
+      "rule_ids": [
+        "prior.coastal_heritage"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안선 장성과 포구 한편의 유적으로 설명되지만 실내 편의시설의 부재는 확인하지 못했다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.outdoor_coastal_heritage"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "대표 방문 경험이 해안선·포구 주변의 야외 유적 관찰이므로 날씨 노출 영향이 크다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "evidence.outdoor_coastal_site"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "인근 포구·방파제가 조용한 산책·휴식 장소로 소개되지만 장성 자체의 휴식 시설은 확인되지 않았다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.quiet_coastal_walk"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "researched_inference",
+      "rationale": "유적 주변의 보행 가능성은 보이나 표면·경사·무장애 접근 정보가 부족해 보수적 중간값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.accessibility_unknown"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포구·방파제 인근에서 유적을 함께 둘러볼 수 있으나 권장 소요시간과 관람 범위는 확인되지 않았다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.open_coastal_stop"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 장성과 포구·방파제가 결합된 야외 장소이나 장성 자체의 경관 가치에 대한 공식 정량 설명은 부족하다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.coastal_port_landscape"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "고려시대 해안 방어를 위해 축성된 환해장성의 현존 삼양 구간으로 확인된다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_jeju_grandculture_20260825"
+      ],
+      "rule_ids": [
+        "evidence.remaining_coastal_fortification"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 해안 방어사와 삼양동 포구의 장소성을 직접 보여 주는 지역 역사유적이다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "evidence.jeju_coastal_history"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "삼양 구간을 포함한 환해장성 10개소가 제주도기념물로 지정·관리되는 문화유산이다.",
+      "source_ids": [
+        "src_jeju_council_20260825",
+        "src_jeju_grandculture_20260825"
+      ],
+      "rule_ids": [
+        "evidence.designated_jeju_monument"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 장성과 포구를 함께 볼 수 있으나 사진 촬영이 공식적으로 핵심 경험으로 안내되지는 않는다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.coastal_visual_record"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안 유적을 개별 관찰·산책할 수 있으나 현장 접근과 안전 정보가 부족하다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.open_coastal_walk"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포구 주변 산책과 역사유적 관찰을 함께 할 수 있으나 편의 정보가 부족하다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.open_coastal_walk"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "동반 보행·관찰은 가능하나 단체 이용 편의나 프로그램은 확인되지 않았다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "inference.open_coastal_walk"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "researched_inference",
+      "rationale": "역사 관찰 가치는 있으나 해안 인접 구간의 어린이 안전·난이도 정보가 부족해 중간 폴백값을 사용한다.",
+      "source_ids": [
+        "src_jeju_council_20260825"
+      ],
+      "rule_ids": [
+        "fallback.coastal_site_child_safety_unknown"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "researched_inference",
+      "rationale": "역사유적이지만 보행 표면·경사·휴식시설 정보가 부족해 중간 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.accessibility_unknown"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 운영·안전 정보를 확인하지 못해 야외 해안 유적의 보수적 기후 폴백값을 사용한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ],
+      "rule_ids": [
+        "fallback.climate_unknown"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "공식 방문시간, 보행 표면·경사, 해안 인접 구간의 안전·야간 조명 정보가 확인되지 않음",
+      "status": "needs_review",
+      "action": "접근성 또는 어린이·고령자 동반 적합성을 확정적으로 추천하기 전 현장·공식 안내를 확인한다.",
+      "source_ids": [
+        "src_visitjeju_20260825"
+      ]
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

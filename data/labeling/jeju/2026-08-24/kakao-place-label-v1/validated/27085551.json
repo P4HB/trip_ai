@@ -1,0 +1,570 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "27085551",
+  "canonical_id": "kakao:27085551",
+  "name": "사려니숲",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "복수의 공개 방문 경험이 사려니숲의 숲길, 10km 전 구간과 입구 산책로, 주차장·물찻오름 방향 보행을 일관되게 설명하므로 독립 자연 탐방지로 잠정 판정한다.",
+    "source_ids": [
+      "K1",
+      "R1",
+      "R2",
+      "R3"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT-REVIEW-CONTEXT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "숲길은 확인되나 산·오름 정상 경험은 미확인이다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해양 경험 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전 구간 약 10km와 약 3시간의 숲길 보행이 언급된다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "THEME-TRAIL-WALKING-CONTEXT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "문화·역사 해설 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "축제 근거가 없다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-THEME-UNKNOWN"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속길 보행 중심으로 설명된다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-TRAIL-CONTEXT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 장거리 숲길 보행이라 날씨 영향 가능성이 높다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE-CONTEXT"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "방문 경험은 숲 냄새와 걷기를 힐링으로 설명한다.",
+      "source_ids": [
+        "R2"
+      ],
+      "rule_ids": [
+        "STYLE-FOREST-REST-CONTEXT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전 구간 10km·약 3시간 보행이 언급되어 장거리 부담 가능성을 반영한다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "STYLE-TRAIL-BURDEN-CONTEXT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전 구간과 입구 근처 산책로를 선택할 수 있다는 경험이 있다.",
+      "source_ids": [
+        "R1"
+      ],
+      "rule_ids": [
+        "STYLE-FLEXIBLE-DURATION-CONTEXT"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속길·뷰 태그 및 자연 경험이 언급된다.",
+      "source_ids": [
+        "R2",
+        "R3"
+      ],
+      "rule_ids": [
+        "STYLE-FOREST-SCENERY-CONTEXT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고유 구성의 공식 근거가 없어 중립 fallback이다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-STYLE-UNKNOWN"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "제주 숲이라는 맥락 외 지역 연결 근거가 부족하다.",
+      "source_ids": [
+        "K1"
+      ],
+      "rule_ids": [
+        "FALLBACK-STYLE-UNKNOWN"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "공적 대표성 정보가 없어 중립 fallback이다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치·허용 여부가 미확인이다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "안전 정보 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동반 편의 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "그룹 수용 정보 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 안전 정보 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "장거리 보행 언급으로 부담 가능성이 있다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "rule_ids": [
+        "COMPANION-LONG-WALKING-CONTEXT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 조건 미확인.",
+      "source_ids": [],
+      "rule_ids": [
+        "CLIMATE-UNKNOWN-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "trail_distance_and_closure_conditions",
+      "applies_to": "all_visitors",
+      "condition": "전 구간은 약 10km·3시간 보행으로 언급되며 물찻오름은 보호 관리상 폐쇄라는 방문자 관찰이 있다.",
+      "status": "needs_review",
+      "action": "방문 전 공식 최신 안내로 구간 개방·통제, 기상과 보행 안전을 확인한다.",
+      "source_ids": [
+        "R1",
+        "R3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "provisional_from_input_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력과 리뷰만으로 잠정 판정했다.",
+    "facts": [],
+    "unknowns": [
+      "월별 운영 조건"
+    ],
+    "sources": []
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

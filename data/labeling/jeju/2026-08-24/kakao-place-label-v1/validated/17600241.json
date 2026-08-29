@@ -1,0 +1,110 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17600241",
+  "place_id": "17600241",
+  "name": "김녕해안길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "입력 Kakao 레코드는 ‘김녕해안길’이라는 일반적인 명칭과 place_id만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 한국관광공사 자료는 김녕 일대에 ‘떠오르길·김녕 바닷길’과 김녕~월정리 해안길처럼 서로 다른 해안 구간·코스를 안내하지만, 이 레코드가 어느 구간 또는 독립 방문 지점을 뜻하는지 교차 확인할 수 없다. 따라서 범위를 추정해 추천용 완전 벡터를 만들지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력에서 확인 가능한 신원은 ‘김녕해안길’이라는 명칭과 place_id뿐이다. 공공 관광 자료에는 김녕 일대의 여러 해안길·해안 코스가 별도로 소개되지만, 입력 레코드와의 동일성 또는 정확한 범위는 확인되지 않았다.",
+    "typical_visit": "한국관광공사 자료상 김녕 일대 해안길의 대표 경험은 바다와 현무암 해안을 보며 걷거나 드라이브하는 것이다. 다만 이 Kakao 레코드가 해당 공공 안내의 어느 장소·구간인지 확정할 수 없다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영·안전 안내 및 공개 방문 후기 근거가 없다. 김녕 일대 해안길은 여러 구간을 가리킬 수 있으므로 길이, 접근 지점, 보행 난이도, 시설과 실제 방문 경험을 특정하지 않았으며 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 대한민국 구석구석은 ‘떠오르길·김녕 바닷길’을 제주시 구좌읍 김녕로1길 51-3의 해안길로 소개하며, 간조 때 드러나는 해안과 에메랄드빛 바다·현무암 풍경을 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 한국관광공사 자료는 김녕~월정리 해안길을 별도의 비치런·런트립 추천 장소로 제시한다. 입력 Kakao 레코드는 주소·좌표가 없어 이들 중 어느 구간 또는 다른 김녕 해안길을 뜻하는지 확인할 수 없다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 시작·끝 지점, 길이 및 공공 안내의 ‘떠오르길·김녕 바닷길’ 또는 김녕~월정리 해안길과의 동일성을 확인하지 못했다.",
+      "실제 보행·차량 이용 가능 구간, 노면·경사·무장애 접근성, 주차·화장실·쉼터, 조석·기상 위험 및 최신 통제 정보를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 없으며 Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_page",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=348b845f-9d7e-4452-a4f0-9a77b1e47df5",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "‘떠오르길·김녕 바닷길’을 제주시 구좌읍 김녕로1길 51-3의 해안길로 소개한다.",
+          "간조 때 드러나는 해안, 에메랄드빛 김녕 바다와 현무암 풍경을 안내한다.",
+          "관곶에서 김녕까지 이어지는 동쪽 해안 코스를 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_page",
+        "url": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=843549f9-3d83-4f93-9d90-2a492ed94377",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "김녕~월정리 해안길을 별도의 비치런·런트립 추천 장소로 제시한다.",
+          "입력 Kakao 레코드에는 이 공공 자료와 연결할 주소·좌표·구간 정보가 없다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17600241",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘김녕해안길’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·구간·업종이 없어 김녕 일대 여러 해안길 중 어느 장소를 뜻하는지, 독립 추천 단위의 범위와 접근·안전 조건을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도에서 좌표와 시작·끝 지점을 확보해 공공 관광 안내의 정확한 해안길과 교차 확인한다. 동일 장소가 확정되면 최신 조석·기상·보행 안전과 접근성을 별도 확인한 뒤 라벨링한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

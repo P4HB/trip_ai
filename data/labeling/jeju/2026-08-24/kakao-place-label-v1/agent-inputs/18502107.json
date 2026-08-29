@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 404,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/18502107.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:18502107",
+    "provider": "kakao",
+    "place_id": "18502107",
+    "name": "올레길 21코스",
+    "url": "https://place.map.kakao.com/18502107",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "13",
+    "blog_review_count": "5",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.23.",
+      "content": "2024. 8. 18. 구름은 있지만 더운 것은 마찬가지.. 1. 공항에서부터 걸었던 것이 다리의 피로가 누적되어 발바닥에 우측 새끼발가락 물집 통증으로 왼쪽 발에 힘을 실었더니 발바닥 통증으로 이어졌다. (십년 전 얘기지만 군대 행군때도 발바닥에 물집하나 잡히지 않았는데 요즘 사정상 운동을 못해서..ㅠㅠ) 2. 세화에서 하도포구? 쪽으로 빠지지 않고 바로 토끼섬 방향으로 직행하였다.( 많이 안걷기위한..) 3. 지미봉! 올라가고 싶었다. 그러나 고민했다. 올라갈지 말지.. (발통증이 정말 심했다). 그래도 제주도 왔는데 ‘오름한번은 올라가야지’ 란 생각에 올라감. 4. 지미봉! 반드시 올라가라. 전망 끝내준다. 정말 최고다! 5. 늦은 아침은 꽃돼지정식?에서 정식 시켜먹음. 맛좋다. 사장님 친절하시다. 위생철저하다. 가게에서 요리할때 위생모? 쓰는분 처음봤다. 다음 코스 계속... (근데 왜 내가 이런 글을 쓰고 있는거지?ㅋㅋ)",
+      "tags": ""
+    },
+    {
+      "date": "2022.04.05.",
+      "content": "역방향으로 가다 만난 지미오름은 힘들었지만 정상에서 본 일출봉의 그림은 환상입니다. 바다만큼 정겨운 밭담길은 고즈넉하고 소박하지만 재밌습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2020.09.15.",
+      "content": "다른 코스에 비해 거리가 짦은 대신에 후반부에 지미오름을 올라야 합니다. 20분 가량을 계속 올라가야해서 정말 힘이 듭니다만 지미봉 정상에 오르면 조망이 굉장히 좋습니다. 시작점인 해녀박물관은 주차장, 화장실등이 잘 되어있습니다. 종점부분엔 공중화장실이 없습니다. 1코스쪽으로 걸어나오면 버스정류장이 있습니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

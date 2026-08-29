@@ -1,0 +1,99 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1693764425",
+  "place_id": "1693764425",
+  "name": "제주 종합관광안내센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력 장소명은 제주 종합관광안내센터이다. 제주관광공사의 공식 관광안내는 ‘종합관광안내센터(제주공항)’를 제주관광 관련 문의 서비스로, 주요 관광안내소 목록의 제주종합관광안내센터 국내선·국제선을 공항 안내소로 제시한다. 따라서 이 레코드는 독립 여행 목적지라기보다 제주공항 이용 중 제공되는 관광 안내 부속 서비스로 판정한다. 다만 입력에는 주소·좌표·터미널 정보가 없어 이 Kakao 표식이 국내선·국제선 중 어느 운영 지점인지 확인하지 못했다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제주 종합관광안내센터는 제주관광공사가 공항의 국내선·국제선 관광안내소로 안내하는 제주관광 문의 서비스로 파악된다.",
+    "typical_visit": "제주공항 도착·출발 이용자가 여행 관련 정보를 문의하거나 안내를 받는 공항 부속 서비스이다.",
+    "experience_scope": "공개 공식 자료는 공항 종합관광안내센터의 존재와 관광 문의 기능을 확인한다. 그러나 입력 Kakao 레코드에는 주소·좌표·터미널 구분이 없어 정확한 공항 내 위치, 현재 운영시간 및 서비스 범위는 이 레코드에 귀속하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1693764425의 명칭을 ‘제주 종합관광안내센터’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사의 공식 관광안내는 종합관광안내센터(제주공항)를 제주관광 관련 문의 서비스로 안내하고, 주요 관광안내소 목록에 제주종합관광안내센터 국내선과 국제선을 포함한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 1693764425가 제주공항 국내선·국제선 중 어느 관광안내센터를 가리키는지와 공항 내 정확한 위치를 확인하지 못했다.",
+      "현재 운영시간, 휴무일, 제공 언어·서비스 범위 및 공항 보안·혼잡에 따른 실제 접근 조건은 최신 운영 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1693764425",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "작업 입력은 이 URL의 place_id를 1693764425, 장소명을 제주 종합관광안내센터로 식별한다.",
+          "입력에는 주소·좌표·터미널 구분·후기 본문이 제공되지 않는다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사",
+        "type": "official_tourism_information",
+        "url": "https://visitjeju.net/kareumstay/travel/infoCenter",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "종합관광안내센터(제주공항)를 제주관광에 관련된 것을 문의하는 서비스로 안내한다.",
+          "주요 관광안내소 목록에 제주종합관광안내센터 국내선과 국제선을 포함한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "airport_information_service_location_and_hours_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "관광안내센터는 제주공항 이용에 종속된 안내 서비스이며, 이 Kakao 표식의 국내선·국제선 구분, 정확한 위치, 최신 운영 여부와 서비스 범위는 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보에서는 제외한다. 공항 방문 안내에 포함해야 하는 경우 제주관광공사 또는 제주국제공항의 최신 공식 안내로 터미널별 위치, 운영시간과 이용 조건을 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

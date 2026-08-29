@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17570202",
+  "place_id": "17570202",
+  "name": "관음사 범종각",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "한국관광공사 관광 정보는 한라산 기슭의 관음사를 제주 불교의 중심 사찰로 소개하고, 1969년 이후 대웅전·선방·영산전·해월각·사천왕문·일주문·종각 등을 다시 지어 현재의 사찰 모습을 갖췄다고 설명한다. 입력의 ‘관음사 범종각’은 이 관음사 경내 구성 건물인 종각을 가리키므로, 독립 여행지와 중복되는 하위 시설로 판정한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION-CONTENT"
+    ],
+    "duplicate_of": "관음사(제주)",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘관음사 범종각’은 제주시 한라산 기슭의 관음사 경내 종각을 가리키는 하위 시설로 확인된다.",
+    "typical_visit": "관람·예불·템플스테이 등 방문 경험은 관음사 전체 경내에 귀속된다. 범종각 단독의 독립 운영·관람 경험은 확인되지 않는다.",
+    "experience_scope": "관음사 자체는 역사·종교·자연 탐방의 독립 방문지일 수 있으나, 범종각은 그 경내 건물이다. 상위 장소와 중복되는 추천용 18개 원자축, 동반자 5축 및 월별 12축은 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 정보는 관음사를 한라산 650m 기슭의 대한불교조계종 제23교구 본사이자 제주 불교 중심 사찰로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 정보는 1969년 이후 관음사에 종각을 포함한 여러 전각을 다시 지어 현재 모습을 갖췄다고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "범종각의 개별 조성 연혁, 문화재 지정 여부 및 단독 관람 가능 범위",
+      "현재 경내 출입·예불·촬영 규칙과 종각 관련 행사 시간",
+      "상위 관음사 경내의 최신 운영 시간·행사·접근 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "official_tourism_information",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b03c957f-90fa-4ff4-9c4e-6e443d2d3407",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "관음사의 위치·역사와 제주 불교 중심 사찰이라는 성격을 소개한다.",
+          "1969년 이후 종각을 포함한 전각을 다시 지어 현재 모습을 갖췄다고 설명한다.",
+          "템플스테이와 명상·체험 프로그램은 관음사에서 운영한다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "템플스테이",
+        "type": "official_temple_program_information",
+        "url": "https://www.templestay.com/fe/MI000000000000000019/reserve/view.do?templestaySeq=25627",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "한라산 관음사를 제주시 아라동 산록북로 660의 템플스테이 운영 사찰로 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_structure_within_temple",
+      "applies_to": "recommendation_candidate",
+      "condition": "범종각은 관음사 경내의 하위 전각으로, 단독 추천 시 상위 사찰의 역사·종교·체험 가치와 중복됨",
+      "status": "confirmed",
+      "action": "추천·라벨링은 상위 장소 ‘관음사(제주)’ 단위로 처리하고, 범종각은 경내 세부 POI·길찾기 정보로만 사용한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

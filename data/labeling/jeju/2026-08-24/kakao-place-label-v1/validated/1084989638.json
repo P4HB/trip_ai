@@ -1,0 +1,119 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1084989638",
+  "canonical_id": "kakao:1084989638",
+  "name": "제주관광 안내데스크 제주국제공항",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.75,
+    "rationale": "입력명은 제주국제공항 안의 제주관광 안내데스크를 가리킨다. 제주관광공사의 공식 관광 지도는 ‘제주공항 관광안내소’를 주요 관광안내소로 별도 표기하고, 공식 제주관광 정보는 제주국제공항을 제주도의 항공 관문으로 설명한다. 따라서 이 장소는 독립 여행 목적지라기보다 공항 이용 중 제공되는 안내 부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명은 제주국제공항의 제주관광 안내데스크를 뜻하며, 공개 관광 자료의 제주공항 관광안내소와 일치하는 공항 내 안내 시설로 파악된다.",
+    "typical_visit": "제주국제공항 도착·출발 이용자가 여행 정보를 문의하는 공항 부속 안내 서비스이다.",
+    "experience_scope": "공개 자료는 공항과 공항 관광안내소의 존재를 확인하지만, 이 Kakao 표식의 정확한 층·위치, 현재 운영시간과 제공 언어·서비스 범위는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 1084989638의 명칭을 ‘제주관광 안내데스크 제주국제공항’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사의 공식 관광 지도는 주요 관광안내소 목록에 ‘제주공항 관광안내소’를 포함하고 전화번호를 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사 운영 Visit Jeju는 제주국제공항을 제주도의 항공 관문으로 소개한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식의 공항 내 정확한 층·구역과 제주공항 관광안내소 표기와의 운영상 동일성",
+      "현재 운영시간, 휴무일, 제공 언어와 안내 서비스의 범위",
+      "공항 혼잡·보안 구역 변화에 따른 실제 접근 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1084989638",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 제주관광 안내데스크 제주국제공항으로 표시된다.",
+          "입력 레코드는 Kakao place_id 1084989638에 연결된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/map/JEJU_MAP_KOREAN_SUMMER.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공식 관광 지도는 주요 관광안내소 목록에 제주공항 관광안내소를 포함한다.",
+          "지도는 제주공항 관광안내소의 연락처를 함께 제공한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019568&menuId=DOM_000001718006000000",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주국제공항은 제주시 공항로 2에 위치한 제주도의 항공 관문으로 소개된다.",
+          "공식 안내는 제주공항 종합안내센터 연락처를 제공한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "airport_access_and_service_hours_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "안내데스크는 공항 내 부속 서비스이며, 현재 운영시간·정확한 위치·제공 서비스와 공항 보안·혼잡에 따른 접근 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "공항 방문 안내에 포함해야 하는 경우 제주국제공항 또는 제주관광공사의 최신 공식 안내로 데스크 위치, 운영 여부와 이용 조건을 확인한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

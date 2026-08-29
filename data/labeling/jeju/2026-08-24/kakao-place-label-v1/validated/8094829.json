@@ -1,0 +1,115 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8094829",
+  "place_id": "8094829",
+  "name": "체오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "한라일보와 제주일보는 입력 장소명과 일치하는 제주시 구좌읍 송당리의 체오름을 별도 오름으로 확인한다. 다만 입력 Kakao 공개 방문 후기에는 사유지로 무단출입이 금지되고 일부 3~4월에만 개방된다는 현장 접근 제한이 명시되어 있다. 공개 신뢰 출처에서 일반 방문객을 위한 상시 개방·안전 관리·방문 안내를 확인하지 못했으므로, 현재 이 레코드를 독립적으로 이용 가능한 여행 방문지 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "체오름은 제주시 구좌읍 송당리에 있는 오름으로 확인된다.",
+    "typical_visit": "과거 지역 기사에는 동백나무·원시림 길과 굼부리 경관을 걷는 오름 경험이 소개되지만, 현재 일반 방문이 가능한지와 실제 동선은 확인되지 않았다.",
+    "experience_scope": "장소 신원은 확인됐으나, 입력 Kakao 공개 후기에서 사유지 무단출입 금지와 제한적 개방을 언급한다. 이를 뒷받침하거나 대체하는 공식 최신 개방 안내를 찾지 못했으므로, 접근 제한을 적합도 점수로 상쇄하지 않고 추천용 벡터 생성 범위에서 제외한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한라일보는 체오름을 제주시 구좌읍 송당리에 있는 표고 382.2m, 자체높이 117m의 오름으로 소개한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주일보는 송당리 체오름의 동백나무 숲길, 울창한 원시림, 굼부리를 소개한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 공개 후기에는 체오름이 사유지여서 출입할 수 없고 일부 3~4월에만 개방된다고 언급되며, 다른 입력 후기에도 허락 없는 무단출입 금지가 적혀 있다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "2026-08-24 기준 소유자 또는 관리 주체의 공식 개방 기간·예약·출입 조건을 확인하지 못했다.",
+      "일반 방문객용 접근로, 주차, 화장실, 난간·노면 상태, 무장애 접근성과 악천후 안전 통제를 확인하지 못했다.",
+      "입력 공개 후기의 제한적 개방 시기와 현재 운영 상태를 공식 출처로 교차 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라일보",
+        "type": "local_news_article",
+        "url": "https://s1.ihalla.com/article.php?aid=1753725600774748370&page=67",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "체오름을 제주시 구좌읍 송당리에 있는 오름으로 소개한다.",
+          "표고 382.2m, 자체높이 117m로 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주일보",
+        "type": "local_news_article",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=1996021&replyAll=&reply_sc_order_by=I",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "송당리 체오름의 동백나무 숲길과 원시림, 굼부리 경관을 소개한다.",
+          "최신 출입 가능 여부나 공식 운영 조건은 제시하지 않는다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 방문 후기",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/8094829",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 공개 후기 두 건은 사유지와 무단출입 금지, 일부 기간 개방을 언급한다.",
+          "평점, 후기 수 및 작성자 정체는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "private_property_and_visitor_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 공개 후기에서 사유지 무단출입 금지와 제한적 개방을 언급하지만, 공식 최신 개방 기간·허가·안전 관리 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않는다. 소유자·관리 주체 또는 지자체의 최신 공식 방문 안내로 합법적 일반 출입과 안전 조건이 확인된 경우에만 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7898811",
+  "place_id": "7898811",
+  "name": "부공시흥망념비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘부공시흥망념비’라는 비표준 표기의 이름과 단 한 건의 짧은 방문 서술만 제공한다. 공개 웹 조사에서도 이 명칭의 소재지·설립 주체·기념 대상 또는 독립 방문지 여부를 확인할 수 있는 공식·공공 출처를 찾지 못했다. 후기의 ‘넙덕빌레’ 언급은 장소명과의 관계를 입증하지 못하므로 신원을 추정하지 않고 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 식별 정보는 Kakao place_id 7898811과 ‘부공시흥망념비’라는 장소명뿐이다. 해당 표기는 공공·공식 자료로 검증되지 않아 기념비의 대상, 위치, 관리 주체 및 관광 방문지 범위를 확인할 수 없다.",
+    "typical_visit": "입력의 공개 방문 서술은 만조 때 ‘넙덕빌레’를 보지 못했다는 내용이나, 이것이 이 Kakao 레코드의 대상·위치·방문 경험을 직접 확인하는 자료는 아니다.",
+    "experience_scope": "신원과 독립 방문 경험을 확인하지 못했으므로 장소 유형이나 경관·역사성·동행자·월별 적합도를 유형 prior로 채우지 않고 추천용 벡터를 생성하지 않는다. 평점 및 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 이름은 ‘부공시흥망념비’이고 place_id는 7898811이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 포함된 공개 방문 서술은 만조 때문에 ‘넙덕빌레’를 보지 못했다는 내용이지만, 기념비의 정확한 신원이나 위치를 확인하지는 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "‘부공시흥망념비’의 정확한 한자·정식 명칭, 기념 대상, 위치와 관리 주체를 확인하지 못했다.",
+      "해당 Kakao 레코드가 독립적으로 방문 가능한 관광·문화 장소인지, 다른 장소의 부속 표지물인지 확인하지 못했다.",
+      "접근성, 관람 가능 여부, 계절별 조건 및 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7898811",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘부공시흥망념비’이며 place_id는 7898811이다.",
+          "입력 패킷에는 한 건의 공개 방문 서술이 있고, 평점·리뷰 수 및 작성자 정보는 라벨 근거로 사용하지 않았다.",
+          "입력 패킷에는 주소, 좌표, 업종, 공식 소개 또는 공공 관리 정보가 제공되지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "비표준 장소명 외에 기념비의 대상·위치·관리 주체와 독립 방문지 범위를 공공·공식 출처로 확인할 수 없음",
+      "status": "needs_review",
+      "action": "정식 명칭과 좌표 또는 주소를 공공 기념물·문화유산 자료나 현장 관리 주체 자료로 교차 확인한다. 독립 방문지임이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

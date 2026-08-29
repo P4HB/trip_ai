@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1917784651",
+  "place_id": "1917784651",
+  "name": "마법의 길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘마법의 길’과 place_id만 제공하며 주소·좌표·업종·설명·공개 리뷰 근거가 없다. 해당 명칭으로 제주 내 독립 방문 장소를 확인하려 했으나 신뢰할 수 있는 공식·공공 출처에서 이 레코드와 동일한 장소를 교차 확인하지 못했다. 따라서 동명 장소나 단순 표식일 가능성을 배제할 수 없어 신원을 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 ‘마법의 길’이라는 명칭과 Kakao place_id 1917784651뿐이다. 주소·좌표·업종이 없어 제주 소재 동명 장소와의 동일성을 판별할 수 없었다.",
+    "typical_visit": "신원이 확인되지 않아 대표 방문 경험을 특정하지 않는다.",
+    "experience_scope": "입력에는 장소 설명, 주소, 좌표, 업종 및 공개 방문 후기 근거가 없으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다. 신원이 확정되기 전에는 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘마법의 길’로 표시하고 place_id를 1917784651로 제공한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 패킷에는 주소, 좌표, 업종, 장소 설명 및 공개 방문 후기 근거가 제공되지 않아 제주 내 실제 장소와의 동일성을 확인할 수 없다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 제주 내 실제 지점 또는 표식과의 동일성",
+      "독립 여행 방문지로서의 관람·체험 범위, 운영 상태, 접근성, 안전 및 최신 안내",
+      "입력 평점과 후기 수 이외의 공개 방문 경험 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1917784651",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘마법의 길’이고 place_id는 1917784651이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 장소 설명이 없다.",
+          "입력의 평점 0.0과 방문자·블로그 후기 수 0은 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "웹 공개 검색",
+        "type": "identity_research",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EB%A7%88%EB%B2%95%EC%9D%98+%EA%B8%B8",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘제주 마법의 길’ 및 동명어 검색에서 이 Kakao place_id와 교차 식별되는 제주 관광·공공 장소 출처를 확인하지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·설명이 없어 ‘마법의 길’의 정확한 신원과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소, 좌표, 업종 또는 현장 표식 정보로 신원을 먼저 교차 확인한다. 확인 전에는 추천 후보 및 41축 적합도 벡터로 사용하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

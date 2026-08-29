@@ -1,0 +1,644 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "12502131",
+  "canonical_id": "kakao:12502131",
+  "name": "우도해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "해양수산부 연안포털이 ‘우도 해안도로’를 17km 해안누리길로 별도 수록하고 코스·거리·소요시간·난이도를 공개한다. 우도 내 여러 경관을 잇는 독립적인 탐방 경로이므로 방문 후보로 판정했다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "코스에 우도봉 정상이 포함되지만 전체 핵심은 해안을 잇는 도로 탐방으로 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-ROUTE-CONTEXT"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 해안누리길로 등록되어 있고 해수욕장·해안·절벽을 지나는 17km 코스가 직접 제시된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-COASTAL-ROUTE-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공개 코스는 17km·300분·매우 난이도로 안내되며, 도보·자전거·스쿠터 등으로 우도를 둘러보는 경험을 설명한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-ROUTE-ACTIVITY-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "코스에는 항일해녀기념비와 고인돌 등 문화·역사 지점이 포함되지만, 해안도로 자체의 주된 경험은 자연 경관 탐방이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-CULTURE-ROUTE-CONTEXT"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내는 해안도로와 자연·해변 경관을 설명하며 놀이시설 또는 테마파크형 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 코스 정보에 카페 이용이 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안도로·해변·항구를 잇는 코스로 소개되며 전통시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상설 해안 탐방 코스로 등록되어 있으며 특정 기간 축제나 공연이 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "해안도로, 해변, 항구, 우도봉과 해안 절벽을 연결하는 야외 코스로 안내된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-ROUTE-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 긴 야외 해안 경로의 보행·이동이므로 비·바람·더위·추위의 영향을 받을 수 있다. 실제 통제 기준은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개는 푸른 바다와 해안 풍경을 즐기며 각자 방식으로 우도를 둘러보는 경험을 직접 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-LEISURE-DIRECT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 기본정보가 17km, 300분, ‘매우’ 난이도로 제시하므로 전 구간을 걷는 경우 신체 부담이 적다고 보기 어렵다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-ROUTE-DIFFICULTY-DIRECT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전체 공식 코스는 300분이지만 항구·해변·전망 지점이 연속되어 있어 일부 지점만 보거나 이동수단을 이용하는 체류 조절이 가능하다고 추론했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-MULTI-STOP-ROUTE"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개는 에메랄드빛 바다, 흰 모래사장, 우도8경과 해안 절경을 이 경로의 볼거리로 직접 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-COASTAL-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "우도 해안도로는 우도봉, 홍조단괴해빈, 검멀레, 돌칸이 해안 등 섬의 고유 지형·경관을 하나의 17km 코스로 연결한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-ISLAND-ROUTE-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주시 우도 지역의 항구·해변·우도봉·항일해녀기념비를 잇는 지역 해안 경로로 공식 등록되어 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-ROUTE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "정부 연안포털이 우도 해안도로를 해안누리길로 수록하고 우도8경을 둘러보는 대표 경로로 소개한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-OFFICIAL-COAST-ROUTE-DIRECT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 설명의 에메랄드빛 바다, 흰 모래사장, 해안 절경은 시각적 기록 가치가 높은 경관임을 뒷받침하지만 사진 촬영 편의시설은 확인하지 못했다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-VISUAL-SCENERY-CONTEXT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개는 해안 풍경에 취해 사색하는 ‘나 홀로 도보여행객’이 우도를 즐기는 모습을 직접 언급한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-SOLO-DIRECT"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개는 스쿠터로 해변도로를 달리는 연인을 이 경로의 방문 모습으로 직접 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-COUPLE-DIRECT"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹의 안전·이동수단·이용 편의에 대한 직접 근거가 부족해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반의 도로 안전, 이동수단 이용 조건 및 보호자 편의 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 보행 부담, 휴식 공간 및 무장애 접근성 정보가 충분히 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 경로의 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "CLIMATE-OUTDOOR-NEUTRAL"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "ferry_and_outdoor_route_conditions",
+      "applies_to": "all_visitors",
+      "condition": "우도 방문은 여객선 운항과 야외 해안 경로 이용에 의존한다. 해상 기상, 운항 여부, 도로 혼잡·안전 및 실제 이동수단 이용 조건은 변동될 수 있다.",
+      "status": "needs_review",
+      "action": "방문 당일 여객선 운항 상태와 최종 출항 시간, 현장 교통·기상 및 도로 안전 안내를 공식 채널로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘우도해안도로’는 해양수산부 연안포털이 제주특별자치도 제주시의 해안누리길로 수록한 ‘우도 해안도로’와 일치한다.",
+    "facts": [
+      {
+        "text": "우도 해안도로는 제주특별자치도 제주시의 해안누리길로, 17km·300분·난이도 매우의 코스이며 하우목동항, 천진항, 홍조단괴해빈, 하고수동해수욕장, 검멀레, 우도봉 정상 등을 잇는다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "연안포털은 해변도로를 스쿠터로 달리는 연인, 전동카를 이용하는 가족, 사색하는 나 홀로 도보여행객 등 여러 방식의 우도 탐방 모습을 소개한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "Visit Jeju는 우도 방문이 계절·날씨·항로에 따라 달라지는 여객선 운항 시간에 맞춰야 하며 당일 운항 상태와 최종 출항 시간을 확인하라고 안내한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "카카오 장소 핀의 정확한 도로 구간과 개별 진입 지점",
+      "현행 도로 통제·이동수단 대여 조건·보행 안전 안내",
+      "장애인·유아차 접근성 및 월별 체감 적합도"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "해양수산부 연안포털",
+        "type": "official_public_information",
+        "url": "https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=49",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "우도 해안도로의 지역, 17km 거리, 300분 소요시간, 매우 난이도와 코스 경로를 공개한다.",
+          "우도 해안 경관과 다양한 탐방 방식, 편의시설 정보를 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/en/detail/view?contentsid=CONT_000000000500477&menuId=DOM_700000000010776",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "우도 접근은 계절·날씨·항로에 따라 달라지는 여객선 운항 시간에 맞춰야 한다고 안내한다.",
+          "방문 당일 운항 상태와 최종 출항 시간 확인을 안내한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

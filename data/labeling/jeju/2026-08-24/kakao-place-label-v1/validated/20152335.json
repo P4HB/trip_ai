@@ -1,0 +1,91 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "20152335",
+  "canonical_id": "kakao:20152335",
+  "name": "직구도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "직구도는 제주시 추자면 대서리에서 떨어진 추자군도의 무인도이며, 특정도서 제205호로 지정된 보전 대상임이 공공 자료에서 확인된다. 공개된 신뢰 출처에서 일반 여행객을 위한 정기 상륙·관람 운영이나 안전한 방문 동선을 확인하지 못했으므로, 접근 가능한 여행지 추천 후보로 완전 적합도 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIGIBILITY-OUT-OF-SCOPE-NONVISITOR-PROTECTED-ISLAND"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "access_and_conservation_status",
+      "applies_to": "general_travel_visitors",
+      "condition": "직구도는 무인 특정도서이며 생태·지형 보전을 목적으로 관리된다. 일반 여행객의 현재 상륙 허용, 정기 운항·관람 운영, 접안 및 악천후 안전 절차는 공개 공식 방문 안내에서 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "exclude_from_recommendation_until_public_access_and_safety_are_verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25",
+      "rule_id": "GATE-ACCESS-NONVISITOR-PROTECTED-ISLAND"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "Kakao 장소명 ‘직구도’는 제주시 추자면 대서리 산150-1에 위치한 특정도서 제205호 직구도와 명칭·행정구역이 일치한다.",
+    "facts": [
+      {
+        "text": "정부 특정도서 현황은 직구도를 특정도서 제205호로, 제주 제주시 추자면 대서리 산150-1 소재의 77,160㎡ 도서로 기록하며 해식애·해식동 등 경관과 멸종위기 야생동물 서식, 해양 생물다양성을 지정 사유로 든다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "제주일보는 직구도를 추자면 대서리에서 서북쪽 약 3.5km 떨어진 추자군도의 무인도라고 소개한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "일반 여행객의 현재 상륙 허용 여부와 필요한 허가 절차",
+      "정기 운항·관람 상품, 접안 지점, 현장 관리 주체와 최신 안전 안내",
+      "날씨·파고에 따른 출입 통제와 구조·통신 여건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_environmental_record",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/228/1076/2023/CLIKC6674734884381160_attach_1.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "직구도는 특정도서 제205호로 제주시 추자면 대서리 산150-1에 위치한 것으로 수록돼 있다.",
+          "지정 사유에는 우수한 해안 지형·경관, 보호가 필요한 야생동물과 해안 무척추동물·해조류 서식환경이 포함된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주일보",
+        "type": "reputable_local_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2122288",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "직구도는 추자면 대서리에서 서북 방향 약 3.5km 떨어진 추자군도의 무인도로 소개된다.",
+          "기사는 직구도의 절벽 지형과 야생조류 서식을 소개한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

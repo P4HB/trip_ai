@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26564432",
+  "place_id": "26564432",
+  "name": "함덕북촌마을길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "해양수산부 연안포털은 함덕북촌마을길을 제주시의 5.5km·120분 해안누리길로, 함덕어촌계횟집에서 북촌 포구휴게소까지 이어지는 독립 코스로 안내한다. 입력 Kakao 명칭과 공식 코스명이 일치하며, 다른 시설의 부속물이 아닌 방문 가능한 보행 코스이므로 eligible로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "함덕북촌마을길은 제주특별자치도 제주시의 해안누리길 보행 코스다.",
+    "typical_visit": "함덕어촌계횟집에서 서우봉해변과 흥진비치호텔을 거쳐 북촌 포구휴게소로 이어지는 약 5.5km, 120분의 야외 해안 보행 경험이다.",
+    "experience_scope": "해안 경관을 보며 걷는 독립 코스다. 카카오 평점·후기 수는 입력에 있으나 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "해양수산부 연안포털은 함덕북촌마을길을 제주특별자치도 제주시의 해안누리길로, 거리 5.5km·소요시간 120분·난이도 어려움으로 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공식 코스 경로는 함덕어촌계횟집, 서우봉해변, 흥진비치호텔, 북촌 포구휴게소를 잇는다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "공식 안내는 화장실 위치 일부와 함덕해수욕장 매점을 제시하지만, 식수는 없다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F4", "text": "기상청 기후평년값은 월별 기온과 강수량 등 장기 기후 통계를 제공한다. 야외 보행 코스의 월별 값은 이 일반 기후 자료를 보수적으로 적용한 추론이다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "코스 전 구간의 무장애 접근성, 노면 상태, 그늘 및 휴식 지점은 확인하지 못했다.",
+      "당일 통제, 파고·강풍, 주차 및 시설 운영 상태는 방문 전에 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "해양수산부 연안포털", "type": "official_public_route", "url": "https://coast.mof.go.kr/coastScene/coastWayView.do?dt2=330&road_no=51", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["함덕북촌마을길의 지역, 거리, 소요시간, 난이도와 코스 경로를 안내한다.", "화장실·식수·매점 정보를 안내한다."]},
+      {"id": "S2", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/26564432", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 Kakao 장소명은 함덕북촌마을길이다.", "평점과 후기 수는 라벨 근거로 사용하지 않았다."]},
+      {"id": "S3", "publisher": "기상청 기상자료개방포털", "type": "official_climate_statistics", "url": "https://data.kma.go.kr/climate/average30Years/selectAverage30YearsKoreaList.do", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["1991~2020 기후평년의 월별 기온·강수량 등 주요 요소를 제공한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 경로에 서우봉해변이 포함되지만 산·오름 자체가 코스의 주 방문 목적인지는 확인되지 않아 낮게 둔다.", "source_ids": ["S1"], "rule_ids": ["R-THEME-MOUNTAIN-ROUTE-CONTEXT"]},
+    "theme.ocean": {"value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식적으로 해안누리길이며 경로가 해변과 포구를 잇는 해안 보행 코스다.", "source_ids": ["S1"], "rule_ids": ["R-THEME-OCEAN-OFFICIAL-COASTAL-ROUTE"]},
+    "theme.activity": {"value": 0.75, "confidence": 0.85, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "5.5km·120분, 난이도 어려움으로 안내된 보행 코스이므로 걷기 활동 비중이 높다.", "source_ids": ["S1"], "rule_ids": ["R-THEME-ACTIVITY-WALKING-ROUTE"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 안내에서 문화·역사 해설이나 유산 관람을 이 코스의 핵심 경험으로 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-NO-CULTURE-EVIDENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 정보는 자연 해안 보행 코스만 확인하며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-NO-THEMEPARK-EVIDENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "매점 안내는 있으나 카페·차·디저트 이용이 독립적 핵심 목적이라는 근거는 없다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-NO-CAFE-EVIDENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 코스와 편의시설 안내에서 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-NO-MARKET-EVIDENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "상시 해안 보행 코스로 안내되며 특정 기간 행사·축제는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-NO-FESTIVAL-EVIDENCE"]},
+    "environment.indoor_ratio": {"value": 0, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 경로가 해변·포구를 잇는 해안누리길 보행 코스로 안내되어 대표 경험은 실외다.", "source_ids": ["S1"], "rule_ids": ["R-ENV-INDOOR-OUTDOOR-ROUTE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "climate_heuristic", "rationale": "실외 해안 보행이 대표 경험이므로 월별 기온·강수량 및 당일 바람·비의 영향을 받을 가능성이 높다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-ENV-WEATHER-OUTDOOR-CLIMATE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 경관을 따라 걷는 코스이나 난이도 어려움으로 안내되어 휴식성은 중간으로 둔다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-REST-WALKING-DIFFICULTY"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.85, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공식 난이도가 어려움이고 5.5km 보행을 요구하므로 신체 부담이 적다고 보기 어렵다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-EASE-OFFICIAL-DIFFICULTY"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "전체 공식 소요시간은 120분이나 중간 진입·이탈 가능 여부는 확인되지 않아 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-DURATION-ROUTE-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.8, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해안누리길은 주변 해안 경관을 경험하는 길로 선정되었고, 코스가 해변·포구를 잇는다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-SCENIC-OFFICIAL-COASTAL-ROUTE"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안누리길로 별도 지정된 코스이나 다른 해안 보행로와 비교한 고유성 평가는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-DISTINCT-ROUTE-DESIGNATION"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "함덕·북촌의 해변과 포구를 잇는 제주시 해안누리길로 공식 안내된다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-LOCAL-ROUTE-PLACE-NAMES"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 해안누리길로 선정된 지역 코스이나 제주 전체를 대표하는 상징성은 자료만으로 확정할 수 없다.", "source_ids": ["S1"], "rule_ids": ["R-STYLE-LANDMARK-ROUTE-DESIGNATION"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안 경관 코스이지만 사진 촬영이 직접 확인된 핵심 활동이라는 근거는 찾지 못했다.", "source_ids": ["S1"], "rule_ids": ["R-FALLBACK-PHOTO-NOT-DIRECTLY-CONFIRMED"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립 보행 코스이지만 단독 보행 안전·길찾기 여건은 확인되지 않아 중간값이다.", "source_ids": ["S1"], "rule_ids": ["R-COMPANION-SOLO-WALKING-ROUTE"]},
+    "couple": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "두 사람이 함께 해안 경관을 걸을 수 있으나 관계별 편의 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-COMPANION-COUPLE-WALKING-ROUTE"]},
+    "friends": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "친구와 함께 걷는 활동에는 적용 가능하나 단체 보행·휴식 편의는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["R-COMPANION-FRIENDS-WALKING-ROUTE"]},
+    "kids": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "5.5km에 공식 난이도 어려움인 야외 보행 코스여서 일반 키즈 동행 적합도는 낮게 둔다. 연령·안전 조건은 별도 확인이 필요하다.", "source_ids": ["S1"], "rule_ids": ["R-COMPANION-KIDS-DISTANCE-DIFFICULTY"]},
+    "parents": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "5.5km에 공식 난이도 어려움인 보행 코스여서 부모님 동행 적합도는 낮게 둔다. 보행 보조·무장애 조건은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["R-COMPANION-PARENTS-DISTANCE-DIFFICULTY"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "야외 해안 보행의 월별 적합도에 대한 코스별 직접 근거가 없어 기후 평년 자료 기반 중립값으로 보류한다.", "source_ids": ["S1", "S3"], "rule_ids": ["R-MONTH-OUTDOOR-CLIMATE-FALLBACK"]}
+  },
+  "hard_constraints": [
+    {"kind": "route_difficulty", "applies_to": "mobility_and_party", "condition": "공식 안내상 5.5km, 120분, 난이도 어려움인 야외 보행 코스", "status": "confirmed", "action": "보행 능력, 동행 아동·고령자 조건과 일정을 별도 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-25T00:00:00+09:00"},
+    {"kind": "outdoor_weather_and_amenity", "applies_to": "visit_conditions", "condition": "야외 해안 코스이며 공식 안내는 식수가 없다고 한다.", "status": "confirmed", "action": "당일 기상·해안 안전 상태와 식수·편의시설을 방문 전에 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

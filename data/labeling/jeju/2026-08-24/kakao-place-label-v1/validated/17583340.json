@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17583340",
+  "place_id": "17583340",
+  "name": "한라생태숲 수생식물원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "제주관광공사와 제주특별자치도 자료는 수생식물원을 한라생태숲 안에 조성된 여러 테마숲·교육시설 중 하나로 열거한다. 독립 운영 관광지가 아닌 한라생태숲 관람 경험의 구성 요소이므로 별도 추천 후보로 벡터화하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION-IDENTIFIED"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 한라생태숲 내부의 수생식물원을 가리킨다.",
+    "typical_visit": "한라생태숲의 제주 자생식물 관찰·생태교육·산책 경험의 일부다.",
+    "experience_scope": "상위 장소 한라생태숲의 구성 시설로 판정하여 추천용 41축 벡터를 생성하지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 한라생태숲에서 볼 수 있는 시설·주제숲으로 수생식물원을 목련총림·벚나무숲·암석원 등과 함께 열거한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 자료는 한라생태숲에 수생식물원과 여러 테마숲·숲 교육 시설을 조성했다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "수생식물원 단독 운영·개방 여부",
+      "현장 동선·계절별 관찰 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000011955",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "수생식물원을 한라생태숲의 여러 시설·주제숲 중 하나로 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "public_environment_information",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2021/CLIKC4219664676277677_attach_1.pdf",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라생태숲의 테마숲·교육 시설로 수생식물원을 수록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_ecological_forest_feature_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "수생식물원은 한라생태숲 내부 구성 시설",
+      "status": "confirmed",
+      "action": "추천에서는 상위 장소 한라생태숲으로 통합하고 현장 탐방·생태보호 안내를 따른다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

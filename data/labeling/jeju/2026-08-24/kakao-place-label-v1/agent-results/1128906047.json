@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1128906047",
+  "place_id": "1128906047",
+  "name": "김녕바닷길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.65,
+    "rationale": "입력 Kakao 공개 후기는 물이 있을 때와 빠졌을 때의 바닷길, 경관 감상, 미끄러운 표면을 일관되게 언급한다. 제주관광공사 Visit Jeju의 김녕오조해안도로 안내도 김녕리 해안의 바다 경관·드라이브·자연경관을 별도 관광 경험으로 안내한다. 정확한 지점 좌표와 공식 명칭의 일치는 확인하지 못했으나, 독립적으로 방문하는 김녕 해안 경관·보행 지점으로 보수적으로 적격 처리한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "김녕바닷길은 입력 Kakao 후기에서 조수에 따라 물에 잠기거나 드러나는 김녕리 해안의 경관·보행 지점으로 나타난다. 공식 출처는 인접한 넓은 김녕오조해안도로만 확인되어 정확한 개별 지점 일치는 미확인이다.",
+    "typical_visit": "해안의 물빛과 조수에 따른 길·바위 풍경을 짧게 보고 사진을 남기는 야외 방문으로 추정된다.",
+    "experience_scope": "공식 관광 안내는 김녕리에서 하도까지 이어지는 해안도로의 바다 경관, 드라이브, 자연경관을 설명한다. 김녕바닷길 자체의 공식 주소, 개방 시간, 안전시설, 정비 상태, 조석별 통행 가능 여부와 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"제주관광공사 Visit Jeju는 김녕오조해안도로를 김녕리에서 하도까지 바다를 끼고 가는 해안 관광 코스로 안내하며, 드라이브·맑음·여름·자연경관 태그와 에메랄드빛 바다 및 포토존을 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"입력된 Kakao 공개 후기는 김녕바닷길에서 물이 있을 때와 빠졌을 때의 모습, 좋은 경관, 이끼 같은 표면의 미끄러움을 언급한다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["김녕바닷길의 정확한 공식 명칭·주소·좌표와 Visit Jeju 해안도로 페이지의 개별 지점 일치를 확인하지 못했다.", "조석별 통행 가능 시간, 최신 출입 통제, 안전 표지와 구조·편의시설을 확인하지 못했다.", "주차, 화장실, 휠체어·유모차 접근성, 어린이 동반 안전 조건을 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021064&menuId=DOM_000001718001000000","checked_at":"2026-08-24","facts":["김녕오조해안도로는 제주시 구좌읍 김녕리에서 하도까지 바다를 끼고 이어지는 약 19.2km 해안 코스다.","공식 페이지는 드라이브·커플·맑음·여름·자연경관 태그와 에메랄드빛 바다, 포토존을 안내한다.","이 공식 페이지는 김녕바닷길이라는 개별 지점의 조석·보행 안전 정보를 제공하지 않는다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/1128906047","checked_at":"2026-08-24","facts":["입력된 공개 후기는 물이 차거나 빠진 모습과 경관을 언급한다.","입력된 공개 후기는 이끼 같은 표면이 미끄럽다고 언급한다.","공개 후기는 보조 방문 경험 근거이며 평점·리뷰 수는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기가 조수에 따른 바닷길과 해안 경관을, 공식 안내가 김녕 해안의 바다 경관을 설명해 해양·해안 경험 비중이 높다고 추론한다. 개별 지점 일치는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 외 레포츠·참여형 체험의 규모와 조건을 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용이 이 개별 지점의 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문이 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안 바다와 조수에 따른 길을 보는 방문으로 나타나 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안 경관과 조석에 따른 길이 방문 핵심으로 나타나 비·바람·파랑과 조수 영향을 크게 받을 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·소음·휴식시설과 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"입력 후기에 미끄러운 표면 언급은 있으나 거리·노면·경사·계단과 무장애 정보가 없어 종합 난이도는 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개별 지점의 동선 길이와 체류 선택지 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 안내의 해안 자연경관·에메랄드빛 바다·포토존과 입력 후기의 좋은 경관 언급을 근거로 경관 감상 가치가 높다고 추론한다. 공식 안내는 넓은 해안도로 기준이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"조수에 따른 모습은 언급되지만 다른 해안 지점과 비교한 고유성의 충분한 근거가 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"김녕리 해안이라는 위치 외에 제주 지역 생활·문화·생산자와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"공식 해안도로 안내가 포토존을, 입력 후기가 사진이 예쁘게 나온다고 언급해 사진·시각 기록 가치가 높다고 추론한다. 포토존 안내는 넓은 해안도로 기준이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공식 해안도로의 커플 태그는 넓은 코스 기준이며 개별 지점 동반 체류 조건이 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"미끄러운 표면 언급은 있으나 어린이 동반용 안전시설·감독 조건이 확인되지 않아 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 여름 더위와 강수 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 방문은 겨울 기상과 바람 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"tide_and_slip_safety_unknown","applies_to":"all_visitors","condition":"입력된 공개 후기에는 물이 차고 빠지는 모습과 이끼 같은 미끄러운 표면이 언급된다. 조석별 통행 가능 여부, 현장 안전 표지, 노면 상태와 기상·파랑 통제는 공식 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 최신 안내와 조석·기상 조건을 확인하고, 젖거나 미끄러운 표면에서는 해안 가장자리·바닷길 진입을 피한다.","source_ids":["S2"],"checked_at":"2026-08-24"},
+    {"kind":"identity_and_access_unknown","applies_to":"all_visitors","condition":"공식 출처는 김녕오조해안도로라는 넓은 관광 코스를 안내하며 김녕바닷길의 정확한 주소·출입·주차·무장애 정보를 확인하지 못했다.","status":"needs_review","action":"출발 전 지도와 현장 최신 안내로 정확한 접근 지점, 주차와 출입 가능 여부를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

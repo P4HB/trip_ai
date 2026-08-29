@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25316350",
+  "place_id": "25316350",
+  "name": "어도오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "제주학 아카이브가 애월읍 봉성리 북서쪽의 도내산을 어도오름·도노미·어도악의 이명으로 직접 기록한다. 입력 후기도 분화구 둘레 산책과 오름 접근 경험을 일관되게 보여 주어, 독립적인 자연 방문 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "어도오름은 제주시 애월읍 봉성리 북서쪽에 있는 오름이며 도내산·도노미·어도악으로도 불린다.",
+    "typical_visit": "낮은 오름의 야외 보행로를 따라 오르고 분화구 둘레를 산책하는 자연 경관 방문으로 파악된다.",
+    "experience_scope": "공개 자료는 지명·입지와 오름 성격, 입력 후기는 매트가 설치된 짧은 야외 산책 경험을 뒷받침한다. 최신 개방 여부, 공식 탐방로 관리, 주차·화장실·무장애 시설과 계절별 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주학 아카이브의 제주어 구술자료집 주석은 도내산을 제주시 애월읍 봉성리 북서쪽의 오름으로 설명하고 어도오름·도노미·어도악을 이명으로 든다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "입력에 포함된 공개 Kakao 방문 후기는 분화구 둘레 산책, 야자매트, 약 20분 소요 및 낮은 오름이라는 현장 경험을 언급한다.", "source_ids": ["S3"]},
+      {"id": "F3", "text": "제주관광공사 보도자료는 제주 서부권 자연·자전거길 홍보 맥락에서 어도오름을 다른 제주 오름과 함께 소개한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "현재 출입 가능 여부와 공식 탐방로·시설 관리 상태는 확인하지 못했다.",
+      "경사, 노면, 계단, 주차, 화장실, 쉼터 및 무장애 접근성의 공식 최신 정보가 없다.",
+      "계절별 폐쇄·산불 예방 통제와 악천후 안전 기준은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주학 아카이브", "type": "public_archive_document", "url": "https://archive.jst.re.kr/upload/pdf/RC00094030.pdf", "checked_at": "2026-08-24", "facts": ["도내산은 제주시 애월읍 봉성리 북서쪽의 오름이다.", "도내산은 어도오름, 도노미, 어도악으로도 불린다."]},
+      {"id": "S2", "publisher": "제주관광공사", "type": "official_press_release", "url": "https://www.visitjeju.net/korean/Bd/view.php?bno=1606&btable=report_info&cate=0&p=80", "checked_at": "2026-08-24", "facts": ["제주관광공사는 제주 서부권 자연·자전거길 홍보 코스에서 어도오름을 다른 오름과 함께 언급했다."]},
+      {"id": "S3", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/25316350", "checked_at": "2026-08-24", "facts": ["입력 후기는 분화구 둘레 산책과 매트가 놓인 짧은 오름 보행 경험을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 아카이브가 이 장소를 애월읍 봉성리의 오름으로 직접 기록하고, 입력 후기 역시 오름 보행·분화구 산책을 확인한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·바다 또는 해양 활동이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"짧은 오름 보행·분화구 둘레 산책은 확인되지만 레포츠나 참여형 체험이 핵심이라는 근거는 부족해 중립값으로 제한한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시 또는 전통 체험이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트가 독립적인 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"오름과 분화구 둘레를 걷는 야외 경험이 확인되어 실내 비율은 낮게 추론한다. 실내 시설 존재 여부는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 오름 보행과 분화구 산책으로 파악되어 비·바람·더위 등의 영향을 비교적 받을 것으로 추론한다. 현장 통제 기준은 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소음, 휴식시설과 체류 환경의 객관적 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"입력 후기는 낮은 오름, 매트가 놓인 길, 약 20분 왕복을 언급해 보행 부담이 비교적 적을 가능성을 시사한다. 최신 노면·경사와 무장애 정보가 없어 검수가 필요하다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"후기에는 약 20분 둘러보기 경험이 있으나, 공식 동선·개방시간·체류 선택지는 확인되지 않아 중립값으로 제한한다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"분화구 산책은 언급되지만 경관 감상이 대표 방문 가치라는 신뢰 가능한 직접 근거가 부족해 중립값이다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"복수 이명과 오름이라는 사실은 확인되지만 다른 오름과 구별되는 고유 경험의 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주학 아카이브가 애월읍 봉성리의 지명·이명으로 기록해 제주 지역 자연지형과 직접 연결됨을 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 애월을 대표하는 상징 명소라는 공적 지정이나 공식 안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 최신 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행 이용 조건과 안전시설 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 최신 노면·안전시설·통제 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도, 쉼터와 무장애 접근성의 공식 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 오름 방문이나 월별 실제 개방·노면 정보가 없어 일반 기후 휴리스틱만 적용한 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 개방 여부, 공식 탐방로 상태, 경사·노면, 주차·화장실·무장애 시설 및 악천후·계절 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 현장 또는 관할 지자체의 최신 안내로 출입 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

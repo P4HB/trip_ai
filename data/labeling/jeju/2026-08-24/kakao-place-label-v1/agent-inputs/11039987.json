@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 270,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/11039987.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:11039987",
+    "provider": "kakao",
+    "place_id": "11039987",
+    "name": "검은데기오름",
+    "url": "https://place.map.kakao.com/11039987",
+    "average_rating_5": "2.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.06.08.",
+      "content": "빨간색길로 올랐더니 더 재밌었음..",
+      "tags": "뷰"
+    },
+    {
+      "date": "2026.03.10.",
+      "content": "레미콘공장을 지나가야해서 쫄리지만 오름갈건데 들어가도 괜찮은지 물어보고 들어가도 된다고하셔서 들어가서 다녀왔어요 첫번째 사진속 레미콘공장으로 들어가서 오름입구가 있는것때문에 1점으로 남겨뒀지만, 레미콘공장 들어오는것만아니면 올라가는 길도 예쁘고 숲도, 뷰도 괜찮은오름입니다. (정상에는 산불감시초소가 있구요. 레미콘공장쪽으로 가는길이 유일한길이에요.)",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

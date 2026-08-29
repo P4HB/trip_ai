@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1302946535",
+  "canonical_id": "kakao:1302946535",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털이 국가등록문화유산으로 등재한 1952년 설립의 구 육군 98병원 병동으로, 학교 내 실습실이라는 현재 용도와 별개로 독립된 역사문화 유산이다."
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 국가유산 정보에서 산·오름 경관 경험은 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 국가유산 정보의 대표 경험은 역사 건축물이며 해양 활동은 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 정보는 역사 건축물로 소개하며 참여형 활동은 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.culture_history": {"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가등록문화유산으로 등록되어 있으며 구 육군 98병원 병동이라는 역사적 용도가 공식 기록에 명시된다.","source_ids":["s1","s2"],"rule_ids":["heritage_direct"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 정보에서 테마파크형 시설이나 오락 경험은 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"카페 이용이 방문 목적이라는 근거는 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"시장 방문 경험은 공식 정보에서 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"특정 축제나 기간성 행사가 핵심이라는 근거는 확인되지 않는다.","source_ids":["s1"],"rule_ids":["theme_scope"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"등록 대상이 면적 142㎡의 단일 병동 건축물로 기록되어 실내 건축물 관람 비중이 있을 것으로 판단된다.","source_ids":["s1"],"rule_ids":["building_archetype"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"건축물 중심 장소이나 실제 관람 동선과 개방 상태가 확인되지 않아 낮은 수준으로만 추정한다.","source_ids":["s1"],"rule_ids":["weather_uncertainty"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"휴식 목적의 장소라는 직접 근거는 확인되지 않는다.","source_ids":["s1"],"rule_ids":["style_scope"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"건축물 관람은 일반적으로 고강도 활동은 아니지만 접근·시설 상태가 확인되지 않았다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"학교 부지 내 문화유산의 실제 개방·관람 시간 정보가 확인되지 않는다.","source_ids":["s1","s2"],"rule_ids":["access_uncertainty"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"공식 정보는 역사적 가치와 건축물 기록을 제시하나 경관 감상이 대표 가치라는 근거는 부족하다.","source_ids":["s1"],"rule_ids":["style_scope"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"구 육군 98병원 병동이라는 개별 역사와 국가등록문화유산 지위가 공식적으로 확인된다.","source_ids":["s1","s2"],"rule_ids":["heritage_direct"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 대정읍 소재의 국가등록문화유산이며 제주특별자치도교육청이 관리단체로 기록되어 있다.","source_ids":["s1"],"rule_ids":["heritage_direct"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"국가등록문화유산이지만 제주 전역의 대표 상징 명소라는 직접 근거는 확인하지 못했다.","source_ids":["s1"],"rule_ids":["significance_conservative"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"기록화 사업에서 건축물 사진 기록이 수행됐으나 일반 방문자의 촬영 가치에 대한 직접 근거는 부족하다.","source_ids":["s2"],"rule_ids":["photo_conservative"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"역사 건축물 관람은 개인 방문과 양립할 수 있으나 출입 조건이 확인되지 않았다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"역사문화 관심 방문에는 가능하나 개방 정보가 불명확하다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"소규모 역사 탐방에는 가능하나 실제 관람 가능 여부가 확인되지 않았다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]},
+    "kids":{"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"학교 부지 내 역사 건축물로서 어린이 대상 해설·체험과 출입 절차가 확인되지 않았다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"archetype_prior","rationale":"역사문화 관심 성인 동반 방문은 가능할 수 있으나 접근 조건을 확인해야 한다.","source_ids":["s1"],"rule_ids":["access_uncertainty"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실제 개방 일정이 확인되지 않아 계절별 적합성은 보수적 기본값을 사용한다.","source_ids":["s1"],"rule_ids":["month_fallback"]}
+  },
+  "hard_constraints": ["학교 부지 내 시설이므로 실제 관람 가능 여부, 출입 절차 및 운영 일정은 방문 전에 대정여자고등학교 또는 관리기관에 확인해야 한다."],
+  "research": {
+    "sources": [
+      {"source_id":"s1","url":"https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=4415006800000","publisher":"국가유산포털","checked_at":"2026-08-28T00:00:00+09:00","facts":"국가등록문화유산, 교육시설 분류, 1952년 설립, 대정읍 소재, 제주특별자치도교육청 관리로 기재."},
+      {"source_id":"s2","url":"https://digital.khs.go.kr/buis/buisDetail.do?bizUid=13898748268187900593&ctptNo=4415006800000&ctptUid=13898859683824301539&nation=&stakeholdersSes=","publisher":"국가유산 디지털 서비스","checked_at":"2026-08-28T00:00:00+09:00","facts":"제주 대정여자고등학교 실습실(육군 98병원 병동)의 기록화 사업과 조사 대상 건축물임을 확인."}
+    ]
+  },
+  "review_priority": "high"
+}

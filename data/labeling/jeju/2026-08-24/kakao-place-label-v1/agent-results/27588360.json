@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27588360",
+  "place_id": "27588360",
+  "name": "제주4.3평화공원 위령제단",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.99,
+    "rationale": "제주4·3평화재단의 4·3평화공원 시설안내는 위령제단을 공원의 주요시설 ①로 명시하고, 위령광장·위령제단을 공원 안의 추모 공간으로 설명한다. 따라서 Kakao 장소는 독립 운영되는 방문지라기보다 제주4·3평화공원 관람·참배 경험에 포함되는 세부 추모 시설로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주4.3평화공원 위령제단은 제주시 명림로 430의 제주4·3평화공원 안에 조성된 4·3사건 희생자 추모·참배 시설이다.",
+    "typical_visit": "제주4·3평화공원 방문 동선에서 4·3희생자를 추모하고 참배하는 세부 공간으로 식별된다.",
+    "experience_scope": "상위 장소인 제주4·3평화공원 안의 위령제단이므로 이 결과에서는 독립 추천 후보용 원자·동행·월별 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주4·3평화재단 시설안내는 4·3평화공원의 주요시설 ①을 위령제단으로 열거하고, 이를 연중 4·3희생자에 대한 참배와 4·3희생자 추념식이 봉행되는 공간으로 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 위령제단·위령광장이 정방형 위령광장과 반원형 부채꼴 대형 제단으로 이루어졌으며, 4·3사건 희생자 추모를 위해 조성되었다고 설명한다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "위령제단 세부 항목만의 별도 예약·독립 운영 또는 관람 시간은 확인하지 않았다.",
+      "방문 시점의 행사에 따른 현장 동선·접근 제한은 최신 공원 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주4·3평화재단",
+        "type": "official_facility_information",
+        "url": "https://jeju43peace.or.kr/kor/sub04_02_01.do",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "위령제단은 제주4·3평화공원의 주요시설 ①로 안내된다.",
+          "위령제단은 연중 4·3희생자 참배와 4·3희생자 추념식이 봉행되는 공간으로 설명된다.",
+          "위령제단·위령광장은 4·3사건 희생자 추모를 위해 조성된 공원 내 공간으로 설명된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_memorial_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "위령제단은 제주4·3평화공원의 주요시설로 확인된 세부 추모·참배 공간이다.",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서는 제외하고 제주4·3평화공원 방문 정보의 세부 시설로만 표시한다. 행사일 방문 전 최신 공원 안내로 현장 동선과 접근 조건을 확인한다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25"
+}

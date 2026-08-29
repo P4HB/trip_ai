@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25726277",
+  "place_id": "25726277",
+  "name": "방천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.85,
+    "rationale": "공개 하천 현황 자료는 방천을 제주시 영평동에서 화북천으로 이어지는 지방하천으로 수록한다. 입력 Kakao 레코드는 명칭 외 주소·좌표·업종·방문 경험 근거를 제공하지 않고, 확인한 공개 자료에도 특정 구간을 일반 여행객을 위한 독립 관광·체험 장소로 운영하거나 관람 동선과 안전 관리를 제공한다는 근거가 없다. 따라서 선형 하천 지리 객체 자체는 추천용 독립 방문 장소 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "방천은 공개 하천 현황 자료에서 제주시 영평동을 기점으로 화북천에 합류하는 지방하천으로 수록된 수계 지명이다.",
+    "typical_visit": "확인된 공개 정보는 하천의 행정상 수계·위치 정보이며, 일반 여행객 대상의 독립 관람 시설, 상시 탐방 동선 또는 운영 프로그램은 확인하지 못했다.",
+    "experience_scope": "하천의 신원은 확인됐지만 입력 Kakao 표식의 정확한 구간과 일반 방문객 접근·출입·안전 조건은 확인되지 않았다. 독립 관광 방문 경험을 추정하지 않으므로 추천 적합도 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 지방하천 현황 자료는 방천을 화북천 수계의 지방하천으로 수록하고 하천 코드 6020250을 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 자료는 방천의 기점을 제주시 영평 2235번지선, 종점을 제주시 화북의 화북천 합류점으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao place_id가 가리키는 정확한 하천 구간, 주소·좌표 및 현장 안내 시설을 확인하지 못했다.",
+      "일반 방문객의 상시 출입 가능 여부, 공식 산책·관람 동선, 주차·화장실·무장애 접근성과 관광·체험 프로그램을 확인하지 못했다.",
+      "강우 시 수량·범람·미끄럼 위험, 통제 기준 및 최신 안전 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회 하천정보 자료",
+        "type": "public_river_register",
+        "url": "https://www.riverlove.or.kr/files/riverData/ab073fccac0a4afadc1aaab9bbbcfb85.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주도권역 지방하천 목록은 방천을 화북천 수계의 지방하천으로 수록한다.",
+          "방천의 하천 코드는 6020250이며, 기점은 제주시 영평 2235번지선, 종점은 제주시 화북의 화북천 합류점으로 제시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25726277",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘방천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_access_and_flood_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "방천은 지방하천으로 확인됐지만, 이 Kakao 표식의 일반 방문객용 접근 구간·관광 운영 및 강우 시 수변 안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천 후보에서 제외한다. 향후 특정 구간에 대한 공식 관광·탐방 안내가 확인되면 그 구간을 별도 장소 레코드로 검수하고, 방문 전 최신 출입·강우·보행 안전 정보를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

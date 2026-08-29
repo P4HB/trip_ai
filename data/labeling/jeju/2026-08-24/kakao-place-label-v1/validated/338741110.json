@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:338741110",
+  "place_id": "338741110",
+  "name": "올레길쉼터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘올레길쉼터’와 place_id만 제공하며 주소·좌표·업종·공개 방문 후기 정보가 없다. 2026-08-25 공개 웹 검색에서는 제주 올레 4코스의 ‘신흥1리 올레길쉼터’ 언급과 외도천 생태복원사업의 계획상 ‘올레길쉼터’가 각각 확인되지만, 어느 자료도 Kakao place_id 338741110과 연결되지 않는다. 동명·일반명 성격의 쉼터를 특정 독립 방문지로 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 정보는 Kakao place_id 338741110과 명칭 ‘올레길쉼터’뿐이다. 공개 웹에는 서로 다른 제주 맥락의 동명 쉼터 언급이 있으나, 이 Kakao 레코드의 위치·유형·운영 주체를 교차 확인할 식별 근거는 찾지 못했다.",
+    "typical_visit": "미확인: 정확한 대상의 위치와 시설·개방 범위가 확인되지 않아 일반적인 방문 경험을 추론하지 않는다.",
+    "experience_scope": "입력에 주소, 좌표, 업종, 공개 후기 또는 운영 정보가 없고 Kakao 평점·리뷰 수는 라벨 근거로 사용하지 않았다. 신원이 확정되지 않았으므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 338741110, 장소명 ‘올레길쉼터’, Kakao 장소 URL을 제공하며 주소·좌표·업종·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-25 공개 웹 검색에서는 제주 올레 4코스의 신흥1리 올레길쉼터와 외도천 생태복원사업의 계획상 올레길쉼터가 확인됐으나, 어느 자료에도 Kakao place_id 338741110 또는 이를 식별할 주소·좌표가 없어 동일성을 확인할 수 없다.",
+        "source_ids": [
+          "S2",
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 장소 유형",
+      "제주 올레 4코스 신흥1리 쉼터, 외도천 사업의 쉼터 또는 다른 동명 장소 중 어느 대상인지 여부",
+      "독립 여행 방문지로서의 접근성, 안전, 개방 상태 및 대표 경험"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/338741110",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 338741110과 장소명 ‘올레길쉼터’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "개인 여행 블로그",
+        "type": "public_web_page",
+        "url": "https://kwon-blog.tistory.com/3199",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주 올레 4코스 여행 기록은 신흥1리의 ‘올레길쉼터’를 경로상 명칭으로 언급한다.",
+          "이 기록에는 Kakao place_id 338741110이나 이를 연결할 좌표·정확한 주소가 없다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주환경일보",
+        "type": "public_news",
+        "url": "https://www.donongnews.com/news/articleView.html?idxno=38289",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "외도수원지 생태복원사업 기사에는 조성 계획 시설 중 하나로 ‘올레길쉼터’가 언급된다.",
+          "기사에는 Kakao place_id 338741110이나 이 레코드와 동일성을 확인할 장소 식별 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·공개 후기 근거가 없고, 공개 웹의 동명 쉼터 자료와도 동일성을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 출처의 주소·좌표·유형 정보로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

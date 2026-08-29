@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26502713",
+  "place_id": "26502713",
+  "name": "제주관광정보센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.95,
+    "rationale": "제주관광공사의 공식 안내와 보도자료는 제주관광정보센터를 관광객에게 전화·채팅으로 여행 정보와 관광 불편 대응을 제공하는 상담 서비스로 설명한다. 물리적 안내 창구 주소는 확인되지만, 이는 독립적으로 관람·체류·체험하는 관광지가 아니라 다른 관광지 방문을 지원하는 정보 서비스이므로 추천용 방문 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주관광정보센터는 제주관광공사가 운영하는 제주 여행 문의 및 관광 불편 대응 정보 서비스이며, 공식 관광 페이지에는 제주시 선덕로 23 1층의 안내 창구와 전화 문의처가 제시된다.",
+    "typical_visit": "여행자는 전화 또는 실시간 채팅으로 제주 여행 정보를 문의하고 관광 중 불편사항 지원을 받을 수 있다. 공식 소개는 이 서비스를 개별 관광지를 추천·이용하기 위한 정보 제공 창구로 설명한다.",
+    "experience_scope": "안내 창구의 위치는 확인되나, 장소 자체에 관람·전시·공연·자연경관·체험·상거래 등 독립적인 여행 방문 경험이 있다는 근거는 확인되지 않았다. 정보 상담 서비스는 추천 후보 관광지와 구분해 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju의 제주관광정보센터 소개는 제주도민 상담사가 제주에 관한 문의와 관광 중 불편사항 접수를 지원한다고 설명하고, 센터 주소를 제주시 선덕로 23 1층으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 보도자료는 제주관광정보센터가 관광객에게 전화 또는 채팅 상담으로 관광 정보를 제공하고 관광 불편에 종합 대응하기 위해 구축됐다고 설명한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao place_id가 공식 소개의 1층 안내 창구와 정확히 같은 지도 표식인지 좌표·상세 주소로 추가 대조하지 못했다.",
+      "현장 안내 창구의 최신 대면 운영 여부, 운영시간, 접근성 및 편의시설은 확인하지 못했다.",
+      "센터 건물에 별도 전시·관람 공간이 있는지와 일반 관광지로 이용할 만한 독립 체험이 있는지는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000013608&menuId=DOM_000002000000000221",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주관광정보센터 상담사가 제주 여행 문의와 관광 중 불편사항 접수를 지원한다고 설명한다.",
+          "제주시 선덕로 23 1층과 여행 문의 전화 064-740-6000을 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사",
+        "type": "official_press_release",
+        "url": "https://www.visitjeju.net/korean/Bd/view.php?bno=1874&btable=report_info&cate=0&p=64",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주관광정보센터는 전화 또는 채팅 상담으로 제주 관광 정보를 제공한다고 설명한다.",
+          "관광객의 관광 불편 등에 종합 대응하기 위해 구축됐다고 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/26502713",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주관광정보센터’다.",
+          "입력 패킷에는 평점 0.0과 후기 수 0만 제공됐으며, 이를 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "information_service_not_independent_visit_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "공식 출처가 확인하는 기능은 제주 여행 정보 상담과 관광 불편 대응이며, 독립 관광지로서의 관람·체험·체류 경험은 확인되지 않음",
+      "status": "confirmed",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 여행자가 정보 지원을 원할 때에는 별도 안내 서비스로 참조할 수 있다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

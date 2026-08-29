@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17580445",
+  "place_id": "17580445",
+  "name": "제주 조각공원 전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 패킷에는 ‘제주 조각공원 전망대’라는 Kakao 장소명과 URL만 있고, 주소·좌표·업종·공식 안내·방문 근거가 제공되지 않았다. 명칭만으로는 어느 조각공원에 속하는 전망대인지, 독립 방문지인지, 정확한 위치와 운영 범위를 확인할 수 없으므로 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명, place_id와 Kakao 장소 URL뿐이다. 정확한 조각공원, 전망대의 위치 및 독립 방문지 여부는 입력 근거만으로 확인할 수 없다.",
+    "typical_visit": "장소명은 조각공원 내 전망 감상 또는 야외 전시 경험을 시사하지만, 입력에 이를 뒷받침하는 공식·공공 사실이 없어 방문 경험으로 확정하지 않는다.",
+    "experience_scope": "주소·좌표·업종·공식 운영 안내·공개 리뷰 근거가 제공되지 않았고, 평점과 리뷰 수는 모두 0으로 라벨 근거로 사용하지 않았다. 장소 신원이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 17580445의 장소명을 ‘제주 조각공원 전망대’로 제공하고, 주소·좌표·업종·리뷰 근거는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 17580445의 정확한 주소와 좌표, 어느 조각공원에 속하는지 및 독립 장소 여부",
+      "공식 관리 주체, 실제 관람·전망 범위, 접근성·안전·개방 상태와 최신 운영 안내",
+      "장소의 핵심 방문 경험과 동행자·월별 적합도를 판단할 수 있는 공식·공공 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/17580445",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주 조각공원 전망대’이고 place_id는 17580445다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점과 리뷰 수는 각각 0으로 제공되며 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력 Kakao 레코드에 주소·좌표·업종·공식 안내가 없어 조각공원 내 정확한 위치, 독립 방문지 범위 및 최신 접근·안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 안내와 Kakao 주소·좌표로 장소 신원을 먼저 교차 확인한다. 독립 방문지로 확인되면 관람 범위, 접근성, 기상·통제 조건을 별도 검수한 뒤에만 추천용 벡터를 생성한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

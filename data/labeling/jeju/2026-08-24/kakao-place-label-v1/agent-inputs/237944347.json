@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1921,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/237944347.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:237944347",
+    "provider": "kakao",
+    "place_id": "237944347",
+    "name": "큰넓궤",
+    "url": "https://place.map.kakao.com/237944347",
+    "average_rating_5": "4.5",
+    "visitor_review_count": "6",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.17.",
+      "content": "우리가 잊어서는 안되는 일입니다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.11.05.",
+      "content": "다 출입금지라 들어가진 못하네요 그래도 한번쯤은 꼭 가서 느껴보시길... 진입로 자갈길은 조심히, 천천히 가세요 승용차 많이 불편하실듯 바이크도 스쿠터나 아메리칸은 어려우실듯",
+      "tags": ""
+    },
+    {
+      "date": "2022.09.24.",
+      "content": "다크투어리즘 꼭 가봐야 할 제주 4.3 유적지",
+      "tags": ""
+    },
+    {
+      "date": "2022.04.09.",
+      "content": "딸애가 가보고싶데서 갔다가 비포장도로땜 죽다산듯요 차망가질까봐",
+      "tags": ""
+    },
+    {
+      "date": "2021.11.05.",
+      "content": "토벌대를 피해 마을 주민들이 숨어지낸 동굴입니다. 궤는 동굴을 의미합니다. 입구는 기어들어갈 정도로 좁만 안에는 제법 큰 공간이 있다고 합니다. 도엣궤까지 걸어가 보십시오. 큰넓궤와 도엣궤는 연결되어 있다고 합니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

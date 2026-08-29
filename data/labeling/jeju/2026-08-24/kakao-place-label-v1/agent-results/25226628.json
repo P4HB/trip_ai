@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25226628",
+  "place_id": "25226628",
+  "name": "막가채산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 지리 자료와 산봉 목록은 막가채산을 제주시 추자면 대서리의 약 154m 산봉으로 일관되게 제시한다. 그러나 공식·공공 관광 안내에서 일반 방문객용 등산로, 관람 운영, 안전 관리 또는 독립 방문 경험은 확인하지 못했다. 지형명만으로 접근 가능한 관광·체험 장소라고 가정하지 않아 추천용 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "막가채산은 제주특별자치도 제주시 추자면 대서리에 위치한 산봉으로 공개 지리 자료에 표시된다.",
+    "typical_visit": "확인된 공개 자료는 산봉의 명칭·위치·고도와 인근 횡간도·미역섬 같은 지리적 맥락만 제시하며, 일반 방문객을 위한 등산·관람·체험 운영은 확인하지 못했다.",
+    "experience_scope": "자연 지형의 신원은 확인됐지만, 독립 여행 방문지로서의 접근로·개방·안전·운영 근거가 없다. 따라서 미확인 지형을 추천 가능한 방문 경험으로 추정하지 않고 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 산봉 목록은 막가채산을 해발 153.8m, 위도 34.00671·경도 126.34888의 제주 제주시 추자면 대서리 산봉으로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "OpenStreetMap 기반 공개 지도는 막가채산을 횡간도 인근의 peak로 표시한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 장소 레코드는 장소명을 ‘막가채산’으로 제공하며 평점과 리뷰 수는 모두 0이다. 평점·리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객이 사용할 수 있는 공식 등산로, 진입 지점, 토지·출입 권한 및 현행 개방 여부를 확인하지 못했다.",
+      "경사·낙석·해안 기상 등 현장 안전 조건, 난간·표지·휴식 시설, 화장실·주차 및 무장애 접근성은 확인하지 못했다.",
+      "관광 목적의 상시 관람, 안내 프로그램 또는 관리 주체의 방문 안내를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "P2SKLife",
+        "type": "public_geographic_listing",
+        "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "막가채산을 해발 153.8m의 제주 제주시 추자면 대서리 산봉으로 제시한다.",
+          "좌표를 위도 34.00671, 경도 126.34888로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Mapcarta (OpenStreetMap 기반)",
+        "type": "public_geographic_map",
+        "url": "https://mapcarta.com/16034180",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "횡간도 지도에서 막가채산을 인근 주요 지형인 peak로 표시한다.",
+          "인근 지리 맥락으로 횡간도와 미역섬을 함께 제시한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25226628",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘막가채산’이다.",
+          "입력에는 공개 리뷰 근거가 없으며 평점과 방문자·블로그 리뷰 수는 모두 0으로 제공됐다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_natural_terrain_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "막가채산은 지형명과 위치만 확인됐고, 일반 방문객의 출입·등산로·개방·안전 관리 및 시설 정보가 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 주체 또는 공공 관광 안내가 독립 방문과 안전한 접근 조건을 확인하면 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

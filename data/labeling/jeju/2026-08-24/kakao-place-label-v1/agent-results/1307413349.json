@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1307413349",
+  "canonical_id": "kakao:1307413349",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "source_ids": ["src_jeju43"],
+    "rule_ids": ["eligibility.historical_site"],
+    "rationale": "제주4·3연구소의 4·3 유적지 목록에 동일 명칭의 유적지가 등재되어 있어 독립 방문 장소로 판정했다.",
+    "status_detail": "confirmed"
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_jst"],"rule_ids":["theme.landscape_context"],"rationale":"죽성은 제주 중산간 마을로 기술되어 산지·숲 인접 경관 맥락이 있다."},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"해양 경험이 핵심이라는 직접 근거를 확인하지 못했다."},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_samda"],"rule_ids":["theme.walking_access"],"rationale":"현장까지 걸어 들어가는 방문 동선은 확인되지만 레포츠·체험형 활동은 확인되지 않았다."},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43","src_jst"],"rule_ids":["theme.historical_memorial"],"rationale":"제주4·3 유적지로 등재되고 4·3 당시 소실된 죽성마을의 역사로 설명된다."},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"테마파크형 시설 경험의 근거를 확인하지 못했다."},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"카페·음료 이용이 핵심이라는 근거를 확인하지 못했다."},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"시장 방문 장소라는 근거를 확인하지 못했다."},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"기간성 축제·공연이 핵심이라는 근거를 확인하지 못했다."},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_samda"],"rule_ids":["environment.outdoor_site_inference"],"rationale":"현장 안내는 마을 진입로와 표지석·쉼터를 따라 걷는 방문으로 서술되어 실외 비중이 높다고 추정했다."},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_samda"],"rule_ids":["environment.outdoor_site_inference"],"rationale":"대표 경험이 야외 보행과 표지·유적 관람으로 기술되어 날씨 영향을 받을 가능성이 높다."},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_samda"],"rule_ids":["style.quiet_outdoor_visit"],"rationale":"쉼터와 도보 동선은 확인되나 휴식 목적의 시설·프로그램은 확인되지 않았다."},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"경사, 노면, 무장애 시설의 직접 정보가 부족하다."},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_samda"],"rule_ids":["style.self_guided_visit"],"rationale":"정해진 관람 프로그램 없이 안내판과 주변 유적을 따라 도보 방문하는 방식으로 소개된다."},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"경관 감상이 핵심 방문 가치라는 직접 근거가 부족하다."},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43","src_jst"],"rule_ids":["style.unique_historical_identity"],"rationale":"4·3으로 소실되어 복구되지 못한 죽성 새장밧이라는 고유한 역사 유적 정체성이 직접 확인된다."},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","source_ids":["src_jeju43","src_jst"],"rule_ids":["style.jeju_history_connection"],"rationale":"제주 오등리 죽성마을과 제주4·3의 지역사에 직접 연결된 유적이다."},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","source_ids":["src_jeju43"],"rule_ids":["style.registered_historical_site"],"rationale":"공식 4·3 유적지 목록에는 등재되어 있으나 제주를 대표하는 상징 명소라는 평가 근거는 제한적이다."},
+    "style_evidence.photo_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"사진 촬영 가치가 직접 확인되지 않았다."}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"동반 유형별 이용 적합성 정보가 부족하다."},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"동반 유형별 이용 적합성 정보가 부족하다."},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"동반 유형별 이용 적합성 정보가 부족하다."},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"아동 안전·교육 프로그램 및 동선 정보가 부족하다."},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","source_ids":[],"rule_ids":["fallback.insufficient_evidence"],"rationale":"고령 동반자의 접근성·휴식시설 정보가 부족하다."}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","source_ids":[],"rule_ids":["fallback.no_seasonal_evidence"],"rationale":"월별 운영·계절 경험의 직접 근거가 부족하다."}
+  },
+  "hard_constraints": [
+    {"type":"weather_exposure","source_ids":["src_samda"],"rule_ids":["constraint.outdoor_visit"],"rationale":"야외 도보·표지 관람 중심으로 서술되어 악천후 시 방문 경험이 제한될 수 있다.","status":"needs_review"},
+    {"type":"accessibility_unknown","source_ids":[],"rule_ids":["constraint.missing_accessibility_data"],"rationale":"경사·노면·무장애 접근성의 직접 정보가 확인되지 않았다.","status":"fallback"}
+  ],
+  "review_priority": "medium",
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {"source_id":"src_jeju43","publisher":"제주4·3연구소","url":"https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1&page=0","checked_at":"2026-08-25","facts":["4·3 유적지 목록에 '잃어버린 마을 죽성 새장밧'이 등재되어 있다."]},
+      {"source_id":"src_jst","publisher":"제주학연구센터","url":"https://jst.re.kr/upload/pdf/RC00095030.pdf","checked_at":"2026-08-25","facts":["오등리 죽성은 여러 자연마을로 이루어졌고 제주4·3 이후 잃어버린 마을이 되었다."]},
+      {"source_id":"src_samda","publisher":"삼다일보","url":"https://www.samdailbo.com/news/articleView.html?idxno=244550","checked_at":"2026-08-25","facts":["죽성마을 진입로에서 표지석과 쉼터를 따라 도보로 방문하는 현장 동선이 소개되어 있다."]}
+    ]
+  }
+}

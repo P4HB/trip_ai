@@ -1,0 +1,81 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17754599",
+  "place_id": "17754599",
+  "name": "덩개해안",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소명과 공개 자료가 모두 제주시 구좌읍 김녕의 덩개해안을 가리킨다. 제주특별자치도의 습지보전 계획과 제주대학교 자료가 이곳을 용암지대·해안 생태 조사 장소로 확인하므로, 독립적인 자연 해안 방문지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "덩개해안은 제주특별자치도 제주시 구좌읍 김녕리에 있는 자연 암석 해안·용암지대이다.",
+    "typical_visit": "해안의 용암 지형과 식생을 보며 짧게 걷고 경관을 감상하는 야외 자연 방문 경험으로 확인된다. 상업 시설·실내 관람·정비된 보행로의 범위는 공개 신뢰 출처에서 확인하지 못했다.",
+    "experience_scope": "해안 경관 및 자연 관찰을 대표 경험으로만 라벨링했다. 해수욕, 낚시, 물질, 야간 접근, 조간대 진입의 가능 여부·안전성은 운영 정보가 아니므로 적합도에 포함하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "제주특별자치도 습지보전 실천계획은 덩개해안을 설문대 할망 전설이 서린 넓빌레 용암지대이며 원시 어로시설인 '원'과 관련된 곳으로 설명한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "제주대학교 이삭플랫폼의 2023년 시민과학 자료는 조사 장소를 '제주시 구좌읍 김녕 덩개해안'으로 기록하고 해안 식물 자료를 공개한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력 Kakao 레코드는 장소명을 덩개해안으로 제공하며, 제공된 공개 방문 후기에는 경관과 노을에 대한 언급이 있다. 평점·후기 수는 라벨 근거로 사용하지 않았다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": [
+      "공식 관광 안내의 주차, 화장실, 접근 경로, 무장애 시설, 이용 가능 시간과 최신 현장 상태를 확인하지 못했다.",
+      "용암 암반·조간대 접근의 미끄럼, 파도, 조석 및 야간 안전 조건을 공식 안전 출처로 확인하지 못했다.",
+      "장소의 관리 주체와 정비된 탐방 동선 여부를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "제주특별자치도", "type": "government_plan_pdf", "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2022/CLIKC4815781149608071_attach_1.pdf", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["습지보전 실천계획의 습지 유래 표는 덩개해안을 넓빌레 용암지대와 원시 어로시설 '원' 관련 장소로 기록한다."]},
+      {"id": "S2", "publisher": "제주대학교 이삭플랫폼", "type": "university_research_data", "url": "https://esac.jejunu.ac.kr/data/40bb4731-42ff-4212-9b26-b5d6ee0e7499?pdf=", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["2023년 식물 조사 장소를 제주시 구좌읍 김녕 덩개해안으로 표시한다.", "해안 식물 자료를 공개한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_listing_and_input_review_evidence", "url": "https://place.map.kakao.com/17754599", "checked_at": "2026-08-24T00:00:00+09:00", "facts": ["입력 패킷의 장소명은 덩개해안이다.", "입력에 포함된 익명 공개 후기에는 '뷰' 및 '아름다운 노을' 언급이 있다.", "평점과 후기 수는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료가 대표 지형을 해안의 넓빌레 용암지대로 설명하며 산·오름 경험은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":["THEME-MOUNTAIN-NOT-CORE"]},
+    "theme.ocean": {"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"장소명과 공공·대학 자료가 모두 김녕의 해안 및 해안 식생 조사 장소임을 직접 확인한다.","source_ids":["S1","S2","S3"],"rule_ids":["THEME-OCEAN-CORE"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험은 자연 해안 감상·관찰로 확인되며, 별도 레포츠·참여 프로그램은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["THEME-ACTIVITY-LOW"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"용암지대와 원시 어로시설 관련 유래는 확인되지만, 전시·해설·문화 체험이 대표 방문 경험인지는 확인되지 않았다.","source_ids":["S1"],"rule_ids":["THEME-CULTURE-CONTEXT"]},
+    "theme.theme_park": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료는 자연 해안·용암지대와 식생 조사만 제시하며 테마파크 시설은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":["THEME-PARK-NOT-CORE"]},
+    "theme.cafe": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료에서 카페·차·디저트 이용 시설이나 목적은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":["THEME-CAFE-NOT-CORE"]},
+    "theme.traditional_market": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료의 장소 성격은 자연 해안이며 시장 기능은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":["THEME-MARKET-NOT-CORE"]},
+    "theme.festival": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공개 자료에서 특정 축제·기간성 행사가 장소의 핵심이라는 근거를 찾지 못했다.","source_ids":["S1","S2"],"rule_ids":["THEME-FESTIVAL-NOT-CORE"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"확인된 대표 경험은 해안 용암지대와 해안 식생의 야외 관찰이며 실내 공간은 확인되지 않는다.","source_ids":["S1","S2"],"rule_ids":["ENV-INDOOR-OUTDOOR"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"실내 대체 공간이 확인되지 않은 노출 해안·용암지대의 야외 방문이므로 날씨가 경험에 크게 영향을 줄 것으로 보이나, 현장 운영 기준은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["ENV-WEATHER-OUTDOOR-COAST"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"경관 감상과 자연 관찰은 느린 체류에 활용될 수 있으나, 휴식 시설·체류 여건은 확인되지 않았다.","source_ids":["S1","S2","S3"],"rule_ids":["STYLE-REST-NATURE"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"용암지대라는 지형 외에 실제 동선·경사·발판 정보가 없어 보행 부담을 보수적으로 중간값으로 둔다.","source_ids":["S1"],"rule_ids":["STYLE-EASE-UNKNOWN-TERRAIN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"정비 동선·주차·관람 소요시간이 확인되지 않아 짧거나 긴 체류의 조절 가능성을 보수적으로 중간값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["STYLE-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공공 자료의 넓빌레 용암지대 설명과 입력 공개 후기의 경관·노을 언급이 해안 경관 감상을 뒷받침한다.","source_ids":["S1","S3"],"rule_ids":["STYLE-SCENIC-COAST"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"넓빌레 용암지대 및 원시 어로시설 관련 유래와 해안 식생 조사가 이 장소의 구별되는 자연·문화 맥락을 직접 뒷받침한다.","source_ids":["S1","S2"],"rule_ids":["STYLE-DISTINCTIVE-LAVA-COAST"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 지역의 용암지대, 전통 어로시설 유래, 김녕 해안 식생과 직접 연결된 장소다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LOCAL-JEJU-COAST"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"공공 계획에 유래가 기록되고 대학 조사 대상이지만, 제주를 대표하는 광역 랜드마크라는 공식 관광 지정·방문량 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["STYLE-LANDMARK-LOCAL"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"용암 해안 지형과 입력 후기의 경관·노을 언급은 시각적 기록 가능성을 시사하지만, 공식 촬영 명소 안내는 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["STYLE-PHOTO-COAST"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"자연 관찰형 해안이나 실제 접근·안전·편의 정보가 없어 1인 방문 적합도를 중간값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-SOLO-UNKNOWN-ACCESS"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 경관 근거는 있으나 체류 시설·접근 정보가 없어 동반 방문 적합도를 중간값으로 둔다.","source_ids":["S1","S3"],"rule_ids":["COMPANION-COUPLE-UNKNOWN-ACCESS"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안 자연 방문지이나 단체 활동·편의 시설 정보가 없어 친구 방문 적합도를 중간값으로 둔다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-FRIENDS-UNKNOWN-ACCESS"]},
+    "kids": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"용암 해안·조간대의 실제 보행 및 안전 조건이 확인되지 않아 어린이 동반은 보수적으로 낮게 둔다.","source_ids":["S1","S2"],"rule_ids":["COMPANION-KIDS-COAST-CAUTION"]},
+    "parents": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"용암지대라는 지형은 확인되지만 무장애 동선·보행 난이도가 미확인이라 부모 동반은 보수적으로 낮게 둔다.","source_ids":["S1"],"rule_ids":["COMPANION-PARENTS-TERRAIN-CAUTION"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "3": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "4": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "5": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "9": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "10": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "11": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안이나 계절별 현장 접근·날씨 정보가 없어 보수적 중간값이다.","source_ids":["S1","S2"],"rule_ids":["MONTH-OUTDOOR-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"coastal_terrain_and_tide","applies_to":"shoreline_and_lava_terrain_access","condition":"공식 안전·동선 자료가 없어 용암 암반·조간대 접근 시 조석, 파도, 미끄럼 및 야간 위험을 방문 전에 현장 표지와 기상·해상 정보를 통해 확인해야 한다.","status":"needs_review","action":"관리 주체의 출입 안내와 현장 표지, 기상·해상 및 조석 정보를 확인하고 안전한 육상 관찰 범위를 벗어나지 않는다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

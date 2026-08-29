@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 610,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8335690.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8335690",
+    "provider": "kakao",
+    "place_id": "8335690",
+    "name": "동백동산",
+    "url": "https://place.map.kakao.com/8335690",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "37",
+    "blog_review_count": "43",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.03.24.",
+      "content": "비자림같은 숲속을 좋아하시면 추천이요. 대자연의 원시림 느낌이 나고, 사람도 없어서 조용히 산책하기 정말 좋아요. 제주도 보름살이중 가장 기억에 남는곳이에요.이름과 달리 동백꽃은 거의 없어서 꽃보러가시는거면 비추천이요.",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2025.03.13.",
+      "content": "동백나무군락지라 이름도 동백동산이지만 빼곡히 자리한 동백나무들은 햇빛을 보지못해 꽃은 거의 피지못한다. 겨울에도 초록초록한 상록수와 양치식물들로 가득한 제주의 곶자왈로 한바퀴 5km로 한시간 조금 더걸리는 코스이다.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2024.06.15.",
+      "content": "초입부터 돌길이라 등산화랑 스틱 필요함. 그리고 24번 스탬프는 인주가 없어서 못 찍음.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2023.09.30.",
+      "content": "제주 올때마다 들르는 힐링하기 좋은 숲길. 좋아했던 사려니길이 너무 관광지로 붐벼서 대안으로 찾은 곳. 조용하고 좋습니다.",
+      "tags": "뷰|주차|+1"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

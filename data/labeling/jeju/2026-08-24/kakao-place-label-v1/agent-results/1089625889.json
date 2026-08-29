@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1089625889",
+  "canonical_id": "kakao:1089625889",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status": "eligible", "confidence": 0.5, "rationale": "장소명과 2026년 입력 기록은 시민 모금으로 매입·보전된 제주 곶자왈 숲이라는 독립 자연·보전 장소를 일관되게 설명한다. 다만 공식 출처와 공개된 탐방 동선·개방 조건은 입력에 없어 방문 가능 여부는 검토가 필요하다.", "source_ids": ["kakao-place-metadata", "kakao-review-2026-02-27"], "rule_ids": ["eligibility.independent_place", "evidence.kakao_supplementary"]},
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "입력 기록은 울창한 나무·돌·습기가 있는 제주 곶자왈 숲을 구체적으로 묘사해 산림 자연 경관 경험이 핵심임을 시사한다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-forest"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "해안·해양 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "기록은 숲에서 걸음을 멈추는 탐방 경험을 언급하지만, 정식 탐방로·거리·활동 강도는 확인되지 않는다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-forest-visit"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "곶자왈 보전에 헌신한 연구자와 시민 모금·보전의 의미를 기리는 장소라는 서술이 있어 자연보전 서사와 지역 기억이 중요한 경험으로 보인다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-conservation-history"]},
+    "theme.theme_park": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 놀이 시설 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.cafe": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·음료 이용의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.traditional_market": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "theme.festival": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "축제·기간성 행사의 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "울창한 나무와 숲의 바람·습기를 묘사한 기록으로 대표 경험은 실외일 가능성이 높다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-forest"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 실외 숲의 바람·습기·생태 환경에 기반하므로 기상 조건의 영향을 크게 받을 가능성이 높지만, 운영 기준은 확인되지 않았다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["inference.outdoor-forest"]},
+    "style_evidence.restfulness": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "조용한 숲, 바람, 습기와 잠시 걸음을 멈추는 경험을 묘사해 느린 자연 체류의 성격이 강하게 나타난다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-quiet-forest"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "탐방로 상태·경사·돌길·접근성 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "체류 시간과 탐방 동선 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "울창한 나무 사이의 바람과 돌 사이 습기로 전해지는 곶자왈 생명력을 묘사한 기록이 있어 자연 경관·분위기 감상의 가치가 확인된다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-forest"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "개발 대신 보전을 선택해 시민 모금으로 매입한 곶자왈 숲이라는 서술이 장소의 고유한 보전 맥락을 보여준다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-conservation-history"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "제주의 물과 다양한 생명이 공존하는 곶자왈 생태계, 지역 보전 활동 및 시민 연대를 직접 서술해 지역 자연·공동체와의 연결이 강하다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-local-ecology"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "보전 상징성은 서술되지만 제주 전체를 대표하는 명소인지 판단할 비교 근거가 없다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영 가치의 직접 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 탐방의 개방·안전·동선 정보를 확인할 수 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 동행 적합성을 직접 판단할 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 동행 적합성을 직접 판단할 근거가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반에 필요한 안전·통행 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "부모 동반에 필요한 접근성·휴식 시설 정보가 없다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.insufficient-evidence"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "1월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "2": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "2026년 2월 기록은 존재하지만 월 전체의 개방·탐방 조건을 확정할 수 없어 중립값으로 둔다.", "source_ids": ["kakao-review-2026-02-27"], "rule_ids": ["evidence.review-stated-visit-month"]},
+    "3": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "2026년 3월 기록은 존재하지만 월 전체의 개방·탐방 조건을 확정할 수 없어 중립값으로 둔다.", "source_ids": ["kakao-review-2026-03-01"], "rule_ids": ["evidence.review-stated-visit-month"]},
+    "4": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "4월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "5": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "5월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "6": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "6월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "7": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "7월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "8": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "8월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "9": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "9월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "10": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "10월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "11": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "11월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]},
+    "12": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "12월의 개방·탐방 조건 정보가 없어 중립값으로 남긴다.", "source_ids": ["kakao-place-metadata"], "rule_ids": ["fallback.seasonal-forest"]}
+  },
+  "hard_constraints": ["보전 숲의 실제 공개 여부, 출입 허용 구간, 탐방로·주차·화장실과 안전 조건은 입력 패킷으로 확인되지 않는다. 자연보전 지침과 현장 접근 조건을 방문 전 별도로 확인해야 한다."],
+  "research": {"sources": [{"source_id": "kakao-place-metadata", "publisher": "Kakao", "url": "https://place.map.kakao.com/1089625889", "checked_at": null, "facts": ["장소명: 송시태숲"]}, {"source_id": "kakao-review-2026-02-27", "publisher": "Kakao 공개 방문 기록", "url": "https://place.map.kakao.com/1089625889", "checked_at": "2026-02-27", "facts": ["시민 모금으로 매입된 곶자왈 보전 숲이라는 서술", "숲의 나무·바람·돌·습기와 보전의 의미를 묘사"]}], "limitations": ["공식·공공 상세 출처가 입력에 없음", "공개 방문 기록은 현재 출입·탐방 조건을 보장하지 않음"]},
+  "review_priority": "high"
+}

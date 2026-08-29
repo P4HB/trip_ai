@@ -1,0 +1,658 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17880032",
+  "canonical_id": "kakao:17880032",
+  "name": "파라다이스카지노 메종글래드제주점",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 메종글래드 제주 내 파라다이스 카지노 제주와 일치하는 독립 방문 시설이다. 다만 공식 안내상 외국인·해외이주자만, 만 19세 이상만 입장할 수 있어 이 조건은 점수와 분리한 필수 제약으로 기록한다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT",
+      "ELIG-HARD-CONSTRAINT-SEPARATE"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내는 카지노의 실내 게임 경험과 제주시 도심 인접성을 설명하며 산·오름 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 지점 카지노의 실내 게임 시설로 확인되며 해안·해양 활동이 대표 경험이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 카지노 안내는 게임 이용을 위한 입장과 카지노 서비스를 설명하므로 참여형 게임이 방문의 핵심이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PARTICIPATORY-EXPERIENCE-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 자료에서 역사·전시·공연·전통 체험은 확인되지 않고 카지노 게임 이용이 중심이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "카지노는 성인 제한이 있는 게임 시설이며 놀이공원·동물·수족관형 테마파크 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "다이닝 서비스 언급은 있으나 커피·차·디저트 이용이 독립적인 핵심 방문 목적이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 안내의 장소 성격은 카지노 게임 시설이며 시장 방문 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "연중 운영 카지노로 소개되며 특정 기간 축제나 공연이 장소의 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "메종글래드 제주 내부의 카지노 시설로 확인되며 대표 경험은 실내 게임 공간에서 이뤄진다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-INDOOR-FACILITY-DIRECT"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 실내 카지노 이용이므로 날씨 노출은 낮을 것으로 판단했으나, 기상 시 교통·호텔 출입 영향은 별도 확인하지 못했다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "ENV-INDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식·평온함을 핵심 경험으로 제시한 직접 근거가 없어, 게임 시설 특성에 따른 낮은 잠정값으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-RESTFULNESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "실내 카지노 이용 시설이므로 장거리 야외 보행 부담은 낮을 것으로 보이나, 출입구·좌석·무장애 동선은 확인하지 못했다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-INDOOR-ACCESS-CONTEXT"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 초보자 안내는 카지노가 365일 24시간 운영된다고 설명해, 입장 자격을 충족한 방문자는 체류 시점을 비교적 유연하게 정할 수 있다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-EXTENDED-HOURS-DIRECT"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경관 감상이 핵심이라는 공식 근거를 찾지 못해 실내 게임 시설의 낮은 잠정값으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SCENERY-UNKNOWN"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주에 있는 파라다이스의 외국인 전용 카지노라는 점은 확인되지만, 게임 구성이나 건축·서비스의 고유성은 충분히 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-PLACE-TYPE-CONTEXT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제주 메종글래드 호텔 내 제주 지점으로 확인되지만, 제주 자연·문화·생산자·생활을 직접 경험하는 프로그램은 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-LOCATION-CONTEXT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "파라다이스가 제주를 포함한 국내 4개 카지노를 운영한다는 점은 확인되지만, 제주 대표 랜드마크라는 공적 지정·상징성은 확인되지 않았다.",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "STYLE-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카지노 내부의 사진 촬영 가능 여부나 시각 기록 가치에 대한 공식 근거가 없어 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-PHOTO-UNKNOWN"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "자격을 충족하는 1인 이용의 안전·편의 정보가 충분하지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 대상 이용 편의나 프로그램을 확인하지 못해 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 그룹 수용·이용 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "value": 0,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내는 만 19세 미만 미성년자의 출입을 허용하지 않으므로 4~12세 아동 동행 방문에는 적합하지 않다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-MINOR-ENTRY-PROHIBITED"
+      ]
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "고령 방문자의 이동·좌석·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-SENIOR-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "2": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "3": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "4": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "5": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "6": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "7": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "8": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "9": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "10": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "11": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    },
+    "12": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 안내의 365일 24시간 운영 정보에 근거한 월별 운영 가능성 값이며, 입장 자격과 임시 운영 변경은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-YEAR-ROUND-OPERATION-DIRECT"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "foreigner_or_overseas_resident_only",
+      "applies_to": "all_visitors",
+      "condition": "공식 안내에 따라 외국인(외국 시민권 취득자) 및 해외이주자(해외 영주권 취득자)만 입장할 수 있으며 내국인은 출입할 수 없다.",
+      "status": "confirmed",
+      "action": "추천 전에 방문자의 국적·해외이주자 자격과 공식 신분증명서 요건을 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "minimum_age_19",
+      "applies_to": "all_visitors",
+      "condition": "공식 안내에 따라 만 19세 미만 미성년자의 출입은 허용되지 않는다.",
+      "status": "confirmed",
+      "action": "동행자 전원의 만 19세 이상 여부를 먼저 확인하고, 아동 동반 후보에서는 제외한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    },
+    {
+      "kind": "operating_hours_subject_to_change",
+      "applies_to": "all_visitors",
+      "condition": "공식 안내는 365일 24시간 운영을 고지하지만 임시 운영 변경 여부는 방문 시점에 재확인이 필요하다.",
+      "status": "needs_review",
+      "action": "방문 전 파라다이스 카지노 제주 공식 채널에서 당일 입장·운영 여부를 확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명은 파라다이스가 운영하는 제주 카지노이며, 공식 회사 자료가 제주 메종글래드 호텔 내 소재를 확인한다.",
+    "facts": [
+      {
+        "text": "파라다이스 카지노의 공식 초보자 안내는 외국인 전용 카지노로서 365일 24시간 운영되고, 내국인과 만 19세 미만의 출입이 허용되지 않는다고 안내한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "파라다이스 공식 사이트는 제주를 포함한 국내 4개 카지노를 운영한다고 안내하며, 회사 공시 자료는 제주 카지노가 제주시 노연로 80 메종글래드 제주 내에 있다고 밝힌다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "당일 임시 휴장·게임 테이블 운영 현황",
+      "장애인 접근성·휴식 좌석·동반 그룹 이용 편의",
+      "카지노 내부 사진 촬영 정책과 개별 게임 이용 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "파라다이스 카지노",
+        "type": "official",
+        "url": "https://www.paradisecasino.co.kr/casino-guide/beginners",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "외국인 전용 카지노, 365일 24시간 운영, 내국인 및 만 19세 미만 출입 불가를 안내한다.",
+          "외국인·해외이주자 입장 시 신분 증명서류 안내를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "파라다이스",
+        "type": "official_company_disclosure",
+        "url": "https://paradise.co.kr/public/2024/03/14/18/5/57/407b44ed-6199-4701-8b4f-fbadab7d81ed.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "파라다이스 카지노 제주가 제주시 노연로 80 메종글래드 제주 내에 소재한다고 기재한다.",
+          "파라다이스의 제주 카지노 운영 맥락을 확인할 수 있다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

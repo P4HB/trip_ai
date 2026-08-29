@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1858,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/23231118.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:23231118",
+    "provider": "kakao",
+    "place_id": "23231118",
+    "name": "물의도시 베니스랜드",
+    "url": "https://place.map.kakao.com/23231118",
+    "average_rating_5": "3.0",
+    "visitor_review_count": "31",
+    "blog_review_count": "28",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.05.06.",
+      "content": "제주도 베니스랜드는 많이 들어본..흔한 관광지라 생각 했었는데 유명한 이유가 있었어요. 가족,신혼,우정 또는 혼자여행이든 동쪽 오시면 꼭 들려보세요! 곤돌라 또는 카페 이용가로 이 멋진곳을 즐길수 있어요. 곤돌라 탈때 부터 잉어들이 줄지어 따라오는데 장관이에요..(사료 꼭 사셔요🥹)노 저을때 부딪히는 잉어들이 있어 조심해야해요ㅠㅠ 어쩔수 없이 부딪히는 잉어들 한테 미안해서 혼났어요😭 곤돌라 타는 동안 조경들 이쁘게 잘 꾸며 놓으셔서 노 젓느라 팔은 아팠지만 ㅎㅎ 힐링했습니다.(옷 젖어요 스킬부족😂)끝나고 세계 오지 박물관 과 트릭사진전까지 있어서 사진찍고 관람하느라 시간가는줄 모를정도로 재미 있었구요, 다른 일정이 있어 정원 산책 못하고 온것이 아쉬웠어요. 이번 7박8일 여행중 제일 기억에 남을것 같습니다.💕",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.08.07.",
+      "content": "8월 초 방문 4년전에 와보고 넘 좋아서 재방문했습니다 수국 예쁘게 펼때 방문했으면 더 좋았겠어요 박물관 엄청 잘 되어 있네요 포토존도 멋지고요 2시간은 있어야할듯 +몸살 났습니다 몸 쓰는거 좋아하시는분들 추천 전 재밌어서 재방문함 잉어 좋아하시는 분도 추천",
+      "tags": "뷰|시설"
+    },
+    {
+      "date": "2022.11.12.",
+      "content": "박물관은 두가지 컨셉인데 원시부족과 ,유럽 함브르크가문 전성기 시절 그림들,명소 그림등 입니다 물길 따라 노 저어서 움직이는건데.. 카약노 입니다. 엄청나게 불편하고 물도 튀고.. 반쯤가면 짜증이 납니다 다시 하라고 하면 꽁짜라도 안할듯합니다",
+      "tags": ""
+    },
+    {
+      "date": "2022.08.02.",
+      "content": "입장료는 안에서 결재하고 애들 데리고 한번쯤 갈만한 곳입니다. 배타고 돌며 잉어 먹이 주는데 애들이 즐거워 합니다. 다만 여름이라 덥고 노젓는데 약간 힘든점이 있고 오지박물관에가면 트릭아트가 있어서 사진찍기 좋아요ㅋ",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.30.",
+      "content": "절대 가지마세요~!! 인터넷에 평점 안좋은 이야기 있었는데, 입장료 무료라고 들어 갔다가 들어가면 카페에서 입장료 내야하고, 커피만 마신다고 했더니 바로 나가라고합니다. 커피도 넘 오래되어 맛이 없고, 컵도 눅눅합니다. 카페는 전문성은 없어 보이니 참고하시길요,,, 볼것도 없고 곤도라도 볼품없어요. 그리고 불친절하고 장사속만 있어요. 시간만 버렸어요. 완전 비추입니다~!!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7917833",
+  "place_id": "7917833",
+  "name": "비자림로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "입력 장소명 ‘비자림로’는 독립 관람·체험 시설이 아니라 제주시 구좌읍의 도로명이다. 공개 보도와 산림문화 자료도 비자림로를 사려니숲길의 출입·연결 도로 또는 도로 확장 사업 구간으로 설명한다. 입력의 한 줄 후기에는 사려니숲 방문 언급이 있으나, 이는 비자림로 자체의 독립 방문 경험을 입증하지 않는다. 따라서 경유 도로 레코드로서 추천용 장소 벡터 대상에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao 레코드는 ‘비자림로’라는 도로명을 가리킨다. 조사 출처들은 이를 제주시 구좌읍의 도로 및 사려니숲길 비자림로 방면 출입·연결 구간으로 설명한다.",
+    "typical_visit": "비자림로는 차량·도보 이동을 위한 공공 도로이며, 인근 사려니숲길 등 별도 탐방지로 접근하는 경로가 될 수 있다.",
+    "experience_scope": "도로 자체는 독립된 관광 시설·탐방 코스·사업장이 아니며, 입력 리뷰의 사려니숲 언급만으로 특정 숲길 구간이나 관광지와 동일시할 수 없다. 이 레코드에는 추천용 41축 벡터를 부여하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드의 장소명은 ‘비자림로’이며, 제공된 공개 후기 내용은 ‘사려니숲 5월’이다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "연합뉴스는 비자림로를 제주시 구좌읍 대천 교차로부터 금백조로 입구 구간의 도로 확장공사 대상으로 보도한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "산림청 제주산림문화체험 자료는 사려니숲길의 한 출발 지점을 ‘비자림로(1112번도로) 사려니숲길 입구’로 설명한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "입력에는 비자림로의 특정 좌표·구간·도로변 시설 정보가 없어 개별 경관 구간이나 인근 관광지와의 동일성을 확인할 수 없다.",
+      "사려니숲길의 실제 접근 가능 구간과 운영 정보는 이 도로 레코드의 추천 적합도 판단에 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7917833",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘비자림로’다.",
+          "입력 패킷의 공개 후기 내용은 ‘사려니숲 5월’이다.",
+          "평점, 후기 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "news_report",
+        "url": "https://www.yna.co.kr/view/AKR20251219028900056",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "비자림로는 제주시 구좌읍의 도로 확장공사 구간으로 보도됐다.",
+          "보도는 대천 교차로부터 금백조로 입구까지의 비자림로 구간을 언급한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "산림청",
+        "type": "government_publication",
+        "url": "https://www.forest.go.kr/images/data/jejuEco.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "자료는 사려니숲길 출발 위치 중 하나를 ‘비자림로(1112번도로) 사려니숲길 입구’로 기술한다.",
+          "이는 비자림로가 사려니숲길과 구별되는 도로·접근 지점임을 뒷받침한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "non_destination_road_record",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드는 독립 방문지가 아닌 비자림로 도로명이며 특정 관광지·숲길 코스와의 동일성이 확인되지 않음",
+      "status": "needs_review",
+      "action": "사려니숲길 등 독립 관광지를 추천하려면 별도 장소 레코드와 공식 위치·운영 정보를 사용한다. 이 도로 레코드는 추천용 41축 벡터에서 제외한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

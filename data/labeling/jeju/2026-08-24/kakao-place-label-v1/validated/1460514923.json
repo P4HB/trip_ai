@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1460514923",
+  "canonical_id": "kakao:1460514923",
+  "name": "수악오름도시숲",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력은 수악오름도시숲이라는 산책 코스를 가리키지만 Kakao 위치표시가 틀렸고, 입구·이정표·조성 상태가 불완전하다고 설명한다. 공식 장소 경계와 현재 접근 지점을 입력 근거만으로 고정할 수 없으므로 추천용 벡터를 부여하지 않는다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-LOCATION-CONFLICT",
+      "ELIG-REQUIRES-REVIEW"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_location_and_construction_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력에는 지도 위치 오류, 불완전한 이정표, 조성·공사 미완료 가능성이 언급되나 현재 입구·개방·통제·안전 조건은 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "공식 최신 안내로 정확한 입구, 공사·개방 상태, 이정표와 탐방 안전 조건을 확인하기 전에는 추천 후보에 포함하지 않는다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 방문 기록은 약 1시간 30분 오름 산책 코스를 시사하지만 지도 위치·입구·조성 상태가 불확실하다고 설명한다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력에는 빨간 이정표가 끊기고 조성이 완전히 끝나지 않았다는 경험이 있다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "입력에는 Kakao 지도 위치 오류와 국립산림생태관리센터 맞은편으로 추정되는 입구 설명이 있다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "정확한 공식 장소 경계와 입구",
+      "현재 조성·공사·개방 상태",
+      "탐방로 이정표와 안전",
+      "경사·노면·무장애 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/1460514923",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 수악오름도시숲이며 Kakao place_id는 1460514923이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/1460514923",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 위치표시 오류, 이정표 단절과 미완성 조성 상태를 서술한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11234528",
+  "canonical_id": "kakao:11234528",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력 후기는 정해진 등반로 없이 흔적을 따라 접근했고 맞은편 사유지 출입금지 현수막을 봤다고 설명한다. 공식 출처 없이 현재 접근 허용 범위와 안전한 독립 방문 가능 여부를 확인할 수 없다.",
+    "source_ids": [
+      "r1",
+      "r2"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "access_permission_and_safety_verification_required",
+      "detail": "정식 등반로가 없고 사유지 출입금지 표지가 언급되어, 공식 관리 주체의 접근 허용·안전 정보를 확인하기 전 추천 대상에서 제외해야 한다.",
+      "source_ids": [
+        "r1",
+        "r2"
+      ]
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "source_id": "r1",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/11234528",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "비정규 경로, 사유지 출입금지 표지, 3개 오름 연계 언급"
+        ]
+      },
+      {
+        "source_id": "r2",
+        "publisher": "Kakao Map visitor review",
+        "url": "https://place.map.kakao.com/11234528",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "등반로 없음, 길 개척 접근 언급"
+        ]
+      }
+    ],
+    "limitations": [
+      "현재 접근 가능 여부를 확인할 공식·공공 출처가 입력 패킷에 제공되지 않았다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1570343912",
+  "place_id": "1570343912",
+  "name": "하도환해장성",
+  "agent_identity": {"model": "gpt-5.6-terra", "reasoning_effort": "medium"},
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status": "eligible", "confidence": 0.85, "rationale": "Kakao 장소명과 공개 자료의 ‘하도 환해장성’이 일치하며, 제주 해안의 역사 석축 유산이라는 독립 방문 대상이 확인된다.", "duplicate_of": null, "source_ids": ["S1", "S2", "S3"], "evidence_ids": ["F1", "F2"]},
+  "research": {
+    "identity_summary": "하도환해장성은 제주시 구좌읍 하도 지역 해안의 환해장성 구간으로, 제주 해안을 따라 축조된 고려시대 방어 석축 유산이다.",
+    "typical_visit": "야외 해안 석축 유적을 걷거나 바라보며 제주 방어유산의 역사와 해안 환경을 접하는 짧은 탐방이다.",
+    "experience_scope": "독립적인 야외 문화유산 지점으로 판단했다. 현장 주차·화장실·정확한 노면·무장애 접근·상시 해설 및 현재 개방 상태는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "제주문화유산돌봄센터의 하도 환해장성 환경정비 보도는 하도 환해장성을 관리 대상 환해장성으로 명시한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 문화유산 자료는 환해장성을 제주 해안에 축조된 고려 후기 석성으로 설명하며, 제주 해안 방어유산의 맥락을 제시한다.", "source_ids": ["S2", "S3"]}
+    ],
+    "unknowns": ["해당 Kakao 핀이 정확히 어느 잔존·복원 구간인지와 현재 관람 동선은 확인하지 못했다.", "현장 편의시설, 경사·계단·노면, 휠체어 접근성, 어린이 안전시설은 unknown이다.", "운영시간·출입 통제·해설 프로그램 등 변동 정보는 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "뉴스N제주", "type": "local_news_report", "url": "https://www.newsnjeju.com/news/articleView.html?idxno=262343", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["제주문화유산돌봄센터가 월정·조천·하도 환해장성 주변 환경정비를 실시했다고 보도했다.", "환해장성은 제주 해안선을 따라 축조된 석축 성곽으로 소개된다."]},
+      {"id": "S2", "publisher": "디지털제주문화대전", "type": "public_cultural_encyclopedia", "url": "https://jeju.grandculture.net/jeju/dir/GC00702683?category=%ED%91%9C%EC%A0%9C%EC%96%B4&depth=3&name=%ED%95%98&search=%ED%95%98&type=titleKor", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["환해장성은 제주특별자치도 제주시 해안에 축조된 고려 후기 석성으로 설명된다."]},
+      {"id": "S3", "publisher": "문화재청", "type": "public_cultural_heritage_document", "url": "https://www.khs.go.kr/evinfo/html/PDF/book_17.pdf", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["제주 해안 방어 문화유산 자료는 환해장성을 제주 해안선을 따라 축성된 방어유산으로 설명한다."]},
+      {"id": "S4", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/1570343912", "checked_at": "2026-08-24T12:00:00+09:00", "facts": ["입력 패킷의 장소명은 ‘하도환해장성’이다.", "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"공개 자료는 해안 방어 석축을 설명하며 산·오름 경험이 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean": {"value":0.75,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"환해장성은 제주 해안선을 따라 축조된 석축 성곽으로 소개되어 해안 환경이 대표 방문 경험에 직접 결부된다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"현장 탐방은 예상되지만 레포츠 또는 참여형 체험이 핵심이라는 근거는 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"value":0.75,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"공개 문화유산 자료가 환해장성을 고려 후기 제주 해안의 방어 석성으로 설명하므로 역사·문화유산 탐방이 핵심이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.theme_park": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 시설이나 운영은 확인되지 않았다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립적 방문 목적인 장소라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 방문 경험은 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 이 장소의 핵심이라는 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"value":0,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"자료가 해안선을 따라 축조된 석축 성곽으로 설명하므로 대표 관람 대상은 야외 유산이다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity": {"value":0.75,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"실내 대체 공간이 확인되지 않은 해안 야외 유적 탐방이므로 비·바람·더위·추위가 경험에 비교적 크게 영향을 준다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"해안 유적의 체류 분위기·혼잡도·휴식시설이 확인되지 않아 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단·무장애 접근성을 확인하지 못해 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"장성 구간의 정확한 동선·체류 시간·편의시설이 확인되지 않아 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"해안 석축 유적이라는 성격상 해안 풍경을 접할 가능성은 있으나, 해당 핀의 조망 품질은 직접 확인하지 못했다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness": {"value":0.75,"confidence":0.8,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"환해장성은 제주 해안 방어를 위해 축조된 고유한 석축 유산이며 하도 구간은 관리 대상으로 특정된다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness": {"value":0.75,"confidence":0.85,"state":"numeric","status":"confirmed","inference_level":"direct_evidence","rationale":"제주 해안 방어와 지역 석축 문화유산의 역사적 맥락이 장소 정체성에 직접 결부된다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance": {"value":0.5,"confidence":0.5,"state":"numeric","status":"needs_review","inference_level":"researched_inference","rationale":"환해장성은 제주 대표 방어유산으로 소개되지만 하도 개별 구간의 관광 상징성·인지도는 확인하지 못했다.","source_ids":["S1","S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"해안 석축이라는 시각 요소는 있으나 공식 촬영 명소 또는 사진 경험이라는 직접 근거가 없어 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"개별 야외 역사 탐방은 가능하나 현장 접근성·안전 정보가 부족해 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"동반 해안 유적 탐방은 가능하나 체류·편의시설 정보가 없어 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"소규모 탐방은 가능하나 단체 활동 공간과 안전 정보가 없어 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"역사 학습 맥락은 있으나 해안 인접 안전설비·노면·유아 적합성을 확인하지 못해 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"archetype_prior","rationale":"유적 탐방은 가능하나 노면·휴식시설·무장애 접근성을 확인하지 못해 중립값으로 기록한다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적의 일반 계절 휴리스틱으로 겨울 추위·바람 영향을 반영했으며 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적의 일반 계절 휴리스틱으로 겨울 추위·바람 영향을 반영했으며 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 강수·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적의 일반 계절 휴리스틱으로 한여름 더위·햇볕 영향을 반영했으며 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적의 일반 계절 휴리스틱으로 한여름 더위·햇볕 영향을 반영했으며 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"value":0.5,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 유적 탐방의 일반 계절 휴리스틱만 적용했으며 실제 개방·노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"value":0.25,"confidence":0.25,"state":"numeric","status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 유적의 일반 계절 휴리스틱으로 겨울 추위·바람 영향을 반영했으며 현장 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"accessibility_unknown","applies_to":"mobility_limited_visitors","condition":"정확한 관람 동선, 노면·경사·계단, 무장애 접근, 휴식·위생시설을 확인하지 못했다.","status":"needs_review","action":"이동 제약이 있거나 어린이를 동반하면 출발 전 현장 또는 지역 안내로 접근성과 해안 인접 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T12:00:00+09:00"},
+    {"kind":"outdoor_weather_exposure","applies_to":"all_visitors","condition":"대표 경험이 야외 해안 석축 유적 탐방이며 실내 대체 공간은 확인되지 않았다.","status":"needs_review","action":"강풍·강수·폭염·한파 시 현장 여건을 확인하고 일정을 조정한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24T12:00:00+09:00"
+}

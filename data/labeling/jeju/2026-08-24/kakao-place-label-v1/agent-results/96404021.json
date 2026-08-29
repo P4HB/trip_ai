@@ -1,0 +1,74 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "96404021",
+  "canonical_id": "kakao:96404021",
+  "name": "큰짓물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명 큰짓물은 제주시 화북포구의 용천수 ‘큰짓물(처착물)’로 공개 소개되며, 과거 주민 식수원이라는 고유한 자연·생활유산 맥락을 가진 현장 방문 지점으로 확인된다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소는 화북포구 해안의 용천수이며 산·오름·산림 경관이 핵심 경험이라는 근거는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"value": 0.5, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "큰짓물은 화북포구 해안선의 용천수로 소개되고, 현장은 바닷길을 걷는 화북포구 맥락에 있다. 다만 핵심 표식 자체는 해양 레포츠가 아닌 샘물이다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-COASTAL-DIRECT"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주올레 18코스가 화북포구 길을 지난다고 소개되지만, 큰짓물 자체의 별도 체험·레포츠 프로그램이나 보행 난이도는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-ROUTE-CONTEXT"]},
+    "theme.culture_history": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "상수도 연결 전인 1960년대까지 주민 식수원으로 쓰인 용천수이며, 화북포구가 조선시대 제주 관문의 하나였던 지역의 생활·역사 맥락으로 직접 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-HISTORY-DIRECT"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "출처는 해안 용천수와 포구의 역사·산책 맥락을 설명하며 테마파크형 시설은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 독립적인 방문 목적인지 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "용천수와 포구 방문 지점으로 소개되며 전통시장 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 기간 축제·공연이 큰짓물의 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "화북포구 해안선의 용천수와 바닷길을 보는 야외 지점으로 소개된다. 실내 대표 방문 공간은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-SITE"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 해안 포구의 야외 용천수·산책 경관이므로 비·바람·더위·추위의 영향을 받을 수 있다. 현장 통제 기준은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 안내는 화북포구 바닷길에서 바닷바람을 맞으며 걷는 경험을 소개하지만, 큰짓물 단독의 휴식 시설이나 체류 환경은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-COASTAL-REST-CONTEXT"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "큰짓물 표식까지의 경사·계단·보행면·무장애 접근성 정보가 부족하여 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "큰짓물 단독 체류시간, 주차 후 동선 및 인근 화북포구와 결합한 방문 시간이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안 용천수와 화북포구 바닷길 경관은 확인되지만, 큰짓물 자체가 대표적인 조망 명소로 공식 지정·소개된 근거는 확인하지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-COASTAL-SCENERY-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "현무암 해안에서 솟는 용천수로서 과거 지역 주민의 식수원이었다는 형성·이용 이력이 직접 확인된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-UNIQUE-NATURAL-HERITAGE-DIRECT"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주시 화북포구 주민의 식수원이었던 용천수이며, 제주 해안 용천수와 마을 형성의 맥락으로 설명된다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LIVING-HERITAGE-DIRECT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화북포구 역사 탐방에서 소개되는 지역 표식이라는 의미는 있으나 제주 전체를 대표하는 지정 랜드마크·상징성은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-LOCAL-LANDMARK-CONTEXT"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "화북포구의 바닷길과 해안 용천수라는 시각 요소는 확인되지만 사진 촬영이 공식적으로 핵심 경험으로 권장되는지는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["STYLE-COASTAL-VISUAL-CONTEXT"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설의 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 수변 접근 통제 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 보행면·경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 해안 지점의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_coastal_spring_access_and_water_safety_unknown", "applies_to": "all_visitors", "condition": "큰짓물은 해안의 야외 용천수이나 현재 접근 동선, 수변 안전시설, 수질·음용 가능 여부, 기상 악화 시 현장 안전·통제 기준은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 현장 최신 안내로 접근 가능 여부와 보행·수변 안전을 확인하고, 수질 안내가 없으면 물을 음용하거나 물에 들어가지 않는다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘큰짓물’은 제주시 화북포구의 용천수로, ‘처착물’이라는 병기 명칭도 공개 자료에서 확인됐다.",
+    "facts": [
+      {"text": "제주시 공식 블로그 시민기자단 글은 큰짓물(처착물)을 화북포구 해안선에서 솟는 용천수로 소개하며, 상수도 연결 전 1960년대까지 주민 식수원이었다고 설명한다.", "source_id": "S1"},
+      {"text": "제주학연구센터의 제주 해양유적 연구는 화북 용천수 중 하나로 큰이물(큰짓물)을 기록하고, 금돈지 주변 용천수의 위치·이용 맥락을 정리한다.", "source_id": "S2"}
+    ],
+    "unknowns": ["현재 수질·음용 가능 여부", "정확한 진입 지점, 주차, 경사·계단 및 무장애 접근성", "현행 시설 관리 주체·개방 시간과 악천후 시 안전 통제"],
+    "sources": [
+      {"id": "S1", "publisher": "제주시청 공식 블로그 시민기자단", "type": "official_local_government_blog", "url": "https://blog.naver.com/wowjejusi/223293493660", "checked_at": "2026-08-25", "facts": ["큰짓물(처착물)을 화북포구 해안선의 용천수로 소개했다.", "상수도 연결 전 1960년대까지 주민 식수원이었다고 소개했다.", "화북포구 바닷길과 제주올레 18코스의 맥락을 소개했다."]},
+      {"id": "S2", "publisher": "제주학연구센터", "type": "public_research_report", "url": "https://jst.re.kr/upload/pdf/RC00000586.pdf", "checked_at": "2026-08-25", "facts": ["화북 용천수 목록에 큰이물(큰짓물)을 기록했다.", "금돈지 주변 해안 용천수의 위치와 이용 맥락을 정리했다."]}
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 639,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8071163.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8071163",
+    "provider": "kakao",
+    "place_id": "8071163",
+    "name": "죽도",
+    "url": "https://place.map.kakao.com/8071163",
+    "average_rating_5": "3.5",
+    "visitor_review_count": "2",
+    "blog_review_count": "8",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.01.17.",
+      "content": "한라산이랑 바다랑 노을이 한 눈에 보이는 곳이라서 좋지만 차가 못 들어가는 곳이라서 좀 걸어야 한다. 그래도 근처 카페에서 음료를 사면서 걸으면 딱 좋은 곳이다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2021.09.04.",
+      "content": "갓길에 주차하고 저 입구에서 걸어가야되고 뷰 좋고 중간에 해안길과 또 이어집니다",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

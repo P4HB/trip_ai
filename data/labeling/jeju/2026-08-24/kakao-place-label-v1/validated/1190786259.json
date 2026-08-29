@@ -1,0 +1,72 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1190786259",
+  "canonical_id": "kakao:1190786259",
+  "name": "잃어버린 마을 종남굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 장소명·Kakao URL만 있고 정확한 위치·굴의 지질 또는 역사적 성격·출입 허용·상세 설명·리뷰 근거가 없다. ‘잃어버린 마을’ 맥락과 종남굴의 독립 방문 가능 여부를 확인할 수 없어 적격성을 확정하지 않는다.",
+    "source_ids": [
+      "K1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "NO-VECTOR-WHEN-IDENTITY-UNKNOWN"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "cave_identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "굴의 위치, 출입 허용·안전, 조명·낙석·기상 조건이 입력에 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 최신 안내로 정확한 식별과 출입·안전 조건을 확인한다.",
+      "source_ids": [
+        "K1"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unknown",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "장소명 외 식별 근거가 제공되지 않았다.",
+    "facts": [
+      {
+        "text": "입력 장소명은 잃어버린 마을 종남굴이다.",
+        "source_id": "K1"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·관리 주체",
+      "출입·안전·개방 조건"
+    ],
+    "sources": [
+      {
+        "id": "K1",
+        "publisher": "Kakao place agent input",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/1190786259",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "장소명은 잃어버린 마을 종남굴이며 리뷰 근거는 비어 있다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

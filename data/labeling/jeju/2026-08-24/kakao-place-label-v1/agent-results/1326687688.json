@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1326687688",
+  "place_id": "1326687688",
+  "name": "그린스케이프",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "운영사 대동은 그린스케이프를 제주시 애월읍 새별오름 인근의 미래농업 테마 관광단지이자 복합문화공간으로 안내한다. 제주당, 아르떼 키즈파크, 스마트팜, 야외 필드·산책로와 마켓 등 여러 공개 방문 경험을 포괄하는 독립 관광지이므로 적격으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "그린스케이프는 제주대동이 제주시 애월읍 새별오름 인근에 조성·운영하는 미래농업 테마 관광단지 및 복합문화공간이다.",
+    "typical_visit": "베이커리 카페 제주당, 실내 어린이 체험공간, 스마트팜·농업 테마 콘텐츠, 억새 필드와 새별오름·이달오름 방향 산책, 시기별 지역 마켓·전시를 조합해 방문하는 곳이다.",
+    "experience_scope": "운영사 자료는 복합공간의 구성과 야외·실내 콘텐츠를 확인한다. 개별 시설의 당일 운영시간·입장료·휴무·예약, 마켓·전시 일정, 산책로 개방 상태, 주차·무장애·유아 안전 설비는 이 조사에서 최신 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"대동은 그린스케이프를 제주시 애월읍 새별오름 인근의 21만 평 규모 미래농업 테마 관광단지로 안내한다.","source_ids":["S1"]},
+      {"id":"F2","text":"운영사 자료는 제주당 베이커리카페, 아르떼 키즈파크, 스마트팜 기반 팜투테이블 콘텐츠와 날씨와 무관하게 즐길 수 있는 실내 체험 공간을 그린스케이프의 구성으로 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"운영사 자료는 천연 억새 그레이트필드, 새별오름·이달오름으로 연결되는 산책로 및 제주 지역 소상공인·작가·농가가 참여하는 야외 마켓을 안내한다.","source_ids":["S1","S2"]}
+    ],
+    "unknowns": ["개별 시설의 최신 운영시간·휴무·입장·예약 및 가격을 확인하지 못했다.", "마켓·전시·체험의 실제 개최일과 참가 조건을 확인하지 못했다.", "산책로의 당일 개방, 노면·경사, 유아·휠체어 접근성과 악천후 안전 통제를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"대동","type":"official_news_page","url":"https://recruit.daedong.co.kr/news/daedongnews/2191","checked_at":"2026-08-24","facts":["제주대동이 애월읍 새별오름 인근에 조성 중인 미래농업 테마 관광단지라고 안내한다.","제주당 베이커리카페와 아르떼 키즈파크, 스마트팜 기반 팜투테이블 콘텐츠를 설명한다.","실내 체험 공간, 천연 억새 그레이트필드, 새별오름·이달오름 산책로를 안내한다."]},
+      {"id":"S2","publisher":"대동","type":"official_news_page","url":"https://recruit.daedong.co.kr/news/daedongnews/1867","checked_at":"2026-08-24","facts":["그린스케이프 마켓은 제주당 인근 야외 정원에서 지역 소상공인·수공예 작가·6차 산업 기업의 상품과 체험을 다루는 행사로 안내된다.","마켓은 당시 일정 기준의 정기 행사로 공지되었으므로 최신 개최 여부는 별도 확인이 필요하다."]},
+      {"id":"S3","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/1326687688","checked_at":"2026-08-24","facts":["입력된 공개 후기는 대형 카페 규모, 빵·음료, 경치와 뷰에 관한 방문 경험을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"새별오름·이달오름으로 연결되는 산책로가 안내되지만, 단지 자체의 대표 경험을 오름 등반으로 한정할 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"운영사 자료가 어린이 체험공간, 체험 기반 관광 콘텐츠와 산책로를 복합공간의 방문 경험으로 직접 안내한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"제주 작가 전시와 지역 마켓은 확인되지만 역사·문화유산·예술 관람이 상시 핵심 경험인지는 확인되지 않았다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"단지 안에 미디어아트 기반 어린이 체험공간이 있으나, 그린스케이프 전체를 테마파크형 경험으로 규정할 상세 근거는 부족하다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"운영사 자료가 제주당 베이커리카페를 단지의 중심 콘텐츠로 안내하고, 입력 공개 후기에도 빵·음료와 대형 카페 경험이 언급된다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"지역 생산자·작가의 야외 마켓이 안내되나 일정성 행사이며 전통시장 자체가 상시 핵심 경험이라는 근거는 없다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"팝업·전시·마켓 행사가 안내되지만 특정 축제 또는 기간 행사가 이 장소의 본질이라는 근거는 부족하다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.5,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"카페·키즈파크 등 실내 콘텐츠와 억새 필드·산책로·야외 마켓이 함께 확인되어 대표 경험의 실내 비율을 중간으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.5,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 필드·산책·마켓은 날씨 영향을 받지만 운영사는 실내 체험 콘텐츠도 안내하므로 전체 방문 경험의 민감도를 중간으로 판정한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"카페와 자연 필드 방문은 여유 있는 체류 가능성을 시사하지만 혼잡도·휴식시설과 실제 체류 환경은 확인되지 않았다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내 시설과 산책로가 함께 있으나 동선별 거리·경사·계단·무장애 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"카페만 이용하거나 체험공간·필드·산책·행사를 조합할 수 있는 여러 콘텐츠가 확인되어 체류 시간을 조절하기 비교적 쉽다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"운영사가 천연 억새 그레이트필드와 제주 자연을 담은 내외관을 안내하고, 입력 공개 후기도 경치와 뷰를 직접 언급한다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"스마트팜 재배 식재료의 팜투테이블, 농업·관광·예술을 결합한 복합공간이라는 구성은 운영사 자료에서 직접 확인된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"운영사는 제주 지역 소상공인·작가·농가 참여 마켓과 제주 특산물·지역 연계 프로그램을 직접 안내한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"운영사의 관광 명소 표현은 확인되지만 공적 지정 또는 지역 대표성을 독립적으로 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"억새 필드·제주 자연을 담은 내외관과 공개 후기의 뷰 언급은 시각적 가치를 시사하지만 사진 촬영이 핵심이라는 직접 근거는 부족하다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개인 방문의 동선·안전·혼잡 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"두 사람 방문의 좌석·동선·혼잡 여건이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문의 수용·예약·동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"운영사 자료가 단지 구성으로 어린이 체험공간 아르떼 키즈파크를 직접 안내한다. 개별 입장 조건과 보호자·안전 기준은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"실내와 야외 콘텐츠가 함께 있으나 월별 운영·현장 기상 조건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"dynamic_operations_and_event_availability","applies_to":"all_visitors","condition":"카페·키즈파크·마켓·전시·체험과 산책로의 운영시간, 입장·예약 조건, 개최일, 개방 상태는 변동될 수 있으며 이 조사에서 당일 상태를 확인하지 못했다.","status":"needs_review","action":"방문 전 운영사 또는 각 시설의 최신 공식 공지로 운영·입장·예약, 행사 개최와 산책로 개방 여부를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"},
+    {"kind":"mobility_and_child_safety_unknown","applies_to":"kids_and_mobility_limited_visitors","condition":"야외 필드·산책로의 노면·경사와 시설별 유아 안전, 휠체어·유모차 접근성은 확인하지 못했다.","status":"needs_review","action":"어린이 또는 이동 제약 방문자는 방문 전 시설별 연령·보호자 규정과 접근·안전 정보를 확인한다.","source_ids":["S1"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

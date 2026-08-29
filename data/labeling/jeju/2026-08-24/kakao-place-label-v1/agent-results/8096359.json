@@ -1,0 +1,62 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8096359",
+  "place_id": "8096359",
+  "name": "충효렬비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 ‘충효렬비’라는 명칭과 place_id만 제공하며 주소·좌표·업종·공개 방문 후기 근거가 없다. 공개 신뢰 출처 조사에서도 이 레코드의 위치, 비석의 대상·지정 내역 또는 독립 관광 방문지 여부를 교차 확인하지 못했다. 명칭만으로 다른 동명 비석이나 부속 기념물과의 동일성을 추정할 수 없으므로 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 Kakao 레코드 정보는 ‘충효렬비’라는 장소명과 place_id 8096359뿐이다. 공개 신뢰 출처로 정확한 위치와 대상, 독립 방문지 여부를 확인하지 못했다.",
+    "typical_visit": "‘충효렬비’라는 명칭은 충·효·열을 기리는 비석을 뜻할 수 있으나, 이 Kakao 레코드가 가리키는 실물·위치와 방문 경험은 확인되지 않았다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 운영·관람 정보 및 공개 방문 후기 근거가 없고 Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다. 장소 신원이 확정되지 않았으므로 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 place_id 8096359의 장소명을 ‘충효렬비’로 제공하며, 주소·좌표·업종과 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 위치, 대상 인물·사건, 문화유산 지정 여부와 다른 동명 비석과의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람 가능 여부, 접근성, 안전, 주차·편의시설과 최신 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8096359",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘충효렬비’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 위치·좌표·업종·방문 근거가 없어 ‘충효렬비’의 실물, 독립 관광 방문지 범위 및 동명 장소와의 동일성을 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 문화유산·지자체 자료 또는 Kakao의 주소·좌표로 신원을 먼저 교차 확인한다. 독립 방문 가능한 기념물로 확인될 때만 별도 라벨 검수를 진행하며, 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

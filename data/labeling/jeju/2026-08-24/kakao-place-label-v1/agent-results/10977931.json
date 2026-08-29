@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "10977931",
+  "canonical_id": "kakao:10977931",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "공식 관광 정보가 제주시 화북1동의 화북비석거리를 독립 관광지이자 역사유적지로 소개한다.",
+    "source_ids": ["visitjeju"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경험에 대한 직접 근거가 확인되지 않았다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개는 비석거리 앞 해안가와 화북포구를 함께 설명한다.","source_ids":["visitjeju"],"rule_ids":["theme.coastal_context"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠나 참여형 체험이 핵심이라는 직접 근거가 없다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"조선시대 지방관리의 공적비 13기가 남은 문화유적지로 공식 소개된다.","source_ids":["visitjeju","aks"],"rule_ids":["theme.documented_history_core"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 또는 놀이 경험의 근거가 없다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·음료 이용이 방문 목적이라는 근거가 없다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"전통시장 또는 시장 방문지라는 근거가 없다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"기간성 축제나 공연이 핵심이라는 근거가 없다.","source_ids":[],"rule_ids":["fallback.no_direct_evidence"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"비석이 서 있는 거리와 앞 해안가를 감상하는 야외 유적지로 소개되어 실내 비중은 낮게 추정된다.","source_ids":["visitjeju"],"rule_ids":["environment.outdoor_site_inference"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 비석거리와 해안가 감상이므로 강수·바람에 영향을 받을 가능성이 높다.","source_ids":["visitjeju"],"rule_ids":["environment.outdoor_weather_exposure"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"유적과 해안가를 자유롭게 둘러보는 성격이나 휴식 시설·체류 환경은 확인되지 않았다.","source_ids":["visitjeju"],"rule_ids":["style.self_guided_outdoor_inference"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"거리 유적이지만 보행면, 경사, 무장애 시설의 직접 정보가 없다.","source_ids":[],"rule_ids":["fallback.accessibility_unknown"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"독립된 야외 역사유적 방문지이나 권장 관람시간 또는 운영 제약은 확인되지 않았다.","source_ids":["visitjeju"],"rule_ids":["style.self_guided_duration_inference"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 소개가 비석거리 앞 해안가와 화북포구 경관을 함께 제시한다.","source_ids":["visitjeju"],"rule_ids":["style.documented_coastal_setting"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 관문 화북포구에 조선시대 지방관리 공적비 13기가 남은 특유의 역사 경관이다.","source_ids":["visitjeju","aks"],"rule_ids":["style.documented_unique_composition"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":1,"confidence":0.95,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주에 부임·이임한 지방관리와 화북포구의 역사에 직접 연결된 유적이다.","source_ids":["visitjeju","aks"],"rule_ids":["style.documented_jeju_history"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주특별자치도 기념물로 지정된 화북동의 역사유적이며 공식 관광지로 제공된다.","source_ids":["visitjeju","aks"],"rule_ids":["style.designated_heritage_significance"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 비석거리와 해안 배경의 여러 현장 이미지를 제공한다.","source_ids":["visitjeju"],"rule_ids":["style.official_visual_documentation"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"자유 관람형 야외 역사유적이라는 성격상 혼자 짧게 둘러보기 적합할 수 있다.","source_ids":["visitjeju"],"rule_ids":["companion.self_guided_inference"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"해안가와 역사유적을 함께 볼 수 있으나 커플 특화 시설은 확인되지 않았다.","source_ids":["visitjeju"],"rule_ids":["companion.general_outdoor_inference"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"소규모로 역사유적을 둘러볼 수 있으나 단체 활동 요소는 확인되지 않았다.","source_ids":["visitjeju"],"rule_ids":["companion.general_outdoor_inference"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"역사 학습 소재는 있으나 아동 편의·체험·안전 시설 정보가 없다.","source_ids":["visitjeju","aks"],"rule_ids":["companion.history_learning_with_unknown_facilities"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"역사유적 관람지는 될 수 있으나 보행면과 휴식·무장애 정보가 확인되지 않았다.","source_ids":["visitjeju"],"rule_ids":["companion.accessibility_unknown"]}
+  },
+  "month_fit": {
+    "1": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "2": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "3": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "4": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "5": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "6": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "7": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "8": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "9": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "10": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "11": {"state":"numeric","value":0.75,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지의 일반적 계절 적합도를 적용했다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]},
+    "12": {"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"climate_heuristic","rationale":"야외 유적 관람지이므로 계절 기후가 체감에 영향을 준다.","source_ids":["visitjeju"],"rule_ids":["month.outdoor_climate_heuristic"]}
+  },
+  "hard_constraints": [
+    {"constraint":"outdoor_weather_exposure","severity":"caution","rationale":"비석거리와 해안가를 걷는 야외 방문지이므로 강수·강풍 시 체험 품질 저하 가능성이 있다.","source_ids":["visitjeju"]},
+    {"constraint":"accessibility_unknown","severity":"caution","rationale":"보행면, 경사, 화장실, 휠체어 접근성에 대한 공식 상세 정보가 확인되지 않았다.","source_ids":[]}
+  ],
+  "research": {
+    "sources": [
+      {"id":"visitjeju","publisher":"제주관광공사 Visit Jeju","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500700&menuId=DOM_000001917003000000","checked_at":"2026-08-25","facts":["제주시 화북1동 4008의 관광지·역사유적지로 소개됨","화북포구에 지방관리 공적비 13기가 남아 있음","비석거리 앞 해안가와 화북포구를 설명하고 현장 이미지 제공"]},
+      {"id":"aks","publisher":"한국학중앙연구원 한국민족문화대백과사전","url":"https://encykorea.aks.ac.kr/Article/E0064626","checked_at":"2026-08-25","facts":["제주시 화북동 소재 시도기념물로 설명됨","13기의 비석이 세워져 있다고 설명됨"]}
+    ]
+  },
+  "review_priority": "medium"
+}

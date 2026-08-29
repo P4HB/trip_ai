@@ -1,0 +1,84 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8215747",
+  "place_id": "8215747",
+  "name": "구렁이굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.65,
+    "rationale": "Kakao 지도 공개 페이지는 ‘구렁이굴’을 서귀포시 성산읍 수산리에 있는 지점으로 표시하지만, 해당 지점의 동굴 실재·관리 주체·공개 탐방 가능 여부를 뒷받침하는 공식·공공 상세 출처를 확인하지 못했다. 동명 지명이나 자연지물이 실제 독립 방문지인지 추정할 수 없으므로 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드와 공개 장소 페이지는 ‘구렁이굴’이라는 명칭 및 서귀포시 성산읍 수산리의 지도 지점을 제시한다. 그러나 이 장소가 공개 탐방 가능한 동굴인지, 단순 지명·비공개 자연지물인지 독립적으로 확인되지 않았다.",
+    "typical_visit": "확인 가능한 공식·공공 자료가 없어 일반 방문 경험을 확정할 수 없다.",
+    "experience_scope": "입력에는 공개 방문 후기, 업종, 운영·안전·접근 안내가 없으며, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다. 장소 신원이 확정되지 않았으므로 추천용 방문 경험 및 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 지도 공개 장소 페이지의 제목은 ‘구렁이굴’이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao 지도 공개 장소 페이지는 이 지점의 위치 설명을 ‘제주특별자치도 서귀포시 성산읍 수산리’로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 가리키는 동굴 또는 자연지물의 정확한 범위와 실제 존재를 공식·공공 출처로 교차 확인하지 못했다.",
+      "공개 탐방 가능 여부, 출입 제한, 안전 위험, 관리 주체, 접근로·주차·무장애 정보와 최신 운영 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았으며 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8215747",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 장소 페이지의 제목은 ‘구렁이굴’이다.",
+          "페이지의 위치 설명은 ‘제주특별자치도 서귀포시 성산읍 수산리’다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없고, 평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 지도 표기 외에 동굴의 실재, 독립 방문지 범위, 관리·공개 탐방 상태를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "지자체·관리 주체·공공 지질 또는 관광 자료에서 정확한 대상과 출입 가능 여부를 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

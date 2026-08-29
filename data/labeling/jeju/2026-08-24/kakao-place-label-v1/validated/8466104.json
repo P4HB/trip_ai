@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8466104",
+  "place_id": "8466104",
+  "name": "용암동굴지대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 주소·좌표·업종 없이 일반명 ‘용암동굴지대’만 제공한다. 한국민족문화대백과사전에는 ‘제주 한림 용암동굴지대’라는 유사한 국가자연유산이 있으나, 이 명칭은 한림읍 여러 리에 분포하는 동굴 시스템 전체를 뜻하고 개별 Kakao place_id와의 동일성 또는 독립 방문 가능 범위를 직접 연결하는 공공 근거는 확인하지 못했다. 따라서 특정 관광지로 단정해 추천 벡터를 부여하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 장소명 ‘용암동굴지대’는 제주 한림 용암동굴지대의 약칭일 가능성이 있으나, 제공된 식별 정보만으로는 동일 장소인지 확정할 수 없다.",
+    "typical_visit": "확정 불가. 유사 공공 기록은 여러 용암동굴이 분포한 보호 지질 시스템을 설명하지만, 이 Kakao 레코드가 가리키는 접근·관람 지점은 확인되지 않았다.",
+    "experience_scope": "장소 경계와 독립 방문 가능성이 불명확하므로 추천용 41축 벡터 생성 대상에서 보류한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소명은 ‘용암동굴지대’이며 주소, 좌표, 업종 및 텍스트 리뷰 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국민족문화대백과사전은 제주 한림 용암동굴지대를 한림읍 협재리·상명리·금능리 일대에 분포하는 용암 동굴 시스템으로 정의한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "같은 공공 기록은 이 동굴지대에 협재굴·쌍룡굴·황금굴·소천굴 등 여러 동굴이 분포하며, 일부는 한림공원이 관리하고 일부는 낙반·붕괴 우려로 보존 관리가 필요하다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8466104의 정확한 주소, 좌표, 업종과 장소 경계",
+      "이 레코드가 제주 한림 용암동굴지대와 동일한지 여부",
+      "일반 방문객의 현재 출입·관람 가능 범위 및 운영 주체",
+      "개별 관광지, 상위 보호구역 또는 세부 동굴 시설 중 무엇을 지칭하는지"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 메타데이터 (입력 패킷)",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/8466104",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘용암동굴지대’이다.",
+          "입력 패킷에는 주소·좌표·업종·공개 리뷰 텍스트가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "type": "public_encyclopedia",
+        "url": "https://encykorea.aks.ac.kr/Article/E0051423",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주 한림 용암동굴지대는 한림읍 협재리·상명리·금능리 일대의 용암 동굴 시스템이다.",
+          "협재굴·쌍룡굴·황금굴·소천굴 등 여러 동굴이 분포한다.",
+          "협재굴·쌍룡굴·황금굴은 한림공원이 관리하며, 일부 동굴은 낙반·붕괴 우려가 언급된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_resolution",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 지점·범위가 공공 기록의 특정 용암동굴지대 또는 개별 시설과 확인 가능하게 연결되지 않음",
+      "status": "needs_review",
+      "action": "주소·좌표 및 현재 방문 가능 범위를 공식 운영·공공 출처로 확인한 뒤, 독립 장소 여부를 재판정",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

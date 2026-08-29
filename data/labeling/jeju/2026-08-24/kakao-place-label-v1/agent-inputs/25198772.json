@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 969,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/25198772.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:25198772",
+    "provider": "kakao",
+    "place_id": "25198772",
+    "name": "녹남봉",
+    "url": "https://place.map.kakao.com/25198772",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "9",
+    "blog_review_count": "6",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.11.16.",
+      "content": "12코스 안에 있는 작은 오름 둘레길에 나무로 둘러싸여서 걷기 좋음 정상까지 금방이고 한라산~송악산까지 보이긴 하는데 탁 트인 뷰는 아니고 적당히 가볼만 한 오름이에요 다시 방문은 굳이??",
+      "tags": ""
+    },
+    {
+      "date": "2025.06.06.",
+      "content": "2025.06.06 방문, 올레길 12코스 올레길 12코스 내 포함되어 있는 녹남봉오름이다. 밖에 햇빛이 가득한데도 녹남봉오름에 오를 땐 어두울정도로 숲이 정말 빽빽하게 우거져있다. 잠깐 고생해서 오르면 금방 정상에 오를 수 있고, 높은 곳에 올라가서 주변 풍경을 볼 수 있도록 시설물이 세워져있다. 내려가는길에 진지동굴 입구 라는 표지판을 보고 가봤는데, 일본군이 주민을 강제동원해 만든 진지동굴이 있었다. 녹남봉도 일제가 만들어낸 상처를 가지고 있다는 점을 알 수 있었다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.03.31.",
+      "content": "아기자기한 제주를 볼 수 있는 곳ㅎ",
+      "tags": ""
+    },
+    {
+      "date": "2026.06.09.",
+      "content": "올레길에서 다녀왔습니다.",
+      "tags": "뷰"
+    },
+    {
+      "date": "2024.12.25.",
+      "content": "올레길 12코스에서 만난 뷰가 멋진 곳이다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "19164028",
+  "canonical_id": "kakao:19164028",
+  "name": "추사와창천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력의 장소명만으로 장소 유형·위치·관리 주체를 식별할 수 없다. 익명 방문 기록은 주변 경치를 보았다는 경험과 주차 태그만 제공하므로 독립 방문 장소인지, 상위 장소의 일부인지 또는 사유지인지 판단할 수 없다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-INSUFFICIENT",
+      "ELIG-REQUIRES-REVIEW"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "정확한 장소 정체, 공공 접근 가능 여부, 주차 조건, 관리 주체, 안전과 편의시설을 입력 근거만으로 확인할 수 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처로 장소의 정체·위치·접근 허용 여부를 확인하기 전에는 추천 후보에 포함하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 장소명 ‘추사와창천’과 주변 경치에 관한 익명 방문 기록만으로는 정확한 지리적·운영상 정체를 확인할 수 없다. 외부 조사는 수행하지 않았다.",
+    "facts": [
+      {
+        "text": "입력의 익명화된 방문 기록은 최근 방문하여 주변 경치를 보았다고 서술한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치와 공식 장소명",
+      "독립 시설·상위 장소의 부속 지점·사유지 여부",
+      "관리 주체와 공공 방문 가능 여부",
+      "안전, 접근성, 주차 가능 여부, 개방 시간 및 계절성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao place agent input",
+        "type": "input_metadata",
+        "url": "https://place.map.kakao.com/19164028",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "입력 장소명은 추사와창천이며 Kakao place_id는 19164028이다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao place agent input",
+        "type": "anonymized_visitor_review_evidence",
+        "url": "https://place.map.kakao.com/19164028",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "익명화된 방문 기록은 주변 경치 관람과 주차 태그를 포함한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

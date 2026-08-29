@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2042,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8018193.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8018193",
+    "provider": "kakao",
+    "place_id": "8018193",
+    "name": "영주산",
+    "url": "https://place.map.kakao.com/8018193",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "51",
+    "blog_review_count": "62",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.05.20.",
+      "content": "2025.12.26일 현재는 정상 산불감시초소지나 하산길 잘 정비되어 있슴. 계속진행해 하산 원점회귀됨. 야자매트길로 길좋은 숲길.(40여분) 등산싫은 관광은 정상뷰만보고 되돌아가도됨! 하산길은 숲길. 뷰없승 . 입구들어서면 걍바로 곧장 올라감됨! 하늘과 능선이 닿은곳으로! 김영갑작가의 사진에 등장하는 곳! 입구에서 오르며 보는풍경 아름답다. 입구오른쪽 계단길은 궁금해서 하산해서 올라가보니 별거없슴.산 조망터? 계단끝이 궁금하면 올라가보고옴됨! 3분. 총1시간에서 1시간반 정도 시간 소요. 정상이트여 성산 표선 바다다보임. 오름들도 쫙 보임~좋다!! 추천!! 산이라해서 높은줄 힘든줄. 그닥.",
+      "tags": ""
+    },
+    {
+      "date": "2024.11.24.",
+      "content": "화장실없음 볼일 꼭 보고 오시고 오른쪽 데크쪽으론 길이 없으니 정면에 보이는 길로 올라가세요 그리고 완전중요!! 정상까지 올라갔던 길로 다시 내려오세요 반대쪽은 정비가 하나도 안되있어요",
+      "tags": ""
+    },
+    {
+      "date": "2024.05.16.",
+      "content": "뷰는 뭐 좋아요 절대 반바지는 입지 마세요 올라가실 때 좌측코스 말고 우측코스로 오르세요 계단은 헬이고 등산로 정리가 안됐어요 많이 긁혀요",
+      "tags": ""
+    },
+    {
+      "date": "2023.04.11.",
+      "content": "좀 힘든데 볼만해요 무료기도하고",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2022.09.27.",
+      "content": "입장료 없음 주차 무료 소가 많고 그만큼 소똥도 많아여 잘 피해서 다녀야합니다. 올라가기 그렇게 어렵지는 않고 올라가면서 뷰도 좋고 바람도 선선하게 불어서 좋았어요~",
+      "tags": "뷰|주차"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

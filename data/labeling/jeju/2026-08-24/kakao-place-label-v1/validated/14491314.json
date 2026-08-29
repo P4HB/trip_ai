@@ -1,0 +1,111 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:14491314",
+  "place_id": "14491314",
+  "name": "고망숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "공개 자료는 고망숲길을 제주올레 13코스에서 용수저수지 뒤에 이어지는 여러 숲길 중 하나로 열거한다. 제주관광공사가 안내하는 제주올레 13코스는 용수포구부터 저지예술정보화마을까지 잇는 하나의 14.8km 걷기 코스이므로, 입력 Kakao 표식은 독립 운영·방문지라기보다 해당 코스 안의 구간 표식으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "고망숲길은 Kakao Map에 표시된 명칭이며, 공개 경로 자료에서는 제주올레 13코스의 숲길 구간 중 하나로 확인된다.",
+    "typical_visit": "제주올레 13코스의 장거리 도보 경험 중 지나는 숲길 구간으로 파악되며, 독립적인 시설·프로그램 또는 별도 방문 운영은 확인하지 못했다.",
+    "experience_scope": "제주관광공사는 제주올레 13코스 전체의 거리·소요 시간과 좁은 숲길 구간을 안내한다. 고망숲길 자체의 정확한 시작·끝 좌표, 최신 통행 가능 여부, 노면·경사, 편의시설과 무장애 접근 조건은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 14491314의 명칭을 ‘고망숲길’로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 경로 자료는 제주올레 13코스에서 용수저수지 뒤에 특전사숲길·고목나무숲길·고사리숲길·고망숲길 등 여러 숲길이 이어진다고 설명하며, 제주관광공사는 13코스 전체를 14.8km의 걷기 코스로 안내한다.",
+        "source_ids": [
+          "S2",
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 표식이 제주올레 13코스의 어느 정확한 구간을 가리키는지와 현장 표지 상태는 확인하지 못했다.",
+      "고망숲길을 독립 방문지로 운영하는 주체, 별도 개방 시간·프로그램·입장 조건은 확인하지 못했다.",
+      "최신 우회·통제, 노면·경사, 주차·화장실·쉼터 및 무장애 접근 조건은 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/14491314",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 고망숲길로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018727",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 13코스는 용수포구에서 저지예술정보화마을까지 이어지는 14.8km, 약 4~5시간의 걷기 코스다.",
+          "13코스는 폭이 좁은 숲길을 여럿 지난다고 안내한다.",
+          "코스 우회와 변경이 있을 수 있어 방문 전 제주올레 공식 홈페이지 확인을 권고한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "월간산",
+        "type": "public_trail_guide",
+        "url": "https://san.chosun.com/news/articleView.html?idxno=10885",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주올레 13코스에서 용수저수지를 지난 뒤 특전사숲길·고목나무숲길·고사리숲길·고망숲길 등 7개의 숲길과 저지오름이 이어진다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "route_segment_and_access_confirmation_required",
+      "applies_to": "all_visitors",
+      "condition": "고망숲길은 독립 운영 장소가 아닌 제주올레 13코스의 한 구간으로 파악되며, 해당 구간의 최신 우회·통제와 노면·기상 안전 조건은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 추천 후보로 사용하지 말고, 걷기 코스 안내 시 제주올레 공식 최신 공지로 코스 변경과 현장 통행·안전 조건을 확인한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

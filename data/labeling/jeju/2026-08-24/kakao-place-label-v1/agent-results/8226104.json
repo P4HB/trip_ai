@@ -1,0 +1,62 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8226104",
+  "place_id": "8226104",
+  "name": "구현비",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘구현비’와 place_id만 제공하며 주소·좌표·업종·사진·공개 방문 후기 정보가 없다. 공개 웹 검색에서도 제주 소재의 특정 장소나 사업체로 이 레코드를 식별할 신뢰 가능한 결과를 확인하지 못했다. 따라서 장소 유형, 독립 여행 방문지 여부와 경험 특성을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 8226104는 ‘구현비’라는 명칭만 확인되며, 해당 명칭을 제주 특정 장소와 연결할 주소·좌표·업종 또는 공식 안내가 없다.",
+    "typical_visit": "미확인: 이 Kakao 레코드의 실제 장소 유형과 방문 경험을 특정할 근거가 없다.",
+    "experience_scope": "입력에 식별 정보와 방문 경험 근거가 부족하므로, 여행 추천 후보 범위 및 41축 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 공개 장소 메타데이터는 place_id 8226104, 장소명 ‘구현비’, 장소 URL을 제공하며 주소·좌표·업종·사진·공개 방문 후기 근거는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao 레코드의 정확한 주소, 좌표, 업종 및 운영 주체를 확인하지 못했다.",
+      "‘구현비’ 명칭이 제주 내 어떤 물리적 장소 또는 사업체를 가리키는지 확인하지 못했다.",
+      "독립 여행 방문지 여부, 방문·관람·체험 범위, 접근성과 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/8226104",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 패킷은 place_id 8226104와 장소명 ‘구현비’를 제공한다.",
+          "입력 패킷에는 주소, 좌표, 업종, 사진 및 공개 방문 후기 근거가 없다.",
+          "Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_not_resolved",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드의 주소·좌표·업종과 장소 유형이 확인되지 않아 독립 여행 방문지 여부를 판정할 수 없다.",
+      "status": "needs_review",
+      "action": "공식 또는 Kakao의 주소·좌표·업종 정보로 장소 신원을 교차 확인하기 전에는 추천 후보 및 라벨 벡터에 포함하지 않는다.",
+      "source_ids": ["S1"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

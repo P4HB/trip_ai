@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1407600846",
+  "canonical_id": "kakao:1407600846",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "이도종 목사 추모비·기념비는 무릉2리 인향동의 순교 터, 대정교회 앞 기념 공원 등 서로 다른 장소로 공개 기록된다. 입력에는 지점 구분·주소·관리 주체가 없어 어느 추모비를 가리키는지 확정할 수 없으므로, 특정 장소의 추천용 수치 벡터를 부여하지 않는다.",
+    "source_ids": ["source_martyr_site", "source_43_site", "source_church_news"],
+    "rule_ids": ["eligibility.identity_unknown.multiple_memorial_locations", "policy.no_forced_vector"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "type": "exact_memorial_location_required",
+      "rationale": "순교 터와 교회 내 기념비를 포함한 여러 이도종 목사 추모 지점 중 실제 지도 좌표·관리 주체를 확인한 뒤에만 장소별 방문 판단을 할 수 있다."
+    }
+  ],
+  "research": {
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "sources": [
+      {
+        "source_id": "source_martyr_site",
+        "url": "https://bss2079.tistory.com/15854157",
+        "publisher": "기독교 순례 기록",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "이도종 목사 순교지 추모비를 무릉2리 인향동·무릉교차로 인근의 순교 터 표석으로 소개한다."
+        ]
+      },
+      {
+        "source_id": "source_43_site",
+        "url": "https://www.jeju43.org/m/bbs/board.php?bo_table=3_2_1_1",
+        "publisher": "제주4·3 연구소",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "이도종 목사 기념비의 소재지를 서귀포시 대정읍 추사로36번길 11 대정교회로 수록한다."
+        ]
+      },
+      {
+        "source_id": "source_church_news",
+        "url": "https://jangro.kr/2026/04/08/%EA%B5%90%EA%B3%84%EC%9D%B4%EC%8A%88-%EC%9D%B4-%EC%82%AC%EB%9E%8C%EC%9D%84-%EC%95%84%EC%8B%AD%EB%8B%88%EA%B9%8C-%ED%95%9C%EA%B5%AD%EA%B5%90%ED%9A%8C-%EC%88%9C%EA%B5%90%EC%9E%90%EB%93%A4-4-2/",
+        "publisher": "한국장로신문",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "대정장로교회 앞마당에 이도종 목사를 추모하는 작은 공원이 마련돼 있다고 보도한다."
+        ]
+      }
+    ]
+  },
+  "review_priority": "high"
+}

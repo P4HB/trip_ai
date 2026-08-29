@@ -1,0 +1,89 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:377709627",
+  "place_id": "377709627",
+  "name": "제주국제공항 랜딩카지노",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 명칭은 제주국제공항 내 랜딩카지노를 뜻하지만, 공개 보도는 랜딩카지노가 2018년 서귀포시 안덕면 제주신화월드로 이전해 운영했다고 일관되게 설명한다. 입력에는 주소·좌표·업종·후기가 없고 공항에 같은 명칭의 독립 방문 시설이 존재한다는 공개 근거를 확인하지 못했으므로, 신화월드 카지노와 같은 장소인지 또는 잘못되거나 오래된 공항 표식인지 판정할 수 없다.",
+    "source_ids": ["S1", "S2", "S3"],
+    "rule_ids": ["ELIG-IDENTITY-UNRESOLVED", "ELIG-NO-VECTOR-WHEN-LOCATION-CONFLICTS"]
+  },
+  "research": {
+    "status": "identity_unresolved",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_summary": "Kakao 입력은 ‘제주국제공항 랜딩카지노’라는 이름과 장소 URL만 제공한다. 공개 보도상 랜딩카지노의 확인 가능한 영업 위치는 제주신화월드이며, 이 공항 표식과의 동일성 또는 현재 유효성을 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "입력 Kakao 장소 레코드는 장소명을 ‘제주국제공항 랜딩카지노’로, URL을 place.map.kakao.com/377709627로 제공하며 주소·좌표·업종·공개 후기 근거는 제공하지 않는다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "연합뉴스는 2018년 랜딩카지노가 서귀포시 하얏트리젠시 제주에서 제주신화월드 호텔 앤 리조트 메리어트관 지하 2층으로 이전 신청·운영 맥락에 있음을 보도했다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "아주경제는 랜딩카지노가 2018년 2월부터 서귀포시 안덕면 제주신화월드에서 영업을 시작했다고 보도했다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 377709627의 실제 좌표, 주소, 업종, 운영 상태와 공항 내 독립 시설 여부",
+      "이 표식이 제주신화월드 랜딩카지노를 잘못 연결한 것인지, 과거 표식인지, 별도 안내·제휴 지점인지",
+      "여행자가 방문할 수 있는 독립 경험, 출입 자격·연령·국적 요건, 최신 운영 정보와 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/377709627",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 장소명, place_id, URL 및 평점·후기 수 0만 제공한다.",
+          "평점·후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://www.yna.co.kr/view/AKR20180212156300056",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2018년 보도는 랜딩카지노의 제주신화월드 이전·확장 신청과 기존 서귀포 하얏트리젠시 제주 위치를 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "아주경제",
+        "type": "reputable_news",
+        "url": "https://www.ajunews.com/view/20180930124501091",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "랜딩카지노가 2018년 2월부터 서귀포시 안덕면 제주신화월드에서 영업을 시작했다고 보도했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_location_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "입력은 제주국제공항 소재를 암시하지만 공개 출처의 랜딩카지노 위치는 제주신화월드로 확인되어 장소 신원과 독립 방문 범위가 충돌한다.",
+      "status": "needs_review",
+      "action": "Kakao의 주소·좌표·업종과 운영 주체의 최신 공식 안내를 교차 확인한다. 공항 내 독립 방문 시설임이 확인되기 전에는 추천용 41축 벡터를 만들지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "rule_ids": ["HARD-IDENTITY-LOCATION-CONFLICT"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

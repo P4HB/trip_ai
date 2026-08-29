@@ -1,0 +1,28 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1111828885",
+  "canonical_id": "kakao:1111828885",
+  "name": "뤼미에르테크",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 ‘뤼미에르테크’라는 장소명과 Kakao 식별자만 있고 사업·시설 유형, 위치, 공공 방문 가능 여부 또는 방문 경험을 확인할 근거가 없다. 명칭만으로 추천 가능한 장소 정체를 확정할 수 없어 벡터를 부여하지 않는다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["ELIG-IDENTITY-INSUFFICIENT", "ELIG-REQUIRES-REVIEW"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [{"kind": "identity_and_public_access_unknown", "applies_to": "all_visitors", "condition": "정확한 장소 정체, 위치, 공공 접근 가능 여부, 관리 주체, 안전과 편의시설을 입력 근거만으로 확인할 수 없다.", "status": "needs_review", "action": "공식 또는 공공 출처로 장소의 정체·위치·방문 가능 여부를 확인하기 전에는 추천 후보에 포함하지 않는다.", "source_ids": ["S1"], "checked_at": "2026-08-28"}],
+  "review_priority": "high",
+  "research": {
+    "status": "identity_unresolved_input_evidence_only",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력 장소명 ‘뤼미에르테크’ 외에 리뷰 또는 장소 설명이 제공되지 않아 정체를 확인할 수 없다. 외부 조사는 수행하지 않았다.",
+    "facts": [{"text": "입력 장소명은 뤼미에르테크이며 Kakao place_id는 1111828885이다.", "source_id": "S1"}],
+    "unknowns": ["정확한 위치와 공식 장소명", "시설·사업장·방문지 여부", "관리 주체와 공공 방문 가능 여부", "안전, 접근성, 개방 시간 및 계절성"],
+    "sources": [{"id": "S1", "publisher": "Kakao place agent input", "type": "input_metadata", "url": "https://place.map.kakao.com/1111828885", "checked_at": "2026-08-28", "facts": ["입력 장소명은 뤼미에르테크이며 리뷰 근거는 제공되지 않았다."]}]
+  },
+  "generated_at": "2026-08-28"
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17581719",
+  "place_id": "17581719",
+  "name": "한라수목원 잔디광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 보도는 잔디광장을 한라수목원 안의 탐방환경·안전 관리 대상 시설로 명시한다. 입력명도 ‘한라수목원 잔디광장’으로 상위 수목원에 속한 광장을 가리키므로, 독립 방문지로 별도 추천 벡터를 만들지 않고 부속 시설로 판정한다.",
+    "duplicate_of": "한라수목원",
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 장소는 제주특별자치도 제주시 연동의 공립 한라수목원 내부 잔디광장으로 식별된다.",
+    "typical_visit": "한라수목원 관람 중 이용하는 야외 광장 구역이다.",
+    "experience_scope": "독립 시설의 운영·관람 범위가 아니라 한라수목원의 일부로 공개되어 있어, 상위 수목원과 분리된 41축 적합도는 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "헤드라인제주는 제주특별자치도 세계유산본부의 한라수목원 보완조성사업을 보도하며, 한라수목원 내 잔디광장을 CCTV 설치가 완료된 탐방환경 안전 관리 대상 중 하나로 명시했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "한국민족문화대백과사전은 한라수목원을 제주특별자치도 제주시 연동에 소재한 공립수목원으로 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "잔디광장만을 대상으로 한 독립 운영시간, 예약·대관, 시설 범위와 접근성의 최신 안내는 확인하지 못했다.",
+      "한라수목원 전체의 최신 개방·기상·안전 안내는 방문 전에 관리 주체의 최신 공지를 확인해야 한다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "헤드라인제주",
+        "type": "reputable_news",
+        "url": "https://www.headlinejeju.co.kr/news/articleView.html?idxno=446063",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주특별자치도 세계유산본부의 한라수목원 보완조성사업을 보도했다.",
+          "기사에서 잔디광장을 한라수목원 내 CCTV 설치 대상 장소로 명시했다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국학중앙연구원 한국민족문화대백과사전",
+        "type": "public_encyclopedia",
+        "url": "https://encykorea.aks.ac.kr/Article/E0075260",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "한라수목원은 제주특별자치도 제주시 연동에 소재한 공립수목원으로 설명된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_separate_recommendation_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "잔디광장은 한라수목원 내부의 광장 구역으로 확인돼 상위 수목원과 분리한 독립 여행지 후보로 취급할 수 없다.",
+      "status": "confirmed",
+      "action": "잔디광장 이용 정보가 필요하면 상위 장소 ‘한라수목원’의 최신 공식 운영·안전 안내와 함께 제시하고, 이 레코드에는 독립 적합도 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "ELIG-PLACE-IDENTIFIED",
+        "ELIG-SUBORDINATE-FACILITY"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

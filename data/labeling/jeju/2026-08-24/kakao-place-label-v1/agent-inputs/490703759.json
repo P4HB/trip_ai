@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2002,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/490703759.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:490703759",
+    "provider": "kakao",
+    "place_id": "490703759",
+    "name": "천제연제2폭포",
+    "url": "https://place.map.kakao.com/490703759",
+    "average_rating_5": "4.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.05.01.",
+      "content": "천제연 폭포 가볼만 합니다. 입장료는 2500원입니다. 사진찍으면서 제1폭포 제 2폭포 제 3폭포 돌면 거진 1시간정도 걸립니다. 빨리돌면 30분이면 돌고 나와요. 제 1폭포는 폭포라기보단 연못같은 느낌입니다. 저는 비오고 다음날가서 물이 있었는데 안내판에 보니까 말라있는 경우도 있나봐요.",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2025.08.15.",
+      "content": "데크까지밖에 못가네요... 정방이나 천지연 폭포가 더 좋은 것 같습니다",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

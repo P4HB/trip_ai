@@ -1,0 +1,119 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1627709922",
+  "place_id": "1627709922",
+  "name": "저지오름 칠성단",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "Kakao 지도 표식은 ‘저지오름 칠성단’으로 표시되며, 공개 보도는 저지오름 9부 능선에 학림사 승려가 세운 칠성단과 표석이 있다고 설명한다. 제주관광공사의 저지오름 안내도 이곳을 하나의 오름 탐방지로 소개한다. 따라서 칠성단은 저지오름 탐방 중 만나는 역사·신앙 관련 세부 지점으로 판단하며, 독립 추천 후보에 완전 벡터를 부여하지 않는다.",
+    "duplicate_of": "저지오름",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "저지오름 칠성단은 제주시 한경면 저지리 저지오름 9부 능선에 있는 칠성신앙 관련 제단·표석으로 소개된 Kakao 지도 세부 표식이다.",
+    "typical_visit": "저지오름 숲길과 정상 방향 탐방 중 칠성단의 흔적·표석을 만나는 부속 지점으로 파악된다.",
+    "experience_scope": "상위 장소 저지오름의 자연 탐방 동선 안에 있는 역사·신앙 관련 세부 지점이므로 이 결과에서는 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 지도 공개 장소 메타데이터는 place_id 1627709922의 장소명을 ‘저지오름 칠성단’으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 저지오름을 제주올레 13코스 종점에 있는 오름으로 소개하고 정상 전망대까지의 숲길·계단과 자연경관을 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주의소리는 저지오름 9부 능선 동쪽에 1960년대 학림사 승려가 세운 칠성단이 있으며 궤에 단을 만들고 칠성대 표석을 두었다고 보도한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 세부 표식의 정확한 좌표와 보도된 칠성단·표석의 일치 여부는 별도 공공 좌표 자료로 확인하지 못했다.",
+      "칠성단의 현존 상태, 별도 관리·의례 운영 여부, 최신 접근로·계단·노면, 무장애 접근 및 악천후 안전 통제는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/1627709922",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘저지오름 칠성단’으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020959",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "저지오름은 제주올레 13코스 종점에 있는 오름으로 안내된다.",
+          "정상 전망대까지 1.9km이며 숲길과 정상 계단을 포함한 탐방 경험을 소개한다.",
+          "콘텐츠의 정보는 변경될 수 있어 방문 전 확인을 권고한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주의소리",
+        "type": "public_news_report",
+        "url": "https://www.jejusori.net/news/articleView.html?idxno=406759",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "저지오름 9부 능선 동쪽에 1960년대 학림사 승려가 세운 칠성단이 있다고 보도한다.",
+          "궤에 단을 만들고 칠성대 표석을 세웠다고 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "저지오름 칠성단은 저지오름 9부 능선의 역사·신앙 관련 제단·표석으로 소개되어 상위 오름 탐방 동선의 세부 지점으로 판단됨",
+      "status": "needs_review",
+      "action": "독립 추천 후보 벡터에서 제외하고 저지오름 본체와 함께 검토하며, 표식의 정확한 위치·현존 상태와 접근 안전은 방문 전 최신 현장 또는 관할 안내로 확인",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

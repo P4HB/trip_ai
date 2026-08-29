@@ -1,0 +1,115 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:65456820",
+  "place_id": "65456820",
+  "name": "렛츠런파크제주 해피랜드",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 제주관광공사 안내와 한국마사회 지속가능경영보고서는 해피랜드를 각각 렛츠런파크 제주에 설치된 말 테마파크 골프장·공원 테마 구역 및 제주경마공원의 주요시설로 설명한다. 입력 Kakao 장소명도 ‘렛츠런파크제주 해피랜드’이므로, 독립 여행지 후보가 아니라 상위 장소 렛츠런파크 제주 내부의 부속 구역으로 보수적으로 판정한다.",
+    "duplicate_of": "렛츠런파크 제주",
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "이 Kakao 레코드는 렛츠런파크 제주 내부의 ‘해피랜드’ 공원·시설 구역을 가리킨다. 상위 시설과 별도 독립 여행지로 처리하지 않는다.",
+    "typical_visit": "해피랜드에는 말 테마파크 골프장이 설치된 것으로 관광 공공 안내에 소개되어 있으며, 렛츠런파크 제주 방문 중 이용하는 공원 구역이다.",
+    "experience_scope": "해피랜드의 구체적인 개별 프로그램, 운영일·시간, 요금, 현재 이용 가능 시설은 이번 조사에서 최신 공식 안내로 확인하지 못했다. 부속 시설 상태이므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드의 명칭은 ‘렛츠런파크제주 해피랜드’이며, 공개 후기 근거는 제공되지 않았다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 렛츠런파크 제주에 말 테마파크 골프장을 설치한 ‘해피랜드’가 있다고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "한국마사회 2025 지속가능경영보고서는 제주경마공원의 주요시설로 꿈의광장, 모험랜드, 해피랜드, F&B를 열거한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "해피랜드 안의 현재 개별 시설·프로그램과 운영 상태를 최신 공식 상세 페이지로 확인하지 못했다.",
+      "독립 입장·예약·요금 여부와 개별 접근성 정보는 확인하지 못했다.",
+      "입력에는 주소·좌표·업종 및 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/65456820",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘렛츠런파크제주 해피랜드’다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism_site",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021600",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "렛츠런파크 제주에 말 테마파크 골프장을 설치한 ‘해피랜드’가 있다고 안내한다.",
+          "해피랜드를 렛츠런파크 제주 안의 여러 공원·체험 시설 가운데 하나로 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "한국마사회",
+        "type": "official_report",
+        "url": "https://www.kra.co.kr/cms/contents/kr/resource/pdf/report/2025_esgSustainabilityReport.pdf",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "2025 지속가능경영보고서는 제주경마공원의 주요시설로 꿈의광장, 모험랜드, 해피랜드, F&B 등을 열거한다.",
+          "제주경마공원을 휴식·레저공간과 편의를 제공하는 시설로 설명한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "해피랜드는 한국마사회가 제주경마공원의 주요시설로 열거하고 제주관광공사가 렛츠런파크 제주 내 말 테마파크 골프장·공원 구역으로 소개한 부속 시설임",
+      "status": "needs_review",
+      "action": "상위 장소 ‘렛츠런파크 제주’의 방문지 프로필에서 해피랜드 관련 경험을 중복 없이 통합 검토한다. 해피랜드를 별도 추천 후보 및 41축 벡터로 사용하지 않는다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

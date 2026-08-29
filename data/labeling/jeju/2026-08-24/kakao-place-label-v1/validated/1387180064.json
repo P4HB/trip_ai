@@ -1,0 +1,103 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1387180064",
+  "canonical_id": "kakao:1387180064",
+  "name": "한라산둘레길 숲길센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공식 한라산둘레길 안내는 숲길센터를 붉은오름 사려니숲길 안에 위치한 안내센터로 소개하고, 방문자 안내센터 운영의 목적을 둘레길 관리·운영·안내와 편의 제공으로 설명한다. 따라서 입력 장소는 독립 관광지라기보다 한라산둘레길·사려니숲길 방문을 지원하는 부속 안내시설이다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-VISITOR-CENTER",
+      "ELIG-PARENT-TRAIL"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "trail_conditions_are_separate_from_center",
+      "applies_to": "all_visitors",
+      "condition": "입력의 방문 경험은 사려니숲길의 숲·보행 경험을 설명하지만, 해당 경험은 숲길센터 자체의 적합도 근거가 아니다. 사려니숲길은 기상·현장 통제에 따라 탐방로와 소요 시간이 달라질 수 있다.",
+      "status": "needs_review",
+      "action": "둘레길 또는 사려니숲길 방문 전 공식 공지로 센터 운영과 탐방로 개방·통제 상태를 각각 확인한다.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 한라산둘레길 공식 사이트가 붉은오름 사려니숲길 내에 위치한다고 설명하는 숲길센터와 일치한다.",
+    "facts": [
+      {
+        "text": "한라산둘레길은 숲길센터를 붉은오름 사려니숲길 내에 위치한 안내센터로 운영한다고 안내한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한라산둘레길은 숲길센터 방문자 안내센터 운영을 둘레길의 관리·운영·안내 및 산림휴양 관련 편의 제공 사업으로 설명한다.",
+        "source_id": "S2"
+      },
+      {
+        "text": "사려니숲길의 탐방로와 소요시간은 기상 및 현장 통제 상황에 따라 달라질 수 있어 방문 전 공식 공지 확인이 필요하다고 관광 안내가 고지한다.",
+        "source_id": "S3"
+      }
+    ],
+    "unknowns": [
+      "숲길센터의 현재 운영 시간과 제공 편의시설",
+      "센터의 무장애 접근성과 주차·화장실 현황",
+      "당일 사려니숲길 구간별 개방 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한라산둘레길",
+        "type": "official_operator_information",
+        "url": "https://hallatrail.or.kr/all",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "숲길센터가 붉은오름 사려니숲길 내에 위치한 안내센터라고 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한라산둘레길",
+        "type": "official_operator_information",
+        "url": "https://www.hallatrail.or.kr/1",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "숲길센터 운영의 목적을 한라산둘레길의 관리·운영·안내와 산림휴양 편의 제공으로 설명한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500281&menuId=DOM_000001718000000000",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "사려니숲길 탐방로와 소요시간은 기상 및 현장 통제에 따라 달라질 수 있다고 고지한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

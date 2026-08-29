@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725818",
+  "place_id": "13725818",
+  "name": "항물",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.8,
+    "rationale": "Kakao Map places ‘항물’ in Mureung-ri, Daejeong-eup (126.266634, 33.295447). Public route material identifies ‘무릉곶자왈(항물)’ as a passing point on the former 제주올레 14-1 course, while VisitJEJU describes the independently visitable attraction as the approximately 17 km 제주올레길 14-1코스 itself. No official or public source was found that establishes 항물 as an independently managed attraction, program, or separate visitor facility. It is therefore conservatively treated as a subordinate route waypoint rather than a standalone recommendation candidate.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "The Kakao pin is named 항물 in Mureung-ri, Daejeong-eup. Public descriptions connect the name to ‘무릉곶자왈(항물)’, a waypoint within 제주올레 14-1코스 rather than a separately documented tourism operation.",
+    "typical_visit": "It may be encountered while walking the 제주올레 14-1 route; no independent visit program, facilities, admission, or management information for the pin itself was confirmed.",
+    "experience_scope": "VisitJEJU documents the 14-1 trail as the tourism experience and directs visitors to check the official 제주올레 site because routes may change. The available historic route descriptions place 항물 within that course, but do not establish the point as a standalone destination.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao Map public place metadata names the record ‘항물’, gives the locality as 제주특별자치도 서귀포시 대정읍 무릉리, and gives map coordinates 126.2666342706187 longitude and 33.295447217382424 latitude.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "A public report on the opening of 제주올레 14-1코스 lists 무릉곶자왈(항물) among the route’s waypoints between 오설록 and 영동케(봉근물).",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "VisitJEJU describes 제주올레길 14-1코스 as an approximately 17 km, 5–6 hour trail and notes that routes may be rerouted or changed, directing visitors to verify the official 제주올레 website before use.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "Whether the Kakao pin denotes a presently accessible spring, a route marker, or another exact physical feature was not confirmed by an authoritative place record.",
+      "No independent operator, visitor program, opening conditions, amenities, admission rules, or barrier-free access information for 항물 was found.",
+      "The current 14-1 route alignment at this exact point was not verified; VisitJEJU cautions that course changes can occur."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13725818",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "The place title is 항물.",
+          "Open-graph metadata gives the locality as 제주특별자치도 서귀포시 대정읍 무릉리.",
+          "Open-graph metadata gives longitude 126.2666342706187 and latitude 33.295447217382424."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "경향신문",
+        "type": "news_report",
+        "url": "https://www.khan.co.kr/article/201004211706471",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "The report identifies 무릉곶자왈(항물) as a waypoint on the then-opened 제주올레 14-1코스.",
+          "It reports the course as a 17.5 km walk through gotjawal and oreum terrain."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사 VisitJEJU",
+        "type": "official_tourism_listing",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018726",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주올레길 14-1코스 is presented as a route of about 17 km taking 5–6 hours.",
+          "Visitors are advised to check the official 제주올레 website before use because route detours and changes can occur."
+        ]
+      }
+    ],
+    "label_basis": "No Kakao rating, review count, review text, or reviewer identity was used as label evidence. Because this record is not an eligible standalone place, no fit or atomic score was generated."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_route_waypoint_and_current_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "항물 is only corroborated as a waypoint associated with the 제주올레 14-1 trail; its independent visitor identity and current route/access conditions are not confirmed.",
+      "status": "needs_review",
+      "action": "Do not generate a standalone recommendation vector. If later official route or site-management material establishes an independently visitable place at this pin, re-evaluate identity and current access conditions first.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

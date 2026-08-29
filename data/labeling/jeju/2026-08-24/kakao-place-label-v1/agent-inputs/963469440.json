@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2318,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/963469440.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:963469440",
+    "provider": "kakao",
+    "place_id": "963469440",
+    "name": "남벽분기점 전망대",
+    "url": "https://place.map.kakao.com/963469440",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "5",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.05.06.",
+      "content": "최상입니다 꼭 한번 다녀오세요",
+      "tags": "뷰"
+    },
+    {
+      "date": "2025.10.21.",
+      "content": "남벽분기점까지 다 가진 못하고 내리막전 방아오름 전망대 까지만 갔다가 흐린날에 우박 살짝 맞고 돌아섰는데 해가 살짝 쨍해줘서 더욱 멋진 한라산 서벽이랑 남벽 볼수 있어서 감사 엄마의 76세 버킷 리스트에 있는 그래도 한라산코스ㅎ 백록담을 가고 싶어 하셨지만 엄마에겐 너무 늦고 나도 함께 할 체력은 안되는 관계로 가장 짧고 도전 할만한 영실코스로 등반완료",
+      "tags": "뷰|주차|+1"
+    },
+    {
+      "date": "2025.02.17.",
+      "content": "진한곰탕,,,",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

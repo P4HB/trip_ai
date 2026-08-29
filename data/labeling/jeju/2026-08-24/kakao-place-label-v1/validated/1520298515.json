@@ -1,0 +1,97 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1520298515",
+  "place_id": "1520298515",
+  "name": "평대옛길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘평대옛길’과 place_id만 제공하고 주소·좌표·업종·공개 방문 후기 근거가 없다. 제주관광공사 Visit Jeju는 평대해변과 평대리 일대의 올레길·밭담을 안내하지만 ‘평대옛길’이라는 독립 장소명 또는 이 Kakao 레코드와의 동일성을 확인하지 못했다. 따라서 실제 위치, 독립 방문지 여부와 대표 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 ‘평대옛길’이라는 명칭과 place_id뿐이다. 공개 관광 안내는 평대리 해변과 주변 올레길·밭담을 설명하지만, 이 명칭의 정확한 길 또는 지점과 Kakao 레코드의 동일성은 확인되지 않았다.",
+    "typical_visit": "평대리 일대에는 해변과 제주올레 20코스, 밭담 경관이 존재한다는 지역 맥락은 확인되지만, ‘평대옛길’ 자체의 동선·관리 주체·관람 또는 체험 경험은 확인하지 못했다.",
+    "experience_scope": "주소·좌표·업종·공개 후기와 공식 장소 안내가 없어 독립 추천 후보인지, 평대해변·올레길의 일부 표기인지, 접근 가능한 공공 보행로인지 판단할 수 없다. 평점·후기 수는 입력상 0이며 라벨 근거로 사용하지 않았다. 신원 확인 전 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 레코드는 장소명을 ‘평대옛길’로 제공하며, 주소·좌표·업종 및 공개 방문 후기 근거를 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju의 평대해변 안내는 평대리 주변에 제주올레 20코스와 밭담이 있다고 설명하지만, ‘평대옛길’이라는 독립 장소 또는 이 Kakao place_id와의 동일성을 명시하지 않는다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 도로 구간, 관리 주체 및 평대리의 다른 관광·보행 경로와의 관계를 확인하지 못했다.",
+      "일반 방문객의 접근 가능 여부, 보행 동선·노면·경사, 주차·화장실, 무장애 접근성 및 악천후 안전 조건을 확인하지 못했다.",
+      "독립 여행 방문지로서의 안내·체험·운영 정보와 공개 방문 경험 근거를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/1520298515",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘평대옛길’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021475",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "평대해변은 제주시 구좌읍 평대리 1994-20에 안내된다.",
+          "안내는 평대해변 주변에서 제주올레 20코스와 밭담을 볼 수 있다고 설명한다.",
+          "안내에는 ‘평대옛길’이라는 독립 장소명이나 Kakao place_id 1520298515가 나타나지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종·후기 근거가 없고, 공개 관광 안내로는 ‘평대옛길’의 정확한 구간과 독립 방문지 여부를 교차 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 지자체의 도로·관광 안내와 Kakao의 주소·좌표 정보를 먼저 교차 확인한다. 독립적으로 접근 가능한 여행 보행 경로로 확인될 때만 대표 경험과 안전·접근 조건을 별도 검수해 41축 벡터를 생성한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

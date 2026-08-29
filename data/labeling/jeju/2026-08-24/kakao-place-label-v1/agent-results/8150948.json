@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8150948",
+  "place_id": "8150948",
+  "name": "해송",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘해송’과 place_id만 제공하고 주소·좌표·업종·공개 리뷰 근거가 없다. 공개 검색에는 성산읍의 동명 음식점 등 서로 다른 ‘해송’ 장소가 확인되지만, 이 레코드가 어느 장소인지 place_id와 교차할 수 있는 공식·공공 근거는 찾지 못했다. 따라서 독립 여행 방문지 여부와 방문 경험을 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "확인 가능한 입력 식별자는 ‘해송’과 Kakao place_id 8150948뿐이며, 동명 장소가 여러 곳이라 정확한 지점 또는 업종을 확정할 수 없다.",
+    "typical_visit": "공개 검색 결과 중 한 동명 ‘해송’은 제주 서귀포시 성산읍의 생선요리 음식점으로 소개되지만, 입력 레코드와의 동일성은 확인되지 않았다.",
+    "experience_scope": "주소·좌표·업종·공식 상세 안내·공개 후기 근거가 없어 이 Kakao 레코드의 독립 방문 경험, 운영 및 접근 조건을 확인할 수 없다. 신원이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 식당 안내는 ‘해송’을 제주 서귀포시 성산읍 일출로 270-2의 생선요리 음식점으로 소개하지만, Kakao place_id 8150948과의 동일성은 제시하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력 Kakao 레코드는 장소명을 ‘해송’으로만 제공하며 주소·좌표·업종·공개 리뷰 근거가 없다. 제공된 평점 및 리뷰 수는 모두 0이며 라벨 근거로 사용하지 않았다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8150948의 정확한 주소, 좌표, 업종 및 동명 공개 장소와의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람·체험 범위, 현행 운영, 접근성, 주차, 안전 및 편의시설을 확인하지 못했다.",
+      "입력에는 평점·리뷰 수 외 공개 방문 경험 근거가 제공되지 않았고, 이를 적합도 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "테이블링",
+        "type": "public_business_listing",
+        "url": "https://www.tabling.co.kr/place/677cd04766de5f069885c7fd",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "동명 ‘해송’을 제주 서귀포시 성산읍 일출로 270-2의 음식점으로 소개한다.",
+          "해당 목록은 Kakao place_id 8150948을 제시하지 않아 입력 레코드와의 동일성을 확정할 수 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/8150948",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘해송’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없으며 평점·리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 지점·주소·좌표·업종·방문 경험 근거가 없어 동명 장소와의 동일성 및 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 Kakao의 주소·업종·좌표 정보로 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "rule_ids": ["IDENTITY-AMBIGUOUS-NO-LOCATION"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17808879",
+  "canonical_id": "kakao:17808879",
+  "name": "중문관광단지 별내린전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "별내린전망대는 중문관광단지 내부에서 중문천·천제연폭포·선임교 일대를 조망하는 단지 내 전망 시설이다. 독립 목적지보다 부모 관광단지 탐방의 하위 지점으로 판정했다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-PARENT-ATTRACTION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "parent_complex_access_and_view_conditions",
+      "applies_to": "all_visitors",
+      "condition": "전망대 접근·안전·조망은 단지 동선과 기상·야간 운영 조건에 따른다.",
+      "status": "needs_review",
+      "action": "방문 전 중문관광단지의 최신 보행 동선·안전 안내를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력은 중문관광단지 내부의 별내린전망대와 일치한다.",
+    "facts": [
+      {
+        "text": "비짓제주는 별내린전망대를 중문관광단지와 별도 대표 이미지 항목으로 검색 제공한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "보도는 별내린전망대가 중문관광단지 안에서 중문천·천제연폭포·선임교를 조망하는 시설이라고 설명한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "전망대의 독립 운영·접근성",
+      "야간 조명과 당일 안전 통제"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/search?q=%EC%B2%9C%EC%A0%9C%EC%97%B0&searchtype=2",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "별내린전망대와 중문관광단지를 검색 결과에 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스 보도 재게시",
+        "type": "reputable_news",
+        "url": "https://v.daum.net/v/20180817100615873?s=print_news",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "별내린전망대의 단지 내 위치와 조망 대상을 설명한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

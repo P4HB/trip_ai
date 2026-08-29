@@ -1,0 +1,600 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "label_version": "kakao-place-label-v1",
+  "canonical_id": "kakao:849053787",
+  "provider": "kakao",
+  "place_id": "849053787",
+  "name": "한라산신제단",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "processed_at": "2026-08-25T00:00:00+09:00",
+  "review_priority": "high",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "국가유산포털은 한라산신제단을 제주특별자치도 기념물인 제사 유적으로, 디지털제주문화대전은 1470년에 조성된 제단이자 제주 신앙 의식을 보여주는 주요 유적으로 설명한다.",
+    "rule_ids": [
+      "ELIGIBLE_DESIGNATED_CULTURAL_HERITAGE",
+      "IDENTITY_NAME_AND_LOCATION_MATCH"
+    ],
+    "source_ids": [
+      "heritage_1",
+      "culture_1"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "source_id": "heritage_1",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=23%2C00670000%2C50&pageNo=1_1_1_0",
+        "publisher": "국가유산포털",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "한라산신제단은 제주특별자치도 기념물로 지정된 제사 유적이며 아라동 375-4번지에 있다.",
+          "제단 2식과 고선비 3기가 수록된다."
+        ]
+      },
+      {
+        "source_id": "culture_1",
+        "url": "https://jeju.grandculture.net/jeju/dir/GC00712123?category=%EC%8B%9C%EB%8C%80&depth=3&name=%EC%A1%B0%EC%84%A0+%EC%A0%84%EA%B8%B0&search=%EC%A1%B0%EC%84%A0%2F%EC%A1%B0%EC%84%A0+%EC%A0%84%EA%B8%B0",
+        "publisher": "디지털제주문화대전",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "1470년 이약동이 한라산신제를 위해 조성한 제단으로 설명된다.",
+          "제주인의 한라산 신앙 의식을 엿볼 수 있는 주요 유적으로 설명된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "한라산신을 위한 제단이지만 실제 산행 경험이 핵심인지는 확인되지 않았다.",
+      "rule_ids": [
+        "MOUNTAIN_ASSOCIATION_INFERENCE"
+      ],
+      "source_ids": [
+        "culture_1"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "해양 경험 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "의례 관람 외 신체 활동이 핵심이라는 근거가 없다.",
+      "rule_ids": [
+        "LOW_ACTIVITY_HERITAGE_INFERENCE"
+      ],
+      "source_ids": [
+        "heritage_1"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "국가유산 자료와 지역 문화대전이 제사 유적·조선시대 제단·제주 신앙 유적으로 직접 설명한다.",
+      "rule_ids": [
+        "DIRECT_CULTURAL_HERITAGE_EVIDENCE"
+      ],
+      "source_ids": [
+        "heritage_1",
+        "culture_1"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페 이용 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 경험 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "theme.festival": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제사 유적이나 의례의 현재 정기 운영은 확인되지 않아 중간값으로 둔다.",
+      "rule_ids": [
+        "RITUAL_EVENT_UNVERIFIED"
+      ],
+      "source_ids": [
+        "culture_1"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "제단과 비석 유적으로 설명되어 야외 중심으로 추정한다.",
+      "rule_ids": [
+        "OUTDOOR_HERITAGE_INFERENCE"
+      ],
+      "source_ids": [
+        "heritage_1"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "야외 유적 관람 중심으로 추정되어 날씨 영향을 받는다.",
+      "rule_ids": [
+        "OUTDOOR_HERITAGE_WEATHER_INFERENCE"
+      ],
+      "source_ids": [
+        "heritage_1"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "휴식 분위기의 직접 근거가 부족하다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "보행로·경사·무장애 정보가 없다.",
+      "rule_ids": [
+        "FALLBACK_ACCESSIBILITY_UNKNOWN"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "권장 체류 시간 정보가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경관 감상 가치의 직접 근거가 부족하다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "한라산신 제사 유적과 제단·고선비 구성은 고유 경험 근거다.",
+      "rule_ids": [
+        "DIRECT_CULTURAL_HERITAGE_EVIDENCE"
+      ],
+      "source_ids": [
+        "heritage_1",
+        "culture_1"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "제주인의 한라산 신앙 의식을 보여주는 유적이라고 직접 설명된다.",
+      "rule_ids": [
+        "DIRECT_LOCAL_CULTURE_EVIDENCE"
+      ],
+      "source_ids": [
+        "culture_1"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "지정 문화유산이자 주요 유적으로 확인된다.",
+      "rule_ids": [
+        "DIRECT_DESIGNATED_HERITAGE_EVIDENCE"
+      ],
+      "source_ids": [
+        "heritage_1",
+        "culture_1"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "사진 촬영 가치의 직접 근거가 부족하다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "소규모 야외 문화유적 관람으로 혼자 방문 적합성을 추정한다.",
+      "rule_ids": [
+        "HERITAGE_COMPANION_INFERENCE"
+      ],
+      "source_ids": [
+        "heritage_1"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "커플 적합성의 직접 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "친구 동행 적합성의 직접 근거가 없다.",
+      "rule_ids": [
+        "FALLBACK_INSUFFICIENT_EVIDENCE"
+      ],
+      "source_ids": []
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 대상성·안전 정보가 없다.",
+      "rule_ids": [
+        "FALLBACK_AGE_POLICY_UNKNOWN"
+      ],
+      "source_ids": []
+    },
+    "parents": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "접근성·좌석 정보가 없다.",
+      "rule_ids": [
+        "FALLBACK_ACCESSIBILITY_UNKNOWN"
+      ],
+      "source_ids": []
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "야외 유적의 계절별 관람 근거가 부족하다.",
+      "rule_ids": [
+        "OUTDOOR_CLIMATE_FALLBACK"
+      ],
+      "source_ids": []
+    }
+  },
+  "hard_constraints": [
+    {
+      "key": "operating_hours",
+      "value": "unknown",
+      "status": "needs_review",
+      "rule_ids": [
+        "DYNAMIC_OPERATING_CONDITIONS_UNVERIFIED"
+      ],
+      "rationale": "개방 시간과 출입 조건은 확인되지 않았다.",
+      "source_ids": []
+    },
+    {
+      "key": "weather",
+      "value": "weather_sensitive",
+      "status": "needs_review",
+      "rule_ids": [
+        "OUTDOOR_HERITAGE_WEATHER_INFERENCE"
+      ],
+      "rationale": "대표 관람이 야외 유적 중심으로 추정된다.",
+      "source_ids": [
+        "heritage_1"
+      ]
+    },
+    {
+      "key": "accessibility",
+      "value": "unknown",
+      "status": "needs_review",
+      "rule_ids": [
+        "ACCESSIBILITY_UNVERIFIED"
+      ],
+      "rationale": "무장애·주차·화장실 정보는 확인되지 않았다.",
+      "source_ids": []
+    }
+  ],
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

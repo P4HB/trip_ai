@@ -1,0 +1,41 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1192,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/2000552601.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:2000552601",
+    "provider": "kakao",
+    "place_id": "2000552601",
+    "name": "제주여행자센터",
+    "url": "https://place.map.kakao.com/2000552601",
+    "average_rating_5": "5.0",
+    "visitor_review_count": "2",
+    "blog_review_count": "22",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.12.22.",
+      "content": "제주여행자센터 방문하면 국내외 모든관광객들에게 5,000원 할인쿠폰을 발행합니다! (국내항공권, 승선권, 국외 여권등 제시)이 구폰은 제주칠성로 일대에 180여개 매장에서 사용가능하다. 와우!!그리고 여행자센터에서는 캐리어보관, 셀프음료자판기, 환전기, 환급기 텍스리펀 , 제주크리에이티브 상품을 위탁판매중이다. 퀼리티 있고 좋은제품들이 많아서 아주 좋습니다^^",
+      "tags": "뷰|시설|+2"
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

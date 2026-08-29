@@ -1,0 +1,65 @@
+{
+  "schema_version": "kakao-place-label-contract-v1",
+  "label_version": "kakao-place-label-v1",
+  "score_scale": [0, 0.25, 0.5, 0.75, 1],
+  "eligibility_statuses": [
+    "eligible",
+    "duplicate",
+    "subordinate_facility",
+    "out_of_scope",
+    "identity_unknown"
+  ],
+  "inference_levels": [
+    "direct_evidence",
+    "researched_inference",
+    "archetype_prior",
+    "climate_heuristic"
+  ],
+  "review_statuses": ["confirmed", "needs_review", "fallback"],
+  "axis_states": ["numeric", "not_applicable"],
+  "atomic_labels": {
+    "theme.mountain": "산, 오름, 고개, 봉우리, 산림 경관이 핵심 방문 경험인 정도",
+    "theme.ocean": "바다, 해안, 해변, 섬 또는 해양 활동이 핵심 방문 경험인 정도",
+    "theme.activity": "신체 활동, 레포츠 또는 참여형 체험이 핵심인 정도",
+    "theme.culture_history": "역사, 문화유산, 예술, 전시, 공연 또는 전통 체험이 핵심인 정도",
+    "theme.theme_park": "놀이, 동물, 수족관, 워터파크 등 테마파크형 경험의 정도",
+    "theme.cafe": "카페, 차, 커피, 디저트 이용이 독립적인 핵심 방문 목적인 정도",
+    "theme.traditional_market": "전통시장 또는 상설·비상설 시장 방문이 핵심인 정도",
+    "theme.festival": "특정 축제, 공연 또는 기간성 행사가 장소의 핵심인 정도",
+    "environment.indoor_ratio": "대표 방문 경험 중 실내 공간이 차지하는 비율",
+    "environment.weather_sensitivity": "비, 바람, 더위, 추위 등 날씨가 대표 경험에 영향을 주는 정도",
+    "style_evidence.restfulness": "휴식, 느린 체류, 평온함을 제공하는 정도",
+    "style_evidence.physical_ease": "보행, 경사, 계단, 장비 부담이 적고 이용이 쉬운 정도",
+    "style_evidence.visit_duration_flexibility": "짧은 방문부터 긴 체류까지 시간을 조절하기 쉬운 정도",
+    "style_evidence.scenic_value": "경관 감상 자체가 방문 가치인 정도",
+    "style_evidence.distinctiveness": "다른 장소와 구별되는 고유한 경험이나 구성이 있는 정도",
+    "style_evidence.local_embeddedness": "제주 지역의 자연, 문화, 생산자 또는 생활과 연결된 정도",
+    "style_evidence.landmark_significance": "제주 또는 해당 지역을 대표하는 명소·상징인 정도",
+    "style_evidence.photo_value": "사진 촬영 또는 시각적 기록 가치가 직접 확인되는 정도"
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+    "derived_style.scenic_immersion": "copy(style_evidence.scenic_value)",
+    "derived_style.discovery_explorer": "constant(0.5)",
+    "derived_style.local_immersion": "copy(style_evidence.local_embeddedness)",
+    "derived_style.iconic_highlight": "copy(style_evidence.landmark_significance)",
+    "derived_style.photo_mood": "copy(style_evidence.photo_value)"
+  },
+  "companion_keys": ["solo", "couple", "friends", "kids", "parents"],
+  "month_keys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+  "policies": {
+    "inference_priority": [
+      "direct_evidence",
+      "researched_inference",
+      "archetype_prior",
+      "climate_heuristic"
+    ],
+    "non_direct_extreme_values_forbidden": true,
+    "fallback_confidence": 0.25,
+    "rating_or_review_count_as_label_evidence": false,
+    "reviewer_identity_allowed": false,
+    "dynamic_fact_requires_checked_at": true,
+    "hard_constraints_separate_from_fit": true,
+    "derived_labels_are_recomputed": true
+  }
+}

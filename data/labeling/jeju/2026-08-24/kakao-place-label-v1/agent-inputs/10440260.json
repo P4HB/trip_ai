@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 265,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/10440260.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:10440260",
+    "provider": "kakao",
+    "place_id": "10440260",
+    "name": "산세미오름",
+    "url": "https://place.map.kakao.com/10440260",
+    "average_rating_5": "3.0",
+    "visitor_review_count": "6",
+    "blog_review_count": "2",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.01.30.",
+      "content": "산 전체가 똥밭에 무덤무덤~ 간간히 리본은 보이는데 탐방로로 보긴 힘듦.",
+      "tags": ""
+    },
+    {
+      "date": "2021.06.20.",
+      "content": "입구:천아오름 신엄목장 정상 뷰 없음 분화구 뷰 없음 길 안좋음 아무래도 사람들이 잘 안 찾는 오름이어서 자연적인게 아쉬운 오름",
+      "tags": ""
+    },
+    {
+      "date": "2021.05.30.",
+      "content": "참고로 아래 구윤희씨 리뷰는 산세미가 아니라 안세미오름입니다. 여기는 정해진 등반로가 없습니다. 임도와 사람들 다녔던 오솔길만 있을뿐. 정상뷰 없습니다. 정상부근 누군가 만들어논 쉼터? 와 묘지 한기가 있을뿐. 궁금한분 아니면 가볼만한 곳 아닙니다.",
+      "tags": ""
+    },
+    {
+      "date": "2020.05.24.",
+      "content": "녹지과 관리선생님께서 해주신 설명이 참좋았습니다. 인생을 많이 배우고갑니다. 감사합니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

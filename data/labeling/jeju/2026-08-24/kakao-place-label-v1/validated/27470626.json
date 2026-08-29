@@ -1,0 +1,117 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:27470626",
+  "place_id": "27470626",
+  "name": "선린지리조트 전린지리조트전망대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "공개 자료에서 ‘선린지 리조트’라는 숙박 시설은 제주 조천읍 일대의 리조트·휴양펜션으로 확인된다. 그러나 입력명에 포함된 ‘전린지리조트전망대’라는 정확한 표식은 공개·공식 자료에서 확인되지 않았고, 리조트 내부 전망 시설인지 별도 일반 방문지인지, 현행 출입 가능 여부도 확인할 수 없다. 따라서 추천용 독립 방문지 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명은 선린지 리조트와 전망대 표식을 함께 적고 있으나, 공개 자료가 확인하는 것은 과거 제주 조천읍 소재 선린지 리조트·휴양펜션뿐이다. 해당 Kakao 표식의 정확한 실체와 방문 가능 범위는 확인하지 못했다.",
+    "typical_visit": "일반 방문객이 이용할 수 있는 전망 시설인지, 숙박객 전용 부속시설인지, 현행 운영 여부를 확인하지 못했다.",
+    "experience_scope": "확인되지 않은 전망·숙박·조경 경험을 라벨값으로 추정하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 메타데이터는 place_id 27470626과 ‘선린지리조트 전린지리조트전망대’라는 장소명만 제공하며, 평점·방문자 후기·블로그 후기 수는 모두 0으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "공개 관광 통계 문서는 선린지 휴양펜션을 조천읍 선흘리 소재 휴양펜션으로 수록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "공개 여행 기사는 선린지를 넓은 산책로와 석부작 테마공원을 갖춘 리조트로 소개하지만, 입력명과 일치하는 전망대의 명칭·위치·공개 이용 조건은 제시하지 않는다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "‘전린지리조트전망대’가 오기인지, 선린지 리조트 내부의 특정 시설인지, 별도 장소인지 확인하지 못했다.",
+      "현행 리조트 운영 여부와 해당 표식의 일반 방문객 출입·이용 가능 여부를 확인하지 못했다.",
+      "정확한 위치, 안전한 접근 동선, 주차·보행 여건 및 최신 기상·시설 통제 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/27470626",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷은 place_id 27470626과 해당 장소명을 제공하며 공개 리뷰 근거는 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_tourism_statistics",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2013/CLIKC4220961285749039_attach_1.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2011년 제주 관광동향 연차보고서의 휴양펜션업 등록현황은 선린지 휴양펜션을 조천읍 선흘리 소재로 수록한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "매일신문",
+        "type": "news_travel_article",
+        "url": "https://www.imaeil.com/page/view/2002091314523078837",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "2002년 여행 기사는 선린지를 숙박·산책로·석부작 테마공원 맥락으로 소개한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 표식의 정확한 시설 유형·위치와 일반 방문객 출입 가능 여부, 현행 운영·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 리조트 관리 주체나 현장 최신 안내로 표식의 실재, 숙박객·일반 방문객의 이용 범위, 안전한 접근과 운영 상태를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

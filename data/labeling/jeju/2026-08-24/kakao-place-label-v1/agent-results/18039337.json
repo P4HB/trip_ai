@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18039337",
+  "place_id": "18039337",
+  "name": "사라봉공원 순국지사조봉호기념탑",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가보훈부 현충시설정보는 입력명과 일치하는 ‘순국지사 조봉호 기념비’를 제주시의 독립운동 현충시설(비석)로 안내한다. 사라봉공원 모충사 경내에 위치한 별도 기념시설로 공개 확인되어 독립 방문 가능한 역사·추모 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력명은 국가보훈부 현충시설정보의 ‘순국지사 조봉호 기념비’와 일치하는 사라봉공원 모충사 경내의 독립운동 현충시설이다.",
+    "typical_visit": "사라봉공원 안의 기념비를 찾아 조봉호의 제주 독립운동과 순국 이력을 읽고 추모하는 짧은 야외 역사 방문이다.",
+    "experience_scope": "공식 시설 정보는 독립운동 현충시설, 비석, 제주시 소재 및 건립 배경을 확인한다. 최신 개방 시간, 현장 해설, 주차·화장실, 보행로 상태와 무장애 접근성은 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국가보훈부 현충시설정보는 ‘순국지사 조봉호 기념비’를 제주특별자치도 제주시의 독립운동 현충시설이며 시설 종류는 비석이라고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "국가보훈부 현충시설정보는 조봉호가 1919년 독립희생회 제주도지방조직 활동과 군자금 모금으로 체포되어 복역 중 1920년 옥사했고, 제주도민이 그의 애국·희생정신을 기리기 위해 1977년 기념비를 세웠다고 설명한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "공개 저작물 안내는 모충사가 사라봉공원 안에 세운 사당이라고 설명하며 순국지사조봉호기념탑 사진을 제공한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "현행 개방 시간, 현장 해설·전시 운영 및 기념행사 일정을 확인하지 못했다.",
+      "기념비까지의 보행로 경사·계단, 휠체어 접근성, 주차·화장실과 휴식시설 정보를 확인하지 못했다.",
+      "월별 방문 여건과 악천후 시 현장 안전·통제 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "국가보훈부 현충시설정보서비스", "type": "official_memorial_facility_database", "url": "https://mfis.mpva.go.kr/memorial/mfisMovementList.do?pageIndex=77", "checked_at": "2026-08-25", "facts": ["순국지사 조봉호 기념비는 제주특별자치도 제주시의 독립운동 현충시설이며 시설 종류는 비석이다.", "조봉호의 1919년 독립운동, 1920년 옥사 및 1977년 기념비 건립 배경을 안내한다."]},
+      {"id": "S2", "publisher": "한국저작권위원회 공유마당", "type": "public_cultural_resource", "url": "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?menuNo=200018&wrtSn=12416360", "checked_at": "2026-08-25", "facts": ["저작물명은 순국지사조봉호기념탑이다.", "소개문은 모충사가 사라봉공원 안에 세운 사당이라고 설명한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "사라봉공원 안에 있으나, 공식 시설 설명에서 산·오름 탐방이나 정상 경관은 이 기념비의 핵심 경험으로 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.ocean": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 현충시설 정보는 독립운동 기념비를 설명하며 해안·해양 방문 경험은 확인하지 않는다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험은 기념비 관람과 추모이며 레포츠·참여형 체험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.culture_history": {"state": "numeric", "value": 0.75, "confidence": 0.9, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "국가보훈부가 독립운동 현충시설로 분류하고 조봉호의 독립운동과 순국 이력을 기념비의 설치 취지로 직접 설명한다.", "source_ids": ["S1"], "rule_ids": ["THEME-HISTORY-MEMORIAL-DIRECT"]},
+    "theme.theme_park": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 정보는 비석 형태의 현충시설을 안내하며 놀이·동물·전시 복합시설형 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·차·커피·디저트 이용이 이 기념비의 독립적인 방문 목적인 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "현충시설·비석으로 안내되며 시장 또는 상거래 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"state": "numeric", "value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "기념비의 상설 관람·추모 성격은 확인되지만 특정 기간 축제·공연이 핵심이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"state": "numeric", "value": 0.25, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "시설 종류가 비석이고 사라봉공원 모충사 경내의 기념시설로 확인되어 대표 관람은 야외에서 이뤄진다. 부대 실내공간은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-MEMORIAL"]},
+    "environment.weather_sensitivity": {"state": "numeric", "value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 공원 경내의 야외 비석 관람이므로 비·바람·더위·추위의 영향을 비교적 크게 받을 수 있다. 현장 통제 기준은 미확인이다.", "source_ids": ["S1", "S2"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공원 경내라는 위치 외에 조용함·혼잡도·휴식시설 등 체류 환경 근거가 부족해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "기념비까지의 실제 보행거리, 경사·계단 및 무장애 동선을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-ACCESSIBILITY-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "기념비 단독 관람의 체류시간과 주변 공원 연계 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "사라봉공원 경내 위치는 확인되지만 이 기념비의 경관 감상 가치가 직접 강조된 근거는 부족해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state": "numeric", "value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "조봉호의 제주 독립운동과 순국을 기리기 위해 제주도민의 이름으로 세운 특정 인물의 현충 기념비라는 고유성이 직접 확인된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-UNIQUE-MEMORIAL-DIRECT"]},
+    "style_evidence.local_embeddedness": {"state": "numeric", "value": 0.75, "confidence": 0.75, "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주에서 전개된 조봉호의 독립운동과 제주도민이 세운 기념비라는 설치 배경이 제주 지역 역사와 직접 연결된다.", "source_ids": ["S1"], "rule_ids": ["STYLE-LOCAL-HISTORY-DIRECT"]},
+    "style_evidence.landmark_significance": {"state": "numeric", "value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 현충시설로 관리되는 지역 독립운동 기념물이라는 의미는 확인되지만 제주 전체를 대표하는 관광 랜드마크라는 지정·안내는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["STYLE-MEMORIAL-SIGNIFICANCE"]},
+    "style_evidence.photo_value": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공개 사진 자료는 있으나 사진 촬영 또는 시각적 기록이 핵심 방문 경험으로 직접 권장되는 근거는 부족해 중립 fallback으로 둔다.", "source_ids": ["S2"], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문 시 최신 안전·안내·통신 환경을 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 체류 환경과 편의시설 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반에 필요한 보행로·안전시설·보호자 안내를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·현장 여건 정보가 확인되지 않아 야외 기념시설의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [
+    {"kind": "outdoor_memorial_accessibility_and_current_access_unknown", "applies_to": "all_visitors", "condition": "기념비는 사라봉공원 모충사 경내의 야외 현충시설이나, 현행 개방 여부, 보행로 경사·계단, 휠체어 접근성, 주차·화장실과 악천후 시 안전·통제는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 제주시 또는 현장 최신 안내로 공원·모충사 경내 접근 가능 여부, 보행 안전, 주차와 무장애 동선을 확인한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

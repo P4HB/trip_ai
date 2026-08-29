@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:24325298",
+  "place_id": "24325298",
+  "name": "용두암 인증센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "공개 관광·정부 자료에서 용두암 인증센터는 제주환상 자전거길 국토종주 인증을 위한 10개 인증센터 중 하나로 확인된다. 용두암 주변의 자전거길 종주 스탬프·인증을 지원하는 부대 시설이며, 독립적인 관람·체험 여행지로는 확인되지 않아 별도 추천 후보에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘용두암 인증센터’는 제주환상 자전거길의 용두암 인증 거점을 가리킨다.",
+    "typical_visit": "제주환상 자전거길 종주자가 인증수첩에 스탬프를 받고, 인근 제주시 관광안내센터에서 종주 완료 인증스티커 또는 속지를 받는 보조 목적의 짧은 방문이다.",
+    "experience_scope": "인증센터 자체는 자전거길 이용을 지원하는 부대 시설이다. 인접한 용두암·해안 경관이나 제주환상 자전거길 라이딩 경험은 이 Kakao 레코드의 독립 방문 경험으로 합산하지 않는다. 입력의 평점·리뷰 수와 공개 리뷰 작성자 정보는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 비짓제주 안내는 제주환상 자전거길 종주 완료 후 인증스티커를 용두암인증센터 옆 제주시 관광안내센터에서 현장 발급한다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "정부 관광정책 자료는 제주환상 자전거길에 총 10개 인증센터가 설치되어 운영되며, 그 명칭에 용두암이 포함된다고 밝힌다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "인증 부스의 2026년 현재 운영 상태, 스탬프·안내 서비스 제공 시간 및 기상·시설 점검에 따른 이용 가능 여부",
+      "이 Kakao 레코드가 가리키는 정확한 부스 위치와 현장 접근성·자전거 거치 편의"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 비짓제주",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000013514",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주환상 자전거길 종주 완료 후 인증스티커는 용두암인증센터 옆 제주시 관광안내센터에서 현장 발급된다고 안내한다.",
+          "제주환상 자전거길 인증센터와 주요 거점 정보는 자전거길 지도정보 서비스를 통해 확인하도록 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "대한민국 정책브리핑 관광관련 정부정책 (행정자치부 자료)",
+        "type": "government_publication",
+        "url": "https://www.tour.go.kr/FileSystem/UploadTemp/SendNewsLetter/%EC%A0%9C484%ED%98%B8_%EA%B4%80%EA%B4%91%EA%B4%80%EB%A0%A8%EC%A0%95%EB%B6%80%EC%A0%95%EC%B1%85(2015%EB%85%84%2011%EC%9B%942%EC%A3%BC).pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주환상 자전거길에 총 10개소의 인증센터가 설치되어 운영되며 용두암이 인증센터명에 포함된다고 기록한다.",
+          "인증수첩 갱신을 위한 스티커가 관광안내소 및 인증센터 등에 비치된다고 기록한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_route_certification_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "용두암 인증센터는 제주환상 자전거길 종주 인증을 지원하는 부대 시설로 확인되며, 독립적인 여행지 후보가 아님",
+      "status": "confirmed",
+      "action": "독립 추천·랭킹·일정 장소로 사용하지 않는다. 자전거길 종주 경로를 별도로 지원할 때에만 인증 거점 정보로 참조하고, 현장 운영 여부는 최신 안내로 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

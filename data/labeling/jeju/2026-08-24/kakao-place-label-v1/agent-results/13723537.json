@@ -1,0 +1,69 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723537",
+  "place_id": "13723537",
+  "name": "무명천산책길3",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.75,"rationale":"공개 코스 안내들이 무명천산책길3을 제주올레 14코스의 8.3km 지점에 있는 명시적 보행 구간으로 일관되게 수록한다. 상위 시설의 출입구나 중복 장소라는 근거는 확인되지 않아 독립 야외 탐방 지점으로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"무명천산책길3은 제주올레 14코스(저지-한림)의 무명천 산책길 구간 가운데 8.3km 지점으로 공개 코스 자료에 수록된 야외 보행 지점이다.",
+    "typical_visit":"올레 14코스를 걷는 중 숲·밭·하천길로 이어지는 야외 구간을 통과하는 짧은 도보 탐방으로 파악된다.",
+    "experience_scope":"공개 자료는 코스 내 위치와 보행 구간 성격을 확인한다. 최신 통행 가능 여부, 정확한 노면·경사, 편의시설·주차·무장애 접근성 및 계절별 안전 통제는 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"제주 관광 안내 페이지는 올레 14코스의 경로에 무명천 산책길3을 8.3km 지점으로 수록하고, 코스에 돌담길·밭길·숲길·하천길 등이 이어진다고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"공개 올레 14코스 경로 자료는 무명천 산책길1·2·3을 차례로 열거하고 무명천 산책길3을 8.3km 지점으로 기록한다.","source_ids":["S2"]},
+      {"id":"F3","text":"공개 여행 기록은 무명천 산책길 입구의 무명천 할머니 이야기를 제주 4·3의 지역 기억과 연결해 소개한다.","source_ids":["S3"]}
+    ],
+    "unknowns":["현재 개방·통행 가능 여부와 우천·강풍 시 안전 통제는 확인하지 못했다.","경사, 계단, 노면, 쉼터, 화장실, 주차 및 무장애 접근성은 확인하지 못했다.","해설·표지의 현행 상태와 무명천 할머니 관련 현장 안내의 존재는 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"제주 관광 안내","type":"public_tourism_information","url":"https://tjeju.com/CS/TourInfo/detail.aspx?cid=3898","checked_at":"2026-08-24","facts":["올레 14코스 경로에 무명천 산책길3이 8.3km 지점으로 수록된다.","코스에는 돌담길, 밭길, 숲길, 하천길 등이 이어진다고 소개된다."]},
+      {"id":"S2","publisher":"란초향이 가득한 곳에","type":"public_trail_record","url":"https://fkschgid.tistory.com/471202","checked_at":"2026-08-24","facts":["올레 14코스는 약 19.3km, 6~7시간 코스로 소개된다.","무명천 산책길3은 8.3km 지점으로 기록된다."]},
+      {"id":"S3","publisher":"비양도가 보이는 아름다운 바닷길","type":"public_travel_record","url":"https://bykk.tistory.com/entry/%EB%B9%84%EC%96%91%EB%8F%84%EA%B0%80-%EB%B3%B4%EC%9D%B4%EB%8A%94-%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4-%EB%B0%94%EB%8B%B7%EA%B8%B8-%EC%A0%9C%EC%A3%BC-%EC%98%AC%EB%A0%88-14%EC%BD%94%EC%8A%A4","checked_at":"2026-08-24","facts":["무명천 산책길 입구와 무명천 할머니 이야기를 제주 4·3의 지역 기억으로 소개한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·봉우리 경관이 이 지점의 핵심이라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안 또는 해양 활동이 이 지점의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"공개 코스 자료가 이 지점을 장거리 올레 보행 경로의 산책길 구간으로 수록한다. 개별 구간의 난이도·체험 운영은 미확인이라 0.75로 제한한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"무명천 할머니 이야기는 지역 역사 기억과 연결되지만, 이 지점에서 문화유산 관람·해설이 핵심 경험으로 제공되는지는 확인하지 못했다.","source_ids":["S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설·운영의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"자료가 산책길·밭길·숲길·하천길로 이어지는 보행 코스를 설명하므로 대표 경험은 야외로 파악된다. 인근 실내 시설 비율은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 보행이므로 비·바람·더위·추위의 영향을 비교적 받을 것으로 추론한다. 실제 통제 기준과 노면 상태는 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소음, 혼잡, 쉼터와 체류 환경 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해당 세부 구간의 경사·계단·노면 정보가 없어 보행 부담을 판단할 수 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 지점만의 소요시간과 출입 동선이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"이 세부 지점의 경관 감상이 핵심이라는 직접 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"이름과 지역 기억이 구분되지만, 다른 올레 구간과 비교한 고유 경험의 근거가 부족해 중립값으로 제한한다.","source_ids":["S2","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"제주올레 지역 보행 경로이며 무명천 할머니 이야기가 제주 4·3의 지역 기억과 연결되어 소개된다. 현장 해설 여부는 미확인이다.","source_ids":["S1","S3"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역 대표 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 통행·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 세부 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 보행은 겨울 기상 영향을 받을 수 있으나 실제 통행 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 보행은 겨울 기상 영향을 받을 수 있으나 실제 통행 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 보행은 여름 더위와 강수 영향을 받을 수 있으나 실제 통행 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 보행은 여름 더위와 강수 영향을 받을 수 있으나 실제 통행 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 방문의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 보행은 겨울 기상 영향을 받을 수 있으나 실제 통행 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"access_and_safety_unknown","applies_to":"all_visitors","condition":"최신 통행 가능 여부, 경사·노면, 주차·화장실·쉼터, 무장애 접근성 및 악천후 안전 통제는 확인하지 못했다.","status":"needs_review","action":"방문 전 제주올레 또는 현장 최신 안내로 통행 가능 여부와 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-24"
+}

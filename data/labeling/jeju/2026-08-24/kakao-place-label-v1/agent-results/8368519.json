@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8368519",
+  "place_id": "8368519",
+  "name": "생쟁이왓굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 기록은 생쟁이왓굴을 제주시 한림읍 협재리의 천연동굴·매장문화재로 식별하지만, 2016~2017년 불법 개발 과정에서 전체 70m 중 50m가 훼손됐다고 보도한다. 현재 일반 방문객을 위한 공식 관람 운영, 출입 동선 또는 안전 안내를 확인하지 못해 독립 방문·체험 장소로 41축 벡터를 생성하는 범위에서는 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "생쟁이왓굴은 제주시 한림읍 협재리에 있는 천연동굴로 공개 기록에 식별된다.",
+    "typical_visit": "일반 관광객을 위한 현재의 관람·체험 운영은 확인되지 않았으며, 공개 기록은 주로 동굴 훼손 사건과 매장문화재 보호 맥락에서 이 장소를 다룬다.",
+    "experience_scope": "관광객이 안전하게 독립 방문할 수 있는 공식 개방·동선·운영 근거가 없고, 과거 훼손 사실이 확인되어 추천용 독립 장소 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "국회도서관 국가정책정보협의회 공개 문서의 제주 동굴 목록은 생쟁이왓굴을 제주시 한림읍 협재리 소재 동굴로 수록한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "연합뉴스는 제주도자치경찰단 자료를 인용해 생쟁이왓굴이 협재리의 천연동굴·매장문화재이며, 불법 개발 과정에서 전체 70m 중 50m가 파괴됐다고 보도했다. 2020년 보도는 훼손이 회복 불가능한 정도였다는 법원 판단을 전한다.",
+        "source_ids": ["S2", "S3"]
+      }
+    ],
+    "unknowns": [
+      "2026-08-24 기준 현재 출입 허용 여부, 소유·관리 주체, 복구·보전 상태를 확인하지 못했다.",
+      "일반 방문객용 관람 운영, 공식 접근 동선, 주차·화장실·안전시설 또는 무장애 정보는 확인하지 못했다.",
+      "Kakao 지도 핀의 정확한 입구·잔존 구간과 실제 현장 위치 일치는 별도 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_government_document",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/95/624/2025/CLIKC2394003951198443_attach_2.pdf",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주 동굴 목록은 생쟁이왓굴의 소재지를 제주시 한림읍 협재리로 수록한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "news_report_with_government_source",
+        "url": "https://www.yna.co.kr/view/AKR20180629061400056",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "제주도자치경찰단 자료를 인용해 생쟁이왓굴을 제주시 한림읍 협재리의 천연동굴로 보도한다.",
+          "불법 개발 과정에서 전체 70m 중 50m 구간이 파괴됐다고 보도한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "연합뉴스",
+        "type": "court_report",
+        "url": "https://www.yna.co.kr/view/AKR20200116074200056",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "생쟁이왓굴을 매장문화재인 천연동굴로 보도한다.",
+          "법원 판단 인용 보도는 훼손이 회복 불가능한 정도였다고 전한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_safety_unconfirmed",
+      "applies_to": "recommendation_candidate",
+      "condition": "공개 기록상 훼손된 천연동굴·매장문화재이나, 현재 일반 방문객의 공식 출입 허용, 접근 동선, 현장 안전 및 관람 운영을 확인하지 못함",
+      "status": "needs_review",
+      "action": "독립 추천 후보에서는 제외하고, 향후 활용 전 관할 행정기관 또는 공식 관리 주체로부터 최신 출입·보전·안전 상태를 확인한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

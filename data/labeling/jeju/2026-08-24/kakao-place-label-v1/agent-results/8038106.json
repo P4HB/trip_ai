@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8038106",
+  "place_id": "8038106",
+  "name": "윤남못",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "입력의 장소명 ‘윤남못’은 공공 조사자료와 보도에서 제주시 애월읍 신엄리의 습지·생태학습장으로 확인되는 지명과 일치한다. 독립된 자연 관찰·산책 대상이지만 최신 개방·시설·안전 정보는 확인되지 않아 보수적으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "윤남못은 공개 공공 조사자료에서 제주시 애월읍 신엄리의 생태학습장으로 언급된 습지이며, 최근 보도는 같은 지점에서 수생식물 사이의 조류 활동을 전한다.",
+    "typical_visit": "확인된 범위의 대표 경험은 실외 습지 주변에서 자연·조류·수생식물을 관찰하는 짧은 방문이다.",
+    "experience_scope": "주소·공식 탐방 동선·개방 시간·주차·화장실·난간·노면·무장애 접근성·계절별 관찰 가능성은 확인하지 못했다. 평점·리뷰 수와 작성자 정보는 사용하지 않았다.",
+    "facts": [
+      {"id":"F1","text":"국회도서관에 수록된 제주시 마을특성 조사자료는 신엄리의 윤남못을 초·중·고 학생 생태학습장으로 언급한다.","source_ids":["S1"]},
+      {"id":"F2","text":"서울신문의 2026년 6월 보도는 제주시 애월읍 신엄리 윤남못에서 부레옥잠꽃 사이로 중대백로가 먹이활동을 했다고 전한다.","source_ids":["S2"]},
+      {"id":"F3","text":"입력 Kakao 레코드의 장소명은 ‘윤남못’이며, 주소·좌표·업종·공개 후기 근거는 제공되지 않았다.","source_ids":["S3"]}
+    ],
+    "unknowns": ["이 Kakao place_id의 주소·좌표와 신엄리 윤남못의 직접 대조 정보가 없다.","최신 출입 가능 여부와 습지 훼손·공사·기상에 따른 안전 조건을 확인하지 못했다.","동선 길이, 시설, 주차 및 어린이·고령자 접근성 정보를 확인하지 못했다."],
+    "sources": [
+      {"id":"S1","publisher":"국회도서관 지방의회·지방행정 연구포털(CLIK)","type":"public_research_report","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf","checked_at":"2026-08-24T00:00:00+09:00","facts":["제주시 마을특성 및 실태조사 자료는 신엄리의 윤남못을 학생 생태학습장으로 언급한다."]},
+      {"id":"S2","publisher":"서울신문","type":"public_news_report","url":"https://www.seoul.co.kr/news/society/2026/06/08/20260608800004","checked_at":"2026-08-24T00:00:00+09:00","facts":["2026년 6월 제주시 애월읍 신엄리 윤남못에서 부레옥잠꽃 사이의 중대백로 먹이활동을 보도했다."]},
+      {"id":"S3","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8038106","checked_at":"2026-08-24T00:00:00+09:00","facts":["입력 패킷의 장소명은 윤남못이다.","평점·리뷰 수와 작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름 경험이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.4,"status":"needs_review","inference_level":"researched_inference","rationale":"생태학습장이라는 공공 자료를 근거로 자연 관찰 참여는 가능하다고 보되, 체험 프로그램·동선은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험의 핵심성 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트가 독립 방문 목적인 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연·기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"습지와 조류·수생식물 관찰이라는 확인된 대표 경험은 실외로 추론된다. 부대 실내공간은 미확인이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 습지 관찰 경험이 실외이므로 비·바람·더위·추위 영향을 비교적 크게 받을 것으로 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설·혼잡도·소음 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"노면·경사·계단·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"탐방 동선과 체류 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"수생식물 사이의 조류 활동 보도는 자연 관찰 경관을 뒷받침하지만, 대표 조망지라는 직접 안내는 없어 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"다른 습지와 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.55,"status":"needs_review","inference_level":"researched_inference","rationale":"신엄리 마을의 생태학습장으로 공공 조사자료에 언급돼 지역 자연·생활과의 연결이 비교적 높다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"지역 대표 명소라는 공적 지정·관광 안내를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"수생식물과 조류 보도는 있으나 사진 촬영 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 수용·안전 여건 정보가 부족해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.45,"status":"needs_review","inference_level":"researched_inference","rationale":"학생 생태학습장 언급은 자연 학습 가능성을 뒷받침하지만, 보호자 동반 안전·시설 조건은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 부담·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"현장별 계절 운영·안전 정보가 없어 일반 야외 기후 휴리스틱의 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"identity_location_and_access_verification","applies_to":"recommendation_candidate","condition":"Kakao 입력에는 주소·좌표가 없어 신엄리 윤남못과의 직접 좌표 대조가 없고, 최신 출입·동선·시설·습지 안전 조건도 미확인이다.","status":"needs_review","action":"방문 전 Kakao 또는 현장 공공 안내로 정확한 위치, 출입 가능 여부, 기상·보행 안전과 시설을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

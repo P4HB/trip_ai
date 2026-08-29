@@ -1,0 +1,109 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:17556345",
+  "place_id": "17556345",
+  "name": "선녀와나무꾼 테마공원 추억의영화마을",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 장소명은 ‘선녀와나무꾼 테마공원 추억의영화마을’이다. 공개 자료는 ‘추억의 영화마을’을 선녀와 나무꾼 테마공원에서 함께 둘러보는 여러 내부 공간 가운데 하나로 열거하고, 제주관광공사도 같은 테마공원의 재현 거리와 영화 상영을 소개한다. 따라서 별도의 독립 방문지보다 선녀와나무꾼 테마공원 관람 경험에 포함된 부속 공간으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "evidence_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력의 ‘선녀와나무꾼 테마공원 추억의영화마을’은 선녀와나무꾼 테마공원 안의 ‘추억의 영화마을’을 가리키는 세부 장소명으로 확인된다.",
+    "typical_visit": "방문자는 선녀와나무꾼 테마공원의 여러 재현·전시 공간을 관람하는 과정에서 추억의 영화마을을 함께 이용하는 것으로 파악된다.",
+    "experience_scope": "추억의 영화마을만의 독립 운영·입장·접근 조건은 확인하지 못했다. 이 레코드는 상위 테마공원과 분리된 추천용 41축 벡터를 만들지 않고 부속 시설로 보존한다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터의 명칭은 ‘선녀와나무꾼 테마공원 추억의영화마을’이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "대한병원협회 공개 자료는 선녀와 나무꾼 테마공원에서 서울역, 추억의 사진관, 추억의 영화마을, 도심 상가거리, 민속박물관, 추억의 내무반 등을 돌아볼 수 있다고 설명한다.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주관광공사는 선녀와나무꾼을 50~80년대 시대상을 볼 수 있는 테마공원으로 소개하고, 그 안의 추억의 거리와 영화 상영을 설명한다.",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "unknowns": [
+      "추억의 영화마을 자체의 현재 운영 여부, 상위 테마공원 입장권과 별도 이용 조건, 상영 일정은 확인하지 못했다.",
+      "세부 공간의 최신 접근성, 보행 안전, 사진 촬영 허용 범위와 혼잡도는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/17556345",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘선녀와나무꾼 테마공원 추억의영화마을’이다.",
+          "평점과 후기 수는 적격성이나 라벨값의 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "대한병원협회",
+        "type": "public_program_document",
+        "url": "https://www.kha.or.kr/kha_home/notice_list.do?articleNo=19290&attachNo=325033&mode=download",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "선녀와 나무꾼 테마공원의 관람 구성으로 추억의 영화마을을 포함한 여러 공간을 열거한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "제주관광공사",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022558",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "선녀와나무꾼은 50~80년대 시대상을 볼 수 있는 테마공원으로 소개된다.",
+          "추억의 거리와 과거 영화를 상영하는 공간이 테마공원 경험으로 소개된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "추억의 영화마을은 공개 자료에서 선녀와나무꾼 테마공원의 여러 내부 관람 구성 중 하나로 확인된다.",
+      "status": "confirmed",
+      "action": "상위 테마공원과 별개로 추천·중복 집계하지 않는다. 세부 공간의 최신 운영 또는 접근 안내가 필요하면 상위 시설의 공식 최신 안내를 확인한다.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

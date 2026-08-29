@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725930",
+  "place_id": "13725930",
+  "name": "제주올레5코스 공식안내소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.5,
+    "rationale": "입력 명칭이 제주올레 5코스의 공식안내소이며, 익명 리뷰도 버스·숙소·맛집 등 코스 이용 정보 안내 경험을 언급한다. 안내소는 올레길 이용을 돕는 부속 서비스 지점으로 보존하되, 독립적인 여행 경험·추천 후보로 41축을 부여하지 않는다. 현재 직원 서비스 평가는 시점 의존적이라 라벨 근거로 사용하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 장소명은 제주올레 5코스 공식안내소이며, 익명 리뷰는 올레길 이동·주변 정보 안내 서비스를 언급한다. 공식 최신 운영 시간·제공 서비스 범위는 입력 근거만으로 확인하지 못했다.",
+    "typical_visit": "입력 리뷰는 버스와 숙소·맛집 정보 안내, 그리고 시점별 상이한 직원 응대 경험을 언급한다. 이는 코스 이용 지원 시설의 보조 근거일 뿐, 독립 관광 방문 경험의 근거는 아니다.",
+    "experience_scope": "안내소는 올레 5코스의 부속 서비스 시설로 분류한다. 주소·좌표·공식 최신 운영 안내가 제공되지 않았고, Kakao 평점·리뷰 수와 시점 의존적 서비스 평가는 추천 라벨값에 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 13725930의 장소명을 ‘제주올레5코스 공식안내소’로 제공한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력의 익명 공개 리뷰는 버스, 숙소, 맛집 등 올레길 이용 정보 안내 경험을 언급한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 공식 운영 시간과 제공 서비스 범위",
+      "정확한 위치·접근성 및 휴무·인력 현황",
+      "직원 응대 품질의 최신 상태"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13725930",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘제주올레5코스 공식안내소’이고 place_id는 13725930이다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 익명 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/13725930",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 리뷰는 버스·숙소·맛집 등 코스 이용 정보 안내 경험을 언급한다.",
+          "입력 리뷰에는 시점별로 상이한 직원 응대 경험이 포함되며 최신 운영·서비스 수준을 확정하지 않는다.",
+          "리뷰는 보조 근거로만 사용했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "support_facility_not_independent_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "올레 5코스 이용 정보를 제공하는 안내소로 보이며 독립 관광 경험의 적격 후보가 아님",
+      "status": "needs_review",
+      "action": "코스 이용 전 공식 채널로 최신 운영 시간, 교통·예약·안내 서비스 제공 여부를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

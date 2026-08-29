@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "17582105",
+  "canonical_id": "kakao:17582105",
+  "name": "한라생태숲 목련총림",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "공식 관광 정보는 목련총림을 한라생태숲 안의 여러 식물 주제 공간 중 하나로 열거한다. 독립 여행지가 아닌 상위 생태숲의 내부 구성 구역이다.",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "ELIG-SUBORDINATE-FACILITY",
+      "ELIG-NOT-INDEPENDENT-DESTINATION"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_zone_not_destination",
+      "applies_to": "recommendation_candidate",
+      "condition": "목련총림은 한라생태숲 내부 테마 식재 구역",
+      "status": "confirmed",
+      "action": "상위 장소 한라생태숲을 별도 평가한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28"
+    }
+  ],
+  "review_priority": "low",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "입력명은 공식 소개의 한라생태숲 내 목련총림과 일치한다.",
+    "facts": [
+      {
+        "text": "Visit Jeju는 한라생태숲의 구성 요소로 목련총림을 열거한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "한라생태숲은 목련총림 등을 포함한 여러 테마숲과 시설로 구성된다고 보도된다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "독립 운영 여부는 확인되지 않았으나 상위 생태숲 구성으로 확인됨"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_information",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000011955",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "목련총림을 한라생태숲의 여러 식물 공간 중 하나로 소개한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://www.yna.co.kr/view/AKR20150904029700056",
+        "checked_at": "2026-08-28",
+        "facts": [
+          "한라생태숲이 목련총림 등 여러 숲·식물원으로 구성된다고 보도한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

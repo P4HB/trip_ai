@@ -1,0 +1,663 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7877823",
+  "place_id": "7877823",
+  "name": "목시물굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "Kakao 장소명은 제주관광공사 VisitJeju의 관광지 ‘목시물굴’과 일치한다. 해당 페이지는 제주시 조천읍 선흘리 산26번지 일대의 제주4·3 역사유적·관광지로 설명하므로, 독립적인 방문·추모 목적의 장소 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "목시물굴은 제주시 조천읍 선흘리 산26번지 일대에 있는 제주4·3 역사유적 관광지다.",
+    "typical_visit": "방문자는 선흘곶 일대의 동굴과 제주4·3 희생의 역사를 현장에서 이해·추모하는 짧은 역사·자연 유적 방문을 한다.",
+    "experience_scope": "이 결과는 역사유적의 의미와 동굴 구조만을 근거로 한 AI 초안이다. 현재 출입 가능 여부, 안전관리, 주차·화장실, 정확한 보행 동선과 운영 상태는 확인하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "VisitJeju는 목시물굴을 제주4·3·문화유적지·역사유적으로 분류하고, 선흘리 초토화 이후 주민들이 은신했다가 희생당한 곳으로 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "VisitJeju는 위치를 제주시 조천읍 선흘리 산26번지 일대로 제시하고, 굴의 길이는 약 100m이며 한 입구는 매우 좁고 내부 바닥은 울퉁불퉁하고 낮은 형상이라고 설명한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F3",
+        "text": "제주다크투어는 목시물굴을 선흘리 주민의 은신·학살 역사현장으로 소개하며, 도틀굴에서 덕천 방향 약 1km 지점의 숲속 접근 위치를 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "현재 내부 출입 허용 여부와 안전·보호구역 규칙을 확인하지 못했다.",
+      "무장애 접근, 주차, 화장실, 조명과 정확한 보행 난이도를 확인하지 못했다.",
+      "계절별 방문 조건과 최신 운영·통제 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 VisitJeju",
+        "type": "official_tourism_site",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022866",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "목시물굴을 제주4·3 문화·역사유적 관광지로 소개한다.",
+          "주소와 동굴의 좁고 울퉁불퉁한 내부 구조를 설명한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주다크투어",
+        "type": "historical_site_guide",
+        "url": "https://www.jejudarktours.org/ko/historical-sites/moksimul-cave/",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "목시물굴을 제주4·3 역사현장으로 소개한다.",
+          "숲속 접근 위치와 선흘리 산26번지 일대를 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/7877823",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 목시물굴이다.",
+          "평점과 방문 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.5,
+      "confidence": 0.55,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "선흘곶 숲속의 동굴 역사유적이라는 위치·경관 맥락은 산림 자연 방문 요소를 보이나, 산·오름 자체가 주목적이라는 직접 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "theme-natural-setting-v1"
+      ]
+    },
+    "theme.ocean": {
+      "value": 0.25,
+      "confidence": 0.55,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 방문 경험은 선흘리 내륙의 동굴·역사유적이며 해안·해양 활동 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속 유적에 접근하는 보행은 수반될 수 있으나 레포츠·참여형 체험이 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 1,
+      "confidence": 0.9,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 페이지가 제주4·3 문화·역사유적지로 분류하고 희생 역사와 현장을 상세히 설명한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "theme-cultural-heritage-direct-v1"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "확인된 장소 성격은 역사 동굴 유적이며 놀이·동물·수족관·워터파크형 시설 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광 설명에는 카페·차·커피·디저트 이용 시설이나 경험이 제시되지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광 설명상 역사 동굴 유적이며 시장 방문·상거래가 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "기간성 축제·공연이 장소의 핵심이라는 정보는 확인되지 않고 상시 역사유적 소개만 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "theme-scope-v1"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.7,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "동굴 내부가 있으나 숲속 유적 접근과 입구·주변 공간이 포함되며, 확인된 대표 경험은 실내 시설 중심이 아니다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "environment-structure-v1"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.55,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속 동굴 유적의 외부 접근이 확인되어 비·바람·더위·추위에 노출될 가능성이 크지만, 계절별 운영·기상 영향은 직접 확인되지 않았다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "environment-outdoor-exposure-v1"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.25,
+      "confidence": 0.45,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "자연 속 유적이지만 제주4·3 희생을 마주하는 추모·역사 경험이 핵심이어서 일반적인 휴식 목적 적합도는 낮게 추정한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "style-experience-meaning-v1"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 설명은 한 입구가 한 사람이 누워서 들어갈 만큼 좁고 내부 바닥이 울퉁불퉁하고 낮다고 명시하므로, 편한 보행·이용으로 보기 어렵다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "style-access-structure-v1"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "rationale": "동굴은 약 100m이고 많은 사람이 오래 머물기 부적절한 구조라는 직접 설명이 있어 장시간 체류 유연성은 제한적이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "style-duration-structure-v1"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 0.5,
+      "confidence": 0.45,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속 동굴과 용암 암석이라는 자연 환경은 관찰 요소가 있으나, 전망·경관 감상이 핵심이라는 직접 안내는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "style-natural-observation-v1"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "선흘리 주민의 은신과 희생, 좁은 용암동굴이라는 장소 고유의 제주4·3 역사 맥락이 구체적으로 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "style-unique-history-direct-v1"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "제주 선흘리 주민과 제주4·3 사건, 선흘곶 동굴이라는 지역의 역사·자연 맥락이 직접 확인된다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "style-local-history-direct-v1"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광지와 제주4·3 역사현장으로 등재되어 있으나 제주 전체의 대표 상징 명소인지에 대한 비교·지정 근거는 확인하지 못했다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "style-listed-site-v1"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.25,
+      "confidence": 0.4,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지에는 동굴·안내판 사진이 있으나, 촬영이 핵심 방문 가치라는 직접 근거는 없고 추모 유적의 맥락상 과장하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "style-visual-evidence-v1"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.4,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "개별 역사·추모 방문은 가능하나 혼자 방문 안전·동선 정보가 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "companion-information-limited-v1"
+      ]
+    },
+    "couple": {
+      "value": 0.5,
+      "confidence": 0.4,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "두 사람이 역사유적을 함께 이해할 수 있으나 연인 대상 편의·권장 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "companion-information-limited-v1"
+      ]
+    },
+    "friends": {
+      "value": 0.5,
+      "confidence": 0.4,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "소규모 동행 역사 방문은 가능하나 단체 동선·수용 정보가 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "companion-information-limited-v1"
+      ]
+    },
+    "kids": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "좁고 울퉁불퉁한 동굴 구조와 학살·희생 역사라는 내용은 어린이 동반 시 접근성·정서적 적합성의 사전 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "companion-access-and-content-caution-v1"
+      ]
+    },
+    "parents": {
+      "value": 0.25,
+      "confidence": 0.65,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "좁은 입구와 울퉁불퉁하고 낮은 내부 구조가 확인되어 고령 부모 동반의 보행 편의는 낮게 추정하며 무장애 정보는 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "companion-access-and-content-caution-v1"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "1월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "2": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "2월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "3": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "3월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "4": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "4월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "5": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "5월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "6": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "6월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "7": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "7월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "8": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "8월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "9": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "9월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "10": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "10월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "11": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "11월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    },
+    "12": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "12월의 장소별 방문 조건을 확인하지 못해 중립값으로 보류한다.",
+      "source_ids": [],
+      "rule_ids": [
+        "month-unknown-neutral-fallback-v1"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "현재 내부 출입 허용 여부, 안전 통제 및 무장애 접근 정보가 확인되지 않았고, 공식 설명에는 좁고 울퉁불퉁한 동굴 구조가 있다.",
+      "status": "needs_review",
+      "action": "방문 전 공공·공식 안내로 출입 가능 여부와 안전·보행 조건을 재확인한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    },
+    {
+      "kind": "sensitive_historical_content",
+      "applies_to": "recommendation_candidate",
+      "condition": "제주4·3 희생과 학살의 역사현장으로, 동반자 연령과 여행 목적에 따라 사전 고지가 필요하다.",
+      "status": "needs_review",
+      "action": "어린이 동반 또는 추모·역사 콘텐츠 회피 요청에는 사용자가 맥락을 확인하도록 한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.25,
+      "confidence": 0.45,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.5,
+      "confidence": 0.45,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.85,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.6,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.25,
+      "confidence": 0.4,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

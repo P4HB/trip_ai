@@ -1,0 +1,92 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:441233161",
+  "place_id": "441233161",
+  "name": "창고망난돌",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "duplicate",
+    "confidence": 0.95,
+    "rationale": "Kakao 장소명 ‘창고망난돌’은 한국관광공사 관광 안내의 ‘창꼼’과 같은 별칭으로 제시된다. 두 자료는 모두 제주시 조천읍 북촌리 393의 구멍 난 해안 기암, 바위 구멍을 통한 바다 조망과 사진 촬영 경험을 설명하므로, 기존 추천 가능 TourAPI 관광지 창꼼(contentid 2858656)과 동일 장소로 판정한다.",
+    "duplicate_of": "tourapi:2858656",
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드 ‘창고망난돌’은 공개 관광 안내에서 ‘창꼼’ 또는 ‘창 고망난 돌’로 소개되는 제주시 조천읍 북촌리의 해안 기암과 일치한다.",
+    "typical_visit": "구멍 난 바위와 그 너머의 바다·다려도·방파제를 보고 사진을 촬영하는 짧은 야외 방문이다.",
+    "experience_scope": "기존 TourAPI 관광지 창꼼(contentid 2858656)과 동일한 대표 방문 경험이므로 신규 Kakao 후보로 별도 41축 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 VISITKOREA는 창꼼을 제주시 조천읍 북촌리 393의 창이 난 듯한 기암으로 안내하며, 바위 구멍을 통해 사진을 찍고 바다 쪽 다려도와 방파제가 보인다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 TourAPI 관광지 안내 재배포는 창꼼을 ‘창 고망 난 돌’이라고 설명하고, 북촌환해장성·북촌 용물 동쪽의 구멍 난 바위와 제주 바다 풍경을 소개한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "입력 Kakao 레코드의 장소명은 ‘창고망난돌’이며, 이는 F2의 ‘창 고망 난 돌’ 표기와 일치한다.",
+        "source_ids": ["S3", "S2"]
+      }
+    ],
+    "unknowns": [
+      "입력 패킷에는 Kakao 레코드의 주소·좌표·업종이 포함되지 않았으나, 별칭과 공개 관광 안내의 고유 지형 설명이 기존 TourAPI 장소와 동일함을 뒷받침한다.",
+      "별도 Kakao 레코드의 최신 운영·접근 정보는 신규 후보 라벨의 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 VISITKOREA",
+        "type": "public_tourism",
+        "url": "https://japanese.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=199591",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "창꼼은 제주시 조천읍 북촌리 393의 창이 난 듯한 기암이다.",
+          "바위 구멍을 통해 사진을 찍으며 바다 쪽 다려도와 방파제를 볼 수 있다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 TourAPI 관광지 안내 재배포",
+        "type": "public_tourism",
+        "url": "https://www.koreatriptips.com/tourist-attractions/2858656.html",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "창꼼은 ‘창 고망 난 돌’로도 설명된다.",
+          "북촌환해장성 및 북촌 용물 동쪽의 구멍 난 바위와 제주 바다 풍경을 소개한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/441233161",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘창고망난돌’이다.",
+          "평점·후기 수와 공개 리뷰 작성자 정보는 라벨값 또는 동일성 판정의 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "duplicate_candidate",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao:441233161은 기존 TourAPI 관광지 창꼼(contentid 2858656)과 같은 창고망난돌/창꼼 해안 기암이다.",
+      "status": "confirmed",
+      "action": "기존 TourAPI:2858656의 검수·추천 경로를 재사용하고 Kakao 후보를 별도 추천 벡터로 병합하거나 노출하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

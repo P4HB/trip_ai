@@ -1,0 +1,77 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25206936",
+  "place_id": "25206936",
+  "name": "대천이오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "국립국어원 자료가 조천읍 대천동의 대천이오름을 명시하고, 입력 Kakao 장소명과 일치한다. 공개 후기에는 비정비 자연 오름을 도보로 찾은 경험이 구체적으로 남아 있어, 관리 상태는 별도 제약으로 보존하되 독립 자연 방문지 후보로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "대천이오름은 국립국어원 자료에 제주 조천읍 대천동의 오름으로 수록되어 있으며, Kakao 입력의 장소명과 일치한다.",
+    "typical_visit": "공개 기록은 숲으로 덮인 오름과 분화구 주변을 도보로 찾는 자연 탐방 경험을 설명한다. 입력의 공개 후기는 표지·정비가 부족하고 길 찾기 및 통행에 위험이 있을 수 있다고 전한다.",
+    "experience_scope": "자연 오름 탐방으로 한정해 라벨링했다. 최신 개방 여부, 공식 탐방로, 안전시설, 출입 제한과 계절별 실제 이용 가능성은 확인하지 못했으므로 모든 적합도는 보수적으로 두고 별도 제약을 둔다.",
+    "facts": [
+      {"id": "F1", "text": "국립국어원 자료는 조천읍의 오름 목록과 자연 부락 이름이 같은 오름 예시에서 ‘대천이오름(조천읍 대천동)’을 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "공개 탐방 기록은 대천이오름에 북동쪽으로 열린 말굽형 분화구, 풀밭과 숲 덮인 비탈이 있다고 서술한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "입력에 포함된 익명화된 Kakao 공개 후기들은 2020년에 이정표·정해진 등산로 부족, 우거진 수풀, 출구 통행 문제를 언급한다. 이는 최신 운영 사실로 확정하지 않고 접근성 위험 신호로만 사용한다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["공식 관리기관의 최신 개방·출입·탐방로 안내를 확인하지 못했다.", "현재 계절별 식생, 노면, 주차 및 화장실·안전시설 상태를 확인하지 못했다.", "입력 Kakao 평점과 후기 수는 어떤 라벨값의 근거로도 사용하지 않았다."],
+    "sources": [
+      {"id": "S1", "publisher": "국립국어원", "type": "public_language_reference", "url": "https://www.korean.go.kr/nkview/nklife/1994_1/4_6.html", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["대천이오름을 조천읍 대천동의 오름으로 수록한다."]},
+      {"id": "S2", "publisher": "Alongma", "type": "public_travel_record", "url": "https://alongma2008.tistory.com/7849064", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["말굽형 분화구와 숲 덮인 비탈을 서술한다."]},
+      {"id": "S3", "publisher": "Kakao Map", "type": "public_map_review_summary", "url": "https://place.map.kakao.com/25206936", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 패킷의 익명화된 공개 후기에는 이정표·정해진 등산로 부족과 통행 위험 언급이 있다.", "평점·후기 수·작성자 정보는 라벨 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.7, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "공적 목록과 탐방 기록이 오름 지형을 직접 확인한다.", "source_ids": ["S1", "S2"], "rule_ids": ["mountain-natural-visit"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "확인된 대표 경험은 내륙 오름 탐방이며 해안 경험 자료는 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-ocean-evidence-fallback"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "도보로 오름을 찾는 탐방 기록과 후기에서 참여형 보행이 확인되나 공식 코스는 미확인이다.", "source_ids": ["S2", "S3"], "rule_ids": ["walking-experience-inference"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "장소 자체의 역사·문화 전시 또는 체험 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-culture-evidence-fallback"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "자연 오름 외 테마파크형 시설 근거가 없다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-theme-park-evidence-fallback"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-cafe-evidence-fallback"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-market-evidence-fallback"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 행사나 축제 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["no-festival-evidence-fallback"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "분화구·숲 비탈의 자연 탐방 기록으로 대표 경험은 실외로 판단하나 시설 비율은 미확인이다.", "source_ids": ["S2"], "rule_ids": ["natural-site-indoor-inference"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 실외 보행이고 비정비·수풀 길 언급이 있어 날씨와 노면 영향 가능성이 크다.", "source_ids": ["S2", "S3"], "rule_ids": ["outdoor-trail-weather-inference"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲 자연경관은 확인되지만 평온한 체류 경험을 직접 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["restfulness-uncertain-fallback"]},
+    "style_evidence.physical_ease": {"value": 0.25, "confidence": 0.55, "status": "needs_review", "inference_level": "researched_inference", "rationale": "후기에 희미한 길·수풀·통행 장애가 언급되어 쉬운 보행 경험으로 보기 어렵지만 최신 상태는 미확인이다.", "source_ids": ["S3"], "rule_ids": ["unmaintained-access-ease-inference"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "공식 코스·소요시간 정보가 없어 체류 시간 조절성은 중립 fallback으로 둔다.", "source_ids": ["S2", "S3"], "rule_ids": ["duration-unknown-fallback"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "분화구와 숲 경관은 기록되지만 조망과 대표 경관의 질은 상충된 개인 기록이 있어 중간값으로 둔다.", "source_ids": ["S2", "S3"], "rule_ids": ["scenery-mixed-evidence"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "말굽형 분화구와 숲 오름이라는 특징은 확인되나 비교 가능한 공식 해설이 부족하다.", "source_ids": ["S2"], "rule_ids": ["natural-feature-distinctiveness-inference"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.65, "status": "needs_review", "inference_level": "direct_evidence", "rationale": "국립국어원 자료가 조천읍 대천동의 지명·오름으로 직접 수록한다.", "source_ids": ["S1"], "rule_ids": ["local-place-identity"]},
+    "style_evidence.landmark_significance": {"value": 0.25, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주를 대표하는 상징 명소라는 공적 근거를 찾지 못했다.", "source_ids": ["S1", "S2"], "rule_ids": ["landmark-unknown-fallback"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "자연 지형은 확인되지만 촬영 가치의 직접 근거가 부족하다.", "source_ids": ["S2"], "rule_ids": ["photo-unknown-fallback"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "후기에 혼자 가면 위험할 수 있다는 언급이 있어 보수적으로 낮춘다.", "source_ids": ["S3"], "rule_ids": ["unmaintained-trail-solo-caution"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 탐방 가능성은 있으나 공식 안전·코스 정보가 없다.", "source_ids": ["S3"], "rule_ids": ["companion-uncertain-fallback"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹 탐방의 실제 적합성 자료가 부족하다.", "source_ids": ["S3"], "rule_ids": ["companion-uncertain-fallback"]},
+    "kids": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "정비되지 않은 길과 통행 장애 언급으로 아동 동반은 보수적으로 판단한다.", "source_ids": ["S3"], "rule_ids": ["unmaintained-trail-kids-caution"]},
+    "parents": {"value": 0.25, "confidence": 0.5, "status": "needs_review", "inference_level": "researched_inference", "rationale": "표지·등산로 부족과 수풀·통행 장애 언급으로 부모 동반도 보수적으로 판단한다.", "source_ids": ["S3"], "rule_ids": ["unmaintained-trail-parents-caution"]}
+  },
+  "month_fit": {
+    "1": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "2": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "3": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "4": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "5": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "6": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "7": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "8": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "9": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "10": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "11": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]},
+    "12": {"state": "numeric", "value": 0.5, "confidence": 0.25, "status": "fallback", "inference_level": "climate_heuristic", "rationale": "최신 개방·노면 정보를 확인하지 못해 계절 적합성은 중립 fallback이다.", "source_ids": ["S3"], "rule_ids": ["month-unknown-climate-fallback"]}
+  },
+  "hard_constraints": [
+    {"kind": "access_and_safety_unverified", "applies_to": "recommendation_candidate", "condition": "공식 최신 개방·탐방로·안전시설을 확인하지 못했고, 2020년 공개 후기에는 이정표·정해진 등산로 부족 및 통행 장애가 언급됨", "status": "needs_review", "action": "추천 전 공식 관리기관 또는 현장 최신 정보로 개방·합법적 출입·안전한 동선을 확인한다. 확인 전에는 어린이·보행 취약자 및 단독 탐방 추천에서 제외한다.", "source_ids": ["S3"], "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

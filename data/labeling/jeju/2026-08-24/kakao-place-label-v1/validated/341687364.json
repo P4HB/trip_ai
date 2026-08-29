@@ -1,0 +1,631 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "341687364",
+  "canonical_id": "kakao:341687364",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "identity": {
+    "name": "은달산 전망터",
+    "place_type": "outdoor_viewpoint_on_walking_route",
+    "provider_url": "https://place.map.kakao.com/341687364",
+    "status": "identified",
+    "rationale": "공개 여행 기록과 지역 매체가 모두 추자도 올레 18-1 코스의 은달산 전망터 및 조망 지점으로 지칭한다.",
+    "source_ids": [
+      "source_jejutoday_202408",
+      "source_olle_walk_202204"
+    ]
+  },
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "산책로의 단순 표지물이 아니라, 해상 섬과 추자교 등을 조망하는 독립된 전망·휴식 방문 경험으로 공개 자료에서 확인된다.",
+    "source_ids": [
+      "source_jejutoday_202408",
+      "source_olle_walk_202204",
+      "source_walklog_201904"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "은달산 길의 숲속 보행 구간에 있는 전망터로 소개된다.",
+      "source_ids": [
+        "source_walklog_201904"
+      ],
+      "rule_ids": [
+        "PLACE-TYPE-OUTDOOR-VIEWPOINT"
+      ]
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "전망터에서 염섬·예도 등 바다의 섬을 바라본다는 설명이 있다.",
+      "source_ids": [
+        "source_brunch_202305"
+      ],
+      "rule_ids": [
+        "DIRECT-SEASCAPE-VIEW"
+      ]
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "도보 코스 중 지점이나, 장소 자체의 별도 참여형 활동 정보는 확인되지 않았다.",
+      "source_ids": [
+        "source_olle_walk_202204"
+      ],
+      "rule_ids": [
+        "FALLBACK-OUTDOOR-STOP"
+      ]
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "장소 자체의 역사·문화유산 또는 전시 경험은 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NO-CULTURE-EVIDENCE"
+      ]
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "테마파크형 시설 또는 유료 놀이 경험 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NO-THEME-PARK-EVIDENCE"
+      ]
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "카페·차·디저트 이용 시설 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NO-CAFE-EVIDENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "시장 방문 경험 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NO-MARKET-EVIDENCE"
+      ]
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "특정 기간 행사나 축제 장소라는 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-NO-FESTIVAL-EVIDENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "숲속길의 전망터·조망처로 설명되어 대표 경험은 실외로 판단했으나, 시설 구조의 공식 확인은 없다.",
+      "source_ids": [
+        "source_walklog_201904",
+        "source_brunch_202305"
+      ],
+      "rule_ids": [
+        "OUTDOOR-VIEWPOINT-INFERENCE"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.7,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "실외 숲길과 해상 조망이 핵심이므로 강수·강풍·시정이 방문 경험에 영향을 줄 것으로 판단된다.",
+      "source_ids": [
+        "source_walklog_201904",
+        "source_brunch_202305"
+      ],
+      "rule_ids": [
+        "OUTDOOR-EXPOSURE-INFERENCE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "전망·자연 감상 지점이지만 편의시설과 체류 환경은 확인되지 않았다.",
+      "source_ids": [
+        "source_jejutoday_202408"
+      ],
+      "rule_ids": [
+        "VIEWPOINT-REST-INFERENCE"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "도보 숲길 구간이나 거리·경사·계단·무장애 정보가 확인되지 않았다.",
+      "source_ids": [
+        "source_walklog_201904"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESSIBILITY-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "정차·관람 시간 또는 이용 제한 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-DURATION-UNKNOWN"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "염섬과 예도를 바라보는 전망터로 명시적으로 소개된다.",
+      "source_ids": [
+        "source_brunch_202305"
+      ],
+      "rule_ids": [
+        "DIRECT-NAMED-VIEWPOINT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.55,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "추자도 올레의 해상 섬 조망 지점이라는 특성은 있으나, 공식 차별성 설명은 확인되지 않았다.",
+      "source_ids": [
+        "source_brunch_202305",
+        "source_olle_walk_202204"
+      ],
+      "rule_ids": [
+        "ROUTE-VIEWPOINT-INFERENCE"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "추자도의 올레길과 주변 섬 경관을 직접 경험하는 장소로 자료에서 확인된다.",
+      "source_ids": [
+        "source_jejutoday_202408",
+        "source_brunch_202305"
+      ],
+      "rule_ids": [
+        "DIRECT-LOCAL-LANDSCAPE"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "지역 대표 명소 또는 공인 상징이라는 근거를 확인하지 못했다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-LANDMARK-UNKNOWN"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "현장 사진과 함께 해상 섬 조망을 소개한 공개 기록이 있다.",
+      "source_ids": [
+        "source_brunch_202305",
+        "source_jejutoday_202408"
+      ],
+      "rule_ids": [
+        "DIRECT-PHOTOGRAPHIC-RECORD"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "동행 유형별 이용 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 동반 안전·난이도 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "경사·계단·휴식시설 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "climate_heuristic",
+      "rationale": "월별 현장 운영·접근성 정보가 확인되지 않았다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-MONTH-UNKNOWN"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "weather_exposure",
+      "applies_to": [
+        "outdoor_viewing",
+        "walking_access"
+      ],
+      "condition": "실외 숲길과 해상 조망 지점이므로 강풍·강수·저시정 시 방문 경험과 보행 안전이 저하될 수 있다. 현장 통제 여부는 확인되지 않았다.",
+      "status": "needs_confirmation",
+      "action": "방문 직전 기상과 현장 통제·보행 가능 여부를 확인한다.",
+      "source_ids": [
+        "source_walklog_201904",
+        "source_brunch_202305"
+      ],
+      "checked_at": "2026-08-25T04:39:05+09:00"
+    },
+    {
+      "kind": "accessibility_unknown",
+      "applies_to": [
+        "kids",
+        "parents",
+        "mobility_limited"
+      ],
+      "condition": "거리, 경사, 계단, 난간, 무장애 접근과 화장실·휴식시설의 공식 정보를 확인하지 못했다.",
+      "status": "unknown",
+      "action": "이동약자·아동 동반 전에는 현장 접근 조건을 별도로 확인한다.",
+      "source_ids": [
+        "source_walklog_201904"
+      ],
+      "checked_at": "2026-08-25T04:39:05+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "checked_at": "2026-08-25T04:39:05+09:00",
+    "sources": [
+      {
+        "id": "source_jejutoday_202408",
+        "url": "https://www.ijejutoday.com/news/articleView.html?idxno=300393",
+        "publisher": "제주투데이",
+        "checked_at": "2026-08-25T04:39:05+09:00",
+        "facts": [
+          "상추자 올레 18-1 코스 기사에 은달산 전망터 사진이 포함된다.",
+          "묵리 고갯길 주변 숲길과 추자도 올레 맥락을 소개한다.]"
+        ]
+      },
+      {
+        "id": "source_olle_walk_202204",
+        "url": "https://taeaav.tistory.com/717",
+        "publisher": "태아산악회",
+        "checked_at": "2026-08-25T04:39:05+09:00",
+        "facts": [
+          "제주올레 18-1 코스 답사 기록이 은달산 전망터를 코스 중 지점으로 표기한다.",
+          "추자도 올레가 상·하추자도를 연결하는 도보 코스임을 설명한다.]"
+        ]
+      },
+      {
+        "id": "source_walklog_201904",
+        "url": "https://donggi1014.tistory.com/1202",
+        "publisher": "머무르고 싶었던 시간들",
+        "checked_at": "2026-08-25T04:39:05+09:00",
+        "facts": [
+          "은달산 길을 숲속길로 설명하고 은달산 전망터 안내판과 조망을 기록한다.",
+          "전망터 이후 숲길이 도로와 나란히 이어진다고 설명한다.]"
+        ]
+      },
+      {
+        "id": "source_brunch_202305",
+        "url": "https://brunch.co.kr/%40jehsk52/175",
+        "publisher": "브런치",
+        "checked_at": "2026-08-25T04:39:05+09:00",
+        "facts": [
+          "은달산 전망터에서 염섬과 예도를 바라본다고 설명한다.",
+          "은달산길과 전망 사진을 함께 게시한다.]"
+        ]
+      }
+    ],
+    "limitations": [
+      "공식 운영 주체, 개방 시간, 실제 접근 난이도와 편의시설은 확인하지 못했다.",
+      "Kakao 평점·리뷰 수와 리뷰 작성자 정보는 조사·라벨 근거에 사용하지 않았다."
+    ]
+  },
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.8,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.25,
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

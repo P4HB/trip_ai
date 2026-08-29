@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1694,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/755324204.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:755324204",
+    "provider": "kakao",
+    "place_id": "755324204",
+    "name": "볼고롱동백",
+    "url": "https://place.map.kakao.com/755324204",
+    "average_rating_5": "4.2",
+    "visitor_review_count": "13",
+    "blog_review_count": "73",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.02.10.",
+      "content": "설연휴에 다녀왔어요 전일 규모있는 곳에서 충분히 즐겼기에 한가로이 사진찍으려고 이곳으로 입장했어요",
+      "tags": "주차|입장료"
+    },
+    {
+      "date": "2024.01.13.",
+      "content": "1월5일에 방문했는데 바닥에 카펫처럼 꽃잎이 깔려있는데도 위에 꽃이 한 가득이라 정말 아름다웠습니다. 나무 자체가 옆 동백수목원보다 어린건 맞지만 덜 붐비고 어짜피 찍어도 인간 키에 맞춰 동백을 찍으니 옆집 큰 나무+붐비는 인파보다 여기가 더 좋았습니다. 핑크 동백 예뻣어요❤️",
+      "tags": "뷰|주차|+1"
+    },
+    {
+      "date": "2026.02.17.",
+      "content": "겨울 제주에 이런 아름다움이 숨어 있을줄 몰랐습니다. 눈물겹게 아름다웠습니다. 꼭 한번 가보세요",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2026.01.21.",
+      "content": "가성비 좋은 동백정원입니다. 버스정류장과도 가까워 대중교통으로 이용하기도 수월했고, 잔뜩 심어두신 동백이 만개하니 어느곳을 찍어도 참 좋네요. 하얀전망대에서 내려다보는 정원뷰도 참 좋아요 👍 성인 4,000원 / 도민 3,000원",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

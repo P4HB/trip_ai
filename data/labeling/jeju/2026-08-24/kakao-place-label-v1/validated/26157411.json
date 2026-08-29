@@ -1,0 +1,91 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:26157411",
+  "place_id": "26157411",
+  "name": "갯깍주상절리대",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 관광 정보는 갯깍주상절리대를 하예동의 해안 주상절리 지역으로 식별하지만, 해안절벽·해식동굴 낙석 위험으로 공식 연중 출입통제 지역이라고 안내한다. 안전하게 방문 가능한 추천 후보로 사용하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "갯깍주상절리대는 서귀포시 하예동 해안의 주상절리 지형이나 공식 출입통제 정보가 있다.",
+    "typical_visit": "안전한 접근이 허용되지 않는 낙석 위험 해안 절벽·해식동굴 구역이다.",
+    "experience_scope": "출입통제 구역이므로 경관·사진 명소로 추천하거나 방문 적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국어촌어항공단 바다여행은 갯깍주상절리대 위치를 서귀포시 하예동 1758-1로 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "관광 정보는 해안절벽·해식동굴 낙석 위험으로 공식 연중 출입통제 지역이라고 안내한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "최신 통제 범위와 안전한 외부 조망 가능 지점",
+      "통제 해제·관리 주체의 최신 공지"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국어촌어항공단 바다여행",
+        "type": "official_tourism_information",
+        "url": "https://www.seantour.kr/newseantour/fhlg/trrsrt/trrsrtList.do?pageIndex=120",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "갯깍주상절리대의 하예동 위치를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 관광정보 연계",
+        "type": "public_tourism_information",
+        "url": "https://www.ktourmap.com/spotDetails.jsp?contentId=2796929",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "낙석 위험과 연중 출입통제를 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "official_access_restriction_and_falling_rock_hazard",
+      "applies_to": "all_visitors",
+      "condition": "해안절벽·해식동굴 낙석 위험으로 공식 연중 출입통제 안내가 있음",
+      "status": "confirmed",
+      "action": "통제 구역에 진입하지 말고, 관리 주체의 최신 안전·통제 안내 없이는 방문 후보에서 제외한다.",
+      "source_ids": [
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

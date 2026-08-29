@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2272,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/1982923129.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:1982923129",
+    "provider": "kakao",
+    "place_id": "1982923129",
+    "name": "강정해오름노을길",
+    "url": "https://place.map.kakao.com/1982923129",
+    "average_rating_5": "4.3",
+    "visitor_review_count": "12",
+    "blog_review_count": "30",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2025.12.19.",
+      "content": "제주도 최고의 노을 포토스팟. 대형크루즈선도 자주 입항해서 구경 할수 있어요.",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2024.11.12.",
+      "content": "⭐️⭐️… 여기…그럭저럭…😕…",
+      "tags": ""
+    },
+    {
+      "date": "2023.08.01.",
+      "content": "보름때 가면 노을과 동시에 월출을 볼수 있어요 어디서나 볼수 있는 노을이긴 한데 월출도 동시에 볼수 있으니 넘 좋은거같아요 중간에 화장실도 정말 깨끗 트릭아트랑 꾸며놓은 것들. 문어도 정말 사실적 ㅎㅎ 야경명소네요 일몰 1시간전부터 천천히 걸어가길 추천합니다",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2022.07.05.",
+      "content": "봄,여름,가을,겨울. 어느 계절이든 맑은날 해질녘엔 너무 멋진 곳 같아요. 사람들이 많아져도 워낙 크고 웅장하여 가 볼만 합니다.",
+      "tags": ""
+    },
+    {
+      "date": "2022.05.14.",
+      "content": "풀코스로 왕복 3.2km 입니다. 중간까지만 가보셔도 경치즐기기엔 충분합니다. 멋진 해군 군함과 월드컵경기장, 한라산 경치의 조합이 멋져요 (해군쪽은 사진찍으면 안된다네요 군사기밀) 해질때 가보시는게 좋아요 ㅎㅎ 스케쥴깨문에 완전히 지는건 못봤네요..",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

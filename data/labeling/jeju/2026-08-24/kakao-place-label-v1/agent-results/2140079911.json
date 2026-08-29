@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:2140079911",
+  "place_id": "2140079911",
+  "name": "제주금악4.3길센터",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "제주4·3평화재단은 금악 4·3길의 출발점을 금악리 1906번 ‘금악 건강증진센터’로 직접 안내한다. 입력의 ‘제주금악4.3길센터’는 이 출발·안내 지점을 가리키는 명칭으로 확인되며, 별도 전시·관람 경험을 가진 독립 관광 후보가 아니라 금악마을 4·3길 이용을 위한 부속 지점으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주금악4.3길센터는 제주시 한림읍 금악리의 제주한림 금악마을 4·3길 출발·안내 지점을 가리키는 Kakao 지도 항목으로 식별된다.",
+    "typical_visit": "금악마을 4·3길의 역사·기억 지점을 도보로 탐방하기 전 출발 위치를 찾는 용도이다.",
+    "experience_scope": "공식 자료는 금악마을 4·3길과 출발점 주소는 확인하지만, ‘제주금악4.3길센터’라는 별도 관람 시설·전시·운영 프로그램은 확인하지 못했다. 따라서 독립 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주4·3평화재단은 금악 4·3길의 출발점 주소를 금악리 1906번(금악 건강증진센터)으로 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주4·3평화재단은 제주한림 금악마을을 제주4·3의 역사 현장을 기억하고 인권·평화의 의미를 알리는 4·3길 중 하나로 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "입력 Kakao 항목과 금악 건강증진센터의 현 시점 건물 운영·개방 상태는 확인하지 못했다.",
+      "출발 지점에서 제공되는 지도, 해설, 주차, 화장실 및 무장애 접근 지원의 현재 여부는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주4·3평화재단",
+        "type": "official_public_information",
+        "url": "https://jeju43peace.or.kr/kor/BBSMSTR_000000000034/3930/view.do",
+        "checked_at": "2026-08-24",
+        "facts": ["재단 답변은 4·3금악길의 출발점 주소를 금악리 1906번(금악 건강증진센터)으로 제시한다.", "4·3금악길 담당은 제주특별자치도 4·3지원과라고 안내한다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주4·3평화재단",
+        "type": "official_public_history",
+        "url": "https://jeju43peace.or.kr/kor/sub01_06_01_05.do",
+        "checked_at": "2026-08-24",
+        "facts": ["제주한림 금악마을은 제주4·3길의 한 곳으로 안내된다.", "금악리는 4·3을 거치며 주민 희생과 복구되지 못한 잃어버린 마을들을 남긴 지역으로 설명된다."]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/2140079911",
+        "checked_at": "2026-08-24",
+        "facts": ["입력 패킷의 Kakao 장소명은 ‘제주금악4.3길센터’다.", "평점과 후기 수는 라벨 근거로 사용하지 않았다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "금악마을 4·3길의 출발·안내 지점으로 확인되며, 별도 관광 경험을 제공하는 독립 장소 여부는 확인되지 않음",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고, 금악마을 4·3길 또는 그 역사 지점의 방문 안내에 부속 정보로만 사용",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-24"
+}

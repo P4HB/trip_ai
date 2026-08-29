@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7992566",
+  "canonical_id": "kakao:7992566",
+  "name": "어후오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.7,
+    "rationale": "입력명 어후오름은 국립국어원 자료의 조천읍 오름 목록과 국가 연구기관 자료의 교래리 어후오름 지명에 함께 확인된다. 개별 자연 지형 방문지로 식별되지만 현행 탐방 동선과 개방 상태는 확인되지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "어후오름(어후름)은 제주 조천읍의 오름으로 확인되며, 국가 연구기관 자료는 교래리 어후오름 지명을 수록한다.",
+    "typical_visit": "공개 지명·지형 자료상 오름과 산지 자연 경관을 대상으로 한 야외 접근·감상 경험으로만 확인된다. 지정 탐방로·정상 접근·시설은 확인하지 못했다.",
+    "experience_scope": "정확한 입구, 소유·출입 조건, 난이도, 시설 및 현재 개방 여부가 미확인이다. Kakao 평점과 두 건의 짧은 공개 후기는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {"id": "F1", "text": "국립국어원 발간 자료는 조천읍의 오름 명칭 목록에 어후오름을 수록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "국립생물자원관 자료는 북제주군 조천읍 교래리의 어후오름을 지명으로 수록한다.", "source_ids": ["S2"]},
+      {"id": "F3", "text": "공개 지리 자료는 Eohu-Oreum을 제주도의 peak로 분류하며 해발 약 960m와 좌표를 제시한다. 이는 보조 지리 근거이며 현장 운영 정보는 아니다.", "source_ids": ["S3"]}
+    ],
+    "unknowns": ["Kakao 표식의 정확한 진입 지점과 현행 출입 가능 여부", "공식 탐방로, 경사·노면·계단, 주차·화장실·무장애 접근성", "우천·강풍·산불 등 기상·안전 통제와 계절별 접근 조건"],
+    "sources": [
+      {"id": "S1", "publisher": "국립국어원", "type": "government_publication", "url": "https://www.korean.go.kr/nkview/nklife/1994_1/4_6.html", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["조천읍 오름 명칭 목록에 어후오름을 수록한다."]},
+      {"id": "S2", "publisher": "국립생물자원관", "type": "government_publication", "url": "https://www.nibr.go.kr/aiibook/catImage/9/2015%20Wildlife.pdf", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["북제주군 조천읍 교래리(어후오름)를 수록한다."]},
+      {"id": "S3", "publisher": "Mapcarta / OpenStreetMap·GeoNames 기반 공개 지리 자료", "type": "public_geographic_reference", "url": "https://mapcarta.com/24733904", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["Eohu-Oreum을 제주도의 peak로 분류하고 해발 약 960m를 제시한다."]},
+      {"id": "S4", "publisher": "Kakao Map", "type": "public_map_listing", "url": "https://place.map.kakao.com/7992566", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["입력 장소명은 어후오름이다.", "평점과 리뷰 수, 공개 후기 내용은 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"정부·공공 자료가 어후오름을 조천읍·교래리의 오름 지명으로 직접 수록하므로 산지 자연 지형이 핵심이다.","source_ids":["S1","S2","S3"],"rule_ids":["THEME-OREUM-DIRECT"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 정체는 내륙 오름·봉우리이며 해안·해양 활동이나 바다 경관이 핵심이라는 근거는 확인되지 않았다.","source_ids":["S1","S2","S3"],"rule_ids":["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름 지형은 확인되나 실제 접근로·걷기 가능 여부와 체험 동선이 확인되지 않아 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-ACTIVITY-ACCESS-UNKNOWN"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·전시형 테마파크 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-THEME-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"확인된 장소 유형이 야외 오름·봉우리여서 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내 공간은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["ENV-OUTDOOR-LANDFORM"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.5,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 야외 산지 지형에 의존하므로 비·바람·더위·추위 영향을 비교적 크게 받을 수 있다. 실제 통제 기준은 미확인이다.","source_ids":["S1","S2","S3"],"rule_ids":["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 환경·혼잡도·소음·체류 여건 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"진입로, 거리, 경사, 노면, 계단과 무장애 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"단독 방문 시간, 순환·단축 동선과 체류 시설을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"오름·봉우리라는 지형은 확인되지만 실제 조망·경관의 질이나 감상 지점은 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S3"],"rule_ids":["FALLBACK-SCENERY-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"별칭 외에 다른 오름과 구별되는 경험·구성의 충분한 근거가 없어 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-DISTINCTIVENESS-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 조천읍·교래리의 지형이라는 사실 외에 지역 생활·문화·생산자와의 직접 연결은 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-LOCAL-CONTEXT-UNKNOWN"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 공적 명소·상징이라는 지정이나 관광 안내를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·통신·동선 정보가 부족해 혼자 방문 적합도는 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 방문 시 동선·안전·수용 여건 정보가 부족해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·안전시설·보호자 조건 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·휴식·무장애 접근성 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 개방·계절 절정·현장 상태가 확인되지 않아 야외 산지의 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind":"outdoor_mountain_access_and_weather_unknown","applies_to":"all_visitors","condition":"어후오름은 야외 산지 지형으로 식별되지만, 최신 출입 가능 여부, 정확한 접근로·탐방로, 경사·노면·낙상 위험, 기상·산불 시 통제와 구조·통신 여건을 확인하지 못했다.","status":"needs_review","action":"방문 전 제주도 또는 해당 토지·탐방 관리 주체의 최신 공지로 출입 허용, 지정 경로, 기상·산불 통제 및 보행 안전을 확인한다.","source_ids":["S1","S2","S3"],"checked_at":"2026-08-25T00:00:00+09:00"}],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

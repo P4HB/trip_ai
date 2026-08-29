@@ -1,0 +1,646 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "7970247",
+  "canonical_id": "kakao:7970247",
+  "name": "신양신산해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "비짓제주가 성산읍 신산리에서 신양해수욕장까지 이어지는 9.4km 해안도로를 독립적인 드라이브·경관 방문지로 소개하며, 입력 장소명과 공개 명칭이 일치한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-PLACE-IDENTIFIED",
+      "ELIG-INDEPENDENT-VISIT"
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공개 소개의 핵심은 해안도로와 바다 경관이며 산·오름 탐방 경험은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.ocean": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "신산리에서 신양해수욕장까지 이어지는 해안도로로, 성산일출봉·섭지코지를 배경으로 한 바다 경관이 핵심 경험으로 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-COAST-DIRECT"
+      ]
+    },
+    "theme.activity": {
+      "value": 0.5,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 소개가 드라이브코스로 명시하고, 해안가 산책 경험도 공개 리뷰에 있으나 대표 활동은 차량 이동과 경관 감상이다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "THEME-DRIVE-DIRECT"
+      ]
+    },
+    "theme.culture_history": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해녀가 공수한 해산물을 파는 포장마차 맥락은 소개되지만, 문화·역사 해설 또는 유산 체험이 핵심이라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.theme_park": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해안도로와 마을 경관으로 소개되며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.cafe": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "포장마차의 해산물 식사는 소개되지만 카페·차·디저트 이용이 독립적인 방문 목적이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.traditional_market": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "해산물 포장마차가 언급되지만 전통시장 또는 상설·비상설 시장 방문지라는 근거는 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "theme.festival": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "상시 해안도로로 소개되며 특정 기간 축제·공연이 장소의 핵심이라는 근거는 없다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "THEME-PRIMARY-EXPERIENCE"
+      ]
+    },
+    "environment.indoor_ratio": {
+      "value": 0.25,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "9.4km 해안도로의 드라이브와 해안 경관 감상이 대표 경험으로 소개되어 실내 공간 비중은 낮다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-ROAD"
+      ]
+    },
+    "environment.weather_sensitivity": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "대표 경험이 야외 해안 경관 감상과 이동이므로 비·바람·더위·추위의 영향을 크게 받을 수 있다. 현장 통제 기준은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "ENV-OUTDOOR-EXPOSURE"
+      ]
+    },
+    "style_evidence.restfulness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "조용한 제주 마을 분위기를 느낄 수 있고 북적이는 곳을 선호하지 않는 여행자에게 추천한다고 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-QUIET-REST-DIRECT"
+      ]
+    },
+    "style_evidence.physical_ease": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "드라이브코스라는 사실은 확인되지만 도보 동선, 주차, 경사, 무장애 접근성과 안전시설은 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "FALLBACK-ACCESS-UNKNOWN"
+      ]
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "9.4km의 드라이브코스로 소개되어 이동 속도와 정차에 따라 체류를 조절할 여지는 있으나, 정차 가능 지점과 권장 시간은 미확인이다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-ROAD-DURATION-FLEX"
+      ]
+    },
+    "style_evidence.scenic_value": {
+      "value": 1,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "성산일출봉과 섭지코지를 배경으로 아름다운 풍경을 자랑하는 해안도로라고 직접 소개된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-SCENERY-DIRECT"
+      ]
+    },
+    "style_evidence.distinctiveness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "성산일출봉과 섭지코지를 배경으로 하는 9.4km 신산리-신양해수욕장 연결 해안도로라는 구성이 직접 확인된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-UNIQUE-COAST-ROAD-DIRECT"
+      ]
+    },
+    "style_evidence.local_embeddedness": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "신산리의 조용한 마을 분위기와 해녀가 공수한 해산물 포장마차가 함께 소개되어 제주 해안 마을 생활과 연결된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-LOCAL-COASTAL-VILLAGE-DIRECT"
+      ]
+    },
+    "style_evidence.landmark_significance": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 관광 페이지에서 드라이브·경관 방문지로 소개되지만 제주 전체를 대표하는 공적 랜드마크 지정 또는 상징성은 확인되지 않았다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-LANDMARK-CONTEXT"
+      ]
+    },
+    "style_evidence.photo_value": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 페이지가 경관/포토·포토스팟 태그와 성산일출봉·섭지코지를 배경으로 한 아름다운 풍경을 직접 제시한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "STYLE-PHOTO-DIRECT"
+      ]
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "혼자 방문의 안전·정차·보행 환경이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-COMPANION-UNKNOWN"
+      ]
+    },
+    "couple": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 페이지의 추천 태그에 커플이 직접 포함된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-COUPLE-DIRECT"
+      ]
+    },
+    "friends": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 페이지의 추천 태그에 친구가 직접 포함된다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-FRIENDS-DIRECT"
+      ]
+    },
+    "kids": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "state": "numeric",
+      "status": "fallback",
+      "inference_level": "archetype_prior",
+      "rationale": "아동 안전시설, 차량 정차 환경과 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.",
+      "source_ids": [],
+      "rule_ids": [
+        "FALLBACK-CHILD-UNKNOWN"
+      ]
+    },
+    "parents": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "state": "numeric",
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "rationale": "공식 관광 페이지의 추천 태그에 부모와 중·장년·노년이 직접 포함된다. 다만 실제 이동·접근 조건은 별도 확인이 필요하다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "COMPANION-PARENTS-DIRECT"
+      ]
+    }
+  },
+  "month_fit": {
+    "1": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "2": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "3": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "4": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "5": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "6": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "7": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "8": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "9": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "10": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "11": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    },
+    "12": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "state": "numeric",
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "rationale": "공식 페이지가 사계절 태그로 소개하지만 월별 기상·도로 통제 정보는 없어 잠정값으로 둔다.",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "MONTH-FOUR-SEASONS-CONTEXT"
+      ]
+    }
+  },
+  "hard_constraints": [
+    {
+      "kind": "outdoor_coastal_road_weather_and_access",
+      "applies_to": "all_visitors",
+      "condition": "야외 해안도로 드라이브·경관 감상지이나, 현재 도로 통제, 강풍·우천 시 안전, 정차 가능 구간, 보행 동선과 무장애 접근성은 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "방문 전 도로·기상·현장 교통 안내를 확인하고 지정된 안전 구간에서만 정차·보행한다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘신양신산해안도로’는 비짓제주의 ‘신산신양해안도로’와 어순만 다른 표기이며, 성산읍 신산리~신양해수욕장을 잇는 해안도로라는 설명으로 동일 장소를 확인했다.",
+    "facts": [
+      {
+        "text": "신산신양해안도로는 서귀포시 성산읍 신산리에서 신양해수욕장까지 이어지는 총 9.4km 도로다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "성산일출봉과 섭지코지를 배경으로 한 풍경과 한적한 제주 마을 분위기의 드라이브코스로 소개된다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "공식 페이지는 부모·커플·친구, 경관/포토, 휴식/힐링, 드라이브, 사계절 태그를 제시한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "현재 도로 통제·정차 가능 구간과 주차",
+      "강풍·우천 시 안전 및 통행 안내",
+      "보행 동선·경사·화장실·무장애 접근성",
+      "월별 실제 혼잡도와 계절별 경관 차이"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 비짓제주",
+        "type": "official_tourism",
+        "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007159",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "신산리에서 신양해수욕장까지 이어지는 9.4km 해안도로라고 소개한다.",
+          "성산일출봉·섭지코지 배경의 드라이브코스와 조용한 마을 분위기를 소개한다.",
+          "부모·커플·친구·경관/포토·휴식/힐링·드라이브·사계절 태그를 제공한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao 장소 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/7970247",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력에 포함된 공개 방문 경험은 해안가 드라이브와 산책을 좋게 언급한다.",
+          "입력에 포함된 공개 방문 경험은 일몰 전 스쿠터로 천천히 도는 코스를 언급한다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "direct_evidence",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 1,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "direct_evidence",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11016572",
+  "place_id": "11016572",
+  "name": "김녕오조해안도로",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "제주관광공사 Visit Jeju가 ‘김녕오조해안도로’를 제주시 구좌읍 김녕리에서 하도까지 바다를 끼고 달리는 별도 관광 코스로 직접 안내한다. Kakao 레코드의 동일 명칭·드라이브코스 주소권과도 부합하므로 독립 방문·이동 경관 장소로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "김녕오조해안도로는 제주시 구좌읍 김녕리에서 월정·평대·세화 해변을 지나 하도 해변까지 이어지는 해안 관광 코스다.",
+    "typical_visit": "바다를 끼고 드라이브하며 에메랄드빛 바다와 해변 경관을 보고, 일부 포토존·카페와 인접 해변에 들르는 선형 야외 방문이다.",
+    "experience_scope": "공식 관광 안내는 코스의 해안 경관, 드라이브, 포토존·카페 및 구간 길이를 확인한다. Kakao 핀의 정확한 도로 구간, 최신 교통·주차·보행·무장애 정보, 날씨·파도에 따른 위험 및 개별 시설 운영 상태는 확인하지 못했다.",
+    "facts": [
+      {"id":"F1","text":"Visit Jeju는 김녕오조해안도로를 김녕에서 하도까지 바다를 끼고 달리는 길로 안내하며, 김녕성세기해변부터 월정·평대·세화 해변과 하도 해변을 잇는 약 19.2km 코스라고 설명한다.","source_ids":["S1"]},
+      {"id":"F2","text":"Visit Jeju는 이 관광지에 드라이브·커플·맑음·여름·자연경관 태그를 붙이고, 에메랄드빛 바다와 사진을 남길 포토존, 카페가 있다고 안내한다.","source_ids":["S1"]},
+      {"id":"F3","text":"입력 Kakao 공개 후기에는 김녕 바다 경관, 드라이브, 바람과 파도가 언급된다. 평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다.","source_ids":["S2"]}
+    ],
+    "unknowns": [
+      "Kakao place_id가 가리키는 정확한 도로 구간과 정차·보행 지점은 공식 출처로 교차 확인하지 못했다.",
+      "최신 교통 규제, 도로 폭·갓길·주차, 화장실, 휠체어 접근성 및 안전시설을 확인하지 못했다.",
+      "강풍·파도·호우 시의 현장 위험과 통제, 인접 상점·카페의 최신 운영 상태를 확인하지 못했다."
+    ],
+    "sources": [
+      {"id":"S1","publisher":"제주관광공사 Visit Jeju","type":"official_tourism_page","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021064&menuId=DOM_000001718001000000","checked_at":"2026-08-24T00:00:00+09:00","facts":["김녕오조해안도로는 김녕에서 하도까지 바다를 끼고 달리는 약 19.2km 해안 관광 코스다.","공식 페이지는 드라이브·커플·맑음·여름·자연경관을 태그로 안내한다.","에메랄드빛 바다, 포토존과 카페, 여러 해변 경관을 설명한다."]},
+      {"id":"S2","publisher":"Kakao Map 공개 방문 후기","type":"public_review_evidence","url":"https://place.map.kakao.com/11016572","checked_at":"2026-08-24T00:00:00+09:00","facts":["입력된 공개 후기에는 김녕 바다의 경관과 드라이브, 바람·파도가 언급된다.","평점·후기 수·작성자 식별 정보는 라벨값 근거로 사용하지 않았다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"산·오름·산림 경관이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 바다를 끼고 달리는 해안 코스와 에메랄드빛 바다·여러 해변 경관을 대표 내용으로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"레포츠 또는 참여형 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"문화유산·전시·공연·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인근 카페가 있다는 안내만으로 카페 이용이 이 선형 코스의 독립 핵심 목적이라고 판단하지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"인접 세화오일장 언급은 있으나 시장 방문이 이 도로 자체의 핵심 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0.25,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"대표 경험이 해안도로 드라이브와 해변·바다 경관 감상으로 안내되어 실내 비율이 낮다고 추론한다. 인접 실내 시설 이용 비율은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 해안 경관과 드라이브가 대표 경험이고 공식 태그에 맑음·여름, 입력 후기에는 바람·파도가 언급되어 날씨 영향이 비교적 크다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼잡도·정차 여건·소음·휴식시설 정보를 충분히 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"드라이브 코스이나 정차·보행 구간의 노면, 계단, 경사와 무장애 접근 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"약 19.2km 선형 코스에 여러 해변과 포토존이 안내되어 짧은 정차부터 긴 드라이브까지 체류 시간을 조절할 수 있다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 안내가 에메랄드빛 바다와 여러 해변의 자연경관을 코스의 중심 내용으로 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장거리 해안 코스라는 특징은 확인되지만 다른 제주 해안도로와 비교한 고유성 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 김녕·월정·평대·세화·하도 해변과 세화오일장을 잇는 제주 동부 해안 코스로 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 구좌를 대표하는 상징 명소라는 공식 지정·비교 근거를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 예쁜 사진을 남길 수 있는 포토존을 직접 설명한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"정차·보행 안전과 최신 접근 정보를 확인하지 못해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 이 코스에 커플 태그를 직접 부여한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명의 정차·교통·안전 여건을 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 도로변 안전, 보행 구간과 편의시설 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 동반에 필요한 무장애 접근, 휴식·화장실 및 보행 정보를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 드라이브·경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 드라이브·경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 이 해안 경관 코스에 여름 태그를 직접 부여한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "7":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 이 해안 경관 코스에 여름 태그를 직접 부여한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "8":{"state":"numeric","value":0.75,"confidence":0.7,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광 페이지가 이 해안 경관 코스에 여름 태그를 직접 부여한다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 운영·현장 상태 근거가 없어 야외 방문의 일반 기후 휴리스틱으로 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 해안 드라이브·경관 방문은 겨울 기상 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_weather_safety_unknown","applies_to":"all_visitors","condition":"이 장소는 긴 해안 도로·야외 경관 코스이나 Kakao 핀의 정확한 구간, 최신 교통·정차·보행 안전, 주차·무장애 시설 및 강풍·파도·호우 시 위험·통제 정보를 확인하지 못했다.","status":"needs_review","action":"방문 전 도로·기상·현장 최신 안내로 주행 가능 여부, 안전한 정차 지점과 보행 접근성을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

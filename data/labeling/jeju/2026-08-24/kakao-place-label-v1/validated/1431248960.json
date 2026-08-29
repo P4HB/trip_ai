@@ -1,0 +1,73 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1431248960",
+  "place_id": "1431248960",
+  "name": "씨에스호텔 알드르광장",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "알드르광장은 씨에스호텔앤리조트가 보유한 야외 예식 공간으로 안내된다. 호텔과 분리된 독립 여행지로 추천하지 않고 상위 씨에스호텔앤리조트의 부대시설로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1"
+    ]
+  },
+  "research": {
+    "identity_summary": "알드르광장은 제주 씨에스호텔앤리조트의 야외 예식 공간이다.",
+    "typical_visit": "예약된 호텔 예식 참석 또는 행사 이용을 위한 방문이다.",
+    "experience_scope": "독립 관광지나 상시 개방된 공공 광장으로 운영된다는 근거는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "씨에스호텔앤리조트의 웨딩 공간 안내는 알드르광장을 야외 홀로, 알드르·씨에스가든·꽃낭연회장과 함께 호텔 예식장 구성으로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "행사 없는 날의 출입 가능 여부",
+      "당일 대관·예식 일정과 이용 조건"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "웨딩라스트",
+        "type": "business_listing",
+        "url": "https://wedlast.com/%EC%A0%9C%EC%A3%BC-%EC%9B%A8%EB%94%A9%ED%99%80-%EC%B6%94%EC%B2%9C-top-9/",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "씨에스호텔앤리조트의 알드르광장을 야외 예식 홀로 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_hotel_facility",
+      "applies_to": "recommendation_candidate",
+      "condition": "알드르광장은 씨에스호텔앤리조트의 야외 예식 공간이며, 대관·행사 일정에 따라 이용 가능 여부가 달라질 수 있다.",
+      "status": "needs_review",
+      "action": "상위 호텔의 최신 웨딩·행사 안내로 대관과 출입 조건을 확인한다. 독립 추천 후보로 사용하지 않는다.",
+      "source_ids": [
+        "S1"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

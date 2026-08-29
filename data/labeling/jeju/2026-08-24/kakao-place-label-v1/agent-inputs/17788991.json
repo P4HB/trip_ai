@@ -1,0 +1,46 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1907,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/17788991.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:17788991",
+    "provider": "kakao",
+    "place_id": "17788991",
+    "name": "좌보미알오름",
+    "url": "https://place.map.kakao.com/17788991",
+    "average_rating_5": "3.5",
+    "visitor_review_count": "4",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2022.03.25.",
+      "content": "생각했던 것보다 나쁘지 않았습니다 좌보미알오름을 시작으로 좌봉미 오름을 지나 세개의 능선을 따라 걷는게 운동도 돼고, 능선 정상에서 보는 풍경은 보는 각도에 따라서 풍경은 볼만합니다 트렉킹 하기에 딱 입니다^^^",
+      "tags": ""
+    },
+    {
+      "date": "2021.03.28.",
+      "content": "좌보미와 알오름 외 2개 오름과 2개의 모루(언덕)를 한번에 돌 수 있는 좋은 코스입니다. 운동도 되고 모두 전망이 있어 가볼만 하나, 이정표 또는 리본이 없어 초행인 경우 길을 헤멜수 있습니다. 좌보미 비석에서부터 시작하여 산불 감시초소가 있는 오름부터 한바퀴 돌면 되겠습니다. 등반로가 그냥 오솔길입니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

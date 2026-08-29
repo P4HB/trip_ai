@@ -1,0 +1,88 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25725275",
+  "place_id": "25725275",
+  "name": "대룡소천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 제주도의회 자료는 대룡소천을 제주시 용강동에서 삼수천 합류점까지 이어지는 지방하천으로 제시하고, 제주도 재해정보지도는 이 하천 주변의 침수예상·대피 정보를 제공한다. 독립 관광·체험 장소로서 일반 방문객을 위한 운영, 관람 동선 또는 안전관리 안내는 확인되지 않아, 하천·재해관리 지리 표식을 추천용 방문 장소 벡터 대상으로 삼지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "대룡소천은 제주시 용강동에서 삼수천 합류점으로 이어지는 제주 지방하천으로 확인된다.",
+    "typical_visit": "공공 출처에서 확인되는 기능은 하천 및 재해정보 관리이며, 관광객용 독립 관람·체험 장소로서의 대표 방문 경험은 확인되지 않았다.",
+    "experience_scope": "하천의 신원과 재해지도상 존재는 확인됐으나, 일반 방문객을 위한 상시 개방, 보행 동선, 편의시설, 수변 안전시설 또는 관광 운영은 확인되지 않았다. 따라서 본 라벨링의 독립 방문·체험 장소 범위에 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주특별자치도의회 공개 자료의 제주시 지방하천 현황은 대룡소천의 기점을 용강동 120, 종점을 삼수천 합류점으로 제시하고, 연장을 7.5km로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주특별자치도 재해정보지도는 제주시 아라동·봉개동 구역에서 대룡소천을 표시하고, 하천범람·내수침수 예상 및 안전대피 정보를 함께 제공한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식이 가리키는 정확한 하천 구간과 현장 진입 위치",
+      "일반 방문객 출입 가능 여부, 보행로, 주차, 화장실, 난간 및 무장애 접근성",
+      "수위·범람 위험·통제처럼 변하는 현장 안전 상태와 관광·레저 목적의 상시 운영 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주특별자치도의회",
+        "type": "local_government_public_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 지방하천 현황에 대룡소천을 수록한다.",
+          "대룡소천의 구간을 용강동 120에서 삼수천 합류점까지, 연장을 7.5km로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도",
+        "type": "government_disaster_map",
+        "url": "https://bangjae.jeju.go.kr/files/map4/jejusi_048.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 아라동·봉개동 재해정보지도에 대룡소천을 표시한다.",
+          "지도는 하천범람·내수침수 예상과 안전대피 정보를 포함한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25725275",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘대룡소천’이며 place_id는 25725275다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "waterway_access_and_flood_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "대룡소천은 지방하천으로 확인됐으나 일반 방문객을 위한 출입·관람 운영 및 수위·범람 시 안전 조건은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 공식 관광 방문 안내와 안전·접근 조건이 함께 확인되면 별도 검수한다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

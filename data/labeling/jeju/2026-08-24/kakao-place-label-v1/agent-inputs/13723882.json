@@ -1,0 +1,51 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1333,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/13723882.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:13723882",
+    "provider": "kakao",
+    "place_id": "13723882",
+    "name": "도두추억애거리",
+    "url": "https://place.map.kakao.com/13723882",
+    "average_rating_5": "4.6",
+    "visitor_review_count": "5",
+    "blog_review_count": "5",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.03.26.",
+      "content": "어릴적 동네 골목에서 놀던 옛기억 새록새록 나는곳. ㅎㅎ 40대 이상이시면 대부분 공감하실듯...",
+      "tags": "뷰|시설|+2"
+    },
+    {
+      "date": "2023.02.04.",
+      "content": "도두항 방향 방파제 옆으로 조성된 넓은 보도길에, 굴렁쇠 굴리기, 공기놀이, 고무줄놀이 등을 하고있는 조형물들이 띄엄띄엄 있어요. 걷다보면 잊고 살았던 추억 한조각은 절로 떠오르는 곳입니다. 세대에 딱 맞는 분들이라면 이야기 거리가 샘솟을듯요^^",
+      "tags": ""
+    },
+    {
+      "date": "2020.07.05.",
+      "content": "It changed my life",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

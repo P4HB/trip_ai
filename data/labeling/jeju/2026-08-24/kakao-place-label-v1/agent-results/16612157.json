@@ -1,0 +1,63 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "16612157",
+  "canonical_id": "kakao:16612157",
+  "name": "고양부삼성사재단",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "rationale": "입력명은 독립 관람 장소가 아니라 제주 삼성혈의 소유·관리 단체로 국가유산포털에 기재된 재단명과 일치한다. 공개 자료는 재단이 관리하는 국가유산을 설명할 뿐 재단 자체의 방문 경험·관람 공간은 확인하지 못했으므로, 삼성혈과 별개의 추천 장소 벡터를 부여하지 않는다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-OPERATOR-ORGANIZATION", "ELIG-NO-INDEPENDENT-VISIT-EVIDENCE"]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "medium",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "identity_notes": "입력명 ‘고양부삼성사재단’은 국가유산포털에서 사적 제주 삼성혈의 소유자·관리자로 확인되는 재단명과 일치한다. Kakao 입력에 별도 방문자용 시설·전시·관람 정보가 없고, 공개 자료도 재단 자체가 아닌 삼성혈 유산을 설명한다.",
+    "facts": [
+      {
+        "text": "국가유산포털은 사적 제주 삼성혈의 소유자와 관리자를 고양부삼성사재단으로 기재한다.",
+        "source_id": "S1"
+      },
+      {
+        "text": "국가유산 디지털 서비스는 제주 삼성혈을 제주 고씨·양씨·부씨 시조 설화와 연결된 사적으로 설명하며 소유자·관리자로 고양부삼성사재단을 기재한다.",
+        "source_id": "S2"
+      }
+    ],
+    "unknowns": [
+      "재단 사무 공간이 일반 방문객에게 독립적으로 개방되는지 여부",
+      "재단 자체의 관람·체험 프로그램, 운영 시간 및 접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국가유산포털",
+        "type": "official_heritage_registry",
+        "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?assetnamel=&ccbaAsno=01340000&ccbaCpno=1333901340000&ccbaCtcd=50&ccbaKdcd=13&ccbaLcto=00&culPageNo=1&header=region&pageNo=1_1_3_0&returnUrl=%2Fheri%2Fcul%2FculSelectRegionList.do&s_ctcd=50&s_kdcd=",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "사적 제주 삼성혈의 소유자와 관리자가 고양부삼성사재단으로 표시된다.",
+          "삼성혈의 소재지는 제주 제주시 삼성로 22로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국가유산 디지털 서비스",
+        "type": "official_heritage_information",
+        "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1333901340000&ctptUid=13898859674694300755",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주 삼성혈의 소유자와 관리자가 고양부삼성사재단으로 표시된다.",
+          "삼성혈은 제주 고씨·양씨·부씨의 시조 설화와 관련된 사적으로 설명된다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-25"
+}

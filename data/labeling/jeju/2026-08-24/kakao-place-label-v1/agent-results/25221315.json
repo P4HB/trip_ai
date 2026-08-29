@@ -1,0 +1,66 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25221315",
+  "canonical_id": "kakao:25221315",
+  "name": "뒷굽으니오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "입력명은 산림청 공개 등산로 데이터의 ‘뒷굽은이오름’ 및 제주 지역 보도의 ‘뒷굽으니오름’과 표기 차이만 있는 동일 오름으로 확인된다. 제주시의 독립적인 자연 지형·등산 대상이므로 적격으로 판정했다.",
+    "source_ids": ["S1", "S2"],
+    "rule_ids": ["ELIG-PLACE-IDENTIFIED", "ELIG-INDEPENDENT-VISIT"]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "산림청 공개 등산로 목록에 제주도 제주시의 ‘뒷굽은이오름’으로 등재되어 산·오름 지형과 탐방이 핵심이다.", "source_ids": ["S1"], "rule_ids": ["THEME-MOUNTAIN-DIRECT"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소 정체성은 내륙 오름·등산로이며 해안 또는 해양 경험은 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 등산로 데이터에 등록된 오름이므로 보행·등산 활동이 방문 경험에 포함되는 것으로 판단했지만 실제 탐방로 상태는 미확인이다.", "source_ids": ["S1"], "rule_ids": ["THEME-TRAIL-INFERENCE"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "조사 출처는 자연 지형과 환경자산의 위치를 다루며 역사·문화 해설이 핵심 방문 경험이라는 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름과 등산로로 확인되며 놀이·동물·전시형 테마파크 시설은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "카페·음료·디저트 이용이 이 장소의 독립적 방문 목적이라는 근거는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 장소는 오름·등산로이며 시장 방문 경험은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "특정 기간 축제나 공연이 장소의 핵심이라는 공개 근거는 확인되지 않았다.", "source_ids": ["S1", "S2"], "rule_ids": ["THEME-PRIMARY-EXPERIENCE"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름과 등산로로 확인되어 대표 경험은 야외일 가능성이 높지만, 실내 안내·편의 공간의 현황은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-TRAIL"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 야외 오름 보행으로 추정되어 비·바람·더위·추위 영향을 크게 받을 수 있다. 실제 통제 기준은 미확인이다.", "source_ids": ["S1"], "rule_ids": ["ENV-OUTDOOR-EXPOSURE"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "휴식 공간·소음·체류 경험의 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-RESTFULNESS-UNKNOWN"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "등산로 등록은 확인됐으나 경사, 계단, 거리 및 무장애 접근성 정보가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "단독 체류 시간과 단축·연장 동선이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "오름 정상 인근이 빌레용암지대의 숨골 위치 설명에 사용되지만 실제 조망과 경관 감상 조건은 확인하지 못했다.", "source_ids": ["S2"], "rule_ids": ["STYLE-NATURAL-LANDSCAPE-CONTEXT"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "명칭·자연 지형은 확인되나 다른 오름과 구별되는 탐방 구성의 직접 근거가 부족해 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["FALLBACK-DISTINCTIVENESS-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주시 오름으로 산림청 등산로 데이터에 등재되고 제주 빌레용암지대 환경자산 맥락에서 언급되어 제주 자연 지형과의 연결성이 높다.", "source_ids": ["S1", "S2"], "rule_ids": ["STYLE-JEJU-NATURAL-CONTEXT"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "제주 전체를 대표하는 공적 랜드마크 지정이나 광범위한 상징성은 확인하지 못해 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-LANDMARK-UNKNOWN"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "사진 촬영이 공식적으로 핵심 경험으로 소개된 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-PHOTO-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "혼자 방문의 안전·안내·통신 환경이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "커플 대상 경험·편의시설의 직접 근거가 없어 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "친구 그룹의 이용 편의·수용 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동의 안전시설, 경로 난이도 및 보호자 동반 기준이 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-CHILD-UNKNOWN"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "고령 방문자의 경사·휴식·무장애 접근성 정보가 확인되지 않아 중립 fallback으로 둔다.", "source_ids": [], "rule_ids": ["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·행사·계절 절정 정보가 확인되지 않아 야외 오름의 중립 fallback으로 둔다.", "source_ids": ["S1"], "rule_ids": ["CLIMATE-OUTDOOR-NEUTRAL"]}
+  },
+  "hard_constraints": [{"kind": "outdoor_trail_access_and_weather_conditions_unknown", "applies_to": "all_visitors", "condition": "뒷굽으니오름은 야외 오름·등산로이나 현재 개방 여부, 지정 탐방로, 우천·강풍 시 통제, 실제 경사·계단 및 무장애 접근성은 확인하지 못했다.", "status": "needs_review", "action": "방문 전 관할 지자체 또는 현장 최신 안내로 개방 여부, 허용 탐방로, 기상에 따른 통제와 보행 안전을 확인한다.", "source_ids": ["S1"], "checked_at": "2026-08-28"}],
+  "review_priority": "high",
+  "research": {
+    "status": "matched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "카카오 입력명 ‘뒷굽으니오름’은 산림청 등산로 데이터의 ‘뒷굽은이오름’과 조사 보도의 ‘뒷굽으니오름’으로 나타나는 동일 제주 오름의 표기 변형으로 판단했다.",
+    "facts": [{"text": "산림청 공개 등산로 목록은 ‘뒷굽은이오름’을 제주도 제주시의 등산로 대상으로 수록한다.", "source_id": "S1"}, {"text": "제주 환경자산을 다룬 보도는 수산리 뒷굽으니오름 정상에서 우건에오름 방면 약 500m 지점의 대형 숨골을 설명한다.", "source_id": "S2"}],
+    "unknowns": ["정확한 진입 지점과 현행 공식 운영·개방 시간", "탐방로의 실제 거리·경사·계단·휠체어 접근성 및 편의시설", "우천·강풍·산불 위험 시 통제와 안전 안내", "월별 자연 경관의 절정 시기"],
+    "sources": [{"id": "S1", "publisher": "산림청", "type": "public_data", "url": "https://www.forest.go.kr/kfsweb/kfi/kfs/trail/trailInformation.do?mn=NKFS_06_08_02&pageIndex=85&pageUnit=10&pblicDataId=PBD0000041&searchCnd=0&searchSrvc=&searchWrd=&subTitle=&tabs=3", "checked_at": "2026-08-28", "facts": ["공공데이터 개방목록의 등산로 정보에 뒷굽은이오름을 제주도 제주시로 수록한다.", "등산로 통제·폐쇄 정보는 실시간 반영되지 않을 수 있어 관리 주체 확인을 안내한다."]}, {"id": "S2", "publisher": "한라일보", "type": "reputable_news", "url": "https://www.ihalla.com/read.php3?aid=1685890800742960369", "checked_at": "2026-08-28", "facts": ["수산리 뒷굽으니오름 정상에서 우건에오름 방면 약 500m 지점의 대형 숨골을 언급한다.", "해당 지역을 빌레용암지대 환경자산 맥락에서 다룬다."]}]
+  },
+  "generated_at": "2026-08-28"
+}

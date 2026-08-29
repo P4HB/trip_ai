@@ -1,0 +1,52 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "461556597",
+  "canonical_id": "kakao:461556597",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "source_ids": [
+      "src_kakao_place"
+    ],
+    "rule_ids": [
+      "eligibility.identity_unknown"
+    ],
+    "rationale": "공개 검색에서 카카오 장소명 ‘맹강물’과 place_id 461556597을 특정 가능한 공식·공공 상세 정보를 확인하지 못해 장소 정체와 방문 경험을 검증할 수 없다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "high",
+  "hard_constraints": [
+    {
+      "constraint": "identity_verification_required",
+      "status": "needs_review",
+      "source_ids": [
+        "src_kakao_place"
+      ],
+      "rule_ids": [
+        "eligibility.identity_unknown"
+      ],
+      "rationale": "장소 유형·위치·운영 정보가 검증되지 않아 방문 적합도와 제약을 평가할 수 없다."
+    }
+  ],
+  "research": {
+    "sources": [
+      {
+        "id": "src_kakao_place",
+        "url": "https://place.map.kakao.com/461556597",
+        "publisher": "Kakao Map",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 인벤토리는 장소명 ‘맹강물’ 및 Kakao place_id 461556597만 제공하며, 공개 검색으로 독립적인 공식·공공 상세 정보를 확인하지 못했다."
+        ]
+      }
+    ],
+    "rule_ids": [
+      "eligibility.identity_unknown"
+    ],
+    "rationale": "검증 가능한 장소 정체 정보가 부족하므로 비적격 처리하고 모든 라벨 맵을 비운다."
+  }
+}

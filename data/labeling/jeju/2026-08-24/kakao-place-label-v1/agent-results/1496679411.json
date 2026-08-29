@@ -1,0 +1,87 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1496679411",
+  "place_id": "1496679411",
+  "name": "추자도바다정원",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "label_version": "kakao-place-label-v1",
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 여행 자료에서 추자교~예초삼거리 해안도로를 따라 만나는 ‘바다정원 공원’으로 소개되어, 독립적인 야외 공원 방문 지점으로 판정한다.",
+    "source_ids": ["S1"],
+    "rule_ids": ["eligibility.independent_place"]
+  },
+  "research": {
+    "status": "researched",
+    "summary": "추자도 예초리 방향 해안도로에서 바다 경관을 보며 들르는 야외 공원으로 확인된다. 최신 개방·시설·안전 정보는 확인하지 못했다.",
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "혜강 블로그 (동아일보 2019-04-26 기사 전재)",
+        "url": "https://nam-sh0302.tistory.com/15711768",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자교에서 예초삼거리까지 약 5km 해안도로를 따라 바다정원 공원을 만난다고 소개한다.",
+          "추자도는 강풍을 피하고 순풍을 기다린다는 뜻의 후풍도로 불릴 만큼 바람의 영향을 받는 섬으로 설명된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Visit Jeju (제주관광공사)",
+        "url": "https://www.visitjeju.net/kr/themtour/view?contentsid=CNTS_200000000007591&menuId=DOM_000005000000000221",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자도는 제주도 북서쪽 약 45km 해상에 있는 섬 지역으로 소개된다.",
+          "추자도 방문은 여객선 이동이 필요한 섬 여행으로 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "해안 공원으로 확인되어 산·오름 경관은 핵심으로 보이지 않지만 부재를 확정하지 않는다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "theme.ocean": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "해안도로를 따라 만나는 바다정원 공원으로 확인되어 바다 경관이 핵심이다.", "source_ids": ["S1"], "rule_ids": ["evidence.coastal_park"]},
+    "theme.activity": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로 여행 중 들르는 야외 공원으로 소개되지만, 별도 레포츠·체험 시설은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_stop"]},
+    "theme.culture_history": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "공개 자료에서 역사·문화유산 또는 전시 경험은 확인되지 않아 해안 공원의 낮은 사전값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "일반 해안 공원으로 소개되며 놀이·동물·수족관형 시설은 확인되지 않는다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용이 장소의 핵심이라는 근거를 찾지 못했다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "시장 방문 장소라는 근거가 없어 해안 공원의 낮은 사전값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "archetype_prior", "rationale": "특정 기간 축제·공연이 장소의 핵심이라는 근거를 찾지 못했다.", "source_ids": ["S1"], "rule_ids": ["prior.coastal_park"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로의 공원으로 소개되어 대표 경험은 야외로 보이지만 실내 시설 부재는 확정하지 않는다.", "source_ids": ["S1"], "rule_ids": ["inference.outdoor_coastal_park"]},
+    "environment.weather_sensitivity": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "대표 경험이 노출된 해안 공원 방문이며, 추자도는 바람의 영향을 받는 섬으로 설명된다.", "source_ids": ["S1"], "rule_ids": ["evidence.outdoor_coastal_weather"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로 여행 중 공원을 만나는 구성은 경관 감상형 머무름을 시사하지만 휴식 시설은 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_park_pause"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로 인근 공원이나 실제 보행로·경사·무장애 정보가 없어 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["inference.access_unknown"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로의 방문 지점으로 소개되지만 권장 체류 시간·동선은 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["inference.stop_duration_unknown"]},
+    "style_evidence.scenic_value": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "바다정원 공원이 해안도로의 바다 풍경을 만나는 구간으로 소개되어 경관 감상 가치가 직접 확인된다.", "source_ids": ["S1"], "rule_ids": ["evidence.coastal_scenery"]},
+    "style_evidence.distinctiveness": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도의 해안 공원이지만 고유한 조성·프로그램의 상세 정보는 확인하지 못했다.", "source_ids": ["S1"], "rule_ids": ["inference.local_coastal_park"]},
+    "style_evidence.local_embeddedness": {"value": 0.75, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "추자교~예초삼거리라는 추자도 지역 해안도로의 공원으로 직접 소개된다.", "source_ids": ["S1", "S2"], "rule_ids": ["evidence.chuja_coastal_location"]},
+    "style_evidence.landmark_significance": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "추자도 해안 여행 지점으로 확인되지만 제주 또는 추자도의 대표 명소·지정물이라는 근거는 찾지 못했다.", "source_ids": ["S1"], "rule_ids": ["inference.no_landmark_designation"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다 경관을 만나는 해안 공원이지만 사진 촬영 가치가 직접 안내되지는 않아 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_visual_record"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립적인 해안 공원 방문은 혼자 가능하나 현장 동선·안전 정보가 부족하다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_park_access_unknown"]},
+    "couple": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "바다 경관을 보는 공원이지만 동반 방문 편의 정보가 부족해 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_scenery_companion_unknown"]},
+    "friends": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "해안도로 여행의 방문 지점이나 단체 이용·편의 정보는 확인되지 않았다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_park_group_unknown"]},
+    "kids": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "야외 해안 공원이나 해안 접근 안전·난간·보행로 정보가 부족해 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["inference.coastal_safety_unknown"]},
+    "parents": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공원 위치는 확인되지만 경사·휴식시설·무장애 동선 정보가 없어 중간값으로 둔다.", "source_ids": ["S1"], "rule_ids": ["inference.access_unknown"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 개방·안전 정보를 확인하지 못해 야외 해안 공원의 보수적 기후 폴백값을 사용한다.", "source_ids": ["S1"], "rule_ids": ["fallback.climate_unknown"]}
+  },
+  "hard_constraints": [
+    {"kind": "coastal_weather_and_access_conditions_unknown", "applies_to": "all_visitors", "condition": "야외 해안 공원으로 확인되지만 최신 개방 여부, 해안 가장자리 안전시설·난간, 보행로·경사, 주차·화장실, 무장애 동선 및 강풍·우천 시 통제는 확인하지 못했다.", "status": "needs_review", "action": "방문 전 현장 또는 제주시 추자면의 최신 안내로 개방 여부와 보행·해안 안전을 확인하고, 강풍·우천 시에는 접근을 재검토한다.", "source_ids": ["S1", "S2"], "checked_at": "2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25T00:00:00+09:00"
+}

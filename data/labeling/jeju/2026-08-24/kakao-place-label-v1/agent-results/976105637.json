@@ -1,0 +1,82 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:976105637",
+  "place_id": "976105637",
+  "name": "제주향교 대성전",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.9,
+    "rationale": "국가유산포털은 제주향교 대성전을 제주특별자치도 제주시 서문로 43 제주향교 안에 있는 조선시대 향교 건물 1동(155㎡)으로, 2016년 지정된 보물로 기록한다. 제주향교 공식 안내도 대성전을 향교의 주요 건물로 소개한다. 향교 경내의 한 건물이지만 국가 지정 문화유산으로 독립된 식별·관람 대상이므로 추천 후보로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "제주향교 대성전은 제주시 서문로 43의 제주향교 안에 있는 조선시대 유교 건축 문화유산이다.",
+    "typical_visit": "제주향교 경내에서 대성전 건축물과 유교 문화유산을 둘러보는 문화·역사 관람 경험이다.",
+    "experience_scope": "국가유산포털은 이 건물을 보물, 향교 분류의 유적건조물로 기록하며 제주향교는 대성전을 주요 건물로 안내한다. 다만 실제 개방 시간, 내부 출입, 해설·행사 참여, 주차·무장애 접근 조건은 이번 확인 자료에 없으므로 방문 전 최신 안내를 확인해야 한다.",
+    "facts": [
+      {"id": "F1", "text": "국가유산포털은 제주향교 대성전을 보물로 분류하고, 소재지를 제주특별자치도 제주시 서문로 43(용담일동, 제주향교), 시대를 조선시대, 수량을 1동·155㎡로 기록한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "국가유산포털의 분류는 제주향교 대성전을 교육문화·교육기관·향교의 유적건조물로 제시한다.", "source_ids": ["S1"]},
+      {"id": "F3", "text": "제주향교 공식 사이트는 대성전을 제주향교의 주요 건물로 소개하고 2016년 보물 제1902호 지정 이력을 안내한다.", "source_ids": ["S2"]}
+    ],
+    "unknowns": [
+      "현재 관람 가능 시간, 휴관일, 내부 출입 가능 범위와 행사에 따른 출입 변화는 확인하지 못했다.",
+      "주차, 화장실, 휠체어 동선, 경사·계단 등 접근성 세부 조건은 확인하지 못했다.",
+      "사진 촬영 허용 범위와 상업 촬영·의례 중 관람 제한은 확인하지 못했다."
+    ],
+    "sources": [
+      {"id": "S1", "publisher": "국가유산청 국가유산포털", "type": "official_heritage_information", "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1125019020000&pageNo=1_1_2_0", "checked_at": "2026-08-25", "facts": ["제주향교 대성전은 보물이며 조선시대 향교 건물 1동으로 기록된다.", "소재지는 제주특별자치도 제주시 서문로 43의 제주향교이다."]},
+      {"id": "S2", "publisher": "제주향교", "type": "operator_information", "url": "https://jejuhyanggyo.co.kr/", "checked_at": "2026-08-25", "facts": ["제주향교는 대성전을 주요 건물로 소개한다.", "사이트 연혁은 대성전 1동의 2016년 보물 제1902호 지정을 안내한다."]},
+      {"id": "S3", "publisher": "제주관광공사 Visit Jeju", "type": "official_tourism_information", "url": "https://m.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500581", "checked_at": "2026-08-25", "facts": ["Visit Jeju는 제주향교 대성전의 보물 지정을 소개한다.", "제주향교에서 전통문화 관련 프로그램이 운영된다고 소개한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인 자료는 향교 건축 문화유산을 설명하며 산·오름 경험은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.ocean": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"확인 자료에 해안·해양 경험은 제시되지 않는다.","source_ids":["S1"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.activity": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"대표 경험은 문화유산 관람이며 신체 활동·레포츠의 직접 근거는 없다.","source_ids":["S1","S3"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.culture_history": {"state":"numeric","value":1,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"국가유산포털이 조선시대 향교 유적건조물인 보물로 기록하므로 역사·문화 경험이 핵심이다.","source_ids":["S1"],"rule_ids":["heritage_primary_experience_v1"]},
+    "theme.theme_park": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·워터파크형 시설 경험은 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.cafe": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 핵심이라는 근거는 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.traditional_market": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 방문 경험의 근거는 확인되지 않는다.","source_ids":["S1"],"rule_ids":["theme_scope_fallback_v1"]},
+    "theme.festival": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"정기 축제 자체가 장소의 핵심이라는 근거는 확인되지 않는다.","source_ids":["S2","S3"],"rule_ids":["theme_scope_fallback_v1"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"대성전은 건축물이나 향교 경내 관람의 실내·실외 비율은 자료로 확인하지 못했다.","source_ids":["S1"],"rule_ids":["built_heritage_environment_fallback_v1"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"경내 이동이 포함될 수 있으나 날씨 영향과 운영 통제의 직접 자료가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["mixed_site_weather_fallback_v1"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식·평온 체류의 직접 근거는 확인하지 못해 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["style_fallback_neutral_v1"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"접근로·계단·무장애 동선 정보가 없어 이용 부담을 판단하지 않는다.","source_ids":["S1"],"rule_ids":["accessibility_unknown_neutral_v1"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"관람 시간, 내부 출입 및 프로그램 시간 정보가 없어 체류 조절성을 중립값으로 보류한다.","source_ids":["S1","S2"],"rule_ids":["duration_unknown_neutral_v1"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상 자체가 핵심이라는 직접 설명은 확인하지 못했다.","source_ids":["S1"],"rule_ids":["style_scope_fallback_v1"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"조선시대 향교 건물로 보물 지정된 사실은 고유한 문화유산 경험을 뒷받침하지만 비교 평가 자료는 없다.","source_ids":["S1","S2"],"rule_ids":["designated_heritage_distinctiveness_v1"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.75,"confidence":0.75,"status":"needs_review","inference_level":"researched_inference","rationale":"제주향교 안의 제주 지역 향교 유적건조물이라는 확인 사실을 근거로 지역 문화와의 연결을 높게 추정한다.","source_ids":["S1","S2"],"rule_ids":["local_institutional_heritage_v1"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.75,"confidence":0.8,"status":"needs_review","inference_level":"researched_inference","rationale":"국가 보물 지정은 문화유산으로서의 중요성을 뒷받침하나 관광 대표성의 비교 근거는 없다.","source_ids":["S1","S2"],"rule_ids":["national_heritage_significance_v1"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"건축물 외관은 있으나 촬영 가치·허용 범위의 직접 자료가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["photo_evidence_missing_neutral_v1"]}
+  },
+  "companion_fit": {
+    "solo": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"개별 관람 가능성은 있으나 관람 동선·운영 조건이 확인되지 않아 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["companion_unknown_neutral_v1"]},
+    "couple": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 관람의 직접 적합성 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["companion_unknown_neutral_v1"]},
+    "friends": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 관람·프로그램 참여 가능 조건이 확인되지 않아 중립값으로 보류한다.","source_ids":["S2","S3"],"rule_ids":["companion_unknown_neutral_v1"]},
+    "kids": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 대상 관람·안전·편의 조건을 확인하지 못해 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["companion_unknown_neutral_v1"]},
+    "parents": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고령 방문객의 계단·휴식·무장애 조건을 확인하지 못해 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["companion_unknown_neutral_v1"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 관람·운영 근거가 없어 중립값으로 보류한다.","source_ids":["S1"],"rule_ids":["month_unknown_neutral_v1"]}
+  },
+  "hard_constraints": [
+    {"kind":"current_access_and_accessibility_unverified","applies_to":"all_visitors","condition":"현재 개방 시간, 내부 출입 범위, 행사·의례에 따른 관람 제한 및 무장애 접근 조건을 확인하지 못했다.","status":"needs_review","action":"방문 안내나 접근성 제약 판정 전에 제주향교 또는 관리 기관의 최신 관람·출입·접근성 안내를 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

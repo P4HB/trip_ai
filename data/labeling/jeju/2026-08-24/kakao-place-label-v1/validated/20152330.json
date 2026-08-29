@@ -1,0 +1,108 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20152330",
+  "place_id": "20152330",
+  "name": "흑검도",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.9,
+    "rationale": "공개 공공 자료와 보도는 흑검도를 제주시 추자면 대서리의 특정도서(지정번호 132)로 확인하며, 해송·동백나무 군락 등 식생과 멸종위기종 매 서식이 지정 사유다. 그러나 일반 여행객을 위한 공식 상륙·탐방 동선, 예약·허가 절차, 안전 운영 또는 관람 안내는 확인되지 않았다. 보전 관리 대상 무인도라는 확인된 범위만으로는 일반 방문 가능한 독립 여행지로 볼 수 없으므로 현재 라벨링 범위에서 제외한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "흑검도는 제주특별자치도 제주시 추자면 대서리 산153-1에 소재한 특정도서 지정번호 132로 확인된다.",
+    "typical_visit": "공개 자료에서 흑검도는 자연생태 보전·정기 순찰 대상 섬으로 확인되며, 일반 여행객의 독립 방문 경험은 확인되지 않았다.",
+    "experience_scope": "해송·동백나무 군락과 멸종위기종 매 서식이라는 보전 가치는 확인됐지만, 공식 상륙·탐방·관람 서비스와 최신 접근 조건을 확인하지 못했다. 따라서 접근 가능성을 추정해 추천용 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "특정도서 지정현황 공공 자료는 흑검도를 지정번호 132, 제주시 추자면 대서리 산153-1 소재, 면적 145,884㎡의 특정도서로 제시하며 해송·동백나무 군락 등 다양한 식생과 멸종위기종 매 서식을 지정 사유로 기록한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주도는 흑검도를 특정도서로 관리하면서 자연환경 훼손 행위와 보존 상태를 점검하는 정기 순찰 계획을 공개했다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 상륙 허용 여부, 허가·예약 절차, 공식 선착장 또는 탐방 동선과 최신 개방 상태를 확인하지 못했다.",
+      "해상 이동 수단, 운항·기상 통제, 현장 안전시설, 화장실·휴식시설, 통신 및 응급 대응 정보를 확인하지 못했다.",
+      "입력 패킷에는 공개 방문 후기 근거가 없고, Kakao 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "국회도서관 국가정책정보협의회",
+        "type": "public_government_reference",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/228/1076/2023/CLIKC6674734884381160_attach_1.pdf",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "특정도서 지정현황은 흑검도를 지정번호 132로 제시한다.",
+          "소재지는 제주 제주시 추자면 대서리 산153-1, 면적은 145,884㎡로 제시한다.",
+          "해송·동백나무 군락 등 다양한 식생과 멸종위기종 매 서식을 지정 사유로 제시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "연합뉴스",
+        "type": "reputable_news",
+        "url": "https://www.yna.co.kr/view/AKR20120627113800056",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "보도는 흑검도가 2003년 특정도서로 지정됐다고 설명한다.",
+          "제주도가 흑검도의 자연환경 훼손 행위와 보존 상태를 점검하는 정기 순찰을 계획했다고 보도한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/20152330",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘흑검도’다.",
+          "입력 패킷에는 공개 방문 후기 근거가 없으며, 평점과 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "protected_island_visitor_access_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "흑검도는 특정도서로 확인되나, 일반 여행객의 상륙 허용·공식 탐방 동선·해상 이동 안전·기상 통제와 현장 운영 조건을 확인하지 못함",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 주체 또는 공공 관광 안내에서 일반인의 적법한 방문 허용, 접근 방법 및 안전 운영이 확인되면 적격성을 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

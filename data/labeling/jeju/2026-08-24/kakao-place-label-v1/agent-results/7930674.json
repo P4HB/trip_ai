@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7930674",
+  "place_id": "7930674",
+  "name": "생수동굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.8,
+    "rationale": "공개 지리 데이터는 생수동굴을 제주시 한림읍 일대의 locality(지명)로만 표시하며, 관리 주체·관광지 운영·일반 방문객 출입을 확인하는 공공 안내는 찾지 못했다. 입력 Kakao 후기는 입구가 불명확한 상태에서 진입하다 몸이 끼어 구조를 요청했다는 경험을 남긴다. 따라서 Kakao 표식이 안전하게 이용 가능한 독립 관광지인지, 실제 동굴 입구인지, 단순 지명인지 확인할 수 없어 추천용 장소 정체성은 확인 불가로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "생수동굴은 공개 지도에서 제주시 한림읍, 저지리·남송악 인근의 지명으로 표시되지만, 현재 일반 방문객을 위한 동굴 관광지라는 공적 확인은 찾지 못했다.",
+    "typical_visit": "공식 탐방 동선·개방·안전 운영 정보를 확인하지 못해 일반적인 방문 경험을 추정하지 않는다.",
+    "experience_scope": "공개 지리 데이터의 지명 표기와 익명화된 Kakao 방문 후기만 확인했다. 실제 동굴의 위치, 출입 권한, 관리 주체, 공식 탐방로, 편의시설 및 구조·안전 체계는 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Mapcarta의 OpenStreetMap 기반 공개 지리 페이지는 생수동굴을 제주시 한림읍의 locality로 표시하고, 인근에 저지리와 남송악이 있다고 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력에 포함된 익명화 Kakao 공개 방문 후기는 입구가 잘 표시되지 않았고 진입 중 몸이 끼어 구조 요청 중이었다는 경험을 언급한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 표식이 실제 동굴 입구, 지명 범위 또는 다른 지형 표식 중 무엇과 정확히 대응하는지 확인하지 못했다.",
+      "일반 방문객 출입 허용, 토지·시설 관리 주체, 공식 탐방로·개방 시간·예약 또는 안전 통제 정보를 확인하지 못했다.",
+      "동굴 내부 구조, 낙석·협착·침수 위험, 조명·구조 체계, 주차·화장실 및 무장애 접근성을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Mapcarta (OpenStreetMap 기반 공개 지리 데이터)",
+        "type": "public_geographic_record",
+        "url": "https://mapcarta.com/N3740812910",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "생수동굴은 제주시 한림읍의 locality로 표시된다.",
+          "페이지는 인근 지명으로 저지리와 남송악을 표시한다.",
+          "이 자료는 관광지 운영·출입 허가·안전시설을 확인하지 않는다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 공개 방문 후기 요약",
+        "type": "public_review_evidence",
+        "url": "https://place.map.kakao.com/7930674",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "입력 제공 익명화 후기에는 입구 표식이 불명확하다는 경험과 진입 중 신체가 끼었다는 안전 우려가 있다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_access_and_cave_safety_unknown",
+      "applies_to": "all_visitors",
+      "condition": "공식 개방·출입 권한·탐방 동선·관리 주체와 동굴 내부 안전 체계를 확인하지 못했다. 입력 공개 후기는 불명확한 입구와 협착 위험을 시사한다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체·토지 또는 시설 관리 주체의 최신 공식 안내로 장소 정체성, 출입 허용, 동행·장비 요건 및 기상·동굴 안전 조건을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

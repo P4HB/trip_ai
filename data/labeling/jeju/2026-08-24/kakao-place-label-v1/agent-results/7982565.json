@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:7982565",
+  "place_id": "7982565",
+  "name": "신명지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 메타데이터는 명칭 ‘신명지’와 place_id만 제공하며 주소·업종·좌표·공개 후기가 없다. 공개 웹 조사에서도 이 명칭과 Kakao place_id를 제주도의 특정 방문 장소로 연결하는 공식·공공·신뢰 가능한 기록을 확인하지 못해, 독립 추천 장소인지와 방문 경험을 식별할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "‘신명지’는 Kakao place_id 7982565에 연결된 명칭으로만 확인되며, 제주 내 구체적 장소 유형·주소·운영 주체는 식별되지 않았다.",
+    "typical_visit": "방문 목적이나 대표 경험을 확인할 근거가 없다.",
+    "experience_scope": "장소 정체와 독립 방문 가능 여부가 확인되지 않아 41축 추천 벡터를 만들지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 7982565의 명칭을 ‘신명지’로 제공하지만 주소·업종·좌표·방문 후기는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "2026-08-24 공개 웹 검색에서 ‘신명지’ 및 ‘제주 신명지’를 제주도의 특정 관광·문화·자연 방문 장소로 식별하는 공식·공공 출처를 확인하지 못했다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "정확한 주소·좌표·행정구역과 장소 유형을 확인하지 못했다.",
+      "독립 시설인지, 다른 장소의 부속 항목인지, 중복 등록인지 확인하지 못했다.",
+      "개방 여부, 방문 동선, 이용 조건 및 안전 정보를 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/7982565",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소 식별자는 7982565이며 입력 명칭은 ‘신명지’다.",
+          "입력 패킷의 방문자·블로그 후기 수는 모두 0으로 제공된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 웹 검색",
+        "type": "research_search_result",
+        "url": "https://www.google.com/search?q=%EC%A0%9C%EC%A3%BC+%EC%8B%A0%EB%AA%85%EC%A7%80",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "검색 결과에서 해당 명칭을 제주도의 특정 방문 장소로 확정할 공식·공공 출처를 찾지 못했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소 유형·정확한 위치·독립 방문 가능 여부와 최신 접근·안전 조건이 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 후보에서 제외하고, 주소·업종·공식 운영 주체 또는 현장 식별 근거가 확보된 뒤 재판정한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

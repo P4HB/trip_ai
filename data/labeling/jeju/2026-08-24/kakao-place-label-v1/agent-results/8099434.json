@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8099434",
+  "place_id": "8099434",
+  "name": "천아오름",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 장소명과 Kakao place_id만 있고 주소·좌표가 없다. 한국관광공사 관광정보의 천아오름은 어승생악 서쪽 신엄공동목장 일대의 사유지 오름으로 설명되는 반면, 공공 연구보고서에는 제주시 애월읍 광령리와 한림읍 상대리에 각각 천아오름이 기재되어 있다. 따라서 이 Kakao 항목이 어느 동명 오름을 가리키는지 권위 있는 근거로 확정할 수 없다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "천아오름이라는 명칭의 Kakao 장소이나, 입력 패킷에 위치 식별자가 없어 동명 오름들 중 어느 곳인지 확정하지 못했다.",
+    "typical_visit": "한국관광공사 자료에서 식별되는 한 천아오름은 자연 경관을 보는 오름이나 사유지이고 탐방로가 정비되지 않아 천아계곡까지만 탐방하도록 안내된다. 이 사실을 Kakao 항목 자체의 방문 특성으로 전용하지 않는다.",
+    "experience_scope": "동명 장소 식별이 해소되기 전까지 독립 추천 후보로 쓰지 않으며, 41축 수치 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한국관광공사 대한민국 구석구석은 천아오름을 어승생악 서쪽 신엄공동목장 안의 오름으로 설명하고, 사유지이자 탐방로가 정비되지 않아 천아계곡까지만 탐방할 것을 권한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공공 연구보고서의 제주 오름 목록에는 천아오름이 제주시 애월읍 광령리와 한림읍 상대리에 각각 별도 행으로 기록되어 있다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8099434의 주소·좌표가 입력 패킷에 없어 두 동명 오름 중 어느 곳인지 확인하지 못했다.",
+      "식별이 확정되지 않아 입장 가능 구간, 안전 조건, 편의시설과 계절별 이용 특성을 이 장소의 사실로 판정하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국관광공사 대한민국 구석구석",
+        "type": "public_tourism",
+        "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=5eb998f4-3deb-4869-b8d4-078bfae9d97a",
+        "checked_at": "2026-08-24",
+        "facts": ["천아오름은 어승생악 서쪽 신엄공동목장 안에 위치한 오름으로 소개된다.", "해당 천아오름은 사유지이며 탐방로가 정비되지 않아 천아계곡까지만 탐방하도록 안내된다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관 국가정책연구포털",
+        "type": "public_report",
+        "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2017/CLIKC2001763536685432_attach_2.pdf",
+        "checked_at": "2026-08-24",
+        "facts": ["보고서의 제주 오름 목록은 애월읍 광령리와 한림읍 상대리에 각각 천아오름을 수록한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity",
+      "applies_to": "recommendation_candidate",
+      "condition": "주소 또는 좌표로 동명 천아오름 중 대상이 확정되지 않음",
+      "status": "needs_review",
+      "action": "Kakao 원문 메타데이터의 주소·좌표로 장소를 재식별하기 전까지 추천 후보 벡터에서 제외",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

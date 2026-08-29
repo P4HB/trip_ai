@@ -1,0 +1,98 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25730861",
+  "place_id": "25730861",
+  "name": "한천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.5,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘한천’과 place_id만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 제주관광공사 자료는 제주시 도심을 지나는 한천과 이를 따라가는 오라 올레를 설명하지만, 이 Kakao 레코드가 그 하천의 어느 지점 또는 별도의 동명 장소인지는 교차 확인할 수 없다. 따라서 독립 여행 방문지 여부를 추정하지 않고 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 레코드에서 확인 가능한 신원 정보는 ‘한천’이라는 명칭과 place_id뿐이다. 제주관광공사 자료에는 제주시 도심의 한천이 소개되나, 이 Kakao 레코드와의 동일성 및 정확한 표식 위치는 확인되지 않았다.",
+    "typical_visit": "제주관광공사 자료상 오라 올레는 한천을 따라 걷는 숲길이며, 한천이 만든 소와 기암괴석을 볼 수 있다고 소개된다. 다만 이 레코드가 그 탐방 구간을 가리키는지는 확인하지 못했다.",
+    "experience_scope": "입력에는 주소, 좌표, 업종, 공개 방문 후기 및 운영 안내가 없다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았고, 신원이 확정되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 제주시 도심을 가로지르는 한천을 따라 고지교부터 방선문 계곡까지 오라 올레가 이어진다고 안내한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 안내는 한천이 평소 말라 있다가 비가 와야 물이 고이는 건천이며, 오라 올레에 한천이 만든 소와 기암괴석이 있다고 설명한다. 입력 Kakao 레코드가 이 한천 또는 특정 탐방 지점인지는 확인되지 않는다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id의 정확한 주소, 좌표, 업종 및 공식 안내의 한천·오라 올레와의 동일성을 확인하지 못했다.",
+      "독립 여행 방문지로서의 정확한 진입 지점, 운영·통제, 접근성, 주차, 안전 및 최신 현장 상태를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "official_tourism_page",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009202",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "제주시 도심을 가로지르는 한천을 따라 고지교부터 방선문 계곡까지 오라 올레가 이어진다고 안내한다.",
+          "한천은 평소 말라 있다가 비가 오면 물이 고이는 건천이며, 오라 올레에 소와 기암괴석이 있다고 설명한다.",
+          "방선문 계곡은 안전상 문제로 출입이 폐쇄되는 때가 많다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25730861",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘한천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 위치·좌표·업종·후기 근거가 없어 공식 관광 자료의 한천 또는 별도 동명 장소와의 동일성, 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공공 지도의 정확한 좌표·주소와 공식 한천·오라 올레 안내를 먼저 교차 확인한다. 정확한 탐방 지점과 독립 방문 경험이 확인되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

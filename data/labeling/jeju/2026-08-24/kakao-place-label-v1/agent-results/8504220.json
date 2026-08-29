@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8504220",
+  "place_id": "8504220",
+  "name": "절동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.25,
+    "rationale": "입력된 Kakao 지도 장소 표식은 ‘절동산’이라는 독립 지명을 제공한다. 신뢰할 수 있는 공개 자료만으로는 이 표식의 정확한 위치·진입 동선·방문 가능 범위를 확정하지 못했으므로, 장소 후보로만 보수적으로 포함한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1"]
+  },
+  "research": {
+    "identity_summary": "절동산은 Kakao Map에 등록된 제주 지역의 지명형 장소 표식이다. 동명 지명과 관련 자료가 여럿 있어 이 표식이 어느 절동산을 가리키는지는 공개 출처로 확정하지 못했다.",
+    "typical_visit": "확인된 대표 방문 경험은 없다.",
+    "experience_scope": "장소명 외의 신뢰할 수 있는 상세 안내를 확인하지 못해 모든 적합도는 중립 fallback으로 기록했다.",
+    "facts": [
+      {"id":"F1","text":"입력 패킷은 Kakao Map 장소 ID 8504220의 이름을 ‘절동산’으로 제공한다.","source_ids":["S1"]},
+      {"id":"F2","text":"제주 지역에는 ‘절동산’이라는 동명 지명이 복수 맥락에서 나타나므로, 이름만으로 이 지도 표식의 정확한 위치와 성격을 단정할 수 없다.","source_ids":["S2"]}
+    ],
+    "unknowns": ["정확한 위치·경계·진입로와 일반 방문 가능 여부", "지형, 산책로, 경사·계단, 안전시설 및 무장애 접근성", "운영·통제·계절별 접근 조건과 실제 방문 경험"],
+    "sources": [
+      {"id":"S1","publisher":"Kakao Map","type":"public_map_listing","url":"https://place.map.kakao.com/8504220","checked_at":"2026-08-25T00:00:00+09:00","facts":["입력 패킷에서 장소 ID 8504220과 장소명 ‘절동산’을 확인했다.","평점·리뷰 수 및 작성자 정보는 라벨 근거로 사용하지 않았다."]},
+      {"id":"S2","publisher":"국회도서관 국가학술정보","type":"public_government_report","url":"https://clik.nanet.go.kr/clikr-collection/policyinfo/74/644/2015/CLIKC2001987455406408_attach_3.pdf","checked_at":"2026-08-25T00:00:00+09:00","facts":["제주 지역 공개 조사 자료에는 유수암리의 ‘절동산’이라는 별도 지명이 수록되어 있다.","동명 지명만으로 Kakao 지도 표식의 정확한 위치를 식별할 수 없음을 확인하는 보조 맥락으로만 사용했다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"장소명에 ‘산’이 포함되지만 실제 지형·탐방 경험을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1","S2"],"rule_ids":["FALLBACK-IDENTITY-DETAIL-UNKNOWN"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·해양 경험 여부를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.activity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"걷기·등반 등 참여 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화 방문 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 시설 여부를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페 이용이 핵심 방문 목적이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 경험 여부를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"축제·기간성 행사가 핵심이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-EXPERIENCE-UNKNOWN"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"실내·실외 구성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-ENVIRONMENT-UNKNOWN"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"날씨가 방문 경험에 미치는 영향을 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-ENVIRONMENT-UNKNOWN"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식 경험의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 거리·경사·계단 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-ACCESS-UNKNOWN"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"권장 체류시간·단축 동선 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-DURATION-UNKNOWN"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경관 감상이 대표 경험이라는 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"고유한 경험이나 구성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 지역과의 구체적 자연·문화·생활 연결을 확인하지 못해 중립 fallback으로 둔다.","source_ids":["S1"],"rule_ids":["FALLBACK-LOCAL-CONTEXT-UNKNOWN"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"공적 지정이나 지역 대표성 근거를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SIGNIFICANCE-UNKNOWN"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영·시각적 기록 가치의 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-STYLE-UNKNOWN"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 방문의 안전·안내 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문 적합성 근거가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"그룹 이용 규칙·공간 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-COMPANION-UNKNOWN"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"아동 안전·시설 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-CHILD-UNKNOWN"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"경사·휴식·무장애 접근성 정보를 확인하지 못해 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-SENIOR-UNKNOWN"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"월별 접근·계절 경험 정보가 없어 중립 fallback으로 둔다.","source_ids":[],"rule_ids":["FALLBACK-MONTH-UNKNOWN"]}
+  },
+  "hard_constraints": [
+    {"kind":"identity_location_access_and_safety_unverified","applies_to":"visit_planning","condition":"동명 지명 때문에 Kakao 표식의 정확한 위치·경계·진입로와 일반 방문 가능 여부를 확정하지 못했고, 지형·경사·계단·기상 시 안전 정보도 미확인이다.","status":"needs_review","action":"방문 전 Kakao 지도 좌표와 현장 최신 안내로 정확한 위치·사유지 여부·진입 가능성 및 기상·보행 안전을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-25T00:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

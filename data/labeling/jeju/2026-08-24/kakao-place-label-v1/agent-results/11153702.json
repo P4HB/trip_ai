@@ -1,0 +1,102 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:11153702",
+  "place_id": "11153702",
+  "name": "조롱굴",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.95,
+    "rationale": "제주관광공사 Visit Jeju는 조롱굴을 금능석물원 안의 두 동굴 가운데 하나로 직접 안내하고, 한국관광공사 열린관광 모두의 여행도 같은 석물원 내 동굴로 설명한다. Kakao 지도 표식의 금능리 위치도 이 설명과 일치한다. 따라서 조롱굴은 별도 독립 관광지가 아니라 금능석물원 관람 경험에 포함되는 세부 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2", "S3"],
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "조롱굴은 제주시 한림읍 금능리 금능석물원 내부에 있는 동굴이며, 석물원의 세부 관람 지점으로 식별된다.",
+    "typical_visit": "금능석물원의 돌 조각·제주 생활문화 전시를 관람하는 동선 중 동굴과 내부 암자를 보는 경험으로 안내된다.",
+    "experience_scope": "상위 장소 금능석물원 안의 세부 동굴이므로 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주관광공사 Visit Jeju는 금능석물원 안에 정녀굴과 조롱굴 두 동굴이 있고, 굴 안에 불공을 드릴 수 있는 암자가 있다고 안내한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국관광공사 열린관광 모두의 여행은 금능석물원 내 동굴에 계단이 있어 접근이 제한된다고 안내하며, 조롱굴을 석물원 내 동굴로 설명한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "Kakao Map 공개 장소 페이지는 조롱굴을 제주특별자치도 제주시 한림읍 금능리에 수록한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "조롱굴만의 별도 입장, 독립 운영 또는 예약 조건은 확인하지 못했다.",
+      "동굴의 현재 개방 범위, 계단 상태 및 악천후 시 이용 가능 여부는 방문 전 금능석물원 최신 안내로 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019446",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금능석물원 내에 정녀굴과 조롱굴 두 동굴이 있다고 안내한다.",
+          "동굴 안에 불공을 드릴 수 있는 암자가 있다고 안내한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국관광공사 열린관광 모두의 여행",
+        "type": "public_accessibility_information",
+        "url": "https://access.visitkorea.or.kr/ms/detail.do?cotId=2f92353b-af4f-4b03-8c06-4a4a5893154c",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "금능석물원 내에 정녀굴과 조롱굴 두 동굴이 있다고 안내한다.",
+          "석물원 내 동굴은 계단으로 접근이 제한된다고 안내한다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map 공개 장소 페이지",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11153702",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 조롱굴로 표시된다.",
+          "위치는 제주특별자치도 제주시 한림읍 금능리로 표시된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "금능석물원 내부의 세부 동굴 관람 시설로 확인됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 금능석물원과 함께 검토",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-24"
+    },
+    {
+      "kind": "accessibility",
+      "applies_to": "mobility_limited_visitors",
+      "condition": "석물원 내 동굴은 계단으로 접근이 제한된다고 공공 무장애 관광정보가 안내함",
+      "status": "needs_review",
+      "action": "방문 전 금능석물원의 최신 동굴 개방 여부와 계단·보행 접근 조건을 확인",
+      "source_ids": ["S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24"
+}

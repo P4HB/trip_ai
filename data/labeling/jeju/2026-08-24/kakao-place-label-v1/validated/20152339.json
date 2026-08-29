@@ -1,0 +1,107 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:20152339",
+  "place_id": "20152339",
+  "name": "덜섬",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "공개 자료에서 덜섬은 추자면 예초리 북동쪽의 돌섬을 가리키는 별칭(덧섬·독섬)으로 확인된다. 그러나 관광객을 위한 상시 접근·관람 운영, 안전시설 또는 독립 방문 경험은 신뢰할 수 있는 공개 출처에서 확인되지 않았다. 따라서 일반 여행 추천용 독립 방문지 벡터를 생성하지 않고 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 장소명 ‘덜섬’은 제주 추자면 예초리에서 북동쪽 약 6km 해상에 있는 돌섬의 별칭으로 공개 보도에서 확인된다.",
+    "typical_visit": "확인된 공개 자료는 무인 도서·해상 자연 지형으로서의 존재와 식생 관찰을 설명할 뿐, 일반 여행객 대상의 독립 관람·체험 운영을 안내하지 않는다.",
+    "experience_scope": "자연 지형의 신원은 확인되나 일반인의 합법적·안전한 접근, 상륙, 관람 동선 및 관리 주체의 방문 안내가 확인되지 않았다. 이 작업의 독립 여행 방문 장소 범위에는 포함하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주일보 보도는 추자면 예초리에서 북동쪽으로 약 6km 떨어진 돌섬 두 곳을 설명하며, 이를 덜섬·덧섬·독섬으로도 부른다고 적었다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "국회도서관 소장정보에는 제주특별자치도 무인도서 실태조사 자료의 항목으로 ‘덜섬’을 수록한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객의 상륙·출입 가능 여부와 관련 허가·보호구역 조건을 확인하지 못했다.",
+      "관광객용 선착장, 탐방 동선, 안전시설, 화장실, 주차 또는 무장애 접근성은 확인하지 못했다.",
+      "관광·레저 목적으로 상시 개방하거나 운영하는 주체와 공식 방문 안내는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "제주일보",
+        "type": "local_news",
+        "url": "https://www.jejunews.com/news/articleView.html?idxno=2127005",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "추자면 예초리에서 북동쪽 약 6km 떨어진 돌섬 두 곳을 설명한다.",
+          "돌섬의 다른 이름으로 덜섬, 덧섬, 독섬을 제시한다.",
+          "섬 밖에서 식생을 관찰한 내용을 보도한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "국회도서관",
+        "type": "public_library_catalog",
+        "url": "https://dl.nanet.go.kr/detail/MONO12023000013101",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘(제2차) 무인도서 실태조사(5차년도) : 제주특별자치도’ 소장정보의 수록 항목에 덜섬이 표시된다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/20152339",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘덜섬’이다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_safety_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "무인도서·해상 자연 지형이라는 신원은 확인됐으나 일반인의 상륙·출입, 안전시설 및 독립 관광 방문 운영은 확인되지 않음",
+      "status": "needs_review",
+      "action": "추천용 41축 벡터를 생성하지 않고 out_of_scope로 보존한다. 향후 관리 기관의 공식 접근·관람 안내가 확인되면 별도 검수한다.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

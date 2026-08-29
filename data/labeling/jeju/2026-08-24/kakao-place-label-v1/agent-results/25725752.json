@@ -1,0 +1,96 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25725752",
+  "place_id": "25725752",
+  "name": "동회천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 Kakao 레코드는 ‘동회천’이라는 명칭과 place_id만 제공하며 주소·좌표·업종·공개 후기 근거가 없다. 공개 검색에서 동회천은 제주시 회천동의 도로명·지역 표기와 여러 서로 다른 역사 현장의 위치 설명으로 사용되지만, 어느 대상도 이 Kakao place_id와 직접 연결되지 않는다. 따라서 이 레코드를 특정 방문지·시설·자연지물로 식별하거나 추천 후보로 간주하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2", "F3"]
+  },
+  "research": {
+    "identity_summary": "Kakao 입력에는 이름 ‘동회천’ 외의 위치·분류 정보가 없다. 공개 자료는 동회천이 제주시 회천동 일대의 도로명 및 역사 현장 위치 설명에 쓰임을 보여 주지만, 해당 자료만으로 place_id 25725752의 정확한 대상을 확정할 수 없다.",
+    "typical_visit": "확정할 수 없음. 공개 자료에 동회천을 포함한 서로 다른 장소·주소가 나타나나, 어느 하나를 이 레코드의 대표 방문 경험으로 연결할 직접 근거가 없다.",
+    "experience_scope": "장소 신원과 독립 방문지 여부가 확인되지 않아 추천용 방문 경험·적합도 벡터를 생성하지 않는다. Kakao 평점·후기 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 레코드는 이름을 ‘동회천’으로 제공하며 주소, 좌표, 업종 및 공개 후기 근거를 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주다크투어의 ‘석구왓궤(동회천)’ 역사현장 안내는 위치를 제주특별자치도 제주시 동회천1길 56 일대로 표시한다.",
+        "source_ids": ["S2"]
+      },
+      {
+        "id": "F3",
+        "text": "제주다크투어의 ‘이덕구 가족묘(동회천)’ 안내는 동회천을 위치 설명에 사용하며, 별도 역사 현장의 주소는 제주시 회천동 673으로 표시한다.",
+        "source_ids": ["S3"]
+      }
+    ],
+    "unknowns": [
+      "이 Kakao place_id가 지칭하는 정확한 지점·시설·자연지물·행정 또는 생활권 표기를 확인하지 못했다.",
+      "독립 여행 방문지로서의 관람·체험·접근성·안전·운영 정보를 확인하지 못했다.",
+      "입력에는 공개 방문 후기 근거가 제공되지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/25725752",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘동회천’이다.",
+          "입력 패킷에는 주소, 좌표, 업종 및 공개 방문 후기 근거가 없다.",
+          "평점·후기 수와 작성자 정보는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "(사)제주다크투어",
+        "type": "nonprofit_historical_site_guide",
+        "url": "https://www.jejudarktours.org/ko/historical-sites/%EC%84%9D%EA%B5%AC%EC%99%93%EA%B6%A4%EB%8F%99%ED%9A%8C%EC%B2%9C/",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘석구왓궤(동회천)’를 별도 역사현장으로 안내한다.",
+          "안내된 위치는 제주특별자치도 제주시 동회천1길 56 일대다.",
+          "이 안내에는 Kakao place_id 25725752와의 연결 정보가 없다."
+        ]
+      },
+      {
+        "id": "S3",
+        "publisher": "(사)제주다크투어",
+        "type": "nonprofit_historical_site_guide",
+        "url": "https://www.jejudarktours.org/ko/historical-sites/%EC%9D%B4%EB%8D%95%EA%B5%AC-%EA%B0%80%EC%A1%B1%EB%AC%98%EB%8F%99%ED%9A%8C%EC%B2%9C/",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "‘이덕구 가족묘(동회천)’를 별도 역사현장으로 안내한다.",
+          "안내된 주소는 제주특별자치도 제주시 회천동 673이다.",
+          "이 안내에는 Kakao place_id 25725752와의 연결 정보가 없다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 레코드에 주소·좌표·업종이 없고 ‘동회천’이라는 명칭이 여러 지역·역사 현장 표기에 쓰여 정확한 대상과 독립 여행 방문지 범위를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "Kakao 또는 공식·공공 지도의 좌표·주소·업종을 확보해 place_id의 신원을 먼저 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2", "S3"],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25"
+}

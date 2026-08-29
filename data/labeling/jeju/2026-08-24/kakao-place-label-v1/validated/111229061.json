@@ -1,0 +1,38 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "111229061",
+  "canonical_id": "kakao:111229061",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "rationale": "장소명은 서귀포시 관련 안내 지원 시설을 가리킨다. 독립적인 방문 목적지 경험이 아니라 정보 제공 서비스이므로 추천용 벡터 대상에서 제외한다.",
+    "source_ids": []
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "constraint": "support_service_not_destination",
+      "detail": "독립 목적지로 추천하지 않고 안내 지원 시설로 취급해야 한다.",
+      "source_ids": []
+    }
+  ],
+  "research": {
+    "sources": [],
+    "limitations": [
+      "현재 운영·서비스 정보는 공식 또는 공공 출처로 확인이 필요하다.",
+      "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ]
+  },
+  "review_priority": "high",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

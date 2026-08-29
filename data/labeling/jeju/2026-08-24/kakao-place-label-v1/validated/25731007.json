@@ -1,0 +1,93 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:25731007",
+  "place_id": "25731007",
+  "name": "호근천",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력은 좌표·주소·후기 없이 ‘호근천’이라는 이름과 Kakao 장소 ID만 제공한다. 공개 하천 자료에는 서귀포의 호근천이 확인되지만, 이 Kakao 표식이 그 하천의 어느 구간 또는 별도 방문 지점을 뜻하는지는 확인할 수 없어 추천용 장소 정체를 확정하지 않았다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "공개 자료는 호근천을 제주특별자치도 서귀포시의 지방하천으로 열거하지만, 입력 Kakao ID와 특정 하천 구간의 대응은 확인되지 않았다.",
+    "typical_visit": "확인 불가",
+    "experience_scope": "공식·공공 자료에서 하천명과 행정 구분만 확인됐다. 접근 지점, 산책로, 조망, 개방·안전 상태 및 관광 방문 경험은 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "제주 하천 목록 자료는 서귀포시의 지방하천으로 호근천을 열거한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "제주도의회 공개 부록은 서귀포시 하천 목록에 호근천을 포함한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Kakao 장소 ID가 가리키는 정확한 좌표와 하천 구간",
+      "관광객 접근성, 산책 가능 여부, 시설과 안전 관리 상태",
+      "최신 공사·통제·기상 위험 정보"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한국하천협회 하천정보",
+        "type": "public_river_list",
+        "url": "https://www.riverlove.or.kr/files/riverData/aaeeb7c31d2261d3b16464f05d42f021.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "제주특별자치도 서귀포시의 지방하천 목록에 호근천이 수록돼 있다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주특별자치도의회",
+        "type": "public_record",
+        "url": "https://record.council.jeju.kr/CLRecords/Files/FileAppendix/a11/A034906.pdf",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "서귀포시 하천 목록 자료에서 호근천을 확인했다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_access_unknown",
+      "applies_to": "all_visitors",
+      "condition": "입력 Kakao 표식의 정확한 하천 구간과 접근·안전 상태를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "공식 지도와 현장 최신 안내로 정확한 위치 및 출입·안전 상태를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

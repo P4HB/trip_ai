@@ -1,0 +1,71 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "21627106",
+  "canonical_id": "kakao:21627106",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "agent_identity": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium"
+  },
+  "eligibility": {
+    "status": "eligible",
+    "rationale": "공개 행정 데이터에 성판악 탐방로가 한라산국립공원의 독립된 탐방 코스로 수록되어 있고, Kakao 장소명도 해당 코스와 일치한다.",
+    "source_ids": ["source_public_data_001", "source_kakao_place_001"]
+  },
+  "atomic_labels": {
+    "theme.mountain": { "value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "공공데이터가 성판악을 한라산 탐방 코스로 명시한다.", "rule_ids": ["theme-core-experience"], "source_ids": ["source_public_data_001"] },
+    "theme.ocean": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 대표 경험은 한라산 산행이며 해양 활동 근거는 확인되지 않았다.", "rule_ids": ["theme-core-experience"], "source_ids": ["source_public_data_001"] },
+    "theme.activity": { "value": 1, "confidence": 0.9, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "9.6km 탐방 코스의 도보 산행이 장소의 대표 이용이다.", "rule_ids": ["theme-core-experience"], "source_ids": ["source_public_data_001"] },
+    "theme.culture_history": { "value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "문화·역사 전시 또는 체험이 이 탐방로의 핵심이라는 근거를 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": [] },
+    "theme.theme_park": { "value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "테마파크형 시설이라는 근거를 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": [] },
+    "theme.cafe": { "value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페 이용이 독립적 방문 목적인지 확인되지 않았다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": [] },
+    "theme.traditional_market": { "value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 방문 경험이라는 근거를 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": [] },
+    "theme.festival": { "value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 축제나 기간성 행사가 핵심이라는 근거를 확인하지 못했다.", "rule_ids": ["fallback-insufficient-evidence"], "source_ids": [] },
+    "environment.indoor_ratio": { "value": 0.25, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "확인된 대표 경험이 9.6km 탐방로 산행이므로 실내 비중은 낮은 것으로 판단했으나 시설 비중의 정량 근거는 없다.", "rule_ids": ["environment-primary-experience"], "source_ids": ["source_public_data_001"] },
+    "environment.weather_sensitivity": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "장거리 산악 탐방로이며 계절별 입산 통제 시간이 별도로 운영되어 날씨·계절 조건의 영향이 큰 편으로 판단했다.", "rule_ids": ["environment-weather-exposure"], "source_ids": ["source_public_data_001", "source_public_data_002"] },
+    "style_evidence.restfulness": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "자연 탐방 경험은 있으나 장거리 산행이므로 휴식성은 중립으로 보수적으로 평가했다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.physical_ease": { "value": 0.25, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상까지 편도 9.6km인 탐방 코스여서 신체 부담이 낮다고 보기 어렵다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.visit_duration_flexibility": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공식 자료는 정상 방향 전체 코스를 제시하지만, 짧은 구간 탐방의 가능 여부는 확인하지 못했다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.scenic_value": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "한라산 정상으로 이어지는 자연 탐방로이며 제공된 방문 후기에도 백록담과 조망 경험이 언급된다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001", "source_kakao_review_001"] },
+    "style_evidence.distinctiveness": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "한라산 정상 방향의 성판악이라는 특정 국립공원 탐방 코스로 식별된다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.local_embeddedness": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주특별자치도가 관리하는 한라산국립공원 탐방 코스다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.landmark_significance": { "value": 0.75, "confidence": 0.75, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공공데이터가 한라산국립공원의 주요 탐방 코스 중 하나로 성판악을 별도 관리한다.", "rule_ids": ["style-evidence"], "source_ids": ["source_public_data_001"] },
+    "style_evidence.photo_value": { "value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제공된 공개 후기에서 백록담 조망이 방문 경험으로 언급되지만 촬영 가치의 공식 근거는 부족하다.", "rule_ids": ["style-evidence"], "source_ids": ["source_kakao_review_001"] }
+  },
+  "companion_fit": {
+    "solo": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "독립 탐방은 가능하나 장거리 산행의 개인 적합성은 별도 확인이 필요하다.", "rule_ids": ["companion-fit"], "source_ids": ["source_public_data_001"] },
+    "couple": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "동반 산행은 가능하나 코스 길이 외의 동반 편의 근거가 부족하다.", "rule_ids": ["companion-fit"], "source_ids": ["source_public_data_001"] },
+    "friends": { "value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "여러 명의 산행 여부를 제한하는 근거는 없으나 적합성을 확정할 정보도 부족하다.", "rule_ids": ["companion-fit"], "source_ids": ["source_public_data_001"] },
+    "kids": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상 방향 9.6km 장거리 산행이어서 일반적 아동 동반 적합성은 낮게 보수 평가했다.", "rule_ids": ["companion-fit"], "source_ids": ["source_public_data_001"] },
+    "parents": { "value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "정상 방향 9.6km 산행이어서 일반적 부모 동반 적합성은 낮게 보수 평가했다.", "rule_ids": ["companion-fit"], "source_ids": ["source_public_data_001"] }
+  },
+  "month_fit": {
+    "1": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "2": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "3": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "4": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "5": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "6": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "7": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "8": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "9": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "10": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "11": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] },
+    "12": { "value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "계절별 운영은 확인되나 월별 탐방 품질 근거가 부족하다.", "rule_ids": ["month-climate-fallback"], "source_ids": ["source_public_data_002"] }
+  },
+  "hard_constraints": [
+    { "type": "physical_demand", "detail": "정상 방향 공식 코스 거리는 9.6km이며 체력·보행 능력을 사전 고려해야 한다.", "source_ids": ["source_public_data_001"] },
+    { "type": "seasonal_access", "detail": "입산·하산 통제 시간은 계절별로 운영되므로 출발 전 최신 공지를 확인해야 한다.", "source_ids": ["source_public_data_002"] }
+  ],
+  "research": {
+    "checked_at": "2026-08-25T00:00:00+09:00",
+    "sources": [
+      { "source_id": "source_public_data_001", "url": "https://www.data.go.kr/dataset/3084205/fileData.do?lang=ko", "publisher": "제주특별자치도 세계유산본부·공공데이터포털", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["성판악은 한라산 탐방 코스이며 성판악에서 진달래밭을 거쳐 동능정상까지 총 9.6km로 안내된다."] },
+      { "source_id": "source_public_data_002", "url": "https://www.data.go.kr/data/15056441/fileData.do?recommendDataYn=Y", "publisher": "제주특별자치도·공공데이터포털", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["성판악 탐방로 입구와 진달래밭 통제소의 입산 제한 시간이 계절별로 제공된다."] },
+      { "source_id": "source_kakao_place_001", "url": "https://place.map.kakao.com/21627106", "publisher": "Kakao", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["장소명은 한라산국립공원 성판악탐방로다."] },
+      { "source_id": "source_kakao_review_001", "url": "https://place.map.kakao.com/21627106", "publisher": "Kakao 공개 방문 후기", "checked_at": "2026-08-25T00:00:00+09:00", "facts": ["제공된 익명화 후기에는 성판악 탐방과 백록담 조망 경험이 언급된다."] }
+    ]
+  },
+  "review_priority": "medium"
+}

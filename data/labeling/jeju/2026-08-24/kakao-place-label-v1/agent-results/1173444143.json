@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:1173444143",
+  "place_id": "1173444143",
+  "name": "북받친밭(이덕구산전)",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.75,
+    "rationale": "제주관광공사 Visit Jeju가 이 장소를 제주시 조천의 제주4·3 문화유적지로 공개 안내하며, 입력 장소명과 이덕구산전이라는 별칭 및 피난처 유래가 일치한다.",
+    "duplicate_of": null,
+    "source_ids": ["src_visitjeju", "src_kakao"],
+    "rule_ids": ["identity-public-place-match", "eligible-independent-historic-site"]
+  },
+  "research": {
+    "identity_summary": "북받친밭(속칭 이덕구산전)은 제주시 조천읍 교래리 산중의 제주4·3 역사유적지로, 피난민들이 은신했고 이후 이덕구부대가 잠시 주둔한 것으로 전해지는 장소다.",
+    "typical_visit": "숲속의 제주4·3 역사 현장을 찾아 유래와 장소의 기억을 살피는 야외 답사형 방문이다.",
+    "experience_scope": "공개 관광 자료는 역사적 유래와 농업용 차량길에서 이어지는 현장 접근 설명을 제공한다. 현재 개방 상태, 안내·해설, 주차, 화장실, 보행로 상태 및 무장애 시설은 확인하지 못했다.",
+    "facts": [
+      "Visit Jeju는 북받친밭을 제주4·3·문화유적지·역사유적으로 분류하고, 피난민들의 은신처 및 이덕구부대가 잠시 주둔한 장소로 소개한다.",
+      "Visit Jeju의 현장 설명은 내창에서 농업용 차량길을 따라 약 700m 이동한 뒤 약 100m 들어가는 경로와 두 내의 합류 지점이라는 위치 관계를 안내한다.",
+      "입력 Kakao 장소명은 ‘북받친밭(이덕구산전)’이며, 제공된 비식별 리뷰도 제주4·3 역사 장소라는 인식과 일치한다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "unknowns": [
+      "현재 출입 가능 여부, 운영·해설·안내판 제공, 주차 및 화장실의 현황은 확인하지 못했다.",
+      "접근로의 노면, 경사, 계단, 우천·강풍 시 안전성과 무장애 동선은 확인하지 못했다.",
+      "월별 관람 적기 또는 계절별 현장 조건은 공식 자료에서 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "source_id": "src_visitjeju",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000022859",
+        "publisher": "제주관광공사 Visit Jeju",
+        "checked_at": "2026-08-25T12:00:00+09:00",
+        "facts": ["제주4·3 문화유적지·역사유적 분류", "피난민 은신처와 이덕구부대의 일시 주둔 유래", "농업용 차량길과 계곡 합류부를 따른 현장 접근 설명"]
+      },
+      {
+        "source_id": "src_kakao",
+        "url": "https://place.map.kakao.com/1173444143",
+        "publisher": "Kakao Place 공개 장소 메타데이터·비식별 리뷰 입력",
+        "checked_at": "2026-08-25T12:00:00+09:00",
+        "facts": ["장소명은 북받친밭(이덕구산전)", "입력 리뷰는 제주4·3 역사 장소라는 설명을 담고 있음"]
+      }
+    ],
+    "limitations": ["Kakao 평점·리뷰 수·작성자 정보는 라벨 근거로 사용하지 않았다.", "변동 가능한 개방·시설·접근성 정보는 공식 최신 안내로 별도 확인이 필요하다."]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"value": 0.5, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산중 계곡 합류부에 있는 야외 유적임은 확인되지만, 산·오름 경관 감상이 방문의 핵심이라는 직접 근거는 없다.", "source_ids": ["src_visitjeju"], "rule_ids": ["theme-mountain-context-not-core"]},
+    "theme.ocean": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "공개 안내의 장소 경험은 산중 역사유적과 계곡 주변이며 바다·해안 경험은 확인되지 않았다.", "source_ids": ["src_visitjeju"], "rule_ids": ["theme-inland-not-ocean"]},
+    "theme.activity": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장까지의 이동 설명 외 레포츠나 참여형 체험이 핵심이라는 근거는 확인하지 못했다.", "source_ids": ["src_visitjeju"], "rule_ids": ["fallback-insufficient-activity-evidence"]},
+    "theme.culture_history": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주관광공사 자료가 제주4·3 문화유적지·역사유적으로 분류하고 피난처와 이덕구산전의 유래를 직접 설명한다.", "source_ids": ["src_visitjeju"], "rule_ids": ["theme-direct-history-core"]},
+    "theme.theme_park": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "놀이·동물·수족관·워터파크 등 테마파크형 시설의 근거는 없다.", "source_ids": [], "rule_ids": ["fallback-insufficient-facility-evidence"]},
+    "theme.cafe": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "카페·차·디저트 이용이 독립적인 방문 목적이라는 근거는 없다.", "source_ids": [], "rule_ids": ["fallback-insufficient-cafe-evidence"]},
+    "theme.traditional_market": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "시장 기능이나 판매 활동의 근거는 없다.", "source_ids": [], "rule_ids": ["fallback-insufficient-market-evidence"]},
+    "theme.festival": {"value": 0.25, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "특정 기간 축제·공연·행사가 핵심이라는 근거는 없다.", "source_ids": [], "rule_ids": ["fallback-insufficient-festival-evidence"]},
+    "environment.indoor_ratio": {"value": 0.25, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "산중의 내와 농업용 차량길을 따라 찾는 역사 현장으로 안내되어 대표 경험은 실내보다 야외로 판단한다.", "source_ids": ["src_visitjeju"], "rule_ids": ["environment-outdoor-historic-site-inference"]},
+    "environment.weather_sensitivity": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "대표 경험이 숲속 야외 현장 답사이므로 강수·바람·기온의 영향을 비교적 크게 받을 것으로 판단한다.", "source_ids": ["src_visitjeju"], "rule_ids": ["environment-outdoor-weather-inference"]},
+    "style_evidence.restfulness": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲속 역사 현장이지만 휴식·평온한 체류를 제공한다는 직접 설명은 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-restfulness-unverified"]},
+    "style_evidence.physical_ease": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "농업용 차량길 뒤 현장 접근 설명은 있으나 노면·경사·계단·무장애 동선 정보가 부족하다.", "source_ids": ["src_visitjeju"], "rule_ids": ["fallback-accessibility-unverified"]},
+    "style_evidence.visit_duration_flexibility": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장 답사형 장소이나 권장 체류시간·해설 프로그램·동선 길이는 확인하지 못했다.", "source_ids": ["src_visitjeju"], "rule_ids": ["fallback-duration-unverified"]},
+    "style_evidence.scenic_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "숲과 계곡 주변이라는 위치 설명은 있으나 경관 감상 자체가 방문 가치라는 직접 근거는 확인하지 못했다.", "source_ids": ["src_visitjeju"], "rule_ids": ["fallback-scenic-value-unverified"]},
+    "style_evidence.distinctiveness": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주4·3 피난처와 이덕구산전이라는 구체적 역사 기억이 결합된 개별 유적지여서 고유성이 높다고 판단한다.", "source_ids": ["src_visitjeju"], "rule_ids": ["style-specific-historic-memory-inference"]},
+    "style_evidence.local_embeddedness": {"value": 1, "confidence": 0.75, "state": "numeric", "status": "confirmed", "inference_level": "direct_evidence", "rationale": "제주 중산간 주민들의 피난 생활과 제주4·3의 지역사, 교래리 산중 지형의 관계가 공개 자료에 직접 설명된다.", "source_ids": ["src_visitjeju"], "rule_ids": ["style-direct-local-history"]},
+    "style_evidence.landmark_significance": {"value": 0.75, "confidence": 0.5, "state": "numeric", "status": "needs_review", "inference_level": "researched_inference", "rationale": "제주관광공사가 제주4·3 역사유적으로 별도 소개하지만, 제주 전체의 대표 명소라는 비교·지정 자료는 확인하지 못했다.", "source_ids": ["src_visitjeju"], "rule_ids": ["landmark-historic-site-inference"]},
+    "style_evidence.photo_value": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "현장 사진 촬영 또는 시각적 기록 가치에 관한 공식·공공 근거는 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-photo-value-unverified"]}
+  },
+  "companion_fit": {
+    "solo": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "개인 역사 답사가 가능해 보이나 단독 방문 안전·편의 정보가 부족하다.", "source_ids": [], "rule_ids": ["fallback-companion-unverified"]},
+    "couple": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "동반 2인 방문의 편의·안전 또는 체험 적합성 근거가 부족하다.", "source_ids": [], "rule_ids": ["fallback-companion-unverified"]},
+    "friends": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "그룹용 시설·해설·체험 운영 여부를 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-companion-unverified"]},
+    "kids": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "아동 동반 시 필요한 접근로 안전·보호자 안내와 현장 시설 정보를 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-kids-safety-unverified"]},
+    "parents": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "archetype_prior", "rationale": "보행 부담, 휴식시설, 접근성의 최신 정보가 부족하다.", "source_ids": [], "rule_ids": ["fallback-parents-accessibility-unverified"]}
+  },
+  "month_fit": {
+    "1": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "2": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "3": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "4": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "5": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "6": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "7": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "8": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "9": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "10": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "11": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]},
+    "12": {"value": 0.5, "confidence": 0.25, "state": "numeric", "status": "fallback", "inference_level": "climate_heuristic", "rationale": "월별 현장 개방·접근·기상 조건을 확인하지 못했다.", "source_ids": [], "rule_ids": ["fallback-monthly-climate-unknown"]}
+  },
+  "hard_constraints": [
+    {"kind": "weather_exposure", "applies_to": "all_visitors", "condition": "숲속 야외 역사 현장으로 안내되며, 우천·강풍·기온에 따른 현장 안전과 접근 조건은 확인되지 않았다.", "status": "needs_review", "action": "방문 전 현지 날씨와 최신 공식 출입·안전 안내를 확인한다.", "source_ids": ["src_visitjeju"], "checked_at": "2026-08-25T12:00:00+09:00"},
+    {"kind": "mobility_access", "applies_to": "limited_mobility_visitors", "condition": "농업용 차량길과 추가 도보 접근 설명은 있으나 노면·경사·계단·무장애 동선은 확인되지 않았다.", "status": "needs_review", "action": "방문 전 관리 주체 또는 최신 공식 안내로 실제 접근성 및 보행 안전을 확인한다.", "source_ids": ["src_visitjeju"], "checked_at": "2026-08-25T12:00:00+09:00"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-25T12:00:00+09:00"
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "11405154",
+  "canonical_id": "kakao:11405154",
+  "name": "웃보",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "rationale": "입력에는 짧은 장소명과 place_id만 있고 정확한 위치·유형·공식 안내가 없어 신원 미확정으로 판정한다.",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "ELIG-IDENTITY-UNKNOWN",
+      "ELIG-NO-UNVERIFIED-VECTOR"
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [],
+  "review_priority": "high",
+  "research": {
+    "status": "unmatched",
+    "checked_at": "2026-08-28T00:00:00+09:00",
+    "identity_notes": "정확한 장소·범위를 확인하지 못했다.",
+    "facts": [
+      {
+        "text": "입력 Kakao 레코드는 장소명과 place_id만 제공한다.",
+        "source_id": "S1"
+      }
+    ],
+    "unknowns": [
+      "정확한 위치·유형·개방·접근성"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/11405154",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 장소명은 웃보다."
+        ]
+      }
+    ]
+  },
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

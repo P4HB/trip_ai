@@ -1,0 +1,37 @@
+{
+  "contract": "tourapi-kakao-place-crosswalk-v1",
+  "updated_at": "2026-08-24T15:48:41.640313+09:00",
+  "inputs": {
+    "database": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\match-inputs\\existing_ready_fd05_230.sqlite3",
+    "existing_places": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\match-inputs\\kakao_places_all_3665.csv",
+    "existing_summary": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\match-inputs\\kakao_places_all_3665.csv",
+    "db_place_count": 230,
+    "existing_kakao_place_count": 3665,
+    "existing_kakao_summary_count": 3665
+  },
+  "completed_search_count": 230,
+  "status_counts": {
+    "ambiguous": 32,
+    "matched_existing": 4,
+    "matched_new": 189,
+    "not_found": 5
+  },
+  "new_queue_count": 189,
+  "new_queue_unique_count": 189,
+  "new_queue_existing_overlap_count": 0,
+  "matching_rules": {
+    "top_score_margin_min": 0.08,
+    "rules": [
+      "exact_name+locality+distance<=500m",
+      "name>=0.88+road_number+distance<=300m",
+      "name>=0.95+locality+distance<=150m"
+    ]
+  },
+  "outputs": {
+    "search_candidates": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\fd05-crosswalk\\search_candidates.jsonl",
+    "crosswalk": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\fd05-crosswalk\\place_crosswalk.csv",
+    "ambiguous": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\fd05-crosswalk\\ambiguous_matches.csv",
+    "not_found": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\fd05-crosswalk\\not_found.csv",
+    "new_queue": "data\\labeling\\jeju\\2026-08-24\\kakao-place-label-v1\\fd05-crosswalk\\new_place_queue.csv"
+  }
+}

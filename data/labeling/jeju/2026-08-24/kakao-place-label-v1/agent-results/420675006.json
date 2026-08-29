@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:420675006",
+  "place_id": "420675006",
+  "name": "솔숲",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.55,
+    "rationale": "Kakao 장소 페이지는 ‘솔숲’이라는 명칭, 제주시 구좌읍 동복리 56-4 지번 주소와 좌표를 표시한다. 그러나 공개 페이지와 검색 가능한 독립 출처에서 이 지점의 업종·관리 주체·관람 또는 체험 내용·독립 여행 방문지 여부를 확인하지 못했다. ‘솔숲’은 일반 명사이기도 하므로, 명칭과 위치만으로 방문 경험을 특정하거나 추천용 수치 벡터를 부여하지 않는다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "Kakao place_id 420675006은 ‘솔숲’으로 표시되며, 공개 장소 페이지의 Open Graph 메타데이터에는 제주특별자치도 제주시 구좌읍 동복리 56-4와 WGS84 좌표 126.71053849897918, 33.5437672605235가 제공된다. 다만 장소 유형과 실제 이용 경험은 확인되지 않았다.",
+    "typical_visit": "확인 가능한 공개 근거만으로는 이 장소가 자연 경관 방문지, 사유지, 상호명 또는 기타 시설 중 무엇인지 판별할 수 없다.",
+    "experience_scope": "장소 유형·운영 주체·관람 또는 체험 내용이 확인되지 않아 독립 여행 추천 후보의 방문 경험 범위를 확정할 수 없다. 따라서 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 장소 페이지의 제목과 Open Graph 제목은 ‘솔숲’이며, Open Graph 설명은 제주특별자치도 제주시 구좌읍 동복리 56-4를 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "Kakao 장소 페이지의 Open Graph 정적지도 URL은 WGS84 경도 126.71053849897918, 위도 33.5437672605235를 포함한다. 페이지와 입력 패킷에는 업종·상세 소개·공개 방문 후기 근거가 없다.",
+        "source_ids": ["S1", "S2"]
+      }
+    ],
+    "unknowns": [
+      "이 지점의 관리 주체, 시설 또는 자연지명으로서의 성격과 독립 방문지 여부를 확인하지 못했다.",
+      "관람·체험 내용, 접근 방식, 이용 가능 여부 및 최신 운영 상태를 확인하지 못했다.",
+      "입력 패킷에는 공개 방문 후기 텍스트가 제공되지 않았고, 평점·후기 수는 라벨 근거로 사용하지 않았다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/420675006",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "공개 장소 페이지의 제목은 ‘솔숲’이다.",
+          "Open Graph 설명은 제주특별자치도 제주시 구좌읍 동복리 56-4를 표시한다.",
+          "Open Graph 정적지도 URL은 WGS84 경도 126.71053849897918, 위도 33.5437672605235를 포함한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map labeling input",
+        "type": "source_input_metadata",
+        "url": "https://place.map.kakao.com/420675006",
+        "checked_at": "2026-08-24T00:00:00+09:00",
+        "facts": [
+          "입력 패킷에는 장소명·Kakao URL 외에 주소, 좌표, 업종 및 공개 방문 후기 텍스트가 없다.",
+          "평점과 후기 수는 0으로 제공됐지만 라벨값의 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_and_scope_unverified",
+      "applies_to": "recommendation_candidate",
+      "condition": "장소의 유형·관리 주체·독립 방문지 여부와 실제 관람 또는 체험 내용을 공개 근거로 확인할 수 없음",
+      "status": "needs_review",
+      "action": "공식 또는 공공 출처에서 장소 유형, 관리 주체, 공개 이용 가능 여부와 방문 경험을 교차 확인한다. 확인 전에는 추천용 41축 벡터를 생성하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

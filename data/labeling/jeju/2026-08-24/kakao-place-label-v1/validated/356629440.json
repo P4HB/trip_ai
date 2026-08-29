@@ -1,0 +1,94 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:356629440",
+  "place_id": "356629440",
+  "name": "제1수원지",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "out_of_scope",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 장소 ID와 같은 공개 지도 색인은 제1수원지를 제주특별자치도 제주시 추자면 대서리 234의 저수지로 분류한다. 그러나 일반 여행객을 위한 독립 관람·체험 장소의 공식 운영, 개방, 탐방 동선 또는 안전 안내는 확인하지 못했다. 수원·저수 시설이라는 명칭과 지도 유형만으로 공개 관광 방문지라고 가정하지 않아 추천용 장소 벡터 범위 밖으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "제1수원지는 공개 지도 색인에서 제주특별자치도 제주시 추자면 대서리 234에 있는 저수지로 표시된다.",
+    "typical_visit": "확인 가능한 공개 정보는 저수지라는 장소 유형과 위치뿐이며, 관광객용 관람·체험·탐방 운영은 확인되지 않았다.",
+    "experience_scope": "이 Kakao 레코드는 수원·저수 시설 표식으로 식별되지만 일반 방문객의 합법적 출입, 관리 주체, 동선 및 수변 안전 조건을 확인할 수 없다. 평점·후기 수는 라벨 근거로 사용하지 않았으며, 확인되지 않은 자연·관광 경험을 점수화하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "공개 지도 색인 페이지의 식별자는 Kakao place ID 356629440에 대응하며, 장소명을 ‘제1수원지’로 표시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "같은 공개 지도 색인은 제1수원지를 ‘여행 > 관광,명소 > 저수지’로 분류하고 지번을 제주특별자치도 제주시 추자면 대서리 234로 제시한다.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "unknowns": [
+      "일반 방문객 출입 가능 여부, 운영·관리 주체, 공식 탐방 동선, 주차·화장실, 난간·수변 안전시설 및 무장애 접근성은 확인하지 못했다.",
+      "이 표식이 관광 목적으로 공개된 저수지인지 또는 용수 관리 시설인지는 공식·공공 상세 출처에서 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "PlaceView",
+        "type": "public_map_listing_index",
+        "url": "https://www.placeview.co.kr/id/MzU2NjI5NDQw",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "페이지 식별자 MzU2NjI5NDQw은 입력 Kakao place ID 356629440의 Base64 표기와 일치한다.",
+          "장소명 ‘제1수원지’, 저수지 분류 및 제주특별자치도 제주시 추자면 대서리 234 지번을 표시한다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/356629440",
+        "checked_at": "2026-08-25T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소 ID는 356629440이고 장소명은 ‘제1수원지’다.",
+          "입력의 평점·방문자 후기 수·블로그 후기 수는 라벨 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "derived_labels": {},
+  "hard_constraints": [
+    {
+      "kind": "visitor_access_and_waterfront_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "저수지 표식의 일반인 출입 가능 여부, 수변 안전시설, 공식 동선과 관리 주체를 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "추천용 적합도 벡터를 생성하지 않고 out_of_scope로 보존한다. 공식 관광·방문 안내가 확인되면 독립 방문 장소로 재검수한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-25T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25",
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

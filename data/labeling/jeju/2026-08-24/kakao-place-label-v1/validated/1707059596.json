@@ -1,0 +1,662 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "1707059596",
+  "canonical_id": "kakao:1707059596",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "rule_ids": [
+      "R-ELIGIBLE-INDEPENDENT-PLACE"
+    ],
+    "rationale": "공개 자료에서 내도바당길은 알작지 해안에 이어지는 독립적인 해안 보행 구간으로 확인된다.",
+    "review_status": "confirmed"
+  },
+  "research": {
+    "checked_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://www.ohmynews.com/NWS_Web/view/at_pg.aspx?CNTN_CD=A0003213804",
+        "publisher": "오마이뉴스",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "내도 알작지는 둥근 자갈로 이뤄진 해안이며 파도와 자갈 소리가 언급된다.",
+          "알작지와 월대 일대는 한적한 해안·물빛 경관으로 서술된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "url": "https://walk.kimgoon.kr/trails/1334",
+        "publisher": "걷기좋은길",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "내도바당길은 제주 올레 17코스의 경유 지점으로 나열된다.",
+          "해안도로를 잇는 걷기 코스라는 맥락이 안내된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-NON-MOUNTAIN-COAST"
+      ],
+      "rationale": "확인된 핵심 경험은 해안 보행이며 산·오름 경관은 확인되지 않았다."
+    },
+    "theme.ocean": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-COASTAL-WALK"
+      ],
+      "rationale": "알작지의 자갈 해안과 해안 보행 구간이라는 자료를 바탕으로 바다 경험의 비중이 높다고 판정했다."
+    },
+    "theme.activity": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S2"
+      ],
+      "rule_ids": [
+        "R-WALKING-ACTIVITY"
+      ],
+      "rationale": "올레 경유지의 걷기 경험은 확인되나 레포츠·체험 시설은 확인되지 않았다."
+    },
+    "theme.culture_history": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-NON-CULTURAL-VENUE"
+      ],
+      "rationale": "주변 전설과 마을 맥락은 언급되지만 이 길 자체의 문화시설·유산 경험은 확인되지 않았다."
+    },
+    "theme.theme_park": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-NON-THEME-PARK"
+      ],
+      "rationale": "해안 산책 구간으로 확인되어 테마파크형 경험 근거가 없다."
+    },
+    "theme.cafe": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-NON-CAFE"
+      ],
+      "rationale": "장소 자체가 카페·차·디저트 이용 시설이라는 근거가 없다."
+    },
+    "theme.traditional_market": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-NON-MARKET"
+      ],
+      "rationale": "시장 기능을 뒷받침하는 근거가 없다."
+    },
+    "theme.festival": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-NON-FESTIVAL"
+      ],
+      "rationale": "특정 기간 행사나 축제가 핵심이라는 근거가 없다."
+    },
+    "environment.indoor_ratio": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-COASTAL-PATH"
+      ],
+      "rationale": "자료가 해안·자갈·바닷길의 야외 보행 경험을 설명하므로 실내 비율은 낮게 판정했다."
+    },
+    "environment.weather_sensitivity": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-WEATHER"
+      ],
+      "rationale": "주된 활동이 개방된 해안 보행이므로 강수·바람·기온의 영향을 크게 받을 가능성이 있다."
+    },
+    "style_evidence.restfulness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-QUIET-SCENERY"
+      ],
+      "rationale": "한적한 풍경과 잔잔한 물빛·파도 및 자갈 소리의 묘사를 근거로 느린 감상 체류 가능성을 판정했다."
+    },
+    "style_evidence.physical_ease": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-COASTAL-WALK-ACCESS"
+      ],
+      "rationale": "걷기 구간이나 자갈 해안 인접 구간의 실제 노면·경사·무장애 정보가 부족해 중간값으로 보수적으로 판정했다."
+    },
+    "style_evidence.visit_duration_flexibility": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OPEN-WALK-SEGMENT"
+      ],
+      "rationale": "올레 경유지인 열린 해안 보행 구간으로 확인되어 짧은 산책과 주변 연계 보행 모두 가능하다고 추정했다."
+    },
+    "style_evidence.scenic_value": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COASTAL-SCENERY"
+      ],
+      "rationale": "자갈 해안, 파도 소리, 바다와 민물이 만나는 물빛 및 한적한 풍경이 직접 서술된다."
+    },
+    "style_evidence.distinctiveness": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ALJAKJI-CHARACTER"
+      ],
+      "rationale": "둥근 자갈 해안과 파도·자갈 소리라는 특징은 확인되나, 제주 전체에서의 상대적 희소성 근거는 부족하다."
+    },
+    "style_evidence.local_embeddedness": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-JEJU-LOCAL-TRAIL"
+      ],
+      "rationale": "제주 올레 경유지이며 알작지의 제주 지역 전설과 해안 마을 맥락이 확인된다."
+    },
+    "style_evidence.landmark_significance": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-LOCAL-NONICON"
+      ],
+      "rationale": "지역 해안 산책 지점으로는 확인되나 제주를 대표하는 상징 명소라는 근거는 부족하다."
+    },
+    "style_evidence.photo_value": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-VISUAL-COAST"
+      ],
+      "rationale": "자갈 해안과 물빛 경관이 확인되나 공식 사진 명소 지정 근거는 없어 중간값으로 판정했다."
+    }
+  },
+  "companion_fit": {
+    "solo": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OPEN-COASTAL-WALK"
+      ],
+      "rationale": "개방형 해안 산책 경험으로 혼자 경관을 감상하며 걷는 데 적합할 가능성이 있다."
+    },
+    "couple": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-SCENIC-WALK"
+      ],
+      "rationale": "한적한 해안 경관을 함께 걷고 감상하는 경험에 어울릴 가능성이 있다."
+    },
+    "friends": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-SCENIC-WALK"
+      ],
+      "rationale": "걷기와 경관 감상을 함께할 수 있으나 단체용 시설 여부는 확인되지 않았다."
+    },
+    "kids": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-COASTAL-SAFETY-UNKNOWN"
+      ],
+      "rationale": "야외 해안 보행은 가능하나 자갈·파도 인접 환경과 안전시설 정보가 부족해 중간값으로 판정했다."
+    },
+    "parents": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-ACCESS-UNKNOWN"
+      ],
+      "rationale": "산책형 장소이나 노면·경사·휴식시설 정보가 부족해 보행 부담을 확정할 수 없다."
+    }
+  },
+  "month_fit": {
+    "1": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 보행 특성상 겨울철 바람·추위 가능성을 고려한 보수적 추정이다."
+    },
+    "2": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 보행 특성상 겨울철 바람·추위 가능성을 고려한 보수적 추정이다."
+    },
+    "3": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 중간 수준 추정했다."
+    },
+    "4": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 비교적 높게 추정했다."
+    },
+    "5": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 비교적 높게 추정했다."
+    },
+    "6": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 비교적 높게 추정했다."
+    },
+    "7": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 보행은 가능하나 더위·강수 영향을 고려해 중간 수준으로 추정했다."
+    },
+    "8": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 보행은 가능하나 더위·강수 영향을 고려해 중간 수준으로 추정했다."
+    },
+    "9": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 비교적 높게 추정했다."
+    },
+    "10": {
+      "state": "numeric",
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 비교적 높게 추정했다."
+    },
+    "11": {
+      "state": "numeric",
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 산책의 계절 적합도를 기후 일반론으로 중간 수준 추정했다."
+    },
+    "12": {
+      "state": "numeric",
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "climate_heuristic",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-SEASONAL"
+      ],
+      "rationale": "야외 해안 보행 특성상 겨울철 바람·추위 가능성을 고려한 보수적 추정이다."
+    }
+  },
+  "hard_constraints": [
+    {
+      "type": "weather_exposure",
+      "status": "needs_review",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "rule_ids": [
+        "R-OUTDOOR-WEATHER"
+      ],
+      "rationale": "개방된 해안 보행 특성상 강수·강풍 시 경험과 안전이 영향을 받을 수 있다."
+    },
+    {
+      "type": "accessibility_unknown",
+      "status": "needs_review",
+      "source_ids": [
+        "S1"
+      ],
+      "rule_ids": [
+        "R-ACCESS-UNKNOWN"
+      ],
+      "rationale": "자갈 해안 인접 구간의 노면·무장애·난간 정보가 공개 자료에서 충분히 확인되지 않았다."
+    }
+  ],
+  "review_priority": "medium",
+  "derived_labels": {
+    "derived_style.healing_slow": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "quantize(0.4*style_evidence.restfulness+0.3*style_evidence.physical_ease+0.3*style_evidence.visit_duration_flexibility)",
+      "input_labels": [
+        "style_evidence.restfulness",
+        "style_evidence.physical_ease",
+        "style_evidence.visit_duration_flexibility"
+      ]
+    },
+    "derived_style.discovery_explorer": {
+      "value": 0.5,
+      "confidence": 0.25,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "constant(0.5)",
+      "input_labels": []
+    },
+    "derived_style.scenic_immersion": {
+      "value": 0.75,
+      "confidence": 0.75,
+      "status": "confirmed",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.scenic_value)",
+      "input_labels": [
+        "style_evidence.scenic_value"
+      ]
+    },
+    "derived_style.local_immersion": {
+      "value": 0.75,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.local_embeddedness)",
+      "input_labels": [
+        "style_evidence.local_embeddedness"
+      ]
+    },
+    "derived_style.iconic_highlight": {
+      "value": 0.25,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "archetype_prior",
+      "calculation": "copy(style_evidence.landmark_significance)",
+      "input_labels": [
+        "style_evidence.landmark_significance"
+      ]
+    },
+    "derived_style.photo_mood": {
+      "value": 0.5,
+      "confidence": 0.5,
+      "status": "needs_review",
+      "inference_level": "researched_inference",
+      "calculation": "copy(style_evidence.photo_value)",
+      "input_labels": [
+        "style_evidence.photo_value"
+      ]
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:466833983",
+  "place_id": "466833983",
+  "name": "삼나무숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력에는 일반 명칭 ‘삼나무숲길’과 익명 리뷰 한 건만 있고 주소·좌표·공식 안내가 없다. 리뷰의 아름답고 구경하기 좋다는 표현만으로 동명 숲길 중 어느 곳인지, 정확한 위치·공공 접근·안전 범위를 확인할 수 없어 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": [
+      "F1",
+      "F2"
+    ]
+  },
+  "research": {
+    "identity_summary": "입력 레코드는 장소명, place_id, URL 및 익명 리뷰 한 건만 제공한다. 동명 숲길과의 구별 및 정확한 위치를 확인할 수 없다.",
+    "typical_visit": "리뷰는 시각적 관람에 관한 긍정적 표현만 제공하며 공식 탐방 정보가 아니다.",
+    "experience_scope": "공식 위치·관리·개방 정보가 없어 신원 확정 전 추천용 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 466833983의 장소명을 ‘삼나무숲길’로 제공하며 주소·좌표·업종 정보는 제공하지 않는다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "F2",
+        "text": "입력 익명 리뷰는 장소가 아름답고 구경하기 좋다는 방문자 표현을 포함한다.",
+        "source_ids": [
+          "S2"
+        ]
+      }
+    ],
+    "unknowns": [
+      "정확한 숲길 위치와 동명 장소와의 구별",
+      "공식 관리 주체·보행 가능 구간·개방·통제",
+      "안전·접근성·동행자 적합도를 판단할 공식 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/466833983",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "장소명은 ‘삼나무숲길’이고 place_id는 466833983이다.",
+          "평점·리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 익명 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/466833983",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 리뷰는 아름답고 구경하기 좋다는 표현을 포함한다.",
+          "리뷰는 보조 근거로만 사용하며 공식 탐방 정보를 확정하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "forest_trail_identity_and_access_unverified",
+      "applies_to": "all_visitors",
+      "condition": "정확한 숲길·공식 탐방로와 최신 개방·안전 정보를 확인할 수 없음",
+      "status": "needs_review",
+      "action": "방문 전 공식 또는 공공 안내로 위치, 접근 가능 구간, 기상·안전 통제를 확인한다.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28",
+  "derived_labels": {},
+  "validation": {
+    "status": "passed",
+    "validator": "validate-kakao-place-labels-v1",
+    "error_count": 0,
+    "errors": [],
+    "normalizations": []
+  }
+}

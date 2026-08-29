@@ -1,0 +1,79 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13723750",
+  "place_id": "13723750",
+  "name": "기정길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "rationale": "입력 패킷에는 ‘기정길’이라는 Kakao 장소명과 익명 공개 리뷰만 있고 주소·좌표·공식 탐방 안내가 없다. 한 리뷰는 지도상 길이와 현장 진입 경로를 찾기 어렵고 출입 금지 표시가 있는 귤밭을 언급한다. 다른 리뷰의 경관 평가는 보조 근거일 뿐, 이 레코드가 공공 탐방로인지 사유지 인접 오솔길인지 확인할 수 없어 신원 미확정으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력 Kakao 레코드에서 확인되는 정보는 장소명, place_id, Kakao URL과 익명 공개 리뷰 요약이다. ‘기정길’의 정확한 위치와 공공 도로·탐방로 여부는 입력 근거만으로 확인할 수 없다.",
+    "typical_visit": "일부 익명 리뷰는 아름답거나 좋은 곳이라고 표현하지만, 다른 리뷰는 지도상 길과 현장 진입 경로를 찾기 어렵고 출입 금지 표시가 있는 귤밭을 언급한다. 상충·불완전한 리뷰만으로 방문 가능 범위를 확정하지 않는다.",
+    "experience_scope": "주소·좌표·업종·공식 운영·탐방 안내가 제공되지 않았다. Kakao 평점과 리뷰 수는 라벨값의 직접 근거로 사용하지 않았으며, 장소 신원과 공공 접근성이 확정되기 전에는 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷은 Kakao place_id 13723750의 장소명을 ‘기정길’로 제공하며, 주소·좌표·업종 정보는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "입력의 익명 공개 리뷰는 경관에 대한 긍정적 표현과 함께, 지도상 길·진입 경로를 찾기 어렵고 출입 금지 표시가 있는 귤밭을 언급하는 경험을 포함한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 13723750의 정확한 주소와 좌표, 공공 도로·탐방로 또는 사유지 인접 경로 여부",
+      "공식 관리 주체, 실제 보행 가능 구간, 출입 허용 범위와 최신 통제 안내",
+      "주차·보행 안전·통신·기상 위험과 동행자·월별 적합도를 판단할 공식·공공 근거"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 입력 패킷",
+        "type": "public_map_listing",
+        "url": "https://place.map.kakao.com/13723750",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 패킷의 Kakao 장소명은 ‘기정길’이고 place_id는 13723750이다.",
+          "입력 패킷에는 주소, 좌표 및 업종 정보가 없다.",
+          "평점과 리뷰 수는 라벨 근거로 사용하지 않았다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "Kakao Map 익명 공개 리뷰 요약",
+        "type": "public_review",
+        "url": "https://place.map.kakao.com/13723750",
+        "checked_at": "2026-08-28T00:00:00+09:00",
+        "facts": [
+          "입력 익명 리뷰들은 장소의 경관에 대한 긍정적 표현을 포함한다.",
+          "입력 익명 리뷰 한 건은 지도상 길·진입 경로를 찾기 어렵고 출입 금지 표시가 있는 귤밭을 언급한다.",
+          "리뷰는 보조 근거로만 사용했으며 공공 접근 가능 여부를 확정하지 않는다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "public_access_and_private_property_unverified",
+      "applies_to": "all_visitors",
+      "condition": "입력 익명 리뷰는 지도상 길·진입 경로를 찾기 어렵고 출입 금지 표시가 있는 귤밭을 언급하지만, 공식 탐방로·사유지 경계와 최신 접근 정책은 확인되지 않음",
+      "status": "needs_review",
+      "action": "방문 전 공식 또는 공공 지도·관리 주체 안내로 공공 접근 가능 구간과 사유지 경계를 확인한다. 출입 금지 표지 또는 사유지 경계가 있으면 진입하지 않는다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-28T00:00:00+09:00"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-28"
+}

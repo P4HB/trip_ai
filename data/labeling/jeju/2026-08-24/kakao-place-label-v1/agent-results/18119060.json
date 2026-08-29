@@ -1,0 +1,76 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:18119060",
+  "place_id": "18119060",
+  "name": "제주돌문화공원 미아보호휴게소",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.9,
+    "rationale": "입력 Kakao 장소명은 ‘제주돌문화공원 미아보호휴게소’이다. 제주돌문화공원을 분석한 제주대학교 학위논문은 공원의 편의시설에 ‘미아보호휴게소’를 포함하고, 공원의 관람 동선과 시설 구성을 설명한다. 따라서 이 표식은 독립 관광 방문지보다 제주돌문화공원 내부의 보호·휴게 편의시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "제주돌문화공원 미아보호휴게소는 Kakao에 별도 표식으로 등록된 제주돌문화공원 내 보호·휴게 용도의 부속 편의시설이다.",
+    "typical_visit": "공원 관람 중 보호 또는 휴식 편의를 위한 시설로만 확인되며, 독립적인 관광·체험 방문 경험은 확인하지 않았다.",
+    "experience_scope": "공개 자료는 이 시설을 제주돌문화공원의 편의시설로 열거한다. 시설의 최신 운영 시간, 출입·이용 조건, 위치 및 제공 서비스는 별도로 확인하지 못했다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 Kakao 장소 메타데이터는 place_id 18119060의 명칭을 ‘제주돌문화공원 미아보호휴게소’로 제시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주대학교 학위논문은 제주돌문화공원의 편의시설로 운전기사휴게소·매표소·수표휴게소·미아보호휴게소를 열거하고, 공원 시설을 전시·관리·편의·기반시설로 구분한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "미아보호휴게소의 현재 운영 여부, 운영 시간, 출입·이용 조건 및 제공 서비스는 확인하지 못했다.",
+      "Kakao 표식의 정확한 현장 위치와 공원 내 안내 체계의 최신 상태는 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/18119060",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 제주돌문화공원 미아보호휴게소로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주대학교 교육대학원",
+        "type": "academic_thesis",
+        "url": "https://oak.jejunu.ac.kr/bitstream/2020.oak/16329/2/%EB%B0%95%EB%AC%BC%EA%B4%80%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A7%80%EC%97%AD%EB%AC%B8%ED%99%94%20%ED%99%9C%EC%84%B1%ED%99%94%20%EB%B0%A9%EC%95%88.pdf",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주돌문화공원 편의시설에 미아보호휴게소가 포함된다고 제시한다.",
+          "공원의 시설은 전시시설, 관리시설, 편의시설, 기반시설로 구분된다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_not_independent_destination",
+      "applies_to": "all_visitors",
+      "condition": "이 표식은 제주돌문화공원의 보호·휴게 편의시설로 확인되며 독립 관광 목적지로는 확인되지 않았다.",
+      "status": "confirmed",
+      "action": "여행지 추천 후보에서는 제외하고, 필요 시 제주돌문화공원 방문 중의 편의시설 정보로만 별도 안내한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-25"
+}

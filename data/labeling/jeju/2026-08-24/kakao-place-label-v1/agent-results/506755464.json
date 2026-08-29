@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:506755464",
+  "place_id": "506755464",
+  "name": "전망대 제주항연안여객터미널",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.85,
+    "rationale": "Kakao 공개 장소 페이지는 이 표식을 제주항연안여객터미널과 같은 주소인 제주시 임항로 111의 2층으로 표시한다. 한국해양교통안전공단도 같은 건물의 1·2층을 운항관리·안전 기관 사무공간으로 안내한다. 따라서 이 항목은 별도 운영·관람 경험이 확인된 독립 여행지가 아니라 여객터미널 건물 안의 전망 표식·부속 시설로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "입력명 ‘전망대 제주항연안여객터미널’은 Kakao에서 제주특별자치도 제주시 임항로 111, 제주항연안여객터미널 2층으로 표시된다.",
+    "typical_visit": "독립 목적지로서의 관람·체험·운영 내용은 확인하지 못했으며, 여객선 이용을 위한 제주항연안여객터미널 건물 내 부속 전망 지점으로 파악된다.",
+    "experience_scope": "연안여객터미널은 여객선 이용·운항관리 기능의 건물이며, 이 Kakao 표식의 별도 출입·개방시간, 관람료, 안전시설과 독립적 관광 프로그램은 확인되지 않았다. 평점과 리뷰 수는 라벨 근거로 사용하지 않았다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "Kakao 공개 장소 페이지는 place_id 506755464의 명칭을 ‘전망대 제주항연안여객터미널’로, 주소를 제주특별자치도 제주시 임항로 111 2층으로 표시한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "한국해양교통안전공단은 제주항연안여객터미널 주소를 제주시 임항로 111로 안내하고, 제주운항관리센터는 1층, 제주어선원안전보건센터는 2층에 있다고 표시한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "이 표식이 가리키는 정확한 전망 공간의 현장 위치, 독립 출입 가능 여부와 운영·개방 시간",
+      "전망대의 별도 관리 주체, 관람·안전 규정, 무장애 접근성 및 기상 시 통제 조건",
+      "터미널 이용객 외 방문객에게 독립적인 관광 방문이 허용되는지 여부"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 공개 장소 메타데이터",
+        "type": "public_place_metadata",
+        "url": "https://place.map.kakao.com/506755464",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "장소명은 전망대 제주항연안여객터미널이다.",
+          "소재지는 제주특별자치도 제주시 임항로 111 2층으로 표시된다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "한국해양교통안전공단",
+        "type": "public_agency_information",
+        "url": "https://komsa.or.kr/jeju/sub02_01.do",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "제주항연안여객터미널의 주소를 제주특별자치도 제주시 임항로 111로 안내한다.",
+          "제주운항관리센터는 1층, 제주어선원안전보건센터는 2층에 있다고 안내한다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "subordinate_facility_access_confirmation_required",
+      "applies_to": "recommendation_candidate",
+      "condition": "전망 표식은 제주항연안여객터미널 2층에 표시되지만, 터미널 이용객 외 독립 방문 가능 여부와 최신 출입·안전 조건을 확인하지 못했다.",
+      "status": "needs_review",
+      "action": "독립 관광지로 추천하거나 안내하기 전에 터미널 관리 주체의 최신 안내로 전망 공간의 실제 위치, 일반인 출입 가능 여부와 운영·안전 조건을 확인한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-25"
+    }
+  ],
+  "review_priority": "medium",
+  "generated_at": "2026-08-25"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 2349,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/12777859.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:12777859",
+    "provider": "kakao",
+    "place_id": "12777859",
+    "name": "한라산 웃세누운오름",
+    "url": "https://place.map.kakao.com/12777859",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "7",
+    "blog_review_count": "0",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.07.16.",
+      "content": "안녕하세요 유튜브 “산타크루TV” 페이입니다! https://youtu.be/3WXGWlT9E_U 역대급 설산 풍경을 한라산에서 만나고 왔습니다!❄️ “한라산 윗세오름”",
+      "tags": "뷰|시설|+1"
+    },
+    {
+      "date": "2024.08.02.",
+      "content": "힘들어서 올라갈까? 말까? 고민 했는데...뷰 보면 힘들었던게 싹~~~~~사라집니다 안 올라 와쓰면 평생 후회 할뻔!",
+      "tags": "뷰"
+    },
+    {
+      "date": "2022.09.24.",
+      "content": "제주공항에서 뱅기 이착륙 보이고 신창풍차해안, 마라도, 가파도, 산방산, 중문, 서귀포까지...",
+      "tags": "뷰"
+    },
+    {
+      "date": "2018.09.18.",
+      "content": "제주도 No.1 spot. 오르는 길은 조금 고생되지만 오른후의 만족감은 최고!",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

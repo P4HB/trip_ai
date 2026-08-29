@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1338,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/11053768.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:11053768",
+    "provider": "kakao",
+    "place_id": "11053768",
+    "name": "산천단",
+    "url": "https://place.map.kakao.com/11053768",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "7",
+    "blog_review_count": "6",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2023.08.29.",
+      "content": "제주에서 보낸 첫날 산천단에서 출발~~",
+      "tags": ""
+    },
+    {
+      "date": "2024.05.14.",
+      "content": "산천제를 비롯해 여러 제사를 지낸곳. #산책로",
+      "tags": "뷰|주차"
+    },
+    {
+      "date": "2022.04.26.",
+      "content": "거창하게 둘러보는 곳은 아니지만 산천단의 역사투어 ㅎㅎ 멋진 곰솔나무 보고가세요 산천단 축제 할때 오면 좋을것 같아요 연계관광: 구암굴사 편백나무숲길 세미양오름",
+      "tags": ""
+    },
+    {
+      "date": "2022.11.28.",
+      "content": "제주도의 역사 그 자체 엄마 살던데라 꼭 가긴하는데 좀 습함 카페 고양이 귀엽고 엄청 사람 좋아함 처음 만나는 사람한테 배깜",
+      "tags": ""
+    },
+    {
+      "date": "2016.11.30.",
+      "content": "제주 숨은비경 31 8그루의 곰솔 나무가 있으며 수령은 500~600년으로 추정 천연기념물 제160호로 지정 야간조명",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

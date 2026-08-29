@@ -1,0 +1,70 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:19533520",
+  "place_id": "19533520",
+  "name": "한림공원 왕벚꽃동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "subordinate_facility",
+    "confidence": 0.99,
+    "rationale": "한림공원 공식 안내는 왕벚꽃축제의 장소를 ‘한림공원내 왕벚꽃동산’으로 명시하며, 제주관광공사 Visit Jeju도 한림공원을 다수의 테마 정원으로 이루어진 공원으로 소개한다. 따라서 별도 독립 추천 후보가 아니라 한림공원 관람에 포함되는 내부 정원으로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "왕벚꽃동산은 제주시 한림읍 협재리 한림공원 안에 있는 왕벚나무와 유채꽃 중심의 내부 정원이다.",
+    "typical_visit": "한림공원 관람 동선에서 봄철 왕벚꽃과 유채꽃을 감상하는 세부 정원 방문으로 식별된다.",
+    "experience_scope": "상위 장소 한림공원 내부의 세부 정원이므로 이 결과에서는 단독 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "한림공원 공식 게시물은 왕벚꽃축제의 장소를 ‘한림공원내 왕벚꽃동산’으로 표기하고, 이곳의 왕벚꽃과 유채꽃을 설명한다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "제주관광공사 Visit Jeju는 한림공원을 아열대식물원·분재원·민속마을·연못정원 등 9개 테마로 이루어진 테마파크로 소개하며 주소를 제주시 한림읍 한림로 300으로 안내한다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "왕벚꽃동산 세부 항목만의 별도 입장·독립 운영 여부는 확인하지 않았다.",
+      "왕벚꽃 개화 상태와 축제·관람 가능 기간은 매년 달라질 수 있어 최신 한림공원 공지 확인이 필요하다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "한림공원",
+        "type": "official_park",
+        "url": "https://hallimpark.com/gallery/?bmode=view&idx=6093757",
+        "checked_at": "2026-08-24",
+        "facts": ["왕벚꽃축제 장소를 ‘한림공원내 왕벚꽃동산’으로 명시한다.", "왕벚꽃동산의 왕벚꽃과 유채꽃을 설명한다.", "한림공원 주소는 제주시 한림읍 한림로 300으로 안내된다."]
+      },
+      {
+        "id": "S2",
+        "publisher": "제주관광공사 Visit Jeju",
+        "type": "public_tourism",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500690&menuId=DOM_200000000010940",
+        "checked_at": "2026-08-24",
+        "facts": ["한림공원을 9개 테마로 이루어진 테마파크로 소개한다.", "주소를 제주시 한림읍 한림로 300으로 안내한다."]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "eligibility",
+      "applies_to": "recommendation_candidate",
+      "condition": "한림공원 내부의 세부 정원으로 확인됨",
+      "status": "confirmed",
+      "action": "독립 추천 후보 벡터에서 제외하고 상위 장소 한림공원과 함께 검토",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "low",
+  "generated_at": "2026-08-24"
+}

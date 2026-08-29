@@ -1,0 +1,58 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "place_id": "25729759",
+  "canonical_id": "kakao:25729759",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.25,
+    "review_status": "fallback",
+    "inference_level": "archetype_prior",
+    "source_ids": [
+      "S1"
+    ],
+    "rule_ids": [
+      "RULE-IDENTITY-INSUFFICIENT"
+    ],
+    "rationale": "Kakao 입력의 장소명은 '조천'뿐이고 주소·업종·좌표·상세 설명이 없다. 공개 조사에서도 조천은 제주시의 지역명으로 쓰이며, 이 place_id가 특정 관광·상업 시설 또는 방문 가능한 POI임을 확인할 수 없었다."
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "review_priority": "high",
+  "hard_constraints": [],
+  "research": {
+    "status": "completed",
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://place.map.kakao.com/25729759",
+        "publisher": "Kakao",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "입력 레코드는 장소명을 '조천'으로만 제공하며, 평점과 방문자·블로그 리뷰 수는 모두 0이다.",
+          "입력 레코드에는 주소, 업종, 좌표, 운영 정보 또는 장소 설명이 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "url": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000019854",
+        "publisher": "Visit Jeju",
+        "checked_at": "2026-08-25",
+        "facts": [
+          "공식 관광 페이지는 '조천'을 조천-함덕 해안도로의 출발 지역으로 언급하며, 해당 도로는 별도 관광지명과 주소로 제시한다.",
+          "이 자료만으로 Kakao place_id 25729759가 어느 특정 장소를 가리키는지는 연결할 수 없다."
+        ]
+      }
+    ],
+    "rationale": "동일한 짧은 지명은 지역명 또는 여러 POI의 일부로 사용될 수 있어, 특정 장소 신원이 확인될 때까지 적격 판정을 보류한다.",
+    "rule_ids": [
+      "RULE-IDENTITY-INSUFFICIENT"
+    ]
+  }
+}

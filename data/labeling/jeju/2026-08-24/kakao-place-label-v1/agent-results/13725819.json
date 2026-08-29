@@ -1,0 +1,68 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:13725819",
+  "place_id": "13725819",
+  "name": "무릉곶 자왈아름다운숲길",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {"status":"eligible","confidence":0.9,"rationale":"제주관광공사의 공식 관광정보가 무릉곶자왈을 서귀포시 대정읍 무릉리의 독립 관광지·숲길로 안내하며, 입력 장소명은 그 숲길 구간을 가리킨다. 다른 시설의 부속물이나 중복 장소가 아닌 독립적인 자연 탐방 지점으로 판정한다.","duplicate_of":null,"evidence_ids":["F1","F2"]},
+  "research": {
+    "identity_summary":"무릉곶자왈아름다운숲길은 서귀포시 대정읍 무릉리의 무릉곶자왈을 걷는 야외 숲길 탐방 지점이다.",
+    "typical_visit":"울창한 곶자왈 숲과 화산활동으로 형성된 바위·덩굴 지형을 도보로 관찰하고 자연 경관을 느끼는 야외 방문이다.",
+    "experience_scope":"공식 관광정보는 초보자 탐방, 아침~낮 탐방 권고와 어두워질 때의 위험을 안내한다. 최신 개방 상태, 정확한 코스 길이, 주차·화장실·무장애 시설과 악천후 통제 기준은 확인하지 못했다.",
+    "facts":[
+      {"id":"F1","text":"제주관광공사 VisitJeju는 무릉곶자왈을 서귀포시 대정읍 무릉리 산 1의 관광지로 안내하고, 초보자도 쉽게 탐방할 수 있는 곳이라고 소개한다.","source_ids":["S1"]},
+      {"id":"F2","text":"VisitJeju는 무릉곶자왈이 화산활동으로 형성된 요철 바위 지형의 숲이며, 숲·바위·나무덩굴 때문에 어두워지면 위험할 수 있어 아침에서 낮 사이 탐방과 편한 복장을 권고한다고 설명한다.","source_ids":["S1"]},
+      {"id":"F3","text":"VisitJeju의 무릉2리 체험 안내는 무릉곶자왈 숲길에서 자연의 소리에 귀 기울이는 사운드워킹·명상 체험을 소개한다.","source_ids":["S2"]}
+    ],
+    "unknowns":["현재 개방 여부와 구간별 통제·예약 필요 여부를 확인하지 못했다.","정확한 탐방 거리·소요 시간, 노면 상태, 계단·경사, 주차·화장실·쉼터 및 무장애 시설을 확인하지 못했다.","월별 식생·행사와 기상에 따른 현장 안전 기준을 확인하지 못했다."],
+    "sources":[
+      {"id":"S1","publisher":"제주관광공사 VisitJeju","type":"official_tourism_listing","url":"https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020975","checked_at":"2026-08-25","facts":["무릉곶자왈은 서귀포시 대정읍 무릉리 산 1의 관광지다.","초보자도 쉽게 탐방할 수 있는 곳으로 소개된다.","화산활동으로 생긴 바위 요철 지형의 숲이며, 어두워지기 시작하면 위험할 수 있어 아침~낮 탐방과 걷기 편한 복장을 권고한다."]},
+      {"id":"S2","publisher":"제주관광공사 VisitJeju 카름스테이","type":"official_tourism_experience","url":"https://www.visitjeju.net/kareumstay/villages/placeDetail/325","checked_at":"2026-08-25","facts":["무릉곶자왈 숲길의 사운드워킹은 새소리·바람·나뭇잎 소리에 집중하는 명상적 체험으로 소개된다.","안내된 체험 시간은 90분이다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain":{"state":"numeric","value":0.75,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광정보가 화산활동으로 형성된 바위 요철 지형의 곶자왈 숲을 핵심 경험으로 안내하므로 산림 경관 테마가 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"해안·바다·해양 활동이 대표 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 숲길 탐방과 걷기/등산을 직접 제시하므로 도보 참여 활동이 핵심이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.culture_history":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·공연이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"테마파크형 놀이·동물·수족관 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·디저트 이용이 독립적인 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래 기능의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 장소의 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio":{"state":"numeric","value":0,"confidence":0.9,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 자료가 숲길·바위·나무덩굴을 걷는 야외 탐방지로 직접 안내하므로 대표 경험의 실내 비율은 없다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "environment.weather_sensitivity":{"state":"numeric","value":1,"confidence":0.85,"status":"confirmed","inference_level":"direct_evidence","rationale":"대표 경험이 전면 야외 숲길 탐방이고, 공식 안내도 어두워지면 위험할 수 있어 탐방 시간과 복장을 권고하므로 날씨·일조 영향이 매우 크다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.restfulness":{"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 체험 안내가 숲의 자연 소리에 집중하고 천천히 걷는 명상적 사운드워킹을 소개하므로 평온한 체류 가치가 높다.","source_ids":["S2"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.physical_ease":{"state":"numeric","value":0.75,"confidence":0.7,"status":"needs_review","inference_level":"direct_evidence","rationale":"공식 관광정보가 초보자도 쉽게 탐방할 수 있다고 소개한다. 다만 바위·덩굴 지형의 구간별 노면·경사와 무장애 정보는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"일반 탐방의 공식 소요시간·코스 선택지와 최신 개방 시간이 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 관광정보가 제주 고유의 자연 그대로인 곶자왈에서 자연의 아름다움을 생생하게 느끼는 경험으로 소개하므로 경관 감상 가치가 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"제주 고유의 곶자왈은 화산활동으로 형성된 바위 요철 지형과 숲·덩굴이 결합한 독특한 자연 환경으로 공식 설명된다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.local_embeddedness":{"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 정보가 이 장소를 제주도만의 독특한 곶자왈 자연환경으로 명시하므로 제주 지역 자연과의 연결성이 높다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.landmark_significance":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 대정 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"사진 촬영 또는 시각적 기록 가치가 직접 확인되지 않아 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"혼자 탐방의 최신 안전·통신·동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 방문의 최신 동선·편의시설 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"소규모 동행의 최신 이용 조건과 안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어린이 동반에 필요한 노면·보호시설·안전 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"부모 동반에 필요한 구간별 경사·쉼터·무장애 접근성 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길은 겨울 기상과 일조시간의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길은 겨울 기상과 일조시간의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길은 여름 더위와 강수의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 탐방의 월별 적합도에 일반 기후 휴리스틱만 적용해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.25,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 숲길은 겨울 기상과 일조시간의 영향을 받을 수 있으나 현장 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints":[{"kind":"outdoor_trail_access_and_safety","applies_to":"all_visitors","condition":"야외 곶자왈 숲길은 바위·나무덩굴 지형이며 어두워지면 위험할 수 있다. 최신 개방·통제, 노면·경사, 주차·화장실·무장애 시설과 악천후 안전 기준은 확인하지 못했다.","status":"needs_review","action":"방문 전 공식 관광안내 또는 현장 최신 안내로 개방 여부와 지정 탐방로를 확인하고, 아침~낮에 걷기 편한 복장·신발로 방문하며 기상·일몰 전 보행 안전을 확인한다.","source_ids":["S1"],"checked_at":"2026-08-25"}],
+  "review_priority":"high",
+  "generated_at":"2026-08-25"
+}

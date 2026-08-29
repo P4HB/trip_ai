@@ -1,0 +1,61 @@
+{
+  "schema_version": "kakao-place-label-agent-input-v1",
+  "queue_index": 1922,
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "contract_path": "config/kakao_place_label_contract.v1.json",
+  "output_path": "data/labeling/jeju/2026-08-24/kakao-place-label-v1/agent-results/8021042.json",
+  "place": {
+    "schema_version": "kakao-place-labeling-queue-v1",
+    "canonical_id": "kakao:8021042",
+    "provider": "kakao",
+    "place_id": "8021042",
+    "name": "영아리",
+    "url": "https://place.map.kakao.com/8021042",
+    "average_rating_5": "4.7",
+    "visitor_review_count": "15",
+    "blog_review_count": "3",
+    "inventory_source": "spec-020",
+    "queue_status": "ready"
+  },
+  "kakao_review_evidence": [
+    {
+      "date": "2026.05.18.",
+      "content": "포도호텔 맞은편 마보기에서 시작 서영아리 습지랑 정상 및 쌍둥이 바위 찍고 다시 마보기로 내려왔는데 하산하는길이 헷갈려서 조금 해맸습니다 가시덤불 많아요",
+      "tags": "뷰"
+    },
+    {
+      "date": "2024.11.17.",
+      "content": "밑의 후기들 처럼 안덕면 쓰레기 매릭장 입구 근처에 해병대 훈련장이라고 경고문구 있는 길로 들어가시면 됩니다. 사진의 파란색깔은 차로도 갈 수 있습니다. 길은 조금 험하고 좁지만 일반 세단으로도 가려면 갈 수는 있습니다. 다만 주차하기가 힘들 수 있음. 등산로 입구에 영아리오름 표지판이 생겨서 입구도 쉽게 찾을 수 있습니다. 걸어가셔도 멀지 않으니 걷는 것도 좋아요. 빨간색 표시는 등산로 입니다. 20분 정도면 올라갑니다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.10.22.",
+      "content": "투숙객은 나인브릿지 둘레길에서 올라갈 수 있습니다.",
+      "tags": ""
+    },
+    {
+      "date": "2023.10.03.",
+      "content": "올라가는 길은 편했지만 호수로 가는 길은 정글같.. 아름답고 신비로운 오름이었습니다",
+      "tags": "뷰"
+    },
+    {
+      "date": "2023.03.07.",
+      "content": "신운용님 리뷰를 참고해 골프장 입구 갓길에 차를 두고 마보기를 넘어 다녀왔습니다. 혹시 길을 잃을까봐 트래킹 앱을 켜고 갔구요, 마보기, 영오름습지, 영오름정상,영오름습지 순서로 돌았구요 마보기에서 영오름 입구까지가 갈대밭인데 여기서 청록색 노끈만 잘 따라간다면 크게 어렵지 않습니다.",
+      "tags": ""
+    }
+  ],
+  "instructions": [
+    "장소 한 곳만 판정한다.",
+    "먼저 identity와 eligibility를 판정한다.",
+    "eligible이면 계약의 원자 18축, companion 5축, month 12축을 생성한다.",
+    "companion state는 numeric, month state는 numeric 또는 not_applicable만 사용한다.",
+    "derived 6축은 생성하지 않는다. 메인 validator가 재계산한다.",
+    "Kakao 평점과 리뷰 수는 라벨값 근거로 사용하지 않는다.",
+    "공식·공공 상세 출처를 우선 조사하고 URL, publisher, checked_at, facts를 기록한다.",
+    "공개 리뷰 작성자 정체를 출력하지 않는다.",
+    "직접 근거 없는 0과 1은 사용하지 않는다.",
+    "근거 부족 fallback은 confidence 0.25, status fallback으로 기록한다.",
+    "hard constraint는 fit 점수와 분리한다."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8163059",
+  "place_id": "8163059",
+  "name": "항물동산",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "identity_unknown",
+    "confidence": 0.75,
+    "rationale": "입력 Kakao 레코드는 장소명 ‘항물동산’과 URL만 제공하며 주소·좌표·업종·방문 후기가 없다. 공개 검색에서 제주 제주시 애월읍 어음리의 동명 지형을 언급한 비공식 목록은 확인했지만, 해당 지형과 Kakao place_id의 위치 동일성, 일반 방문객 출입 허용 또는 독립적인 방문 경험을 공공·공식 자료로 확인하지 못했다. 따라서 추천용 장소로 특정할 수 없어 identity_unknown으로 판정한다.",
+    "duplicate_of": null,
+    "source_ids": ["S1", "S2"],
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "항물동산은 입력의 이름만으로는 정확한 위치와 독립 방문지 여부를 확인할 수 없는 지형 표식이다.",
+    "typical_visit": "확정 불가. 공식 관리 주체, 일반 방문객 출입 조건 및 탐방 동선을 확인하지 못했다.",
+    "experience_scope": "Kakao 표식과 공개 지형 언급의 동일성, 현재 접근 가능 범위가 불명확하므로 추천용 41축 벡터를 생성하지 않는다.",
+    "facts": [
+      {
+        "id": "F1",
+        "text": "입력 패킷의 Kakao 장소 메타데이터는 place_id 8163059, 장소명 ‘항물동산’과 Kakao 장소 URL을 제공하며 주소·좌표·업종·리뷰 텍스트는 제공하지 않는다.",
+        "source_ids": ["S1"]
+      },
+      {
+        "id": "F2",
+        "text": "공개된 제주 산봉 목록에는 항물동산이 제주시 애월읍 어음리의 표고 218m 지형으로 기재되어 있으나, 이는 Kakao 표식과의 동일성이나 일반 출입 가능성을 증명하지 않는 보조 정보다.",
+        "source_ids": ["S2"]
+      }
+    ],
+    "unknowns": [
+      "Kakao place_id 8163059의 정확한 주소·좌표와 공개 목록의 항물동산이 같은 지점인지 확인하지 못했다.",
+      "토지·관리 주체, 일반 방문객 출입 허용, 공식 탐방로와 주차·화장실·안전시설을 확인하지 못했다.",
+      "현재 노면·식생 상태, 우천·강풍 시 안전 통제 및 계절별 접근 조건을 확인하지 못했다."
+    ],
+    "sources": [
+      {
+        "id": "S1",
+        "publisher": "Kakao Map 장소 메타데이터 (입력 패킷)",
+        "type": "provider_metadata",
+        "url": "https://place.map.kakao.com/8163059",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "장소명은 ‘항물동산’이다.",
+          "입력 패킷에는 주소·좌표·업종·공개 리뷰 텍스트가 없다."
+        ]
+      },
+      {
+        "id": "S2",
+        "publisher": "공개 제주 산봉 목록",
+        "type": "public_secondary_reference",
+        "url": "https://2fpretty0911.tistory.com/entry/%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4%EC%82%B0-%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84-%EC%A0%9C%EC%A3%BC%EC%8B%9C-%EC%82%B0%EB%B4%89-%EB%AA%A9%EB%A1%9D-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-276%EA%B0%9C",
+        "checked_at": "2026-08-24",
+        "facts": [
+          "항물동산을 제주시 애월읍 어음리, 표고 218m 지형으로 기재한다.",
+          "해당 목록은 공공·공식 관리 또는 출입 안내가 아니므로 위치 동일성과 방문 가능성의 확정 근거로 사용하지 않았다."
+        ]
+      }
+    ]
+  },
+  "atomic_labels": {},
+  "companion_fit": {},
+  "month_fit": {},
+  "hard_constraints": [
+    {
+      "kind": "identity_land_access_and_safety_unknown",
+      "applies_to": "recommendation_candidate",
+      "condition": "Kakao 표식의 정확한 위치·동일성, 토지 또는 관리 주체, 일반 방문객 출입 허용 및 공식 탐방 동선·현재 안전 조건이 공공·공식 출처로 확인되지 않았다.",
+      "status": "needs_review",
+      "action": "추천 또는 방문 안내 전에 관할 지자체·토지 또는 관리 주체의 최신 안내로 표식의 동일성, 일반 출입 허용 및 안전한 접근 경로를 확인한 뒤 독립 방문 장소이면 재라벨링한다.",
+      "source_ids": ["S1", "S2"],
+      "checked_at": "2026-08-24"
+    }
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}

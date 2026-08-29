@@ -1,0 +1,75 @@
+{
+  "schema_version": "kakao-place-label-agent-result-v1",
+  "canonical_id": "kakao:8007088",
+  "place_id": "8007088",
+  "name": "어리목계곡",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "medium",
+  "eligibility": {
+    "status": "eligible",
+    "confidence": 0.85,
+    "rationale": "국립제주호국원은 어리목계곡을 어리목 탐방로에 위치한 계곡으로 별도 소개하고, 어리목광장에서 약 10분 올라가 볼 수 있으며 사제비동산·만세동산·윗세오름 대피소로 이어지는 탐방 맥락을 안내한다. 독립적으로 방문·관찰할 수 있는 자연 관광지로 판정한다.",
+    "duplicate_of": null,
+    "evidence_ids": ["F1", "F2"]
+  },
+  "research": {
+    "identity_summary": "어리목계곡은 한라산 어리목 탐방로에 위치한 계곡으로, 공식 안내상 어리목광장에서 약 10분 올라가 볼 수 있다.",
+    "typical_visit": "야외 탐방로를 따라 계곡을 보고, 계속 오르면 사제비동산·만세동산·윗세오름 대피소 방향으로 이어지는 자연 관찰·보행 방문이다.",
+    "experience_scope": "공식 안내는 탐방로상 위치, 계곡까지의 약 10분 보행 및 상위 탐방 지점과의 연결을 확인한다. 최신 탐방로 개방, 노면·경사·계단, 화장실·주차·무장애 시설, 계곡 수량과 악천후 통제는 확인하지 못했다.",
+    "facts": [
+      {"id": "F1", "text": "국립제주호국원은 어리목계곡이 사제비동산·만세동산·윗세오름 대피소로 이어지는 어리목 탐방로에 위치한다고 안내한다.", "source_ids": ["S1"]},
+      {"id": "F2", "text": "국립제주호국원은 어리목광장에서 약 10분 올라가면 계곡을 볼 수 있고, 계곡에서 약 한 시간 오르면 사제비동산에 이른다고 안내한다. 입력 Kakao 공개 후기는 바람이 많이 불고 아이들이 추워 사진만 찍고 내려왔다고 적었다.", "source_ids": ["S1", "S2"]}
+    ],
+    "unknowns": ["최신 탐방로 개방·예약·출입 제한을 확인하지 못했다.", "노면, 경사, 계단, 난간, 무장애 접근성과 어린이·고령자 안전시설을 확인하지 못했다.", "계절별 계곡 수량, 결빙, 강풍·호우 시 통제와 주차·화장실 운영을 확인하지 못했다."],
+    "sources": [
+      {"id": "S1", "publisher": "국립제주호국원", "type": "public_institution_tourism_page", "url": "https://518.mpva.go.kr/jjnc/contents.do?key=1726", "checked_at": "2026-08-24", "facts": ["어리목계곡은 어리목 탐방로에 위치한다.", "어리목광장에서 약 10분 올라가면 계곡을 볼 수 있다.", "계곡 위 탐방은 사제비동산, 만세동산, 윗세오름 대피소 방향으로 이어진다."]},
+      {"id": "S2", "publisher": "Kakao Map 공개 방문 후기", "type": "public_review_evidence", "url": "https://place.map.kakao.com/8007088", "checked_at": "2026-08-24", "facts": ["입력된 공개 후기는 바람이 많이 불고 아이들이 추워 사진만 찍고 내려온 방문 경험을 언급한다."]}
+    ]
+  },
+  "atomic_labels": {
+    "theme.mountain": {"state":"numeric","value":0.75,"confidence":0.8,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 안내가 한라산 어리목 탐방로의 계곡과 그 위쪽 사제비동산·윗세오름 방향 탐방을 설명해 산지 자연 경험이 핵심임을 확인한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "theme.ocean": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"바다·해안·해양 활동이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.activity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"계곡까지 약 10분, 사제비동산까지 추가 보행이 필요한 탐방로상 장소라는 공식 안내를 근거로 야외 보행·탐방 비중을 높게 추론한다. 실제 동선 상태는 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.culture_history": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"역사·문화유산·전시·전통 체험이 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.theme_park": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"놀이·동물·수족관 등 테마파크형 경험의 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.cafe": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"카페·차·커피·디저트 이용이 독립 방문 목적이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.traditional_market": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"시장 또는 상거래가 핵심 방문 경험이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "theme.festival": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"특정 축제·공연 또는 기간성 행사가 핵심이라는 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.indoor_ratio": {"state":"numeric","value":0.25,"confidence":0.7,"status":"needs_review","inference_level":"researched_inference","rationale":"탐방로를 올라 계곡을 보는 자연 관찰 경험으로 공식 안내돼 대표 경험의 실내 비율은 낮게 추론한다. 부대 실내공간은 미확인이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "environment.weather_sensitivity": {"state":"numeric","value":0.75,"confidence":0.65,"status":"needs_review","inference_level":"researched_inference","rationale":"야외 탐방로와 계곡 관찰이 대표 경험이며, 입력 후기에도 강풍·추위가 방문을 단축한 사례가 있어 날씨 영향을 크게 받는다고 추론한다.","source_ids":["S1","S2"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.restfulness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"휴식시설, 혼잡도, 소음 및 체류 환경 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.physical_ease": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"계곡까지의 시간은 안내되지만 노면·경사·계단·난간과 무장애 정보가 없어 보행 부담은 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.visit_duration_flexibility": {"state":"numeric","value":0.75,"confidence":0.6,"status":"needs_review","inference_level":"researched_inference","rationale":"계곡만 보는 약 10분 접근과 그 위쪽 탐방을 이어갈 수 있다는 공식 안내를 근거로 짧은 방문과 연장 탐방 모두 가능하다고 추론한다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.scenic_value": {"state":"numeric","value":0.75,"confidence":0.75,"status":"confirmed","inference_level":"direct_evidence","rationale":"공식 기관이 계곡을 주변 명소로 소개하고 탐방로의 자연 지점으로 안내하므로 자연 경관 관찰이 직접 확인되는 방문 가치다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-011"]},
+    "style_evidence.distinctiveness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"어리목 탐방로의 계곡이라는 위치는 확인되지만 다른 계곡과 비교한 고유한 경험의 충분한 근거가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.local_embeddedness": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 한라산 자연환경이라는 사실 외에 제주 지역 문화·생활·생산자와의 직접 연결 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.landmark_significance": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"제주 또는 지역을 대표하는 상징 명소라는 공적 지정·안내를 확인하지 못해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]},
+    "style_evidence.photo_value": {"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"계곡의 경관성은 확인되지만 사진 촬영 또는 시각적 기록 가치가 직접 강조된 근거가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-006","REQ-008","REQ-009","REQ-011"]}
+  },
+  "companion_fit": {
+    "solo":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"최신 출입·안전·동선 정보가 부족해 혼자 방문 적합도는 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "couple":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"동반 체류 환경과 동선 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "friends":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"여러 명 방문 시 동선·안전·수용 여건 정보가 부족해 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "kids":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"입력 후기는 강풍과 추위로 아이들이 추워했다는 사례를 보이나, 어린이용 안전시설과 노면 정보를 확인하지 못해 중립값이다.","source_ids":["S1","S2"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "parents":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"archetype_prior","rationale":"보행 난이도·쉼터·무장애 접근성 정보가 없어 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "month_fit": {
+    "1":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "2":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "3":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "4":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "5":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "6":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "7":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "8":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "9":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "10":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "11":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]},
+    "12":{"state":"numeric","value":0.5,"confidence":0.25,"status":"fallback","inference_level":"climate_heuristic","rationale":"야외 계곡 탐방의 월별 현장 조건을 확인하지 못해 일반 기후 휴리스틱에 따른 중립값이다.","source_ids":["S1"],"rule_ids":["REQ-007","REQ-008","REQ-009","REQ-011"]}
+  },
+  "hard_constraints": [
+    {"kind":"access_and_weather_safety_unknown","applies_to":"all_visitors","condition":"최신 탐방로 개방 여부, 노면·경사·계단·난간, 계곡 수량·결빙, 강풍·호우 시 통제와 무장애·안전시설을 확인하지 못했다. 입력 공개 후기는 강풍과 추위가 짧은 방문에 영향을 준 사례를 보인다.","status":"needs_review","action":"방문 전 한라산국립공원 또는 현장 최신 안내로 탐방로 개방, 기상, 보행 안전과 동반자 적합성을 확인한다.","source_ids":["S1","S2"],"checked_at":"2026-08-24"}
+  ],
+  "review_priority": "high",
+  "generated_at": "2026-08-24"
+}
