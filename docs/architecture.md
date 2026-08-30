@@ -114,6 +114,8 @@ scripts/validate_all_place_profiles.py
 - `data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/`: 전체 비음식점 AI 초안의 재개 가능 웹 cache, canonical JSONL, 질의용 SQLite, manifest와 검수 보고서를 보관한다.
 - `map-ui/`: 동행자·날짜·여행 방식·취향·확인을 한 단계씩 진행하는 베타 입력 흐름과 검색·지도 탐색을 제공한다. 취향 단계에서는 프리셋·세부 조정과 함께 여행 MBTI를 시작하고 결과 가중치를 적용할 수 있다. 최종 확인 뒤 `ccu-mmr-v6-travel-mbti-three-axis` 구조화 입력, P/A/M 관련도, 관련도 상위 3개를 각각 seed로 한 코스 3안, 최초 `0.5/0.3/0.2` 선택, 세션 재추천, 요청 인지형 MMR, 선택 코스 자동 일정 중심과 일차 hover/focus 지도 강조를 계산한다. 베타 추천 카드는 장소 요약·수치 없는 추천 이유·상세보기·1~5 만족도만 먼저 표시하고, ID·출처·점수 trace·41축은 장소 상세 패널에서 확인한다. 시작일·종료일로 만든 일자별 일정의 각 장소에도 같은 1~5 만족도와 최대 300자 의견을 표시하며, 추천 목록과 일정의 같은 장소는 ID 기준으로 입력 상태를 즉시 동기화한다. `preference-elicitation.js`는 A/R·O/I·L/H 축마다 6개씩 총 18개 질문과 최대 3개 적응형 가상 pair에서 연속 원자 라벨 가중치와 3축 8개 여행 MBTI를 결정적으로 만들며 DOM과 분리된다.
 
+- 760px 이하 `map-ui`는 다섯 입력 section을 모두 펼친 단일 문서 흐름으로 표시하고, 명시적 실행 뒤 결과·일정을 입력 아래, 지도를 그 아래에 배치한다. 761px 이상은 기존 단계형 wizard와 태블릿 drawer 경계를 유지한다.
+
 ### 현재 런타임 경계
 
 - 공개 베타 배포는 `https://168-107-40-231.sslip.io/travel/`에서 제공한다. 같은 Caddy edge의 기존 Rail Desk `/`와 `/healthz`를 유지하고, 버전된 Docker 릴리스가 Map UI 정적 파일을 `/srv/travel/`에 포함해 `/travel/` 경로로만 노출한다. `/travel`은 `/travel/`로 영구 리다이렉트한다.

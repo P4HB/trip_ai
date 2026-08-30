@@ -67,6 +67,7 @@
     ],
   };
   const WIZARD_STEPS = ["동행자", "날짜", "여행 방식", "여행 취향", "조건 확인"];
+  const MOBILE_STACKED_MEDIA = "(max-width: 760px)";
   const FEEDBACK_OPTIONS = Object.freeze([
     { score: 1, label: "전혀 안 끌려요" },
     { score: 2, label: "별로예요" },
@@ -658,6 +659,10 @@
     window.requestAnimationFrame(() => document.querySelector(selector)?.focus({ preventScroll: true }));
   }
 
+  function isMobileStackedFlow() {
+    return window.matchMedia(MOBILE_STACKED_MEDIA).matches;
+  }
+
   function validateWizardStep(step) {
     hideFormError();
     if (step === 1 && !dom.companionType.value) {
@@ -698,28 +703,43 @@
     return true;
   }
 
+  function validateMobileWizardFlow() {
+    for (let step = 1; step < WIZARD_STEPS.length; step += 1) {
+      if (validateWizardStep(step)) continue;
+      state.wizardStep = step;
+      document.querySelector(`[data-wizard-step="${step}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return false;
+    }
+    return true;
+  }
+
   function showWizardStep(step, { focus = true } = {}) {
     const nextStep = Math.max(1, Math.min(WIZARD_STEPS.length, Number(step) || 1));
     state.wizardStep = nextStep;
     hideFormError();
+    const stacked = isMobileStackedFlow();
+    document.body.classList.toggle("mobile-stacked-flow", stacked);
     document.querySelectorAll("[data-wizard-step]").forEach((section) => {
       const active = Number(section.dataset.wizardStep) === nextStep;
-      section.hidden = !active;
-      section.setAttribute("aria-hidden", String(!active));
+      section.hidden = stacked ? false : !active;
+      section.setAttribute("aria-hidden", String(stacked ? false : !active));
       section.classList.toggle("is-active", active);
     });
     const progress = Math.round((nextStep / WIZARD_STEPS.length) * 100);
     dom.wizardStepLabel.textContent = `${nextStep} / ${WIZARD_STEPS.length} · ${WIZARD_STEPS[nextStep - 1]}`;
     dom.wizardProgressPercent.textContent = `${progress}%`;
     dom.wizardProgressBar.style.width = `${progress}%`;
-    dom.wizardBackButton.hidden = nextStep === 1;
-    dom.wizardNextButton.hidden = nextStep === WIZARD_STEPS.length;
-    dom.runRecommendationButton.hidden = nextStep !== WIZARD_STEPS.length;
-    if (nextStep === WIZARD_STEPS.length) renderReviewSummary();
-    document.querySelector(".panel-scroll")?.scrollTo({ top: 0, behavior: "smooth" });
+    dom.wizardBackButton.hidden = stacked || nextStep === 1;
+    dom.wizardNextButton.hidden = stacked || nextStep === WIZARD_STEPS.length;
+    dom.runRecommendationButton.hidden = stacked ? false : nextStep !== WIZARD_STEPS.length;
+    if (stacked || nextStep === WIZARD_STEPS.length) renderReviewSummary();
+    if (!stacked) document.querySelector(".panel-scroll")?.scrollTo({ top: 0, behavior: "smooth" });
     if (focus) {
       const heading = document.querySelector(`[data-wizard-step="${nextStep}"] .wizard-step-heading`);
-      window.requestAnimationFrame(() => heading?.focus({ preventScroll: true }));
+      window.requestAnimationFrame(() => {
+        if (stacked) heading?.scrollIntoView({ behavior: "smooth", block: "start" });
+        heading?.focus({ preventScroll: true });
+      });
     }
   }
 
@@ -2295,7 +2315,11 @@
       attachVariantSession(result, { reroll, preserveSession });
       renderRecommendationOutput(result);
       if (fit && mapPlaces().length) fitRecommendationPlaces();
-      if (openOutput && window.innerWidth <= 1240) openOutputPanel();
+      if (openOutput && isMobileStackedFlow()) {
+        window.requestAnimationFrame(() => dom.outputPanel.scrollIntoView({ behavior: "smooth", block: "start" }));
+      } else if (openOutput && window.innerWidth <= 1240) {
+        openOutputPanel();
+      }
       return result;
     } catch (error) {
       showFormError(error instanceof Error ? error.message : "추천 입력을 확인해 주세요.");
@@ -2391,6 +2415,10 @@
   }
 
   function openSidebar() {
+    if (isMobileStackedFlow()) {
+      document.getElementById("sidebar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     state.drawerReturnFocus = document.activeElement;
     document.body.classList.remove("output-open");
     document.body.classList.add("sidebar-open");
@@ -2408,6 +2436,10 @@
     window.setTimeout(() => state.map?.invalidateSize(), 230);
   }
   function openOutputPanel() {
+    if (isMobileStackedFlow()) {
+      dom.outputPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     state.drawerReturnFocus = document.activeElement;
     document.body.classList.remove("sidebar-open");
     document.body.classList.add("output-open");
@@ -2429,6 +2461,13 @@
   function bindEvents() {
     dom.recommendationForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      if (isMobileStackedFlow()) {
+        renderReviewSummary();
+        if (!validateMobileWizardFlow()) return;
+        showWizardStep(WIZARD_STEPS.length, { focus: false });
+        runRecommendation();
+        return;
+      }
       if (state.wizardStep !== WIZARD_STEPS.length) {
         if (validateWizardStep(state.wizardStep)) showWizardStep(state.wizardStep + 1);
         return;
@@ -2565,6 +2604,7 @@
     });
     window.addEventListener("resize", debounce(() => {
       if (window.innerWidth > 1240) { closeSidebar(); closeOutputPanel(); }
+      showWizardStep(state.wizardStep, { focus: false });
       state.map?.invalidateSize();
       scheduleVisibleResultRender();
     }, 120));

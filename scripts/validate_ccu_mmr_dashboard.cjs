@@ -11,9 +11,11 @@ const workspaceRoot = path.resolve(__dirname, "..");
 const bundlePath = path.join(workspaceRoot, "map-ui", "data", "jeju-places.js");
 const htmlPath = path.join(workspaceRoot, "map-ui", "index.html");
 const appPath = path.join(workspaceRoot, "map-ui", "app.js");
+const stylesPath = path.join(workspaceRoot, "map-ui", "styles.css");
 const preferencePath = path.join(workspaceRoot, "map-ui", "preference-elicitation.js");
 const dashboardHtml = fs.readFileSync(htmlPath, "utf8");
 const dashboardApp = fs.readFileSync(appPath, "utf8");
+const dashboardStyles = fs.readFileSync(stylesPath, "utf8");
 const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "clearTravelMbtiButton", "travelMbtiDialog",
@@ -60,6 +62,14 @@ for (const target of ["companionType", "destinationRegion", "tripIntent", "trans
   assert.match(dashboardHtml, new RegExp(`data-choice-target="${target}"`, "u"), `${target}: choice cards`);
 }
 assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
+assert.match(dashboardApp, /function validateMobileWizardFlow\(\)/u, "mobile stacked flow validation");
+assert.match(dashboardApp, /const MOBILE_STACKED_MEDIA = "\(max-width: 760px\)"/u, "mobile stacked flow breakpoint");
+assert.match(dashboardApp, /dom\.outputPanel\.scrollIntoView\(\{ behavior: "smooth", block: "start" \}\)/u, "mobile result scroll");
+assert.match(dashboardApp, /section\.hidden = stacked \? false : !active/u, "mobile exposes every wizard section");
+assert.match(dashboardStyles, /body:not\(\.has-recommendation\) \.output-panel\s*\{\s*display: none;/u, "mobile hides empty output panel");
+assert.match(dashboardStyles, /\.sidebar\s*\{\s*order: 1;/u, "mobile input order");
+assert.match(dashboardStyles, /\.output-panel\s*\{\s*order: 2;/u, "mobile result order");
+assert.match(dashboardStyles, /\.map-shell\s*\{\s*order: 3;/u, "mobile map order");
 assert.match(dashboardApp, /function renderReviewSummary\(\)/u, "review summary");
 assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recommendation must not auto-run on initialize");
 const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\r?\n  \}\r?\n\r?\n  function clearTravelMbtiProfile/u)?.[1] || "";
