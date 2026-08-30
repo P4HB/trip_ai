@@ -1,12 +1,13 @@
 # SPEC-059: 추천 만족도 서버 적재 API
 
-- 상태: Implemented
+- 상태: Superseded
 - 작성일: 2026-08-28
 - 최종 수정일: 2026-08-28
 - 관련 이슈: 사용자 정정 — 평가 로그 저장은 브라우저 JSON 다운로드가 아니라 서버 적재를 의미함
 - 관련 문서: [SPEC-058](spec_058.md), [시스템 아키텍처](architecture.md), [데이터 계약](data_contracts.md), [안전 및 개인정보](safety_privacy.md), [배포 SPEC](spec_057.md)
 - 관련 코드: `map-ui/`, `server/travel-feedback/`, `scripts/validate_ccu_mmr_dashboard.cjs`
 - 선행 SPEC: SPEC-056, SPEC-057, SPEC-058
+- 후속 SPEC: [SPEC-060](spec_060.md) — 저장 버튼 방식에서 선택 즉시 자동 저장으로 대체
 
 ## 배경
 

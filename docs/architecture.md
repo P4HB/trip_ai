@@ -121,7 +121,7 @@ scripts/validate_all_place_profiles.py
 - 지도 라이브러리는 `map-ui/vendor/`의 로컬 파일을 사용한다.
 - 지도 타일과 장소 이미지는 외부 네트워크에 의존한다.
 - 지도 UI는 생성된 `window.JEJU_PLACES`와 `window.JEJU_DATA_META`를 읽는다.
-- 추천 입력·결과, 여행 MBTI 질문·pair 응답·프로필과 장소별 만족도·의견은 저장 전까지 브라우저 메모리에 있다. 모든 고유 장소 만족도를 고르고 사용자가 명시적으로 저장을 누르면 Map UI가 `travel-recommendation-feedback-log-v2`를 동일 출처 `POST /travel/api/feedback`으로 전송한다. Caddy는 이 경로만 전용 `travel-feedback` 서비스로 프록시하며 서비스는 입력을 검증해 Rail Desk와 분리된 SQLite 볼륨에 90일 보관한다. 제출 UUID로 재시도를 멱등 처리하고 IP·User-Agent·쿠키·Rail Desk 계정 정보는 DB에 저장하지 않는다. 공개 조회 API와 Web Storage는 없다. 공유 문구는 유형 코드·이름·공개 설명만 포함한다. 날씨·실제 이동시간·가격은 현재 계산에 없다.
+- 추천 입력·결과, 여행 MBTI 질문·pair 응답·프로필과 장소별 만족도·의견은 평가 전까지 브라우저 메모리에 있다. 만족도 선택은 즉시, 의견은 800ms debounce 뒤 Map UI가 전체 최신 `travel-recommendation-feedback-log-v3` 스냅샷을 동일 출처 `POST /travel/api/feedback`으로 전송한다. Caddy는 이 경로만 전용 `travel-feedback` 서비스로 프록시하며 서비스는 입력을 검증해 Rail Desk와 분리된 SQLite 볼륨의 `feedback_sessions`에 추천 세션별 한 행으로 UPSERT하고 90일 보관한다. 단조 증가 revision으로 지연 요청의 역덮어쓰기를 막고 실패한 동일 payload를 자동 재시도한다. IP·User-Agent·쿠키·Rail Desk 계정 정보는 DB에 저장하지 않으며 공개 조회 API와 Web Storage는 없다. 기존 v2 수동 제출 계약은 열린 이전 탭 호환성을 위해 유지한다. 공유 문구는 유형 코드·이름·공개 설명만 포함한다. 날씨·실제 이동시간·가격은 현재 계산에 없다.
 - 단계형 입력 상태도 브라우저 메모리에만 있고 초기 화면에서는 예시 추천을 자동 실행하지 않는다. 여행 MBTI를 적용해도 취향 단계에 머무르며, 사용자가 5단계 확인 화면에서 명시적으로 실행한 뒤에만 추천 결과를 계산한다.
 - `ccu-mmr-v6-travel-mbti-three-axis`는 SPEC-008의 목표 `baseline-v0`와 별도인 `internal_experiment`다. `balanced` 모드는 상위 3개 seed variant를 결정적으로 미리 계산하고 최초 표시만 가중 선택하며, 브라우저 세션에서 미노출 variant를 우선한다. 개인화는 P 블록 안의 원자 feature weight만 바꾸고 P/A/M 고정 비율과 제약·일정 경계는 유지한다. 이는 AI 초안 데이터의 운영 승격을 뜻하지 않는다.
 - 근사 일정은 필수 군집과 사용자 중심을 먼저 보존한 뒤 선택 variant Top-N에서 남은 일자의 자동 중심을 만든다. 자차 15km/비자차 5km와 하루 최대 6곳을 사용하며, 중심-장소 Haversine 직선거리 군집일 뿐 도로·교통·방문 순서를 계산하지 않는다.

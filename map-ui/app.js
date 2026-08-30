@@ -104,7 +104,7 @@
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
-    "recommendationCount", "recommendationResultList", "feedbackSavePanel", "feedbackCompletionStatus", "saveFeedbackLogButton", "feedbackSaveHelp",
+    "recommendationCount", "recommendationResultList", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
     "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
     "courseVariantBar", "courseVariantLabel", "courseOverlapSummary", "rerollRecommendationButton",
@@ -173,7 +173,19 @@
     recommendationResult: null,
     recommendationById: new Map(),
     recommendationFeedback: new Map(),
-    feedbackSubmission: { status: "idle", payload: null, receipt: null, error: "" },
+    feedbackAutoSave: {
+      sessionId: null,
+      createdAt: null,
+      revision: 0,
+      savedRevision: 0,
+      status: "idle",
+      timerId: null,
+      retryAttempt: 0,
+      inFlight: false,
+      controller: null,
+      pendingPayload: null,
+      error: "",
+    },
     scheduleById: new Map(),
     requiredPlaceIds: new Set(),
     selectedAnchorIds: new Set(),
@@ -1620,55 +1632,64 @@
     return { completed, total: targets.length, allCompleted: targets.length > 0 && completed === targets.length };
   }
 
-  function resetFeedbackSubmission() {
-    state.feedbackSubmission = { status: "idle", payload: null, receipt: null, error: "" };
+  function resetFeedbackAutoSave({ createSession = false } = {}) {
+    const previous = state.feedbackAutoSave;
+    if (previous.timerId) window.clearTimeout(previous.timerId);
+    if (previous.controller) previous.controller.abort();
+    state.feedbackAutoSave = {
+      sessionId: createSession ? crypto.randomUUID() : null,
+      createdAt: createSession ? new Date().toISOString() : null,
+      revision: 0,
+      savedRevision: 0,
+      status: "idle",
+      timerId: null,
+      retryAttempt: 0,
+      inFlight: false,
+      controller: null,
+      pendingPayload: null,
+      error: "",
+    };
   }
 
   function updateFeedbackSaveState() {
     const completion = recommendationFeedbackCompletion();
     const hasTargets = Boolean(state.recommendationResult) && completion.total > 0;
-    const submission = state.feedbackSubmission;
+    const autosave = state.feedbackAutoSave;
     dom.feedbackSavePanel.hidden = !hasTargets;
     dom.feedbackCompletionStatus.textContent = `만족도 ${completion.completed}/${completion.total} 완료`;
-    dom.saveFeedbackLogButton.disabled = !completion.allCompleted || submission.status === "saving" || submission.status === "saved";
-    dom.saveFeedbackLogButton.textContent = submission.status === "saving"
-      ? "서버에 저장 중…"
-      : submission.status === "saved"
-        ? "서버 저장 완료"
-        : "서버에 평가 로그 저장";
     if (!hasTargets) dom.feedbackSaveHelp.textContent = "";
-    else if (submission.status === "saved") {
-      dom.feedbackSaveHelp.textContent = `서버에 안전하게 저장했습니다. 제출 ID: ${submission.receipt.submission_id}`;
-    } else if (submission.status === "saving") {
-      dom.feedbackSaveHelp.textContent = "평가 로그를 서버에 저장하고 있습니다.";
-    } else if (submission.status === "failed") {
-      dom.feedbackSaveHelp.textContent = `${submission.error} 같은 제출 ID로 다시 시도할 수 있습니다.`;
-    } else if (completion.allCompleted) dom.feedbackSaveHelp.textContent = "모든 만족도를 입력했습니다. 의견은 선택 사항입니다.";
-    else dom.feedbackSaveHelp.textContent = `남은 장소 ${completion.total - completion.completed}곳의 만족도를 선택해 주세요.`;
+    else if (autosave.status === "saved") dom.feedbackSaveHelp.textContent = `서버에 자동 저장됨 · ${autosave.savedRevision}번째 변경`;
+    else if (autosave.status === "saving") dom.feedbackSaveHelp.textContent = "서버에 자동 저장 중…";
+    else if (autosave.status === "pending") dom.feedbackSaveHelp.textContent = "변경 내용을 곧 자동 저장합니다.";
+    else if (autosave.status === "failed") dom.feedbackSaveHelp.textContent = `${autosave.error} 자동으로 다시 시도합니다.`;
+    else dom.feedbackSaveHelp.textContent = "만족도를 선택하거나 의견을 입력하면 서버에 자동 저장됩니다.";
   }
 
   function cloneForFeedbackLog(value) {
     return value == null ? value : JSON.parse(JSON.stringify(value));
   }
 
-  function buildFeedbackLog(submissionId = null) {
+  function buildFeedbackLog(revision = state.feedbackAutoSave.revision) {
     const completion = recommendationFeedbackCompletion();
-    if (!state.recommendationResult || !completion.allCompleted) {
-      throw new Error("모든 추천 장소의 만족도를 먼저 선택해 주세요.");
+    const autosave = state.feedbackAutoSave;
+    if (!state.recommendationResult || !autosave.sessionId || !autosave.createdAt || revision < 1) {
+      throw new Error("자동 저장할 추천 세션이 없습니다.");
     }
     const result = cloneForFeedbackLog(state.recommendationResult);
     return {
-      schema_version: "travel-recommendation-feedback-log-v2",
-      submission_id: submissionId || crypto.randomUUID(),
-      created_at: new Date().toISOString(),
+      schema_version: "travel-recommendation-feedback-log-v3",
+      session_id: autosave.sessionId,
+      revision,
+      created_at: autosave.createdAt,
+      updated_at: new Date().toISOString(),
       storage: {
-        method: "server_api",
+        method: "server_autosave",
         endpoint: "/travel/api/feedback",
         server_transmitted: true,
         web_storage_used: false,
       },
       source: {
-        ui_version: "map-ui-feedback-server-v2",
+        ui_version: "map-ui-feedback-autosave-v3",
         algorithm_version: algorithm.ALGORITHM_VERSION,
         provenance: cloneForFeedbackLog(result.provenance || null),
       },
@@ -1696,13 +1717,14 @@
         completed_place_count: completion.completed,
         all_scores_completed: completion.allCompleted,
         entries: recommendationFeedbackTargets().map((target) => {
-          const entry = state.recommendationFeedback.get(target.placeId);
+          const entry = state.recommendationFeedback.get(target.placeId) || { score: null, comment: "" };
+          const score = Number.isInteger(entry.score) && entry.score >= 1 && entry.score <= 5 ? entry.score : null;
           return {
             place_id: target.placeId,
             title: target.title,
             contexts: cloneForFeedbackLog(target.contexts),
-            score: entry.score,
-            score_label: FEEDBACK_OPTIONS[entry.score - 1].label,
+            score,
+            score_label: score === null ? null : FEEDBACK_OPTIONS[score - 1].label,
             comment: entry.comment || "",
           };
         }),
@@ -1710,39 +1732,83 @@
     };
   }
 
-  async function saveFeedbackLog() {
-    if (state.feedbackSubmission.status === "saving" || state.feedbackSubmission.status === "saved") return;
-    const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
-    try {
-      const log = state.feedbackSubmission.payload || buildFeedbackLog();
-      state.feedbackSubmission = { status: "saving", payload: log, receipt: null, error: "" };
+  function scheduleFeedbackAutoSave(delayMs = 0) {
+    const autosave = state.feedbackAutoSave;
+    if (!state.recommendationResult || !autosave.sessionId) return;
+    autosave.revision += 1;
+    autosave.status = "pending";
+    autosave.retryAttempt = 0;
+    autosave.pendingPayload = null;
+    autosave.error = "";
+    if (autosave.timerId) window.clearTimeout(autosave.timerId);
+    autosave.timerId = window.setTimeout(() => flushFeedbackAutoSave(autosave), delayMs);
+    updateFeedbackSaveState();
+  }
+
+  function queueFeedbackAutoSaveRetry(autosave) {
+    if (state.feedbackAutoSave !== autosave || autosave.timerId) return;
+    const delayMs = Math.min(15000, 2000 * (2 ** Math.min(Math.max(autosave.retryAttempt - 1, 0), 3)));
+    autosave.timerId = window.setTimeout(() => flushFeedbackAutoSave(autosave), delayMs);
+  }
+
+  async function flushFeedbackAutoSave(autosave = state.feedbackAutoSave) {
+    if (state.feedbackAutoSave !== autosave || !state.recommendationResult || !autosave.sessionId) return;
+    autosave.timerId = null;
+    if (autosave.inFlight) return;
+    if (autosave.revision <= autosave.savedRevision) {
+      autosave.status = autosave.savedRevision ? "saved" : "idle";
       updateFeedbackSaveState();
+      return;
+    }
+    const sendingRevision = autosave.revision;
+    const log = autosave.pendingPayload?.revision === sendingRevision
+      ? autosave.pendingPayload
+      : buildFeedbackLog(sendingRevision);
+    autosave.pendingPayload = log;
+    autosave.inFlight = true;
+    autosave.status = "saving";
+    autosave.controller = new AbortController();
+    const timeoutId = window.setTimeout(() => autosave.controller?.abort(), 15000);
+    updateFeedbackSaveState();
+    try {
       const response = await fetch("/travel/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(log),
         credentials: "omit",
-        signal: controller.signal,
+        signal: autosave.controller.signal,
       });
       const receipt = await response.json().catch(() => null);
       if (!response.ok || !receipt?.ok) {
         throw new Error(receipt?.error ? `서버 저장에 실패했습니다 (${receipt.error}).` : `서버 저장에 실패했습니다 (HTTP ${response.status}).`);
       }
-      if (receipt.submission_id !== log.submission_id) throw new Error("서버 영수증의 제출 ID가 일치하지 않습니다.");
-      state.feedbackSubmission = { status: "saved", payload: log, receipt, error: "" };
+      if (receipt.session_id !== log.session_id) throw new Error("서버 영수증의 세션 ID가 일치하지 않습니다.");
+      if (!Number.isInteger(receipt.revision) || receipt.revision < sendingRevision) throw new Error("서버 저장 버전을 확인할 수 없습니다.");
+      if (state.feedbackAutoSave !== autosave) return;
+      autosave.savedRevision = Math.max(autosave.savedRevision, receipt.revision);
+      autosave.retryAttempt = 0;
+      autosave.error = "";
+      if (autosave.revision <= autosave.savedRevision) {
+        autosave.status = "saved";
+        autosave.pendingPayload = null;
+      } else autosave.status = "pending";
     } catch (error) {
+      if (state.feedbackAutoSave !== autosave) return;
       const message = error?.name === "AbortError"
         ? "서버 응답 시간이 초과되었습니다."
-        : error instanceof Error ? error.message : "평가 로그를 서버에 저장하지 못했습니다.";
-      state.feedbackSubmission = {
-        status: "failed",
-        payload: state.feedbackSubmission.payload,
-        receipt: null,
-        error: message,
-      };
+        : error instanceof Error ? error.message : "자동 저장하지 못했습니다.";
+      autosave.status = "failed";
+      autosave.error = message;
+      autosave.retryAttempt += 1;
     } finally {
       window.clearTimeout(timeoutId);
+      if (state.feedbackAutoSave !== autosave) return;
+      autosave.inFlight = false;
+      autosave.controller = null;
+      if (autosave.status === "failed") queueFeedbackAutoSaveRetry(autosave);
+      else if (autosave.revision > autosave.savedRevision && !autosave.timerId) {
+        autosave.timerId = window.setTimeout(() => flushFeedbackAutoSave(autosave), 0);
+      }
       updateFeedbackSaveState();
     }
   }
@@ -1774,10 +1840,10 @@
       feedbackButton.setAttribute("aria-pressed", String(selectedFeedback.score === option.score));
       feedbackButton.addEventListener("click", () => {
         const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
+        if (current.score === option.score) return;
         state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
-        resetFeedbackSubmission();
         syncRecommendationFeedback(feedbackKey);
-        updateFeedbackSaveState();
+        scheduleFeedbackAutoSave(0);
       });
       feedbackScale.append(feedbackButton);
     }
@@ -1810,9 +1876,8 @@
     commentInput.addEventListener("input", () => {
       const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
       state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
-      resetFeedbackSubmission();
       syncRecommendationFeedback(feedbackKey, commentInput);
-      updateFeedbackSaveState();
+      scheduleFeedbackAutoSave(800);
     });
     comment.append(commentLabel, commentInput, commentCount);
     feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
@@ -2159,7 +2224,7 @@
   }
 
   function renderRecommendationOutput(result) {
-    resetFeedbackSubmission();
+    resetFeedbackAutoSave({ createSession: true });
     result.provenance = {
       sourceDate: metadata.sourceDate || null,
       labelSnapshotDate: metadata.labelSnapshotDate || null,
@@ -2241,7 +2306,7 @@
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     state.selectedAnchorIds.clear();
     state.recommendationFeedback.clear();
-    resetFeedbackSubmission();
+    resetFeedbackAutoSave();
     resetVariantSession();
     dom.courseVariantBar.hidden = true;
     document.body.classList.remove("has-recommendation");
@@ -2452,7 +2517,6 @@
       resetRecommendationForm();
     });
     dom.rerollRecommendationButton.addEventListener("click", rerollRecommendation);
-    dom.saveFeedbackLogButton.addEventListener("click", saveFeedbackLog);
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
       if (event.target === dom.requiredPlaceSearch) return;
@@ -2532,7 +2596,14 @@
         getPreferenceProfile: () => state.preferenceProfile,
         getRecommendationFeedback: () => Object.fromEntries(state.recommendationFeedback),
         getFeedbackCompletion: () => recommendationFeedbackCompletion(),
-        buildFeedbackLog: () => buildFeedbackLog(),
+        buildFeedbackLog: () => buildFeedbackLog(Math.max(1, state.feedbackAutoSave.revision)),
+        getFeedbackAutoSaveState: () => ({
+          sessionId: state.feedbackAutoSave.sessionId,
+          revision: state.feedbackAutoSave.revision,
+          savedRevision: state.feedbackAutoSave.savedRevision,
+          status: state.feedbackAutoSave.status,
+          error: state.feedbackAutoSave.error,
+        }),
         startTravelMbti: () => startTravelMbti(),
       };
     } catch (error) {

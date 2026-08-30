@@ -28,6 +28,7 @@
 - 구현됨: 3축 8개 여행 MBTI를 내장한 지도 추천 UI
 - 구현됨: 베타 추천 카드의 내부 trace 상세 분리와 추천 목록·일자별 일정 장소의 1~5·최대 300자 동기화 세션 피드백 UI
 - 구현됨: 모든 고유 추천 장소의 만족도 입력 완료 후 명시적 저장 버튼으로 선택·추천 결과·피드백을 서버의 분리된 SQLite에 90일 적재
+- 구현됨: 장소 만족도 선택 즉시 세션 최신 스냅샷을 서버에 자동 저장하고 의견 입력은 짧게 디바운스해 갱신
 - 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
 ## SPEC 색인
@@ -55,10 +56,11 @@
 | [SPEC-022](spec_022.md) | Kakao 신규 후보 2,374건 41축 에이전트 라벨링 v1 | In Progress | research, labeling, data |
 | [SPEC-056](spec_056.md) | 베타 추천 카드 단순화와 장소별 만족도 UI | Implemented | recommendation, feedback, map, UI |
 | [SPEC-057](spec_057.md) | Map UI `/travel/` 정적 호스팅 배포 | Implemented | deployment, hosting, map, UI |
-| [SPEC-058](spec_058.md) | 추천 만족도 완료형 JSON 로그 저장 | Implemented | recommendation, feedback, privacy, UI |
-| [SPEC-059](spec_059.md) | 추천 만족도 서버 적재 API | Implemented | recommendation, feedback, API, privacy, deployment |
+| [SPEC-058](spec_058.md) | 추천 만족도 완료형 JSON 로그 저장 | Superseded | recommendation, feedback, privacy, UI |
+| [SPEC-059](spec_059.md) | 추천 만족도 서버 적재 API | Superseded | recommendation, feedback, API, privacy, deployment |
+| [SPEC-060](spec_060.md) | 추천 만족도 실시간 자동 저장 | Implemented | recommendation, feedback, autosave, API, privacy, deployment |
 
-- 다음 예약 번호: `SPEC-060`
+- 다음 예약 번호: `SPEC-061`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

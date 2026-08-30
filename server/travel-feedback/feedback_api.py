@@ -15,7 +15,9 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
+V2_SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
+V3_SCHEMA_VERSION = "travel-recommendation-feedback-log-v3"
+SCHEMA_VERSION = V2_SCHEMA_VERSION
 API_PATH = "/travel/api/feedback"
 MAX_BODY_BYTES = 2 * 1024 * 1024
 MAX_ENTRIES = 100
@@ -50,10 +52,10 @@ def parse_iso_datetime(value: Any, field: str) -> datetime:
     return parsed
 
 
-def validate_payload(payload: Any) -> dict[str, Any]:
+def validate_v2_payload(payload: Any) -> dict[str, Any]:
     if not isinstance(payload, dict):
         raise ValidationError("request body must be an object")
-    if payload.get("schema_version") != SCHEMA_VERSION:
+    if payload.get("schema_version") != V2_SCHEMA_VERSION:
         raise ValidationError("unsupported schema_version")
 
     submission_id = payload.get("submission_id")
@@ -114,6 +116,97 @@ def validate_payload(payload: Any) -> dict[str, Any]:
     return payload
 
 
+def validate_v3_payload(payload: Any) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ValidationError("request body must be an object")
+    if payload.get("schema_version") != V3_SCHEMA_VERSION:
+        raise ValidationError("unsupported schema_version")
+
+    session_id = payload.get("session_id")
+    try:
+        parsed_id = uuid.UUID(session_id)
+    except (AttributeError, TypeError, ValueError) as exc:
+        raise ValidationError("session_id must be a UUID") from exc
+    if str(parsed_id) != session_id.lower():
+        raise ValidationError("session_id must use canonical UUID form")
+
+    revision = payload.get("revision")
+    if type(revision) is not int or revision < 1:
+        raise ValidationError("revision must be a positive integer")
+    parse_iso_datetime(payload.get("created_at"), "created_at")
+    parse_iso_datetime(payload.get("updated_at"), "updated_at")
+
+    storage = payload.get("storage")
+    if not isinstance(storage, dict) or storage.get("method") != "server_autosave":
+        raise ValidationError("storage.method must be server_autosave")
+    if storage.get("endpoint") != API_PATH:
+        raise ValidationError("storage.endpoint is invalid")
+    if storage.get("server_transmitted") is not True or storage.get("web_storage_used") is not False:
+        raise ValidationError("storage flags are invalid")
+
+    feedback = payload.get("feedback")
+    if not isinstance(feedback, dict):
+        raise ValidationError("feedback must be an object")
+    entries = feedback.get("entries")
+    if not isinstance(entries, list) or not 1 <= len(entries) <= MAX_ENTRIES:
+        raise ValidationError(f"feedback.entries must contain 1..{MAX_ENTRIES} items")
+    required = feedback.get("required_place_count")
+    completed = feedback.get("completed_place_count")
+    if type(required) is not int or type(completed) is not int:
+        raise ValidationError("feedback counts must be integers")
+    if required != len(entries) or not 0 <= completed <= required:
+        raise ValidationError("feedback completion counts do not match")
+
+    seen_place_ids: set[str] = set()
+    actual_completed = 0
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            raise ValidationError(f"feedback.entries[{index}] must be an object")
+        place_id = entry.get("place_id")
+        if not isinstance(place_id, str) or not place_id or len(place_id) > 100:
+            raise ValidationError(f"feedback.entries[{index}].place_id is invalid")
+        if place_id in seen_place_ids:
+            raise ValidationError("feedback place_id values must be unique")
+        seen_place_ids.add(place_id)
+        score = entry.get("score")
+        score_label = entry.get("score_label")
+        if score is None:
+            if score_label is not None:
+                raise ValidationError(f"feedback.entries[{index}].score_label must be null")
+        elif type(score) is int and 1 <= score <= 5:
+            if not isinstance(score_label, str) or not score_label:
+                raise ValidationError(f"feedback.entries[{index}].score_label is invalid")
+            actual_completed += 1
+        else:
+            raise ValidationError(f"feedback.entries[{index}].score must be null or 1..5")
+        comment = entry.get("comment")
+        if not isinstance(comment, str) or len(comment) > MAX_COMMENT_LENGTH:
+            raise ValidationError(f"feedback.entries[{index}].comment is too long")
+        if not isinstance(entry.get("title"), str) or not isinstance(entry.get("contexts"), list):
+            raise ValidationError(f"feedback.entries[{index}] metadata is invalid")
+
+    all_completed = completed == required
+    if completed != actual_completed or feedback.get("all_scores_completed") is not all_completed:
+        raise ValidationError("feedback score completion state is invalid")
+    if not isinstance(payload.get("source"), dict):
+        raise ValidationError("source must be an object")
+    if not isinstance(payload.get("user_selections"), dict):
+        raise ValidationError("user_selections must be an object")
+    if not isinstance(payload.get("recommendation_result"), dict):
+        raise ValidationError("recommendation_result must be an object")
+    return payload
+
+
+def validate_payload(payload: Any) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ValidationError("request body must be an object")
+    if payload.get("schema_version") == V2_SCHEMA_VERSION:
+        return validate_v2_payload(payload)
+    if payload.get("schema_version") == V3_SCHEMA_VERSION:
+        return validate_v3_payload(payload)
+    raise ValidationError("unsupported schema_version")
+
+
 class FeedbackStore:
     def __init__(self, db_path: str, retention_days: int = 90):
         self.db_path = db_path
@@ -143,11 +236,27 @@ class FeedbackStore:
             connection.execute(
                 "CREATE INDEX IF NOT EXISTS idx_feedback_received_at ON feedback_submissions(received_at)"
             )
+            connection.execute(
+                """
+                CREATE TABLE IF NOT EXISTS feedback_sessions (
+                    session_id TEXT PRIMARY KEY,
+                    revision INTEGER NOT NULL,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    schema_version TEXT NOT NULL,
+                    payload_json TEXT NOT NULL
+                )
+                """
+            )
+            connection.execute(
+                "CREATE INDEX IF NOT EXISTS idx_feedback_sessions_updated_at ON feedback_sessions(updated_at)"
+            )
             self._prune(connection, utc_now())
 
     def _prune(self, connection: sqlite3.Connection, now: datetime) -> None:
         cutoff = isoformat_utc(now - timedelta(days=self.retention_days))
         connection.execute("DELETE FROM feedback_submissions WHERE received_at < ?", (cutoff,))
+        connection.execute("DELETE FROM feedback_sessions WHERE updated_at < ?", (cutoff,))
 
     def save(self, payload: dict[str, Any], now: datetime | None = None) -> tuple[str, bool]:
         received_at = isoformat_utc(now or utc_now())
@@ -181,9 +290,61 @@ class FeedbackStore:
                 received_at = row[0]
         return received_at, duplicate
 
+    def save_session(
+        self, payload: dict[str, Any], now: datetime | None = None
+    ) -> tuple[str, bool, bool, int]:
+        received_at = isoformat_utc(now or utc_now())
+        canonical_payload = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+        with self.connect() as connection:
+            self._prune(connection, now or utc_now())
+            row = connection.execute(
+                "SELECT revision, updated_at, payload_json FROM feedback_sessions WHERE session_id = ?",
+                (payload["session_id"],),
+            ).fetchone()
+            if row is None:
+                connection.execute(
+                    """
+                    INSERT INTO feedback_sessions
+                        (session_id, revision, created_at, updated_at, schema_version, payload_json)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        payload["session_id"],
+                        payload["revision"],
+                        payload["created_at"],
+                        received_at,
+                        payload["schema_version"],
+                        canonical_payload,
+                    ),
+                )
+                return received_at, True, False, payload["revision"]
+
+            stored_revision, stored_at, stored_payload = int(row[0]), row[1], row[2]
+            if payload["revision"] < stored_revision:
+                return stored_at, False, True, stored_revision
+            if payload["revision"] == stored_revision:
+                if stored_payload != canonical_payload:
+                    raise SubmissionConflict("session revision already belongs to another payload")
+                return stored_at, False, True, stored_revision
+            connection.execute(
+                """
+                UPDATE feedback_sessions
+                SET revision = ?, updated_at = ?, schema_version = ?, payload_json = ?
+                WHERE session_id = ?
+                """,
+                (
+                    payload["revision"],
+                    received_at,
+                    payload["schema_version"],
+                    canonical_payload,
+                    payload["session_id"],
+                ),
+            )
+            return received_at, False, False, payload["revision"]
+
 
 class MemoryRateLimiter:
-    def __init__(self, limit: int = 20, window_seconds: int = 60):
+    def __init__(self, limit: int = 60, window_seconds: int = 60):
         self.limit = limit
         self.window_seconds = window_seconds
         self._events: dict[str, list[float]] = {}
@@ -269,22 +430,39 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
             self.send_json(422, {"ok": False, "error": "invalid_feedback", "detail": str(exc)})
             return
         try:
-            received_at, duplicate = self.feedback_server.store.save(payload)
+            if payload["schema_version"] == V3_SCHEMA_VERSION:
+                received_at, created, stale, revision = self.feedback_server.store.save_session(payload)
+            else:
+                received_at, duplicate = self.feedback_server.store.save(payload)
         except SubmissionConflict:
-            self.send_json(409, {"ok": False, "error": "submission_id_conflict"})
+            conflict_error = "feedback_revision_conflict" if payload["schema_version"] == V3_SCHEMA_VERSION else "submission_id_conflict"
+            self.send_json(409, {"ok": False, "error": conflict_error})
             return
         except sqlite3.Error:
             self.send_json(500, {"ok": False, "error": "storage_unavailable"})
             return
-        self.send_json(
-            200 if duplicate else 201,
-            {
-                "ok": True,
-                "submission_id": payload["submission_id"],
-                "received_at": received_at,
-                "duplicate": duplicate,
-            },
-        )
+        if payload["schema_version"] == V3_SCHEMA_VERSION:
+            self.send_json(
+                201 if created else 200,
+                {
+                    "ok": True,
+                    "session_id": payload["session_id"],
+                    "revision": revision,
+                    "received_at": received_at,
+                    "created": created,
+                    "stale": stale,
+                },
+            )
+        else:
+            self.send_json(
+                200 if duplicate else 201,
+                {
+                    "ok": True,
+                    "submission_id": payload["submission_id"],
+                    "received_at": received_at,
+                    "duplicate": duplicate,
+                },
+            )
 
 
 class FeedbackHTTPServer(ThreadingHTTPServer):

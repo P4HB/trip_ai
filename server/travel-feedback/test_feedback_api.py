@@ -51,6 +51,48 @@ def valid_payload(submission_id: str | None = None) -> dict:
     }
 
 
+def valid_v3_payload(session_id: str | None = None, revision: int = 1) -> dict:
+    return {
+        "schema_version": feedback_api.V3_SCHEMA_VERSION,
+        "session_id": session_id or str(uuid.uuid4()),
+        "revision": revision,
+        "created_at": "2026-08-30T00:00:00.000Z",
+        "updated_at": f"2026-08-30T00:00:0{min(revision, 9)}.000Z",
+        "storage": {
+            "method": "server_autosave",
+            "endpoint": feedback_api.API_PATH,
+            "server_transmitted": True,
+            "web_storage_used": False,
+        },
+        "source": {"ui_version": "map-ui-feedback-autosave-v3", "algorithm_version": "test"},
+        "user_selections": {"request": {}},
+        "recommendation_result": {"items": []},
+        "feedback": {
+            "required_place_count": 2,
+            "completed_place_count": 1,
+            "all_scores_completed": False,
+            "entries": [
+                {
+                    "place_id": "123",
+                    "title": "첫 장소",
+                    "contexts": [{"kind": "recommendation", "rank": 1}],
+                    "score": 5,
+                    "score_label": "꼭 가고 싶어요",
+                    "comment": "",
+                },
+                {
+                    "place_id": "456",
+                    "title": "둘째 장소",
+                    "contexts": [{"kind": "recommendation", "rank": 2}],
+                    "score": None,
+                    "score_label": None,
+                    "comment": "",
+                },
+            ],
+        },
+    }
+
+
 class FeedbackApiTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory()
@@ -89,6 +131,10 @@ class FeedbackApiTests(unittest.TestCase):
     def record_count(self) -> int:
         with sqlite3.connect(self.db_path) as connection:
             return connection.execute("SELECT COUNT(*) FROM feedback_submissions").fetchone()[0]
+
+    def session_count(self) -> int:
+        with sqlite3.connect(self.db_path) as connection:
+            return connection.execute("SELECT COUNT(*) FROM feedback_sessions").fetchone()[0]
 
     def test_create_and_idempotent_retry(self) -> None:
         payload = valid_payload()
@@ -153,6 +199,65 @@ class FeedbackApiTests(unittest.TestCase):
         self.assertEqual(self.record_count(), 1)
         self.store.save(valid_payload(), now=datetime.now(timezone.utc))
         self.assertEqual(self.record_count(), 1)
+
+    def test_v3_creates_and_updates_one_session(self) -> None:
+        payload = valid_v3_payload()
+        status, body = self.post(payload)
+        self.assertEqual(status, 201)
+        self.assertTrue(body["created"])
+        self.assertEqual(body["revision"], 1)
+        self.assertEqual(self.session_count(), 1)
+
+        updated = valid_v3_payload(payload["session_id"], revision=2)
+        updated["feedback"]["entries"][1]["score"] = 4
+        updated["feedback"]["entries"][1]["score_label"] = "마음에 들어요"
+        updated["feedback"]["completed_place_count"] = 2
+        updated["feedback"]["all_scores_completed"] = True
+        status, body = self.post(updated)
+        self.assertEqual(status, 200)
+        self.assertFalse(body["created"])
+        self.assertFalse(body["stale"])
+        self.assertEqual(body["revision"], 2)
+        self.assertEqual(self.session_count(), 1)
+
+    def test_v3_stale_revision_cannot_overwrite_latest(self) -> None:
+        first = valid_v3_payload()
+        latest = valid_v3_payload(first["session_id"], revision=2)
+        self.assertEqual(self.post(first)[0], 201)
+        self.assertEqual(self.post(latest)[0], 200)
+        status, body = self.post(first)
+        self.assertEqual(status, 200)
+        self.assertTrue(body["stale"])
+        self.assertEqual(body["revision"], 2)
+        with sqlite3.connect(self.db_path) as connection:
+            stored_revision = connection.execute(
+                "SELECT revision FROM feedback_sessions WHERE session_id = ?", (first["session_id"],)
+            ).fetchone()[0]
+        self.assertEqual(stored_revision, 2)
+
+    def test_v3_same_revision_different_payload_conflicts(self) -> None:
+        payload = valid_v3_payload()
+        self.assertEqual(self.post(payload)[0], 201)
+        payload["feedback"]["entries"][0]["comment"] = "changed"
+        status, body = self.post(payload)
+        self.assertEqual(status, 409)
+        self.assertEqual(body["error"], "feedback_revision_conflict")
+        self.assertEqual(self.session_count(), 1)
+
+    def test_v3_rejects_incorrect_partial_completion(self) -> None:
+        payload = valid_v3_payload()
+        payload["feedback"]["completed_place_count"] = 2
+        status, body = self.post(payload)
+        self.assertEqual(status, 422)
+        self.assertEqual(body["error"], "invalid_feedback")
+        self.assertEqual(self.session_count(), 0)
+
+    def test_v3_prunes_expired_sessions(self) -> None:
+        old = datetime.now(timezone.utc) - timedelta(days=91)
+        self.store.save_session(valid_v3_payload(), now=old)
+        self.assertEqual(self.session_count(), 1)
+        self.store.save_session(valid_v3_payload(), now=datetime.now(timezone.utc))
+        self.assertEqual(self.session_count(), 1)
 
 
 if __name__ == "__main__":

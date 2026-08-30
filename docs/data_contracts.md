@@ -534,23 +534,25 @@ RecommendationCandidateTrace {
 - `review_priority`는 trace의 점수나 reliability 입력이 아니다.
 - `source_order`는 안정적 동점 처리에 사용하며 추천 품질 특징이 아니다.
 
-## 추천 만족도 서버 적재 로그 — 구현됨
+## 추천 만족도 서버 자동 적재 로그 — 구현됨
 
-`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 모든 고유 장소의 1~5점 만족도가 입력된 뒤 사용자가 `서버에 평가 로그 저장`을 누르면 다음 논리 구조를 `POST /travel/api/feedback`으로 전송한다. Web Storage나 백그라운드 전송은 없다.
+`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 만족도를 선택·변경하면 즉시, 자유 의견은 마지막 입력 후 800ms에 다음 최신 스냅샷을 `POST /travel/api/feedback`으로 전송한다. 평가 전 단순 방문·추천 실행은 전송하지 않으며 Web Storage와 `sendBeacon`은 사용하지 않는다.
 
 ```text
-TravelRecommendationFeedbackLogV2 {
-  schema_version: travel-recommendation-feedback-log-v2
-  submission_id: uuid            # 클라이언트 생성, 재시도 멱등 키
-  created_at: datetime            # UTC ISO 8601
+TravelRecommendationFeedbackLogV3 {
+  schema_version: travel-recommendation-feedback-log-v3
+  session_id: uuid               # 추천 실행별 클라이언트 생성 세션 키
+  revision: positive integer     # 세션 안에서 1부터 단조 증가
+  created_at: datetime           # 추천 세션 생성 UTC ISO 8601
+  updated_at: datetime           # 이 revision 스냅샷 생성 UTC ISO 8601
   storage: {
-    method: server_api
+    method: server_autosave
     endpoint: /travel/api/feedback
     server_transmitted: true
     web_storage_used: false
   }
   source: {
-    ui_version: map-ui-feedback-server-v2
+    ui_version: map-ui-feedback-autosave-v3
     algorithm_version: string
     provenance: object?
   }
@@ -576,7 +578,7 @@ TravelRecommendationFeedbackLogV2 {
   feedback: {
     required_place_count: integer
     completed_place_count: integer
-    all_scores_completed: true
+    all_scores_completed: boolean
     entries: RecommendationFeedbackEntry[]
   }
 }
@@ -585,8 +587,8 @@ RecommendationFeedbackEntry {
   place_id: string
   title: string
   contexts: RecommendationFeedbackContext[]
-  score: 1 | 2 | 3 | 4 | 5
-  score_label: string
+  score: null | 1 | 2 | 3 | 4 | 5
+  score_label: null | string
   comment: string               # 0..300자
 }
 
@@ -596,11 +598,13 @@ RecommendationFeedbackContext =
 ```
 
 - 같은 장소가 추천 목록과 하나 이상의 일정 카드에 나타나도 `entries`에는 한 번만 기록하고 모든 노출 context를 보존한다.
-- `required_place_count`와 `completed_place_count`는 저장 시 항상 같으며 `entries.length`와도 같다.
-- 자유 의견은 선택 사항이고 만족도만 완료 조건이다.
+- `required_place_count`는 `entries.length`와 같고 `completed_place_count`는 점수가 입력된 항목 수다. 미평가 항목은 `score`와 `score_label`을 `null`로 보존한다.
+- 자유 의견은 선택 사항이다. 만족도와 의견 어느 쪽이든 첫 변경부터 부분 스냅샷을 저장한다.
 - 요청 본문은 최대 2 MiB, 피드백은 최대 100건이며 서버가 점수·의견 길이·완료 건수와 UUID를 다시 검증한다.
-- 성공 응답은 신규 HTTP 201 또는 중복 재시도 HTTP 200과 `{ ok, submission_id, received_at, duplicate }`를 반환한다.
-- 서버 SQLite `feedback_submissions`는 `submission_id` 기본키, `received_at`, `client_created_at`, `schema_version`, `payload_json`만 저장한다. 수신 IP·User-Agent·쿠키는 저장하지 않으며 `received_at` 기준 90일 뒤 삭제한다.
+- 성공 응답은 신규 HTTP 201 또는 갱신·중복 HTTP 200과 `{ ok, session_id, revision, received_at, created, stale }`를 반환한다.
+- 서버 SQLite `feedback_sessions`는 `session_id` 기본키로 최신 `revision`, 세션 생성 시각, 마지막 서버 갱신 시각, 스키마 버전과 payload를 한 행에 저장한다. 더 낮은 revision은 최신 값을 덮어쓰지 않고, 같은 revision의 다른 payload는 409다.
+- 자동 저장 실패는 동일 revision·동일 payload로 최대 15초 간격까지 재시도한다. 전송 중 더 최신 변경이 생기면 현재 요청 완료 직후 최신 revision을 전송한다.
+- 수신 IP·User-Agent·쿠키는 저장하지 않으며 마지막 서버 갱신 기준 90일 뒤 삭제한다. 기존 `travel-recommendation-feedback-log-v2`와 `feedback_submissions`는 열린 이전 탭의 수동 제출 호환성을 위해 유지한다.
 
 ## 장소 추천 결과 — 목표 계약, 미구현
 

@@ -18,14 +18,14 @@ const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "clearTravelMbtiButton", "travelMbtiDialog",
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
-  "detailPlaceId", "feedbackSavePanel", "feedbackCompletionStatus", "saveFeedbackLogButton", "feedbackSaveHelp",
+  "detailPlaceId", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
 ]) {
   assert.match(dashboardHtml, new RegExp(`id=["']${id}["']`, "u"), `${id}: travel MBTI DOM contract`);
 }
 assert.ok(dashboardHtml.indexOf("./preference-elicitation.js") < dashboardHtml.indexOf("./ccu-mmr.js"), "preference module must load before ranker");
 assert.ok(dashboardHtml.indexOf("./ccu-mmr.js") < dashboardHtml.indexOf("./app.js"), "ranker must load before app");
 assert.doesNotMatch(`${dashboardApp}\n${preferenceSource}`, /localStorage|sessionStorage|sendBeacon|XMLHttpRequest/u, "profile must not use browser persistence or background transport");
-assert.equal([...dashboardApp.matchAll(/fetch\s*\(/gu)].length, 1, "only the explicit feedback save may use fetch");
+assert.equal([...dashboardApp.matchAll(/fetch\s*\(/gu)].length, 1, "only feedback autosave may use fetch");
 assert.doesNotMatch(preferenceSource, /fetch\s*\(/u, "preference engine remains network-free");
 assert.equal(Preference.QUESTIONS.length, 18);
 assert.equal(Object.keys(Preference.ARCHETYPES).length, 8);
@@ -65,9 +65,9 @@ assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recomm
 const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\r?\n  \}\r?\n\r?\n  function clearTravelMbtiProfile/u)?.[1] || "";
 assert.ok(travelMbtiApplySource, "travel MBTI apply function");
 assert.doesNotMatch(travelMbtiApplySource, /runRecommendation\(/u, "travel MBTI apply must wait for final wizard confirmation");
-assert.match(dashboardHtml, /모든 장소의 만족도를 고르면 여행 조건과 추천 결과를 서버에 저장할 수 있어요\./u, "feedback server notice");
-assert.match(dashboardHtml, /id="saveFeedbackLogButton"[^>]*disabled/u, "feedback save starts disabled");
-assert.match(dashboardHtml, /서버에 전송되어 90일간 보관/u, "feedback retention notice");
+assert.match(dashboardHtml, /만족도나 의견을 남기면 여행 조건과 추천 결과가 서버에 자동 저장돼요\./u, "feedback autosave notice");
+assert.doesNotMatch(dashboardHtml, /id="saveFeedbackLogButton"/u, "manual feedback save button is removed");
+assert.match(dashboardHtml, /자동 전송되어 90일간 보관/u, "feedback retention notice");
 assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
 assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
 assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
@@ -109,18 +109,22 @@ const clearRecommendationSource = clearRecommendationStart >= 0 && clearRecommen
 assert.match(clearRecommendationSource, /state\.recommendationFeedback\.clear\(\)/u, "new recommendation conditions clear feedback");
 assert.match(dashboardApp, /function recommendationFeedbackTargets\(result = state\.recommendationResult\)/u, "unique feedback target calculation");
 assert.match(dashboardApp, /function recommendationFeedbackCompletion\(\)/u, "feedback completion calculation");
-assert.match(dashboardApp, /function buildFeedbackLog\(submissionId = null\)/u, "feedback log builder");
-assert.match(dashboardApp, /schema_version: "travel-recommendation-feedback-log-v2"/u, "feedback log schema version");
-assert.match(dashboardApp, /submission_id: submissionId \|\| crypto\.randomUUID\(\)/u, "idempotent feedback submission id");
-assert.match(dashboardApp, /method: "server_api"/u, "feedback server storage");
+assert.match(dashboardApp, /function buildFeedbackLog\(revision = state\.feedbackAutoSave\.revision\)/u, "feedback log builder");
+assert.match(dashboardApp, /schema_version: "travel-recommendation-feedback-log-v3"/u, "feedback log schema version");
+assert.match(dashboardApp, /session_id: autosave\.sessionId/u, "feedback session id");
+assert.match(dashboardApp, /revision,/u, "monotonic feedback revision");
+assert.match(dashboardApp, /method: "server_autosave"/u, "feedback autosave storage");
 assert.match(dashboardApp, /endpoint: "\/travel\/api\/feedback"/u, "same-origin feedback endpoint");
 assert.match(dashboardApp, /server_transmitted: true/u, "feedback server transmission");
 assert.match(dashboardApp, /web_storage_used: false/u, "no feedback Web Storage");
 assert.match(dashboardApp, /await fetch\("\/travel\/api\/feedback"/u, "feedback POST request");
 assert.match(dashboardApp, /credentials: "omit"/u, "feedback request omits credentials");
-assert.match(dashboardApp, /state\.feedbackSubmission\.payload \|\| buildFeedbackLog\(\)/u, "failed feedback retries reuse payload");
+assert.match(dashboardApp, /autosave\.pendingPayload\?\.revision === sendingRevision/u, "failed feedback retries reuse payload");
+assert.match(feedbackComponentSource, /scheduleFeedbackAutoSave\(0\)/u, "score selection saves immediately");
+assert.match(feedbackComponentSource, /scheduleFeedbackAutoSave\(800\)/u, "comment input is debounced");
+assert.match(dashboardApp, /function queueFeedbackAutoSaveRetry\(autosave\)/u, "failed autosave retries automatically");
 assert.match(dashboardApp, /getFeedbackCompletion: \(\) => recommendationFeedbackCompletion\(\)/u, "feedback completion inspection boundary");
-assert.match(dashboardApp, /buildFeedbackLog: \(\) => buildFeedbackLog\(\)/u, "feedback log inspection boundary");
+assert.match(dashboardApp, /buildFeedbackLog: \(\) => buildFeedbackLog\(Math\.max\(1, state\.feedbackAutoSave\.revision\)\)/u, "feedback log inspection boundary");
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);
 assert.equal(readyPlaces.length, 1663);
