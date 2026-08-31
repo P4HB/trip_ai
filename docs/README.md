@@ -61,8 +61,9 @@
 | [SPEC-060](spec_060.md) | 추천 만족도 실시간 자동 저장 | Implemented | recommendation, feedback, autosave, API, privacy, deployment |
 | [SPEC-061](spec_061.md) | Graphify 프로젝트 전용 코드 지식 그래프 설정 | Implemented | repository, agent, tooling |
 | [SPEC-062](spec_062.md) | 모바일 단일 스크롤 추천 입력·결과 UI | In Progress | recommendation, onboarding, mobile, map, UI |
+| [SPEC-063](spec_063.md) | 지도 UI 웹 조사 장소 설명 한국어화 | In Progress | research, labeling, map, UI, deployment |
 
-- 다음 예약 번호: `SPEC-063`
+- 다음 예약 번호: `SPEC-064`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
