@@ -72,8 +72,9 @@
 | [SPEC-067](spec_067.md) | 데스크톱 여행 선택 패널 접기·펼치기 | Implemented | recommendation, desktop, map, UI |
 | [SPEC-068](spec_068.md) | 장소 상세 대표 이미지 표시·확대 개선 | Implemented | map, image, responsive, accessibility, UI |
 | [SPEC-069](spec_069.md) | 추천 평가 로그 참여자 이름·별칭 입력 | Implemented | feedback, participant, privacy, API, UI |
+| [SPEC-071](spec_071.md) | 장소 상세 내부 라벨·변동 제약 표시 제거 | Implemented | map, recommendation, detail, UI |
 
-- 다음 예약 번호: `SPEC-070`
+- 다음 예약 번호: `SPEC-072`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

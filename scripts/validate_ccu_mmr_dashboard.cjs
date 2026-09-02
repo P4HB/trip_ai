@@ -90,6 +90,8 @@ assert.match(dashboardStyles, /@media \(min-width: 1241px\)[\s\S]*body\.sidebar-
 assert.match(dashboardStyles, /body\.sidebar-collapsed \.sidebar-expand-button:not\(\[hidden\]\)\s*\{\s*display: inline-flex;/u, "collapsed desktop shows expand control");
 assert.match(dashboardStyles, /@media \(max-width: 1240px\)[\s\S]*\.sidebar-collapse-button,[\s\S]*\.sidebar-expand-button\s*\{\s*display: none !important;/u, "new controls stay out of tablet and mobile flows");
 assert.match(dashboardHtml, /id="detailImageButton"[\s\S]*aria-haspopup="dialog"/u, "detail image opens an accessible dialog");
+assert.doesNotMatch(dashboardHtml, /id="detailLabels"|id="detailConstraintNote"|장소 41개 라벨/u, "internal labels and constraints are removed from place detail DOM");
+assert.doesNotMatch(dashboardApp, /renderPlaceLabels|renderConstraintNote|장소 라벨|변동·제약 정보/u, "place detail no longer renders internal labels or free-text constraints");
 assert.match(dashboardHtml, /id="placeImageDialog"[\s\S]*aria-labelledby="placeImageDialogTitle"/u, "large image dialog labeling");
 assert.match(dashboardApp, /function openPlaceImageDialog\(\)/u, "large image dialog open behavior");
 assert.match(dashboardApp, /function closePlaceImageDialog\(\{ restoreFocus = true \} = \{\}\)/u, "large image dialog focus restoration");

@@ -20,14 +20,6 @@
   });
   const LIST_LIMIT = 40;
   const JEJU_LIMITS = [[32.78, 125.72], [33.82, 127.22]];
-  const LABEL_GROUPS = [
-    { name: "Theme", prefix: "theme.", count: 8 },
-    { name: "Environment", prefix: "environment.", count: 2 },
-    { name: "Atomic Style", prefix: "style_evidence.", count: 8 },
-    { name: "Derived Style · 표시 전용", prefix: "derived_style.", count: 6, displayOnly: true },
-    { name: "Companion", prefix: "companion.", count: 5 },
-    { name: "Month", prefix: "month.", count: 12 },
-  ];
   const LABEL_NAMES = {
     mountain: "산", ocean: "바다", activity: "활동", culture_history: "문화·역사",
     theme_park: "테마파크", cafe: "카페", traditional_market: "전통시장", festival: "축제",
@@ -62,7 +54,7 @@
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
     "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
-    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
+    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "detailScoreTrace", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCollapseButton", "sidebarExpandButton", "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
@@ -96,12 +88,6 @@
 
   function featureKey(label) {
     return String(label || "").split(".").at(-1);
-  }
-
-  function labelName(label) {
-    const key = featureKey(label);
-    if (/^\d{1,2}$/u.test(key)) return `${key}월`;
-    return LABEL_NAMES[key] || key;
   }
 
   function atomicFeaturesFor(place) {
@@ -1418,116 +1404,6 @@
     return button;
   }
 
-  function requestUsedLabel(record) {
-    const request = state.recommendationResult?.request;
-    if (!request) return false;
-    if (record.label.startsWith("companion.")) return featureKey(record.label) === request.companionType;
-    if (record.label.startsWith("month.")) return Boolean(request.monthWeights?.daysByMonth?.[featureKey(record.label)]);
-    return request.preferences.some((preference) => preference.feature === featureKey(record.label));
-  }
-
-  function allLabelRecords(place) {
-    const contextRecords = [];
-    for (const axis of place.fit?.companion || []) {
-      contextRecords.push({
-        label: `companion.${axis.key}`, value: axis.value, confidence: axis.confidence,
-        status: axis.status, inferenceLevel: axis.inferenceLevel, state: axis.state, source_ids: [],
-      });
-    }
-    for (const axis of place.fit?.month || []) {
-      contextRecords.push({
-        label: `month.${axis.key}`, value: axis.value, confidence: axis.confidence,
-        status: axis.status, inferenceLevel: axis.inferenceLevel, state: axis.state, source_ids: [],
-      });
-    }
-    return [...(place.v5?.labels || []), ...contextRecords];
-  }
-
-  function renderPlaceLabels(place) {
-    const records = allLabelRecords(place);
-    dom.detailLabels.replaceChildren();
-    if (!records.length) {
-      dom.detailLabels.hidden = true;
-      return;
-    }
-    dom.detailLabels.hidden = false;
-    const heading = document.createElement("div");
-    heading.className = "v5-label-heading";
-    const headingTitle = document.createElement("strong");
-    headingTitle.textContent = `장소 라벨 ${records.length}개`;
-    const headingCopy = document.createElement("span");
-    headingCopy.textContent = "강조된 항목은 현재 추천 점수에 사용";
-    heading.append(headingTitle, headingCopy);
-    const grid = document.createElement("div");
-    grid.className = "v5-label-grid label-grid-extended";
-    const detail = document.createElement("div");
-    detail.className = "v5-label-detail";
-    const sourceMap = new Map((place.v5?.sources || []).map((source) => [source.id, source]));
-
-    const showDetail = (record, group) => {
-      detail.replaceChildren();
-      const title = document.createElement("strong");
-      title.textContent = `${labelName(record.label)} · ${record.state === "not_applicable" ? "N/A" : formatScore(record.value, 2)}`;
-      const status = document.createElement("span");
-      status.className = "v5-label-status";
-      status.textContent = record.status === "confirmed" ? "근거 확인" : record.status === "ai_draft" ? "AI 초안" : "검토 보류";
-      const rationale = document.createElement("p");
-      if (group.displayOnly) rationale.textContent = "파생 Style은 화면 요약용이며 CCU-MMR 점수와 유사도에는 다시 사용하지 않습니다.";
-      else if (record.rationale || record.hold_reason) rationale.textContent = record.rationale || record.hold_reason;
-      else if (record.state === "not_applicable") rationale.textContent = "개최일 확인이 필요한 축제로 월 적합도를 점수에 사용하지 않습니다.";
-      else rationale.textContent = `근거 수준 ${record.inferenceLevel || "미기록"} · 신뢰도 ${formatScore(record.confidence, 2)}. 원시 값을 그대로 사용하는 CCU-MMR 실험입니다.`;
-      if (requestUsedLabel(record)) rationale.textContent += " 현재 요청 점수에 사용된 라벨입니다.";
-      detail.append(title, status, rationale);
-      const linkedSources = (record.source_ids || []).map((id) => sourceMap.get(id)).filter((source) => source?.url);
-      if (linkedSources.length) {
-        const links = document.createElement("div");
-        links.className = "v5-source-links";
-        for (const source of linkedSources) {
-          const link = document.createElement("a");
-          link.href = source.url;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = source.publisher || "웹 근거";
-          links.append(link);
-        }
-        detail.append(links);
-      }
-    };
-
-    for (const groupDefinition of LABEL_GROUPS) {
-      const groupRecords = records.filter((record) => record.label.startsWith(groupDefinition.prefix));
-      if (!groupRecords.length) continue;
-      const group = document.createElement("div");
-      group.className = `v5-label-group${groupDefinition.displayOnly ? " is-display-only" : ""}`;
-      const title = document.createElement("span");
-      title.textContent = `${groupDefinition.name} · ${groupRecords.length}`;
-      group.append(title);
-      for (const record of groupRecords) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `v5-label-chip${requestUsedLabel(record) ? " is-used" : ""}`;
-        button.setAttribute("aria-pressed", "false");
-        const name = document.createElement("span");
-        name.textContent = labelName(record.label);
-        const score = document.createElement("b");
-        score.textContent = record.state === "not_applicable" ? "N/A" : formatScore(record.value, 2);
-        button.append(name, score);
-        button.addEventListener("click", () => {
-          grid.querySelectorAll(".v5-label-chip").forEach((chip) => {
-            chip.classList.remove("is-active");
-            chip.setAttribute("aria-pressed", "false");
-          });
-          button.classList.add("is-active");
-          button.setAttribute("aria-pressed", "true");
-          showDetail(record, groupDefinition);
-        });
-        group.append(button);
-      }
-      grid.append(group);
-    }
-    dom.detailLabels.append(heading, grid, detail);
-  }
-
   function scorePill(label, value, className = "") {
     const pill = document.createElement("div");
     pill.className = `score-pill ${className}`.trim();
@@ -1583,38 +1459,6 @@
     dom.detailScoreTrace.append(heading, scores, blockLine, preferenceLine);
   }
 
-  function renderConstraintNote(place) {
-    dom.detailConstraintNote.replaceChildren();
-    if (!place.constraints?.length) {
-      dom.detailConstraintNote.hidden = true;
-      return;
-    }
-    dom.detailConstraintNote.hidden = false;
-    const title = document.createElement("strong");
-    title.textContent = `변동·제약 정보 ${place.constraints.length}건 확인 필요`;
-    const copy = document.createElement("p");
-    copy.textContent = "자유 텍스트 정보라 추천 점수로 자동 통과·제외하지 않았습니다.";
-    dom.detailConstraintNote.append(title, copy);
-    for (const constraint of place.constraints.slice(0, 4)) {
-      const row = document.createElement("div");
-      row.className = "constraint-row";
-      const kind = document.createElement("b");
-      kind.textContent = constraint.kind || "확인 항목";
-      const condition = document.createElement("span");
-      condition.textContent = constraint.condition || constraint.appliesTo || "상세 확인 필요";
-      row.append(kind, condition);
-      if (/^https:\/\//u.test(constraint.sourceUrl || "")) {
-        const link = document.createElement("a");
-        link.href = constraint.sourceUrl;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "출처";
-        row.append(link);
-      }
-      dom.detailConstraintNote.append(row);
-    }
-  }
-
   function selectPlace(place, { moveMap = false } = {}) {
     const previous = state.selectedPlace;
     state.selectedPlace = place;
@@ -1646,8 +1490,6 @@
     renderResearchDetail(place);
     loadPlaceReviews(place);
     renderScoreTrace(place, recommendation);
-    renderPlaceLabels(place);
-    renderConstraintNote(place);
     closePlaceImageDialog({ restoreFocus: false });
     const loadToken = ++state.detailImageLoadToken;
     const imageUrl = String(place.image || "").trim();
