@@ -75,6 +75,7 @@
 - 라벨 chip, 근거 링크, 제약 안내 전용 CSS를 제거했다.
 - 추천 계산용 `place.v5`, `place.fit`, `place.constraints`와 `LABEL_NAMES`, 내부 추천 trace 및 결과 JSON은 유지했다.
 - 정적 계약에 제거된 DOM ID·렌더러·사용자 문구가 다시 들어오지 않는 회귀 검사를 추가했다.
+- Git 커밋 `d032cd3`을 OCI 운영 릴리스 `/opt/rail-desk/releases/20260902-place-detail-d032cd3`로 배포했다. 공개 정적 파일에서 제거 대상 DOM·렌더러·CSS가 없고 기존 메인·헬스·여행 UI·리뷰 API가 모두 HTTP 200임을 확인했다.
 
 ## 설계와 달라진 점
 
@@ -90,6 +91,7 @@
 |---|---|
 | 2026-09-02 | 사용자 승인 범위로 SPEC 작성 및 구현 시작 |
 | 2026-09-02 | 장소 상세 라벨·변동 제약 UI와 전용 코드 제거 및 추천 회귀 검증 완료 |
+| 2026-09-02 | 운영 릴리스 `20260902-place-detail-d032cd3` 배포 및 공개 HTTPS 회귀 검증 완료 |
 
 ## 테스트 결과
 
@@ -101,3 +103,4 @@
 | `node scripts/test_preference_elicitation.cjs` | 통과 |
 | `git diff --check` | 통과 |
 | 로컬 실제 장소 상세 브라우저 QA | 통과 — `수망리 마흐니숲길` 상세에서 사진·기본 설명은 유지되고 라벨·변동 제약 문구는 없음 |
+| 운영 공개 HTTPS 검증 | 통과 — `/`, `/healthz`, `/travel/`, JS/CSS, 리뷰 API HTTP 200 및 제거 대상 문자열 부재 |
