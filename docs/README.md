@@ -68,7 +68,7 @@
 | [SPEC-063](spec_063.md) | 지도 UI 웹 조사 장소 설명 한국어화 | In Progress | research, labeling, map, UI, deployment |
 | [SPEC-064](spec_064.md) | 추천 필수 조건 누락 방지 UI | Implemented | recommendation, onboarding, validation, mobile, UI |
 | [SPEC-065](spec_065.md) | 여행 MBTI 중립 선택지와 단일 취향 입력 흐름 | Implemented | personalization, recommendation, onboarding, UI |
-| [SPEC-066](spec_066.md) | 매칭 장소 카카오 리뷰 DB 연동·공개 상세 표시 | In Progress | reviews, database, API, map, deployment |
+| [SPEC-066](spec_066.md) | 매칭 장소 카카오 리뷰 DB 연동·공개 상세 표시 | Implemented | reviews, database, API, map, deployment |
 | [SPEC-067](spec_067.md) | 데스크톱 여행 선택 패널 접기·펼치기 | Implemented | recommendation, desktop, map, UI |
 | [SPEC-068](spec_068.md) | 장소 상세 대표 이미지 표시·확대 개선 | Implemented | map, image, responsive, accessibility, UI |
 | [SPEC-069](spec_069.md) | 추천 평가 로그 참여자 이름·별칭 입력 | Implemented | feedback, participant, privacy, API, UI |

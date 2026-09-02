@@ -1,6 +1,6 @@
 # SPEC-066: 매칭 장소 카카오 리뷰 DB 연동·공개 상세 표시
 
-- 상태: In Progress
+- 상태: Implemented
 - 작성일: 2026-09-02
 - 최종 수정일: 2026-09-02
 - 관련 이슈: 사용자 요청 — 수집한 카카오 리뷰를 매칭된 추천 장소 상세에서 조회하고 서버 배포
@@ -108,7 +108,8 @@ API 응답은 `kakao-place-reviews-v1`이며 `place_id`는 TourAPI `contentid` �
 - 생성 DB는 같은 입력으로 두 번 재생성했을 때 SHA-256이 일치했고 `PRAGMA integrity_check=ok`, 금지 작성자 열 0개, 중복 review hash 0개를 확인했다.
 - `travel-feedback` 서비스에 읽기 전용 `ReviewStore`와 `GET /travel/api/places/{contentid}/reviews`를 추가했다. 숫자 ID와 페이지 범위를 검증하고 리뷰가 없는 장소도 HTTP 200 빈 응답을 제공한다.
 - Map UI 장소 상세에 비차단 후기 로딩, 본문·별점·작성일·태그·도움 수, 본문 없는 별점 후기 폴백, Kakao 원문 링크, 수집 한계 고지를 추가했다. 다른 장소 선택·상세 닫기 시 이전 요청을 중단하고 늦은 응답을 무시한다.
-- Python API 단위 테스트 16건, Python·JavaScript 문법, 리뷰 DB validator, CCU-MMR 테스트와 실제 2,153개 지도 번들 대시보드 계약 검증이 통과했다.
+- Python API 단위 테스트 19건, Python·JavaScript 문법, 리뷰 DB validator, 선호 입력·CCU-MMR 테스트와 실제 2,153개 지도 번들 대시보드 계약 검증이 통과했다.
+- Git 커밋 `420dcda370b2e34784ab36d0f8f81eee4de6cf82`를 OCI 운영 서버의 새 릴리스 `/opt/rail-desk/releases/20260902-trip-ai-420dcda`로 배포했다. 세 컨테이너의 헬스체크와 공개 `/`, `/healthz`, `/travel/`, 정적 자산, 실제 리뷰 API 표본을 확인한 뒤 현재 릴리스 포인터를 전환했다.
 
 ## 설계와 달라진 점
 
@@ -118,7 +119,7 @@ API 응답은 `kakao-place-reviews-v1`이며 `place_id`는 TourAPI `contentid` �
 
 - 수집기는 Kakao가 당시 노출한 유용한 순 상위 후기 최대 5건만 보존하므로 전체 후기나 현재 상태를 뜻하지 않는다.
 - 공개 운영 전 Kakao 약관·저작권 정책에 대한 별도 검토가 필요하다.
-- 기존 `scripts/test_preference_elicitation.cjs`는 이 변경과 무관한 `travel-mbti-site/app/lib/preference-elicitation.js` 누락으로 실행되지 않는다. 실제 Map UI 모듈의 문법 검사와 이를 직접 불러오는 대시보드·CCU-MMR 검증은 통과했다.
+- 리뷰 데이터는 배포 이미지에 포함된 수집 시점 스냅샷이므로 최신 Kakao 상태와 다를 수 있다.
 
 ## 변경 이력
 
@@ -127,3 +128,4 @@ API 응답은 `kakao-place-reviews-v1`이며 `place_id`는 TourAPI `contentid` �
 | 2026-09-02 | 사용자 승인 범위로 SPEC 작성 및 구현 시작 |
 | 2026-09-02 | 본문 없는 별점 후기를 누락하지 않도록 nullable 본문·표시 폴백 계약 반영 |
 | 2026-09-02 | 결정적 리뷰 DB·읽기 전용 API·장소 상세 UI 구현 및 로컬 계약 검증 완료 |
+| 2026-09-02 | OCI 운영 릴리스 `20260902-trip-ai-420dcda` 배포 및 공개 HTTPS·컨테이너 헬스 검증 완료 |
