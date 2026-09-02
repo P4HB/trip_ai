@@ -6,14 +6,16 @@
   "use strict";
 
   const PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
-  const QUESTIONNAIRE_VERSION = "travel-mbti-questions-v4-three-axis-18";
-  const PAIR_CATALOG_VERSION = "travel-mbti-content-pairs-v2";
-  const ESTIMATOR_VERSION = "axis-feature-evidence-v2";
+  const QUESTIONNAIRE_VERSION = "travel-mbti-questions-v5-four-way";
+  const PAIR_CATALOG_VERSION = "travel-mbti-content-pairs-v3-four-way";
+  const ESTIMATOR_VERSION = "axis-feature-evidence-v3-ambivalent";
   const ARCHETYPE_CATALOG_VERSION = "travel-mbti-8-v4-three-axis";
   const MAX_PAIR_QUESTIONS = 3;
   const MAX_ACTIVE_FEATURES = 8;
   const EVIDENCE_SATURATION = 4.8;
   const PAIR_EVIDENCE_WEIGHT = 1.25;
+  const QUESTION_BOTH_EVIDENCE_WEIGHT = 0.75;
+  const PAIR_BOTH_EVIDENCE_WEIGHT = 0.6;
 
   const ATOMIC_FEATURES = Object.freeze([
     "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
@@ -283,7 +285,7 @@
       if (!question) throw new Error(`알 수 없는 질문입니다: ${questionId || "(비어 있음)"}`);
       if (seen.has(questionId)) throw new Error(`질문 응답이 중복되었습니다: ${questionId}`);
       seen.add(questionId);
-      if (optionId !== "skip" && !question.options.some((option) => option.id === optionId)) {
+      if (!["skip", "both_like", "both_dislike"].includes(optionId) && !question.options.some((option) => option.id === optionId)) {
         throw new Error(`알 수 없는 질문 선택지입니다: ${questionId}/${optionId}`);
       }
       return { questionId, optionId };
@@ -301,7 +303,7 @@
       const choice = String(answer?.choice || "skip");
       if (!byId.has(pairId)) throw new Error(`알 수 없는 가상 장소 pair입니다: ${pairId || "(비어 있음)"}`);
       if (seen.has(pairId)) throw new Error(`가상 장소 pair 응답이 중복되었습니다: ${pairId}`);
-      if (!["a", "b", "tie", "skip"].includes(choice)) throw new Error(`알 수 없는 pair 선택입니다: ${choice}`);
+      if (!["a", "b", "both_like", "both_dislike", "tie", "skip"].includes(choice)) throw new Error(`알 수 없는 pair 선택입니다: ${choice}`);
       seen.add(pairId);
       return { pairId, choice };
     });
@@ -316,17 +318,33 @@
     for (const answer of questionnaire) {
       if (answer.optionId === "skip") continue;
       const question = questionsById.get(answer.questionId);
-      const option = question.options.find((item) => item.id === answer.optionId);
-      for (const [feature, value] of Object.entries(option.effects || {})) {
-        addEvidence(featureAccumulator[feature], Number(value), "quiz");
+      if (["both_like", "both_dislike"].includes(answer.optionId)) {
+        const direction = answer.optionId === "both_like" ? 1 : -1;
+        const features = new Set(question.options.flatMap((option) => Object.keys(option.effects || {})));
+        for (const feature of features) {
+          const average = question.options.reduce((sum, option) => sum + Number(option.effects?.[feature] || 0), 0) / question.options.length;
+          addEvidence(featureAccumulator[feature], direction * average * QUESTION_BOTH_EVIDENCE_WEIGHT, "quiz");
+        }
+        continue;
       }
+      const option = question.options.find((item) => item.id === answer.optionId);
+      for (const [feature, value] of Object.entries(option.effects || {})) addEvidence(featureAccumulator[feature], Number(value), "quiz");
       addEvidence(axisAccumulator[question.axisId], Number(option.axisValue), "quiz");
     }
 
     const pairsById = new Map(PAIRS.map((pair) => [pair.id, pair]));
     for (const answer of pairwise) {
-      if (!["a", "b"].includes(answer.choice)) continue;
       const pair = pairsById.get(answer.pairId);
+      if (["both_like", "both_dislike"].includes(answer.choice)) {
+        const direction = answer.choice === "both_like" ? 1 : -1;
+        const features = new Set([...Object.keys(pair.cardA.features), ...Object.keys(pair.cardB.features)]);
+        for (const feature of features) {
+          const average = (Number(pair.cardA.features[feature] || 0) + Number(pair.cardB.features[feature] || 0)) / 2;
+          addEvidence(featureAccumulator[feature], direction * average * PAIR_BOTH_EVIDENCE_WEIGHT, "pairwise");
+        }
+        continue;
+      }
+      if (!["a", "b"].includes(answer.choice)) continue;
       const direction = answer.choice === "a" ? 1 : -1;
       const features = new Set([...Object.keys(pair.cardA.features), ...Object.keys(pair.cardB.features)]);
       for (const feature of features) {
@@ -481,6 +499,8 @@
     ARCHETYPE_CATALOG_VERSION,
     MAX_PAIR_QUESTIONS,
     MAX_ACTIVE_FEATURES,
+    QUESTION_BOTH_EVIDENCE_WEIGHT,
+    PAIR_BOTH_EVIDENCE_WEIGHT,
     ATOMIC_FEATURES,
     FEATURE_LABELS,
     QUESTIONS,

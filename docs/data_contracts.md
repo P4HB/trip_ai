@@ -74,9 +74,9 @@ Place {
 
 ## CCU-MMR 정적 대시보드 요청·결과 — 구현됨
 
-`map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v2`와 `ccu-mmr-request-v4-personalized`를 사용한다. 공통 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 자차 여부, 18개 원자 라벨 선호, 필수·추가 중심·제외 ID, 결과 수, 다양성과 확인 필요 조건이다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다. 자차는 15km, 비자차는 5km 반경으로 정규화하고 하루 capacity는 `place_count=6`으로 고정한다.
+`map-ui/ccu-mmr.js`는 서버 API가 아닌 브라우저 내부 계약 `ccu-mmr-request-v2`와 `ccu-mmr-request-v4-personalized`를 사용한다. 공통 입력은 지역, 단일 intent lane, 여행 기간, 대표 동행, 자차 여부, 18개 원자 라벨 선호, 필수·추가 중심·제외 ID, 결과 수, 다양성과 확인 필요 조건이다. 현재 사용자 UI는 수동 원자 라벨을 받지 않고 적용된 여행 MBTI 프로필에서 만든 선호만 v4-personalized 요청에 넣는다. 지도 검색어·카테고리 후보 필터도 정규화 요청에 기록한다. 자차는 15km, 비자차는 5km 반경으로 정규화하고 하루 capacity는 `place_count=6`으로 고정한다.
 
-v2는 기존 수동 중요도 `1|2|4`만 허용한다. v4-personalized는 `TravelerPreferenceProfileV2` snapshot과 `confidence`, `source`, `0 < weight <= 4`인 연속 중요도를 허용한다. 프로필은 A/R·O/I·L/H 각 6개인 18개 상황 질문과 최대 3개 가상 장소 pair의 stable ID 응답, 18개 feature estimate, 전용 질문 evidence로 계산한 3축·8유형 요약을 가진다. pair 응답은 세부 feature만 보정하며 유형 문자를 바꾸지 않는다. 자동 활성 feature는 신호 상위 최대 8개다. 유형 ID는 표시·공유용이며 점수 입력이 아니다. P/A/M block weight는 v2와 같은 고정값을 유지한다.
+v2는 호환 경계에서 수동 중요도 `1|2|4`만 허용한다. v4-personalized는 `TravelerPreferenceProfileV2` snapshot과 `confidence`, `source`, `0 < weight <= 4`인 연속 중요도를 허용한다. 프로필은 A/R·O/I·L/H 각 6개인 18개 상황 질문과 최대 3개 가상 장소 pair의 stable ID 응답, 18개 feature estimate, 전용 질문 evidence로 계산한 3축·8유형 요약을 가진다. 질문과 pair 응답 enum은 `a|b|both_like|both_dislike|skip`이며 과거 pair snapshot의 `tie`도 중립으로 읽는다. `both_like|both_dislike`는 유형 축 evidence를 만들지 않고, 두 선택의 평균 feature 벡터를 각각 감쇠된 긍정·회피 신호로 더한다. pair 응답은 세부 feature만 보정하며 유형 문자를 바꾸지 않는다. 자동 활성 feature는 신호 상위 최대 8개다. 유형 ID는 표시·공유용이며 점수 입력이 아니다. P/A/M block weight는 v2와 같은 고정값을 유지한다.
 
 결과 `ccu-mmr-result-v6`는 정규화 요청, 고정 config, 후보 집계, Top-N P/A/M/R/MMR trace, Top-N별 표시용 `webResearch`, 확인 필요 후보, 경고와 데이터 provenance를 포함한다. 개인화 요청에서는 실제 사용한 profile과 preference confidence·source·연속 weight도 trace한다. `balanced` 모드는 관련도 상위 최대 3개를 각각 seed로 하는 `courseVariants[]`를 결정적으로 만들고 최초 `courseVariant`만 `0.5/0.3/0.2`로 선택한다. 명시적 `variantId` 선택은 난수를 사용하지 않는다. 요청에 포함된 선호 feature는 관련도에 유지하되 파생 `diversityFeatureKeys`에서는 제외한다. `diversity=off`는 단일 관련도 순 variant다.
 

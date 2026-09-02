@@ -18,7 +18,7 @@ const dashboardApp = fs.readFileSync(appPath, "utf8");
 const dashboardStyles = fs.readFileSync(stylesPath, "utf8");
 const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
-  "headerTravelMbtiButton", "startTravelMbtiButton", "travelMbtiApplied", "clearTravelMbtiButton", "travelMbtiDialog",
+  "headerTravelMbtiButton", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "restartTravelMbtiButton", "travelMbtiDialog",
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
   "detailPlaceId", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
 ]) {
@@ -31,6 +31,17 @@ assert.equal([...dashboardApp.matchAll(/fetch\s*\(/gu)].length, 1, "only feedbac
 assert.doesNotMatch(preferenceSource, /fetch\s*\(/u, "preference engine remains network-free");
 assert.equal(Preference.QUESTIONS.length, 18);
 assert.equal(Object.keys(Preference.ARCHETYPES).length, 8);
+assert.match(dashboardHtml, /검사하러 가기/u, "unapplied preference step only offers the MBTI entry point");
+assert.doesNotMatch(dashboardHtml, /data-preset=|id="preferenceRows"|id="addPreferenceButton"|세부 취향을 직접 조정|취향 없이 골고루/u, "manual preference presets and rows are removed");
+assert.doesNotMatch(dashboardHtml, /id="clearTravelMbtiButton"/u, "applied MBTI is replaced through retesting instead of a manual preference fallback");
+assert.match(dashboardApp, /function createTravelMbtiBothChoices\(/u, "shared both-like and both-dislike controls");
+assert.match(dashboardApp, /\["both_like", "♡", "둘 다 좋아요"/u, "both-like option");
+assert.match(dashboardApp, /\["both_dislike", "×", "둘 다 마음에 안 들어요"/u, "both-dislike option");
+assert.match(dashboardApp, /return preferenceEngine\.materializePreferences\(state\.preferenceProfile\)/u, "recommendation preferences come only from the applied MBTI profile");
+assert.match(dashboardApp, /complete: Boolean\(state\.preferenceProfile && preferences\.length\)/u, "preference requirement needs an applied MBTI profile");
+assert.match(dashboardApp, /focusWizardChoice\("#startTravelMbtiButton"\)/u, "missing preference returns to the MBTI entry point");
+assert.doesNotMatch(dashboardApp, /PRESETS|syncPresetCards|renderPreferenceRows|addPreferenceRow|\[data-preset\]/u, "manual preference code path is removed");
+assert.match(dashboardStyles, /\.mbti-both-actions/u, "four-way MBTI response layout");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(bundlePath, "utf8"), sandbox, { filename: bundlePath });
@@ -53,8 +64,9 @@ assert.equal(metadata.algorithmVersion, CCU.ALGORITHM_VERSION);
 
 assert.equal((dashboardHtml.match(/data-wizard-step="[1-5]"/gu) || []).length, 5, "five wizard steps");
 for (const id of [
-  "wizardStepLabel", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "dateUndecided", "reviewSummary",
+  "wizardStepLabel", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "dateUndecided", "dateEventRequirement", "reviewSummary",
   "companionType", "destinationRegion", "tripIntent", "transportMode", "runRecommendationButton",
+  "requiredOverview", "requiredProgressText", "requiredProgressTrack", "requiredProgressBar", "requiredMissingText",
 ]) {
   assert.match(dashboardHtml, new RegExp(`id="${id}"`, "u"), `${id}: wizard control`);
 }
@@ -70,7 +82,25 @@ assert.match(dashboardStyles, /body:not\(\.has-recommendation\) \.output-panel\s
 assert.match(dashboardStyles, /\.sidebar\s*\{\s*order: 1;/u, "mobile input order");
 assert.match(dashboardStyles, /\.output-panel\s*\{\s*order: 2;/u, "mobile result order");
 assert.match(dashboardStyles, /\.map-shell\s*\{\s*order: 3;/u, "mobile map order");
-assert.match(dashboardApp, /function renderReviewSummary\(\)/u, "review summary");
+assert.equal((dashboardHtml.match(/data-requirement-key="(?:companion|date|region|intent|transport|preference)"/gu) || []).length, 6, "six required input groups");
+assert.equal((dashboardHtml.match(/data-requirement-status="(?:companion|date|region|intent|transport|preference)"/gu) || []).length, 6, "six live required statuses");
+assert.match(dashboardHtml, /추천 결과 설정 <span class="optional-badge">선택<\/span>/u, "optional output settings label");
+assert.match(dashboardApp, /function requiredInputStates\(\)/u, "required input state model");
+assert.match(dashboardApp, /function updateRequiredInputState\(/u, "required input status synchronization");
+assert.match(dashboardApp, /function clearRecommendation\([^)]*\) \{\s*hideFormError\(\);/u, "input changes clear stale validation alerts");
+assert.match(dashboardApp, /const eventRequiresDates = dom\.tripIntent\.value === "event"/u, "event intent requires explicit dates");
+assert.match(dashboardApp, /step === 2 && dom\.tripIntent\.value === "event" && dom\.dateUndecided\.checked/u, "event and undecided date cross-field validation");
+assert.match(dashboardApp, /if \(validateWizardFlow\(\{ stacked: false \}\)\) runRecommendation\(\)/u, "desktop final submit revalidates every required step");
+assert.match(dashboardApp, /`필수 조건 \$\{missing\.length\}개 확인하기`/u, "missing count call to action");
+assert.match(dashboardApp, /state\.recommendationResult\s*\? "이 조건으로 다시 추천받기"\s*: "추천 결과 아래에서 보기"/u, "ready and rerun call to action states");
+assert.match(dashboardApp, /state\.requiredValidationAttempted = true;\s*updateRequiredInputState\(\{ renderReview: true \}\)/u, "mobile submit marks every missing group");
+assert.match(dashboardApp, /hasBothDates[\s\S]*?: "미선택";/u, "unselected dates remain visibly unselected");
+assert.match(dashboardApp, /function preferenceSummary\(\)[\s\S]*?: "미선택";/u, "unselected preference remains visibly unselected");
+assert.match(dashboardStyles, /\.review-summary-item\.is-missing/u, "review summary missing state");
+assert.match(dashboardStyles, /\.has-required-error/u, "inline required error state");
+assert.match(dashboardStyles, /\.choice-card\[aria-pressed="true"\]::after,[\s\S]*?content: "";/u, "selected checkmark stays decorative");
+assert.doesNotMatch(dashboardApp, /dom\.runRecommendationButton\.textContent = "이 조건으로 장소 추천받기"/u, "dirty input must not imply readiness");
+assert.match(dashboardApp, /function renderReviewSummary\(/u, "review summary");
 assert.doesNotMatch(dashboardApp, /initMap\(\);\s*runRecommendation\(/u, "recommendation must not auto-run on initialize");
 const travelMbtiApplySource = dashboardApp.match(/function applyTravelMbtiProfile\(\) \{([\s\S]*?)\r?\n  \}\r?\n\r?\n  function clearTravelMbtiProfile/u)?.[1] || "";
 assert.ok(travelMbtiApplySource, "travel MBTI apply function");

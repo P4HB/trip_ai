@@ -24,8 +24,10 @@
 - 구현됨: 관련도 상위 1·2·3위 seed 코스 3안, 최초 `0.5/0.3/0.2` 선택과 세션 미노출 코스 재추천
 - 구현됨: 요청 선호 feature를 중복축에서 제외한 MMR과 선택 코스 기반 자동 일정 중심·일차별 지도 강조
 - 구현됨: 동행자부터 조건 확인까지 5단계로 진행하는 베타 사용자용 추천 입력 UI
-- 구현됨: A/R·O/I·L/H 축마다 6개씩 총 18개 상황 질문·최대 3개 적응형 가상 장소 A/B·연속 라벨 가중치
+- 구현됨: 모바일 필수 조건 6개 완료 현황·전체 누락 표시와 축제·행사 날짜 교차 검증
+- 구현됨: A/R·O/I·L/H 축마다 6개씩 총 18개 4방향 상황 질문·최대 3개 적응형 가상 장소 비교·연속 라벨 가중치
 - 구현됨: 3축 8개 여행 MBTI를 내장한 지도 추천 UI
+- 구현됨: 여행 취향 입력을 MBTI 검사 하나로 통합하고 미검사 사용자의 추천 실행 차단
 - 구현됨: 베타 추천 카드의 내부 trace 상세 분리와 추천 목록·일자별 일정 장소의 1~5·최대 300자 동기화 세션 피드백 UI
 - 구현됨: 모든 고유 추천 장소의 만족도 입력 완료 후 명시적 저장 버튼으로 선택·추천 결과·피드백을 서버의 분리된 SQLite에 90일 적재
 - 구현됨: 장소 만족도 선택 즉시 세션 최신 스냅샷을 서버에 자동 저장하고 의견 입력은 짧게 디바운스해 갱신
@@ -60,10 +62,12 @@
 | [SPEC-059](spec_059.md) | 추천 만족도 서버 적재 API | Superseded | recommendation, feedback, API, privacy, deployment |
 | [SPEC-060](spec_060.md) | 추천 만족도 실시간 자동 저장 | Implemented | recommendation, feedback, autosave, API, privacy, deployment |
 | [SPEC-061](spec_061.md) | Graphify 프로젝트 전용 코드 지식 그래프 설정 | Implemented | repository, agent, tooling |
-| [SPEC-062](spec_062.md) | 모바일 단일 스크롤 추천 입력·결과 UI | In Progress | recommendation, onboarding, mobile, map, UI |
+| [SPEC-062](spec_062.md) | 모바일 단일 스크롤 추천 입력·결과 UI | Implemented | recommendation, onboarding, mobile, map, UI |
 | [SPEC-063](spec_063.md) | 지도 UI 웹 조사 장소 설명 한국어화 | In Progress | research, labeling, map, UI, deployment |
+| [SPEC-064](spec_064.md) | 추천 필수 조건 누락 방지 UI | Implemented | recommendation, onboarding, validation, mobile, UI |
+| [SPEC-065](spec_065.md) | 여행 MBTI 중립 선택지와 단일 취향 입력 흐름 | Implemented | personalization, recommendation, onboarding, UI |
 
-- 다음 예약 번호: `SPEC-064`
+- 다음 예약 번호: `SPEC-066`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

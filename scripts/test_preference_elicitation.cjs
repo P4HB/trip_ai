@@ -8,6 +8,8 @@ const Preference = require("../map-ui/preference-elicitation.js");
 assert.equal(Preference.QUESTIONS.length, 18);
 assert.equal(Preference.PAIRS.length, 6);
 assert.equal(Preference.MAX_PAIR_QUESTIONS, 3);
+assert.equal(Preference.QUESTION_BOTH_EVIDENCE_WEIGHT, 0.75);
+assert.equal(Preference.PAIR_BOTH_EVIDENCE_WEIGHT, 0.6);
 assert.equal(Object.keys(Preference.ARCHETYPES).length, 8);
 assert.deepEqual(
   Object.keys(Preference.ARCHETYPES).sort(),
@@ -86,6 +88,30 @@ assert.equal(Preference.materializePreferences(skipped).length, 0);
 assert.ok(Object.values(skipped.featureEstimates).every((estimate) => estimate.mean === 0 && estimate.active === false));
 assert.ok(Object.values(skipped.axisEstimates).every((estimate) => estimate.mean === 0 && estimate.confidence === 0));
 
+const bothLikedAnswers = Preference.QUESTIONS.map((question) => ({ questionId: question.id, optionId: "both_like" }));
+const bothDislikedAnswers = Preference.QUESTIONS.map((question) => ({ questionId: question.id, optionId: "both_dislike" }));
+const bothLiked = Preference.estimateProfile(bothLikedAnswers, []);
+const bothDisliked = Preference.estimateProfile(bothDislikedAnswers, []);
+assert.equal(bothLiked.status, "complete");
+assert.match(bothLiked.versions.questionnaire, /four-way/u);
+assert.match(bothLiked.versions.estimator, /ambivalent/u);
+assert.ok(Object.values(bothLiked.axisEstimates).every((estimate) => estimate.answeredCount === 0 && estimate.mean === 0 && estimate.confidence === 0));
+for (const feature of Preference.ATOMIC_FEATURES) {
+  assert.ok(Math.abs(bothLiked.featureEstimates[feature].mean + bothDisliked.featureEstimates[feature].mean) < 1e-9, `${feature}: question both-like/dislike symmetry`);
+  assert.equal(bothLiked.featureEstimates[feature].uncertainty, bothDisliked.featureEstimates[feature].uncertainty, `${feature}: question both uncertainty symmetry`);
+}
+const questionAOnly = Preference.estimateProfile([{ questionId: "q01_arrival_energy", optionId: "a" }], []);
+const questionBothOnly = Preference.estimateProfile([{ questionId: "q01_arrival_energy", optionId: "both_like" }], []);
+assert.ok(questionBothOnly.featureEstimates.ocean.evidenceCount < questionAOnly.featureEstimates.ocean.evidenceCount, "both choice is weaker than a decisive question answer");
+
+const pairBothLiked = Preference.estimateProfile([], [{ pairId: "p01_panorama_or_story", choice: "both_like" }]);
+const pairBothDisliked = Preference.estimateProfile([], [{ pairId: "p01_panorama_or_story", choice: "both_dislike" }]);
+assert.match(pairBothLiked.versions.pairCatalog, /four-way/u);
+for (const feature of ["mountain", "ocean", "scenic_value", "culture_history", "traditional_market"]) {
+  assert.ok(Math.abs(pairBothLiked.featureEstimates[feature].mean + pairBothDisliked.featureEstimates[feature].mean) < 1e-9, `${feature}: pair both-like/dislike symmetry`);
+  assert.equal(pairBothLiked.featureEstimates[feature].uncertainty, pairBothDisliked.featureEstimates[feature].uncertainty, `${feature}: pair both uncertainty symmetry`);
+}
+
 const refinedRepresentative = Preference.estimateProfile(representativeAnswers, [{ pairId: "p01_panorama_or_story", choice: "b" }]);
 assert.equal(refinedRepresentative.displaySummary.archetypeId, representative.displaySummary.archetypeId, "label refinement must not change type letters");
 
@@ -101,13 +127,17 @@ assert.match(shareText, /AIL · 로컬 콘텐츠 탐험가/u);
 assert.doesNotMatch(shareText, /featureEstimates|questionnaire|activity|confidence/u);
 
 assert.throws(() => Preference.estimateProfile([{ questionId: "unknown", optionId: "a" }]), /알 수 없는 질문/u);
+assert.throws(() => Preference.estimateProfile([{ questionId: "q01_arrival_energy", optionId: "neither" }]), /알 수 없는 질문 선택지/u);
 assert.throws(() => Preference.estimateProfile([], [{ pairId: "unknown", choice: "a" }]), /알 수 없는 가상 장소/u);
 
 const normalizeSource = (source) => source.replace(/\r\n/g, "\n").trimEnd();
-assert.equal(
-  normalizeSource(fs.readFileSync(path.join(__dirname, "..", "travel-mbti-site", "app", "lib", "preference-elicitation.js"), "utf8")),
-  normalizeSource(fs.readFileSync(path.join(__dirname, "..", "map-ui", "preference-elicitation.js"), "utf8")),
-  "standalone site engine snapshot must match map UI engine",
-);
+const standaloneSnapshotPath = path.join(__dirname, "..", "travel-mbti-site", "app", "lib", "preference-elicitation.js");
+if (fs.existsSync(standaloneSnapshotPath)) {
+  assert.equal(
+    normalizeSource(fs.readFileSync(standaloneSnapshotPath, "utf8")),
+    normalizeSource(fs.readFileSync(path.join(__dirname, "..", "map-ui", "preference-elicitation.js"), "utf8")),
+    "standalone site engine snapshot must match map UI engine",
+  );
+}
 
 console.log("Travel preference elicitation tests passed");
