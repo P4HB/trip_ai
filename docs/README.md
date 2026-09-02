@@ -20,6 +20,8 @@
 - 구현됨: 비음식점 1,434건 전체 웹 조사·companion·월별 자동 라벨·canonical JSONL·SQLite (`ai_draft`)
 - 구현됨: 비음식점과 FD05 카페·찻집 1,664건의 Theme·Environment·Style 24축 완전 숫자 라벨
 - 구현됨: 장소 검색, 카테고리 필터, 지도 마커·클러스터, 장소 상세 UI
+- 구현됨: 1,240px 초과 데스크톱에서 왼쪽 여행 선택 패널 접기·펼치기와 지도 자동 확장
+- 구현됨: 장소 상세 대표 이미지 전체 표시·저해상도 확대 보호·큰 이미지 뷰어
 - 구현됨: 구조화된 입력으로 1,663개 41축 장소의 CCU-MMR 결과를 비교하는 정적 내부 실험 대시보드
 - 구현됨: 관련도 상위 1·2·3위 seed 코스 3안, 최초 `0.5/0.3/0.2` 선택과 세션 미노출 코스 재추천
 - 구현됨: 요청 선호 feature를 중복축에서 제외한 MMR과 선택 코스 기반 자동 일정 중심·일차별 지도 강조
@@ -29,7 +31,7 @@
 - 구현됨: 3축 8개 여행 MBTI를 내장한 지도 추천 UI
 - 구현됨: 여행 취향 입력을 MBTI 검사 하나로 통합하고 미검사 사용자의 추천 실행 차단
 - 구현됨: 베타 추천 카드의 내부 trace 상세 분리와 추천 목록·일자별 일정 장소의 1~5·최대 300자 동기화 세션 피드백 UI
-- 구현됨: 모든 고유 추천 장소의 만족도 입력 완료 후 명시적 저장 버튼으로 선택·추천 결과·피드백을 서버의 분리된 SQLite에 90일 적재
+- 구현됨: 추천 결과 최상단 이름·별칭과 장소별 만족도·의견을 추천 세션 최신 스냅샷으로 서버의 분리된 SQLite에 90일 적재
 - 구현됨: 장소 만족도 선택 즉시 세션 최신 스냅샷을 서버에 자동 저장하고 의견 입력은 짧게 디바운스해 갱신
 - 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
@@ -66,8 +68,12 @@
 | [SPEC-063](spec_063.md) | 지도 UI 웹 조사 장소 설명 한국어화 | In Progress | research, labeling, map, UI, deployment |
 | [SPEC-064](spec_064.md) | 추천 필수 조건 누락 방지 UI | Implemented | recommendation, onboarding, validation, mobile, UI |
 | [SPEC-065](spec_065.md) | 여행 MBTI 중립 선택지와 단일 취향 입력 흐름 | Implemented | personalization, recommendation, onboarding, UI |
+| [SPEC-066](spec_066.md) | 매칭 장소 카카오 리뷰 DB 연동·공개 상세 표시 | In Progress | reviews, database, API, map, deployment |
+| [SPEC-067](spec_067.md) | 데스크톱 여행 선택 패널 접기·펼치기 | Implemented | recommendation, desktop, map, UI |
+| [SPEC-068](spec_068.md) | 장소 상세 대표 이미지 표시·확대 개선 | Implemented | map, image, responsive, accessibility, UI |
+| [SPEC-069](spec_069.md) | 추천 평가 로그 참여자 이름·별칭 입력 | Implemented | feedback, participant, privacy, API, UI |
 
-- 다음 예약 번호: `SPEC-066`
+- 다음 예약 번호: `SPEC-070`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

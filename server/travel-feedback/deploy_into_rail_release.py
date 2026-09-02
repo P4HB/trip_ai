@@ -20,6 +20,7 @@ SERVICE_BLOCK = """  travel-feedback:
       TRAVEL_PUBLIC_ORIGIN: ${RAIL_PUBLIC_ORIGIN:?Set RAIL_PUBLIC_ORIGIN in .env}
       TRAVEL_FEEDBACK_DB_PATH: /data/feedback.sqlite3
       TRAVEL_FEEDBACK_RETENTION_DAYS: 90
+      TRAVEL_REVIEW_DB_PATH: /app/data/kakao_reviews.sqlite3
     volumes:
       - travel_feedback_data:/data
     mem_limit: 96m
@@ -51,7 +52,16 @@ SERVICE_BLOCK = """  travel-feedback:
 
 """
 
-CADDY_BLOCK = """\t\t@travel_feedback path /travel/api/feedback
+CADDY_BLOCK = """\t\t@travel_api path /travel/api/feedback /travel/api/places/*/reviews
+\t\thandle @travel_api {
+\t\t\treverse_proxy travel-feedback:8200 {
+\t\t\t\theader_up X-Travel-Client-IP {remote_host}
+\t\t\t}
+\t\t}
+
+"""
+
+PREVIOUS_CADDY_BLOCK = """\t\t@travel_feedback path /travel/api/feedback
 \t\thandle @travel_feedback {
 \t\t\treverse_proxy travel-feedback:8200 {
 \t\t\t\theader_up X-Travel-Client-IP {remote_host}
@@ -101,10 +111,13 @@ def install(release: Path, version: str) -> None:
 \t\t}
 
 """
-    if legacy_caddy_block in caddy:
+    if PREVIOUS_CADDY_BLOCK in caddy:
+        caddy = replace_once(caddy, PREVIOUS_CADDY_BLOCK, CADDY_BLOCK, "travel API route")
+        caddy_path.write_text(caddy, encoding="utf-8")
+    elif legacy_caddy_block in caddy:
         caddy = replace_once(caddy, legacy_caddy_block, CADDY_BLOCK, "legacy travel feedback route")
         caddy_path.write_text(caddy, encoding="utf-8")
-    elif "@travel_feedback path" not in caddy:
+    elif "@travel_api path" not in caddy:
         caddy = replace_once(
             caddy,
             "\t\t@travel_no_slash path /travel\n",

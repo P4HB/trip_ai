@@ -20,14 +20,18 @@ const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "restartTravelMbtiButton", "travelMbtiDialog",
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
-  "detailPlaceId", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
+  "detailPlaceId", "detailReviews", "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage",
+  "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
+  "sidebarCollapseButton", "sidebarExpandButton",
+  "participantNamePanel", "participantName", "participantNameStatus",
+  "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
 ]) {
   assert.match(dashboardHtml, new RegExp(`id=["']${id}["']`, "u"), `${id}: travel MBTI DOM contract`);
 }
 assert.ok(dashboardHtml.indexOf("./preference-elicitation.js") < dashboardHtml.indexOf("./ccu-mmr.js"), "preference module must load before ranker");
 assert.ok(dashboardHtml.indexOf("./ccu-mmr.js") < dashboardHtml.indexOf("./app.js"), "ranker must load before app");
 assert.doesNotMatch(`${dashboardApp}\n${preferenceSource}`, /localStorage|sessionStorage|sendBeacon|XMLHttpRequest/u, "profile must not use browser persistence or background transport");
-assert.equal([...dashboardApp.matchAll(/fetch\s*\(/gu)].length, 1, "only feedback autosave may use fetch");
+assert.equal([...dashboardApp.matchAll(/fetch\s*\(/gu)].length, 2, "only feedback autosave and review lookup may use fetch");
 assert.doesNotMatch(preferenceSource, /fetch\s*\(/u, "preference engine remains network-free");
 assert.equal(Preference.QUESTIONS.length, 18);
 assert.equal(Object.keys(Preference.ARCHETYPES).length, 8);
@@ -75,6 +79,26 @@ for (const target of ["companionType", "destinationRegion", "tripIntent", "trans
 }
 assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
 assert.match(dashboardApp, /function validateMobileWizardFlow\(\)/u, "mobile stacked flow validation");
+assert.match(dashboardHtml, /id="sidebarCollapseButton"[\s\S]*?aria-controls="sidebar"[\s\S]*?aria-expanded="true"/u, "desktop sidebar collapse control");
+assert.match(dashboardHtml, /id="sidebarExpandButton"[\s\S]*?aria-controls="sidebar"[\s\S]*?aria-expanded="false"/u, "desktop sidebar expand control");
+assert.match(dashboardApp, /sidebarCollapsed: false/u, "desktop sidebar starts expanded");
+assert.match(dashboardApp, /function setDesktopSidebarCollapsed\(collapsed, \{ focus = true \} = \{\}\)/u, "desktop sidebar state transition");
+assert.match(dashboardApp, /document\.body\.classList\.toggle\("sidebar-collapsed", collapsed\)/u, "desktop sidebar body state");
+assert.match(dashboardApp, /state\.map\?\.invalidateSize\(\)/u, "sidebar layout refreshes Leaflet map");
+assert.match(dashboardApp, /else if \(state\.sidebarCollapsed\) setDesktopSidebarCollapsed\(false, \{ focus: false \}\)/u, "responsive boundary clears desktop collapse");
+assert.match(dashboardStyles, /@media \(min-width: 1241px\)[\s\S]*body\.sidebar-collapsed \.workspace\s*\{\s*grid-template-columns: 0 minmax\(420px, 1fr\) var\(--output-width\);/u, "collapsed desktop grid expands map");
+assert.match(dashboardStyles, /body\.sidebar-collapsed \.sidebar-expand-button:not\(\[hidden\]\)\s*\{\s*display: inline-flex;/u, "collapsed desktop shows expand control");
+assert.match(dashboardStyles, /@media \(max-width: 1240px\)[\s\S]*\.sidebar-collapse-button,[\s\S]*\.sidebar-expand-button\s*\{\s*display: none !important;/u, "new controls stay out of tablet and mobile flows");
+assert.match(dashboardHtml, /id="detailImageButton"[\s\S]*aria-haspopup="dialog"/u, "detail image opens an accessible dialog");
+assert.match(dashboardHtml, /id="placeImageDialog"[\s\S]*aria-labelledby="placeImageDialogTitle"/u, "large image dialog labeling");
+assert.match(dashboardApp, /function openPlaceImageDialog\(\)/u, "large image dialog open behavior");
+assert.match(dashboardApp, /function closePlaceImageDialog\(\{ restoreFocus = true \} = \{\}\)/u, "large image dialog focus restoration");
+assert.match(dashboardApp, /state\.detailImageLoadToken === loadToken && state\.selectedPlace\?\.id === place\.id/u, "stale detail image guard");
+assert.match(dashboardApp, /const imageLoader = new Image\(\)/u, "detail image preloads before display");
+assert.match(dashboardApp, /dom\.detailMedia\.classList\.toggle\("is-low-resolution", scale > 1\.35\)/u, "low-resolution upscaling guard");
+assert.match(dashboardStyles, /\.detail-media\s*\{[\s\S]*?aspect-ratio: 4 \/ 3;[\s\S]*?align-self: start;/u, "desktop image keeps an independent 4:3 frame");
+assert.match(dashboardStyles, /\.detail-image-button > img\s*\{[\s\S]*?object-fit: contain;/u, "detail image remains fully visible");
+assert.match(dashboardStyles, /@media \(max-width: 760px\)[\s\S]*?\.detail-media\s*\{[\s\S]*?min-height: 200px;[\s\S]*?aspect-ratio: 16 \/ 9;/u, "mobile image uses a larger 16:9 frame");
 assert.match(dashboardApp, /const MOBILE_STACKED_MEDIA = "\(max-width: 760px\)"/u, "mobile stacked flow breakpoint");
 assert.match(dashboardApp, /dom\.outputPanel\.scrollIntoView\(\{ behavior: "smooth", block: "start" \}\)/u, "mobile result scroll");
 assert.match(dashboardApp, /section\.hidden = stacked \? false : !active/u, "mobile exposes every wizard section");
@@ -108,6 +132,8 @@ assert.doesNotMatch(travelMbtiApplySource, /runRecommendation\(/u, "travel MBTI 
 assert.match(dashboardHtml, /만족도나 의견을 남기면 여행 조건과 추천 결과가 서버에 자동 저장돼요\./u, "feedback autosave notice");
 assert.doesNotMatch(dashboardHtml, /id="saveFeedbackLogButton"/u, "manual feedback save button is removed");
 assert.match(dashboardHtml, /자동 전송되어 90일간 보관/u, "feedback retention notice");
+assert.match(dashboardHtml, /id="participantName"[^>]*maxlength="30"/u, "participant name length boundary");
+assert.match(dashboardHtml, /실명 대신 별칭을 사용해도 되며 연락처는 입력하지 마세요/u, "participant privacy notice");
 assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
 assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
 assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
@@ -151,6 +177,9 @@ assert.match(dashboardApp, /function recommendationFeedbackTargets\(result = sta
 assert.match(dashboardApp, /function recommendationFeedbackCompletion\(\)/u, "feedback completion calculation");
 assert.match(dashboardApp, /function buildFeedbackLog\(revision = state\.feedbackAutoSave\.revision\)/u, "feedback log builder");
 assert.match(dashboardApp, /schema_version: "travel-recommendation-feedback-log-v3"/u, "feedback log schema version");
+assert.match(dashboardApp, /participant_name: participantNameValue\(\) \|\| null/u, "participant name feedback field");
+assert.match(dashboardApp, /if \(!participantNameValue\(\) && !allowBlankParticipant\)/u, "blank participant blocks initial feedback transmission");
+assert.match(dashboardApp, /dom\.participantName\.addEventListener\("input", handleParticipantNameInput\)/u, "participant name changes update feedback log");
 assert.match(dashboardApp, /session_id: autosave\.sessionId/u, "feedback session id");
 assert.match(dashboardApp, /revision,/u, "monotonic feedback revision");
 assert.match(dashboardApp, /method: "server_autosave"/u, "feedback autosave storage");
@@ -158,12 +187,16 @@ assert.match(dashboardApp, /endpoint: "\/travel\/api\/feedback"/u, "same-origin 
 assert.match(dashboardApp, /server_transmitted: true/u, "feedback server transmission");
 assert.match(dashboardApp, /web_storage_used: false/u, "no feedback Web Storage");
 assert.match(dashboardApp, /await fetch\("\/travel\/api\/feedback"/u, "feedback POST request");
+assert.match(dashboardApp, /fetch\(`api\/places\/\$\{encodeURIComponent\(placeId\)\}\/reviews\?limit=5&offset=0`/u, "same-origin review lookup");
+assert.match(dashboardApp, /schema_version !== "kakao-place-reviews-v1"/u, "review response contract");
+assert.match(dashboardApp, /state\.reviewRequest\.controller\?\.abort\(\)/u, "stale review request cancellation");
 assert.match(dashboardApp, /credentials: "omit"/u, "feedback request omits credentials");
 assert.match(dashboardApp, /autosave\.pendingPayload\?\.revision === sendingRevision/u, "failed feedback retries reuse payload");
 assert.match(feedbackComponentSource, /scheduleFeedbackAutoSave\(0\)/u, "score selection saves immediately");
 assert.match(feedbackComponentSource, /scheduleFeedbackAutoSave\(800\)/u, "comment input is debounced");
 assert.match(dashboardApp, /function queueFeedbackAutoSaveRetry\(autosave\)/u, "failed autosave retries automatically");
 assert.match(dashboardApp, /getFeedbackCompletion: \(\) => recommendationFeedbackCompletion\(\)/u, "feedback completion inspection boundary");
+assert.match(dashboardApp, /getParticipantName: \(\) => participantNameValue\(\)/u, "participant name inspection boundary");
 assert.match(dashboardApp, /buildFeedbackLog: \(\) => buildFeedbackLog\(Math\.max\(1, state\.feedbackAutoSave\.revision\)\)/u, "feedback log inspection boundary");
 
 const readyPlaces = places.filter((place) => place.v5 && place.fit);

@@ -61,20 +61,22 @@
     "map", "mapLoading", "headerReadyCount", "sourceDate", "filterSummary", "placeSearch", "clearSearchButton",
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
-    "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
-    "detailAddress", "detailPhone", "detailResearch", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
+    "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
+    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "detailScoreTrace", "detailLabels", "detailConstraintNote", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
-    "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
+    "sidebarCollapseButton", "sidebarExpandButton", "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
     "resultLimit", "diversityPreset", "requiredPlaceSearch", "selectedRequiredPlaces",
     "requiredPlaceSearchResults", "requiredPlaceStatus", "excludedPlaceIds", "formError",
     "headerTravelMbtiButton", "preferenceStepTitle", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "travelMbtiAppliedType", "travelMbtiAppliedName", "travelMbtiAppliedSummary",
     "restartTravelMbtiButton", "travelMbtiDialog", "travelMbtiCloseButton", "travelMbtiProgressLabel", "travelMbtiProgressBar",
     "travelMbtiBody", "travelMbtiFooter", "travelMbtiBackButton", "travelMbtiSkipButton",
+    "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "requiredOverview", "requiredProgressText", "requiredProgressTrack", "requiredProgressBar", "requiredMissingText",
     "recommendationSummary", "candidateMetric", "scoredMetric", "poolMetric", "returnedMetric", "warningList",
+    "participantNamePanel", "participantName", "participantNameStatus",
     "recommendationCount", "recommendationResultList", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
     "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
@@ -137,6 +139,9 @@
     markerById: new Map(),
     selectedTypes: new Set(availableTypes),
     selectedPlace: null,
+    sidebarCollapsed: false,
+    detailImageLoadToken: 0,
+    reviewRequest: { controller: null, placeId: null },
     filteredPlaces: places,
     initialBounds: null,
     query: "",
@@ -280,6 +285,116 @@
       ? "웹 조사에서 활동 설명을 찾지 못해 분류·주소 등 기본 정보만 표시합니다. 실제 체험은 원문에서 확인하세요."
       : "출처 내용을 짧게 정리한 AI 초안입니다. 운영시간·가격·휴무·행사 일정은 방문 전에 원문에서 다시 확인하세요.";
     dom.detailResearch.append(heading, facts, notice);
+  }
+
+  function reviewHeading(total = null) {
+    const heading = document.createElement("div");
+    heading.className = "review-heading";
+    const title = document.createElement("strong");
+    title.textContent = "카카오 방문 후기";
+    const badge = document.createElement("span");
+    badge.className = "review-count-badge";
+    badge.textContent = total === null ? "불러오는 중" : `수집 ${formatNumber(total)}건`;
+    heading.append(title, badge);
+    return heading;
+  }
+
+  function renderReviewStatus(message, className = "") {
+    dom.detailReviews.hidden = false;
+    const status = document.createElement("p");
+    status.className = `review-status ${className}`.trim();
+    status.textContent = message;
+    dom.detailReviews.replaceChildren(reviewHeading(), status);
+  }
+
+  function renderReviewResponse(place, payload) {
+    dom.detailReviews.hidden = false;
+    const heading = reviewHeading(payload.total);
+    if (!payload.reviews.length) {
+      const status = document.createElement("p");
+      status.className = "review-status";
+      status.textContent = payload.kakao_places.length
+        ? "매칭된 카카오 장소에 수집된 방문 후기가 없습니다."
+        : "이 장소와 연결된 카카오 방문 후기가 없습니다.";
+      dom.detailReviews.replaceChildren(heading, status);
+      return;
+    }
+
+    const list = document.createElement("div");
+    list.className = "review-list";
+    for (const review of payload.reviews) {
+      const card = document.createElement("article");
+      card.className = "review-card";
+      const meta = document.createElement("div");
+      meta.className = "review-meta";
+      const rating = document.createElement("strong");
+      rating.textContent = Number.isFinite(review.rating) ? `★ ${Number(review.rating).toFixed(1)}` : "별점 없음";
+      const date = document.createElement("span");
+      date.textContent = review.date || "작성일 없음";
+      meta.append(rating, date);
+      const content = document.createElement("p");
+      content.className = "review-content";
+      content.textContent = review.content || "별점만 남긴 후기입니다.";
+      card.append(meta, content);
+      if (review.tags?.length || Number.isFinite(review.likes)) {
+        const signals = document.createElement("div");
+        signals.className = "review-signals";
+        for (const tagText of review.tags || []) {
+          const tag = document.createElement("span");
+          tag.textContent = tagText;
+          signals.append(tag);
+        }
+        if (Number.isFinite(review.likes) && review.likes > 0) {
+          const likes = document.createElement("span");
+          likes.textContent = `도움 ${formatNumber(review.likes)}`;
+          signals.append(likes);
+        }
+        card.append(signals);
+      }
+      if (/^https:\/\/place\.map\.kakao\.com\/[0-9]+$/u.test(review.place_url || "")) {
+        const link = document.createElement("a");
+        link.className = "review-source-link";
+        link.href = review.place_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "카카오맵에서 원문 보기";
+        link.setAttribute("aria-label", `${place.title} 카카오맵 후기 원문 새 창`);
+        card.append(link);
+      }
+      list.append(card);
+    }
+    const notice = document.createElement("p");
+    notice.className = "review-notice";
+    const collectedDate = formatSourceDate(String(payload.collected_at || "").slice(0, 10));
+    notice.textContent = `${collectedDate} 기준 카카오맵 공개 후기 중 수집 당시 노출된 최대 ${payload.collection_limit_per_place || 5}건입니다. 작성자명은 표시하지 않으며 현재 정보는 원문에서 확인하세요.`;
+    dom.detailReviews.replaceChildren(heading, list, notice);
+  }
+
+  async function loadPlaceReviews(place) {
+    state.reviewRequest.controller?.abort();
+    const controller = new AbortController();
+    const placeId = String(place.id);
+    state.reviewRequest = { controller, placeId };
+    renderReviewStatus("수집된 카카오 후기를 불러오고 있어요.", "is-loading");
+    try {
+      const response = await fetch(`api/places/${encodeURIComponent(placeId)}/reviews?limit=5&offset=0`, {
+        method: "GET",
+        credentials: "omit",
+        headers: { Accept: "application/json" },
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error(`review_api_${response.status}`);
+      const payload = await response.json();
+      if (payload.schema_version !== "kakao-place-reviews-v1" || !Array.isArray(payload.reviews)) {
+        throw new Error("review_api_contract");
+      }
+      if (state.selectedPlace?.id !== place.id || state.reviewRequest.controller !== controller) return;
+      renderReviewResponse(place, payload);
+    } catch (error) {
+      if (error?.name === "AbortError") return;
+      if (state.selectedPlace?.id !== place.id || state.reviewRequest.controller !== controller) return;
+      renderReviewStatus("후기를 불러오지 못했습니다. 잠시 후 장소를 다시 열어 주세요.", "is-error");
+    }
   }
 
   function regionName(region) {
@@ -700,6 +815,30 @@
   function closeTravelMbtiDialog() {
     if (dom.travelMbtiDialog.open && typeof dom.travelMbtiDialog.close === "function") dom.travelMbtiDialog.close();
     else dom.travelMbtiDialog.removeAttribute("open");
+  }
+
+  function placeImageDialogOpen() {
+    return Boolean(dom.placeImageDialog.open || dom.placeImageDialog.hasAttribute("open"));
+  }
+
+  function closePlaceImageDialog({ restoreFocus = true } = {}) {
+    if (!placeImageDialogOpen()) return;
+    if (typeof dom.placeImageDialog.close === "function") dom.placeImageDialog.close();
+    else dom.placeImageDialog.removeAttribute("open");
+    if (restoreFocus && !dom.detailPanel.hidden && !dom.detailImageButton.hidden) {
+      window.requestAnimationFrame(() => dom.detailImageButton.focus({ preventScroll: true }));
+    }
+  }
+
+  function openPlaceImageDialog() {
+    if (dom.detailImageButton.hidden || !dom.detailImage.currentSrc) return;
+    const title = state.selectedPlace?.title || "장소";
+    dom.placeImageDialogTitle.textContent = `${title} 사진`;
+    dom.placeImageDialogImage.alt = `${title} 크게 본 사진`;
+    dom.placeImageDialogImage.src = dom.detailImage.currentSrc;
+    if (typeof dom.placeImageDialog.showModal === "function") dom.placeImageDialog.showModal();
+    else dom.placeImageDialog.setAttribute("open", "");
+    window.requestAnimationFrame(() => dom.placeImageDialogCloseButton.focus({ preventScroll: true }));
   }
 
   function setTravelMbtiProgress(label, completed, total = preferenceEngine.QUESTIONS.length + preferenceEngine.MAX_PAIR_QUESTIONS) {
@@ -1505,28 +1644,58 @@
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
     renderResearchDetail(place);
+    loadPlaceReviews(place);
     renderScoreTrace(place, recommendation);
     renderPlaceLabels(place);
     renderConstraintNote(place);
-    dom.detailImage.onload = () => { dom.detailImage.hidden = false; dom.detailImagePlaceholder.hidden = true; };
-    dom.detailImage.onerror = () => { dom.detailImage.hidden = true; dom.detailImagePlaceholder.hidden = false; dom.detailImage.removeAttribute("src"); };
-    if (place.image) {
-      dom.detailImage.hidden = false;
+    closePlaceImageDialog({ restoreFocus: false });
+    const loadToken = ++state.detailImageLoadToken;
+    const imageUrl = String(place.image || "").trim();
+    dom.detailMedia.classList.remove("is-low-resolution");
+    dom.detailImageButton.hidden = true;
+    dom.detailImageBackdrop.hidden = true;
+    dom.detailImagePlaceholder.hidden = false;
+    dom.detailImage.removeAttribute("src");
+    dom.detailImageBackdrop.removeAttribute("src");
+    dom.detailImage.alt = "";
+    dom.detailImageButton.removeAttribute("aria-label");
+    if (!imageUrl) return;
+    const imageStillCurrent = () => state.detailImageLoadToken === loadToken && state.selectedPlace?.id === place.id;
+    const imageLoader = new Image();
+    imageLoader.onload = () => {
+      if (!imageStillCurrent()) return;
+      const scale = Math.min(
+        dom.detailMedia.clientWidth / Math.max(1, imageLoader.naturalWidth),
+        dom.detailMedia.clientHeight / Math.max(1, imageLoader.naturalHeight),
+      );
+      dom.detailMedia.classList.toggle("is-low-resolution", scale > 1.35);
+      dom.detailImage.src = imageUrl;
+      dom.detailImageBackdrop.src = imageUrl;
+      dom.detailImageButton.hidden = false;
+      dom.detailImageBackdrop.hidden = false;
       dom.detailImagePlaceholder.hidden = true;
-      dom.detailImage.alt = `${place.title} 사진`;
-      dom.detailImage.src = place.image;
-    } else {
-      dom.detailImage.hidden = true;
+    };
+    imageLoader.onerror = () => {
+      if (!imageStillCurrent()) return;
+      dom.detailImageButton.hidden = true;
+      dom.detailImageBackdrop.hidden = true;
       dom.detailImagePlaceholder.hidden = false;
-      dom.detailImage.removeAttribute("src");
-      dom.detailImage.alt = "";
-    }
+    };
+    dom.detailImage.alt = `${place.title} 사진`;
+    dom.detailImageButton.setAttribute("aria-label", `${place.title} 사진 크게 보기`);
+    imageLoader.src = imageUrl;
   }
 
   function clearSelection() {
+    closePlaceImageDialog({ restoreFocus: false });
+    state.detailImageLoadToken += 1;
+    state.reviewRequest.controller?.abort();
+    state.reviewRequest = { controller: null, placeId: null };
     if (state.selectedPlace) state.markerById.get(state.selectedPlace.id)?.setIcon(createMarkerIcon(state.selectedPlace, false));
     state.selectedPlace = null;
     dom.detailPanel.hidden = true;
+    dom.detailReviews.replaceChildren();
+    dom.detailReviews.hidden = true;
     document.body.classList.remove("detail-open");
     scheduleVisibleResultRender();
   }
@@ -1587,6 +1756,29 @@
     return { completed, total: targets.length, allCompleted: targets.length > 0 && completed === targets.length };
   }
 
+  function participantNameValue() {
+    return dom.participantName.value.trim();
+  }
+
+  function feedbackHasUserInput() {
+    return [...state.recommendationFeedback.values()].some((entry) =>
+      (Number.isInteger(entry.score) && entry.score >= 1 && entry.score <= 5) || Boolean(entry.comment),
+    );
+  }
+
+  function updateParticipantNameState() {
+    const hasResult = Boolean(state.recommendationResult);
+    const name = participantNameValue();
+    const waiting = hasResult && feedbackHasUserInput() && !name && state.feedbackAutoSave.savedRevision === 0;
+    dom.participantNamePanel.hidden = !hasResult;
+    dom.participantNamePanel.classList.toggle("is-waiting", waiting);
+    dom.participantName.setAttribute("aria-invalid", String(waiting));
+    if (!hasResult) dom.participantNameStatus.textContent = "";
+    else if (name) dom.participantNameStatus.textContent = `${name.length}/30자 · 평가 로그에 함께 저장됩니다.`;
+    else if (waiting) dom.participantNameStatus.textContent = "이름 또는 별칭을 입력하면 보류 중인 평가가 저장됩니다.";
+    else dom.participantNameStatus.textContent = "이름 또는 별칭을 입력해 주세요.";
+  }
+
   function resetFeedbackAutoSave({ createSession = false } = {}) {
     const previous = state.feedbackAutoSave;
     if (previous.timerId) window.clearTimeout(previous.timerId);
@@ -1610,9 +1802,12 @@
     const completion = recommendationFeedbackCompletion();
     const hasTargets = Boolean(state.recommendationResult) && completion.total > 0;
     const autosave = state.feedbackAutoSave;
+    const participantName = participantNameValue();
+    updateParticipantNameState();
     dom.feedbackSavePanel.hidden = !hasTargets;
     dom.feedbackCompletionStatus.textContent = `만족도 ${completion.completed}/${completion.total} 완료`;
     if (!hasTargets) dom.feedbackSaveHelp.textContent = "";
+    else if (!participantName && feedbackHasUserInput() && autosave.savedRevision === 0) dom.feedbackSaveHelp.textContent = "이름 또는 별칭 입력을 기다리고 있습니다.";
     else if (autosave.status === "saved") dom.feedbackSaveHelp.textContent = `서버에 자동 저장됨 · ${autosave.savedRevision}번째 변경`;
     else if (autosave.status === "saving") dom.feedbackSaveHelp.textContent = "서버에 자동 저장 중…";
     else if (autosave.status === "pending") dom.feedbackSaveHelp.textContent = "변경 내용을 곧 자동 저장합니다.";
@@ -1633,6 +1828,7 @@
     const result = cloneForFeedbackLog(state.recommendationResult);
     return {
       schema_version: "travel-recommendation-feedback-log-v3",
+      participant_name: participantNameValue() || null,
       session_id: autosave.sessionId,
       revision,
       created_at: autosave.createdAt,
@@ -1687,9 +1883,21 @@
     };
   }
 
-  function scheduleFeedbackAutoSave(delayMs = 0) {
+  function scheduleFeedbackAutoSave(delayMs = 0, { allowBlankParticipant = false } = {}) {
     const autosave = state.feedbackAutoSave;
     if (!state.recommendationResult || !autosave.sessionId) return;
+    if (!participantNameValue() && !allowBlankParticipant) {
+      if (autosave.timerId) window.clearTimeout(autosave.timerId);
+      autosave.timerId = null;
+      if (!autosave.inFlight) {
+        autosave.revision = autosave.savedRevision;
+        autosave.pendingPayload = null;
+      }
+      autosave.status = "awaiting_name";
+      autosave.error = "";
+      updateFeedbackSaveState();
+      return;
+    }
     autosave.revision += 1;
     autosave.status = "pending";
     autosave.retryAttempt = 0;
@@ -2372,6 +2580,27 @@
     state.drawerReturnFocus = null;
     window.setTimeout(() => state.map?.invalidateSize(), 230);
   }
+  function isDesktopSidebarCollapsible() {
+    return window.matchMedia("(min-width: 1241px)").matches;
+  }
+  function syncDesktopSidebarState() {
+    const collapsed = isDesktopSidebarCollapsible() && state.sidebarCollapsed;
+    document.body.classList.toggle("sidebar-collapsed", collapsed);
+    dom.sidebarCollapseButton.setAttribute("aria-expanded", String(!collapsed));
+    dom.sidebarExpandButton.setAttribute("aria-expanded", String(!collapsed));
+    dom.sidebarExpandButton.hidden = !collapsed;
+  }
+  function setDesktopSidebarCollapsed(collapsed, { focus = true } = {}) {
+    state.sidebarCollapsed = Boolean(collapsed) && isDesktopSidebarCollapsible();
+    syncDesktopSidebarState();
+    const focusTarget = state.sidebarCollapsed ? dom.sidebarExpandButton : dom.sidebarCollapseButton;
+    window.requestAnimationFrame(() => {
+      state.map?.invalidateSize();
+      if (!focus) return;
+      window.setTimeout(() => focusTarget.focus({ preventScroll: true }), 240);
+    });
+    window.setTimeout(() => state.map?.invalidateSize(), 240);
+  }
   function openOutputPanel() {
     if (isMobileStackedFlow()) {
       dom.outputPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -2396,6 +2625,23 @@
   }
 
   function bindEvents() {
+    const handleParticipantNameInput = () => {
+      updateParticipantNameState();
+      if (!state.recommendationResult || !feedbackHasUserInput()) {
+        updateFeedbackSaveState();
+        return;
+      }
+      const allowBlankParticipant = !participantNameValue()
+        && (state.feedbackAutoSave.savedRevision > 0 || state.feedbackAutoSave.revision > 0);
+      scheduleFeedbackAutoSave(500, { allowBlankParticipant });
+    };
+    dom.participantName.addEventListener("input", handleParticipantNameInput);
+    dom.participantName.addEventListener("blur", () => {
+      const trimmedName = participantNameValue();
+      if (dom.participantName.value === trimmedName) return;
+      dom.participantName.value = trimmedName;
+      handleParticipantNameInput();
+    });
     dom.recommendationForm.addEventListener("submit", (event) => {
       event.preventDefault();
       if (isMobileStackedFlow()) {
@@ -2502,24 +2748,42 @@
     dom.fitFilteredButton.addEventListener("click", fitFilteredPlaces);
     dom.fitJejuButton.addEventListener("click", fitJeju);
     dom.detailCloseButton.addEventListener("click", clearSelection);
+    dom.detailImageButton.addEventListener("click", openPlaceImageDialog);
+    dom.placeImageDialogCloseButton.addEventListener("click", () => closePlaceImageDialog());
+    dom.placeImageDialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closePlaceImageDialog();
+    });
+    dom.placeImageDialog.addEventListener("click", (event) => {
+      if (event.target !== dom.placeImageDialog) return;
+      const bounds = dom.placeImageDialog.querySelector(".place-image-dialog-shell").getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
+        closePlaceImageDialog();
+      }
+    });
     dom.centerPlaceButton.addEventListener("click", centerSelectedPlace);
     dom.copyPlaceButton.addEventListener("click", copySelectedPlace);
     dom.mobilePanelButton.addEventListener("click", openSidebar);
     dom.mobileOutputButton.addEventListener("click", openOutputPanel);
     dom.mobileResultsFab.addEventListener("click", openOutputPanel);
+    dom.sidebarCollapseButton.addEventListener("click", () => setDesktopSidebarCollapsed(true));
+    dom.sidebarExpandButton.addEventListener("click", () => setDesktopSidebarCollapsed(false));
     dom.sidebarCloseButton.addEventListener("click", closeSidebar);
     dom.outputCloseButton.addEventListener("click", closeOutputPanel);
     dom.sidebarBackdrop.addEventListener("click", closeSidebar);
     dom.outputBackdrop.addEventListener("click", closeOutputPanel);
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
-      if (dom.travelMbtiDialog.open) closeTravelMbtiDialog();
+      if (placeImageDialogOpen()) closePlaceImageDialog();
+      else if (dom.travelMbtiDialog.open) closeTravelMbtiDialog();
       else if (document.body.classList.contains("sidebar-open")) closeSidebar();
       else if (document.body.classList.contains("output-open")) closeOutputPanel();
       else if (state.selectedPlace) clearSelection();
     });
     window.addEventListener("resize", debounce(() => {
       if (window.innerWidth > 1240) { closeSidebar(); closeOutputPanel(); }
+      else if (state.sidebarCollapsed) setDesktopSidebarCollapsed(false, { focus: false });
+      else syncDesktopSidebarState();
       showWizardStep(state.wizardStep, { focus: false });
       state.map?.invalidateSize();
       scheduleVisibleResultRender();
@@ -2539,6 +2803,7 @@
       renderRequiredPlacePicker();
       createCategoryFilters();
       bindEvents();
+      syncDesktopSidebarState();
       initMap();
       showWizardStep(1, { focus: false });
       window.CCU_MMR_DASHBOARD = {
@@ -2546,10 +2811,12 @@
         reroll: () => rerollRecommendation(),
         getResult: () => state.recommendationResult,
         getSelectedPlace: () => state.selectedPlace,
+        getSidebarCollapsed: () => state.sidebarCollapsed,
         getMapPlaceIds: () => mapPlaces().map((place) => String(place.id)),
         getHighlightedScheduleDay: () => activeScheduleDay(),
         getPreferenceProfile: () => state.preferenceProfile,
         getRecommendationFeedback: () => Object.fromEntries(state.recommendationFeedback),
+        getParticipantName: () => participantNameValue(),
         getFeedbackCompletion: () => recommendationFeedbackCompletion(),
         buildFeedbackLog: () => buildFeedbackLog(Math.max(1, state.feedbackAutoSave.revision)),
         getFeedbackAutoSaveState: () => ({

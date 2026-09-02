@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css?v=20260902-mbti-v1" />
+    <link rel="stylesheet" href="./styles.css?v=20260902-result-experience-v2" />
   </head>
   <body>
     <header class="topbar">
@@ -75,16 +75,31 @@
               <h2 id="requestPanelTitle">여행을 같이 만들어볼까요?</h2>
               <p>필요한 조건을 고르면 추천 장소와 일정이 바로 이어져요.</p>
             </div>
-            <button
-              class="icon-button sidebar-close-button"
-              id="sidebarCloseButton"
-              type="button"
-              aria-label="추천 입력 닫기"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
-              </svg>
-            </button>
+            <div class="sidebar-heading-actions">
+              <button
+                class="sidebar-collapse-button"
+                id="sidebarCollapseButton"
+                type="button"
+                aria-controls="sidebar"
+                aria-expanded="true"
+                aria-label="여행 선택지 접기"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 6-6 6 6 6" />
+                </svg>
+                <span>접기</span>
+              </button>
+              <button
+                class="icon-button sidebar-close-button"
+                id="sidebarCloseButton"
+                type="button"
+                aria-label="추천 입력 닫기"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <form id="recommendationForm" class="recommendation-form" novalidate>
@@ -359,6 +374,21 @@
       <section class="map-shell" aria-label="제주 추천 결과 지도">
         <div id="map"></div>
 
+        <button
+          class="sidebar-expand-button"
+          id="sidebarExpandButton"
+          type="button"
+          aria-controls="sidebar"
+          aria-expanded="false"
+          aria-label="여행 선택지 펼치기"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+          <span>선택지 펼치기</span>
+        </button>
+
         <div class="map-toolbar" aria-label="지도 보기 도구">
           <button class="map-action" id="fitRecommendationButton" type="button" disabled>추천 결과 맞춤</button>
           <button class="map-action" id="fitFilteredButton" type="button">후보 맞춤</button>
@@ -387,7 +417,17 @@
             </svg>
           </button>
           <div class="detail-media" id="detailMedia">
-            <img id="detailImage" alt="" />
+            <img class="detail-image-backdrop" id="detailImageBackdrop" alt="" aria-hidden="true" hidden />
+            <button class="detail-image-button" id="detailImageButton" type="button" aria-haspopup="dialog" hidden>
+              <img id="detailImage" alt="" />
+              <span class="detail-image-zoom-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="10.5" cy="10.5" r="5.5" />
+                  <path d="m15 15 4 4M8 10.5h5M10.5 8v5" />
+                </svg>
+                크게 보기
+              </span>
+            </button>
             <div class="image-placeholder" id="detailImagePlaceholder" aria-hidden="true">
               <svg viewBox="0 0 48 48">
                 <path d="M8 38V14a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4v24H8Z" />
@@ -407,6 +447,7 @@
             <p class="detail-address" id="detailAddress"></p>
             <p class="detail-phone" id="detailPhone" hidden></p>
             <section class="detail-research" id="detailResearch" aria-label="웹 조사 장소 설명" hidden></section>
+            <section class="detail-reviews" id="detailReviews" aria-label="카카오 방문 후기" hidden></section>
             <section class="detail-score-trace" id="detailScoreTrace" hidden></section>
             <section class="v5-labels" id="detailLabels" aria-label="장소 41개 라벨"></section>
             <section class="constraint-note" id="detailConstraintNote" hidden></section>
@@ -439,6 +480,15 @@
         </div>
 
         <div class="output-scroll" id="outputScroll">
+          <section class="participant-name-panel" id="participantNamePanel" aria-labelledby="participantNameLabel" hidden>
+            <label for="participantName">
+              <span id="participantNameLabel">이름 또는 별칭 <strong>필수</strong></span>
+              <input id="participantName" type="text" maxlength="30" autocomplete="off" placeholder="예: 테스터01" aria-describedby="participantNameHelp participantNameStatus" />
+            </label>
+            <p id="participantNameHelp">평가 로그를 구분하는 용도로 만족도·의견과 함께 90일 보관됩니다. 실명 대신 별칭을 사용해도 되며 연락처는 입력하지 마세요.</p>
+            <span id="participantNameStatus" role="status" aria-live="polite">이름 또는 별칭을 입력해 주세요.</span>
+          </section>
+
           <section class="course-variant-bar" id="courseVariantBar" aria-label="추천 코스 변경" hidden>
             <div>
               <strong id="courseVariantLabel">코스 1안</strong>
@@ -489,7 +539,7 @@
               <strong>평가 로그 자동 저장</strong>
               <span id="feedbackCompletionStatus" aria-live="polite">만족도 0/0 완료</span>
             </div>
-            <p>만족도를 선택하면 즉시, 의견은 입력이 잠시 멈춘 뒤 여행 조건·MBTI 선택·추천 결과·일정과 함께 서비스 개선 목적으로 서버에 자동 전송되어 90일간 보관됩니다. 의견은 선택 사항이며 실명·연락처·현재 위치·IP는 저장하지 않습니다.</p>
+            <p>이름 또는 별칭과 만족도를 입력하면 즉시, 의견은 입력이 잠시 멈춘 뒤 여행 조건·MBTI 선택·추천 결과·일정과 함께 서비스 개선 목적으로 서버에 자동 전송되어 90일간 보관됩니다. 의견은 선택 사항이며 연락처·현재 위치·IP는 저장하지 않습니다.</p>
             <span class="feedback-save-help" id="feedbackSaveHelp" role="status" aria-live="polite"></span>
           </section>
 
@@ -542,6 +592,18 @@
       </div>
     </dialog>
 
+    <dialog id="placeImageDialog" class="place-image-dialog" aria-labelledby="placeImageDialogTitle">
+      <div class="place-image-dialog-shell">
+        <header class="place-image-dialog-header">
+          <h2 id="placeImageDialogTitle">장소 사진</h2>
+          <button id="placeImageDialogCloseButton" class="place-image-dialog-close" type="button" aria-label="큰 장소 사진 닫기">×</button>
+        </header>
+        <div class="place-image-dialog-stage">
+          <img id="placeImageDialogImage" alt="" />
+        </div>
+      </div>
+    </dialog>
+
     <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
     <div class="output-backdrop" id="outputBackdrop" aria-hidden="true"></div>
 
@@ -550,6 +612,6 @@
     <script src="./data/jeju-places.js?v=20260824-b0046a2" defer></script>
     <script src="./preference-elicitation.js?v=20260902-mbti-v1" defer></script>
     <script src="./ccu-mmr.js?v=20260824-feedback-log-v1" defer></script>
-    <script src="./app.js?v=20260902-mbti-v1" defer></script>
+    <script src="./app.js?v=20260902-result-experience-v2" defer></script>
   </body>
 </html>

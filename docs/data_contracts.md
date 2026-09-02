@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-08-13
+- 최종 수정일: 2026-09-02
 
 ## 공통 규칙
 
@@ -536,11 +536,12 @@ RecommendationCandidateTrace {
 
 ## 추천 만족도 서버 자동 적재 로그 — 구현됨
 
-`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 만족도를 선택·변경하면 즉시, 자유 의견은 마지막 입력 후 800ms에 다음 최신 스냅샷을 `POST /travel/api/feedback`으로 전송한다. 평가 전 단순 방문·추천 실행은 전송하지 않으며 Web Storage와 `sendBeacon`은 사용하지 않는다.
+`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 이름 또는 별칭이 입력된 상태에서 만족도를 선택·변경하면 즉시, 자유 의견은 마지막 입력 후 800ms에 다음 최신 스냅샷을 `POST /travel/api/feedback`으로 전송한다. 이름만 입력하거나 평가 전 단순 방문·추천 실행만 한 경우에는 전송하지 않으며 Web Storage와 `sendBeacon`은 사용하지 않는다.
 
 ```text
 TravelRecommendationFeedbackLogV3 {
   schema_version: travel-recommendation-feedback-log-v3
+  participant_name: null | string # trim된 1..30자 이름 또는 별칭
   session_id: uuid               # 추천 실행별 클라이언트 생성 세션 키
   revision: positive integer     # 세션 안에서 1부터 단조 증가
   created_at: datetime           # 추천 세션 생성 UTC ISO 8601
@@ -598,13 +599,14 @@ RecommendationFeedbackContext =
 ```
 
 - 같은 장소가 추천 목록과 하나 이상의 일정 카드에 나타나도 `entries`에는 한 번만 기록하고 모든 노출 context를 보존한다.
+- `participant_name`은 trim된 1..30자 이름 또는 별칭이며 새 UI의 최초 평가 전송에는 필수다. 저장 후 입력을 지우면 `null`로 갱신하며 필드가 없는 기존 v3 요청도 `null`로 허용한다. 이름만 입력한 상태에서는 전송하지 않는다.
 - `required_place_count`는 `entries.length`와 같고 `completed_place_count`는 점수가 입력된 항목 수다. 미평가 항목은 `score`와 `score_label`을 `null`로 보존한다.
 - 자유 의견은 선택 사항이다. 만족도와 의견 어느 쪽이든 첫 변경부터 부분 스냅샷을 저장한다.
 - 요청 본문은 최대 2 MiB, 피드백은 최대 100건이며 서버가 점수·의견 길이·완료 건수와 UUID를 다시 검증한다.
 - 성공 응답은 신규 HTTP 201 또는 갱신·중복 HTTP 200과 `{ ok, session_id, revision, received_at, created, stale }`를 반환한다.
 - 서버 SQLite `feedback_sessions`는 `session_id` 기본키로 최신 `revision`, 세션 생성 시각, 마지막 서버 갱신 시각, 스키마 버전과 payload를 한 행에 저장한다. 더 낮은 revision은 최신 값을 덮어쓰지 않고, 같은 revision의 다른 payload는 409다.
 - 자동 저장 실패는 동일 revision·동일 payload로 최대 15초 간격까지 재시도한다. 전송 중 더 최신 변경이 생기면 현재 요청 완료 직후 최신 revision을 전송한다.
-- 수신 IP·User-Agent·쿠키는 저장하지 않으며 마지막 서버 갱신 기준 90일 뒤 삭제한다. 기존 `travel-recommendation-feedback-log-v2`와 `feedback_submissions`는 열린 이전 탭의 수동 제출 호환성을 위해 유지한다.
+- 사용자가 입력한 이름 또는 별칭을 payload와 함께 보관하되 수신 IP·User-Agent·쿠키는 저장하지 않으며 마지막 서버 갱신 기준 90일 뒤 삭제한다. 기존 `travel-recommendation-feedback-log-v2`와 `feedback_submissions`는 열린 이전 탭의 수동 제출 호환성을 위해 유지한다.
 
 ## 장소 추천 결과 — 목표 계약, 미구현
 

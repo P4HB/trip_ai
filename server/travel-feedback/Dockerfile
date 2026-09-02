@@ -6,6 +6,8 @@ RUN addgroup -g 10001 -S app && adduser -u 10001 -S -G app app \
 
 WORKDIR /app
 COPY --chown=app:app feedback_api.py /app/feedback_api.py
+COPY --chown=app:app data/kakao_reviews.sqlite3 /app/data/kakao_reviews.sqlite3
+COPY --chown=app:app data/kakao_reviews_manifest.json /app/data/kakao_reviews_manifest.json
 
 USER app
 EXPOSE 8200

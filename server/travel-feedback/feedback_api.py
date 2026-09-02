@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sqlite3
 import threading
 import time
@@ -13,15 +14,19 @@ from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qs, urlsplit
 
 
 V2_SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
 V3_SCHEMA_VERSION = "travel-recommendation-feedback-log-v3"
 SCHEMA_VERSION = V2_SCHEMA_VERSION
 API_PATH = "/travel/api/feedback"
+REVIEW_SCHEMA_VERSION = "kakao-place-reviews-v1"
+REVIEW_PATH_PATTERN = re.compile(r"^/travel/api/places/([^/]+)/reviews$")
 MAX_BODY_BYTES = 2 * 1024 * 1024
 MAX_ENTRIES = 100
 MAX_COMMENT_LENGTH = 300
+MAX_PARTICIPANT_NAME_LENGTH = 30
 
 
 class ValidationError(ValueError):
@@ -30,6 +35,96 @@ class ValidationError(ValueError):
 
 class SubmissionConflict(ValueError):
     pass
+
+
+class ReviewStore:
+    def __init__(self, db_path: str):
+        self.db_path = str(Path(db_path).resolve(strict=True))
+        self.initialize()
+
+    def connect(self) -> sqlite3.Connection:
+        uri_path = Path(self.db_path).as_posix()
+        connection = sqlite3.connect(f"file:{uri_path}?mode=ro", uri=True, timeout=5)
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA query_only = ON")
+        return connection
+
+    def initialize(self) -> None:
+        with self.connect() as connection:
+            if connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+                raise RuntimeError("Kakao review database integrity check failed")
+            schema_version = connection.execute(
+                "SELECT value FROM metadata WHERE key = 'schema_version'"
+            ).fetchone()
+            if schema_version is None or schema_version[0] != REVIEW_SCHEMA_VERSION:
+                raise RuntimeError("Kakao review database schema is unsupported")
+
+    def fetch(self, contentid: str, limit: int, offset: int) -> dict[str, Any]:
+        with self.connect() as connection:
+            metadata = dict(connection.execute("SELECT key, value FROM metadata"))
+            places = [
+                {
+                    "place_id": row["kakao_place_id"],
+                    "name": row["kakao_place_name"],
+                    "url": row["kakao_place_url"],
+                }
+                for row in connection.execute(
+                    """
+                    SELECT kakao_place_id, kakao_place_name, kakao_place_url
+                    FROM place_links
+                    WHERE contentid = ?
+                    ORDER BY CAST(kakao_place_id AS INTEGER)
+                    """,
+                    (contentid,),
+                )
+            ]
+            total = connection.execute(
+                """
+                SELECT COUNT(*)
+                FROM reviews r
+                JOIN place_links p ON p.kakao_place_id = r.kakao_place_id
+                WHERE p.contentid = ?
+                """,
+                (contentid,),
+            ).fetchone()[0]
+            rows = connection.execute(
+                """
+                SELECT r.review_id, r.kakao_place_id, r.kakao_place_name, r.kakao_place_url,
+                       r.rating, r.review_date, r.content, r.tags_json, r.likes, r.source_snapshot
+                FROM reviews r
+                JOIN place_links p ON p.kakao_place_id = r.kakao_place_id
+                WHERE p.contentid = ?
+                ORDER BY r.source_order, r.review_id
+                LIMIT ? OFFSET ?
+                """,
+                (contentid, limit, offset),
+            )
+            reviews = [
+                {
+                    "review_id": row["review_id"],
+                    "kakao_place_id": row["kakao_place_id"],
+                    "place_name": row["kakao_place_name"],
+                    "place_url": row["kakao_place_url"],
+                    "rating": row["rating"],
+                    "date": row["review_date"],
+                    "content": row["content"],
+                    "tags": json.loads(row["tags_json"]),
+                    "likes": row["likes"],
+                    "source_snapshot": row["source_snapshot"],
+                }
+                for row in rows
+            ]
+        return {
+            "schema_version": REVIEW_SCHEMA_VERSION,
+            "place_id": contentid,
+            "collected_at": metadata.get("collected_at"),
+            "collection_limit_per_place": int(metadata.get("review_limit_per_place", "5")),
+            "total": total,
+            "limit": limit,
+            "offset": offset,
+            "kakao_places": places,
+            "reviews": reviews,
+        }
 
 
 def utc_now() -> datetime:
@@ -121,6 +216,15 @@ def validate_v3_payload(payload: Any) -> dict[str, Any]:
         raise ValidationError("request body must be an object")
     if payload.get("schema_version") != V3_SCHEMA_VERSION:
         raise ValidationError("unsupported schema_version")
+
+    participant_name = payload.get("participant_name")
+    if participant_name is not None:
+        if not isinstance(participant_name, str) or not 1 <= len(participant_name) <= MAX_PARTICIPANT_NAME_LENGTH:
+            raise ValidationError(f"participant_name must contain 1..{MAX_PARTICIPANT_NAME_LENGTH} characters")
+        if participant_name != participant_name.strip():
+            raise ValidationError("participant_name must not have leading or trailing whitespace")
+        if any(ord(character) < 32 or ord(character) == 127 for character in participant_name):
+            raise ValidationError("participant_name must not contain control characters")
 
     session_id = payload.get("session_id")
     try:
@@ -376,21 +480,51 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         # Do not persist client IPs or request headers in application logs.
         print(f"travel-feedback {self.command} {self.path}", flush=True)
 
-    def send_json(self, status: int, body: dict[str, Any]) -> None:
+    def send_json(self, status: int, body: dict[str, Any], cache_control: str = "no-store") -> None:
         encoded = json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(encoded)))
-        self.send_header("Cache-Control", "no-store")
+        self.send_header("Cache-Control", cache_control)
         self.send_header("X-Content-Type-Options", "nosniff")
         self.end_headers()
         self.wfile.write(encoded)
 
     def do_GET(self) -> None:
-        if self.path == "/healthz":
-            self.send_json(200, {"ok": True})
-        else:
+        parsed = urlsplit(self.path)
+        if parsed.path == "/healthz":
+            self.send_json(200, {"ok": True, "review_catalog": self.feedback_server.review_store is not None})
+            return
+        match = REVIEW_PATH_PATTERN.fullmatch(parsed.path)
+        if not match:
             self.send_json(404, {"ok": False, "error": "not_found"})
+            return
+        contentid = match.group(1)
+        if not contentid.isascii() or not contentid.isdigit() or len(contentid) > 20:
+            self.send_json(400, {"ok": False, "error": "invalid_place_id"})
+            return
+        if self.feedback_server.review_store is None:
+            self.send_json(503, {"ok": False, "error": "review_catalog_unavailable"})
+            return
+        query = parse_qs(parsed.query, keep_blank_values=True)
+        if any(key not in {"limit", "offset"} for key in query) or any(len(values) != 1 for values in query.values()):
+            self.send_json(400, {"ok": False, "error": "invalid_pagination"})
+            return
+        limit_text = query.get("limit", ["5"])[0]
+        offset_text = query.get("offset", ["0"])[0]
+        if not limit_text.isascii() or not limit_text.isdigit() or not offset_text.isascii() or not offset_text.isdigit():
+            self.send_json(400, {"ok": False, "error": "invalid_pagination"})
+            return
+        limit, offset = int(limit_text), int(offset_text)
+        if not 1 <= limit <= 20 or not 0 <= offset <= 1_000_000:
+            self.send_json(400, {"ok": False, "error": "invalid_pagination"})
+            return
+        try:
+            body = self.feedback_server.review_store.fetch(contentid, limit, offset)
+        except sqlite3.Error:
+            self.send_json(503, {"ok": False, "error": "review_catalog_unavailable"})
+            return
+        self.send_json(200, body, "public, max-age=3600")
 
     def do_POST(self) -> None:
         if self.path != API_PATH:
@@ -474,10 +608,12 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
         store: FeedbackStore,
         public_origin: str,
         rate_limiter: MemoryRateLimiter | None = None,
+        review_store: ReviewStore | None = None,
     ):
         self.store = store
         self.public_origin = public_origin.rstrip("/")
         self.rate_limiter = rate_limiter or MemoryRateLimiter()
+        self.review_store = review_store
         super().__init__(server_address, FeedbackRequestHandler)
 
 
@@ -486,7 +622,13 @@ def main() -> None:
     db_path = os.environ.get("TRAVEL_FEEDBACK_DB_PATH", "/data/feedback.sqlite3")
     public_origin = os.environ.get("TRAVEL_PUBLIC_ORIGIN", "http://127.0.0.1:8080")
     retention_days = int(os.environ.get("TRAVEL_FEEDBACK_RETENTION_DAYS", "90"))
-    server = FeedbackHTTPServer(("0.0.0.0", port), FeedbackStore(db_path, retention_days), public_origin)
+    review_db_path = os.environ.get("TRAVEL_REVIEW_DB_PATH", "/app/data/kakao_reviews.sqlite3")
+    server = FeedbackHTTPServer(
+        ("0.0.0.0", port),
+        FeedbackStore(db_path, retention_days),
+        public_origin,
+        review_store=ReviewStore(review_db_path),
+    )
     print(f"travel-feedback listening on :{port}", flush=True)
     server.serve_forever()
 

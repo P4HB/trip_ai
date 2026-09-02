@@ -54,6 +54,7 @@ def valid_payload(submission_id: str | None = None) -> dict:
 def valid_v3_payload(session_id: str | None = None, revision: int = 1) -> dict:
     return {
         "schema_version": feedback_api.V3_SCHEMA_VERSION,
+        "participant_name": "테스터01",
         "session_id": session_id or str(uuid.uuid4()),
         "revision": revision,
         "created_at": "2026-08-30T00:00:00.000Z",
@@ -97,12 +98,50 @@ class FeedbackApiTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory()
         self.db_path = str(Path(self.temp_dir.name) / "feedback.sqlite3")
+        self.review_db_path = str(Path(self.temp_dir.name) / "reviews.sqlite3")
+        with sqlite3.connect(self.review_db_path) as connection:
+            connection.executescript(
+                """
+                CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL) WITHOUT ROWID;
+                CREATE TABLE place_links (
+                    contentid TEXT NOT NULL,
+                    kakao_place_id TEXT NOT NULL,
+                    kakao_place_name TEXT NOT NULL,
+                    kakao_place_url TEXT NOT NULL,
+                    PRIMARY KEY (contentid, kakao_place_id)
+                ) WITHOUT ROWID;
+                CREATE TABLE reviews (
+                    review_id TEXT PRIMARY KEY,
+                    review_hash TEXT NOT NULL UNIQUE,
+                    kakao_place_id TEXT NOT NULL,
+                    kakao_place_name TEXT NOT NULL,
+                    kakao_place_url TEXT NOT NULL,
+                    rating REAL,
+                    review_date TEXT,
+                    content TEXT,
+                    tags_json TEXT NOT NULL,
+                    likes INTEGER,
+                    source_snapshot TEXT NOT NULL,
+                    source_order INTEGER NOT NULL UNIQUE
+                ) WITHOUT ROWID;
+                INSERT INTO metadata VALUES ('schema_version', 'kakao-place-reviews-v1');
+                INSERT INTO metadata VALUES ('collected_at', '2026-08-23T23:55:05+09:00');
+                INSERT INTO metadata VALUES ('review_limit_per_place', '5');
+                INSERT INTO place_links VALUES ('123', '900', '테스트 카카오 장소', 'https://place.map.kakao.com/900');
+                INSERT INTO place_links VALUES ('456', '901', '리뷰 없는 장소', 'https://place.map.kakao.com/901');
+                INSERT INTO reviews VALUES (
+                    'review-1', 'hash-1', '900', '테스트 카카오 장소', 'https://place.map.kakao.com/900',
+                    4.5, '2026.08.01.', '좋은 장소예요', '["뷰","시설"]', 3, '2026-08-19', 1
+                );
+                """
+            )
         self.store = feedback_api.FeedbackStore(self.db_path, retention_days=90)
         self.server = feedback_api.FeedbackHTTPServer(
             ("127.0.0.1", 0),
             self.store,
             "https://example.test",
             feedback_api.MemoryRateLimiter(limit=20),
+            feedback_api.ReviewStore(self.review_db_path),
         )
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
@@ -127,6 +166,15 @@ class FeedbackApiTests(unittest.TestCase):
             return exc.code, json.load(exc)
         with response:
             return response.status, json.load(response)
+
+    def get(self, path: str) -> tuple[int, dict, dict]:
+        request = urllib.request.Request(self.base_url + path, method="GET")
+        try:
+            response = urllib.request.urlopen(request, timeout=2)
+        except urllib.error.HTTPError as exc:
+            return exc.code, json.load(exc), dict(exc.headers)
+        with response:
+            return response.status, json.load(response), dict(response.headers)
 
     def record_count(self) -> int:
         with sqlite3.connect(self.db_path) as connection:
@@ -219,6 +267,35 @@ class FeedbackApiTests(unittest.TestCase):
         self.assertFalse(body["stale"])
         self.assertEqual(body["revision"], 2)
         self.assertEqual(self.session_count(), 1)
+        with sqlite3.connect(self.db_path) as connection:
+            stored_payload = json.loads(connection.execute(
+                "SELECT payload_json FROM feedback_sessions WHERE session_id = ?", (payload["session_id"],)
+            ).fetchone()[0])
+        self.assertEqual(stored_payload["participant_name"], "테스터01")
+
+    def test_v3_accepts_legacy_payload_without_participant_name(self) -> None:
+        payload = valid_v3_payload()
+        payload.pop("participant_name")
+        status, _ = self.post(payload)
+        self.assertEqual(status, 201)
+        self.assertEqual(self.session_count(), 1)
+
+    def test_v3_accepts_null_participant_name(self) -> None:
+        payload = valid_v3_payload()
+        payload["participant_name"] = None
+        status, _ = self.post(payload)
+        self.assertEqual(status, 201)
+        self.assertEqual(self.session_count(), 1)
+
+    def test_v3_rejects_invalid_participant_name(self) -> None:
+        for invalid_name in ("", " 테스터", "테스터 ", "x" * 31, "테스터\n01"):
+            with self.subTest(participant_name=repr(invalid_name)):
+                payload = valid_v3_payload()
+                payload["participant_name"] = invalid_name
+                status, body = self.post(payload)
+                self.assertEqual(status, 422)
+                self.assertEqual(body["error"], "invalid_feedback")
+                self.assertEqual(self.session_count(), 0)
 
     def test_v3_stale_revision_cannot_overwrite_latest(self) -> None:
         first = valid_v3_payload()
@@ -258,6 +335,41 @@ class FeedbackApiTests(unittest.TestCase):
         self.assertEqual(self.session_count(), 1)
         self.store.save_session(valid_v3_payload(), now=datetime.now(timezone.utc))
         self.assertEqual(self.session_count(), 1)
+
+    def test_review_api_returns_public_review_without_author(self) -> None:
+        status, body, headers = self.get("/travel/api/places/123/reviews?limit=5&offset=0")
+        self.assertEqual(status, 200)
+        self.assertEqual(body["schema_version"], feedback_api.REVIEW_SCHEMA_VERSION)
+        self.assertEqual(body["place_id"], "123")
+        self.assertEqual(body["total"], 1)
+        self.assertEqual(body["reviews"][0]["content"], "좋은 장소예요")
+        self.assertEqual(body["reviews"][0]["tags"], ["뷰", "시설"])
+        self.assertNotIn("reviewer", json.dumps(body, ensure_ascii=False))
+        self.assertEqual(headers["Cache-Control"], "public, max-age=3600")
+
+    def test_review_api_returns_empty_for_linked_place_without_reviews(self) -> None:
+        status, body, _ = self.get("/travel/api/places/456/reviews")
+        self.assertEqual(status, 200)
+        self.assertEqual(body["total"], 0)
+        self.assertEqual(body["reviews"], [])
+        self.assertEqual(len(body["kakao_places"]), 1)
+
+    def test_review_api_returns_empty_for_unmatched_place(self) -> None:
+        status, body, _ = self.get("/travel/api/places/789/reviews")
+        self.assertEqual(status, 200)
+        self.assertEqual(body["total"], 0)
+        self.assertEqual(body["kakao_places"], [])
+
+    def test_review_api_rejects_invalid_id_and_pagination(self) -> None:
+        self.assertEqual(self.get("/travel/api/places/not-a-number/reviews")[0], 400)
+        for path in (
+            "/travel/api/places/123/reviews?limit=0",
+            "/travel/api/places/123/reviews?limit=21",
+            "/travel/api/places/123/reviews?offset=-1",
+            "/travel/api/places/123/reviews?limit=5%20OR%201=1",
+            "/travel/api/places/123/reviews?unknown=1",
+        ):
+            self.assertEqual(self.get(path)[0], 400, path)
 
 
 if __name__ == "__main__":
