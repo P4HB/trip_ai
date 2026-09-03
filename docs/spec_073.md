@@ -110,6 +110,7 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - 모바일 추천 결과 헤더의 sticky 위치를 해제해 결과와 함께 자연스럽게 스크롤되도록 변경했다.
 - 추천 카드 제목·평가 버튼과 일정 장소 버튼은 모바일에서 지도 선택 대신 현재 viewport의 native modal 평가 창을 열며, 데스크톱에서는 기존 지도 상세 동작을 유지한다.
 - 모바일 추천·일정 카드의 중복 인라인 평가 입력은 숨기고 modal에 공통 피드백 컴포넌트를 mount해 점수·의견 동기화와 자동 저장 경로를 재사용했다.
+- 수정 커밋 `8b18d94`를 원격 `main`에 반영하고 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-mobile-feedback-modal-8b18d94`로 배포했다.
 
 ### 검증 결과
 
@@ -124,6 +125,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - 운영 공개 경로 `/`, `/healthz`, `/travel/`, `/travel/app.js`, `/travel/styles.css`, 장소 후기 API: 모두 HTTP 200이며 모바일 상세 mount·렌더 함수·스타일 계약 포함 확인
 - 변경 후 `node --check map-ui/app.js`, 정적 dashboard 검증, CCU-MMR·취향 회귀, 피드백 API 19건: 모두 통과
 - Chrome 390×844: 결과 헤더가 스크롤 뒤 viewport 위로 사라짐, 추천 장소 선택 시 지도 상세 없이 평가 modal 표시, 5개 점수·300자 의견 제공, 4점·13자 의견의 동일 장소 상태 동기화, 카드 인라인 입력 숨김, ESC 닫기·포커스 복원 및 콘솔 오류 없음 확인
+- 운영 컨테이너 `edge`, `rail-api`, `travel-feedback`: `mobile-feedback-modal-8b18d94` 이미지로 전환 후 모두 healthy 확인
+- 운영 공개 경로 `/`, `/healthz`, `/travel/`, `/travel/app.js`, `/travel/styles.css`, 장소 후기 API: 모두 HTTP 200이며 새 modal DOM·렌더 함수·스타일 포함 확인
 
 ## 설계와 달라진 점
 
@@ -142,3 +145,4 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 | 2026-09-03 | 구현 커밋 원격 반영 및 OCI 운영 릴리스 배포·상태 확인 완료 |
 | 2026-09-03 | 모바일 결과 헤더 고정 해제 및 추천 장소 평가 다이얼로그 요구사항으로 재개 |
 | 2026-09-03 | 모바일 추천·일정 장소 평가 modal, 중복 인라인 입력 제거, 헤더 일반 스크롤 구현 및 390px 검증 완료 |
+| 2026-09-03 | 수정 커밋 원격 반영 및 OCI 운영 릴리스 배포·공개 경로 검증 완료 |
