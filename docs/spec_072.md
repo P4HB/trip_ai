@@ -1,6 +1,6 @@
 # SPEC-072: 장소 상세 내부 추천 점수 trace 숨김
 
-- 상태: In Progress
+- 상태: Implemented
 - 작성일: 2026-09-03
 - 최종 수정일: 2026-09-03
 - 관련 이슈: 사용자 요청 — 장소 상세의 coverage·R·MMR·P/A/M·중복 유사도·활성 블록·축별 계산 내역 제거
@@ -71,7 +71,11 @@ SPEC-071은 장소 상세에서 41개 라벨과 자유 텍스트 제약만 제�
 
 ## 구현 결과
 
-구현 완료 후 기록한다.
+- 장소 상세 HTML의 `detailScoreTrace` 섹션을 제거했다.
+- `scorePill`, `renderScoreTrace`, DOM 참조와 장소 선택 시 호출을 제거하고 전용 CSS를 정리했다.
+- 추천 순위 badge 갱신은 `renderDetail`에 남겨 사용자에게 유용한 순위 표시는 유지했다.
+- 추천 결과 객체·41축 계산·피드백 로그·전체 출력 JSON은 변경하지 않았다.
+- Git 커밋 `c3e9a22`을 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-hide-trace-c3e9a22`로 배포했다. 공개 HTML·JS·CSS에서 제거 대상 DOM·렌더러·문구·스타일이 없고 기존 서비스 경로가 모두 정상임을 확인했다.
 
 ## 설계와 달라진 점
 
@@ -86,3 +90,16 @@ SPEC-071은 장소 상세에서 41개 라벨과 자유 텍스트 제약만 제�
 | 날짜 | 변경 내용 |
 |---|---|
 | 2026-09-03 | 사용자 승인 범위로 SPEC 작성 및 구현 시작 |
+| 2026-09-03 | 장소 상세 내부 추천 trace 제거, 회귀 테스트, Git push 및 운영 배포 완료 |
+
+## 테스트 결과
+
+| 검증 | 결과 |
+|---|---|
+| `node --check map-ui/app.js` | 통과 |
+| `node scripts/validate_ccu_mmr_dashboard.cjs` | 통과 — 추천 10건·장소당 41개 계산 데이터 유지 |
+| `node scripts/test_ccu_mmr.cjs` | 통과 |
+| `node scripts/test_preference_elicitation.cjs` | 통과 |
+| 운영 컨테이너 헬스 | 통과 — edge·rail-api·travel-feedback 모두 healthy |
+| 운영 공개 HTTPS | 통과 — `/`, `/healthz`, `/travel/`, JS/CSS, 장소 `1840913` 리뷰 API HTTP 200 |
+| 운영 정적 파일 검사 | 통과 — trace DOM·렌더러·문구·전용 CSS 부재 |
