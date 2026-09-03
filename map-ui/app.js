@@ -65,7 +65,8 @@
     "travelMbtiBody", "travelMbtiFooter", "travelMbtiBackButton", "travelMbtiSkipButton",
     "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
     "mobileRecommendationFeedbackDialog", "mobileRecommendationFeedbackContext", "mobileRecommendationFeedbackTitle", "mobileRecommendationFeedbackMeta",
-    "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMount",
+    "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMedia", "mobileRecommendationFeedbackImage",
+    "mobileRecommendationFeedbackImagePlaceholder", "mobileRecommendationFeedbackMount", "mobileRecommendationFeedbackResearch", "mobileRecommendationFeedbackReviews",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "requiredOverview", "requiredProgressText", "requiredProgressTrack", "requiredProgressBar", "requiredMissingText",
@@ -129,7 +130,7 @@
     selectedPlace: null,
     sidebarCollapsed: false,
     detailImageLoadToken: 0,
-    reviewRequest: { controller: null, placeId: null },
+    reviewRequests: new Map(),
     filteredPlaces: places,
     initialBounds: null,
     query: "",
@@ -221,14 +222,14 @@
     };
   }
 
-  function renderResearchDetail(place) {
-    dom.detailResearch.replaceChildren();
+  function renderResearchDetail(place, container = dom.detailResearch) {
+    container.replaceChildren();
     const research = place.research;
     if (!research?.highlights?.length) {
-      dom.detailResearch.hidden = true;
+      container.hidden = true;
       return;
     }
-    dom.detailResearch.hidden = false;
+    container.hidden = false;
     const metadataOnly = research.coverage === "metadata_only";
     const heading = document.createElement("div");
     heading.className = "research-heading";
@@ -273,7 +274,7 @@
     notice.textContent = metadataOnly
       ? "웹 조사에서 활동 설명을 찾지 못해 분류·주소 등 기본 정보만 표시합니다. 실제 체험은 원문에서 확인하세요."
       : "출처 내용을 짧게 정리한 AI 초안입니다. 운영시간·가격·휴무·행사 일정은 방문 전에 원문에서 다시 확인하세요.";
-    dom.detailResearch.append(heading, facts, notice);
+    container.append(heading, facts, notice);
   }
 
   function reviewHeading(total = null) {
@@ -288,16 +289,16 @@
     return heading;
   }
 
-  function renderReviewStatus(message, className = "") {
-    dom.detailReviews.hidden = false;
+  function renderReviewStatus(message, className = "", container = dom.detailReviews) {
+    container.hidden = false;
     const status = document.createElement("p");
     status.className = `review-status ${className}`.trim();
     status.textContent = message;
-    dom.detailReviews.replaceChildren(reviewHeading(), status);
+    container.replaceChildren(reviewHeading(), status);
   }
 
-  function renderReviewResponse(place, payload) {
-    dom.detailReviews.hidden = false;
+  function renderReviewResponse(place, payload, container = dom.detailReviews) {
+    container.hidden = false;
     const heading = reviewHeading(payload.total);
     if (!payload.reviews.length) {
       const status = document.createElement("p");
@@ -305,7 +306,7 @@
       status.textContent = payload.kakao_places.length
         ? "매칭된 카카오 장소에 수집된 방문 후기가 없습니다."
         : "이 장소와 연결된 카카오 방문 후기가 없습니다.";
-      dom.detailReviews.replaceChildren(heading, status);
+      container.replaceChildren(heading, status);
       return;
     }
 
@@ -356,15 +357,25 @@
     notice.className = "review-notice";
     const collectedDate = formatSourceDate(String(payload.collected_at || "").slice(0, 10));
     notice.textContent = `${collectedDate} 기준 카카오맵 공개 후기 중 수집 당시 노출된 최대 ${payload.collection_limit_per_place || 5}건입니다. 작성자명은 표시하지 않으며 현재 정보는 원문에서 확인하세요.`;
-    dom.detailReviews.replaceChildren(heading, list, notice);
+    container.replaceChildren(heading, list, notice);
   }
 
-  async function loadPlaceReviews(place) {
-    state.reviewRequest.controller?.abort();
+  function reviewRequestIsCurrent(place, controller, container) {
+    if (state.reviewRequests.get(container)?.controller !== controller) return false;
+    if (container === dom.detailReviews) return state.selectedPlace?.id === place.id;
+    if (container === dom.mobileRecommendationFeedbackReviews) {
+      return dom.mobileRecommendationFeedbackDialog.open
+        && dom.mobileRecommendationFeedbackDialog.dataset.placeId === String(place.id);
+    }
+    return false;
+  }
+
+  async function loadPlaceReviews(place, container = dom.detailReviews) {
+    state.reviewRequests.get(container)?.controller?.abort();
     const controller = new AbortController();
     const placeId = String(place.id);
-    state.reviewRequest = { controller, placeId };
-    renderReviewStatus("수집된 카카오 후기를 불러오고 있어요.", "is-loading");
+    state.reviewRequests.set(container, { controller, placeId });
+    renderReviewStatus("수집된 카카오 후기를 불러오고 있어요.", "is-loading", container);
     try {
       const response = await fetch(`api/places/${encodeURIComponent(placeId)}/reviews?limit=5&offset=0`, {
         method: "GET",
@@ -377,12 +388,12 @@
       if (payload.schema_version !== "kakao-place-reviews-v1" || !Array.isArray(payload.reviews)) {
         throw new Error("review_api_contract");
       }
-      if (state.selectedPlace?.id !== place.id || state.reviewRequest.controller !== controller) return;
-      renderReviewResponse(place, payload);
+      if (!reviewRequestIsCurrent(place, controller, container)) return;
+      renderReviewResponse(place, payload, container);
     } catch (error) {
       if (error?.name === "AbortError") return;
-      if (state.selectedPlace?.id !== place.id || state.reviewRequest.controller !== controller) return;
-      renderReviewStatus("후기를 불러오지 못했습니다. 잠시 후 장소를 다시 열어 주세요.", "is-error");
+      if (!reviewRequestIsCurrent(place, controller, container)) return;
+      renderReviewStatus("후기를 불러오지 못했습니다. 잠시 후 장소를 다시 열어 주세요.", "is-error", container);
     }
   }
 
@@ -1509,8 +1520,8 @@
   function clearSelection() {
     closePlaceImageDialog({ restoreFocus: false });
     state.detailImageLoadToken += 1;
-    state.reviewRequest.controller?.abort();
-    state.reviewRequest = { controller: null, placeId: null };
+    state.reviewRequests.get(dom.detailReviews)?.controller?.abort();
+    state.reviewRequests.delete(dom.detailReviews);
     if (state.selectedPlace) state.markerById.get(state.selectedPlace.id)?.setIcon(createMarkerIcon(state.selectedPlace, false));
     state.selectedPlace = null;
     dom.detailPanel.hidden = true;
@@ -1867,14 +1878,52 @@
     return feedback;
   }
 
+  function renderMobileRecommendationFeedbackImage(place) {
+    const image = dom.mobileRecommendationFeedbackImage;
+    const placeholder = dom.mobileRecommendationFeedbackImagePlaceholder;
+    const imageUrl = String(place.image || "").trim();
+    image.onload = null;
+    image.onerror = null;
+    image.hidden = true;
+    image.removeAttribute("src");
+    image.alt = "";
+    placeholder.hidden = false;
+    if (!imageUrl) return;
+    const imageStillCurrent = () => dom.mobileRecommendationFeedbackDialog.dataset.placeId === String(place.id);
+    image.onload = () => {
+      if (!imageStillCurrent()) return;
+      image.hidden = false;
+      placeholder.hidden = true;
+    };
+    image.onerror = () => {
+      if (!imageStillCurrent()) return;
+      image.hidden = true;
+      placeholder.hidden = false;
+    };
+    image.alt = `${place.title} 사진`;
+    image.src = imageUrl;
+  }
+
   function closeMobileRecommendationFeedbackDialog({ restoreFocus = true } = {}) {
     const dialog = dom.mobileRecommendationFeedbackDialog;
     const returnFocus = restoreFocus ? state.mobileFeedbackReturnFocus : null;
     state.mobileFeedbackReturnFocus = null;
     if (dialog.open && typeof dialog.close === "function") dialog.close();
     else dialog.removeAttribute("open");
+    state.reviewRequests.get(dom.mobileRecommendationFeedbackReviews)?.controller?.abort();
+    state.reviewRequests.delete(dom.mobileRecommendationFeedbackReviews);
     document.body.classList.remove("mobile-feedback-open");
+    delete dialog.dataset.placeId;
+    dom.mobileRecommendationFeedbackImage.onload = null;
+    dom.mobileRecommendationFeedbackImage.onerror = null;
+    dom.mobileRecommendationFeedbackImage.removeAttribute("src");
+    dom.mobileRecommendationFeedbackImage.hidden = true;
+    dom.mobileRecommendationFeedbackImagePlaceholder.hidden = false;
     dom.mobileRecommendationFeedbackMount.replaceChildren();
+    dom.mobileRecommendationFeedbackResearch.replaceChildren();
+    dom.mobileRecommendationFeedbackResearch.hidden = true;
+    dom.mobileRecommendationFeedbackReviews.replaceChildren();
+    dom.mobileRecommendationFeedbackReviews.hidden = true;
     if (returnFocus instanceof HTMLElement) {
       window.requestAnimationFrame(() => returnFocus.focus({ preventScroll: true }));
     }
@@ -1887,16 +1936,20 @@
     }
     const recommendation = recommendationFor(place);
     state.mobileFeedbackReturnFocus = returnFocus instanceof HTMLElement ? returnFocus : null;
+    dom.mobileRecommendationFeedbackDialog.dataset.placeId = String(place.id);
     dom.mobileRecommendationFeedbackContext.textContent = contextLabel || (recommendation ? `추천 ${recommendation.rank}위` : "추천 장소 평가");
     dom.mobileRecommendationFeedbackTitle.textContent = place.title;
     dom.mobileRecommendationFeedbackMeta.textContent = `${categoryFor(place.type).label} · ${regionName(place.region)}`;
+    renderMobileRecommendationFeedbackImage(place);
     dom.mobileRecommendationFeedbackMount.replaceChildren(createRecommendationFeedback(place, "mobile-dialog"));
+    renderResearchDetail(place, dom.mobileRecommendationFeedbackResearch);
     document.body.classList.add("mobile-feedback-open");
     if (typeof dom.mobileRecommendationFeedbackDialog.showModal === "function") {
       dom.mobileRecommendationFeedbackDialog.showModal();
     } else {
       dom.mobileRecommendationFeedbackDialog.setAttribute("open", "");
     }
+    loadPlaceReviews(place, dom.mobileRecommendationFeedbackReviews);
     window.requestAnimationFrame(() => {
       dom.mobileRecommendationFeedbackMount.querySelector(".recommendation-feedback-option")?.focus({ preventScroll: true });
     });

@@ -1043,6 +1043,45 @@ input:focus-visible,
   padding: 17px 18px max(18px, env(safe-area-inset-bottom));
 }
 
+.mobile-recommendation-feedback-media {
+  position: relative;
+  min-height: 180px;
+  margin: -17px -18px 16px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(145deg, #dcebe5, #f1eee3);
+}
+
+.mobile-recommendation-feedback-media > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.mobile-recommendation-feedback-media > img[hidden],
+.mobile-recommendation-feedback-image-placeholder[hidden] {
+  display: none;
+}
+
+.mobile-recommendation-feedback-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(23, 110, 97, 0.45);
+}
+
+.mobile-recommendation-feedback-image-placeholder svg {
+  width: 54px;
+  height: 54px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
 .mobile-recommendation-feedback-body > p {
   margin: 0;
   color: var(--ink-soft);
@@ -5026,6 +5065,11 @@ button:focus-visible {
   .mobile-recommendation-feedback-dialog .recommendation-feedback-comment textarea {
     min-height: 112px;
     font-size: 16px;
+  }
+
+  .mobile-recommendation-feedback-research,
+  .mobile-recommendation-feedback-reviews {
+    margin-top: 16px;
   }
 
   .output-scroll {

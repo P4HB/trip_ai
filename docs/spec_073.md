@@ -45,6 +45,9 @@
 - `REQ-7311`: 모바일 평가 창은 장소명·추천 순위·유형·지역, 1~5점, 최대 300자 의견과 닫기 동작을 제공해야 한다.
 - `REQ-7312`: 모바일 추천 카드에 중복 점수·의견 입력을 노출하지 않고, 다이얼로그 입력은 같은 `placeId` 상태와 자동 저장 경로를 사용해야 한다.
 - `REQ-7313`: 761px 이상 추천 카드의 상세보기→지도 상세 동작과 기존 인라인 평가 입력은 유지한다.
+- `REQ-7314`: 모바일 평가 창은 장소 대표 사진, 웹 조사 `어떤 곳인가요?`, 카카오 방문 후기를 점수·의견과 함께 표시해야 한다.
+- `REQ-7315`: 대표 사진은 전체 비율을 보존하고 누락·실패 시 placeholder를 표시해야 한다.
+- `REQ-7316`: 카카오 후기는 기존 동일 출처 API의 로딩·성공·빈 결과·오류 상태를 재사용하며, modal 닫기·장소 전환 시 이전 요청을 취소하거나 무시해야 한다.
 
 ## 입력과 출력
 
@@ -89,6 +92,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - `AC-7307`: 모바일 추천 장소를 누르면 현재 viewport 위 평가 창이 열리며 지도 이동·결과 위치 이동이 발생하지 않는다.
 - `AC-7308`: 평가 창에서 입력한 점수·의견이 동일 장소 상태와 자동 저장에 반영되고, 닫기·ESC·backdrop 동작이 가능하다.
 - `AC-7309`: 데스크톱 상세보기와 인라인 평가는 기존 동작을 유지한다.
+- `AC-7310`: 모바일 추천 평가 창에서 대표 사진·장소 설명·카카오 후기와 평가 입력이 하나의 내부 스크롤 흐름으로 보인다.
+- `AC-7311`: 이미지 누락·후기 빈 결과·후기 오류와 빠른 modal 전환이 기존 상세을 오염시키지 않는다.
 
 ## 테스트 계획
 
@@ -99,6 +104,7 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 | AC-7305 | 구문·추천·선호 회귀 | `node --check map-ui/app.js`; `node scripts/test_ccu_mmr.cjs`; `node scripts/test_preference_elicitation.cjs` |
 | AC-7305 | 서버 API 회귀 | `python -m unittest server/travel-feedback/test_feedback_api.py` |
 | AC-7306~AC-7309 | 390×844 추천 결과 스크롤·장소 평가 dialog·상태 동기화 | 로컬 Map UI |
+| AC-7310~AC-7311 | 리뷰 보유·미보유·이미지 누락 장소의 mobile dialog와 stale 요청 | 로컬 Map UI·정적 계약 |
 
 ## 구현 결과
 
@@ -111,6 +117,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - 추천 카드 제목·평가 버튼과 일정 장소 버튼은 모바일에서 지도 선택 대신 현재 viewport의 native modal 평가 창을 열며, 데스크톱에서는 기존 지도 상세 동작을 유지한다.
 - 모바일 추천·일정 카드의 중복 인라인 평가 입력은 숨기고 modal에 공통 피드백 컴포넌트를 mount해 점수·의견 동기화와 자동 저장 경로를 재사용했다.
 - 수정 커밋 `8b18d94`를 원격 `main`에 반영하고 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-mobile-feedback-modal-8b18d94`로 배포했다.
+- 모바일 평가 modal에 16:9 `contain` 대표 사진과 누락·실패 placeholder, 기존 웹 조사 장소 설명, 카카오 방문 후기 섹션을 평가 입력과 같은 내부 스크롤에 추가했다.
+- 장소 설명·후기 렌더러는 대상 컨테이너를 받도록 공통화했고, 상세 패널과 modal의 후기 요청을 컨테이너별로 분리해 서로 취소하지 않으면서 각 화면의 닫기·전환 시 stale 응답을 차단한다.
 
 ### 검증 결과
 
@@ -127,6 +135,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - Chrome 390×844: 결과 헤더가 스크롤 뒤 viewport 위로 사라짐, 추천 장소 선택 시 지도 상세 없이 평가 modal 표시, 5개 점수·300자 의견 제공, 4점·13자 의견의 동일 장소 상태 동기화, 카드 인라인 입력 숨김, ESC 닫기·포커스 복원 및 콘솔 오류 없음 확인
 - 운영 컨테이너 `edge`, `rail-api`, `travel-feedback`: `mobile-feedback-modal-8b18d94` 이미지로 전환 후 모두 healthy 확인
 - 운영 공개 경로 `/`, `/healthz`, `/travel/`, `/travel/app.js`, `/travel/styles.css`, 장소 후기 API: 모두 HTTP 200이며 새 modal DOM·렌더 함수·스타일 포함 확인
+- 변경 후 JavaScript 구문, 정적 dashboard 계약, CCU-MMR·취향 회귀, 피드백·후기 API 19건: 모두 통과
+- Chrome 390×844: `수월봉` 평가 modal에서 전체 비율 대표 사진, `어떤 곳인가요?`, `카카오 방문 후기`, 5점 평가가 하나의 내부 스크롤에 표시되고 닫은 뒤 이미지 src·설명·후기 DOM이 정리됨을 확인
 
 ## 설계와 달라진 점
 
@@ -146,3 +156,5 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 | 2026-09-03 | 모바일 결과 헤더 고정 해제 및 추천 장소 평가 다이얼로그 요구사항으로 재개 |
 | 2026-09-03 | 모바일 추천·일정 장소 평가 modal, 중복 인라인 입력 제거, 헤더 일반 스크롤 구현 및 390px 검증 완료 |
 | 2026-09-03 | 수정 커밋 원격 반영 및 OCI 운영 릴리스 배포·공개 경로 검증 완료 |
+| 2026-09-03 | 모바일 평가 modal에 대표 사진·장소 설명·카카오 후기를 포함하는 요구사항으로 재개 |
+| 2026-09-03 | 공통 설명·후기 렌더러와 화면별 요청 취소, 대표 사진·설명·후기 포함 mobile modal 구현 및 390px 검증 완료 |

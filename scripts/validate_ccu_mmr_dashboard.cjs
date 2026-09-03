@@ -23,7 +23,9 @@ for (const id of [
   "detailPlaceId", "detailReviews", "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailMobileFeedback",
   "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
   "mobileRecommendationFeedbackDialog", "mobileRecommendationFeedbackContext", "mobileRecommendationFeedbackTitle",
-  "mobileRecommendationFeedbackMeta", "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMount",
+  "mobileRecommendationFeedbackMeta", "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMedia",
+  "mobileRecommendationFeedbackImage", "mobileRecommendationFeedbackImagePlaceholder", "mobileRecommendationFeedbackMount",
+  "mobileRecommendationFeedbackResearch", "mobileRecommendationFeedbackReviews",
   "sidebarCollapseButton", "sidebarExpandButton",
   "participantNamePanel", "participantName", "participantNameStatus",
   "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
@@ -174,11 +176,18 @@ assert.match(dashboardStyles, /\.detail-mobile-feedback \.recommendation-feedbac
 assert.match(dashboardHtml, /id="mobileRecommendationFeedbackDialog"[\s\S]*?aria-labelledby="mobileRecommendationFeedbackTitle"/u, "mobile recommendation feedback dialog labeling");
 assert.match(dashboardApp, /function openMobileRecommendationFeedbackDialog\(place, contextLabel, returnFocus = document\.activeElement\)/u, "mobile recommendation feedback dialog open behavior");
 assert.match(dashboardApp, /mobileRecommendationFeedbackMount\.replaceChildren\(createRecommendationFeedback\(place, "mobile-dialog"\)\)/u, "mobile dialog reuses shared feedback component");
+assert.match(dashboardApp, /renderMobileRecommendationFeedbackImage\(place\)/u, "mobile dialog renders the place image");
+assert.match(dashboardApp, /renderResearchDetail\(place, dom\.mobileRecommendationFeedbackResearch\)/u, "mobile dialog reuses the public research renderer");
+assert.match(dashboardApp, /loadPlaceReviews\(place, dom\.mobileRecommendationFeedbackReviews\)/u, "mobile dialog loads Kakao reviews");
+assert.match(dashboardApp, /function reviewRequestIsCurrent\(place, controller, container\)/u, "detail and modal review requests share stale response protection");
+assert.match(dashboardApp, /state\.reviewRequests\.get\(dom\.mobileRecommendationFeedbackReviews\)\?\.controller\?\.abort\(\)/u, "closing the mobile dialog aborts its review request");
 assert.match(dashboardApp, /function openRecommendationPlace\(place, contextLabel, returnFocus\)[\s\S]*?if \(openMobileRecommendationFeedbackDialog\(place, contextLabel, returnFocus\)\) return;[\s\S]*?selectPlace\(place, \{ moveMap: true \}\);/u, "mobile opens feedback dialog while desktop keeps map detail");
 assert.match(dashboardStyles, /\.output-heading\s*\{\s*position: relative;\s*z-index: auto;\s*top: auto;/u, "mobile result heading scrolls in normal document flow");
 assert.match(dashboardStyles, /\.recommendation-card > \.recommendation-feedback,[\s\S]*?\.schedule-place-card > \.recommendation-feedback\s*\{\s*display: none;/u, "mobile cards defer feedback inputs to the dialog");
 assert.match(dashboardStyles, /\.mobile-recommendation-feedback-dialog \.recommendation-feedback-option\s*\{[\s\S]*?min-height: 48px;/u, "mobile dialog score controls are touch sized");
 assert.match(dashboardStyles, /\.mobile-recommendation-feedback-dialog \.recommendation-feedback-comment textarea\s*\{[\s\S]*?font-size: 16px;/u, "mobile dialog comment avoids input zoom");
+assert.match(dashboardStyles, /\.mobile-recommendation-feedback-media\s*\{[\s\S]*?aspect-ratio: 16 \/ 9;/u, "mobile dialog image uses a stable widescreen frame");
+assert.match(dashboardStyles, /\.mobile-recommendation-feedback-media > img\s*\{[\s\S]*?object-fit: contain;/u, "mobile dialog keeps the complete place image visible");
 const recommendationCardStart = dashboardApp.indexOf("function createRecommendationCard(item)");
 const recommendationCardEnd = dashboardApp.indexOf("function renderWarnings", recommendationCardStart);
 const recommendationCardSource = recommendationCardStart >= 0 && recommendationCardEnd > recommendationCardStart
@@ -220,7 +229,7 @@ assert.match(dashboardApp, /web_storage_used: false/u, "no feedback Web Storage"
 assert.match(dashboardApp, /await fetch\("\/travel\/api\/feedback"/u, "feedback POST request");
 assert.match(dashboardApp, /fetch\(`api\/places\/\$\{encodeURIComponent\(placeId\)\}\/reviews\?limit=5&offset=0`/u, "same-origin review lookup");
 assert.match(dashboardApp, /schema_version !== "kakao-place-reviews-v1"/u, "review response contract");
-assert.match(dashboardApp, /state\.reviewRequest\.controller\?\.abort\(\)/u, "stale review request cancellation");
+assert.match(dashboardApp, /state\.reviewRequests\.get\(container\)\?\.controller\?\.abort\(\)/u, "stale review request cancellation per rendering surface");
 assert.match(dashboardApp, /credentials: "omit"/u, "feedback request omits credentials");
 assert.match(dashboardApp, /autosave\.pendingPayload\?\.revision === sendingRevision/u, "failed feedback retries reuse payload");
 assert.match(feedbackComponentSource, /scheduleFeedbackAutoSave\(0\)/u, "score selection saves immediately");
