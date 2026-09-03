@@ -90,6 +90,7 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - `renderMobileDetailFeedback()`이 현재 추천 대상에는 공통 `createRecommendationFeedback(place, "mobile-detail")`을 연결하고, 추천 전·비대상 장소에는 서로 다른 안내 문구를 표시한다.
 - 공통 `placeId` 상태를 사용하므로 상세·추천 카드·일정 카드의 점수, 의견, 글자 수가 즉시 동기화되고 기존 즉시/800ms 자동 저장 정책을 그대로 따른다.
 - 모바일 점수 버튼을 44px로, 의견 입력 글자 크기를 16px로 조정했으며 사진·설명·후기·장소 액션은 기존 순서로 유지했다.
+- 구현 커밋 `fd84f15`를 원격 `main`에 반영하고 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-mobile-detail-fd84f15`로 배포했다.
 
 ### 검증 결과
 
@@ -100,6 +101,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - `python -m unittest server/travel-feedback/test_feedback_api.py`: 19건 통과
 - `git diff --check`: 통과
 - Chrome 390×844: 추천 장소 상세에서 1~5점·300자 의견·장소 설명·후기 영역 표시 확인, 상세의 4점 및 13자 의견이 추천 카드에 즉시 동기화됨을 확인, 이름·별칭 미입력 시 저장 대기 및 콘솔 오류 없음 확인
+- 운영 컨테이너 `edge`, `rail-api`, `travel-feedback`: `mobile-detail-fd84f15` 이미지로 전환 후 모두 healthy 확인
+- 운영 공개 경로 `/`, `/healthz`, `/travel/`, `/travel/app.js`, `/travel/styles.css`, 장소 후기 API: 모두 HTTP 200이며 모바일 상세 mount·렌더 함수·스타일 계약 포함 확인
 
 ## 설계와 달라진 점
 
@@ -115,3 +118,4 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 |---|---|
 | 2026-09-03 | 사용자 승인 범위로 SPEC 작성 및 구현 시작 |
 | 2026-09-03 | 모바일 상세 평가·안내·동기화 구현 및 정적·회귀·390px 브라우저 검증 완료 |
+| 2026-09-03 | 구현 커밋 원격 반영 및 OCI 운영 릴리스 배포·상태 확인 완료 |
