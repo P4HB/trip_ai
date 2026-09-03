@@ -54,7 +54,7 @@
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
     "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
-    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "detailScoreTrace", "centerPlaceButton",
+    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCollapseButton", "sidebarExpandButton", "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
@@ -1404,61 +1404,6 @@
     return button;
   }
 
-  function scorePill(label, value, className = "") {
-    const pill = document.createElement("div");
-    pill.className = `score-pill ${className}`.trim();
-    const name = document.createElement("span");
-    name.textContent = label;
-    const score = document.createElement("strong");
-    score.textContent = formatScore(value);
-    pill.append(name, score);
-    return pill;
-  }
-
-  function renderScoreTrace(place, recommendation) {
-    dom.detailScoreTrace.replaceChildren();
-    dom.detailRank.hidden = !recommendation;
-    if (!recommendation) {
-      dom.detailScoreTrace.hidden = true;
-      return;
-    }
-    dom.detailRank.hidden = false;
-    dom.detailRank.textContent = `추천 ${recommendation.rank}위`;
-    dom.detailScoreTrace.hidden = false;
-    const heading = document.createElement("div");
-    heading.className = "trace-heading";
-    const title = document.createElement("strong");
-    title.textContent = "내부 추천 상세";
-    const meta = document.createElement("span");
-    meta.textContent = `coverage ${(recommendation.requestCoverage * 100).toFixed(0)}%`;
-    heading.append(title, meta);
-    const scores = document.createElement("div");
-    scores.className = "trace-score-grid";
-    scores.append(
-      scorePill("관련도 R", recommendation.relevance, "is-primary"),
-      scorePill("MMR", recommendation.mmrScore),
-      scorePill("취향 P", recommendation.components.preference.value),
-      scorePill("동행 A", recommendation.components.companion.value),
-      scorePill("월 M", recommendation.components.month.value),
-      scorePill("중복 유사도", recommendation.maxSimilarity),
-    );
-    const blockLine = document.createElement("p");
-    const activeBlocks = ["preference", "companion", "month"].filter((key) => recommendation.components[key].active).map((key) => {
-      const names = { preference: "P", companion: "A", month: "M" };
-      return `${names[key]} ${(recommendation.components[key].effectiveWeight * 100).toFixed(1)}%`;
-    });
-    blockLine.textContent = `활성 블록: ${activeBlocks.join(" · ") || "없음(탐색 모드)"}`;
-    const preferenceLine = document.createElement("div");
-    preferenceLine.className = "trace-preference-list";
-    for (const trace of recommendation.components.preference.traces || []) {
-      const item = document.createElement("span");
-      const mode = trace.mode === "avoid" ? "회피" : trace.mode === "target" ? "목표" : "선호";
-      item.textContent = `${LABEL_NAMES[trace.feature] || trace.feature} ${mode}: x=${formatScore(trace.rawValue, 2)} → u=${formatScore(trace.utility, 2)} · w${trace.weight}`;
-      preferenceLine.append(item);
-    }
-    dom.detailScoreTrace.append(heading, scores, blockLine, preferenceLine);
-  }
-
   function selectPlace(place, { moveMap = false } = {}) {
     const previous = state.selectedPlace;
     state.selectedPlace = place;
@@ -1483,13 +1428,14 @@
     dom.detailType.textContent = `${category.label} · ${regionName(place.region)}`;
     dom.detailModified.textContent = formatModifiedDate(place.modified);
     dom.detailPlaceId.textContent = `ID ${place.id}`;
+    dom.detailRank.hidden = !recommendation;
+    if (recommendation) dom.detailRank.textContent = `추천 ${recommendation.rank}위`;
     dom.detailTitle.textContent = place.title;
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
     renderResearchDetail(place);
     loadPlaceReviews(place);
-    renderScoreTrace(place, recommendation);
     closePlaceImageDialog({ restoreFocus: false });
     const loadToken = ++state.detailImageLoadToken;
     const imageUrl = String(place.image || "").trim();
