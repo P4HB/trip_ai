@@ -22,6 +22,8 @@ for (const id of [
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
   "detailPlaceId", "detailReviews", "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailMobileFeedback",
   "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
+  "mobileRecommendationFeedbackDialog", "mobileRecommendationFeedbackContext", "mobileRecommendationFeedbackTitle",
+  "mobileRecommendationFeedbackMeta", "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMount",
   "sidebarCollapseButton", "sidebarExpandButton",
   "participantNamePanel", "participantName", "participantNameStatus",
   "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
@@ -169,6 +171,14 @@ assert.match(dashboardStyles, /\.detail-mobile-feedback\s*\{\s*display: none;/u,
 assert.match(dashboardStyles, /@media \(max-width: 760px\)[\s\S]*?\.detail-mobile-feedback\s*\{[\s\S]*?display: block;/u, "mobile detail feedback becomes visible at mobile breakpoint");
 assert.match(dashboardStyles, /\.detail-mobile-feedback \.recommendation-feedback-option\s*\{[\s\S]*?min-height: 44px;/u, "mobile feedback score targets are touch sized");
 assert.match(dashboardStyles, /\.detail-mobile-feedback \.recommendation-feedback-comment textarea\s*\{[\s\S]*?font-size: 16px;/u, "mobile feedback comment avoids input zoom");
+assert.match(dashboardHtml, /id="mobileRecommendationFeedbackDialog"[\s\S]*?aria-labelledby="mobileRecommendationFeedbackTitle"/u, "mobile recommendation feedback dialog labeling");
+assert.match(dashboardApp, /function openMobileRecommendationFeedbackDialog\(place, contextLabel, returnFocus = document\.activeElement\)/u, "mobile recommendation feedback dialog open behavior");
+assert.match(dashboardApp, /mobileRecommendationFeedbackMount\.replaceChildren\(createRecommendationFeedback\(place, "mobile-dialog"\)\)/u, "mobile dialog reuses shared feedback component");
+assert.match(dashboardApp, /function openRecommendationPlace\(place, contextLabel, returnFocus\)[\s\S]*?if \(openMobileRecommendationFeedbackDialog\(place, contextLabel, returnFocus\)\) return;[\s\S]*?selectPlace\(place, \{ moveMap: true \}\);/u, "mobile opens feedback dialog while desktop keeps map detail");
+assert.match(dashboardStyles, /\.output-heading\s*\{\s*position: relative;\s*z-index: auto;\s*top: auto;/u, "mobile result heading scrolls in normal document flow");
+assert.match(dashboardStyles, /\.recommendation-card > \.recommendation-feedback,[\s\S]*?\.schedule-place-card > \.recommendation-feedback\s*\{\s*display: none;/u, "mobile cards defer feedback inputs to the dialog");
+assert.match(dashboardStyles, /\.mobile-recommendation-feedback-dialog \.recommendation-feedback-option\s*\{[\s\S]*?min-height: 48px;/u, "mobile dialog score controls are touch sized");
+assert.match(dashboardStyles, /\.mobile-recommendation-feedback-dialog \.recommendation-feedback-comment textarea\s*\{[\s\S]*?font-size: 16px;/u, "mobile dialog comment avoids input zoom");
 const recommendationCardStart = dashboardApp.indexOf("function createRecommendationCard(item)");
 const recommendationCardEnd = dashboardApp.indexOf("function renderWarnings", recommendationCardStart);
 const recommendationCardSource = recommendationCardStart >= 0 && recommendationCardEnd > recommendationCardStart
@@ -177,6 +187,7 @@ const recommendationCardSource = recommendationCardStart >= 0 && recommendationC
 assert.ok(recommendationCardSource, "recommendation card function");
 assert.match(recommendationCardSource, /recommendation-detail-button/u, "explicit place detail button");
 assert.match(recommendationCardSource, /createRecommendationFeedback\(place, "recommendation"\)/u, "recommendation card uses shared feedback");
+assert.match(recommendationCardSource, /openRecommendationPlace\(place, `추천 \$\{item\.rank\}위`, top\)/u, "recommendation title opens the viewport feedback action");
 assert.doesNotMatch(recommendationCardSource, /ID |MMR|연결 출처|seed:|sim |recommendation-score-row|recommendation-relevance/u, "beta card must hide internal trace");
 const schedulePlaceStart = dashboardApp.indexOf("function createSchedulePlaceCard(item, dayIndex)");
 const schedulePlaceEnd = dashboardApp.indexOf("function renderSchedule(schedule)", schedulePlaceStart);

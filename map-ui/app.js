@@ -64,6 +64,8 @@
     "restartTravelMbtiButton", "travelMbtiDialog", "travelMbtiCloseButton", "travelMbtiProgressLabel", "travelMbtiProgressBar",
     "travelMbtiBody", "travelMbtiFooter", "travelMbtiBackButton", "travelMbtiSkipButton",
     "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
+    "mobileRecommendationFeedbackDialog", "mobileRecommendationFeedbackContext", "mobileRecommendationFeedbackTitle", "mobileRecommendationFeedbackMeta",
+    "mobileRecommendationFeedbackCloseButton", "mobileRecommendationFeedbackMount",
     "runRecommendationButton", "resetRecommendationButton", "requestPreview", "configPreview", "algorithmBadge",
     "wizardStepLabel", "wizardProgressPercent", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "reviewSummary",
     "requiredOverview", "requiredProgressText", "requiredProgressTrack", "requiredProgressBar", "requiredMissingText",
@@ -154,6 +156,7 @@
     hoveredScheduleDay: null,
     focusedScheduleDay: null,
     drawerReturnFocus: null,
+    mobileFeedbackReturnFocus: null,
     wizardStep: 1,
     requiredValidationAttempted: false,
     selectedPreset: null,
@@ -1864,6 +1867,48 @@
     return feedback;
   }
 
+  function closeMobileRecommendationFeedbackDialog({ restoreFocus = true } = {}) {
+    const dialog = dom.mobileRecommendationFeedbackDialog;
+    const returnFocus = restoreFocus ? state.mobileFeedbackReturnFocus : null;
+    state.mobileFeedbackReturnFocus = null;
+    if (dialog.open && typeof dialog.close === "function") dialog.close();
+    else dialog.removeAttribute("open");
+    document.body.classList.remove("mobile-feedback-open");
+    dom.mobileRecommendationFeedbackMount.replaceChildren();
+    if (returnFocus instanceof HTMLElement) {
+      window.requestAnimationFrame(() => returnFocus.focus({ preventScroll: true }));
+    }
+  }
+
+  function openMobileRecommendationFeedbackDialog(place, contextLabel, returnFocus = document.activeElement) {
+    if (!isMobileStackedFlow()) return false;
+    if (dom.mobileRecommendationFeedbackDialog.open) {
+      closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
+    }
+    const recommendation = recommendationFor(place);
+    state.mobileFeedbackReturnFocus = returnFocus instanceof HTMLElement ? returnFocus : null;
+    dom.mobileRecommendationFeedbackContext.textContent = contextLabel || (recommendation ? `추천 ${recommendation.rank}위` : "추천 장소 평가");
+    dom.mobileRecommendationFeedbackTitle.textContent = place.title;
+    dom.mobileRecommendationFeedbackMeta.textContent = `${categoryFor(place.type).label} · ${regionName(place.region)}`;
+    dom.mobileRecommendationFeedbackMount.replaceChildren(createRecommendationFeedback(place, "mobile-dialog"));
+    document.body.classList.add("mobile-feedback-open");
+    if (typeof dom.mobileRecommendationFeedbackDialog.showModal === "function") {
+      dom.mobileRecommendationFeedbackDialog.showModal();
+    } else {
+      dom.mobileRecommendationFeedbackDialog.setAttribute("open", "");
+    }
+    window.requestAnimationFrame(() => {
+      dom.mobileRecommendationFeedbackMount.querySelector(".recommendation-feedback-option")?.focus({ preventScroll: true });
+    });
+    return true;
+  }
+
+  function openRecommendationPlace(place, contextLabel, returnFocus) {
+    if (openMobileRecommendationFeedbackDialog(place, contextLabel, returnFocus)) return;
+    selectPlace(place, { moveMap: true });
+    closeOutputPanel();
+  }
+
   function createRecommendationCard(item) {
     const place = placeById.get(item.placeId);
     const category = categoryFor(place.type);
@@ -1871,7 +1916,8 @@
     card.className = "recommendation-card";
     card.dataset.placeId = item.placeId;
     card.setAttribute("aria-current", state.selectedPlace?.id === item.placeId ? "true" : "false");
-    const top = document.createElement("div");
+    const top = document.createElement("button");
+    top.type = "button";
     top.className = "recommendation-card-top";
     const rank = document.createElement("span");
     rank.className = "recommendation-rank";
@@ -1884,6 +1930,8 @@
     meta.textContent = `${category.label} · ${regionName(place.region)}`;
     copy.append(title, meta);
     top.append(rank, copy);
+    top.setAttribute("aria-label", `${place.title} 추천 평가 열기`);
+    top.addEventListener("click", () => openRecommendationPlace(place, `추천 ${item.rank}위`, top));
     card.setAttribute("aria-labelledby", title.id);
     const researchSnippet = document.createElement("div");
     researchSnippet.className = "recommendation-research-snippet";
@@ -1921,11 +1969,10 @@
     const detailButton = document.createElement("button");
     detailButton.type = "button";
     detailButton.className = "recommendation-detail-button";
-    detailButton.textContent = "상세보기";
-    detailButton.setAttribute("aria-label", `${place.title} 상세보기`);
+    detailButton.innerHTML = '<span class="recommendation-detail-desktop-label">상세보기</span><span class="recommendation-detail-mobile-label">이 장소 평가하기</span>';
+    detailButton.setAttribute("aria-label", `${place.title} 열기`);
     detailButton.addEventListener("click", () => {
-      selectPlace(place, { moveMap: true });
-      closeOutputPanel();
+      openRecommendationPlace(place, `추천 ${item.rank}위`, detailButton);
     });
 
     const feedback = createRecommendationFeedback(place, "recommendation");
@@ -1999,8 +2046,7 @@
     button.addEventListener("click", () => {
       const place = placeById.get(item.placeId);
       if (place) {
-        selectPlace(place, { moveMap: true });
-        closeOutputPanel();
+        openRecommendationPlace(place, `${dayIndex}일차 · ${role}`, button);
       }
     });
     card.append(button);
@@ -2204,6 +2250,7 @@
   }
 
   function renderRecommendationOutput(result) {
+    closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
     resetFeedbackAutoSave({ createSession: true });
     result.provenance = {
       sourceDate: metadata.sourceDate || null,
@@ -2289,6 +2336,7 @@
 
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     hideFormError();
+    closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
     state.selectedAnchorIds.clear();
     state.recommendationFeedback.clear();
     resetFeedbackAutoSave();
@@ -2571,6 +2619,14 @@
       event.preventDefault();
       closePlaceImageDialog();
     });
+    dom.mobileRecommendationFeedbackCloseButton.addEventListener("click", () => closeMobileRecommendationFeedbackDialog());
+    dom.mobileRecommendationFeedbackDialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeMobileRecommendationFeedbackDialog();
+    });
+    dom.mobileRecommendationFeedbackDialog.addEventListener("click", (event) => {
+      if (event.target === dom.mobileRecommendationFeedbackDialog) closeMobileRecommendationFeedbackDialog();
+    });
     dom.placeImageDialog.addEventListener("click", (event) => {
       if (event.target !== dom.placeImageDialog) return;
       const bounds = dom.placeImageDialog.querySelector(".place-image-dialog-shell").getBoundingClientRect();
@@ -2591,13 +2647,17 @@
     dom.outputBackdrop.addEventListener("click", closeOutputPanel);
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
-      if (placeImageDialogOpen()) closePlaceImageDialog();
+      if (dom.mobileRecommendationFeedbackDialog.open) closeMobileRecommendationFeedbackDialog();
+      else if (placeImageDialogOpen()) closePlaceImageDialog();
       else if (dom.travelMbtiDialog.open) closeTravelMbtiDialog();
       else if (document.body.classList.contains("sidebar-open")) closeSidebar();
       else if (document.body.classList.contains("output-open")) closeOutputPanel();
       else if (state.selectedPlace) clearSelection();
     });
     window.addEventListener("resize", debounce(() => {
+      if (!isMobileStackedFlow() && dom.mobileRecommendationFeedbackDialog.open) {
+        closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
+      }
       if (window.innerWidth > 1240) { closeSidebar(); closeOutputPanel(); }
       else if (state.sidebarCollapsed) setDesktopSidebarCollapsed(false, { focus: false });
       else syncDesktopSidebarState();

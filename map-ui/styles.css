@@ -972,6 +972,84 @@ input:focus-visible,
   filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.32));
 }
 
+.mobile-recommendation-feedback-dialog {
+  width: min(520px, calc(100vw - 28px));
+  max-width: none;
+  max-height: min(86dvh, 720px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(23, 50, 46, 0.14);
+  border-radius: 20px;
+  background: #fffdf8;
+  color: var(--ink);
+  box-shadow: 0 28px 90px rgba(5, 22, 19, 0.34);
+}
+
+.mobile-recommendation-feedback-dialog::backdrop {
+  background: rgba(8, 23, 20, 0.58);
+  backdrop-filter: blur(4px);
+}
+
+.mobile-recommendation-feedback-shell {
+  max-height: min(86dvh, 720px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.mobile-recommendation-feedback-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 16px 14px 18px;
+  border-bottom: 1px solid var(--line-soft);
+  background: linear-gradient(145deg, #edf8f3, #fffdf8);
+}
+
+.mobile-recommendation-feedback-header span {
+  color: var(--brand-deep);
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.mobile-recommendation-feedback-header h2 {
+  margin: 5px 0 0;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+}
+
+.mobile-recommendation-feedback-header p {
+  margin: 5px 0 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.mobile-recommendation-feedback-close {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid rgba(23, 50, 46, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mobile-recommendation-feedback-body {
+  overflow-y: auto;
+  padding: 17px 18px max(18px, env(safe-area-inset-bottom));
+}
+
+.mobile-recommendation-feedback-body > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
 .detail-content {
   min-width: 0;
   display: flex;
@@ -3076,10 +3154,18 @@ button:focus-visible {
 }
 
 .recommendation-card-top {
+  width: 100%;
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr);
   gap: 9px;
   align-items: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .recommendation-rank {
@@ -3237,6 +3323,10 @@ button:focus-visible {
 
 .recommendation-detail-button:hover {
   background: var(--brand-pale);
+}
+
+.recommendation-detail-mobile-label {
+  display: none;
 }
 
 .detail-mobile-feedback {
@@ -4669,6 +4759,10 @@ button:focus-visible {
     overflow-y: auto;
   }
 
+  body.mobile-feedback-open {
+    overflow: hidden;
+  }
+
   .topbar {
     position: sticky;
     top: 0;
@@ -4877,11 +4971,61 @@ button:focus-visible {
   }
 
   .output-heading {
-    position: sticky;
-    z-index: 4;
-    top: var(--header-height);
-    background: rgba(255, 253, 248, 0.96);
-    backdrop-filter: blur(14px);
+    position: relative;
+    z-index: auto;
+    top: auto;
+    background: var(--panel);
+    backdrop-filter: none;
+  }
+
+  .recommendation-card > .recommendation-feedback,
+  .schedule-place-card > .recommendation-feedback {
+    display: none;
+  }
+
+  .recommendation-detail-desktop-label {
+    display: none;
+  }
+
+  .recommendation-detail-mobile-label {
+    display: inline;
+  }
+
+  .recommendation-card-top,
+  .recommendation-detail-button,
+  .schedule-place {
+    min-height: 44px;
+  }
+
+  .mobile-recommendation-feedback-dialog {
+    width: calc(100vw - 18px);
+    max-height: calc(100dvh - 18px);
+    margin: auto;
+    border-radius: 18px;
+  }
+
+  .mobile-recommendation-feedback-shell {
+    max-height: calc(100dvh - 18px);
+  }
+
+  .mobile-recommendation-feedback-dialog .recommendation-feedback {
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+
+  .mobile-recommendation-feedback-dialog .recommendation-feedback > strong,
+  .mobile-recommendation-feedback-dialog .recommendation-feedback-comment label {
+    font-size: 13px;
+  }
+
+  .mobile-recommendation-feedback-dialog .recommendation-feedback-option {
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .mobile-recommendation-feedback-dialog .recommendation-feedback-comment textarea {
+    min-height: 112px;
+    font-size: 16px;
   }
 
   .output-scroll {
