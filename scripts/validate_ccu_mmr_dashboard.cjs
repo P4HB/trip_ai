@@ -155,7 +155,7 @@ assert.match(feedbackComponentSource, /recommendation-feedback-option/u, "per-pl
 assert.match(feedbackComponentSource, /aria-pressed/u, "feedback pressed state");
 assert.match(feedbackComponentSource, /createElement\("textarea"\)/u, "per-place free-text feedback");
 assert.match(feedbackComponentSource, /commentInput\.maxLength = 300/u, "feedback comment length boundary");
-assert.match(feedbackComponentSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value \}\)/u, "feedback comment memory state");
+assert.match(feedbackComponentSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value, completed: false \}\)/u, "feedback comment memory state");
 assert.match(feedbackComponentSource, /syncRecommendationFeedback\(feedbackKey, commentInput\)/u, "feedback instances synchronize comments");
 assert.match(dashboardHtml, /id="detailMobileFeedback"[^>]*hidden/u, "mobile detail feedback mount starts hidden");
 const mobileDetailFeedbackStart = dashboardApp.indexOf("function renderMobileDetailFeedback(place, recommendation)");

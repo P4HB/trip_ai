@@ -32,6 +32,7 @@
 - 구현됨: 여행 취향 입력을 MBTI 검사 하나로 통합하고 미검사 사용자의 추천 실행 차단
 - 구현됨: 베타 추천 카드의 내부 trace 상세 분리와 추천 목록·일자별 일정 장소의 1~5·최대 300자 동기화 세션 피드백 UI
 - 구현됨: 추천 결과 최상단 이름·별칭과 장소별 만족도·의견을 추천 세션 최신 스냅샷으로 서버의 분리된 SQLite에 90일 적재
+- 구현됨: 점수 필수·의견 선택 평가 완료 버튼과 추천·일정 카드의 완료 체크·점수 표시
 - 구현됨: 장소 만족도 선택 즉시 세션 최신 스냅샷을 서버에 자동 저장하고 의견 입력은 짧게 디바운스해 갱신
 - 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
 
@@ -75,8 +76,9 @@
 | [SPEC-071](spec_071.md) | 장소 상세 내부 라벨·변동 제약 표시 제거 | Implemented | map, recommendation, detail, UI |
 | [SPEC-072](spec_072.md) | 장소 상세 내부 추천 점수 trace 숨김 | Implemented | map, recommendation, detail, UI |
 | [SPEC-073](spec_073.md) | 모바일 장소 상세 추천 평가 입력 | Implemented | mobile, map, feedback, detail, UI |
+| [SPEC-074](spec_074.md) | 장소 평가 완료 버튼과 추천 목록 완료 표시 | Implemented | feedback, recommendation, mobile, UI |
 
-- 다음 예약 번호: `SPEC-074`
+- 다음 예약 번호: `SPEC-075`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

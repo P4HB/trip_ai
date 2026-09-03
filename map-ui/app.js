@@ -1531,6 +1531,41 @@
     scheduleVisibleResultRender();
   }
 
+  function hasFeedbackScore(entry) {
+    return Number.isInteger(entry?.score) && entry.score >= 1 && entry.score <= 5;
+  }
+
+  function updateFeedbackBadge(badge, entry) {
+    const rated = hasFeedbackScore(entry);
+    const completed = rated && entry.completed === true;
+    badge.textContent = completed ? `✓ 평가 완료 · ${entry.score}점`
+      : rated ? `${entry.score}점 · 완료 전` : "미평가";
+    badge.classList.toggle("is-completed", completed);
+    badge.classList.toggle("is-rated", rated && !completed);
+  }
+
+  function createFeedbackBadge(placeId) {
+    const badge = document.createElement("span");
+    badge.className = "recommendation-feedback-badge";
+    badge.dataset.feedbackBadgePlaceId = String(placeId);
+    badge.setAttribute("aria-live", "polite");
+    updateFeedbackBadge(badge, state.recommendationFeedback.get(String(placeId)));
+    return badge;
+  }
+
+  function completeRecommendationFeedback(feedbackKey, contextKey) {
+    const current = state.recommendationFeedback.get(feedbackKey);
+    if (!hasFeedbackScore(current)) return;
+    state.recommendationFeedback.set(feedbackKey, { ...current, completed: true });
+    syncRecommendationFeedback(feedbackKey);
+    scheduleFeedbackAutoSave(0);
+    if (contextKey === "mobile-dialog") closeMobileRecommendationFeedbackDialog();
+    else if (contextKey === "mobile-detail") {
+      clearSelection();
+      openOutputPanel();
+    }
+  }
+
   function syncRecommendationFeedback(feedbackKey, sourceInput = null) {
     const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
     for (const feedback of document.querySelectorAll(".recommendation-feedback")) {
@@ -1544,12 +1579,17 @@
           ? `${current.score}점 · ${FEEDBACK_OPTIONS[current.score - 1].label}`
           : "";
       }
+      const completeButton = feedback.querySelector(".recommendation-feedback-complete");
+      if (completeButton) completeButton.hidden = !hasFeedbackScore(current);
       const commentInput = feedback.querySelector("textarea");
       if (commentInput && commentInput !== sourceInput && commentInput.value !== current.comment) {
         commentInput.value = current.comment;
       }
       const commentCount = feedback.querySelector(".recommendation-feedback-count");
       if (commentCount) commentCount.textContent = `${current.comment.length}/300`;
+    }
+    for (const badge of document.querySelectorAll(".recommendation-feedback-badge")) {
+      if (badge.dataset.feedbackBadgePlaceId === feedbackKey) updateFeedbackBadge(badge, current);
     }
   }
 
@@ -1815,7 +1855,7 @@
     feedback.dataset.feedbackPlaceId = feedbackKey;
     feedback.setAttribute("aria-label", `${place.title} 추천 만족도`);
     const feedbackHeading = document.createElement("strong");
-    feedbackHeading.textContent = "이 추천, 얼마나 마음에 드나요?";
+    feedbackHeading.textContent = "이 추천, 얼마나 마음에 드나요? (점수 필수)";
     const feedbackScale = document.createElement("div");
     feedbackScale.className = "recommendation-feedback-scale";
     feedbackScale.setAttribute("role", "group");
@@ -1835,7 +1875,7 @@
       feedbackButton.addEventListener("click", () => {
         const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
         if (current.score === option.score) return;
-        state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score });
+        state.recommendationFeedback.set(feedbackKey, { ...current, score: option.score, completed: false });
         syncRecommendationFeedback(feedbackKey);
         scheduleFeedbackAutoSave(0);
       });
@@ -1869,12 +1909,18 @@
     commentCount.textContent = `${commentInput.value.length}/300`;
     commentInput.addEventListener("input", () => {
       const current = state.recommendationFeedback.get(feedbackKey) || { score: null, comment: "" };
-      state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value });
+      state.recommendationFeedback.set(feedbackKey, { ...current, comment: commentInput.value, completed: false });
       syncRecommendationFeedback(feedbackKey, commentInput);
       scheduleFeedbackAutoSave(800);
     });
     comment.append(commentLabel, commentInput, commentCount);
-    feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment);
+    const completeButton = document.createElement("button");
+    completeButton.type = "button";
+    completeButton.className = "recommendation-feedback-complete";
+    completeButton.textContent = "완료";
+    completeButton.hidden = !hasFeedbackScore(selectedFeedback);
+    completeButton.addEventListener("click", () => completeRecommendationFeedback(feedbackKey, contextKey));
+    feedback.append(feedbackHeading, feedbackScale, feedbackEnds, feedbackStatus, comment, completeButton);
     return feedback;
   }
 
@@ -2029,7 +2075,7 @@
     });
 
     const feedback = createRecommendationFeedback(place, "recommendation");
-    card.append(top, researchSnippet);
+    card.append(top, createFeedbackBadge(place.id), researchSnippet);
     if (traces.length) card.append(reasons);
     card.append(detailButton, feedback);
     return card;
@@ -2104,7 +2150,7 @@
     });
     card.append(button);
     const place = placeById.get(item.placeId);
-    if (place) card.append(createRecommendationFeedback(place, `schedule-${dayIndex}`));
+    if (place) card.append(createFeedbackBadge(place.id), createRecommendationFeedback(place, `schedule-${dayIndex}`));
     return card;
   }
 

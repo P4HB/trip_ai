@@ -1,7 +1,7 @@
 # 시스템 아키텍처
 
 - 문서 상태: 현재 구현 + 목표 구조
-- 최종 수정일: 2026-09-02
+- 최종 수정일: 2026-09-03
 
 ## 현재 구현
 
@@ -126,6 +126,7 @@ scripts/validate_all_place_profiles.py
 - 지도 타일과 장소 이미지는 외부 네트워크에 의존한다.
 - 지도 UI는 생성된 `window.JEJU_PLACES`와 `window.JEJU_DATA_META`를 읽는다.
 - 장소 상세를 열면 브라우저가 동일 출처 `GET /travel/api/places/{contentid}/reviews?limit=5&offset=0`을 호출한다. Caddy는 이 경로를 `travel-feedback` 서비스로 프록시하고, 서비스는 이미지에 포함된 읽기 전용 `kakao_reviews.sqlite3`에서 승인된 `contentid`↔Kakao `place_id` 관계와 작성자명이 제거된 수집 후기 스냅샷을 조회한다. 리뷰 카탈로그 DB는 추천 만족도 쓰기 DB·90일 보존 볼륨과 분리된다.
+- [SPEC-074](spec_074.md): 공통 장소 평가에서 1~5점 선택 후 완료 버튼을 표시하며 의견은 선택이다. 완료 시 모바일 평가 창을 닫고 추천·일정 카드에 체크와 점수를 동기화한다. 점수·의견 수정은 다시 미완료가 된다. `completed`는 브라우저 메모리 전용 입력 완료 상태이며 v3 서버 payload나 저장 성공을 뜻하지 않는다. 사진 아래 중복 저장 안내를 제거하고 기존 자동 저장·이름 대기·재시도를 유지한다.
 - 추천 입력·결과, 여행 MBTI 질문·pair 응답·프로필과 장소별 만족도·의견은 평가 전까지 브라우저 메모리에 있다. 결과 최상단의 이름 또는 별칭이 입력된 상태에서 만족도 선택은 즉시, 의견은 800ms debounce 뒤 Map UI가 전체 최신 `travel-recommendation-feedback-log-v3` 스냅샷을 동일 출처 `POST /travel/api/feedback`으로 전송한다. 이름만 입력하면 전송하지 않고 평가가 먼저 입력되면 이름 입력까지 보류한다. Caddy는 이 경로만 전용 `travel-feedback` 서비스로 프록시하며 서비스는 이름을 trim된 1..30자 또는 null로 검증해 Rail Desk와 분리된 SQLite 볼륨의 `feedback_sessions` payload에 추천 세션별 한 행으로 UPSERT하고 90일 보관한다. 단조 증가 revision으로 지연 요청의 역덮어쓰기를 막고 실패한 동일 payload를 자동 재시도한다. 사용자가 입력한 이름·별칭 외 IP·User-Agent·쿠키·Rail Desk 계정 정보는 DB에 저장하지 않으며 공개 조회 API와 Web Storage는 없다. 기존 v2 수동 제출 계약은 열린 이전 탭 호환성을 위해 유지한다. 공유 문구는 유형 코드·이름·공개 설명만 포함한다. 날씨·실제 이동시간·가격은 현재 계산에 없다.
 - 단계형 입력 상태도 브라우저 메모리에만 있고 초기 화면에서는 예시 추천을 자동 실행하지 않는다. 여행 MBTI를 적용해도 취향 단계에 머무르며, 사용자가 5단계 확인 화면에서 명시적으로 실행한 뒤에만 추천 결과를 계산한다. 최종 실행은 viewport와 현재 단계에 관계없이 필수 1~4단계를 다시 검증하고, 축제·행사 목적에는 날짜 미정을 허용하지 않고 유효한 시작일·종료일을 요구한다.
 - `ccu-mmr-v6-travel-mbti-three-axis`는 SPEC-008의 목표 `baseline-v0`와 별도인 `internal_experiment`다. `balanced` 모드는 상위 3개 seed variant를 결정적으로 미리 계산하고 최초 표시만 가중 선택하며, 브라우저 세션에서 미노출 variant를 우선한다. 개인화는 P 블록 안의 원자 feature weight만 바꾸고 P/A/M 고정 비율과 제약·일정 경계는 유지한다. 이는 AI 초안 데이터의 운영 승격을 뜻하지 않는다.
