@@ -76,6 +76,11 @@
 - `artifacts/feedback-completion/completed.png`, `dialog.png`를 확인해 모바일 완료 체크와 버튼 배치·문구 삭제를 시각 검증했다.
 - `graphify update . --no-cluster`: 통과, 4,068 nodes·6,444 edges로 코드 그래프 갱신. `git diff --check`도 통과.
 
+### 배포 현황
+
+- 사용자 후속 요청으로 구현 커밋 `1829c54`를 GitHub `origin/main`에 반영했다.
+- 운영 서버 `168.107.40.231:22` SSH 연결이 시간 초과되어 운영 릴리스 배포는 수행하지 못했다. 서버 파일·컨테이너는 변경하지 않았다. 접속 경로와 인증이 제공되면 SPEC-057의 기존 배포 절차로 진행한다.
+
 ## 설계와 달라진 점
 
 없음.
