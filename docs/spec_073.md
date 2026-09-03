@@ -119,6 +119,7 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - 수정 커밋 `8b18d94`를 원격 `main`에 반영하고 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-mobile-feedback-modal-8b18d94`로 배포했다.
 - 모바일 평가 modal에 16:9 `contain` 대표 사진과 누락·실패 placeholder, 기존 웹 조사 장소 설명, 카카오 방문 후기 섹션을 평가 입력과 같은 내부 스크롤에 추가했다.
 - 장소 설명·후기 렌더러는 대상 컨테이너를 받도록 공통화했고, 상세 패널과 modal의 후기 요청을 컨테이너별로 분리해 서로 취소하지 않으면서 각 화면의 닫기·전환 시 stale 응답을 차단한다.
+- 상세 보완 커밋 `141b99d`를 원격 `main`에 반영하고 OCI 운영 릴리스 `/opt/rail-desk/releases/20260903-mobile-modal-details-141b99d`로 배포했다.
 
 ### 검증 결과
 
@@ -137,6 +138,8 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 - 운영 공개 경로 `/`, `/healthz`, `/travel/`, `/travel/app.js`, `/travel/styles.css`, 장소 후기 API: 모두 HTTP 200이며 새 modal DOM·렌더 함수·스타일 포함 확인
 - 변경 후 JavaScript 구문, 정적 dashboard 계약, CCU-MMR·취향 회귀, 피드백·후기 API 19건: 모두 통과
 - Chrome 390×844: `수월봉` 평가 modal에서 전체 비율 대표 사진, `어떤 곳인가요?`, `카카오 방문 후기`, 5점 평가가 하나의 내부 스크롤에 표시되고 닫은 뒤 이미지 src·설명·후기 DOM이 정리됨을 확인
+- 운영 컨테이너 `edge`, `rail-api`, `travel-feedback`: `mobile-modal-details-141b99d` 이미지로 전환 후 모두 healthy 확인
+- 운영 공개 `/travel/`과 정적 자산에 새 사진·설명·후기 modal 계약 포함, 수월봉 후기 API HTTP 200·5건 반환 확인
 
 ## 설계와 달라진 점
 
@@ -158,3 +161,4 @@ HTML에 모바일 평가 mount section을 추가하고 `renderMobileDetailFeedba
 | 2026-09-03 | 수정 커밋 원격 반영 및 OCI 운영 릴리스 배포·공개 경로 검증 완료 |
 | 2026-09-03 | 모바일 평가 modal에 대표 사진·장소 설명·카카오 후기를 포함하는 요구사항으로 재개 |
 | 2026-09-03 | 공통 설명·후기 렌더러와 화면별 요청 취소, 대표 사진·설명·후기 포함 mobile modal 구현 및 390px 검증 완료 |
+| 2026-09-03 | 상세 보완 커밋 원격 반영 및 OCI 운영 릴리스 배포·실제 후기 응답 검증 완료 |
