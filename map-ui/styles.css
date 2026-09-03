@@ -3239,6 +3239,10 @@ button:focus-visible {
   background: var(--brand-pale);
 }
 
+.detail-mobile-feedback {
+  display: none;
+}
+
 .recommendation-feedback {
   display: grid;
   gap: 7px;
@@ -3942,6 +3946,77 @@ button:focus-visible {
 
   .detail-phone {
     display: block;
+  }
+
+  .detail-close {
+    width: 44px;
+    height: 44px;
+  }
+
+  .detail-mobile-feedback {
+    display: block;
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid #b9d9ce;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #f3fbf7, #fff);
+  }
+
+  .detail-mobile-feedback[hidden] {
+    display: none;
+  }
+
+  .detail-mobile-feedback.is-unavailable {
+    border-style: dashed;
+    background: #f7f8f5;
+  }
+
+  .detail-mobile-feedback-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .detail-mobile-feedback-heading > strong {
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .detail-mobile-feedback-heading > span {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--brand-pale);
+    color: var(--brand-deep);
+    font-size: 10px;
+    font-weight: 820;
+  }
+
+  .detail-mobile-feedback > p {
+    margin: 7px 0 0;
+    color: var(--ink-soft);
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .detail-mobile-feedback .recommendation-feedback {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .detail-mobile-feedback .recommendation-feedback-option {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .detail-mobile-feedback .recommendation-feedback-comment label {
+    font-size: 12px;
+  }
+
+  .detail-mobile-feedback .recommendation-feedback-comment textarea {
+    min-height: 96px;
+    font-size: 16px;
   }
 
   .metric-grid {

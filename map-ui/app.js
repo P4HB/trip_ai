@@ -54,7 +54,7 @@
     "resetFiltersButton", "categoryFilters", "resultCount", "resultList", "viewportCount", "mobileResultCount",
     "fitRecommendationButton", "fitFilteredButton", "fitJejuButton", "detailPanel", "detailCloseButton",
     "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailImagePlaceholder", "detailType", "detailModified", "detailPlaceId", "detailRank", "detailTitle",
-    "detailAddress", "detailPhone", "detailResearch", "detailReviews", "centerPlaceButton",
+    "detailAddress", "detailPhone", "detailMobileFeedback", "detailResearch", "detailReviews", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCollapseButton", "sidebarExpandButton", "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
     "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
@@ -1419,6 +1419,34 @@
     }
   }
 
+  function renderMobileDetailFeedback(place, recommendation) {
+    const panel = dom.detailMobileFeedback;
+    panel.replaceChildren();
+    panel.hidden = false;
+    panel.classList.toggle("is-unavailable", !recommendation);
+
+    const heading = document.createElement("div");
+    heading.className = "detail-mobile-feedback-heading";
+    const title = document.createElement("strong");
+    title.textContent = recommendation ? "이 장소 평가하기" : "장소 평가";
+    heading.append(title);
+
+    const help = document.createElement("p");
+    if (recommendation) {
+      const rank = document.createElement("span");
+      rank.textContent = `추천 ${recommendation.rank}위`;
+      heading.append(rank);
+      help.textContent = "추천 카드와 일정의 평가가 함께 바뀌며 이름·별칭과 함께 자동 저장됩니다.";
+      panel.append(heading, help, createRecommendationFeedback(place, "mobile-detail"));
+      return;
+    }
+
+    help.textContent = state.recommendationResult
+      ? "이번 추천 결과에 포함된 장소만 점수와 의견을 남길 수 있어요."
+      : "여행 추천을 완료하면 추천 장소에 점수와 의견을 남길 수 있어요.";
+    panel.append(heading, help);
+  }
+
   function renderDetail(place) {
     const category = categoryFor(place.type);
     const recommendation = recommendationFor(place);
@@ -1434,6 +1462,7 @@
     dom.detailAddress.textContent = place.address || "주소 정보 없음";
     dom.detailPhone.textContent = place.phone || "";
     dom.detailPhone.hidden = !place.phone;
+    renderMobileDetailFeedback(place, recommendation);
     renderResearchDetail(place);
     loadPlaceReviews(place);
     closePlaceImageDialog({ restoreFocus: false });

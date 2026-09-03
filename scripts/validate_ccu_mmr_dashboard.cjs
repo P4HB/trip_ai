@@ -20,7 +20,7 @@ const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "restartTravelMbtiButton", "travelMbtiDialog",
   "travelMbtiProgressLabel", "travelMbtiProgressBar", "travelMbtiBody", "travelMbtiBackButton", "travelMbtiSkipButton",
-  "detailPlaceId", "detailReviews", "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage",
+  "detailPlaceId", "detailReviews", "detailMedia", "detailImageBackdrop", "detailImageButton", "detailImage", "detailMobileFeedback",
   "placeImageDialog", "placeImageDialogTitle", "placeImageDialogImage", "placeImageDialogCloseButton",
   "sidebarCollapseButton", "sidebarExpandButton",
   "participantNamePanel", "participantName", "participantNameStatus",
@@ -153,6 +153,22 @@ assert.match(feedbackComponentSource, /createElement\("textarea"\)/u, "per-place
 assert.match(feedbackComponentSource, /commentInput\.maxLength = 300/u, "feedback comment length boundary");
 assert.match(feedbackComponentSource, /recommendationFeedback\.set\(feedbackKey, \{ \.\.\.current, comment: commentInput\.value \}\)/u, "feedback comment memory state");
 assert.match(feedbackComponentSource, /syncRecommendationFeedback\(feedbackKey, commentInput\)/u, "feedback instances synchronize comments");
+assert.match(dashboardHtml, /id="detailMobileFeedback"[^>]*hidden/u, "mobile detail feedback mount starts hidden");
+const mobileDetailFeedbackStart = dashboardApp.indexOf("function renderMobileDetailFeedback(place, recommendation)");
+const mobileDetailFeedbackEnd = dashboardApp.indexOf("function renderDetail(place)", mobileDetailFeedbackStart);
+const mobileDetailFeedbackSource = mobileDetailFeedbackStart >= 0 && mobileDetailFeedbackEnd > mobileDetailFeedbackStart
+  ? dashboardApp.slice(mobileDetailFeedbackStart, mobileDetailFeedbackEnd)
+  : "";
+assert.ok(mobileDetailFeedbackSource, "mobile place detail feedback renderer");
+assert.match(mobileDetailFeedbackSource, /createRecommendationFeedback\(place, "mobile-detail"\)/u, "recommended mobile detail uses shared feedback");
+assert.match(mobileDetailFeedbackSource, /state\.recommendationResult/u, "mobile detail distinguishes recommendation eligibility guidance");
+assert.match(mobileDetailFeedbackSource, /이번 추천 결과에 포함된 장소만/u, "non-target place guidance");
+assert.match(mobileDetailFeedbackSource, /여행 추천을 완료하면/u, "pre-recommendation guidance");
+assert.match(dashboardApp, /renderMobileDetailFeedback\(place, recommendation\)/u, "place detail renders mobile feedback state");
+assert.match(dashboardStyles, /\.detail-mobile-feedback\s*\{\s*display: none;/u, "mobile detail feedback stays hidden on desktop");
+assert.match(dashboardStyles, /@media \(max-width: 760px\)[\s\S]*?\.detail-mobile-feedback\s*\{[\s\S]*?display: block;/u, "mobile detail feedback becomes visible at mobile breakpoint");
+assert.match(dashboardStyles, /\.detail-mobile-feedback \.recommendation-feedback-option\s*\{[\s\S]*?min-height: 44px;/u, "mobile feedback score targets are touch sized");
+assert.match(dashboardStyles, /\.detail-mobile-feedback \.recommendation-feedback-comment textarea\s*\{[\s\S]*?font-size: 16px;/u, "mobile feedback comment avoids input zoom");
 const recommendationCardStart = dashboardApp.indexOf("function createRecommendationCard(item)");
 const recommendationCardEnd = dashboardApp.indexOf("function renderWarnings", recommendationCardStart);
 const recommendationCardSource = recommendationCardStart >= 0 && recommendationCardEnd > recommendationCardStart
