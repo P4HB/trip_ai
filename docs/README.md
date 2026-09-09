@@ -73,6 +73,7 @@
 | [SPEC-067](spec_067.md) | 데스크톱 여행 선택 패널 접기·펼치기 | Implemented | recommendation, desktop, map, UI |
 | [SPEC-068](spec_068.md) | 장소 상세 대표 이미지 표시·확대 개선 | Implemented | map, image, responsive, accessibility, UI |
 | [SPEC-069](spec_069.md) | 추천 평가 로그 참여자 이름·별칭 입력 | Implemented | feedback, participant, privacy, API, UI |
+| [SPEC-070](spec_070.md) | 9월 3일 이후 익명 테스터 피드백 HTML 리포트 | Implemented | feedback, reporting, UI |
 | [SPEC-071](spec_071.md) | 장소 상세 내부 라벨·변동 제약 표시 제거 | Implemented | map, recommendation, detail, UI |
 | [SPEC-072](spec_072.md) | 장소 상세 내부 추천 점수 trace 숨김 | Implemented | map, recommendation, detail, UI |
 | [SPEC-073](spec_073.md) | 모바일 장소 상세 추천 평가 입력 | Implemented | mobile, map, feedback, detail, UI |
