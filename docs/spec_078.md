@@ -42,7 +42,7 @@
 - `node scripts/test_daily_type_limit.cjs`: 유형 상한·필수 동일 유형 분리·부족 여행일 infeasible/필수 보존·사용자/자동 anchor·unknown·diversity off 및 실제 데이터 48개 시나리오 통과.
 - `node scripts/validate_ccu_mmr_dashboard.cjs`: UI 계약과 전체 데이터 fixture 통과.
 - 번들 변경 후 `python scripts/classify_place_types.py`로 sidecar 입력 해시를 갱신하고 `python scripts/test_place_types.py` 통과. 분류값과 유형 건수는 유지됐다.
-- 배포 및 실제 브라우저 시각 검증은 이번 범위에서 수행하지 않았다.
+- 초기 구현 검증 당시 배포 및 실제 브라우저 시각 검증은 수행하지 않았다. 후속 배포 결과는 아래에 기록한다.
 
 ## 설계와 달라진 점
 없음.
@@ -57,3 +57,12 @@
 
 ## 후속 배포 계획
 사용자가 Git push 및 서버 배포를 승인했다. 원격 main 최신 커밋 기반 별도 작업트리에서 이번 변경만 커밋·푸시한다. OCI 현재 릴리스의 edge 이미지를 기반으로 map-ui를 갱신한 새 이미지를 만들고 기존 `activate-edge-only.sh`로 전환한다. Rail API·피드백 컨테이너, 볼륨, Caddy 설정을 유지한다. 공개 HTTPS 파일 해시·버전·기존 healthz를 검증하며 실패 시 기존 edge 릴리스로 복구한다.
+
+## 후속 배포 결과
+
+- 기능 커밋 `7270b2a`, SPEC 색인 커밋 `fbda02c`를 `origin/main`에 푸시했다. 원격 기존 커밋을 보존하고 관련 없는 로컬 미완료 작업은 포함하지 않았다.
+- `/opt/rail-desk/releases/20260911-travel-types-fbda02c`를 활성화했다. 이전 활성 릴리스 `20260911-clock-02`를 복제하고 기존 edge 이미지를 기반으로 `map-ui`만 교체한 `rail-desk-edge:travel-types-fbda02c`를 생성했다.
+- 기존 `activate-edge-only.sh`가 서비스 설정 동일성·예약 작업 없음·헬스체크를 검증하고 전환했다. Rail API와 travel-feedback 컨테이너 ID는 유지됐으며 세 컨테이너 모두 healthy다.
+- 공개 `/`, `/healthz`, `/travel/` HTTP 200. index/app/ccu-mmr/장소 데이터/styles/preference/Leaflet 자산 7개도 HTTP 200이며 업로드한 Git 아카이브와 SHA-256/바이트가 일치한다. Git archive의 Windows 줄바꿈 변환 때문에 Git blob 직접 비교와는 줄바꿈만 다르며 정규화 내용은 일치한다.
+- 공개 URL: https://168-107-40-231.sslip.io/travel/
+- 실제 브라우저 시각 검증은 별도로 수행하지 않았다. 기능은 앞서 통과한 48개 시나리오 코드와 동일한 파일이 배포됐다.
