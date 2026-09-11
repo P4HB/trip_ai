@@ -81,6 +81,10 @@
 | [SPEC-074](spec_074.md) | 장소 평가 완료 버튼과 추천 목록 완료 표시 | Implemented | feedback, recommendation, mobile, UI |
 
 
+| [SPEC-075](spec_075.md) | 하루 유형 상한을 위한 기존 지도 장소 대표 유형 분류 | Implemented | data, classification |
+| [SPEC-076](spec_076.md) | 장소 유형 사용자 확정과 경관·걷기 분류 | Implemented | data, classification |
+| [SPEC-077](spec_077.md) | 남은 장소 유형 8곳 사용자 확정 | Implemented | data, classification |
+| [SPEC-078](spec_078.md) | 하루 대표 유형당 1곳 제한 | Implemented | recommendation, itinerary, data |
 
 - 다음 예약 번호: `SPEC-079`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
