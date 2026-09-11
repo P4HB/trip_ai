@@ -340,6 +340,17 @@ if (source.date !== LABEL_SNAPSHOT_DATE) {
   throw new Error(`TourAPI snapshot ${source.date} does not match label snapshot ${LABEL_SNAPSHOT_DATE}`);
 }
 const rawPlaces = JSON.parse(fs.readFileSync(source.file, "utf8"));
+const primaryTypeTaxonomy = JSON.parse(fs.readFileSync(path.join(workspaceRoot, "config/place_type_taxonomy.v1.json"), "utf8"));
+const primaryTypeRecords = readJsonLines(path.join(workspaceRoot, "data/labeling/jeju/2026-09-11/place-types-v1/place_types.jsonl"));
+const primaryTypes = new Map();
+for (const record of primaryTypeRecords) {
+  if (primaryTypes.has(record.place_id) || record.taxonomy_version !== primaryTypeTaxonomy.version
+    || !primaryTypeTaxonomy.types[record.primary_type] || record.primary_type === "unknown"
+    || !["rule_classified", "user_confirmed"].includes(record.classification_status)) {
+    throw new Error(`Invalid primary type classification: ${record.place_id}`);
+  }
+  primaryTypes.set(record.place_id, record);
+}
 const v5Reviews = loadV5Reviews();
 const fitLabels = loadFitLabels();
 const { constraintsById, count: hardConstraintCount } = loadHardConstraints();
@@ -360,12 +371,16 @@ const places = rawPlaces.flatMap((place, sourceOrder) => {
   }
 
   const placeId = clean(place.contentid);
+  const primaryType = primaryTypes.get(placeId);
+  if (!primaryType) throw new Error(`Missing primary type classification: ${placeId}`);
   const v5Review = v5Reviews.get(placeId) ?? null;
   return [
     {
       id: placeId,
       sourceOrder,
       type: clean(place.contenttypeid),
+      primaryType: primaryType.primary_type,
+      primaryTypeLabel: primaryTypeTaxonomy.types[primaryType.primary_type].label,
       title: clean(place.title) || "이름 없는 장소",
       address: [clean(place.addr1), clean(place.addr2)].filter(Boolean).join(" "),
       phone: clean(place.tel),
@@ -384,6 +399,7 @@ const places = rawPlaces.flatMap((place, sourceOrder) => {
     },
   ];
 });
+if (places.length !== primaryTypes.size) throw new Error("Primary type scope differs from map places");
 
 const recommendationReadyCount = places.filter((place) => {
   const labels = new Map((place.v5?.labels ?? []).map((record) => [record.label, record.value]));
@@ -421,7 +437,8 @@ const metadata = {
   hardConstraintAttachedCount: attachedConstraintCount,
   hardConstraintAttachedPlaceCount: attachedConstraintPlaceCount,
   datasetStatus: "ai_draft",
-  algorithmVersion: "ccu-mmr-v6-travel-mbti-three-axis",
+  algorithmVersion: "ccu-mmr-v7-daily-type-limit",
+  primaryTypeVersion: primaryTypeTaxonomy.version,
   fitLabelVersion: "place-fit-relabel-v2-relative-five-level-companion",
   preferenceLabelVersion: "place-preference-label-v5-researched",
   researchVersion: "place-preference-label-v5-researched-sources-v1",

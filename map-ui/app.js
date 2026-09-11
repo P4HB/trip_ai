@@ -2156,7 +2156,7 @@
 
   function renderSchedule(schedule) {
     dom.scheduleDayCount.textContent = formatNumber(schedule.dayClusters.length);
-    dom.scheduleSummary.textContent = `${scheduleStatusLabel(schedule.status)} · ${schedule.radiusKm}km · 하루 ${schedule.dailyCapacity}곳 · 장소별 만족도 입력 가능`;
+    dom.scheduleSummary.textContent = `${scheduleStatusLabel(schedule.status)} · ${schedule.radiusKm}km · 하루 최대 ${schedule.dailyCapacity}곳 · 유형별 하루 1곳 · 장소별 만족도 입력 가능`;
     if (schedule.dayClusters.length) {
       const fragment = document.createDocumentFragment();
       for (const day of schedule.dayClusters) {
@@ -2196,6 +2196,11 @@
         placesList.className = "schedule-place-list";
         for (const item of day.places) placesList.append(createSchedulePlaceCard(item, day.dayIndex));
         card.append(heading, meta, placesList);
+        if (schedule.status !== "infeasible" && day.remainingCapacity > 0) {
+          const note = document.createElement("p");
+          note.textContent = "유형별 하루 1곳과 거리 조건에 맞는 후보만 배치했습니다.";
+          card.append(note);
+        }
         if (day.anchorPlaceId && day.centerType === "user_anchor") {
           const remove = document.createElement("button");
           remove.type = "button";

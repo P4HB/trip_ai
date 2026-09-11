@@ -15,6 +15,7 @@ function place(id, relevanceVector, overrides = {}) {
   return {
     id,
     title: id,
+    primaryType: overrides.primaryType || `fixture_${id}`,
     type: overrides.type || "12",
     region: overrides.region || "jeju_city",
     sourceOrder: overrides.sourceOrder ?? (Number(id.replace(/\D/gu, "")) || 0),

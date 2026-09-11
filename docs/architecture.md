@@ -5,6 +5,8 @@
 
 ## 현재 구현
 
+[ SPEC-078](spec_078.md): 지도 데이터 생성기는 기존 대표 유형 JSONL과 taxonomy를 조인해 primaryType/primaryTypeLabel을 공급한다. 브라우저 엔진이 필수 군집 분할과 자동 일정 선택에서 유형별 하루 1곳 상한을 적용한다. 분류 sidecar는 별도 SQLite로 유지한다.
+
 현재 제품은 제주 장소 데이터를 수집하고 브라우저 지도에서 탐색하며, 구조화된 입력으로 CCU-MMR 내부 실험을 실행하는 정적 MVP다. 서버 추천 API와 운영 추천 엔진은 없다.
 
 ```text

@@ -170,3 +170,7 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 - 빈 결과, mapper 실패와 외부 데이터 실패 폴백 검증
 
 정확한 품질 임계값과 운영 승격 조건은 구현 SPEC에서 독립 평가 결과와 함께 승인한다. 그 전까지 현재 데이터는 내부 실험용 `ai_draft`다.
+
+## 하루 유형 상한 회귀 — SPEC-078
+
+`node scripts/test_daily_type_limit.cjs`는 일자별 대표 유형 중복 0, 필수 보존과 일자 분리, 여행일 초과 infeasible, anchor 집계, unknown 제외, diversity off 및 실제 데이터 48개 조건의 반경·capacity·ID 중복을 검사한다. 이는 만족도 개선 검증이 아니다.

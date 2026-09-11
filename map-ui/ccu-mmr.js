@@ -5,7 +5,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
   "use strict";
 
-  const ALGORITHM_VERSION = "ccu-mmr-v6-travel-mbti-three-axis";
+  const ALGORITHM_VERSION = "ccu-mmr-v7-daily-type-limit";
   const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v2";
   const PERSONALIZED_REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v4-personalized";
   const PREFERENCE_PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
@@ -655,8 +655,15 @@
           - bearingFromCenter(geographicCluster.center, placesById.get(rightId));
         return bearingDifference || compareText(leftId, rightId);
       });
-      for (let offset = 0; offset < ordered.length; offset += dailyCapacity) {
-        const requiredPlaceIds = ordered.slice(offset, offset + dailyCapacity);
+      const partitions = [];
+      for (const placeId of ordered) {
+        const type = scheduleType(placesById.get(placeId));
+        let partition = partitions.find((ids) => ids.length < dailyCapacity
+          && ids.every((id) => scheduleType(placesById.get(id)) !== type));
+        if (!partition) { partition = []; partitions.push(partition); }
+        partition.push(placeId);
+      }
+      for (const requiredPlaceIds of partitions) {
         const child = clusterFromIds(requiredPlaceIds, placesById, geographicCluster.center);
         dayClusters.push({
           center: child.center,
@@ -690,11 +697,14 @@
       ...(dayCluster.anchorPlaceId ? [dayCluster.anchorPlaceId] : []),
     ];
     const recommended = [];
+    const selectedTypes = new Set(selectedIds.map((id) => scheduleType(placesById.get(id))));
     while (selectedIds.length < request.scheduleConfig.dailyCapacity) {
       const evaluated = [];
       for (const candidate of scoredCandidates) {
         if (usedPlaceIds.has(candidate.placeId)) continue;
         const candidatePlace = placesById.get(candidate.placeId);
+        const primaryType = scheduleType(candidatePlace);
+        if (!primaryType || selectedTypes.has(primaryType)) continue;
         const distanceKm = haversineKm(dayCluster.center, candidatePlace);
         if (distanceKm > request.scheduleConfig.radiusKm + 1e-9) continue;
         const centerFit = Math.max(0, 1 - distanceKm / request.scheduleConfig.radiusKm);
@@ -727,10 +737,16 @@
       selectionPool.sort((a, b) => compareStable(a, b, "mmrScore"));
       const winner = selectionPool[0];
       selectedIds.push(winner.placeId);
+      selectedTypes.add(scheduleType(placesById.get(winner.placeId)));
       usedPlaceIds.add(winner.placeId);
       recommended.push(winner);
     }
     return recommended;
+  }
+
+  function scheduleType(place) {
+    const type = place?.primaryType;
+    return typeof type === "string" && type.trim() && type !== "unknown" ? type : null;
   }
 
   function buildSchedule(scoredCandidates, placesById, request, courseVariant = null) {
@@ -746,6 +762,7 @@
       radiusKm,
       capacityMode: request.scheduleConfig.capacityMode,
       dailyCapacity,
+      dailyTypeLimit: 1,
       geographicClusterCount: 0,
       requiredDayClusterCount: 0,
       selectedAnchorCount: 0,
@@ -768,6 +785,7 @@
       if (!place) throw new Error(`일정 장소 ID를 후보 데이터에서 찾을 수 없습니다: ${placeId}`);
       if (!scoreById.has(placeId)) throw new Error(`일정 장소가 현재 지역·목적·필수조건을 통과하지 못했습니다: ${placeId}`);
       if (!hasCoordinates(place)) throw new Error(`일정 장소 좌표가 없습니다: ${placeId}`);
+      if (!scheduleType(place)) throw new Error(`일정 장소의 대표 유형을 확인해야 합니다: ${placeId}`);
     }
 
     const geographicClusters = clusterRequiredPlaces(request.requiredPlaceIds, placesById, radiusKm);
@@ -779,7 +797,7 @@
       base.unfilledDayCount = 0;
       base.violations.push({
         code: "required_clusters_exceed_trip_days",
-        message: `필수 장소에 필요한 일자 ${dayClusters.length}일이 여행일 ${tripDays}일을 초과합니다.`,
+        message: `유형당 하루 1곳·반경·하루 수용량 조건으로 필수 장소에 필요한 ${dayClusters.length}일이 여행일 ${tripDays}일을 초과합니다.`,
       });
     }
 
@@ -814,7 +832,7 @@
       const addAutomaticAnchor = (candidate, source) => {
         if (!candidate || dayClusters.length >= tripDays || occupiedIds.has(candidate.placeId)) return false;
         const place = placesById.get(candidate.placeId);
-        if (!place || !scoreById.has(candidate.placeId) || !outsideAllCenters(place, dayClusters, radiusKm)) return false;
+        if (!place || !scheduleType(place) || !scoreById.has(candidate.placeId) || !outsideAllCenters(place, dayClusters, radiusKm)) return false;
         dayClusters.push({
           center: { lat: Number(place.lat), lng: Number(place.lng) },
           centerType: source === "variant" ? "variant_anchor" : "fallback_anchor",
@@ -846,6 +864,7 @@
       base.unfilledDayCount = Math.max(0, tripDays - dayClusters.length);
       base.status = base.unfilledDayCount ? "needs_anchor_selection" : "feasible";
       base.anchorCandidates = scoredCandidates
+        .filter((candidate) => scheduleType(placesById.get(candidate.placeId)))
         .filter((candidate) => !occupiedIds.has(candidate.placeId))
         .filter((candidate) => outsideAllCenters(placesById.get(candidate.placeId), dayClusters, radiusKm))
         .slice(0, CONFIG.schedule.anchorCandidateLimit)
@@ -885,6 +904,7 @@
         places: allPlaceIds.map((placeId) => ({
           placeId,
           title: placesById.get(placeId)?.title || placeId,
+          primaryType: scheduleType(placesById.get(placeId)),
           role: cluster.requiredPlaceIds.includes(placeId)
             ? "required"
             : placeId === cluster.anchorPlaceId ? "anchor" : "recommended",

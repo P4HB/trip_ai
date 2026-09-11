@@ -32,6 +32,20 @@
 
 ## 지도 장소 — 구현됨
 
+### 지도 장소 대표 유형 sidecar — 구현됨 (규칙 기반 초안)
+
+[SPEC-075](spec_075.md)는 기존 지도 2,153곳에 하루 유형 상한용 대표 유형을 붙인다. [SPEC-078](spec_078.md)에서 유형당 하루 1곳 상한을 구현했다. 기준 설정은 `config/place_type_taxonomy.v1.json`, 산출물은 `data/labeling/jeju/2026-09-11/place-types-v1/`다. 원본 SQLite는 유지하고, SPEC-078 지도 생성기가 sidecar를 검증해 번들에 대표 유형을 조인한다.
+
+- `place_types.jsonl`: `place_id`(기존 TourAPI ID), `primary_type`(33개 대표 유형 또는 unknown), `taxonomy_version`, `classification_status`, `human_reviewed`, `user_confirmation`, `rule_id`, `evidence`, `review_reasons`, `source_classification`, `research_highlights`, `research_sources`, `recommendation_ready`.
+- [SPEC-076](spec_076.md)의 사용자 확정은 `classification_status=user_confirmed`, `human_reviewed=true`, `method=user_confirmation`이며 확인일·명시적 지시를 `user_confirmation`에 보존한다. 웹 사실의 최신성 검증을 뜻하지 않는다. [SPEC-077](spec_077.md) 이후 taxonomy version은 `place-primary-types-v1.2-review-complete`이며 사용자 확정 27곳·규칙 판정 2,126곳·검토 0곳이다. 경관·걷기(`scenic_walk`)를 추가했다.
+- `classification_status=rule_classified`는 규칙 판정이며 사람 승인이나 정확도 보장이 아니다. 복합·불확실 사례는 `needs_review`로 기록한다. 대표 유형은 한 장소당 하나이며 확률 형태 confidence는 만들지 않는다.
+- `recommendation_ready`는 기존 41축 데이터 준비 여부다. 실제 추천 자격, intent 일치나 운영 가능 여부를 뜻하지 않는다. 카페 유형에는 기존 추천 미대상 베이커리도 포함된다.
+- `place_types.sqlite3`의 `place_types` 테이블은 `place_id` 기본키와 `primary_type` 인덱스, 전체 레코드 `record_json`을 가진다. JSONL과 동일한 레코드다.
+- `review_queue.jsonl`은 검토 필요 레코드, `report.md`는 유형 분포·검토 목록·전체 장소 목록, `manifest.json`은 입력/출력 해시와 버전·건수를 가진다.
+- 생성: `python scripts/classify_place_types.py`. 검증: `python scripts/test_place_types.py`. 유형 ID별 의미는 taxonomy를 정본으로 사용한다.
+
+### 지도 번들
+
 `scripts/build_map_ui_data.mjs`가 `map-ui/data/jeju-places.js`에 아래 논리 구조를 생성한다.
 
 ```text
@@ -39,6 +53,8 @@ Place {
   id: string
   sourceOrder: integer
   type: string
+  primaryType: string // SPEC-078, 대표 유형 ID
+  primaryTypeLabel: string // 대표 유형 표시 이름
   title: string
   address: string
   phone: string
@@ -698,3 +714,7 @@ EvidenceBackedReason {
 - 결과에는 데이터 snapshot과 feature/filter/scoring/diversity/mapper 버전을 모두 기록한다.
 - 후속 일정 엔진은 `place_fit`을 변경하지 않고 별도 `schedule_feasibility`와 `schedule_utility` 계약을 사용한다.
 - 점수 범위, 내부 정밀도와 표시 반올림은 알고리즘 버전별로 고정한다.
+
+## 하루 대표 유형 제한 — SPEC-078
+
+지도 metadata의 `primaryTypeVersion`은 분류 taxonomy 버전이다. 생성기는 중복·누락·unknown·검토 필요 분류를 허용하지 않는다. 일정 결과 `dailyTypeLimit=1`과 `dayClusters[].places[].primaryType`을 기록한다. 엔진에 직접 전달한 unknown/누락 유형은 자동 일정 후보에서 제외하고 필수/사용자 anchor는 오류로 반환한다.
