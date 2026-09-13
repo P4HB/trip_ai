@@ -86,6 +86,9 @@
 - 축제·행사는 기간이나 미정 선택으로 날짜 요구사항을 통과할 수 없게 유지했다.
 - 데스크톱 단계형 화면에서 기간 선택으로 다음 단계 진행, 실제 날짜와 기간·미정 간 상호 해제 동작을 브라우저에서 확인했다.
 - 390×844 모바일 화면에서 세 기간 카드의 선택 상태와 가로 넘침 0px를 확인했다.
+- 기능 커밋 `e5683a4`를 원격 `main`에 푸시하고 운영 릴리스 `/opt/rail-desk/releases/20260913-trip-duration-e5683a4`로 배포했다. 직전 OSM 복구 릴리스를 기반으로 `map-ui`만 교체했으며 Rail API와 후기 API 컨테이너는 재시작하지 않았다.
+- 공개 `/`, `/healthz`, `/travel/`, 버전된 `app.js`·`ccu-mmr.js`와 실제 카카오 후기 API가 모두 HTTP 200을 반환했다. 운영 HTML에서 기간 카드 3개와 `20260913-duration-only` 자산 버전을 확인했고 브라우저 경고·오류는 없었다.
+- 운영 `/travel/`의 `Referrer-Policy: strict-origin-when-cross-origin`과 비여행 루트의 `same-origin`을 확인해 OSM 지도 복구 설정도 보존됐다.
 - 검증 결과:
   - `node --check map-ui/app.js`: 통과
   - `node --check map-ui/ccu-mmr.js`: 통과
@@ -108,3 +111,4 @@
 |---|---|
 | 2026-09-13 | 사용자 요청을 승인 근거로 구현 시작 |
 | 2026-09-13 | 기간 선택 UI·요청 계약·일정 생성과 회귀 검증을 완료하고 Implemented로 전환 |
+| 2026-09-13 | 기능 커밋 `e5683a4` 푸시, 운영 릴리스 `20260913-trip-duration-e5683a4` edge 배포 및 공개 회귀 검증 완료 |
