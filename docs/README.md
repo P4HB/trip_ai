@@ -85,8 +85,9 @@
 | [SPEC-076](spec_076.md) | 장소 유형 사용자 확정과 경관·걷기 분류 | Implemented | data, classification |
 | [SPEC-077](spec_077.md) | 남은 장소 유형 8곳 사용자 확정 | Implemented | data, classification |
 | [SPEC-078](spec_078.md) | 하루 대표 유형당 1곳 제한 | Implemented | recommendation, itinerary, data |
+| [SPEC-079](spec_079.md) | OpenStreetMap 타일 차단 복구 | In Progress | map, deployment, hosting |
 
-- 다음 예약 번호: `SPEC-079`
+- 다음 예약 번호: `SPEC-080`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

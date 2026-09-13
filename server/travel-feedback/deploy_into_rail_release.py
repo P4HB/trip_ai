@@ -70,11 +70,42 @@ PREVIOUS_CADDY_BLOCK = """\t\t@travel_feedback path /travel/api/feedback
 
 """
 
+TRAVEL_REFERRER_POLICY_BLOCK = """\t\t@travel_referrer_policy path /travel /travel/*
+\t\theader @travel_referrer_policy Referrer-Policy "strict-origin-when-cross-origin"
+
+\t\t@non_travel_referrer_policy not path /travel /travel/*
+\t\theader @non_travel_referrer_policy Referrer-Policy "same-origin"
+
+"""
+
+GLOBAL_REFERRER_POLICY = '\t\t\tReferrer-Policy "same-origin"\n'
+
 
 def replace_once(text: str, old: str, new: str, label: str) -> str:
     if text.count(old) != 1:
         raise RuntimeError(f"expected one {label} anchor, found {text.count(old)}")
     return text.replace(old, new, 1)
+
+
+def configure_referrer_policy(caddy: str) -> str:
+    """Allow an origin Referer for travel tiles without relaxing other routes."""
+    if TRAVEL_REFERRER_POLICY_BLOCK in caddy:
+        if GLOBAL_REFERRER_POLICY in caddy:
+            raise RuntimeError("travel referrer policy conflicts with global same-origin policy")
+        return caddy
+
+    caddy = replace_once(
+        caddy,
+        GLOBAL_REFERRER_POLICY,
+        "",
+        "global Referrer-Policy",
+    )
+    return replace_once(
+        caddy,
+        "\t\theader {\n",
+        TRAVEL_REFERRER_POLICY_BLOCK + "\t\theader {\n",
+        "global header block",
+    )
 
 
 def install(release: Path, version: str) -> None:
@@ -105,6 +136,7 @@ def install(release: Path, version: str) -> None:
 
     caddy_path = resolved / "deploy" / "Caddyfile"
     caddy = caddy_path.read_text(encoding="utf-8")
+    caddy = configure_referrer_policy(caddy)
     legacy_caddy_block = """\t\t@travel_feedback path /travel/api/feedback
 \t\thandle @travel_feedback {
 \t\t\treverse_proxy travel-feedback:8200
@@ -113,10 +145,8 @@ def install(release: Path, version: str) -> None:
 """
     if PREVIOUS_CADDY_BLOCK in caddy:
         caddy = replace_once(caddy, PREVIOUS_CADDY_BLOCK, CADDY_BLOCK, "travel API route")
-        caddy_path.write_text(caddy, encoding="utf-8")
     elif legacy_caddy_block in caddy:
         caddy = replace_once(caddy, legacy_caddy_block, CADDY_BLOCK, "legacy travel feedback route")
-        caddy_path.write_text(caddy, encoding="utf-8")
     elif "@travel_api path" not in caddy:
         caddy = replace_once(
             caddy,
@@ -124,7 +154,7 @@ def install(release: Path, version: str) -> None:
             CADDY_BLOCK + "\t\t@travel_no_slash path /travel\n",
             "travel route",
         )
-        caddy_path.write_text(caddy, encoding="utf-8")
+    caddy_path.write_text(caddy, encoding="utf-8")
 
     activate_path = resolved / "deploy" / "activate-release.sh"
     activate = activate_path.read_text(encoding="utf-8")

@@ -125,7 +125,7 @@ scripts/validate_all_place_profiles.py
 - 공개 베타 배포는 `https://168-107-40-231.sslip.io/travel/`에서 제공한다. 같은 Caddy edge의 기존 Rail Desk `/`와 `/healthz`를 유지하고, 버전된 Docker 릴리스가 Map UI 정적 파일을 `/srv/travel/`에 포함해 `/travel/` 경로로만 노출한다. `/travel`은 `/travel/`로 영구 리다이렉트한다.
 - 브라우저에 API 키를 전달하지 않는다.
 - 지도 라이브러리는 `map-ui/vendor/`의 로컬 파일을 사용한다.
-- 지도 타일과 장소 이미지는 외부 네트워크에 의존한다.
+- 지도 타일과 장소 이미지는 외부 네트워크에 의존한다. Leaflet은 OSM의 공식 단일 HTTPS 타일 호스트를 사용하고, Caddy는 `/travel`과 `/travel/*`에만 `Referrer-Policy: strict-origin-when-cross-origin`을 적용해 OSM에 공개 서비스 origin을 전달한다. 비여행 경로는 기존 `same-origin` 정책을 유지한다.
 - 지도 UI는 생성된 `window.JEJU_PLACES`와 `window.JEJU_DATA_META`를 읽는다.
 - 장소 상세를 열면 브라우저가 동일 출처 `GET /travel/api/places/{contentid}/reviews?limit=5&offset=0`을 호출한다. Caddy는 이 경로를 `travel-feedback` 서비스로 프록시하고, 서비스는 이미지에 포함된 읽기 전용 `kakao_reviews.sqlite3`에서 승인된 `contentid`↔Kakao `place_id` 관계와 작성자명이 제거된 수집 후기 스냅샷을 조회한다. 리뷰 카탈로그 DB는 추천 만족도 쓰기 DB·90일 보존 볼륨과 분리된다.
 - [SPEC-074](spec_074.md): 공통 장소 평가에서 1~5점 선택 후 완료 버튼을 표시하며 의견은 선택이다. 완료 시 모바일 평가 창을 닫고 추천·일정 카드에 체크와 점수를 동기화한다. 점수·의견 수정은 다시 미완료가 된다. `completed`는 브라우저 메모리 전용 입력 완료 상태이며 v3 서버 payload나 저장 성공을 뜻하지 않는다. 사진 아래 중복 저장 안내를 제거하고 기존 자동 저장·이름 대기·재시도를 유지한다.
