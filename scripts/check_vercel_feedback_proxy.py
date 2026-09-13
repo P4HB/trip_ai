@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import gzip
 import hashlib
 import json
 import urllib.error
@@ -26,7 +27,7 @@ MAP_DIR = Path(__file__).resolve().parents[1] / "map-ui"
 
 
 def request(url: str, *, body: bytes | None = None, origin: str | None = None):
-    headers = {"User-Agent": "TripAI-DeploymentCheck/SPEC-081"}
+    headers = {"User-Agent": "TripAI-DeploymentCheck/SPEC-081", "Accept-Encoding": "gzip"}
     if body is not None:
         headers["Content-Type"] = "application/json"
     if origin is not None:
@@ -37,7 +38,10 @@ def request(url: str, *, body: bytes | None = None, origin: str | None = None):
     except urllib.error.HTTPError as exc:
         response = exc
     with response:
-        return response.status, response.read(), response.headers
+        content = response.read()
+        if response.headers.get("Content-Encoding") == "gzip":
+            content = gzip.decompress(content)
+        return response.status, content, response.headers
 
 
 def require(condition: bool, description: str) -> None:

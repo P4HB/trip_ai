@@ -18,6 +18,14 @@ python -m http.server 8080 -d map-ui
 
 그다음 <http://localhost:8080>을 엽니다. 이 단순 정적 서버에서는 리뷰 API가 없으므로 후기 섹션은 오류 폴백을 표시합니다. 리뷰까지 로컬 확인하려면 `server/travel-feedback` API와 `/travel/api/` 프록시를 함께 실행해야 합니다. 지도 타일과 장소 이미지는 인터넷 연결이 필요합니다.
 
+## Vercel 배포와 기존 DB 연결
+
+Vercel 프로젝트의 Root Directory는 `map-ui`, Framework Preset은 `Other`이며 별도 빌드 없이 이 폴더를 제공한다. 공개 주소는 `https://trip-ai-wine-eight.vercel.app/`다. `vercel.json`이 `POST /travel/api/feedback`과 숫자 ID의 `GET /api/places/{contentid}/reviews`를 기존 `https://168-107-40-231.sslip.io/travel/api/`로 전달한다. 평가 로그는 Vercel DB가 아닌 기존 서버의 같은 SQLite에 저장된다.
+
+평가 POST의 Origin이 공개 Vercel 주소에 정확히 일치할 때만 기존 서버 Origin으로 변환한다. 다른 Origin은 그대로 전달해 기존 API의 거부 정책을 유지한다. Preview 주소는 평가 저장 허용 대상이 아니며 공개 도메인을 바꾸면 이 설정도 갱신해야 한다. 피드백 응답은 캐시하지 않고 기존 저장 성공·오류·재시도 흐름을 사용한다. 친구 서버가 중단되면 Vercel에서도 저장과 후기 조회가 실패한다.
+
+배포 후 `python3 scripts/check_vercel_feedback_proxy.py`로 정적 자산·후기·거부 정책을 확인한다. `--write-test`를 붙이면 `DEPLOYMENT-TEST-SPEC081` 이름의 합성 세션 **1개를 실제 DB에 저장**해 두 주소의 세션 생성·수정·중복 영수증을 교차 검증한다. 이 행은 기존 90일 보존 대상이며 실제 테스터 분석에서 제외한다. 상세 결정·검증 결과는 [SPEC-081](../docs/spec_081.md)을 따른다.
+
 ## 데이터 갱신
 
 현재 데모는 TourAPI와 라벨 snapshot이 모두 `2026-08-09`일 때만 번들을 만듭니다. 원본·라벨을 갱신한 뒤 날짜 상수와 계약을 함께 검토하고 다음 스크립트를 실행합니다.

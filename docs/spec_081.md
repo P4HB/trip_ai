@@ -1,6 +1,6 @@
 # SPEC-081: Vercel 호스팅과 기존 DB 평가 저장 연결
 
-- 상태: In Progress
+- 상태: Implemented
 - 작성일: 2026-09-13
 - 최종 수정일: 2026-09-13
 - 관련 이슈: 사용자 요청 — Vercel hosting 복구 및 Vercel 평가를 친구 서버의 기존 DB에 저장
@@ -51,7 +51,7 @@
 
 ## 설계
 
-계획: 현재 적용된 Root Directory `map-ui`를 유지하고 `map-ui/vercel.json`에 빌드 없는 정적 출력과 한정된 외부 전달 경로를 기록한다. Vercel routes의 조건부 request-header transform은 공개 Vercel Origin에 정확히 일치하는 POST만 기존 서버 Origin으로 변환한다. 조건 밖의 Origin은 손대지 않아 기존 API의 403 정책을 유지한다. 숫자 장소 ID의 리뷰 GET도 연결하고 나머지는 정적 파일 시스템으로 처리한다. API를 HTML로 돌려주는 catch-all rewrite는 추가하지 않는다.
+현재 적용된 Root Directory `map-ui`를 유지하고 `map-ui/vercel.json`에 빌드 없는 정적 출력과 한정된 외부 전달 경로를 기록한다. Vercel routes의 조건부 request-header transform은 공개 Vercel Origin에 정확히 일치하는 POST만 기존 서버 Origin으로 변환한다. 조건 밖의 Origin은 손대지 않아 기존 API의 403 정책을 유지한다. 숫자 장소 ID의 리뷰 GET도 연결하고 나머지는 정적 파일 시스템으로 처리한다. API를 HTML로 돌려주는 catch-all rewrite는 추가하지 않는다.
 
 기존 서버의 코드·Origin 설정·DB 볼륨은 변경하지 않는다. 새로운 Vercel 함수·DB·비밀키는 필요하지 않다. Vercel 전달 구간에서 기존 이름·별칭·평가 payload를 처리하지만 별도 저장소나 body 로그를 만들지 않는다. Git main에 설정을 푸시해 기존 자동 배포를 사용한다.
 
@@ -93,17 +93,27 @@
 
 ## 구현 결과
 
-진행 중. Vercel Build and Deployment 화면에서 Framework Preset `Other`, 비어 있는 Root Directory, 기본 Output Directory 설정을 확인했다. Root Directory에 `map-ui`를 입력하고 Save를 눌렀으며 저장 요청 중 입력과 버튼이 비활성화됐다. 이후 컴퓨터 사용 도구가 `noWindowsAvailable` 오류를 반환해 저장 성공 여부를 재확인하지 못했다. Production 재배포는 아직 실행하지 않았다. 저장 확인·재배포·AC-8101~8104 검증이 남아 있으며 완료 상태가 아니다.
+- 최초 작업에서 Vercel Root Directory를 `map-ui`로 저장 요청한 뒤 화면 연결이 종료됐다. 후속 HTTP 확인으로 루트 변경이 적용된 것을 확인했다. 이후 사용자 화면에는 접근하지 않았다.
+- `map-ui/vercel.json`의 정확한 Origin 조건·외부 POST·리뷰 GET 전달 설정을 커밋 `ef216f4`로 main에 푸시했다. Vercel 배포 `6zLrFd3aoCFVGU2hgN921cwUSG98`과 GitHub Production deployment `6421977413`가 성공했다.
+- 원래 서버에 직접 보낸 Vercel Origin의 POST는 403이다. Vercel 전달 경로를 거치면 정상 Origin 검사 후 원래 API가 처리한다. 기존 서버 코드·설정·DB와 운영 컨테이너는 변경하지 않았다.
+- `AC-8101~8102`: 공개 루트 HTML 및 참조 정적 자산 10개의 내용·해시가 로컬 파일과 일치했다. 지도 데이터 생성이나 추천 코드 변경은 없다.
+- `AC-8103~8104`: 비공개 경로·GET 평가 조회 경로는 404이며 원래 `/travel/`은 200이다. Vercel 후기 조회의 `limit=1`, `offset=0/1` 결과가 기존 서버 JSON과 일치했다.
+- `AC-8105~8106`: 합성 세션을 Vercel에서 revision 1로 생성(201), revision 2로 수정(200)했다. 원래 서버에 각각 같은 payload를 보내 `created=false`와 같은 revision을 확인했다. Vercel에 오래된 revision 1을 재전송하면 `stale=true`, `revision=2`를 반환해 같은 DB의 최신 상태를 확인했다. 저장 영수증과 오류 응답은 모두 `no-store`였다.
+- 잘못된 Origin, 도메인 뒤 문자열을 붙인 Origin, 점을 다른 문자로 바꾼 유사 Origin, `null` Origin은 모두 403이었다. 정상 Vercel Origin의 잘못된 JSON은 400, 잘못된 payload는 422였다.
+- 검증 명령: `python3 -m unittest server/travel-feedback/test_feedback_api.py` 19건 통과; `python3 -m py_compile scripts/check_vercel_feedback_proxy.py` 통과; Vercel 공식 JSON Schema를 적용한 설정 검증 오류 0개; `python3 scripts/check_vercel_feedback_proxy.py --write-test` 전체 통과; `git diff --check` 통과.
+- 합성 세션 ID는 `b474f0c1-f40c-44b4-ae74-0f40845c2ead`, 이름은 `DEPLOYMENT-TEST-SPEC081`, source.ui_version은 `deployment-smoke-spec081`이다. 가상 장소·가상 평가만 담은 **테스트 행 1개**이며 기존 90일 보존 대상이다. 실제 테스터 분석에서 제외한다.
+- 통합 검증 스크립트의 후속 네트워크 요청은 gzip 전송을 지원하도록 개선했다. 압축 응답을 해제한 후 원본 바이트·해시를 비교한다.
 
 ## 설계와 달라진 점
 
-없음.
+친구 서버에 Vercel Origin 허용 목록을 추가하는 대신, Vercel 배포 설정에서 정확한 공개 Origin에 한정해 기존 서버 Origin으로 변환했다. 기존 서버 SSH가 시간 초과인 상황에서도 기존 보안 정책·DB·컨테이너를 변경하지 않고 연결할 수 있으며, 다른 Origin 거부를 공개 HTTPS에서 검증했다. 원래 서버에서 같은 세션의 중복·지연 영수증을 확인하는 방식으로 DB 공유를 검증했으며 DB 파일 자체를 내려받거나 실제 사용자 데이터를 열지 않았다.
 
 ## 알려진 제한
 
 - 친구 서버가 계속 실행돼야 Vercel에서도 평가 저장·후기 조회가 가능하다.
 - 임시 Preview 도메인의 브라우저 평가는 허용하지 않는다. 공개 Vercel 도메인 변경 시 정확한 Origin 설정을 함께 갱신해야 한다.
 - 기존 IP별 rate limit은 Vercel 프록시 IP 기준으로 합산될 수 있다.
+- 테스트 행 1개는 관리 접근이 없어 삭제하지 않았다. 운영자가 위 합성 세션 ID로 삭제하거나 기존 보존 만료를 적용할 수 있다.
 
 ## 변경 이력
 
@@ -112,3 +122,4 @@
 | 2026-09-13 | 배포 성공·루트 404·하위 앱 200 확인, 정적 공개 폴더 복구 범위 작성 |
 | 2026-09-13 | Root Directory 수정 저장 요청 후 브라우저 연결 불가. 저장 완료 확인과 Production 재배포는 미완료 |
 | 2026-09-13 | 사용자 요청으로 기존 DB 평가 저장·후기 연결을 승인 범위에 포함, 브라우저 조작 없이 Git·HTTPS 기반 진행 |
+| 2026-09-13 | 커밋 `ef216f4` Vercel Production 배포, 원래 DB와 합성 세션 생성·갱신·중복 교차 검증 완료 |

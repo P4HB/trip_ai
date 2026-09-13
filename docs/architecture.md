@@ -123,6 +123,7 @@ scripts/validate_all_place_profiles.py
 ### 현재 런타임 경계
 
 - 공개 베타 배포는 `https://168-107-40-231.sslip.io/travel/`에서 제공한다. 같은 Caddy edge의 기존 Rail Desk `/`와 `/healthz`를 유지하고, 버전된 Docker 릴리스가 Map UI 정적 파일을 `/srv/travel/`에 포함해 `/travel/` 경로로만 노출한다. `/travel`은 `/travel/`로 영구 리다이렉트한다.
+- [SPEC-081](spec_081.md)의 Vercel 배포는 `map-ui/`를 루트로 제공하며 `map-ui/vercel.json`으로 평가 POST와 숫자 장소 ID 리뷰 GET만 기존 서버에 전달한다. 정확한 공개 Vercel Origin의 평가 요청에만 기존 서버 Origin을 적용하고 나머지는 기존 API의 검증을 받는다. 평가 DB·스키마·90일 보존은 기존 서버에 유지되며 Vercel에는 별도 저장소를 만들지 않는다. 공개 주소·운영 조건과 통합 검증 방법은 [Map UI 배포 안내](../map-ui/README.md#vercel-배포와-기존-db-연결)를 따른다.
 - 브라우저에 API 키를 전달하지 않는다.
 - 지도 라이브러리는 `map-ui/vendor/`의 로컬 파일을 사용한다.
 - 지도 타일과 장소 이미지는 외부 네트워크에 의존한다. Leaflet은 OSM의 공식 단일 HTTPS 타일 호스트를 사용하고, Caddy는 `/travel`과 `/travel/*`에만 `Referrer-Policy: strict-origin-when-cross-origin`을 적용해 OSM에 공개 서비스 origin을 전달한다. 비여행 경로는 기존 `same-origin` 정책을 유지한다.

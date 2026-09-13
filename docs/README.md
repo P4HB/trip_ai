@@ -88,7 +88,7 @@
 | [SPEC-079](spec_079.md) | OpenStreetMap 타일 차단 복구 | Implemented | map, deployment, hosting |
 | [SPEC-080](spec_080.md) | 날짜 없는 여행 기간 선택 | Implemented | recommendation, itinerary, onboarding, UI |
 
-| [SPEC-081](spec_081.md) | Vercel 호스팅과 기존 DB 평가 저장 연결 | In Progress | deployment, hosting, feedback, API |
+| [SPEC-081](spec_081.md) | Vercel 호스팅과 기존 DB 평가 저장 연결 | Implemented | deployment, hosting, feedback, API |
 
 - 다음 예약 번호: `SPEC-082`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
