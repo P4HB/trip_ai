@@ -1,0 +1,41 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "^/travel/api/feedback$",
+      "methods": ["POST"],
+      "has": [
+        {
+          "type": "header",
+          "key": "origin",
+          "value": { "eq": "https://trip-ai-wine-eight.vercel.app" }
+        }
+      ],
+      "dest": "https://168-107-40-231.sslip.io/travel/api/feedback",
+      "respectOriginCacheControl": false,
+      "transforms": [
+        {
+          "type": "request.headers",
+          "op": "set",
+          "target": { "key": "origin" },
+          "args": "https://168-107-40-231.sslip.io"
+        }
+      ]
+    },
+    {
+      "src": "^/travel/api/feedback$",
+      "methods": ["POST"],
+      "dest": "https://168-107-40-231.sslip.io/travel/api/feedback",
+      "respectOriginCacheControl": false
+    },
+    {
+      "src": "^/api/places/([0-9]+)/reviews$",
+      "methods": ["GET"],
+      "dest": "https://168-107-40-231.sslip.io/travel/api/places/$1/reviews"
+    },
+    { "handle": "filesystem" }
+  ]
+}
