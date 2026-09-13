@@ -72,13 +72,13 @@ assert.equal(metadata.algorithmVersion, CCU.ALGORITHM_VERSION);
 
 assert.equal((dashboardHtml.match(/data-wizard-step="[1-5]"/gu) || []).length, 5, "five wizard steps");
 for (const id of [
-  "wizardStepLabel", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "dateUndecided", "dateEventRequirement", "reviewSummary",
+  "wizardStepLabel", "wizardProgressBar", "wizardBackButton", "wizardNextButton", "tripDurationDays", "dateUndecided", "dateEventRequirement", "reviewSummary",
   "companionType", "destinationRegion", "tripIntent", "transportMode", "runRecommendationButton",
   "requiredOverview", "requiredProgressText", "requiredProgressTrack", "requiredProgressBar", "requiredMissingText",
 ]) {
   assert.match(dashboardHtml, new RegExp(`id="${id}"`, "u"), `${id}: wizard control`);
 }
-for (const target of ["companionType", "destinationRegion", "tripIntent", "transportMode"]) {
+for (const target of ["companionType", "tripDurationDays", "destinationRegion", "tripIntent", "transportMode"]) {
   assert.match(dashboardHtml, new RegExp(`data-choice-target="${target}"`, "u"), `${target}: choice cards`);
 }
 assert.match(dashboardApp, /function validateWizardStep\(step\)/u, "wizard validation");
@@ -121,7 +121,11 @@ assert.match(dashboardApp, /function requiredInputStates\(\)/u, "required input 
 assert.match(dashboardApp, /function updateRequiredInputState\(/u, "required input status synchronization");
 assert.match(dashboardApp, /function clearRecommendation\([^)]*\) \{\s*hideFormError\(\);/u, "input changes clear stale validation alerts");
 assert.match(dashboardApp, /const eventRequiresDates = dom\.tripIntent\.value === "event"/u, "event intent requires explicit dates");
-assert.match(dashboardApp, /step === 2 && dom\.tripIntent\.value === "event" && dom\.dateUndecided\.checked/u, "event and undecided date cross-field validation");
+assert.match(dashboardApp, /step === 2 && dom\.tripIntent\.value === "event" && \(dom\.dateUndecided\.checked \|\| selectedTripDays\(\)\)/u, "event rejects undecided and duration-only dates");
+assert.equal((dashboardHtml.match(/data-choice-target="tripDurationDays" data-choice-value="[234]"/gu) || []).length, 3, "three duration-only choices");
+assert.match(dashboardApp, /const tripDays = hasDates \? null : selectedTripDays\(\)/u, "duration-only request field");
+assert.match(dashboardApp, /function clearDurationForExactDate|const clearDurationForExactDate/u, "exact dates clear duration mode");
+assert.match(dashboardStyles, /\.duration-choice-grid\s*\{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u, "duration choices use a responsive three-column grid");
 assert.match(dashboardApp, /if \(validateWizardFlow\(\{ stacked: false \}\)\) runRecommendation\(\)/u, "desktop final submit revalidates every required step");
 assert.match(dashboardApp, /`필수 조건 \$\{missing\.length\}개 확인하기`/u, "missing count call to action");
 assert.match(dashboardApp, /state\.recommendationResult\s*\? "이 조건으로 다시 추천받기"\s*: "추천 결과 아래에서 보기"/u, "ready and rerun call to action states");

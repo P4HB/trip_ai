@@ -264,7 +264,14 @@
           timezone: "Asia/Seoul",
         }
       : null;
-    if (intent === "event" && !travelWindow) throw new Error("축제·행사 추천에는 여행 기간이 필요합니다.");
+    let tripDays = 0;
+    if (!travelWindow && input.tripDays !== undefined && input.tripDays !== null && input.tripDays !== "") {
+      tripDays = Number(input.tripDays);
+      if (!Number.isInteger(tripDays) || tripDays < 1 || tripDays > 30) {
+        throw new Error("날짜 없는 여행 일수는 1~30의 정수여야 합니다.");
+      }
+    }
+    if (intent === "event" && !travelWindow) throw new Error("축제·행사 추천에는 실제 여행 날짜가 필요합니다.");
     const monthWeights = monthDayWeights(travelWindow);
     const excludedPlaceIds = normalizeIdList(input.excludedPlaceIds, "excludedPlaceIds");
     const requiredPlaceIds = normalizeIdList(input.requiredPlaceIds, "requiredPlaceIds");
@@ -292,6 +299,7 @@
       destinationRegion,
       intent,
       travelWindow,
+      tripDays: travelWindow ? null : tripDays || null,
       transportMode,
       companionType,
       preferences: normalizedPreferences,
@@ -305,7 +313,7 @@
       diversity,
       monthWeights,
       scheduleConfig: {
-        tripDays: monthWeights?.totalDays || 0,
+        tripDays: monthWeights?.totalDays || tripDays,
         radiusKm: transportMode === "car" ? CONFIG.schedule.carRadiusKm : CONFIG.schedule.noCarRadiusKm,
         capacityMode: CONFIG.schedule.capacityMode,
         dailyCapacity: CONFIG.schedule.dailyCapacity,

@@ -451,7 +451,7 @@ PlaceRecommendationRequest {
 - 현재 제주 adapter에서 결과의 `place_id`는 TourAPI `contentid` 문자열과 1:1이다. 제목·주소·좌표 유사성으로 새 ID를 만들거나 병합하지 않는다. 향후 다중 공급자를 도입하면 별도 namespace 계약을 먼저 만든다.
 - 정규화된 `PlaceRecommendationRequest.intent`는 필수다. UI·CLI가 intent를 받지 않았다면 이 계약으로 직렬화하기 전에 `visit`을 넣는다.
 - `visit`은 `representative_visit`만 후보로 사용한다. 쇼핑·숙박·축제는 각 intent를 명시해야 한다.
-- 일반 탐색에서 `travel_window`는 생략할 수 있지만 `event`에는 필수다. 날짜에는 시간대를 포함하며 축제는 확인 가능한 구조화 개최일과 여행 기간이 겹칠 때만 eligible이다.
+- 일반 탐색에서 `travel_window`는 생략할 수 있다. 현재 브라우저 내부 요청은 실제 날짜 없이 일정을 요청하는 선택적 `tripDays` 정수도 받으며 UI는 2·3·4일만 제공한다. `travel_window`가 있으면 해당 날짜 수를 우선하고, `tripDays`만 있으면 Month 점수 없이 날짜가 null인 일차를 생성한다. `event`에는 실제 `travel_window`가 필수이며 날짜에는 시간대를 포함하고 확인 가능한 구조화 개최일과 겹칠 때만 eligible이다.
 - 성인 수로 `couple` 또는 `friends`를 추측하지 않는다.
 - `children_ages`는 연령 제약 판정용이며 현재 companion의 `kids` 축은 만 4~12세 범위라는 한계를 별도 표시한다.
 - `accessibility_needs`는 companion 축과 별도 hard constraint다.

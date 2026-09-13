@@ -281,6 +281,34 @@ assert.equal(carRequest.scheduleConfig.radiusKm, 15);
 assert.equal(carRequest.scheduleConfig.dailyCapacity, 6);
 assert.equal(CCU.normalizeRequest({ transportMode: "no_car" }).scheduleConfig.radiusKm, 5);
 assert.throws(() => CCU.normalizeRequest({ transportMode: "airplane" }), /이동수단/u);
+for (const tripDays of [2, 3, 4]) {
+  const durationRequest = CCU.normalizeRequest({ tripDays });
+  assert.equal(durationRequest.travelWindow, null);
+  assert.equal(durationRequest.tripDays, tripDays);
+  assert.equal(durationRequest.monthWeights, null);
+  assert.equal(durationRequest.scheduleConfig.tripDays, tripDays);
+}
+assert.equal(CCU.normalizeRequest({
+  travelWindow: { startDate: "2026-08-20", endDate: "2026-08-22" },
+  tripDays: 30,
+}).scheduleConfig.tripDays, 3, "explicit dates take precedence over tripDays");
+assert.throws(() => CCU.normalizeRequest({ tripDays: 1.5 }), /1~30의 정수/u);
+assert.throws(() => CCU.normalizeRequest({ tripDays: 31 }), /1~30의 정수/u);
+assert.throws(() => CCU.normalizeRequest({ intent: "event", tripDays: 3 }), /실제 여행 날짜/u);
+
+const durationPlaces = [
+  place("D1", [], { sourceOrder: 1, lat: 33.25, lng: 126.20 }),
+  place("D2", [], { sourceOrder: 2, lat: 33.25, lng: 126.45 }),
+  place("D3", [], { sourceOrder: 3, lat: 33.25, lng: 126.70 }),
+  place("D4", [], { sourceOrder: 4, lat: 33.45, lng: 126.90 }),
+];
+for (const tripDays of [2, 3, 4]) {
+  const durationResult = CCU.rank(durationPlaces, { tripDays, resultCount: 4, diversity: "balanced" }, { random: () => 0 });
+  assert.equal(durationResult.schedule.tripDays, tripDays);
+  assert.equal(durationResult.schedule.dayClusters.length, tripDays);
+  assert.ok(durationResult.schedule.dayClusters.every((day) => day.date === null));
+  assert.ok(durationResult.items.every((item) => item.components.month.active === false));
+}
 close(CCU.haversineKm({ lat: 0, lng: 0 }, { lat: 1, lng: 0 }), 111.1950802335329, 1e-6);
 
 const closeRequired = Array.from({ length: 8 }, (_, index) => place(`R${index + 1}`, [], {

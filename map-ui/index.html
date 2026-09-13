@@ -190,9 +190,23 @@
                   <input id="travelEndDate" name="travelEndDate" type="date" />
                 </label>
               </div>
+              <div class="duration-choice-block">
+                <div class="duration-choice-heading">
+                  <strong>날짜 대신 여행 기간만 선택</strong>
+                  <span>월별 점수 없이 선택한 일수만큼 일정을 만들어요.</span>
+                </div>
+                <div class="choice-card-grid duration-choice-grid" role="group" aria-label="날짜 없는 여행 기간 선택">
+                  <button class="choice-card duration-choice-card" type="button" data-choice-target="tripDurationDays" data-choice-value="2"><strong>1박 2일</strong><span>2일 일정</span></button>
+                  <button class="choice-card duration-choice-card" type="button" data-choice-target="tripDurationDays" data-choice-value="3"><strong>2박 3일</strong><span>3일 일정</span></button>
+                  <button class="choice-card duration-choice-card" type="button" data-choice-target="tripDurationDays" data-choice-value="4"><strong>3박 4일</strong><span>4일 일정</span></button>
+                </div>
+                <select class="wizard-source-control" id="tripDurationDays" name="tripDurationDays" aria-hidden="true" tabindex="-1">
+                  <option value="" selected></option><option value="2">1박 2일</option><option value="3">2박 3일</option><option value="4">3박 4일</option>
+                </select>
+              </div>
               <label class="undecided-option">
                 <input id="dateUndecided" type="checkbox" />
-                <span><strong>아직 날짜를 정하지 않았어요</strong><small>월별 적합도와 일정을 제외하고 장소만 추천해요.</small></span>
+                <span><strong>기간도 아직 정하지 않았어요</strong><small>월별 적합도와 일정을 제외하고 장소만 추천해요.</small></span>
               </label>
               <p class="requirement-help" id="dateEventRequirement" hidden>축제·행사는 시기에 맞춰 찾아야 해서 출발일과 돌아오는 날이 꼭 필요해요.</p>
             </section>
@@ -637,7 +651,7 @@
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
     <script src="./data/jeju-places.js?v=20260911-daily-types" defer></script>
     <script src="./preference-elicitation.js?v=20260902-mbti-v1" defer></script>
-    <script src="./ccu-mmr.js?v=20260911-daily-types" defer></script>
-    <script src="./app.js?v=20260913-osm-tile-fix" defer></script>
+    <script src="./ccu-mmr.js?v=20260913-duration-only" defer></script>
+    <script src="./app.js?v=20260913-duration-only" defer></script>
   </body>
 </html>

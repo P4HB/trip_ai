@@ -57,7 +57,7 @@
     "detailAddress", "detailPhone", "detailMobileFeedback", "detailResearch", "detailReviews", "centerPlaceButton",
     "copyPlaceButton", "copyPlaceButtonLabel", "mobilePanelButton", "mobileOutputButton", "mobileResultsFab",
     "sidebarCollapseButton", "sidebarExpandButton", "sidebarCloseButton", "outputCloseButton", "sidebarBackdrop", "outputBackdrop", "outputPanel",
-    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
+    "recommendationForm", "destinationRegion", "tripIntent", "travelStartDate", "travelEndDate", "tripDurationDays", "dateUndecided", "dateEventRequirement", "companionType", "transportMode",
     "resultLimit", "diversityPreset", "requiredPlaceSearch", "selectedRequiredPlaces",
     "requiredPlaceSearchResults", "requiredPlaceStatus", "excludedPlaceIds", "formError",
     "headerTravelMbtiButton", "preferenceStepTitle", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "travelMbtiAppliedType", "travelMbtiAppliedName", "travelMbtiAppliedSummary",
@@ -545,6 +545,7 @@
     const hardConstraints = [...document.querySelectorAll('input[name="hardConstraint"]:checked')].map((input) => input.value);
     const excludedPlaceIds = dom.excludedPlaceIds.value.split(/[\s,]+/u).map((value) => value.trim()).filter(Boolean);
     const hasDates = !dom.dateUndecided.checked && dom.travelStartDate.value && dom.travelEndDate.value;
+    const tripDays = hasDates ? null : selectedTripDays();
     return {
       ...(state.preferenceProfile ? {
         schemaVersion: algorithm.PERSONALIZED_REQUEST_SCHEMA_VERSION,
@@ -554,6 +555,7 @@
       destinationRegion: dom.destinationRegion.value,
       intent: dom.tripIntent.value,
       travelWindow: hasDates ? { startDate: dom.travelStartDate.value, endDate: dom.travelEndDate.value } : null,
+      tripDays,
       transportMode: dom.transportMode.value,
       companionType: dom.companionType.value,
       preferences: collectPreferences(),
@@ -582,6 +584,15 @@
     return match ? `${match[1]}.${match[2]}.${match[3]}` : "미선택";
   }
 
+  function selectedTripDays() {
+    const value = Number(dom.tripDurationDays.value);
+    return [2, 3, 4].includes(value) ? value : null;
+  }
+
+  function formatTripDuration(days) {
+    return Number.isInteger(days) && days > 1 ? `${days - 1}박 ${days}일` : "미선택";
+  }
+
   function preferenceSummary() {
     const mbtiSummary = state.preferenceProfile?.displaySummary;
     if (mbtiSummary) return `${mbtiSummary.archetypeId} · ${mbtiSummary.archetypeName}`;
@@ -591,18 +602,21 @@
   function requiredInputStates() {
     const hasBothDates = Boolean(dom.travelStartDate.value && dom.travelEndDate.value);
     const hasValidDates = hasBothDates && dom.travelStartDate.value <= dom.travelEndDate.value;
+    const tripDays = selectedTripDays();
     const eventRequiresDates = dom.tripIntent.value === "event";
-    const dateValue = dom.dateUndecided.checked && eventRequiresDates
+    const dateValue = (dom.dateUndecided.checked || tripDays) && eventRequiresDates
       ? "축제 날짜 필요"
       : dom.dateUndecided.checked
-      ? "날짜 미정"
+      ? "기간 미정"
+      : tripDays
+        ? formatTripDuration(tripDays)
       : hasBothDates
         ? `${formatWizardDate(dom.travelStartDate.value)} → ${formatWizardDate(dom.travelEndDate.value)}`
         : "미선택";
     const preferences = collectPreferences();
     return [
       { key: "companion", label: "동행", step: 1, complete: Boolean(dom.companionType.value), value: DISPLAY_VALUES.companionType[dom.companionType.value] || "미선택" },
-      { key: "date", label: "날짜", step: 2, complete: (!dom.dateUndecided.checked && hasValidDates) || (dom.dateUndecided.checked && !eventRequiresDates), value: dateValue },
+      { key: "date", label: "날짜·기간", step: 2, complete: hasValidDates || (Boolean(tripDays) && !eventRequiresDates) || (dom.dateUndecided.checked && !eventRequiresDates), value: dateValue },
       { key: "region", label: "여행 지역", step: 3, complete: Boolean(dom.destinationRegion.value), value: DISPLAY_VALUES.destinationRegion[dom.destinationRegion.value] || "미선택" },
       { key: "intent", label: "찾는 장소", step: 3, complete: Boolean(dom.tripIntent.value), value: DISPLAY_VALUES.tripIntent[dom.tripIntent.value] || "미선택" },
       { key: "transport", label: "이동", step: 3, complete: Boolean(dom.transportMode.value), value: DISPLAY_VALUES.transportMode[dom.transportMode.value] || "미선택" },
@@ -682,14 +696,16 @@
       focusWizardChoice('[data-choice-target="companionType"]');
       return false;
     }
-    if (step === 2 && dom.tripIntent.value === "event" && dom.dateUndecided.checked) {
-      showFormError("축제·행사 추천은 출발일과 돌아오는 날이 필요해요. 날짜 미정을 해제하고 날짜를 선택해 주세요.");
-      window.requestAnimationFrame(() => dom.dateUndecided.focus());
+    if (step === 2 && dom.tripIntent.value === "event" && (dom.dateUndecided.checked || selectedTripDays())) {
+      showFormError("축제·행사 추천은 실제 출발일과 돌아오는 날이 필요해요. 날짜를 직접 선택해 주세요.");
+      window.requestAnimationFrame(() => selectedTripDays()
+        ? document.querySelector('[data-choice-target="tripDurationDays"][aria-pressed="true"]')?.focus()
+        : dom.dateUndecided.focus());
       return false;
     }
-    if (step === 2 && !dom.dateUndecided.checked) {
+    if (step === 2 && !dom.dateUndecided.checked && !selectedTripDays()) {
       if (!dom.travelStartDate.value || !dom.travelEndDate.value) {
-        showFormError("출발일과 돌아오는 날을 모두 선택하거나 날짜 미정을 골라주세요.");
+        showFormError("출발일과 돌아오는 날을 모두 선택하거나 여행 기간을 골라주세요.");
         window.requestAnimationFrame(() => (!dom.travelStartDate.value ? dom.travelStartDate : dom.travelEndDate).focus());
         return false;
       }
@@ -780,6 +796,7 @@
     dom.tripIntent.value = "";
     dom.travelStartDate.value = "";
     dom.travelEndDate.value = "";
+    dom.tripDurationDays.value = "";
     dom.dateUndecided.checked = false;
     dom.travelStartDate.disabled = false;
     dom.travelEndDate.disabled = false;
@@ -2649,11 +2666,32 @@
       if (undecided) {
         dom.travelStartDate.value = "";
         dom.travelEndDate.value = "";
+        dom.tripDurationDays.value = "";
       }
       dom.travelStartDate.disabled = undecided;
       dom.travelEndDate.disabled = undecided;
+      syncChoiceCards();
       hideFormError();
     });
+    dom.tripDurationDays.addEventListener("change", () => {
+      if (selectedTripDays()) {
+        dom.travelStartDate.value = "";
+        dom.travelEndDate.value = "";
+        dom.dateUndecided.checked = false;
+        dom.travelStartDate.disabled = false;
+        dom.travelEndDate.disabled = false;
+      }
+      syncChoiceCards();
+      hideFormError();
+    });
+    const clearDurationForExactDate = () => {
+      if (!dom.travelStartDate.value && !dom.travelEndDate.value) return;
+      dom.tripDurationDays.value = "";
+      dom.dateUndecided.checked = false;
+      syncChoiceCards();
+    };
+    dom.travelStartDate.addEventListener("input", clearDurationForExactDate);
+    dom.travelEndDate.addEventListener("input", clearDurationForExactDate);
     dom.headerTravelMbtiButton.addEventListener("click", startTravelMbti);
     dom.startTravelMbtiButton.addEventListener("click", startTravelMbti);
     dom.restartTravelMbtiButton.addEventListener("click", startTravelMbti);
