@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css?v=20260903-feedback-completion-v1" />
+    <link rel="stylesheet" href="./styles.css?v=20260924-itinerary-v2" />
   </head>
   <body>
     <header class="topbar">
@@ -532,6 +532,42 @@
             </div>
           </section>
 
+          <section class="itinerary-section" id="itinerarySection" aria-labelledby="itineraryTitle" hidden>
+            <div class="output-section-heading">
+              <div>
+                <h3 id="itineraryTitle">방문 순서와 시간표</h3>
+                <p>추천된 날짜별 장소를 이어 자동차 동선을 만들어요. 식당은 아직 선정하지 않습니다.</p>
+              </div>
+            </div>
+            <p id="itineraryGate" class="itinerary-notice" role="status"></p>
+            <form id="itineraryForm" novalidate>
+              <div id="itineraryDayInputs" class="itinerary-day-inputs"></div>
+              <datalist id="itineraryPublicPlaces"></datalist>
+              <details class="itinerary-settings">
+                <summary>식사 시간과 추가 이동 수정</summary>
+                <p>초기 제안값이며 내 여행에 맞게 수정할 수 있어요. 각 시간대 안에 식사 전체가 들어갑니다.</p>
+                <fieldset class="itinerary-meal-fields">
+                  <legend>점심</legend>
+                  <label>가능 시작<input id="itineraryLunchStart" type="time" value="11:30" /></label>
+                  <label>가능 종료<input id="itineraryLunchEnd" type="time" value="14:00" /></label>
+                  <label>식사 분<input id="itineraryLunchDuration" type="number" min="15" max="180" value="60" /></label>
+                </fieldset>
+                <fieldset class="itinerary-meal-fields">
+                  <legend>저녁</legend>
+                  <label>가능 시작<input id="itineraryDinnerStart" type="time" value="17:30" /></label>
+                  <label>가능 종료<input id="itineraryDinnerEnd" type="time" value="20:00" /></label>
+                  <label>식사 분<input id="itineraryDinnerDuration" type="number" min="15" max="180" value="60" /></label>
+                </fieldset>
+                <label class="itinerary-detour-field">식당 왕복 추가 이동 한도 (분)<input id="itineraryMaxDetour" type="number" min="0" max="60" value="20" /></label>
+                <p>원래 앞뒤 장소 간 경로보다 늘어나는 총 이동시간입니다. 식당 선택 뒤 이동·운영시간을 다시 확인해야 해요.</p>
+              </details>
+              <p class="itinerary-privacy">선택한 공개 장소·여행 날짜·활동 시간은 동선 생성을 위해 서버와 외부 AI·자동차 경로 제공자에 전달됩니다. 이름·평가 의견·MBTI 응답은 전송하지 않습니다.</p>
+              <button id="generateItineraryButton" class="button button-primary" type="submit">동선 만들기</button>
+            </form>
+            <p id="itineraryStatus" class="itinerary-notice" role="status" aria-live="polite"></p>
+            <div id="itineraryResults" class="itinerary-results"></div>
+          </section>
+
           <div class="output-section-heading">
             <div>
               <h3>추천 장소</h3>
@@ -652,6 +688,7 @@
     <script src="./data/jeju-places.js?v=20260911-daily-types" defer></script>
     <script src="./preference-elicitation.js?v=20260902-mbti-v1" defer></script>
     <script src="./ccu-mmr.js?v=20260913-duration-only" defer></script>
-    <script src="./app.js?v=20260913-duration-only" defer></script>
+    <script src="./itinerary.js?v=20260924-itinerary-v2" defer></script>
+    <script src="./app.js?v=20260924-itinerary-v2" defer></script>
   </body>
 </html>

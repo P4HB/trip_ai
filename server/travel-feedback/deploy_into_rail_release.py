@@ -21,10 +21,16 @@ SERVICE_BLOCK = """  travel-feedback:
       TRAVEL_FEEDBACK_DB_PATH: /data/feedback.sqlite3
       TRAVEL_FEEDBACK_RETENTION_DAYS: 90
       TRAVEL_REVIEW_DB_PATH: /app/data/kakao_reviews.sqlite3
+      ITINERARY_ENABLED: ${ITINERARY_ENABLED:-0}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-gpt-5.6-terra}
+      KAKAO_MOBILITY_API_KEY: ${KAKAO_MOBILITY_API_KEY:-}
+      ITINERARY_REQUESTS_PER_MINUTE: ${ITINERARY_REQUESTS_PER_MINUTE:-10}
+      ITINERARY_REQUESTS_PER_DAY: ${ITINERARY_REQUESTS_PER_DAY:-100}
     volumes:
       - travel_feedback_data:/data
-    mem_limit: 96m
-    mem_reservation: 24m
+    mem_limit: 192m
+    mem_reservation: 48m
     cpus: 0.5
     pids_limit: 64
     ulimits:
@@ -52,7 +58,7 @@ SERVICE_BLOCK = """  travel-feedback:
 
 """
 
-CADDY_BLOCK = """\t\t@travel_api path /travel/api/feedback /travel/api/places/*/reviews
+CADDY_BLOCK = """\t\t@travel_api path /travel/api/feedback /travel/api/places/*/reviews /travel/api/itineraries
 \t\thandle @travel_api {
 \t\t\treverse_proxy travel-feedback:8200 {
 \t\t\t\theader_up X-Travel-Client-IP {remote_host}
@@ -60,6 +66,8 @@ CADDY_BLOCK = """\t\t@travel_api path /travel/api/feedback /travel/api/places/*/
 \t\t}
 
 """
+
+PRE_ITINERARY_CADDY_BLOCK = CADDY_BLOCK.replace(" /travel/api/itineraries", "")
 
 PREVIOUS_CADDY_BLOCK = """\t\t@travel_feedback path /travel/api/feedback
 \t\thandle @travel_feedback {
@@ -108,6 +116,37 @@ def configure_referrer_policy(caddy: str) -> str:
     )
 
 
+def configure_itinerary_service(compose: str) -> str:
+    """Upgrade the existing sidecar only; preserve unrelated release services."""
+    import re
+    pattern = r"(?ms)^  travel-feedback:\n.*?(?=^  [A-Za-z0-9_-]+:\n|^[^ \n]|\Z)"
+    matches = list(re.finditer(pattern, compose))
+    if len(matches) != 1:
+        raise RuntimeError(f"expected one travel-feedback service, found {len(matches)}")
+    block = matches[0].group()
+    additions = []
+    for line in SERVICE_BLOCK.splitlines():
+        if line.startswith("      ") and any(line.strip().startswith(key + ":") for key in (
+            "ITINERARY_ENABLED", "OPENAI_API_KEY", "ITINERARY_LLM_MODEL", "KAKAO_MOBILITY_API_KEY",
+            "ITINERARY_REQUESTS_PER_MINUTE", "ITINERARY_REQUESTS_PER_DAY",
+        )):
+            key = line.strip().partition(":")[0]
+            if not re.search(r"(?m)^      " + key + ":", block):
+                additions.append(line + "\n")
+    if additions:
+        block = replace_once(block, "    environment:\n", "    environment:\n" + "".join(additions), "sidecar environment")
+    # Only increase known legacy defaults; preserve explicit release overrides.
+    block = block.replace("    mem_limit: 96m\n", "    mem_limit: 192m\n")
+    block = block.replace("    mem_reservation: 24m\n", "    mem_reservation: 48m\n")
+    return compose[:matches[0].start()] + block + compose[matches[0].end():]
+
+
+def configure_itinerary_route(caddy: str) -> str:
+    if PRE_ITINERARY_CADDY_BLOCK in caddy:
+        return replace_once(caddy, PRE_ITINERARY_CADDY_BLOCK, CADDY_BLOCK, "itinerary API route")
+    return caddy
+
+
 def install(release: Path, version: str) -> None:
     resolved = release.resolve(strict=True)
     releases_root = Path("/opt/rail-desk/releases").resolve()
@@ -132,11 +171,13 @@ def install(release: Path, version: str) -> None:
             "  rail_api_data:\n  travel_feedback_data:\n",
             "volume list",
         )
-        compose_path.write_text(compose, encoding="utf-8")
+    compose = configure_itinerary_service(compose)
+    compose_path.write_text(compose, encoding="utf-8")
 
     caddy_path = resolved / "deploy" / "Caddyfile"
     caddy = caddy_path.read_text(encoding="utf-8")
     caddy = configure_referrer_policy(caddy)
+    caddy = configure_itinerary_route(caddy)
     legacy_caddy_block = """\t\t@travel_feedback path /travel/api/feedback
 \t\thandle @travel_feedback {
 \t\t\treverse_proxy travel-feedback:8200

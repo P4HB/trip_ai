@@ -5159,3 +5159,47 @@ button:focus-visible {
 .recommendation-feedback-badge.is-rated { background: #fff2d6; color: #805000; }
 .recommendation-feedback-badge.is-completed { background: #def4e8; color: #12613f; }
 .schedule-place-card > .recommendation-feedback-badge { margin-left: 10px; }
+
+/* SPEC-083: independently updated itinerary panel. */
+.itinerary-section {
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.itinerary-section[hidden], .itinerary-section [hidden] { display: none; }
+.itinerary-section p, .itinerary-section li, .itinerary-section small {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.itinerary-section p, .itinerary-section small { font-size: 11px; color: var(--ink-soft); }
+.itinerary-notice { padding: 10px; border-radius: 9px; background: var(--brand-pale); }
+.itinerary-notice:empty { display: none; }
+.itinerary-day-inputs, .itinerary-results { display: grid; gap: 12px; }
+.itinerary-day-fields, .itinerary-meal-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(80px, .48fr);
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.itinerary-day-fields legend, .itinerary-meal-fields legend { font-size: 12px; font-weight: 750; }
+.itinerary-section label { display: grid; min-width: 0; gap: 5px; font-size: 11px; }
+.itinerary-section input, .itinerary-section select { width: 100%; min-width: 0; padding: 9px 7px; border: 1px solid var(--line); border-radius: 7px; background: white; color: var(--ink); font-size: 12px; }
+.itinerary-day-meals { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.itinerary-settings { margin-top: 14px; }
+.itinerary-settings summary { cursor: pointer; font-size: 12px; font-weight: 700; }
+.itinerary-meal-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 10px 0; }
+.itinerary-detour-field { grid-template-columns: minmax(0, 1fr) 70px; align-items: center; }
+.itinerary-privacy { margin: 14px 0; }
+.itinerary-day-card { min-width: 0; padding: 12px; border: 1px solid #cfe3dc; border-radius: 12px; background: #f8fcfa; font-size: 11px; }
+.itinerary-day-card h4 { margin: 0 0 12px; font-size: 12px; }
+.itinerary-day-card ul { padding-left: 18px; }
+.itinerary-day-card details { margin: 12px 0; }
+.itinerary-day-card summary { cursor: pointer; }
+.itinerary-timeline { display: grid; gap: 8px; padding: 0; list-style: none; }
+.itinerary-timeline > li { padding: 10px; border-left: 3px solid var(--brand); background: white; border-radius: 4px; }
+.itinerary-timeline p { margin: 5px 0 0; }
+.itinerary-timeline .itinerary-meal { border-left-color: #c98535; background: #fff6e5; }

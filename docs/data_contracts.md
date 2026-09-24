@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-09-02
+- 최종 수정일: 2026-09-22
 
 ## 공통 규칙
 
@@ -718,3 +718,13 @@ EvidenceBackedReason {
 ## 하루 대표 유형 제한 — SPEC-078
 
 지도 metadata의 `primaryTypeVersion`은 분류 taxonomy 버전이다. 생성기는 중복·누락·unknown·검토 필요 분류를 허용하지 않는다. 일정 결과 `dailyTypeLimit=1`과 `dayClusters[].places[].primaryType`을 기록한다. 엔진에 직접 전달한 unknown/누락 유형은 자동 일정 후보에서 제외하고 필수/사용자 anchor는 오류로 반환한다.
+
+## 날짜 기반 동선 계약 — SPEC-083 로컬 구현
+
+권위 있는 요청·응답·개발 기본값·제한은 [SPEC-083](spec_083.md#입력과-출력--구현-계약)을 따른다. 원래 `schedule`은 근사 일자 배정이며 방문 순서가 아니다. `itinerary-request-v1`은 해당 `dayClusters`의 ID를 전송하고 `itinerary-result-v1`은 별도 결과다. 이름·평가 의견·MBTI 원문·클라이언트가 만든 영업시간/이동시간은 동선 LLM 입력에 포함하지 않는다.
+
+- 서버 카탈로그 `server/travel-feedback/data/itinerary_catalog.json`: 공개 장소 ID, 경도 `lng`·위도 `lat`, 대표 유형, 추천 가능 상태, 운영정보/공식 체류/리뷰 추론과 원본 해시·버전·coverage. 기존 지도 번들은 수정하지 않는다.
+- 운영 구간은 ISO 요일 1~7의 `weekly`, 실제 날짜 `exceptions`, `seasonal`로 나뉘며 마지막 입장·중간 휴게·자정 경계를 보존한다. 원문·출처·확인일이 없거나 오래된 정보는 확인 필요다.
+- 리뷰 분석 `visit_insights.json`: 장소별 낮·일몰·야간 추론/체류 범위, 근거 리뷰 ID, 원본 입력 해시와 모델/프롬프트 버전. 운영시간 사실과 분리한다. 리뷰 철회/수정/모델 변경 시 재생성하고 원문은 이 산출물에 보관하지 않는다.
+- `mealSlots`의 앞뒤 위치·기본 경로·식사 시간·총 추가 이동 허용 분은 식당 후보 연결용이다. `restaurantStatus=pending`이며 식당 선택 후 앞뒤 이동·영업/주문 마감·후속 방문 전체를 다시 검증해야 한다.
+- 일자별 `mealModes`, 출력 `mealRequirements`, 하루 요청 `generationScope=day`, 생성 실패 `generation_failed`를 추가했다. 세부 상태·기본값·예외는 SPEC-083의 현재 입력/출력 계약과 REQ-8313~8316을 따른다. 브라우저 집계는 일자별 provenance를 보존하며 전송 오류로 호출 횟수를 알 수 없으면 `calls=null`, `callsKnown=false`로 표시한다.

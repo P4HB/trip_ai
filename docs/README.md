@@ -35,7 +35,8 @@
 - 구현됨: 점수 필수·의견 선택 평가 완료 버튼과 추천·일정 카드의 완료 체크·점수 표시
 - 구현됨: 장소 만족도 선택 즉시 세션 최신 스냅샷을 서버에 자동 저장하고 의견 입력은 짧게 디바운스해 갱신
 - 구현됨: 대표 유형별 하루 1곳 상한, 동일 유형 필수 장소 일차 분리
-- 미구현: 운영 사용자 프로필, 실제 이동시간·방문 순서 기반 일정 최적화, 추천 API, 추천 품질 평가 파이프라인
+- 로컬 구현·외부 검증 대기: 실제 날짜 필수 LLM 동선·운영/이동시간 검증·식사 연결 구간. 부분 일자 식사, 날짜별 순차 생성·부분 결과, 생성 실패 구분과 실제 경로를 반영한 수정까지 보완. 개발 기본값·공개 데이터 준비·실제 품질 합격 기준은 SPEC-083 참조
+- 미구현: 운영 사용자 프로필, 운영 검증된 일정 최적화·추천 API, 추천 품질 평가 파이프라인
 
 ## SPEC 색인
 
@@ -90,7 +91,7 @@
 
 | [SPEC-081](spec_081.md) | Vercel 호스팅과 기존 DB 평가 저장 연결 | Implemented | deployment, hosting, feedback, API |
 | [SPEC-082](spec_082.md) | 기존 카카오맵 수집기 Git 등록 | Implemented | crawler, reviews, repository |
-| [SPEC-083](spec_083.md) | 날짜 기반 LLM 동선·식사 구간 생성 구현 계획 | Draft | itinerary, LLM, reviews, routing, API, UI |
+| [SPEC-083](spec_083.md) | 날짜 기반 LLM 동선·식사 구간 생성 구현 계획 | In Progress | itinerary, LLM, reviews, routing, API, UI |
 
 - 다음 예약 번호: `SPEC-084`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.

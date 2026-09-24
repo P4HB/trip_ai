@@ -75,6 +75,8 @@
     "recommendationCount", "recommendationResultList", "feedbackSavePanel", "feedbackCompletionStatus", "feedbackSaveHelp",
     "verificationPanel", "verificationCount", "verificationList",
     "scheduleSummary", "scheduleDayCount", "scheduleResultList", "anchorCandidatePanel", "anchorCandidateHelp", "anchorCandidateList",
+    "itinerarySection", "itineraryGate", "itineraryForm", "itineraryDayInputs", "itineraryPublicPlaces", "itineraryLunchStart", "itineraryLunchEnd", "itineraryLunchDuration",
+    "itineraryDinnerStart", "itineraryDinnerEnd", "itineraryDinnerDuration", "itineraryMaxDetour", "generateItineraryButton", "itineraryStatus", "itineraryResults",
     "courseVariantBar", "courseVariantLabel", "courseOverlapSummary", "rerollRecommendationButton",
     "outputPreview", "recommendationLegend", "outputScroll",
   ].map((id) => [id, document.getElementById(id)]));
@@ -136,6 +138,7 @@
     query: "",
     renderFrame: null,
     recommendationResult: null,
+    itineraryRevision: 0,
     recommendationById: new Map(),
     recommendationFeedback: new Map(),
     feedbackAutoSave: {
@@ -179,6 +182,210 @@
       lastTransition: null,
     },
   };
+
+  const itineraryModule = window.TRAVEL_ITINERARY;
+  const itineraryClient = itineraryModule?.createClient({ onChange: renderItineraryState });
+
+  function itineraryPlaceLabel(place) {
+    return `${place.title} · ${place.id}`;
+  }
+
+  function invalidateItinerary() {
+    state.itineraryRevision += 1;
+    itineraryClient?.invalidate();
+  }
+
+  function renderItineraryInputs() {
+    const result = state.recommendationResult;
+    dom.itinerarySection.hidden = !result;
+    if (!result) return;
+    const gate = itineraryModule?.eligibility(result) || (!itineraryModule ? "시간표 모듈을 불러오지 못했습니다. 새로고침해 주세요." : "");
+    dom.itineraryGate.textContent = gate;
+    dom.itineraryGate.hidden = !gate;
+    dom.itineraryForm.hidden = Boolean(gate);
+    dom.itineraryDayInputs.replaceChildren();
+    if (gate) return;
+    if (!dom.itineraryPublicPlaces.children.length) {
+      const fragment = document.createDocumentFragment();
+      for (const place of places) {
+        const option = document.createElement("option");
+        option.value = itineraryPlaceLabel(place);
+        fragment.append(option);
+      }
+      dom.itineraryPublicPlaces.append(fragment);
+    }
+    for (const day of result.schedule.dayClusters) {
+      const group = document.createElement("fieldset");
+      group.className = "itinerary-day-fields";
+      group.dataset.itineraryDay = String(day.dayIndex);
+      const legend = document.createElement("legend");
+      legend.textContent = `${day.dayIndex}일차 · ${day.date}`;
+      group.append(legend);
+      for (const [field, labelText, type, initial] of [
+        ["startLocation", "출발 장소", "text", ""], ["startTime", "시작 시각", "time", "09:00"],
+        ["endLocation", "종료 장소", "text", ""], ["endTime", "종료 시각", "time", "20:00"],
+      ]) {
+        const label = document.createElement("label");
+        label.textContent = labelText;
+        const input = document.createElement("input");
+        input.type = type; input.value = initial; input.dataset.itineraryField = field;
+        input.setAttribute("aria-label", `${day.dayIndex}일차 ${labelText}`);
+        input.required = true;
+        if (type === "text") {
+          input.setAttribute("list", "itineraryPublicPlaces");
+          input.placeholder = "공개 장소명 검색 후 선택";
+          input.autocomplete = "off";
+          label.className = "itinerary-location-field";
+        }
+        label.append(input); group.append(label);
+      }
+      const mealFields = document.createElement("div"); mealFields.className = "itinerary-day-meals";
+      for (const [kind, name] of [["lunch", "점심"], ["dinner", "저녁"]]) {
+        const label = document.createElement("label"); label.textContent = name;
+        const select = document.createElement("select"); select.dataset.itineraryField = `meal_${kind}`;
+        select.setAttribute("aria-label", `${day.dayIndex}일차 ${name} 포함`);
+        for (const [value, text] of [["auto", "활동 시간에 맞춰"], ["required", "반드시 포함"], ["excluded", "일정에서 제외"]]) {
+          const option = document.createElement("option"); option.value = value; option.textContent = text; select.append(option);
+        }
+        label.append(select); mealFields.append(label);
+      }
+      group.append(mealFields);
+      dom.itineraryDayInputs.append(group);
+    }
+  }
+
+  function collectItineraryOptions() {
+    const days = [...dom.itineraryDayInputs.querySelectorAll("[data-itinerary-day]")].map(group => {
+      const input = { dayIndex: Number(group.dataset.itineraryDay) };
+      for (const field of group.querySelectorAll("[data-itinerary-field]")) {
+        const name = field.dataset.itineraryField;
+        if (name.endsWith("Location")) {
+          const place = places.find(candidate => itineraryPlaceLabel(candidate) === field.value);
+          input[name] = { placeId: place ? String(place.id) : null };
+        } else if (name.startsWith("meal_")) {
+          input.mealModes ||= {}; input.mealModes[name.slice(5)] = field.value;
+        } else input[name] = field.value;
+      }
+      return input;
+    });
+    return { requestId: window.crypto?.randomUUID?.() || `itinerary-${Date.now()}-${Math.random().toString(36).slice(2)}`, recommendationRevision: String(state.itineraryRevision), sourceMapVersion: [metadata.sourceDate, metadata.primaryTypeVersion].join(":"), days,
+      mealPreferences: {
+        lunch: { windowStart: dom.itineraryLunchStart.value, windowEnd: dom.itineraryLunchEnd.value, durationMinutes: Number(dom.itineraryLunchDuration.value) },
+        dinner: { windowStart: dom.itineraryDinnerStart.value, windowEnd: dom.itineraryDinnerEnd.value, durationMinutes: Number(dom.itineraryDinnerDuration.value) },
+        maxDetourMinutes: Number(dom.itineraryMaxDetour.value),
+      } };
+  }
+
+  async function generateItinerary() {
+    try {
+      if (!itineraryModule || !itineraryClient) throw new Error("시간표 모듈을 불러오지 못했습니다.");
+      const payload = itineraryModule.buildRequest(state.recommendationResult, collectItineraryOptions());
+      return await itineraryClient.generate(payload);
+    } catch (error) {
+      dom.itineraryStatus.textContent = error.message;
+      return null;
+    }
+  }
+
+  function itineraryTime(value) {
+    const match = String(value || "").match(/(?:T|^)(\d{2}:\d{2})/u);
+    return match ? match[1] : "시각 확인 필요";
+  }
+
+  function itineraryStatusLabel(status) {
+    return ({ validated: "입력 조건 검사 통과", verification_required: "운영정보 등 확인 필요", partially_scheduled: "일부 장소 미배정", infeasible: "기존 일자 배정 조건 충돌", generation_failed: "조건을 만족하는 시간표를 찾지 못함 · 다시 시도 가능", needs_input: "추가 입력 필요", unavailable: "동선 제공 일시 중단" })[status] || "확인 필요";
+  }
+
+  function appendItineraryNotes(container, title, notes) {
+    if (!notes?.length) return;
+    const heading = document.createElement("strong"); heading.textContent = title;
+    const list = document.createElement("ul");
+    for (const note of notes) {
+      const item = document.createElement("li");
+      const name = note.placeId ? placeById.get(String(note.placeId))?.title || note.placeId : "";
+      item.textContent = `${name ? `${name}: ` : ""}${typeof note === "string" ? note : note.message || note.reason || note.code || "확인 필요"}`;
+      list.append(item);
+    }
+    container.append(heading, list);
+  }
+
+  function renderItineraryState(current) {
+    dom.generateItineraryButton.disabled = current.status === "loading";
+    dom.generateItineraryButton.textContent = current.status === "loading" ? "동선 만드는 중…" : "동선 만들기";
+    dom.itinerarySection.setAttribute("aria-busy", String(current.status === "loading"));
+    dom.itineraryResults.replaceChildren();
+    if (current.status === "idle") { dom.itineraryStatus.textContent = ""; return; }
+    if (current.status === "loading") {
+      dom.itineraryStatus.textContent = `${current.progress?.dayIndex || 1}일차 시간표를 만들고 있어요 · ${current.progress?.completed || 0}/${current.progress?.total || 1}일 처리. 완료된 날짜부터 확인할 수 있습니다.`;
+      if (!current.result) return;
+    }
+    if (current.status === "error") { dom.itineraryStatus.textContent = `${current.error} 기존 장소 추천은 그대로 유지됩니다.`; return; }
+    const result = current.result;
+    if (current.status !== "loading") dom.itineraryStatus.textContent = `${itineraryStatusLabel(result.status)} · 식당 미선정 · 조회 시점의 예상 일정입니다.`;
+    appendItineraryNotes(dom.itineraryResults, "전체 일정 안내", result.violations);
+    appendItineraryNotes(dom.itineraryResults, "추가 확인", result.unknowns);
+    for (const day of result.days) {
+      const card = document.createElement("article"); card.className = "itinerary-day-card";
+      const heading = document.createElement("h4"); heading.textContent = `${day.dayIndex}일차 · ${day.date} · ${itineraryStatusLabel(day.status)}`;
+      card.append(heading);
+      // Invalid provider proposals are diagnostics only, never a usable timeline.
+      if (!["infeasible", "generation_failed", "unavailable", "needs_input"].includes(day.status)) {
+        const timeline = document.createElement("ol"); timeline.className = "itinerary-timeline";
+        const entries = [...(day.stops || []).map((stop, index) => ({ ...stop, kind: "visit", index: index + 1, time: stop.arrival })), ...(day.mealSlots || []).map(meal => ({ ...meal, time: meal.start }))].sort((a, b) => String(a.time).localeCompare(String(b.time)));
+        for (const entry of entries) {
+          const item = document.createElement("li");
+          const title = document.createElement("strong");
+          if (entry.kind === "visit") {
+            title.textContent = `${itineraryTime(entry.arrival)}–${itineraryTime(entry.departure)} · ${entry.index}. ${entry.title || placeById.get(String(entry.placeId))?.title || entry.placeId}`;
+            const detail = document.createElement("p");
+            const basis = typeof entry.dwellBasis === "string" ? entry.dwellBasis : entry.dwellBasis?.source || entry.dwellBasis?.kind;
+            const basisLabel = ({ official: "공식 정보", review_estimate: "리뷰 근거 추정", provisional_type_default: "유형별 임시값", review: "리뷰 근거 추정", reviews: "리뷰 근거 추정", temporary_default: "유형별 임시값", type_default: "유형별 임시값", default: "유형별 임시값" })[basis] || "체류 근거 확인 필요";
+            detail.textContent = `체류 ${entry.dwellMinutes}분 (${basisLabel}) · 별도 여유 ${entry.bufferMinutes ?? 10}분 · 운영 ${["confirmed", "verified", "checked", "known"].includes(entry.operatingStatus) ? "정보 확인됨" : "확인 필요"}`;
+            item.append(title, detail);
+            if (entry.evidenceReviewIds?.length) {
+              const evidence = document.createElement("small"); evidence.textContent = `리뷰 추론 근거 ID: ${entry.evidenceReviewIds.join(", ")} · 운영정보와 별개`; item.append(evidence);
+            }
+            for (const insight of entry.visitInsights?.preferredPeriods || []) {
+              const evidence = document.createElement("p");
+              const period = ({ daylight: "낮", sunset: "일몰", night: "야간", any: "시간대 무관" })[insight.period] || "확인 필요";
+              evidence.textContent = `리뷰 기반 방문 적합성: ${period} (추론) · 근거 ID: ${(insight.evidenceReviewIds || []).join(", ") || "확인 필요"}`;
+              item.append(evidence);
+            }
+            if (entry.dwellEvidence?.evidenceReviewIds?.length) {
+              const evidence = document.createElement("p"); evidence.textContent = `체류시간 리뷰 근거 ID: ${entry.dwellEvidence.evidenceReviewIds.join(", ")}`; item.append(evidence);
+            }
+          } else {
+            item.className = "itinerary-meal";
+            title.textContent = `${itineraryTime(entry.start)}–${itineraryTime(entry.end)} · ${entry.kind === "lunch" ? "점심" : "저녁"} ${entry.durationMinutes}분`;
+            const detail = document.createElement("p");
+            const before = entry.beforeLocation?.title || placeById.get(String(entry.beforeLocation?.placeId))?.title || "앞 위치 확인 필요";
+            const after = entry.afterLocation?.title || placeById.get(String(entry.afterLocation?.placeId))?.title || "뒤 위치 확인 필요";
+            detail.textContent = `${before} → ${after} 사이 · 추가 이동 총 ${entry.maxDetourMinutes}분 이내 · 식당 미선정`;
+            item.append(title, detail);
+          }
+          timeline.append(item);
+        }
+        card.append(timeline);
+        if (day.legs?.length) {
+          const routes = document.createElement("details");
+          const summary = document.createElement("summary"); summary.textContent = "구간별 자동차 이동시간"; routes.append(summary);
+          const list = document.createElement("ul");
+          for (const leg of day.legs) {
+            const row = document.createElement("li");
+            row.textContent = `${placeById.get(String(leg.fromId))?.title || leg.fromId} → ${placeById.get(String(leg.toId))?.title || leg.toId}: ${leg.durationMinutes}분 (${itineraryTime(leg.departureTime)}–${itineraryTime(leg.arrivalTime)})`;
+            list.append(row);
+          }
+          routes.append(list); card.append(routes);
+        }
+      }
+      appendItineraryNotes(card, "식사 안내", day.mealRequirements?.filter(meal => meal.status !== "required"));
+      appendItineraryNotes(card, "미배정 장소", day.unscheduledPlaces);
+      appendItineraryNotes(card, "조건 위반", day.violations);
+      appendItineraryNotes(card, "확인 필요", day.unknowns);
+      appendItineraryNotes(card, "추정과 기본값", day.assumptions);
+      dom.itineraryResults.append(card);
+    }
+  }
 
   function formatNumber(value) {
     return numberFormatter.format(Number(value) || 0);
@@ -2371,6 +2578,7 @@
   }
 
   function renderRecommendationOutput(result) {
+    invalidateItinerary();
     closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
     resetFeedbackAutoSave({ createSession: true });
     result.provenance = {
@@ -2409,6 +2617,7 @@
     renderWarnings(result.warnings);
     renderVerificationCandidates(result);
     renderSchedule(result.schedule);
+    renderItineraryInputs();
     if (result.items.length) {
       const fragment = document.createDocumentFragment();
       for (const item of result.items) fragment.append(createRecommendationCard(item));
@@ -2457,6 +2666,8 @@
 
   function clearRecommendation(message = "추천 입력을 바꾼 뒤 다시 실행하세요.") {
     hideFormError();
+    invalidateItinerary();
+    dom.itinerarySection.hidden = true;
     closeMobileRecommendationFeedbackDialog({ restoreFocus: false });
     state.selectedAnchorIds.clear();
     state.recommendationFeedback.clear();
@@ -2729,6 +2940,12 @@
       resetRecommendationForm();
     });
     dom.rerollRecommendationButton.addEventListener("click", rerollRecommendation);
+    dom.itineraryForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      generateItinerary();
+    });
+    dom.itineraryForm.addEventListener("input", invalidateItinerary);
+    dom.itineraryForm.addEventListener("change", invalidateItinerary);
     const markRequestDirty = (event) => {
       if (event.target.closest("#runRecommendationButton, #resetRecommendationButton")) return;
       if (event.target === dom.requiredPlaceSearch) return;
@@ -2829,6 +3046,8 @@
         run: () => runRecommendation({ fit: false, openOutput: false }),
         reroll: () => rerollRecommendation(),
         getResult: () => state.recommendationResult,
+        getItinerary: () => itineraryClient?.getState(),
+        generateItinerary: () => generateItinerary(),
         getSelectedPlace: () => state.selectedPlace,
         getSidebarCollapsed: () => state.sidebarCollapsed,
         getMapPlaceIds: () => mapPlaces().map((place) => String(place.id)),

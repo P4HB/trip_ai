@@ -21,6 +21,8 @@ V2_SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
 V3_SCHEMA_VERSION = "travel-recommendation-feedback-log-v3"
 SCHEMA_VERSION = V2_SCHEMA_VERSION
 API_PATH = "/travel/api/feedback"
+ITINERARY_PATH = "/travel/api/itineraries"
+MAX_ITINERARY_BODY_BYTES = 64 * 1024
 REVIEW_SCHEMA_VERSION = "kakao-place-reviews-v1"
 REVIEW_PATH_PATTERN = re.compile(r"^/travel/api/places/([^/]+)/reviews$")
 MAX_BODY_BYTES = 2 * 1024 * 1024
@@ -478,7 +480,9 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
 
     def log_message(self, format_string: str, *args: Any) -> None:
         # Do not persist client IPs or request headers in application logs.
-        print(f"travel-feedback {self.command} {self.path}", flush=True)
+        route = urlsplit(self.path).path
+        route = route if route in {API_PATH, ITINERARY_PATH, "/healthz"} else "other"
+        print(f"travel-feedback {self.command} {route}", flush=True)
 
     def send_json(self, status: int, body: dict[str, Any], cache_control: str = "no-store") -> None:
         encoded = json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
@@ -527,6 +531,9 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         self.send_json(200, body, "public, max-age=3600")
 
     def do_POST(self) -> None:
+        if self.path == ITINERARY_PATH:
+            self.post_itinerary()
+            return
         if self.path != API_PATH:
             self.send_json(404, {"ok": False, "error": "not_found"})
             return
@@ -598,6 +605,68 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
                 },
             )
 
+    def post_itinerary(self) -> None:
+        server = self.feedback_server
+        # A public, billable endpoint requires an exact browser Origin. The edge
+        # forwards only the explicitly configured Vercel origin for this route.
+        if self.headers.get("Origin") != server.public_origin:
+            self.send_json(403, {"status": "unavailable", "error": "origin_not_allowed"})
+            return
+        if self.headers.get("Content-Type", "").partition(";")[0].strip().lower() != "application/json":
+            self.send_json(415, {"status": "needs_input", "error": "application_json_required"})
+            return
+        if self.headers.get("Transfer-Encoding"):
+            self.send_json(400, {"status": "needs_input", "error": "transfer_encoding_not_supported"})
+            return
+        try:
+            length = int(self.headers.get("Content-Length", ""))
+        except ValueError:
+            self.send_json(411, {"status": "needs_input", "error": "content_length_required"})
+            return
+        if not 0 < length <= MAX_ITINERARY_BODY_BYTES:
+            self.send_json(413 if length > MAX_ITINERARY_BODY_BYTES else 400,
+                           {"status": "needs_input", "error": "invalid_body_size"})
+            return
+        try:
+            self.connection.settimeout(10)
+            raw_body = self.rfile.read(length)
+            payload = json.loads(raw_body.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError, TimeoutError, OSError):
+            self.send_json(400, {"status": "needs_input", "error": "invalid_json"})
+            return
+        if not isinstance(payload, dict):
+            self.send_json(422, {"status": "needs_input", "error": "invalid_itinerary"})
+            return
+        if server.itinerary_service is None:
+            self.send_json(503, {"status": "unavailable", "error": "itinerary_not_configured"})
+            return
+        try:
+            server.itinerary_service.validate_request(payload)
+        except ValueError as exc:
+            self.send_json(422, {"status": "needs_input", "error": "invalid_itinerary", "detail": str(exc)})
+            return
+        if not server.itinerary_slots.acquire(blocking=False):
+            self.send_json(429, {"status": "unavailable", "error": "itinerary_busy"})
+            return
+        try:
+            # Global counters cannot be bypassed by changing forwarded IPs and
+            # retain no user identities. Supplier project budgets remain needed.
+            if not server.itinerary_minute_limiter.allow("all") or not server.itinerary_daily_limiter.allow("all"):
+                self.send_json(429, {"status": "unavailable", "error": "itinerary_rate_limit"})
+                return
+            try:
+                result = server.itinerary_service.generate(payload)
+            except ValueError:
+                self.send_json(422, {"status": "needs_input", "error": "invalid_itinerary"})
+                return
+            except Exception:
+                # Supplier exceptions can contain headers, prompts or URLs.
+                self.send_json(503, {"status": "unavailable", "error": "itinerary_unavailable"})
+                return
+            self.send_json(200, result)
+        finally:
+            server.itinerary_slots.release()
+
 
 class FeedbackHTTPServer(ThreadingHTTPServer):
     daemon_threads = True
@@ -609,12 +678,42 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
         public_origin: str,
         rate_limiter: MemoryRateLimiter | None = None,
         review_store: ReviewStore | None = None,
+        itinerary_service: Any = None,
+        itinerary_per_minute: int = 10,
+        itinerary_per_day: int = 100,
     ):
         self.store = store
         self.public_origin = public_origin.rstrip("/")
         self.rate_limiter = rate_limiter or MemoryRateLimiter()
         self.review_store = review_store
+        self.itinerary_service = itinerary_service
+        self.itinerary_slots = threading.BoundedSemaphore(2)
+        self.itinerary_minute_limiter = MemoryRateLimiter(itinerary_per_minute)
+        self.itinerary_daily_limiter = MemoryRateLimiter(itinerary_per_day, 86400)
         super().__init__(server_address, FeedbackRequestHandler)
+
+
+def load_itinerary_service() -> Any:
+    """Load public sidecars once. Feature-off/missing data never breaks feedback."""
+    if os.environ.get("ITINERARY_ENABLED", "0") != "1":
+        return None
+    try:
+        from itinerary_service import ItineraryService
+        from llm_client import OpenAIClient
+        from route_provider import KakaoRouteProvider
+        base = Path(__file__).parent / "data"
+        catalog_path = Path(os.environ.get("ITINERARY_CATALOG_PATH", str(base / "itinerary_catalog.json")))
+        insights_path = Path(os.environ.get("ITINERARY_INSIGHTS_PATH", str(base / "visit_insights.json")))
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        insights = json.loads(insights_path.read_text(encoding="utf-8")) if insights_path.is_file() else None
+        if not isinstance(catalog, dict) or catalog.get("schemaVersion") != "itinerary-catalog-v1" or not isinstance(catalog.get("places"), list):
+            raise ValueError("invalid_catalog")
+        if insights is not None and (not isinstance(insights, dict) or insights.get("version") != catalog.get("reviewVersion")):
+            raise ValueError("rebuild_catalog_after_review_analysis")
+        return ItineraryService(catalog, OpenAIClient(), KakaoRouteProvider(), insights=insights)
+    except (OSError, ValueError, ImportError, TypeError, KeyError):
+        print("travel-feedback itinerary_configuration_unavailable", flush=True)
+        return None
 
 
 def main() -> None:
@@ -628,6 +727,9 @@ def main() -> None:
         FeedbackStore(db_path, retention_days),
         public_origin,
         review_store=ReviewStore(review_db_path),
+        itinerary_service=load_itinerary_service(),
+        itinerary_per_minute=int(os.environ.get("ITINERARY_REQUESTS_PER_MINUTE", "10")),
+        itinerary_per_day=int(os.environ.get("ITINERARY_REQUESTS_PER_DAY", "100")),
     )
     print(f"travel-feedback listening on :{port}", flush=True)
     server.serve_forever()
