@@ -5,7 +5,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
   "use strict";
 
-  const ALGORITHM_VERSION = "ccu-mmr-v7-daily-type-limit";
+  const ALGORITHM_VERSION = "ccu-mmr-v8-preference-budget";
   const REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v2";
   const PERSONALIZED_REQUEST_SCHEMA_VERSION = "ccu-mmr-request-v4-personalized";
   const PREFERENCE_PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
@@ -28,6 +28,15 @@
     candidatePoolSize: 100,
     resultCountDefault: 10,
     blockWeights: BLOCK_WEIGHTS,
+    preferenceWeightPolicy: Object.freeze({
+      version: "preference-weight-budget-v1",
+      visualFeatures: Object.freeze(["scenic_value", "photo_value"]),
+      visualBudget: "max",
+      cappedFeatures: Object.freeze([
+        "scenic_value", "distinctiveness", "local_embeddedness", "landmark_significance", "photo_value",
+      ]),
+      maxCappedShare: 0.25,
+    }),
     similarityWeights: Object.freeze({ feature: 0.70, sameType: 0.20, sameRegion: 0.10 }),
     seedSelection: Object.freeze({
       strategy: "weighted-precomputed-top-relevance-3",
@@ -327,6 +336,62 @@
     return INTENT_TYPES[intent]?.has(String(place.type));
   }
 
+  function adjustPreferenceWeights(traces) {
+    const policy = CONFIG.preferenceWeightPolicy;
+    const usable = traces.filter((trace) => Number.isFinite(trace.utility));
+    const visual = usable.filter((trace) => policy.visualFeatures.includes(trace.feature));
+    const visualWeightSum = visual.reduce((sum, trace) => sum + trace.weight, 0);
+    const visualBudget = visual.reduce((maximum, trace) => Math.max(maximum, trace.weight), 0);
+    for (const trace of traces) {
+      trace.groupedWeight = !Number.isFinite(trace.utility) ? 0
+        : policy.visualFeatures.includes(trace.feature)
+          ? (trace.weight / visualWeightSum) * visualBudget
+          : trace.weight;
+      trace.normalizedWeightBeforeCap = 0;
+      trace.effectiveWeight = 0;
+      trace.contribution = 0;
+    }
+    const groupedTotal = usable.reduce((sum, trace) => sum + trace.groupedWeight, 0);
+    for (const trace of usable) {
+      trace.normalizedWeightBeforeCap = trace.groupedWeight / groupedTotal;
+      trace.effectiveWeight = trace.normalizedWeightBeforeCap;
+    }
+    const capped = usable.filter((trace) => policy.cappedFeatures.includes(trace.feature));
+    const others = usable.filter((trace) => !policy.cappedFeatures.includes(trace.feature));
+    const shareBeforeCap = capped.reduce((sum, trace) => sum + trace.effectiveWeight, 0);
+    // Sum the other side directly; 1 - shareBeforeCap can lose small valid weights.
+    const otherShare = others.reduce((sum, trace) => sum + trace.effectiveWeight, 0);
+    const capApplied = others.length > 0 && shareBeforeCap > policy.maxCappedShare;
+    if (capApplied) {
+      for (const trace of capped) {
+        trace.effectiveWeight = (trace.normalizedWeightBeforeCap / shareBeforeCap) * policy.maxCappedShare;
+      }
+      for (const trace of others) {
+        trace.effectiveWeight = (trace.normalizedWeightBeforeCap / otherShare) * (1 - policy.maxCappedShare);
+      }
+    }
+    for (const trace of usable) trace.contribution = trace.effectiveWeight * trace.utility;
+    return {
+      policyVersion: policy.version,
+      visualGroup: {
+        features: visual.map((trace) => trace.feature),
+        originalWeightSum: visualWeightSum,
+        budget: visualBudget,
+        applied: visual.length > 1,
+      },
+      cappedGroup: {
+        maxShare: policy.maxCappedShare,
+        shareBeforeCap,
+        shareAfterCap: capped.reduce((sum, trace) => sum + trace.effectiveWeight, 0),
+        capApplied,
+        reason: !usable.length ? "no_usable_features"
+          : !capped.length ? "no_capped_features"
+            : !others.length ? "no_other_usable_features"
+              : capApplied ? "capped" : "within_limit",
+      },
+    };
+  }
+
   function preferenceComponent(place, preferences) {
     if (!preferences.length) return { requested: false, active: false, value: null, coverage: 0, traces: [] };
     const traces = preferences.map((preference) => {
@@ -337,17 +402,15 @@
     const usable = traces.filter((trace) => Number.isFinite(trace.utility));
     const requestedWeight = traces.reduce((sum, trace) => sum + trace.weight, 0);
     const usableWeight = usable.reduce((sum, trace) => sum + trace.weight, 0);
-    if (!usableWeight) return { requested: true, active: false, value: null, coverage: 0, traces };
-    for (const trace of traces) {
-      trace.effectiveWeight = Number.isFinite(trace.utility) ? trace.weight / usableWeight : 0;
-      trace.contribution = Number.isFinite(trace.utility) ? trace.effectiveWeight * trace.utility : 0;
-    }
+    const weightAdjustment = adjustPreferenceWeights(traces);
+    if (!usableWeight) return { requested: true, active: false, value: null, coverage: 0, traces, weightAdjustment };
     return {
       requested: true,
       active: true,
-      value: usable.reduce((sum, trace) => sum + trace.weight * trace.utility, 0) / usableWeight,
+      value: usable.reduce((sum, trace) => sum + trace.contribution, 0),
       coverage: usableWeight / requestedWeight,
       traces,
+      weightAdjustment,
     };
   }
 

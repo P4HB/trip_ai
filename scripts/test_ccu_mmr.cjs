@@ -49,7 +49,8 @@ const exampleResult = CCU.rank([example], {
   ],
   resultCount: 1,
 });
-close(exampleResult.items[0].components.preference.value, 8 / 9);
+// 14~18 carry 25%; ocean/physical_ease split the remaining 75% at 4:2.
+close(exampleResult.items[0].components.preference.value, 0.5 * 1 + 0.25 * 0.75 + (1 / 6) * 0.8 + (1 / 12) * 0.9);
 
 const profileAnswers = Preference.QUESTIONS.map((question, index) => ({
   questionId: question.id,

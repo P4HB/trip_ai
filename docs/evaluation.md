@@ -1,7 +1,7 @@
 # 추천 평가 전략
 
 - 문서 상태: 내부 데모 회귀 구현, 추천 품질 평가는 미구현
-- 최종 수정일: 2026-09-22
+- 최종 수정일: 2026-09-26
 - 활성 설계 초안: [SPEC-008](spec_008.md)
 
 운영 품질을 판단하는 자동 추천 평가 파이프라인은 없다. SPEC-014~017은 수식·계약, 일정 회귀, 상위 3개 가중 seed 경계, 코스 variant·세션 순환·중복 trace와 자동 일정 중심을 확인하는 `scripts/test_ccu_mmr.cjs`와 실제 1,663곳 41축 번들을 검사하는 `scripts/validate_ccu_mmr_dashboard.cjs`만 구현했다. 이는 품질 평가나 출시 gate가 아니며 현행 AI 초안 라벨과 추천 결과를 정답으로 재사용하지 않는다.
@@ -43,7 +43,7 @@ SPEC-007은 비음식점 1,434건을 모두 조사·생성했다.
 - 축별 값 범위, provenance, confidence와 evidence 연결
 - `dataset_status=ai_draft` 실행 gate와 경고 누락률
 - 관련도·각 seed variant·자동 일정은 같은 입력에서 결정적이어야 한다. 최초 브라우저 가중 seed는 상위 3개와 `0.5/0.3/0.2` 경계를 벗어나지 않고, 명시 variant 선택은 난수를 호출하지 않아야 한다.
-- 여행 MBTI 질문·pair catalog ID와 mapping, 같은 답변의 profile JSON, A/B 대칭성, `both_like|both_dislike`의 축 중립·feature 부호 대칭·감쇠, 미노출 적응형 pair 선택, A/R·O/I·L/H 각 6문항과 선택지 방향 3:3 균형, 8개 유형과 최대 8개 active feature를 고정 fixture로 회귀한다. 기존 v2와 개인화 v4 요청을 분리해 v2 P/A/M/R/MMR·일정 결과가 유지되는지 확인한다.
+- 여행 MBTI 질문·pair catalog ID와 mapping, 같은 답변의 profile JSON, A/B 대칭성, `both_like|both_dislike`의 축 중립·feature 부호 대칭·감쇠, 미노출 적응형 pair 선택, A/R·O/I·L/H 각 6문항과 선택지 방향 3:3 균형, 8개 유형과 최대 8개 active feature를 고정 fixture로 회귀한다. v2와 개인화 v4 요청 계약을 구분하며 현재 점수 정책에 대응하는 P/A/M/R/MMR·일정 불변조건을 확인한다. SPEC-084로 의도적으로 바뀐 P는 과거 평면 가중평균을 기대값으로 고정하지 않는다.
 
 ### 2. 필수 제약 정확성
 
@@ -182,3 +182,11 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 `python3 scripts/evaluate_itineraries.py --output /tmp/spec083-sample-audit.json`은 실제 랭커의 4일·24개 장소를 읽어 임시 체류시간, 점심·저녁, 누락/확인 필요와 기존 순서의 왕복 진단을 출력한다. 시간표와 10분 경로는 명시적인 모의값이다. 직선거리 순서 비교는 진단 지표이며 도로 이동시간·실제 LLM 품질을 대신하지 않는다. 실제 API 평가에는 별도 미래 날짜와 키를 사용해 같은 지표·지연·사용 토큰을 다시 측정해야 한다.
 
 2026-09-24 보완은 부분 일자 식사, 7일 호출 예산, 생성 실패와 배정 불가능 구분, 수정 입력의 실제 이동시간을 고정 회귀로 검사한다. 실제 평가의 표본·성공률·가중 장소 보존·동일 집합 이동시간·지연·비용 합격선 및 측정 정의는 [SPEC-083의 실제 품질 gate](spec_083.md#itinerary-quality-gate)를 기준으로 한다. 모의 보고서는 `qualityGate.status=not_evaluated`와 남은 지표를 반환한다. 실제 반복 모델 평가기는 아직 미구현이며 모의 보고서가 실제 품질 합격을 대신하지 않는다.
+
+## 상관 feature 가중치 예산 — SPEC-084
+
+`node scripts/test_preference_weight_budget.cjs`는 [SPEC-084](spec_084.md)의 묶음·상한 순서, 비율·효용 보존, 결측·그룹 전용 예외, 추천 순위 변화, trace 합계와 결정성을 손계산 fixture로 검증한다.
+
+`node scripts/evaluate_preference_weight_budget.cjs --baseline-engine <보존한-v7-엔진.cjs>`는 변경 전 실제 엔진과 현재 엔진을 같은 1,663개 추천 준비 장소에 적용한다. 합성 MBTI 8개와 명시적 자연·사진 선호 2개에 대해 visit lane, 동행·월 미사용, Top 10, 다양성 off/balanced를 비교한다. balanced는 첫 seed로 고정한다. 프로필별 기여 비중·Top 10 ID·대표 유형 수·해변/오름 수·프로필 간 겹침을 `artifacts/evaluation/spec_084_preference_budget.json`에 기록하며 입력 및 두 엔진 SHA-256을 포함한다.
+
+이 보고서는 현재 라벨과 합성 입력에 대한 민감도 분석이다. 원래 점수나 달라진 점수 자체를 독립 정답으로 쓰지 않고, 지표가 나빠진 경우도 기록한다. 결과 수치와 알려진 제한은 SPEC-084의 구현 결과를 따른다.

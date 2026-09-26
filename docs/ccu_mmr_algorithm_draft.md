@@ -1,16 +1,16 @@
 # CCU-MMR 장소 추천 및 일정 군집 알고리즘 초안
 
-- 문서 상태: 3축 여행 MBTI 개인화·세션 코스 3안·요청 인지형 MMR과 선택 코스 자동 일정 v6 구현
+- 문서 상태: 상관 feature 가중치 예산 v8·하루 유형 상한·개인화·코스 variant 구현
 - 작성일: 2026-08-12
-- 최종 수정일: 2026-08-22
-- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md), [SPEC-016](spec_016.md), [SPEC-017](spec_017.md), [SPEC-019](spec_019.md)
+- 최종 수정일: 2026-09-26
+- 관련 SPEC: [SPEC-008](spec_008.md), [SPEC-014](spec_014.md), [SPEC-015](spec_015.md), [SPEC-016](spec_016.md), [SPEC-017](spec_017.md), [SPEC-019](spec_019.md), [SPEC-078](spec_078.md), [SPEC-084](spec_084.md)
 - 관련 기준 문서: [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md)
 
 > 이 문서는 41개 장소·상황 라벨을 사용하는 CCU-MMR 장소 추천과, 추천 결과를 여행일별로 묶기 위한 중심 반경·일일 capacity 군집을 하나의 흐름으로 정리한다. 중심 반경·capacity 일정 v2는 SPEC-015에 따라 구현하며 실제 이동시간, 체류시간과 방문 순서 최적화는 포함하지 않는다.
 
 ## 현재 일정 상한 — SPEC-078
 
-[하루 대표 유형당 1곳 제한](spec_078.md)이 아래 기존 v6 일정 설명보다 우선한다. 현재 알고리즘은 `ccu-mmr-v7-daily-type-limit`이다. 대표 유형(`primaryType`)은 하루 최대 1곳이며 필수 장소·anchor도 집계한다. 같은 유형의 필수 장소는 고정 지리 중심을 유지하면서 다른 일자로 분리한다. 여행일을 초과하면 infeasible이다. 자동 선택은 이미 선택된 유형과 unknown/누락 유형을 제외한다. 필수·사용자 anchor의 유형 미확인은 오류다. 날짜 간 같은 유형은 허용하며 Top-N 랭킹은 그대로다. 부족한 후보로 하루 6곳을 강제 채우지 않는다. 결과에 `dailyTypeLimit=1`, 일자별 `places[].primaryType`를 기록한다.
+[하루 대표 유형당 1곳 제한](spec_078.md)이 아래 기존 v6 일정 설명보다 우선한다. 현재 알고리즘은 `ccu-mmr-v8-preference-budget`이며 일정의 유형 상한은 v7 동작을 유지한다. 대표 유형(`primaryType`)은 하루 최대 1곳이며 필수 장소·anchor도 집계한다. 같은 유형의 필수 장소는 고정 지리 중심을 유지하면서 다른 일자로 분리한다. 여행일을 초과하면 infeasible이다. 자동 선택은 이미 선택된 유형과 unknown/누락 유형을 제외한다. 필수·사용자 anchor의 유형 미확인은 오류다. 날짜 간 같은 유형은 허용한다. 유형 상한 자체는 Top-N을 제한하지 않으며 v8 취향 점수 변경은 Top-N에 반영된다. 부족한 후보로 하루 6곳을 강제 채우지 않는다. 결과에 `dailyTypeLimit=1`, 일자별 `places[].primaryType`를 기록한다.
 
 ## 1. 알고리즘 한눈에 보기
 
@@ -153,19 +153,19 @@ target:  u_k(x) = exp(-(x-target)^2 / (2*tolerance^2))
 ignore:  계산에서 제외
 ```
 
-v2 중요도는 `1`, `2`, `4`, v4-personalized 중요도는 `0 < weight <= 4`인 연속값을 사용하고 활성 가중치의 합으로 정규화한다. 개인화 confidence는 weight 생성 근거와 trace에 남지만 장소 라벨 confidence 보정으로 사용하지 않는다. “반드시”는 큰 가중치가 아니라 필수 조건으로 입력해야 한다.
+v2 중요도는 `1`, `2`, `4`, v4-personalized 중요도는 `0 < weight <= 4`인 연속값을 사용한다. v8에서는 아래 개인 취향 P의 가중치 예산 정책을 적용한 뒤 효용을 합산한다. 개인화 confidence는 weight 생성 근거와 trace에 남지만 장소 라벨 confidence 보정으로 사용하지 않는다. “반드시”는 큰 가중치가 아니라 필수 조건으로 입력해야 한다.
 
 ## 6. 장소 관련도 계산
 
 ### 6.1 개인 취향 P
 
 ```text
-P_i
-  = sum(w_k * u_k(x_ik))
-    / sum(w_k)
+P_i = sum(effectiveWeight_ik * u_k(x_ik))
 ```
 
-사용자가 선택하지 않은 라벨은 0점으로 넣지 않고 계산에서 제외한다.
+`effectiveWeight`의 기준 계산은 [SPEC-084](spec_084.md)의 설계다. 유효한 경관·사진 가중치는 최댓값 하나를 예산으로 나누고, 정규화한 뒤 경관·독특함·로컬성·랜드마크성·사진 가치의 합에 25% 상한을 적용한다. 두 그룹 내부의 상대 선호는 유지한다. 그룹 밖 유효 선호가 없으면 상한을 생략하고 그 이유를 trace에 기록한다.
+
+사용자가 선택하지 않은 라벨과 결측값은 계산에서 제외한다. 유효한 0점은 포함한다. `coverage`는 기존 원래 weight 중 유효 weight 비율이다. `groupedWeight`, `normalizedWeightBeforeCap`, 최종 `effectiveWeight`와 `contribution`으로 정책 적용을 추적하며 추천 이유도 최종 기여도를 사용한다.
 
 ### 6.2 동행자 A
 
@@ -196,7 +196,7 @@ W_i(context)
   = 1 - weather_badness(context) * weather_sensitivity_i
 ```
 
-현재 `ccu-mmr-v6-travel-mbti-three-axis`는 날씨 블록을 비활성화한다. 개인화 v2도 P/A/M/W 블록 가중치 자체는 바꾸지 않고 개인취향 P 내부 feature weight만 변경한다.
+현재 v8도 날씨 블록을 비활성화한다. 개인화와 가중치 예산 정책은 P/A/M/W 블록 가중치 자체를 바꾸지 않고 개인취향 P 내부 feature weight에 적용한다.
 
 ### 6.5 최종 장소 관련도 R
 

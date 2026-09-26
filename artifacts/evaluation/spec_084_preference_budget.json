@@ -1,0 +1,1604 @@
+{
+  "schemaVersion": "spec-084-preference-budget-evaluation-v1",
+  "data": {
+    "path": "map-ui/data/jeju-places.js",
+    "sha256": "052ea149da774f749e9259d5249424b750e1d18f04164eef2daad47fde5992b1",
+    "metadata": {
+      "source": "한국관광공사 TourAPI",
+      "sourceDate": "2026-08-09",
+      "labelSnapshotDate": "2026-08-09",
+      "total": 2154,
+      "validCoordinates": 2153,
+      "excludedCoordinates": 1,
+      "excluded": [
+        {
+          "id": "2704351",
+          "title": "영주산",
+          "lng": "12.79737228191",
+          "lat": "33.4042093891"
+        }
+      ],
+      "v5ReviewSourceCount": 1664,
+      "v5ReviewAttachedCount": 1663,
+      "fitLabelSourceCount": 1664,
+      "fitLabelAttachedCount": 1663,
+      "recommendationReadyCount": 1663,
+      "recommendationUnscoredCount": 490,
+      "researchSourceCount": 1664,
+      "researchAttachedCount": 1663,
+      "recommendationResearchReadyCount": 1663,
+      "hardConstraintSourceCount": 1518,
+      "hardConstraintAttachedCount": 1517,
+      "hardConstraintAttachedPlaceCount": 1313,
+      "datasetStatus": "ai_draft",
+      "algorithmVersion": "ccu-mmr-v8-preference-budget",
+      "primaryTypeVersion": "place-primary-types-v1.2-review-complete",
+      "fitLabelVersion": "place-fit-relabel-v2-relative-five-level-companion",
+      "preferenceLabelVersion": "place-preference-label-v5-researched",
+      "researchVersion": "place-preference-label-v5-researched-sources-v1",
+      "hardConstraintVersion": "place-profile-v1-all-1434",
+      "companionKeys": [
+        "solo",
+        "couple",
+        "friends",
+        "kids",
+        "parents"
+      ],
+      "monthKeys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    "readyCount": 1663,
+    "visitCount": 799
+  },
+  "baseline": {
+    "algorithmVersion": "ccu-mmr-v7-daily-type-limit",
+    "engineSha256": "bb8d45e1b175cbf612fe6e127a87908037aaf3029142f9ca60bdac7805fbe930"
+  },
+  "current": {
+    "algorithmVersion": "ccu-mmr-v8-preference-budget",
+    "engineSha256": "e2bbd613953fbb1d1e1dcfa19b4239b3fdc248006aadeaf1737257f54f14eea3",
+    "policy": {
+      "version": "preference-weight-budget-v1",
+      "visualFeatures": [
+        "scenic_value",
+        "photo_value"
+      ],
+      "visualBudget": "max",
+      "cappedFeatures": [
+        "scenic_value",
+        "distinctiveness",
+        "local_embeddedness",
+        "landmark_significance",
+        "photo_value"
+      ],
+      "maxCappedShare": 0.25
+    }
+  },
+  "evaluation": {
+    "syntheticMbtiProfiles": 8,
+    "explicitScenarios": 2,
+    "intent": "visit",
+    "destinationRegion": "jeju_all",
+    "companionType": "none",
+    "travelWindow": null,
+    "resultCount": 10,
+    "balancedSeed": "seed-rank-1",
+    "realUserResponsesUsed": false
+  },
+  "aggregate": {
+    "off": {
+      "before": {
+        "meanUniquePrimaryTypes": 5.5,
+        "meanBeachOreumCount": 2.375,
+        "meanPairwiseTop10Overlap": 0.642857,
+        "groupWeightShareRange": [
+          0.279523,
+          0.382687
+        ]
+      },
+      "after": {
+        "meanUniquePrimaryTypes": 5.5,
+        "meanBeachOreumCount": 2,
+        "meanPairwiseTop10Overlap": 0.821429,
+        "groupWeightShareRange": [
+          0.25,
+          0.25
+        ]
+      },
+      "meanBeforeAfterOverlap": 7.75
+    },
+    "balanced": {
+      "before": {
+        "meanUniquePrimaryTypes": 6.5,
+        "meanBeachOreumCount": 1.625,
+        "meanPairwiseTop10Overlap": 0.857143,
+        "groupWeightShareRange": [
+          0.279523,
+          0.382687
+        ]
+      },
+      "after": {
+        "meanUniquePrimaryTypes": 6.25,
+        "meanBeachOreumCount": 1.375,
+        "meanPairwiseTop10Overlap": 0.892857,
+        "groupWeightShareRange": [
+          0.25,
+          0.25
+        ]
+      },
+      "meanBeforeAfterOverlap": 8
+    }
+  },
+  "scenarios": [
+    {
+      "id": "AOL",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": 1,
+        "environment": 1,
+        "discovery": 1
+      },
+      "preferences": [
+        {
+          "feature": "activity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "local_embeddedness",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "distinctiveness",
+          "mode": "benefit",
+          "weight": 3.5,
+          "confidence": 0.833333,
+          "source": "quiz"
+        },
+        {
+          "feature": "theme_park",
+          "mode": "benefit",
+          "weight": 2.344,
+          "confidence": 0.447917,
+          "source": "quiz"
+        },
+        {
+          "feature": "festival",
+          "mode": "benefit",
+          "weight": 2,
+          "confidence": 0.333333,
+          "source": "quiz"
+        },
+        {
+          "feature": "scenic_value",
+          "mode": "benefit",
+          "weight": 1.938,
+          "confidence": 0.3125,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "126446",
+              "126436",
+              "264590",
+              "824619",
+              "1841003",
+              "2710264",
+              "572973",
+              "2711404",
+              "129617",
+              "131103"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 3,
+            "meanOcean": 0.4,
+            "meanMountain": 0.525,
+            "meanPhoto": 0.8,
+            "meanCappedWeightShare": 0.372852
+          },
+          "after": {
+            "top10": [
+              "637398",
+              "126446",
+              "131546",
+              "2710264",
+              "2738726",
+              "2674014",
+              "572973",
+              "126436",
+              "264590",
+              "824619"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 3,
+            "meanOcean": 0.15,
+            "meanMountain": 0.5,
+            "meanPhoto": 0.7,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 6
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "126446",
+              "824619",
+              "264590",
+              "2710264",
+              "1841003",
+              "2674014",
+              "126436",
+              "2863882",
+              "131546",
+              "1839713"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 2,
+            "meanOcean": 0.425,
+            "meanMountain": 0.525,
+            "meanPhoto": 0.8,
+            "meanCappedWeightShare": 0.372852
+          },
+          "after": {
+            "top10": [
+              "637398",
+              "126446",
+              "126436",
+              "1839713",
+              "131546",
+              "2738726",
+              "2674014",
+              "824619",
+              "1841003",
+              "2711404"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 1,
+            "meanOcean": 0.325,
+            "meanMountain": 0.4,
+            "meanPhoto": 0.725,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 7
+        }
+      }
+    },
+    {
+      "id": "AOH",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": 1,
+        "environment": 1,
+        "discovery": -1
+      },
+      "preferences": [
+        {
+          "feature": "activity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "landmark_significance",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "photo_value",
+          "mode": "benefit",
+          "weight": 3.25,
+          "confidence": 0.75,
+          "source": "quiz"
+        },
+        {
+          "feature": "theme_park",
+          "mode": "benefit",
+          "weight": 2.75,
+          "confidence": 0.583333,
+          "source": "quiz"
+        },
+        {
+          "feature": "festival",
+          "mode": "benefit",
+          "weight": 2,
+          "confidence": 0.333333,
+          "source": "quiz"
+        },
+        {
+          "feature": "scenic_value",
+          "mode": "benefit",
+          "weight": 1.938,
+          "confidence": 0.3125,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "264590",
+              "126449",
+              "572973",
+              "126436",
+              "126434",
+              "126435",
+              "127635",
+              "129074",
+              "1839713",
+              "1841003"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 7,
+            "meanOcean": 0.6,
+            "meanMountain": 0.75,
+            "meanPhoto": 0.975,
+            "meanCappedWeightShare": 0.360752
+          },
+          "after": {
+            "top10": [
+              "264590",
+              "637398",
+              "126449",
+              "572973",
+              "126436",
+              "2674014",
+              "126446",
+              "1839713",
+              "1841003",
+              "2863882"
+            ],
+            "uniquePrimaryTypes": 7,
+            "beachOreumCount": 4,
+            "meanOcean": 0.525,
+            "meanMountain": 0.425,
+            "meanPhoto": 0.9,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 6
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "264590",
+              "1841003",
+              "126449",
+              "572973",
+              "1839713",
+              "129074",
+              "2863882",
+              "126436",
+              "126434",
+              "126435"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 6,
+            "meanOcean": 0.7,
+            "meanMountain": 0.675,
+            "meanPhoto": 0.975,
+            "meanCappedWeightShare": 0.360752
+          },
+          "after": {
+            "top10": [
+              "264590",
+              "637398",
+              "126449",
+              "572973",
+              "1839713",
+              "2863882",
+              "824619",
+              "2674014",
+              "1841003",
+              "126436"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 4,
+            "meanOcean": 0.425,
+            "meanMountain": 0.525,
+            "meanPhoto": 0.875,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 7
+        }
+      }
+    },
+    {
+      "id": "AIL",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": 1,
+        "environment": -1,
+        "discovery": 1
+      },
+      "preferences": [
+        {
+          "feature": "activity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "local_embeddedness",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "distinctiveness",
+          "mode": "benefit",
+          "weight": 3.5,
+          "confidence": 0.833333,
+          "source": "quiz"
+        },
+        {
+          "feature": "theme_park",
+          "mode": "benefit",
+          "weight": 2.344,
+          "confidence": 0.447917,
+          "source": "quiz"
+        },
+        {
+          "feature": "festival",
+          "mode": "benefit",
+          "weight": 2,
+          "confidence": 0.333333,
+          "source": "quiz"
+        },
+        {
+          "feature": "traditional_market",
+          "mode": "benefit",
+          "weight": 1.906,
+          "confidence": 0.302083,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "2740014",
+              "3329719",
+              "3031552",
+              "2738653",
+              "2905116",
+              "780778",
+              "3439423",
+              "3056829",
+              "2609373",
+              "2798046"
+            ],
+            "uniquePrimaryTypes": 7,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0.05,
+            "meanPhoto": 0.575,
+            "meanCappedWeightShare": 0.296665
+          },
+          "after": {
+            "top10": [
+              "2740014",
+              "3329719",
+              "3031552",
+              "780778",
+              "3439423",
+              "2905116",
+              "2738653",
+              "2418778",
+              "1737497",
+              "3056829"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 0,
+            "meanOcean": 0.15,
+            "meanMountain": 0.05,
+            "meanPhoto": 0.575,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 8
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "2740014",
+              "3329719",
+              "3031552",
+              "1957971",
+              "780778",
+              "126452",
+              "2905116",
+              "2738653",
+              "2609373",
+              "1737497"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 0,
+            "meanOcean": 0.2,
+            "meanMountain": 0.15,
+            "meanPhoto": 0.675,
+            "meanCappedWeightShare": 0.296665
+          },
+          "after": {
+            "top10": [
+              "2740014",
+              "3329719",
+              "3031552",
+              "780778",
+              "1957971",
+              "2905116",
+              "2738653",
+              "2418778",
+              "1737497",
+              "2609373"
+            ],
+            "uniquePrimaryTypes": 7,
+            "beachOreumCount": 0,
+            "meanOcean": 0.2,
+            "meanMountain": 0.15,
+            "meanPhoto": 0.6,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        }
+      }
+    },
+    {
+      "id": "AIH",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": 1,
+        "environment": -1,
+        "discovery": -1
+      },
+      "preferences": [
+        {
+          "feature": "activity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "landmark_significance",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "photo_value",
+          "mode": "benefit",
+          "weight": 3.25,
+          "confidence": 0.75,
+          "source": "quiz"
+        },
+        {
+          "feature": "theme_park",
+          "mode": "benefit",
+          "weight": 2.75,
+          "confidence": 0.583333,
+          "source": "quiz"
+        },
+        {
+          "feature": "festival",
+          "mode": "benefit",
+          "weight": 2,
+          "confidence": 0.333333,
+          "source": "quiz"
+        },
+        {
+          "feature": "restfulness",
+          "mode": "avoid",
+          "weight": 1.75,
+          "confidence": 0.25,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "2740014",
+              "780778",
+              "3439423",
+              "1737497",
+              "2472824",
+              "3329719",
+              "126452",
+              "2759120",
+              "128665",
+              "2418778"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 0,
+            "meanOcean": 0.05,
+            "meanMountain": 0,
+            "meanPhoto": 0.675,
+            "meanCappedWeightShare": 0.286777
+          },
+          "after": {
+            "top10": [
+              "2740014",
+              "780778",
+              "3439423",
+              "3329719",
+              "1737497",
+              "2472824",
+              "2418778",
+              "2759120",
+              "128665",
+              "126452"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 0,
+            "meanOcean": 0.05,
+            "meanMountain": 0,
+            "meanPhoto": 0.675,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 10
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "2740014",
+              "780778",
+              "126452",
+              "1737497",
+              "3329719",
+              "2472824",
+              "3439423",
+              "3464225",
+              "2759120",
+              "1957971"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0.1,
+            "meanPhoto": 0.725,
+            "meanCappedWeightShare": 0.286777
+          },
+          "after": {
+            "top10": [
+              "2740014",
+              "780778",
+              "3329719",
+              "1737497",
+              "3439423",
+              "2472824",
+              "3464225",
+              "126452",
+              "2418778",
+              "2759120"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.075,
+            "meanMountain": 0,
+            "meanPhoto": 0.675,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        }
+      }
+    },
+    {
+      "id": "ROL",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": -1,
+        "environment": 1,
+        "discovery": 1
+      },
+      "preferences": [
+        {
+          "feature": "local_embeddedness",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "restfulness",
+          "mode": "benefit",
+          "weight": 3.906,
+          "confidence": 0.96875,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "distinctiveness",
+          "mode": "benefit",
+          "weight": 3.5,
+          "confidence": 0.833333,
+          "source": "quiz"
+        },
+        {
+          "feature": "physical_ease",
+          "mode": "benefit",
+          "weight": 2.531,
+          "confidence": 0.510417,
+          "source": "quiz"
+        },
+        {
+          "feature": "scenic_value",
+          "mode": "benefit",
+          "weight": 2.438,
+          "confidence": 0.479167,
+          "source": "quiz"
+        },
+        {
+          "feature": "activity",
+          "mode": "avoid",
+          "weight": 2.063,
+          "confidence": 0.5,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "126472",
+              "126461",
+              "637212",
+              "2742357",
+              "2740135",
+              "126446",
+              "2946074",
+              "1861656",
+              "2715648",
+              "126474"
+            ],
+            "uniquePrimaryTypes": 9,
+            "beachOreumCount": 3,
+            "meanOcean": 0.425,
+            "meanMountain": 0.275,
+            "meanPhoto": 0.775,
+            "meanCappedWeightShare": 0.382687
+          },
+          "after": {
+            "top10": [
+              "126472",
+              "126461",
+              "637212",
+              "2742357",
+              "591798",
+              "2946074",
+              "2740135",
+              "1861656",
+              "2715648",
+              "126446"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 3,
+            "meanOcean": 0.525,
+            "meanMountain": 0.175,
+            "meanPhoto": 0.775,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "126472",
+              "126446",
+              "2738671",
+              "1861656",
+              "637212",
+              "126461",
+              "2740135",
+              "2742357",
+              "129145",
+              "2715648"
+            ],
+            "uniquePrimaryTypes": 9,
+            "beachOreumCount": 2,
+            "meanOcean": 0.525,
+            "meanMountain": 0.25,
+            "meanPhoto": 0.8,
+            "meanCappedWeightShare": 0.382687
+          },
+          "after": {
+            "top10": [
+              "126472",
+              "126446",
+              "1861656",
+              "2738671",
+              "637212",
+              "591798",
+              "126461",
+              "2742357",
+              "2715648",
+              "2738728"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 3,
+            "meanOcean": 0.525,
+            "meanMountain": 0.25,
+            "meanPhoto": 0.775,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 8
+        }
+      }
+    },
+    {
+      "id": "ROH",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": -1,
+        "environment": 1,
+        "discovery": -1
+      },
+      "preferences": [
+        {
+          "feature": "landmark_significance",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "restfulness",
+          "mode": "benefit",
+          "weight": 3.906,
+          "confidence": 0.96875,
+          "source": "quiz"
+        },
+        {
+          "feature": "indoor_ratio",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "photo_value",
+          "mode": "benefit",
+          "weight": 3.25,
+          "confidence": 0.75,
+          "source": "quiz"
+        },
+        {
+          "feature": "physical_ease",
+          "mode": "benefit",
+          "weight": 2.531,
+          "confidence": 0.510417,
+          "source": "quiz"
+        },
+        {
+          "feature": "scenic_value",
+          "mode": "benefit",
+          "weight": 2.438,
+          "confidence": 0.479167,
+          "source": "quiz"
+        },
+        {
+          "feature": "activity",
+          "mode": "avoid",
+          "weight": 2.063,
+          "confidence": 0.5,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "598558",
+              "637212",
+              "126434",
+              "126472",
+              "591866",
+              "2652545",
+              "228853",
+              "129145",
+              "2564158",
+              "2662743"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 6,
+            "meanOcean": 0.7,
+            "meanMountain": 0.175,
+            "meanPhoto": 0.975,
+            "meanCappedWeightShare": 0.376686
+          },
+          "after": {
+            "top10": [
+              "126472",
+              "598558",
+              "126461",
+              "637212",
+              "591798",
+              "126434",
+              "2742357",
+              "2791450",
+              "3056663",
+              "591866"
+            ],
+            "uniquePrimaryTypes": 6,
+            "beachOreumCount": 6,
+            "meanOcean": 0.65,
+            "meanMountain": 0.175,
+            "meanPhoto": 0.85,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 5
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "598558",
+              "1841279",
+              "637212",
+              "2662743",
+              "126434",
+              "129145",
+              "129074",
+              "126472",
+              "127861",
+              "879234"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 3,
+            "meanOcean": 0.575,
+            "meanMountain": 0.35,
+            "meanPhoto": 0.925,
+            "meanCappedWeightShare": 0.376686
+          },
+          "after": {
+            "top10": [
+              "126472",
+              "1841279",
+              "126446",
+              "591798",
+              "1861656",
+              "126434",
+              "637212",
+              "598558",
+              "2662743",
+              "126461"
+            ],
+            "uniquePrimaryTypes": 9,
+            "beachOreumCount": 3,
+            "meanOcean": 0.475,
+            "meanMountain": 0.275,
+            "meanPhoto": 0.85,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 6
+        }
+      }
+    },
+    {
+      "id": "RIL",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": -1,
+        "environment": -1,
+        "discovery": 1
+      },
+      "preferences": [
+        {
+          "feature": "indoor_ratio",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "local_embeddedness",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "restfulness",
+          "mode": "benefit",
+          "weight": 3.906,
+          "confidence": 0.96875,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "distinctiveness",
+          "mode": "benefit",
+          "weight": 3.5,
+          "confidence": 0.833333,
+          "source": "quiz"
+        },
+        {
+          "feature": "physical_ease",
+          "mode": "benefit",
+          "weight": 2.75,
+          "confidence": 0.583333,
+          "source": "quiz"
+        },
+        {
+          "feature": "activity",
+          "mode": "avoid",
+          "weight": 2.281,
+          "confidence": 0.427083,
+          "source": "quiz"
+        },
+        {
+          "feature": "cafe",
+          "mode": "benefit",
+          "weight": 2.219,
+          "confidence": 0.40625,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "3546163",
+              "2606690",
+              "2798046",
+              "2933508",
+              "130872",
+              "250412",
+              "3063420",
+              "129894",
+              "2949573",
+              "3343597"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0,
+            "meanPhoto": 0.5,
+            "meanCappedWeightShare": 0.286402
+          },
+          "after": {
+            "top10": [
+              "3546163",
+              "2606690",
+              "2798046",
+              "250412",
+              "2933508",
+              "130872",
+              "3063420",
+              "3012012",
+              "129894",
+              "2949573"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 0,
+            "meanOcean": 0.1,
+            "meanMountain": 0,
+            "meanPhoto": 0.475,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "3546163",
+              "3343597",
+              "2606690",
+              "250412",
+              "130872",
+              "3012012",
+              "2798046",
+              "2933508",
+              "3063420",
+              "3553979"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.2,
+            "meanMountain": 0,
+            "meanPhoto": 0.525,
+            "meanCappedWeightShare": 0.286402
+          },
+          "after": {
+            "top10": [
+              "3546163",
+              "3012012",
+              "250412",
+              "2606690",
+              "3553979",
+              "130872",
+              "2798046",
+              "128555",
+              "3063420",
+              "3343597"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.225,
+            "meanMountain": 0,
+            "meanPhoto": 0.525,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        }
+      }
+    },
+    {
+      "id": "RIH",
+      "kind": "synthetic_mbti",
+      "axes": {
+        "energy": -1,
+        "environment": -1,
+        "discovery": -1
+      },
+      "preferences": [
+        {
+          "feature": "indoor_ratio",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "landmark_significance",
+          "mode": "benefit",
+          "weight": 4,
+          "confidence": 1,
+          "source": "quiz"
+        },
+        {
+          "feature": "restfulness",
+          "mode": "benefit",
+          "weight": 3.906,
+          "confidence": 0.96875,
+          "source": "quiz"
+        },
+        {
+          "feature": "weather_sensitivity",
+          "mode": "avoid",
+          "weight": 3.531,
+          "confidence": 0.84375,
+          "source": "quiz"
+        },
+        {
+          "feature": "photo_value",
+          "mode": "benefit",
+          "weight": 3.25,
+          "confidence": 0.75,
+          "source": "quiz"
+        },
+        {
+          "feature": "physical_ease",
+          "mode": "benefit",
+          "weight": 2.75,
+          "confidence": 0.583333,
+          "source": "quiz"
+        },
+        {
+          "feature": "activity",
+          "mode": "avoid",
+          "weight": 2.281,
+          "confidence": 0.427083,
+          "source": "quiz"
+        },
+        {
+          "feature": "cafe",
+          "mode": "benefit",
+          "weight": 2.219,
+          "confidence": 0.40625,
+          "source": "quiz"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "2606690",
+              "597562",
+              "2752772",
+              "3553979",
+              "3546163",
+              "696841",
+              "130872",
+              "126452",
+              "129767",
+              "250412"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.15,
+            "meanMountain": 0,
+            "meanPhoto": 0.675,
+            "meanCappedWeightShare": 0.279523
+          },
+          "after": {
+            "top10": [
+              "2606690",
+              "3546163",
+              "250412",
+              "3553979",
+              "696841",
+              "130872",
+              "597562",
+              "2752772",
+              "129767",
+              "2714241"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0,
+            "meanPhoto": 0.65,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "2606690",
+              "250412",
+              "696841",
+              "3553979",
+              "597562",
+              "126452",
+              "130872",
+              "3546163",
+              "3303346",
+              "2752772"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0,
+            "meanPhoto": 0.7,
+            "meanCappedWeightShare": 0.279523
+          },
+          "after": {
+            "top10": [
+              "2606690",
+              "250412",
+              "696841",
+              "3553979",
+              "597562",
+              "126452",
+              "3546163",
+              "130872",
+              "2714241",
+              "3303346"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 0,
+            "meanOcean": 0.175,
+            "meanMountain": 0,
+            "meanPhoto": 0.7,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 9
+        }
+      }
+    },
+    {
+      "id": "explicit_nature",
+      "kind": "explicit_preference",
+      "preferences": [
+        {
+          "feature": "ocean",
+          "weight": 4,
+          "mode": "benefit"
+        },
+        {
+          "feature": "mountain",
+          "weight": 2,
+          "mode": "benefit"
+        },
+        {
+          "feature": "scenic_value",
+          "weight": 4,
+          "mode": "benefit"
+        },
+        {
+          "feature": "photo_value",
+          "weight": 4,
+          "mode": "benefit"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "126435",
+              "127529",
+              "1839451",
+              "1839713",
+              "126434",
+              "129074",
+              "598696",
+              "1069144",
+              "1957971",
+              "3013283"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 4,
+            "meanOcean": 0.9,
+            "meanMountain": 0.875,
+            "meanPhoto": 0.975,
+            "meanCappedWeightShare": 0.571429
+          },
+          "after": {
+            "top10": [
+              "126435",
+              "1957971",
+              "127529",
+              "1839451",
+              "1839713",
+              "129146",
+              "1839772",
+              "1840913",
+              "2370834",
+              "2738671"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 1,
+            "meanOcean": 1,
+            "meanMountain": 0.8,
+            "meanPhoto": 0.85,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 5
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "126435",
+              "1839713",
+              "127529",
+              "1957971",
+              "1839451",
+              "3013283",
+              "2738671",
+              "598696",
+              "1069144",
+              "126434"
+            ],
+            "uniquePrimaryTypes": 4,
+            "beachOreumCount": 4,
+            "meanOcean": 0.9,
+            "meanMountain": 0.9,
+            "meanPhoto": 0.95,
+            "meanCappedWeightShare": 0.571429
+          },
+          "after": {
+            "top10": [
+              "126435",
+              "1957971",
+              "1840913",
+              "127529",
+              "1839451",
+              "1839713",
+              "129146",
+              "2738671",
+              "2370834",
+              "1839772"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 1,
+            "meanOcean": 1,
+            "meanMountain": 0.8,
+            "meanPhoto": 0.85,
+            "meanCappedWeightShare": 0.25
+          },
+          "overlapBeforeAfter": 6
+        }
+      }
+    },
+    {
+      "id": "photo_only",
+      "kind": "explicit_preference",
+      "preferences": [
+        {
+          "feature": "photo_value",
+          "weight": 4,
+          "mode": "benefit"
+        }
+      ],
+      "variants": {
+        "off": {
+          "before": {
+            "top10": [
+              "126434",
+              "126435",
+              "126445",
+              "126448",
+              "126449",
+              "126452",
+              "127529",
+              "127635",
+              "127813",
+              "128777"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 6,
+            "meanOcean": 0.675,
+            "meanMountain": 0.4,
+            "meanPhoto": 1,
+            "meanCappedWeightShare": 1
+          },
+          "after": {
+            "top10": [
+              "126434",
+              "126435",
+              "126445",
+              "126448",
+              "126449",
+              "126452",
+              "127529",
+              "127635",
+              "127813",
+              "128777"
+            ],
+            "uniquePrimaryTypes": 5,
+            "beachOreumCount": 6,
+            "meanOcean": 0.675,
+            "meanMountain": 0.4,
+            "meanPhoto": 1,
+            "meanCappedWeightShare": 1
+          },
+          "overlapBeforeAfter": 10
+        },
+        "balanced": {
+          "before": {
+            "top10": [
+              "126434",
+              "2740014",
+              "1839713",
+              "780778",
+              "2674014",
+              "3026604",
+              "1064572",
+              "126449",
+              "126452",
+              "264590"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 3,
+            "meanOcean": 0.375,
+            "meanMountain": 0.35,
+            "meanPhoto": 1,
+            "meanCappedWeightShare": 1
+          },
+          "after": {
+            "top10": [
+              "126434",
+              "2740014",
+              "1839713",
+              "780778",
+              "2674014",
+              "3026604",
+              "1064572",
+              "126449",
+              "126452",
+              "264590"
+            ],
+            "uniquePrimaryTypes": 8,
+            "beachOreumCount": 3,
+            "meanOcean": 0.375,
+            "meanMountain": 0.35,
+            "meanPhoto": 1,
+            "meanCappedWeightShare": 1
+          },
+          "overlapBeforeAfter": 10
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "합성 응답과 현재 AI 초안 점수에 대한 민감도 비교이며 만족도·정확도 개선 검증이 아님.",
+    "해변·오름 수는 두 대표 유형의 수이며 전체 자연경관 장소 수가 아님.",
+    "각 버전은 자기 점수로 순위를 정하므로 서로 다른 버전의 점수 크기를 품질로 비교하지 않음."
+  ]
+}

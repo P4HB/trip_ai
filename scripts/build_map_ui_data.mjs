@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import CCU from "../map-ui/ccu-mmr.js";
 
 const workspaceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const datasetRoot = path.join(workspaceRoot, "data", "tourapi", "jeju");
@@ -437,7 +438,7 @@ const metadata = {
   hardConstraintAttachedCount: attachedConstraintCount,
   hardConstraintAttachedPlaceCount: attachedConstraintPlaceCount,
   datasetStatus: "ai_draft",
-  algorithmVersion: "ccu-mmr-v7-daily-type-limit",
+  algorithmVersion: CCU.ALGORITHM_VERSION,
   primaryTypeVersion: primaryTypeTaxonomy.version,
   fitLabelVersion: "place-fit-relabel-v2-relative-five-level-companion",
   preferenceLabelVersion: "place-preference-label-v5-researched",
