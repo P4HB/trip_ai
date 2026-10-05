@@ -41,6 +41,8 @@
 
 - 구현됨: [인스타 링크의 전체 사진 수집·로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_102.md). 단일 사진 1/1·캐러셀 사진 8/8 다운로드와 장소 후보 10개/16개를 실제 검증했다. OCR 오인식·모호한 후보는 검토하며 메타데이터는 기존 스냅샷 대조다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
 
+- 구현됨: 제주 음식점 13,561곳·리뷰 44,156건의 독립 로컬 JSONL·조회용 SQLite 카탈로그. 상세 실패 36곳·운영시간 미확인/미수집 112곳을 보존하며 수집은 부분 완료 상태다. [SPEC-085](spec_085.md), [SPEC-103](spec_103.md) 참조.
+
 ## SPEC 색인
 
 | SPEC | 제목 | 상태 | 관련 영역 |
@@ -69,7 +71,6 @@
 | [SPEC-058](spec_058.md) | 추천 만족도 완료형 JSON 로그 저장 | Superseded | recommendation, feedback, privacy, UI |
 | [SPEC-059](spec_059.md) | 추천 만족도 서버 적재 API | Superseded | recommendation, feedback, API, privacy, deployment |
 | [SPEC-060](spec_060.md) | 추천 만족도 실시간 자동 저장 | Implemented | recommendation, feedback, autosave, API, privacy, deployment |
-| [SPEC-061](spec_061.md) | Graphify 프로젝트 전용 코드 지식 그래프 설정 | Implemented | repository, agent, tooling |
 | [SPEC-062](spec_062.md) | 모바일 단일 스크롤 추천 입력·결과 UI | Implemented | recommendation, onboarding, mobile, map, UI |
 | [SPEC-063](spec_063.md) | 지도 UI 웹 조사 장소 설명 한국어화 | In Progress | research, labeling, map, UI, deployment |
 | [SPEC-064](spec_064.md) | 추천 필수 조건 누락 방지 UI | Implemented | recommendation, onboarding, validation, mobile, UI |
@@ -83,23 +84,34 @@
 | [SPEC-072](spec_072.md) | 장소 상세 내부 추천 점수 trace 숨김 | Implemented | map, recommendation, detail, UI |
 | [SPEC-073](spec_073.md) | 모바일 장소 상세 추천 평가 입력 | Implemented | mobile, map, feedback, detail, UI |
 | [SPEC-074](spec_074.md) | 장소 평가 완료 버튼과 추천 목록 완료 표시 | Implemented | feedback, recommendation, mobile, UI |
-
-
 | [SPEC-075](spec_075.md) | 하루 유형 상한을 위한 기존 지도 장소 대표 유형 분류 | Implemented | data, classification |
 | [SPEC-076](spec_076.md) | 장소 유형 사용자 확정과 경관·걷기 분류 | Implemented | data, classification |
 | [SPEC-077](spec_077.md) | 남은 장소 유형 8곳 사용자 확정 | Implemented | data, classification |
 | [SPEC-078](spec_078.md) | 하루 대표 유형당 1곳 제한 | Implemented | recommendation, itinerary, data |
 | [SPEC-079](spec_079.md) | OpenStreetMap 타일 차단 복구 | Implemented | map, deployment, hosting |
 | [SPEC-080](spec_080.md) | 날짜 없는 여행 기간 선택 | Implemented | recommendation, itinerary, onboarding, UI |
-
 | [SPEC-081](spec_081.md) | Vercel 호스팅과 기존 DB 평가 저장 연결 | Implemented | deployment, hosting, feedback, API |
 | [SPEC-082](spec_082.md) | 기존 카카오맵 수집기 Git 등록 | Implemented | crawler, reviews, repository |
 | [SPEC-083](spec_083.md) | 날짜 기반 LLM 동선·식사 구간 생성 구현 계획 | In Progress | itinerary, LLM, reviews, routing, API, UI |
 | [SPEC-084](spec_084.md) | 상관 feature의 취향 가중치 예산 | Implemented | recommendation, scoring, evaluation |
+| [SPEC-085](spec_085.md) | 제주 음식점 Kakao 장소·리뷰 별도 수집기 | In Progress | collection, restaurants, reviews |
+| [SPEC-086](spec_086.md) | 프로젝트 코드 지식 그래프 연동 제거 | Implemented | repository, agent, tooling |
+| [SPEC-087](spec_087.md) | KAIST 1단계 제출 산출물과 로컬 자료 제외 | Implemented | deliverables, business, repository |
+| [SPEC-088](spec_088.md) | 1단계 평가기준 대조와 사업·제주 MVP 범위 정정 | Implemented | deliverables, business, evaluation |
+| [SPEC-089](spec_089.md) | 제출 Spec의 사업 설계 보완과 프로세스 정합성 | Implemented | deliverables, business, process |
+| [SPEC-090](spec_090.md) | L01·L02 재검토에 따른 제출 기획 보완 | Implemented | deliverables, business, requirements, release |
+| [SPEC-091](spec_091.md) | 1단계 평가 항목 중심의 제출 Spec 재정리 | Implemented | deliverables, business, evaluation |
+| [SPEC-092](spec_092.md) | 제출 Spec의 관광 안내 업무 절감 가정 제거 | Implemented | deliverables, business |
+| [SPEC-093](spec_093.md) | 글로벌 목표 시장·국내 경쟁사·초기 고객 선정 기준 정정 | Implemented | deliverables, business, market |
+| [SPEC-094](spec_094.md) | 목표 서비스 중심의 1단계 기획과 여행 예약 연결 | Implemented | deliverables, business, booking, process |
+| [SPEC-095](spec_095.md) | 제출 Spec 후반부에 전체 서비스 구현 계획 추가 | Superseded | deliverables, architecture, implementation-plan |
+| [SPEC-096](spec_096.md) | 제출 Spec 후반부 구현 계획 간략화 | Implemented | deliverables, implementation-plan |
+| [SPEC-097](spec_097.md) | 제출 비즈니스 프로세스 표기 통일과 설명 간소화 | Implemented | deliverables, process |
 | [SPEC-101](spec_101.md) | 인스타 공유 게시물의 장소 추출·도시별 저장·추천 연결 설계 | Draft | social import, place resolution, wishlist, labeling, itinerary |
 | [SPEC-102](spec_102.md) | 인스타 전체 사진 수집·장소 추출·메타데이터·기존 라벨 연결 v1 | Implemented | social import, metadata, labeling, local UI |
+| [SPEC-103](spec_103.md) | 제주 음식점 정본 JSONL·조회용 SQLite 카탈로그 | Implemented | restaurants, data, database |
 
-- 다음 예약 번호: `SPEC-103`
+- 다음 예약 번호: `SPEC-104`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
@@ -107,7 +119,8 @@
 
 | 문서 | 내용 | 상태 |
 |---|---|---|
-| [수익모델 및 사회적 기여 성과](business_model_and_social_impact.md) | B2B·B2G 대상, 과금 구조, 사회적 성과와 측정 지표 | 사업 제안 초안 |
+| [수익모델 및 사회적 기여 성과](business_model_and_social_impact.md) | 여행 추천·예약 앱과 B2B·B2G 공급, 과금 구조, 사회적 성과·측정 지표 | 사업 제안 초안 |
+| [1단계 제출 Spec](../kaist_app/제출용/01_Trip_AI_1단계_Spec.md) | §1~8 사업·앱 기획, §9~17 전체 서비스 기술 구현 계획 | 기획·구현 계획 · 로컬 전용/Git 제외 |
 
 ## 기준 문서
 

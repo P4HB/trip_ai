@@ -43,7 +43,7 @@
 
 ## 영향 범위
 
-- 변경 예정 파일: 본 SPEC, 문서 색인·아키텍처, `map-ui/app.js`, `map-ui/index.html`, `map-ui/styles.css`, 검증 스크립트, `graphify-out/`
+- 변경 예정 파일: 본 SPEC, 문서 색인·아키텍처, `map-ui/app.js`, `map-ui/index.html`, `map-ui/styles.css`, 검증 스크립트
 - 데이터 마이그레이션: 없음
 - 호환성 영향: v3 API 계약 유지
 - 보안·개인정보 영향: 추가 전송·영속 저장 필드 없음
@@ -61,7 +61,7 @@
 | 승인 기준 | 검증 방법 | 명령 또는 위치 |
 |---|---|---|
 | AC-7401~AC-7404 | DOM 상태·클릭·동기화 회귀 및 화면 확인 | `node scripts/test_feedback_completion.cjs` |
-| AC-7405 | 구문·기존 계약·그래프 갱신 | `node --check map-ui/app.js`, `node scripts/validate_ccu_mmr_dashboard.cjs`, `graphify update . --no-cluster` |
+| AC-7405 | 구문·기존 계약 확인 | `node --check map-ui/app.js`, `node scripts/validate_ccu_mmr_dashboard.cjs` |
 
 ## 구현 결과
 
@@ -74,7 +74,7 @@
 - `node scripts/test_feedback_completion.cjs`: 실제 Chromium 390×844·1440×1000에서 점수 필수, 의견 생략, 완료·복귀 위치, 추천·일정 배지 동기화, 재열기·ESC 보존, 편집 후 재완료, 이름 대기, v3 payload 호환성, 새 조건 초기화 통과. 가로 넘침·pageerror 없음.
 - 테스트는 Playwright를 사용한다. 프로젝트에 설치된 Playwright 또는 실행 환경의 `NODE_PATH`를 사용하고, 필요하면 `FEEDBACK_TEST_CHROMIUM`으로 Chromium 실행 파일을 지정한다. 로컬 서버에 실제 앱·데이터를 로드하고 추천 입력 준비만 테스트 훅으로 주입한다. 외부 이미지·후기·저장 요청은 fixture로 격리하므로 운영 서버에 평가를 전송하지 않는다.
 - `artifacts/feedback-completion/completed.png`, `dialog.png`를 확인해 모바일 완료 체크와 버튼 배치·문구 삭제를 시각 검증했다.
-- `graphify update . --no-cluster`: 통과, 4,068 nodes·6,444 edges로 코드 그래프 갱신. `git diff --check`도 통과.
+- `git diff --check`: 통과.
 
 ### 배포 현황
 

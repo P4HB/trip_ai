@@ -63,7 +63,7 @@
 
 ## 영향 범위
 
-- 변경 예정 파일: `docs/README.md`, `docs/spec_061.md`, `docs/spec_062.md`, `docs/architecture.md`, `map-ui/index.html`, `map-ui/styles.css`, `map-ui/app.js`, `map-ui/README.md`, `scripts/validate_ccu_mmr_dashboard.cjs`, `graphify-out/`
+- 변경 예정 파일: `docs/README.md`, `docs/spec_062.md`, `docs/architecture.md`, `map-ui/index.html`, `map-ui/styles.css`, `map-ui/app.js`, `map-ui/README.md`, `scripts/validate_ccu_mmr_dashboard.cjs`
 - 데이터 마이그레이션: 없음
 - 호환성 영향: 760px 이하 표시 흐름만 변경하며 알고리즘·API 계약은 유지한다.
 - 보안·개인정보 영향: 없음. 기존 입력·자동 저장 범위를 확장하지 않는다.
@@ -77,7 +77,6 @@
 - `AC-6205`: 761px 이상에서 기존 단계별 hidden·진행 버튼과 태블릿 drawer가 유지된다.
 - `AC-6206`: 모바일 가로 넘침 없이 선택 카드·날짜·고급 조건·추천 카드·피드백을 사용할 수 있다.
 - `AC-6207`: 정적 dashboard 검증, 앱 구문 검사와 추천 알고리즘 회귀 검사가 통과한다.
-- `AC-6208`: 변경 후 Graphify 지식 그래프가 source와 동기화된다.
 
 ## 테스트 계획
 
@@ -86,7 +85,6 @@
 | AC-6201~AC-6205 | 모바일 stacked flow DOM·CSS·이벤트 정적 검증 | `node scripts/validate_ccu_mmr_dashboard.cjs` |
 | AC-6201~AC-6206 | 390×844 모바일 브라우저에서 선택→실행→결과→지도 흐름 확인 | `python -m http.server 8080 -d map-ui` |
 | AC-6205~AC-6207 | 구문·알고리즘 회귀 | `node --check map-ui/app.js`; `node scripts/test_ccu_mmr.cjs` |
-| AC-6208 | 증분 그래프 갱신 | `graphify update .` |
 
 ## 구현 결과
 
@@ -98,7 +96,6 @@
 - 모바일 header의 조건·결과 버튼, panel 닫기, 결과 FAB와 backdrop을 숨기고 3열 선택 카드는 2열로 완화했다.
 - 761px 이상 단계형 UI와 1,240px 이하 태블릿 drawer 동작은 기존 경계를 유지했다.
 - `node --check map-ui/app.js`, `node scripts/validate_ccu_mmr_dashboard.cjs`, `node scripts/test_ccu_mmr.cjs`, `node scripts/test_preference_elicitation.cjs`, `git diff --check`가 통과했다.
-- `graphify update . --no-cluster`를 실행해 코드 그래프를 3,817 nodes·6,072 edges로 갱신했다.
 
 ## 설계와 달라진 점
 

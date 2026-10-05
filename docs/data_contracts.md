@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-10-05
+- 최종 수정일: 2026-10-06
 
 ## 공통 규칙
 
@@ -17,6 +17,24 @@
 [SPEC-102](spec_102.md)의 `instagram-place-import-v1`이 정본이다. 결과는 `source`, 미디어/사진/OCR 처리 수를 구분한 `coverage`, 사진 순서와 digest를 가진 `assets`, 원 관측 이름·수정 이름·근거·후보를 가진 `mentions`, `warnings`, catalog/추출기 버전·입력 digest를 가진 `provenance`로 구성된다. 장소 식별은 `resolved|needs_review|not_found`, 라벨 연결은 `linked|labels_missing|labels_incomplete`로 별도 기록한다. 영상은 `not_processed`다.
 
 메타데이터의 `canonical_id`는 `tourapi:{contentid}` 또는 `kakao:{place_id}`이며 서로 다른 공급자 ID를 임의 병합하지 않는다. 좌표는 WGS84 `[longitude, latitude]`이고 도시 코드는 주소에서 확인 가능한 제주시/서귀포시만 채운다. `verification=snapshot_match`, `freshness=verification_required`, `operational_status=unknown`은 기존 스냅샷 대조임을 뜻한다. 라벨 값·N/A·출처·기존 `ai_draft` 상태를 보존하고 원본을 변경하지 않는다. 미확정 장소의 metadata/labels는 null이다. 이 계약은 개인 저장이나 추천 결과 계약이 아니다. HTTP/CLI·보관/삭제 규칙은 SPEC-102와 [실행 문서](../server/instagram-import/README.md)를 따른다.
+
+## 독립 Kakao 음식점 수집 데이터
+
+제주 음식점·공개 후기의 별도 수집 계약과 실행/재개 방법은 [SPEC-085](spec_085.md) 및 [음식점 수집 안내](kakao_restaurant_collection.md)를 따른다. `data/kakao/jeju/YYYY-MM-DD/restaurants/`의 SQLite가 재개 기준이며 CSV와 manifest는 체크포인트 내보내기다. 기존 TourAPI·지도·리뷰 서비스 DB의 계약은 바뀌지 않는다. 공개 검색에 기반하므로 전체 등록 음식점 전수성을 보장하지 않는다.
+
+운영시간은 `business_hours` 부가 테이블 및 `business_hours.csv`에 원문·출처 URL·확인 시각과 함께 저장한다. 영업시간·휴무·휴게시간·라스트오더가 미기재이면 추정하지 않는다. 표시된 날짜/요일은 그대로 보존하며 반복 일정으로 자동 해석하지 않는다. 필드와 상태의 정본은 위 수집 안내다.
+
+### 음식점 정본·조회용 카탈로그 — 구현됨
+
+[SPEC-103](spec_103.md)의 `restaurant-catalog-v1`은 기존 장소 프로필과 같은 canonical JSONL + 파생 SQLite + 검증 manifest 방식이다. `data/catalogs/jeju/YYYY-MM-DD/restaurant-catalog-v1/`에 `places.jsonl`, `reviews.jsonl`, `business_hours.jsonl`, `collection_issues.jsonl`, `restaurants.sqlite3`, `manifest.json`을 만든다. SQL 필드·제약·인덱스의 정본은 [`config/restaurant_catalog.v1.sql`](../config/restaurant_catalog.v1.sql)이다. 실행·재구축 방법은 [수집 안내](kakao_restaurant_collection.md#조회용-db-저장과-복원)를 따른다.
+
+- 장소 식별자는 `canonical_id=kakao:{place_id}`다. TourAPI ID·라벨을 임의로 부여하지 않으며 현재 좌표는 null이다. `source_order`는 장소 ID 문자열 순서의 0 기반 정수다.
+- `visitor_review_count`는 확인한 총수, `collected_review_count`는 저장한 후기 수다. `visitor_review_count_status=observed|unknown|not_provided|unverified_legacy`이며 확인하지 못한 총수는 null이다. 상세 근거가 없는 구형 검색값 30은 숨김 DOM 기본값 가능성 때문에 null로 내보내고 inventory 원관측은 보존한다. `review_status=empty`의 0건과 매장주 요청 `not_provided`를 구별한다.
+- `source.inventory`와 `source.detail`은 원래 수집 시각을 보존한다. 블로그 총수의 확인 시각은 검색 시각이다. 상세 평점·총수는 수집기에서 검색값을 폴백했을 수 있으므로 실시간 재확인값으로 단정하지 않는다. 최근 상세 실패 시 이전에 저장한 후기와 요약이 남을 수 있고 `detail_status`와 오류를 함께 확인한다.
+- 리뷰는 원본 `position`을 보존한다. 같은 본문도 서로 다른 위치의 관측이면 삭제하지 않으며 작성자 필드는 내보내지 않는다. JSONL에 없는 raw_json/record_sha256은 DB 적재 때 canonical 레코드로부터 계산한다.
+- 운영시간은 모든 장소에 한 행을 두고 `available|not_provided|unrecognized|uncollected`를 구분한다. 미수집은 checked_at=null이다. 날짜별 원문 일정을 정규 주간 영업 규칙으로 바꾸지 않는다.
+- `collection_issues`는 상세 실패·운영시간 미확인/미수집·검색 상한·의심 총수를 보존한다. 원본은 읽기 전용 SQLite backup으로 일관된 스냅샷을 읽으며 변경하지 않는다.
+- manifest는 입력 논리 해시, 스키마 해시(개행 LF 정규화), 출력 파일별 크기·SHA-256, 건수·coverage·논리 DB 해시를 기록한다. 원본과 생성 데이터는 로컬 보관하고 작은 manifest만 Git에 올린다. Git clone만으로 실제 데이터가 복원되지는 않는다.
 
 ## TourAPI 장소 원본 — 구현됨
 
