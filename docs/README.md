@@ -39,6 +39,8 @@
 - 로컬 구현·외부 검증 대기: 실제 날짜 필수 LLM 동선·운영/이동시간 검증·식사 연결 구간. 부분 일자 식사, 날짜별 순차 생성·부분 결과, 생성 실패 구분과 실제 경로를 반영한 수정까지 보완. 개발 기본값·공개 데이터 준비·실제 품질 합격 기준은 SPEC-083 참조
 - 미구현: 운영 사용자 프로필, 운영 검증된 일정 최적화·추천 API, 추천 품질 평가 파이프라인
 
+- 구현됨: [인스타 링크의 전체 사진 수집·로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_102.md). 단일 사진 1/1·캐러셀 사진 8/8 다운로드와 장소 후보 10개/16개를 실제 검증했다. OCR 오인식·모호한 후보는 검토하며 메타데이터는 기존 스냅샷 대조다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
+
 ## SPEC 색인
 
 | SPEC | 제목 | 상태 | 관련 영역 |
@@ -94,8 +96,10 @@
 | [SPEC-082](spec_082.md) | 기존 카카오맵 수집기 Git 등록 | Implemented | crawler, reviews, repository |
 | [SPEC-083](spec_083.md) | 날짜 기반 LLM 동선·식사 구간 생성 구현 계획 | In Progress | itinerary, LLM, reviews, routing, API, UI |
 | [SPEC-084](spec_084.md) | 상관 feature의 취향 가중치 예산 | Implemented | recommendation, scoring, evaluation |
+| [SPEC-101](spec_101.md) | 인스타 공유 게시물의 장소 추출·도시별 저장·추천 연결 설계 | Draft | social import, place resolution, wishlist, labeling, itinerary |
+| [SPEC-102](spec_102.md) | 인스타 전체 사진 수집·장소 추출·메타데이터·기존 라벨 연결 v1 | Implemented | social import, metadata, labeling, local UI |
 
-- 다음 예약 번호: `SPEC-085`
+- 다음 예약 번호: `SPEC-103`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

@@ -1,7 +1,7 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-09-22
+- 최종 수정일: 2026-10-05
 
 ## 공통 규칙
 
@@ -11,6 +11,12 @@
 - TourAPI의 `mapx`는 경도, `mapy`는 위도다.
 - 알 수 없는 값은 임의로 보정하지 않는다. 스키마에 따라 `null`, 빈 값 또는 명시적 `unknown`을 사용한다.
 - 외부 데이터에는 출처와 수집·확인 시각을 함께 보관한다.
+
+## 인스타 링크의 장소 연결 결과 — 구현됨
+
+[SPEC-102](spec_102.md)의 `instagram-place-import-v1`이 정본이다. 결과는 `source`, 미디어/사진/OCR 처리 수를 구분한 `coverage`, 사진 순서와 digest를 가진 `assets`, 원 관측 이름·수정 이름·근거·후보를 가진 `mentions`, `warnings`, catalog/추출기 버전·입력 digest를 가진 `provenance`로 구성된다. 장소 식별은 `resolved|needs_review|not_found`, 라벨 연결은 `linked|labels_missing|labels_incomplete`로 별도 기록한다. 영상은 `not_processed`다.
+
+메타데이터의 `canonical_id`는 `tourapi:{contentid}` 또는 `kakao:{place_id}`이며 서로 다른 공급자 ID를 임의 병합하지 않는다. 좌표는 WGS84 `[longitude, latitude]`이고 도시 코드는 주소에서 확인 가능한 제주시/서귀포시만 채운다. `verification=snapshot_match`, `freshness=verification_required`, `operational_status=unknown`은 기존 스냅샷 대조임을 뜻한다. 라벨 값·N/A·출처·기존 `ai_draft` 상태를 보존하고 원본을 변경하지 않는다. 미확정 장소의 metadata/labels는 null이다. 이 계약은 개인 저장이나 추천 결과 계약이 아니다. HTTP/CLI·보관/삭제 규칙은 SPEC-102와 [실행 문서](../server/instagram-import/README.md)를 따른다.
 
 ## TourAPI 장소 원본 — 구현됨
 

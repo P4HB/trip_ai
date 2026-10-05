@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>인스타에서 발견한 여행 장소</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">TRIP AI · 장소 가져오기</span><h1>저장하고 싶었던 그 장소.</h1><p>인스타 링크를 넣으면 사진 속 장소를 찾고, 기존 장소 정보와 라벨을 연결합니다.</p></header>
+    <form id="import-form"><label for="url">인스타 게시물 링크</label><div class="input-row"><input id="url" name="url" type="url" required placeholder="https://www.instagram.com/p/…/" autocomplete="off"><button id="submit" type="submit">장소 찾기</button></div></form>
+    <p class="notice">기존 데이터의 수집 시점과 확인이 필요한 항목을 함께 표시합니다. 영상 내용은 분석하지 않습니다.</p>
+    <section id="progress" aria-live="polite" hidden><span class="dot"></span><span id="progress-text"></span></section>
+    <p id="error" role="alert" hidden></p>
+    <section id="results" hidden>
+      <div class="result-heading"><div><h2>발견한 장소</h2><p id="summary"></p></div><div class="actions"><a id="export" class="button secondary" download>JSON 내려받기</a><button id="delete" class="secondary" type="button">작업 삭제</button></div></div>
+      <p id="warnings" class="notice"></p>
+      <details><summary>다운로드한 사진과 처리 상태</summary><div id="assets" class="asset-grid"></div></details>
+      <div id="mentions" class="mention-grid"></div>
+    </section>
+  </main>
+</body>
+</html>
