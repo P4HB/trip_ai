@@ -81,14 +81,27 @@ manifest의 `hours_checked_count`는 기재 또는 명시적 미등록을 확인
 
 ## 조회용 DB 저장과 복원
 
-[SPEC-103](spec_103.md)은 재개용 원본 DB를 유지하면서 기존 장소 프로필과 같은 canonical JSONL·조회용 SQLite를 별도로 생성한다. 카탈로그 작업에는 Python 3.11 이상, SQLite 3.37 이상이 필요하며 Python 표준 라이브러리만 사용한다. 파일·필드·상태의 정본은 [데이터 계약](data_contracts.md#음식점-정본조회용-카탈로그--구현됨)과 [SQL 스키마](../config/restaurant_catalog.v1.sql)다.
+[SPEC-103](spec_103.md)은 재개용 원본 DB를 유지하면서 canonical JSONL·v1 SQLite를 생성한다. [SPEC-104](spec_104.md)는 같은 JSONL에서 중복 JSON을 제외한 **현재 조회용 v2 DB**를 생성한다. 카탈로그 작업에는 Python 3.11 이상, SQLite 3.37 이상이 필요하며 Python 표준 라이브러리만 사용한다. 파일·필드·상태의 정본은 [데이터 계약](data_contracts.md#음식점-정본조회용-카탈로그--구현됨), [v1 스키마](../config/restaurant_catalog.v1.sql), [v2 조회 스키마](../config/restaurant_catalog.v2.sql)다.
+
+이미 v1 JSONL이 있으면 다음 명령으로 조회 DB를 생성·검증한다:
+
+```powershell
+python scripts/build_restaurant_query_db.py
+python scripts/validate_restaurant_query_db.py
+```
+
+기본 정본 입력은 `data/catalogs/jeju/2026-09-21/restaurant-catalog-v1/`, 조회 출력은 같은 날짜의 `restaurant-catalog-v2/`다. 새 폴더에는 `restaurants.sqlite3`와 `manifest.json`만 생성하며 JSONL은 복제하지 않는다. v1의 raw_json/source_json을 제외한 컬럼은 모두 유지한다. 원관측은 정본 JSONL로 확인한다. 기존 v1 DB는 비교·복구용으로 보존하므로 총 디스크 사용량을 줄이는 삭제 작업은 수행하지 않는다.
+
+2026-10-06 실제 v2 DB는 **55,853,056 bytes**로, v1 215,818,240 bytes에서 **74.12% 감소**했다. 모든 유지 컬럼·레코드 해시가 v1과 같고 원본·정본 파일 해시가 바뀌지 않았으며 전체 재구축도 같은 논리 digest를 생성했다.
+
+정본부터 생성해야 할 때 사용하는 기존 v1 명령도 유지한다:
 
 ```powershell
 python scripts/build_restaurant_catalog.py
 python scripts/validate_restaurant_catalog.py
 ```
 
-기본 입력은 `data/kakao/jeju/2026-09-21/restaurants/collection.sqlite3`, 출력은 `data/catalogs/jeju/2026-09-21/restaurant-catalog-v1/`다. 출력 폴더에는 `places.jsonl`, `reviews.jsonl`, `business_hours.jsonl`, `collection_issues.jsonl`, `restaurants.sqlite3`, `manifest.json`이 생긴다. 원본은 일관된 읽기 전용 snapshot에서 읽고 출력은 임시 폴더에서 검증한 후 게시한다. 같은 입력의 재실행은 기존 결과를 검증해 재사용한다. 다른 입력이나 불완전한 출력 폴더가 있으면 새 `--output-dir`을 지정한다.
+v1 기본 입력은 `data/kakao/jeju/2026-09-21/restaurants/collection.sqlite3`, 출력은 `data/catalogs/jeju/2026-09-21/restaurant-catalog-v1/`다. 출력 폴더에는 `places.jsonl`, `reviews.jsonl`, `business_hours.jsonl`, `collection_issues.jsonl`, `restaurants.sqlite3`, `manifest.json`이 생긴다. 원본은 일관된 읽기 전용 snapshot에서 읽고 출력은 임시 폴더에서 검증한 후 게시한다. 두 버전 모두 같은 입력의 재실행은 기존 결과를 검증해 재사용한다. 다른 입력이나 불완전한 출력 폴더가 있으면 새 `--output-dir`을 지정한다.
 
 2026-10-06 저장·검증한 스냅샷은 식당 13,561곳, 후기 44,156건이다. 상세 완료 13,525곳·실패 36곳, 운영시간 기재 10,672곳·명시적 미등록 2,777곳·미확인 80곳·미수집 32곳을 그대로 보존한다. 43개 구역의 예약 검색 1,698개는 done 1,480개·truncated 218개이며 전체 등록 식당의 전수성을 보증하지 않는다. 카탈로그 검증 완료는 수집 미확인 항목의 해결을 뜻하지 않는다.
 
@@ -111,8 +124,10 @@ SQLite 파일 없이 canonical 파일만으로 새 폴더에 복원할 수 있�
 
 ```powershell
 python scripts/validate_restaurant_catalog.py C:/data/restaurant-exchange --jsonl-only
-python scripts/build_restaurant_catalog.py --from-jsonl C:/data/restaurant-exchange --output-dir C:/data/restaurant-restored
-python scripts/validate_restaurant_catalog.py C:/data/restaurant-restored
+python scripts/build_restaurant_query_db.py --canonical-dir C:/data/restaurant-exchange --output-dir C:/data/restaurant-restored
+python scripts/validate_restaurant_query_db.py C:/data/restaurant-restored --canonical-dir C:/data/restaurant-exchange
 ```
 
-검증기는 JSONL 전 행과 DB의 typed columns/raw_json/레코드 해시, 무결성·외래키·스키마·파일 해시·건수·상태를 비교한다. 재구축 결과의 `database_logical_sha256`은 원본 카탈로그와 같아야 한다. 리뷰 개수와 본문, 영업시간은 각 출처의 관찰 시점 스냅샷이다.
+두 폴더를 같은 상대 위치로 복사하면 v2 manifest에 기록된 정본 위치로 검증한다. 정본을 다른 곳으로 옮겼으면 `--canonical-dir`로 위치를 지정한다. Git에서 받은 manifest만으로 실제 데이터를 복원할 수는 없다.
+
+검증기는 JSONL 전 행과 DB의 유지 컬럼·레코드 해시, 무결성·외래키·스키마·파일 해시·건수·상태를 비교한다. v2 `database_logical_sha256`은 중복 JSON을 제외한 조회 행의 해시이며 같은 v2 재구축끼리 같아야 한다. `canonical.logical_sha256`은 v1의 원관측을 포함한 전체 정본 해시다. 리뷰 개수와 본문, 영업시간은 각 출처의 관찰 시점 스냅샷이다.

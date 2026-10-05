@@ -9,6 +9,8 @@
 
 [SPEC-085](spec_085.md)·[SPEC-103](spec_103.md): 독립 음식점 수집기의 재개용 SQLite를 읽기 전용 스냅샷으로 변환해 장소·리뷰·운영시간·수집 오류 canonical JSONL과 조회용 `restaurants.sqlite3`를 만든다. 기존 장소 프로필과 같은 외래키·인덱스·레코드 해시·manifest 검증 방식이며 JSONL에서 재구축할 수 있다. 대용량 원본과 생성 데이터는 로컬에 보관하고 코드·SQL·문서·작은 manifest만 Git 관리한다. 기존 지도·추천·공개 리뷰 서비스 DB는 변경하지 않는다. 수집의 미확인 상태는 카탈로그에도 남긴다.
 
+[SPEC-104](spec_104.md): 현재 음식점 조회용 `restaurant-catalog-v2/restaurants.sqlite3`는 v1 canonical JSONL의 조회 컬럼만 담고 중복 raw_json/source_json을 제외한다. 정본은 v1 폴더에 보존하며 v2 manifest에서 파일·레코드 해시와 상대 위치를 연결한다. 생성·독립 검증은 `build_restaurant_query_db.py`와 `validate_restaurant_query_db.py`를 사용한다. v1 생성/검증 도구와 기존 DB는 계속 보존한다.
+
 [SPEC-102](spec_102.md): 독립 로컬 서비스 `server/instagram-import/`가 웹 링크 또는 CLI에서 인스타 게시물의 모든 사진을 코드로 내려받고 로컬 한국어 OCR로 장소 후보를 만든다. 기존 TourAPI 번들과 선택적 Kakao 스냅샷을 읽기 전용으로 대조해 메타데이터·도시·기존 41축 라벨을 연결한다. 동명이점/오인식은 후보 선택·이름 수정으로 검토한다. loopback HTTP·단일 백그라운드 worker·별도 만료/삭제 가능한 작업 파일을 사용하며, 기존 지도·추천 파이프라인과 공용 catalog를 변경하지 않는다. 공개 배포·개인 위시리스트·추천 입력 연결·모바일 공유/DM은 [SPEC-101의 후속 설계](spec_101.md)다.
 
 [ SPEC-078](spec_078.md): 지도 데이터 생성기는 기존 대표 유형 JSONL과 taxonomy를 조인해 primaryType/primaryTypeLabel을 공급한다. 브라우저 엔진이 필수 군집 분할과 자동 일정 선택에서 유형별 하루 1곳 상한을 적용한다. 분류 sidecar는 별도 SQLite로 유지한다.

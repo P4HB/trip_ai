@@ -8,6 +8,8 @@
 - 관련 코드: `scripts/build_restaurant_catalog.py`, `scripts/validate_restaurant_catalog.py`, `config/restaurant_catalog.v1.sql`
 - 선행 SPEC: SPEC-007, SPEC-066, SPEC-085
 
+후속 [SPEC-104](spec_104.md)는 이 v1 정본·도구를 유지하면서 중복 JSON을 제외한 v2 조회 DB를 추가한다. 아래 내용은 v1 계약과 구현 당시 검증 기록이다.
+
 ## 배경
 
 기존 장소는 source_order 순서 canonical JSONL, 제약·인덱스가 있는 조회용 SQLite, 건수·해시 manifest를 사용한다. 음식점 원본은 약 104MiB 재개용 SQLite이며 장소 13,561곳·리뷰 44,156건을 저장했다. 상세 실패 36곳과 운영시간 미확인/미수집 112곳이 남았다. 사용자 요청으로 같은 저장 방식을 적용하며 대용량 파일은 로컬에 둔다.

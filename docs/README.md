@@ -41,7 +41,7 @@
 
 - 구현됨: [인스타 링크의 전체 사진 수집·로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_102.md). 단일 사진 1/1·캐러셀 사진 8/8 다운로드와 장소 후보 10개/16개를 실제 검증했다. OCR 오인식·모호한 후보는 검토하며 메타데이터는 기존 스냅샷 대조다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
 
-- 구현됨: 제주 음식점 13,561곳·리뷰 44,156건의 독립 로컬 JSONL·조회용 SQLite 카탈로그. 상세 실패 36곳·운영시간 미확인/미수집 112곳을 보존하며 수집은 부분 완료 상태다. [SPEC-085](spec_085.md), [SPEC-103](spec_103.md) 참조.
+- 구현됨: 제주 음식점 13,561곳·리뷰 44,156건의 독립 로컬 JSONL·조회용 SQLite 카탈로그. v2 조회 DB는 정본을 보존하고 중복 JSON을 제외해 215.8MB→55.9MB로 축소했다. 상세 실패 36곳·운영시간 미확인/미수집 112곳을 보존하며 수집은 부분 완료 상태다. [SPEC-085](spec_085.md), [SPEC-103](spec_103.md), [SPEC-104](spec_104.md) 참조.
 
 ## SPEC 색인
 
@@ -110,8 +110,9 @@
 | [SPEC-101](spec_101.md) | 인스타 공유 게시물의 장소 추출·도시별 저장·추천 연결 설계 | Draft | social import, place resolution, wishlist, labeling, itinerary |
 | [SPEC-102](spec_102.md) | 인스타 전체 사진 수집·장소 추출·메타데이터·기존 라벨 연결 v1 | Implemented | social import, metadata, labeling, local UI |
 | [SPEC-103](spec_103.md) | 제주 음식점 정본 JSONL·조회용 SQLite 카탈로그 | Implemented | restaurants, data, database |
+| [SPEC-104](spec_104.md) | 음식점 조회 DB의 중복 JSON 제거 | Implemented | restaurants, database, storage |
 
-- 다음 예약 번호: `SPEC-104`
+- 다음 예약 번호: `SPEC-105`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
