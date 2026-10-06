@@ -81,7 +81,7 @@ manifest의 `hours_checked_count`는 기재 또는 명시적 미등록을 확인
 
 ## 조회용 DB 저장과 복원
 
-[SPEC-103](spec_103.md)은 재개용 원본 DB를 유지하면서 canonical JSONL·v1 SQLite를 생성한다. [SPEC-104](spec_104.md)는 같은 JSONL에서 중복 JSON을 제외한 **현재 조회용 v2 DB**를 생성한다. 카탈로그 작업에는 Python 3.11 이상, SQLite 3.37 이상이 필요하며 Python 표준 라이브러리만 사용한다. 파일·필드·상태의 정본은 [데이터 계약](data_contracts.md#음식점-정본조회용-카탈로그--구현됨), [v1 스키마](../config/restaurant_catalog.v1.sql), [v2 조회 스키마](../config/restaurant_catalog.v2.sql)다.
+[SPEC-103](spec_103.md)은 재개용 원본 DB를 유지하면서 canonical JSONL·v1 SQLite를 생성한다. [SPEC-104](spec_104.md)는 같은 JSONL에서 중복 JSON을 제외한 v2 DB를 생성한다. 좌표 수집과 v3 연결은 아래 [전체 음식점 좌표 갱신](#전체-음식점-좌표-갱신)을 따른다. 카탈로그 작업에는 Python 3.11 이상, SQLite 3.37 이상이 필요하며 Python 표준 라이브러리만 사용한다. 파일·필드·상태의 정본은 [데이터 계약](data_contracts.md#음식점-정본조회용-카탈로그--구현됨), [v1 스키마](../config/restaurant_catalog.v1.sql), [v2 조회 스키마](../config/restaurant_catalog.v2.sql)다.
 
 이미 v1 JSONL이 있으면 다음 명령으로 조회 DB를 생성·검증한다:
 
@@ -131,3 +131,36 @@ python scripts/validate_restaurant_query_db.py C:/data/restaurant-restored --can
 두 폴더를 같은 상대 위치로 복사하면 v2 manifest에 기록된 정본 위치로 검증한다. 정본을 다른 곳으로 옮겼으면 `--canonical-dir`로 위치를 지정한다. Git에서 받은 manifest만으로 실제 데이터를 복원할 수는 없다.
 
 검증기는 JSONL 전 행과 DB의 유지 컬럼·레코드 해시, 무결성·외래키·스키마·파일 해시·건수·상태를 비교한다. v2 `database_logical_sha256`은 중복 JSON을 제외한 조회 행의 해시이며 같은 v2 재구축끼리 같아야 한다. `canonical.logical_sha256`은 v1의 원관측을 포함한 전체 정본 해시다. 리뷰 개수와 본문, 영업시간은 각 출처의 관찰 시점 스냅샷이다.
+
+## 전체 음식점 좌표 갱신
+
+[SPEC-106](spec_106.md)의 별도 수집기는 v1 정본에 있는 모든 음식점 ID로 공개 카카오맵 장소 응답을 확인한다. 응답 ID가 같은 경우에만 경도·위도를 연결하며 기존 수집 코드와 원본·v1/v2 데이터는 보존한다. 좌표/상태 필드의 정본은 [데이터 계약](data_contracts.md#음식점-좌표-관측과-조회-db-v3--구현됨)이다.
+
+2026-10-06 전체 13,561곳을 확인해 **좌표 13,475곳 확보**, **조회 불가 82곳·ID 불일치 4곳은 null**로 보존했다. 미시도/접속 오류는 0곳이다. 현재 조회용 v3 DB는 **60,420,096 bytes**이며 기존 리뷰·운영시간 전 행과 원본 파일 보존, JSONL 전체 재구축 검증을 통과했다. 상세 검증 결과는 SPEC-106을 따른다.
+
+```powershell
+python scripts/collect_restaurant_coordinates.py --interval 0.1
+python scripts/validate_restaurant_coordinates.py
+python scripts/build_restaurant_coordinate_catalog.py
+python scripts/build_restaurant_coordinate_catalog.py --validate-only
+```
+
+현재 기본 입력은 `data/catalogs/jeju/2026-09-21/restaurant-catalog-v1/`, 좌표 출력은 `data/kakao/jeju/2026-10-06/restaurant-coordinates/`, 조회 출력은 `data/catalogs/jeju/2026-10-06/restaurant-catalog-v3/`다. 새로운 확인일에는 `--output-dir`로 새 좌표 폴더를 지정한다. 위 기본 폴더의 재실행은 이미 처리한 ID를 다시 요청하지 않는 재개 동작이다. 오류만 재시도하려면 `--retry-errors`를 명시한다. HTTP 401/403/429로 중단되었다면 접근 제한이 해소되기 전에 재시도하지 않는다.
+
+동시 요청은 최대 4개, 기본 간격은 전체 worker 합산 0.15초이고 최솟값은 0.1초다. timeout은 20초이며 연속 오류 5개 또는 접근 제한이면 저장 후 중단한다. 좌표 출력 폴더의 `STOP` 파일로 정상 중단하고 재개 전에 그 파일을 삭제한다. `.collector.lock`이 남은 경우 실제 이전 프로세스 종료를 확인한 뒤에만 잠금을 제거한다. `manifest.json`은 약 15초마다 갱신하며 target/attempted/pending과 상태별 건수를 확인한다. `pass_finished`는 이번 실행 대상을 처리했다는 뜻이고 `--limit` 사용 시 pending이 남을 수 있다. 전체 대상 시도와 모든 좌표 확보는 서로 구분한다.
+
+v3는 미시도 pending이 없을 때만 만들며 성공 외 좌표는 null로 남긴다. 원래 장소명·리뷰 44,156건·운영시간은 기존 확인 시점의 스냅샷을 그대로 유지한다. 좌표 미확인 목록은 다음 질의로 확인한다.
+
+```sql
+SELECT place_id, title, address, coordinate_status, coordinate_source_url, coordinate_checked_at
+FROM places WHERE coordinate_status <> 'available' ORDER BY source_order;
+```
+
+다른 PC에서 v3를 재구축하려면 v1 JSONL 4개·manifest와 좌표 JSONL·manifest를 각각 별도 폴더에 복사한다. 좌표 체크포인트 SQLite와 기존 v1/v2 조회 DB는 복원에 필요하지 않다.
+
+```powershell
+python scripts/build_restaurant_coordinate_catalog.py --canonical-dir C:/data/restaurant-canonical --coordinates-dir C:/data/restaurant-coordinates --output-dir C:/data/restaurant-v3
+python scripts/build_restaurant_coordinate_catalog.py --validate-only --output-dir C:/data/restaurant-v3
+```
+
+manifest는 입력 폴더의 상대 위치를 기록한다. 두 입력을 따로 옮겼다면 검증 명령에도 `--canonical-dir`과 `--coordinates-dir`을 지정한다. 데이터 파일은 로컬 보관하며 Git에는 코드·SQL·문서와 작은 manifest만 올린다.

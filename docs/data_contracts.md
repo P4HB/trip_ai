@@ -26,9 +26,9 @@
 
 ### 음식점 정본·조회용 카탈로그 — 구현됨
 
-[SPEC-103](spec_103.md)의 `restaurant-catalog-v1`은 기존 장소 프로필과 같은 canonical JSONL + 파생 SQLite + 검증 manifest 방식이다. `data/catalogs/jeju/YYYY-MM-DD/restaurant-catalog-v1/`에 `places.jsonl`, `reviews.jsonl`, `business_hours.jsonl`, `collection_issues.jsonl`, `restaurants.sqlite3`, `manifest.json`을 만든다. 정본 JSONL과 v1 조회 DB 계약은 유지하며, 중복 JSON을 제외한 현재 조회용 DB는 아래 SPEC-104의 v2를 사용한다. 실행·재구축 방법은 [수집 안내](kakao_restaurant_collection.md#조회용-db-저장과-복원)를 따른다.
+[SPEC-103](spec_103.md)의 `restaurant-catalog-v1`은 기존 장소 프로필과 같은 canonical JSONL + 파생 SQLite + 검증 manifest 방식이다. `data/catalogs/jeju/YYYY-MM-DD/restaurant-catalog-v1/`에 `places.jsonl`, `reviews.jsonl`, `business_hours.jsonl`, `collection_issues.jsonl`, `restaurants.sqlite3`, `manifest.json`을 만든다. 정본 JSONL과 v1 조회 DB 계약은 유지하며, 중복 JSON을 제외하는 v2와 별도 좌표 관측을 연결하는 v3는 아래 계약을 따른다. 실행·재구축 방법은 [수집 안내](kakao_restaurant_collection.md#조회용-db-저장과-복원)를 따른다.
 
-- 장소 식별자는 `canonical_id=kakao:{place_id}`다. TourAPI ID·라벨을 임의로 부여하지 않으며 현재 좌표는 null이다. `source_order`는 장소 ID 문자열 순서의 0 기반 정수다.
+- 장소 식별자는 `canonical_id=kakao:{place_id}`다. TourAPI ID·라벨을 임의로 부여하지 않으며 v1/v2의 좌표는 null로 보존한다. `source_order`는 장소 ID 문자열 순서의 0 기반 정수다.
 - `visitor_review_count`는 확인한 총수, `collected_review_count`는 저장한 후기 수다. `visitor_review_count_status=observed|unknown|not_provided|unverified_legacy`이며 확인하지 못한 총수는 null이다. 상세 근거가 없는 구형 검색값 30은 숨김 DOM 기본값 가능성 때문에 null로 내보내고 inventory 원관측은 보존한다. `review_status=empty`의 0건과 매장주 요청 `not_provided`를 구별한다.
 - `source.inventory`와 `source.detail`은 원래 수집 시각을 보존한다. 블로그 총수의 확인 시각은 검색 시각이다. 상세 평점·총수는 수집기에서 검색값을 폴백했을 수 있으므로 실시간 재확인값으로 단정하지 않는다. 최근 상세 실패 시 이전에 저장한 후기와 요약이 남을 수 있고 `detail_status`와 오류를 함께 확인한다.
 - 리뷰는 원본 `position`을 보존한다. 같은 본문도 서로 다른 위치의 관측이면 삭제하지 않으며 작성자 필드는 내보내지 않는다. v1 DB의 raw_json/record_sha256은 적재 때 canonical 레코드로부터 계산한다. v2는 같은 record_sha256을 유지하고 raw_json은 저장하지 않는다.
@@ -43,6 +43,17 @@
 v2 manifest의 `canonical`에는 정본 계약, 상대 폴더, 정본 manifest의 의미 해시(JSON key 정렬·개행 정규화), JSONL별 해시·크기, 기존 전체 레코드 논리 해시를 기록한다. `database_logical_sha256`은 원문 JSON을 제외한 v2 조회 행의 별도 해시다. `record_sha256`은 계속 전체 canonical 레코드의 해시이므로 v2 컬럼만으로 재계산할 수 없고 정본과 대조한다. 검증기는 정본과 DB의 모든 유지 컬럼을 비교한다. 같은 부모 폴더에서 두 버전을 함께 이동하면 상대 경로를 유지하며, 정본을 따로 옮긴 경우 `--canonical-dir`로 실제 폴더를 지정한다. DB 자체 조회는 정본 폴더 없이도 가능하지만 전체 검증·원관측 조회·재구축에는 JSONL 4개와 v1 manifest가 필요하다.
 
 v1 원본 파일과 DB는 비교·복구용으로 보존한다. v2 DB는 용량이 작아져도 계속 Git 제외 대상이며, 해당 manifest와 코드·문서만 Git 관리한다.
+
+### 음식점 좌표 관측과 조회 DB v3 — 구현됨
+
+[SPEC-106](spec_106.md)은 기존 정본의 모든 장소 ID를 고정 입력으로 사용해 공개 카카오맵 장소 응답의 `summary.confirm_id`와 `summary.point.lon/lat`를 확인한다. `restaurant-coordinates-v1` 계약의 `coordinates.jsonl` 저장 폴더는 `data/kakao/jeju/YYYY-MM-DD/restaurant-coordinates/`다. 원관측은 요청 ID, 이름·주소·지역·제공처 상태·좌표만 보존하며, 응답 전체나 새 리뷰는 저장하지 않는다. `checked_at`은 시간대가 있는 실제 확인 시각이고 `response_sha256`은 받은 응답 바이트의 해시다.
+
+- 좌표는 WGS84 `longitude`, `latitude` 순서다. 동일 ID, 유한 숫자와 축 범위, 제주 주소/지역 및 보조 범위(125≤경도≤127.5, 32.8≤위도≤34.2)를 모두 확인한 경우에만 `available`로 연결한다. 주소 지오코딩·동명 식당 대체는 하지 않는다.
+- 관측 상태는 `pending|available|missing|unavailable|identity_mismatch|outside_jeju|invalid_coordinates|error`다. `unavailable`은 HTTP 404/410이며 폐업 확정이 아니다. 성공 외의 좌표는 null이고 실패 원관측은 별도 보존한다. 아직 확인하지 않은 pending이 있으면 v3 빌드를 거절한다.
+- `coordinates.sqlite3`는 재개용 체크포인트이고 `coordinates.jsonl`과 manifest가 조회 DB 복원 입력이다. manifest는 고정 대상 ID 목록과 v1 입력 해시, 상태별 건수·시도 건수, JSONL 해시·크기를 기록한다. 실행 중 내보낸 두 파일은 갱신 중일 수 있으므로 종료 후 세트로 복사한다.
+- v3 스키마는 [`config/restaurant_catalog.v3.sql`](../config/restaurant_catalog.v3.sql)이다. 기존 v2의 모든 조회 필드를 유지하고 `places.longitude/latitude`와 `coordinate_status`, `coordinate_source_url`, `coordinate_checked_at`, `coordinate_record_sha256`을 연결한다. 원래 장소명·주소·리뷰 총수·본문·영업시간·오류를 최신 좌표 응답으로 덮어쓰지 않는다.
+- `places.record_sha256`은 **기존 v1 레코드** 해시다. 별도 관측의 해시는 `coordinate_record_sha256`이며 두 정본을 함께 대조한다. 전체 v3 조회 행의 해시는 `database_logical_sha256`이다. manifest에 두 정본 폴더의 상대 위치·manifest 의미 해시를 기록한다.
+- 생성·전체 검증은 `scripts/build_restaurant_coordinate_catalog.py`를 사용한다. v1 JSONL 4개와 manifest, 좌표 JSONL과 manifest로 재구축하며 기존 v1/v2 SQLite가 없어도 된다. 데이터 파일은 Git에서 제외하고 작은 manifest만 버전 관리한다.
 
 ## TourAPI 장소 원본 — 구현됨
 

@@ -9,7 +9,9 @@
 
 [SPEC-085](spec_085.md)·[SPEC-103](spec_103.md): 독립 음식점 수집기의 재개용 SQLite를 읽기 전용 스냅샷으로 변환해 장소·리뷰·운영시간·수집 오류 canonical JSONL과 조회용 `restaurants.sqlite3`를 만든다. 기존 장소 프로필과 같은 외래키·인덱스·레코드 해시·manifest 검증 방식이며 JSONL에서 재구축할 수 있다. 대용량 원본과 생성 데이터는 로컬에 보관하고 코드·SQL·문서·작은 manifest만 Git 관리한다. 기존 지도·추천·공개 리뷰 서비스 DB는 변경하지 않는다. 수집의 미확인 상태는 카탈로그에도 남긴다.
 
-[SPEC-104](spec_104.md): 현재 음식점 조회용 `restaurant-catalog-v2/restaurants.sqlite3`는 v1 canonical JSONL의 조회 컬럼만 담고 중복 raw_json/source_json을 제외한다. 정본은 v1 폴더에 보존하며 v2 manifest에서 파일·레코드 해시와 상대 위치를 연결한다. 생성·독립 검증은 `build_restaurant_query_db.py`와 `validate_restaurant_query_db.py`를 사용한다. v1 생성/검증 도구와 기존 DB는 계속 보존한다.
+[SPEC-104](spec_104.md): 음식점 조회용 `restaurant-catalog-v2/restaurants.sqlite3`는 v1 canonical JSONL의 조회 컬럼만 담고 중복 raw_json/source_json을 제외한다. 정본은 v1 폴더에 보존하며 v2 manifest에서 파일·레코드 해시와 상대 위치를 연결한다. 생성·독립 검증은 `build_restaurant_query_db.py`와 `validate_restaurant_query_db.py`를 사용한다. v1 생성/검증 도구와 기존 DB는 계속 보존한다.
+
+[SPEC-106](spec_106.md): `collect_restaurant_coordinates.py`가 기존 식당 ID 전체에 대해 공개 카카오맵의 정확한 ID와 WGS84 좌표를 확인하고 최소 관측 JSONL·재개용 SQLite를 별도로 저장한다. `build_restaurant_coordinate_catalog.py`는 이 관측과 v1 정본을 조인해 좌표가 포함된 현재 v3 조회 DB를 생성·검증한다. v2의 중복 JSON 제거 구조, 기존 리뷰·운영시간과 base record hash를 유지하며 좌표 출처·확인 시각·별도 관측 hash를 추가한다. 전체 13,561개 확인을 마쳤으며 미확인은 상태와 null로 보존한다. 기존 지도·추천 런타임 연결은 이 작업 범위 밖이다.
 
 [SPEC-102](spec_102.md): 독립 로컬 서비스 `server/instagram-import/`가 웹 링크 또는 CLI에서 인스타 게시물의 모든 사진을 코드로 내려받고 로컬 한국어 OCR로 장소 후보를 만든다. 기존 TourAPI 번들과 선택적 Kakao 스냅샷을 읽기 전용으로 대조해 메타데이터·도시·기존 41축 라벨을 연결한다. 동명이점/오인식은 후보 선택·이름 수정으로 검토한다. loopback HTTP·단일 백그라운드 worker·별도 만료/삭제 가능한 작업 파일을 사용하며, 기존 지도·추천 파이프라인과 공용 catalog를 변경하지 않는다. 공개 배포·개인 위시리스트·추천 입력 연결·모바일 공유/DM은 [SPEC-101의 후속 설계](spec_101.md)다.
 

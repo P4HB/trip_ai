@@ -111,8 +111,9 @@
 | [SPEC-102](spec_102.md) | 인스타 전체 사진 수집·장소 추출·메타데이터·기존 라벨 연결 v1 | Implemented | social import, metadata, labeling, local UI |
 | [SPEC-103](spec_103.md) | 제주 음식점 정본 JSONL·조회용 SQLite 카탈로그 | Implemented | restaurants, data, database |
 | [SPEC-104](spec_104.md) | 음식점 조회 DB의 중복 JSON 제거 | Implemented | restaurants, database, storage |
+| [SPEC-106](spec_106.md) | 전체 음식점 장소 ID별 좌표 수집과 조회 DB 연결 | Implemented | restaurants, coordinates, collection, database |
 
-- 다음 예약 번호: `SPEC-105`
+- 다음 예약 번호: `SPEC-107`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
