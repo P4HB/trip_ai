@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import copy
 import importlib.util
 import io
 import ipaddress
@@ -13,6 +14,7 @@ import socket
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -24,7 +26,8 @@ if (MODULE_DIR / ".deps").exists():
     sys.path.insert(0, str(MODULE_DIR / ".deps"))
 
 from PIL import Image, ImageFilter, ImageOps
-from extractor import extract_mentions
+from extractor import extract_mentions, extract_model_mentions, resolve_mention
+from gemini import GeminiExtractor, setting
 
 MAX_BYTES = 16 * 1024 * 1024
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
@@ -41,7 +44,15 @@ def atomic_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".tmp")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
-    temporary.replace(path)
+    for attempt in range(3):
+        try:
+            temporary.replace(path)
+            break
+        except PermissionError:
+            if attempt == 2:
+                raise
+            # Windows readers/AV may briefly hold an existing destination open.
+            time.sleep(0.03 * (attempt + 1))
 
 
 def normalize_url(value):
@@ -214,11 +225,17 @@ class LocalOCR:
             return json.loads(completed.stdout.decode("utf-8-sig"))
 
 
+def make_extractor(adapter="auto", model=None):
+    if adapter == "gemini" or adapter == "auto" and setting("GEMINI_API_KEY"):
+        return GeminiExtractor(model=model)
+    return LocalOCR("easyocr" if adapter == "auto" else adapter)
+
+
 class Pipeline:
     def __init__(self, catalog, acquirer=None, ocr=None, downloader=download_image):
         self.catalog = catalog
         self.acquirer = acquirer or InstagramAcquirer()
-        self.ocr = ocr or LocalOCR()
+        self.ocr = ocr or make_extractor()
         self.downloader = downloader
 
     def run(self, url, directory, progress=None):
@@ -269,25 +286,76 @@ class Pipeline:
         if expected != downloaded or not enumeration_ok:
             result["warnings"].append({"code": "partial_media"})
         emit("extracting", "사진에서 장소 추출")
+        is_model = self.ocr.adapter == "gemini"
+        result["provenance"]["extraction_adapter"] = self.ocr.adapter
+        if is_model:
+            result["provenance"].update(self.ocr.provenance)
+            result["provenance"]["extractor_version"] = "image-model-mentions-v1"
+            result["provenance"]["ocr_adapter"] = "not_used"
         try:
-            ocr_rows = self.ocr.recognize(assets, directory, emit)
+            ocr_rows = self.ocr.extract(assets, directory, post["caption"], emit) if is_model else self.ocr.recognize(assets, directory, emit)
         except Exception as error:
             ocr_rows = []
             result["warnings"].append({"code": "extraction_unavailable", "error": type(error).__name__})
-        atomic_json(directory / "ocr.json", ocr_rows)
+        self._apply_extraction(result, ocr_rows, directory, is_model, emit)
+        fingerprint = json.dumps({"url": post["canonical_url"], "caption": post["caption"],
+                                  "images": [a.get("sha256") for a in assets if a["kind"] == "image"]}, ensure_ascii=False, sort_keys=True)
+        result["provenance"]["input_digest"] = hashlib.sha256(fingerprint.encode()).hexdigest()
+        result["provenance"]["processed_at"] = now()
+        return result
+
+    def _apply_extraction(self, result, ocr_rows, directory, is_model, emit):
+        atomic_json(directory / ("extraction.json" if is_model else "ocr.json"), ocr_rows)
+        downloaded = result["coverage"]["downloaded_image_count"]
         ocr_complete = sum(row["status"] == "complete" for row in ocr_rows)
-        result["coverage"]["ocr_processed_image_count"] = ocr_complete
-        result["coverage"]["ocr"] = "complete" if ocr_complete == downloaded else "partial"
+        result["coverage"]["extraction_processed_image_count"] = ocr_complete
+        result["coverage"]["extraction"] = "complete" if ocr_complete == downloaded else "partial"
+        result["coverage"]["ocr_processed_image_count"] = 0 if is_model else ocr_complete
+        result["coverage"]["ocr"] = "not_used" if is_model else result["coverage"]["extraction"]
+        if is_model:
+            result["provenance"]["image_extractions"] = [{k: row[k] for k in ["index", "status", "model", "response_model", "usage", "error"] if k in row} for row in ocr_rows]
+            for code in sorted({row["error"] for row in ocr_rows if row.get("error")}):
+                result["warnings"].append({"code": code})
         emit("resolving", "기존 장소·메타데이터·라벨 확인")
-        result["mentions"] = extract_mentions(post["caption"], ocr_rows, self.catalog)
+        result["mentions"] = extract_model_mentions(ocr_rows, self.catalog) if is_model else extract_mentions(result["source"]["caption"], ocr_rows, self.catalog)
         if not result["mentions"]:
             result["warnings"].append({"code": "no_place_mentions"})
         if ocr_complete != downloaded:
             result["warnings"].append({"code": "partial_extraction"})
         summarize(result)
-        fingerprint = json.dumps({"url": post["canonical_url"], "caption": post["caption"],
-                                  "images": [a.get("sha256") for a in assets if a["kind"] == "image"]}, ensure_ascii=False, sort_keys=True)
-        result["provenance"]["input_digest"] = hashlib.sha256(fingerprint.encode()).hexdigest()
+
+    def can_retry(self, result):
+        if self.ocr.adapter != "gemini" or any(result["provenance"].get(k) != self.ocr.provenance[k]
+                for k in ["model", "prompt_version", "output_schema_version"]) or result["provenance"].get("catalog") != self.catalog.provenance:
+            raise ValueError("retry_incompatible")
+        if result["coverage"]["extraction_processed_image_count"] >= result["coverage"]["downloaded_image_count"]:
+            raise ValueError("extraction_complete")
+
+    def retry_extraction(self, previous, directory, progress=None):
+        self.can_retry(previous)
+        result = copy.deepcopy(previous)
+        emit = progress or (lambda stage, detail: None)
+        rows = json.loads((directory / "extraction.json").read_text(encoding="utf-8"))
+        complete = {row["index"] for row in rows if row["status"] == "complete"}
+        assets = [a for a in result["assets"] if a["status"] == "downloaded" and a["index"] not in complete]
+        retried = self.ocr.extract(assets, directory, result["source"]["caption"], emit)
+        combined = {row["index"]: row for row in rows}
+        combined.update({row["index"]: row for row in retried})
+        history = result["provenance"].setdefault("extraction_attempts", [{"processed_at": result["provenance"]["processed_at"],
+            "images": copy.deepcopy(result["provenance"]["image_extractions"])}])
+        history.append({"processed_at": now(), "images": [{k: row[k] for k in ["index", "status", "model", "response_model", "usage", "error"] if k in row} for row in retried]})
+        result["warnings"] = [w for w in result["warnings"] if not w["code"].startswith("gemini_") and w["code"] not in {"partial_extraction", "extraction_unavailable", "no_place_mentions"}]
+        self._apply_extraction(result, [combined[i] for i in sorted(combined)], directory, True, emit)
+        old_mentions = {m["mention_id"]: m for m in previous["mentions"]}
+        for m in result["mentions"]:
+            old = old_mentions.get(m["mention_id"], {})
+            if old.get("corrected_name"):
+                m["corrected_name"] = old["corrected_name"]
+                m["name_review"] = old["name_review"]
+                resolve_mention(m, self.catalog)
+            if old.get("identity_basis") == "user_selected":
+                resolve_mention(m, self.catalog, old["metadata"]["canonical_id"])
+        summarize(result)
         result["provenance"]["processed_at"] = now()
         return result
 

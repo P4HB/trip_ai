@@ -17,7 +17,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from catalog import Catalog
-from core import MODULE_DIR, LocalOCR, Pipeline, atomic_json, normalize_url, now, summarize
+from core import MODULE_DIR, Pipeline, atomic_json, make_extractor, normalize_url, now, summarize
 from extractor import resolve_mention
 
 ROOT = MODULE_DIR.parents[1]
@@ -80,7 +80,7 @@ class JobStore:
             self.executor.submit(self._work, job_id)
             return self.get(job_id)
 
-    def _work(self, job_id):
+    def _work(self, job_id, retry=False):
         import tempfile
         scratch = Path(tempfile.mkdtemp(prefix="trip-ai-import-"))
         try:
@@ -96,13 +96,18 @@ class JobStore:
                 if self._cancelled(job_id):
                     return
                 url = self.jobs[job_id]["url"]
-            result = self.pipeline.run(url, scratch, progress)
+                previous = copy.deepcopy(self.jobs[job_id].get("result")) if retry else None
+                if retry:
+                    for file in self._path(job_id).iterdir():
+                        if file.is_file() and (file.name == "extraction.json" or re.fullmatch(r"image_\d{2}\.jpg", file.name)):
+                            shutil.copyfile(file, scratch / file.name)
+            result = self.pipeline.retry_extraction(previous, scratch, progress) if retry else self.pipeline.run(url, scratch, progress)
             with self.lock:
                 if self._cancelled(job_id):
                     return
                 directory = self._path(job_id)
                 for file in scratch.iterdir():
-                    if file.is_file() and (file.name == "ocr.json" or re.fullmatch(r"image_\d{2}\.jpg", file.name)):
+                    if file.is_file() and (file.name in {"ocr.json", "extraction.json"} or re.fullmatch(r"image_\d{2}\.jpg", file.name)):
                         shutil.copyfile(file, directory / file.name)
                 job = self.jobs[job_id]
                 job.update(state="finished", stage="finished", detail="분석 완료", result=result, updated_at=now())
@@ -112,7 +117,8 @@ class JobStore:
         except Exception as error:
             with self.lock:
                 if not self._cancelled(job_id):
-                    self.jobs[job_id].update(state="failed", stage="failed", detail="게시물을 처리하지 못했습니다",
+                    self.jobs[job_id].update(state="finished" if retry else "failed", stage="finished" if retry else "failed",
+                                             detail="재시도하지 못했습니다" if retry else "게시물을 처리하지 못했습니다",
                                              error=type(error).__name__, updated_at=now())
                     self._save(self.jobs[job_id])
         finally:
@@ -123,7 +129,31 @@ class JobStore:
     def get(self, job_id):
         with self.lock:
             self.cleanup()
-            return copy.deepcopy(self.jobs[job_id])
+            job = copy.deepcopy(self.jobs[job_id])
+            job["can_retry_extraction"] = False
+            if job["state"] == "finished" and job.get("result") and not job.get("raw_expired"):
+                try:
+                    self.pipeline.can_retry(job["result"])
+                    job["can_retry_extraction"] = True
+                except ValueError:
+                    pass
+            return job
+
+    def retry_extraction(self, job_id):
+        with self.lock:
+            self.cleanup()
+            job = self.jobs[job_id]
+            if job["state"] != "finished" or not job.get("result"):
+                raise ValueError("result_not_ready")
+            if job.get("raw_expired"):
+                raise ValueError("raw_expired")
+            self.pipeline.can_retry(job["result"])
+            if sum(j["state"] in {"queued", "processing"} for j in self.jobs.values()) >= 4:
+                raise ValueError("queue_full")
+            job.update(state="queued", stage="queued", detail="실패 사진 분석 대기", updated_at=now())
+            self._save(job)
+            self.executor.submit(self._work, job_id, True)
+            return self.get(job_id)
 
     def resolve(self, job_id, mention_id, candidate_id):
         if not isinstance(candidate_id, str) or not 1 <= len(candidate_id) <= 100:
@@ -200,6 +230,7 @@ class JobStore:
                     for file in directory.glob("image_*.jpg"):
                         file.unlink(missing_ok=True)
                     (directory / "ocr.json").unlink(missing_ok=True)
+                    (directory / "extraction.json").unlink(missing_ok=True)
                     result = job["result"]
                     result["source"]["caption"] = None
                     for asset in result["assets"]:
@@ -273,7 +304,10 @@ def handler_class(store):
             try:
                 if path == "/api/health":
                     return self._reply(200, {"catalog_count": len(store.pipeline.catalog.places),
-                                             "ocr_adapter": store.pipeline.ocr.adapter, "ocr_available": store.pipeline.ocr.available})
+                        "extraction_adapter": store.pipeline.ocr.adapter, "extraction_available": store.pipeline.ocr.available,
+                        "model": getattr(store.pipeline.ocr, "model", None),
+                        "ocr_adapter": "not_used" if store.pipeline.ocr.adapter == "gemini" else store.pipeline.ocr.adapter,
+                        "ocr_available": store.pipeline.ocr.available if store.pipeline.ocr.adapter != "gemini" else False})
                 match = re.fullmatch(r"/api/imports/([0-9a-f]{32})(?:/(export|assets/([0-9]{1,2})))?", path)
                 if match:
                     if match[3] is not None:
@@ -297,15 +331,17 @@ def handler_class(store):
                 if path == "/api/imports":
                     job = store.submit(body.get("url"))
                     return self._reply(202, {"job_id": job["job_id"]})
-                match = re.fullmatch(r"/api/imports/([0-9a-f]{32})/(resolve|review-name)", path)
+                match = re.fullmatch(r"/api/imports/([0-9a-f]{32})/(resolve|review-name|retry-extraction)", path)
                 if match:
+                    if match[2] == "retry-extraction":
+                        return self._reply(202, store.retry_extraction(match[1]))
                     if match[2] == "review-name":
                         return self._reply(200, store.review_name(match[1], body.get("mention_id"), body.get("name")))
                     return self._reply(200, store.resolve(match[1], body.get("mention_id"), body.get("candidate_id")))
                 self._reply(404, {"error": "not_found"})
             except ValueError as error:
                 # Error codes are internal fixed strings; external exception messages are never returned.
-                allowed = {"invalid_url", "invalid_body", "queue_full", "invalid_mention", "invalid_candidate", "invalid_name", "result_not_ready", "candidate_not_offered"}
+                allowed = {"invalid_url", "invalid_body", "queue_full", "invalid_mention", "invalid_candidate", "invalid_name", "result_not_ready", "candidate_not_offered", "raw_expired", "retry_incompatible", "extraction_complete"}
                 code = str(error) if str(error) in allowed else "invalid_request"
                 self._reply(429 if code == "queue_full" else 400, {"error": code})
             except KeyError:
@@ -329,7 +365,8 @@ def handler_class(store):
 
 def main():
     parser = argparse.ArgumentParser(description="Instagram 장소 추출·기존 라벨 연결")
-    parser.add_argument("--ocr", choices=["easyocr", "windows"], default="easyocr")
+    parser.add_argument("--extractor", "--ocr", dest="extractor", choices=["auto", "gemini", "easyocr", "windows"], default="auto")
+    parser.add_argument("--model", help="Gemini model ID (default: GEMINI_MODEL or gemini-3.1-flash-lite)")
     sub = parser.add_subparsers(dest="command", required=True)
     serve = sub.add_parser("serve")
     serve.add_argument("--port", type=int, default=8091)
@@ -339,7 +376,7 @@ def main():
     run.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     catalog = Catalog(ROOT)
-    pipeline = Pipeline(catalog, ocr=LocalOCR(args.ocr))
+    pipeline = Pipeline(catalog, ocr=make_extractor(args.extractor, args.model))
     if args.command == "import":
         try:
             result = pipeline.run(args.url, args.output.resolve(), lambda stage, detail: print(f"{stage}: {detail}", flush=True))

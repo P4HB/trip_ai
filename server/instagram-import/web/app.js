@@ -24,9 +24,24 @@ function render(job) {
   $('summary').textContent = `${counts.extracted}개 장소 후보 · ${counts.resolved}곳 연결 · ${counts.needs_review}곳 검토 · ${counts.not_found}곳 미매칭`;
   const warnings = [`사진 ${coverage.downloaded_image_count}/${coverage.expected_image_count}장 다운로드`, `영상 ${coverage.video_count}개 분석 제외`];
   if (coverage.images !== 'complete') warnings.push('일부 사진을 받지 못했습니다');
-  if (coverage.ocr !== 'complete') warnings.push('일부 사진의 글자를 읽지 못했습니다');
+  if ((coverage.extraction || coverage.ocr) !== 'complete') warnings.push('일부 사진에서 장소를 읽지 못했습니다');
+  if (coverage.extraction_processed_image_count !== undefined) warnings.push(`사진 ${coverage.extraction_processed_image_count}/${coverage.downloaded_image_count}장 분석`);
+  const extractionErrors = {
+    gemini_key_missing: 'Gemini API 키가 설정되지 않았습니다',
+    gemini_auth_failed: 'Gemini API 키 또는 접근 권한을 확인해주세요',
+    gemini_quota_exceeded: 'Gemini 호출 한도를 초과했습니다. API 한도를 확인한 뒤 다시 시도해주세요',
+    gemini_model_unavailable: '설정한 Gemini 모델을 사용할 수 없습니다',
+    gemini_request_rejected: 'Gemini가 분석 요청을 받지 못했습니다',
+    gemini_timeout: 'Gemini 분석 시간이 초과되었습니다',
+    gemini_invalid_response: '일부 Gemini 응답을 검증하지 못했습니다',
+    gemini_service_failed: 'Gemini 연결에 실패했습니다',
+    gemini_image_too_large: 'Gemini에 전송할 수 없는 크기의 사진이 있습니다'
+  };
+  for (const warning of result.warnings || []) if (extractionErrors[warning.code]) warnings.push(extractionErrors[warning.code]);
   if (job.raw_expired) warnings.push('원문·사진 보관 기간이 만료되었습니다');
   $('warnings').textContent = warnings.join(' · ');
+  $('retry-extraction').hidden = !job.can_retry_extraction;
+  $('retry-extraction').disabled = false;
   $('export').href = `/api/imports/${jobId}/export`;
   $('assets').replaceChildren();
   for (const asset of result.assets) {
@@ -117,6 +132,18 @@ $('import-form').addEventListener('submit', async (event) => {
 $('delete').addEventListener('click', async () => {
   try { await request(`/api/imports/${jobId}`, {method:'DELETE'}); clearTimeout(polling); jobId = null; history.replaceState(null, '', '/'); $('results').hidden = true; }
   catch { failure('작업을 삭제하지 못했습니다.'); }
+});
+$('retry-extraction').addEventListener('click', async () => {
+  $('retry-extraction').disabled = true;
+  $('error').hidden = true;
+  try {
+    await request(`/api/imports/${jobId}/retry-extraction`, {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+    $('submit').disabled = true; $('progress').hidden = false;
+    await poll();
+  } catch {
+    $('retry-extraction').disabled = false;
+    failure('사진 보관 기간과 현재 모델 설정을 확인한 뒤 다시 시도해주세요.');
+  }
 });
 const initialJob = new URLSearchParams(location.search).get('job');
 if (initialJob && /^[0-9a-f]{32}$/.test(initialJob)) { jobId = initialJob; $('progress').hidden = false; poll(); }

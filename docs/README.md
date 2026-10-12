@@ -40,7 +40,7 @@
 - 로컬 구현·실제 API 미검증: 동선 이동시간을 카카오 호출 없이 직선거리 기반 추정으로 계산하고, 점심·저녁 칸마다 동선 일대·해당 시각 영업 식당 최대 5곳을 요청 시 LLM 리뷰 판정과 함께 보여주며 사람이 골라 일정에 넣는다. Gemini 또는 OpenAI 키 하나만으로 동작하고(`LLM_PROVIDER`, [SPEC-108](spec_108.md)) `scripts/run_trip_ai_local.py`로 로컬 실행한다. [SPEC-107](spec_107.md) 참조
 - 미구현: 운영 사용자 프로필, 운영 검증된 일정 최적화·추천 API, 추천 품질 평가 파이프라인
 
-- 구현됨: [인스타 링크의 전체 사진 수집·로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_102.md). 단일 사진 1/1·캐러셀 사진 8/8 다운로드와 장소 후보 10개/16개를 실제 검증했다. OCR 오인식·모호한 후보는 검토하며 메타데이터는 기존 스냅샷 대조다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
+- 구현됨: [인스타 링크의 전체 사진 수집·Gemini/선택적 로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_110.md). [SPEC-102 사진 수집](spec_102.md)에 Gemini Flash-Lite와 실패 사진만 수동 재시도를 추가했다. 단일 1/1·캐러셀 8/8 분석, 두 표본 이름 10/10·16/16을 실제 검증했다. 메타데이터는 기존 스냅샷 대조이며 모호한 후보는 검토한다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
 
 - 구현됨: 제주 음식점 13,561곳·리뷰 44,156건의 독립 로컬 JSONL·조회용 SQLite 카탈로그. v2 조회 DB는 정본을 보존하고 중복 JSON을 제외해 215.8MB→55.9MB로 축소했다. 상세 실패 36곳·운영시간 미확인/미수집 112곳을 보존하며 수집은 부분 완료 상태다. [SPEC-085](spec_085.md), [SPEC-103](spec_103.md), [SPEC-104](spec_104.md) 참조.
 
@@ -117,8 +117,9 @@
 | [SPEC-107](spec_107.md) | 동선 기반 식사 시간대 식당 후보 추천과 추정 이동시간 | In Progress | itinerary, restaurants, routing, LLM, UI |
 | [SPEC-108](spec_108.md) | Gemini LLM 공급자 지원 | In Progress | LLM, itinerary, restaurants, configuration |
 | [SPEC-109](spec_109.md) | 비밀 파일(.env) AI 열람 금지 | Implemented | repository, agent, security |
+| [SPEC-110](spec_110.md) | Gemini 이미지 장소 추출과 기존 메타데이터·라벨 연결 | Implemented | instagram, extraction, metadata, labeling |
 
-- 다음 예약 번호: `SPEC-110`
+- 다음 예약 번호: `SPEC-111`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

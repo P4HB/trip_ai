@@ -133,19 +133,54 @@ def extract_mentions(caption, ocr_rows, catalog):
             collected.append({"observed_name": name, "region_hint": "제주" if REGION.search(caption) else None,
                               "address_hint": None, "evidence": [{"kind": "caption", "text": part,
                               "span": [start, start + len(part)]}]})
-    merged = {}
+    return merge_mentions(collected, catalog)
+
+
+def extract_model_mentions(rows, catalog):
+    collected = []
+    for row in rows:
+        if row["status"] != "complete":
+            continue
+        for p in row["places"]:
+            width, height = row["width"], row["height"]
+            x, y, w, h = p["bbox"]
+            collected.append({"observed_name": p["observed_name"].strip(),
+                "region_hint": p["region_hint"], "address_hint": p["address_hint"],
+                "name_status": "review_required" if p["uncertain"] else "model_observed",
+                "evidence": [{"kind": "image_model", "image_order": row["index"],
+                    "text": p["evidence_text"], "bbox": [round(x * width / 1000, 1), round(y * height / 1000, 1),
+                    round(w * width / 1000, 1), round(h * height / 1000, 1)], "bbox_source": "model_estimated"}]})
+    return merge_mentions(collected, catalog)
+
+
+def merge_mentions(collected, catalog):
+    groups = {}
     for mention in collected:
         key = normalized(mention["observed_name"])
-        # An address conflict keeps branches separate even if the visible name is equal.
-        if key in merged and mention.get("address_hint") and merged[key].get("address_hint") and normalized(mention["address_hint"]) != normalized(merged[key]["address_hint"]):
-            key += ":" + normalized(mention["address_hint"])
-        if key in merged:
-            merged[key]["evidence"].extend(mention["evidence"])
+        compatible = []
+        for old in groups.get(key, []):
+            a, b = mention.get("address_hint"), old.get("address_hint")
+            address_conflict = a and b and normalized(a) != normalized(b)
+            a, b = mention.get("region_hint"), old.get("region_hint")
+            city_conflict = a in {"제주시", "서귀포시"} and b in {"제주시", "서귀포시"} and a != b
+            if not address_conflict and not city_conflict:
+                compatible.append(old)
+        if len(compatible) == 1:
+            old = compatible[0]
+            old["evidence"].extend(mention["evidence"])
+            if mention.get("name_status") == "review_required":
+                old["name_status"] = "review_required"
+            # Prefer independent evidence found on a later repeated title.
+            for field in ["region_hint", "address_hint"]:
+                if not old.get(field) and mention.get(field):
+                    old[field] = mention[field]
+            if old.get("region_hint") == "제주" and mention.get("region_hint") in {"제주시", "서귀포시"}:
+                old["region_hint"] = mention["region_hint"]
         else:
-            merged[key] = mention
-    mentions = list(merged.values())
+            groups.setdefault(key, []).append(mention)
+    mentions = [m for values in groups.values() for m in values]
     for mention in mentions:
-        key = normalized(mention["observed_name"]) + str(mention.get("address_hint"))
+        key = normalized(mention["observed_name"]) + str(mention.get("address_hint")) + str(mention.get("region_hint"))
         mention["mention_id"] = hashlib.sha256(key.encode()).hexdigest()[:16]
         resolve_mention(mention, catalog)
     return mentions
@@ -165,6 +200,9 @@ def resolve_mention(mention, catalog, selected=None):
         chosen = selected
         method = "user_selected"
     else:
+        if mention.get("name_status") == "review_required" and not mention.get("corrected_name"):
+            mention["resolution"] = "needs_review"
+            return mention
         # UI candidate limits must never hide a conflicting exact-name branch.
         exact = [c for c in catalog.candidates(name, limit=None) if c["match_kind"] == "exact_name"]
         viable = []
