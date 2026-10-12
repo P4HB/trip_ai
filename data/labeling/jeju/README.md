@@ -146,3 +146,27 @@ python scripts/validate_all_place_profiles.py
 python scripts/build_all_place_profiles.py
 python scripts/validate_all_place_profiles.py
 ```
+
+## Companion·월별 적합도 5단계 재라벨링 v2
+
+비음식점 1,434곳과 FD05 카페·찻집 230곳, 총 1,664곳의 장소 소개·facts를 읽어 companion 5축과 month 12축을 `0`, `0.25`, `0.5`, `0.75`, `1`로 직접 판정한 결과다. `0`은 방문 불가가 아닌 5단계 중 최저 적합도다. 행사형 장소의 month는 개최일을 일반 월 적합도로 환산하지 않고 `not_applicable`로 둔다.
+
+```text
+2026-08-09/place-fit-relabel-v2/
+  place_fit_labels.jsonl
+  coverage_report.json
+  manifest.json
+  direct_place_fit_labels.jsonl
+  direct_coverage_report.json
+  direct_manifest.json
+  direct_analysis.md
+  place_fit_labels.rules-v1.jsonl
+```
+
+모든 결과는 `ai_draft`이며 기존 full SQLite·v5 24축 라벨을 수정하지 않는다. 재생성·검증:
+
+```powershell
+python scripts/merge_direct_place_fit_labels.py --promote
+python scripts/build_place_fit_relabel_viewer.py
+python scripts/validate_place_fit_relabel_v2.py
+```

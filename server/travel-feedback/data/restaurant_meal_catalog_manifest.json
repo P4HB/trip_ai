@@ -1,0 +1,77 @@
+{
+  "contract": "restaurant-meal-catalog-v1",
+  "catalogVersion": "8c87b5bdcb1e0f489c9542e39314f748bb0e2d49a10c52cb513c44d96ebc5482",
+  "generatedAt": "2026-10-12T03:32:45+09:00",
+  "hoursParserVersion": "kakao-observed-week-hours-v1",
+  "hoursBasis": "observed_week_projection",
+  "observationHolidays": [
+    "2026-09-24",
+    "2026-09-25",
+    "2026-09-26",
+    "2026-10-03",
+    "2026-10-05",
+    "2026-10-09"
+  ],
+  "source": {
+    "path": "data/catalogs/jeju/2026-10-06/restaurant-catalog-v3/restaurants.sqlite3",
+    "sha256": "199f1434c9ac5e414d306cdd3f43214d46508bb4f452b2021c3c46635ed58808",
+    "sha256After": "199f1434c9ac5e414d306cdd3f43214d46508bb4f452b2021c3c46635ed58808",
+    "bytes": 60420096,
+    "contract": "restaurant-catalog-v3",
+    "databaseLogicalSha256": "25a2a86a8845803b9740c57592d6df9dae6b9e99a7503768dcd3de035c932515"
+  },
+  "policy": {
+    "nonMealCategories": [
+      "구내식당",
+      "단체,협회",
+      "디저트",
+      "배달도시락",
+      "선교회",
+      "수산물판매",
+      "아이스크림",
+      "양식업",
+      "제과,베이커리",
+      "카페"
+    ],
+    "maxReviewsPerRestaurant": 8,
+    "maxReviewChars": 400
+  },
+  "coverage": {
+    "sourcePlaces": 13561,
+    "included": 9522,
+    "excluded": 4039,
+    "excludedByReason": {
+      "hours_not_provided": 2763,
+      "hours_parse_note_unsupported": 977,
+      "hours_parse_no_open_weekday": 113,
+      "coordinate_unavailable": 82,
+      "hours_unrecognized": 78,
+      "non_meal_category": 12,
+      "hours_parse_break_outside_hours": 7,
+      "coordinate_identity_mismatch": 4,
+      "hours_parse_last_order_outside_hours": 2,
+      "hours_parse_label_weekday_mismatch": 1
+    },
+    "includedOpenByIsoWeekday": {
+      "1": 8524,
+      "2": 8681,
+      "3": 8885,
+      "4": 9097,
+      "5": 9291,
+      "6": 8565,
+      "7": 7847
+    },
+    "unknownWeekdayReasons": {
+      "holiday_observation": 1984,
+      "not_observed": 250,
+      "dated_closure": 61
+    },
+    "reviews": 35508,
+    "restaurantsWithReviews": 7899
+  },
+  "output": {
+    "path": "server/travel-feedback/data/restaurant_meal_catalog.sqlite3",
+    "sha256": "7f294be0afa6beab0708ad1f5bedea2d27a8db3db11b33ec188c6a4df3795672",
+    "bytes": 19091456
+  }
+}

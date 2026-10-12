@@ -387,11 +387,14 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
     return result
 
 
-def validate_restaurant_insertion(slot, first_leg_seconds, second_leg_seconds, arrival, departure, next_arrival):
-    """Follow-up contract checker, not a restaurant search/insert implementation.
+def validate_restaurant_insertion(slot, first_leg_seconds, second_leg_seconds, arrival, departure, next_arrival,
+                                  *, window_start=None, window_end=None):
+    """Check a restaurant stop placed in a meal slot gap.
 
-    Caller must separately validate restaurant opening/order cutoff and revalidate
-    all following itinerary legs at their changed departure times.
+    By default the meal must stay inside the LLM-reserved ``slot.start..slot.end``. SPEC-107
+    passes the date's meal-preference window instead, so a meal that starts later because the
+    restaurant is farther away is still valid while it stays in the allowed window and the
+    next visit is reached. Caller separately validates opening/last order (restaurant_hours).
     """
     errors = []
     baseline = slot["baselineRoute"]["durationSeconds"]
@@ -400,7 +403,9 @@ def validate_restaurant_insertion(slot, first_leg_seconds, second_leg_seconds, a
     if first_leg_seconds + second_leg_seconds - baseline > slot["maxDetourMinutes"] * 60:
         errors.append(issue("restaurant_detour", "식당 경유의 추가 이동시간이 허용 우회를 초과합니다."))
     start, end, following = (datetime.fromisoformat(value) for value in (arrival, departure, next_arrival))
-    if start < datetime.fromisoformat(slot["start"]) or end > datetime.fromisoformat(slot["end"]) or (end - start).total_seconds() < slot["durationMinutes"] * 60:
+    lower = datetime.fromisoformat(window_start or slot["start"])
+    upper = datetime.fromisoformat(window_end or slot["end"])
+    if start < lower or end > upper or (end - start).total_seconds() < slot["durationMinutes"] * 60:
         errors.append(issue("restaurant_meal_window", "식당 체류가 확보한 식사 시간과 맞지 않습니다."))
     if end + timedelta(minutes=math.ceil(second_leg_seconds / 60)) > following:
         errors.append(issue("restaurant_next_arrival", "식당 이후 이동으로 다음 방문 시각을 지킬 수 없습니다."))

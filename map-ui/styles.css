@@ -5203,3 +5203,41 @@ button:focus-visible {
 .itinerary-timeline > li { padding: 10px; border-left: 3px solid var(--brand); background: white; border-radius: 4px; }
 .itinerary-timeline p { margin: 5px 0 0; }
 .itinerary-timeline .itinerary-meal { border-left-color: #c98535; background: #fff6e5; }
+
+/* SPEC-107: meal-slot restaurant candidates and selection. */
+.itinerary-restaurants { display: grid; gap: 8px; margin-top: 10px; min-width: 0; }
+.itinerary-section p.itinerary-restaurants-heading { margin: 0; color: var(--ink); font-weight: 650; }
+.itinerary-section p.itinerary-restaurants-note { margin: 0; padding: 8px; border-radius: 7px; background: #fff; }
+.itinerary-restaurant-list { display: grid; gap: 8px; margin: 0; padding: 0 !important; list-style: none; }
+.itinerary-restaurant { display: grid; gap: 4px; min-width: 0; padding: 10px; border: 1px solid #ecdcc3; border-radius: 9px; background: white; }
+.itinerary-restaurant.is-selected { border-color: var(--brand); box-shadow: inset 0 0 0 1px var(--brand); background: #f3faf7; }
+.itinerary-restaurant p { margin: 0; }
+.itinerary-restaurant-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; min-width: 0; }
+.itinerary-restaurant-header strong { font-size: 12px; overflow-wrap: anywhere; }
+.itinerary-restaurant-category { color: var(--ink-soft); font-size: 11px; }
+.itinerary-verdict { margin-left: auto; padding: 2px 7px; border-radius: 999px; background: #edf0eb; color: #4a5a57; font-size: 10px; font-weight: 750; white-space: nowrap; }
+.itinerary-verdict.is-recommended { background: #def4e8; color: #12613f; }
+.itinerary-verdict.is-acceptable { background: #e8f0fb; color: #24518a; }
+.itinerary-verdict.is-insufficient_evidence { background: #f4f1e9; color: #6b5d3f; }
+.itinerary-verdict.is-not_recommended { background: #fbe9e6; color: #9a3524; }
+.itinerary-section p.itinerary-restaurant-reason { color: var(--ink); }
+.itinerary-restaurant-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 4px; }
+.itinerary-restaurant-actions a { color: var(--brand-deep); font-size: 11px; font-weight: 650; }
+.itinerary-section .itinerary-restaurant-choose, .itinerary-section .itinerary-restaurant-clear {
+  min-height: 34px; padding: 6px 12px; border: 1px solid var(--brand); border-radius: 8px; background: white; color: var(--brand-deep); font-size: 12px; font-weight: 700; cursor: pointer;
+}
+.itinerary-section .itinerary-restaurant-choose[aria-pressed="true"] { background: var(--brand); color: white; }
+.itinerary-section .itinerary-restaurant-choose:focus-visible, .itinerary-section .itinerary-restaurant-clear:focus-visible,
+.itinerary-restaurant-actions a:focus-visible, .itinerary-restaurant-hidden summary:focus-visible { outline: 3px solid #f2b45c; outline-offset: 2px; }
+.itinerary-restaurant-clear { justify-self: start; margin-top: 6px; }
+.itinerary-timeline .itinerary-meal.has-restaurant { border-left-color: var(--brand); background: #f3faf7; }
+.itinerary-section p.itinerary-warning { margin-top: 6px; padding: 7px 8px; border-radius: 7px; background: #fff0e9; color: #8a3f12; font-weight: 650; }
+.itinerary-section p.itinerary-check { margin-top: 6px; color: #12613f; }
+.itinerary-section p.itinerary-restaurant-preview.has-warning { color: #8a3f12; font-weight: 650; }
+.itinerary-restaurant-hidden { margin: 2px 0 0 !important; }
+.itinerary-restaurant-hidden summary { font-size: 11px; font-weight: 700; }
+.itinerary-restaurant-hidden .itinerary-restaurant-list { margin-top: 8px; }
+@media (max-width: 760px) {
+  .itinerary-restaurant-actions .button { flex: 1 1 140px; }
+  .itinerary-verdict { margin-left: 0; }
+}

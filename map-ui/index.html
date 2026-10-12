@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css?v=20260924-itinerary-v2" />
+    <link rel="stylesheet" href="./styles.css?v=20261012-restaurants-v1" />
   </head>
   <body>
     <header class="topbar">
@@ -536,7 +536,7 @@
             <div class="output-section-heading">
               <div>
                 <h3 id="itineraryTitle">방문 순서와 시간표</h3>
-                <p>추천된 날짜별 장소를 이어 자동차 동선을 만들어요. 식당은 아직 선정하지 않습니다.</p>
+                <p>추천된 날짜별 장소를 이어 자동차 동선을 만들고, 점심·저녁 칸에서 동선 근처 식당 후보를 직접 골라 넣을 수 있어요. 이동시간은 직선거리 기반 추정값입니다.</p>
               </div>
             </div>
             <p id="itineraryGate" class="itinerary-notice" role="status"></p>
@@ -559,9 +559,9 @@
                   <label>식사 분<input id="itineraryDinnerDuration" type="number" min="15" max="180" value="60" /></label>
                 </fieldset>
                 <label class="itinerary-detour-field">식당 왕복 추가 이동 한도 (분)<input id="itineraryMaxDetour" type="number" min="0" max="60" value="20" /></label>
-                <p>원래 앞뒤 장소 간 경로보다 늘어나는 총 이동시간입니다. 식당 선택 뒤 이동·운영시간을 다시 확인해야 해요.</p>
+                <p>원래 앞뒤 장소 간 경로보다 늘어나는 총 이동시간(추정)입니다. 이 한도 안의 식당만 후보로 보여드려요.</p>
               </details>
-              <p class="itinerary-privacy">선택한 공개 장소·여행 날짜·활동 시간은 동선 생성을 위해 서버와 외부 AI·자동차 경로 제공자에 전달됩니다. 이름·평가 의견·MBTI 응답은 전송하지 않습니다.</p>
+              <p class="itinerary-privacy">선택한 공개 장소·여행 날짜·활동 시간은 동선 생성을 위해 서버와 외부 AI에 전달됩니다. 식당 후보 판정에는 동행 유형과 취향 요약(예: 제주 로컬성 선호), 이미 고른 식당의 업종, 공개 식당 리뷰만 함께 보냅니다. 이름·평가 의견·MBTI 응답·정확한 위치는 전송하지 않으며 식당 선택은 이 화면에만 남습니다.</p>
               <button id="generateItineraryButton" class="button button-primary" type="submit">동선 만들기</button>
             </form>
             <p id="itineraryStatus" class="itinerary-notice" role="status" aria-live="polite"></p>
@@ -688,7 +688,7 @@
     <script src="./data/jeju-places.js?v=20260926-preference-budget" defer></script>
     <script src="./preference-elicitation.js?v=20260902-mbti-v1" defer></script>
     <script src="./ccu-mmr.js?v=20260926-preference-budget" defer></script>
-    <script src="./itinerary.js?v=20260924-itinerary-v2" defer></script>
-    <script src="./app.js?v=20260924-itinerary-v2" defer></script>
+    <script src="./itinerary.js?v=20261012-restaurants-v1" defer></script>
+    <script src="./app.js?v=20261012-restaurants-v1" defer></script>
   </body>
 </html>

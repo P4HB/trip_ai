@@ -1,4 +1,4 @@
-/* SPEC-083: minimum itinerary contract and revision-safe asynchronous client. */
+/* SPEC-083/107: itinerary contract, revision-safe asynchronous client and meal-slot restaurant helpers. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -11,6 +11,42 @@
     dinner: Object.freeze({ windowStart: "17:30", windowEnd: "20:00", durationMinutes: 60 }),
     maxDetourMinutes: 20,
   });
+  // Same vocabulary as ccu-mmr.js ATOMIC_FEATURES; the server re-validates this allowlist.
+  const PREFERENCE_FEATURES = Object.freeze(["mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
+    "traditional_market", "festival", "indoor_ratio", "weather_sensitivity", "restfulness", "physical_ease",
+    "visit_duration_flexibility", "scenic_value", "distinctiveness", "local_embeddedness", "landmark_significance", "photo_value"]);
+  const COMPANIONS = Object.freeze(["solo", "couple", "friends", "kids", "parents", "none"]);
+  const MAX_USED_RESTAURANTS = 28, MAX_CHOSEN_RESTAURANTS = 14, MAX_PREFERENCE_SIGNALS = 8;
+  const VERDICT_LABELS = Object.freeze({ recommended: "추천", acceptable: "괜찮음", insufficient_evidence: "근거 부족", not_recommended: "비추천" });
+  /** Only companion type and preference feature directions; never names, weights, MBTI type or free text. */
+  function travelerContext(request) {
+    const companionType = COMPANIONS.includes(request?.companionType) ? request.companionType : null;
+    const seen = new Set(), preferenceSignals = [];
+    for (const item of Array.isArray(request?.preferences) ? request.preferences : []) {
+      if (!PREFERENCE_FEATURES.includes(item?.feature) || seen.has(item.feature) || !["benefit", "avoid"].includes(item.mode)) continue;
+      seen.add(item.feature);
+      preferenceSignals.push({ feature: item.feature, direction: item.mode });
+      if (preferenceSignals.length >= MAX_PREFERENCE_SIGNALS) break;
+    }
+    return { companionType, preferenceSignals };
+  }
+  /** Client-only meal selections -> request context for the next day's diversity judgement. */
+  function foodContext(selections) {
+    const chosen = [];
+    for (const item of selections || []) {
+      if (!/^kakao:\d{1,20}$/u.test(item?.restaurantId || "") || chosen.some(entry => entry.restaurantId === item.restaurantId)) continue;
+      chosen.push({ restaurantId: item.restaurantId, category: String(item.category || "").slice(0, 40) });
+    }
+    return { usedRestaurantIds: chosen.map(item => item.restaurantId).slice(0, MAX_USED_RESTAURANTS), chosen: chosen.slice(0, MAX_CHOSEN_RESTAURANTS) };
+  }
+  function verdictLabel(judgement) {
+    return judgement?.status === "judged" ? VERDICT_LABELS[judgement.verdict] || "확인 필요" : "AI 판정 없음";
+  }
+  /** Candidates split into visible list and the collapsed not_recommended group (server order kept). */
+  function partitionCandidates(slot) {
+    const all = Array.isArray(slot?.restaurantCandidates) ? slot.restaurantCandidates : [];
+    return { visible: all.filter(item => item.judgement?.verdict !== "not_recommended"), hidden: all.filter(item => item.judgement?.verdict === "not_recommended") };
+  }
   function validDate(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/u.test(value || "")) return false;
     const date = new Date(`${value}T00:00:00Z`);
@@ -66,12 +102,13 @@
     });
     const allIds = days.flatMap(day => day.placeIds);
     if (new Set(allIds).size !== allIds.length) throw new Error("날짜별 장소 배정이 중복되었습니다. 장소 추천을 다시 실행해 주세요.");
-    return { schemaVersion: "itinerary-request-v1", requestId: options.requestId, recommendationRevision: String(options.recommendationRevision), courseVariantId: result.courseVariant?.variantId || null,
+    return { schemaVersion: "itinerary-request-v2", requestId: options.requestId, recommendationRevision: String(options.recommendationRevision), courseVariantId: result.courseVariant?.variantId || null,
       ...(options.sourceMapVersion ? { sourceMapVersion: options.sourceMapVersion } : {}),
       travelWindow: { startDate: result.request.travelWindow.startDate, endDate: result.request.travelWindow.endDate }, timezone: "Asia/Seoul", routeMode: "car", scheduleStatus: result.schedule.status,
-      scheduleIssues: (result.schedule.violations || []).map(issue => ({ code: issue.code, message: issue.message })), excludedPlaceIds: (result.request.excludedPlaceIds || []).map(String), days, mealPreferences };
+      scheduleIssues: (result.schedule.violations || []).map(issue => ({ code: issue.code, message: issue.message })), excludedPlaceIds: (result.request.excludedPlaceIds || []).map(String), days, mealPreferences,
+      travelerContext: travelerContext(result.request) };
   }
-  function createClient({ fetchImpl = (...args) => fetch(...args), onChange = () => {}, timeoutMs = 120000 } = {}) {
+  function createClient({ fetchImpl = (...args) => fetch(...args), onChange = () => {}, timeoutMs = 120000, getTripFoodContext = () => null } = {}) {
     let revision = 0, controller = null;
     let state = { status: "idle", result: null, error: "" };
     const publish = update => { state = update; onChange(state); };
@@ -88,12 +125,14 @@
       function aggregate() {
         const days = responses.flatMap(result => result.days);
         const callsKnown = responses.every(result => result.provenance?.calls);
-        return { schemaVersion: "itinerary-result-v1", requestId: payload.requestId, recommendationRevision: payload.recommendationRevision,
-          courseVariantId: payload.courseVariantId, travelWindow: payload.travelWindow, restaurantIntegrationStatus: "pending", days,
+        const integration = responses.map(result => result.restaurantIntegrationStatus).filter(Boolean);
+        return { schemaVersion: "itinerary-result-v2", requestId: payload.requestId, recommendationRevision: payload.recommendationRevision,
+          courseVariantId: payload.courseVariantId, travelWindow: payload.travelWindow, restaurantIntegrationStatus: integration.includes("candidates_only") ? "candidates_only" : integration[0] || "catalog_unavailable", days,
           status: statuses.find(status => days.some(day => day.status === status)) || "unavailable",
           ...Object.fromEntries(["violations", "unknowns", "assumptions"].map(field => [field, days.flatMap(day => (day[field] || []).map(note => ({ ...note, dayIndex: day.dayIndex })))])),
           provenance: { generationMode: "sequential_days", days: responses.map(result => ({ dayIndex: result.days[0].dayIndex, ...result.provenance })),
-            callsKnown, calls: callsKnown ? { routes: responses.reduce((sum, result) => sum + result.provenance.calls.routes, 0), llm: responses.reduce((sum, result) => sum + result.provenance.calls.llm, 0) } : null } };
+            callsKnown, calls: callsKnown ? { routes: responses.reduce((sum, result) => sum + result.provenance.calls.routes, 0), llm: responses.reduce((sum, result) => sum + result.provenance.calls.llm, 0),
+              restaurantLlm: responses.reduce((sum, result) => sum + (result.provenance.calls.restaurantLlm || 0), 0) } : null } };
       }
       let transportError = "", stopRequests = false;
       for (const day of payload.days) {
@@ -105,6 +144,9 @@
         let timedOut = false;
         const timer = setTimeout(() => { timedOut = true; active.abort(); }, timeoutMs);
         const dailyPayload = { ...payload, requestId: `${String(payload.requestId).slice(0, 110)}.day-${day.dayIndex}`, generationScope: "day", days: [day] };
+        // Read selections at send time: the user may pick earlier days' restaurants while later days are pending.
+        const tripFoodContext = getTripFoodContext();
+        if (tripFoodContext?.usedRestaurantIds?.length || tripFoodContext?.chosen?.length) dailyPayload.tripFoodContext = tripFoodContext;
         try {
           if (stopRequests) throw new Error(transportError);
           const response = await fetchImpl("/travel/api/itineraries", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dailyPayload), signal: active.signal });
@@ -136,5 +178,5 @@
     }
     return { invalidate, generate, getState: () => state };
   }
-  return { MAX_DAYS, DEFAULT_MEALS, eligibility, buildRequest, createClient };
+  return { MAX_DAYS, DEFAULT_MEALS, PREFERENCE_FEATURES, VERDICT_LABELS, eligibility, buildRequest, createClient, travelerContext, foodContext, verdictLabel, partitionCandidates };
 });

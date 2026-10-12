@@ -538,7 +538,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
             self.send_json(404, {"ok": False, "error": "not_found"})
             return
         origin = self.headers.get("Origin")
-        if origin and origin != self.feedback_server.public_origin:
+        if origin and not self.feedback_server.origin_allowed(origin):
             self.send_json(403, {"ok": False, "error": "origin_not_allowed"})
             return
         content_type = self.headers.get("Content-Type", "").partition(";")[0].strip().lower()
@@ -609,7 +609,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         server = self.feedback_server
         # A public, billable endpoint requires an exact browser Origin. The edge
         # forwards only the explicitly configured Vercel origin for this route.
-        if self.headers.get("Origin") != server.public_origin:
+        if not server.origin_allowed(self.headers.get("Origin")):
             self.send_json(403, {"status": "unavailable", "error": "origin_not_allowed"})
             return
         if self.headers.get("Content-Type", "").partition(";")[0].strip().lower() != "application/json":
@@ -681,26 +681,56 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
         itinerary_service: Any = None,
         itinerary_per_minute: int = 10,
         itinerary_per_day: int = 100,
+        additional_origins: tuple[str, ...] = (),
+        handler_class: Any = None,
     ):
         self.store = store
         self.public_origin = public_origin.rstrip("/")
+        # Exact-match extra origins (local runner: localhost and 127.0.0.1 of the same port).
+        self.additional_origins = frozenset(origin.rstrip("/") for origin in additional_origins)
         self.rate_limiter = rate_limiter or MemoryRateLimiter()
         self.review_store = review_store
         self.itinerary_service = itinerary_service
         self.itinerary_slots = threading.BoundedSemaphore(2)
         self.itinerary_minute_limiter = MemoryRateLimiter(itinerary_per_minute)
         self.itinerary_daily_limiter = MemoryRateLimiter(itinerary_per_day, 86400)
-        super().__init__(server_address, FeedbackRequestHandler)
+        super().__init__(server_address, handler_class or FeedbackRequestHandler)
+
+    def origin_allowed(self, origin: str | None) -> bool:
+        return bool(origin) and (origin == self.public_origin or origin in self.additional_origins)
+
+
+def itinerary_enabled(environ: Any = None) -> bool:
+    """`1` on, `0` off; unset/`auto` turns on when the selected LLM provider has a key (SPEC-107 D8, SPEC-108)."""
+    environ = os.environ if environ is None else environ
+    flag = str(environ.get("ITINERARY_ENABLED", "auto")).strip().lower()
+    if flag in ("1", "true", "on"):
+        return True
+    if flag in ("", "auto"):
+        from llm_client import llm_key_configured
+        return llm_key_configured(environ)
+    return False
+
+
+def load_restaurant_catalog(base: Path) -> Any:
+    """Optional sidecar; when missing the itinerary still works without restaurant candidates."""
+    try:
+        from restaurant_catalog import RestaurantCatalog
+        path = Path(os.environ.get("ITINERARY_RESTAURANT_CATALOG_PATH", str(base / "restaurant_meal_catalog.sqlite3")))
+        return RestaurantCatalog(path)
+    except Exception:
+        print("travel-feedback restaurant_catalog_unavailable", flush=True)
+        return None
 
 
 def load_itinerary_service() -> Any:
     """Load public sidecars once. Feature-off/missing data never breaks feedback."""
-    if os.environ.get("ITINERARY_ENABLED", "0") != "1":
+    if not itinerary_enabled():
         return None
     try:
-        from itinerary_service import ItineraryService
-        from llm_client import OpenAIClient
-        from route_provider import KakaoRouteProvider
+        from itinerary_service import ItineraryService, load_policy
+        from llm_client import create_llm_client
+        from route_provider import create_route_provider
         base = Path(__file__).parent / "data"
         catalog_path = Path(os.environ.get("ITINERARY_CATALOG_PATH", str(base / "itinerary_catalog.json")))
         insights_path = Path(os.environ.get("ITINERARY_INSIGHTS_PATH", str(base / "visit_insights.json")))
@@ -710,7 +740,14 @@ def load_itinerary_service() -> Any:
             raise ValueError("invalid_catalog")
         if insights is not None and (not isinstance(insights, dict) or insights.get("version") != catalog.get("reviewVersion")):
             raise ValueError("rebuild_catalog_after_review_analysis")
-        return ItineraryService(catalog, OpenAIClient(), KakaoRouteProvider(), insights=insights)
+        policy = load_policy()
+        router = create_route_provider(policy)  # default: estimate (no Kakao key needed)
+        restaurants = load_restaurant_catalog(base)
+        restaurant_model = os.environ.get("RESTAURANT_LLM_MODEL", "").strip() or None
+        restaurant_tokens = os.environ.get("RESTAURANT_LLM_MAX_OUTPUT_TOKENS", "").strip() or None
+        # LLM_PROVIDER=auto|gemini|openai selects the adapter; keys are read from the environment only.
+        return ItineraryService(catalog, create_llm_client(), router, insights=insights, policy=policy, restaurants=restaurants,
+                                restaurant_llm=create_llm_client(model=restaurant_model, max_output_tokens=restaurant_tokens))
     except (OSError, ValueError, ImportError, TypeError, KeyError):
         print("travel-feedback itinerary_configuration_unavailable", flush=True)
         return None

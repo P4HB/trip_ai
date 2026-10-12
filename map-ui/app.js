@@ -139,6 +139,9 @@
     renderFrame: null,
     recommendationResult: null,
     itineraryRevision: 0,
+    // SPEC-107: slotId -> chosen restaurant candidate. Tab memory only; never sent to the feedback log.
+    mealSelections: new Map(),
+    openRestaurantGroups: new Set(),
     recommendationById: new Map(),
     recommendationFeedback: new Map(),
     feedbackAutoSave: {
@@ -184,7 +187,8 @@
   };
 
   const itineraryModule = window.TRAVEL_ITINERARY;
-  const itineraryClient = itineraryModule?.createClient({ onChange: renderItineraryState });
+  const itineraryClient = itineraryModule?.createClient({ onChange: renderItineraryState,
+    getTripFoodContext: () => itineraryModule.foodContext([...state.mealSelections.values()]) });
 
   function itineraryPlaceLabel(place) {
     return `${place.title} · ${place.id}`;
@@ -192,6 +196,8 @@
 
   function invalidateItinerary() {
     state.itineraryRevision += 1;
+    state.mealSelections.clear();
+    state.openRestaurantGroups.clear();
     itineraryClient?.invalidate();
   }
 
@@ -280,6 +286,8 @@
     try {
       if (!itineraryModule || !itineraryClient) throw new Error("시간표 모듈을 불러오지 못했습니다.");
       const payload = itineraryModule.buildRequest(state.recommendationResult, collectItineraryOptions());
+      state.mealSelections.clear(); // 다시 만들기: previous restaurant choices no longer match new slots
+      state.openRestaurantGroups.clear();
       return await itineraryClient.generate(payload);
     } catch (error) {
       dom.itineraryStatus.textContent = error.message;
@@ -309,9 +317,159 @@
     container.append(heading, list);
   }
 
+  const MEAL_NAMES = { lunch: "점심", dinner: "저녁" };
+
+  function itineraryDate(value) {
+    const match = String(value || "").match(/^\d{4}-(\d{2})-(\d{2})/u);
+    return match ? `${Number(match[1])}/${Number(match[2])}` : "확인일 미상";
+  }
+
+  function restaurantWarnings(candidate) {
+    const insertion = candidate.insertion || {};
+    const warnings = (insertion.violations || []).map(item => item.message).filter(Boolean);
+    if (insertion.nextDelayMinutes > 0) warnings.unshift(`다음 장소 도착이 약 ${insertion.nextDelayMinutes}분 늦어집니다(추정).`);
+    return [...new Set(warnings)];
+  }
+
+  function selectMealRestaurant(slot, candidate, dayIndex) {
+    if (state.mealSelections.get(slot.slotId)?.restaurantId === candidate.restaurantId) state.mealSelections.delete(slot.slotId);
+    else state.mealSelections.set(slot.slotId, { slotId: slot.slotId, dayIndex, restaurantId: candidate.restaurantId, title: candidate.title, category: candidate.category, candidate });
+    rerenderItinerary(`${slot.slotId}|${candidate.restaurantId}`);
+  }
+
+  function clearMealRestaurant(slot) {
+    const previous = state.mealSelections.get(slot.slotId);
+    state.mealSelections.delete(slot.slotId);
+    rerenderItinerary(previous ? `${slot.slotId}|${previous.restaurantId}` : null);
+  }
+
+  function rerenderItinerary(focusKey) {
+    if (!itineraryClient) return;
+    renderItineraryState(itineraryClient.getState());
+    if (focusKey) [...dom.itineraryResults.querySelectorAll("[data-focus-key]")].find(element => element.dataset.focusKey === focusKey)?.focus();
+  }
+
+  function renderRestaurantCandidate(slot, candidate, dayIndex) {
+    const selected = state.mealSelections.get(slot.slotId)?.restaurantId === candidate.restaurantId;
+    const item = document.createElement("li");
+    item.className = `itinerary-restaurant${selected ? " is-selected" : ""}`;
+    item.dataset.restaurantId = candidate.restaurantId;
+    const header = document.createElement("div"); header.className = "itinerary-restaurant-header";
+    const name = document.createElement("strong"); name.textContent = candidate.title;
+    const category = document.createElement("span"); category.className = "itinerary-restaurant-category"; category.textContent = candidate.category;
+    const judgement = candidate.judgement || {};
+    const badge = document.createElement("span");
+    badge.className = `itinerary-verdict is-${judgement.status === "judged" ? judgement.verdict : "unavailable"}`;
+    badge.textContent = itineraryModule.verdictLabel(judgement);
+    header.append(name, category, badge);
+    const meta = document.createElement("p"); meta.className = "itinerary-restaurant-meta";
+    const rating = Number(candidate.reviewCount) > 0 && Number.isFinite(Number(candidate.averageRating)) && candidate.averageRating !== null
+      ? `★${Number(candidate.averageRating).toFixed(1)} · 리뷰 ${candidate.reviewCount}` : Number(candidate.reviewCount) > 0 ? `리뷰 ${candidate.reviewCount}` : "리뷰 없음";
+    meta.textContent = `${rating} · 약 ${candidate.estimatedDetourMinutes}분 우회(추정)`;
+    const hours = document.createElement("p"); hours.className = "itinerary-restaurant-hours";
+    hours.textContent = `${candidate.hoursSummary} · ${itineraryDate(candidate.hoursCheckedAt)} 확인 요일 패턴`;
+    const reason = document.createElement("p"); reason.className = "itinerary-restaurant-reason";
+    reason.textContent = judgement.status === "judged" ? judgement.reason : "AI 판정 없음 · 동선·영업시간 조건만 통과한 후보예요.";
+    const insertion = candidate.insertion || {};
+    const preview = document.createElement("p"); preview.className = "itinerary-restaurant-preview";
+    const warnings = restaurantWarnings(candidate);
+    const delayText = insertion.nextDelayMinutes > 0 ? ` · 약 ${insertion.nextDelayMinutes}분 지연` : warnings.length ? " · 식사 시간 확인 필요" : " · 지연 없음";
+    preview.textContent = `${itineraryTime(insertion.arrival)} 도착 · 다음 장소 ${itineraryTime(insertion.nextArrival)} 도착(추정)${delayText}`;
+    if (warnings.length) preview.classList.add("has-warning");
+    const actions = document.createElement("div"); actions.className = "itinerary-restaurant-actions";
+    const choose = document.createElement("button");
+    choose.type = "button"; choose.className = "button itinerary-restaurant-choose";
+    choose.dataset.focusKey = `${slot.slotId}|${candidate.restaurantId}`;
+    choose.setAttribute("aria-pressed", String(selected));
+    choose.setAttribute("aria-label", `${MEAL_NAMES[slot.kind] || "식사"} ${candidate.title} ${selected ? "선택 해제" : "선택"}`);
+    choose.textContent = selected ? "선택됨 · 해제" : "이 식당 선택";
+    choose.addEventListener("click", () => selectMealRestaurant(slot, candidate, dayIndex));
+    actions.append(choose);
+    if (/^https:\/\/place\.map\.kakao\.com\/\d+$/u.test(candidate.sourceUrl || "")) {
+      const link = document.createElement("a");
+      link.href = candidate.sourceUrl; link.target = "_blank"; link.rel = "noopener noreferrer";
+      link.textContent = "카카오맵"; link.setAttribute("aria-label", `${candidate.title} 카카오맵에서 보기 (새 창)`);
+      actions.append(link);
+    }
+    item.append(header, meta, hours, reason, preview, actions);
+    return item;
+  }
+
+  function renderRestaurantCandidates(slot, dayIndex) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "itinerary-restaurants";
+    const mealName = MEAL_NAMES[slot.kind] || "식사";
+    const heading = document.createElement("p"); heading.className = "itinerary-restaurants-heading";
+    const status = slot.restaurantStatus;
+    if (status === "catalog_unavailable" || status === "pending" || !status) {
+      heading.textContent = "식당 후보 데이터가 준비되지 않았어요. 식사 시간만 확보했습니다.";
+      wrapper.append(heading); return wrapper;
+    }
+    if (status === "no_candidates") {
+      heading.textContent = `${mealName} 식당 후보 없음 · ${slot.restaurantNoCandidateMessage || "조건에 맞는 식당을 찾지 못했어요."}`;
+      wrapper.append(heading); return wrapper;
+    }
+    const { visible, hidden } = itineraryModule.partitionCandidates(slot);
+    heading.textContent = `${mealName} 식당 후보 ${slot.restaurantCandidates.length}곳 · 동선 일대에서 이 시각 영업하는 곳 중 무작위로 골랐어요. 하나를 고르면 일정에 넣어 다시 계산해요.`;
+    wrapper.append(heading);
+    if (status === "judgement_unavailable") {
+      const note = document.createElement("p"); note.className = "itinerary-restaurants-note";
+      note.textContent = "AI 판정을 받지 못했어요. 후보는 동선·영업시간 조건만 통과했으며 그대로 선택할 수 있어요.";
+      wrapper.append(note);
+    }
+    const list = document.createElement("ul"); list.className = "itinerary-restaurant-list";
+    list.setAttribute("aria-label", `${mealName} 식당 후보`);
+    visible.forEach(candidate => list.append(renderRestaurantCandidate(slot, candidate, dayIndex)));
+    if (visible.length) wrapper.append(list);
+    if (hidden.length) {
+      const details = document.createElement("details"); details.className = "itinerary-restaurant-hidden";
+      details.open = state.openRestaurantGroups.has(slot.slotId) || hidden.some(candidate => state.mealSelections.get(slot.slotId)?.restaurantId === candidate.restaurantId);
+      details.addEventListener("toggle", () => { if (details.open) state.openRestaurantGroups.add(slot.slotId); else state.openRestaurantGroups.delete(slot.slotId); });
+      const summary = document.createElement("summary"); summary.textContent = `제외된 후보 보기 (${hidden.length})`;
+      const hiddenList = document.createElement("ul"); hiddenList.className = "itinerary-restaurant-list";
+      hidden.forEach(candidate => hiddenList.append(renderRestaurantCandidate(slot, candidate, dayIndex)));
+      details.append(summary, hiddenList); wrapper.append(details);
+    }
+    return wrapper;
+  }
+
+  function renderMealEntry(item, title, entry, dayIndex) {
+    item.className = "itinerary-meal";
+    const mealName = MEAL_NAMES[entry.kind] || "식사";
+    const chosen = state.mealSelections.get(entry.slotId);
+    const before = entry.beforeLocation?.title || placeById.get(String(entry.beforeLocation?.placeId))?.title || "앞 위치 확인 필요";
+    const after = entry.afterLocation?.title || placeById.get(String(entry.afterLocation?.placeId))?.title || "뒤 위치 확인 필요";
+    if (chosen) {
+      const insertion = chosen.candidate.insertion || {};
+      item.classList.add("has-restaurant");
+      title.textContent = `${itineraryTime(insertion.arrival)}–${itineraryTime(insertion.mealEnd)} · ${mealName} · ${chosen.title}`;
+      const detail = document.createElement("p");
+      detail.textContent = `${before} ${itineraryTime(insertion.departPrevious)} 출발 → 식당까지 약 ${insertion.toRestaurantMinutes}분(추정) → 식사 ${entry.durationMinutes}분 → ${after}까지 약 ${insertion.fromRestaurantMinutes}분(추정), ${itineraryTime(insertion.nextArrival)} 도착 예정 (원래 ${itineraryTime(insertion.originalNextArrival)})`;
+      item.append(title, detail);
+      const warnings = restaurantWarnings(chosen.candidate);
+      const check = document.createElement("p");
+      check.className = warnings.length ? "itinerary-warning" : "itinerary-check";
+      check.setAttribute("role", warnings.length ? "alert" : "status");
+      check.textContent = warnings.length ? `주의: ${warnings.join(" ")}` : "추정 이동시간 기준으로 다음 일정에 지연이 없어요.";
+      const clear = document.createElement("button");
+      clear.type = "button"; clear.className = "button itinerary-restaurant-clear";
+      clear.dataset.focusKey = `${entry.slotId}|clear`;
+      clear.setAttribute("aria-label", `${mealName} 식당 선택 해제`);
+      clear.textContent = "선택 해제";
+      clear.addEventListener("click", () => clearMealRestaurant(entry));
+      item.append(check, clear);
+    } else {
+      title.textContent = `${itineraryTime(entry.start)}–${itineraryTime(entry.end)} · ${mealName} ${entry.durationMinutes}분`;
+      const detail = document.createElement("p");
+      detail.textContent = `${before} → ${after} 사이 · 추가 이동 총 ${entry.maxDetourMinutes}분 이내 · 식당 미선정`;
+      item.append(title, detail);
+    }
+    item.append(renderRestaurantCandidates(entry, dayIndex));
+  }
+
   function renderItineraryState(current) {
     dom.generateItineraryButton.disabled = current.status === "loading";
-    dom.generateItineraryButton.textContent = current.status === "loading" ? "동선 만드는 중…" : "동선 만들기";
+    dom.generateItineraryButton.textContent = current.status === "loading" ? "동선 만드는 중…" : current.result ? "다시 만들기" : "동선 만들기";
     dom.itinerarySection.setAttribute("aria-busy", String(current.status === "loading"));
     dom.itineraryResults.replaceChildren();
     if (current.status === "idle") { dom.itineraryStatus.textContent = ""; return; }
@@ -321,7 +479,10 @@
     }
     if (current.status === "error") { dom.itineraryStatus.textContent = `${current.error} 기존 장소 추천은 그대로 유지됩니다.`; return; }
     const result = current.result;
-    if (current.status !== "loading") dom.itineraryStatus.textContent = `${itineraryStatusLabel(result.status)} · 식당 미선정 · 조회 시점의 예상 일정입니다.`;
+    if (current.status !== "loading") {
+      const chosen = state.mealSelections.size;
+      dom.itineraryStatus.textContent = `${itineraryStatusLabel(result.status)} · ${chosen ? `식당 ${chosen}곳 선택` : "식당은 식사 칸의 후보에서 직접 골라요"} · 이동시간은 직선거리 기반 추정입니다.`;
+    }
     appendItineraryNotes(dom.itineraryResults, "전체 일정 안내", result.violations);
     appendItineraryNotes(dom.itineraryResults, "추가 확인", result.unknowns);
     for (const day of result.days) {
@@ -331,7 +492,8 @@
       // Invalid provider proposals are diagnostics only, never a usable timeline.
       if (!["infeasible", "generation_failed", "unavailable", "needs_input"].includes(day.status)) {
         const timeline = document.createElement("ol"); timeline.className = "itinerary-timeline";
-        const entries = [...(day.stops || []).map((stop, index) => ({ ...stop, kind: "visit", index: index + 1, time: stop.arrival })), ...(day.mealSlots || []).map(meal => ({ ...meal, time: meal.start }))].sort((a, b) => String(a.time).localeCompare(String(b.time)));
+        const entries = [...(day.stops || []).map((stop, index) => ({ ...stop, kind: "visit", index: index + 1, time: stop.arrival })),
+          ...(day.mealSlots || []).map(meal => ({ ...meal, time: state.mealSelections.get(meal.slotId)?.candidate.insertion?.arrival || meal.start }))].sort((a, b) => String(a.time).localeCompare(String(b.time)));
         for (const entry of entries) {
           const item = document.createElement("li");
           const title = document.createElement("strong");
@@ -355,24 +517,21 @@
               const evidence = document.createElement("p"); evidence.textContent = `체류시간 리뷰 근거 ID: ${entry.dwellEvidence.evidenceReviewIds.join(", ")}`; item.append(evidence);
             }
           } else {
-            item.className = "itinerary-meal";
-            title.textContent = `${itineraryTime(entry.start)}–${itineraryTime(entry.end)} · ${entry.kind === "lunch" ? "점심" : "저녁"} ${entry.durationMinutes}분`;
-            const detail = document.createElement("p");
-            const before = entry.beforeLocation?.title || placeById.get(String(entry.beforeLocation?.placeId))?.title || "앞 위치 확인 필요";
-            const after = entry.afterLocation?.title || placeById.get(String(entry.afterLocation?.placeId))?.title || "뒤 위치 확인 필요";
-            detail.textContent = `${before} → ${after} 사이 · 추가 이동 총 ${entry.maxDetourMinutes}분 이내 · 식당 미선정`;
-            item.append(title, detail);
+            renderMealEntry(item, title, entry, day.dayIndex);
           }
           timeline.append(item);
         }
         card.append(timeline);
         if (day.legs?.length) {
           const routes = document.createElement("details");
-          const summary = document.createElement("summary"); summary.textContent = "구간별 자동차 이동시간"; routes.append(summary);
+          const summary = document.createElement("summary");
+          summary.textContent = day.legs.every(leg => leg.predictionBasis === "distance_estimate") ? "구간별 자동차 이동시간(직선거리 기반 추정)" : "구간별 자동차 이동시간";
+          routes.append(summary);
           const list = document.createElement("ul");
           for (const leg of day.legs) {
             const row = document.createElement("li");
-            row.textContent = `${placeById.get(String(leg.fromId))?.title || leg.fromId} → ${placeById.get(String(leg.toId))?.title || leg.toId}: ${leg.durationMinutes}분 (${itineraryTime(leg.departureTime)}–${itineraryTime(leg.arrivalTime)})`;
+            const estimated = leg.predictionBasis === "distance_estimate" ? "(추정)" : "";
+            row.textContent = `${placeById.get(String(leg.fromId))?.title || leg.fromId} → ${placeById.get(String(leg.toId))?.title || leg.toId}: 약 ${leg.durationMinutes}분${estimated} (${itineraryTime(leg.departureTime)}–${itineraryTime(leg.arrivalTime)})`;
             list.append(row);
           }
           routes.append(list); card.append(routes);

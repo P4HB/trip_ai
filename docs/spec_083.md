@@ -8,6 +8,8 @@
 - 관련 코드: `map-ui/ccu-mmr.js`, `map-ui/app.js`, `map-ui/index.html`, `map-ui/vercel.json`, `scripts/collect_tourapi_jeju.py`, `scripts/build_map_ui_data.mjs`, `scripts/build_kakao_review_db.py`, `server/travel-feedback/`
 - 선행 SPEC: SPEC-017, SPEC-066, SPEC-078, SPEC-080, SPEC-081
 
+> **2026-10-12 변경 — [SPEC-107](spec_107.md)**: 사용자 결정으로 카카오모빌리티 경로 호출을 기본 비활성화하고 좌표 거리 기반 **추정 이동시간**(`provider=estimated_haversine`, 「추정」 표기)을 사용한다. 아래 `REQ-8305`의 「직선거리로 확정 이동시간을 대신하지 않는다」와 카카오 경로 전제, `restaurantStatus=pending` 식사 계약은 SPEC-107이 대체한다. 카카오 공급자 코드는 `ITINERARY_ROUTE_PROVIDER=kakao`로 되돌릴 수 있게 보존한다.
+
 > 2026-09-22 구현 요청 및 2026-09-24 검토 보완 요청으로 진행 중이다. 「1차 검토 보완」과 현재 입력/출력 계약이 이전 계획·제안보다 우선한다. 외부 API와 실제 모델 품질 검증 전에는 전체 승인 기준 완료로 보고하지 않는다.
 
 ## 1차 검토 보완 — 2026-09-24 승인된 범위와 결정

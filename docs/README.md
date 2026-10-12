@@ -37,6 +37,7 @@
 - 구현됨: 대표 유형별 하루 1곳 상한, 동일 유형 필수 장소 일차 분리
 - 구현됨: 경관·사진 가중치 묶음과 경관·독특함·로컬성·랜드마크성·사진 취향 가중치 합 25% 상한(그룹 외 유효 선호가 있을 때)
 - 로컬 구현·외부 검증 대기: 실제 날짜 필수 LLM 동선·운영/이동시간 검증·식사 연결 구간. 부분 일자 식사, 날짜별 순차 생성·부분 결과, 생성 실패 구분과 실제 경로를 반영한 수정까지 보완. 개발 기본값·공개 데이터 준비·실제 품질 합격 기준은 SPEC-083 참조
+- 로컬 구현·실제 API 미검증: 동선 이동시간을 카카오 호출 없이 직선거리 기반 추정으로 계산하고, 점심·저녁 칸마다 동선 일대·해당 시각 영업 식당 최대 5곳을 요청 시 LLM 리뷰 판정과 함께 보여주며 사람이 골라 일정에 넣는다. Gemini 또는 OpenAI 키 하나만으로 동작하고(`LLM_PROVIDER`, [SPEC-108](spec_108.md)) `scripts/run_trip_ai_local.py`로 로컬 실행한다. [SPEC-107](spec_107.md) 참조
 - 미구현: 운영 사용자 프로필, 운영 검증된 일정 최적화·추천 API, 추천 품질 평가 파이프라인
 
 - 구현됨: [인스타 링크의 전체 사진 수집·로컬 OCR·기존 메타데이터/41축 라벨 연결](spec_102.md). 단일 사진 1/1·캐러셀 사진 8/8 다운로드와 장소 후보 10개/16개를 실제 검증했다. OCR 오인식·모호한 후보는 검토하며 메타데이터는 기존 스냅샷 대조다. 개인 저장·추천/일정 연결·운영 배포·모바일 공유/DM은 [전체 목표 설계 초안](spec_101.md)의 후속 범위다.
@@ -111,9 +112,13 @@
 | [SPEC-102](spec_102.md) | 인스타 전체 사진 수집·장소 추출·메타데이터·기존 라벨 연결 v1 | Implemented | social import, metadata, labeling, local UI |
 | [SPEC-103](spec_103.md) | 제주 음식점 정본 JSONL·조회용 SQLite 카탈로그 | Implemented | restaurants, data, database |
 | [SPEC-104](spec_104.md) | 음식점 조회 DB의 중복 JSON 제거 | Implemented | restaurants, database, storage |
+| [SPEC-105](spec_105.md) | 리뷰 기반 LLM 라벨·장소 동선·여행 전체 식당 배치 설계 | Draft | LLM, labeling, operating hours, routing, restaurants, evaluation |
 | [SPEC-106](spec_106.md) | 전체 음식점 장소 ID별 좌표 수집과 조회 DB 연결 | Implemented | restaurants, coordinates, collection, database |
+| [SPEC-107](spec_107.md) | 동선 기반 식사 시간대 식당 후보 추천과 추정 이동시간 | In Progress | itinerary, restaurants, routing, LLM, UI |
+| [SPEC-108](spec_108.md) | Gemini LLM 공급자 지원 | In Progress | LLM, itinerary, restaurants, configuration |
+| [SPEC-109](spec_109.md) | 비밀 파일(.env) AI 열람 금지 | Implemented | repository, agent, security |
 
-- 다음 예약 번호: `SPEC-107`
+- 다음 예약 번호: `SPEC-110`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 

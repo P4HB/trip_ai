@@ -21,9 +21,13 @@ SERVICE_BLOCK = """  travel-feedback:
       TRAVEL_FEEDBACK_DB_PATH: /data/feedback.sqlite3
       TRAVEL_FEEDBACK_RETENTION_DAYS: 90
       TRAVEL_REVIEW_DB_PATH: /app/data/kakao_reviews.sqlite3
-      ITINERARY_ENABLED: ${ITINERARY_ENABLED:-0}
+      ITINERARY_ENABLED: ${ITINERARY_ENABLED:-auto}
+      LLM_PROVIDER: ${LLM_PROVIDER:-auto}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-gpt-5.6-terra}
+      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-}
+      RESTAURANT_LLM_MODEL: ${RESTAURANT_LLM_MODEL:-}
+      ITINERARY_ROUTE_PROVIDER: ${ITINERARY_ROUTE_PROVIDER:-estimate}
       KAKAO_MOBILITY_API_KEY: ${KAKAO_MOBILITY_API_KEY:-}
       ITINERARY_REQUESTS_PER_MINUTE: ${ITINERARY_REQUESTS_PER_MINUTE:-10}
       ITINERARY_REQUESTS_PER_DAY: ${ITINERARY_REQUESTS_PER_DAY:-100}
@@ -127,7 +131,8 @@ def configure_itinerary_service(compose: str) -> str:
     additions = []
     for line in SERVICE_BLOCK.splitlines():
         if line.startswith("      ") and any(line.strip().startswith(key + ":") for key in (
-            "ITINERARY_ENABLED", "OPENAI_API_KEY", "ITINERARY_LLM_MODEL", "KAKAO_MOBILITY_API_KEY",
+            "ITINERARY_ENABLED", "LLM_PROVIDER", "GEMINI_API_KEY", "OPENAI_API_KEY", "ITINERARY_LLM_MODEL", "RESTAURANT_LLM_MODEL",
+            "ITINERARY_ROUTE_PROVIDER", "KAKAO_MOBILITY_API_KEY",
             "ITINERARY_REQUESTS_PER_MINUTE", "ITINERARY_REQUESTS_PER_DAY",
         )):
             key = line.strip().partition(":")[0]
@@ -137,6 +142,8 @@ def configure_itinerary_service(compose: str) -> str:
         block = replace_once(block, "    environment:\n", "    environment:\n" + "".join(additions), "sidecar environment")
     # Only increase known legacy defaults; preserve explicit release overrides.
     block = block.replace("    mem_limit: 96m\n", "    mem_limit: 192m\n")
+    # SPEC-108: the old OpenAI-only default would force a GPT model on Gemini; providers pick their own default.
+    block = block.replace("      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-gpt-5.6-terra}\n", "      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-}\n")
     block = block.replace("    mem_reservation: 24m\n", "    mem_reservation: 48m\n")
     return compose[:matches[0].start()] + block + compose[matches[0].end():]
 

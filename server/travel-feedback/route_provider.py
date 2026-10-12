@@ -1,4 +1,9 @@
-"""Kakao Mobility car routes, preserving direction and exact future departure time."""
+"""Route providers for itinerary legs.
+
+SPEC-107 (user decision D2): the default provider is a deterministic distance-based
+estimate that never calls an external API. The Kakao Mobility future-route provider is
+kept for an explicit opt-in (`ITINERARY_ROUTE_PROVIDER=kakao`).
+"""
 from __future__ import annotations
 
 import hashlib
@@ -92,3 +97,130 @@ class KakaoRouteProvider:
                 "provider": self.provider, "providerVersion": self.version, "mode": "car",
                 "queriedAt": queried_at.isoformat(), "departureAt": planned.isoformat(), "departureTime": planned.isoformat(),
                 "predictionBasis": "future_departure_prediction", "routeRef": f"kakao:{digest}", "path": path}
+
+
+ESTIMATE_DEFAULTS = {
+    "version": "haversine-road-factor-v1",
+    "roadFactor": 1.35,
+    "speedBandsKmh": [{"maxKm": 3, "kmh": 25}, {"maxKm": 15, "kmh": 40}, {"maxKm": None, "kmh": 55}],
+    "fixedOverheadMinutes": 3,
+}
+EARTH_RADIUS_METERS = 6_371_008.8
+
+
+def haversine_meters(lng1, lat1, lng2, lat2):
+    """Great-circle distance in meters; arguments are WGS84 longitude, latitude pairs."""
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi, dlambda = phi2 - phi1, math.radians(lng2 - lng1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    return 2 * EARTH_RADIUS_METERS * math.asin(min(1.0, math.sqrt(a)))
+
+
+class RouteEstimator:
+    """Monotonic, concave distance→minutes estimate (development default, not measured).
+
+    Road distance = straight distance × roadFactor. Driving time accumulates band by band
+    (first 3km at 25km/h, next 12km at 40km/h, rest at 55km/h) so a longer trip never takes
+    less time. A fixed parking/boarding overhead is added once per leg and the total is
+    rounded up to whole minutes. Points closer than 1m are the same location (0 minutes).
+    """
+
+    def __init__(self, config=None):
+        config = {**ESTIMATE_DEFAULTS, **(config or {})}
+        self.version = str(config["version"])
+        self.road_factor = float(config["roadFactor"])
+        self.overhead = float(config["fixedOverheadMinutes"])
+        bands, previous = [], 0.0
+        for band in config["speedBandsKmh"]:
+            upper = math.inf if band.get("maxKm") is None else float(band["maxKm"])
+            speed = float(band["kmh"])
+            if not (upper > previous and speed > 0 and math.isfinite(speed)):
+                raise ValueError("invalid_route_estimate_band")
+            bands.append((previous, upper, speed))
+            previous = upper
+        if not bands or bands[-1][1] != math.inf or self.road_factor < 1 or self.overhead < 0:
+            raise ValueError("invalid_route_estimate_config")
+        self.bands = bands
+        # Smallest minutes-per-straight-km slope; used for a lossless prefilter.
+        self.min_minutes_per_straight_km = self.road_factor * 60 / max(speed for _, _, speed in bands)
+
+    def driving_minutes(self, road_km):
+        minutes = 0.0
+        for lower, upper, speed in self.bands:
+            if road_km <= lower:
+                break
+            minutes += (min(road_km, upper) - lower) / speed * 60
+        return minutes
+
+    def minutes(self, straight_meters):
+        if not math.isfinite(straight_meters) or straight_meters < 0:
+            raise ValueError("invalid_distance")
+        if straight_meters < 1:
+            return 0
+        road_km = straight_meters / 1000 * self.road_factor
+        # Round to 1e-9 first so exact boundaries are not pushed up by float noise.
+        return math.ceil(round(self.driving_minutes(road_km) + self.overhead, 9))
+
+    def between(self, origin, destination):
+        meters = haversine_meters(float(origin["lng"]), float(origin["lat"]), float(destination["lng"]), float(destination["lat"]))
+        return self.minutes(meters), meters
+
+    def straight_km_budget(self, detour_minutes):
+        """Max extra straight-line km (a+b-c) that can still fit a detour budget (lossless).
+
+        Driving time f is increasing and concave with f(0)=0, so f(a)+f(b)-f(c) >= slope_min*(a+b-c).
+        With the overhead on each leg and ceil rounding, ceil(f(c)+o) < f(c)+o+1, hence
+        detour > slope_min*(a+b-c) + o - 1. Legs under 1 m (0 minutes) only arise when the
+        excess is below 2 m, covered by the 0.002 km floor.
+        """
+        return max(0.002, (detour_minutes - self.overhead + 1) / self.min_minutes_per_straight_km)
+
+
+class EstimatedRouteProvider:
+    """Kakao-free route provider (SPEC-107). Never performs network I/O."""
+    provider = "estimated_haversine"
+    external = False
+
+    def __init__(self, config=None, *, now=None):
+        self.estimator = RouteEstimator(config)
+        self.version = self.estimator.version
+        self._now = now or (lambda: datetime.now(KST))
+
+    @property
+    def configured(self):
+        return True
+
+    def route(self, origin, destination, departure, mode="car", timeout=10):
+        if mode != "car":
+            raise ProviderError("unsupported_route_mode")
+        try:
+            planned = datetime.fromisoformat(departure)
+            if planned.utcoffset() is None:
+                raise ValueError()
+            points = [(float(item["lng"]), float(item["lat"])) for item in (origin, destination)]
+            if any(not math.isfinite(x) or not math.isfinite(y) or not (-180 <= x <= 180 and -90 <= y <= 90) for x, y in points):
+                raise ValueError()
+        except (KeyError, TypeError, ValueError):
+            raise ProviderError("route_invalid_input") from None
+        minutes, meters = self.estimator.between({"lng": points[0][0], "lat": points[0][1]}, {"lng": points[1][0], "lat": points[1][1]})
+        identity = {"provider": self.version, "points": points}
+        digest = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:24]
+        return {"fromId": origin.get("placeId", origin.get("id")), "toId": destination.get("placeId", destination.get("id")),
+                "durationSeconds": minutes * 60, "durationMinutes": minutes,
+                "distanceMeters": round(meters * self.estimator.road_factor),
+                "straightDistanceMeters": round(meters),
+                "provider": self.provider, "providerVersion": self.version, "mode": "car",
+                "queriedAt": self._now().isoformat(), "departureAt": planned.astimezone(KST).isoformat(),
+                "departureTime": planned.astimezone(KST).isoformat(),
+                "predictionBasis": "distance_estimate", "routeRef": f"estimate:{digest}", "geometry": []}
+
+
+def create_route_provider(policy, name=None, environ=None):
+    """Select the configured provider; unknown names raise ValueError (feature stays off)."""
+    environ = os.environ if environ is None else environ
+    name = (name or environ.get("ITINERARY_ROUTE_PROVIDER") or "estimate").strip().lower()
+    if name == "estimate":
+        return EstimatedRouteProvider((policy or {}).get("routeEstimate"))
+    if name == "kakao":
+        return KakaoRouteProvider(environ.get("KAKAO_MOBILITY_API_KEY", ""))
+    raise ValueError("unsupported_route_provider")

@@ -21,14 +21,24 @@ class ConfigureReferrerPolicyTest(unittest.TestCase):
     def test_sidecar_upgrade_preserves_other_settings(self):
         old = DEPLOY.SERVICE_BLOCK
         old = '\n'.join(line for line in old.split('\n') if not any(key in line for key in (
-            'ITINERARY_', 'OPENAI_API_KEY', 'KAKAO_MOBILITY_API_KEY')))
+            'ITINERARY_', 'OPENAI_API_KEY', 'KAKAO_MOBILITY_API_KEY', 'RESTAURANT_LLM_MODEL', 'GEMINI_API_KEY', 'LLM_PROVIDER')))
         old = old.replace('    mem_limit: 192m', '    mem_limit: 256m')
         source = 'services:\n' + old + '  edge:\n    image: custom-edge\nvolumes:\n  data:\n'
         result = DEPLOY.configure_itinerary_service(source)
-        self.assertIn('ITINERARY_ENABLED: ${ITINERARY_ENABLED:-0}', result)
+        self.assertIn('ITINERARY_ENABLED: ${ITINERARY_ENABLED:-auto}', result)
+        self.assertIn('ITINERARY_ROUTE_PROVIDER: ${ITINERARY_ROUTE_PROVIDER:-estimate}', result)
+        self.assertIn('RESTAURANT_LLM_MODEL: ${RESTAURANT_LLM_MODEL:-}', result)
+        self.assertIn('LLM_PROVIDER: ${LLM_PROVIDER:-auto}', result)
+        self.assertIn('GEMINI_API_KEY: ${GEMINI_API_KEY:-}', result)
         self.assertIn('    mem_limit: 256m', result)
         self.assertTrue(result.endswith('  edge:\n    image: custom-edge\nvolumes:\n  data:\n'))
         self.assertEqual(result, DEPLOY.configure_itinerary_service(result))
+
+    def test_legacy_openai_model_default_is_neutralized(self):
+        legacy = DEPLOY.SERVICE_BLOCK.replace('      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-}\n', '      ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-gpt-5.6-terra}\n')
+        result = DEPLOY.configure_itinerary_service('services:\n' + legacy + '  edge:\n    image: e\n')
+        self.assertIn('ITINERARY_LLM_MODEL: ${ITINERARY_LLM_MODEL:-}\n', result)
+        self.assertNotIn('gpt-5.6-terra', result)
 
     def test_splits_travel_and_non_travel_policies(self):
         source = """example.test {

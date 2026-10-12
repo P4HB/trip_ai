@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "server/travel-feedback"))
-from llm_client import OpenAIClient, ProviderError
+from llm_client import ProviderError, create_llm_client
 from visit_insights import (PROMPT_VERSION, SANITIZER_VERSION, SCHEMA_VERSION, analyze_reviews,
                             input_hash, prepared_reviews, unknown_insights, validate_insights)
 
@@ -101,9 +101,9 @@ def main():
             parser.error("visit insights failed provenance or evidence validation")
         print(json.dumps({"valid": True, "apiCalls": 0}))
         return
-    client = OpenAIClient()
+    client = create_llm_client()  # LLM_PROVIDER=auto|gemini|openai (SPEC-108)
     if not args.prepare_only and not client.configured:
-        parser.error("OPENAI_API_KEY is required unless --prepare-only is used")
+        parser.error("GEMINI_API_KEY or OPENAI_API_KEY is required unless --prepare-only is used")
     old = json.loads(args.output.read_text(encoding="utf-8")) if args.output.exists() else {}
     cached = old.get("places", {})
     results, errors, calls, reused = {}, [], 0, 0

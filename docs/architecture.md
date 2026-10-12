@@ -153,8 +153,14 @@ scripts/validate_all_place_profiles.py
 
 - 추천 점수와 `schedule.dayClusters`는 브라우저의 기존 랭커가 유지한다. 별도 `itinerary.js`가 실제 날짜·공개 시작/종료 장소·시각·일자별 식사 포함 조건을 `POST /travel/api/itineraries`로 하루씩 순차 전송한다. 완료된 날짜부터 표시하고 중간 실패에도 다른 날짜를 보존한다. 변경/취소하면 후속 날짜 요청을 중단한다. 응답은 평가 세션·기존 추천 객체와 분리해 현재 탭 메모리에만 둔다.
 - 기존 Python 서버는 공개 서버 카탈로그, 별도로 저장한 리뷰 시간대 추론, 운영정보와 자동차 경로를 조합하고 공통 LLM 인터페이스로 일자별 시간표를 제안받는다. 식사 창과 활동 시간의 충돌은 호출 전에 확인한다. 결정적 검증 뒤 실제 출발시각의 경로/부족시간을 전달해 최대 1회 수정하며, 남은 위반은 `generation_failed`다. 기존 배정 불가능인 `infeasible`과 구분한다. 공급자 키는 서버 환경변수에서만 읽는다.
-- Vercel과 Caddy가 새 POST 경로를 기존 서버로 전달한다. `ITINERARY_ENABLED=0`이 기본이며 새 기능 비활성·키 누락·공급자 실패가 평가·리뷰 API를 중단하지 않는다. 전체 요청 deadline·호출 수·토큰·분당/일일 요청·동시성 한도를 둔다.
+- Vercel과 Caddy가 새 POST 경로를 기존 서버로 전달한다. [SPEC-107](spec_107.md) 이후 `ITINERARY_ENABLED`가 없거나 `auto`면 선택된 LLM 공급자의 키가 있을 때만 켜지고 `0`이면 끈다. 공급자는 [SPEC-108](spec_108.md)의 `LLM_PROVIDER=auto|gemini|openai`로 고르며 `llm_client.create_llm_client()`가 같은 `generate_structured` 계약의 `GeminiClient`(generateContent, JSON Schema 구조화 출력) 또는 `OpenAIClient`(Responses API)를 만든다. 새 기능 비활성·키 누락·공급자 실패가 평가·리뷰 API를 중단하지 않는다. 전체 요청 deadline·호출 수·토큰·분당/일일 요청·동시성 한도를 둔다.
+- [SPEC-107](spec_107.md): 이동시간 기본 공급자는 외부 호출 없는 `EstimatedRouteProvider`(Haversine × 도로 보정, 구간 누적 속도, 고정 여유, 분 올림)이며 카카오모빌리티는 `ITINERARY_ROUTE_PROVIDER=kakao`로만 쓴다. 검증된 날짜의 식사 slot마다 서버가 `restaurant_meal_catalog.sqlite3` sidecar에서 우회 한도·해당 시각 영업 식당을 시드 고정 무작위로 최대 5곳 고르고 삽입 시뮬레이션을 붙인 뒤, 그날 후보 전체를 LLM `restaurant_fit` 1회로 판정한다. 판정 실패는 장소 일정에 영향을 주지 않는다. 사람이 브라우저에서 고른 식당은 탭 메모리에만 두고 다음 날 요청의 `tripFoodContext`로 보낸다.
+- 로컬 실행기 `scripts/run_trip_ai_local.py`는 저장소 루트 `.env`를 읽어 지도 UI와 같은 API를 한 출처에서 제공한다(평가 DB는 임시 폴더).
 - 수집기·카탈로그 생성기·공개 리뷰 사전 분석은 오프라인 작업이고 일정 요청에서 리뷰 원문을 다시 분석하지 않는다. 실제 운영정보 수집·유료 모델/경로 호출은 아직 검증하지 않았다. 상세 계약·기본값·검증 결과와 제한은 [SPEC-083](spec_083.md), 실행 설정은 [서버 README](../server/travel-feedback/README.md)를 따른다.
+
+### 리뷰 라벨·동선·여행 전체 식당 연결 — 목표 설계, 1차 구현은 SPEC-107
+
+[SPEC-105](spec_105.md)은 공개 데이터의 사전 LLM 분석과 사용자 요청의 장소 추천·동선·식당 배치·최종 검증 경계를 정의한다. 그중 식사 slot 주변 식당 후보·영업 필터·요청 시 리뷰 판정·사람 선택은 [SPEC-107](spec_107.md)로 1차 구현했다. 사전 음식 라벨, 여행 전체 음식 상태 기반 조정기, 식당 선택 후 전체 재생성은 아직 구현되지 않았다. 데이터·책임·이행 순서의 정본은 해당 SPEC을 따른다.
 
 ## 목표 장소 추천 구조 — 미구현
 

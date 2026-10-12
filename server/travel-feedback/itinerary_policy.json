@@ -1,5 +1,5 @@
 {
-  "version": "itinerary-development-defaults-v2",
+  "version": "itinerary-development-defaults-v3",
   "policyStatus": "development_default_not_confirmed_user_policy",
   "maxDays": 7,
   "maxPlacesPerDay": 6,
@@ -26,5 +26,26 @@
     "theme_park": 120,
     "culture_learning": 120
   },
-  "durationConfirmationTypes": ["mountain_oreum", "walking_route", "performance", "event", "accommodation", "camping"]
+  "durationConfirmationTypes": ["mountain_oreum", "walking_route", "performance", "event", "accommodation", "camping"],
+  "routeCallBudgetScope": "external_providers_only",
+  "routeEstimate": {
+    "version": "haversine-road-factor-v1",
+    "status": "development_default_not_measured",
+    "roadFactor": 1.35,
+    "speedBandsKmh": [{"maxKm": 3, "kmh": 25}, {"maxKm": 15, "kmh": 40}, {"maxKm": null, "kmh": 55}],
+    "fixedOverheadMinutes": 3
+  },
+  "restaurant": {
+    "status": "development_default_not_confirmed_user_policy",
+    "candidateCount": 5,
+    "maxReviewsPerRestaurant": 8,
+    "maxReviewChars": 400,
+    "nonMealCategories": ["카페", "디저트", "제과,베이커리", "아이스크림", "단체,협회", "선교회", "양식업", "수산물판매", "구내식당", "배달도시락"],
+    "judgementTimeoutSeconds": 30,
+    "minSecondsForJudgement": 5,
+    "reservePerRemainingDaySeconds": 25,
+    "maxUsedRestaurantIds": 28,
+    "maxChosenRestaurants": 14,
+    "maxPreferenceSignals": 8
+  }
 }

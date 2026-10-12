@@ -55,6 +55,20 @@ v1 원본 파일과 DB는 비교·복구용으로 보존한다. v2 DB는 용량�
 - `places.record_sha256`은 **기존 v1 레코드** 해시다. 별도 관측의 해시는 `coordinate_record_sha256`이며 두 정본을 함께 대조한다. 전체 v3 조회 행의 해시는 `database_logical_sha256`이다. manifest에 두 정본 폴더의 상대 위치·manifest 의미 해시를 기록한다.
 - 생성·전체 검증은 `scripts/build_restaurant_coordinate_catalog.py`를 사용한다. v1 JSONL 4개와 manifest, 좌표 JSONL과 manifest로 재구축하며 기존 v1/v2 SQLite가 없어도 된다. 데이터 파일은 Git에서 제외하고 작은 manifest만 버전 관리한다.
 
+### 동선용 식당 식사 카탈로그 sidecar — SPEC-107 구현
+
+[SPEC-107](spec_107.md)의 `restaurant-meal-catalog-v1`은 v3 조회 DB를 읽기 전용(`immutable=1`)으로 열어 `server/travel-feedback/data/restaurant_meal_catalog.sqlite3`와 `restaurant_meal_catalog_manifest.json`을 만든다(`scripts/build_restaurant_meal_catalog.py`, `--validate-only`). 원본·v1·v2·v3 데이터는 바꾸지 않으며 생성 전후 원본 해시를 비교한다.
+
+- 포함: 좌표 `available` + 영업시간 `available` + `restaurant_hours.py`(`kakao-observed-week-hours-v1`)가 완전히 해석 + `itinerary_policy.json`의 `restaurant.nonMealCategories`에 없는 업종. 제외 사유별 수는 manifest `coverage.excludedByReason`.
+- `restaurants`: `restaurant_id=kakao:{place_id}`, 이름·업종, 경도 `lng`·위도 `lat`, 평균 별점(0은 null), 리뷰 총수, 카카오 장소 URL, `hours_json`(ISO 요일 1~7별 `open|closed|unknown`, 영업 조각 `[시작분, 종료분, 라스트오더분|null]` — 자정 넘김은 1440 초과, `dateClosures`, `observedRange`), 영업정보 확인 시각·출처 URL.
+- `reviews`: 식당별 최근순(`YYYY.MM.DD.` 원문 기준, 같은 날짜는 원래 위치순) 최대 8개, 본문 400자, `review_id`·별점·날짜 원문·태그. 작성자 정보 없음.
+- 영업시간은 **관측 주간의 요일 투영**이다(정본 DB의 「날짜별 원문을 반복 규칙으로 바꾸지 않는다」 계약은 그대로 유지). 공휴일 관측일·특별/날짜 지정 휴무·상충 관측은 그 요일 `unknown`, 해석 불가 메모·토큰은 식당 제외다. 규칙은 SPEC-107 3절이 정본이다.
+- `catalogVersion`은 모든 행·파서 버전·업종 정책의 논리 SHA-256이며 같은 입력이면 파일 해시도 같다.
+
+### 음식점·방문 시간대·전체 여행 식사 확장 — 목표 계약, 미구현
+
+[SPEC-105](spec_105.md#입력과-출력--목표-계약-미구현)은 식당 좌표·로컬 성격/인지도·음식 종류, 출처를 연결한 날짜별 영업 구간, 리뷰 방문 선호, 전체 여행 식사 상태의 목표 계약을 정의한다. 기존 정본/조회 DB와 관광지 41축을 보존한 버전 확장 제안이며 현재 스키마나 추천 API가 아니다. 원문 수집 상태와 해당 날짜의 영업 가능 판정을 구별한다.
+
 ## TourAPI 장소 원본 — 구현됨
 
 기준 위치는 `data/tourapi/jeju/YYYY-MM-DD/jeju_places.json`이다. 주요 필드는 다음과 같다.
@@ -772,10 +786,11 @@ EvidenceBackedReason {
 
 ## 날짜 기반 동선 계약 — SPEC-083 로컬 구현
 
-권위 있는 요청·응답·개발 기본값·제한은 [SPEC-083](spec_083.md#입력과-출력--구현-계약)을 따른다. 원래 `schedule`은 근사 일자 배정이며 방문 순서가 아니다. `itinerary-request-v1`은 해당 `dayClusters`의 ID를 전송하고 `itinerary-result-v1`은 별도 결과다. 이름·평가 의견·MBTI 원문·클라이언트가 만든 영업시간/이동시간은 동선 LLM 입력에 포함하지 않는다.
+권위 있는 요청·응답·개발 기본값·제한은 [SPEC-083](spec_083.md#입력과-출력--구현-계약)과 식당 후보·추정 이동시간을 바꾼 [SPEC-107](spec_107.md)을 따른다. 원래 `schedule`은 근사 일자 배정이며 방문 순서가 아니다. `itinerary-request-v1`은 해당 `dayClusters`의 ID를 전송하고 `itinerary-result-v1`은 별도 결과다. 이름·평가 의견·MBTI 원문·클라이언트가 만든 영업시간/이동시간은 동선 LLM 입력에 포함하지 않는다.
 
 - 서버 카탈로그 `server/travel-feedback/data/itinerary_catalog.json`: 공개 장소 ID, 경도 `lng`·위도 `lat`, 대표 유형, 추천 가능 상태, 운영정보/공식 체류/리뷰 추론과 원본 해시·버전·coverage. 기존 지도 번들은 수정하지 않는다.
 - 운영 구간은 ISO 요일 1~7의 `weekly`, 실제 날짜 `exceptions`, `seasonal`로 나뉘며 마지막 입장·중간 휴게·자정 경계를 보존한다. 원문·출처·확인일이 없거나 오래된 정보는 확인 필요다.
 - 리뷰 분석 `visit_insights.json`: 장소별 낮·일몰·야간 추론/체류 범위, 근거 리뷰 ID, 원본 입력 해시와 모델/프롬프트 버전. 운영시간 사실과 분리한다. 리뷰 철회/수정/모델 변경 시 재생성하고 원문은 이 산출물에 보관하지 않는다.
-- `mealSlots`의 앞뒤 위치·기본 경로·식사 시간·총 추가 이동 허용 분은 식당 후보 연결용이다. `restaurantStatus=pending`이며 식당 선택 후 앞뒤 이동·영업/주문 마감·후속 방문 전체를 다시 검증해야 한다.
+- `mealSlots`의 앞뒤 위치·기본 경로·식사 시간·총 추가 이동 허용 분은 식당 후보 연결용이다. [SPEC-107](spec_107.md#입력과-출력) 이후 요청은 `itinerary-request-v2`(선택 `tripFoodContext`, `travelerContext`; v1 수용), 응답은 `itinerary-result-v2`다. `mealSlots[]`에 `restaurantStatus=candidates_ready|no_candidates|judgement_unavailable|catalog_unavailable`, 0곳 사유, 단계별 후보 수, 최대 5개 `restaurantCandidates[]`(영업 요약·확인일·추정 우회·삽입 시뮬레이션·LLM 판정)가 붙고 `restaurantIntegrationStatus=candidates_only`(사람이 선택)다. 선택 후에는 삽입 시뮬레이션의 지연·위반을 경고할 뿐 뒤 일정 전체를 다시 생성하지 않는다.
+- 이동 구간(`legs`)은 기본적으로 `provider=estimated_haversine`, `predictionBasis=distance_estimate`인 직선거리 기반 추정이며 응답 `assumptions`에 `route_estimated`를 넣는다. 카카오 경로는 `ITINERARY_ROUTE_PROVIDER=kakao`일 때만 사용한다.
 - 일자별 `mealModes`, 출력 `mealRequirements`, 하루 요청 `generationScope=day`, 생성 실패 `generation_failed`를 추가했다. 세부 상태·기본값·예외는 SPEC-083의 현재 입력/출력 계약과 REQ-8313~8316을 따른다. 브라우저 집계는 일자별 provenance를 보존하며 전송 오류로 호출 횟수를 알 수 없으면 `calls=null`, `callsKnown=false`로 표시한다.
