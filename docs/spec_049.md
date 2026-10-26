@@ -42,7 +42,7 @@
 
 ## 영향 범위
 
-- 변경 파일: 본 SPEC, `docs/README.md`, `scripts/review_calibrated_batch_12.py`, reviewed JSONL.
+- 변경 파일: 본 SPEC, `docs/README.md`, `scripts/archive/review_calibrated_batch_12.py`, reviewed JSONL.
 - 데이터 마이그레이션·호환성·보안·개인정보 영향: 없음.
 
 ## 승인 기준
@@ -56,14 +56,14 @@
 
 | 승인 기준 | 검증 방법 | 명령 또는 위치 |
 |---|---|---|
-| AC-4901~AC-4903 | JSONL 파싱, 순서·스키마·값·provenance 전수 검사 | `python scripts/review_calibrated_batch_12.py --check` |
+| AC-4901~AC-4903 | JSONL 파싱, 순서·스키마·값·provenance 전수 검사 | `python scripts/archive/review_calibrated_batch_12.py --check` |
 | AC-4904 | 생성 전후 변경 파일 확인 | `git diff --check`, `git status --short` |
 
 ## 구현 결과
 
 - `calibration_outputs/reviewed/reviewed_calibrated_batch_12.jsonl`에 입력 순서 그대로 50행·250축을 생성했다.
-- `scripts/review_calibrated_batch_12.py`는 직접 판정값과 1차→경계 재검토 비교를 재현하고, `--check`에서 입력·출력 식별자 순서, 완전한 5축, 허용값, 상태, evidence ID, review rule ID를 전수 검증한다.
-- 검증 통과: `python -m py_compile scripts/review_calibrated_batch_12.py`, 생성, `--check`, `git diff --check`.
+- `scripts/archive/review_calibrated_batch_12.py`는 직접 판정값과 1차→경계 재검토 비교를 재현하고, `--check`에서 입력·출력 식별자 순서, 완전한 5축, 허용값, 상태, evidence ID, review rule ID를 전수 검증한다.
+- 검증 통과: `python -m py_compile scripts/archive/review_calibrated_batch_12.py`, 생성, `--check`, `git diff --check`.
 - 최종 분포: solo `{0.5: 47, 0.75: 3}`, couple `{0.5: 44, 0.75: 6}`, friends `{0.5: 42, 0.75: 8}`, kids `{0: 1, 0.25: 3, 0.5: 33, 0.75: 9, 1: 4}`, parents `{0.25: 4, 0.5: 41, 0.75: 5}`. 1차→경계 재검토 변경은 3축이다.
 
 ## 설계와 달라진 점

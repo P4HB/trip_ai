@@ -2,7 +2,7 @@ import glob
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 INPUT_GLOB = ROOT / "data/labeling/jeju/2026-08-09/place-fit-relabel-v2/audit_inputs/companion_audit_*.jsonl"
 OUTPUT = ROOT / "data/labeling/jeju/2026-08-09/place-fit-relabel-v2/batches/companion_relative_02.jsonl"
 AXES = ("solo", "couple", "friends", "kids", "parents")

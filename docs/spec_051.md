@@ -36,7 +36,7 @@
 
 ## 영향 범위
 
-- 변경 파일: 본 SPEC, `docs/README.md`, `scripts/generate_reviewed_calibrated_batch_07.py`, reviewed JSONL sidecar.
+- 변경 파일: 본 SPEC, `docs/README.md`, `scripts/archive/generate_reviewed_calibrated_batch_07.py`, reviewed JSONL sidecar.
 - 데이터 마이그레이션·호환성·보안·개인정보 영향: 없음.
 
 ## 승인 기준
@@ -50,7 +50,7 @@
 
 | 승인 기준 | 검증 명령 |
 |---|---|
-| AC-5101~AC-5104 | `python scripts/generate_reviewed_calibrated_batch_07.py --check` |
+| AC-5101~AC-5104 | `python scripts/archive/generate_reviewed_calibrated_batch_07.py --check` |
 
 ## 구현 결과
 
@@ -58,7 +58,7 @@
 
 분포: solo `{0.5: 19, 0.75: 15}`, couple `{0.5: 33, 1: 1}`, friends `{0.5: 30, 0.75: 2, 1: 2}`, kids `{0.25: 3, 0.5: 20, 0.75: 6, 1: 5}`, parents `{0.25: 2, 0.5: 24, 0.75: 8}`. 5축 동일값 장소는 11곳이며 1차→재검토 변경은 3축이다: 달달미깡감귤밭 couple, 뱅듸승마클럽 friends, 세기알해변 couple을 각각 `0.75→0.5`로 조정했다.
 
-생성, `--check`, `python -m py_compile scripts/generate_reviewed_calibrated_batch_07.py`, `git diff --check`를 통과했다.
+생성, `--check`, `python -m py_compile scripts/archive/generate_reviewed_calibrated_batch_07.py`, `git diff --check`를 통과했다.
 
 ## 설계와 달라진 점
 

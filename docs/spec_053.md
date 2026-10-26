@@ -32,7 +32,7 @@ The outdoor_nature batch 17 input requires a source-grounded first-pass Companio
 
 ## Impact scope
 
-- Changed files: this SPEC, `docs/README.md`, `scripts/review_calibrated_batch_17.py`, and the reviewed JSONL output.
+- Changed files: this SPEC, `docs/README.md`, `scripts/archive/review_calibrated_batch_17.py`, and the reviewed JSONL output.
 - Compatibility: input and existing calibration outputs remain unchanged; no canonical label changes.
 - Security and privacy: no new collection or personal data.
 
@@ -48,7 +48,7 @@ The outdoor_nature batch 17 input requires a source-grounded first-pass Companio
 ## Implementation results
 
 - Added `calibration_outputs/reviewed/reviewed_calibrated_batch_17.jsonl` with 50 input-ordered records and 250 complete Companion AxisLabels.
-- Added `scripts/review_calibrated_batch_17.py`, which holds the first-pass decisions in memory, applies three documented boundary changes, writes only the final reviewed sidecar, and validates its schema.
+- Added `scripts/archive/review_calibrated_batch_17.py`, which holds the first-pass decisions in memory, applies three documented boundary changes, writes only the final reviewed sidecar, and validates its schema.
 - Validation passed: ordered identifiers/family match, allowed five-step values, complete AxisLabel fields, `ai_draft` status, null null-reasons, input evidence IDs, review rule IDs, source-fact/unknown rationales, and unchanged input SHA-256 (`439c1728414c0344cd3b33c4e946329c2deb27925ebc740bc19473508a1d8f3d`).
 - Final distribution: solo `{0.5: 50}`; couple `{0.5: 48, 0.75: 2}`; friends `{0.5: 46, 0.75: 4}`; kids `{0.25: 3, 0.5: 31, 0.75: 13, 1: 3}`; parents `{0.25: 3, 0.5: 45, 0.75: 1, 1: 1}`. Twenty-eight places have the same value on all five axes.
 - Boundary reread changed three axes: transparent-kayak couple `0.75→0.5` (view/two-person boarding is not couple support), camel-trekking kids `0.75→0.5` (guide safety without child eligibility), and ferry solo `0.75→0.5` (safe passenger service is not solo-specific support).

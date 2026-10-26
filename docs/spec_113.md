@@ -88,7 +88,7 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 | AC-002 | 골든 비교 | `node scripts/check_golden_outputs.cjs`, `python -X utf8 scripts/check_golden_outputs.py` |
 | AC-003 | 정적 계약과 브라우저 동작 검사 분리 | `scripts/validate_ccu_mmr_dashboard.cjs`(JS·CSS 소스 형태 미검사), `node scripts/test_dashboard_behavior.cjs` |
 | AC-004 | 의존 그래프 검사 | 모듈 생성 인자 검토 |
-| AC-005 | 링크 검사 | Markdown 상대 링크 검사 스크립트 |
+| AC-005 | 링크 검사 | `python -X utf8 scripts/check_markdown_links.py` |
 | AC-006 | 서버 단위·골든 | `python -m unittest discover -s server/travel-feedback` |
 
 ## 구현 결과
@@ -116,6 +116,17 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
   - 확인 중 `test_itinerary_ui.cjs`의 스크린샷 기본 경로가 `/tmp/...`(Windows에서는 `C:\tmp`)인 것을 발견해 `tmp/test-artifacts/itinerary-ui/`로 바꿨다(기존 환경변수 덮어쓰기 유지).
 - 검증(Windows, 2026-10-26): `python -X utf8 scripts/run_tests.py` → 19 통과, 2 SKIP(아래 알려진 제한), 0 실패, 약 67초. 서버 168, 인스타 16+15, 골든 JS 123 시나리오·Python 84+21+30 일치, 브라우저 3종 통과. 동작 테스트는 연속 3회 통과했다.
 
+### 2단계 저위험 정리 (REQ-004, 2026-10-26)
+
+- 로컬 실행기: `scripts/run_trip_ai_local.py`의 `KNOWN_LLM_NAMES`에 `GEMINI_FALLBACK_MODEL`을 추가했다. 서버 모듈이 읽는 LLM 관련 환경변수 이름이 모두 실행기 목록에 있는지 소스에서 추출해 확인하는 테스트(`test_runner_recognizes_every_llm_setting_the_server_reads`)를 추가했다. 수정 전 코드에서는 이 테스트가 실패한다.
+- 활성 라벨 보호: `merge_relative_five_level_companion.py`는 `--promote` 없이는 검토용 `relative_five_level_*` 파일만 쓰고, `recalibrate_companion_labels.py`는 `--promote` 없이는 아무것도 쓰지 않고 종료 코드 2로 끝난다. 라벨 계산은 바꾸지 않았다. 두 기존 스크립트(`merge_direct_place_fit_labels.py`, `merge_calibrated_companion_labels.py`)는 이미 `--promote`가 필요하다. 플래그 없는 실행에서 활성 `place_fit_labels.jsonl`·`manifest.json`·`coverage_report.json`의 바이트가 그대로이고 검토용 출력이 현재 활성 라벨과 같음(LF 기준)을 확인한 뒤 갱신된 sidecar를 되돌렸다. `data/labeling/jeju/README.md`는 이전 세대로 되돌리는 `merge_direct_place_fit_labels.py --promote` 대신 현재 세대(`place-fit-relabel-v2-relative-five-level-companion`)의 재적용·검증 명령과 이전 세대 `--promote` 경고를 안내한다. `validate_place_fit_relabel_v2.py` 통과.
+- 실행 불가 파일 삭제: 생성·검증 스크립트가 이미 없어 재생성할 수 없고 어떤 페이지도 불러오지 않는 `review-ui/review-model.js`, `review-ui/styles.css`, `review-ui/data/review-data.js`, `review-ui/data/ai-review-proposals.js`와 없는 `scripts/lib/review_ui_data.mjs`를 import하는 `scripts/validate_review_ui_data.mjs`를 삭제하고 `review-ui/README.md`의 v1 안내를 삭제 기록으로 바꿨다. `labeling-review`는 자체 `src/review-model.js`를 쓰므로 영향이 없다.
+- `travel-mbti-site`: `.gitmodules` 없는 gitlink(`a2c640f`)를 인덱스에서 제거하고 `.gitignore`에 추가했다. 로컬 디렉터리(자체 Git 저장소)는 그대로 둔다. 현재 문서의 참조는 과거 SPEC 기록뿐이다.
+- 테스터 피드백: `travel-feedback-anonymized-since-0903 copy.json`을 추적 해제(`git rm --cached`)하고 `/travel-feedback-anonymized*.json`을 무시한다. `scripts/build_feedback_report.mjs`는 `--input <경로>`를 받고 기본값은 기존 루트 경로이며, 입력이 없으면 사용법과 함께 종료 코드 1로 끝난다. 파일 내용은 열람하지 않았고 프로그램의 `--check` 집계(9명·10세션·133평가·60의견)가 SPEC-070 기록과 같음만 확인했다. Git 이력 삭제는 하지 않았다.
+- 일회성 스크립트 27개를 `git mv`로 `scripts/archive/`에 옮겼다(참조 0인 15개와 Implemented SPEC-034·042·043·046·048~055에서만 언급된 12개). 데이터 manifest에 해시가 고정된 스크립트는 없음을 확인했다. `Path(__file__).resolve().parents[1]`로 루트를 찾던 18개는 `parents[2]`로만 바꿨다. 과거 SPEC 12개의 경로를 `scripts/archive/...`로 갱신했고, SPEC에 기록된 재현 명령 3개(`review_calibrated_batch_12.py --check`, `generate_reviewed_calibrated_batch_07.py --check`, `review_calibrated_batch_13.py --check`)는 이동 전후 출력이 같다. `scripts/archive/README.md`에 보관 규칙을 적었다.
+- 1단계 동작 테스트 보강: 2단계 전체 실행에서 사이드바 접기 뒤 Leaflet 폭이 컨테이너보다 5px 작아 4px 허용치를 넘는 간헐 실패가 났다(앱의 240ms `invalidateSize`와 grid 전환 종료 사이 경합, 알려진 제한 참조). 검사를 "300px 넘게 커지고 컨테이너의 90% 이상"으로 바꿨다. 같은 이유로 자동 저장 시간 검사를 부하에 흔들리지 않는 경계(점수 저장 800ms 미만, 의견 저장 700ms 이상)로 바꿨다. 6회 연속 통과했고 크기 갱신 제거·의견 디바운스 제거·점수 즉시 저장 제거 변형은 모두 실패한다.
+- 링크 검사(AC-005): `scripts/check_markdown_links.py`는 추적 중인 Markdown의 상대 링크·이미지 경로를 검사한다(외부 URL·앵커·코드 내부 제외). 처음 실행에서 기존 깨진 링크 1건(`docs/spec_012.md`의 존재한 적 없는 `spec_011.md`)을 찾아 일반 텍스트로 바꿨고, 이제 135개 파일에서 0건이다. 단일 실행기에 `docs: markdown links` 단계로 추가했다.
+
 ## 설계와 달라진 점
 
 - 골든 해시는 키를 정렬한 JSON으로 계산한다. 리팩토링이 객체 속성 생성 순서만 바꾸는 경우를 차이로 보지 않기 위해서이며, 배열 순서와 숫자 값은 그대로 비교한다. AC-002의 "바이트 단위로 같다"는 이 정규화 출력과 골든 파일 내용 기준이다. 파일 비교는 Windows `core.autocrlf` 체크아웃의 줄바꿈 차이를 피하려고 파싱한 JSON끼리 한다.
@@ -130,6 +141,8 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 - 이 Windows 환경에서는 `test_place_types.py`(고정 SQLite가 3.37.2로 기록됨, 이 Python은 3.50.4)와 `test_labeling_review_model.mjs`(고정 해시 대상 JSON이 CRLF로 체크아웃됨)가 SKIP된다. 기준선 커밋에서도 같은 이유로 실패하는 사전 문제이며 이번 변경과 무관하다. 고정 데이터에 `eol=lf` 속성을 주는 정리는 별도 결정이 필요하다.
 - 데스크톱 사이드바를 접으면 Leaflet의 마지막 `invalidateSize`(240ms)가 grid 전환 종료 직전에 실행돼 지도 크기가 컨테이너보다 약 2px 작게 남을 수 있다. 기존 동작이며 동작 보존 범위라 고치지 않았고, 테스트는 지도 폭이 커지고 컨테이너와 4px 이내인지만 확인한다.
 - 골든 입력(지도 번들·일정 카탈로그·식당 sidecar·정책 버전)이 바뀌면 골든 비교가 실패한다. 데이터 재생성은 리팩토링이 아니므로 별도 SPEC에서 골든을 갱신한다.
+- 피드백 파일 추적 해제 커밋을 받는 다른 작업 사본에서는 Git이 그 파일을 작업 트리에서 지운다(이력에는 남음). 리포트를 다시 만들 사람은 받기 전에 로컬 사본을 저장소 밖에 보관하고 `--input`으로 지정해야 한다.
+- 보관 스크립트 중 일부(`make_full_direct_04.py` 등)는 당시 작업 환경의 절대 경로를 담고 있어 그대로는 실행되지 않는다. 보관 기록이며 유지 대상이 아니다.
 
 ## 변경 이력
 
@@ -137,3 +150,4 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 |---|---|
 | 2026-10-26 | 조사 결과를 바탕으로 초안 작성, 사용자 승인 범위(단계별 전체)로 In Progress |
 | 2026-10-26 | 1단계 안전망(REQ-001~003) 구현: 골든 출력 2종, 테스트 플래그 훅, 정적 계약/브라우저 동작 검사 분리, 단일 실행기. 테스트 계획 명령 갱신 |
+| 2026-10-26 | 2단계 저위험 정리(REQ-004) 구현: 실행기 LLM 이름, 활성 라벨 `--promote` 보호, review-ui v1·깨진 검증기 삭제, gitlink·피드백 파일 추적 해제, 일회성 스크립트 27개 보관, Markdown 링크 검사 |

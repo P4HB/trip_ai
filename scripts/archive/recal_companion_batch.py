@@ -2,7 +2,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / 'data/labeling/jeju/2026-08-09'
 OUT = BASE / 'place-fit-relabel-v2/batches/companion_recal_05.jsonl'
 AXES = ['solo', 'couple', 'friends', 'kids', 'parents']

@@ -48,7 +48,7 @@ The outdoor_nature batch 11 input needs a source-grounded first-pass Companion l
 ## Implementation results
 
 - Added `calibration_outputs/reviewed/reviewed_calibrated_batch_11.jsonl` with 50 records and 250 complete Companion labels; the input hash was unchanged.
-- Added `scripts/review_calibrated_batch_11.py` to make the source-grounded first-pass and boundary decisions reproducible.
+- Added `scripts/archive/review_calibrated_batch_11.py` to make the source-grounded first-pass and boundary decisions reproducible.
 - Validation passed: input-order comparison, complete schema, allowed values, `ai_draft` status, null null-reasons, input evidence IDs, review rule IDs, and non-empty source-grounded rationales.
 - Distribution: solo `{0.5: 41, 0.75: 9}`; couple `{0.5: 49, 1: 1}`; friends `{0.5: 49, 1: 1}`; kids `{0: 1, 0.25: 7, 0.5: 32, 0.75: 9, 1: 1}`; parents `{0.25: 6, 0.5: 40, 0.75: 3, 1: 1}`. Thirty-one places have the same score on all five axes.
 - Boundary reread changed 0 axes from the first-pass decisions; every non-neutral decision retained direct source support.

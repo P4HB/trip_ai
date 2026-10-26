@@ -6,7 +6,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "data/labeling/jeju/2026-08-09/place-fit-relabel-v2"
 INPUT = BASE / "calibration_inputs/14_outdoor_nature.jsonl"
 OUTPUT = BASE / "calibration_outputs/reviewed/reviewed_calibrated_batch_13.jsonl"

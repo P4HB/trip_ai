@@ -4,10 +4,18 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const inputPath = path.join(repoRoot, "travel-feedback-anonymized-since-0903 copy.json");
+// SPEC-113: tester feedback exports are not tracked in Git; pass a local export with --input.
+const inputIndex = process.argv.indexOf("--input");
+const inputPath = inputIndex >= 0 && process.argv[inputIndex + 1]
+  ? path.resolve(process.argv[inputIndex + 1])
+  : path.join(repoRoot, "travel-feedback-anonymized-since-0903 copy.json");
 const outputPath = path.join(repoRoot, "tmp", "reports", "travel-feedback-since-0903.html");
 const checkOnly = process.argv.includes("--check");
 
+if (!fs.existsSync(inputPath)) {
+  console.error(`피드백 입력 파일이 없습니다: ${inputPath}\n사용법: node scripts/build_feedback_report.mjs --input <anonymized-feedback-v1.json> [--check]`);
+  process.exit(1);
+}
 const raw = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 validateInput(raw);
 

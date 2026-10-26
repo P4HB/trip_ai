@@ -4,7 +4,7 @@
 - 작성일: 2026-08-12
 - 최종 수정일: 2026-08-12
 - 관련 요청: 전수 검수된 v5 장소를 선택하면 24개 라벨 결과와 웹 근거를 즉시 표시한다.
-- 관련 문서: [문서 색인](README.md), [데이터 계약](data_contracts.md), [SPEC-011](spec_011.md)
+- 관련 문서: [문서 색인](README.md), [데이터 계약](data_contracts.md), SPEC-011(저장소에 문서 없음)
 - 관련 코드: `scripts/build_v5_researched_viewer_data.mjs`, `review-ui/`
 - 선행 SPEC: SPEC-011
 

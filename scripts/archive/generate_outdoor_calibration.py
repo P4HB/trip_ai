@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-root=Path(__file__).resolve().parents[1]
+root=Path(__file__).resolve().parents[2]
 src=root/'data/labeling/jeju/2026-08-09/place-fit-relabel-v2/calibration_inputs/calibration_sample.jsonl'
 out=root/'data/labeling/jeju/2026-08-09/place-fit-relabel-v2/calibration_outputs/calibrate_outdoor.jsonl'
 axes=('solo','couple','friends','kids','parents'); rule='CALIBRATED-DIRECT-COMPANION-V1'

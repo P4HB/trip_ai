@@ -521,5 +521,15 @@ class LocalRunnerTests(unittest.TestCase):
         for secret in ("FILEVALUE", "OTHER", "sk-system"):
             self.assertNotIn(secret, text)
 
+    def test_runner_recognizes_every_llm_setting_the_server_reads(self):
+        import re
+        read = set()
+        for source in HERE.glob("*.py"):
+            if not source.name.startswith("test_"):
+                read.update(re.findall(r'(?:environ\.get|getenv)\("([A-Z0-9_]+)"', source.read_text(encoding="utf-8")))
+        llm_names = {name for name in read if self.runner.LLM_NAME_HINT.search(name)}
+        self.assertIn("GEMINI_FALLBACK_MODEL", llm_names)
+        self.assertEqual(llm_names - self.runner.KNOWN_LLM_NAMES, set(), "runner must not warn about settings the server reads")
+
 if __name__ == "__main__":
     unittest.main()

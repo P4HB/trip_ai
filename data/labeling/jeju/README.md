@@ -161,12 +161,16 @@ python scripts/validate_all_place_profiles.py
   direct_manifest.json
   direct_analysis.md
   place_fit_labels.rules-v1.jsonl
+  relative_five_level_place_fit_labels.jsonl
+  relative_five_level_coverage_report.json
+  relative_five_level_manifest.json
 ```
 
-모든 결과는 `ai_draft`이며 기존 full SQLite·v5 24축 라벨을 수정하지 않는다. 재생성·검증:
+모든 결과는 `ai_draft`이며 기존 full SQLite·v5 24축 라벨을 수정하지 않는다. 활성 `place_fit_labels.jsonl`은 `manifest.json`의 `place-fit-relabel-v2-relative-five-level-companion` 세대다. `merge_direct_place_fit_labels.py --promote`, `merge_calibrated_companion_labels.py --promote`, `recalibrate_companion_labels.py --promote`는 이전 세대 결과로 활성 파일을 바꾸므로 재생성에 쓰지 않는다. 활성 라벨을 바꾸는 스크립트는 모두 `--promote` 없이는 활성 파일을 쓰지 않는다([SPEC-113](../../../docs/spec_113.md)). 현재 세대 재적용·검증:
 
 ```powershell
-python scripts/merge_direct_place_fit_labels.py --promote
+python scripts/merge_relative_five_level_companion.py            # 검토용 relative_five_level_* 파일만 갱신
+python scripts/merge_relative_five_level_companion.py --promote  # 활성 라벨 교체(최초 1회 백업)
 python scripts/build_place_fit_relabel_viewer.py
 python scripts/validate_place_fit_relabel_v2.py
 ```

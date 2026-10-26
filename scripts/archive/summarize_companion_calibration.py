@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "data" / "labeling" / "jeju" / "2026-08-09" / "place-fit-relabel-v2"
 
 

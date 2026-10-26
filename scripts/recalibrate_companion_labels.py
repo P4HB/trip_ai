@@ -1,5 +1,6 @@
 """Apply independently recalibrated Companion labels to the 1,664-place JSONL."""
 
+import argparse
 import hashlib
 import json
 from collections import Counter
@@ -32,6 +33,11 @@ def validate_axis(axis: dict, contentid: str, key: str) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--promote", action="store_true", help="rewrite the active place_fit_labels.jsonl and manifest in place")
+    if not parser.parse_args().promote:
+        # This step only rewrites the active labels; an older generation would replace the current one.
+        parser.error("refusing to overwrite the active labels without --promote")
     rows = [json.loads(line) for line in LABELS.read_text(encoding="utf-8").splitlines() if line.strip()]
     expected = [str(row["contentid"]) for row in rows]
     recalibrated: dict[str, dict] = {}

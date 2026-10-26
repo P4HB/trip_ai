@@ -59,7 +59,7 @@ Policy target ranges are review warnings only. A score of `0` is relative lowest
 ## Implementation results
 
 - Added `calibration_outputs/reviewed/reviewed_calibrated_batch_04.jsonl` with 50 records and 250 complete Companion axes. The supplied input and draft were preserved.
-- Added `scripts/review_calibrated_batch_04.py` to make the source-grounded boundary decisions reproducible.
+- Added `scripts/archive/review_calibrated_batch_04.py` to make the source-grounded boundary decisions reproducible.
 - Validation passed: ordered identifier/family comparison, complete five-axis schema, allowed values, source evidence IDs, review rule IDs, rationale presence, and cafe-exception check.
 - Distribution: solo `{0.5: 50}`; couple `{0.5: 47, 1: 3}`; friends `{0.5: 49, 0.75: 1}`; kids `{0.25: 3, 0.5: 38, 0.75: 6, 1: 3}`; parents `{0.25: 2, 0.5: 44, 0.75: 4}`. Changed 63 of 250 axes from the supplied draft.
 

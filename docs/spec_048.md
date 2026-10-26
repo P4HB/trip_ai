@@ -63,7 +63,7 @@ If `cafe_unknown_intro` appears, all axes remain `0.5`, confidence is at most `0
 ## Implementation results
 
 - Created `calibration_outputs/reviewed/reviewed_calibrated_batch_09.jsonl` with all 50 input rows and 250 complete numeric Companion AxisLabels.
-- Added `scripts/review_culture_batch_09.py` to reproduce the reviewed sidecar and retain the recorded first-pass map for audit statistics.
+- Added `scripts/archive/review_culture_batch_09.py` to reproduce the reviewed sidecar and retain the recorded first-pass map for audit statistics.
 - Validation passed: identity/order/family preservation; allowed numeric values; complete AxisLabel schema; source fact and unknown in each rationale; evidence ID preservation; review rule IDs; and protected input/policy/anchor SHA-256 checks.
 - Final axis distributions: solo `{0.5: 50}`, couple `{0.5: 50}`, friends `{0.5: 49, 1: 1}`, kids `{0.5: 43, 0.75: 4, 1: 3}`, parents `{0.5: 50}`. The review changed 8 axes from the recorded first pass; the target-range deviations were retained because the policy defines them as warnings rather than quotas.
 

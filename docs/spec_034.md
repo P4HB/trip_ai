@@ -4,7 +4,7 @@
 - 작성일: 2026-08-12
 - 최종 수정일: 2026-08-12
 - 관련 문서: [문서 색인](README.md), [SPEC-022](spec_022.md)
-- 관련 코드: `scripts/generate_outdoor_calibration.py`
+- 관련 코드: `scripts/archive/generate_outdoor_calibration.py`
 
 ## 배경
 
@@ -40,7 +40,7 @@
 
 ## 구현 결과
 
-- `scripts/generate_outdoor_calibration.py`가 입력의 `outdoor_nature` 30건만 읽어 출력 sidecar를 생성한다.
+- `scripts/archive/generate_outdoor_calibration.py`가 입력의 `outdoor_nature` 30건만 읽어 출력 sidecar를 생성한다.
 - 출력은 30행·150축이며 값 분포는 0=2, 0.25=8, 0.5=107, 0.75=31, 1=2다.
 - Python 구문 검사, 전수 JSONL 구조·허용값·provenance 검사를 통과했다.
 

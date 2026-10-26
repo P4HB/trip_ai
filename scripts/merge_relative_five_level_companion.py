@@ -1,5 +1,6 @@
 """Promote the second-pass relative five-level Companion labels safely."""
 
+import argparse
 import hashlib
 import json
 from collections import Counter
@@ -76,6 +77,9 @@ def load_rework() -> tuple[dict[str, dict], list[Path]]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--promote", action="store_true", help="replace the active place_fit_labels.jsonl and manifest after a one-time backup")
+    args = parser.parse_args()
     records, paths = load_rework()
     expected = expected_place_ids()
     if set(records) != set(expected):
@@ -111,6 +115,9 @@ def main() -> None:
     }
     (OUT / "relative_five_level_coverage_report.json").write_text(json.dumps(counts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (OUT / "relative_five_level_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if not args.promote:
+        print(f"WROTE {merged.relative_to(ROOT)} for review; rerun with --promote to replace the active labels")
+        return
     backup = OUT / "place_fit_labels.before-relative-five-level.jsonl"
     if not backup.exists():
         backup.write_bytes(canonical.read_bytes())

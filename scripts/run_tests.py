@@ -82,6 +82,7 @@ CHECKS = [
     Check("node: review contracts", node("test_review_contracts.cjs")),
     Check("node: instagram import ui", node("test_instagram_import_ui.cjs")),
     Check("node: labeling review model (pinned outputs)", node("test_labeling_review_model.mjs"), precondition=labeling_review_environment),
+    Check("docs: markdown links", (*PY, "scripts/check_markdown_links.py")),
     Check("golden: js outputs", node("check_golden_outputs.cjs")),
     Check("golden: python outputs", (*PY, "scripts/check_golden_outputs.py")),
     Check("browser: itinerary ui", node("test_itinerary_ui.cjs"), browser=True),

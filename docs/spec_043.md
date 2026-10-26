@@ -63,7 +63,7 @@ Missing companion-specific evidence remains `0.5`; it is not treated as a prohib
 ## Implementation results
 
 - Created `calibration_outputs/reviewed/reviewed_calibrated_batch_02.jsonl` with all 50 input rows and 250 complete Companion AxisLabels.
-- Added `scripts/review_culture_batch_02.py` to reproduce the reviewed sidecar from the protected input and draft.
+- Added `scripts/archive/review_culture_batch_02.py` to reproduce the reviewed sidecar from the protected input and draft.
 - Validation passed: identifier/order/family preservation; permitted numeric values; complete axis schema; evidence IDs; source-grounded rationales; review rule IDs; and protected input/draft SHA-256 checks.
 - Final axis distributions: solo `{0.5: 50}`, couple `{0.5: 48, 0.75: 1, 1: 1}`, friends `{0.5: 48, 1: 2}`, kids `{0.25: 5, 0.5: 25, 0.75: 12, 1: 8}`, parents `{0.25: 7, 0.5: 38, 0.75: 5}`. The review changed 60 axes from the draft.
 

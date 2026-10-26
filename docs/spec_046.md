@@ -35,7 +35,7 @@ The original draft identifies candidates only; the source excerpt controls each 
 
 ## Impact scope
 
-- Changed files: this SPEC, `docs/README.md`, `scripts/generate_reviewed_calibrated_batch_01.py`, and the reviewed JSONL sidecar.
+- Changed files: this SPEC, `docs/README.md`, `scripts/archive/generate_reviewed_calibrated_batch_01.py`, and the reviewed JSONL sidecar.
 - Data migration, compatibility, security, and privacy effects: none; this is an additive AI-draft sidecar.
 
 ## Acceptance criteria

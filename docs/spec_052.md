@@ -41,7 +41,7 @@ The 50 `outdoor_nature` records in calibration input 16 require source-grounded 
 ## Implementation results
 
 - Added `calibration_outputs/reviewed/reviewed_calibrated_batch_15.jsonl` with 50 records and 250 complete Companion labels; the input was read without modification (SHA-256: `d9c42df017997e9f7e1fd7e95ff2c7a970df755e9da6ddc5954cb1cdcdddf93d`).
-- Added `scripts/review_calibrated_batch_15.mjs` to make the first-pass decisions and the boundary-review comparison reproducible.
+- Added `scripts/archive/review_calibrated_batch_15.mjs` to make the first-pass decisions and the boundary-review comparison reproducible.
 - Validation passed: JSONL parse, input-order identity comparison, five-axis schema, allowed values, `ai_draft` status, null null-reasons, evidence-ID equality, review rule ID, and non-empty rationales.
 - Distribution: solo `{0.5: 26, 0.75: 24}`; couple `{0.5: 45, 0.75: 4, 1: 1}`; friends `{0.5: 47, 0.75: 3}`; kids `{0: 1, 0.25: 20, 0.5: 20, 0.75: 9}`; parents `{0.25: 22, 0.5: 28}`. Thirteen places have the same value on all five axes.
 - Boundary reread changed 3 axes: Gaseoreum kids `0.25→0`, Gaksibawieoreum kids `0.5→0.25`, and Dwigubeunieoreum parents `0.5→0.25`, each because the source explicitly states a route hazard or steep section.

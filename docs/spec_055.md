@@ -39,7 +39,7 @@ The batch-18 `outdoor_nature` input requires a source-grounded first-pass Compan
 
 ## Implementation results
 
-- Added `calibration_outputs/reviewed/reviewed_calibrated_batch_18.jsonl` with 50 records and 250 complete labels, plus reproducible generator `scripts/review_calibrated_batch_18.py`.
+- Added `calibration_outputs/reviewed/reviewed_calibrated_batch_18.jsonl` with 50 records and 250 complete labels, plus reproducible generator `scripts/archive/review_calibrated_batch_18.py`.
 - Validation passed for source order/identities, complete schema, numeric values, `ai_draft` status, null reasons, evidence IDs, required boundary-review rule, source-grounded rationales, and unchanged input SHA-256.
 - First pass to boundary reread changed 0 axes. The review retained every non-neutral score only where source text supplied direct activity, age, family, walking, or constraint evidence.
 - Distribution: solo `{0.5: 28, 0.75: 22}`; couple `{0.5: 50}`; friends `{0.5: 48, 0.75: 2}`; kids `{0.25: 5, 0.5: 36, 0.75: 4, 1: 5}`; parents `{0.25: 4, 0.5: 38, 0.75: 7, 1: 1}`. Eighteen places have the same score on all five axes.

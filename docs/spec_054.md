@@ -39,8 +39,8 @@ outdoor_nature batch 13의 50개 장소에 대해 소개 원문·unknowns·evide
 ## 구현 결과
 
 - `calibration_outputs/reviewed/reviewed_calibrated_batch_13.jsonl`에 입력 순서 그대로 50행·250축을 생성했다.
-- `scripts/review_calibrated_batch_13.py`는 1차 판정과 경계 재검토 차이를 메모리에서 비교하고, `--check`로 입력 순서·식별자·5축 schema·값·상태·provenance를 전수 검사한다.
-- 검증 통과: `python -m py_compile scripts/review_calibrated_batch_13.py`, 생성, `python scripts/review_calibrated_batch_13.py --check`, `git diff --check`.
+- `scripts/archive/review_calibrated_batch_13.py`는 1차 판정과 경계 재검토 차이를 메모리에서 비교하고, `--check`로 입력 순서·식별자·5축 schema·값·상태·provenance를 전수 검사한다.
+- 검증 통과: `python -m py_compile scripts/archive/review_calibrated_batch_13.py`, 생성, `python scripts/archive/review_calibrated_batch_13.py --check`, `git diff --check`.
 - 최종 분포: solo `{0.5: 48, 0.75: 2}`; couple `{0.5: 49, 0.75: 1}`; friends `{0.5: 48, 0.75: 2}`; kids `{0.25: 1, 0.5: 39, 0.75: 8, 1: 2}`; parents `{0.25: 1, 0.5: 46, 0.75: 2, 1: 1}`. 5축 동일값 장소는 38개, 1차→경계 재검토 변경은 3축이다.
 
 ## 알려진 제한
