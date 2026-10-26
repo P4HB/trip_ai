@@ -14,8 +14,8 @@ const appPath = path.join(workspaceRoot, "map-ui", "app.js");
 const stylesPath = path.join(workspaceRoot, "map-ui", "styles.css");
 const preferencePath = path.join(workspaceRoot, "map-ui", "preference-elicitation.js");
 const dashboardHtml = fs.readFileSync(htmlPath, "utf8");
-const dashboardApp = fs.readFileSync(appPath, "utf8");
-const dashboardStyles = fs.readFileSync(stylesPath, "utf8");
+const dashboardApp = ["app", "state", "feedback", "wizard", "preference-view", "map-view", "place-detail"].map(name => fs.readFileSync(path.join(workspaceRoot, "map-ui", name + ".js"), "utf8")).join("\n");
+const dashboardStyles = ["base", "recommendation", "panels", "mobile", "itinerary"].map(name => fs.readFileSync(path.join(workspaceRoot, "map-ui/styles", name + ".css"), "utf8")).join("\n");
 const preferenceSource = fs.readFileSync(preferencePath, "utf8");
 for (const id of [
   "headerTravelMbtiButton", "travelMbtiLaunch", "startTravelMbtiButton", "travelMbtiApplied", "restartTravelMbtiButton", "travelMbtiDialog",
@@ -149,11 +149,8 @@ assert.match(dashboardHtml, /실명 대신 별칭을 사용해도 되며 연락�
 assert.match(dashboardApp, /const FEEDBACK_OPTIONS = Object\.freeze/u, "five-point feedback options");
 assert.match(dashboardApp, /recommendationFeedback: new Map\(\)/u, "feedback is memory-only state");
 assert.match(dashboardApp, /getRecommendationFeedback: \(\) => Object\.fromEntries\(state\.recommendationFeedback\)/u, "feedback inspection boundary");
-const feedbackComponentStart = dashboardApp.indexOf("function createRecommendationFeedback(place, contextKey)");
-const feedbackComponentEnd = dashboardApp.indexOf("function createRecommendationCard(item)", feedbackComponentStart);
-const feedbackComponentSource = feedbackComponentStart >= 0 && feedbackComponentEnd > feedbackComponentStart
-  ? dashboardApp.slice(feedbackComponentStart, feedbackComponentEnd)
-  : "";
+const feedbackModuleSource = fs.readFileSync(path.join(workspaceRoot, "map-ui/feedback.js"), "utf8");
+const feedbackComponentSource = feedbackModuleSource.slice(feedbackModuleSource.indexOf("function createRecommendationFeedback(place, contextKey)"));
 assert.ok(feedbackComponentSource, "shared place feedback component");
 assert.match(feedbackComponentSource, /recommendation-feedback-option/u, "per-place satisfaction controls");
 assert.match(feedbackComponentSource, /aria-pressed/u, "feedback pressed state");
@@ -217,8 +214,8 @@ const clearRecommendationSource = clearRecommendationStart >= 0 && clearRecommen
   ? dashboardApp.slice(clearRecommendationStart, clearRecommendationEnd)
   : "";
 assert.match(clearRecommendationSource, /state\.recommendationFeedback\.clear\(\)/u, "new recommendation conditions clear feedback");
-assert.match(dashboardApp, /function recommendationFeedbackTargets\(result = state\.recommendationResult\)/u, "unique feedback target calculation");
-assert.match(dashboardApp, /function recommendationFeedbackCompletion\(\)/u, "feedback completion calculation");
+assert.match(dashboardApp, /function recommendationFeedbackTargets\(result = state\.recommendationResult,/u, "unique feedback target calculation");
+assert.match(dashboardApp, /function recommendationFeedbackCompletion\(/u, "feedback completion calculation");
 assert.match(dashboardApp, /function buildFeedbackLog\(revision = state\.feedbackAutoSave\.revision\)/u, "feedback log builder");
 assert.match(dashboardApp, /schema_version: "travel-recommendation-feedback-log-v3"/u, "feedback log schema version");
 assert.match(dashboardApp, /participant_name: participantNameValue\(\) \|\| null/u, "participant name feedback field");

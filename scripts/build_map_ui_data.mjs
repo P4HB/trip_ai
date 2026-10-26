@@ -1,41 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath } from "node:url";
 import CCU from "../map-ui/ccu-mmr.js";
 
-const workspaceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const datasetRoot = path.join(workspaceRoot, "data", "tourapi", "jeju");
-const v5ReviewRoot = path.join(
-  workspaceRoot,
-  "data",
-  "labeling",
-  "jeju",
-  "2026-08-09",
-  "place-preference-label-v5-researched",
-  "reviews",
-);
-const fitLabelPath = path.join(
-  workspaceRoot,
-  "data",
-  "labeling",
-  "jeju",
-  "2026-08-09",
-  "place-fit-relabel-v2",
-  "place_fit_labels.jsonl",
-);
-const hardConstraintPath = path.join(
-  workspaceRoot,
-  "data",
-  "labeling",
-  "jeju",
-  "2026-08-09",
-  "full",
-  "place-profile-v1-all-1434",
-  "hard_constraints.jsonl",
-);
-const outputPath = path.join(workspaceRoot, "map-ui", "data", "jeju-places.js");
-const LABEL_SNAPSHOT_DATE = "2026-08-09";
+import { gzipSync } from "node:zlib";
+import { createHash } from "node:crypto";
+import { workspaceRoot, activeDatasets, activePath, readJsonLines } from "./lib/data_io.mjs";
+const v5ReviewRoot = activePath("preferenceReviews");
+const fitLabelPath = activePath("fitLabels");
+const hardConstraintPath = activePath("hardConstraints");
+const outputPath = path.join(workspaceRoot, "map-ui/data/jeju-places.js");
+const LABEL_SNAPSHOT_DATE = activeDatasets.snapshotDate;
 const COMPANION_KEYS = ["solo", "couple", "friends", "kids", "parents"];
 const MONTH_KEYS = Array.from({ length: 12 }, (_, index) => String(index + 1));
 const ATOMIC_LABEL_KEYS = [
@@ -56,23 +31,6 @@ const EXPECTED_LABEL_KEYS = new Set([...ATOMIC_LABEL_KEYS, ...DERIVED_LABEL_KEYS
 const RESEARCH_SEMANTIC_PATTERN = /정원|공원|해변|바다|오름|산|폭포|동굴|숲|산책|탐방|트레일|조망|전망|경관|일출|일몰|관람|감상|체험|박물관|미술관|전시|공연|문화|작품|기념관|갤러리|축제|행사|프로그램|퍼레이드|마켓|레저|낚시|수영|서핑|승마|골프|캠핑|트레킹|투어|자전거|요트|다이빙|숙박|객실|호텔|리조트|펜션|게스트하우스|조식|수영장|스파|휴식|쇼핑|시장|매장|판매|구매|취급|상품|특산품|기념품|의류|면세|브랜드|생활용품|약국|소매|음식|메뉴|요리|식당|카페|커피|디저트|베이커리|흑돼지|해산물|국수|전복|갈치|식사|즐길|둘러|볼 수|맛볼|먹을|마실|머물|촬영|선보/u;
 const RESEARCH_CATALOG_PATTERN = /contentid|TourAPI|관광 분류|주소는|주소와|주소를|주소가|위치는|장소명|명칭은|수록|기록한다|기재|일치|목록|검색 결과|교차 확인|기준점|등록|데이터/u;
 const RESEARCH_DYNAMIC_PATTERN = /영업|이용시간|운영|관람시간|휴무|주차|전화|문의|예약|체크인|체크아웃|입장|마감|개최|행사기간|일정|장날|운항|상시 개방|연중무휴|요금|가격|무료|유료|매주|매월|매년[^,.]{0,24}(?:열|개최|행사|축제|공연|운영)|\d{1,2}[·,]\d{1,2}일장|유효기간|시즌별|요일[^,.]{0,20}\d{1,2}(?:시|:)|\b\d{1,2}:\d{2}\b|20\d{2}년\s*\d{1,2}월/u;
-
-function readJsonLines(filePath) {
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`JSONL input is missing: ${filePath}`);
-  }
-  return fs
-    .readFileSync(filePath, "utf8")
-    .split(/\r?\n/u)
-    .filter((line) => line.trim())
-    .map((line, index) => {
-      try {
-        return JSON.parse(line);
-      } catch (error) {
-        throw new Error(`Invalid JSONL at ${filePath}:${index + 1}: ${error.message}`);
-      }
-    });
-}
 
 function compactAxisRecord(key, record) {
   if (!record || typeof record !== "object") throw new Error(`Axis record is missing for ${key}`);
@@ -280,24 +238,6 @@ function loadV5Reviews() {
   return reviews;
 }
 
-function findLatestDataset() {
-  const candidates = fs
-    .readdirSync(datasetRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => ({
-      date: entry.name,
-      file: path.join(datasetRoot, entry.name, "jeju_places.json"),
-    }))
-    .filter((candidate) => fs.existsSync(candidate.file))
-    .sort((a, b) => b.date.localeCompare(a.date));
-
-  if (!candidates.length) {
-    throw new Error(`No jeju_places.json found under ${datasetRoot}`);
-  }
-
-  return candidates[0];
-}
-
 function clean(value) {
   return String(value ?? "").replace(/\s+/g, " ").trim();
 }
@@ -336,13 +276,13 @@ function isValidJejuCoordinate(lng, lat) {
   );
 }
 
-const source = findLatestDataset();
+const source = { date: activeDatasets.snapshotDate, file: activePath("tourapi") };
 if (source.date !== LABEL_SNAPSHOT_DATE) {
   throw new Error(`TourAPI snapshot ${source.date} does not match label snapshot ${LABEL_SNAPSHOT_DATE}`);
 }
 const rawPlaces = JSON.parse(fs.readFileSync(source.file, "utf8"));
 const primaryTypeTaxonomy = JSON.parse(fs.readFileSync(path.join(workspaceRoot, "config/place_type_taxonomy.v1.json"), "utf8"));
-const primaryTypeRecords = readJsonLines(path.join(workspaceRoot, "data/labeling/jeju/2026-09-11/place-types-v1/place_types.jsonl"));
+const primaryTypeRecords = readJsonLines(activePath("primaryTypes"));
 const primaryTypes = new Map();
 for (const record of primaryTypeRecords) {
   if (primaryTypes.has(record.place_id) || record.taxonomy_version !== primaryTypeTaxonomy.version
@@ -448,12 +388,26 @@ const metadata = {
   monthKeys: MONTH_KEYS,
 };
 
+// Preserve full labeling evidence outside the public browser bundle.
+const evidence = JSON.stringify({ schemaVersion: "map-label-evidence-v1", sourceDate: source.date,
+  places: Object.fromEntries(places.filter(place => place.v5 || place.fit).map(place => [place.id, { v5: place.v5, fit: place.fit }])) });
+metadata.bundleFormat = "compact-v1";
+metadata.evidencePath = activeDatasets.mapEvidence;
+metadata.evidenceHash = createHash("sha256").update(evidence).digest("hex");
+fs.mkdirSync(path.dirname(activePath("mapEvidence")), { recursive: true });
+fs.writeFileSync(activePath("mapEvidence"), gzipSync(evidence, { level: 9 }));
+const browserPlaces = places.map(place => ({ ...place,
+  v5: place.v5 ? { labels: place.v5.labels.map(({ label, value }) => ({ label, value })) } : null,
+  fit: place.fit ? { version: place.fit.version, status: place.fit.status,
+    companion: place.fit.companion.map(({ key, state, value }) => ({ key, state, value })),
+    month: place.fit.month.map(({ key, state, value }) => ({ key, state, value })) } : null,
+}));
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(
   outputPath,
   `/* Generated from ${path.relative(workspaceRoot, source.file).replaceAll("\\", "/")} */\n` +
     `window.JEJU_DATA_META = ${JSON.stringify(metadata)};\n` +
-    `window.JEJU_PLACES = ${JSON.stringify(places)};\n`,
+    `window.JEJU_PLACES = ${JSON.stringify(browserPlaces)};\n`,
   "utf8",
 );
 

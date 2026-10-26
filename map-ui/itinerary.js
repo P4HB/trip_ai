@@ -1,9 +1,9 @@
 /* SPEC-083/107: itinerary contract, revision-safe asynchronous client and meal-slot restaurant helpers. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports ? require("./domain.js") : root.TRAVEL_DOMAIN);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.TRAVEL_ITINERARY = api;
-})(typeof window !== "undefined" ? window : globalThis, function () {
+})(typeof window !== "undefined" ? window : globalThis, function (domain) {
   "use strict";
   const MAX_DAYS = 7;
   const DEFAULT_MEALS = Object.freeze({
@@ -12,9 +12,7 @@
     maxDetourMinutes: 20,
   });
   // Same vocabulary as ccu-mmr.js ATOMIC_FEATURES; the server re-validates this allowlist.
-  const PREFERENCE_FEATURES = Object.freeze(["mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
-    "traditional_market", "festival", "indoor_ratio", "weather_sensitivity", "restfulness", "physical_ease",
-    "visit_duration_flexibility", "scenic_value", "distinctiveness", "local_embeddedness", "landmark_significance", "photo_value"]);
+  const PREFERENCE_FEATURES = domain.ATOMIC_FEATURES;
   const COMPANIONS = Object.freeze(["solo", "couple", "friends", "kids", "parents", "none"]);
   const MAX_USED_RESTAURANTS = 28, MAX_CHOSEN_RESTAURANTS = 14, MAX_PREFERENCE_SIGNALS = 8;
   const VERDICT_LABELS = Object.freeze({ recommended: "추천", acceptable: "괜찮음", insufficient_evidence: "근거 부족", not_recommended: "비추천" });
@@ -46,6 +44,41 @@
   function partitionCandidates(slot) {
     const all = Array.isArray(slot?.restaurantCandidates) ? slot.restaurantCandidates : [];
     return { visible: all.filter(item => item.judgement?.verdict !== "not_recommended"), hidden: all.filter(item => item.judgement?.verdict === "not_recommended") };
+  }
+  /** Replace only the selected meal's direct leg. Server proposal remains unchanged. */
+  function selectedMealRoutes(day, selections) {
+    const replacements = new Map(), warnings = [];
+    for (const slot of day.mealSlots || []) {
+      const selected = selections.get(slot.slotId);
+      if (!selected) continue;
+      const fromId = String(slot.beforeLocation?.placeId || ""), toId = String(slot.afterLocation?.placeId || "");
+      const key = `${fromId}|${toId}`, insertion = selected.candidate?.insertion;
+      if (replacements.has(key)) {
+        warnings.push("같은 이동 구간에 식사를 여러 번 선택했습니다. 식당 간 이동시간을 다시 확인해 주세요.");
+        replacements.set(key, []);
+        continue;
+      }
+      if (!insertion || !insertion.departPrevious || !insertion.nextArrival) {
+        warnings.push("선택한 식당의 이동시간을 확인할 수 없습니다.");
+        replacements.set(key, []);
+        continue;
+      }
+      const common = { predictionBasis: insertion.basis, selectedMeal: true };
+      replacements.set(key, [
+        { ...common, fromId, toId: selected.restaurantId, fromTitle: slot.beforeLocation?.title, toTitle: selected.title,
+          durationMinutes: insertion.toRestaurantMinutes, departureTime: insertion.departPrevious, arrivalTime: insertion.arrival },
+        { ...common, fromId: selected.restaurantId, toId, fromTitle: selected.title, toTitle: slot.afterLocation?.title,
+          durationMinutes: insertion.fromRestaurantMinutes, departureTime: insertion.mealEnd, arrivalTime: insertion.nextArrival },
+      ]);
+    }
+    const legs = [];
+    for (const leg of day.legs || []) {
+      const key = `${leg.fromId}|${leg.toId}`;
+      if (!replacements.has(key)) legs.push(leg);
+    }
+    for (const replacement of replacements.values()) legs.push(...replacement);
+    legs.sort((a, b) => String(a.departureTime).localeCompare(String(b.departureTime)));
+    return { legs, warnings };
   }
   function validDate(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/u.test(value || "")) return false;
@@ -178,5 +211,5 @@
     }
     return { invalidate, generate, getState: () => state };
   }
-  return { MAX_DAYS, DEFAULT_MEALS, PREFERENCE_FEATURES, VERDICT_LABELS, eligibility, buildRequest, createClient, travelerContext, foodContext, verdictLabel, partitionCandidates };
+  return { MAX_DAYS, DEFAULT_MEALS, PREFERENCE_FEATURES, VERDICT_LABELS, eligibility, buildRequest, createClient, travelerContext, foodContext, verdictLabel, partitionCandidates, selectedMealRoutes };
 });

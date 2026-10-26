@@ -2,8 +2,10 @@
 """Minimal same-origin API for durable travel recommendation feedback."""
 
 from __future__ import annotations
+from contextlib import closing
 
 import json
+import ipaddress
 import os
 import re
 import sqlite3
@@ -17,27 +19,8 @@ from typing import Any
 from urllib.parse import parse_qs, urlsplit
 
 
-V2_SCHEMA_VERSION = "travel-recommendation-feedback-log-v2"
-V3_SCHEMA_VERSION = "travel-recommendation-feedback-log-v3"
-SCHEMA_VERSION = V2_SCHEMA_VERSION
-API_PATH = "/travel/api/feedback"
-ITINERARY_PATH = "/travel/api/itineraries"
-MAX_ITINERARY_BODY_BYTES = 64 * 1024
-REVIEW_SCHEMA_VERSION = "kakao-place-reviews-v1"
-REVIEW_PATH_PATTERN = re.compile(r"^/travel/api/places/([^/]+)/reviews$")
-MAX_BODY_BYTES = 2 * 1024 * 1024
-MAX_ENTRIES = 100
-MAX_COMMENT_LENGTH = 300
-MAX_PARTICIPANT_NAME_LENGTH = 30
-
-
-class ValidationError(ValueError):
-    pass
-
-
-class SubmissionConflict(ValueError):
-    pass
-
+from feedback_contract import (V2_SCHEMA_VERSION, V3_SCHEMA_VERSION, SCHEMA_VERSION, API_PATH, ITINERARY_PATH, MAX_ITINERARY_BODY_BYTES, REVIEW_SCHEMA_VERSION, REVIEW_PATH_PATTERN, MAX_BODY_BYTES, MAX_ENTRIES, MAX_SESSION_ENTRIES, MAX_COMMENT_LENGTH, MAX_PARTICIPANT_NAME_LENGTH, ValidationError, SubmissionConflict, parse_iso_datetime)
+from feedback_validation import validate_payload, validate_v3_payload, validate_v2_payload
 
 class ReviewStore:
     def __init__(self, db_path: str):
@@ -52,7 +35,7 @@ class ReviewStore:
         return connection
 
     def initialize(self) -> None:
-        with self.connect() as connection:
+        with closing(self.connect()) as connection, connection:
             if connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                 raise RuntimeError("Kakao review database integrity check failed")
             schema_version = connection.execute(
@@ -62,7 +45,7 @@ class ReviewStore:
                 raise RuntimeError("Kakao review database schema is unsupported")
 
     def fetch(self, contentid: str, limit: int, offset: int) -> dict[str, Any]:
-        with self.connect() as connection:
+        with closing(self.connect()) as connection, connection:
             metadata = dict(connection.execute("SELECT key, value FROM metadata"))
             places = [
                 {
@@ -137,182 +120,6 @@ def isoformat_utc(value: datetime) -> str:
     return value.astimezone(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
 
 
-def parse_iso_datetime(value: Any, field: str) -> datetime:
-    if not isinstance(value, str):
-        raise ValidationError(f"{field} must be an ISO 8601 string")
-    try:
-        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError as exc:
-        raise ValidationError(f"{field} must be an ISO 8601 string") from exc
-    if parsed.tzinfo is None:
-        raise ValidationError(f"{field} must include a timezone")
-    return parsed
-
-
-def validate_v2_payload(payload: Any) -> dict[str, Any]:
-    if not isinstance(payload, dict):
-        raise ValidationError("request body must be an object")
-    if payload.get("schema_version") != V2_SCHEMA_VERSION:
-        raise ValidationError("unsupported schema_version")
-
-    submission_id = payload.get("submission_id")
-    try:
-        parsed_id = uuid.UUID(submission_id)
-    except (AttributeError, TypeError, ValueError) as exc:
-        raise ValidationError("submission_id must be a UUID") from exc
-    if str(parsed_id) != submission_id.lower():
-        raise ValidationError("submission_id must use canonical UUID form")
-
-    parse_iso_datetime(payload.get("created_at"), "created_at")
-    storage = payload.get("storage")
-    if not isinstance(storage, dict) or storage.get("method") != "server_api":
-        raise ValidationError("storage.method must be server_api")
-    if storage.get("endpoint") != API_PATH:
-        raise ValidationError("storage.endpoint is invalid")
-    if storage.get("server_transmitted") is not True or storage.get("web_storage_used") is not False:
-        raise ValidationError("storage flags are invalid")
-
-    feedback = payload.get("feedback")
-    if not isinstance(feedback, dict):
-        raise ValidationError("feedback must be an object")
-    entries = feedback.get("entries")
-    if not isinstance(entries, list) or not 1 <= len(entries) <= MAX_ENTRIES:
-        raise ValidationError(f"feedback.entries must contain 1..{MAX_ENTRIES} items")
-    required = feedback.get("required_place_count")
-    completed = feedback.get("completed_place_count")
-    if type(required) is not int or type(completed) is not int:
-        raise ValidationError("feedback counts must be integers")
-    if required != completed or completed != len(entries) or feedback.get("all_scores_completed") is not True:
-        raise ValidationError("feedback completion counts do not match")
-
-    seen_place_ids: set[str] = set()
-    for index, entry in enumerate(entries):
-        if not isinstance(entry, dict):
-            raise ValidationError(f"feedback.entries[{index}] must be an object")
-        place_id = entry.get("place_id")
-        if not isinstance(place_id, str) or not place_id or len(place_id) > 100:
-            raise ValidationError(f"feedback.entries[{index}].place_id is invalid")
-        if place_id in seen_place_ids:
-            raise ValidationError("feedback place_id values must be unique")
-        seen_place_ids.add(place_id)
-        score = entry.get("score")
-        if type(score) is not int or not 1 <= score <= 5:
-            raise ValidationError(f"feedback.entries[{index}].score must be 1..5")
-        comment = entry.get("comment")
-        if not isinstance(comment, str) or len(comment) > MAX_COMMENT_LENGTH:
-            raise ValidationError(f"feedback.entries[{index}].comment is too long")
-        if not isinstance(entry.get("title"), str) or not isinstance(entry.get("contexts"), list):
-            raise ValidationError(f"feedback.entries[{index}] metadata is invalid")
-
-    if not isinstance(payload.get("source"), dict):
-        raise ValidationError("source must be an object")
-    if not isinstance(payload.get("user_selections"), dict):
-        raise ValidationError("user_selections must be an object")
-    if not isinstance(payload.get("recommendation_result"), dict):
-        raise ValidationError("recommendation_result must be an object")
-    return payload
-
-
-def validate_v3_payload(payload: Any) -> dict[str, Any]:
-    if not isinstance(payload, dict):
-        raise ValidationError("request body must be an object")
-    if payload.get("schema_version") != V3_SCHEMA_VERSION:
-        raise ValidationError("unsupported schema_version")
-
-    participant_name = payload.get("participant_name")
-    if participant_name is not None:
-        if not isinstance(participant_name, str) or not 1 <= len(participant_name) <= MAX_PARTICIPANT_NAME_LENGTH:
-            raise ValidationError(f"participant_name must contain 1..{MAX_PARTICIPANT_NAME_LENGTH} characters")
-        if participant_name != participant_name.strip():
-            raise ValidationError("participant_name must not have leading or trailing whitespace")
-        if any(ord(character) < 32 or ord(character) == 127 for character in participant_name):
-            raise ValidationError("participant_name must not contain control characters")
-
-    session_id = payload.get("session_id")
-    try:
-        parsed_id = uuid.UUID(session_id)
-    except (AttributeError, TypeError, ValueError) as exc:
-        raise ValidationError("session_id must be a UUID") from exc
-    if str(parsed_id) != session_id.lower():
-        raise ValidationError("session_id must use canonical UUID form")
-
-    revision = payload.get("revision")
-    if type(revision) is not int or revision < 1:
-        raise ValidationError("revision must be a positive integer")
-    parse_iso_datetime(payload.get("created_at"), "created_at")
-    parse_iso_datetime(payload.get("updated_at"), "updated_at")
-
-    storage = payload.get("storage")
-    if not isinstance(storage, dict) or storage.get("method") != "server_autosave":
-        raise ValidationError("storage.method must be server_autosave")
-    if storage.get("endpoint") != API_PATH:
-        raise ValidationError("storage.endpoint is invalid")
-    if storage.get("server_transmitted") is not True or storage.get("web_storage_used") is not False:
-        raise ValidationError("storage flags are invalid")
-
-    feedback = payload.get("feedback")
-    if not isinstance(feedback, dict):
-        raise ValidationError("feedback must be an object")
-    entries = feedback.get("entries")
-    if not isinstance(entries, list) or not 1 <= len(entries) <= MAX_ENTRIES:
-        raise ValidationError(f"feedback.entries must contain 1..{MAX_ENTRIES} items")
-    required = feedback.get("required_place_count")
-    completed = feedback.get("completed_place_count")
-    if type(required) is not int or type(completed) is not int:
-        raise ValidationError("feedback counts must be integers")
-    if required != len(entries) or not 0 <= completed <= required:
-        raise ValidationError("feedback completion counts do not match")
-
-    seen_place_ids: set[str] = set()
-    actual_completed = 0
-    for index, entry in enumerate(entries):
-        if not isinstance(entry, dict):
-            raise ValidationError(f"feedback.entries[{index}] must be an object")
-        place_id = entry.get("place_id")
-        if not isinstance(place_id, str) or not place_id or len(place_id) > 100:
-            raise ValidationError(f"feedback.entries[{index}].place_id is invalid")
-        if place_id in seen_place_ids:
-            raise ValidationError("feedback place_id values must be unique")
-        seen_place_ids.add(place_id)
-        score = entry.get("score")
-        score_label = entry.get("score_label")
-        if score is None:
-            if score_label is not None:
-                raise ValidationError(f"feedback.entries[{index}].score_label must be null")
-        elif type(score) is int and 1 <= score <= 5:
-            if not isinstance(score_label, str) or not score_label:
-                raise ValidationError(f"feedback.entries[{index}].score_label is invalid")
-            actual_completed += 1
-        else:
-            raise ValidationError(f"feedback.entries[{index}].score must be null or 1..5")
-        comment = entry.get("comment")
-        if not isinstance(comment, str) or len(comment) > MAX_COMMENT_LENGTH:
-            raise ValidationError(f"feedback.entries[{index}].comment is too long")
-        if not isinstance(entry.get("title"), str) or not isinstance(entry.get("contexts"), list):
-            raise ValidationError(f"feedback.entries[{index}] metadata is invalid")
-
-    all_completed = completed == required
-    if completed != actual_completed or feedback.get("all_scores_completed") is not all_completed:
-        raise ValidationError("feedback score completion state is invalid")
-    if not isinstance(payload.get("source"), dict):
-        raise ValidationError("source must be an object")
-    if not isinstance(payload.get("user_selections"), dict):
-        raise ValidationError("user_selections must be an object")
-    if not isinstance(payload.get("recommendation_result"), dict):
-        raise ValidationError("recommendation_result must be an object")
-    return payload
-
-
-def validate_payload(payload: Any) -> dict[str, Any]:
-    if not isinstance(payload, dict):
-        raise ValidationError("request body must be an object")
-    if payload.get("schema_version") == V2_SCHEMA_VERSION:
-        return validate_v2_payload(payload)
-    if payload.get("schema_version") == V3_SCHEMA_VERSION:
-        return validate_v3_payload(payload)
-    raise ValidationError("unsupported schema_version")
-
-
 class FeedbackStore:
     def __init__(self, db_path: str, retention_days: int = 90):
         self.db_path = db_path
@@ -326,7 +133,7 @@ class FeedbackStore:
         return connection
 
     def initialize(self) -> None:
-        with self.connect() as connection:
+        with closing(self.connect()) as connection, connection:
             connection.execute("PRAGMA journal_mode = WAL")
             connection.execute(
                 """
@@ -364,10 +171,14 @@ class FeedbackStore:
         connection.execute("DELETE FROM feedback_submissions WHERE received_at < ?", (cutoff,))
         connection.execute("DELETE FROM feedback_sessions WHERE updated_at < ?", (cutoff,))
 
+    def prune(self, now: datetime | None = None) -> None:
+        with closing(self.connect()) as connection, connection:
+            self._prune(connection, now or utc_now())
+
     def save(self, payload: dict[str, Any], now: datetime | None = None) -> tuple[str, bool]:
         received_at = isoformat_utc(now or utc_now())
         canonical_payload = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
-        with self.connect() as connection:
+        with closing(self.connect()) as connection, connection:
             self._prune(connection, now or utc_now())
             cursor = connection.execute(
                 """
@@ -401,7 +212,7 @@ class FeedbackStore:
     ) -> tuple[str, bool, bool, int]:
         received_at = isoformat_utc(now or utc_now())
         canonical_payload = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
-        with self.connect() as connection:
+        with closing(self.connect()) as connection, connection:
             self._prune(connection, now or utc_now())
             row = connection.execute(
                 "SELECT revision, updated_at, payload_json FROM feedback_sessions WHERE session_id = ?",
@@ -450,16 +261,32 @@ class FeedbackStore:
 
 
 class MemoryRateLimiter:
-    def __init__(self, limit: int = 60, window_seconds: int = 60):
+    def __init__(self, limit: int = 60, window_seconds: int = 60, max_keys: int = 10000):
         self.limit = limit
         self.window_seconds = window_seconds
         self._events: dict[str, list[float]] = {}
         self._lock = threading.Lock()
+        self.max_keys = max_keys
+        self._next_prune = 0.0
+
+    def prune(self, now: float | None = None) -> None:
+        current = now if now is not None else time.monotonic()
+        with self._lock:
+            self._prune(current)
+
+    def _prune(self, current: float) -> None:
+        self._events = {key: events for key, events in self._events.items()
+                        if events and events[-1] > current - self.window_seconds}
+        self._next_prune = current + min(self.window_seconds, 60)
 
     def allow(self, key: str, now: float | None = None) -> bool:
         current = now if now is not None else time.monotonic()
         cutoff = current - self.window_seconds
         with self._lock:
+            if current >= self._next_prune:
+                self._prune(current)
+            if key not in self._events and len(self._events) >= self.max_keys:
+                return False
             events = [event for event in self._events.get(key, []) if event > cutoff]
             allowed = len(events) < self.limit
             if allowed:
@@ -545,8 +372,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         if content_type != "application/json":
             self.send_json(415, {"ok": False, "error": "application_json_required"})
             return
-        trusted_client_ip = self.headers.get("X-Travel-Client-IP", "").strip()
-        rate_key = trusted_client_ip or self.client_address[0]
+        rate_key = self.feedback_server.client_rate_key(self.client_address[0], self.headers.get("X-Travel-Client-IP", ""))
         if not self.feedback_server.rate_limiter.allow(rate_key):
             self.send_json(429, {"ok": False, "error": "rate_limit_exceeded"})
             return
@@ -683,8 +509,11 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
         itinerary_per_day: int = 100,
         additional_origins: tuple[str, ...] = (),
         handler_class: Any = None,
+        trusted_proxy_ips: tuple[str, ...] = (),
     ):
         self.store = store
+        self.trusted_proxy_ips = frozenset(str(ipaddress.ip_address(value)) for value in trusted_proxy_ips)
+        self._next_maintenance = time.monotonic() + 60
         self.public_origin = public_origin.rstrip("/")
         # Exact-match extra origins (local runner: localhost and 127.0.0.1 of the same port).
         self.additional_origins = frozenset(origin.rstrip("/") for origin in additional_origins)
@@ -698,6 +527,25 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
 
     def origin_allowed(self, origin: str | None) -> bool:
         return bool(origin) and (origin == self.public_origin or origin in self.additional_origins)
+
+    def client_rate_key(self, peer: str, forwarded: str) -> str:
+        if peer in self.trusted_proxy_ips:
+            try:
+                return str(ipaddress.ip_address(forwarded.strip()))
+            except ValueError:
+                pass
+        return peer
+
+    def service_actions(self) -> None:
+        # serve_forever calls this even when there are no incoming requests.
+        if time.monotonic() < self._next_maintenance:
+            return
+        self._next_maintenance = time.monotonic() + 60
+        try:
+            self.store.prune()
+        except sqlite3.Error:
+            print("travel-feedback retention_cleanup_failed", flush=True)
+        self.rate_limiter.prune()
 
 
 def itinerary_enabled(environ: Any = None) -> bool:
@@ -767,6 +615,7 @@ def main() -> None:
         itinerary_service=load_itinerary_service(),
         itinerary_per_minute=int(os.environ.get("ITINERARY_REQUESTS_PER_MINUTE", "10")),
         itinerary_per_day=int(os.environ.get("ITINERARY_REQUESTS_PER_DAY", "100")),
+        trusted_proxy_ips=tuple(value.strip() for value in os.environ.get("TRAVEL_TRUSTED_PROXY_IPS", "").split(",") if value.strip()),
     )
     print(f"travel-feedback listening on :{port}", flush=True)
     server.serve_forever()

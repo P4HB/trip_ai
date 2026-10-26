@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css" />
     <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="./styles.css?v=20261012-restaurants-v1" />
+    <link rel="stylesheet" href="./styles.css?v=20261026-review-fixes" />
   </head>
   <body>
     <header class="topbar">
@@ -346,17 +346,17 @@
             <span>AI 초안 데이터로 만든 내부 베타입니다. 날씨·실제 이동시간·가격은 현재 점수에 넣지 않습니다.</span>
           </details>
 
-          <details class="json-panel">
+          <details class="json-panel" data-debug-only hidden>
             <summary>정규화 입력 JSON</summary>
             <pre id="requestPreview">추천을 실행하면 입력이 표시됩니다.</pre>
           </details>
-          <details class="json-panel">
+          <details class="json-panel" data-debug-only hidden>
             <summary>적용 설정 JSON</summary>
             <pre id="configPreview">알고리즘 설정을 불러오는 중입니다.</pre>
           </details>
 
           <details class="explore-panel">
-            <summary>추천 후보 탐색 필터</summary>
+            <summary>지도 탐색 필터</summary>
             <p class="explore-copy" id="filterSummary">데이터를 불러오는 중입니다.</p>
             <div class="search-field compact-search">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -594,7 +594,7 @@
           <details class="run-summary-panel">
             <summary>실행 요약 · 주의사항</summary>
             <div class="run-summary-content">
-              <div class="metric-grid" id="metricGrid">
+              <div class="metric-grid" id="metricGrid" data-debug-only hidden>
                 <div><span>후보</span><strong id="candidateMetric">—</strong></div>
                 <div><span>점수 계산</span><strong id="scoredMetric">—</strong></div>
                 <div><span>MMR pool</span><strong id="poolMetric">—</strong></div>
@@ -611,7 +611,7 @@
             <div id="verificationList"></div>
           </details>
 
-          <details class="json-panel output-json-panel">
+          <details class="json-panel output-json-panel" data-debug-only hidden>
             <summary>전체 출력 JSON</summary>
             <pre id="outputPreview">추천을 실행하면 결과 trace가 표시됩니다.</pre>
           </details>
@@ -686,9 +686,17 @@
     <script src="./vendor/leaflet/leaflet.js" defer></script>
     <script src="./vendor/markercluster/leaflet.markercluster.js" defer></script>
     <script src="./data/jeju-places.js?v=20260926-preference-budget" defer></script>
+    <script src="./domain.js?v=20261026" defer></script>
     <script src="./preference-elicitation.js?v=20260902-mbti-v1" defer></script>
     <script src="./ccu-mmr.js?v=20260926-preference-budget" defer></script>
-    <script src="./itinerary.js?v=20261012-restaurants-v1" defer></script>
-    <script src="./app.js?v=20261012-restaurants-v1" defer></script>
+    <script src="./itinerary.js?v=20261026-review-fixes" defer></script>
+    <script src="./state.js?v=20261026" defer></script>
+    <script src="./feedback.js?v=20261026" defer></script>
+    <script src="./itinerary-view.js?v=20261026" defer></script>
+    <script src="./wizard.js?v=20261026" defer></script>
+    <script src="./preference-view.js?v=20261026" defer></script>
+    <script src="./map-view.js?v=20261026" defer></script>
+    <script src="./place-detail.js?v=20261026" defer></script>
+    <script src="./app.js?v=20261026-review-fixes" defer></script>
   </body>
 </html>

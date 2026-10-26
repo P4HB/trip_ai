@@ -249,6 +249,9 @@ class JudgementTests(unittest.TestCase):
         day, _ = self.run_attach(FitLLM(mutate=fake_ref))
         judged = [c["judgement"] for s in day["mealSlots"] for c in s["restaurantCandidates"]]
         bad = [j for j in judged if j.get("evidenceIssue") == "unknown_review_reference"]
+        for judgement in bad:
+            self.assertIn("근거가 부족", judgement["reason"])
+            self.assertEqual({judgement["criteria"][name] for name in ("companionFit", "mealTimeFit", "quality")}, {"unknown"})
         self.assertEqual(len(bad), 1)
         self.assertEqual((bad[0]["verdict"], bad[0]["evidenceReviewIds"]), ("insufficient_evidence", []))
         self.assertTrue(all(j["status"] == "judged" for j in judged))
@@ -499,6 +502,24 @@ class LocalRunnerTests(unittest.TestCase):
         self.assertEqual(loaded, ["OPENAI_API_KEY"])
         self.assertEqual(environ, {"ITINERARY_LLM_MODEL": "kept", "OPENAI_API_KEY": "sk-file"})
 
+
+    def test_env_llm_keys_win_over_inherited_and_diagnostic_hides_values(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / ".env"
+            path.write_text("OPENAI_API_KEY=AIzaFILEVALUE\nGEMINI_KEY=AIzaOTHER\nLLM_PROVIDER=\n", encoding="utf-8")
+            inherited = {"OPENAI_API_KEY": "sk-system"}
+            environ = dict(inherited)
+            loaded = self.runner.load_env_file(path, environ)
+            pairs = self.runner.read_env_pairs(path)
+        self.assertEqual(environ["OPENAI_API_KEY"], "AIzaFILEVALUE", "a non-empty .env LLM key beats an inherited one")
+        self.assertEqual(environ["LLM_PROVIDER"], "", "empty .env values do not override")
+        self.assertIn("GEMINI_KEY", loaded)
+        lines = self.runner.describe_llm_settings(pairs, inherited, environ)
+        text = "\n".join(lines)
+        self.assertIn("OPENAI_API_KEY 있음(.env, Google(Gemini) 형식, 시스템 환경변수 값 대신 .env 사용)", text)
+        self.assertIn("인식하지 않는 .env 이름: GEMINI_KEY", text)
+        for secret in ("FILEVALUE", "OTHER", "sk-system"):
+            self.assertNotIn(secret, text)
 
 if __name__ == "__main__":
     unittest.main()

@@ -133,5 +133,7 @@ def analyze_reviews(reviews, client, timeout=30):
     except ValueError:
         raise ProviderError("review_invalid_output") from None
     base.update(valid)
+    base["model"] = getattr(result, "model", client.model)
+    base["inputHash"] = input_hash(reviews, base["model"])
     base["unknownReason"] = "conflicting_evidence" if valid["status"] == "conflict" else ("insufficient_evidence" if valid["status"] == "unknown" else None)
     return base

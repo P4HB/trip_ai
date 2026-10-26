@@ -4,11 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { workspaceRoot as ROOT, readJSON } from './lib/data_io.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const hash = (value) => crypto.createHash('sha256').update(value).digest('hex');
-const readJSON = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 function options(argv) {
   const settings = { source: path.join(ROOT, 'map-ui/data/jeju-places.js'),
@@ -28,7 +26,9 @@ function assignment(source, name) {
   const marker = `window.${name} = `;
   const start = source.indexOf(marker);
   if (start < 0) throw new Error(`Missing ${name}`);
-  const end = source.indexOf(';\n', start);
+  const boundary = /;\r?\n|;\s*$/g;
+  boundary.lastIndex = start;
+  const end = boundary.exec(source)?.index ?? -1;
   return JSON.parse(source.slice(start + marker.length, end < 0 ? source.length : end).trim().replace(/;$/, ''));
 }
 
@@ -72,12 +72,12 @@ function operatingData(row) {
 }
 
 function build(settings) {
-  const source = fs.readFileSync(settings.source, 'utf8');
+  const source = fs.readFileSync(settings.source, 'utf8').replace(/\r\n/g, '\n');
   const meta = assignment(source, 'JEJU_DATA_META');
   const places = assignment(source, 'JEJU_PLACES');
   const insightFile = fs.existsSync(settings.insights) ? readJSON(settings.insights) : { version: 'not_analyzed', places: {} };
   if (fs.existsSync(settings.insights)) {
-    const validation = spawnSync('python3', [path.join(ROOT, 'scripts/build_visit_insights.py'), '--validate-only',
+    const validation = spawnSync(process.env.PYTHON || (process.platform === 'win32' ? 'python' : 'python3'), [path.join(ROOT, 'scripts/build_visit_insights.py'), '--validate-only',
       '--output', settings.insights, '--database', settings['review-database']], { encoding: 'utf8', timeout: 30_000 });
     if (validation.status !== 0) throw new Error('Visit insights failed provenance or authorized review evidence validation');
   }

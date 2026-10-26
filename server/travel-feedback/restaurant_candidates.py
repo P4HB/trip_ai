@@ -9,6 +9,7 @@ call. Judgement failures never fail the place itinerary.
 from __future__ import annotations
 
 import hashlib
+import logging
 import math
 import random
 import re
@@ -17,6 +18,7 @@ from datetime import datetime, timedelta
 
 from itinerary_validation import iso, issue, local_time, validate_restaurant_insertion
 from restaurant_hours import hours_summary, meal_fits
+from llm_client import safe_error_code
 from route_provider import RouteEstimator, haversine_meters
 
 PROMPT_VERSION = "restaurant-fit-v1"
@@ -273,7 +275,10 @@ class RestaurantRecommender:
             result = self.llm.generate_structured(TASK, prompt, FIT_SCHEMA, timeout=timeout)
         except Exception as error:  # Provider details may contain secrets; keep only safe codes.
             code = getattr(error, "code", None)
-            return {}, code if isinstance(code, str) and re.fullmatch(r"[a-z0-9_]{1,60}", code) else "llm_unavailable"
+            code = code if isinstance(code, str) and re.fullmatch(r"[a-z0-9_]{1,60}", code) else "llm_unavailable"
+            logging.getLogger("trip_ai.restaurants").warning("restaurant judgement unavailable: %s (llm=%s/%s)", safe_error_code(error),
+                                                             getattr(self.llm, "provider", "?"), getattr(self.llm, "model", "?"))
+            return {}, code
         judgements = result.get("judgements") if isinstance(result, dict) else None
         if not isinstance(judgements, list):
             return {}, "invalid_judgement"
@@ -303,10 +308,14 @@ class RestaurantRecommender:
             elif verdict != "insufficient_evidence" and not refs:
                 verdict, evidence_issue = "insufficient_evidence", "missing_review_evidence"
             reason = " ".join(item["reason"].split())[:80] or "판정 이유가 제공되지 않았습니다."
+            unsupported = evidence_issue is not None or not refs
+            if unsupported:
+                reason = "확인할 수 있는 리뷰 근거가 부족해 적합성을 판단하지 않았습니다."
             output[key] = {"status": "judged", "verdict": verdict,
-                           "criteria": {name: item[name] for name in CRITERIA},
+                           "criteria": {name: "unknown" if unsupported else item[name] for name in CRITERIA},
                            "reason": reason, "evidenceReviewIds": [ref_maps[key][ref] for ref in refs],
-                           "evidenceIssue": evidence_issue, "model": self.model, "promptVersion": PROMPT_VERSION}
+                           "evidenceIssue": evidence_issue, "model": getattr(result, "model", self.model),
+                           "promptVersion": PROMPT_VERSION}
         return output, None
 
     # ------------------------------------------------------------------ orchestration

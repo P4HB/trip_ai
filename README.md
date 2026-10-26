@@ -74,7 +74,7 @@ python -m http.server 8080 -d map-ui
 
 ### 방법 3: 동선·식당 후보까지 로컬 실행 (API 포함)
 
-저장소 루트의 `.env`(Git 제외, AI 열람 금지)에 `GEMINI_API_KEY=...`(또는 `OPENAI_API_KEY=...`)를 넣고 다음을 실행합니다. 두 키를 모두 넣었다면 `LLM_PROVIDER=gemini`로 공급자를 고정합니다. 지도 UI와 동선·리뷰·평가 API가 같은 주소에서 함께 뜨며, 이동시간은 외부 경로 API 없이 직선거리 기반으로 추정합니다. 로컬 평가 저장은 임시 폴더의 별도 SQLite에 쌓입니다.
+저장소 루트의 `.env`(Git 제외, AI 열람 금지)에 `GEMINI_API_KEY=...`(또는 `OPENAI_API_KEY=...`)를 넣고 다음을 실행합니다. Gemini 키가 있으면 Gemini를 우선 사용하며, OpenAI를 쓰려면 `LLM_PROVIDER=openai`를 넣습니다. 지도 UI와 동선·리뷰·평가 API가 같은 주소에서 함께 뜨며, 이동시간은 외부 경로 API 없이 직선거리 기반으로 추정합니다. 로컬 평가 저장은 임시 폴더의 별도 SQLite에 쌓입니다.
 
 ```powershell
 python scripts/run_trip_ai_local.py
@@ -155,7 +155,6 @@ node scripts/build_map_ui_data.mjs
 │  └─ labeling/jeju/               # 파일럿 및 전체 AI 초안
 ├─ labeling-review/                # 100건 정적 사람 검수 도구
 ├─ docs/                           # SPEC·설계·계약·평가 기준 문서
-├─ COMPETITOR_RESEARCH_2026-08-02.md
 ├─ .env.example
 └─ README.md
 ```
@@ -174,5 +173,4 @@ Leaflet 및 MarkerCluster 라이선스는 각 `map-ui/vendor/` 하위에 포함�
 
 - [개발 SPEC 및 설계 문서 색인](docs/README.md)
 - [AI 초안 인지형 장소 추천 엔진 Draft](docs/spec_008.md)
-- [경쟁사 및 시장 조사](COMPETITOR_RESEARCH_2026-08-02.md)
 - [지도 UI 실행 안내](map-ui/README.md)

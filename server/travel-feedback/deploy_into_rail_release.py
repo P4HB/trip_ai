@@ -20,6 +20,7 @@ SERVICE_BLOCK = """  travel-feedback:
       TRAVEL_PUBLIC_ORIGIN: ${RAIL_PUBLIC_ORIGIN:?Set RAIL_PUBLIC_ORIGIN in .env}
       TRAVEL_FEEDBACK_DB_PATH: /data/feedback.sqlite3
       TRAVEL_FEEDBACK_RETENTION_DAYS: 90
+      TRAVEL_TRUSTED_PROXY_IPS: ${TRAVEL_TRUSTED_PROXY_IPS:-}
       TRAVEL_REVIEW_DB_PATH: /app/data/kakao_reviews.sqlite3
       ITINERARY_ENABLED: ${ITINERARY_ENABLED:-auto}
       LLM_PROVIDER: ${LLM_PROVIDER:-auto}
@@ -133,7 +134,7 @@ def configure_itinerary_service(compose: str) -> str:
         if line.startswith("      ") and any(line.strip().startswith(key + ":") for key in (
             "ITINERARY_ENABLED", "LLM_PROVIDER", "GEMINI_API_KEY", "OPENAI_API_KEY", "ITINERARY_LLM_MODEL", "RESTAURANT_LLM_MODEL",
             "ITINERARY_ROUTE_PROVIDER", "KAKAO_MOBILITY_API_KEY",
-            "ITINERARY_REQUESTS_PER_MINUTE", "ITINERARY_REQUESTS_PER_DAY",
+            "ITINERARY_REQUESTS_PER_MINUTE", "ITINERARY_REQUESTS_PER_DAY", "TRAVEL_TRUSTED_PROXY_IPS",
         )):
             key = line.strip().partition(":")[0]
             if not re.search(r"(?m)^      " + key + ":", block):

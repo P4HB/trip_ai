@@ -12,10 +12,37 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 
+class StructuredResponse(dict):
+    """JSON-compatible value with provenance belonging to this response, never the shared client."""
+    def __init__(self, value, model, usage):
+        super().__init__(value)
+        self.model = model
+        self.usage = dict(usage)
+
+
 class ProviderError(RuntimeError):
-    def __init__(self, code: str):
+    def __init__(self, code: str, reason: str | None = None):
         self.code = code
+        # Provider enum such as API_KEY_INVALID / RESOURCE_EXHAUSTED / invalid_api_key — never a message.
+        self.reason = reason if isinstance(reason, str) and re.fullmatch(r"[A-Za-z0-9_.]{1,60}", reason) else None
         super().__init__(code)
+
+
+def provider_error_reason(body):
+    """Extract only a machine enum from a provider error body (Google ErrorInfo reason/status, OpenAI code/type)."""
+    try:
+        error = json.loads(body).get("error")
+    except (ValueError, AttributeError, TypeError):
+        return None
+    if not isinstance(error, dict):
+        return None
+    for detail in error.get("details") or []:
+        if isinstance(detail, dict) and isinstance(detail.get("reason"), str):
+            return detail["reason"]
+    for key in ("status", "code", "type"):
+        if isinstance(error.get(key), str):
+            return error[key]
+    return None
 
 
 def validate_schema(value, schema, path="$"):
@@ -80,12 +107,31 @@ def request_json(request, timeout, opener=urlopen, max_bytes=2_000_000):
     except ProviderError:
         raise
     except HTTPError as error:
-        # Do not include URLs, authorization headers, response bodies or request text.
-        raise ProviderError(f"provider_http_{error.code}") from None
-    except (URLError, TimeoutError, OSError):
+        # Do not include URLs, authorization headers, response bodies or request text; keep only an enum reason.
+        try:
+            reason = provider_error_reason(error.read(65_536))
+        except Exception:
+            reason = None
+        finally:
+            error.close()
+        raise ProviderError(f"provider_http_{error.code}", reason) from None
+    except TimeoutError:
+        raise ProviderError("provider_timeout") from None
+    except URLError as error:
+        raise ProviderError("provider_timeout" if isinstance(error.reason, TimeoutError) else "provider_unavailable") from None
+    except OSError:
         raise ProviderError("provider_unavailable") from None
     except (ValueError, UnicodeError):
         raise ProviderError("provider_invalid_response") from None
+
+
+def safe_error_code(error):
+    """A loggable code for an exception: fixed provider codes only, never messages or bodies."""
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and re.fullmatch(r"[a-z0-9_]{1,60}", code):
+        reason = getattr(error, "reason", None)
+        return f"{code}:{reason}" if isinstance(reason, str) and re.fullmatch(r"[A-Za-z0-9_.]{1,60}", reason) else code
+    return type(error).__name__
 
 
 def task_instructions(task):
@@ -191,14 +237,22 @@ class OpenAIClient:
         except (ValueError, TypeError):
             raise ProviderError("llm_invalid_output") from None
         usage = response.get("usage", {})
-        self.last_usage = {key: usage[key] for key in ("input_tokens", "output_tokens", "total_tokens")
+        response_usage = {key: usage[key] for key in ("input_tokens", "output_tokens", "total_tokens")
                            if isinstance(usage.get(key), int) and usage[key] >= 0}
-        return result
+        self.last_usage = response_usage  # compatibility diagnostics only
+        return StructuredResponse(result, self.model, response_usage)
 
 
 # --------------------------------------------------------------------------- Gemini (SPEC-108)
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/"
 GEMINI_DEFAULT_MODEL = "gemini-3.8-flash"
+# Lower thinking keeps structured calls inside the request deadline; "default" uses the model's own level.
+GEMINI_DEFAULT_THINKING = "low"
+# Used when the primary model is overloaded/slow (429/5xx/timeout); "none" disables it.
+GEMINI_DEFAULT_FALLBACK_MODEL = "gemini-3.5-flash-lite"
+GEMINI_FALLBACK_CODES = {"provider_http_429", "provider_http_500", "provider_http_502", "provider_http_503",
+                         "provider_http_504", "provider_timeout"}
+GEMINI_FALLBACK_COOLDOWN_SECONDS = 300
 OPENAI_DEFAULT_MODEL = "gpt-5.6-terra"
 # Finish reasons that mean the provider withheld content (vs. simply stopping early).
 GEMINI_REFUSAL_REASONS = {"SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT", "SPII", "IMAGE_SAFETY", "LANGUAGE"}
@@ -246,19 +300,28 @@ class GeminiClient:
     provider = "gemini"
     prompt_version = OpenAIClient.prompt_version
 
-    def __init__(self, api_key=None, model=None, *, opener=urlopen, max_output_tokens=None, thinking_level=None):
+    def __init__(self, api_key=None, model=None, *, opener=urlopen, max_output_tokens=None, thinking_level=None,
+                 fallback_model=None):
         if api_key is None:
-            api_key = os.environ.get("GEMINI_API_KEY", "") or os.environ.get("GOOGLE_API_KEY", "")
+            api_key = gemini_key()
         self._api_key = api_key.strip()
         self.model = (model or os.environ.get("ITINERARY_LLM_MODEL", "") or GEMINI_DEFAULT_MODEL).removeprefix("models/")
         # Thinking tokens share the output budget on Gemini thinking models; keep a larger default.
         self.max_output_tokens = min(65536, max(256, int(max_output_tokens or os.environ.get("ITINERARY_LLM_MAX_OUTPUT_TOKENS", "") or "8192")))
-        self.thinking_level = (thinking_level if thinking_level is not None else os.environ.get("GEMINI_THINKING_LEVEL", "")).strip() or None
+        level = str(thinking_level if thinking_level is not None else os.environ.get("GEMINI_THINKING_LEVEL", "")).strip().lower()
+        self.thinking_level = None if level in ("default", "model", "none", "off") else (level or GEMINI_DEFAULT_THINKING)
+        fallback = str(fallback_model if fallback_model is not None else os.environ.get("GEMINI_FALLBACK_MODEL", "")).strip()
+        fallback = (fallback or GEMINI_DEFAULT_FALLBACK_MODEL).removeprefix("models/")
+        self.fallback_model = None if fallback.lower() in ("none", "off", "") or fallback == self.model else fallback
         self._opener = opener
-        self._model_checked = False
+        self._checked_models = set()
         self._check_lock = threading.Lock()
-        self._schema_mode = "json"  # "json" -> responseJsonSchema, "openapi" -> responseSchema fallback
+        # Per-model request adjustments learned from 400 responses (they stick for later calls).
+        self._no_thinking_models = set()
+        self._openapi_schema_models = set()
+        self._fallback_until = 0.0
         self.last_usage = {}
+        self.last_model = None
 
     @property
     def configured(self):
@@ -274,14 +337,15 @@ class GeminiClient:
                           method="GET" if data is None else "POST")
         return request_json(request, timeout, self._opener)
 
-    def check_model_access(self, timeout=10):
+    def check_model_access(self, timeout=10, model_name=None):
+        model_name = model_name or self.model
         deadline = time.monotonic() + timeout
         if not self._check_lock.acquire(timeout=max(0, timeout)):
             raise ProviderError("provider_deadline")
         try:
-            if not self._model_checked:
+            if model_name not in self._checked_models:
                 try:
-                    model = self._request("models/" + quote(self.model, safe=""), None, deadline - time.monotonic())
+                    model = self._request("models/" + quote(model_name, safe=""), None, deadline - time.monotonic())
                 except ProviderError as error:
                     if error.code == "provider_http_404":
                         raise ProviderError("llm_model_unavailable") from None
@@ -293,18 +357,19 @@ class GeminiClient:
                 if not isinstance(name, str) or not name.startswith("models/") or \
                         (isinstance(methods, list) and "generateContent" not in methods):
                     raise ProviderError("llm_model_unavailable")
-                self._model_checked = True
+                self._checked_models.add(model_name)
         finally:
             self._check_lock.release()
-        return self.model
+        return model_name
 
-    def _body(self, task, serialized, schema):
+    def _body(self, task, serialized, schema, model_name=None):
+        model_name = model_name or self.model
         config = {"responseMimeType": "application/json", "maxOutputTokens": self.max_output_tokens}
-        if self._schema_mode == "json":
-            config["responseJsonSchema"] = schema
-        else:
+        if model_name in self._openapi_schema_models:
             config["responseSchema"] = json_schema_to_gemini(schema)
-        if self.thinking_level:
+        else:
+            config["responseJsonSchema"] = schema
+        if self.thinking_level and model_name not in self._no_thinking_models:
             config["thinkingConfig"] = {"thinkingLevel": self.thinking_level}
         return {"systemInstruction": {"parts": [{"text": task_instructions(task)}]},
                 "contents": [{"role": "user", "parts": [{"text": serialized}]}],
@@ -315,16 +380,43 @@ class GeminiClient:
         serialized = json.dumps(input, ensure_ascii=False, allow_nan=False)
         if len(serialized.encode("utf-8")) > 120_000:
             raise ProviderError("llm_input_too_large")
-        self.check_model_access(min(10, max(0, deadline - time.monotonic())))
-        path = "models/" + quote(self.model, safe="") + ":generateContent"
-        try:
-            response = self._request(path, self._body(task, serialized, schema), deadline - time.monotonic())
-        except ProviderError as error:
-            # Older/other models may reject JSON Schema; retry once with the OpenAPI subset.
-            if error.code != "provider_http_400" or self._schema_mode != "json":
-                raise
-            self._schema_mode = "openapi"
-            response = self._request(path, self._body(task, serialized, schema), deadline - time.monotonic())
+        models = [self.model] + ([self.fallback_model] if self.fallback_model else [])
+        if self.fallback_model and time.monotonic() < self._fallback_until:
+            models = [self.fallback_model]  # primary was overloaded recently: use the whole budget on the fallback
+        for index, model_name in enumerate(models):
+            last = index == len(models) - 1
+            left = deadline - time.monotonic()
+            # Leave time for the fallback model when the primary is slow or overloaded.
+            end = deadline if last else time.monotonic() + max(min(left, 15), left * 0.6)
+            try:
+                self.check_model_access(min(10, max(0, end - time.monotonic())), model_name)
+                response = self._generate(model_name, task, serialized, schema, end)
+                self.last_model = model_name
+                break
+            except ProviderError as error:
+                if last or error.code not in GEMINI_FALLBACK_CODES:
+                    raise
+                self._fallback_until = time.monotonic() + GEMINI_FALLBACK_COOLDOWN_SECONDS
+        return self._parse(response, schema, model_name)
+
+    def _generate(self, model_name, task, serialized, schema, deadline):
+        path = "models/" + quote(model_name, safe="") + ":generateContent"
+        while True:
+            try:
+                return self._request(path, self._body(task, serialized, schema, model_name), deadline - time.monotonic())
+            except ProviderError as error:
+                # A model may reject the thinking level or JSON Schema: drop thinkingConfig first, then
+                # switch to the OpenAPI schema subset. Each fallback sticks for later calls.
+                if error.code != "provider_http_400" or (error.reason or "").startswith("API_KEY"):
+                    raise
+                if self.thinking_level and model_name not in self._no_thinking_models:
+                    self._no_thinking_models.add(model_name)
+                elif model_name not in self._openapi_schema_models:
+                    self._openapi_schema_models.add(model_name)
+                else:
+                    raise
+
+    def _parse(self, response, schema, model_name=None):
         feedback = response.get("promptFeedback")
         if isinstance(feedback, dict) and feedback.get("blockReason"):
             raise ProviderError("llm_refused")
@@ -348,26 +440,58 @@ class GeminiClient:
         usage = response.get("usageMetadata", {}) if isinstance(response.get("usageMetadata"), dict) else {}
         mapping = {"input_tokens": "promptTokenCount", "output_tokens": "candidatesTokenCount",
                    "thought_tokens": "thoughtsTokenCount", "total_tokens": "totalTokenCount"}
-        self.last_usage = {key: usage[source] for key, source in mapping.items()
+        response_usage = {key: usage[source] for key, source in mapping.items()
                            if isinstance(usage.get(source), int) and usage[source] >= 0}
-        return result
+        self.last_usage = response_usage  # compatibility diagnostics only
+        return StructuredResponse(result, model_name or self.model, response_usage)
 
 
 def _env_key(environ, *names):
     return next((str(environ.get(name, "")).strip() for name in names if str(environ.get(name, "")).strip()), "")
 
 
+def _misplaced_google_key(value):
+    """Google AI Studio keys start with "AIza"; such a value can never work as an OpenAI key."""
+    return value.startswith("AIza")
+
+
+def gemini_key(environ=None):
+    """GEMINI_API_KEY, GOOGLE_API_KEY, or a Google-format key that was put under OPENAI_API_KEY."""
+    environ = os.environ if environ is None else environ
+    key = _env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY")
+    if not key:
+        openai_value = _env_key(environ, "OPENAI_API_KEY")
+        key = openai_value if _misplaced_google_key(openai_value) else ""
+    return key
+
+
+def openai_key(environ=None):
+    environ = os.environ if environ is None else environ
+    value = _env_key(environ, "OPENAI_API_KEY")
+    return "" if _misplaced_google_key(value) else value
+
+
+def llm_key_notices(environ=None):
+    """Human-readable setup notices for the local runner. Never includes key values."""
+    environ = os.environ if environ is None else environ
+    notices = []
+    if _misplaced_google_key(_env_key(environ, "OPENAI_API_KEY")):
+        notices.append("OPENAI_API_KEY에 Gemini(Google) 형식 키가 들어 있어 Gemini 키로 사용합니다. .env에서 이름을 GEMINI_API_KEY로 바꾸는 것을 권장합니다.")
+    if _env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY") and openai_key(environ) and \
+            str(environ.get("LLM_PROVIDER", "")).strip().lower() in ("", "auto"):
+        notices.append("Gemini와 OpenAI 키가 모두 있어 Gemini를 사용합니다(OpenAI 키는 시스템 환경변수에서 왔을 수 있음). OpenAI를 쓰려면 LLM_PROVIDER=openai.")
+    return notices
+
+
 def resolve_llm_provider(environ=None):
-    """``LLM_PROVIDER=auto|gemini|openai``. auto: the only configured key wins; both -> openai (compat)."""
+    """``LLM_PROVIDER=auto|gemini|openai``. auto: Gemini when a Gemini key exists, otherwise OpenAI."""
     environ = os.environ if environ is None else environ
     choice = str(environ.get("LLM_PROVIDER", "auto")).strip().lower() or "auto"
     if choice in ("gemini", "openai"):
         return choice
     if choice != "auto":
         raise ValueError("unsupported_llm_provider")
-    has_gemini = bool(_env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY"))
-    has_openai = bool(_env_key(environ, "OPENAI_API_KEY"))
-    return "gemini" if has_gemini and not has_openai else "openai"
+    return "gemini" if gemini_key(environ) else "openai"
 
 
 def llm_key_configured(environ=None):
@@ -377,7 +501,7 @@ def llm_key_configured(environ=None):
         provider = resolve_llm_provider(environ)
     except ValueError:
         return False
-    return bool(_env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY") if provider == "gemini" else _env_key(environ, "OPENAI_API_KEY"))
+    return bool(gemini_key(environ) if provider == "gemini" else openai_key(environ))
 
 
 def model_for_provider(value, provider):
@@ -396,6 +520,6 @@ def create_llm_client(model=None, max_output_tokens=None, environ=None):
     chosen = model_for_provider(model, provider) or model_for_provider(environ.get("ITINERARY_LLM_MODEL"), provider)
     tokens = max_output_tokens or str(environ.get("ITINERARY_LLM_MAX_OUTPUT_TOKENS", "")).strip() or None
     if provider == "gemini":
-        return GeminiClient(_env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY"), model=chosen or GEMINI_DEFAULT_MODEL,
+        return GeminiClient(gemini_key(environ), model=chosen or GEMINI_DEFAULT_MODEL,
                             max_output_tokens=tokens, thinking_level=str(environ.get("GEMINI_THINKING_LEVEL", "")))
-    return OpenAIClient(_env_key(environ, "OPENAI_API_KEY"), model=chosen or OPENAI_DEFAULT_MODEL, max_output_tokens=tokens)
+    return OpenAIClient(openai_key(environ), model=chosen or OPENAI_DEFAULT_MODEL, max_output_tokens=tokens)

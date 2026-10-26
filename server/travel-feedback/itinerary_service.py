@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import json
+import logging
 import math
 import re
 import time
@@ -13,7 +14,9 @@ from itinerary_validation import (bounds, choose_duration, iso, issue, local_tim
                                   operating_windows, solar_times, validate_day, meal_requirements)
 from restaurant_candidates import (FoodContextError, RestaurantRecommender, normalize_traveler_context,
                                    normalize_trip_food_context)
+from llm_client import safe_error_code
 
+LOG = logging.getLogger("trip_ai.itinerary")
 SCHEMA_VERSION = "itinerary-result-v2"
 REQUEST_VERSIONS = ("itinerary-request-v1", "itinerary-request-v2")
 PROMPT_VERSION = "itinerary-order-and-time-v3"
@@ -329,7 +332,7 @@ class ItineraryService:
                     remaining()
                     calls["llm"] += 1
                     try:
-                        proposal = self.llm.generate_structured("itinerary", prompt, PROPOSAL_SCHEMA, timeout=min(35, remaining()))
+                        proposal = self.llm.generate_structured("itinerary", prompt, PROPOSAL_SCHEMA, timeout=min(float(self.policy.get("llmCallTimeoutSeconds", 35)), remaining()))
                     except Exception as exc:
                         # A malformed structured response consumes the sole repair slot;
                         # network/auth/refusal failures remain provider errors.
@@ -341,6 +344,8 @@ class ItineraryService:
                     result = validate_day(day, proposal, self.places, route, request["mealPreferences"], self.policy)
                     observations = result.pop("routeObservations", [])
                     result["provenance"] = {"llmCalls": attempt + 1, "routeCalls": day_route_calls,
+                        "llmModel": getattr(proposal, "model", getattr(self.llm, "model", None)),
+                        "llmUsage": getattr(proposal, "usage", {}),
                         "reviewInputHashes": {pid: (self.places[pid].get("visitInsights") or {}).get("inputHash") for pid in day["placeIds"]}}
                     if not result["violations"] or attempt == self.policy["maxRepairCallsPerDay"]:
                         break
@@ -357,7 +362,10 @@ class ItineraryService:
                     self._attach_restaurants(result, request, day, lambda: remaining() - reserve, calls)
                 response["days"].append(result)
             except Exception as exc:
-                # Do not leak provider bodies, API keys, prompt text or user data.
+                # Do not leak provider bodies, API keys, prompt text or user data. Only a fixed code is logged.
+                LOG.warning("itinerary day %s unavailable: %s (llm=%s/%s)", day.get("dayIndex"),
+                            str(exc) if isinstance(exc, ItineraryUnavailable) else safe_error_code(exc),
+                            getattr(self.llm, "provider", "?"), getattr(self.llm, "model", "?"))
                 code = str(exc) if isinstance(exc, ItineraryUnavailable) else "provider_unavailable"
                 if code not in ("request_deadline", "route_call_budget", "invalid_route_duration"):
                     code = "provider_unavailable"

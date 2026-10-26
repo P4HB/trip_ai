@@ -130,14 +130,8 @@ assert.throws(() => Preference.estimateProfile([{ questionId: "unknown", optionI
 assert.throws(() => Preference.estimateProfile([{ questionId: "q01_arrival_energy", optionId: "neither" }]), /알 수 없는 질문 선택지/u);
 assert.throws(() => Preference.estimateProfile([], [{ pairId: "unknown", choice: "a" }]), /알 수 없는 가상 장소/u);
 
-const normalizeSource = (source) => source.replace(/\r\n/g, "\n").trimEnd();
-const standaloneSnapshotPath = path.join(__dirname, "..", "travel-mbti-site", "app", "lib", "preference-elicitation.js");
-if (fs.existsSync(standaloneSnapshotPath)) {
-  assert.equal(
-    normalizeSource(fs.readFileSync(standaloneSnapshotPath, "utf8")),
-    normalizeSource(fs.readFileSync(path.join(__dirname, "..", "map-ui", "preference-elicitation.js"), "utf8")),
-    "standalone site engine snapshot must match map UI engine",
-  );
-}
+// The standalone archive redirects to /map; its unused app/lib snapshot is not a runtime dependency.
+const mapHtml = fs.readFileSync(path.join(__dirname, "..", "map-ui", "index.html"), "utf8");
+assert.match(mapHtml, /src="(?:\.\/)?preference-elicitation\.js(?:\?[^"]*)?"/u);
 
 console.log("Travel preference elicitation tests passed");

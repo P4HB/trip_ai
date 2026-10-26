@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import gzip
 import json
 import re
 import unicodedata
@@ -37,12 +38,25 @@ class Catalog:
             return decoder.raw_decode(text.split(marker, 1)[1])[0]
 
         self.bundle_meta = assignment("JEJU_DATA_META")
+        label_evidence = {}
+        if self.bundle_meta.get("bundleFormat") == "compact-v1":
+            evidence_path = (root / self.bundle_meta["evidencePath"]).resolve()
+            if not evidence_path.is_relative_to((root / "data").resolve()):
+                raise ValueError("invalid_evidence_path")
+            evidence_bytes = gzip.decompress(evidence_path.read_bytes())
+            if hashlib.sha256(evidence_bytes).hexdigest() != self.bundle_meta["evidenceHash"]:
+                raise ValueError("label_evidence_hash_mismatch")
+            evidence = json.loads(evidence_bytes)
+            if evidence.get("schemaVersion") != "map-label-evidence-v1" or evidence.get("sourceDate") != self.bundle_meta.get("sourceDate"):
+                raise ValueError("label_evidence_version_mismatch")
+            label_evidence = evidence["places"]
         self.provenance = {"tourapi_sha256": hashlib.sha256(raw).hexdigest(),
                            "source_date": self.bundle_meta.get("sourceDate"),
                            "preference_version": self.bundle_meta.get("preferenceLabelVersion"),
                            "fit_version": self.bundle_meta.get("fitLabelVersion")}
         self.places = {}
         for row in assignment("JEJU_PLACES"):
+            row.update(label_evidence.get(row["id"], {}))
             cid = f"tourapi:{row['id']}"
             self.places[cid] = {
                 "canonical_id": cid, "provider": "tourapi", "provider_id": row["id"],

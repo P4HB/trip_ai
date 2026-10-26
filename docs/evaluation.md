@@ -195,6 +195,6 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 
 `node scripts/test_preference_weight_budget.cjs`는 [SPEC-084](spec_084.md)의 묶음·상한 순서, 비율·효용 보존, 결측·그룹 전용 예외, 추천 순위 변화, trace 합계와 결정성을 손계산 fixture로 검증한다.
 
-`node scripts/evaluate_preference_weight_budget.cjs --baseline-engine <보존한-v7-엔진.cjs>`는 변경 전 실제 엔진과 현재 엔진을 같은 1,663개 추천 준비 장소에 적용한다. 합성 MBTI 8개와 명시적 자연·사진 선호 2개에 대해 visit lane, 동행·월 미사용, Top 10, 다양성 off/balanced를 비교한다. balanced는 첫 seed로 고정한다. 프로필별 기여 비중·Top 10 ID·대표 유형 수·해변/오름 수·프로필 간 겹침을 `artifacts/evaluation/spec_084_preference_budget.json`에 기록하며 입력 및 두 엔진 SHA-256을 포함한다.
+`node scripts/evaluate_preference_weight_budget.cjs --baseline-engine <보존한-v7-엔진.cjs>`는 변경 전 실제 엔진과 현재 엔진을 같은 1,663개 추천 준비 장소에 적용한다. 합성 MBTI 8개와 명시적 자연·사진 선호 2개에 대해 visit lane, 동행·월 미사용, Top 10, 다양성 off/balanced를 비교한다. balanced는 첫 seed로 고정한다. 프로필별 기여 비중·Top 10 ID·대표 유형 수·해변/오름 수·프로필 간 겹침을 `tmp/evaluation/spec_084_preference_budget.json`에 기록하며 입력 및 두 엔진 SHA-256을 포함한다.
 
 이 보고서는 현재 라벨과 합성 입력에 대한 민감도 분석이다. 원래 점수나 달라진 점수 자체를 독립 정답으로 쓰지 않고, 지표가 나빠진 경우도 기록한다. 결과 수치와 알려진 제한은 SPEC-084의 구현 결과를 따른다.

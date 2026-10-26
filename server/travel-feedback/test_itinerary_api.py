@@ -1,4 +1,5 @@
 """HTTP boundary and deployment regressions; no supplier calls or persistent logs."""
+from contextlib import closing
 import contextlib
 import http.client
 import importlib.util
@@ -54,7 +55,7 @@ class ItineraryHTTPTests(unittest.TestCase):
     def test_separate_endpoint_does_not_write_feedback(self):
         status,body=self.post()
         self.assertEqual(status,200); self.assertEqual(body['requestId'],'current')
-        with self.server.store.connect() as connection:
+        with closing(self.server.store.connect()) as connection, connection:
             self.assertEqual(connection.execute('SELECT COUNT(*) FROM feedback_sessions').fetchone()[0],0)
     def test_missing_date_never_generates(self):
         self.assertEqual(self.post({'requestId':'none'})[0],422)

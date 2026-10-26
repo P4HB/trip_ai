@@ -8,6 +8,8 @@
 - 관련 코드: `map-ui/ccu-mmr.js`, `map-ui/index.html`, `scripts/build_map_ui_data.mjs`, `map-ui/data/jeju-places.js`, `scripts/test_ccu_mmr.cjs`, `scripts/test_preference_weight_budget.cjs`, `scripts/evaluate_preference_weight_budget.cjs`
 - 선행 SPEC: [SPEC-019](spec_019.md), [SPEC-065](spec_065.md), [SPEC-078](spec_078.md)
 
+> 후속 정리: [SPEC-112](spec_112.md)에서 기존 평가 JSON을 삭제하고 기본 출력을 `tmp/evaluation/spec_084_preference_budget.json`으로 변경했다. 아래 평가 결과·경로는 당시 기록이다.
+
 ## 배경
 
 현재 엔진은 활성 원자 feature의 효용을 원래 선호 가중치로 평균한다. 전체 추천 준비 장소 1,663곳에서 경관·독특함·로컬성·랜드마크성·사진 가치의 상관이 높아 유사 특성이 여러 축의 가중치를 확보할 수 있다. visit 799곳에서는 상관이 다르므로 다섯 라벨을 동일 개념으로 합치지는 않는다. 경관·사진의 visit Pearson 상관은 약 0.625다.

@@ -6,7 +6,7 @@ provider. The LLM is the deterministic offline stand-in (``fake_llm_scheduler``)
 measures candidate supply (how many restaurants survive the detour/opening filters and how
 often a slot ends up empty) — NOT model quality, real road times or real opening status.
 
-    python scripts/evaluate_restaurant_candidates.py --output reports/spec107-restaurant-candidates.json
+    python scripts/evaluate_restaurant_candidates.py --output tmp/evaluation/spec107-restaurant-candidates.json
 """
 from __future__ import annotations
 

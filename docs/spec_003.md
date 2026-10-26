@@ -4,7 +4,7 @@
 - 작성일: 2026-08-09
 - 최종 수정일: 2026-08-09
 - 관련 이슈: 사용자 요청
-- 관련 문서: [문서 색인](README.md), [데이터 계약](data_contracts.md), [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md), [`handoff.md`](../handoff.md)
+- 관련 문서: [문서 색인](README.md), [데이터 계약](data_contracts.md), [추천 알고리즘](recommendation_algorithm.md), [평가 전략](evaluation.md), [후속 추천 설계](spec_008.md)
 - 관련 코드: `scripts/build_place_profile_pilot.mjs`, `scripts/validate_place_profile_pilot.mjs`, `data/labeling/jeju/2026-08-09/pilots/place-profile-v1-100/`
 - 선행 SPEC: [SPEC-002](spec_002.md)
 

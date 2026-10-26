@@ -4,9 +4,11 @@
 - 작성일: 2026-09-30
 - 최종 수정일: 2026-09-30
 - 관련 이슈: 사용자의 숙박·렌터카 예약 제안 및 현재 MVP와 독립적인 제출 기획 요청
-- 관련 문서: [1단계 제출 Spec](../kaist_app/제출용/01_Trip_AI_1단계_Spec.md), [사업 기준](business_model_and_social_impact.md)
+- 관련 문서: [제출·사업 자료 정리 기록](spec_112.md)
 - 관련 코드: 제품 코드는 변경하지 않음. 도면 생성은 `kaist_app/_work/build_process.py`, PDF 생성은 `kaist_app/_work/render_process_pdf.py`
 - 선행 SPEC: SPEC-091, SPEC-092, SPEC-093
+
+> 후속 정리: 2026-10-26 [SPEC-112](spec_112.md)에 따라 생성 제출본·도면·작업 자료·사업 문서를 삭제했다. 아래는 작성 당시의 이력이다.
 
 ## 배경
 

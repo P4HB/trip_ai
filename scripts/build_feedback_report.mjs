@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const inputPath = path.join(repoRoot, "travel-feedback-anonymized-since-0903 copy.json");
-const outputPath = path.join(repoRoot, "reports", "travel-feedback-since-0903.html");
+const outputPath = path.join(repoRoot, "tmp", "reports", "travel-feedback-since-0903.html");
 const checkOnly = process.argv.includes("--check");
 
 const raw = JSON.parse(fs.readFileSync(inputPath, "utf8"));

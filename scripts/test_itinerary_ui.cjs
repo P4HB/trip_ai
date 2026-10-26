@@ -114,6 +114,7 @@ const fixture = `window.ITINERARY_TEST = {
     const request = {destinationRegion:'jeju_all',intent:'visit',travelWindow:mode === 'duration' ? null : {startDate:'2026-10-01',endDate:mode === 'multi' ? '2026-10-03' : '2026-10-01'},tripDays: mode === 'duration' ? 1 : null, transportMode:mode === 'no_car' ? 'no_car' : 'car',requiredPlaceIds:[],companionType:'parents',preferences:[{feature:'ocean',mode:'benefit',weight:4}],resultCount:1,diversity:'balanced'};
     const result = algorithm.rank(places, request, {random:()=>0.65});
     dom.travelStartDate.value = '2026-10-01'; dom.travelEndDate.value = '2026-10-01';
+    resetFeedbackAutoSave({ createSession: true });
     renderRecommendationOutput(result);
     return {ids: result.items.map(item=>item.placeId), dayIds:result.schedule.dayClusters[0]?.placeIds, labels:places.slice(0,2).map(itineraryPlaceLabel)};
   },

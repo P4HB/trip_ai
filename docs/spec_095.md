@@ -4,10 +4,12 @@
 - 작성일: 2026-10-02
 - 최종 수정일: 2026-10-02
 - 관련 이슈: 기존 제출 본문을 보존하고 가을볕 예시와 같은 구현 계획을 뒤에 추가하라는 사용자 요청
-- 관련 문서: [제출 Spec](../kaist_app/제출용/01_Trip_AI_1단계_Spec.md), [아키텍처](architecture.md), [데이터 계약](data_contracts.md), [CCU-MMR](ccu_mmr_algorithm_draft.md), [평가](evaluation.md), [개인정보](safety_privacy.md)
+- 관련 문서: [제출 자료 정리 기록](spec_112.md), [아키텍처](architecture.md), [데이터 계약](data_contracts.md), [CCU-MMR](ccu_mmr_algorithm_draft.md), [평가](evaluation.md), [개인정보](safety_privacy.md)
 - 관련 코드: 제품 코드 변경 없음
 - 선행 SPEC: SPEC-094, SPEC-019, SPEC-083, SPEC-084
 - 대체 SPEC: [SPEC-096](spec_096.md). 사용자의 후반부 간략화 요청에 따라 최종 구현 계획은 §9~17로 개정했다. 아래 구현·검증 결과는 최초 추가본의 기록이다.
+
+> 후속 정리: 2026-10-26 [SPEC-112](spec_112.md)에 따라 생성 제출본·도면·작업 자료·사업 문서를 삭제했다. 아래는 작성 당시의 이력이다.
 
 ## 배경
 

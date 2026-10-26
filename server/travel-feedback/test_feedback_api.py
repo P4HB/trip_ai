@@ -1,4 +1,5 @@
 from __future__ import annotations
+from contextlib import closing
 
 import importlib.util
 import http.client
@@ -99,7 +100,7 @@ class FeedbackApiTests(unittest.TestCase):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.db_path = str(Path(self.temp_dir.name) / "feedback.sqlite3")
         self.review_db_path = str(Path(self.temp_dir.name) / "reviews.sqlite3")
-        with sqlite3.connect(self.review_db_path) as connection:
+        with closing(sqlite3.connect(self.review_db_path)) as connection, connection:
             connection.executescript(
                 """
                 CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL) WITHOUT ROWID;
@@ -177,11 +178,11 @@ class FeedbackApiTests(unittest.TestCase):
             return response.status, json.load(response), dict(response.headers)
 
     def record_count(self) -> int:
-        with sqlite3.connect(self.db_path) as connection:
+        with closing(sqlite3.connect(self.db_path)) as connection, connection:
             return connection.execute("SELECT COUNT(*) FROM feedback_submissions").fetchone()[0]
 
     def session_count(self) -> int:
-        with sqlite3.connect(self.db_path) as connection:
+        with closing(sqlite3.connect(self.db_path)) as connection, connection:
             return connection.execute("SELECT COUNT(*) FROM feedback_sessions").fetchone()[0]
 
     def test_create_and_idempotent_retry(self) -> None:
@@ -267,7 +268,7 @@ class FeedbackApiTests(unittest.TestCase):
         self.assertFalse(body["stale"])
         self.assertEqual(body["revision"], 2)
         self.assertEqual(self.session_count(), 1)
-        with sqlite3.connect(self.db_path) as connection:
+        with closing(sqlite3.connect(self.db_path)) as connection, connection:
             stored_payload = json.loads(connection.execute(
                 "SELECT payload_json FROM feedback_sessions WHERE session_id = ?", (payload["session_id"],)
             ).fetchone()[0])
@@ -306,7 +307,7 @@ class FeedbackApiTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertTrue(body["stale"])
         self.assertEqual(body["revision"], 2)
-        with sqlite3.connect(self.db_path) as connection:
+        with closing(sqlite3.connect(self.db_path)) as connection, connection:
             stored_revision = connection.execute(
                 "SELECT revision FROM feedback_sessions WHERE session_id = ?", (first["session_id"],)
             ).fetchone()[0]

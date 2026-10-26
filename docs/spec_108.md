@@ -24,8 +24,8 @@
 - `REQ-10801`: `GeminiClient.generate_structured()`가 OpenAI 어댑터와 같은 입출력·오류 코드를 낸다. 같은 task별 지시문(시스템 지시)을 쓰고, 입력은 비신뢰 데이터 JSON 한 덩어리로 보낸다. 결과는 기존 `validate_schema`로 검증한다.
 - `REQ-10802`: 구조화 출력은 `generationConfig.responseMimeType=application/json`과 `responseJsonSchema`(JSON Schema)를 먼저 쓴다. 공급자가 400으로 거절하면 OpenAPI 부분집합 `responseSchema`(대문자 type, `additionalProperties` 제거, null 결합은 `nullable`)로 한 번 다시 보내고 이후 호출은 그 방식을 유지한다.
 - `REQ-10803`: 첫 호출 전 `GET models/{model}`로 모델 접근을 확인한다. 키는 URL이 아닌 헤더로만 보내고 오류·로그·응답에 키·프롬프트·공급자 본문을 남기지 않는다. 사고(thought) part는 결과에서 제외한다. 차단(`promptFeedback.blockReason`, 안전 계열 `finishReason`)은 `llm_refused`, `MAX_TOKENS` 등 미완료는 `llm_incomplete`, JSON/스키마 오류는 `llm_invalid_output`이다.
-- `REQ-10804`: 공급자 선택 `LLM_PROVIDER=auto|gemini|openai`(기본 auto). auto는 키가 하나뿐이면 그 공급자, 둘 다 있으면 기존 호환을 위해 openai다. 키 이름은 `GEMINI_API_KEY`(없으면 `GOOGLE_API_KEY`). 모델은 공급자 공통 `ITINERARY_LLM_MODEL`·`RESTAURANT_LLM_MODEL`로 바꾸며 기본값은 gemini `gemini-3.8-flash`, openai `gpt-5.6-terra`. 출력 상한 기본값은 Gemini 8,192(사고 토큰 여유), 허용 256~65,536. 선택적 `GEMINI_THINKING_LEVEL`을 `thinkingConfig.thinkingLevel`로 전달한다.
-- `REQ-10805`: `ITINERARY_ENABLED=auto`는 선택된 공급자의 키가 있을 때 켠다. 로컬 실행기는 공급자 이름과 "키 설정됨/없음"만 출력한다. 배포 설치기와 `.env.example`에 새 변수를 추가한다.
+- `REQ-10804`: 공급자 선택 `LLM_PROVIDER=auto|gemini|openai`(기본 auto). auto는 Gemini 키가 있으면 gemini, 없으면 openai다(2026-10-12 변경: 처음엔 둘 다 있으면 openai였다. 사용자 PC 실제 실행에서 OpenAI가 선택되는 것을 확인했고, 원인은 시스템 환경변수의 OpenAI 키 또는 키 이름 오입력으로 추정한다. `.env`는 열람하지 않았다). 키 이름은 `GEMINI_API_KEY`(없으면 `GOOGLE_API_KEY`). `OPENAI_API_KEY`에 Google 형식(`AIza`로 시작) 키가 들어 있으면 OpenAI로 보내지 않고 Gemini 키로 쓰며 로컬 실행기가 이름 변경을 안내한다. 모델은 공급자 공통 `ITINERARY_LLM_MODEL`·`RESTAURANT_LLM_MODEL`로 바꾸며 기본값은 gemini `gemini-3.8-flash`, openai `gpt-5.6-terra`. 출력 상한 기본값은 Gemini 8,192(사고 토큰 여유), 허용 256~65,536. 사고 수준은 기본 `low`(gemini-3.8-flash는 low/medium/high 지원, 모델 기본 medium)로 보내 응답 지연을 줄이고, `GEMINI_THINKING_LEVEL`로 바꾸거나 `default`로 모델 기본값을 쓴다. 400이 오면 `thinkingConfig`를 먼저 빼고, 그래도 400이면 `responseSchema`로 바꾼다(각각 이후 호출에도 유지, `API_KEY*` 사유는 재시도하지 않음).
+- `REQ-10805`: `ITINERARY_ENABLED=auto`는 선택된 공급자의 키가 있을 때 켠다. 로컬 실행기는 공급자 이름과 "키 설정됨/없음", 그리고 키 진단(변수 이름·출처 `.env`/시스템 환경변수·형식 Google/OpenAI/알 수 없음, 인식하지 않는 키 이름)만 출력하고 값은 출력하지 않는다. `.env`의 비어 있지 않은 LLM 설정(`GEMINI_API_KEY`, `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `LLM_PROVIDER`)은 상속된 시스템 환경변수보다 우선한다. 배포 설치기와 `.env.example`에 새 변수를 추가한다.
 
 ## 설계
 
@@ -40,6 +40,9 @@
 | `responseJsonSchema` 400 | `responseSchema`로 1회 재시도, 다시 실패하면 공급자 오류 |
 | 안전 차단·미완료·형식 오류 | 위 오류 코드. 시간표는 기존 수정·실패 규칙, 식당 판정은 `judgement_unavailable` |
 | 알 수 없는 `LLM_PROVIDER` | 동선 기능만 비활성 |
+| 날짜 생성·식당 판정 실패 | 응답에는 기존처럼 `provider_unavailable`/`judgement_unavailable`만 주고, 서버 로그(WARNING)에 고정 오류 코드(`provider_http_400:API_KEY_INVALID`, `provider_http_429:RESOURCE_EXHAUSTED`, `provider_timeout` 등 공급자 오류 본문의 enum 사유만)와 공급자·모델 이름만 남긴다. 키·오류 메시지·본문·프롬프트는 남기지 않는다 |
+| Gemini 과부하·지연 (`429`, `5xx`, `provider_timeout`) | 남은 시간의 60%(최소 15초)까지만 기본 모델을 기다리고, 나머지 시간에 대체 모델 `GEMINI_FALLBACK_MODEL`(기본 `gemini-3.5-flash-lite`, `none`이면 끔)로 한 번 다시 보낸다. 이후 5분 동안은 대체 모델로 바로 보낸다. 실제 사용 모델은 날짜 provenance `llmModel`과 식당 판정 `model`에 기록한다 |
+| 시간표 LLM 호출 시간 | `itinerary_policy.json`의 `llmCallTimeoutSeconds`(55초, 정책 v4)와 요청 남은 시간 중 작은 값 |
 
 ## 영향 범위
 
@@ -73,8 +76,8 @@
 
 | 명령 | 결과 |
 |---|---|
-| `python -m unittest server/travel-feedback/test_llm_gemini.py` | 11개 통과(AC-10801~10805) |
-| `python -m unittest discover -s server/travel-feedback -p "test_*.py"` | 156개 중 155개 통과. 실패 1건은 변경 전부터 실패하던 `test_itinerary_adapters`의 카탈로그 결정성 테스트(SPEC-107 기록과 동일) |
+| `python -m unittest server/travel-feedback/test_llm_gemini.py` | 15개 통과(AC-10801~10805, 공급자 선택·사고 수준·오류 사유·대체 모델 포함) |
+| `python -m unittest discover -s server/travel-feedback -p "test_*.py"` | 161개 중 160개 통과. 실패 1건은 변경 전부터 실패하던 `test_itinerary_adapters`의 카탈로그 결정성 테스트(SPEC-107 기록과 동일) |
 | `node scripts/test_itinerary_ui.cjs` | 3개 시나리오 통과(UI 변경 없음, 회귀 확인) |
 | `GEMINI_API_KEY=<가짜 값> python scripts/run_trip_ai_local.py` | `LLM 공급자: gemini · 키 설정됨`, 시간표·판정 모델 `gemini-3.8-flash`, 키 값 미출력 |
 
@@ -85,11 +88,17 @@
 - `responseJsonSchema`/`responseSchema`가 받는 JSON Schema 부분집합과 사고 토큰 소비는 모델별로 다를 수 있다. 서버 재검증이 최종 기준이다.
 - 무료 키 사용 시 입력이 Google 제품 개선·사람 검토에 쓰일 수 있다.
 - 실제 Gemini 호출 미검증. 첫 실행 시 로컬 실행기로 하루 동선을 만들어 시간표와 식당 판정이 모두 나오는지 확인해야 한다. `responseJsonSchema`가 거절되면 자동으로 `responseSchema`로 바뀐다.
-- 두 키가 모두 있으면 auto는 OpenAI를 고른다. Gemini를 쓰려면 `LLM_PROVIDER=gemini`.
+- 두 키가 모두 있으면 auto는 Gemini를 고른다. OpenAI를 쓰려면 `LLM_PROVIDER=openai`.
 
 ## 변경 이력
+
+후속 검증: [SPEC-111](spec_111.md)에서 미커밋 Gemini 진단·폴백 변경을 보존해 서버 168개 모의 테스트를 통과했고, 응답별 모델 출처를 분리했다. 실제 공급자 품질 검증 대기는 유지한다.
 
 | 날짜 | 변경 내용 |
 |---|---|
 | 2026-10-12 | Gemini 공식 문서·약관 확인, 요구사항·설계 작성(구현 전) |
 | 2026-10-12 | 구현·로컬 검증 완료. 실제 Gemini 호출 미검증으로 In Progress 유지 |
+| 2026-10-12 | 사용자 PC 실제 실행에서 OpenAI(`gpt-5.6-terra`)가 선택되어 두 날짜 모두 `provider_unavailable`. auto를 Gemini 우선으로 바꾸고, OPENAI 자리의 Google 키 처리·실행기 안내·실패 코드 로그 추가 |
+| 2026-10-12 | 재실행에서도 `openai · 키 설정됨`(안내 없음) → 유효한 Gemini 키가 환경에 없음. `.env` LLM 설정 우선 적용과 이름·출처·형식만 보이는 키 진단 추가 |
+| 2026-10-12 | Gemini 선택 후 두 날짜가 각각 약 35초 뒤 `provider_unavailable`(로그). 시간 초과로 판단해 사고 수준 기본 low, 시간표 호출 55초(정책 v4), `provider_timeout`과 오류 enum 사유 로그, 400 단계별 폴백 추가 |
+| 2026-10-12 | 재실행 로그: 1일차 `provider_timeout`(55초), 2일차 `provider_http_503:UNAVAILABLE`(모델 과부하). 키·연결은 정상. 과부하·지연 시 `gemini-3.5-flash-lite` 대체 모델과 5분 유지, 사용 모델 provenance 기록 추가 |

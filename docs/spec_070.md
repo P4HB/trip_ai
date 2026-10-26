@@ -8,6 +8,8 @@
 - 관련 코드: `scripts/build_feedback_report.mjs`, `reports/travel-feedback-since-0903.html`
 - 선행 SPEC: SPEC-060, SPEC-069
 
+> 후속 정리: [SPEC-112](spec_112.md)에서 기존 HTML 산출물을 삭제하고 생성기의 기본 출력을 `tmp/reports/travel-feedback-since-0903.html`로 변경했다. 아래 경로·검증 결과는 당시 기록이다.
+
 ## 배경
 
 9월 3일 이후 추천 평가 로그가 `anonymized-feedback-v1` JSON으로 정리됐지만, 원본은 중첩 구조가 깊고 40만 자 이상이라 전체 경향과 사용자별 의견을 빠르게 비교하기 어렵다.

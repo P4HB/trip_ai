@@ -124,7 +124,7 @@ Place {
   modified: string
   category: [string, string, string]
   region: jeju_city | seogwipo_city | unknown
-  v5: { labels: PreferenceLabel[24], sources: Source[] } | null
+  v5: { labels: Array<{label: string, value: number}>[24] } | null
   research: {
     status: ai_draft
     reviewedAt: YYYY-MM-DD
@@ -139,11 +139,12 @@ Place {
 ```
 
 - 유효 지도 좌표 범위는 경도 `125.5..127.5`, 위도 `32.5..34.2`다.
+- SPEC-111: 브라우저 fit 축은 `{key,state,value}`만 보낸다. 전체 v5 근거·confidence·sources와 fit 부가 정보는 `data/catalogs/map-label-evidence.json.gz`에 보존한다. `schemaVersion=map-label-evidence-v1`, `sourceDate`, `places[id]={v5,fit}` 구조이며 번들 metadata의 `evidenceHash`는 압축 해제한 UTF-8 JSON 바이트의 SHA-256이다. `bundleFormat=compact-v1`을 읽는 오프라인 서비스는 이를 검증하고 결합한다. 입력 경로는 `config/active_datasets.json`이 정의한다.
 - 이미지 URL은 HTTP(S)만 허용하고 HTTP는 HTTPS로 정규화한다.
 - 이름이 비어 있으면 `이름 없는 장소`를 사용한다.
 - 2026-08-09 번들은 좌표 정상 2,153곳을 담고, 이 중 24+17축이 완전한 1,663곳만 추천 가능하다. 좌표 이상 `2704351` 한 곳과 지도 탐색 전용 490곳은 metadata에서 분리 집계한다.
 - Companion·Month는 `state=numeric|not_applicable`을 먼저 확인한다. `not_applicable` 값은 반드시 `null`이며 0이나 0.5로 대체하지 않는다.
-- metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v6-travel-mbti-three-axis`를 기록한다.
+- metadata는 TourAPI/라벨 snapshot 날짜, preference/fit/constraint 버전, source·attached count와 `algorithmVersion=ccu-mmr-v8-preference-budget`를 기록한다.
 - `research.highlights`는 v5 `sources[].facts[]`를 원문 출처 ID와 함께 유지한 표시용 요약이다. 구형 1건은 `evidence`를 claim으로 정규화한다. 링크는 HTTPS로 정규화하며 활동·체험·관람·판매·메뉴 설명을 주소·카탈로그·운영 정보보다 우선하고 변동 정보는 우선 제외한다.
 - 웹 조사 설명은 ranking feature가 아니며 `status=ai_draft`다. `dynamic=true` 또는 운영시간·가격·휴무·행사 일정은 현재 사실로 보장하지 않고 원문 재확인이 필요하다.
 

@@ -16,9 +16,14 @@ python scripts/validate_kakao_review_db.py
 - `TRAVEL_FEEDBACK_DB_PATH`: 기본 `/data/feedback.sqlite3`
 - `TRAVEL_PUBLIC_ORIGIN`: 허용할 동일 출처 Origin
 - `TRAVEL_FEEDBACK_RETENTION_DAYS`: 기본 `90`
+- `TRAVEL_TRUSTED_PROXY_IPS`: 전달 IP를 신뢰할 직전 프록시 IP의 쉼표 구분 목록. 기본은 비어 있음(헤더 무시). 지정된 프록시가 `X-Travel-Client-IP`를 항상 덮어쓰는 구성에서만 설정한다. 미설정 시 실제 연결 주소를 기준으로 제한한다.
 - `TRAVEL_REVIEW_DB_PATH`: 기본 `/app/data/kakao_reviews.sqlite3`
 
 컨테이너에는 `/data` 전용 영속 볼륨을 연결한다. 서비스는 v3를 `feedback_sessions`, v2를 `feedback_submissions`에 분리해 요청 payload, UUID와 시각만 보관하고 IP·User-Agent·쿠키는 저장하지 않는다. Kakao 리뷰 DB는 이미지에 포함된 별도 읽기 전용 스냅샷이며 후기 작성자명은 저장하지 않는다.
+
+[SPEC-111](../../docs/spec_111.md): `feedback_contract.py`는 공통 경계, `feedback_validation.py`는 v3, `feedback_legacy.py`는 v2 호환 검증이다. SQLite 연결은 트랜잭션 종료 후 닫는다. 요청이 없어도 실행 중인 서버가 최대 60초 간격으로 만료 데이터를 삭제하며, 서버가 중지된 동안의 만료분은 재시작 때 삭제한다. 속도 제한 키도 만료 정리하며 최대 10,000개로 제한한다. v3는 코스 재선택에 따른 누적 평가를 위해 최대 3,000개 장소(본문 2MiB 제한 유지)를 받는다. v2의 100개 제한은 유지한다.
+
+LLM 응답의 실제 모델명·사용량은 응답 객체에 귀속된다. 공유 클라이언트의 `last_model`/`last_usage`는 호환용 진단값이며 결과 출처로 사용하지 않는다.
 
 ## 날짜 기반 동선 (SPEC-083)
 
@@ -27,12 +32,13 @@ python scripts/validate_kakao_review_db.py
 서버 설정:
 
 - `ITINERARY_ENABLED`: 기본 `auto`(SPEC-107/108: 선택된 LLM 공급자의 키가 있으면 켜짐), `1` 강제 활성, `0` 비활성. 비활성이나 잘못된 카탈로그 설정은 기존 평가·리뷰 서비스를 유지한다.
-- `LLM_PROVIDER`: `auto`(기본) | `gemini` | `openai` ([SPEC-108](../../docs/spec_108.md)). `auto`는 키가 하나만 있으면 그 공급자, 둘 다 있으면 `openai`. 잘못된 값이면 동선 기능만 꺼진다.
+- `LLM_PROVIDER`: `auto`(기본) | `gemini` | `openai` ([SPEC-108](../../docs/spec_108.md)). `auto`는 Gemini 키가 있으면 `gemini`, 없으면 `openai`(둘 다 있어도 Gemini). `OPENAI_API_KEY`에 Google 형식 키(`AIza…`)가 있으면 Gemini 키로 쓴다. 날짜 생성·식당 판정 실패는 WARNING 로그에 고정 오류 코드만 남긴다. 잘못된 값이면 동선 기능만 꺼진다.
 - `GEMINI_API_KEY`(없으면 `GOOGLE_API_KEY`): Gemini Developer API 키. `x-goog-api-key` 헤더로만 보낸다. 무료(미결제) 키 입력은 Google 약관상 제품 개선·사람 검토에 쓰일 수 있으므로 결제 연결 프로젝트 키를 권장한다.
 - `OPENAI_API_KEY`: OpenAI 서버 키. 두 공급자 모두 첫 structured 호출 전 지정 모델의 계정 접근을 확인한다.
 - `ITINERARY_LLM_MODEL`: 공급자 공통 모델 이름. 비우면 gemini `gemini-3.8-flash`, openai `gpt-5.6-terra`. 다른 공급자 이름(`gpt-*`↔`gemini*`)이 남아 있으면 무시하고 기본값을 쓴다.
 - `ITINERARY_LLM_MAX_OUTPUT_TOKENS`: OpenAI 기본 4,000(256~8,000), Gemini 기본 8,192(사고 토큰 포함, 256~65,536).
-- `GEMINI_THINKING_LEVEL`: 선택. 값이 있으면 `thinkingConfig.thinkingLevel`로 전달한다(예: `low`). 비우면 모델 기본값.
+- `GEMINI_FALLBACK_MODEL`: 기본 `gemini-3.5-flash-lite`. 기본 모델이 과부하(429·5xx)거나 늦으면 같은 요청을 이 모델로 다시 보내고 5분간 유지한다. `none`이면 끈다.
+- `GEMINI_THINKING_LEVEL`: 기본 `low`(빠른 응답). `medium`/`high`로 올리거나 `default`로 모델 기본값을 쓴다. 모델이 거절하면 자동으로 빼고 다시 보낸다.
 - `KAKAO_MOBILITY_API_KEY`: 카카오모빌리티 자동차 미래 운행 길찾기 키. SPEC-107 이후 `ITINERARY_ROUTE_PROVIDER=kakao`일 때만 사용한다(기본은 추정 이동시간).
 - `ITINERARY_CATALOG_PATH`, `ITINERARY_INSIGHTS_PATH`: 기본은 서비스 폴더의 `data/itinerary_catalog.json`, `data/visit_insights.json`.
 - `ITINERARY_REQUESTS_PER_MINUTE`, `ITINERARY_REQUESTS_PER_DAY`: 프로세스 전역 기본 10/100. 동시 2건, 본문 64 KiB. 공급자 계정의 프로젝트 예산도 별도로 설정한다.

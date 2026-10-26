@@ -2,6 +2,8 @@
 
 [SPEC-102](../../docs/spec_102.md)의 사진 수집·연결에 [SPEC-110](../../docs/spec_110.md)의 Gemini 이미지 판독을 추가한 로컬 서비스다. 링크 하나 → 전체 사진 다운로드 → 장소 후보 → 기존 스냅샷 메타데이터·41축 라벨 연결까지 처리한다. 개인 저장·추천·일정·신규 라벨 생성은 없다.
 
+[SPEC-111](../../docs/spec_111.md): HTTP/CLI는 `app.py`, 작업 상태·취소·보존 관리는 `job_store.py`에 분리했다. 지도 번들의 간결한 값과 `data/catalogs/map-label-evidence.json.gz`의 전체 근거를 함께 읽고 해시를 검증한다. 근거 파일은 `node scripts/build_map_ui_data.mjs`로 재생성한다.
+
 ## 실행
 
 현재 작업 환경에는 격리된 `.deps/`와 OCR 모델 cache가 준비되어 있다. 저장소 루트에서 실행한다.

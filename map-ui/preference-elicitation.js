@@ -1,8 +1,8 @@
 (function exposeTravelPreference(root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports ? require("./domain.js") : root.TRAVEL_DOMAIN);
   if (typeof module === "object" && module.exports) module.exports = api;
   root.TRAVEL_PREFERENCE = api;
-})(typeof globalThis !== "undefined" ? globalThis : window, function createTravelPreference() {
+})(typeof globalThis !== "undefined" ? globalThis : window, function createTravelPreference(domain) {
   "use strict";
 
   const PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
@@ -17,21 +17,9 @@
   const QUESTION_BOTH_EVIDENCE_WEIGHT = 0.75;
   const PAIR_BOTH_EVIDENCE_WEIGHT = 0.6;
 
-  const ATOMIC_FEATURES = Object.freeze([
-    "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
-    "traditional_market", "festival", "indoor_ratio", "weather_sensitivity",
-    "restfulness", "physical_ease", "visit_duration_flexibility", "scenic_value",
-    "distinctiveness", "local_embeddedness", "landmark_significance", "photo_value",
-  ]);
+  const ATOMIC_FEATURES = domain.ATOMIC_FEATURES;
 
-  const FEATURE_LABELS = Object.freeze({
-    mountain: "산", ocean: "바다", activity: "활동", culture_history: "문화·역사",
-    theme_park: "테마 공간", cafe: "카페", traditional_market: "전통시장", festival: "축제",
-    indoor_ratio: "실내", weather_sensitivity: "날씨 타는 야외 경험", restfulness: "휴식",
-    physical_ease: "편한 동선", visit_duration_flexibility: "체류 유연성", scenic_value: "경관",
-    distinctiveness: "독특함", local_embeddedness: "제주 로컬성", landmark_significance: "랜드마크",
-    photo_value: "사진 가치",
-  });
+  const FEATURE_LABELS = domain.FEATURE_LABELS;
 
   const QUESTIONS = Object.freeze([
     {

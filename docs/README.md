@@ -66,7 +66,41 @@
 | [SPEC-018](spec_018.md) | 클러스터 재사용·일자 한계효용 기반 일정 배분 v5 | Draft | itinerary, clustering, distance, evaluation |
 | [SPEC-019](spec_019.md) | 여행 MBTI·적응형 가상 장소 선택 기반 개인 선호 v2 | Implemented | personalization, preference elicitation, ranking, UI, viral |
 | [SPEC-020](spec_020.md) | 베타 사용자용 단계형 여행 조건 입력 UI v1 | Implemented | recommendation, onboarding, map, UI |
+| [SPEC-021](spec_021.md) | 원격 최신화와 로컬 SPEC 번호 재정비 | Implemented | 과거 데이터·라벨 작업 |
 | [SPEC-022](spec_022.md) | Kakao 신규 후보 2,374건 41축 에이전트 라벨링 v1 | In Progress | research, labeling, data |
+| [SPEC-023](spec_023.md) | Companion 재판정 batch 04 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-024](spec_024.md) | Companion 재판정 batch 06 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-025](spec_025.md) | Companion 품질 감사 배치 001a | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-026](spec_026.md) | Companion 품질 재판정 001d | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-027](spec_027.md) | Companion 품질 판정 batch 001b | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-028](spec_028.md) | Companion 엄격 기준 품질 재판정 001d | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-029](spec_029.md) | Companion 엄격 품질 판정 batch strict-001b | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-030](spec_030.md) | Companion 엄격 품질 판정 batch 001c | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-031](spec_031.md) | Companion 엄격 품질 재판정 strict-001a | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-032](spec_032.md) | Companion 상대 5점 재판정 batch 05 | In Progress | 과거 데이터·라벨 작업 |
+| [SPEC-033](spec_033.md) | Companion 상대 5점 재판정 01 | In Progress | 과거 데이터·라벨 작업 |
+| [SPEC-034](spec_034.md) | outdoor_nature Companion calibration 표본 직접 라벨링 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-035](spec_035.md) | Companion calibration shopping_market 기준 표본 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-036](spec_036.md) | Culture Exhibition Companion calibration sample | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-037](spec_037.md) | Cafe unknown-intro Companion 경계 재검토 batch 06 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-038](spec_038.md) | Culture exhibition calibration batch 02 | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-039](spec_039.md) | other_place Companion calibration batch 03 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-040](spec_040.md) | shopping_market calibration batch 05 Companion 직접 판정 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-041](spec_041.md) | Activity-family Companion calibration batch 01 | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-042](spec_042.md) | outdoor_nature Companion batch 04 boundary review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-043](spec_043.md) | Culture exhibition Companion boundary review batch 02 | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-044](spec_044.md) | shopping_market batch 05 Companion 경계 재검토 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-045](spec_045.md) | other_place Companion batch 03 boundary review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-046](spec_046.md) | Activity-family calibration batch 01 Companion boundary review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-047](spec_047.md) | Cafe unknown-intro Companion 최종 검토 batch 08 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-048](spec_048.md) | Culture exhibition Companion calibration batch 09 boundary review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-049](spec_049.md) | outdoor_nature calibration batch 12 Companion boundary review | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-050](spec_050.md) | outdoor_nature Companion calibration batch 11 boundary review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-051](spec_051.md) | Activity-family calibration batch 07 Companion boundary review | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-052](spec_052.md) | outdoor_nature Companion final review batch 15 | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-053](spec_053.md) | outdoor_nature Companion calibration batch 17 final review | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
+| [SPEC-054](spec_054.md) | outdoor_nature Companion final review batch 13 | Implemented | 과거 데이터·라벨 작업 |
+| [SPEC-055](spec_055.md) | outdoor_nature Companion final review batch 18 | 상태는 원문 참조 | 과거 데이터·라벨 작업 |
 | [SPEC-056](spec_056.md) | 베타 추천 카드 단순화와 장소별 만족도 UI | Implemented | recommendation, feedback, map, UI |
 | [SPEC-057](spec_057.md) | Map UI `/travel/` 정적 호스팅 배포 | Implemented | deployment, hosting, map, UI |
 | [SPEC-058](spec_058.md) | 추천 만족도 완료형 JSON 로그 저장 | Superseded | recommendation, feedback, privacy, UI |
@@ -118,17 +152,12 @@
 | [SPEC-108](spec_108.md) | Gemini LLM 공급자 지원 | In Progress | LLM, itinerary, restaurants, configuration |
 | [SPEC-109](spec_109.md) | 비밀 파일(.env) AI 열람 금지 | Implemented | repository, agent, security |
 | [SPEC-110](spec_110.md) | Gemini 이미지 장소 추출과 기존 메타데이터·라벨 연결 | Implemented | instagram, extraction, metadata, labeling |
+| [SPEC-111](spec_111.md) | 코드 리뷰 후속 수정과 작업 파일 정리 | Implemented | recommendation, feedback, itinerary, server, repository |
+| [SPEC-112](spec_112.md) | 생성 문서·도면·임시 산출물 삭제 | Implemented | repository, docs, cleanup |
 
-- 다음 예약 번호: `SPEC-111`
+- 다음 예약 번호: `SPEC-113`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
-
-## 사업 문서
-
-| 문서 | 내용 | 상태 |
-|---|---|---|
-| [수익모델 및 사회적 기여 성과](business_model_and_social_impact.md) | 여행 추천·예약 앱과 B2B·B2G 공급, 과금 구조, 사회적 성과·측정 지표 | 사업 제안 초안 |
-| [1단계 제출 Spec](../kaist_app/제출용/01_Trip_AI_1단계_Spec.md) | §1~8 사업·앱 기획, §9~17 전체 서비스 기술 구현 계획 | 기획·구현 계획 · 로컬 전용/Git 제외 |
 
 ## 기준 문서
 
@@ -158,3 +187,9 @@
 - `In Progress`: SPEC에 따른 구현이 진행 중이다.
 - `Implemented`: 구현, 검증, 문서 동기화가 끝났다.
 - `Superseded`: 더 새로운 SPEC으로 대체되었으며 대체 문서를 링크해야 한다.
+
+## 생성 자료 정리
+
+- 제출용 문서·도면·백업, 일회성 조사·보고서·스크린샷은 [SPEC-112](spec_112.md)에 따라 삭제했다. 과거 SPEC의 해당 경로·검증 결과는 당시 작업 이력이다.
+- 새 임시 평가·보고서 출력은 Git에서 제외한 `tmp/`를 사용한다.
+- 기준 문서·SPEC, 데이터 검증에 필요한 보고서, 강의 원본과 `labeling-review/`의 검수 도구는 유지한다.

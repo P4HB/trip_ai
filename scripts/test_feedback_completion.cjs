@@ -13,11 +13,33 @@ const fixture = `window.FEEDBACK_TEST = {
       transportMode: 'car', requiredPlaceIds: [], companionType: 'parents',
       preferences: [{feature:'ocean',mode:'benefit',weight:4}], resultCount:10, diversity:'balanced'
     }, { random: () => 0.65 });
+    resetFeedbackAutoSave({ createSession: true });
+    attachVariantSession(result);
     renderRecommendationOutput(result);
     return result.items.map(item => item.placeId);
   },
   guard(id) { completeRecommendationFeedback(id, 'mobile-dialog'); },
-  clear: () => clearRecommendation()
+  clear: () => clearRecommendation(),
+  toggle: () => toggleCategory('12'),
+  run() {
+    const request = state.recommendationResult.request;
+    for (const [key, value] of Object.entries({destinationRegion:request.destinationRegion, tripIntent:request.intent,
+      companionType:request.companionType, transportMode:request.transportMode,
+      travelStartDate:request.travelWindow.startDate, travelEndDate:request.travelWindow.endDate,
+      resultLimit:10, diversityPreset:'balanced'})) dom[key].value = value;
+    dom.dateUndecided.checked = false;
+    return runRecommendation({fit:false, openOutput:false, preserveSession:true});
+  },
+  reroll: () => rerollRecommendation(),
+  anchor() {
+    state.selectedAnchorIds.add(state.recommendationResult.items[0].placeId);
+    return runRecommendation({fit:false,openOutput:false,preserveSession:true});
+  },
+  editAndClear(id) {
+    state.recommendationFeedback.set(id,{score:4,comment:'debounced-before-reset'});
+    scheduleFeedbackAutoSave(800);
+    clearRecommendation();
+  }
 };`;
 const server = http.createServer((req, res) => {
   const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
@@ -105,7 +127,7 @@ const server = http.createServer((req, res) => {
     assert.ok((await badges.allTextContents()).every(text => text === '✓ 평가 완료 · 3점'));
     await page.setViewportSize({width:390,height:844});
     await card.scrollIntoViewIfNeeded();
-    const output = path.resolve(__dirname, '../artifacts/feedback-completion');
+    const output = path.resolve(process.env.FEEDBACK_TEST_OUTPUT || path.join(__dirname, '../tmp/test-artifacts/feedback-completion'));
     fs.mkdirSync(output, {recursive:true});
     await page.screenshot({path:path.join(output, 'completed.png')});
     await card.locator('.recommendation-card-top').click();
@@ -116,8 +138,48 @@ const server = http.createServer((req, res) => {
     assert.equal(await dialog.isVisible(), false);
     await page.evaluate(() => FEEDBACK_TEST.setup());
     assert.ok((await page.locator('.recommendation-feedback-badge').allTextContents()).every(text => text === '미평가'));
+    // SPEC-111: browsing filters cannot reset a recommendation or shrink its candidate pool.
+    const snapshot = await page.evaluate(() => ({result:CCU_MMR_DASHBOARD.getResult(), session:CCU_MMR_DASHBOARD.getFeedbackAutoSaveState().sessionId}));
+    await page.setViewportSize({width:1440,height:1000});
+    await page.locator('.explore-panel > summary').click();
+    await page.locator('#placeSearch').fill('성산');
+    await page.waitForTimeout(250);
+    await page.evaluate(() => FEEDBACK_TEST.toggle());
+    assert.deepEqual(await page.evaluate(() => CCU_MMR_DASHBOARD.getResult()), snapshot.result);
+    const full = await page.evaluate(() => FEEDBACK_TEST.run());
+    assert.equal(full.summary.inputCandidates, 2153);
+    assert.equal(full.request.candidateFilter.query, null);
+    assert.equal(await page.evaluate(() => CCU_MMR_DASHBOARD.getFeedbackAutoSaveState().sessionId), snapshot.session);
+    const ratedId = full.items[0].placeId;
+    await page.setViewportSize({width:1440,height:1000});
+    const rated = page.locator('.recommendation-card[data-place-id="' + ratedId + '"] .recommendation-feedback');
+    await rated.locator('[data-score="4"]').click();
+    await rated.locator('textarea').fill('kept-across-courses');
+    await page.evaluate(() => FEEDBACK_TEST.reroll());
+    await page.evaluate(() => FEEDBACK_TEST.anchor());
+    const log = await page.evaluate(() => CCU_MMR_DASHBOARD.buildFeedbackLog());
+    assert.equal(log.session_id, snapshot.session);
+    assert.equal(log.feedback.entries.find(entry=>entry.place_id===ratedId).comment, 'kept-across-courses');
+    // A failed outgoing snapshot must retry even after a new session becomes current.
+    let failed = false;
+    await page.route('**/travel/api/feedback', async route => {
+      const payload = route.request().postDataJSON(); posts.push(payload);
+      if (!failed && payload.feedback.entries.some(entry=>entry.comment==='debounced-before-reset')) {
+        failed=true; await route.fulfill({status:503,json:{ok:false}});
+      } else await route.fulfill({json:{ok:true,session_id:payload.session_id,revision:payload.revision}});
+    });
+    await page.evaluate(id => FEEDBACK_TEST.editAndClear(id), ratedId);
+    await page.evaluate(() => FEEDBACK_TEST.setup());
+    await page.waitForTimeout(2400);
+    const outgoing = posts.filter(payload=>payload.session_id===snapshot.session && payload.feedback.entries.some(entry=>entry.comment==='debounced-before-reset'));
+    assert.ok(failed && outgoing.length>=2, 'retired session retries after reset');
+    assert.deepEqual(outgoing[0],outgoing[1], 'retry sends the same immutable snapshot');
+    await page.evaluate(() => FEEDBACK_TEST.clear());
+    for(const id of ['requestPreview','outputPreview','warningList','verificationList']) assert.equal(await page.locator('#'+id).textContent(),'');
+    for(const id of ['candidateMetric','scoredMetric','poolMetric','returnedMetric']) assert.equal(await page.locator('#'+id).textContent(),'0');
+    assert.equal(await page.locator('#metricGrid').isVisible(),false,'diagnostics hidden in beta');
     assert.deepEqual(errors, []);
-    console.log('PASS: score required, optional comment, completion/return, shared badges, edit/reopen, autosave schema, desktop, reset, no overflow or page errors');
+    console.log('PASS: feedback completion/synchronization, exploration isolation, full candidates, reroll/anchor session continuity, retired snapshot retry, complete reset, responsive UI');
   } finally {
     await browser?.close();
     await new Promise(resolve => server.close(resolve));

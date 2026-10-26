@@ -304,7 +304,7 @@ class ImportTests(unittest.TestCase):
             return original_rmtree(path, *args, **kwargs)
         try:
             self.assertTrue(entered.wait(2))
-            with patch("app.shutil.rmtree", side_effect=locked_only):
+            with patch("job_store.shutil.rmtree", side_effect=locked_only):
                 with self.assertRaisesRegex(RuntimeError, "delete_failed"):
                     store.delete(jid)
                 release.set(); store.close()
@@ -347,7 +347,7 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(updated["result"]["mentions"][0]["identity_basis"], "user_selected")
             self.assertEqual(request(f"/api/imports/{jid}/assets/2").headers["Content-Type"], "image/jpeg")
             self.assertEqual(json.load(request(f"/api/imports/{jid}/export"))["schema_version"], "instagram-place-import-v1")
-            with patch("app.shutil.rmtree", side_effect=PermissionError("locked fixture")):
+            with patch("job_store.shutil.rmtree", side_effect=PermissionError("locked fixture")):
                 with self.assertRaises(urllib.error.HTTPError) as error:
                     request(f"/api/imports/{jid}", method="DELETE")
                 self.assertEqual(error.exception.code, 500)

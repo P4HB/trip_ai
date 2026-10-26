@@ -1,4 +1,5 @@
 """Deterministic adapter, evidence and catalog tests; no keys/network are needed."""
+from contextlib import closing
 import copy
 import io
 import json
@@ -291,7 +292,7 @@ class CatalogTests(unittest.TestCase):
         import sqlite3
         with tempfile.TemporaryDirectory() as directory:
             database, output = Path(directory) / "reviews.sqlite3", Path(directory) / "insights.json"
-            with sqlite3.connect(database) as conn:
+            with closing(sqlite3.connect(database)) as conn, conn:
                 conn.executescript("CREATE TABLE place_links(contentid TEXT,kakao_place_id TEXT); CREATE TABLE reviews(kakao_place_id TEXT,review_id TEXT,content TEXT);")
                 conn.execute("INSERT INTO place_links VALUES ('a','k')")
                 conn.execute("INSERT INTO reviews VALUES ('k','r','일몰 좋고 관람에 90분 소요')")
@@ -300,7 +301,7 @@ class CatalogTests(unittest.TestCase):
             first = output.read_bytes()
             self.assertEqual(subprocess.run(command, capture_output=True).returncode, 0)
             self.assertEqual(first, output.read_bytes())
-            with sqlite3.connect(database) as conn:
+            with closing(sqlite3.connect(database)) as conn, conn:
                 conn.execute("DELETE FROM reviews")
             self.assertEqual(subprocess.run(command, capture_output=True).returncode, 0)
             self.assertFalse(json.loads(output.read_text())["places"])

@@ -21,7 +21,7 @@ const baselinePath = path.resolve(baselineArgument);
 const Baseline = require(baselinePath);
 assert.equal(Baseline.ALGORITHM_VERSION, "ccu-mmr-v7-daily-type-limit", "baseline must be the pre-budget engine");
 const bundlePath = path.join(root, "map-ui/data/jeju-places.js");
-const outputPath = path.resolve(option("--output") || path.join(root, "artifacts/evaluation/spec_084_preference_budget.json"));
+const outputPath = path.resolve(option("--output") || path.join(root, "tmp/evaluation/spec_084_preference_budget.json"));
 const digest = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(bundlePath, "utf8"), context);

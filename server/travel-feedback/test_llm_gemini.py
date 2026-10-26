@@ -15,7 +15,8 @@ import feedback_api
 from fake_llm_scheduler import GeminiGenerateStub
 from itinerary_service import PROPOSAL_SCHEMA
 from llm_client import (GeminiClient, OpenAIClient, ProviderError, create_llm_client, json_schema_to_gemini,
-                        llm_key_configured, resolve_llm_provider, task_instructions)
+                        llm_key_configured, llm_key_notices, resolve_llm_provider, safe_error_code,
+                        task_instructions)
 from restaurant_candidates import FIT_SCHEMA
 from visit_insights import INSIGHTS_SCHEMA
 
@@ -52,8 +53,10 @@ def reply(value, reason="STOP", extra=None):
     return body
 
 
-def http_error(code):
-    return HTTPError("https://generativelanguage.googleapis.com/x", code, "secret body with key", {}, None)
+def http_error(code, body=None):
+    import io
+    fp = io.BytesIO(json.dumps(body).encode()) if body is not None else None
+    return HTTPError("https://generativelanguage.googleapis.com/x", code, "secret body with key", {}, fp)
 
 
 class GeminiAdapterTests(unittest.TestCase):
@@ -74,7 +77,7 @@ class GeminiAdapterTests(unittest.TestCase):
         self.assertEqual(json.loads(body["contents"][0]["parts"][0]["text"]), {"slots": []})
         config = body["generationConfig"]
         self.assertEqual((config["responseMimeType"], config["responseJsonSchema"], config["maxOutputTokens"]), ("application/json", SCHEMA, 8192))
-        self.assertNotIn("thinkingConfig", config)
+        self.assertEqual(config["thinkingConfig"], {"thinkingLevel": "low"}, "low thinking by default keeps calls fast")
         self.assertEqual(client.last_usage, {"input_tokens": 10, "output_tokens": 4, "thought_tokens": 7, "total_tokens": 21})
 
     def test_thought_parts_are_ignored_and_thinking_level_is_optional(self):
@@ -87,7 +90,7 @@ class GeminiAdapterTests(unittest.TestCase):
 
     def test_json_schema_rejection_falls_back_once_and_sticks(self):
         http = FakeHTTP([MODEL, http_error(400), reply({"x": 1}), reply({"x": 2})])
-        client = GeminiClient("k", opener=http)
+        client = GeminiClient("k", opener=http, thinking_level="default")
         self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA), {"x": 1})
         self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA), {"x": 2})
         self.assertEqual(len(http.requests), 4)
@@ -95,6 +98,42 @@ class GeminiAdapterTests(unittest.TestCase):
         self.assertNotIn("responseJsonSchema", retry)
         self.assertEqual(retry["responseSchema"]["type"], "OBJECT")
         self.assertNotIn("responseJsonSchema", json.loads(http.requests[3].data)["generationConfig"])
+
+    def test_rejected_thinking_level_is_dropped_before_schema_fallback(self):
+        http = FakeHTTP([MODEL, http_error(400), http_error(400), reply({"x": 1}), reply({"x": 2})])
+        client = GeminiClient("k", opener=http)
+        self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA), {"x": 1})
+        self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA), {"x": 2})
+        configs = [json.loads(request.data)["generationConfig"] for request in http.requests[1:]]
+        self.assertEqual(configs[0]["thinkingConfig"], {"thinkingLevel": "low"})
+        self.assertNotIn("thinkingConfig", configs[1])
+        self.assertIn("responseJsonSchema", configs[1])
+        self.assertIn("responseSchema", configs[2])
+        self.assertTrue(all("thinkingConfig" not in config and "responseSchema" in config for config in configs[2:]))
+        self.assertIsNone(GeminiClient("k", thinking_level="default").thinking_level)
+        self.assertEqual(GeminiClient("k", thinking_level="High").thinking_level, "high")
+
+    def test_overloaded_primary_falls_back_to_lite_model_and_cools_down(self):
+        lite = {"name": "models/gemini-3.5-flash-lite", "supportedGenerationMethods": ["generateContent"]}
+        busy = {"error": {"code": 503, "message": "The model is overloaded.", "status": "UNAVAILABLE"}}
+        http = FakeHTTP([MODEL, http_error(503, busy), lite, reply({"x": 1}), reply({"x": 2})])
+        client = GeminiClient("k", opener=http)
+        self.assertEqual(client.fallback_model, "gemini-3.5-flash-lite")
+        self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA, 40), {"x": 1})
+        self.assertEqual(client.last_model, "gemini-3.5-flash-lite")
+        self.assertEqual(client.generate_structured("itinerary", {}, SCHEMA, 40), {"x": 2})
+        urls = [request.full_url.rsplit("/", 1)[-1] for request in http.requests]
+        self.assertEqual(urls, ["gemini-3.8-flash", "gemini-3.8-flash:generateContent", "gemini-3.5-flash-lite",
+                                "gemini-3.5-flash-lite:generateContent", "gemini-3.5-flash-lite:generateContent"],
+                         "after an overload the next call goes straight to the fallback during the cooldown")
+        # Timeouts also fall back; permission errors do not.
+        http = FakeHTTP([MODEL, TimeoutError(), lite, reply({"x": 3})])
+        self.assertEqual(GeminiClient("k", opener=http).generate_structured("itinerary", {}, SCHEMA, 40), {"x": 3})
+        http = FakeHTTP([MODEL, http_error(403)])
+        with self.assertRaisesRegex(ProviderError, "provider_http_403"):
+            GeminiClient("k", opener=http).generate_structured("itinerary", {}, SCHEMA, 40)
+        self.assertIsNone(GeminiClient("k", fallback_model="none").fallback_model)
+        self.assertIsNone(GeminiClient("k", model="gemini-3.5-flash-lite").fallback_model, "no fallback to itself")
 
     def test_refusals_incomplete_and_invalid_outputs(self):
         cases = [(reply({"x": 1}, extra={"promptFeedback": {"blockReason": "SAFETY"}}), "llm_refused"),
@@ -117,9 +156,31 @@ class GeminiAdapterTests(unittest.TestCase):
                                 ([MODEL, http_error(429)], "provider_http_429")):
             with self.subTest(code=code):
                 with self.assertRaises(ProviderError) as caught:
-                    GeminiClient("secret-key", opener=FakeHTTP(responses)).generate_structured("itinerary", {}, SCHEMA)
+                    GeminiClient("secret-key", opener=FakeHTTP(responses), fallback_model="none").generate_structured("itinerary", {}, SCHEMA)
                 self.assertEqual(str(caught.exception), code)
                 self.assertNotIn("secret", str(caught.exception))
+
+    def test_error_reason_enum_is_kept_but_messages_are_not(self):
+        bad_key = {"error": {"code": 400, "message": "API key not valid. secret-key AIzaLEAK", "status": "INVALID_ARGUMENT",
+                             "details": [{"@type": "type.googleapis.com/google.rpc.ErrorInfo", "reason": "API_KEY_INVALID"}]}}
+        http = FakeHTTP([http_error(400, bad_key)])
+        with self.assertRaises(ProviderError) as caught:
+            GeminiClient("secret-key", opener=http).generate_structured("itinerary", {}, SCHEMA)
+        self.assertEqual((str(caught.exception), caught.exception.reason), ("provider_http_400", "API_KEY_INVALID"))
+        self.assertEqual(safe_error_code(caught.exception), "provider_http_400:API_KEY_INVALID")
+        quota = {"error": {"code": 429, "message": "Quota exceeded for secret", "status": "RESOURCE_EXHAUSTED"}}
+        with self.assertRaises(ProviderError) as caught:
+            GeminiClient("k", opener=FakeHTTP([MODEL, http_error(429, quota)]), fallback_model="none").generate_structured("itinerary", {}, SCHEMA)
+        self.assertEqual(safe_error_code(caught.exception), "provider_http_429:RESOURCE_EXHAUSTED")
+        self.assertNotIn("secret", safe_error_code(caught.exception))
+        # A key problem on generateContent is not retried with the fallback schema.
+        http = FakeHTTP([MODEL, http_error(400, bad_key)])
+        with self.assertRaises(ProviderError):
+            GeminiClient("k", opener=http).generate_structured("itinerary", {}, SCHEMA)
+        self.assertEqual(len(http.requests), 2)
+        with self.assertRaises(ProviderError) as caught:
+            GeminiClient("k", opener=FakeHTTP([TimeoutError()]), fallback_model="none").generate_structured("itinerary", {}, SCHEMA)
+        self.assertEqual(str(caught.exception), "provider_timeout")
 
     def test_missing_key_deadline_and_size_limits_prevent_calls(self):
         http = FakeHTTP([])
@@ -159,7 +220,9 @@ class ProviderSelectionTests(unittest.TestCase):
         self.assertEqual(resolve_llm_provider({"GEMINI_API_KEY": "g"}), "gemini")
         self.assertEqual(resolve_llm_provider({"GOOGLE_API_KEY": "g"}), "gemini")
         self.assertEqual(resolve_llm_provider({"OPENAI_API_KEY": "o"}), "openai")
-        self.assertEqual(resolve_llm_provider({"OPENAI_API_KEY": "o", "GEMINI_API_KEY": "g"}), "openai")
+        self.assertEqual(resolve_llm_provider({"OPENAI_API_KEY": "o", "GEMINI_API_KEY": "g"}), "gemini",
+                         "an OpenAI key inherited from the system environment must not override the project's Gemini key")
+        self.assertEqual(resolve_llm_provider({"OPENAI_API_KEY": "o", "GEMINI_API_KEY": "g", "LLM_PROVIDER": "openai"}), "openai")
         self.assertEqual(resolve_llm_provider({"OPENAI_API_KEY": "o", "GEMINI_API_KEY": "g", "LLM_PROVIDER": "gemini"}), "gemini")
         self.assertEqual(resolve_llm_provider({}), "openai")
         with self.assertRaises(ValueError):
@@ -167,6 +230,19 @@ class ProviderSelectionTests(unittest.TestCase):
         self.assertTrue(llm_key_configured({"GEMINI_API_KEY": "g"}))
         self.assertFalse(llm_key_configured({"LLM_PROVIDER": "gemini", "OPENAI_API_KEY": "o"}))
         self.assertFalse(llm_key_configured({"LLM_PROVIDER": "nope", "GEMINI_API_KEY": "g"}))
+
+    def test_google_key_under_openai_name_is_used_as_gemini(self):
+        env = {"OPENAI_API_KEY": "AIzaFAKEKEYFORTESTS"}
+        self.assertEqual(resolve_llm_provider(env), "gemini")
+        self.assertTrue(llm_key_configured(env))
+        client = create_llm_client(environ=env)
+        self.assertIsInstance(client, GeminiClient)
+        self.assertTrue(client.configured)
+        self.assertFalse(llm_key_configured({**env, "LLM_PROVIDER": "openai"}), "a Google key is never sent to OpenAI")
+        notices = llm_key_notices(env) + llm_key_notices({"OPENAI_API_KEY": "sk-o", "GEMINI_API_KEY": "g"})
+        self.assertEqual(len(notices), 2)
+        self.assertTrue(all("AIza" not in notice and "FAKE" not in notice and "sk-o" not in notice for notice in notices))
+        self.assertEqual(llm_key_notices({"GEMINI_API_KEY": "g"}), [])
 
     def test_factory_models_tokens_and_stale_cross_provider_names(self):
         gemini = create_llm_client(environ={"GEMINI_API_KEY": "g"})

@@ -4,9 +4,11 @@
 - 작성일: 2026-10-04
 - 최종 수정일: 2026-10-04
 - 관련 이슈: 사용자의 BP 표기 재확인 및 02 PDF 주석·부가 설명 제거 요청
-- 관련 문서: [1단계 제출 Spec](../kaist_app/제출용/01_Trip_AI_1단계_Spec.md)
+- 관련 문서: [제출 자료 정리 기록](spec_112.md)
 - 관련 코드: `kaist_app/_work/build_process.py`, `kaist_app/_work/render_process_pdf.py`
 - 선행 SPEC: SPEC-094, SPEC-096
+
+> 후속 정리: 2026-10-26 [SPEC-112](spec_112.md)에 따라 생성 제출본·도면·작업 자료·사업 문서를 삭제했다. 아래는 작성 당시의 이력이다.
 
 ## 배경
 

@@ -1,8 +1,8 @@
 (function exposeCCUMMR(root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports ? require("./domain.js") : root.TRAVEL_DOMAIN);
   if (typeof module === "object" && module.exports) module.exports = api;
   root.CCU_MMR = api;
-})(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR() {
+})(typeof globalThis !== "undefined" ? globalThis : window, function createCCUMMR(domain) {
   "use strict";
 
   const ALGORITHM_VERSION = "ccu-mmr-v8-preference-budget";
@@ -11,12 +11,7 @@
   const PREFERENCE_PROFILE_SCHEMA_VERSION = "traveler-preference-profile-v2-three-axis";
   const RESULT_SCHEMA_VERSION = "ccu-mmr-result-v6";
   const SEED_SELECTION_WEIGHTS = Object.freeze([0.5, 0.3, 0.2]);
-  const ATOMIC_FEATURES = [
-    "mountain", "ocean", "activity", "culture_history", "theme_park", "cafe",
-    "traditional_market", "festival", "indoor_ratio", "weather_sensitivity",
-    "restfulness", "physical_ease", "visit_duration_flexibility", "scenic_value",
-    "distinctiveness", "local_embeddedness", "landmark_significance", "photo_value",
-  ];
+  const ATOMIC_FEATURES = domain.ATOMIC_FEATURES;
   const COMPANION_TYPES = ["solo", "couple", "friends", "kids", "parents"];
   const BLOCK_WEIGHTS = Object.freeze({ preference: 0.70, companion: 0.15, month: 0.10, weather: 0.05 });
   const CONFIG = Object.freeze({
@@ -55,12 +50,7 @@
       anchorCandidateLimit: 12,
     }),
   });
-  const INTENT_TYPES = Object.freeze({
-    visit: new Set(["12", "14", "25", "28"]),
-    shopping: new Set(["38"]),
-    stay: new Set(["32"]),
-    event: new Set(["15"]),
-  });
+  const INTENT_TYPES = domain.INTENT_TYPES;
 
   function clamp(value, min = 0, max = 1) {
     return Math.min(max, Math.max(min, value));
@@ -204,7 +194,7 @@
       throw new Error("여행 취향 프로필은 개인화 요청 버전에서만 사용할 수 있습니다.");
     }
     const destinationRegion = input.destinationRegion || "jeju_all";
-    if (!["jeju_all", "jeju_city", "seogwipo_city"].includes(destinationRegion)) {
+    if (!Object.hasOwn(domain.REGIONS, destinationRegion)) {
       throw new Error("지원하지 않는 추천 지역입니다.");
     }
     const intent = input.intent || "visit";
