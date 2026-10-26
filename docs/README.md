@@ -154,8 +154,9 @@
 | [SPEC-110](spec_110.md) | Gemini 이미지 장소 추출과 기존 메타데이터·라벨 연결 | Implemented | instagram, extraction, metadata, labeling |
 | [SPEC-111](spec_111.md) | 코드 리뷰 후속 수정과 작업 파일 정리 | Implemented | recommendation, feedback, itinerary, server, repository |
 | [SPEC-112](spec_112.md) | 생성 문서·도면·임시 산출물 삭제 | Implemented | repository, docs, cleanup |
+| [SPEC-113](spec_113.md) | 동작 보존 구조 리팩토링 | In Progress | map-ui, server, scripts, tests, repository |
 
-- 다음 예약 번호: `SPEC-113`
+- 다음 예약 번호: `SPEC-114`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
