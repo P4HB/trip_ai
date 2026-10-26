@@ -125,4 +125,21 @@ class StartupContracts(unittest.TestCase):
         finally:
             sys.path.pop(0)
 
+class DockerImageContracts(unittest.TestCase):
+    def test_image_copies_every_local_module_the_server_imports(self):
+        import re
+        dockerfile = (ROOT / 'Dockerfile').read_text(encoding='utf-8')
+        copied = set(re.findall(r'([A-Za-z_][\w]*)\.py\b', ' '.join(line for line in dockerfile.splitlines() if line.startswith('COPY'))))
+        local = {path.stem for path in ROOT.glob('*.py')}
+        needed, pending = set(), ['feedback_api']
+        while pending:  # Dockerfile copies files one by one (SPEC-113)
+            name = pending.pop()
+            if name in needed:
+                continue
+            needed.add(name)
+            source = (ROOT / f'{name}.py').read_text(encoding='utf-8')
+            pending.extend(module for module in re.findall(r'^\s*(?:from|import)\s+([A-Za-z_]\w*)', source, re.M) if module in local)
+        self.assertIn('settings', needed)
+        self.assertEqual(needed - copied, set())
+
 if __name__=='__main__': unittest.main()

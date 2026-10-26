@@ -13,10 +13,10 @@ from __future__ import annotations
 import json
 import re
 from collections import Counter
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, datetime, time, timedelta
 
 VERSION = "kakao-observed-week-hours-v1"
-KST = timezone(timedelta(hours=9))
+from timeutil import KST
 WEEKDAYS = "월화수목금토일"  # ISO weekday 1..7
 # Public holidays inside the 2026-09 collection windows. They are needed only to decide
 # whether an observed day shows regular weekly hours. The data itself labels these dates

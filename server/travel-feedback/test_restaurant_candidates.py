@@ -522,14 +522,23 @@ class LocalRunnerTests(unittest.TestCase):
             self.assertNotIn(secret, text)
 
     def test_runner_recognizes_every_llm_setting_the_server_reads(self):
+        import settings
+        llm_names = {name for name in settings.DEFAULTS if self.runner.LLM_NAME_HINT.search(name)}
+        self.assertEqual(llm_names, set(settings.LLM_SETTING_NAMES))
+        self.assertIn("GEMINI_FALLBACK_MODEL", llm_names)
+        self.assertEqual(llm_names - self.runner.KNOWN_LLM_NAMES, set(), "runner must not warn about settings the server reads")
+
+    def test_every_setting_read_is_registered(self):
         import re
+        import settings
         read = set()
         for source in HERE.glob("*.py"):
             if not source.name.startswith("test_"):
-                read.update(re.findall(r'(?:environ\.get|getenv)\("([A-Z0-9_]+)"', source.read_text(encoding="utf-8")))
-        llm_names = {name for name in read if self.runner.LLM_NAME_HINT.search(name)}
-        self.assertIn("GEMINI_FALLBACK_MODEL", llm_names)
-        self.assertEqual(llm_names - self.runner.KNOWN_LLM_NAMES, set(), "runner must not warn about settings the server reads")
+                text = source.read_text(encoding="utf-8")
+                read.update(re.findall(r'settings\.env\("([A-Z0-9_]+)"', text))
+                self.assertNotRegex(text, r'(?:environ\.get|getenv)\("[A-Z0-9_]+"', f"{source.name}: read settings through settings.env")
+        self.assertIn("TRAVEL_PUBLIC_ORIGIN", read)
+        self.assertEqual(read - set(settings.DEFAULTS), set())
 
 if __name__ == "__main__":
     unittest.main()

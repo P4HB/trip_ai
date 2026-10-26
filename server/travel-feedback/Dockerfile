@@ -6,6 +6,7 @@ RUN addgroup -g 10001 -S app && adduser -u 10001 -S -G app app \
 
 WORKDIR /app
 COPY --chown=app:app feedback_api.py /app/feedback_api.py
+COPY --chown=app:app settings.py timeutil.py http_client.py /app/
 COPY --chown=app:app feedback_contract.py feedback_validation.py feedback_legacy.py /app/
 COPY --chown=app:app itinerary_service.py itinerary_validation.py itinerary_policy.json llm_client.py route_provider.py place_time_data.py visit_insights.py /app/
 COPY --chown=app:app restaurant_hours.py restaurant_catalog.py restaurant_candidates.py /app/

@@ -4,9 +4,9 @@ from __future__ import annotations
 import calendar
 import math
 import re
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 
-KST = timezone(timedelta(hours=9))
+from timeutil import KST
 SOLAR_VERSION = "noaa-fractional-year-v1"
 SOLAR_SOURCE = "https://gml.noaa.gov/grad/solcalc/solareqns.PDF"
 
@@ -192,38 +192,30 @@ def meal_requirements(day, preferences):
     return requirements, errors
 
 
-def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=None):
-    """Validate a proposal with server facts; route_fn uses actual proposed departures.
+# Identity/structural errors must never cause route calls to arbitrary locations.
+FATAL_PROPOSAL_ERRORS = frozenset({"unauthorized_place", "duplicate_place", "invalid_time", "invalid_meal_time", "time_overlap",
+                                   "day_boundary", "meal_overlap", "meal_day_boundary"})
 
-    Meals occupy a gap and reserve their detour budget separately. The baseline A→B
-    leg can occur before or after a reserved meal, never concurrently with it.
-    """
-    result = {"dayIndex": day["dayIndex"], "date": day["date"], "status": "generation_failed", "stops": [],
-              "legs": [], "mealSlots": [], "unscheduledPlaces": [], "violations": [], "unknowns": [], "assumptions": [],
-              "restaurantIntegrationStatus": "pending", "routeObservations": []}
+
+def _is_mandatory(day, pid):
+    return pid in day["requiredPlaceIds"] or pid == day.get("anchorPlaceId")
+
+
+def _reject(result, day):
+    old_reasons = {item["placeId"]: item for item in result["unscheduledPlaces"]}
+    result["unscheduledPlaces"] = [old_reasons.get(pid, {
+        "placeId": pid, "reason": "validation_failed", "required": _is_mandatory(day, pid)
+    }) for pid in day["placeIds"]]
+    # Rejected proposals are only sent to the bounded repair call, not presented as a timetable.
+    result["stops"], result["legs"], result["mealSlots"] = [], [], []
+    return result
+
+
+def _check_stops(day, proposal, places, policy, now, result, day_start, day_end, buffer):
+    """Visits: authorization, duplicates, day bounds, order, dwell evidence and opening hours per calendar date."""
     errors, unknowns = result["violations"], result["unknowns"]
-    result["mealRequirements"], meal_errors = meal_requirements(day, meal_preferences)
-    def reject():
-        old_reasons = {item["placeId"]: item for item in result["unscheduledPlaces"]}
-        result["unscheduledPlaces"] = [old_reasons.get(pid, {
-            "placeId": pid, "reason": "validation_failed", "required": pid in day["requiredPlaceIds"] or pid == day.get("anchorPlaceId")
-        }) for pid in day["placeIds"]]
-        # Rejected proposals are only sent to the bounded repair call, not presented as a timetable.
-        result["stops"], result["legs"], result["mealSlots"] = [], [], []
-        return result
-    if meal_errors:
-        errors.extend(meal_errors)
-        result["status"] = "needs_input"
-        return reject()
-    if not _proposal_structure(proposal):
-        errors.append(issue("invalid_schema", "LLM의 시간표 형식이 올바르지 않습니다."))
-        result["unscheduledPlaces"] = [{"placeId": pid, "reason": "invalid_schema", "required": pid in day["requiredPlaceIds"] or pid == day.get("anchorPlaceId")} for pid in day["placeIds"]]
-        return reject()
     allowed = set(day["placeIds"])
-    mandatory = set(day["requiredPlaceIds"]) | ({day["anchorPlaceId"]} if day.get("anchorPlaceId") else set())
     seen, stop_times = set(), []
-    day_start, day_end = bounds(day)
-    buffer = timedelta(minutes=policy["visitBufferMinutes"])
     for item in proposal["stops"]:
         pid = item["placeId"]
         if pid not in allowed:
@@ -254,28 +246,7 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
         valid_evidence = set((place.get("visitInsights") or {}).get("evidenceReviewIds") or [])
         if not set(item["evidenceReviewIds"]) <= valid_evidence:
             errors.append(issue("fabricated_evidence", "저장된 분석에 없는 리뷰 근거입니다.", pid))
-        # A travel day can end after midnight. Validate the actual calendar dates
-        # touched by a visit so tomorrow's explicit closure overrides yesterday's
-        # overnight interval. A midnight boundary does not require re-admission.
-        unknown = None
-        visit_dates = sorted({arrival.date(), (departure - timedelta(microseconds=1)).date()})
-        for visit_date in visit_dates:
-            midnight = local_time(visit_date.isoformat(), "00:00")
-            segment_start = max(arrival, midnight)
-            segment_end = min(departure, midnight + timedelta(days=1))
-            if segment_end <= segment_start:
-                continue
-            windows, segment_unknown = operating_windows(place, visit_date.isoformat(), policy, now)
-            if segment_unknown:
-                unknown = segment_unknown
-                unknowns.append(segment_unknown)
-                continue
-            covering = [(opened, closed, cutoff) for opened, closed, cutoff in windows
-                        if segment_start >= opened and segment_end <= closed]
-            if not covering:
-                errors.append(issue("closed_or_outside_hours", "휴무·휴게 또는 운영 종료 시각을 위반합니다.", pid))
-            elif segment_start == arrival and not any(cutoff is None or arrival <= cutoff for _, _, cutoff in covering):
-                errors.append(issue("last_admission", "입장 마감 시각을 지났습니다.", pid))
+        unknown = _check_visit_hours(place, pid, arrival, departure, policy, now, errors, unknowns)
         stop_times.append((pid, arrival, departure))
         result["stops"].append({"placeId": pid, "title": place.get("title", pid), "order": len(stop_times),
             "arrival": iso(arrival), "departure": iso(departure), "dwellMinutes": (departure - arrival).total_seconds() / 60,
@@ -285,6 +256,43 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
             "operatingCheckedAt": (place.get("operatingInfo") or {}).get("checkedAt"),
             "evidenceReviewIds": item["evidenceReviewIds"], "visitInsights": place.get("visitInsights") or {"status": "unknown"},
             "solarTimes": solar_times(arrival.date().isoformat(), place["lng"], place["lat"])})
+    return seen, stop_times
+
+
+def _check_visit_hours(place, pid, arrival, departure, policy, now, errors, unknowns):
+    """Opening hours for each calendar date a visit touches; returns the last unknown-hours issue, if any.
+
+    A travel day can end after midnight. Validate the actual calendar dates touched by a visit so
+    tomorrow's explicit closure overrides yesterday's overnight interval. A midnight boundary does
+    not require re-admission.
+    """
+    unknown = None
+    visit_dates = sorted({arrival.date(), (departure - timedelta(microseconds=1)).date()})
+    for visit_date in visit_dates:
+        midnight = local_time(visit_date.isoformat(), "00:00")
+        segment_start = max(arrival, midnight)
+        segment_end = min(departure, midnight + timedelta(days=1))
+        if segment_end <= segment_start:
+            continue
+        windows, segment_unknown = operating_windows(place, visit_date.isoformat(), policy, now)
+        if segment_unknown:
+            unknown = segment_unknown
+            unknowns.append(segment_unknown)
+            continue
+        covering = [(opened, closed, cutoff) for opened, closed, cutoff in windows
+                    if segment_start >= opened and segment_end <= closed]
+        if not covering:
+            errors.append(issue("closed_or_outside_hours", "휴무·휴게 또는 운영 종료 시각을 위반합니다.", pid))
+        elif segment_start == arrival and not any(cutoff is None or arrival <= cutoff for _, _, cutoff in covering):
+            errors.append(issue("last_admission", "입장 마감 시각을 지났습니다.", pid))
+    return unknown
+
+
+def _check_unscheduled(day, proposal, seen, result):
+    """Places left out of the timetable need a model reason; required places and the anchor may not be left out."""
+    errors = result["violations"]
+    allowed = set(day["placeIds"])
+    mandatory = set(day["requiredPlaceIds"]) | ({day["anchorPlaceId"]} if day.get("anchorPlaceId") else set())
     reasons = {}
     for item in proposal["unscheduledPlaces"]:
         pid = item["placeId"]
@@ -298,9 +306,11 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
                 errors.append(issue("required_place_missing", "필수 장소 또는 anchor가 누락되었습니다.", pid))
             elif pid not in reasons:
                 errors.append(issue("unscheduled_reason_missing", "선택 장소의 미배정 이유가 필요합니다.", pid))
-    types = [places[pid].get("primaryType") for pid in seen]
-    if len(set(types)) != len(types):
-        errors.append(issue("daily_type_limit", "하루 대표 유형당 1곳 제한을 위반합니다."))
+
+
+def _check_meal_slots(day, proposal, meal_preferences, result, day_start, day_end, buffer, stop_times):
+    """Each required meal exactly once, inside its window and the day, without overlapping visits or other meals."""
+    errors = result["violations"]
     required_meals = {item["kind"] for item in result["mealRequirements"] if item["status"] == "required"}
     meal_times, meal_kinds = [], set()
     for item in proposal["mealSlots"]:
@@ -329,10 +339,16 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
     meal_times.sort(key=lambda item: item[1])
     if any(current[1] < previous[3] for previous, current in zip(meal_times, meal_times[1:])):
         errors.append(issue("meal_overlap", "식사·우회 여유가 서로 겹칩니다."))
-    # Identity/structural errors must never cause route calls to arbitrary locations.
-    fatal = {"unauthorized_place", "duplicate_place", "invalid_time", "invalid_meal_time", "time_overlap", "day_boundary", "meal_overlap", "meal_day_boundary"}
-    if any(error["code"] in fatal for error in errors):
-        return reject()
+    return meal_times, meal_kinds
+
+
+def _meal_location(places, pid):
+    return {key: places[pid][key] for key in ("placeId", "title", "lng", "lat")}
+
+
+def _attach_legs(day, stop_times, meal_times, route_fn, places, meal_preferences, result, day_start, day_end, buffer):
+    """Route every gap at its actual departure, moving past meals in the gap; returns the meal kinds attached."""
+    errors, unknowns = result["violations"], result["unknowns"]
     points = [(day["startLocation"]["placeId"], day_start, day_start)] + stop_times + [(day["endLocation"]["placeId"], day_end, day_end)]
     attached_meals = set()
     for index, (previous, following) in enumerate(zip(points, points[1:])):
@@ -369,20 +385,51 @@ def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=
             unknowns.append(issue("route_forecast_unknown", "해당 출발일·시각의 교통 예측이 아닌 조회 시점 추정입니다."))
         for kind, start, end, reserved_end in in_gap:
             attached_meals.add(kind)
-            def location(pid):
-                return {key: places[pid][key] for key in ("placeId", "title", "lng", "lat")}
             result["mealSlots"].append({"slotId": f"{day['date']}-{kind}", "kind": kind,
                 "start": iso(start), "end": iso(end), "durationMinutes": (end - start).total_seconds() / 60,
                 "windowStart": meal_preferences[kind]["windowStart"], "windowEnd": meal_preferences[kind]["windowEnd"],
-                "beforeLocation": location(from_id), "afterLocation": location(to_id),
+                "beforeLocation": _meal_location(places, from_id), "afterLocation": _meal_location(places, to_id),
                 "routeRef": route.get("routeRef"), "baselineRoute": leg,
                 "maxDetourMinutes": meal_preferences["maxDetourMinutes"], "detourReserveEnd": iso(reserved_end),
                 "gapStart": iso(gap_start), "nextArrival": iso(next_arrival),
                 "restaurantStatus": "pending", "requiresRevalidation": True})
+    return attached_meals
+
+
+def validate_day(day, proposal, places, route_fn, meal_preferences, policy, now=None):
+    """Validate a proposal with server facts; route_fn uses actual proposed departures.
+
+    Meals occupy a gap and reserve their detour budget separately. The baseline A→B
+    leg can occur before or after a reserved meal, never concurrently with it.
+    """
+    result = {"dayIndex": day["dayIndex"], "date": day["date"], "status": "generation_failed", "stops": [],
+              "legs": [], "mealSlots": [], "unscheduledPlaces": [], "violations": [], "unknowns": [], "assumptions": [],
+              "restaurantIntegrationStatus": "pending", "routeObservations": []}
+    errors, unknowns = result["violations"], result["unknowns"]
+    result["mealRequirements"], meal_errors = meal_requirements(day, meal_preferences)
+    if meal_errors:
+        errors.extend(meal_errors)
+        result["status"] = "needs_input"
+        return _reject(result, day)
+    if not _proposal_structure(proposal):
+        errors.append(issue("invalid_schema", "LLM의 시간표 형식이 올바르지 않습니다."))
+        result["unscheduledPlaces"] = [{"placeId": pid, "reason": "invalid_schema", "required": _is_mandatory(day, pid)} for pid in day["placeIds"]]
+        return _reject(result, day)
+    day_start, day_end = bounds(day)
+    buffer = timedelta(minutes=policy["visitBufferMinutes"])
+    seen, stop_times = _check_stops(day, proposal, places, policy, now, result, day_start, day_end, buffer)
+    _check_unscheduled(day, proposal, seen, result)
+    types = [places[pid].get("primaryType") for pid in seen]
+    if len(set(types)) != len(types):
+        errors.append(issue("daily_type_limit", "하루 대표 유형당 1곳 제한을 위반합니다."))
+    meal_times, meal_kinds = _check_meal_slots(day, proposal, meal_preferences, result, day_start, day_end, buffer, stop_times)
+    if any(error["code"] in FATAL_PROPOSAL_ERRORS for error in errors):
+        return _reject(result, day)
+    attached_meals = _attach_legs(day, stop_times, meal_times, route_fn, places, meal_preferences, result, day_start, day_end, buffer)
     if attached_meals != meal_kinds:
         errors.append(issue("meal_gap_missing", "식사와 우회 여유를 연결할 앞뒤 이동 구간이 없습니다."))
     if errors:
-        return reject()
+        return _reject(result, day)
     result["status"] = "partially_scheduled" if result["unscheduledPlaces"] else "verification_required" if unknowns else "validated"
     return result
 

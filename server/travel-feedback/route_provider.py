@@ -10,13 +10,13 @@ import hashlib
 import json
 import math
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from llm_client import ProviderError, request_json
-
-KST = timezone(timedelta(hours=9))
+from http_client import ProviderError, request_json
+import settings
+from timeutil import KST
 
 
 class KakaoRouteProvider:
@@ -24,7 +24,7 @@ class KakaoRouteProvider:
     version = "kakao-future-directions-v1"
 
     def __init__(self, api_key=None, *, opener=urlopen, now=None):
-        self._api_key = api_key if api_key is not None else os.environ.get("KAKAO_MOBILITY_API_KEY", "")
+        self._api_key = api_key if api_key is not None else settings.env("KAKAO_MOBILITY_API_KEY")
         self._opener = opener
         self._now = now or (lambda: datetime.now(KST))
 
@@ -218,9 +218,9 @@ class EstimatedRouteProvider:
 def create_route_provider(policy, name=None, environ=None):
     """Select the configured provider; unknown names raise ValueError (feature stays off)."""
     environ = os.environ if environ is None else environ
-    name = (name or environ.get("ITINERARY_ROUTE_PROVIDER") or "estimate").strip().lower()
+    name = (name or settings.env("ITINERARY_ROUTE_PROVIDER", environ) or "estimate").strip().lower()
     if name == "estimate":
         return EstimatedRouteProvider((policy or {}).get("routeEstimate"))
     if name == "kakao":
-        return KakaoRouteProvider(environ.get("KAKAO_MOBILITY_API_KEY", ""))
+        return KakaoRouteProvider(settings.env("KAKAO_MOBILITY_API_KEY", environ))
     raise ValueError("unsupported_route_provider")

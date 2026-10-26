@@ -144,6 +144,20 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 - `REQ-007` 랭커 분해: `rank` 175줄 → 35줄(`assertUniquePlaceIds`, `emptySummary`, `scoreEligiblePlaces`, `selectVariant`, `resultWarnings`), `buildSchedule` 170줄 → 48줄(`emptySchedule`, `assertSchedulablePlaces`, `anchorCluster`, `addUserAnchors`, `addAutomaticAnchors`, `anchorCandidatesOutside`, `dayPlan`). 두 MMR 경로의 최대 유사도 루프는 `mostSimilarChosen`으로 합쳤다(같은 계산·같은 순회 순서). 공개 API는 그대로다. 골든 123개 시나리오가 같고, 분해 전 랭커와 480개 요청(의도·이동·기간·다양성·필수·anchor·hard constraint·개인화·명시/가중 seed 조합)의 `JSON.stringify` 결과가 키 순서·오류 문구까지 같다.
 - 검증(Windows): `python -X utf8 scripts/run_tests.py` → 20 통과, 2 SKIP(알려진 제한), 0 실패.
 
+### 4단계 서버 (REQ-008~009, 2026-10-26)
+
+- AC-006 골든 요청(서버 변경 전 커밋 `2be8e0c`): `check_golden_outputs.py`가 실제 `FeedbackHTTPServer`를 프로세스 안에서 띄워(임시 평가 DB, 실제 리뷰 DB, 오프라인 일정 서비스, `utc_now` 고정) 원시 HTTP 요청 58개의 상태 코드·고정 헤더·본문을 기록한다. 리뷰 페이지 규칙, 평가 v2/v3 생성·반복·이전 revision·충돌, 두 POST 경로의 Origin·Content-Type·Content-Length 누락·chunked·빈 본문·크기 초과·잘못된 JSON/UTF-8·검증 오류, 미구성 서비스, 신뢰 프록시 키별 속도 제한, 기본 501 응답을 포함한다. 기록 시점의 서버 코드는 0단계와 같다(README만 다름).
+- `REQ-008` 공통화:
+  - `settings.py`: 서버가 읽는 환경 변수 23개의 이름·기본값 레지스트리와 `env(name, environ)`. 값은 호출 시점에 원문 그대로 읽어 각 호출부의 기존 처리(공백 제거·숫자 변환·공급자별 대체값)를 유지한다. 기본값이 없던 `ITINERARY_LLM_MODEL`·`ITINERARY_ROUTE_PROVIDER`·`LLM_PROVIDER` 읽기는 `""` 기본값과 결과가 같음을 확인했다(`model_for_provider(None)`=`model_for_provider("")`, `"" or "estimate"`, `"" → "auto"`). `feedback_api.py`, `llm_client.py`, `route_provider.py`의 직접 환경 변수 읽기를 모두 바꿨고, 테스트가 소스에 `environ.get("…")` 직접 읽기가 남지 않았는지와 사용한 이름이 모두 등록됐는지 검사한다. 실행기 LLM 이름 테스트는 레지스트리를 기준으로 바꿨다.
+  - `timeutil.py`: 3곳의 `KST`를 공유하고 기존 모듈 속성 이름(`itinerary_validation.KST` 등)은 유지한다.
+  - `http_client.py`: `route_provider`가 `llm_client`에서 빌려 쓰던 `request_json`과 `ProviderError`·`provider_error_reason`을 옮겼다. `llm_client`가 같은 객체를 다시 내보내 `scripts/collect_place_operating_info.py` 등 기존 import가 그대로 동작한다.
+  - `feedback_api.py`: GET/POST 라우트 표(`GET_ROUTES`, `POST_ROUTES`)와 `content_length()`·`read_json()` 공용 본문 함수. 두 POST 경로의 검사 순서·오류 형식·Transfer-Encoding·소켓 제한 시간 차이는 동작 보존을 위해 각 경로에 그대로 두었다(합치면 chunked 평가 요청이 411에서 400으로 바뀐다).
+  - `Dockerfile`에 새 모듈 3개를 추가하고, `feedback_api.py`가 직간접으로 import하는 모든 로컬 모듈이 COPY 목록에 있는지 검사하는 테스트를 추가했다(하나를 빼면 실패함을 확인).
+- `REQ-009` 분해: `validate_request` 126줄 → 12줄(`_request_window`, `_normalize_request_context`, `_excluded_place_ids`, `_normalize_request_day(s)`, `_normalize_meal_preferences`), `ItineraryService.generate` 157줄 → 14줄(`_response_shell`, `_failed_day`, `_generate_day`, `_DayRouter`, `_route_matrix`, `_prompt_places`, `_day_prompt`, `_propose_and_validate`, `_schedule_day`, `_summarize`), `validate_day` 193줄 → 36줄(`_reject`, `_check_stops`, `_check_visit_hours`, `_check_unscheduled`, `_check_meal_slots`, `_attach_legs`, `FATAL_PROPOSAL_ERRORS`). 평가 v2/v3 검증기는 UUID·storage·entries·장소·의견·메타데이터·스냅샷 구획 검사를 `feedback_contract.py`의 공용 함수로 옮겼다. 검사 순서와 오류 문구는 그대로다. 테스트가 patch하는 `itinerary_service.validate_day`는 모듈 전역 이름으로 계속 호출한다.
+- 동일성 확인: 골든(일정 84·잘못된 요청 21·평가 30·HTTP 58)이 같고, 0~3단계 작업 트리(`e781986`)의 서버 코드와 새 코드로 일정 검증·생성 29건과 평가 검증 5건을 각각 실행한 `json.dumps` 결과(키 순서 포함)가 바이트 단위로 같다.
+- 중복으로 지목됐지만 합치지 않은 것(결정): HH:MM 함수 5개는 서로 다른 연산(요청 검증, 원문 정규화, datetime 형식화, 분 단위+다음날 표기, 문자열→datetime)이라 하나로 합치면 동작이 바뀐다. 서버의 haversine은 `route_provider.haversine_meters` 하나뿐이고, 지구 반지름 차이(JS 6371km·Python 6371.0088km)는 서로 다른 런타임 간 차이라 맞추면 추천·이동시간 결과가 바뀐다. `atomic_json`은 인스타 가져오기 서버에만 있다. 인스타 가져오기 서버(`server/instagram-import`)는 별도 로컬 도구이고 배포 이미지가 달라 공용 모듈을 나누지 않았다.
+- 검증(Windows): 서버 단위 테스트 171개(새 2개 포함) 통과. 한 번 실행에서 오류 1건이 났으나 이어진 10회 연속 실행에서 재현되지 않았다(로컬 소켓 시간 제한 테스트의 일시적 지연으로 추정). `python -X utf8 scripts/run_tests.py` → 20 통과, 2 SKIP, 0 실패.
+
 ## 설계와 달라진 점
 
 - 골든 해시는 키를 정렬한 JSON으로 계산한다. 리팩토링이 객체 속성 생성 순서만 바꾸는 경우를 차이로 보지 않기 위해서이며, 배열 순서와 숫자 값은 그대로 비교한다. AC-002의 "바이트 단위로 같다"는 이 정규화 출력과 골든 파일 내용 기준이다. 파일 비교는 Windows `core.autocrlf` 체크아웃의 줄바꿈 차이를 피하려고 파싱한 JSON끼리 한다.
@@ -170,3 +184,4 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 | 2026-10-26 | 1단계 안전망(REQ-001~003) 구현: 골든 출력 2종, 테스트 플래그 훅, 정적 계약/브라우저 동작 검사 분리, 단일 실행기. 테스트 계획 명령 갱신 |
 | 2026-10-26 | 2단계 저위험 정리(REQ-004) 구현: 실행기 LLM 이름, 활성 라벨 `--promote` 보호, review-ui v1·깨진 검증기 삭제, gitlink·피드백 파일 추적 해제, 일회성 스크립트 27개 보관, Markdown 링크 검사 |
 | 2026-10-26 | 프론트 모듈 구조 결정을 설계에 기록하고 3단계(REQ-005~007) 구현: `domain.js` 공통화, `app.js` 분해와 이벤트 기반 의존 차단, 랭커 단계 함수 분해 |
+| 2026-10-26 | HTTP 골든 58개를 먼저 기록하고 4단계(REQ-008~009) 구현: 설정 레지스트리·KST·HTTP 클라이언트 공통화, 라우트 표, 일정 요청 검증·생성·하루 검증·평가 검증기 분해, Docker 모듈 목록 검사 |

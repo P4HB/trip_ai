@@ -12,6 +12,8 @@ python scripts/validate_kakao_review_db.py
 
 ## 환경 변수
 
+서버가 읽는 이름과 기본값은 `settings.py`의 `DEFAULTS` 한 곳에 있고 모든 모듈이 `settings.env(...)`로 읽는다([SPEC-113](../../docs/spec_113.md)). 새 설정은 여기에 먼저 등록한다(등록되지 않은 이름은 오류). 새 서버 모듈은 `Dockerfile`의 COPY 목록에 추가해야 하며 `test_itinerary_api.py`가 누락을 검사한다.
+
 - `TRAVEL_FEEDBACK_PORT`: 기본 `8200`
 - `TRAVEL_FEEDBACK_DB_PATH`: 기본 `/data/feedback.sqlite3`
 - `TRAVEL_PUBLIC_ORIGIN`: 허용할 동일 출처 Origin

@@ -11,6 +11,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
+from http_client import ProviderError, provider_error_reason, request_json  # noqa: F401 (re-exported)
+import settings
+
 
 class StructuredResponse(dict):
     """JSON-compatible value with provenance belonging to this response, never the shared client."""
@@ -18,31 +21,6 @@ class StructuredResponse(dict):
         super().__init__(value)
         self.model = model
         self.usage = dict(usage)
-
-
-class ProviderError(RuntimeError):
-    def __init__(self, code: str, reason: str | None = None):
-        self.code = code
-        # Provider enum such as API_KEY_INVALID / RESOURCE_EXHAUSTED / invalid_api_key — never a message.
-        self.reason = reason if isinstance(reason, str) and re.fullmatch(r"[A-Za-z0-9_.]{1,60}", reason) else None
-        super().__init__(code)
-
-
-def provider_error_reason(body):
-    """Extract only a machine enum from a provider error body (Google ErrorInfo reason/status, OpenAI code/type)."""
-    try:
-        error = json.loads(body).get("error")
-    except (ValueError, AttributeError, TypeError):
-        return None
-    if not isinstance(error, dict):
-        return None
-    for detail in error.get("details") or []:
-        if isinstance(detail, dict) and isinstance(detail.get("reason"), str):
-            return detail["reason"]
-    for key in ("status", "code", "type"):
-        if isinstance(error.get(key), str):
-            return error[key]
-    return None
 
 
 def validate_schema(value, schema, path="$"):
@@ -90,39 +68,6 @@ def validate_schema(value, schema, path="$"):
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         if not math.isfinite(value) or value < schema.get("minimum", -math.inf) or value > schema.get("maximum", math.inf):
             raise ValueError(f"schema_range:{path}")
-
-
-def request_json(request, timeout, opener=urlopen, max_bytes=2_000_000):
-    if timeout <= 0:
-        raise ProviderError("provider_deadline")
-    try:
-        with opener(request, timeout=timeout) as response:
-            content = response.read(max_bytes + 1)
-        if len(content) > max_bytes:
-            raise ProviderError("provider_response_too_large")
-        result = json.loads(content)
-        if not isinstance(result, dict):
-            raise ProviderError("provider_invalid_response")
-        return result
-    except ProviderError:
-        raise
-    except HTTPError as error:
-        # Do not include URLs, authorization headers, response bodies or request text; keep only an enum reason.
-        try:
-            reason = provider_error_reason(error.read(65_536))
-        except Exception:
-            reason = None
-        finally:
-            error.close()
-        raise ProviderError(f"provider_http_{error.code}", reason) from None
-    except TimeoutError:
-        raise ProviderError("provider_timeout") from None
-    except URLError as error:
-        raise ProviderError("provider_timeout" if isinstance(error.reason, TimeoutError) else "provider_unavailable") from None
-    except OSError:
-        raise ProviderError("provider_unavailable") from None
-    except (ValueError, UnicodeError):
-        raise ProviderError("provider_invalid_response") from None
 
 
 def safe_error_code(error):
@@ -178,9 +123,9 @@ class OpenAIClient:
     prompt_version = "itinerary-review-restaurant-v2"
 
     def __init__(self, api_key=None, model=None, *, opener=urlopen, max_output_tokens=None):
-        self._api_key = api_key if api_key is not None else os.environ.get("OPENAI_API_KEY", "")
-        self.model = model or os.environ.get("ITINERARY_LLM_MODEL", "") or "gpt-5.6-terra"
-        self.max_output_tokens = min(8000, max(256, int(max_output_tokens or os.environ.get("ITINERARY_LLM_MAX_OUTPUT_TOKENS", "") or "4000")))
+        self._api_key = api_key if api_key is not None else settings.env("OPENAI_API_KEY")
+        self.model = model or settings.env("ITINERARY_LLM_MODEL") or "gpt-5.6-terra"
+        self.max_output_tokens = min(8000, max(256, int(max_output_tokens or settings.env("ITINERARY_LLM_MAX_OUTPUT_TOKENS") or "4000")))
         self._opener = opener
         self._model_checked = False
         self._check_lock = threading.Lock()
@@ -305,12 +250,12 @@ class GeminiClient:
         if api_key is None:
             api_key = gemini_key()
         self._api_key = api_key.strip()
-        self.model = (model or os.environ.get("ITINERARY_LLM_MODEL", "") or GEMINI_DEFAULT_MODEL).removeprefix("models/")
+        self.model = (model or settings.env("ITINERARY_LLM_MODEL") or GEMINI_DEFAULT_MODEL).removeprefix("models/")
         # Thinking tokens share the output budget on Gemini thinking models; keep a larger default.
-        self.max_output_tokens = min(65536, max(256, int(max_output_tokens or os.environ.get("ITINERARY_LLM_MAX_OUTPUT_TOKENS", "") or "8192")))
-        level = str(thinking_level if thinking_level is not None else os.environ.get("GEMINI_THINKING_LEVEL", "")).strip().lower()
+        self.max_output_tokens = min(65536, max(256, int(max_output_tokens or settings.env("ITINERARY_LLM_MAX_OUTPUT_TOKENS") or "8192")))
+        level = str(thinking_level if thinking_level is not None else settings.env("GEMINI_THINKING_LEVEL")).strip().lower()
         self.thinking_level = None if level in ("default", "model", "none", "off") else (level or GEMINI_DEFAULT_THINKING)
-        fallback = str(fallback_model if fallback_model is not None else os.environ.get("GEMINI_FALLBACK_MODEL", "")).strip()
+        fallback = str(fallback_model if fallback_model is not None else settings.env("GEMINI_FALLBACK_MODEL")).strip()
         fallback = (fallback or GEMINI_DEFAULT_FALLBACK_MODEL).removeprefix("models/")
         self.fallback_model = None if fallback.lower() in ("none", "off", "") or fallback == self.model else fallback
         self._opener = opener
@@ -447,7 +392,7 @@ class GeminiClient:
 
 
 def _env_key(environ, *names):
-    return next((str(environ.get(name, "")).strip() for name in names if str(environ.get(name, "")).strip()), "")
+    return next((str(settings.env(name, environ)).strip() for name in names if str(settings.env(name, environ)).strip()), "")
 
 
 def _misplaced_google_key(value):
@@ -478,7 +423,7 @@ def llm_key_notices(environ=None):
     if _misplaced_google_key(_env_key(environ, "OPENAI_API_KEY")):
         notices.append("OPENAI_API_KEY에 Gemini(Google) 형식 키가 들어 있어 Gemini 키로 사용합니다. .env에서 이름을 GEMINI_API_KEY로 바꾸는 것을 권장합니다.")
     if _env_key(environ, "GEMINI_API_KEY", "GOOGLE_API_KEY") and openai_key(environ) and \
-            str(environ.get("LLM_PROVIDER", "")).strip().lower() in ("", "auto"):
+            str(settings.env("LLM_PROVIDER", environ)).strip().lower() in ("", "auto"):
         notices.append("Gemini와 OpenAI 키가 모두 있어 Gemini를 사용합니다(OpenAI 키는 시스템 환경변수에서 왔을 수 있음). OpenAI를 쓰려면 LLM_PROVIDER=openai.")
     return notices
 
@@ -486,7 +431,7 @@ def llm_key_notices(environ=None):
 def resolve_llm_provider(environ=None):
     """``LLM_PROVIDER=auto|gemini|openai``. auto: Gemini when a Gemini key exists, otherwise OpenAI."""
     environ = os.environ if environ is None else environ
-    choice = str(environ.get("LLM_PROVIDER", "auto")).strip().lower() or "auto"
+    choice = str(settings.env("LLM_PROVIDER", environ)).strip().lower() or "auto"
     if choice in ("gemini", "openai"):
         return choice
     if choice != "auto":
@@ -517,9 +462,9 @@ def create_llm_client(model=None, max_output_tokens=None, environ=None):
     """Adapter for the selected provider; ``model``/``max_output_tokens`` override env defaults."""
     environ = os.environ if environ is None else environ
     provider = resolve_llm_provider(environ)
-    chosen = model_for_provider(model, provider) or model_for_provider(environ.get("ITINERARY_LLM_MODEL"), provider)
-    tokens = max_output_tokens or str(environ.get("ITINERARY_LLM_MAX_OUTPUT_TOKENS", "")).strip() or None
+    chosen = model_for_provider(model, provider) or model_for_provider(settings.env("ITINERARY_LLM_MODEL", environ), provider)
+    tokens = max_output_tokens or str(settings.env("ITINERARY_LLM_MAX_OUTPUT_TOKENS", environ)).strip() or None
     if provider == "gemini":
         return GeminiClient(gemini_key(environ), model=chosen or GEMINI_DEFAULT_MODEL,
-                            max_output_tokens=tokens, thinking_level=str(environ.get("GEMINI_THINKING_LEVEL", "")))
+                            max_output_tokens=tokens, thinking_level=str(settings.env("GEMINI_THINKING_LEVEL", environ)))
     return OpenAIClient(openai_key(environ), model=chosen or OPENAI_DEFAULT_MODEL, max_output_tokens=tokens)

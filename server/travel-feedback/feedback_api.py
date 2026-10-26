@@ -21,6 +21,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from feedback_contract import (V2_SCHEMA_VERSION, V3_SCHEMA_VERSION, SCHEMA_VERSION, API_PATH, ITINERARY_PATH, MAX_ITINERARY_BODY_BYTES, REVIEW_SCHEMA_VERSION, REVIEW_PATH_PATTERN, MAX_BODY_BYTES, MAX_ENTRIES, MAX_SESSION_ENTRIES, MAX_COMMENT_LENGTH, MAX_PARTICIPANT_NAME_LENGTH, ValidationError, SubmissionConflict, parse_iso_datetime)
 from feedback_validation import validate_payload, validate_v3_payload, validate_v2_payload
+import settings
 
 class ReviewStore:
     def __init__(self, db_path: str):
@@ -300,6 +301,9 @@ class MemoryRateLimiter:
 
 class FeedbackRequestHandler(BaseHTTPRequestHandler):
     server_version = "TravelFeedback/1"
+    # Exact paths -> handler method; review lookups match REVIEW_PATH_PATTERN (SPEC-113 REQ-008).
+    GET_ROUTES = {"/healthz": "get_health"}
+    POST_ROUTES = {ITINERARY_PATH: "post_itinerary", API_PATH: "post_feedback"}
 
     @property
     def feedback_server(self) -> "FeedbackHTTPServer":
@@ -308,7 +312,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
     def log_message(self, format_string: str, *args: Any) -> None:
         # Do not persist client IPs or request headers in application logs.
         route = urlsplit(self.path).path
-        route = route if route in {API_PATH, ITINERARY_PATH, "/healthz"} else "other"
+        route = route if route in {*self.POST_ROUTES, *self.GET_ROUTES} else "other"
         print(f"travel-feedback {self.command} {route}", flush=True)
 
     def send_json(self, status: int, body: dict[str, Any], cache_control: str = "no-store") -> None:
@@ -321,16 +325,40 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(encoded)
 
+    def content_length(self) -> int | None:
+        """Declared body size, or None when Content-Length is missing or not an integer."""
+        try:
+            return int(self.headers.get("Content-Length", ""))
+        except ValueError:
+            return None
+
+    def read_json(self, length: int) -> Any:
+        """Read exactly the declared body as UTF-8 JSON; decode and I/O errors propagate to the route."""
+        return json.loads(self.rfile.read(length).decode("utf-8"))
+
     def do_GET(self) -> None:
         parsed = urlsplit(self.path)
-        if parsed.path == "/healthz":
-            self.send_json(200, {"ok": True, "review_catalog": self.feedback_server.review_store is not None})
+        route = self.GET_ROUTES.get(parsed.path)
+        if route:
+            getattr(self, route)()
             return
         match = REVIEW_PATH_PATTERN.fullmatch(parsed.path)
         if not match:
             self.send_json(404, {"ok": False, "error": "not_found"})
             return
-        contentid = match.group(1)
+        self.get_reviews(parsed, match.group(1))
+
+    def do_POST(self) -> None:
+        route = self.POST_ROUTES.get(self.path)
+        if route is None:
+            self.send_json(404, {"ok": False, "error": "not_found"})
+            return
+        getattr(self, route)()
+
+    def get_health(self) -> None:
+        self.send_json(200, {"ok": True, "review_catalog": self.feedback_server.review_store is not None})
+
+    def get_reviews(self, parsed: Any, contentid: str) -> None:
         if not contentid.isascii() or not contentid.isdigit() or len(contentid) > 20:
             self.send_json(400, {"ok": False, "error": "invalid_place_id"})
             return
@@ -357,13 +385,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
             return
         self.send_json(200, body, "public, max-age=3600")
 
-    def do_POST(self) -> None:
-        if self.path == ITINERARY_PATH:
-            self.post_itinerary()
-            return
-        if self.path != API_PATH:
-            self.send_json(404, {"ok": False, "error": "not_found"})
-            return
+    def post_feedback(self) -> None:
         origin = self.headers.get("Origin")
         if origin and not self.feedback_server.origin_allowed(origin):
             self.send_json(403, {"ok": False, "error": "origin_not_allowed"})
@@ -376,9 +398,8 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         if not self.feedback_server.rate_limiter.allow(rate_key):
             self.send_json(429, {"ok": False, "error": "rate_limit_exceeded"})
             return
-        try:
-            content_length = int(self.headers.get("Content-Length", ""))
-        except ValueError:
+        content_length = self.content_length()
+        if content_length is None:
             self.send_json(411, {"ok": False, "error": "content_length_required"})
             return
         if content_length <= 0:
@@ -388,8 +409,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
             self.send_json(413, {"ok": False, "error": "payload_too_large"})
             return
         try:
-            raw_body = self.rfile.read(content_length)
-            payload = validate_payload(json.loads(raw_body.decode("utf-8")))
+            payload = validate_payload(self.read_json(content_length))
         except (UnicodeDecodeError, json.JSONDecodeError):
             self.send_json(400, {"ok": False, "error": "invalid_json"})
             return
@@ -444,9 +464,8 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
         if self.headers.get("Transfer-Encoding"):
             self.send_json(400, {"status": "needs_input", "error": "transfer_encoding_not_supported"})
             return
-        try:
-            length = int(self.headers.get("Content-Length", ""))
-        except ValueError:
+        length = self.content_length()
+        if length is None:
             self.send_json(411, {"status": "needs_input", "error": "content_length_required"})
             return
         if not 0 < length <= MAX_ITINERARY_BODY_BYTES:
@@ -455,8 +474,7 @@ class FeedbackRequestHandler(BaseHTTPRequestHandler):
             return
         try:
             self.connection.settimeout(10)
-            raw_body = self.rfile.read(length)
-            payload = json.loads(raw_body.decode("utf-8"))
+            payload = self.read_json(length)
         except (UnicodeDecodeError, json.JSONDecodeError, TimeoutError, OSError):
             self.send_json(400, {"status": "needs_input", "error": "invalid_json"})
             return
@@ -551,7 +569,7 @@ class FeedbackHTTPServer(ThreadingHTTPServer):
 def itinerary_enabled(environ: Any = None) -> bool:
     """`1` on, `0` off; unset/`auto` turns on when the selected LLM provider has a key (SPEC-107 D8, SPEC-108)."""
     environ = os.environ if environ is None else environ
-    flag = str(environ.get("ITINERARY_ENABLED", "auto")).strip().lower()
+    flag = str(settings.env("ITINERARY_ENABLED", environ)).strip().lower()
     if flag in ("1", "true", "on"):
         return True
     if flag in ("", "auto"):
@@ -560,11 +578,11 @@ def itinerary_enabled(environ: Any = None) -> bool:
     return False
 
 
-def load_restaurant_catalog(base: Path) -> Any:
+def load_restaurant_catalog() -> Any:
     """Optional sidecar; when missing the itinerary still works without restaurant candidates."""
     try:
         from restaurant_catalog import RestaurantCatalog
-        path = Path(os.environ.get("ITINERARY_RESTAURANT_CATALOG_PATH", str(base / "restaurant_meal_catalog.sqlite3")))
+        path = Path(settings.env("ITINERARY_RESTAURANT_CATALOG_PATH"))
         return RestaurantCatalog(path)
     except Exception:
         print("travel-feedback restaurant_catalog_unavailable", flush=True)
@@ -579,9 +597,8 @@ def load_itinerary_service() -> Any:
         from itinerary_service import ItineraryService, load_policy
         from llm_client import create_llm_client
         from route_provider import create_route_provider
-        base = Path(__file__).parent / "data"
-        catalog_path = Path(os.environ.get("ITINERARY_CATALOG_PATH", str(base / "itinerary_catalog.json")))
-        insights_path = Path(os.environ.get("ITINERARY_INSIGHTS_PATH", str(base / "visit_insights.json")))
+        catalog_path = Path(settings.env("ITINERARY_CATALOG_PATH"))
+        insights_path = Path(settings.env("ITINERARY_INSIGHTS_PATH"))
         catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
         insights = json.loads(insights_path.read_text(encoding="utf-8")) if insights_path.is_file() else None
         if not isinstance(catalog, dict) or catalog.get("schemaVersion") != "itinerary-catalog-v1" or not isinstance(catalog.get("places"), list):
@@ -590,9 +607,9 @@ def load_itinerary_service() -> Any:
             raise ValueError("rebuild_catalog_after_review_analysis")
         policy = load_policy()
         router = create_route_provider(policy)  # default: estimate (no Kakao key needed)
-        restaurants = load_restaurant_catalog(base)
-        restaurant_model = os.environ.get("RESTAURANT_LLM_MODEL", "").strip() or None
-        restaurant_tokens = os.environ.get("RESTAURANT_LLM_MAX_OUTPUT_TOKENS", "").strip() or None
+        restaurants = load_restaurant_catalog()
+        restaurant_model = settings.env("RESTAURANT_LLM_MODEL").strip() or None
+        restaurant_tokens = settings.env("RESTAURANT_LLM_MAX_OUTPUT_TOKENS").strip() or None
         # LLM_PROVIDER=auto|gemini|openai selects the adapter; keys are read from the environment only.
         return ItineraryService(catalog, create_llm_client(), router, insights=insights, policy=policy, restaurants=restaurants,
                                 restaurant_llm=create_llm_client(model=restaurant_model, max_output_tokens=restaurant_tokens))
@@ -602,20 +619,20 @@ def load_itinerary_service() -> Any:
 
 
 def main() -> None:
-    port = int(os.environ.get("TRAVEL_FEEDBACK_PORT", "8200"))
-    db_path = os.environ.get("TRAVEL_FEEDBACK_DB_PATH", "/data/feedback.sqlite3")
-    public_origin = os.environ.get("TRAVEL_PUBLIC_ORIGIN", "http://127.0.0.1:8080")
-    retention_days = int(os.environ.get("TRAVEL_FEEDBACK_RETENTION_DAYS", "90"))
-    review_db_path = os.environ.get("TRAVEL_REVIEW_DB_PATH", "/app/data/kakao_reviews.sqlite3")
+    port = int(settings.env("TRAVEL_FEEDBACK_PORT"))
+    db_path = settings.env("TRAVEL_FEEDBACK_DB_PATH")
+    public_origin = settings.env("TRAVEL_PUBLIC_ORIGIN")
+    retention_days = int(settings.env("TRAVEL_FEEDBACK_RETENTION_DAYS"))
+    review_db_path = settings.env("TRAVEL_REVIEW_DB_PATH")
     server = FeedbackHTTPServer(
         ("0.0.0.0", port),
         FeedbackStore(db_path, retention_days),
         public_origin,
         review_store=ReviewStore(review_db_path),
         itinerary_service=load_itinerary_service(),
-        itinerary_per_minute=int(os.environ.get("ITINERARY_REQUESTS_PER_MINUTE", "10")),
-        itinerary_per_day=int(os.environ.get("ITINERARY_REQUESTS_PER_DAY", "100")),
-        trusted_proxy_ips=tuple(value.strip() for value in os.environ.get("TRAVEL_TRUSTED_PROXY_IPS", "").split(",") if value.strip()),
+        itinerary_per_minute=int(settings.env("ITINERARY_REQUESTS_PER_MINUTE")),
+        itinerary_per_day=int(settings.env("ITINERARY_REQUESTS_PER_DAY")),
+        trusted_proxy_ips=tuple(value.strip() for value in settings.env("TRAVEL_TRUSTED_PROXY_IPS").split(",") if value.strip()),
     )
     print(f"travel-feedback listening on :{port}", flush=True)
     server.serve_forever()
