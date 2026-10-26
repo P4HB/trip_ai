@@ -10,12 +10,18 @@ Clock reads are pinned so the output depends only on code and data.
 from __future__ import annotations
 
 import argparse
+import contextlib
+from contextlib import closing
 import copy
 import hashlib
+import io
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
+import socket
 import sys
+import tempfile
+import threading
 
 ROOT = Path(__file__).resolve().parents[1]
 SERVER = ROOT / "server/travel-feedback"
@@ -211,6 +217,151 @@ def feedback_outputs():
     return outputs
 
 
+# --- HTTP boundary (AC-006) ---------------------------------------------------------------------
+
+ORIGIN = "https://travel.example"
+FIXED_UTC = datetime(2026, 10, 19, 0, 0, tzinfo=timezone.utc)
+RECORDED_HEADERS = ("content-type", "content-length", "cache-control", "x-content-type-options")
+
+
+def raw_http(address, method, path, headers=(), body=b""):
+    """One request on its own connection; raw bytes so malformed framing can be expressed."""
+    lines = [f"{method} {path} HTTP/1.1", "Host: golden.test", "Connection: close", *(f"{name}: {value}" for name, value in headers)]
+    with socket.create_connection(address, timeout=15) as connection:
+        connection.sendall(("\r\n".join(lines) + "\r\n\r\n").encode("latin-1") + body)
+        chunks = []
+        while chunk := connection.recv(65536):
+            chunks.append(chunk)
+    head, _, payload = b"".join(chunks).partition(b"\r\n\r\n")
+    status_line, *header_lines = head.decode("iso-8859-1").split("\r\n")
+    response_headers = {name.strip().lower(): value.strip() for name, value in (line.split(":", 1) for line in header_lines)}
+    record = {"status": int(status_line.split()[1]), "headers": {name: response_headers[name] for name in RECORDED_HEADERS if name in response_headers}}
+    if response_headers.get("content-type", "").startswith("application/json"):
+        body_json = json.loads(payload)
+        record["body"] = {"sha256": digest(body_json), "status": body_json.get("status"), "requestId": body_json.get("requestId")} \
+            if len(payload) > 4096 else body_json
+    else:
+        record["bodySha256"] = hashlib.sha256(payload).hexdigest()
+    return record
+
+
+def json_body(value):
+    return json.dumps(value, ensure_ascii=False).encode("utf-8")
+
+
+def post(address, path, payload=None, *, origin=ORIGIN, content_type="application/json", body=None, extra=()):
+    data = json_body(payload) if body is None else body
+    headers = [("Origin", origin)] if origin else []
+    if content_type:
+        headers.append(("Content-Type", content_type))
+    headers.append(("Content-Length", str(len(data))))
+    return raw_http(address, "POST", path, [*headers, *extra], data)
+
+
+@contextlib.contextmanager
+def running_server(**options):
+    with tempfile.TemporaryDirectory() as directory:
+        server = feedback_api.FeedbackHTTPServer(("127.0.0.1", 0), feedback_api.FeedbackStore(str(Path(directory) / "feedback.sqlite3")), ORIGIN, **options)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            yield server.server_address
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join()
+
+
+def http_outputs(service):
+    original_now = feedback_api.utc_now
+    feedback_api.utc_now = lambda: FIXED_UTC
+    reviews = feedback_api.ReviewStore(str(SERVER / "data/kakao_reviews.sqlite3"))
+    with closing(reviews.connect()) as connection:
+        place_id = connection.execute("SELECT contentid FROM place_links ORDER BY contentid LIMIT 1").fetchone()[0]
+    review = f"/travel/api/places/{place_id}/reviews"
+    valid_itinerary = itinerary_request(SCENARIOS[0], DATES[0], 20)
+    out = {}
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            limiter = feedback_api.MemoryRateLimiter(limit=1000)
+            with running_server(review_store=reviews, itinerary_service=service, rate_limiter=limiter, itinerary_per_minute=1000, itinerary_per_day=1000) as address:
+                get = lambda path: raw_http(address, "GET", path)  # noqa: E731
+                out["get.health"] = get("/healthz")
+                for name, query in {"default": "", "page": "?limit=2&offset=1", "bounds": "?limit=20&offset=1000000", "extra": "?foo=1",
+                                    "repeated": "?limit=1&limit=2", "limit-zero": "?limit=0", "limit-high": "?limit=21", "limit-negative": "?limit=-1",
+                                    "offset-text": "?offset=abc"}.items():
+                    out[f"get.reviews.{name}"] = get(review + query)
+                out["get.reviews.unknown-place"] = get("/travel/api/places/999999999/reviews")
+                out["get.reviews.non-digit"] = get("/travel/api/places/abc/reviews")
+                out["get.reviews.long-id"] = get("/travel/api/places/" + "1" * 21 + "/reviews")
+                out["get.not-found"] = get("/nope")
+                out["get.feedback-path"] = get(feedback_api.API_PATH)
+                out["head.health"] = raw_http(address, "HEAD", "/healthz")
+                out["put.feedback"] = raw_http(address, "PUT", feedback_api.API_PATH, [("Content-Length", "0")])
+
+                feedback = feedback_api.API_PATH
+                v3 = v3_payload()
+                out["feedback.v3.create"] = post(address, feedback, v3)
+                out["feedback.v3.repeat"] = post(address, feedback, v3)
+                newer = {**v3_payload(), "revision": 3, "updated_at": "2026-08-30T00:00:03.000Z"}
+                out["feedback.v3.newer"] = post(address, feedback, newer)
+                out["feedback.v3.older"] = post(address, feedback, v3)
+                out["feedback.v3.conflict"] = post(address, feedback, {**newer, "participant_name": "다른이름"})
+                v2 = v2_payload()
+                out["feedback.v2.create"] = post(address, feedback, v2)
+                out["feedback.v2.duplicate"] = post(address, feedback, v2)
+                out["feedback.v2.conflict"] = post(address, feedback, {**v2, "created_at": "2026-08-28T00:00:01.000Z"})
+                other_session = {**v3_payload(), "session_id": "1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f"}
+                out["feedback.no-origin"] = post(address, feedback, other_session, origin=None)
+                out["feedback.charset"] = post(address, feedback, {**other_session, "session_id": "2c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f"},
+                                                content_type="application/json; charset=utf-8")
+                out["feedback.bad-origin"] = post(address, feedback, v3, origin="https://evil.example")
+                out["feedback.text-plain"] = post(address, feedback, v3, content_type="text/plain")
+                out["feedback.no-length"] = raw_http(address, "POST", feedback, [("Origin", ORIGIN), ("Content-Type", "application/json")])
+                out["feedback.chunked"] = raw_http(address, "POST", feedback, [("Origin", ORIGIN), ("Content-Type", "application/json"),
+                                                                                ("Transfer-Encoding", "chunked")], b"0\r\n\r\n")
+                out["feedback.empty"] = post(address, feedback, body=b"")
+                out["feedback.too-large"] = raw_http(address, "POST", feedback, [("Origin", ORIGIN), ("Content-Type", "application/json"),
+                                                                                  ("Content-Length", str(feedback_api.MAX_BODY_BYTES + 1))])
+                out["feedback.invalid-json"] = post(address, feedback, body=b"{not json")
+                out["feedback.bad-utf8"] = post(address, feedback, body=b'{"a":"\xff"}')
+                out["feedback.invalid"] = post(address, feedback, {**v3_payload(), "revision": 0})
+                out["feedback.query-path"] = post(address, feedback + "?x=1", v3)
+                out["post.not-found"] = post(address, "/nope", v3)
+
+                itinerary = feedback_api.ITINERARY_PATH
+                out["itinerary.no-origin"] = post(address, itinerary, valid_itinerary, origin=None)
+                out["itinerary.bad-origin"] = post(address, itinerary, valid_itinerary, origin="https://evil.example")
+                out["itinerary.text-plain"] = post(address, itinerary, valid_itinerary, content_type="text/plain")
+                out["itinerary.chunked"] = raw_http(address, "POST", itinerary, [("Origin", ORIGIN), ("Content-Type", "application/json"),
+                                                                                  ("Transfer-Encoding", "chunked")], b"0\r\n\r\n")
+                out["itinerary.no-length"] = raw_http(address, "POST", itinerary, [("Origin", ORIGIN), ("Content-Type", "application/json")])
+                out["itinerary.empty"] = post(address, itinerary, body=b"")
+                out["itinerary.too-large"] = raw_http(address, "POST", itinerary, [("Origin", ORIGIN), ("Content-Type", "application/json"),
+                                                                                    ("Content-Length", str(feedback_api.MAX_ITINERARY_BODY_BYTES + 1))])
+                out["itinerary.invalid-json"] = post(address, itinerary, body=b"{not json")
+                out["itinerary.array"] = post(address, itinerary, [])
+                out["itinerary.invalid"] = post(address, itinerary, {**valid_itinerary, "travelWindow": None})
+                out["itinerary.valid"] = post(address, itinerary, valid_itinerary)
+                out["itinerary.valid-other"] = post(address, itinerary, itinerary_request(SCENARIOS[5], DATES[2], 10))
+            with running_server(review_store=None, itinerary_service=None) as address:
+                out["unconfigured.health"] = raw_http(address, "GET", "/healthz")
+                out["unconfigured.reviews"] = raw_http(address, "GET", review)
+                out["unconfigured.itinerary"] = post(address, feedback_api.ITINERARY_PATH, valid_itinerary)
+            with running_server(itinerary_service=service, rate_limiter=feedback_api.MemoryRateLimiter(limit=1),
+                                itinerary_per_minute=1, trusted_proxy_ips=("127.0.0.1",)) as address:
+                sessions = [{**v3_payload(), "session_id": f"{index}c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f"} for index in range(3, 6)]
+                proxy = lambda ip: [("X-Travel-Client-IP", ip)]  # noqa: E731
+                out["limits.feedback.first"] = post(address, feedback_api.API_PATH, sessions[0], extra=proxy("203.0.113.7"))
+                out["limits.feedback.other-client"] = post(address, feedback_api.API_PATH, sessions[1], extra=proxy("203.0.113.8"))
+                out["limits.feedback.same-client"] = post(address, feedback_api.API_PATH, sessions[2], extra=proxy("203.0.113.7"))
+                out["limits.itinerary.first"] = post(address, feedback_api.ITINERARY_PATH, valid_itinerary)
+                out["limits.itinerary.second"] = post(address, feedback_api.ITINERARY_PATH, valid_itinerary)
+    finally:
+        feedback_api.utc_now = original_now
+    return out
+
+
 def build_golden():
     restore = pin_clock()
     try:
@@ -224,7 +375,8 @@ def build_golden():
                            "policyVersion": policy.get("version"), "fixedNow": FIXED_NOW.isoformat()},
                 "itinerary": itinerary_outputs(service),
                 "itineraryInputErrors": invalid_itinerary_outputs(service),
-                "feedbackValidation": feedback_outputs()}
+                "feedbackValidation": feedback_outputs(),
+                "http": http_outputs(service)}
     finally:
         restore()
 
@@ -264,7 +416,8 @@ def main():
             print(f"  - {item}", file=sys.stderr)
         return 1
     print(f"PASS: Python golden outputs match ({len(golden['itinerary'])} itinerary runs, "
-          f"{len(golden['itineraryInputErrors'])} invalid requests, {len(golden['feedbackValidation'])} feedback payloads)")
+          f"{len(golden['itineraryInputErrors'])} invalid requests, {len(golden['feedbackValidation'])} feedback payloads, "
+          f"{len(golden['http'])} HTTP requests)")
     return 0
 
 
