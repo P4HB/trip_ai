@@ -17,14 +17,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "server/travel-feedback"))
 from llm_client import ProviderError, request_json
 from place_time_data import normalize_introduction
+from lib.data_io import atomic_write_text, json_text  # noqa: E402
 
 ENDPOINT = "https://apis.data.go.kr/B551011/KorService2/detailIntro2"
 
 
 def atomic_write(path, value):
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    atomic_write_text(path, json_text(value))
 
 
 def collect_one(place, api_key, timeout=15):

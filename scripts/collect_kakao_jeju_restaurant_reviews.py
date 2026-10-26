@@ -25,6 +25,7 @@ from collect_kakao_jeju_tourism_reviews import JEJU_REGIONS
 from kakao_restaurant_review_crawler import (
     VERSION, Place, build_driver, classify, collect_detail, collect_query, now,
 )
+from lib.data_io import atomic_write_text  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 SUBTERMS = ["한식", "중식", "일식", "양식", "분식", "고기", "해산물", "치킨",
@@ -222,9 +223,7 @@ class Store:
 
 
 def atomic_text(path, text):
-    temp = path.with_suffix(path.suffix + ".tmp")
-    temp.write_text(text, encoding="utf-8")
-    temp.replace(path)
+    atomic_write_text(path, text)
 
 
 def write_csv(path, fields, rows):

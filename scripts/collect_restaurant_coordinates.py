@@ -18,6 +18,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import build_restaurant_catalog as canonical
+from lib.data_io import atomic_write_text  # noqa: E402
 
 VERSION = "restaurant-coordinates-v1"
 DEFAULT_CANONICAL = canonical.DEFAULT_OUTPUT
@@ -163,9 +164,7 @@ def output_lock(directory):
 
 
 def atomic_text(path, value):
-    temporary = path.with_name(path.name + ".tmp")
-    temporary.write_text(value, encoding="utf-8", newline="\n")
-    temporary.replace(path)
+    atomic_write_text(path, value, newline="\n")
 
 
 def initialize(conn, targets, provenance):

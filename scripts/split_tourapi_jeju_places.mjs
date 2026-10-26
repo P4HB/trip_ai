@@ -1,6 +1,6 @@
-import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { sha256Hex as sha256 } from "./lib/data_io.mjs";
 
 const workspaceRoot = path.resolve(import.meta.dirname, "..");
 const datasetRoot = path.join(workspaceRoot, "data", "tourapi", "jeju");
@@ -29,10 +29,6 @@ function relativePath(filePath) {
 
 function clean(value) {
   return String(value ?? "").trim();
-}
-
-function sha256(value) {
-  return crypto.createHash("sha256").update(value).digest("hex");
 }
 
 function serialize(value) {

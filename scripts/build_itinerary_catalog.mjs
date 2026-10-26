@@ -2,11 +2,9 @@
 // Build a separate server-only public place catalog; never modifies recommendation data.
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { workspaceRoot as ROOT, readJSON } from './lib/data_io.mjs';
+import { workspaceRoot as ROOT, readJSON, sha256Hex as hash } from './lib/data_io.mjs';
 
-const hash = (value) => crypto.createHash('sha256').update(value).digest('hex');
 
 function options(argv) {
   const settings = { source: path.join(ROOT, 'map-ui/data/jeju-places.js'),

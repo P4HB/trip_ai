@@ -121,7 +121,7 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
   - 일부러 동작을 바꾼 11개 변형(훅 항상 노출, MBTI 적용 시 추천 실행, 피드백 credentials, 의견 디바운스 제거, 카드에 내부 trace, 리뷰 스키마 검사 제거, 축제 날짜 검사 제거, 모바일 CSS order, 저해상도 표시 제거, 늦은 이미지 보호 제거, Leaflet 크기 갱신 제거)이 모두 이름 있는 assertion으로 실패하고 원복 후 통과했다.
 - `REQ-003` 단일 실행기 `scripts/run_tests.py`: Python 8종(서버 unittest, 인스타 2, 식당 수집·카탈로그·좌표·조회 DB, 장소 유형), Node 8종, 골든 2종, 브라우저 3종을 순서대로 실행하고 실패 출력 끝부분을 요약한다. `-k`(이름 필터)·`--list`·`-v`를 지원한다. 실행 전후 `git status`를 비교해 `tmp/` 밖에 파일을 남기면 실패한다. Node `playwright`가 없으면 설치된 Python Playwright 드라이버를 `tmp/test-runtime` shim으로 재사용한다.
   - 확인 중 `test_itinerary_ui.cjs`의 스크린샷 기본 경로가 `/tmp/...`(Windows에서는 `C:\tmp`)인 것을 발견해 `tmp/test-artifacts/itinerary-ui/`로 바꿨다(기존 환경변수 덮어쓰기 유지).
-- 검증(Windows, 2026-10-26): `python -X utf8 scripts/run_tests.py` → 19 통과, 2 SKIP(아래 알려진 제한), 0 실패, 약 67초. 서버 168, 인스타 16+15, 골든 JS 123 시나리오·Python 84+21+30 일치, 브라우저 3종 통과. 동작 테스트는 연속 3회 통과했다.
+- 검증(Windows, 2026-10-26): `python -X utf8 scripts/run_tests.py` → 19 통과, 2 SKIP(아래 알려진 제한, 5단계에서 장소 유형 테스트를 XFAIL로 정정), 0 실패, 약 67초. 서버 168, 인스타 16+15, 골든 JS 123 시나리오·Python 84+21+30 일치, 브라우저 3종 통과. 동작 테스트는 연속 3회 통과했다.
 
 ### 2단계 저위험 정리 (REQ-004, 2026-10-26)
 
@@ -158,19 +158,33 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 - 중복으로 지목됐지만 합치지 않은 것(결정): HH:MM 함수 5개는 서로 다른 연산(요청 검증, 원문 정규화, datetime 형식화, 분 단위+다음날 표기, 문자열→datetime)이라 하나로 합치면 동작이 바뀐다. 서버의 haversine은 `route_provider.haversine_meters` 하나뿐이고, 지구 반지름 차이(JS 6371km·Python 6371.0088km)는 서로 다른 런타임 간 차이라 맞추면 추천·이동시간 결과가 바뀐다. `atomic_json`은 인스타 가져오기 서버에만 있다. 인스타 가져오기 서버(`server/instagram-import`)는 별도 로컬 도구이고 배포 이미지가 달라 공용 모듈을 나누지 않았다.
 - 검증(Windows): 서버 단위 테스트 171개(새 2개 포함) 통과. 한 번 실행에서 오류 1건이 났으나 이어진 10회 연속 실행에서 재현되지 않았다(로컬 소켓 시간 제한 테스트의 일시적 지연으로 추정). `python -X utf8 scripts/run_tests.py` → 20 통과, 2 SKIP, 0 실패.
 
+### 5단계 스크립트 공용 계층 (REQ-010, 2026-10-26)
+
+- `scripts/lib/data_io.py`(새, `data_io.mjs`의 Python 짝): `ROOT`, `sha256_file`, `json_text`, `atomic_write_text(path, text, *, newline=None, make_parents=False)`, `active_path`. `data_io.mjs`에 `sha256Hex`를 추가했다. `scripts/test_data_io.py`(실행기 등록)가 해시·JSON 형식·줄바꿈 모드·임시 파일 미잔존·상위 폴더 생성·manifest 조회를 검사한다.
+- 옮긴 활성 스크립트: 파일 해시 4벌(`collect_tourapi_jeju.py`, `build_restaurant_meal_catalog.py`, `validate_kakao_review_db.py`, `build_kakao_review_db.py`), JSON 문서 쓰기(`collect_tourapi_jeju.py`), 원자적 쓰기 4벌(`build_visit_insights.py`, `collect_place_operating_info.py`, `collect_restaurant_coordinates.py`, `collect_kakao_jeju_restaurant_reviews.py`), JS 해시 3벌(`split_tourapi_jeju_places.mjs`, `build_itinerary_catalog.mjs`, `build_map_ui_data.mjs`). 기존 원자적 쓰기는 줄바꿈 처리(LF 고정과 플랫폼 기본값)와 상위 폴더 생성 여부가 서로 달라 호출부마다 기존 동작을 인자로 그대로 지정했다. 기존 함수 이름은 별칭으로 유지해 다른 스크립트·테스트의 import가 그대로다. `test_daily_type_limit.cjs`는 장소 유형 sidecar 경로를 `config/active_datasets.json`에서 읽는다.
+- 동일성 확인: 변경 전 코드로 만든 출력과 비교해 식당 식사 카탈로그 SQLite가 바이트 단위로 같고 manifest는 생성 시각·지정한 출력 경로만 다르다. 카카오 리뷰 DB·방문 인사이트 검증 출력이 같다. TourAPI 분리·일정 카탈로그·지도 번들 재생성 결과가 커밋된 파일과 바이트 단위로 같다. 네트워크가 필요한 수집기는 실행하지 않고, 변경 전 커밋의 원래 함수 원문과 새 호출을 이 Windows 환경에서 같은 입력으로 실행해 출력 바이트(CRLF 변환 포함)가 모두 같음을 확인했다. 관련 단위 테스트(좌표·식당 수집기, 서버의 `build_visit_insights` import)가 통과한다.
+- 옮기지 않은 것(결정): 해시가 manifest에 고정된 `build_all_place_profiles.py`·`classify_place_types.py`, 그 산출물을 검사하는 `validate_all_place_profiles.py`, 라벨 계보(`merge_*`, `recalibrate_*`, `build_place_profile_*`/`validate_place_profile_*`, `build_kakao_labeling_*`·`build_kakao_agent_inputs.py`, `fetch_*_web_pages.mjs`, `build_place_fit_relabel_viewer.py`, `build_labeling_review_ui.mjs`/`validate_labeling_review_ui.mjs`)와 보관 스크립트. `2026-08-09` 하드코딩 대부분은 이 계보 스크립트에 있다. 활성 데이터셋 manifest에 등록된 경로를 문자열로 가진 스크립트는 `classify_place_types.py`(동결)와 보관 스크립트, 위 테스트뿐이었다. 식당 파이프라인은 이미 `build_restaurant_catalog`를 공용 모듈로 쓰고, JSONL 읽기는 중복 키 검출 같은 고유 동작이 있어 그대로 두었다.
+
+### 6단계 문서 (REQ-011, 2026-10-26)
+
+- 구조 변경을 기준 문서와 README에 반영했다: `docs/architecture.md`(프론트 조립·이벤트, 서버 설정·라우트·공용 모듈, 스크립트 공용 I/O), `docs/data_contracts.md`(평가 대상 계산 위치), `docs/evaluation.md`(단일 실행기·골든·동작 테스트·SKIP/XFAIL), `map-ui/README.md`, `server/travel-feedback/README.md`, `review-ui/README.md`, `data/labeling/jeju/README.md`, `scripts/archive/README.md`, `AGENTS.md` 검증 명령. `python -X utf8 scripts/check_markdown_links.py`가 깨진 상대 링크 0건을 확인한다.
+- 장소 유형 테스트의 원인 기록을 정정했다(알려진 제한). 실행기는 이 테스트를 `XFAIL`로 실행하고, 라벨 검수 해시 테스트는 LF 체크아웃이 아니면 SKIP한다.
+- 상태: REQ-001~011을 구현했다. AC-002~006은 확인했고, AC-001은 SPEC-113 이전부터 실패하는 장소 유형 테스트 1개(`XFAIL`)와 환경 SKIP 1개를 빼고 통과한다. 장소 유형 산출물 재생성 여부(데이터 변경)를 사용자가 결정하기 전까지 `In Progress`로 둔다.
+
 ## 설계와 달라진 점
 
 - 골든 해시는 키를 정렬한 JSON으로 계산한다. 리팩토링이 객체 속성 생성 순서만 바꾸는 경우를 차이로 보지 않기 위해서이며, 배열 순서와 숫자 값은 그대로 비교한다. AC-002의 "바이트 단위로 같다"는 이 정규화 출력과 골든 파일 내용 기준이다. 파일 비교는 Windows `core.autocrlf` 체크아웃의 줄바꿈 차이를 피하려고 파싱한 JSON끼리 한다.
 - JS·CSS 소스 검사를 Playwright로 옮기면서 정적 검증기에 넣지 않고 별도 `test_dashboard_behavior.cjs`로 분리했다. 정적 검증기는 브라우저 없이 빠르게 돌고, 동작 검사는 실행기의 브라우저 단계에 둔다.
 - `fetch(` 정확히 2회 검사는 "실제 흐름의 fetch/XHR이 허용된 두 엔드포인트뿐"이라는 네트워크 검사와 "엔진 3개는 `fetch`를 쓰지 않는다"는 금지 API 검사로 바꿨다. 금지 API 검사 범위는 7개 파일에서 `map-ui/`의 모든 1차 모듈로 넓혔다.
-- 실행 환경이 고정 산출물 바이트를 재현할 수 없는 두 테스트는 실패 대신 사유와 함께 SKIP한다(통과로 세지 않는다). 조건이 맞는 체크아웃에서는 그대로 실행한다.
+- 실행 환경이 고정 산출물 바이트를 재현할 수 없는 테스트는 실패 대신 사유와 함께 SKIP하고, SPEC-113 이전부터 실패하던 테스트는 `XFAIL`(알려진 실패)로 실행 결과와 원인을 보여 준다. 둘 다 통과로 세지 않으며, 알려진 실패가 통과하면 표시를 지우라고 알린다(5단계에서 정정, 아래 알려진 제한).
 - 1단계에서는 정적 검증기의 장소 보강 코드를 그대로 두고 골든 스크립트가 기준선 `app.js` 보강을 복사해 `enrichedPlaces` 해시로 고정했다. 3단계(REQ-005)에서 넷 모두 `domain.enrichPlace`로 바꿨다.
 - `preference-view.js`의 `clearTravelMbtiProfile({ run: true })` 분기(초기화 뒤 바로 추천 실행)는 호출하는 곳이 없어 제거했다. 유일한 호출부(조건 초기화)는 기존 `run: false` 동작 그대로다.
 
 ## 알려진 제한
 
 - 피드백 파일(`travel-feedback-anonymized-since-0903 copy.json`)의 Git 이력 삭제 여부는 사용자 결정이 필요하다.
-- 이 Windows 환경에서는 `test_place_types.py`(고정 SQLite가 3.37.2로 기록됨, 이 Python은 3.50.4)와 `test_labeling_review_model.mjs`(고정 해시 대상 JSON이 CRLF로 체크아웃됨)가 SKIP된다. 기준선 커밋에서도 같은 이유로 실패하는 사전 문제이며 이번 변경과 무관하다. 고정 데이터에 `eol=lf` 속성을 주는 정리는 별도 결정이 필요하다.
+- `test_labeling_review_model.mjs`는 고정 해시 대상 JSON이 이 Windows 작업 사본에서 CRLF라 SKIP된다. 같은 파일을 LF 작업 사본으로 바꾸면 통과(종료 코드 0, 12개 묶음)함을 확인하고 되돌렸다. 고정 데이터에 `eol=lf` 속성을 주는 정리는 별도 결정이 필요하다.
+- `test_place_types.py`는 SPEC-113 이전부터 실패한다(`XFAIL`). 1단계에서는 SQLite 버전·CRLF만 원인으로 기록했으나 5단계에서 다시 확인한 결과, 재생성한 JSONL·보고서는 줄바꿈만 다르고 내용이 같지만 `place-types-v1/manifest.json`이 SPEC-111 번들 변경 이전의 `map-ui/data/jeju-places.js` 해시를 고정하고 있어 어떤 환경에서도 일치하지 않는다. 0~2단계 작업 트리(`e781986`)에서도 같은 차이가 난다. 재생성은 데이터 변경이고 `classify_place_types.py`는 수정 금지 대상이라 SPEC-113 범위 밖이며 사용자 결정이 필요하다. 바이트 비교에는 SQLite 3.37.2와 LF 체크아웃도 필요하다.
 - 데스크톱 사이드바를 접으면 Leaflet의 마지막 `invalidateSize`(240ms)가 grid 전환 종료 직전에 실행돼 지도 크기가 컨테이너보다 약 2px 작게 남을 수 있다. 기존 동작이며 동작 보존 범위라 고치지 않았고, 테스트는 지도 폭이 커지고 컨테이너와 4px 이내인지만 확인한다.
 - 골든 입력(지도 번들·일정 카탈로그·식당 sidecar·정책 버전)이 바뀌면 골든 비교가 실패한다. 데이터 재생성은 리팩토링이 아니므로 별도 SPEC에서 골든을 갱신한다.
 - 피드백 파일 추적 해제 커밋을 받는 다른 작업 사본에서는 Git이 그 파일을 작업 트리에서 지운다(이력에는 남음). 리포트를 다시 만들 사람은 받기 전에 로컬 사본을 저장소 밖에 보관하고 `--input`으로 지정해야 한다.
@@ -185,3 +199,4 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 | 2026-10-26 | 2단계 저위험 정리(REQ-004) 구현: 실행기 LLM 이름, 활성 라벨 `--promote` 보호, review-ui v1·깨진 검증기 삭제, gitlink·피드백 파일 추적 해제, 일회성 스크립트 27개 보관, Markdown 링크 검사 |
 | 2026-10-26 | 프론트 모듈 구조 결정을 설계에 기록하고 3단계(REQ-005~007) 구현: `domain.js` 공통화, `app.js` 분해와 이벤트 기반 의존 차단, 랭커 단계 함수 분해 |
 | 2026-10-26 | HTTP 골든 58개를 먼저 기록하고 4단계(REQ-008~009) 구현: 설정 레지스트리·KST·HTTP 클라이언트 공통화, 라우트 표, 일정 요청 검증·생성·하루 검증·평가 검증기 분해, Docker 모듈 목록 검사 |
+| 2026-10-26 | 5단계(REQ-010) 스크립트 공용 I/O, 6단계(REQ-011) 문서 반영. 장소 유형 테스트 원인 정정(SKIP→XFAIL)과 상태 판단 기록 |

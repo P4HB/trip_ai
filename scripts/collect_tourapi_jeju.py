@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import os
 import sys
@@ -21,6 +20,7 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import unquote, urlencode
 from urllib.request import Request, urlopen
+from lib.data_io import json_text, sha256_file as file_sha256  # noqa: E402
 
 
 API_URL = "https://apis.data.go.kr/B551011/KorService2/areaBasedList2"
@@ -163,18 +163,7 @@ def response_items(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def write_json(path: Path, value: Any) -> None:
-    path.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-
-
-def file_sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    path.write_text(json_text(value), encoding="utf-8")
 
 
 def coordinate_issue(item: dict[str, Any]) -> str | None:

@@ -4,8 +4,7 @@ import process from "node:process";
 import CCU from "../map-ui/ccu-mmr.js";
 
 import { gzipSync } from "node:zlib";
-import { createHash } from "node:crypto";
-import { workspaceRoot, activeDatasets, activePath, readJsonLines } from "./lib/data_io.mjs";
+import { workspaceRoot, activeDatasets, activePath, readJsonLines, sha256Hex } from "./lib/data_io.mjs";
 const v5ReviewRoot = activePath("preferenceReviews");
 const fitLabelPath = activePath("fitLabels");
 const hardConstraintPath = activePath("hardConstraints");
@@ -393,7 +392,7 @@ const evidence = JSON.stringify({ schemaVersion: "map-label-evidence-v1", source
   places: Object.fromEntries(places.filter(place => place.v5 || place.fit).map(place => [place.id, { v5: place.v5, fit: place.fit }])) });
 metadata.bundleFormat = "compact-v1";
 metadata.evidencePath = activeDatasets.mapEvidence;
-metadata.evidenceHash = createHash("sha256").update(evidence).digest("hex");
+metadata.evidenceHash = sha256Hex(evidence);
 fs.mkdirSync(path.dirname(activePath("mapEvidence")), { recursive: true });
 fs.writeFileSync(activePath("mapEvidence"), gzipSync(evidence, { level: 9 }));
 const browserPlaces = places.map(place => ({ ...place,

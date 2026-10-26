@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / "server/travel-feedback"))
 from llm_client import ProviderError, create_llm_client
 from visit_insights import (PROMPT_VERSION, SANITIZER_VERSION, SCHEMA_VERSION, analyze_reviews,
                             input_hash, prepared_reviews, unknown_insights, validate_insights)
+from lib.data_io import atomic_write_text, json_text  # noqa: E402
 
 
 def load_reviews(database):
@@ -38,10 +39,7 @@ def review_metadata(database):
 
 
 def atomic_write(path, data):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    atomic_write_text(path, json_text(data), make_parents=True)
 
 
 def validate_store(store, by_place, database_hash):

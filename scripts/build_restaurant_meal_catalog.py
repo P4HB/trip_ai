@@ -15,7 +15,6 @@ import argparse
 from collections import Counter
 from contextlib import closing
 from datetime import datetime, timedelta, timezone
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -29,6 +28,7 @@ sys.path.insert(0, str(SERVER))
 import restaurant_hours  # noqa: E402
 from restaurant_catalog import (REVIEW_COLUMNS, RESTAURANT_COLUMNS, SCHEMA_SQL, SCHEMA_VERSION,  # noqa: E402
                                 compact_hours, logical_digest, read_only_uri)
+from lib.data_io import sha256_file as file_sha256  # noqa: E402
 
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCE = ROOT / "data/catalogs/jeju/2026-10-06/restaurant-catalog-v3/restaurants.sqlite3"
@@ -38,12 +38,6 @@ POLICY = SERVER / "itinerary_policy.json"
 DATE_RAW = re.compile(r"(\d{4})\.(\d{1,2})\.(\d{1,2})\.?")
 
 
-def file_sha256(path):
-    digest = hashlib.sha256()
-    with open(path, "rb") as handle:
-        for chunk in iter(lambda: handle.read(1 << 20), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def relative(path):

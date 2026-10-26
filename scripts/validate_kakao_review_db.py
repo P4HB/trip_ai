@@ -3,10 +3,10 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import sqlite3
 from pathlib import Path
+from lib.data_io import sha256_file  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,12 +15,6 @@ MANIFEST_PATH = ROOT / "server/travel-feedback/data/kakao_reviews_manifest.json"
 FORBIDDEN_COLUMNS = {"reviewer", "author", "nickname", "user_name"}
 
 
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def main() -> None:

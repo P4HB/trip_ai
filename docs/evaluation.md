@@ -201,7 +201,7 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 
 ## 동작 보존 회귀와 골든 출력 — SPEC-113
 
-`python -X utf8 scripts/run_tests.py`는 Python·Node 단위 테스트, Markdown 상대 링크 검사, 골든 비교, Playwright 브라우저 테스트를 순서대로 실행하고 실패 요약을 출력한다. 실행 뒤 `tmp/` 밖에 파일이 생기거나 바뀌면 실패로 처리한다. 고정 산출물 바이트를 비교하는 장소 유형 SQLite·라벨 검수 해시 테스트는 같은 SQLite 버전과 LF 체크아웃이 아니면 사유와 함께 SKIP하며 통과로 세지 않는다.
+`python -X utf8 scripts/run_tests.py`는 Python·Node 단위 테스트, Markdown 상대 링크 검사, 골든 비교, Playwright 브라우저 테스트를 순서대로 실행하고 실패 요약을 출력한다. 실행 뒤 `tmp/` 밖에 파일이 생기거나 바뀌면 실패로 처리한다. 라벨 검수 해시 테스트는 LF 체크아웃이 아니면 사유와 함께 SKIP하고, SPEC-113 이전부터 고정 manifest가 현재 지도 번들과 맞지 않는 장소 유형 테스트는 `XFAIL`(알려진 실패)로 실행 결과와 원인을 보여 준다. 둘 다 통과로 세지 않는다.
 
 `node scripts/check_golden_outputs.cjs`와 `python -X utf8 scripts/check_golden_outputs.py`는 리팩토링 전 코드로 기록한 `scripts/fixtures/golden/`의 출력과 현재 출력을 비교한다. JS는 실제 번들의 장소 보강, intent·동행·이동수단·기간·선호·seed variant 조합과 필수·anchor·제외·hard constraint·다양성 off·가중 seed·오류 입력의 `rank` 결과, 코스 재추천 선택, 여행 MBTI 흐름, 일정 요청·식당 후보 helper를 해시한다. Python은 SPEC-107 평가와 같은 오프라인 구성(결정적 LLM 대역·추정 이동시간·실제 카탈로그)의 일정 생성, 잘못된 일정 요청, 피드백 v2/v3 검증 결과를 고정 시각으로 해시한다. 해시는 키를 정렬한 JSON으로 계산하므로 객체 속성 생성 순서는 비교하지 않고 배열 순서와 값은 비교한다.
 

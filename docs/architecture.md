@@ -7,7 +7,7 @@
 
 ## 현재 구현
 
-[SPEC-111](spec_111.md): 지도 탐색 필터와 추천 입력을 분리하고, 동일 조건의 코스 재선택은 평가 세션을 유지한다. [SPEC-113](spec_113.md) 이후 `app.js`는 상태·레이아웃·입력 단계·취향 검사·지도·상세·결과·추천 제어·평가·일정 모듈을 의존 순서대로 조립하고 전역 단축키·리사이즈만 맡으며, 뒤 모듈로 향하는 알림은 `map-ui/events.js`의 이름 있는 동기 이벤트로 전달한다. 어휘·장소 보강은 `map-ui/domain.js`가 단일 출처다. 지도 데이터 입력은 `config/active_datasets.json`, 브라우저 출력은 `map-ui/data/jeju-places.js`, 전체 라벨 근거는 `data/catalogs/map-label-evidence.json.gz`로 구분한다. 인스타 Catalog는 번들의 해시로 근거 파일을 검증한다. 피드백 API는 공통 계약·v3 검증·v2 호환 모듈을 분리하며 유휴 상태에서도 만료 자료를 정리한다. LLM 모델명·사용량은 요청별 응답에서 결과 출처로 전달한다.
+[SPEC-111](spec_111.md): 지도 탐색 필터와 추천 입력을 분리하고, 동일 조건의 코스 재선택은 평가 세션을 유지한다. [SPEC-113](spec_113.md) 이후 `app.js`는 상태·레이아웃·입력 단계·취향 검사·지도·상세·결과·추천 제어·평가·일정 모듈을 의존 순서대로 조립하고 전역 단축키·리사이즈만 맡으며, 뒤 모듈로 향하는 알림은 `map-ui/events.js`의 이름 있는 동기 이벤트로 전달한다. 어휘·장소 보강은 `map-ui/domain.js`가 단일 출처다. 지도 데이터 입력은 `config/active_datasets.json`, 브라우저 출력은 `map-ui/data/jeju-places.js`, 전체 라벨 근거는 `data/catalogs/map-label-evidence.json.gz`로 구분한다. 인스타 Catalog는 번들의 해시로 근거 파일을 검증한다. 피드백 API는 공통 계약·v3 검증·v2 호환 모듈을 분리하며 유휴 상태에서도 만료 자료를 정리한다. SPEC-113 이후 서버 환경 변수는 `server/travel-feedback/settings.py` 레지스트리, KST는 `timeutil.py`, 외부 JSON 호출은 `http_client.py`에서 공유하고 HTTP 경로는 `feedback_api.py`의 라우트 표로 나눈다. 활성 데이터 스크립트의 파일 해시·JSON 문서·원자적 쓰기·활성 데이터셋 조회는 `scripts/lib/data_io.py`·`data_io.mjs`가 맡고, 해시가 고정된 동결 라벨 계보 스크립트는 자체 구현을 유지한다. LLM 모델명·사용량은 요청별 응답에서 결과 출처로 전달한다.
 
 [SPEC-085](spec_085.md)·[SPEC-103](spec_103.md): 독립 음식점 수집기의 재개용 SQLite를 읽기 전용 스냅샷으로 변환해 장소·리뷰·운영시간·수집 오류 canonical JSONL과 조회용 `restaurants.sqlite3`를 만든다. 기존 장소 프로필과 같은 외래키·인덱스·레코드 해시·manifest 검증 방식이며 JSONL에서 재구축할 수 있다. 대용량 원본과 생성 데이터는 로컬에 보관하고 코드·SQL·문서·작은 manifest만 Git 관리한다. 기존 지도·추천·공개 리뷰 서비스 DB는 변경하지 않는다. 수집의 미확인 상태는 카탈로그에도 남긴다.
 

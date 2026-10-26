@@ -51,7 +51,9 @@ check(run(fixture).schedule); // Automatic anchor also occupies its type.
 
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync("map-ui/data/jeju-places.js", "utf8"), sandbox);
-const sidecar = new Map(fs.readFileSync("data/labeling/jeju/2026-09-11/place-types-v1/place_types.jsonl", "utf8").trim().split(/\r?\n/).map(line => { const r = JSON.parse(line); return [r.place_id, r]; }));
+// The active primary-type sidecar is registered in config/active_datasets.json (SPEC-113 REQ-010).
+const activeDatasets = JSON.parse(fs.readFileSync("config/active_datasets.json", "utf8"));
+const sidecar = new Map(fs.readFileSync(activeDatasets.primaryTypes, "utf8").trim().split(/\r?\n/).map(line => { const r = JSON.parse(line); return [r.place_id, r]; }));
 const places = sandbox.window.JEJU_PLACES.map(p => {
   assert.equal(p.primaryType, sidecar.get(p.id).primary_type);
   return Domain.enrichPlace(p);
