@@ -67,6 +67,10 @@
   };
 
 
-    return { state };
+  function recommendationFor(place) {
+    return state.recommendationById.get(String(place.id)) || null;
+  }
+
+    return { state, recommendationFor };
   } };
 })(window);

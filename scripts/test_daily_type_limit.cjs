@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 const C = require("../map-ui/ccu-mmr.js");
+const Domain = require("../map-ui/domain.js");
 
 function place(id, primaryType, lng = 126.5) {
   return { id, title: id, primaryType, type: "12", region: "jeju_city", lng, lat: 33.4,
@@ -53,10 +54,7 @@ vm.runInNewContext(fs.readFileSync("map-ui/data/jeju-places.js", "utf8"), sandbo
 const sidecar = new Map(fs.readFileSync("data/labeling/jeju/2026-09-11/place-types-v1/place_types.jsonl", "utf8").trim().split(/\r?\n/).map(line => { const r = JSON.parse(line); return [r.place_id, r]; }));
 const places = sandbox.window.JEJU_PLACES.map(p => {
   assert.equal(p.primaryType, sidecar.get(p.id).primary_type);
-  return { ...p, recommendationReady: !!(p.v5 && p.fit),
-    atomicFeatures: Object.fromEntries((p.v5?.labels || []).filter(r => !r.label.startsWith("derived")).map(r => [r.label.split(".").pop(), r.value])),
-    companionScores: Object.fromEntries((p.fit?.companion || []).map(r => [r.key, r.value])),
-    monthScores: Object.fromEntries((p.fit?.month || []).map(r => [r.key, r.value])) };
+  return Domain.enrichPlace(p);
 });
 let scenarios = 0;
 for (const feature of ["ocean", "mountain", "restfulness", "indoor_ratio"])

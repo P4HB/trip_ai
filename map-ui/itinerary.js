@@ -13,7 +13,7 @@
   });
   // Same vocabulary as ccu-mmr.js ATOMIC_FEATURES; the server re-validates this allowlist.
   const PREFERENCE_FEATURES = domain.ATOMIC_FEATURES;
-  const COMPANIONS = Object.freeze(["solo", "couple", "friends", "kids", "parents", "none"]);
+  const COMPANIONS = Object.freeze([...domain.COMPANION_TYPES, "none"]);
   const MAX_USED_RESTAURANTS = 28, MAX_CHOSEN_RESTAURANTS = 14, MAX_PREFERENCE_SIGNALS = 8;
   const VERDICT_LABELS = Object.freeze({ recommended: "추천", acceptable: "괜찮음", insufficient_evidence: "근거 부족", not_recommended: "비추천" });
   /** Only companion type and preference feature directions; never names, weights, MBTI type or free text. */

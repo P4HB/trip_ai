@@ -1,6 +1,11 @@
 (function (root) {
   "use strict";
-  root.TRAVEL_PREFERENCE_VIEW = { create({ clearRecommendation, closeTravelMbtiDialog, dom, hideFormError, preferenceEngine, runRecommendation, showFormError, state }) {
+  root.TRAVEL_PREFERENCE_VIEW = { create({ dom, events, hideFormError, preferenceEngine, showFormError, state }) {
+  function closeTravelMbtiDialog() {
+    if (dom.travelMbtiDialog.open && typeof dom.travelMbtiDialog.close === "function") dom.travelMbtiDialog.close();
+    else dom.travelMbtiDialog.removeAttribute("open");
+  }
+
   function setTravelMbtiProgress(label, completed, total = preferenceEngine.QUESTIONS.length + preferenceEngine.MAX_PAIR_QUESTIONS) {
     dom.travelMbtiProgressLabel.textContent = label;
     dom.travelMbtiProgressBar.style.width = `${Math.max(0, Math.min(100, (completed / total) * 100))}%`;
@@ -305,19 +310,14 @@
     renderAppliedTravelMbti();
     hideFormError();
     closeTravelMbtiDialog();
-    clearRecommendation("여행 MBTI 취향을 적용했습니다. 마지막 확인에서 추천을 실행해 주세요.");
+    events.emit("conditionsChanged", { message: "여행 MBTI 취향을 적용했습니다. 마지막 확인에서 추천을 실행해 주세요." });
   }
 
-  function clearTravelMbtiProfile({ run = false } = {}) {
+  function clearTravelMbtiProfile() {
     state.preferenceProfile = null;
     state.selectedPreset = null;
     renderAppliedTravelMbti();
-    if (run) {
-      clearRecommendation("여행 MBTI 개인화를 해제했습니다.");
-      runRecommendation({ fit: true, openOutput: false });
-    } else {
-      clearRecommendation("여행 MBTI 개인화를 해제했습니다. 취향을 다시 선택해 주세요.");
-    }
+    events.emit("conditionsChanged", { message: "여행 MBTI 개인화를 해제했습니다. 취향을 다시 선택해 주세요." });
   }
 
   function travelMbtiBack() {
@@ -341,6 +341,18 @@
     renderTravelMbtiQuestion();
   }
 
-    return { setTravelMbtiProgress, resetTravelMbtiWizard, startTravelMbti, answerForQuestion, createTravelMbtiBothChoices, renderTravelMbtiQuestion, recordTravelMbtiQuestion, renderNextTravelMbtiPair, recordTravelMbtiPair, featureChip, renderTravelMbtiResult, renderAppliedTravelMbti, applyTravelMbtiProfile, clearTravelMbtiProfile, travelMbtiBack };
+  function bindEvents() {
+    dom.headerTravelMbtiButton.addEventListener("click", startTravelMbti);
+    dom.startTravelMbtiButton.addEventListener("click", startTravelMbti);
+    dom.restartTravelMbtiButton.addEventListener("click", startTravelMbti);
+    dom.travelMbtiCloseButton.addEventListener("click", closeTravelMbtiDialog);
+    dom.travelMbtiBackButton.addEventListener("click", travelMbtiBack);
+    dom.travelMbtiSkipButton.addEventListener("click", () => {
+      if (state.travelMbti.phase === "question") recordTravelMbtiQuestion("skip");
+      else if (state.travelMbti.phase === "pair") recordTravelMbtiPair("skip");
+    });
+  }
+
+    return { closeTravelMbtiDialog, setTravelMbtiProgress, resetTravelMbtiWizard, startTravelMbti, answerForQuestion, createTravelMbtiBothChoices, renderTravelMbtiQuestion, recordTravelMbtiQuestion, renderNextTravelMbtiPair, recordTravelMbtiPair, featureChip, renderTravelMbtiResult, renderAppliedTravelMbti, applyTravelMbtiProfile, clearTravelMbtiProfile, travelMbtiBack, bindEvents };
   } };
 })(window);

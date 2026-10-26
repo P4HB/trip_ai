@@ -1,6 +1,10 @@
 (function (root) {
   "use strict";
-  root.TRAVEL_MAP_VIEW = { create({ JEJU_LIMITS, LIST_LIMIT, availableTypes, categoryFor, countsByType, createPlaceListItem, dom, fitFilteredPlaces, fitJeju, formatNumber, hideLoading, placeById, places, renderEmptyState, selectPlace, state }) {
+  const domain = root.TRAVEL_DOMAIN;
+  root.TRAVEL_MAP_VIEW = { create({ availableTypes, categoryFor, clearSelection, countsByType, debounce, dom, events, formatNumber, hideLoading, placeById, places, recommendationFor, regionName, renderEmptyState, selectPlace, state }) {
+  const LIST_LIMIT = 40;
+  const JEJU_LIMITS = [[32.78, 125.72], [33.82, 127.22]];
+
   function createCategoryFilters() {
     const fragment = document.createDocumentFragment();
     for (const type of availableTypes) {
@@ -38,10 +42,6 @@
     else state.selectedTypes.add(type);
     updateCategoryFilterState();
     applyFilters();
-  }
-
-  function recommendationFor(place) {
-    return state.recommendationById.get(String(place.id)) || null;
   }
 
   function activeScheduleDay() {
@@ -201,6 +201,97 @@
     dom.resultList.replaceChildren(fragment);
   }
 
-    return { createCategoryFilters, updateCategoryFilterState, toggleCategory, recommendationFor, activeScheduleDay, createMarkerIcon, createClusterIcon, createMarkers, mapPlaces, refreshMapMarkers, refreshScheduleDayHighlight, initMap, matchesCurrentFilters, applyFilters, scheduleVisibleResultRender, renderVisibleResults };
+  function createPlaceListItem(place) {
+    const category = categoryFor(place.type);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "place-item compact-place-item";
+    button.dataset.placeId = place.id;
+    button.style.setProperty("--item-color", category.color);
+    button.setAttribute("aria-current", state.selectedPlace?.id === place.id ? "true" : "false");
+    const icon = document.createElement("span");
+    icon.className = "place-item-icon";
+    icon.textContent = recommendationFor(place)?.rank || category.short;
+    const copy = document.createElement("span");
+    copy.className = "place-item-copy";
+    const title = document.createElement("span");
+    title.className = "place-item-title";
+    title.textContent = place.title;
+    const address = document.createElement("span");
+    address.className = "place-item-address";
+    address.textContent = `${regionName(place.region)} · ${place.recommendationReady ? "41축" : "추천 라벨 없음"}`;
+    copy.append(title, address);
+    button.append(icon, copy);
+    button.addEventListener("click", () => selectPlace(place, { moveMap: true }));
+    return button;
+  }
+
+  function showSelection({ previous, place, moveMap }) {
+    if (!place) {
+      if (previous) state.markerById.get(previous.id)?.setIcon(createMarkerIcon(previous, false));
+      scheduleVisibleResultRender();
+      return;
+    }
+    if (previous && previous.id !== place.id) state.markerById.get(previous.id)?.setIcon(createMarkerIcon(previous, false));
+    const marker = state.markerById.get(place.id);
+    marker?.setIcon(createMarkerIcon(place, true));
+    scheduleVisibleResultRender();
+    if (moveMap && marker) {
+      const fly = () => state.map.flyTo([place.lat, place.lng], Math.max(state.map.getZoom(), 14), { animate: true, duration: 0.5 });
+      if (state.clusterLayer.hasLayer(marker)) state.clusterLayer.zoomToShowLayer(marker, fly);
+      else fly();
+    }
+  }
+
+  function fitBoundsForPlaces(targetPlaces, maxZoom = 12) {
+    if (!targetPlaces.length) return;
+    if (targetPlaces.length === 1) {
+      state.map.flyTo([targetPlaces[0].lat, targetPlaces[0].lng], 14, { animate: true, duration: 0.55 });
+      return;
+    }
+    state.map.fitBounds(window.L.latLngBounds(targetPlaces.map((place) => [place.lat, place.lng])), {
+      animate: true, duration: 0.55, maxZoom, padding: [42, 42],
+    });
+  }
+
+  function fitFilteredPlaces() { fitBoundsForPlaces(state.filteredPlaces, 12); }
+
+  function fitRecommendationPlaces() { fitBoundsForPlaces(mapPlaces(), 13); }
+
+  function fitJeju() {
+    if (state.initialBounds) state.map.fitBounds(state.initialBounds, { animate: true, duration: 0.55, maxZoom: 10, padding: [36, 36] });
+  }
+
+  function resetFilters() {
+    state.query = "";
+    dom.placeSearch.value = "";
+    dom.clearSearchButton.hidden = true;
+    state.selectedTypes = new Set(availableTypes);
+    clearSelection();
+    applyFilters();
+    fitJeju();
+  }
+
+  function bindEvents() {
+    const handleSearch = debounce(() => {
+      state.query = domain.normalizeSearchText(dom.placeSearch.value.trim());
+      dom.clearSearchButton.hidden = !dom.placeSearch.value;
+      applyFilters({ fit: Boolean(state.query) });
+    });
+    dom.placeSearch.addEventListener("input", handleSearch);
+    dom.clearSearchButton.addEventListener("click", () => {
+      dom.placeSearch.value = "";
+      state.query = "";
+      dom.clearSearchButton.hidden = true;
+      applyFilters();
+    });
+    dom.resetFiltersButton.addEventListener("click", resetFilters);
+    dom.fitRecommendationButton.addEventListener("click", fitRecommendationPlaces);
+    dom.fitFilteredButton.addEventListener("click", fitFilteredPlaces);
+    dom.fitJejuButton.addEventListener("click", fitJeju);
+    events.on("selectionChanged", showSelection);
+  }
+
+    return { createCategoryFilters, updateCategoryFilterState, toggleCategory, activeScheduleDay, createMarkerIcon, createClusterIcon, createMarkers, mapPlaces, refreshMapMarkers, refreshScheduleDayHighlight, initMap, matchesCurrentFilters, applyFilters, scheduleVisibleResultRender, renderVisibleResults, createPlaceListItem, fitFilteredPlaces, fitRecommendationPlaces, fitJeju, resetFilters, bindEvents };
   } };
 })(window);

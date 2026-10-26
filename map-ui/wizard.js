@@ -1,30 +1,34 @@
 (function (root) {
   "use strict";
-  root.TRAVEL_WIZARD = { create({ DISPLAY_VALUES, INTENT_CONTENT_TYPES, MOBILE_STACKED_MEDIA, WIZARD_STEPS, algorithm, availableTypes, categoryFor, clearRecommendation, clearTravelMbtiProfile, dom, formatNumber, placeById, places, preferenceEngine, regionName, state }) {
+  const domain = root.TRAVEL_DOMAIN;
+  const WIZARD_STEPS = Object.freeze(["동행자", "날짜", "여행 방식", "여행 취향", "조건 확인"]);
+  const DISPLAY_VALUES = domain.TRIP_CHOICE_LABELS;
+  const INTENT_CONTENT_TYPES = domain.INTENT_TYPES;
+  root.TRAVEL_WIZARD = { create({ algorithm, availableTypes, categoryFor, dom, events, formatNumber, isMobileStackedFlow, placeById, places, preferenceEngine, regionName, state }) {
   function collectPreferences() {
     if (!state.preferenceProfile || !preferenceEngine) return [];
     return preferenceEngine.materializePreferences(state.preferenceProfile);
   }
 
   function requiredPlaceEligible(place) {
-    if (!place?.recommendationReady || String(place.type) === "15") return false;
+    if (!place?.recommendationReady || domain.isEventPlace(place)) return false;
     if (dom.destinationRegion.value !== "jeju_all" && place.region !== dom.destinationRegion.value) return false;
     return INTENT_CONTENT_TYPES[dom.tripIntent.value]?.has(String(place.type)) || false;
   }
 
   function requiredPlaceMatches(place, query) {
-    const normalized = query.normalize("NFKC").toLocaleLowerCase("ko-KR");
+    const normalized = domain.normalizeSearchText(query);
     return String(place.id).includes(normalized) || place.searchText.includes(normalized);
   }
 
   function requiredPlaceMatchRank(place, query) {
-    const normalized = query.normalize("NFKC").toLocaleLowerCase("ko-KR");
-    const title = String(place.title || "").normalize("NFKC").toLocaleLowerCase("ko-KR");
+    const normalized = domain.normalizeSearchText(query);
+    const title = domain.normalizeSearchText(place.title);
     const id = String(place.id);
     if (id === normalized || title === normalized) return 0;
     if (title.startsWith(normalized)) return 1;
     if (title.includes(normalized)) return 2;
-    if (String(place.address || "").normalize("NFKC").toLocaleLowerCase("ko-KR").includes(normalized)) return 3;
+    if (domain.normalizeSearchText(place.address).includes(normalized)) return 3;
     return 4;
   }
 
@@ -54,7 +58,7 @@
       remove.addEventListener("click", () => {
         state.requiredPlaceIds.delete(placeId);
         renderRequiredPlacePicker();
-        clearRecommendation("필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요.");
+        events.emit("conditionsChanged", { message: "필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요." });
         dom.requiredPlaceSearch.focus();
       });
       chip.append(copy, remove);
@@ -108,7 +112,7 @@
         state.selectedAnchorIds.clear();
         dom.requiredPlaceSearch.value = "";
         renderRequiredPlacePicker();
-        clearRecommendation("필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요.");
+        events.emit("conditionsChanged", { message: "필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요." });
         dom.requiredPlaceSearch.focus();
       });
       dom.requiredPlaceSearchResults.append(button);
@@ -159,8 +163,7 @@
   }
 
   function formatWizardDate(value) {
-    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/u);
-    return match ? `${match[1]}.${match[2]}.${match[3]}` : "미선택";
+    return domain.formatDotDate(value) ?? "미선택";
   }
 
   function selectedTripDays() {
@@ -262,10 +265,6 @@
 
   function focusWizardChoice(selector) {
     window.requestAnimationFrame(() => document.querySelector(selector)?.focus({ preventScroll: true }));
-  }
-
-  function isMobileStackedFlow() {
-    return window.matchMedia(MOBILE_STACKED_MEDIA).matches;
   }
 
   function validateWizardStep(step) {
@@ -370,7 +369,6 @@
   }
 
   function resetRecommendationForm() {
-    clearTravelMbtiProfile({ run: false });
     dom.destinationRegion.value = "";
     dom.tripIntent.value = "";
     dom.travelStartDate.value = "";
@@ -408,6 +406,81 @@
     dom.formError.textContent = "";
   }
 
-    return { collectPreferences, requiredPlaceEligible, requiredPlaceMatches, requiredPlaceMatchRank, renderSelectedRequiredPlaces, renderRequiredPlaceSearchResults, renderRequiredPlacePicker, collectRequest, syncChoiceCards, formatWizardDate, selectedTripDays, formatTripDuration, preferenceSummary, requiredInputStates, renderReviewSummary, updateRequiredInputState, focusWizardChoice, isMobileStackedFlow, validateWizardStep, validateWizardFlow, validateMobileWizardFlow, showWizardStep, resetRecommendationForm, showFormError, hideFormError };
+  function bindEvents() {
+    dom.wizardNextButton.addEventListener("click", () => {
+      if (validateWizardStep(state.wizardStep)) showWizardStep(state.wizardStep + 1);
+    });
+    dom.wizardBackButton.addEventListener("click", () => showWizardStep(state.wizardStep - 1));
+    dom.reviewSummary.addEventListener("click", (event) => {
+      const editButton = event.target.closest("[data-edit-step]");
+      if (editButton) showWizardStep(Number(editButton.dataset.editStep));
+    });
+    document.querySelectorAll("[data-choice-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = dom[button.dataset.choiceTarget];
+        if (!target) return;
+        target.value = button.dataset.choiceValue;
+        syncChoiceCards();
+        hideFormError();
+        target.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+    dom.dateUndecided.addEventListener("change", () => {
+      const undecided = dom.dateUndecided.checked;
+      if (undecided) {
+        dom.travelStartDate.value = "";
+        dom.travelEndDate.value = "";
+        dom.tripDurationDays.value = "";
+      }
+      dom.travelStartDate.disabled = undecided;
+      dom.travelEndDate.disabled = undecided;
+      syncChoiceCards();
+      hideFormError();
+    });
+    dom.tripDurationDays.addEventListener("change", () => {
+      if (selectedTripDays()) {
+        dom.travelStartDate.value = "";
+        dom.travelEndDate.value = "";
+        dom.dateUndecided.checked = false;
+        dom.travelStartDate.disabled = false;
+        dom.travelEndDate.disabled = false;
+      }
+      syncChoiceCards();
+      hideFormError();
+    });
+    const clearDurationForExactDate = () => {
+      if (!dom.travelStartDate.value && !dom.travelEndDate.value) return;
+      dom.tripDurationDays.value = "";
+      dom.dateUndecided.checked = false;
+      syncChoiceCards();
+    };
+    dom.travelStartDate.addEventListener("input", clearDurationForExactDate);
+    dom.travelEndDate.addEventListener("input", clearDurationForExactDate);
+    dom.requiredPlaceSearch.addEventListener("input", renderRequiredPlaceSearchResults);
+    dom.requiredPlaceSearch.addEventListener("focus", renderRequiredPlaceSearchResults);
+    dom.requiredPlaceSearch.addEventListener("keydown", (event) => {
+      const firstResult = dom.requiredPlaceSearchResults.querySelector(".required-place-result");
+      if (event.key === "Enter" && firstResult) {
+        event.preventDefault();
+        firstResult.click();
+      } else if (event.key === "ArrowDown" && firstResult) {
+        event.preventDefault();
+        firstResult.focus();
+      } else if (event.key === "Escape") {
+        dom.requiredPlaceSearchResults.hidden = true;
+        dom.requiredPlaceSearch.setAttribute("aria-expanded", "false");
+      }
+    });
+    dom.destinationRegion.addEventListener("change", renderRequiredPlacePicker);
+    dom.tripIntent.addEventListener("change", renderRequiredPlacePicker);
+    dom.excludedPlaceIds.addEventListener("input", renderRequiredPlaceSearchResults);
+    document.addEventListener("click", (event) => {
+      if (event.target.closest(".required-place-picker")) return;
+      dom.requiredPlaceSearchResults.hidden = true;
+      dom.requiredPlaceSearch.setAttribute("aria-expanded", "false");
+    });
+  }
+
+    return { WIZARD_STEPS, collectPreferences, requiredPlaceEligible, requiredPlaceMatches, requiredPlaceMatchRank, renderSelectedRequiredPlaces, renderRequiredPlaceSearchResults, renderRequiredPlacePicker, collectRequest, syncChoiceCards, formatWizardDate, selectedTripDays, formatTripDuration, preferenceSummary, requiredInputStates, renderReviewSummary, updateRequiredInputState, focusWizardChoice, validateWizardStep, validateWizardFlow, validateMobileWizardFlow, showWizardStep, resetRecommendationForm, showFormError, hideFormError, bindEvents };
   } };
 })(window);

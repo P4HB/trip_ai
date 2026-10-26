@@ -10,6 +10,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 const CCU = require("../map-ui/ccu-mmr.js");
+const Domain = require("../map-ui/domain.js");
 const Preference = require("../map-ui/preference-elicitation.js");
 
 const workspaceRoot = path.resolve(__dirname, "..");
@@ -52,6 +53,14 @@ for (const name of modules.keys()) {
   if (name !== "domain.js") assert.ok(scriptPosition("domain.js") < scriptPosition(name), `domain.js loads before ${name}`);
 }
 assert.ok(scriptPosition("preference-elicitation.js") < scriptPosition("ccu-mmr.js"), "preference module must load before ranker");
+
+// AC-004: app.js wires modules in creation order with direct references; a forwarding closure would hide a
+// dependency on a module created later (events.js carries those notifications instead).
+const moduleCreations = [...modules.get("app.js").matchAll(/window\.(TRAVEL_[A-Z_]+)\.create\(\{([\s\S]*?)\}\);/gu)];
+assert.ok(moduleCreations.length >= 10, "app.js assembles the view modules");
+for (const [, moduleName, args] of moduleCreations) {
+  assert.doesNotMatch(args, /=>/u, `${moduleName}: created with direct references, not forwarding closures`);
+}
 
 // Forbidden browser APIs in every first-party module; pure engines stay network-free.
 for (const [name, source] of modules) {
@@ -159,24 +168,7 @@ for (const contentId of [
   );
 }
 
-function featureKey(label) {
-  return String(label).split(".").at(-1);
-}
-
-const rankedInput = places.map((place) => {
-  const atomicFeatures = Object.fromEntries(
-    (place.v5?.labels || [])
-      .filter((record) => ["theme.", "environment.", "style_evidence."].some((prefix) => record.label.startsWith(prefix)))
-      .map((record) => [featureKey(record.label), record.value]),
-  );
-  return {
-    ...place,
-    atomicFeatures,
-    companionScores: Object.fromEntries((place.fit?.companion || []).map((axis) => [axis.key, axis.value])),
-    monthScores: Object.fromEntries((place.fit?.month || []).map((axis) => [axis.key, axis.value])),
-    recommendationReady: Boolean(place.v5 && place.fit && CCU.ATOMIC_FEATURES.every((key) => Number.isFinite(atomicFeatures[key]))),
-  };
-});
+const rankedInput = places.map((place) => Domain.enrichPlace(place));
 
 const request = {
   destinationRegion: "jeju_all",

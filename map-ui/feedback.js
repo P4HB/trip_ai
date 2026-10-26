@@ -1,7 +1,14 @@
 /* SPEC-111: feedback.js */
 (function (root) {
   "use strict";
-  root.TRAVEL_FEEDBACK = { create({ state, dom, placeById, algorithm, FEEDBACK_OPTIONS, closeMobileRecommendationFeedbackDialog, clearSelection, openOutputPanel }) {
+  const FEEDBACK_OPTIONS = Object.freeze([
+    { score: 1, label: "전혀 안 끌려요" },
+    { score: 2, label: "별로예요" },
+    { score: 3, label: "괜찮아요" },
+    { score: 4, label: "마음에 들어요" },
+    { score: 5, label: "꼭 가고 싶어요" },
+  ]);
+  root.TRAVEL_FEEDBACK = { create({ state, dom, placeById, algorithm, events }) {
   const widgets = new Map(), badges = new Map();
   function register(registry, key, element) {
     if (!registry.has(key)) registry.set(key, new Set());
@@ -44,11 +51,7 @@
     state.recommendationFeedback.set(feedbackKey, { ...current, completed: true });
     syncRecommendationFeedback(feedbackKey);
     scheduleFeedbackAutoSave(0);
-    if (contextKey === "mobile-dialog") closeMobileRecommendationFeedbackDialog();
-    else if (contextKey === "mobile-detail") {
-      clearSelection();
-      openOutputPanel();
-    }
+    events.emit("feedbackCompleted", { feedbackKey, contextKey });
   }
 
   function syncRecommendationFeedback(feedbackKey, sourceInput = null) {
@@ -417,6 +420,26 @@
   }
 
 
-    return { hasFeedbackScore, updateFeedbackBadge, createFeedbackBadge, completeRecommendationFeedback, syncRecommendationFeedback, recommendationFeedbackTargets, recommendationFeedbackCompletion, participantNameValue, feedbackHasUserInput, updateParticipantNameState, resetFeedbackAutoSave, updateFeedbackSaveState, cloneForFeedbackLog, buildFeedbackLog, scheduleFeedbackAutoSave, queueFeedbackAutoSaveRetry, flushFeedbackAutoSave, createRecommendationFeedback };
+  function bindEvents() {
+    const handleParticipantNameInput = () => {
+      updateParticipantNameState();
+      if (!state.recommendationResult || !feedbackHasUserInput()) {
+        updateFeedbackSaveState();
+        return;
+      }
+      const allowBlankParticipant = !participantNameValue()
+        && (state.feedbackAutoSave.savedRevision > 0 || state.feedbackAutoSave.revision > 0);
+      scheduleFeedbackAutoSave(500, { allowBlankParticipant });
+    };
+    dom.participantName.addEventListener("input", handleParticipantNameInput);
+    dom.participantName.addEventListener("blur", () => {
+      const trimmedName = participantNameValue();
+      if (dom.participantName.value === trimmedName) return;
+      dom.participantName.value = trimmedName;
+      handleParticipantNameInput();
+    });
+  }
+
+    return { FEEDBACK_OPTIONS, hasFeedbackScore, updateFeedbackBadge, createFeedbackBadge, completeRecommendationFeedback, syncRecommendationFeedback, recommendationFeedbackTargets, recommendationFeedbackCompletion, participantNameValue, feedbackHasUserInput, updateParticipantNameState, resetFeedbackAutoSave, updateFeedbackSaveState, cloneForFeedbackLog, buildFeedbackLog, scheduleFeedbackAutoSave, queueFeedbackAutoSaveRetry, flushFeedbackAutoSave, createRecommendationFeedback, bindEvents };
   } };
 })(window);

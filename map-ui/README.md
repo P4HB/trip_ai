@@ -2,7 +2,7 @@
 
 [SPEC-111](../docs/spec_111.md)에서 지도 탐색 필터와 추천 후보를 분리했다. 검색·유형 필터는 지도에만 적용되며 추천과 평가를 지우지 않는다. 같은 여행 조건에서 코스 재선택·중심 변경은 평가 세션을 유지한다. 조건 초기화 때 저장 대기 중인 스냅샷은 기존 세션으로 전송·재시도한다. 페이지를 닫거나 새로고침하면 메모리 대기 작업은 복구되지 않는다.
 
-화면 책임은 `state.js`, `wizard.js`, `preference-view.js`, `map-view.js`, `place-detail.js`, `feedback.js`, `itinerary-view.js`로 분리되어 있고 `app.js`가 연결한다. 공통 용어는 `domain.js`, CSS는 `styles/`에서 관리하며 원래 적용 순서를 유지한다. 개발용 JSON·수치는 `?debug=1`에서만 표시한다. 런타임 파일을 배포할 때 `index.html`이 참조하는 모듈과 CSS 폴더도 함께 복사한다.
+화면 책임은 `layout.js`(모바일 판정·서랍·데스크톱 접기), `wizard.js`, `preference-view.js`, `map-view.js`(지도·탐색 목록·선택 마커), `detail-view.js`(장소 상세·이미지·모바일 평가 대화상자), `results-view.js`(추천 카드·일정·코스), `recommendation-controller.js`(추천 실행·재추천·초기화), `place-detail.js`(웹 조사·리뷰), `feedback.js`, `itinerary-view.js`로 나뉘고 각 모듈이 자기 DOM 이벤트를 연결한다. `app.js`는 모듈을 의존 순서대로 만들고 전역 단축키·리사이즈만 맡는다. 앞에서 만든 모듈이 뒤 모듈에 알릴 때는 `events.js`의 이름 있는 동기 이벤트를 쓴다([SPEC-113](../docs/spec_113.md)). 공통 용어·장소 보강은 `domain.js`, 표시 헬퍼는 `view-helpers.js`, CSS는 `styles/`에서 관리하며 원래 적용 순서를 유지한다. 개발용 JSON·수치는 `?debug=1`에서만 표시한다. 런타임 파일을 배포할 때 `index.html`이 참조하는 모듈과 CSS 폴더도 함께 복사한다.
 
 활성 지도 입력은 `config/active_datasets.json`에 고정한다. `node scripts/build_map_ui_data.mjs`는 브라우저용 간결한 번들과 오프라인 근거 압축 파일을 함께 생성한다. 식당 선택 시 구간별 이동에는 선택한 식당 경로를 표시하며, 같은 구간에 두 식사를 선택한 경우 합쳐진 경로가 검증되지 않았음을 안내한다.
 

@@ -395,6 +395,76 @@ async function desktopFlow(browser, baseUrl) {
   await harness.context.close();
 }
 
+// Paths that cross module boundaries: anchor reruns, required places, selection markers and the full reset.
+async function crossModuleFlows(browser, baseUrl) {
+  const harness = await openDashboard(browser, baseUrl, DESKTOP);
+  const { page } = harness;
+  await page.evaluate(() => {
+    const { dom, state } = window.__TRIP_AI_INTERNALS__;
+    for (const [key, value] of Object.entries({ companionType: "parents", destinationRegion: "jeju_all", tripIntent: "visit", transportMode: "car",
+      travelStartDate: "2026-09-10", travelEndDate: "2026-09-12" })) dom[key].value = value;
+    const engine = window.TRAVEL_PREFERENCE;
+    state.preferenceProfile = engine.estimateProfile(engine.QUESTIONS.map((question) => ({ questionId: question.id, optionId: question.options[0].id })));
+  });
+  for (let step = 1; step < 5; step += 1) await page.locator("#wizardNextButton").click();
+  assert.deepEqual(await visibleWizardSteps(page), ["5"]);
+  await page.locator(".output-options-section > summary").click();
+  await page.locator("#diversityPreset").selectOption("off");
+  await page.locator("#runRecommendationButton").click();
+  const unanchored = await dashboard(page, () => CCU_MMR_DASHBOARD.getResult());
+  assert.equal(unanchored.schedule.status, "needs_anchor_selection", "diversity off leaves days for manual centers");
+  const sessionId = (await dashboard(page, () => CCU_MMR_DASHBOARD.getFeedbackAutoSaveState())).sessionId;
+
+  // Choosing and removing a day center reruns with the same course session.
+  assert.equal(await page.locator("#anchorCandidatePanel").isVisible(), true);
+  await page.locator(".anchor-candidate-button").first().click();
+  const anchored = await dashboard(page, () => CCU_MMR_DASHBOARD.getResult());
+  assert.equal(anchored.request.anchorPlaceIds.length, 1, "anchor candidate reruns with the chosen center");
+  assert.ok(anchored.schedule.dayClusters.some((day) => day.centerType === "user_anchor"));
+  assert.equal((await dashboard(page, () => CCU_MMR_DASHBOARD.getFeedbackAutoSaveState())).sessionId, sessionId, "anchor rerun keeps the session");
+  await page.locator(".remove-anchor-button").first().click();
+  assert.deepEqual((await dashboard(page, () => CCU_MMR_DASHBOARD.getResult())).request.anchorPlaceIds, [], "removing the center reruns without it");
+
+  // Selecting places moves the selected marker; Escape clears the selection.
+  const [firstId, secondId] = anchored.items.slice(0, 2).map((item) => item.placeId);
+  const selectedIcons = () => page.evaluate((ids) => ids.map((id) => window.__TRIP_AI_INTERNALS__.state.markerById.get(id)?.options.icon.options.className.includes("is-selected")), [firstId, secondId]);
+  await page.locator(`.recommendation-card[data-place-id="${firstId}"] .recommendation-card-top`).click();
+  assert.deepEqual(await selectedIcons(), [true, false]);
+  await page.locator(`.recommendation-card[data-place-id="${secondId}"] .recommendation-card-top`).click();
+  assert.deepEqual(await selectedIcons(), [false, true], "only the current place marker is selected");
+  await page.keyboard.press("Escape");
+  assert.equal(await dashboard(page, () => CCU_MMR_DASHBOARD.getSelectedPlace()), null);
+  assert.deepEqual(await selectedIcons(), [false, false], "clearing the selection resets its marker");
+
+  // Adding a required place invalidates the result; removing it updates the picker.
+  const requiredPlace = await page.evaluate(() => window.__TRIP_AI_INTERNALS__.places.find((place) => place.recommendationReady && ["12", "14"].includes(String(place.type))));
+  await page.locator(".advanced-section:not(.output-options-section) > summary").click();
+  await page.locator("#requiredPlaceSearch").fill(String(requiredPlace.id));
+  await page.locator(`.required-place-result[data-place-id="${requiredPlace.id}"]`).click();
+  assert.deepEqual(await page.evaluate(() => [...window.__TRIP_AI_INTERNALS__.state.requiredPlaceIds]), [String(requiredPlace.id)]);
+  assert.equal(await dashboard(page, () => CCU_MMR_DASHBOARD.getResult()), null, "required place change clears the result");
+  assert.equal(await page.locator("#recommendationSummary").textContent(), "필수 장소가 바뀌었습니다. 추천을 다시 실행해 주세요.");
+  await page.locator(".remove-required-place").click();
+  assert.deepEqual(await page.evaluate(() => [...window.__TRIP_AI_INTERNALS__.state.requiredPlaceIds]), []);
+  assert.equal(await page.locator("#requiredPlaceStatus").textContent(), "선택된 필수 장소가 없습니다.");
+
+  // Reset clears the result, the applied MBTI profile and every choice.
+  await page.locator("#runRecommendationButton").click();
+  assert.ok(await dashboard(page, () => CCU_MMR_DASHBOARD.getResult()));
+  await page.locator("#resetRecommendationButton").click();
+  assert.equal(await dashboard(page, () => CCU_MMR_DASHBOARD.getResult()), null);
+  assert.equal(await dashboard(page, () => CCU_MMR_DASHBOARD.getPreferenceProfile()), null, "reset clears the MBTI profile");
+  assert.deepEqual(await visibleWizardSteps(page), ["1"]);
+  assert.equal(await page.locator("#recommendationSummary").textContent(), "여행 조건을 모두 고르면 여기에 추천 장소가 나타나요.");
+  assert.equal(await page.locator('[data-choice-target][aria-pressed="true"]').count(), 0, "reset clears every choice");
+  assert.equal(await page.locator("#diversityPreset").inputValue(), "balanced");
+  assert.equal(await requirementStatus(page, "preference"), "선택 전");
+
+  assertOnlyAllowedNetwork(harness, "cross-module");
+  assert.deepEqual(harness.errors, []);
+  await harness.context.close();
+}
+
 async function mobileFlow(browser, baseUrl) {
   const harness = await openDashboard(browser, baseUrl, MOBILE);
   const { page } = harness;
@@ -459,7 +529,13 @@ async function mobileFlow(browser, baseUrl) {
   assert.equal(await page.locator("#detailMobileFeedback .recommendation-feedback").count(), 1, "recommended mobile detail uses shared feedback");
   assert.ok(parseFloat(await style(page, "#detailMobileFeedback .recommendation-feedback-option", "min-height")) >= 44, "touch-sized detail score targets");
   assert.equal(await style(page, "#detailMobileFeedback .recommendation-feedback-comment textarea", "font-size"), "16px", "detail comment avoids input zoom");
-  await page.evaluate(() => document.querySelector("#detailCloseButton").click());
+  // Completing a rating in the mobile detail closes the detail and returns to the results.
+  await page.locator("#detailMobileFeedback [data-score=\"4\"]").click();
+  await page.locator("#detailMobileFeedback .recommendation-feedback-complete").click();
+  assert.equal(await dashboard(page, () => CCU_MMR_DASHBOARD.getSelectedPlace()), null, "mobile detail completion clears the selection");
+  assert.equal(await page.locator("#detailPanel").isVisible(), false);
+  assert.equal(await page.locator(`[data-feedback-badge-place-id="${recommendedId}"]`).first().textContent(), "✓ 평가 완료 · 4점");
+  await page.waitForFunction(() => Math.abs(document.querySelector("#outputPanel").getBoundingClientRect().top) < 80, null, { timeout: 4000 });
 
   // Mobile card opens the feedback dialog with image, research and reviews.
   const dialogPlace = await page.evaluate(() => {
@@ -509,8 +585,9 @@ async function mobileFlow(browser, baseUrl) {
     browser = await chromium.launch({ headless: true, ...(process.env.FEEDBACK_TEST_CHROMIUM ? { executablePath: process.env.FEEDBACK_TEST_CHROMIUM } : {}) });
     await hookIsOptIn(browser, baseUrl);
     await desktopFlow(browser, baseUrl);
+    await crossModuleFlows(browser, baseUrl);
     await mobileFlow(browser, baseUrl);
-    console.log("PASS: dashboard behavior — opt-in test hook, wizard validation, MBTI apply, event dates, feedback sync/autosave, detail image/reviews, sidebar, mobile flow, network/storage limits");
+    console.log("PASS: dashboard behavior — opt-in test hook, wizard validation, MBTI apply, event dates, feedback sync/autosave, detail image/reviews, sidebar, anchors, required places, markers, reset, mobile flow, network/storage limits");
   } finally {
     await browser?.close();
     await new Promise((resolve) => server.close(resolve));

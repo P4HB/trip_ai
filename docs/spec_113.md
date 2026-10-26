@@ -59,6 +59,13 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 - 테스트 훅: 테스트가 `page.addInitScript`로 테스트 플래그를 켠 경우에만 `app.js`가 내부 함수 묶음을 노출한다. 운영 경로의 동작과 네트워크 호출 수는 같다.
 - 골든 출력은 `scripts/fixtures/golden/`에 JSON으로 저장하고 비교 스크립트가 차이를 보고한다.
 - 각 단계는 별도 커밋으로 남긴다.
+- 프론트 모듈 구조(REQ-005~006 결정, 2026-10-26):
+  - `domain.js`: 어휘(동행·의도·지역·이벤트 유형 `"15"`), 검색 정규화, 점 날짜 형식, 장소 보강 `enrichPlace`. 앱·정적 검증기·하루 유형 테스트·골든 스크립트가 공유한다.
+  - `events.js`(`TRAVEL_EVENTS`): 아래 모듈이 위 모듈을 참조하지 않고 알리는 이름 있는 동기 이벤트. `conditions-changed`(추천 무효화), `rerun-requested`(추천 재실행), `feedback-completed`(평가 완료 후 화면별 후속 동작), `selection-changed`(지도 마커·목록 갱신과 지도 이동).
+  - `view-helpers.js`: 카테고리·숫자·날짜·지역 표시, `debounce`, 빈 상태. `layout.js`: 모바일 판정, 로딩 표시, 사이드바·결과 서랍, 데스크톱 접기.
+  - `detail-view.js`: 장소 선택·상세·이미지 대화상자·모바일 평가 대화상자. `results-view.js`: 추천 카드·검증 후보·일정·코스 표시와 `renderRecommendationOutput`. `recommendation-controller.js`: 코스 세션, `runRecommendation`·`rerollRecommendation`·`clearRecommendation`, 폼 제출·입력 변경·초기화.
+  - 생성 순서는 helpers·state → layout → place-detail → feedback → itinerary-view → wizard → preference-view → detail-view → map-view → results-view → controller이며, 각 모듈은 앞에서 만든 모듈의 함수만 인자로 받는다. 뒤 모듈로 향하는 호출은 위 이벤트로 바꾼다. 각 모듈은 `bindEvents()`로 자기 DOM 이벤트를 연결하고, `app.js`는 조립·테스트 훅·전역 단축키(Escape)·리사이즈만 맡는다.
+  - 같은 요소·같은 이벤트 유형의 리스너 등록 순서와 직접 호출 순서는 기존과 같게 유지한다. `dispatchEvent`는 동기이므로 이벤트로 바꾼 호출도 같은 시점에 실행된다.
 
 ## 예외와 폴백
 
@@ -127,13 +134,24 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 - 1단계 동작 테스트 보강: 2단계 전체 실행에서 사이드바 접기 뒤 Leaflet 폭이 컨테이너보다 5px 작아 4px 허용치를 넘는 간헐 실패가 났다(앱의 240ms `invalidateSize`와 grid 전환 종료 사이 경합, 알려진 제한 참조). 검사를 "300px 넘게 커지고 컨테이너의 90% 이상"으로 바꿨다. 같은 이유로 자동 저장 시간 검사를 부하에 흔들리지 않는 경계(점수 저장 800ms 미만, 의견 저장 700ms 이상)로 바꿨다. 6회 연속 통과했고 크기 갱신 제거·의견 디바운스 제거·점수 즉시 저장 제거 변형은 모두 실패한다.
 - 링크 검사(AC-005): `scripts/check_markdown_links.py`는 추적 중인 Markdown의 상대 링크·이미지 경로를 검사한다(외부 URL·앵커·코드 내부 제외). 처음 실행에서 기존 깨진 링크 1건(`docs/spec_012.md`의 존재한 적 없는 `spec_011.md`)을 찾아 일반 텍스트로 바꿨고, 이제 135개 파일에서 0건이다. 단일 실행기에 `docs: markdown links` 단계로 추가했다.
 
+### 3단계 프론트 (REQ-005~007, 2026-10-26)
+
+- `REQ-005` 공통 도메인: `map-ui/domain.js`에 이벤트 유형 `EVENT_CONTENT_TYPE`/`isEventPlace`, `COMPANION_TYPES`·`COMPANION_LABELS`·`TRIP_CHOICE_LABELS`, `normalizeSearchText`(NFKC+`ko-KR` 소문자), `formatDotDate`, `featureKey`, `enrichPlace`를 두었다. `"15"` 하드코딩(`ccu-mmr.js`, `wizard.js`), 동행 목록(`ccu-mmr.js`, `itinerary.js`), 정규화 5곳, 점 날짜 2곳, 장소 보강 4벌(`app.js`, `validate_ccu_mmr_dashboard.cjs`, `test_daily_type_limit.cjs`, 골든 스크립트)이 이를 쓴다. 날짜 형식은 기존처럼 `YYYY-MM-DD` 전체 일치만 바꾸고 각 호출부가 원래 대체값(`"—"`/원문, `"미선택"`)을 유지한다. 골든 스크립트를 기준 복사본에서 `Domain.enrichPlace`로 바꾼 뒤에도 저장된 `enrichedPlaces.sha256`이 같아 2,153곳 보강 결과가 기준선과 바이트 단위로 같음을 확인했다. 정적 검증기 출력도 기준선과 같다.
+- `REQ-006` 프론트 분해: `app.js` 1,340줄 → 193줄. 새 모듈 `events.js`, `view-helpers.js`, `layout.js`, `detail-view.js`, `results-view.js`, `recommendation-controller.js`를 만들고 함수 본문은 생성 스크립트로 원문 그대로 옮겼다(교체마다 1회 일치를 확인). `bindEvents` 200줄은 각 모듈의 `bindEvents()`로 나눴다(피드백 이름 입력→`feedback.js`, 단계·선택 카드·날짜·필수 장소 검색→`wizard.js`, MBTI 버튼→`preference-view.js`, 일정 폼→`itinerary-view.js`, 검색·필터·지도 맞춤→`map-view.js`, 상세·대화상자→`detail-view.js`, 서랍·접기→`layout.js`, 폼 제출·입력 변경·초기화·재추천→컨트롤러). 같은 요소·같은 이벤트 유형의 리스너는 한 모듈 안에 있어 등록 순서가 그대로다. 순환 의존(app↔wizard·preference-view·map-view·feedback)은 생성 인자 대신 `conditionsChanged`·`rerunRequested`·`feedbackCompleted`·`selectionChanged` 이벤트로 바꿨다. 지도 맞춤·필터 초기화·탐색 목록 항목은 `map-view.js`, `FEEDBACK_OPTIONS`는 `feedback.js`, `WIZARD_STEPS`는 `wizard.js`, `isMobileStackedFlow`는 `layout.js`, `recommendationFor`는 `state.js`로 옮겼다. `index.html`에 새 모듈 6개를 추가하고 바뀐 모듈의 캐시 버전을 `20261026-spec113`으로 올렸다.
+  - AC-004 검사: `validate_ccu_mmr_dashboard.cjs`가 `app.js`의 모듈 생성 인자에 전달용 화살표 함수가 없음을 확인한다(앞 모듈만 직접 참조하므로 생성 순서가 의존 그래프다). 분해 전 `app.js`에서는 이 검사가 실패한다.
+  - 동작 테스트 보강: 이벤트로 바꾼 경로(일정 중심 후보 선택·취소 재추천과 세션 유지, 필수 장소 추가·삭제와 결과 무효화 문구, 선택 마커 전환과 Escape 해제, 조건 초기화의 MBTI·선택·설정 초기화, 모바일 상세 평가 완료 후 상세 닫기·결과로 이동)를 `test_dashboard_behavior.cjs`에 추가했다. 보강한 테스트는 분해 전 커밋(`e781986`) 작업 트리와 분해 후 코드에서 모두 통과한다.
+  - 생성 스크립트의 미정의 호출 검사(모듈별 직접 호출이 지역 정의·주입 인자·브라우저 전역인지)를 실행해 `results-view.js`의 `domain` 누락 1건을 고쳤다.
+- `REQ-007` 랭커 분해: `rank` 175줄 → 35줄(`assertUniquePlaceIds`, `emptySummary`, `scoreEligiblePlaces`, `selectVariant`, `resultWarnings`), `buildSchedule` 170줄 → 48줄(`emptySchedule`, `assertSchedulablePlaces`, `anchorCluster`, `addUserAnchors`, `addAutomaticAnchors`, `anchorCandidatesOutside`, `dayPlan`). 두 MMR 경로의 최대 유사도 루프는 `mostSimilarChosen`으로 합쳤다(같은 계산·같은 순회 순서). 공개 API는 그대로다. 골든 123개 시나리오가 같고, 분해 전 랭커와 480개 요청(의도·이동·기간·다양성·필수·anchor·hard constraint·개인화·명시/가중 seed 조합)의 `JSON.stringify` 결과가 키 순서·오류 문구까지 같다.
+- 검증(Windows): `python -X utf8 scripts/run_tests.py` → 20 통과, 2 SKIP(알려진 제한), 0 실패.
+
 ## 설계와 달라진 점
 
 - 골든 해시는 키를 정렬한 JSON으로 계산한다. 리팩토링이 객체 속성 생성 순서만 바꾸는 경우를 차이로 보지 않기 위해서이며, 배열 순서와 숫자 값은 그대로 비교한다. AC-002의 "바이트 단위로 같다"는 이 정규화 출력과 골든 파일 내용 기준이다. 파일 비교는 Windows `core.autocrlf` 체크아웃의 줄바꿈 차이를 피하려고 파싱한 JSON끼리 한다.
 - JS·CSS 소스 검사를 Playwright로 옮기면서 정적 검증기에 넣지 않고 별도 `test_dashboard_behavior.cjs`로 분리했다. 정적 검증기는 브라우저 없이 빠르게 돌고, 동작 검사는 실행기의 브라우저 단계에 둔다.
 - `fetch(` 정확히 2회 검사는 "실제 흐름의 fetch/XHR이 허용된 두 엔드포인트뿐"이라는 네트워크 검사와 "엔진 3개는 `fetch`를 쓰지 않는다"는 금지 API 검사로 바꿨다. 금지 API 검사 범위는 7개 파일에서 `map-ui/`의 모든 1차 모듈로 넓혔다.
 - 실행 환경이 고정 산출물 바이트를 재현할 수 없는 두 테스트는 실패 대신 사유와 함께 SKIP한다(통과로 세지 않는다). 조건이 맞는 체크아웃에서는 그대로 실행한다.
-- 정적 검증기의 장소 보강 코드는 `app.js`와 다른 기존 구현을 그대로 두었다. 단일화는 REQ-005 범위다. 골든 스크립트는 기준선 `app.js` 보강을 복사해 `enrichedPlaces` 해시로 고정했다.
+- 1단계에서는 정적 검증기의 장소 보강 코드를 그대로 두고 골든 스크립트가 기준선 `app.js` 보강을 복사해 `enrichedPlaces` 해시로 고정했다. 3단계(REQ-005)에서 넷 모두 `domain.enrichPlace`로 바꿨다.
+- `preference-view.js`의 `clearTravelMbtiProfile({ run: true })` 분기(초기화 뒤 바로 추천 실행)는 호출하는 곳이 없어 제거했다. 유일한 호출부(조건 초기화)는 기존 `run: false` 동작 그대로다.
 
 ## 알려진 제한
 
@@ -151,3 +169,4 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 | 2026-10-26 | 조사 결과를 바탕으로 초안 작성, 사용자 승인 범위(단계별 전체)로 In Progress |
 | 2026-10-26 | 1단계 안전망(REQ-001~003) 구현: 골든 출력 2종, 테스트 플래그 훅, 정적 계약/브라우저 동작 검사 분리, 단일 실행기. 테스트 계획 명령 갱신 |
 | 2026-10-26 | 2단계 저위험 정리(REQ-004) 구현: 실행기 LLM 이름, 활성 라벨 `--promote` 보호, review-ui v1·깨진 검증기 삭제, gitlink·피드백 파일 추적 해제, 일회성 스크립트 27개 보관, Markdown 링크 검사 |
+| 2026-10-26 | 프론트 모듈 구조 결정을 설계에 기록하고 3단계(REQ-005~007) 구현: `domain.js` 공통화, `app.js` 분해와 이벤트 기반 의존 차단, 랭커 단계 함수 분해 |

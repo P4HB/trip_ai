@@ -620,7 +620,7 @@ RecommendationCandidateTrace {
 
 ## 추천 만족도 서버 자동 적재 로그 — 구현됨
 
-`map-ui/app.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 이름 또는 별칭이 입력된 상태에서 만족도를 선택·변경하면 즉시, 자유 의견은 마지막 입력 후 800ms에 다음 최신 스냅샷을 `POST /travel/api/feedback`으로 전송한다. 이름만 입력하거나 평가 전 단순 방문·추천 실행만 한 경우에는 전송하지 않으며 Web Storage와 `sendBeacon`은 사용하지 않는다.
+`map-ui/feedback.js`는 현재 결과에 나타난 추천 목록과 일정 장소를 `place_id` 기준으로 중복 제거한다. 이름 또는 별칭이 입력된 상태에서 만족도를 선택·변경하면 즉시, 자유 의견은 마지막 입력 후 800ms에 다음 최신 스냅샷을 `POST /travel/api/feedback`으로 전송한다. 이름만 입력하거나 평가 전 단순 방문·추천 실행만 한 경우에는 전송하지 않으며 Web Storage와 `sendBeacon`은 사용하지 않는다.
 
 ```text
 TravelRecommendationFeedbackLogV3 {

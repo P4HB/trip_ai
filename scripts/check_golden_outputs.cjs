@@ -11,6 +11,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 const CCU = require("../map-ui/ccu-mmr.js");
+const Domain = require("../map-ui/domain.js");
 const Preference = require("../map-ui/preference-elicitation.js");
 const Itinerary = require("../map-ui/itinerary.js");
 
@@ -51,32 +52,6 @@ function loadBundle() {
   vm.createContext(sandbox);
   vm.runInContext(source, sandbox, { filename: BUNDLE_PATH });
   return { sourceSha256: sha256(source), rawPlaces: sandbox.window.JEJU_PLACES };
-}
-
-// Reference copy of the map-ui/app.js place enrichment at the SPEC-113 baseline.
-function featureKey(label) {
-  return String(label || "").split(".").at(-1);
-}
-
-function contextScores(records) {
-  return Object.fromEntries((records || []).map((record) => [record.key, record.state === "numeric" ? record.value : null]));
-}
-
-function enrichPlace(place) {
-  const atomicFeatures = {};
-  for (const record of place.v5?.labels || []) {
-    if (["theme.", "environment.", "style_evidence."].some((prefix) => record.label.startsWith(prefix))) {
-      if (Number.isFinite(record.value)) atomicFeatures[featureKey(record.label)] = Number(record.value);
-    }
-  }
-  return {
-    ...place,
-    atomicFeatures,
-    companionScores: contextScores(place.fit?.companion),
-    monthScores: contextScores(place.fit?.month),
-    recommendationReady: Boolean(place.v5 && place.fit && CCU.ATOMIC_FEATURES.every((key) => Number.isFinite(atomicFeatures[key]))),
-    searchText: `${place.title || ""} ${place.address || ""}`.normalize("NFKC").toLocaleLowerCase("ko-KR"),
-  };
 }
 
 // --- Preference engine ------------------------------------------------------------------------
@@ -389,7 +364,8 @@ function itineraryOutputs(results) {
 
 function buildGolden() {
   const { sourceSha256, rawPlaces } = loadBundle();
-  const places = rawPlaces.map(enrichPlace);
+  // The app enriches with the same shared helper; enrichedPlaces.sha256 pins its baseline output.
+  const places = rawPlaces.map((place) => Domain.enrichPlace(place));
   const presentTypes = new Set(places.map((place) => String(place.type)));
   const contentTypeIds = KNOWN_CONTENT_TYPES.filter((type) => presentTypes.has(type)).sort();
   const { profiles, outputs: preference } = preferenceOutputs();

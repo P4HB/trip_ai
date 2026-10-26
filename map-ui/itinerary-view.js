@@ -365,6 +365,15 @@
   }
 
 
-    return { itineraryClient, itineraryPlaceLabel, invalidateItinerary, renderItineraryInputs, collectItineraryOptions, generateItinerary, itineraryTime, itineraryStatusLabel, appendItineraryNotes, itineraryDate, restaurantWarnings, selectMealRestaurant, clearMealRestaurant, rerenderItinerary, renderRestaurantCandidate, renderRestaurantCandidates, renderMealEntry, renderItineraryState };
+  function bindEvents() {
+    dom.itineraryForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      generateItinerary();
+    });
+    dom.itineraryForm.addEventListener("input", invalidateItinerary);
+    dom.itineraryForm.addEventListener("change", invalidateItinerary);
+  }
+
+    return { itineraryClient, itineraryPlaceLabel, invalidateItinerary, renderItineraryInputs, collectItineraryOptions, generateItinerary, itineraryTime, itineraryStatusLabel, appendItineraryNotes, itineraryDate, restaurantWarnings, selectMealRestaurant, clearMealRestaurant, rerenderItinerary, renderRestaurantCandidate, renderRestaurantCandidates, renderMealEntry, renderItineraryState, bindEvents };
   } };
 })(window);
