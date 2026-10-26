@@ -1304,6 +1304,15 @@
       syncDesktopSidebarState();
       initMap();
       showWizardStep(1, { focus: false });
+      // SPEC-113 REQ-001: browser tests set this flag with page.addInitScript before the page loads.
+      if (window.__TRIP_AI_TEST__ === true) {
+        window.__TRIP_AI_INTERNALS__ = Object.freeze({
+          algorithm, places, placeById, dom, state,
+          clearRecommendation, resetFeedbackAutoSave, attachVariantSession, renderRecommendationOutput,
+          completeRecommendationFeedback, toggleCategory, runRecommendation, rerollRecommendation,
+          scheduleFeedbackAutoSave, itineraryPlaceLabel, selectPlace,
+        });
+      }
       window.CCU_MMR_DASHBOARD = {
         run: () => runRecommendation({ fit: false, openOutput: false }),
         reroll: () => rerollRecommendation(),

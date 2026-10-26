@@ -45,12 +45,17 @@ node scripts/build_map_ui_data.mjs
 ## 검증
 
 ```powershell
+python -X utf8 scripts/run_tests.py
 node scripts/test_preference_elicitation.cjs
 node scripts/test_ccu_mmr.cjs
 node scripts/validate_ccu_mmr_dashboard.cjs
+node scripts/test_dashboard_behavior.cjs
+node scripts/check_golden_outputs.cjs
 python scripts/validate_kakao_review_db.py
 python -m unittest server/travel-feedback/test_feedback_api.py
 ```
+
+`run_tests.py`는 전체 회귀·골든 비교·브라우저 테스트를 한 번에 실행한다([SPEC-113](../docs/spec_113.md)). `validate_ccu_mmr_dashboard.cjs`는 HTML 계약·스크립트 순서·금지 API·데이터만 보고, 화면 동작은 `test_dashboard_behavior.cjs`가 실제 브라우저에서 검사한다. 브라우저 테스트는 `page.addInitScript`로 `window.__TRIP_AI_TEST__ = true`를 켠 경우에만 `window.__TRIP_AI_INTERNALS__`를 받으며, 운영 페이지에는 노출되지 않는다.
 
 이 화면은 `ai_draft` 내부 비교용입니다. 웹 조사 문장도 AI 초안이므로 운영시간·가격·휴무·행사 일정은 연결된 원문에서 다시 확인해야 합니다. 일정 군집은 실제 도로·대중교통 이동시간이 아니라 중심과 장소 사이의 Haversine 직선거리만 사용합니다. 날씨·영업·예약·접근성·이동시간·가격을 보장하지 않습니다. 사용자 입력과 여행 MBTI 프로필은 평가 전까지 브라우저 메모리에만 남고, 이름 또는 별칭과 만족도 또는 의견이 모두 준비되면 추천 세션의 최신 평가 스냅샷과 함께 서버에 자동 전송되어 90일간 저장됩니다. 공유 문구에는 유형 코드·이름·공개 설명만 포함합니다.
 

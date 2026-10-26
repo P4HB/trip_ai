@@ -84,9 +84,9 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 
 | 승인 기준 | 검증 방법 | 명령 또는 위치 |
 |---|---|---|
-| AC-001 | 전체 회귀 | `python scripts/run_tests.py` (REQ-003에서 추가) |
-| AC-002 | 골든 비교 | `node scripts/check_golden_outputs.cjs` (REQ-002에서 추가) |
-| AC-003 | 검증 스크립트 검토 | `scripts/validate_ccu_mmr_dashboard.cjs` |
+| AC-001 | 전체 회귀 | `python -X utf8 scripts/run_tests.py` |
+| AC-002 | 골든 비교 | `node scripts/check_golden_outputs.cjs`, `python -X utf8 scripts/check_golden_outputs.py` |
+| AC-003 | 정적 계약과 브라우저 동작 검사 분리 | `scripts/validate_ccu_mmr_dashboard.cjs`(JS·CSS 소스 형태 미검사), `node scripts/test_dashboard_behavior.cjs` |
 | AC-004 | 의존 그래프 검사 | 모듈 생성 인자 검토 |
 | AC-005 | 링크 검사 | Markdown 상대 링크 검사 스크립트 |
 | AC-006 | 서버 단위·골든 | `python -m unittest discover -s server/travel-feedback` |
@@ -98,17 +98,42 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 ### 단계 0 (사전 정리, 2026-10-26)
 
 - 로컬 미푸시 커밋을 `origin/main`(`8fbab8e`) 위로 재적용하고 SPEC 번호 충돌을 SPEC-111·112로 해소했다. 기준선 회귀 전체 통과: 서버 168, 인스타 16+15, Node·브라우저 9종.
+- Windows(Python 3.14, Node 24, Python Playwright 1.59 드라이버)에서도 같은 기준선 12종이 통과했다.
+
+### 1단계 안전망 (REQ-001~003, 2026-10-26)
+
+- `REQ-002` 골든 출력(리팩토링 전 코드로 먼저 기록):
+  - `scripts/check_golden_outputs.cjs` → `scripts/fixtures/golden/js_outputs.json`. 실제 2,153곳 번들을 `app.js`와 같은 방식으로 보강한 결과, 4 intent × 6 동행(이동수단·기간·선호는 동행 순번으로 교차) × seed variant 3개 = 72개와 필수·필수+anchor·anchor·제외·hard constraint·결과 1/20개·기간만 2/3일·권역 2개·7일 여행·다양성 off·가중 seed 3개·오류 입력 7개를 합친 123개 `rank` 결과, `selectNextCourseVariant`·`courseOverlapTrace`, 여행 MBTI 답안 4세트의 `estimateProfile`→적응형 `nextAdaptivePair`→`materializePreferences`·`publicShareText`, `itinerary.js`의 `buildRequest`(정상·오류 10종)·`eligibility`·`travelerContext`·`foodContext`·`verdictLabel`·`partitionCandidates`·`selectedMealRoutes`를 저장한다.
+  - `scripts/check_golden_outputs.py` → `scripts/fixtures/golden/py_outputs.json`. `evaluate_restaurant_candidates.py`와 같은 오프라인 구성(실제 일정 카탈로그·식당 sidecar, `EstimatedRouteProvider`, `FakeScheduler`)으로 7개 시나리오 × 4개 날짜 × 우회 20/10/5분 = 84개 `generate` 결과, 잘못된 일정 요청 21종의 오류, 피드백 v2/v3 payload 30종의 검증 결과를 저장한다. `itinerary_validation.fresh`의 기준 시각과 경로 `queriedAt`(생성자 `now`)을 `2026-10-19T09:00+09:00`으로 고정했다.
+  - 두 스크립트를 새 프로세스로 반복 실행해 같은 결과를 확인했다. 랭커 반경 15→16km, 식당 후보 수 5→4로 일부러 바꾸면 각각 40개 이상 경로의 차이를 보고하고, 되돌리면 다시 통과했다.
+- `REQ-001` 안전망 교체:
+  - `map-ui/app.js`는 `window.__TRIP_AI_TEST__ === true`일 때만 `window.__TRIP_AI_INTERNALS__`(동결 객체: `algorithm`, `places`, `placeById`, `dom`, `state`와 fixture가 쓰는 함수 11개)를 노출한다. 운영 경로의 동작과 네트워크 호출은 같다.
+  - `test_feedback_completion.cjs`, `test_itinerary_ui.cjs`는 `page.addInitScript`로 플래그를 켜고 로드 후 `page.evaluate(installFixture)`로 fixture를 설치한다. `app.js` 문자열 치환은 저장소에서 사라졌다.
+  - `validate_ccu_mmr_dashboard.cjs`(374→248줄)는 HTML DOM 계약(id·마법사 1~5단계·choice target·필수 그룹), 스크립트 로드 순서(모든 1차 모듈 로드·`defer`·`domain.js` 선행·`app.js` 마지막·파일 존재), 모든 1차 모듈의 금지 API(localStorage·sessionStorage·sendBeacon·XMLHttpRequest)와 엔진 3개의 `fetch` 미사용, 데이터 수치, 랭커 결과만 검사한다. JS·CSS 소스 정규식(함수 인접 순서·들여쓰기·`fetch(` 개수 포함)은 제거했다.
+  - 새 `scripts/test_dashboard_behavior.cjs`(Playwright)가 제거한 검사를 실제 동작으로 대신한다: 플래그 없는 페이지의 내부 미노출과 자동 추천 없음, 대시보드 검사 API 16개, 단계 검증과 오류 문구·포커스, 기간↔정확한 날짜 상호 배제, 축제 의도의 날짜 요구와 최종 제출 재검증, 여행 MBTI 4방향 응답·적용 후 미실행·요청 선호가 프로필에서만 나옴, CTA 문구 3상태, 추천 카드 내부 trace 미표시·상세 버튼·5점 평가·의견 300자, 일정 카드 비버튼 컨테이너, 같은 장소 점수·의견 동기화, 이름 없는 첫 전송 보류, 자동 저장 payload(v3·storage·session·revision 증가)·점수 즉시/의견 디바운스·쿠키 미전송, 데스크톱 카드→지도 상세, 상세의 내부 라벨 미표시·리뷰 표시·리뷰 스키마 거부, 이미지 사전 로드·4:3·`contain`·확대 대화상자 포커스 복귀·저해상도 표시·늦은 이미지 무시, 입력 변경 시 결과·평가 초기화, 사이드바 접기·Leaflet 크기 갱신·1,240px 경계 해제, 모바일 5단계 동시 노출·입력/결과/지도 순서·빈 결과 패널 숨김·필수 6개 오류 표시·미선택 문구, 모바일 상세 평가 안내 3상태·터치 크기·16px 입력, 모바일 평가 대화상자의 이미지·조사·리뷰·닫을 때 리뷰 요청 중단, 그리고 전체 흐름의 fetch/XHR이 피드백 POST와 리뷰 GET(`?limit=5&offset=0`)뿐이고 Web Storage가 비어 있음.
+  - 일부러 동작을 바꾼 11개 변형(훅 항상 노출, MBTI 적용 시 추천 실행, 피드백 credentials, 의견 디바운스 제거, 카드에 내부 trace, 리뷰 스키마 검사 제거, 축제 날짜 검사 제거, 모바일 CSS order, 저해상도 표시 제거, 늦은 이미지 보호 제거, Leaflet 크기 갱신 제거)이 모두 이름 있는 assertion으로 실패하고 원복 후 통과했다.
+- `REQ-003` 단일 실행기 `scripts/run_tests.py`: Python 8종(서버 unittest, 인스타 2, 식당 수집·카탈로그·좌표·조회 DB, 장소 유형), Node 8종, 골든 2종, 브라우저 3종을 순서대로 실행하고 실패 출력 끝부분을 요약한다. `-k`(이름 필터)·`--list`·`-v`를 지원한다. 실행 전후 `git status`를 비교해 `tmp/` 밖에 파일을 남기면 실패한다. Node `playwright`가 없으면 설치된 Python Playwright 드라이버를 `tmp/test-runtime` shim으로 재사용한다.
+  - 확인 중 `test_itinerary_ui.cjs`의 스크린샷 기본 경로가 `/tmp/...`(Windows에서는 `C:\tmp`)인 것을 발견해 `tmp/test-artifacts/itinerary-ui/`로 바꿨다(기존 환경변수 덮어쓰기 유지).
+- 검증(Windows, 2026-10-26): `python -X utf8 scripts/run_tests.py` → 19 통과, 2 SKIP(아래 알려진 제한), 0 실패, 약 67초. 서버 168, 인스타 16+15, 골든 JS 123 시나리오·Python 84+21+30 일치, 브라우저 3종 통과. 동작 테스트는 연속 3회 통과했다.
 
 ## 설계와 달라진 점
 
-없음.
+- 골든 해시는 키를 정렬한 JSON으로 계산한다. 리팩토링이 객체 속성 생성 순서만 바꾸는 경우를 차이로 보지 않기 위해서이며, 배열 순서와 숫자 값은 그대로 비교한다. AC-002의 "바이트 단위로 같다"는 이 정규화 출력과 골든 파일 내용 기준이다. 파일 비교는 Windows `core.autocrlf` 체크아웃의 줄바꿈 차이를 피하려고 파싱한 JSON끼리 한다.
+- JS·CSS 소스 검사를 Playwright로 옮기면서 정적 검증기에 넣지 않고 별도 `test_dashboard_behavior.cjs`로 분리했다. 정적 검증기는 브라우저 없이 빠르게 돌고, 동작 검사는 실행기의 브라우저 단계에 둔다.
+- `fetch(` 정확히 2회 검사는 "실제 흐름의 fetch/XHR이 허용된 두 엔드포인트뿐"이라는 네트워크 검사와 "엔진 3개는 `fetch`를 쓰지 않는다"는 금지 API 검사로 바꿨다. 금지 API 검사 범위는 7개 파일에서 `map-ui/`의 모든 1차 모듈로 넓혔다.
+- 실행 환경이 고정 산출물 바이트를 재현할 수 없는 두 테스트는 실패 대신 사유와 함께 SKIP한다(통과로 세지 않는다). 조건이 맞는 체크아웃에서는 그대로 실행한다.
+- 정적 검증기의 장소 보강 코드는 `app.js`와 다른 기존 구현을 그대로 두었다. 단일화는 REQ-005 범위다. 골든 스크립트는 기준선 `app.js` 보강을 복사해 `enrichedPlaces` 해시로 고정했다.
 
 ## 알려진 제한
 
 - 피드백 파일(`travel-feedback-anonymized-since-0903 copy.json`)의 Git 이력 삭제 여부는 사용자 결정이 필요하다.
+- 이 Windows 환경에서는 `test_place_types.py`(고정 SQLite가 3.37.2로 기록됨, 이 Python은 3.50.4)와 `test_labeling_review_model.mjs`(고정 해시 대상 JSON이 CRLF로 체크아웃됨)가 SKIP된다. 기준선 커밋에서도 같은 이유로 실패하는 사전 문제이며 이번 변경과 무관하다. 고정 데이터에 `eol=lf` 속성을 주는 정리는 별도 결정이 필요하다.
+- 데스크톱 사이드바를 접으면 Leaflet의 마지막 `invalidateSize`(240ms)가 grid 전환 종료 직전에 실행돼 지도 크기가 컨테이너보다 약 2px 작게 남을 수 있다. 기존 동작이며 동작 보존 범위라 고치지 않았고, 테스트는 지도 폭이 커지고 컨테이너와 4px 이내인지만 확인한다.
+- 골든 입력(지도 번들·일정 카탈로그·식당 sidecar·정책 버전)이 바뀌면 골든 비교가 실패한다. 데이터 재생성은 리팩토링이 아니므로 별도 SPEC에서 골든을 갱신한다.
 
 ## 변경 이력
 
 | 날짜 | 변경 내용 |
 |---|---|
 | 2026-10-26 | 조사 결과를 바탕으로 초안 작성, 사용자 승인 범위(단계별 전체)로 In Progress |
+| 2026-10-26 | 1단계 안전망(REQ-001~003) 구현: 골든 출력 2종, 테스트 플래그 훅, 정적 계약/브라우저 동작 검사 분리, 단일 실행기. 테스트 계획 명령 갱신 |

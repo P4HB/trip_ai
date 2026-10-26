@@ -61,9 +61,10 @@
 
 ## 현재 검증 명령
 
-변경 범위에 맞는 명령만 실행하고 결과를 SPEC에 기록한다.
+변경 범위에 맞는 명령만 실행하고 결과를 SPEC에 기록한다. 여러 영역에 걸친 변경과 리팩토링은 전체 회귀·골든 비교·브라우저 테스트를 한 번에 실행하는 단일 실행기로 확인한다(SPEC-113).
 
 ```powershell
+python -X utf8 scripts/run_tests.py
 python -m py_compile scripts/collect_tourapi_jeju.py
 node --check scripts/build_map_ui_data.mjs
 node --check map-ui/app.js

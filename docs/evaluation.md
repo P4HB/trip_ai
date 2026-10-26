@@ -198,3 +198,13 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 `node scripts/evaluate_preference_weight_budget.cjs --baseline-engine <보존한-v7-엔진.cjs>`는 변경 전 실제 엔진과 현재 엔진을 같은 1,663개 추천 준비 장소에 적용한다. 합성 MBTI 8개와 명시적 자연·사진 선호 2개에 대해 visit lane, 동행·월 미사용, Top 10, 다양성 off/balanced를 비교한다. balanced는 첫 seed로 고정한다. 프로필별 기여 비중·Top 10 ID·대표 유형 수·해변/오름 수·프로필 간 겹침을 `tmp/evaluation/spec_084_preference_budget.json`에 기록하며 입력 및 두 엔진 SHA-256을 포함한다.
 
 이 보고서는 현재 라벨과 합성 입력에 대한 민감도 분석이다. 원래 점수나 달라진 점수 자체를 독립 정답으로 쓰지 않고, 지표가 나빠진 경우도 기록한다. 결과 수치와 알려진 제한은 SPEC-084의 구현 결과를 따른다.
+
+## 동작 보존 회귀와 골든 출력 — SPEC-113
+
+`python -X utf8 scripts/run_tests.py`는 Python·Node 단위 테스트, 골든 비교, Playwright 브라우저 테스트를 순서대로 실행하고 실패 요약을 출력한다. 실행 뒤 `tmp/` 밖에 파일이 생기거나 바뀌면 실패로 처리한다. 고정 산출물 바이트를 비교하는 장소 유형 SQLite·라벨 검수 해시 테스트는 같은 SQLite 버전과 LF 체크아웃이 아니면 사유와 함께 SKIP하며 통과로 세지 않는다.
+
+`node scripts/check_golden_outputs.cjs`와 `python -X utf8 scripts/check_golden_outputs.py`는 리팩토링 전 코드로 기록한 `scripts/fixtures/golden/`의 출력과 현재 출력을 비교한다. JS는 실제 번들의 장소 보강, intent·동행·이동수단·기간·선호·seed variant 조합과 필수·anchor·제외·hard constraint·다양성 off·가중 seed·오류 입력의 `rank` 결과, 코스 재추천 선택, 여행 MBTI 흐름, 일정 요청·식당 후보 helper를 해시한다. Python은 SPEC-107 평가와 같은 오프라인 구성(결정적 LLM 대역·추정 이동시간·실제 카탈로그)의 일정 생성, 잘못된 일정 요청, 피드백 v2/v3 검증 결과를 고정 시각으로 해시한다. 해시는 키를 정렬한 JSON으로 계산하므로 객체 속성 생성 순서는 비교하지 않고 배열 순서와 값은 비교한다.
+
+이 골든 출력은 위 "골든 시나리오"의 품질 평가와 다르다. 특정 순위가 옳다는 판단이 아니라 구조 변경 전후 동작이 같은지 확인하는 장치다. 의도한 동작·데이터 변경은 해당 SPEC에 기록한 뒤 `--update`로 갱신한다.
+
+`node scripts/test_dashboard_behavior.cjs`는 지도 대시보드의 마법사 검증·축제 날짜·여행 MBTI 적용·평가 동기화와 자동 저장·상세 이미지와 리뷰 계약·사이드바·모바일 흐름·허용된 네트워크 호출·Web Storage 미사용을 실제 브라우저에서 검사한다. `scripts/validate_ccu_mmr_dashboard.cjs`는 HTML DOM 계약·스크립트 순서·금지 API·데이터 수치·랭커 결과만 검사하며 JS·CSS 소스 형태에 의존하지 않는다.

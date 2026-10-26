@@ -70,7 +70,7 @@ node scripts/test_feedback_completion.cjs
 python3 scripts/evaluate_itineraries.py --output /tmp/spec083-sample-audit.json
 ```
 
-브라우저 테스트에는 Playwright와 Chromium 또는 `FEEDBACK_TEST_CHROMIUM` 경로가 필요하다. 샌드박스에서는 localhost 서버를 여는 권한이 필요할 수 있다. macOS Python 캐시 쓰기 제한이 있으면 `PYTHONPYCACHEPREFIX=/tmp/trip-ai-pycache`를 지정한다.
+전체 회귀는 저장소 루트에서 `python -X utf8 scripts/run_tests.py` 하나로 실행한다([SPEC-113](../../docs/spec_113.md)). 브라우저 테스트에는 Playwright와 Chromium 또는 `FEEDBACK_TEST_CHROMIUM` 경로가 필요하다. 실행기는 Node `playwright` 패키지가 없으면 설치된 Python Playwright 드라이버를 `tmp/test-runtime` shim으로 재사용한다. 스크린샷은 `tmp/test-artifacts/`에 저장한다. 샌드박스에서는 localhost 서버를 여는 권한이 필요할 수 있다. macOS Python 캐시 쓰기 제한이 있으면 `PYTHONPYCACHEPREFIX=/tmp/trip-ai-pycache`를 지정한다.
 
 Docker는 새 모듈·정책·카탈로그·분석 sidecar를 포함한다. 릴리스 설치기는 기존 Caddy API 경로를 동선까지 확장하고 기존 서비스에도 새 환경변수를 추가한다. Vercel 프록시는 정확한 공개 Origin의 해당 POST만 변환한다. 아직 배포하지 않았으며 실제 Vercel 대기 한도·모델 지연·경로 이용 조건·비용은 별도 확인이 필요하다. 사용자 일정과 프롬프트는 영속 저장하지 않는다.
 

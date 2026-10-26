@@ -4,50 +4,54 @@ const path = require('node:path');
 const http = require('node:http');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '../map-ui');
-const fixture = `window.FEEDBACK_TEST = {
-  setup() {
-    clearRecommendation();
-    const result = algorithm.rank(places, {
-      destinationRegion: 'jeju_all', intent: 'visit',
-      travelWindow: { startDate: '2026-09-10', endDate: '2026-09-12' },
-      transportMode: 'car', requiredPlaceIds: [], companionType: 'parents',
-      preferences: [{feature:'ocean',mode:'benefit',weight:4}], resultCount:10, diversity:'balanced'
-    }, { random: () => 0.65 });
-    resetFeedbackAutoSave({ createSession: true });
-    attachVariantSession(result);
-    renderRecommendationOutput(result);
-    return result.items.map(item => item.placeId);
-  },
-  guard(id) { completeRecommendationFeedback(id, 'mobile-dialog'); },
-  clear: () => clearRecommendation(),
-  toggle: () => toggleCategory('12'),
-  run() {
-    const request = state.recommendationResult.request;
-    for (const [key, value] of Object.entries({destinationRegion:request.destinationRegion, tripIntent:request.intent,
-      companionType:request.companionType, transportMode:request.transportMode,
-      travelStartDate:request.travelWindow.startDate, travelEndDate:request.travelWindow.endDate,
-      resultLimit:10, diversityPreset:'balanced'})) dom[key].value = value;
-    dom.dateUndecided.checked = false;
-    return runRecommendation({fit:false, openOutput:false, preserveSession:true});
-  },
-  reroll: () => rerollRecommendation(),
-  anchor() {
-    state.selectedAnchorIds.add(state.recommendationResult.items[0].placeId);
-    return runRecommendation({fit:false,openOutput:false,preserveSession:true});
-  },
-  editAndClear(id) {
-    state.recommendationFeedback.set(id,{score:4,comment:'debounced-before-reset'});
-    scheduleFeedbackAutoSave(800);
-    clearRecommendation();
-  }
-};`;
+// Runs in the page after load; app internals come from the SPEC-113 test hook.
+function installFixture() {
+  const { clearRecommendation, algorithm, places, resetFeedbackAutoSave, attachVariantSession, renderRecommendationOutput,
+    completeRecommendationFeedback, toggleCategory, state, dom, runRecommendation, rerollRecommendation, scheduleFeedbackAutoSave } = window.__TRIP_AI_INTERNALS__;
+  window.FEEDBACK_TEST = {
+    setup() {
+      clearRecommendation();
+      const result = algorithm.rank(places, {
+        destinationRegion: 'jeju_all', intent: 'visit',
+        travelWindow: { startDate: '2026-09-10', endDate: '2026-09-12' },
+        transportMode: 'car', requiredPlaceIds: [], companionType: 'parents',
+        preferences: [{feature:'ocean',mode:'benefit',weight:4}], resultCount:10, diversity:'balanced'
+      }, { random: () => 0.65 });
+      resetFeedbackAutoSave({ createSession: true });
+      attachVariantSession(result);
+      renderRecommendationOutput(result);
+      return result.items.map(item => item.placeId);
+    },
+    guard(id) { completeRecommendationFeedback(id, 'mobile-dialog'); },
+    clear: () => clearRecommendation(),
+    toggle: () => toggleCategory('12'),
+    run() {
+      const request = state.recommendationResult.request;
+      for (const [key, value] of Object.entries({destinationRegion:request.destinationRegion, tripIntent:request.intent,
+        companionType:request.companionType, transportMode:request.transportMode,
+        travelStartDate:request.travelWindow.startDate, travelEndDate:request.travelWindow.endDate,
+        resultLimit:10, diversityPreset:'balanced'})) dom[key].value = value;
+      dom.dateUndecided.checked = false;
+      return runRecommendation({fit:false, openOutput:false, preserveSession:true});
+    },
+    reroll: () => rerollRecommendation(),
+    anchor() {
+      state.selectedAnchorIds.add(state.recommendationResult.items[0].placeId);
+      return runRecommendation({fit:false,openOutput:false,preserveSession:true});
+    },
+    editAndClear(id) {
+      state.recommendationFeedback.set(id,{score:4,comment:'debounced-before-reset'});
+      scheduleFeedbackAutoSave(800);
+      clearRecommendation();
+    }
+  };
+}
 const server = http.createServer((req, res) => {
   const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   const file = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
   if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
   try {
-    let body = fs.readFileSync(file);
-    if (file === path.join(root, 'app.js')) body = body.toString().replace('window.CCU_MMR_DASHBOARD = {', fixture + '\nwindow.CCU_MMR_DASHBOARD = {');
+    const body = fs.readFileSync(file);
     const types = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.png':'image/png'};
     res.writeHead(200, {'Content-Type': types[path.extname(file)] || 'application/octet-stream'}).end(body);
   } catch { res.writeHead(404).end(); }
@@ -74,8 +78,10 @@ const server = http.createServer((req, res) => {
         await route.fulfill({contentType:'image/svg+xml', body:'<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="640" height="360" fill="#e7efed"/></svg>'});
       } else await route.continue();
     });
+    await page.addInitScript(() => { window.__TRIP_AI_TEST__ = true; });
     await page.goto(`http://127.0.0.1:${server.address().port}/`);
-    await page.waitForFunction(() => window.FEEDBACK_TEST && window.CCU_MMR_DASHBOARD);
+    await page.waitForFunction(() => window.__TRIP_AI_INTERNALS__ && window.CCU_MMR_DASHBOARD);
+    await page.evaluate(installFixture);
     const ids = await page.evaluate(() => FEEDBACK_TEST.setup());
     const id = ids[0];
     const card = page.locator(`.recommendation-card[data-place-id="${id}"]`);

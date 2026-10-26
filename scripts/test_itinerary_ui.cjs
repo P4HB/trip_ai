@@ -108,28 +108,35 @@ async function unitTests() {
 }
 
 const mapRoot = path.resolve(__dirname, "../map-ui");
-const fixture = `window.ITINERARY_TEST = {
-  setup(mode = 'exact') {
-    clearRecommendation();
-    const request = {destinationRegion:'jeju_all',intent:'visit',travelWindow:mode === 'duration' ? null : {startDate:'2026-10-01',endDate:mode === 'multi' ? '2026-10-03' : '2026-10-01'},tripDays: mode === 'duration' ? 1 : null, transportMode:mode === 'no_car' ? 'no_car' : 'car',requiredPlaceIds:[],companionType:'parents',preferences:[{feature:'ocean',mode:'benefit',weight:4}],resultCount:1,diversity:'balanced'};
-    const result = algorithm.rank(places, request, {random:()=>0.65});
-    dom.travelStartDate.value = '2026-10-01'; dom.travelEndDate.value = '2026-10-01';
-    resetFeedbackAutoSave({ createSession: true });
-    renderRecommendationOutput(result);
-    return {ids: result.items.map(item=>item.placeId), dayIds:result.schedule.dayClusters[0]?.placeIds, labels:places.slice(0,2).map(itineraryPlaceLabel)};
-  },
-  select(id) { selectPlace(placeById.get(id)); },
-  clear: () => clearRecommendation()
-};`;
+// Runs in the page after load; app internals come from the SPEC-113 test hook.
+function installFixture() {
+  const { clearRecommendation, algorithm, places, placeById, dom, resetFeedbackAutoSave, renderRecommendationOutput,
+    itineraryPlaceLabel, selectPlace } = window.__TRIP_AI_INTERNALS__;
+  window.ITINERARY_TEST = {
+    setup(mode = 'exact') {
+      clearRecommendation();
+      const request = {destinationRegion:'jeju_all',intent:'visit',travelWindow:mode === 'duration' ? null : {startDate:'2026-10-01',endDate:mode === 'multi' ? '2026-10-03' : '2026-10-01'},tripDays: mode === 'duration' ? 1 : null, transportMode:mode === 'no_car' ? 'no_car' : 'car',requiredPlaceIds:[],companionType:'parents',preferences:[{feature:'ocean',mode:'benefit',weight:4}],resultCount:1,diversity:'balanced'};
+      const result = algorithm.rank(places, request, {random:()=>0.65});
+      dom.travelStartDate.value = '2026-10-01'; dom.travelEndDate.value = '2026-10-01';
+      resetFeedbackAutoSave({ createSession: true });
+      renderRecommendationOutput(result);
+      return {ids: result.items.map(item=>item.placeId), dayIds:result.schedule.dayClusters[0]?.placeIds, labels:places.slice(0,2).map(itineraryPlaceLabel)};
+    },
+    select(id) { selectPlace(placeById.get(id)); },
+    clear: () => clearRecommendation()
+  };
+}
 async function browserTests() {
   const { chromium } = require("playwright");
+  // Screenshots stay inside the Git-ignored tmp/ directory (SPEC-113 REQ-003).
+  const artifacts = path.resolve(process.env.ITINERARY_TEST_OUTPUT || path.join(__dirname, "../tmp/test-artifacts/itinerary-ui"));
+  fs.mkdirSync(artifacts, { recursive: true });
   const server = http.createServer((req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, "http://localhost").pathname);
     const file = path.resolve(mapRoot, "." + (pathname === "/" ? "/index.html" : pathname));
     if (!file.startsWith(mapRoot + path.sep)) { res.writeHead(403).end(); return; }
     try {
-      let body = fs.readFileSync(file);
-      if (file === path.join(mapRoot, "app.js")) body = body.toString().replace("window.CCU_MMR_DASHBOARD = {", fixture + "\nwindow.CCU_MMR_DASHBOARD = {");
+      const body = fs.readFileSync(file);
       res.writeHead(200, { "Content-Type": ({ ".html": "text/html", ".js": "text/javascript", ".css": "text/css" })[path.extname(file)] || "application/octet-stream" }).end(body);
     } catch { res.writeHead(404).end(); }
   });
@@ -146,8 +153,10 @@ async function browserTests() {
       else if (!url.startsWith("http://127.0.0.1:")) await route.fulfill({ contentType: "image/svg+xml", body: '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' });
       else await route.continue();
     });
+    await page.addInitScript(() => { window.__TRIP_AI_TEST__ = true; });
     await page.goto(`http://127.0.0.1:${server.address().port}/`);
-    await page.waitForFunction(() => window.ITINERARY_TEST && window.CCU_MMR_DASHBOARD);
+    await page.waitForFunction(() => window.__TRIP_AI_INTERNALS__ && window.CCU_MMR_DASHBOARD);
+    await page.evaluate(installFixture);
     await page.evaluate(() => {
       const original = window.fetch;
       window.ITINERARY_PENDING = [];
@@ -231,7 +240,7 @@ async function browserTests() {
     await page.waitForFunction(() => CCU_MMR_DASHBOARD.getItinerary().status === "ready");
     await page.setViewportSize({width:390,height:844});
     await page.locator("#itinerarySection").scrollIntoViewIfNeeded();
-    await page.screenshot({path:process.env.ITINERARY_TEST_SCREENSHOT || "/tmp/trip-ai-itinerary-mobile.png"});
+    await page.screenshot({path:process.env.ITINERARY_TEST_SCREENSHOT || path.join(artifacts, "itinerary-mobile.png")});
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     await page.evaluate(() => { void CCU_MMR_DASHBOARD.generateItinerary(); });
     await page.locator("#travelStartDate").fill("2026-10-02");
@@ -330,7 +339,7 @@ async function browserTests() {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator(".itinerary-restaurant").first().scrollIntoViewIfNeeded();
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, "candidate list fits mobile width");
-    await page.screenshot({ path: process.env.ITINERARY_RESTAURANT_SCREENSHOT || "/tmp/trip-ai-itinerary-restaurants-mobile.png" });
+    await page.screenshot({ path: process.env.ITINERARY_RESTAURANT_SCREENSHOT || path.join(artifacts, "itinerary-restaurants-mobile.png") });
     await page.setViewportSize({ width: 1440, height: 1000 });
     const remake = await page.evaluate(() => { const start = ITINERARY_PENDING.length; void CCU_MMR_DASHBOARD.generateItinerary(); return start; });
     assert.equal(await page.evaluate(index => ITINERARY_PENDING[index].payload.tripFoodContext, remake), undefined, "다시 만들기 clears selections");
