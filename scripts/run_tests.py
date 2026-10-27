@@ -18,7 +18,6 @@ import json
 import os
 from pathlib import Path
 import shutil
-import sqlite3
 import subprocess
 import sys
 import time
@@ -31,25 +30,25 @@ PLACE_TYPES = Path("data/labeling/jeju/2026-09-11/place-types-v1")
 LABELING_PROFILES = Path("data/labeling/jeju/2026-08-09/pilots/place-profile-v3-auto-100/place_profiles.json")
 
 
-def crlf_paths(*paths: Path) -> list[str]:
-    return [path.as_posix() for path in paths if b"\r\n" in (ROOT / path).read_bytes()]
+def newline_mismatches(paths: list[Path], crlf: bool) -> list[str]:
+    return [path.as_posix() for path in paths if (b"\r\n" in (ROOT / path).read_bytes()) != crlf]
+
+
+def recheckout_reason(expected: str, paths: list[str]) -> str | None:
+    # SPEC-115: .gitattributes fixes these line endings, but checkouts made before it keep their old bytes.
+    return f"pinned bytes need {expected}; delete and `git checkout --` {', '.join(paths)}" if paths else None
 
 
 def labeling_review_environment() -> str | None:
-    crlf = crlf_paths(LABELING_PROFILES)
-    return f"pinned byte hash needs an LF checkout; CRLF working copy: {', '.join(crlf)}" if crlf else None
+    return recheckout_reason("LF (.gitattributes eol=lf)", newline_mismatches([LABELING_PROFILES], crlf=False))
 
 
-def sqlite_writer_version(path: Path) -> str:
-    # SQLite records the writing library version in the database header (offset 96).
-    pinned = int.from_bytes((ROOT / path).read_bytes()[96:100], "big")
-    return f"{pinned // 1_000_000}.{pinned // 1_000 % 1_000}.{pinned % 1_000}"
-
-
-PLACE_TYPES_KNOWN_FAILURE = (
-    "pre-existing since SPEC-111: place-types-v1/manifest.json pins the map bundle hash from before the SPEC-111 bundle change, "
-    "and the outputs were not regenerated (data change, outside SPEC-113). Byte equality also needs SQLite "
-    f"{sqlite_writer_version(PLACE_TYPES / 'place_types.sqlite3')} and an LF checkout; this run uses SQLite {sqlite3.sqlite_version}")
+def place_types_environment() -> str | None:
+    # The frozen classifier writes platform newlines, so the published text outputs must use them too.
+    crlf = os.linesep == "\r\n"
+    outputs = [PLACE_TYPES / "place_types.jsonl", PLACE_TYPES / "report.md"]
+    return recheckout_reason(f"{'CRLF' if crlf else 'LF'} platform newlines (.gitattributes text; check core.autocrlf/core.eol)",
+                             newline_mismatches(outputs, crlf))
 
 
 @dataclass(frozen=True)
@@ -76,7 +75,7 @@ CHECKS = [
     Check("python: restaurant coordinates", (*PY, "scripts/test_restaurant_coordinates.py")),
     Check("python: restaurant query db", (*PY, "scripts/test_restaurant_query_db.py")),
     Check("python: script data io", (*PY, "scripts/test_data_io.py")),
-    Check("python: place types (pinned outputs)", (*PY, "scripts/test_place_types.py"), known_failure=PLACE_TYPES_KNOWN_FAILURE),
+    Check("python: place types (pinned outputs)", (*PY, "scripts/test_place_types.py"), precondition=place_types_environment),
     Check("node: ccu-mmr", node("test_ccu_mmr.cjs")),
     Check("node: daily type limit", node("test_daily_type_limit.cjs")),
     Check("node: preference weight budget", node("test_preference_weight_budget.cjs")),

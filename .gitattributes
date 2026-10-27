@@ -2,3 +2,24 @@
 map-ui/data/jeju-places.js text eol=lf
 server/travel-feedback/data/itinerary_catalog.json text eol=lf
 data/catalogs/map-label-evidence.json.gz binary
+
+# SPEC-115: datasets whose pinned hashes tests and validators read. Each rule reproduces the bytes the
+# dataset's own manifest hashed, so every checkout (Windows or Linux, any core.autocrlf) matches it.
+# Place-profile pilots and climate normals (SPEC-003~006) hashed LF bytes.
+data/labeling/jeju/2026-08-09/pilots/** text eol=lf
+data/climate/** text eol=lf
+# The TourAPI 2026-08-09 snapshot manifest hashed a Windows checkout: CRLF except the JSONL.
+data/tourapi/jeju/2026-08-09/jeju_places.json text eol=crlf
+data/tourapi/jeju/2026-08-09/jeju_places.csv text eol=crlf
+data/tourapi/jeju/2026-08-09/quality_issues.csv text eol=crlf
+data/tourapi/jeju/2026-08-09/manifest.json text eol=crlf
+data/tourapi/jeju/2026-08-09/jeju_places.jsonl text eol=lf
+# Relabel v2 (SPEC-007) manifests hashed their top-level label files as CRLF.
+data/labeling/jeju/2026-08-09/place-fit-relabel-v2/*.jsonl text eol=crlf
+# Place types v1 (SPEC-075): the frozen classifier writes platform newlines and its test compares a fresh
+# build with the checkout, so the text outputs stay native (CRLF on Windows, LF elsewhere) even when
+# core.autocrlf is false. Its manifest hashed the classifier as LF and the taxonomy as CRLF.
+data/labeling/jeju/2026-09-11/place-types-v1/*.jsonl text
+data/labeling/jeju/2026-09-11/place-types-v1/report.md text
+scripts/classify_place_types.py text eol=lf
+config/place_type_taxonomy.v1.json text eol=crlf

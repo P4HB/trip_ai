@@ -1,11 +1,12 @@
 # 데이터 계약
 
 - 문서 상태: 현재 구현 + 목표 초안
-- 최종 수정일: 2026-10-12
+- 최종 수정일: 2026-10-27
 
 ## 공통 규칙
 
 - 텍스트 파일은 UTF-8을 기본으로 한다. Excel용 CSV는 UTF-8 BOM을 사용할 수 있다.
+- manifest의 파일 SHA-256은 생성한 PC의 작업 사본 바이트다. 데이터셋마다 LF 또는 CRLF로 해시됐으므로, 테스트·검증기가 읽는 데이터셋은 `.gitattributes`가 그 줄바꿈을 지정해 모든 체크아웃이 같은 바이트를 갖게 한다([SPEC-115](spec_115.md)). 새로 해시를 고정하는 생성기는 줄바꿈을 명시해 쓰거나 줄바꿈 정규화 내용 해시를 쓴다.
 - 날짜는 `YYYY-MM-DD`, 시각은 시간대가 포함된 ISO 8601을 사용한다.
 - 좌표는 WGS84를 전제로 하며 `longitude` 다음 `latitude` 순서를 명시한다.
 - TourAPI의 `mapx`는 경도, `mapy`는 위도다.
@@ -100,8 +101,8 @@ v1 원본 파일과 DB는 비교·복구용으로 보존한다. v2 DB는 용량�
 - `classification_status=rule_classified`는 규칙 판정이며 사람 승인이나 정확도 보장이 아니다. 복합·불확실 사례는 `needs_review`로 기록한다. 대표 유형은 한 장소당 하나이며 확률 형태 confidence는 만들지 않는다.
 - `recommendation_ready`는 기존 41축 데이터 준비 여부다. 실제 추천 자격, intent 일치나 운영 가능 여부를 뜻하지 않는다. 카페 유형에는 기존 추천 미대상 베이커리도 포함된다.
 - `place_types.sqlite3`의 `place_types` 테이블은 `place_id` 기본키와 `primary_type` 인덱스, 전체 레코드 `record_json`을 가진다. JSONL과 동일한 레코드다.
-- `review_queue.jsonl`은 검토 필요 레코드, `report.md`는 유형 분포·검토 목록·전체 장소 목록, `manifest.json`은 입력/출력 해시와 버전·건수를 가진다.
-- 생성: `python scripts/classify_place_types.py`. 검증: `python scripts/test_place_types.py`. 유형 ID별 의미는 taxonomy를 정본으로 사용한다.
+- `review_queue.jsonl`은 검토 필요 레코드, `report.md`는 유형 분포·검토 목록·전체 장소 목록, `manifest.json`은 입력/출력 해시와 버전·건수를 가진다. 현재 산출물은 [SPEC-115](spec_115.md)에서 Windows(SQLite 3.50.4)로 재생성했다. JSONL·보고서 출력 해시는 CRLF 바이트이고 SQLite 해시는 그 라이브러리 버전의 바이트다.
+- 생성: `python scripts/classify_place_types.py`. 검증: `python scripts/test_place_types.py`. 유형 ID별 의미는 taxonomy를 정본으로 사용한다. 분류기는 플랫폼 줄바꿈으로 쓰므로 텍스트 산출물은 플랫폼 줄바꿈으로 체크아웃한다. 테스트는 새로 만든 출력과 커밋된 파일을 바이트로 비교하되, SQLite는 실행 중인 라이브러리 버전이 파일 기록 버전과 다르면 스키마·행으로 비교한다.
 
 ### 지도 번들
 

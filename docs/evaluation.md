@@ -1,7 +1,7 @@
 # 추천 평가 전략
 
 - 문서 상태: 내부 데모 회귀 구현, 추천 품질 평가는 미구현
-- 최종 수정일: 2026-10-06
+- 최종 수정일: 2026-10-27
 - 활성 설계 초안: [SPEC-008](spec_008.md)
 
 운영 품질을 판단하는 자동 추천 평가 파이프라인은 없다. SPEC-014~017은 수식·계약, 일정 회귀, 상위 3개 가중 seed 경계, 코스 variant·세션 순환·중복 trace와 자동 일정 중심을 확인하는 `scripts/test_ccu_mmr.cjs`와 실제 1,663곳 41축 번들을 검사하는 `scripts/validate_ccu_mmr_dashboard.cjs`만 구현했다. 이는 품질 평가나 출시 gate가 아니며 현행 AI 초안 라벨과 추천 결과를 정답으로 재사용하지 않는다.
@@ -201,7 +201,7 @@ SPEC-015 근사 일정 군집은 다음 결정적 회귀 지표를 별도로 검
 
 ## 동작 보존 회귀와 골든 출력 — SPEC-113
 
-`python -X utf8 scripts/run_tests.py`는 Python·Node 단위 테스트, Markdown 상대 링크 검사, 골든 비교, Playwright 브라우저 테스트를 순서대로 실행하고 실패 요약을 출력한다. 실행 뒤 `tmp/` 밖에 파일이 생기거나 바뀌면 실패로 처리한다. 라벨 검수 해시 테스트는 LF 체크아웃이 아니면 사유와 함께 SKIP하고, SPEC-113 이전부터 고정 manifest가 현재 지도 번들과 맞지 않는 장소 유형 테스트는 `XFAIL`(알려진 실패)로 실행 결과와 원인을 보여 준다. 둘 다 통과로 세지 않는다.
+`python -X utf8 scripts/run_tests.py`는 Python·Node 단위 테스트, Markdown 상대 링크 검사, 골든 비교, Playwright 브라우저 테스트를 순서대로 실행하고 실패 요약을 출력한다. 실행 뒤 `tmp/` 밖에 파일이 생기거나 바뀌면 실패로 처리한다. 고정 바이트를 비교하는 라벨 검수 모델·장소 유형 테스트는 작업 사본 줄바꿈이 `.gitattributes` 규칙과 다르면(규칙 도입 전 체크아웃 등) 다시 체크아웃할 파일과 함께 SKIP한다([SPEC-115](spec_115.md)). 알려진 실패로 표시한 검사는 `XFAIL`로 실행 결과와 원인을 보여 주며 현재 표시된 검사는 없다. SKIP·XFAIL은 통과로 세지 않는다.
 
 `node scripts/check_golden_outputs.cjs`와 `python -X utf8 scripts/check_golden_outputs.py`는 리팩토링 전 코드로 기록한 `scripts/fixtures/golden/`의 출력과 현재 출력을 비교한다. JS는 실제 번들의 장소 보강, intent·동행·이동수단·기간·선호·seed variant 조합과 필수·anchor·제외·hard constraint·다양성 off·가중 seed·오류 입력의 `rank` 결과, 코스 재추천 선택, 여행 MBTI 흐름, 일정 요청·식당 후보 helper를 해시한다. Python은 SPEC-107 평가와 같은 오프라인 구성(결정적 LLM 대역·추정 이동시간·실제 카탈로그)의 일정 생성, 잘못된 일정 요청, 피드백 v2/v3 검증 결과를 고정 시각으로 해시한다. 해시는 키를 정렬한 JSON으로 계산하므로 객체 속성 생성 순서는 비교하지 않고 배열 순서와 값은 비교한다.
 

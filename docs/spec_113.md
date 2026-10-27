@@ -1,8 +1,8 @@
 # SPEC-113: 동작 보존 구조 리팩토링
 
-- 상태: In Progress
+- 상태: Implemented
 - 작성일: 2026-10-26
-- 최종 수정일: 2026-10-26
+- 최종 수정일: 2026-10-27
 - 관련 이슈: 사용자 요청 "스파게티 코드 리팩토링"(단계별 전체 진행, SDD 절차 준수 결정)
 - 관련 문서: [아키텍처](architecture.md), [데이터 계약](data_contracts.md), [CCU-MMR](ccu_mmr_algorithm_draft.md), [평가](evaluation.md)
 - 관련 코드: `map-ui/`, `server/travel-feedback/`, `server/instagram-import/`, `scripts/`, `review-ui/`, 저장소 루트 설정
@@ -183,8 +183,8 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 ## 알려진 제한
 
 - 피드백 파일(`travel-feedback-anonymized-since-0903 copy.json`)의 Git 이력 삭제 여부는 사용자 결정이 필요하다.
-- `test_labeling_review_model.mjs`는 고정 해시 대상 JSON이 이 Windows 작업 사본에서 CRLF라 SKIP된다. 같은 파일을 LF 작업 사본으로 바꾸면 통과(종료 코드 0, 12개 묶음)함을 확인하고 되돌렸다. 고정 데이터에 `eol=lf` 속성을 주는 정리는 별도 결정이 필요하다.
-- `test_place_types.py`는 SPEC-113 이전부터 실패한다(`XFAIL`). 1단계에서는 SQLite 버전·CRLF만 원인으로 기록했으나 5단계에서 다시 확인한 결과, 재생성한 JSONL·보고서는 줄바꿈만 다르고 내용이 같지만 `place-types-v1/manifest.json`이 SPEC-111 번들 변경 이전의 `map-ui/data/jeju-places.js` 해시를 고정하고 있어 어떤 환경에서도 일치하지 않는다. 0~2단계 작업 트리(`e781986`)에서도 같은 차이가 난다. 재생성은 데이터 변경이고 `classify_place_types.py`는 수정 금지 대상이라 SPEC-113 범위 밖이며 사용자 결정이 필요하다. 바이트 비교에는 SQLite 3.37.2와 LF 체크아웃도 필요하다.
+- (해결: [SPEC-115](spec_115.md)) `test_labeling_review_model.mjs`는 고정 해시 대상 JSON이 Windows 작업 사본에서 CRLF라 SKIP됐다. SPEC-115가 고정 데이터셋별 줄바꿈을 `.gitattributes`로 정해 Windows·Linux 모두 통과한다.
+- (해결: [SPEC-115](spec_115.md)) `test_place_types.py`는 SPEC-113 이전부터 실패했다(`XFAIL`). 위에 기록했던 manifest의 이전 번들 해시는 테스트가 읽지 않는 출처 기록 오류였고, 실제 실패 원인은 SQLite 라이브러리 버전에 따라 달라지는 `place_types.sqlite3` 바이트였다. SPEC-115가 사용자 결정에 따라 SQLite를 버전이 다르면 내용으로 비교하게 하고 산출물을 재생성해 해결했다.
 - 데스크톱 사이드바를 접으면 Leaflet의 마지막 `invalidateSize`(240ms)가 grid 전환 종료 직전에 실행돼 지도 크기가 컨테이너보다 약 2px 작게 남을 수 있다. 기존 동작이며 동작 보존 범위라 고치지 않았고, 테스트는 지도 폭이 커지고 컨테이너와 4px 이내인지만 확인한다.
 - 골든 입력(지도 번들·일정 카탈로그·식당 sidecar·정책 버전)이 바뀌면 골든 비교가 실패한다. 데이터 재생성은 리팩토링이 아니므로 별도 SPEC에서 골든을 갱신한다.
 - 피드백 파일 추적 해제 커밋을 받는 다른 작업 사본에서는 Git이 그 파일을 작업 트리에서 지운다(이력에는 남음). 리포트를 다시 만들 사람은 받기 전에 로컬 사본을 저장소 밖에 보관하고 `--input`으로 지정해야 한다.
@@ -200,3 +200,4 @@ SPEC-111에서 3,217줄 `map-ui/app.js`를 모듈로 나눴지만 다음 구조 
 | 2026-10-26 | 프론트 모듈 구조 결정을 설계에 기록하고 3단계(REQ-005~007) 구현: `domain.js` 공통화, `app.js` 분해와 이벤트 기반 의존 차단, 랭커 단계 함수 분해 |
 | 2026-10-26 | HTTP 골든 58개를 먼저 기록하고 4단계(REQ-008~009) 구현: 설정 레지스트리·KST·HTTP 클라이언트 공통화, 라우트 표, 일정 요청 검증·생성·하루 검증·평가 검증기 분해, Docker 모듈 목록 검사 |
 | 2026-10-26 | 5단계(REQ-010) 스크립트 공용 I/O, 6단계(REQ-011) 문서 반영. 장소 유형 테스트 원인 정정(SKIP→XFAIL)과 상태 판단 기록 |
+| 2026-10-27 | 남은 SKIP·XFAIL을 [SPEC-115](spec_115.md)가 해결해 AC-001이 전부 통과하므로 Implemented로 변경 |

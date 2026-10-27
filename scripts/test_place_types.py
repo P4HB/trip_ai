@@ -7,6 +7,20 @@ import tempfile
 import classify_place_types as module
 
 
+def sqlite_writer_version(path):
+    # SQLite records the version of the library that last wrote the file at header offset 96.
+    number = int.from_bytes(path.read_bytes()[96:100], 'big')
+    return f'{number // 1_000_000}.{number // 1_000 % 1_000}.{number % 1_000}'
+
+
+def sqlite_dump(path):
+    conn = sqlite3.connect(f"file:{path.as_posix()}?mode=ro", uri=True)
+    try:
+        return list(conn.iterdump())
+    finally:
+        conn.close()
+
+
 def main():
     watched = [module.RAW, module.BUNDLE, module.ROOT / 'map-ui/ccu-mmr.js',
                module.ROOT / 'data/labeling/jeju/2026-08-09/full/place-profile-v1-all-1434/place_profiles.sqlite3']
@@ -84,11 +98,20 @@ def main():
             assert module.classify({'lclsSystm3': code}, synthetic, config)['primary_type'] == expected_kind
         unknown = module.classify({'lclsSystm3': 'NEW_CODE'}, synthetic, config)
         assert (unknown['primary_type'], unknown['classification_status']) == ('unknown', 'needs_review')
-        # Published files must be the current deterministic generation.
+        # Published files must be the current deterministic generation. SQLite page bytes depend on the
+        # library version (SPEC-115), so another version compares schema and rows instead of bytes.
+        published_db = module.OUTPUT / 'place_types.sqlite3'
+        writer = sqlite_writer_version(published_db)
+        db_bytes = writer == sqlite3.sqlite_version
         for name, value in first['outputs'].items():
-            assert module.digest(module.OUTPUT / name) == value, f'Stale output: {name}'
+            if name == published_db.name and not db_bytes:
+                assert sqlite_dump(published_db) == sqlite_dump(target / name), f'Stale output: {name}'
+            else:
+                assert module.digest(module.OUTPUT / name) == value, f'Stale output: {name}'
     assert before == {str(p): module.digest(p) for p in watched}, 'Source changed'
-    print('PASS: 2153 IDs, 1663 ready, semantic fixtures, review queue, SQLite parity/integrity, deterministic outputs, source immutability')
+    db_check = 'bytes' if db_bytes else f'schema+rows (written by SQLite {writer}, running {sqlite3.sqlite_version})'
+    print('PASS: 2153 IDs, 1663 ready, semantic fixtures, review queue, SQLite parity/integrity, deterministic outputs, '
+          f'source immutability; published SQLite compared by {db_check}')
 
 
 if __name__ == '__main__':
