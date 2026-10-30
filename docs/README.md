@@ -11,6 +11,9 @@
 
 ## 현재 제품 상태
 
+- 서비스 본질: 인스타그램 게시물·릴스 → 장소 추출·확인 → 지역(도시)별 저장 → 지역별 여행 일정([SPEC-101](spec_101.md) 목표 설계).
+- 제주는 PoC(MVP) 검증 지역이며 서비스 본질이 아니다. 아래 `구현됨` 항목의 제주 데이터·라벨·추천·일정은 PoC 구현이다([SPEC-114](spec_114.md)).
+
 - 구현됨: 제주 TourAPI 기본 장소 수집 및 검증
 - 구현됨: 최신 스냅샷을 지도용 JavaScript 데이터로 변환
 - 구현됨: TourAPI 장소를 라벨링용 음식점·비음식점 데이터로 분리
@@ -155,8 +158,9 @@
 | [SPEC-111](spec_111.md) | 코드 리뷰 후속 수정과 작업 파일 정리 | Implemented | recommendation, feedback, itinerary, server, repository |
 | [SPEC-112](spec_112.md) | 생성 문서·도면·임시 산출물 삭제 | Implemented | repository, docs, cleanup |
 | [SPEC-113](spec_113.md) | 동작 보존 구조 리팩토링 | In Progress | map-ui, server, scripts, tests, repository |
+| [SPEC-114](spec_114.md) | 서비스 본질 명시와 제주 PoC(MVP) 범위 정의 | Implemented | product, docs, repository |
 
-- 다음 예약 번호: `SPEC-114`
+- 다음 예약 번호: `SPEC-115`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
