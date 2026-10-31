@@ -160,8 +160,10 @@
 | [SPEC-113](spec_113.md) | 동작 보존 구조 리팩토링 | Implemented | map-ui, server, scripts, tests, repository |
 | [SPEC-114](spec_114.md) | 서비스 본질 명시와 제주 PoC(MVP) 범위 정의 | Implemented | product, docs, repository |
 | [SPEC-115](spec_115.md) | 고정 데이터 해시의 플랫폼 간 재현성 | Implemented | data, tests, repository |
+| [SPEC-116](spec_116.md) | 음식점 병행 수집 루프 동작 보존 분해 | Implemented | collection, restaurants, scripts, tests |
+| [SPEC-117](spec_117.md) | 1단계 프로토타입 생성기의 원본 고정과 엄격 치환 | Implemented | stage1, prototype, build |
 
-- 다음 예약 번호: `SPEC-116`
+- 다음 예약 번호: `SPEC-118`
 - 새 번호를 사용할 때 이 표와 다음 예약 번호를 먼저 갱신한다.
 - 하나의 기능을 여러 SPEC으로 나눌 때 선행 SPEC과 의존 관계를 각 문서에 기록한다.
 
