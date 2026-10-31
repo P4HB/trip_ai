@@ -10,7 +10,7 @@ from io import StringIO
 
 from kakao_restaurant_review_crawler import (Place, classify, collect_query, business_hours_record,
                                            review_count, collect_detail, collect_business_hours, visible_text)
-from collect_kakao_jeju_restaurant_reviews import Store, parse_args, collect_concurrent
+from collect_kakao_jeju_restaurant_reviews import Store, parse_args, collect_concurrent, SUBTERMS
 
 
 class RestaurantCollectionTests(unittest.TestCase):
@@ -208,6 +208,77 @@ class RestaurantCollectionTests(unittest.TestCase):
             self.assertEqual(store.counts()['inventory_count'], 1)
             self.assertEqual(store.counts()['queries'], {'pending': 1})
             self.assertEqual(store.db.execute('SELECT pages FROM queries').fetchone()[0], 1)
+            store.db.close()
+
+    def test_concurrent_consecutive_search_failures_stop_run(self):
+        # SPEC-116 REQ-005: pinned before the concurrent loop refactor.
+        with tempfile.TemporaryDirectory() as folder:
+            store = Store(Path(folder), {'max_reviews': 5})
+            self.addCleanup(store.db.close)
+            with store.db:
+                store.add_query('제주시 한림읍', '음식점')
+                store.add_query('제주시 애월읍', '음식점')
+                store.add_query('제주시 조천읍', '음식점')
+            args = parse_args(['--output-dir', folder, '--concurrent', '--inventory-only', '--max-failures', '2',
+                               '--failure-pause', '0', '--region-delay', '0'])
+            searched = []
+            def search(driver, query, wait, delay, checkpoint, pages):
+                searched.append(query)
+                raise ValueError('boom')
+            driver = type('Driver', (), {'quit': lambda self: None})()
+            with patch('collect_kakao_jeju_restaurant_reviews.build_driver', return_value=driver), \
+                 patch('collect_kakao_jeju_restaurant_reviews.collect_query', side_effect=search), \
+                 redirect_stderr(StringIO()):
+                with self.assertRaisesRegex(RuntimeError, r'^search stopped: ValueError: boom$') as caught:
+                    collect_concurrent(store, args)
+            self.assertIsNone(caught.exception.__cause__)
+            self.assertEqual(searched, ['제주시 한림읍 음식점', '제주시 애월읍 음식점'])
+            self.assertEqual(store.counts()['queries'], {'failed': 2, 'pending': 1})
+            rows = store.db.execute("SELECT attempts,error FROM queries WHERE status='failed'").fetchall()
+            self.assertEqual([tuple(r) for r in rows], [(1, 'boom'), (1, 'boom')])
+            store.db.close()
+
+    def test_concurrent_truncated_search_adds_refinement_queries(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store = Store(Path(folder), {'max_reviews': 5})
+            self.addCleanup(store.db.close)
+            with store.db:
+                store.add_query('제주시 한림읍', '음식점')
+            args = parse_args(['--output-dir', folder, '--concurrent', '--inventory-only', '--max-queries', '2',
+                               '--region-delay', '0'])
+            def search(driver, query, wait, delay, checkpoint, pages):
+                status = 'truncated' if query.endswith(' 음식점') else 'done'
+                return {'status': status, 'pages': 200, 'reported_count': 9000, 'seen_count': 3000}
+            driver = type('Driver', (), {'quit': lambda self: None})()
+            with patch('collect_kakao_jeju_restaurant_reviews.build_driver', return_value=driver), \
+                 patch('collect_kakao_jeju_restaurant_reviews.collect_query', side_effect=search):
+                collect_concurrent(store, args)
+            statuses = {r['query']: r['status'] for r in store.db.execute('SELECT query,status FROM queries')}
+            self.assertEqual(len(statuses), 1 + len(SUBTERMS))
+            self.assertEqual(statuses['제주시 한림읍 음식점'], 'truncated')
+            self.assertEqual(statuses[f'제주시 한림읍 {SUBTERMS[0]}'], 'done')
+            self.assertEqual(sum(1 for s in statuses.values() if s == 'pending'), len(SUBTERMS) - 1)
+            store.db.close()
+
+    def test_concurrent_writer_failure_is_raised_and_query_marked_failed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store = Store(Path(folder), {'max_reviews': 5})
+            self.addCleanup(store.db.close)
+            with store.db:
+                store.add_query('제주시 한림읍', '음식점')
+            place = Place('1', '식당', 'https://place.map.kakao.com/1', address='제주 제주시 한림읍 1', category='한식')
+            args = parse_args(['--output-dir', folder, '--concurrent', '--inventory-only'])
+            def search(driver, query, wait, delay, checkpoint, pages):
+                checkpoint([place], 1, 1, 1)
+                return {'status': 'done', 'pages': 1, 'reported_count': 1, 'seen_count': 1}
+            driver = type('Driver', (), {'quit': lambda self: None})()
+            with patch('collect_kakao_jeju_restaurant_reviews.build_driver', return_value=driver), \
+                 patch('collect_kakao_jeju_restaurant_reviews.collect_query', side_effect=search), \
+                 patch.object(store, 'save_page', side_effect=OSError('disk full')):
+                with self.assertRaisesRegex(OSError, 'disk full'):
+                    collect_concurrent(store, args)
+            self.assertEqual(store.counts()['queries'], {'failed': 1})
+            self.assertEqual(store.db.execute('SELECT error FROM queries').fetchone()[0], 'disk full')
             store.db.close()
 
     def test_filter_uses_address_and_category_not_name(self):

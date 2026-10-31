@@ -138,6 +138,35 @@ class Store:
             self.db.execute("UPDATE queries SET status=?,pages=?,reported_count=?,seen_count=?,error='',updated_at=? WHERE query=?",
                             (result['status'], result['pages'], result['reported_count'], result['seen_count'], now(), query))
 
+    def next_pending_query(self, exclude):
+        return next((r for r in self.db.execute(
+            "SELECT * FROM queries WHERE status IN ('pending','failed') "
+            "ORDER BY CASE WHEN term='음식점' THEN 0 ELSE 1 END,rowid") if r['query'] not in exclude), None)
+
+    def mark_query_running(self, query):
+        with self.db:
+            self.db.execute("UPDATE queries SET status='running',attempts=attempts+1,updated_at=? WHERE query=?", (now(), query))
+
+    def mark_query_failed(self, query, exc):
+        with self.db:
+            self.db.execute("UPDATE queries SET status='failed',error=?,updated_at=? WHERE query=?", (str(exc)[:1000], now(), query))
+
+    def reset_query_pending(self, query):
+        with self.db:
+            self.db.execute("UPDATE queries SET status='pending' WHERE query=?", (query,))
+
+    def add_refinements(self, region, term):
+        """Queue narrower terms after a search hit the page cap."""
+        if term not in REFINEMENTS:
+            return
+        with self.db:
+            for refinement in REFINEMENTS[term]:
+                self.add_query(region, refinement)
+
+    def mark_detail_failed(self, place_id, exc):
+        with self.db:
+            self.db.execute("UPDATE places SET detail_status='failed',error=? WHERE place_id=?", (str(exc)[:1000], place_id))
+
     def save_detail(self, place_id, summary, reviews):
         # Reviews and completion become visible together, even after a power loss.
         with self.db:
@@ -261,15 +290,14 @@ def build_inventory(store, args):
     while True:
         if args.max_queries and len(attempted) >= args.max_queries:
             return
-        row = next((r for r in store.db.execute("SELECT * FROM queries WHERE status IN ('pending','failed') ORDER BY CASE WHEN term='음식점' THEN 0 ELSE 1 END,rowid") if r['query'] not in attempted), None)
+        row = store.next_pending_query(attempted)
         if row is None:
             return
         stop_requested(args)
         query = row['query']
         attempted.add(query)
         driver = None
-        with store.db:
-            store.db.execute("UPDATE queries SET status='running',attempts=attempts+1,updated_at=? WHERE query=?", (now(), query))
+        store.mark_query_running(query)
         store.export('inventory_running', full=False)
         print(f"[검색] {query}", flush=True)
         try:
@@ -282,18 +310,15 @@ def build_inventory(store, args):
                     store.export('inventory_running', full=False)
             result = collect_query(driver, query, args.wait, args.page_delay, checkpoint, args.max_pages)
             store.finish_query(query, result)
-            if result['status'] == 'truncated' and row['term'] in REFINEMENTS:
-                with store.db:
-                    for term in REFINEMENTS[row['term']]:
-                        store.add_query(row['region'], term)
+            if result['status'] == 'truncated':
+                store.add_refinements(row['region'], row['term'])
             failures = 0
             print(f"[검색 {result['status']}] {query}: 노출 {result['seen_count']}/{result['reported_count']}", flush=True)
         except KeyboardInterrupt:
             raise
         except Exception as exc:
             failures += 1
-            with store.db:
-                store.db.execute("UPDATE queries SET status='failed',error=?,updated_at=? WHERE query=?", (str(exc)[:1000], now(), query))
+            store.mark_query_failed(query, exc)
             print(f"[검색 실패] {query}: {type(exc).__name__}", flush=True)
             if 'access_restricted' in str(exc) or failures >= args.max_failures:
                 raise RuntimeError("Consecutive search failures; checkpoint saved") from exc
@@ -327,8 +352,7 @@ def collect_details(store, args):
                 print(f"[상세 {index+1}/{len(rows)}] {place.name}: 후기 {len(reviews)}개, 운영시간 {hours_status[0] if hours_status else 'pending'}", flush=True)
             except Exception as exc:
                 failures += 1
-                with store.db:
-                    store.db.execute("UPDATE places SET detail_status='failed',error=? WHERE place_id=?", (str(exc)[:1000], place.place_id))
+                store.mark_detail_failed(place.place_id, exc)
                 print(f"[상세 실패] {place.name}: {type(exc).__name__}", flush=True)
                 if 'access_restricted' in str(exc) or failures >= args.max_failures:
                     raise RuntimeError("Consecutive detail failures; checkpoint saved") from exc
@@ -372,171 +396,252 @@ class BrowserWorker:
             raise
 
 
-def collect_concurrent(store, args):
-    """Search and detail overlap, while the calling thread commits every result."""
-    events, stopped = Queue(), Event()
-    def save(kind, *values):
-        if stopped.is_set():
-            raise KeyboardInterrupt('Collection stopped')
-        stop_requested(args)
-        receipt = Future()
-        events.put((kind, values, receipt))
-        receipt.result()  # Next page/reviews cannot start before durable storage.
-        if stopped.is_set():
-            raise KeyboardInterrupt('Collection stopped')
+class Lane:
+    """One single-thread executor and its browser in --concurrent mode."""
+    kind = ''
 
-    lanes = {}
-    attempted_details = set()
-    lane_kinds = ([] if args.skip_inventory else ['search']) + ([] if args.inventory_only else ['detail'] * args.detail_workers)
-    for index, kind in enumerate(lane_kinds):
-        lanes[f'{kind}{index}'] = {'kind': kind, 'pool': ThreadPoolExecutor(max_workers=1),
-                                 'worker': BrowserWorker(args, stopped, save),
-                                 'future': None, 'row': None, 'attempted': set() if kind == 'search' else attempted_details,
-                                 'failures': 0, 'completed': 0, 'ready': 0.0}
-    detail_queue = deque()
-    fatal = None
-    completed = 0
-    last_export = time.monotonic()
+    def __init__(self, store, args, worker, attempted):
+        self.store, self.args, self.worker, self.attempted = store, args, worker, attempted
+        self.pool = ThreadPoolExecutor(max_workers=1)
+        self.future = None
+        self.row = None
+        self.failures = 0
+        self.completed = 0
+        self.ready = 0.0
 
-    def next_row(kind, lane):
-        limit = args.max_queries if kind == 'search' else args.max_places
-        if limit and len(lane['attempted']) >= limit:
+    def start(self, row):
+        self.attempted.add(self.key(row))
+        self.row = row
+        self.claim(row)
+        self.future = self.pool.submit(self.worker.run, self.kind, row)
+
+    def schedule_next(self):
+        delay = self.base_delay()
+        if self.completed % self.args.batch_size == 0:
+            delay = max(delay, self.args.batch_pause)
+        if self.failures:
+            delay = self.args.failure_pause
+        self.ready = time.monotonic() + delay
+
+    def close(self):
+        self.pool.submit(self.worker.close).result()
+        self.pool.shutdown()
+
+    def claim(self, row):
+        pass
+
+    def record_interrupt(self):
+        pass
+
+
+class SearchLane(Lane):
+    kind = 'search'
+
+    def __init__(self, store, args, worker):
+        super().__init__(store, args, worker, set())
+
+    def key(self, row):
+        return row['query']
+
+    def base_delay(self):
+        return self.args.region_delay
+
+    def next_row(self):
+        if self.args.max_queries and len(self.attempted) >= self.args.max_queries:
             return None
-        if kind == 'search':
-            return next((dict(r) for r in store.db.execute(
-                "SELECT * FROM queries WHERE status IN ('pending','failed') "
-                "ORDER BY CASE WHEN term='음식점' THEN 0 ELSE 1 END,rowid")
-                if r['query'] not in lane['attempted']), None)
-        if not detail_queue:
-            detail_queue.extend(dict(r) for r in store.pending_details()
-                                if r['place_id'] not in lane['attempted']
-                                and (not args.place_id or r['place_id'] in args.place_id))
-        return detail_queue.popleft() if detail_queue else None
+        row = self.store.next_pending_query(self.attempted)
+        return dict(row) if row else None
 
-    try:
-        while True:
-            if fatal is None:
-                try:
-                    stop_requested(args)
-                except KeyboardInterrupt as exc:
-                    fatal = exc
-                    stopped.set()
-            # Even after STOP, acknowledge already queued records after saving them.
+    def claim(self, row):
+        self.store.mark_query_running(row['query'])
+        print(f"[검색] {row['query']}", flush=True)
+
+    def record_success(self, result):
+        row = self.row
+        self.store.finish_query(row['query'], result)
+        if result['status'] == 'truncated':
+            self.store.add_refinements(row['region'], row['term'])
+        print(f"[검색 {result['status']}] {row['query']}: {result['seen_count']}/{result['reported_count']}", flush=True)
+
+    def record_interrupt(self):
+        self.store.reset_query_pending(self.row['query'])
+
+    def record_failure(self, exc):
+        self.store.mark_query_failed(self.row['query'], exc)
+
+
+class DetailLane(Lane):
+    """Detail lanes share attempted ids and one backlog, so --max-places is a combined limit."""
+    kind = 'detail'
+
+    def __init__(self, store, args, worker, attempted, backlog):
+        super().__init__(store, args, worker, attempted)
+        self.backlog = backlog
+
+    def key(self, row):
+        return row['place_id']
+
+    def base_delay(self):
+        return self.args.place_delay
+
+    def next_row(self):
+        if self.args.max_places and len(self.attempted) >= self.args.max_places:
+            return None
+        if not self.backlog:
+            self.backlog.extend(dict(r) for r in self.store.pending_details()
+                                if r['place_id'] not in self.attempted
+                                and (not self.args.place_id or r['place_id'] in self.args.place_id))
+        return self.backlog.popleft() if self.backlog else None
+
+    def record_success(self, result):
+        summary, reviews = result
+        self.store.save_detail(self.row['place_id'], summary, reviews)
+        print(f"[상세 완료 {self.completed}] {summary['place_name']}: 저장 후기 {len(reviews)}개 ({summary.get('review_status', 'unknown')})", flush=True)
+
+    def record_failure(self, exc):
+        self.store.mark_detail_failed(self.row['place_id'], exc)
+
+
+class ConcurrentRun:
+    """Search and detail lanes overlap, while the calling thread commits every result."""
+
+    def __init__(self, store, args):
+        self.store, self.args = store, args
+        self.events, self.stopped = Queue(), Event()
+        self.fatal = None
+        self.completed = 0  # Finished jobs since the last full CSV export.
+        self.last_export = time.monotonic()
+        self.lanes = []
+        if not args.skip_inventory:
+            self.lanes.append(SearchLane(store, args, BrowserWorker(args, self.stopped, self.save)))
+        if not args.inventory_only:
+            attempted, backlog = set(), deque()
+            self.lanes += [DetailLane(store, args, BrowserWorker(args, self.stopped, self.save), attempted, backlog)
+                           for _ in range(args.detail_workers)]
+
+    def save(self, kind, *values):
+        """Worker-side checkpoint: hand the record to the writer and wait until it is durable."""
+        if self.stopped.is_set():
+            raise KeyboardInterrupt('Collection stopped')
+        stop_requested(self.args)
+        receipt = Future()
+        self.events.put((kind, values, receipt))
+        receipt.result()  # Next page/reviews cannot start before durable storage.
+        if self.stopped.is_set():
+            raise KeyboardInterrupt('Collection stopped')
+
+    def run(self):
+        try:
             while True:
-                try:
-                    kind, values, receipt = events.get_nowait()
-                except Empty:
+                self._check_stop_file()
+                self._drain_events()
+                self._reap_finished()
+                self._export_progress()
+                if self.fatal is not None:
+                    if not any(lane.future is not None for lane in self.lanes):
+                        raise self.fatal
+                elif not self._dispatch_idle_lanes():
                     break
-                try:
-                    if kind == 'page':
-                        store.save_page(*values)
-                        query, _, pages, total, seen = values
-                        if pages % 10 == 0:
-                            print(f'[검색 진행] {query}: {seen}/{total}', flush=True)
-                    else:
-                        store.save_hours(*values)
-                    receipt.set_result(None)
-                except BaseException as exc:
-                    receipt.set_exception(exc)
-                    fatal = exc
-                    stopped.set()
+                time.sleep(0.1)
+        finally:
+            self._shutdown()
 
-            for lane in lanes.values():
-                kind = lane['kind']
-                future, row = lane['future'], lane['row']
-                if future is None or not future.done():
-                    continue
-                lane['future'] = None
-                lane['completed'] += 1
-                completed += 1
-                try:
-                    result = future.result()
-                    if kind == 'search':
-                        store.finish_query(row['query'], result)
-                        if result['status'] == 'truncated':
-                            with store.db:
-                                for term in REFINEMENTS.get(row['term'], []):
-                                    store.add_query(row['region'], term)
-                        print(f"[검색 {result['status']}] {row['query']}: {result['seen_count']}/{result['reported_count']}", flush=True)
-                    else:
-                        summary, reviews = result
-                        store.save_detail(row['place_id'], summary, reviews)
-                        print(f"[상세 완료 {lane['completed']}] {summary['place_name']}: 저장 후기 {len(reviews)}개 ({summary.get('review_status', 'unknown')})", flush=True)
-                    lane['failures'] = 0
-                except KeyboardInterrupt as exc:
-                    if kind == 'search':
-                        with store.db:
-                            store.db.execute("UPDATE queries SET status='pending' WHERE query=?", (row['query'],))
-                    if fatal is None:
-                        fatal = exc
-                    stopped.set()
-                except Exception as exc:
-                    lane['failures'] += 1
-                    with store.db:
-                        if kind == 'search':
-                            store.db.execute("UPDATE queries SET status='failed',error=?,updated_at=? WHERE query=?",
-                                             (str(exc)[:1000], now(), row['query']))
-                        else:
-                            store.db.execute("UPDATE places SET detail_status='failed',error=? WHERE place_id=?",
-                                             (str(exc)[:1000], row['place_id']))
-                    print(f"[{kind} 실패] {row.get('query', row.get('place_id'))}: {type(exc).__name__}", flush=True)
-                    if 'access_restricted' in str(exc) or lane['failures'] >= args.max_failures:
-                        if fatal is None:
-                            fatal = RuntimeError(f'{kind} stopped: {type(exc).__name__}: {exc}')
-                        stopped.set()
-                delay = args.region_delay if kind == 'search' else args.place_delay
-                if lane['completed'] % args.batch_size == 0:
-                    delay = max(delay, args.batch_pause)
-                if lane['failures']:
-                    delay = args.failure_pause
-                lane['ready'] = time.monotonic() + delay
+    def _fail(self, exc):
+        if self.fatal is None:
+            self.fatal = exc
+        self.stopped.set()
 
-            if completed >= args.batch_size or time.monotonic() - last_export >= 10:
-                store.export('concurrent_running', full=completed >= args.batch_size)
-                if completed >= args.batch_size:
-                    completed = 0
-                last_export = time.monotonic()
-
-            active = any(lane['future'] is not None for lane in lanes.values())
-            if fatal is not None:
-                if not active:
-                    raise fatal
-            else:
-                waiting = False
-                for lane in lanes.values():
-                    kind = lane['kind']
-                    if lane['future'] is not None:
-                        continue
-                    if time.monotonic() < lane['ready']:
-                        waiting = True
-                        continue
-                    row = next_row(kind, lane)
-                    if row is None:
-                        continue
-                    key = row['query'] if kind == 'search' else row['place_id']
-                    lane['attempted'].add(key)
-                    lane['row'] = row
-                    if kind == 'search':
-                        with store.db:
-                            store.db.execute("UPDATE queries SET status='running',attempts=attempts+1,updated_at=? WHERE query=?", (now(), key))
-                        print(f'[검색] {key}', flush=True)
-                    lane['future'] = lane['pool'].submit(lane['worker'].run, kind, row)
-                    active = True
-                if not active and not waiting:
-                    break
-            time.sleep(0.1)
-    finally:
-        stopped.set()
-        # A failure of the writer must also release workers awaiting a receipt.
-        while any(lane['future'] is not None and not lane['future'].done() for lane in lanes.values()):
+    def _check_stop_file(self):
+        if self.fatal is None:
             try:
-                _, _, receipt = events.get(timeout=0.1)
+                stop_requested(self.args)
+            except KeyboardInterrupt as exc:
+                self._fail(exc)
+
+    def _drain_events(self):
+        # Even after STOP, acknowledge already queued records after saving them.
+        while True:
+            try:
+                kind, values, receipt = self.events.get_nowait()
+            except Empty:
+                return
+            try:
+                if kind == 'page':
+                    self.store.save_page(*values)
+                    query, _, pages, total, seen = values
+                    if pages % 10 == 0:
+                        print(f'[검색 진행] {query}: {seen}/{total}', flush=True)
+                else:
+                    self.store.save_hours(*values)
+                receipt.set_result(None)
+            except BaseException as exc:
+                receipt.set_exception(exc)
+                self.fatal = exc  # A writer failure replaces any earlier fatal error (SPEC-116).
+                self.stopped.set()
+
+    def _reap_finished(self):
+        for lane in self.lanes:
+            future = lane.future
+            if future is None or not future.done():
+                continue
+            lane.future = None
+            lane.completed += 1
+            self.completed += 1
+            try:
+                lane.record_success(future.result())
+                lane.failures = 0
+            except KeyboardInterrupt as exc:
+                lane.record_interrupt()
+                self._fail(exc)
+            except Exception as exc:
+                lane.failures += 1
+                lane.record_failure(exc)
+                print(f"[{lane.kind} 실패] {lane.key(lane.row)}: {type(exc).__name__}", flush=True)
+                if 'access_restricted' in str(exc) or lane.failures >= self.args.max_failures:
+                    self._fail(RuntimeError(f'{lane.kind} stopped: {type(exc).__name__}: {exc}'))
+            lane.schedule_next()
+
+    def _export_progress(self):
+        full = self.completed >= self.args.batch_size
+        if full or time.monotonic() - self.last_export >= 10:
+            self.store.export('concurrent_running', full=full)
+            if full:
+                self.completed = 0
+            self.last_export = time.monotonic()
+
+    def _dispatch_idle_lanes(self):
+        """Start the next row on each ready lane; False once nothing is running or waiting."""
+        busy = waiting = False
+        for lane in self.lanes:
+            if lane.future is not None:
+                busy = True
+                continue
+            if time.monotonic() < lane.ready:
+                waiting = True
+                continue
+            row = lane.next_row()
+            if row is None:
+                continue
+            lane.start(row)
+            busy = True
+        return busy or waiting
+
+    def _shutdown(self):
+        self.stopped.set()
+        # A failure of the writer must also release workers awaiting a receipt.
+        while any(lane.future is not None and not lane.future.done() for lane in self.lanes):
+            try:
+                _, _, receipt = self.events.get(timeout=0.1)
                 receipt.set_exception(RuntimeError('Writer stopped before checkpoint'))
             except Empty:
                 pass
-        for lane in lanes.values():
-            lane['pool'].submit(lane['worker'].close).result()
-            lane['pool'].shutdown()
+        for lane in self.lanes:
+            lane.close()
+
+
+def collect_concurrent(store, args):
+    """Search and detail overlap, while the calling thread commits every result."""
+    ConcurrentRun(store, args).run()
 
 
 def parse_args(argv=None):
